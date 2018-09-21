@@ -1,0 +1,71 @@
+@using Syncfusion.EJ2
+
+@model EJ2MVCSampleBrowser.Controllers.Button.RadioButtonModel
+@section ControlsSection{
+    <div class="control-section">
+        <div class="radio-control">
+            @using (Html.BeginForm())
+            {
+                <h4 class="row">Select the Gender</h4>
+                <div class="row">
+                    @Html.EJS().RadioButtonFor(model => model.gender, "male").Label("Male").Render()
+                </div>
+                <div class="row">
+                    @Html.EJS().RadioButtonFor(model => model.gender, "female").Label("Female").Render()
+                </div>
+                @Html.ValidationMessageFor(model => model.gender)
+                @Html.EJS().Button("submit-button").Content("Submit").Render()
+            }
+        </div>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This demo for Syncfusion Essential JS2 RadioButton control shows strongly typed radio button for control functionality with model binding." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>Click the submit button to post the value of the selected RadioButton. When submitting without selecting any of the RadioButton, validation error message will be shown.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            This sample demonstrates Strongly Typed support in RadioButton. You can bind model property to the RadioButton by using Lambda Expression.
+            While submitting form, the model property will be based on `value` of the selected RadioButton.
+        </p>
+        <p>
+        <p>
+            More information about RadioButton can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/radio-button/getting-started-mvc.html">
+                documentation section
+            </a>.
+        </p>
+    </div>
+}
+<style>
+    .radio-control {
+        width: 165px;
+        margin: 0 auto;
+        margin-top: 6%;
+    }
+
+    .control-section .row {
+        margin: 20px 0;
+    }
+
+    .radio-control h4 {
+        color: rgba(0, 0, 0, 0.64);
+    }
+
+    .e-bigger .radio-control h4 {
+        font-size: 20px;
+    }
+
+    .field-validation-error,
+    .field-validation-valid {
+        color: red;
+        display: block;
+        margin: 15px 0;
+    }
+</style>

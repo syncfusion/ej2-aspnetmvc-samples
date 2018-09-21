@@ -1,0 +1,84 @@
+﻿
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Maps
+@section ControlsSection{
+    <style>
+        #container {
+            display: table;
+            margin: 0 auto;
+        }
+    </style>
+    <div class="control-section">
+        <div id="outer" style="width:100%">
+            @Html.EJS().Maps("container").Load("mapsLoad").TooltipRender("tooltipRender").TitleSettings(title => title.Text("Population density (per square kilometers) - 2015")).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.Maps.LegendPosition.Top)).Layers(layer =>
+        {
+            layer.ShapeDataPath("name").DataSource(ViewBag.data).ShapeSettings(new MapsShapeSettings{ ColorValuePath = "density", Fill = "#E5E5E5" }).TooltipSettings(new MapsTooltipSettings{ Visible = true, ValuePath = "name", Format = "${name} : ${density} per square kms" }).ShapeDataPath("name").ShapePropertyPath("name").ShapeData(ViewBag.shapeData).Add();
+        }).Render();
+            <div style="margin-left:75%">
+                Source:
+                <a href="https://simple.wikipedia.org/wiki/List_of_countries_by_population_density" target="_blank">simple.wikipedia.org</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function tooltipRender(args) {
+            if (!args.options.data) {
+                args.cancel = true;
+            }
+        }
+        function mapsLoad(args) {
+            var theme = location.hash.split('/')[1];
+            theme = theme ? theme : 'Material';
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.layers[0].shapeSettings.colorMapping = [
+                {
+                    from: 0.00001, to: 100, color: 'rgb(153,174,214)', label: '<100'
+                },
+                {
+                    from: 100, to: 200, color: 'rgb(115,143,199)', label: '100 - 200'
+                },
+                {
+                    from: 200, to: 300, color: 'rgb(77,112,184)', label: '200 - 300'
+                },
+                {
+                    from: 300, to: 500, color: 'rgb(38,82,168)', label: '300 - 500'
+                },
+                {
+                    from: 500, to: 19000, color: 'rgb(0,51,153)', label: '>500'
+                }
+            ];
+        }
+    </script>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes grouping of countries in the legend based on its population density. The legend will be displayed at the top of the map.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Maps control visualizes grouping of countries in the legend based on its population density." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render a legend in the maps. A legend item denotes the value of a shape. Any number of legend items can be added to the legend. You can bind the desired colors to the shapes, if its values are within the specified range using the <code>ColorMapping</code> property.
+
+        </p>
+        <p>
+            Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices.
+        </p>
+        <br />
+        <p style="font-weight: 500">Injecting Module</p>
+        <p>
+            Maps component features are segregated into individual feature-wise modules. To use a legend, inject the <code>Legend</code> module using the <code>Maps.Inject(Legend)</code> method.
+        </p>
+        <p>
+            More information on the maps layers can be found in this
+            <a target="_blank" href="">documentation section</a>.
+        </p>
+    </div>}
+
+
+

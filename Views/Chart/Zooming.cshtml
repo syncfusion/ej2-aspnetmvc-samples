@@ -1,0 +1,108 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{
+    <script src="~/Scripts/financial-data.js"></script>
+    <div class="control-section">
+        <div style="text-align:center">
+            @Html.EJS().Chart("container").PrimaryXAxis(px => px.Title("Years").MajorGridLines(mg=>mg.Width(0)).
+       ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).Skeleton("yMMM")).Series(series =>
+       {
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).Border(br=>br.Width(0.5).Color("#00bdae"))
+           .Animation(animation=>animation.Enable(false)).DataSource("series1").Name("Product X").XName("x")
+           .YName("y").Fill("url(#gradient-chart)").Add();
+       }
+       ).ChartArea(area => area.Border(br=>br.Color("transparent"))
+       ).LegendSettings(legend => legend.Visible(false)
+       ).PrimaryYAxis(py => py.Title("Profit ($)")
+       .LineStyle(ls=>ls.Width(0)).MajorTickLines(mt=>mt.Width(0))
+       .RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
+       ).ZoomSettings(z => z.EnableMouseWheelZooming(true).EnablePinchZooming(true)
+       .EnableSelectionZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X)
+       .EnableScrollbar(true)).Title("Sales History of Product X").Load("load").Render()
+        </div>
+    </div>
+
+
+    <style>
+    #gradient-chart stop {
+        stop-color: #BDEDE9;
+    }
+
+        #gradient-chart stop[offset="0"] {
+            stop-opacity: 0.75;
+        }
+
+        #gradient-chart stop[offset="1"] {
+            stop-opacity: 0;
+        }
+
+    #control-container {
+        padding: 0px !important;
+    }
+</style>
+<svg style="height: 0">
+    <defs>
+        <linearGradient id="gradient-chart" style="opacity: 0.75" class="chart-material" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+    </defs>
+</svg>
+    <script>
+        var series1 = [];
+        var point1;
+        var value = 80;
+        var i;
+        for (i = 1; i < 500; i++) {
+            if (Math.random() > 0.5) {
+                value += Math.random();
+            }
+            else {
+                value -= Math.random();
+            }
+            point1 = { x: new Date(1950, i + 2, i), y: value.toFixed(1) };
+            series1.push(point1);
+        }
+        var load = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
+
+        };
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Chart control demonstrates the zooming and panning behavior in chart." />
+}
+@section ActionDescription{
+    <p>
+    This sample illustrates zooming feature in chart. The change can be zoomed by pinching or by mouse wheel.
+</p>
+}
+@section Description{
+    <p>This sample demonstrates the zooming and panning behavior in chart.</p>
+<ul>
+    <li>Click and drag the mouse on a chart area to enable selection zooming.</li>
+    <li>Hover the mouse on the toolbar at the top right corner of chart area to switch between zooming and panning.</li>
+    <li>Pinch in and pinch out the chart area to zoom in or zoom out the chart in touch enabled devices.</li>
+    <li>Touch and drag to pan the chart.</li>
+    <li>Double tap to reset the zoomed chart.</li>
+</ul>
+<p>Chart component supports four types of zooming which can be set using <code>enableSelectionZooming</code>, <code>enablePinchZooming</code>, <code>enableMouseWheelZooming</code>, <code>enableDeferredZooming</code> property.
+<p>
+    Chart supports two mode of zooming which can be set using <code>
+        <a target="_blank" class="code"
+           href="http://ej2.syncfusion.com/documentation/chart/api-zoomSettings.html#mode-zoommode">mode</a>
+    </code> property.
+</p>
+<ul>
+    <li><code>XY</code> - Zoom the chart with respect to both the axis.</li>
+    <li><code>X</code> - Zoom the chart with respect to horizontal axis.</li>
+    <li><code>Y</code> - Zoom the chart with respect to vertical axis.</li>
+</ul>
+<br>
+<p>
+    More information on the Zooming can be found in this
+    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-zoomSettings.html#properties">documentation section</a>.
+</p> 
+}

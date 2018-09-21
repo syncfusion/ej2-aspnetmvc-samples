@@ -1,0 +1,57 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="control-wrapper">
+            <div class="control-section">
+                @Html.EJS().RichTextEditor("inline").InlineMode((object)ViewBag.inline).ToolbarSettings(e => e.Items((object)ViewBag.items)).Created("created").FontFamily((object)ViewBag.width).Format((object)ViewBag.width).Value((string)ViewBag.value).Render()
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 property-section" id="all-option-table">
+        <table id="property" title="Properties">
+            <tbody>
+                <tr>
+                    <td style="padding-right: 10px">
+                        <div style="padding-left: 0;padding-top: 0">
+                            @Html.EJS().CheckBox("select").Checked(true).Label("Show on Selection").Change("select_onChange").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+        .control-section {
+            padding-top: 35px;
+        }
+    </style>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+                        This sample demonstrates the toolbar show on inline mode. Toolbar show while selection on the below editable content and
+            it hide on focus out from edit area.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+                        The rich text editor provides an option to display toolbar on demand using mode property. Set mode as inline to enable
+            inline editor. The toolbar becomes visible only when the content is selected
+        </p>
+    </div>
+}
+
+<script>
+    var defaultRTE;
+    function created() {
+        defaultRTE = this;
+    }
+
+    function select_onChange(args) {
+        defaultRTE.inlineMode.onSelection = args.checked;
+        defaultRTE.dataBind();
+    }
+</script>

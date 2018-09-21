@@ -1,0 +1,157 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <h4 align="center" style="font-family: Segoe UI;font-weight: 500; font-style:normal; font-size:15px;">Inflation vs Goods Consumers</h4>
+        <div id="container" align="center">
+            @(Html.EJS().RangeNavigator("container").Height("120").LabelPosition(Syncfusion.EJ2.Charts.AxisPosition.Outside)
+                    .ValueType(Syncfusion.EJ2.Charts.RangeValueType.Logarithmic).Interval(1)
+                    .LabelIntersectAction(Syncfusion.EJ2.Charts.RangeLabelIntersectAction.None)
+                    .Series(sr =>
+                    {
+                        sr.XName("x").YName("y").Width(2).Type(Syncfusion.EJ2.Charts.RangeNavigatorType.StepLine).Add();
+                    }).Tooltip(tl => tl.Enable(true)).Load("load").Changed("changed").LabelRender("renderLabel").TooltipRender("renderTooltip").Render()
+            )
+        </div>
+        <div id="chartcontainer" align="center">
+            @(Html.EJS().Chart("chart")
+            .Series(sr =>
+            {
+                sr.XName("x")
+                   .YName("y")
+                   .Width(2).Type(Syncfusion.EJ2.Charts.ChartSeriesType.StepArea).Marker(mr=>mr.Visible(true)).Animation(animation=>animation.Enable(false)).Add();
+            })
+              .PrimaryXAxis(xaxis =>
+                 xaxis.Title("Numers of Goods Consumers").Interval(1).CrosshairTooltip(ct=>ct.Enable(false)).MajorGridLines(mg=>mg.Width(0))
+                      .ValueType(Syncfusion.EJ2.Charts.ValueType.Logarithmic)
+                      .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+
+              )
+              .ChartArea(ca => ca.Border(br=>br.Width(0)))
+              .PrimaryYAxis(yaxis =>
+                  yaxis.Title("Inflation").Minimum(0).Maximum(100).MajorTickLines(mt=>mt.Width(0))
+                        .LabelFormat("{value}%").LineStyle(ls=>ls.Width(0)))
+                        .Crosshair(cr => cr.Enable(false).LineType(Syncfusion.EJ2.Charts.LineType.Vertical))
+                        .Height("350")
+                        .Load("chartload").Render()
+            )
+
+
+        </div>
+    </div>
+
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+        #material-gradient-chart stop {
+            stop-color: #00bdae;
+        }
+
+        #fabric-gradient-chart stop {
+            stop-color: #4472c4;
+        }
+
+        #bootstrap-gradient-chart stop {
+            stop-color: #a16ee5;
+        }
+
+        #highcontrast-gradient-chart stop {
+            stop-color: #79ECE4;
+        }
+
+        .chart-gradient stop[offset="0"] {
+            stop-opacity: 0.9;
+        }
+
+        .chart-gradient stop[offset="1"] {
+            stop-opacity: 0.3;
+        }
+    </style>
+<svg style="height: 0">
+    <defs>
+        <linearGradient id="material-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="fabric-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="bootstrap-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="highcontrast-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+    </defs>
+</svg>
+    <script>
+        var zoomFactor, zoomPosition;
+        var data = [];
+        var max = 100;
+        for (var i = 0; i < 100; i++) {
+            data.push({
+                x: Math.pow(10, i * 0.1),
+                y: Math.floor(Math.random() * (80 - 30 + 1)) + 30
+            });
+        }
+        var themes = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast']
+        var borderColor = ['#00bdae', '#4472c4', '#a16ee5', '#79ECE4'];
+        var regionColor = ['rgba(0, 189, 174, 0.3)', 'rgba(68, 114, 196, 0.3)',
+            'rgba(161, 110, 229, 0.3)', 'rgba(121, 236, 228, 0.3)'];
+        var load = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            var theme = args.rangeNavigator.theme;
+            args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
+            args.rangeNavigator.series[0].dataSource = data;
+            args.rangeNavigator.value = [4, 6];
+            args.rangeNavigator.series[0].border = { width: 2, color: borderColor[themes.indexOf(theme)] };
+            args.rangeNavigator.series[0].fill = 'url(#' + theme.toLowerCase() + '-gradient-chart)';
+        }
+        var chartload = function (args) {
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            var theme = args.chart.theme;
+            args.chart.series[0].dataSource = data;
+            args.chart.series[0].border = { width: 2, color: borderColor[themes.indexOf(theme)] };
+            args.chart.series[0].fill = 'url(#' + theme.toLowerCase() + '-gradient-chart)';
+        }
+        var changed = function (args) {
+            zoomFactor = args.zoomFactor;
+            zoomPosition = args.zoomPosition;
+            if ((document.getElementById('chart').childNodes.length > 1)) {
+                var chart = document.getElementById('chart').ej2_instances[0];
+                chart.primaryXAxis.zoomFactor = args.zoomFactor;
+                chart.primaryXAxis.zoomPosition = args.zoomPosition;
+                chart.dataBind();
+            }
+        }
+        var renderLabel = function (args) {
+            args.text = (+args.text).toExponential().toLocaleUpperCase();
+        }
+        var renderTooltip = function (args) {
+            args.text = [(+(+args.text).toFixed(1)).toExponential(1).toString().toLocaleUpperCase()];
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Range Navigator control shows how to visualize the logarithmic scale when data has values with both lower (e.g.: 10^-6) and higher (e.g.: 10^6) orders of magnitude." />
+}
+@section ActionDescription{
+    <p>
+        This sample demonstrates rendering logarithmic axis in the range navigator.
+    </p>
+}
+@section Description{
+    <p>
+        Logarithmic axis uses logarithmic scale and it is very useful in visualizing when the data has values with both lower order of magnitude (eg: 10^-6) and higher order of magnitude (eg: 10^6). 
+        To render Logarithmic axis, set <code>valueType</code> to <code>Logarithmic</code>.
+        Tooltip is enabled in this example, to see the tooltip in action, while the selected range is changed.
+    </p>
+}

@@ -1,0 +1,39 @@
+﻿
+
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("RowHover").DataSource((IEnumerable<object>)ViewBag.datasource).EnableHover().AllowPaging().Columns(col =>
+   {
+
+       col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("ProductName").HeaderText("Product Name").Width("150").Add();
+       col.Field("UnitPrice").HeaderText("Supplier ID").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("UnitsInStock").HeaderText("Units In Stock").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("Discontinued").HeaderText("Discontinued").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Width("140").Type("boolean").DisplayAsCheckBox(true).Add();
+
+
+   }).PageSettings(page=>page.PageCount(5)).Render()
+    </div>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		 <p>This sample demonstrates the Grid component with the row hover feature. Move the mouse over the Grid rows to see the
+			hover effect.
+		</p>
+	</div>
+}
+
+@section Meta{
+    <meta name="description" content="This demo for Essential JS 2 grid control shows the usage of the row hover feature."/>
+}
+
+@section Description{
+    <div id="description">
+		     <p>Row Hover feature enables us to identify the current row by highlighting them with the mouse hovers. This can be enabled
+				by setting the <code>EnableHover</code> property as true.
+			</p>
+			<p>In this demo,by enabling the enableHover property, now you can move the mouse over Grid rows to see the hover effect.</p>
+    </div>
+}

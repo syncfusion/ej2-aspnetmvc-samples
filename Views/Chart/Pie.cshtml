@@ -1,0 +1,176 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{   
+<div>
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            <div id="container">
+                @(Html.EJS().AccumulationChart("container").Series(series =>
+            {
+                series.DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600")))
+                      .XName("xValue")
+                      .YName("yValue")
+                      .Name("Browser")
+                      .Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
+                      .Radius("70%")
+                      .StartAngle(0)
+                      .EndAngle(0)
+                      .InnerRadius("0%")
+                      .Explode(true)
+                      .DataSource(ViewBag.dataSource).Add();
+            })
+            .EnableAnimation(false)
+            .EnableSmartLabels(true)
+            .Title("Mobile Browser Statistics")
+            .LegendSettings(ls => ls.Visible(false))
+            .Tooltip(tp => tp.Enable(true).Format("${point.x} : <b>${point.y}%</b>"))
+            .Load("load").Render()
+                )
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 30%">
+                        <div>
+                            Pie Angle
+                        </div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div data-role="rangeslider">
+                            <input type="range" name="range-min" id="pieangle" value="0" min="0" max="360" style="width:90%">
+                        </div>
+                    </td>
+                    <td style="width: 30%;">
+                        <p id="anglevalue" style="font-weight: normal; padding-top: 15px">0</p>
+                    </td>
+
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 30%">
+                        <div>
+                            Outer Radius
+                        </div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div data-role="rangeslider">
+                            <input type="range" name="range-min" id="pieradius" value="70" min="0" max="80" style="width:90%">
+                        </div>
+                    </td>
+                    <td style="width: 30%;">
+
+                        <p id="radius" style="font-weight: normal;padding-top: 15px">0.70</p>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 30%">
+                        <div>
+                            Explode Radius
+                        </div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div data-role="rangeslider">
+                            <input type="range" name="range-min" id="pieexploderadius" value="10" min="0" max="40" style="width:90%">
+                        </div>
+                    </td>
+                    <td style="width: 30%;">
+                        <p id="exploderadius" style="font-weight: normal;padding-top: 15px">0.1</p>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 30%">
+                        <div>
+                            Explode Index
+                        </div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div data-role="rangeslider">
+                            <input type="range" name="range-min" id="pieexplodeindex" value="0" min="0" max="6" style="width:90%">
+                        </div>
+                    </td>
+                    <td style="width: 30%;">
+                        <p id="explodeindex" style="font-weight: normal;padding-top: 15px">0</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    <script>
+        var load = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.accumulation.series[0].explodeOffset = "10%";
+            args.accumulation.series[0].explodeIndex = 0;
+        }
+       
+        function anglechange(value) {
+            var pie = document.getElementById("container").ej2_instances[0];
+            pie.series[0].startAngle = +value;
+            pie.series[0].endAngle = +value;
+            document.getElementById('anglevalue').innerHTML = value.toString();
+            pie.removeSvg();
+            pie.refreshSeries();
+            pie.refreshChart();
+        }
+        
+        document.getElementById('pieangle').onpointermove = document.getElementById('pieangle').ontouchmove =
+            document.getElementById('pieangle').onchange = function (e) {
+                anglechange(+document.getElementById('pieangle').value);
+            };
+        function radiuschange(value) {
+            var pie = document.getElementById("container").ej2_instances[0];
+            pie.series[0].radius = value + '%';
+            document.getElementById('radius').innerHTML = (value / 100).toFixed(2);
+            pie.removeSvg();
+            pie.refreshSeries();
+            pie.refreshChart();
+        }
+        
+        document.getElementById('pieradius').onpointermove = document.getElementById('pieradius').ontouchmove =
+            document.getElementById('pieradius').onchange = function (e) {
+                radiuschange(+document.getElementById('pieradius').value);
+            };
+        function exploderadius(value) {
+            var pie = document.getElementById("container").ej2_instances[0];
+            pie.visibleSeries[0].explodeOffset = value + '%';
+            document.getElementById('exploderadius').innerHTML = (value / 100).toFixed(2);
+            pie.removeSvg();
+            pie.refreshSeries();
+            pie.refreshChart();
+        }
+        
+        document.getElementById('pieexploderadius').onpointermove = document.getElementById('pieexploderadius').ontouchmove =
+            document.getElementById('pieexploderadius').onchange = function (e) {
+                exploderadius(+document.getElementById('pieexploderadius').value);
+            };
+        function explodeIndex(value) {
+            var pie = document.getElementById("container").ej2_instances[0];
+            pie.visibleSeries[0].explodeIndex = +value;
+            document.getElementById('explodeindex').innerHTML = value.toString();
+            pie.removeSvg();
+            pie.refreshSeries();
+            pie.refreshChart();
+        }
+        
+        document.getElementById('pieexplodeindex').onpointermove = document.getElementById('pieexplodeindex').ontouchmove =
+            document.getElementById('pieexplodeindex').onchange = function (e) {
+                explodeIndex(+document.getElementById('pieexplodeindex').value);
+            };
+
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the pie charts." />
+}
+@section ActionDescription{
+    <p>
+    This sample demonstrates pie chart for mobile browser usage statistics. For pie chart, you can change start angle of chart by <code>Pie Angle</code> in properties panel. Outer radius for pie chart can be changed by <code>Outer Radius</code>. Explode Index and explode radius for chart can be changed by <code>Explode Radius</code> and <code>Explode Index</code>
+</p>
+}
+@section Description{
+    <p> In this example, you can see how to render and configure the pie chart. You can use <code>border</code>, <code>fill</code> properties to customize the pie point. <code>dataLabel</code> is used to represent individual data and its value.</p>
+<p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+}

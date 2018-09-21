@@ -1,0 +1,51 @@
+@using Syncfusion.EJ2
+@{ViewBag.Title = "    Essential DocIO (Word) : Export, Word to EPUB, EPub, epub, ePub, ePUB, Conversion : Syncfusion";}
+@section ControlsSection{
+    <div class="control-section">
+        @{Html.BeginForm("DOCToEPub", "DocIO", FormMethod.Post, new { enctype = "multipart/form-data" });
+            {
+                <div style="margin-top: 10px">
+                    Select Document
+                    <br />
+                    @Html.TextBox("file", "", new { type = "file", accept = ".doc,.docx,.rtf,.dot,.dotm,.dotx,docm,.xml" })
+                    <div style="margin-top: 8px">
+                        Click the button to view the resultant EPUB document being converted from Word
+                        document using Essential DocIO. Please note that EPUB viewer is required to view the resultant EPUB.
+                        <div style="margin-top: 8px">
+                            <input type="checkbox" name="OpenType" value="Font" id="font" />
+                            <label for="font" style="font-weight: normal">
+                                Embed the font files in the resultant EPUB.
+                            </label>
+                        </div>
+                        <div style="margin-top: 8px">
+                            <input class="e-btn" type="submit" value="Convert to EPUB" style="width:170px; text-transform:capitalize" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="text-danger">
+                    @ViewBag.Message
+                </div>
+                Html.EndForm();
+            }
+        }
+    </div>
+}
+@section ActionDescription{
+    <div>
+        This sample demonstrates how to convert Word document to EPub using Essential DocIO.
+    </div>
+}
+@section Description{
+    <div>
+        DocIO provides support to create eBooks starting from Word document and publish by converting the Word document to EPub file. You can also embed the fonts in EPub exporting.
+    </div>
+    <div style="margin-top: 15px">
+        More information about Word to EPub conversion can be found in this
+        <a href="https://help.syncfusion.com/file-formats/docio/word-to-epub">documentation</a>
+        section.
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This sample demonstrates how to convert Word document to EPub in ASP.NET MVC using Syncfusion DocIO (Word) library." />
+}

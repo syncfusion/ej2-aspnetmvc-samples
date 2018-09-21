@@ -1,0 +1,49 @@
+﻿@using Syncfusion.EJ2
+
+
+@section ControlsSection{
+<div class="col-lg-12 control-section">
+    <div class="control_wrapper">
+        @Html.EJS().Uploader("UploadFiles").DropArea(".control-fluid").EnableRtl(true).AutoUpload(false).Removing("onFileRemove").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("/Uploader/Save"), RemoveUrl = @Url.Content("/Uploader/Remove") }).Render()
+    </div>
+</div>
+}
+
+<style>
+    .control_wrapper {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .e-upload {
+        width: 100%;
+        position: relative;
+        margin-top: 15px;
+    }
+</style>
+
+<script>
+    function onFileRemove(args) {
+        args.postRawFile = false;
+    }
+</script>
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the RTL mode of the Uploader component. Browse or drop the files to display its content from right-to-left direction.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The Uploader component supports the right-to-left (RTL) using enableRtl property.
+
+            For more information, you can refer to the Right-To-Left section from the documentation.
+        </p>
+
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This sample demonstrates how to align the upload component, its action buttons, and its file list from right to left (RTL)." />
+}

@@ -1,0 +1,44 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @Html.EJS().CircularGauge("container").Width("60%").Load("gaugeLoad").Axes(axes => axes
+           .Radius("80%").StartAngle(230).EndAngle(130).LabelStyle(ls => ls.Position(Position.Inside).Font(ViewBag.labelFont).Offset(-5))
+           .Pointers(pt => pt.Value(60).Radius("60%").PointerWidth(7).Cap(cp => cp.Radius(7).Color("#757575").Border(br => br.Width(8))).NeedleTail(nd => nd.Length("25%")).Add())
+           .LineStyle(lin => lin.Width(8).Color("#E0E0E0"))
+           .MinorTicks(mi => mi.Width(0.0).Color("Transparent")).MajorTicks(mj => mj.Width(0.0).Color("Transparent")).Add()).Render()
+    </div>
+    <script type="text/javascript">
+        function gaugeLoad(sender) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample illustrates the default rendering of circular gauge.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Circular Gauge control illustrates the default rendering of circular gauge." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render a default circular gauge. The CircularGauge control visualizes the numerical values
+            of scales in a circular manner. You can use <code>axes</code>, <code>ranges</code>, <code>pointers</code>        properties to customize the default appearance of the gauge. In this sample, a axis with multiple ranges and a pointer
+            has been used.
+        </p>
+        <p>
+            More information on the gauge can be found in this
+            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+        </p>
+    </div>
+}
+
+

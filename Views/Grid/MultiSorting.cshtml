@@ -1,0 +1,62 @@
+﻿
+
+@using Syncfusion.EJ2
+@section ControlsSection{
+  
+        <div class="control-section">
+
+            @{
+
+                List<object> cols = new List<object>();
+                cols.Add(new { field = "OrderDate", direction = "Ascending" });
+                cols.Add(new { field = "Freight", direction = "Descending" });
+            }
+            @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowMultiSorting().AllowSorting().Columns(col =>
+           {
+
+               col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("CustomerID").HeaderText("Customer Name").Width("170").Add();
+               col.Field("OrderDate").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("Freight").HeaderText("Freight").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("ShipCountry").HeaderText("Ship Country").Width("150").Add();
+
+           }).AllowPaging().PageSettings(page => page.PageCount(2)).SortSettings(sort=>sort.Columns(cols)).Render()
+        </div>
+ 
+
+}
+@section ActionDescription{
+	<div id="action-description">
+		 <p>
+			This sample demonstrates the Grid multi sorting feature. To sort two or more columns, hold the CTRL key and click the column
+			header.
+		</p>
+	</div>
+}
+
+@section Meta{
+    <meta name="description" content="This demo for Essential JS 2 grid control shows the grid multisorting feature. Using this feature, grid rows can be sorted by two or more columns."/>
+}
+
+@section Description{
+    <div id="description">
+		    <p>
+				Sorting feature enables us to order the data in a particular direction. It can be enabled by setting the <code>AllowSorting</code> as true.
+			</p>
+			<p class="e-grid"> To sort a Grid column simply click the column header. The icons <span class="e-icons e-icon-ascending"></span>(ascending)
+				and <span class="e-icons e-icon-descending"></span>(descending) specifies the sort direction of a column.</p>
+			<p>By default, multi-sorting is enabled in Grid, to sort multiple column hold <strong>CTRL</strong> key and click the column
+				header. To clear sort for a column, hold <strong>SHIFT</strong> key and click the column header.</p>
+			<p>
+				While using Grid in a touch device, you have an option for multi sorting in single tap on the grid header. By tapping on
+				the grid header, it will show the toggle button in small popup with sort icon. Now tap the button to enable the multi-sorting
+				in single tap.
+			</p>
+			<p>In this demo, </p>
+			<ul>
+				<li>Simply click the column header to sort a column.</li>
+				<li>Check the checkboxes in the properties panel to sort a column and uncheck to remove sort from a column.
+				</li>
+			</ul>
+    </div>
+}

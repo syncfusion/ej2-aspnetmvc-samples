@@ -1,0 +1,130 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{
+   <div>
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            <div id="container">
+                @(Html.EJS().AccumulationChart("container")
+                    .Series(sr =>
+                    {
+                        sr.Type(Syncfusion.EJ2.Charts.AccumulationType.Funnel)
+                               .XName("xValue")
+                               .YName("yValue")
+                               .DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600")))
+                               .Width("60%")
+                               .Height("80%")
+                               .NeckWidth("15%")
+                               .GapRatio(0.03)
+                               .NeckHeight("18%")
+                               .Explode(true)
+                               .DataSource(ViewBag.dataSource).Add();
+                    })
+                    .EnableSmartLabels(true)
+                     .Tooltip(tp => tp.Enable(true).Format("${point.x} <br/>Composition: <b>${point.y}%</b>"))
+                     .LegendSettings(leg => leg.ToggleVisibility(false))
+                     .Load("load").Resized("resize")
+                     .Title("Website Visitors").Render()
+                )
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 30%">
+                        <div>
+                            Neck Width
+                        </div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div data-role="rangeslider">
+                            <input type="range" name="range-min" id="chartneckwidth" value="15" min="0" max="50" style="width:90%">
+                        </div>
+                    </td>
+                    <td style="width: 30%;">
+                        <p id="neckWidth" style="font-weight: normal; padding-top:15px">15%</p>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 30%">
+                        <div>
+                            Neck Height
+                        </div>
+                    </td>
+                    <td style="width: 74%;">
+                        <div data-role="rangeslider">
+                            <input type="range" name="range-min" id="chartneckheight" value="18" min="0" max="50" style="width:90%">
+                        </div>
+                    </td>
+                    <td style="width: 30%;">
+                        <p id="neckHeight" style="font-weight: normal; padding-top:15px">18%</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    <script>
+      
+        var load = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
+                args.accumulation.series[0].width = '80%';
+                args.accumulation.series[0].height = '70%';
+            }
+        };
+        var resize = function (args) {
+            var bounds = document.getElementById('container').getBoundingClientRect();
+            if (bounds.width < bounds.height) {
+                args.accumulation.series[0].width = '80%';
+                args.accumulation.series[0].height = '70%';
+            }
+            else {
+                args.accumulation.series[0].width = '60%';
+                args.accumulation.series[0].height = '80%';
+            }
+        };
+        
+        function neckWidth(value) {
+            var chart = document.getElementById("container").ej2_instances[0];
+            chart.series[0].neckWidth = value + '%';
+            document.getElementById('neckWidth').innerHTML = value + '%';
+            chart.removeSvg();
+            chart.refreshSeries();
+            chart.refreshChart();
+        }
+        
+        document.getElementById('chartneckwidth').onpointermove = document.getElementById('chartneckwidth').ontouchmove =
+            document.getElementById('chartneckwidth').onchange = function (e) {
+                neckWidth(+document.getElementById('chartneckwidth').value);
+            };
+        function neckHeight(value) {
+            var chart = document.getElementById("container").ej2_instances[0];
+            chart.series[0].neckHeight = value + '%';
+            document.getElementById('neckHeight').innerHTML = value + '%';
+            chart.removeSvg();
+            chart.refreshSeries();
+            chart.refreshChart();
+        }
+        
+        document.getElementById('chartneckheight').onpointermove = document.getElementById('chartneckheight').ontouchmove =
+            document.getElementById('chartneckheight').onchange = function (e) {
+                neckHeight(+document.getElementById('chartneckheight').value);
+            };
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the funnel charts." />
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the data about website visitors by using default funnel series. Datalabel shows the Information about the points.
+    </p>
+}
+@section Description{
+ <p> In this example, you can see how to render funnel chart.<code>dataLabel</code> is used to represent individual data and its value.</p>
+    <p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+}

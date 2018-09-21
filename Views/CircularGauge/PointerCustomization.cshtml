@@ -1,0 +1,204 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <div class="control-section">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div id="container" style="height:250px;">
+                            @Html.EJS().CircularGauge("container").Load("onGaugeLoad").Axes(axes => axes.Radius("70%").StartAngle(270).EndAngle(90)
+                   .LineStyle(new CircularGaugeLine{ Width = 3, Color = "#01aebe" }).LabelStyle(new CircularGaugeLabel
+                   {
+                       Position = Position.Outside,
+                       Font = new CircularGaugeFont { Size = "0px", Color = "#01aebe" }
+                   }).MajorTicks(new CircularGaugeTick
+                   {
+                       Width = 0,
+                       Height = 0,
+                       Color = "transparent"
+                   })
+                   .MinorTicks(new CircularGaugeTick
+                   {
+                       Width = 0,
+                       Height = 0,
+                       Color = "transparent"
+                   }).Minimum(0).Maximum(100).Pointers(ViewBag.FirstPointers).Annotations(ViewBag.FirstAnnotations).Add()).Render()
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div id="container2" style="height:250px;">
+                            @Html.EJS().CircularGauge("container2").Load("onGaugeLoad").Axes(axes => axes.Radius("70%").StartAngle(270).EndAngle(90)
+                   .LineStyle(new CircularGaugeLine{ Width = 3, Color = "#ff5985" }).LabelStyle(new CircularGaugeLabel
+                   {
+                       Position = Position.Outside,
+                       Font = new CircularGaugeFont { Size = "0px", Color = "#ff5985" }
+                   }).MajorTicks(new CircularGaugeTick
+                   {
+                       Width = 1,
+                       Height = 0,
+                       Interval = 100,
+                       Color = "transparent"
+                   })
+                   .MinorTicks(new CircularGaugeTick
+                   {
+                       Width = 0,
+                       Height = 0,
+                       Color = "transparent"
+                   }).Minimum(0).Maximum(100).Pointers(ViewBag.SecondPointers).Annotations(ViewBag.SecondAnnotations).Add()).Render()
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div id="container3" style="height:250px;">
+                            @Html.EJS().CircularGauge("container3").Load("onGaugeLoad").Axes(axes => axes.Radius("70%").StartAngle(270).EndAngle(90)
+                   .LineStyle(new CircularGaugeLine{ Width = 3, Color = "#1E7145" }).LabelStyle(new CircularGaugeLabel
+                   {
+                       Position = Position.Outside,
+                       Font = new CircularGaugeFont { Size = "0px", Color = "#1E7145" }
+                   }).MajorTicks(new CircularGaugeTick
+                   {
+                       Width = 1,
+                       Height = 0,
+                       Interval = 100,
+                       Color = "transparent"
+                   })
+                   .MinorTicks(new CircularGaugeTick
+                   {
+                       Width = 0,
+                       Height = 0,
+                       Color = "transparent"
+                   }).Minimum(0).Maximum(100).Pointers(ViewBag.ThirdPointers).Annotations(ViewBag.ThirdAnnotations).Add()).Render()
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div id="container4" style="height:250px;">
+                            @Html.EJS().CircularGauge("container4").Load("onGaugeLoad").Axes(axes => axes.Radius("70%").StartAngle(270).EndAngle(90)
+                   .LineStyle(new  CircularGaugeLine{ Width = 3, Color = "#9250e6" }).LabelStyle(new CircularGaugeLabel
+                   {
+                       Position = Position.Outside,
+                       Font = new CircularGaugeFont { Size = "0px", Color = "#9250e6" }
+                   }).MajorTicks(new CircularGaugeTick
+                   {
+                       Width = 0,
+                       Height = 0,
+                       Color = "transparent"
+                   })
+                   .MinorTicks(new CircularGaugeTick
+                   {
+                       Width = 0,
+                       Height = 0,
+                       Color = "transparent"
+                   }).Minimum(0).Maximum(100).Pointers(ViewBag.FourthPointers).Annotations(ViewBag.FourthAnnotations).Add()).Render()
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div id="container5" style="height:250px;">
+                            @Html.EJS().CircularGauge("container5").Load("onGaugeLoad").Axes(axes => axes.Radius("70%").StartAngle(270).EndAngle(90)
+                   .LineStyle(new CircularGaugeLine{ Width = 3, Color = "#e3a21a" }).LabelStyle(new CircularGaugeLabel
+                   {
+                       Position = Position.Outside,
+                       Font = new CircularGaugeFont { Size = "0px", Color = "#e3a21a" }
+                   }).MajorTicks(new CircularGaugeTick
+                   {
+                       Width = 0,
+                       Height = 0,
+                       Color = "transparent"
+                   })
+                   .MinorTicks(new CircularGaugeTick
+                   {
+                       Width = 0,
+                       Height = 0,
+                       Color = "transparent"
+                   }).Minimum(0).Maximum(100).Pointers(ViewBag.FifthPointers).Annotations(ViewBag.FifthAnnotations).Add()).Render()
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div id="container6" style="height:250px;">
+                            @Html.EJS().CircularGauge("container6").Load("onGaugeLoad").Axes(axes => axes.Radius("70%").StartAngle(270).EndAngle(90)
+                   .LineStyle(new  CircularGaugeLine{ Width = 0, Color = "transparent" }).LabelStyle(new CircularGaugeLabel
+                   {
+                       Position = Position.Outside,
+                       Font = new CircularGaugeFont { Size = "0px", Color = "#e3a21a" }
+                   }).MajorTicks(new CircularGaugeTick
+                   {
+                       Width = 0,
+                       Height = 0,
+                       Color = "transparent"
+                   })
+                   .MinorTicks(new CircularGaugeTick
+                   {
+                       Width = 0,
+                       Height = 0,
+                       Color = "transparent"
+                   }).Minimum(0).Maximum(100).Pointers(ViewBag.SixthPointers).Annotations(ViewBag.SixthAnnotations).Add()).Render()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function onGaugeLoad(args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            for (var i = 0; i < args.gauge.axes[0].annotations.length; i++) {
+                args.gauge.axes[0].annotations[i].zIndex = "1";
+            }
+        }
+
+
+        var pointeGauge5Interval1 = setInterval(function () {
+            var newVal = Math.random() * (90 - 20) + 20;
+            if (document.getElementById('container4')) {
+                document.getElementById('container4').ej2_instances[0].setPointerValue(0, 0, newVal);
+            }
+            else {
+                clearInterval(pointeGauge5Interval1);
+            }
+        }, 1000);
+        var gauge6Interval1 = setInterval(function () {
+            var newVal = Math.random() * (80 - 30) + 30;
+            if (document.getElementById('container6')) {
+                document.getElementById('container6').ej2_instances[0].setPointerValue(0, 0, newVal);
+                document.getElementById('container6').ej2_instances[0].setPointerValue(0, 1, newVal);
+            }
+            else {
+                clearInterval(gauge6Interval1);
+            }
+        }, 1000);
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the different types of pointers which are available in the gauge.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Circular Gauge control visualizes the different types of pointers available in the circular gauge." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to customize the pointer for an axis in the circular gauge. Gauge supports different types
+            of pointers like <code>marker</code>, <code>image</code>, <code>needle</code>, <code>rangeBar</code>.
+        </p>
+        <br>
+        <p>
+            Gauge with all type of pointer is used in this sample.
+        </p>
+        <p>
+            More information on the pointers can be found in this
+            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+        </p>
+    </div>
+}
+
+

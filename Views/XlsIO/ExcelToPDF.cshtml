@@ -1,0 +1,81 @@
+﻿@using Syncfusion.EJ2;
+
+
+@section ActionDescription{
+    This sample demonstrates how to convert spreadsheets to PDF documents using XlsIO.
+}
+
+@section Meta{
+    <meta name="description" content="This sample demonstrates how to convert Excel file to PDF in ASP.NET MVC as web services using Syncfusion XlsIO (Excel) library." />
+}
+
+@section Description{
+    This sample illustrates the conversion of a MS Excel document to a PDF format.
+    <br />
+    <br />Essential XlsIO allows to export the Excel document into PDF document. Use the Convert method of ExcelToPDFConverter class to convert the Excel to PDF and save the PDF document. This enabling user easily converts the Excel document to PDF document.
+    <br />
+    <br /><b>Features:</b>
+    <br />
+    <br />
+    <ul>
+        <li>Supports conversion of a Excel document to PDF document</li>
+    </ul>
+    <br />
+    <b>Note:</b> Installation of Essential PDF and ExcelChartToImageConverter is necessary to run this sample
+    <br />
+}
+@section ControlsSection{
+    <div class="control-section">
+        <h5>
+            Clicking the button below will result in a PDF document being converted from Excel document using Essential XlsIO and Essential PDF.
+            Please note that you need to have a PDF viewer installed in order to view the generated PDF file.
+        </h5>
+        <br />
+        <h5>  PDF Page Setup options </h5>
+        <div class="celldiv">
+            <table>
+                <tr>
+                    <td>
+                        @Html.EJS().RadioButton("radio1").Label("NoScaling").Name("select").Value("NoScaling").Checked(false).Render()
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        @Html.EJS().RadioButton("radio2").Label("FitAllRowsOnOnePage").Name("select").Value("FitAllRowsOnOnePage").Checked(false).Render()
+                    </td>
+                </tr>
+                <tr style="height:5px">
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EJS().RadioButton("radio3").Label("FitAllColumnsOnOnePage").Name("select").Value("FitAllColumnsOnOnePage").Checked(false).Render()
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        @Html.EJS().RadioButton("radio4").Label("FitSheetOnOnePage").Name("select").Value("FitSheetOnOnePage").Checked(true).Render()
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="celldiv">
+            @Html.EJS().Button("createbtn").Content("Convert to PDF").Render()
+        </div>
+    </div>
+    <script>
+    document.getElementById('createbtn').onclick = function () {
+        if (document.getElementById('radio1').checked == true)
+            location.href = '@Html.Raw(@Url.Action("ExcelToPDF", new { @button = "Create", @Group1 = "NoScaling" }))';
+        else if (document.getElementById('radio2').checked == true)
+            location.href = '@Html.Raw(@Url.Action("ExcelToPDF", new { @button = "Create", @Group1 = "FitAllRowsOnOnePage" }))';
+        else if (document.getElementById('radio3').checked == true)
+            location.href = '@Html.Raw(@Url.Action("ExcelToPDF", new { @button = "Create", @Group1 = "FitAllColumnsOnOnePage" }))';
+        else
+            location.href = '@Html.Raw(@Url.Action("ExcelToPDF", new { @button = "Create", @Group1 = "FitSheetOnOnePage" }))';
+    };
+    </script>
+}

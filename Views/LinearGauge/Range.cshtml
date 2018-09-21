@@ -1,0 +1,261 @@
+﻿@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-md-8 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().LinearGauge("container").Width("80%").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+           {
+               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0 },
+               Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
+               {
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                   {
+                       Start = 0.1, End = 32, Color = "#30B32D",StartWidth = 15, EndWidth = 15
+                   },
+                    new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                   {
+                       Start = 32, End = 68, Color = "#FFDF00",StartWidth = 15, EndWidth = 15
+                   },
+                  new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                   {
+                       Start = 68, End = 100, Color = "#F03E3E",StartWidth = 15, EndWidth = 15
+                   }
+               },
+               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+               {
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+                   {
+                       Value = 35, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#757575",
+                       Offset =-40,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+                   }
+               },
+               MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Height = 0, Width = 0 },
+               MinorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Height = 0 , Width = 0 },
+               LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Format = "{value}%", Offset = 30 },
+           }
+       }).Annotations(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation> {
+           new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+           {
+               Content = "<div id=pointer style=width:20px;><h1 style=font-size:18px;color:#424242>35</h1></div>",
+               AxisIndex = 0, AxisValue =35, ZIndex = "1", Y = -50
+           }
+       }).Render();
+        </div>
+    </div>
+    <div class="col-md-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <div> Select Range</div>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="selectIndex" autocomplete="off" id="rangeIndex" style="width:90%">
+                                <option value="0">Low</option>
+                                <option value="1">Moderate</option>
+                                <option value="2">High</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Range Color</div>
+                    </td>
+                    <td>
+                        <div>
+                            <div class="e-float-input" style="margin-top: 0px;">
+                                <input type="text" value="#F03E3E" id="color" style="margin-left: -10px">
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Range Font Color</div>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="selectIndex" autocomplete="off" id="useRangeColor" style="width:90%">
+                                <option value="font" selected="">Default Color</option>
+                                <option value="range">Range Color</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="startRangeValue">
+                            Range Start
+                            <span>&nbsp;&nbsp;&nbsp;0</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="range" id="start" value="0" min="0" max="100" style="width:90%;">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="endRangeValue">
+                            Range End
+                            <span>&nbsp;&nbsp;&nbsp;32</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="range" id="end" value="32" min="0" max="100" style="width:90%;">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div id="startWidthValue">
+                            Range Start Width
+                            <span>&nbsp;&nbsp;&nbsp;15</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="range" id="startWidth" value="15" min="0" max="30" style="width:90%;">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="endWidthValue">
+                            Range End Width
+                            <span>&nbsp;&nbsp;&nbsp;15</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="range" id="endWidth" value="15" min="0" max="30" style="width:90%;">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var gauge;
+        function onGaugeLoad(sender) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.orientation = "Horizontal";
+            for (var i = 0; i < sender.gauge.annotations.length; i++) {
+                sender.gauge.annotations[i].zIndex = "1";
+            }
+            gauge = sender.gauge;
+        }
+
+        var rangeIndex = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select Range Bar Color',
+            width: 120,
+            change: function () {
+                var value = +rangeIndex.value;
+                var start = document.getElementById('start');
+                var end = document.getElementById('end');
+                var rangeColor = document.getElementById('color');
+                var startWidth = document.getElementById('startWidth');
+                var endWidth = document.getElementById('endWidth');
+                start.value = gauge.axes[0].ranges[value].start.toString();
+                end.value = gauge.axes[0].ranges[value].end.toString();
+                startWidth.value = gauge.axes[0].ranges[value].startWidth.toString();
+                endWidth.value = gauge.axes[0].ranges[value].endWidth.toString();
+                rangeColor.value = gauge.axes[0].ranges[value].color.toString();
+                document.getElementById('startWidthValue').innerHTML = 'Range Start Width<span>   ' + startWidth.value;
+                document.getElementById('endWidthValue').innerHTML = 'Range End Width<span>   ' + endWidth.value;
+                document.getElementById('startRangeValue').innerHTML = 'Range Start <span>   ' + start.value;
+                document.getElementById('endRangeValue').innerHTML = 'Range End <span>   ' + end.value;
+                gauge.refresh();
+            }
+        });
+        rangeIndex.appendTo('#rangeIndex');
+        document.getElementById('color').onchange = function () {
+            var ele = document.getElementById('color');
+            gauge.axes[0].ranges[+rangeIndex.value].color = ele.value;
+            gauge.refresh();
+        };
+        document.getElementById('startWidth').ontouchmove = document.getElementById('startWidth').onpointermove =
+            document.getElementById('startWidth').onchange = function () {
+                var ele = document.getElementById('startWidth');
+                gauge.axes[0].ranges[+rangeIndex.value].startWidth = parseInt(ele.value, 10);
+                document.getElementById('startWidthValue').innerHTML = 'Range Start Width<span>   ' + ele.value;
+                gauge.refresh();
+            };
+        document.getElementById('endWidth').ontouchmove = document.getElementById('endWidth').onpointermove =
+            document.getElementById('endWidth').onchange = function () {
+                var ele = document.getElementById('endWidth');
+                gauge.axes[0].ranges[+rangeIndex.value].endWidth = parseInt(ele.value, 10);
+                document.getElementById('endWidthValue').innerHTML = 'Range End Width<span>   ' + ele.value;
+                gauge.refresh();
+            };
+        document.getElementById('start').ontouchmove = document.getElementById('start').onpointermove =
+            document.getElementById('start').onchange = function () {
+                var start = document.getElementById('start');
+                var end = document.getElementById('end');
+                gauge.axes[0].ranges[+rangeIndex.value].start = parseInt(start.value, 10);
+                gauge.axes[0].ranges[+rangeIndex.value].end = parseInt(end.value, 10);
+                document.getElementById('startRangeValue').innerHTML = 'Range Start <span>   ' + start.value;
+                gauge.refresh();
+            };
+        document.getElementById('end').ontouchmove = document.getElementById('end').onpointermove =
+            document.getElementById('end').onchange = function () {
+                var start = document.getElementById('start');
+                var end = document.getElementById('end');
+                gauge.axes[0].ranges[+rangeIndex.value].start = parseInt(start.value, 10);
+                gauge.axes[0].ranges[+rangeIndex.value].end = parseInt(end.value, 10);
+                document.getElementById('endRangeValue').innerHTML = 'Range End <span>   ' + end.value;
+                gauge.refresh();
+            };
+        var useRangeColor = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select Range Bar Color',
+            width: 120,
+            change: function () {
+                gauge.axes[0].labelStyle.useRangeColor = (useRangeColor.value === 'range') ? true : false;
+                gauge.refresh();
+            }
+        });
+        useRangeColor.appendTo('#useRangeColor');
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample illustrates how to highlight a region in an axis by using ranges in gauge. Start, end, color, and width of the range can be changed by using the options provided in the property panel.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Linear Gauge control illustrates how to highlight specific regions in an axis by using ranges." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render and configure the ranges in linear gauge. You can use
+            <code>start</code>,
+            <code>end</code>,
+            <code>startWidth</code>,
+            <code>endWidth</code> and
+            <code>position</code> properties to customize the ranges. You can also specify various colors for the ranges in the axis. If you enable
+            the
+            <code>useRangeColor</code> property, then the axis labels will be displayed based on its range color.
+            <br>
+        <p>
+            More information about ranges can be found in this
+            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+        </p>
+    </div>
+
+}
+
+

@@ -1,0 +1,63 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "HeaderTemplate";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("335").Width("auto").Columns(col =>
+   {
+
+       col.Field("EmployeeID").HeaderText("Employee ID").HeaderTemplate("#employeetemplate").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("FirstName").HeaderText("First Name").Width("140").Add();
+       col.Field("BirthDate").HeaderText("Birth Date").HeaderTemplate("#datetemplate").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();       
+       col.Field("City").Width("120").Add();
+       col.Field("Country").HeaderText("Country").Width("140").Add();
+
+   }).Render()
+
+    </div>
+
+<style>
+    .e-grid .e-icon-userlogin::before {
+        width: 15px !important;
+        content: '\e7d4';
+    }
+
+    .e-grid .e-icon-calender::before {
+        width: 15px !important;
+        content: '\e7b5';
+    }
+</style>
+<script id="datetemplate" type="text/x-template">
+    <span class="e-icon-calender e-icons headericon"></span> Order Date
+</script>
+<script id="employeetemplate" type="text/x-template">
+    <span class="e-icon-userlogin e-icons employee"></span> Emp ID
+</script>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates the Grid header template feature. In this sample, we have shown custom icons in the column headers.
+		</p>
+	</div>
+}
+
+@section Meta{
+    <meta name="description" content="This demo for Essential JS 2 grid control shows the usage of the header template feature."/>
+}
+
+@section Description{
+    <div id="description">
+		<p>
+        The Grid provides a way to use a custom element in header element.
+        <code>Columns->HeaderTemplate</code> property accepts either string or HTML element`s ID value, which will be used as the template
+        for the header cell.
+		</p>
+		<p>
+			In this demo, we have render customized template for EmployeeID and BirthDate column headers.
+		</p>
+
+    </div>
+}

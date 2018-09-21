@@ -1,0 +1,135 @@
+﻿@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-md-8 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Title("Temperature Measure").Container(
+            new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer { Width = 13, RoundedCornerRadius = 5, Type = Syncfusion.EJ2.LinearGauge.ContainerType.Normal }
+           ).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+           {
+               Minimum = 0, Maximum = 180,
+               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0, Color="#9E9E9E" },
+               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+               {
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+                   {
+                       Value = 90, Height=13,Width=13,Color="#f02828",
+                       Type = Syncfusion.EJ2.LinearGauge.Point.Bar,RoundedCornerRadius = 5
+                   }
+               },
+               MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Color = "#9E9E9E" , Interval=20, Height=20 },
+               MinorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Color = "#9E9E9E", Height=10 },
+           },new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis {
+              Minimum = 0 ,Maximum = 180, Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0 },
+              MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Interval = 20, Height=20 } , OpposedPosition = true,
+              Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+              {
+                new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+                {
+                    Width = 0
+                }
+              }
+           } }).Render();
+        </div>
+    </div>
+    <div class="col-md-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <div>Orientation</div>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="selectIndex" autocomplete="off" id="orientationMode" style="width:90%">
+                                <option value="Vertical" selected="">Vertical</option>
+                                <option value="Horizontal">Horizontal</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Container Type</div>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="selectIndex" autocomplete="off" id="containerMode" style="width:90%">
+                                <option value="Normal">Normal</option>
+                                <option value="RoundedRectangle">RoundedRectangle</option>
+                                <option value="Thermometer" selected="">Thermometer</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var gauge;
+        function onGaugeLoad(sender) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            gauge = sender.gauge;
+        }
+
+        var containerMode = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select Range Bar Color',
+            width: 120,
+            change: function () {
+                gauge.container.type = containerMode.value;
+                gauge.refresh();
+            }
+        });
+        containerMode.appendTo('#containerMode');
+        var orientationMode = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select Range Bar Color',
+            width: 120,
+            change: function () {
+                gauge.orientation = orientationMode.value;
+                gauge.refresh();
+            }
+        });
+        orientationMode.appendTo('#orientationMode');
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the type of containers used in linear gauge. Orientation and container type of linear gauge can be changed by using <code>Orientation</code> and <code>Container Type</code> options
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Linear Gauge control demonstrates the various types of containers available in linear gauge." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            This sample demonstrates the orientation and container customization in linear gauge. The gauge can be rendered either in
+            vertical or horizontal orientation. And you can use <code>type</code> property in container to change the
+            type of the container.
+        </p>
+        <br>
+        <p>
+            More information about container can be found in this
+            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+        </p>
+    </div>
+
+}
+
+
+
+
+
+
+
+
+
+

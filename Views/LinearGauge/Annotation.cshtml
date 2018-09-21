@@ -1,0 +1,129 @@
+﻿@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        <script id='highimg' type="text/x-template">
+            <div id="high"><img style="height:25px;width:25px;" src="@Url.Content("~/Content/LinearGauge/High.png")"></div>
+        </script>
+        <script id='lowimg' type="text/x-template">
+            <div id="low"><img style="height:25px;width:25px;" src="@Url.Content("~/Content/LinearGauge/Low.png")"></div>
+        </script>
+        <script id='moderateimg' type="text/x-template">
+            <div id="moderate"><img style="height:25px;width:25px;" src="@Url.Content("~/Content/LinearGauge/Moderate.png")"></div>
+        </script>
+        @Html.EJS().LinearGauge("container").Width("80%").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+       {
+           Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0 },
+           Maximum = 90,
+           Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
+           {
+               new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+               {
+                   Start = 0.1, End = 30, Color = "#30B32D",StartWidth = 50, EndWidth = 50
+               },
+                new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+               {
+                   Start = 30, End = 60, Color = "#FFDF00",StartWidth = 50, EndWidth = 50
+               },
+              new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+               {
+                   Start = 60, End = 90, Color = "#F03E3E",StartWidth = 50, EndWidth = 50
+               }
+           },
+           Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+           {
+               new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+               {
+                   Value = 35, Height=15,Width=15,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#757575",
+                   Offset =-50, MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+               }
+           },
+           MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Height = 0, Width = 0, Interval = 10 },
+           MinorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Height = 0 , Width = 0 },
+           LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Font = new Syncfusion.EJ2.LinearGauge.LinearGaugeFont { Size = "0px" } }
+       }
+   }).Annotations(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation> {
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "<div id=title style=width:200px;><p style=font-size:18px;>CPU Utilization</p></div>",
+           HorizontalAlignment = Syncfusion.EJ2.LinearGauge.Placement.Center,X = 35,Y = 50
+       },
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "#lowimg",
+           AxisValue = 15, Y = -25,
+       },
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "#moderateimg",
+           AxisValue = 45, Y = -25
+       },
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "#highimg",
+           AxisValue = 75, Y = -25
+       },
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "<div id=lowText><p style=font-size:15px;color:#248622;>Low</p></div>",
+           AxisValue = 15, Y = 20
+       },
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "<div id=moderateText><p style=font-size:15px;color:#ba9e2a;>Moderate</p></div>",
+           AxisValue = 45, Y = 20
+       },
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "<div id=highText><p style=font-size:15px;color:#b42f2f;>High</p></div>",
+           AxisValue = 75, Y = 20
+       }
+   }).Render();
+    </div>
+    <script type="text/javascript">
+        function onGaugeLoad(sender) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.orientation = "Horizontal";
+            for (var i = 0; i < sender.gauge.annotations.length; i++) {
+                sender.gauge.annotations[i].zIndex = "1";
+            }
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample illustrates the CPU Utilization of a resource by using annotation feature.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Linear Gauge control illustrates the CPU Utilization of a resource by using annotation feature." />
+}
+@section Description{
+    <div id="description">
+
+        In this sample we have used annotations to indicate low, moderate and high ranges. Annotations are used to place the texts,
+        shapes or images anywhere in the gauge. You can use
+        <code>content</code>,
+        <code>x</code>,
+        <code>y</code>,
+        <code>zIndex</code> properties to customize the annotations. And you can specify the id of the element that needs to be displayed, in the
+        content property.
+        <br>
+        <p style="font-weight: 500 ">Injecting Module</p>
+        Linear gauge component features are segregated into individual feature-wise modules. To render annotations, we need to inject
+        <code>Annotations</code> module using
+        <code>LinearGauge.Inject(LinearGauge)</code> method. More information about annotations can be found in this
+        <a target="_blank " href="http://ej2.syncfusion.com/documentation ">documentation section</a>.
+    </div>
+}
+
+
+
+
+
+

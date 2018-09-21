@@ -1,0 +1,78 @@
+﻿@using Syncfusion.EJ2;
+
+@section ActionDescription{
+    This sample demonstrates how to convert spreadsheets to image using XlsIO.
+}
+@section Meta{
+    <meta name="description" content="This sample demonstrates how to convert Excel worksheet to image in ASP.NET MVC using Syncfusion XlsIO (Excel) library." />
+}
+@section Description{
+    A worksheet can be converted to an image that is subject to few limitations. The image can be of any format, and it can also be saved as a memory stream.
+    <br />
+    <br />
+    <b>Features:</b>
+    <br />
+    <br />
+    <ul>
+        <li>Worksheet to image conversion</li>
+        <li>Saving workbooks as images of Bitmaps and metafiles</li>
+    </ul>
+    <br />
+}
+@section ControlsSection{
+    <div class="control-section">
+        <h5>
+            Click the button below to convert the Excel worksheet to image using Essential XlsIO.
+        </h5>
+        <br />
+        <h5>  Convert to </h5>
+        <div class="celldiv">
+            <table>
+                <tr>
+                    <td>
+                        @Html.EJS().RadioButton("radio1").Label("PNG").Name("select").Value("PNG").Checked(true).Render()
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        @Html.EJS().RadioButton("radio2").Label("JPEG").Name("select").Value("JPEG").Checked(false).Render()
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        @Html.EJS().RadioButton("radio3").Label("BMP").Name("select").Value("BMP").Checked(false).Render()
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        @Html.EJS().RadioButton("radio4").Label("EMF").Name("select").Value("EMF").Checked(false).Render()
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="celldiv">
+            @Html.EJS().Button("createbtn").Content("Convert To Image").Render()
+            @Html.EJS().Button("inputbtn").Content("Input Template").Render()
+        </div>
+    </div>
+    <script>
+    document.getElementById('createbtn').onclick = function () {
+        if (document.getElementById('radio1').checked == true)
+            location.href = '@Html.Raw(@Url.Action("WorksheetToImage", new { @button = "Create", @Group1 = "PNG" }))';
+        else if (document.getElementById('radio2').checked == true)
+            location.href = '@Html.Raw(@Url.Action("WorksheetToImage", new { @button = "Create", @Group1 = "JPEG" }))';
+        else if (document.getElementById('radio3').checked == true)
+            location.href = '@Html.Raw(@Url.Action("WorksheetToImage", new { @button = "Create", @Group1 = "BMP" }))';
+        else
+            location.href = '@Html.Raw(@Url.Action("WorksheetToImage", new { @button = "Create", @Group1 = "EMF" }))';
+        };
+        document.getElementById('inputbtn').onclick = function () {
+            location.href = '@Html.Raw(@Url.Action("WorksheetToImage", new { @button = "Input Template", @Group1 = "PNG" }))';
+        };
+    </script>
+
+}

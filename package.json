@@ -1,0 +1,30 @@
+{
+    "name": "@syncfusion/ej2-aspmvc-samples",
+    "version": "1.0.0",
+    "description": "ASP.Net MVC Samples for Syncfusion Essential JS 2",
+    "author": "Syncfusion Inc.",
+    "license": "SEE LICENSE IN license",
+    "keywords": [
+     "ej2",
+     "ej2-aspmvc",
+     "ej2-aspmv-samples"
+   ],
+   "repository": {
+     "type": "git",
+     "url": "https://gitlab.syncfusion.com/essential-studio/ej2-aspmvc-samples.git"
+   },
+
+   "devDependencies": {
+    "json-beautify": "^1.0.1",
+     "gulp-dotnet-cli": "^1.0.2",
+     "require-dir": "^0.3.2",
+     "elasticlunr": "0.9.5",
+     "simple-git": "^1.43.0",
+     "glob": "^7.1.2",
+     "gulp": "^3.9.1",
+     "shelljs": "^0.8.1"
+   },
+     "scripts": {
+         "deploy": "gulp deploy"
+     }
+}

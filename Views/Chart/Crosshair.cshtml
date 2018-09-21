@@ -1,0 +1,93 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{
+    <script src="~/Scripts/financial-data.js"></script>
+    <div class="control-section">
+        <div style="text-align:center">
+      @Html.EJS().Chart("container").Series(series =>
+     {
+
+         series
+         .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line)
+         .Marker(mr=>mr.Visible(true))
+         .XName("xDate")
+         .YName("High")
+         .DataSource("axesData")
+        // .Border(ViewBag.border)
+         .Name("Gold")
+         .Width(2).Add();
+
+         series
+         .Type(Syncfusion.EJ2.Charts.ChartSeriesType.HiloOpenClose)
+         .BearFillColor("#2ecd71")
+         .BullFillColor("#e74c3d")
+         .YAxisName("Yaxis")
+         .High("High")
+         .Low("Low")
+         .Open("Open")
+         .Close("Close")
+         .XName("xDate")
+         .DataSource("axesData")
+        // .Border(ViewBag.border)
+         .Name("Silver")
+         .Width(2).Add();
+
+
+     }).Axes(ax => {
+         ax.RowIndex(0)
+         .OpposedPosition(true)
+         .Minimum(82)
+         .Maximum(88)
+         .Name("Yaxis")
+         .CrosshairTooltip(ct=>ct.Enable(true))
+         .Interval(2)
+         .Title("Million in USD (Stock)").Add();
+     }).PrimaryYAxis(px => px
+         .Minimum(83)
+         .Title("Million in USD")
+         .CrosshairTooltip(ct=>ct.Enable(true))
+         .LabelFormat("{value}M")
+         .Maximum(87)
+         .Interval(1)
+         .MajorTickLines(mt=>mt.Width(0))
+           ).PrimaryXAxis(px => px
+           .LabelFormat("MMM")
+           .CrosshairTooltip(ct=>ct.Enable(true))
+           .MajorGridLines(mg=>mg.Width(0))
+           .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
+           ).Crosshair(cr=>cr.Enable(true)).LegendSettings(lg => lg.Visible(false)).Title("Conns,Inc Stock Details").Load("load").Render()
+
+        </div>
+    </div>
+
+    <script>
+        var axesData = window.axesData;
+        var load = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
+
+        };
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Chart control demonstrates the crosshair behavior in chart." />
+}
+@section ActionDescription{
+    <p>
+        This sample illustrates crosshair feature in chart. To see crosshair, hover or long press the chart.
+    </p>
+}
+@section Description{
+    <p>This sample demonstrates the crosshair behavior in chart. Crosshair is used to inspect or focus on an individual data point.
+        You can customize the axis tooltip using <code>crosshairTooltip</code> properties in axis.
+    </p>
+    <p> 
+         Hover the chart area to view crosshair and its tooltip. Touch and hold to enable crosshair in touch enabled devices. 
+    </p>
+      <br>
+        <p>
+            More information on the Crosshair can be found in this
+            <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-crosshairOptions.html">documentation section</a>.
+        </p>
+}

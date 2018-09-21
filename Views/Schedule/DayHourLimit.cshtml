@@ -1,0 +1,82 @@
+﻿@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).WorkHours(new ScheduleWorkHours { Highlight = false }).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).StartHour("08:00").EndHour("20:00").SelectedDate(new DateTime(2018, 2, 15)).Render()
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 50%">
+                        <div>
+                            Start Hour
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div>
+                            @Html.EJS().TimePicker("startTime").Format("HH:mm").Width("90px").Value(new DateTime(2000, 1, 1, 8, 0, 0)).Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 50%">
+                        <div>
+                            End Hour
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div>
+                            @Html.EJS().TimePicker("endTime").Format("HH:mm").Width("90px").Value(new DateTime(2000, 1, 1, 20, 0, 0)).Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 100%;">
+                        <div>
+                            @Html.EJS().Button("submit").Content("Submit").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
+    <script type="text/javascript">
+        document.getElementById('submit').onclick = function () {
+            var start = document.getElementById('startTime');
+            var end = document.getElementById('endTime');
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.startHour = start.value;
+            scheduleObj.endHour = end.value;
+        }
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            applyCategoryColor(args, scheduleObj.currentView);
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Schedule control depicts how to restrict the start and end hours on scheduler." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo depicts how to restrict the start and end hours of Schedule, thus limiting it to display only the given hour range.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, the Schedule is made to display from 8 AM to 8 PM and the rest of the hours are hidden, as it is restricted
+            to start from
+            <code>08:00</code> hours and end on
+            <code>20:00</code> hours by setting to
+            <code>StartHour</code> and
+            <code>EndHour</code> properties respectively.
+        </p>
+    </div>
+}

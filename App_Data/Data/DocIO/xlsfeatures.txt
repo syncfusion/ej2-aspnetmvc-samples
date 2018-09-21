@@ -1,0 +1,51 @@
+Following are the features of Excel supported by XlsIO:
+
+Quick Overview
+Provides a quick overview of the functionalities of excel. The potential usage of XlsIO has been classified under the four categories
+
+1. SpreadsheetFromScratch		
+2. ExtractDataFromSpreadsheet
+3. SpreadsheetFromTemplate		
+4. EditSpreadsheet
+
+Formatting
+This section explains the formatting capabilities of Essential XlsIO.
+
+1. AlignmentSettings			
+2. BorderSettings
+3. FontSettings			
+4. GlobalStyles
+5. NumberFormatting			
+6. PatternSettings
+7. ColorPalette
+
+Formulas
+Essential XlsIO has advanced support for working with Formula.
+
+1. ArrayFormula			
+2. ExcelFunctions
+3. ReadFormula 
+
+CalculationEngine
+The formulas entered during runtime can be computed using Essential Calculate and XlsIO.
+
+1. XlsIOCalcEngine 
+
+Data Manipulation
+Essential XlsIO has advanced support for working with Data in a worksheet. Here is some key functionality that makes working with data easier.
+
+1. NamedRanges			
+2. ImportExportDataTable
+3. RangeManipulation
+
+Worksheet Manipulation 
+Essential XlsIO has advanced support for manipulating the worksheet.
+
+1. AutofitRowsandColumns		
+2. CopyWorksheetToAnotherWorkbook
+3. Freezepane				
+4. GroupUngroupRowsandColumns
+5. HideUnhideRowsandColumns	
+6. InsertRowsandColumns
+7. PageBreak				
+8. RowHeightandColumnWidth

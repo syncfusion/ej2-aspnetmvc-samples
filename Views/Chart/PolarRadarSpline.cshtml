@@ -1,0 +1,142 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{
+<div>
+    <div class="col-lg-9 control-section">
+@(Html.EJS().Chart("container")
+    .Series(sr =>
+    {
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.Spline)
+            .Name("Cardioid (unidirectional)")
+            .XName("x")
+            .YName("y")
+            .Width(2)
+            .DataSource("cardData")
+            .DashArray("5 5 2").Add();
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.Spline)
+            .Name("Omnidirectional")
+            .XName("x")
+            .YName("y")
+            .Width(2)
+            .DataSource("omniDirData")
+            .DashArray("2").Add();
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.Spline)
+            .Name("Bidirectional")
+            .XName("x")
+            .YName("y")
+            .Width(2)
+            .DataSource("biDirData").Add();
+    })
+      .PrimaryXAxis(xaxis =>
+         xaxis.Maximum(180)
+            .Interval(30)
+            .LabelFormat("{value}°")
+            .Minimum(-180)
+            .Coefficient(100)
+      )
+      .PrimaryYAxis(yaxis =>
+          yaxis.LabelFormat("{value}M")
+                 .Interval(5)
+                 .Minimum(-20)
+                 .Maximum(0)
+      )
+      .Title("Microphone Types Polar Patterns").Tooltip(tp => tp.Enable(true)).Load("load").Render()
+)
+       
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 50%">
+                        <div>
+                            Series Type:
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div>
+                            @Html.EJS().DropDownList("dropdown").Index(0).DataSource(ViewBag.data).Value("Polar").Change("valueChange").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+</style>
+<script>
+    var cardData = [];
+    var biDirData = [];
+    var omniDirData = [];
+    var point1;
+    var point2;
+    for (var x = -180; x < 180; x++) {
+        point1 = { x: x, y: -12.6 * (1 - Math.cos(x * 3.14 / 180)) };
+        cardData.push(point1);
+        point2 = { x: x, y: -3 };
+        omniDirData.push(point2);
+    }
+    for (var x = -180; x < -90; x++) {
+        point1 = { x: x, y: -26 * (1 + Math.cos(x * 3.14 / 180)) };
+        biDirData.push(point1);
+    }
+    for (var x = -90; x < 90; x++) {
+        point1 = { x: x, y: -26 * (1 - Math.cos(x * 3.14 / 180)) };
+        biDirData.push(point1);
+    }
+    for (var x = 90; x < 180; x++) {
+        point1 = { x: x, y: -26 * (1 + Math.cos(x * 3.14 / 180)) };
+        biDirData.push(point1);
+    }
+    var load = function (args) {
+        var selectedTheme = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme && selectedTheme.indexOf('fabric') > -1) ? 'Fabric' : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+    };
+    var valueChange = function () {
+        var chart = document.getElementById('container').ej2_instances[0];
+        var polarType = document.getElementById("dropdown").ej2_instances[0];
+        chart.series[0].type = polarType.value;
+        chart.series[1].type = polarType.value;
+        chart.series[2].type = polarType.value;
+        chart.series[0].animation.enable = true;
+        chart.series[1].animation.enable = true;
+        chart.series[2].animation.enable = true;
+        chart.refresh();
+    }
+</script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render spline in polar and radar charts." />
+}
+@section ActionDescription{
+    <p>
+    This sample demonstrates polar series with spline type for the microphone type data. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+</p>
+}
+@section Description{
+    <p>
+    In this example, you can see how to render and configure the spline type charts. Spline chart connects each point in series
+    through a curved line. You can use <code>dashArray</code>, <code>width</code>, <code>fill</code> properties
+    to customize the spline. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and
+    its value.
+</p>
+<p>
+    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+</p>
+<br>
+<p>
+    More information on the polar series can be found in this
+    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+</p>
+}

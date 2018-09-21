@@ -1,0 +1,96 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Popups
+
+@section ControlsSection{
+    <div class="col-lg-8 control-section" id="target">
+        @Html.EJS().Button("dialogButton").Content("Open").Render()
+        @Html.EJS().Dialog("modal_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).IsModal(true).Open("dialogOpen").Close("dialogClose").Header("Software Update").Content("Your current software version is up to date.").CloseOnEscape(true).Width("335px").Target("#target").Buttons(ViewBag.modalbutton).Render()
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties">
+            <tbody>
+                <tr>
+                    <td style="width:60%;">
+                        <div style="font-size:13px;">Close on overlay click</div>
+                    </td>
+                    <td>                        
+                        @Html.EJS().CheckBox("checkbox").Change("onChange").Checked(false).Render()                       
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+
+<style>
+    .control-wrapper {
+        height: 250px;
+        width: 500px;
+    }
+
+    #target {
+        min-height: 350px;
+        min-height: 350px;
+    }
+
+    @@media screen and (min-width: 150px) and (max-width: 480px) {
+        .control-section {
+            margin-bottom: 30px;
+        }
+    }
+</style>
+
+@section PreScripts {
+    <script>
+        function dialogClose() {
+            document.getElementById('dialogButton').style.display = 'inline-block';
+        }
+        function dialogOpen() {
+            document.getElementById('dialogButton').style.display = 'none';
+        }
+        document.getElementById('dialogButton').onclick = function () {
+            var dialogObj = document.getElementById('modal_dialog').ej2_instances[0];
+            dialogObj.show();
+        };
+        function onChange(args) {
+            var dialogObj = document.getElementById("modal_dialog").ej2_instances[0];
+            if (args.checked) {
+                dialogObj.overlayClick = function () {
+                    dialogObj.hide();
+                };
+            }
+            else {
+                dialogObj.overlayClick = function () {
+                    dialogObj.show();
+                };
+            }
+        }
+        function dlgButtonClick() {
+            var dialogObj = document.getElementById("modal_dialog")
+            dialogObj.ej2_instances[0].hide();
+        }
+    </script>
+ }
+    @section ActionDescription{
+        <div id="action-description">
+            <p>
+                This sample demonstrates that the modal behavior of Dialog component.
+                Choose "Close on overlay" option from property panel to decide whether the Dialog will be closed on click on the overlay.
+                Click on “Open” button to show the Dialog again if it is closed.
+            </p>
+
+        </div>
+    }
+    @section Description{
+        <div id="description">
+            <p>
+                A modal prevents the access to the parent application, so that the user should interact with the Dialog compulsory before continuing
+                the parent application.
+            </p>
+
+        </div>
+    }
+    @section Meta{
+        <meta name="description" content="This sample demonstrates the modal pop-up behavior of the dialog component, which helps display critical information such as errors and warnings." />
+    }
+
