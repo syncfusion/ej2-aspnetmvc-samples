@@ -1,0 +1,67 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div style="text-align:center">
+        <div  ></div>
+
+            @Html.EJS().Chart("container").Series(series =>
+       {
+
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+           .Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Font(ViewBag.Font).Position(Syncfusion.EJ2.Charts.LabelPosition.Top))).XName("x")
+           .YName("yValue").DataSource(ViewBag.dataSource).Name("Gold").Width(2).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+            .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Font(ViewBag.Font).Position(Syncfusion.EJ2.Charts.LabelPosition.Top))).XName("x").YName("yValue1").DataSource(ViewBag.dataSource)
+           .Name("Silver").Width(2).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+            .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Font(ViewBag.Font).Position(Syncfusion.EJ2.Charts.LabelPosition.Top))).XName("x")
+            .YName("yValue2").DataSource(ViewBag.dataSource).Name("Brozen").Width(2).Add();
+
+       }).PrimaryYAxis(px => px.LabelStyle(ls=>ls.Color("transparent")).LineStyle(ls=>ls.Width(0)).MajorTickLines(mg=>mg.Width(0))
+       .MajorGridLines(mg=>mg.Width(0))
+       ).PrimaryXAxis(px => px.Interval(1)
+       .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0))
+       ).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br=>br.Color("transparent"))
+       ).LegendSettings(lg => lg.Visible(false)).Title("Olympic Medal Counts - RIO").Load("load").Render()
+        </div>
+    </div>
+
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+        var load = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render the column series." />
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the Olympic medal count in Rio with default column series in the chart. 
+        Data points values are showed by using data label.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the column type charts. Column type charts are used for comparing
+        the frequency, count, total or average of data in different categories. You can use <code>border</code>,
+        <code>fill</code> properties to customize the vertical rectangle. <code>dataLabel</code> is used to represent individual
+        data and its value.
+    </p>
+    <p>
+        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <br>
+    <p>
+        More information on the column series can be found in this
+        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+    </p>
+}

@@ -1,0 +1,55 @@
+﻿@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        <div class="control_wrapper">
+            <div class="tabs-wrap">
+                <div class="wrap">
+                    @Html.EJS().TimePicker("timepicker").Placeholder("Select a time").Render()
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .control_wrapper {
+        display: block;
+        margin: 0 auto;
+        max-width: 300px;
+        padding: 5% 0;
+    }
+
+    .tabs-wrap {
+        padding: 0 0px 10px;
+    }
+
+    .e-bigger .control-section {
+        margin-top: 60px;
+    }
+</style>
+
+@section Meta{
+    <meta name="description" content="A simple and lightweight TimePicker component for ASP.NET MVC for selecting times that is customizable to fit large-scale applications" />
+}
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            The following sample demonstrates the default functionalities of the TimePicker. Click the TimePicker icon to select a desired time and the selected time value will be displayed in the TimePicker element.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            A <code>TimePicker</code> is an interactive component that provides an option to select a value from popup list or
+            set a desired time value.
+        </p>
+        <p>
+            More information about the TimePicker and it's configuration can be found in the
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/timepicker/getting-started-mvc.html" target="_blank"> documentation section</a>.
+        </p>
+    </div>
+}
+

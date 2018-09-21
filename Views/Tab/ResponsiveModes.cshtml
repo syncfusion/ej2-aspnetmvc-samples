@@ -1,0 +1,91 @@
+﻿@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="e-sample-resize-container">
+            @Html.EJS().Tab("adaptiveTab").Created("tabCreated").Items(ViewBag.adaptiveItems).Render()
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%;">
+            <tbody>
+                <tr>
+                    <td style="width: 50%;">
+                        <div>Mode</div>
+                    </td>
+                    <td style="width: 50%; padding-right: 10px;">
+                        <div>
+                            @Html.EJS().DropDownList("positionList").Width("100%").DataSource(ViewBag.positionData).Value("Scrollable").Change("changeOverFlowMode").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+
+@section ActionDescription{
+    <p>
+        This sample demonstrates both <code>scrollable</code> and <code>popup</code> modes of the <code>Tab</code>. Select option from down-down to change the responsive option in property panel.
+    </p>
+}
+
+@section Description{
+    <p>
+        The <code>Tab</code> is adaptable to the available space when the tab items exceed the view space.
+    </p>
+    <p>
+        You can assign overflowMode property value as <code>Scrollable / Popup</code>. By default scrollable mode of tab is enabled when tab item exceeds the view range.
+        In this sample, users can change the <code>overflowMode</code> by selecting the dropdown options.
+    </p>
+    <p>
+        More information about Tab can be found in this <a target="_blank" href="http://ej2.syncfusion.com/aspnet/documentation/tab/getting-started-asp-mvc.html?syntax=mvc"> documentation </a> section.
+    </p>
+}
+
+@section Meta{
+
+    <meta name="description" content="The sample illustrates that responsive mode of Tab component that aligns tab items in a  scrollable or popup mode if there is no enough space." />
+
+}
+
+<style>
+    .e-content .e-item {
+        font-size: 12px;
+        padding: 10px;
+        text-align: justify;
+    }
+
+    .container {
+        min-width: 350px;
+        max-width: 500px;
+    }
+
+    .property-panel-content {
+        padding: 10px;
+    }
+
+    @@media only screen and (min-width: 1824px) {
+        .e-sample-resize-container {
+            width: 65%;
+        }
+
+        .e-bigger .e-sample-resize-container {
+            width: 75%;
+        }
+    }
+</style>
+
+<script>
+    var tabObj;
+    function tabCreated() {
+        tabObj = document.getElementById('adaptiveTab').ej2_instances[0];
+    }
+    function changeOverFlowMode(e) {
+        if (e.itemData.value != null && e.itemData.value === 'Scrollable') {
+            tabObj.overflowMode = 'Scrollable';
+        } else {
+            tabObj.overflowMode = 'Popup';
+        }
+        tabObj.dataBind();
+    }
+</script>

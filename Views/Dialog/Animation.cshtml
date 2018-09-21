@@ -1,0 +1,104 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Popups
+
+@section ControlsSection{
+    <div id="target" class="col-lg-12 control-section">
+        <div id="customization">
+            <div class="animate">
+                @Html.EJS().Button("Zoom").CssClass("e-outline").IsPrimary(true).Content("Zoom").Render()
+            </div>
+            <div class="animate">
+                @Html.EJS().Button("FlipXDown").CssClass("e-outline").IsPrimary(true).Content("FlipX Down").Render()
+            </div>
+            <div class="animate">
+                @Html.EJS().Button("FlipXUp").CssClass("e-outline").IsPrimary(true).Content("FlipX Up").Render()
+            </div>
+            <div class="animate">
+                @Html.EJS().Button("FlipYLeft").CssClass("e-outline").IsPrimary(true).Content("FlipY Left").Render()
+            </div>
+            <div class="animate">
+                @Html.EJS().Button("FlipYRight").CssClass("e-outline").IsPrimary(true).Content("FlipY Right").Render()
+            </div>
+
+            @Html.EJS().Dialog("defaultDialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.Zoom }).Header("Animation Dialog").Content("<span>The dialog is configured with animation effect. It is opened or closed with 'Zoom In or Out' animation.</span>").IsModal(true).ShowCloseIcon(true).CloseOnEscape(true).Width("285px").Target("#target").Buttons(ViewBag.defaultButton).Render()
+
+        </div>
+    </div>
+}
+
+<style>
+    #target {
+        height: 100%;
+        min-height: 350px;
+    }
+
+    html,
+    body,
+    #container {
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+        min-height: 400px;
+    }
+
+    .text {
+        text-transform: capitalize;
+    }
+
+    #customization {
+        display: table;
+        margin: 0 auto;
+    }
+
+    .animate {
+        display: table-cell;
+        padding: 10px;
+    }
+</style>
+
+@section PreScripts {
+    <script>
+        var dialog = document.getElementById('defaultDialog');
+        var list = document.getElementsByClassName('animate');
+        for (var i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', function (e) {
+                onAnimationChange(e);
+            });
+        }
+        function onAnimationChange(e) {
+            var effects = e.target.id;
+            var txt = e.target.parentElement.innerText;
+            txt = (txt == "Zoom In/Out") ? "Zoom In or Out" : txt;
+            dialog.ej2_instances[0].content = 'The dialog is configured with animation effect. It is opened or closed with "' + txt + '" animation.';
+            dialog.ej2_instances[0].animationSettings = { effect: effects, duration: 400 };
+            dialog.ej2_instances[0].show();
+        }
+        function dlgButtonClick() {
+            var dialogObj = document.getElementById('defaultDialog').ej2_instances[0];
+            dialogObj.hide();
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates how to open or close the dialog with animation effects by clicking the appropriate button.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The dialog can be opened or closed with animation effect using the <code>animationSettings</code> property.
+            You can also customize the duration of animation and delay to begin animation.
+            Disables the dialog's animation by setting the animation effect as none.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This sample demonstrates how to open or close the dialog with various animation effects, and how to customize the animation duration and delay." />
+}

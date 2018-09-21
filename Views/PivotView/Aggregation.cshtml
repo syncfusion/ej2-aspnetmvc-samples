@@ -1,0 +1,145 @@
+@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.PivotView
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Pivot Table control shows different types of aggregation for value fields" />
+}
+@section ControlsSection{
+    <div class="col-lg-10 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSource(dataSource => dataSource.Data((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
+           .DrilledMembers(drilledmembers =>
+           {
+               drilledmembers.Name("EnerType").Items(ViewBag.drilledMembers).Add();
+           })
+           .FormatSettings(formatsettings =>
+           {
+               formatsettings.Name("ProCost").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
+               formatsettings.Name("PowUnits").Format("N0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
+           })
+           .Rows(rows =>
+           {
+               rows.Name("Year").Caption("Production Year").Add();
+               rows.Name("HalfYear").Caption("Half Year").Add();
+               rows.Name("Quarter").Caption("Quarter Year").Add();
+           })
+           .Columns(columns =>
+           {
+               columns.Name("EnerType").Caption("Energy Type").Add();
+               columns.Name("EneSource").Caption("Energy Source").Add();
+           })
+           .Values(values => { values.Name("PowUnits").Caption("Units (GWh)").Add(); values.Name("ProCost").Caption("Cost (MM)").Add(); })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).ShowFieldList(true).Render()
+        </div>
+    </div>
+
+    <div class="col-lg-2 property-section">
+        <table id='property' title='Properties' class='property-panel-table' style="width: 100%;">
+            <tbody>
+                <tr style="height: 50px">
+                    <td>
+                        <div>
+                            <select id="unitdrpdwn" name="ddl-view-mode">
+                                <option value='Sum' selected>Sum</option>
+                                <option value='Avg'>Average</option>
+                                <option value='Min'>Min</option>
+                                <option value='Max'>Max</option>
+                                <option value='Count'>Count</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div>
+                            <select id="costdrpdwn" name="ddl-view-mode">
+                                <option value='Sum' selected>Sum</option>
+                                <option value='Avg'>Average</option>
+                                <option value='Min'>Min</option>
+                                <option value='Max'>Max</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        #pivotview {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        var balanceDropDown = new ej.dropdowns.DropDownList({
+            placeholder: 'Cost',
+            floatLabelType: 'Auto',
+            change: function (args) {
+                setSummaryType('ProCost', args.value);
+            }
+        });
+        balanceDropDown.appendTo('#costdrpdwn');
+        var summaryDropDown = new ej.dropdowns.DropDownList({
+            placeholder: 'Units',
+            floatLabelType: 'Auto',
+            change: function (args) {
+                setSummaryType('PowUnits', args.value);
+            }
+        });
+        summaryDropDown.appendTo('#unitdrpdwn');
+        function setSummaryType(fieldName, summaryType) {
+            var isAvail = false;
+            var pivotGridObj = document.getElementById('pivotview').ej2_instances[0];
+            for (var vCnt = 0; vCnt < pivotGridObj.dataSource.values.length; vCnt++) {
+                if (pivotGridObj.dataSource.values[vCnt].name === fieldName) {
+                    pivotGridObj.dataSource.values[vCnt].type = summaryType;
+                    isAvail = pivotGridObj.dataSource.values[vCnt].properties ? false : true;
+                }
+            }
+            if (isAvail) {
+                pivotGridObj.updateDataSource();
+            }
+        }
+    </script>
+}
+
+@section PreScripts {
+    <script>
+        ej.base.enableRipple(false);
+    </script>
+}
+
+@section ActionDescription{
+   <div id="action-description">
+       <p>
+           This sample demonstrates the aggregate types in the pivot widget. In this sample, you can change the aggregate types
+           for value fields using a dropdown list separately.
+       </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The pivot widget supports different types of aggregation for value fields. The aggregate type can be set using the type
+            property of the value field. The built-in aggregates are:
+        </p>
+        <ul>
+            <li>
+                <code>Sum</code>
+            </li>
+            <li>
+                <code>Average</code>
+            </li>
+            <li>
+                <code>Min</code>
+            </li>
+            <li>
+                <code>Max</code>
+            </li>
+            <li>
+                <code>Count</code>
+            </li>
+        </ul>
+    </div>
+}

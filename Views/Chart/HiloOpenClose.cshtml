@@ -1,0 +1,108 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{
+<script src="~/Scripts/stock-chart-data.js"></script>
+    <div class="control-section">
+        <div align="center">
+            <h4 id="days" style="font-family: Segoe UI;font-weight: 500; font-style:normal; font-size:15px;">AAPL Historical</h4>
+        </div>
+            <div align="center" style="transform:translateX(10%)">
+            @(Html.EJS().RangeNavigator("selector")
+                    .ValueType(Syncfusion.EJ2.Charts.RangeValueType.DateTime)
+                    .XName("x").YName("close").DataSource("chartData")
+                    .DisableRangeSelector(true)
+                    .PeriodSelectorSettings(ps => ps.Position(Syncfusion.EJ2.Charts.PeriodSelectorPosition.Top)
+                    .Periods(periods=> { periods.Text("1M").Interval(1).IntervalType(Syncfusion.EJ2.Charts.RangeIntervalType.Months).Add();
+                        periods.Text("3M").Interval(2).IntervalType(Syncfusion.EJ2.Charts.RangeIntervalType.Months).Add();
+                        periods.Text("2Q").Interval(2).IntervalType(Syncfusion.EJ2.Charts.RangeIntervalType.Quarter).Add();
+                        periods.Text("1Y").Interval(1).Add();
+                        periods.Text("2Y").Interval(2).Selected(true).Add();
+                        periods.Text("YTD").Add();
+                        periods.Text("All").Add(); }))
+                    .Load("load").Loaded("loaded").Changed("changed").Render()
+            )
+        </div>
+        <div style="text-align:center">
+       @Html.EJS().Chart("container").Series(series =>
+       {
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.HiloOpenClose).XName("x").High("high").Low("low").Close("close")
+           .Open("open").DataSource("chartData1").Name("Warmest").Add();
+       }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
+       .MajorGridLines(mg=>mg.Width(0)).CrosshairTooltip(ct=>ct.Enable(true))
+       ).PrimaryYAxis(py => py.RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
+       .MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).Title("Price").LabelFormat("n0")
+       ).ChartArea(area => area.Border(br=>br.Color("transparent"))).Crosshair(cr => cr.Enable(true)
+       .Line(li=>li.Width(0.02)).LineType(Syncfusion.EJ2.Charts.LineType.Vertical)).Load("chartload").AxisLabelRender("axisLabelRender").LegendSettings(lg => lg.Visible(false)
+            ).Tooltip(tt => tt.Enable(true).Shared(true)).Render()
+        </div>
+    </div>
+
+
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+        var chartData1 = [];
+        var chartData = chartData;
+        var selectedTheme = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+        var load = function (args) {
+            args.rangeNavigator.theme = theme;
+            args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
+            args.rangeNavigator.dataSource = chartData;
+            args.rangeNavigator.periodSelectorSettings.height = document.body.className.indexOf('e-bigger') > -1 ? 56 : 42;
+        }
+        var changed = function (args) {
+            if ((document.getElementById('container').childNodes.length > 1)) {
+                var chart = document.getElementById('container').ej2_instances[0];
+                var filterData = chartData.filter(function (data) {
+                    return (data['x'].getTime() >= (args.start) && data['x'].getTime() <= (args.end));
+                });
+                chartData1 = filterData;
+                chart.series[0].animation.enable = false;
+                chart.series[0].dataSource = filterData;
+                chart.refresh();
+
+            }
+        }
+        var axisLabelRender = function (args) {
+            if (args.axis.title === 'Price') {
+                args.text = '$' + args.text;
+            }
+        };
+        var chartload = function (args) {
+            args.chart.theme = theme;
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
+            args.chart.series[0].dataSource = chartData1;
+        }
+        var loaded = function (args) {
+            if (!ej.base.Browser.isDevice && document.getElementById('container_Secondary_Element')) {
+                document.getElementById('container_Secondary_Element').style.transform = 'translate(13%)';
+            }
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render the hilo open close series." />
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the AAPL historical data with default HILO Open Close series in the chart. 
+        Tooltip and crosshair shows the information about the data and period.
+   </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the Hilo Open Close type Series. You can use <code>border</code>, 
+        <code>fill</code> properties to customize the area.
+    </p>
+    <p>
+        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information on the Hilo Open Close series can be found in this
+        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+    </p>
+}

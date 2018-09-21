@@ -1,0 +1,75 @@
+﻿@using Syncfusion.EJ2
+
+@section ActionDescription{
+    This sample demonstrates how to extract data from a spreadsheet using XlsIO.
+    }
+
+@section Meta{
+    <meta name="description" content="This sample demonstrates how to find and extract a word in Excel in ASP.NET MVC using Syncfusion XlsIO (Excel) library." />
+}
+
+@section Description{
+<p>
+    This sample demonstrates some of the rich APIs of Essential XlsIO.
+</p>
+    <br /><b> Features:</b>
+    <br />
+    <br />
+    <ul>
+        <li>Find numbers, text, or dates</li>
+        <li>Read or extract display text and values in a cell</li>
+    </ul>
+}
+@section ControlsSection{
+    <div class="control-section">
+        @{Html.BeginForm("FindAndExtract", "XlsIO", FormMethod.Post);
+        <div class="rowdiv">
+            <p>
+                Select any item from the below listbox and click the Extract Data button to extract
+                the data from the spreasheet using Essential XlsIO.
+            </p>
+        </div>
+        <br />
+        <div class="rowdiv">
+            <div class="celldiv">
+                @Html.EJS().DropDownList("selectoption").Placeholder("Select a Format").DataSource(ViewData["selectoption"]).Width("350").Render()
+            </div>
+        </div>
+        <br />
+        <div class="rowdiv">
+            <div class="celldiv">
+                <table width="400">
+                    <colgroup>
+                        <col style="width: 40%" />
+                        <col style="width: 60%" />
+                    </colgroup>
+                    <tr>
+                        <td id="displaytext" align="left">
+                                Display Text
+                        </td>
+                        <td align="left">
+                            @Html.ViewData["displayText"]
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="valuetext" align="left">
+                                Value in the Cell
+                        </td>
+                        <td align="left">
+                            @Html.ViewData["valueText"]
+                            <br />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="rowdiv">
+            <div class="celldiv">
+                <input type="submit" class ="e-btn" id="extract" value="Extract Data" style=" width:200px;" />
+            </div>
+        </div>
+        }
+    </div>
+}

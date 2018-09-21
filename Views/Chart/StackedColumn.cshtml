@@ -1,0 +1,61 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div style="text-align:center">
+      @Html.EJS().Chart("container-vertical").Series(series =>
+ {
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("y").DataSource(ViewBag.dataSource).Name("UK").Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("y").DataSource(ViewBag.dataSource1).Name("Germany").Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("y").DataSource(ViewBag.dataSource2).Name("France").Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("y").DataSource(ViewBag.dataSource3).Name("Italy").Add();
+ }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+ .MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg => mg.Width(0))
+ .MajorTickLines(mt => mt.Width(0)).
+ MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
+ .LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
+       ).PrimaryYAxis(py => py.MajorTickLines(mt => mt.Width(0)).
+       MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).Title("Sales")
+       ).Title("Mobile Game Market by Country").ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tt => tt.Enable(true)).Load("load").Render()
+        </div>
+        <div style="float: right; margin-right: 10px;">
+            Source:
+            <a href="https://www.cyberagent.co.jp/en/newsinfo/press/detail/id=12026" target="_blank">www.cyberagent.co.jp</a>
+        </div>
+    </div>
+
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+        var load = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render the stacking column series." />
+}
+@section ActionDescription{
+    <p>
+    This sample visualizes mobile game market for different countries with default stacked column series in chart. Legend in the sample shows the information about those series.
+</p>
+}
+@section Description{
+   <p>
+    In this example, you can see how to render and configure the stacking column type charts. Stacks the points in the series vertically and also you can use <code>stackingGroup</code> property to group the stacking collection based on categories.
+    You can use <code>border</code>, <code>fill</code> properties to customize the vertical bar. <code>dataLabel</code> is used to represent individual data and its value.
+</p>
+<p>
+    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+</p>
+<br>
+<p>
+    More information on the stacking column series can be found in this
+    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+</p> 
+}

@@ -1,0 +1,73 @@
+﻿@using Syncfusion.EJ2.Popups
+@using Syncfusion.EJ2
+
+@section ControlsSection{
+    <div id="target" class="col-lg-12 control-section">
+        @Html.EJS().Button("normalbtn").Content("Open").Render()
+        @Html.EJS().Dialog("default_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("About SYNCFUSION Succinctly Series").Open("dialogOpen").Close("dialogClose").Content("<p>In the Succinctly series, Syncfusion created a robust, free library of more than 130 technical e - books formatted for PDF, Kindle, and EPUB.The Succinctly series was born in 2012 out of a desire to provide concise technical e-books for software developers.Each title in the Succinctly series is written by a carefully chosen expert and provides essential content in about 100 pages.</p>").ShowCloseIcon(true).CloseOnEscape(true).Width("500px").Target("#target").Buttons(ViewBag.DefaultButtons).Render()
+    </div>
+}
+
+@section PreScripts {
+    <script>
+        function dialogClose() {
+            document.getElementById('normalbtn').style.display = 'inline-block';
+        }
+        function dialogOpen() {
+            document.getElementById('normalbtn').style.display = 'none';
+        }
+        document.getElementById('normalbtn').onclick = function () {
+            var dialogObj = document.getElementById('default_dialog').ej2_instances[0];
+            dialogObj.show();
+        };
+        function dlgButtonClick() {
+            window.open('https://www.syncfusion.com/company/about-us');
+        }
+    </script>
+    }
+    <style>
+        .control-section {
+            padding-left: 10px;
+        }
+
+        #target {
+            height: 100%;
+            min-height: 350px;
+        }
+
+        @@media screen and (min-width: 150px) and (max-width: 480px) {
+            .control-section {
+                margin-bottom: 30px;
+            }
+
+            .control-wrapper {
+                margin-bottom: 0px;
+            }
+        }
+    </style>
+
+    @section ActionDescription{
+        <div id="action-description">
+            <p>
+                This sample demonstrates the default rendering of the dialog component with minimum configuration. Click close or press ESC to close the dialog. Click “open” to show the dialog again, if it is closed.
+            </p>
+        </div>
+    }
+    @section Description{
+        <div id="description">
+            <p>
+                The dialog component is used to display information and get input from the user. The dialog component is classified as modal and non-modal dialog depend on its interaction with parent application.
+            </p>
+            <ul>
+                <li>
+                    Modal - It creates overlay that disable interaction with the parent application, and user should respond with modal before continuing with other applications.
+                </li>
+                <li>
+                    Non-modal - It does not prevent user interaction with parent application.
+                </li>
+            </ul>
+        </div>
+    }
+    @section Meta{
+        <meta name="description" content="This sample demonstrates the default rendering of the dialog component, which supports modal and non-modal (modeless) behavior based on its interaction state." />
+    }

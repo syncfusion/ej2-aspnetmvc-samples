@@ -1,0 +1,77 @@
+﻿@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.Schedule
+@using Syncfusion.EJ2.DropDowns
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 6, 20)).Timezone("UTC").Render()
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 30%">
+                        <div>
+                            Timezone
+                        </div>
+                    </td>
+                    <td style="width: 70%;">
+                        <div>
+                            @Html.EJS().DropDownList("scheduletimezone").Index(1).PopupWidth("250").DataSource(ViewBag.data).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.min.js"></script>
+    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
+    <script type="text/javascript">
+        if (ej.base.Browser.isIE) {
+            ej.schedule.Timezone.prototype.offset = function (date, timezone) {
+                return moment.tz.zone(timezone).utcOffset(date.getTime());
+            };
+        }
+        function onChange(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.timezone = (args.value).toString();
+            scheduleObj.dataBind();
+        }
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            applyCategoryColor(args, scheduleObj.currentView);
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Schedule control shows how the events are displayed in different timings as per the selected timezone." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo visualizes the 2018 FIFA football match schedule which is depicted as events here. The timings of each event are
+            associated with the timezone of the match location where it will be held. When the Schedule time zone changes, the
+            events in it displays according to the selected timezone's offset time difference.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, the
+            <code>Timezone</code> of Schedule is set to UTC and each events on it holds different
+            <code>StartTimezone</code> and
+            <code>EndTimezone</code> values, therefore the event timings will be converted based on timezone assigned to Schedule and will be displayed
+            appropriately in UTC timings.
+        </p>
+        <p>
+            When the user selects different timezone value listed out in a dropdown on properties panel, Schedule will display the events
+            accordingly to the selected timezone value as the selected timezone will be assigned to Schedule
+            <code>Timezone</code> property.
+        </p>
+    </div>
+}

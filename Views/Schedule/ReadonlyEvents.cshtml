@@ -1,0 +1,80 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).PopupOpen("onPopupOpen").EventRendered("onEventRendered").EventClick("onEventClick").ResizeStart("onResizeStart").DragStart("onDragStart").Render()
+        </div>
+    </div>
+    <style>
+        .e-schedule .e-read-only {
+            opacity: .8;
+        }
+    </style>
+    <script type="text/javascript">
+        var isReadOnly = function (data) {
+            return data.ReadOnly || (data.EndTime < new Date());
+        };
+
+        function onEventClick(args) {
+            if ((args.element).classList.contains('e-read-only')) {
+                args.cancel = true;
+            }
+        }
+        function onEventRendered(args) {
+            if (isReadOnly(args.data)) {
+                args.element.setAttribute('aria-readonly', 'true');
+                args.element.classList.add('e-read-only');
+            }
+        }
+        function onPopupOpen(args) {
+            if (args.type === 'editor' && isReadOnly(args.data)) {
+                args.cancel = true;
+            }
+        }
+        function onResizeStart(args) {
+            if ((args.element).classList.contains('e-read-only')) {
+                args.cancel = true;
+            }
+        }
+        function onDragStart(args) {
+            if ((args.element).classList.contains('e-read-only')) {
+                args.cancel = true;
+            }
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Schedule control shows how to make specific events on the scheduler to be displayed in a read-only mode." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo showcases how to make specific events on the Schedule to be displayed in a read-only mode. The read-only events
+            can be simply viewed and prevented from undergoing any edit actions.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, the events that has occurred on the past hours from the current time are made as read-only and the CRUD actions
+            has been prevented on it. Also, the way to make specific events as read-only regardless of time has been done by
+            adding an additional field
+            <code>ReadOnly</code> to the event object to hold the value for it either as true or false.
+        </p>
+        <p>
+            By checking these two conditions, the events are marked as read-only in this sample and also, visually differentiated the
+            shade of the readonly events by setting CSS style and
+            <code>aria-readonly</code> attribute to it within the
+            <code>EventRendered</code> event which gets triggered before every event rendering on the Schedule user interface.
+        </p>
+        <p>
+            The event editor is prevented to open on these read-only events by setting
+            <code>args.cancel = true</code> within the
+            <code>PopupOpen</code> event which checks for the condition whether the popup type is
+            <code>editor</code> and the event is readonly.
+        </p>
+    </div>
+}

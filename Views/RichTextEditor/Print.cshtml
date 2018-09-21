@@ -1,0 +1,25 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        <div class="control-wrapper">
+            <div class="control-section">
+                @Html.EJS().RichTextEditor("default").Value((string)ViewBag.value).ToolbarSettings( e => e.Items((object)ViewBag.items)).Render()
+            </div>
+        </div>
+    </div>
+
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates how to print the content of the rich text editor. Click the print command which placed in toolbar of RTE to print the editor’s content.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The rich text editor prints its content using the <code>Print</code> library.
+        </p>
+    </div>
+}
+

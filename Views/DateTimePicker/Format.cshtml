@@ -1,0 +1,71 @@
+﻿@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div id="wrapper" class="datetimepicker-section">
+            <div id="datetimepicker-control">
+                @Html.EJS().DateTimePicker("datetimepicker").Format("yyyy-MM-dd HH:mm").Value(ViewBag.value).Render()
+            </div>
+        </div>
+    </div>
+    <div id="propertySection" class="col-lg-4 property-section">
+        <div class="radio-control" id="property" title="Select a format">
+            <div class="row">
+                @Html.EJS().RadioButton("format1").Label("yyyy-MM-dd HH:mm").Name("format").Value("yyyy-MM-dd HH:mm").Checked(true).Change("changeFormat").Render()
+            </div>
+            <div class="row">
+                @Html.EJS().RadioButton("format2").Label("dd-MMM-yy hh:mm a").Name("format").Value("dd-MMM-yy hh:mm a").Change("changeFormat").Render()
+            </div>
+            <div class="row">
+                @Html.EJS().RadioButton("format3").Label("dd-MMMM HH:mm").Name("format").Value("dd-MMMM HH:mm").Change("changeFormat").Render()
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function changeFormat(args) {
+        /*Apply selected format to the component*/
+        datetimepicker = document.getElementById('datetimepicker').ej2_instances[0];
+        let dateFormat = args.value;
+        datetimepicker.format = dateFormat;
+    }
+</script>
+
+<style>
+    #datetimepicker-control {
+        max-width: 300px;
+        margin: 0 auto;
+        padding-top: 50px;
+    }
+
+    #wrapper {
+        max-width: 350px;
+        margin: 20px auto;
+    }
+</style>
+
+@section Meta{
+    <meta name="description" content="Flexible DateTimePicker for ASP.NET MVC with options to customize date and time formats based on the preferred culture to improved readability" />
+}
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            In this sample, the DateTimePicker has been configured with the <code>dd-MMM-yy hh:mm a</code> date format. To change this current date format, go to the properties panel at the right side and select a date format from the dropdown options.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            Date Formats sample illustrates the support of custom date format in the DateTimePicker component by
+            using the <code>format</code> property. You can also change the date format by selecting it from the format options in the properties
+            panel. By using the <code>timeFormat</code> property to format the displayed time value in the popup list.
+        </p>
+        <p>
+            More information on the date format configuration can be found in the <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/datepicker/date-format.html" target="_blank">documentation section</a>.
+        </p>
+    </div>
+}
+

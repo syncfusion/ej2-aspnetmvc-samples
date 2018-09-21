@@ -1,0 +1,9 @@
+{
+  "Grid": [ "Grid" ],
+  "Data Visualization": [ "Chart", "Maps", "TreeMap" ,"CircularGauge", "LinearGauge", "RangeNavigator", "Sparkline", "Smith Chart" ],
+  "Calendar": [ "Schedule", "Calendar" ],
+  "Editors": [ "AutoComplete", "Button", "ComboBox", "DatePicker", "DateRangePicker", "DateTimePicker", "DropDownList", "MultiSelect", "MaskedTextBox", "NumericTextBox", "Slider", "TextBoxes", "TimePicker", "ColorPicker", "Uploader" , "RichTextEditor"],
+  "Layout": [ "ListView", "Dialog", "Tooltip", "Card" ],
+  "Navigators": [ "Sidebar", "TreeView", "Tab", "Toolbar", "ContextMenu", "Accordion" ],
+  "File Formats": ["XlsIO","PDF","DocIO", "Presentation"]
+}

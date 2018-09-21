@@ -1,0 +1,38 @@
+﻿@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 2, 15)).Render()
+        </div>
+    </div>
+    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
+    <script type="text/javascript">
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            applyCategoryColor(args, scheduleObj.currentView);
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Schedule control shows the way of binding an array of JavaScript objects (local JSON datasource)." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo shows the way of binding an array of JavaScript objects (local JSON datasource) to Schedule.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            Schedule can be bound either to local or remote data services which will load the data by default on demand to reduce the
+            data transfer and load time. In this sample, the
+            <code>DataSource</code> property available within the
+            <code>EventSettings</code> needs to be assigned with the valid local JSON data.
+        </p>
+    </div>
+}

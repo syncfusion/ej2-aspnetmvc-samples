@@ -1,0 +1,84 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div align="center">
+
+            @Html.EJS().Chart("container").Series(series =>
+       {
+
+           series.DataSource("dataValues").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Histogram).YName("y")
+           .BinInterval(20).ShowNormalDistribution(true).ColumnWidth(0.99).Name("Score")
+           .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ViewBag.font))).Add();
+       }).PrimaryXAxis(px => px.Maximum(100).Minimum(0).Title("Score of Final Examination").MajorGridLines(mg=>mg.Width(0))
+       ).PrimaryYAxis(px => px.Minimum(0).Maximum(50).Interval(10).Title("Number of Student").LineStyle(ls=>ls.Width(0)).MajorTickLines(mt=>mt.Width(0))
+       ).Title("Examination Result").ChartArea(ca => ca.Border(br=>br.Width(0))).LegendSettings(lg=>lg.Visible(false)).Tooltip(tt => tt.Enable(true)).Width("60%").Load("load").Render()
+
+        </div>
+    </div>
+
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+
+    </style>
+    <script>
+        var dataValues = [];
+        var points = [5.250, 7.750, 0, 8.275, 9.750, 7.750, 8.275, 6.250, 5.750,
+        5.250, 23.000, 26.500, 27.750, 25.025, 26.500, 26.500, 28.025, 29.250, 26.750, 27.250,
+        26.250, 25.250, 34.500, 25.625, 25.500, 26.625, 36.275, 36.250, 26.875, 40.000, 43.000,
+        46.500, 47.750, 45.025, 56.500, 56.500, 58.025, 59.250, 56.750, 57.250,
+        46.250, 55.250, 44.500, 45.525, 55.500, 46.625, 46.275, 56.250, 46.875, 43.000,
+        46.250, 55.250, 44.500, 45.425, 55.500, 56.625, 46.275, 56.250, 46.875, 43.000,
+        46.250, 55.250, 44.500, 45.425, 55.500, 46.625, 56.275, 46.250, 56.875, 41.000, 63.000,
+        66.500, 67.750, 65.025, 66.500, 76.500, 78.025, 79.250, 76.750, 77.250,
+        66.250, 75.250, 74.500, 65.625, 75.500, 76.625, 76.275, 66.250, 66.875, 80.000, 85.250,
+        87.750, 89.000, 88.275, 89.750, 97.750, 98.275, 96.250, 95.750, 95.250
+        ];
+        points.map((value) => {
+            dataValues.push({
+                y: value
+            });
+        });
+        var load = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.chart.series[0].dataSource = dataValues;
+            if (selectedTheme === 'highcontrast') {
+                args.chart.series[0].marker.dataLabel.font.color = '#000000';
+            }
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render the histogram series." />
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the student's results of the final examination with histogram series in chart.
+        Number of students between each interval is shown by using the data label.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the histogram type charts.
+        Histogram type charts can provide a visual display of large amounts of data that are difficult to understand in a tabular or spreadsheet form.
+        You can use the <code>border</code> and <code>fill</code> properties to customize the vertical rectangle.
+        The <code>dataLabel</code> property is used to represent individual data and its value.
+    </p>
+    <p>
+        Tooltip is enabled in this example.
+        To see the tooltip in action, hover the mouse over a point or tap a point in touch enabled devices.
+    </p>
+    <br>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Chart component features are segregated into individual feature-wise modules.
+        To use histogram series, you should inject the <code>HistogramSeries</code> module using the <code>Chart.Inject(HistogramSeries)</code> method.
+    </p>
+    <p>
+        More information on the histogram series can be found in this
+        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+    </p>
+}

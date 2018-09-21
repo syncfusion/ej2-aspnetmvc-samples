@@ -1,0 +1,137 @@
+﻿@using Syncfusion.EJ2.Inputs
+@using Syncfusion.EJ2
+@section ControlsSection{
+<div class="col-lg-8 control-section">
+        <div class="content-wrapper">
+            <div class="control-label">
+                Numeric TextBox
+            </div>
+            @Html.EJS().NumericTextBox("range").Value(15).Min(10).Max(100).Render()
+        </div>
+    </div>
+<div class="col-lg-4 property-section">
+    <table id="property" title="Properties">
+        <tr>
+            <td>
+                <div>Min Value </div>
+            </td>
+            <td>
+                <div>
+                    <input id="min" type="number" class="form-control" value="10" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>Max Value </div>
+            </td>
+            <td>
+                <div>
+                    <input id="max" type="number" class="form-control" value="100" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>Increment Step </div>
+            </td>
+            <td>
+                <div>
+                    <input id="step" type="number" max="100" min="0" class="form-control" value="1" />
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div>
+                    @Html.EJS().Button("buttonApply").CssClass("e-flat e-primary").Content("Apply").Render()
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<style>
+    #property {
+        padding: 0px 10px 10px 0;
+    }
+
+    .content-wrapper {
+        width: 48%;
+        margin: 0 auto;
+        min-width: 185px;
+    }
+
+    .e-float-input.e-numeric.e-input-group {
+        margin-top: 40px;
+    }
+
+    #buttonApply {
+        float: right;
+        text-transform:uppercase;
+    }
+
+    .control-label {
+        padding: 24px 0px 10px 0px;
+        font-size: 12px;
+    }
+</style>
+}
+@section Scripts {
+<script type="text/javascript">
+    document.getElementById('buttonApply').onclick = function () {
+        var numeric = document.getElementById("range").ej2_instances[0];
+        var min = parseFloat(document.getElementById('min').value);
+        var max = parseFloat(document.getElementById('max').value);
+        var step = parseFloat(document.getElementById('step').value);
+        numeric.min = min;
+        numeric.max = max;
+        numeric.step = step;
+    };
+</script>
+}
+
+@section Meta{
+    <meta name="description" content="The NumericTextBox has the options to restrict the input value between a specific range using the min, max, and strictMode properties. In this demo, numeric textbox is restricted between 10 to 100 through the min and max properties." />
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the range validation functionalities of the Numeric TextBox. Change the min, max and step values and click on apply button to change the property values in Numeric TextBox.
+        </p>
+    </div>
+}
+@section Description{
+   <div id="description">
+    <p>
+        The NumericTextBox has the options to restrict the input value between a specific range using the
+        <a href="http://ej2.syncfusion.com/documentation/numerictextbox/api-numericTextBox.html#min-number" target="_blank">min</a>,
+        <a href="http://ej2.syncfusion.com/documentation/numerictextbox/api-numericTextBox.html#max-number" target="_blank">max</a>, and
+        <a href="http://ej2.syncfusion.com/documentation/numerictextbox/api-numericTextBox.html#strictmode-boolean" target="_blank">strictMode</a> properties.
+    </p>
+    <ul>
+        <li>
+            When you enable the <b>strictMode</b> property, the value will automatically change within a range on passing
+            the out-of-range values.
+        </li>
+        <li>
+            When you disable the <b>strictMode</b> property, the NumericTextBox component allows the out-of-range value with the highlighted
+            textbox to indicate the given value is wrong.
+        </li>
+    </ul>
+    <p>
+        In this demo, numeric textbox is restricted between 10 to 100 through the min and max properties. So you can enter only the value between
+        this range.
+    </p>
+    <p>
+        More information on the range validation configuration can be found in the
+        <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/numerictextbox/getting-started-mvc.html#range-validation" target="_blank"> documentation section</a>.
+    </p>
+</div>
+
+}
+
+
+
+

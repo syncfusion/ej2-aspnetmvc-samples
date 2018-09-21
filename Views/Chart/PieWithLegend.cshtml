@@ -1,0 +1,91 @@
+﻿
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" style="margin-left:120px">
+        @(Html.EJS().AccumulationChart("container")
+    .Series(sr =>
+    {
+        sr.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
+               .XName("xValue")
+               .YName("yValue")
+               .DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600").Color("white").Size("14px")))
+               .StartAngle(0)
+               .EndAngle(360)
+               .InnerRadius("40%")
+               .Name("Revenue")
+               .DataSource(ViewBag.dataSource).Add();
+    })
+    .EnableSmartLabels(true)
+    .SelectionMode(Syncfusion.EJ2.Charts.AccumulationSelectionMode.Point)
+    .Tooltip(tp => tp.Enable(false).Format("${point.x} <br/>Composition: <b>${point.y}%</b>"))
+    .LegendSettings(leg => leg.Visible(true)
+                        .ToggleVisibility(false)
+                        .Position(Syncfusion.EJ2.Charts.LegendPosition.Right)
+                        .Height("28%")
+                        .Width("44%"))
+     .TextRender("textRender")
+     .Load("load")
+     .AnimationComplete("animationComplete")
+     .Title("Education Institutional Revenue").Render()     
+     )
+    </div>
+    <script>
+       
+        var centerTitle = document.createElement('div');
+        centerTitle.innerHTML = 'Expenses <br> Year    2013';
+        centerTitle.style.position = 'absolute';
+        centerTitle.style.visibility = 'hidden';
+        
+        var textRender = function (args) {
+            var pie = document.getElementById('container').ej2_instances[0];
+            args.series.dataLabel.font.size = getFontSize(pie.initialClipRect.width);
+            pie.animateSeries = true;
+        }
+        var load = function(args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.accumulation.legendSettings.position = 'Right';
+        }
+        var animationComplete = function(args) {
+            centerTitle.style.fontSize = getFontSize(args.accumulation.initialClipRect.width);
+            var rect = centerTitle.getBoundingClientRect();
+            centerTitle.style.top = (args.accumulation.center.y - rect.height / 2) + 'px';
+            centerTitle.style.left = (args.accumulation.center.x - rect.width / 2) + 'px';
+            centerTitle.style.visibility = 'visible';
+            var points = args.accumulation.visibleSeries[0].points;
+            for (var _i = 0, points_1 = points; _i < points_1.length; _i++) {
+                var point = points_1[_i];
+                if (point.labelPosition === 'Outside' && point.labelVisible) {
+                    var label = document.getElementById('container_datalabel_Series_0_text_' + point.index);
+                    label.setAttribute('fill', 'black');
+                }
+            }
+        }
+        document.getElementById('container').appendChild(centerTitle);
+        function getFontSize(width) {
+            if (width > 300) {
+                return '13px';
+            }
+            else if (width > 250) {
+                return '8px';
+            }
+            else {
+                return '6px';
+            }
+        }
+
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the legends in pie charts." />
+}
+@section ActionDescription{
+    <p>
+    This sample illustrates an educational institute’s revenue by using the pie with legend series. The legend will be displayed at right side of the chart.
+</p>
+}
+@section Description{
+    <p> In this example, you can see how to render doughnut chart. You can use <code>radius</code> and <code>innerRadius</code> properties to render the doughnut and also use <code>border</code>, <code>fill</code> properties to customize the point. <code>dataLabel</code> is used to represent individual data and its value.</p>
+<p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+}

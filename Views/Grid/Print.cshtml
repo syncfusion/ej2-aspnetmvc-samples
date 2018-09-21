@@ -1,0 +1,39 @@
+﻿
+
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("DefaultExporting").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+   {
+
+       col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("CustomerID").HeaderText("Customer Name").Width("150").Add();
+       col.Field("OrderDate").HeaderText("Order Date").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").Add();
+       col.Field("Freight").HeaderText("Freight").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").Width("150").Add();
+
+
+   }).AllowPaging().PageSettings(page=>page.PageCount(5)).Toolbar(new List<string>() { "Print" }).Render()
+    </div>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates the option to print the Grid. Click the print button from the toolbar item to print Grid.</p>
+	</div>
+}
+
+@section Meta{
+    <meta name="description" content="This demo for Essential JS 2 grid control shows how to print the grid content."/>
+}
+
+@section Description{
+    <div id="description">		   
+		<p>The Grid can be printed using the <code>Print
+        </code> method. While printing the pager and scrollbar will be removed if they are enabled in Grid.</p>
+    <p>By default, all pages will be printed. We can print current page alone by setting the <code>PrintMode
+    </code> property value as <code>CurrentPage</code>.</p>
+    <p>In this demo, The Grid toolbar provides an option to print the Grid.</p>
+	</div>
+}
+

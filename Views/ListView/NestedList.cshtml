@@ -1,0 +1,58 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Lists
+@section ControlsSection{
+    <div class="control-section">
+            @Html.EJS().ListView("nestedlist").Enable(true).DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new ListViewFieldSettings { IconCss = "icon", Tooltip = "text" }).ShowHeader(true).HeaderTitle("Folder").ShowIcon(true).Render()
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="Demo of Essential JS 2 ListView control showing the visual representation of nested data using the child property." />
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the default rendering of Slider component. Drag the thumb over the bar for selecting the values
+            between min and max.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+      <p>ListView component supports Nested list. To achieve list navigation, the <code>child</code> property should be defined for the nested list in the array of JSON.</p>
+
+    <p>This sample have Nested folder with the sub folders/files.</p>
+
+
+    </div>
+}
+
+<style>
+    .e-listview .e-list-icon {
+        height: 24px;
+        width: 30px;
+    }
+
+    .folder {
+        background-repeat: no-repeat;
+        background-image: url('@Url.Content("~/Content/images/listview/file_icons.png")');
+        background-position: -5px -466px;
+        background-size: 302%;
+    }
+
+    .file {
+        background-repeat: no-repeat;
+        background-image: url('@Url.Content("~/Content/images/listview/file_icons.png")');
+        background-position: -5px -151px;
+        background-size: 302%;
+    }
+
+    #nestedlist {
+        max-width: 500px;
+        margin: auto;
+        border: 1px solid #dddddd;
+        border-radius: 3px;
+    }
+</style>
+
