@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using EJ2MVCSampleBrowser.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace EJ2MVCSampleBrowser.Controllers.Button
 {
@@ -21,6 +21,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Button
         {
             return View(model);
         }
+    }
+
+    public class CheckBoxModel
+    {
+        [Range(typeof(bool), "true", "true", ErrorMessage = "You need to agree to the Terms and Conditions")]
+        public bool check { get; set; }
     }
 
 }

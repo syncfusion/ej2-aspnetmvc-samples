@@ -11,11 +11,8 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
     {
         public ActionResult Styles()
         {
+            this.DocumentEditorViewResultHelper();
             return View();
-        }
-        public ActionResult Style()
-        {
-            return this.DocumentEditorViewResultHelper();
-        }
+        }        
     }
 }

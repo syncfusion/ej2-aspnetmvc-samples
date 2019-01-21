@@ -26,7 +26,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
     public partial class DocIOController : Controller
     {
         #region doc to PDF
-        public ActionResult DOCtoPDF(string button, string renderingMode, string renderingMode1, string renderingMode2, string renderingMode3, string renderingMode4, string renderingMode5, string autoTag, string preserveFormFields, string exportBookmarks, string embeddingFont, HttpPostedFileBase file)
+        public ActionResult DOCtoPDF(string button, string renderingMode, string renderingMode1, string renderingMode2, string renderingMode3, string renderingMode4, string renderingMode5, string renderingMode6, string autoTag, string preserveFormFields, string exportBookmarks, string embeddingFont, HttpPostedFileBase file)
         {
             if (button == null)
                 return View();
@@ -57,6 +57,8 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
                         converter.Settings.EmbedCompleteFonts = true;
                     if (renderingMode5 == "EnablesSubsetFont")
                         converter.Settings.EmbedFonts = true;
+                    if (renderingMode6 == "ShowRevisions")
+						document.RevisionOptions.ShowMarkup = RevisionType.Deletions | RevisionType.Formatting | RevisionType.Insertions;
                     //Convert word document into PDF document
                     PdfDocument pdfDoc = converter.ConvertToPDF(document);
                     try

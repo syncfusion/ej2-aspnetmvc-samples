@@ -14,6 +14,12 @@ namespace EJ2MVCSampleBrowser
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "sitemap",
+                url: "sitemap.xml",
+                defaults: new { controller = "Home", action = "SitemapXml", Page = 0 }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

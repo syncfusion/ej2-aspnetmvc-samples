@@ -11,12 +11,9 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
     {
         public ActionResult TableOfContents()
         {
+            this.DocumentEditorViewResultHelper();
             return View();
         }
 
-        public ActionResult TableOfContent()
-        {
-            return this.DocumentEditorViewResultHelper();
-        }
     }
 }

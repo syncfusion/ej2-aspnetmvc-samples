@@ -6,8 +6,6 @@ using System.Web.Mvc;
 using Syncfusion.EJ2.Navigations;
 using Syncfusion.EJ2.Grids;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace EJ2MVCSampleBrowser.Controllers.Tab
 {
     public partial class TabController : Controller

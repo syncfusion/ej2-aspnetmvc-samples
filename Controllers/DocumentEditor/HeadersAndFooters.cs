@@ -11,12 +11,8 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
     {
         public ActionResult HeadersAndFooters()
         {
+            this.DocumentEditorViewResultHelper();
             return View();
-        }
-
-        public ActionResult HeaderAndFooter()
-        {
-            return this.DocumentEditorViewResultHelper();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
             ViewBag.orientationItems = orientationItems;
 
             ViewBag.styleData = new string[] { "Default", "Fill", "Accent" };
-            ViewBag.orientationData = new string[] { "Top", "Bottom" };
+            ViewBag.orientationData = new string[] { "Top", "Bottom", "Left", "Right" };
 
             return View();
         }

@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "HeaderTemplate";
 }
-
+<link href="~/Content/grid/gridfont.css" rel="stylesheet" />
 @section ControlsSection{
     <div class="control-section">
         @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("335").Width("auto").Columns(col =>
@@ -19,12 +19,15 @@
     </div>
 
 <style>
+ 
     .e-grid .e-icon-userlogin::before {
+        font-family: 'e-grid-headertemplate';
         width: 15px !important;
         content: '\e7d4';
     }
 
     .e-grid .e-icon-calender::before {
+        font-family: 'e-grid-headertemplate';
         width: 15px !important;
         content: '\e7b5';
     }

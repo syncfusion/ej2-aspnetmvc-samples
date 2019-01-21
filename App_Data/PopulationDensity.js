@@ -1,4 +1,25 @@
 [
+    {
+        "code": "Côte",
+        "value": "1000",
+        "name": "Côte d'Ivoire",
+        "population": 1000000000,
+        "density": -1
+    },
+    {
+        "code": "BH",
+        "value": "2000",
+        "name": "Bhutan",
+        "population": 202002020,
+        "density": -1
+    },
+    {
+        "code": "Ec",
+        "value": "2000",
+        "name": "Ecuador",
+        "population": 10102002,
+        "density": -1
+    },
 	{
 		'code': 'AF',
         'value': 53,
@@ -1175,5 +1196,26 @@
         'name': 'Zimbabwe',
         'population': 13009530,
         'density': 33
-	}
+	},
+    {
+        "code": "Côte",
+        "value": "1000",
+        "name": "Côte d'Ivoire",
+        "population": 1000000000,
+        "density": -1
+    },
+    {
+        "code": "BH",
+        "value": "2000",
+        "name": "Bhutan",
+        "population": 202002020,
+        "density": -1
+    },
+    {
+        "code": "Ec",
+        "value": "2000",
+        "name": "Ecuador",
+        "population": 10102002,
+        "density": -1
+    },
 ]

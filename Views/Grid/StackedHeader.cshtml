@@ -6,19 +6,19 @@
     @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewBag.dataSource).PageSettings(new Syncfusion.EJ2.Grids.GridPageSettings() { PageSize = 5 }).Columns(col =>
    {
 
-       col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.HeaderText("Order Details").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "OrderDate", Width = "135", HeaderText = "Order Date",TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right,Format="yMd" },
-                                                                                            new Syncfusion.EJ2.Grids.GridColumn { Field = "Freight", Width = "130", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, HeaderText = "Freight($)", Format="C2" } }).Add();
-       col.HeaderText("Shipped Details").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "ShippedDate", Width = "140", HeaderText = "Shipped Date", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, Format = "yMd" },
-                                                                                              new Syncfusion.EJ2.Grids.GridColumn { Field = "ShipCountry", Width = "145",  HeaderText = "Ship Country" } }).Add();
+       col.Field("OrderID").HeaderText("Order ID").Width("120").MinWidth("10").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.HeaderText("Order Details").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "OrderDate", Width = "135", HeaderText = "Order Date",TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right,Format="yMd", MinWidth="10" },
+                                                                                            new Syncfusion.EJ2.Grids.GridColumn { Field = "Freight", Width = "130", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, HeaderText = "Freight($)", Format="C2", MinWidth="10" } }).Add();
+       col.HeaderText("Shipped Details").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "ShippedDate", Width = "140", HeaderText = "Shipped Date", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, Format = "yMd", MinWidth="10" },
+                                                                                              new Syncfusion.EJ2.Grids.GridColumn { Field = "ShipCountry", Width = "145",  HeaderText = "Ship Country", MinWidth="10" } }).Add();
 
-   }).AllowPaging().PageSettings(new Syncfusion.EJ2.Grids.GridPageSettings() { PageCount = 5 }).Render()
+   }).AllowPaging().PageSettings(new Syncfusion.EJ2.Grids.GridPageSettings() { PageCount = 5 }).AllowResizing().Render()
 </div>
 }
 
 @section ActionDescription{
 	<div id="action-description">
-		<p>This sample demonstrates the Grid component with the stacked header feature. In this sample, we have shown multiple level of column headers.
+		<p>This sample demonstrates the Grid component with the stacked header and resize feature. In this sample, we have shown multiple level of column headers.
 		</p>
 	</div>
 }
@@ -32,6 +32,17 @@
 		<p>The Grid columns can be stacked/grouped in order to show multiple level of column headers. 
         It can be done by setting the <code>Columns->Columns</code> property.
 		</p>
+
+        <p>
+            The Grid columns can be resized by clicking and dragging at the right edge of columns header. To enable column, resize behavior, set <code>
+                <a target="_blank" class="code"
+                   href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.Grids.Grid~AllowResizing.html">
+                    allowResizing
+                </a>
+            </code> property as true. You can also prevent the resize of the particular column by setting
+            <code> columns->allowResizing </code> as false in columns definition.
+        </p>
+
 		<p>
 			In this demo, the columns <strong>OrderDate, Freight</strong> are grouped under <strong>Order Details</strong>,
 			the columns <strong>ShippedDate, ShipCountry</strong> are grouped under <strong>Ship Details</strong>. 

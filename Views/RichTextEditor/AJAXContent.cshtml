@@ -30,7 +30,7 @@
 
     function onCreated() {
         defaultRTE = this;
-        var ajax = new ej.base.Ajax('../../Content/RichTextEditor/Ajax_content.html', 'GET', true);
+        var ajax = new ej.base.Ajax('../Content/RichTextEditor/Ajax_content.html', 'GET', true);
         ajax.send().then();
         ajax.onSuccess = function (data) {
             defaultRTE.setProperties({ value: data });

@@ -4,7 +4,7 @@
 
 @section ControlsSection{
 
-    <div class="col-lg-9 control-section">
+    <div class="col-lg-9 control-section" style="overflow:auto">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSource(dataSource => dataSource.Data((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
            .FormatSettings(formatsettings =>

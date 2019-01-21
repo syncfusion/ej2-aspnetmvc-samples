@@ -19,7 +19,7 @@
       col.Field("Mail").HeaderText("Mail").Width("230").Filter(new { type = "Menu" }).Add();
       col.Field("Location").HeaderText("Location").Width("140").Filter(new { type = "CheckBox" }).Template("#coltemplate").Add();
       col.Field("Status").HeaderText("Status").Width("150").Filter(new { type = "CheckBox", itemTemplate = "#StatusItemTemp" }).Template("#statusTemplate").Add();
-      col.Field("Trustworthiness").HeaderText("Trustworthiness").Filter(new { type = "CheckBox", itemTemplate = "${ trustTemp(data) }" }).Width("160").Template("#trustTemplate").Add();
+      col.Field("Trustworthiness").HeaderText("Trustworthiness").Filter(new { type = "CheckBox", itemTemplate = "${ trustTemp(data) }" }).Width("200").Template("#trustTemplate").Add();
       col.Field("Rating").HeaderText("Rating").Width("160").Filter(new { type = "CheckBox", itemTemplate = "<div>${ratingDetail(data)}<div>" }).Template("#ratingTemplate").Add();
       col.Field("Software").AllowFiltering(false).AllowSorting(false).HeaderText("Software").Width("180").Template("#progessTemplate").Add();
       col.Field("CurrentSalary").HeaderText("Current Salary").Filter(new { type = "Menu" }).Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("160").Add();
@@ -112,10 +112,10 @@
                 span.textContent = "Active"
                 div.className = 'statustemp e-activecolor'
             }
-            if (e.Status === "InActive") {
+            if (e.Status === "Inactive") {
                 span = document.createElement('span');
                 span.className = 'statustxt e-inactivecolor';
-                span.textContent = "InActive"
+                span.textContent = "Inactive"
                 div.className = 'statustemp e-inactivecolor'
             }
             div.appendChild(span);
@@ -152,7 +152,7 @@
                     args.cell.querySelector(".statustxt").classList.add("e-activecolor");
                     args.cell.querySelector(".statustemp").classList.add("e-activecolor");
                 }
-                if (args.cell.textContent === "InActive") {
+                if (args.cell.textContent === "Inactive") {
                     args.cell.querySelector(".statustxt").classList.add("e-inactivecolor");
                     args.cell.querySelector(".statustemp").classList.add("e-inactivecolor");
                 }
@@ -170,7 +170,7 @@
                 }
                 args.cell.querySelector(".bar").style.width = args.data.Software + "%";
                 args.cell.querySelector(".barlabel").textContent = args.data.Software + "%";
-                if (args.data.Status === "InActive") {
+                if (args.data.Status === "Inactive") {
                     args.cell.querySelector(".bar").classList.add("progressdisable");
                 }
             }
@@ -224,8 +224,8 @@
             var Mail = ['sample.com', 'arpy.com', 'rpy.com', 'mail.com', 'jourrapide.com'];
             var category = ['Energy', 'Financial', 'Technology', 'Industrial'];
             var Location = ['UK', 'USA', 'Sweden', 'France', 'Canada', 'Argentina', 'Austria', 'Germany', 'Mexico'];
-            var Status = ['Active', 'InActive'];
-            var Trustworthiness = ['Perfect', 'Sufficient', 'InSufficient'];
+            var Status = ['Active', 'Inactive'];
+            var Trustworthiness = ['Perfect', 'Sufficient', 'Insufficient'];
             var tradeData = [];
             var Address = ["59 rue de l'Abbaye", "Luisenstr. 48", "Rua do Paço, 67", "2, rue du Commerce", "Boulevard Tirou, 255",
                 "Rua do Paço, 67", "Hauptstr. 31", "Starenweg 5", "Rua do Mercado, 12", "Carrera 22 con Ave. Carlos Soublette #8-35", "Kirchgasse 6",

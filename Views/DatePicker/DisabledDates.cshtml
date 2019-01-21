@@ -6,34 +6,30 @@
         </div>
     </div>
 }
-<script>
+    <script>
 
-    function disableDate(args) {
-        /*Date need to be disabled*/
-        if (args.date.getDay() === 0 || args.date.getDay() === 6) {
-            args.isDisabled = true;
+        function disableDate(args) {
+            /*Date need to be disabled*/
+            if (args.date.getDay() === 0 || args.date.getDay() === 6) {
+                args.isDisabled = true;
+            }
         }
-    }
 
-</script>
+    </script>
 
-<style>
-    #wrapper {
-        max-width: 246px;
-        margin: 30px auto;
-        padding-top: 50px;
-    }
-</style>
-
-@section Meta{
-    <meta name="description" content="Customizable DatePicker widget for ASP.NET MVC with disabled dates that restrict date selection from a defined set of days like weekends, holidays, etc" />
-}
+    <style>
+        #wrapper {
+            max-width: 246px;
+            margin: 30px auto;
+            padding-top: 50px;
+        }
+    </style>
 
 
 @section ActionDescription{
     <div id="action-description">
         <p>
-            In the following sample, all the weekends (Saturday and Sunday) of a month are <code>disabled</code>, and these dates are restricted to set or select in the DatePicker.
+             In the following sample, all the weekends (Saturday and Sunday) of a month are disabled, and these dates are <code>restricted</code> to set or select in the DatePicker.
         </p>
     </div>
 }
@@ -46,8 +42,12 @@
         </p>
         <p>
             More information on the disabled dates can be found in the
-            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/datepicker/customization.html" target="_blank"> documentation section</a>.
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/datepicker/customization/" target="_blank"> documentation section</a>.
         </p>
     </div>
 }
 
+@section Meta{
+
+       <meta content="This example demonstrates how to disable the dates like weekends, weekdays and specific dates (past dates, future dates and current dates) in a ASP.NET MVC DatePicker"/>
+}

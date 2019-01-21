@@ -46,7 +46,10 @@ var isMobile = window.matchMedia('(max-width:550px)').matches;
 var isTablet = window.matchMedia('(min-width:600px) and (max-width: 850px)').matches;
 var isPc = window.matchMedia('(min-width:850px)').matches;
 var selectedTheme = location.hash.split('/')[1] || 'material';
-var toggleAnim = new ej.base.Animation({ duration: 500, timingFunction: 'ease' });
+var toggleAnim = new ej.base.Animation({
+    duration: 500,
+    timingFunction: 'ease'
+});
 var controlSampleData = {};
 var samplesList = getSampleList();
 var samplesTreeList = [];
@@ -60,74 +63,37 @@ var breadCrumbSample = document.querySelector('.sb-bread-crumb-text>.crumb-sampl
 var sampleNavigation = "<div class=\"sb-custom-item sample-navigation\"><button id='prev-sample' class=\"sb-navigation-prev\" \n    aria-label=\"previous sample\">\n<span class='sb-icons sb-icon-Previous'></span>\n</button>\n<button  id='next-sample' class=\"sb-navigation-next\" aria-label=\"next sample\">\n<span class='sb-icons sb-icon-Next'></span>\n</button>\n</div>";
 var contentToolbarTemplate = '<div class="sb-desktop-setting"><button id="open-plnkr" class="sb-custom-item sb-plnr-section">' +
     '</button>' + '</div>' + sampleNavigation + '<div class="sb-icons sb-mobile-setting"></div>';
-var tabContentToolbar = ej.base.createElement('div', { className: 'sb-content-toolbar', innerHTML: contentToolbarTemplate });
+var tabContentToolbar = ej.base.createElement('div', {
+    className: 'sb-content-toolbar',
+    innerHTML: contentToolbarTemplate
+});
 var apiGrid;
-window.navigateSample = (window.navigateSample !== undefined) ? window.navigateSample : function () { return; };
+window.navigateSample = (window.navigateSample !== undefined) ? window.navigateSample : function () {
+    return;
+};
 var isInitRedirected;
 var samplePath = [];
 var samplesAr = [];
-var currencyDropDown;
-var cultureDropDown;
 var currentControlID;
 var currentSampleID;
 var currentControl;
-
-// var matchedCurrency = {
-//     'en': 'USD',
-//     'de': 'EUR',
-//     'ar': 'AED',
-//     'zh': 'CNY',
-//     'fr-CH': 'CHF'
-// };
-
-// function changeCulture(cul) {
-//     if (cul === 'ar') {
-//         changeRtl(true);
-//     }
-//     else {
-//         changeRtl(false);
-//     }
-//     if (currencyDropDown) {
-//         currencyDropDown.value = matchedCurrency[cul];
-//     } else {
-//         ej.base.setCurrencyCode(matchedCurrency[cul]);
-//     }
-//     ej.base.setCulture(cul);
-// }
-// function changeRtl(bool) {
-//     var elementlist = ej.base.selectAll('.e-control', document.getElementById('control-content'));
-//     for (var i = 0; i < elementlist.length; i++) {
-//         var control = elementlist[i];
-//         if (control.ej2_instances) {
-//             for (var a = 0; a < control.ej2_instances.length; a++) {
-//                 var instance = control.ej2_instances[a];
-//                 instance.enableRtl = bool;
-//             }
-//         }
-//     }
-// }
-// function loadCulture(cul) {
-//     var ajaxc = new ej.base.Ajax('/scripts/' + 'cldr-data/' + 'main/' + cul + '/all.json', 'GET', true);
-//         ajaxc.send().then(function (value) {
-//             ej.base.loadCldr(value);
-//             changeCulture(cul);
-//         });
-// }
-
-// loadCulture('en');
-// ej.base.L10n.load(window.Locale);
-
 isMobile = window.matchMedia('(max-width:550px)').matches;
 if (ej.base.Browser.isDevice || isMobile) {
     if (sidebar) {
         sidebar.destroy();
     }
-    sidebar = new ej.navigations.Sidebar({ width: '280px', showBackdrop: true, closeOnDocumentClick: true, enableGestures: false });
+    sidebar = new ej.navigations.Sidebar({
+        width: '280px',
+        showBackdrop: true,
+        closeOnDocumentClick: true,
+        enableGestures: false
+    });
     sidebar.appendTo('#left-sidebar');
     sidebar.hide();
 } else {
     sidebar = new ej.navigations.Sidebar({
-        width: '282px', target: document.querySelector('.sb-content '),
+        width: '282px',
+        target: document.querySelector('.sb-content '),
         showBackdrop: false,
         closeOnDocumentClick: false,
         enableGestures: false,
@@ -145,33 +111,61 @@ function preventTabSwipe(e) {
 function renderSbPopups() {
     switcherPopup = new ej.popups.Popup(document.getElementById('sb-switcher-popup'), {
         relateTo: document.querySelector('.sb-header-text-right'),
-        position: { X: 'left' },
-        collision: { X: 'flip', Y: 'flip' },
+        position: {
+            X: 'left'
+        },
+        collision: {
+            X: 'flip',
+            Y: 'flip'
+        },
         offsetX: 0,
         offsetY: -15,
     });
     themeSwitherPopup = new ej.popups.Popup(document.getElementById('theme-switcher-popup'), {
         offsetY: 2,
         relateTo: document.querySelector('.theme-wrapper'),
-        position: { X: 'left', Y: 'bottom' },
-        collision: { X: 'flip', Y: 'flip' }
+        position: {
+            X: 'left',
+            Y: 'bottom'
+        },
+        collision: {
+            X: 'flip',
+            Y: 'flip'
+        }
     });
     searchPopup = new ej.popups.Popup(searchEle, {
         offsetY: -80,
         relateTo: inputele,
-        position: { X: 'left', Y: 'bottom' },
-        collision: { X: 'flip', Y: 'flip' }
+        position: {
+            X: 'left',
+            Y: 'bottom'
+        },
+        collision: {
+            X: 'flip',
+            Y: 'flip'
+        }
     });
     settingsPopup = new ej.popups.Popup(document.getElementById('settings-popup'), {
         offsetY: 5,
         zIndex: 1001,
         relateTo: settingElement,
-        position: { X: 'right', Y: 'bottom' },
-        collision: { X: 'flip', Y: 'flip' }
+        position: {
+            X: 'right',
+            Y: 'bottom'
+        },
+        collision: {
+            X: 'flip',
+            Y: 'flip'
+        }
     });
     settingsidebar = new ej.navigations.Sidebar({
-        position: 'Right', width: '282', zIndex: '1003', showBackdrop: true, type: 'over', enableGestures: false,
-        
+        position: 'Right',
+        width: '282',
+        zIndex: '1003',
+        showBackdrop: true,
+        type: 'over',
+        enableGestures: false,
+
         closeOnDocumentClick: true
     });
     settingsidebar.appendTo('#right-sidebar');
@@ -186,23 +180,12 @@ function renderSbPopups() {
     themeSwitherPopup.hide();
     themeDropDown = new ej.dropdowns.DropDownList({
         index: 0,
-        change: function (e) { switchTheme(e.value); }
+        change: function (e) {
+            switchTheme(e.value);
+        }
     });
     themeDropDown.appendTo('#sb-setting-theme');
-    // cultureDropDown = new ej.dropdowns.DropDownList({
-    //     index: 0,
-    //     change: function (e) {
-    //         var value = e.value;
-    //         loadCulture(value);
-    //     }
-
-    // });
-    // currencyDropDown = new ej.dropdowns.DropDownList({
-    //     index: 0,
-    //     change: function (e) { ej.base.setCurrencyCode(e.value); }
-    // });
-    // cultureDropDown.appendTo('#sb-setting-culture');
-    // currencyDropDown.appendTo('#sb-setting-currency');
+   
     contentTab = new ej.navigations.Tab({
         selected: changeTab,
         selecting: preventTabSwipe,
@@ -210,7 +193,7 @@ function renderSbPopups() {
             if (e.selectedIndex == 1) {
                 sourceTab.items = ArrayItem;
                 sourceTab.refresh();
-                 renderCopyCode();
+                renderCopyCode();
                 dynamicTabCreation(sourceTab);
             }
         }
@@ -219,8 +202,9 @@ function renderSbPopups() {
         items: [],
         headerPlacement: 'Bottom',
         cssClass: 'sb-source-code-section',
-        created:dynamicTabCreation,
-        selecting: preventTabSwipe, selected: function (e) {
+        created: dynamicTabCreation,
+        selecting: preventTabSwipe,
+        selected: function (e) {
             if (e.selectedIndex === 0) {
                 renderCopyCode();
             }
@@ -234,8 +218,15 @@ function renderSbPopups() {
         }
     }, '#sb-source-tab');
     sourceTab.selectedItem = 1;
-    var prevbutton = new ej.buttons.Button({ iconCss: 'sb-icons sb-icon-Previous', cssClass: 'e-flat' }, '#mobile-prev-sample');
-    var nextbutton = new ej.buttons.Button({ iconCss: 'sb-icons sb-icon-Next', cssClass: 'e-flat', iconPosition: 'right' }, '#mobile-next-sample');
+    var prevbutton = new ej.buttons.Button({
+        iconCss: 'sb-icons sb-icon-Previous',
+        cssClass: 'e-flat'
+    }, '#mobile-prev-sample');
+    var nextbutton = new ej.buttons.Button({
+        iconCss: 'sb-icons sb-icon-Next',
+        cssClass: 'e-flat',
+        iconPosition: 'right'
+    }, '#mobile-next-sample');
     var tabHeader = document.getElementById('sb-content-header');
     tabHeader.appendChild(tabContentToolbar);
     var previous = new ej.popups.Tooltip({
@@ -251,10 +242,18 @@ function renderSbPopups() {
 }
 
 function renderCopyCode() {
-    var ele = ej.base.createElement('div', { className: 'copy-tooltip', innerHTML: '<div class="e-icons copycode"></div>' });
+    var ele = ej.base.createElement('div', {
+        className: 'copy-tooltip',
+        innerHTML: '<div class="e-icons copycode"></div>'
+    });
     document.getElementById('sb-source-tab').appendChild(ele);
     ele.addEventListener('click', copyCode);
-    var copiedTooltip = new ej.popups.Tooltip({ content: 'Copied to clipboard ', position: 'BottomCenter', opensOn: 'Click', closeDelay: 50 }, '.copy-tooltip');
+    var copiedTooltip = new ej.popups.Tooltip({
+        content: 'Copied to clipboard ',
+        position: 'BottomCenter',
+        opensOn: 'Click',
+        closeDelay: 50
+    }, '.copy-tooltip');
 
 }
 
@@ -270,16 +269,18 @@ function changeTab(args) {
     }
 }
 
-function dynamicTabCreation(obj){
+function dynamicTabCreation(obj) {
     var tabObj
     if (obj) {
         tabObj = obj;
-    } else { tabObj = this; }
+    } else {
+        tabObj = this;
+    }
     var contentEle = tabObj.element.querySelector('#e-content_' + tabObj.selectedItem);
     if (!contentEle) {
         return;
     }
-    var  blockEle = tabObj.element.querySelector('#e-content_' + tabObj.selectedItem).children[0];
+    var blockEle = tabObj.element.querySelector('#e-content_' + tabObj.selectedItem).children[0];
     blockEle.innerHTML = tabObj.items[tabObj.selectedItem].data;
     blockEle.classList.add('sb-src-code');
     if (blockEle) {
@@ -294,7 +295,10 @@ function dataBound(args) {
         var tr1 = trs[count];
         if (tr1.getBoundingClientRect().height > 100) {
             var desDiv = tr1.querySelector('.sb-sample-description');
-            var tag = ej.base.createElement('a', { id: 'showtag', innerHTML: ' show more...' });
+            var tag = ej.base.createElement('a', {
+                id: 'showtag',
+                innerHTML: ' show more...'
+            });
             tag.addEventListener('click', tagShowmore.bind(this, desDiv));
             desDiv.classList.add('e-custDesription');
             desDiv.appendChild(tag);
@@ -307,7 +311,11 @@ function tagShowmore(target) {
     target.querySelector('#showtag').classList.add('e-display');
     var hideEle = target.querySelector('#hidetag');
     if (!hideEle) {
-        var tag = ej.base.createElement('a', { id: 'hidetag', attrs: {}, innerHTML: 'hide less..' });
+        var tag = ej.base.createElement('a', {
+            id: 'hidetag',
+            attrs: {},
+            innerHTML: 'hide less..'
+        });
         target.appendChild(tag);
         tag.addEventListener('click', taghideless.bind(this, target));
     } else {
@@ -320,13 +328,19 @@ function taghideless(target) {
     target.querySelector('#showtag').classList.remove('e-display');
     target.classList.add('e-custDesription');
 }
+
 function setPressedAttribute(ele) {
     var status = ele.classList.contains('active');
     ele.setAttribute('aria-pressed', status ? 'true' : 'false');
 }
+
 function sbHeaderClick(action, preventSearch) {
     if (openedPopup) {
-        openedPopup.hide(new ej.base.Animation({ name: 'FadeOut', duration: 300, delay: 0 }));
+        openedPopup.hide(new ej.base.Animation({
+            name: 'FadeOut',
+            duration: 300,
+            delay: 0
+        }));
     }
     if (preventSearch !== true && !searchOverlay.classList.contains('sb-hide')) {
         searchOverlay.classList.add('sb-hide');
@@ -355,7 +369,11 @@ function sbHeaderClick(action, preventSearch) {
         settingElement.classList.remove('active');
     }
     if (curPopup && curPopup !== openedPopup) {
-        curPopup.show(new ej.base.Animation({ name: 'FadeIn', duration: 400, delay: 0 }));
+        curPopup.show(new ej.base.Animation({
+            name: 'FadeIn',
+            duration: 400,
+            delay: 0
+        }));
         openedPopup = curPopup;
     } else {
         openedPopup = null;
@@ -403,8 +421,12 @@ function onsearchInputChange(e) {
     var val = [];
     val = searchInstance.search(searchString, {
         fields: {
-            component: { boost: 1 },
-            name: { boost: 2 }
+            component: {
+                boost: 1
+            },
+            name: {
+                boost: 2
+            }
         },
         expand: true,
         boolean: 'AND'
@@ -436,13 +458,17 @@ function onsearchInputChange(e) {
         if (!searchListView) {
             searchListView = new ej.lists.ListView({
                 dataSource: controls,
-                fields: { id: 'uid', text: 'name', groupBy: 'sortId' },
+                fields: {
+                    id: 'uid',
+                    text: 'name',
+                    groupBy: 'sortId'
+                },
                 select: controlSelect,
                 template: '<div class="e-text-content e-icon-wrapper" data="${dir}/${url}" uid="${uid}" pid="${parentId}">' +
-                '<span class="e-list-text" role="list-item">' +
-                '${name}</span></div>',
+                    '<span class="e-list-text" role="list-item">' +
+                    '${name}</span></div>',
                 groupTemplate: '${if(items[0]["component"])}<div class="e-text-content"><span class="e-search-group">${items[0].component}</span>' +
-                '</div>${/if}',
+                    '</div>${/if}',
                 actionComplete: function () {
                     var searchValue = ej.base.select('#search-input').value;
                     highlight(searchValue, this.element);
@@ -610,6 +636,7 @@ function resetInput(arg) {
     document.getElementById('search-input-wrapper').setAttribute('data-value', '');
     searchPopup.hide();
 }
+
 function bindEvents() {
     document.getElementById('sb-switcher').addEventListener('click', function (e) {
         e.preventDefault();
@@ -694,6 +721,7 @@ function bindEvents() {
         }
     });
 }
+
 function onNextPrevButtonClick(arg) {
     sampleOverlay();
     var theme = getThemeName();
@@ -727,11 +755,10 @@ function setSbLink() {
         var sb = sbArray[i];
         var ele = ej.base.select('#' + sb);
         if (sb === 'aspcore') {
-            ele.href = 'https://aspdotnetcore.syncfusion.com/';
-        }
-        else {
+            ele.href = 'https://ej2.syncfusion.com/aspnetcore/';
+        } else {
             ele.href = ((link) ? ('http://' + link[1] + '/' + (link[3] ? (link[3] + '/') : '')) :
-                ('https://ej2.syncfusion.com/')) + (sbObj[sb] ? (sb + '/') : '') +
+                    ('https://ej2.syncfusion.com/')) + (sbObj[sb] ? (sb + '/') : '') +
                 'demos/#/' + (sample ? (sample[1] + (sb !== 'typescript' ? '' : '.html')) : '');
         }
     }
@@ -863,20 +890,25 @@ function renderLeftPaneComponents() {
         },
         nodeClicked: controlSelect,
         nodeTemplate: '<div><span class="tree-text">${name}</span>' +
-        '${if(type === "update")}<span class="e-badge sb-badge e-samplestatus ${type} tree tree-badge">Updated</span>' +
-        '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type} tree tree-badge">${type}</span>${/if}${/if}</div>'
+            '${if(type === "update")}<span class="e-badge sb-badge e-samplestatus ${type} tree tree-badge">Updated</span>' +
+            '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type} tree tree-badge">${type}</span>${/if}${/if}</div>'
     }, '#controlTree');
     var controlList = new ej.lists.ListView({
         dataSource: controlSampleData[location.pathname.split('/').slice(-2)[0]] || controlSampleData.Button,
-        fields: { id: 'uid', text: 'name', groupBy: 'order', htmlAttributes: 'data' },
+        fields: {
+            id: 'uid',
+            text: 'name',
+            groupBy: 'order',
+            htmlAttributes: 'data'
+        },
         select: controlSelect,
         template: '<div class="e-text-content e-icon-wrapper"> <span class="e-list-text" role="listitem">${name}' +
-        '</span>${if(type === "update")}<span class="e-badge sb-badge e-samplestatus ${type}">Updated</span>' +
-        '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type}">${type}</span>${/if}${/if}' +
-        '${if(directory)}<div class="e-icons e-icon-collapsible"></div>${/if}</div>',
+            '</span>${if(type === "update")}<span class="e-badge sb-badge e-samplestatus ${type}">Updated</span>' +
+            '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type}">${type}</span>${/if}${/if}' +
+            '${if(directory)}<div class="e-icons e-icon-collapsible"></div>${/if}</div>',
         groupTemplate: '${if(items[0]["category"])}<div class="e-text-content">' +
-        '<span class="e-list-text">${items[0].category}</span>' +
-        '</div>${/if}',
+            '<span class="e-list-text">${items[0].category}</span>' +
+            '</div>${/if}',
         actionComplete: setSelectList
     }, '#controlList');
 }
@@ -902,7 +934,12 @@ function getTreeviewList(list) {
     for (var i = 0; i < list.length; i++) {
         if (category !== list[i].category) {
             category = list[i].category;
-            tempList = tempList.concat({ id: i + 1, name: list[i].category, hasChild: true, expanded: true });
+            tempList = tempList.concat({
+                id: i + 1,
+                name: list[i].category,
+                hasChild: true,
+                expanded: true
+            });
             pid = i + 1;
             id = pid;
         }
@@ -926,7 +963,10 @@ function getSamples(samples) {
     var tempSamples = [];
     for (var i = 0; i < samples.length; i++) {
         tempSamples[i] = samples[i];
-        tempSamples[i].data = { 'sample-name': samples[i].url, 'data-path': '/' + samples[i].dir + '/' + samples[i].url };
+        tempSamples[i].data = {
+            'sample-name': samples[i].url,
+            'data-path': '/' + samples[i].dir + '/' + samples[i].url
+        };
     }
     return tempSamples;
 }
@@ -945,7 +985,7 @@ function controlSelect(arg) {
         if (curHashCollection.indexOf(path) === -1) {
             sampleOverlay();
             if (arg.item && ((isMobile && !ej.base.select('.sb-mobile-left-pane').classList.contains('sb-hide')) ||
-                ((isTablet || (ej.base.Browser.isDevice && isPc)) && isLeftPaneOpen()))) {
+                    ((isTablet || (ej.base.Browser.isDevice && isPc)) && isLeftPaneOpen()))) {
                 toggleLeftPane();
             }
 
@@ -984,7 +1024,10 @@ function showHideControlTree() {
 }
 
 function viewSwitch(from, to, reverse) {
-    var anim = new ej.base.Animation({ duration: 500, timingFunction: 'ease' });
+    var anim = new ej.base.Animation({
+        duration: 500,
+        timingFunction: 'ease'
+    });
     var controlTree = ej.base.select('#controlTree');
     var controlList = ej.base.select('#controlList');
     controlTree.style.overflowY = 'hidden';
@@ -1002,7 +1045,9 @@ function viewSwitch(from, to, reverse) {
             controlList.classList.remove('sb-adjust-juggle');
         }
     });
-    anim.animate(to, { name: reverse ? 'SlideLeftIn' : 'SlideRightIn' });
+    anim.animate(to, {
+        name: reverse ? 'SlideLeftIn' : 'SlideRightIn'
+    });
 }
 
 function setSelectList() {
@@ -1093,6 +1138,7 @@ function sampleArray() {
 
 function addRoutes(samplesList) {
     var loop1 = function (node) {
+		
         var dataManager = new ej.data.DataManager(node.samples);
         var samples = dataManager.executeLocal(new ej.data.Query().sortBy('order', 'ascending'));
         var loop2 = function (subNode) {
@@ -1102,13 +1148,16 @@ function addRoutes(samplesList) {
             var sampleName = node.name + ' / ' + ((node.name !== subNode.category) ?
                 (subNode.category + ' / ') : '') + subNode.url;
             var selectedTheme = location.hash.split('/')[1] ? location.hash.split('/')[1] : 'material';
-            var urlString = '/' + control + '/' + sample;
-            if (location.pathname == urlString) {
+            var urlString = control + '/' + sample;
+            if (getSamplePath() === urlString) {
                 var dataSourceLoad = document.getElementById(node.dataSourcePath);
                 if (node.dataSourcePath && !dataSourceLoad) {
                     var dataAjax = new ej.base.Ajax(node.dataSourcePath, 'GET', true);
                     dataAjax.send().then(function (result) {
-                        var ele = ej.base.createElement('script', { id: node.dataSourcePath, innerHTML: result });
+                        var ele = ej.base.createElement('script', {
+                            id: node.dataSourcePath,
+                            innerHTML: result
+                        });
                         document.getElementsByTagName('head')[0].appendChild(ele);
                         onDataSourceLoad(node, subNode, control, sample, sampleName);
                     });
@@ -1132,8 +1181,8 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
     var controlID = node.uid;
     var sampleID = subNode.uid;
     setSbLink();
-    var ajaxCS = new ej.base.Ajax(baseurl +  'Controllers/' + subNode.component + '/' + subNode.url + 'Controller.cs', 'GET', false);
-    var ajaxCSHTML = new ej.base.Ajax(baseurl +  'Views/Index?path=/Views/' + subNode.component + '/' + subNode.url + '.cshtml', 'GET', false);
+    var ajaxCS = new ej.base.Ajax(baseurl + 'Controllers/' + subNode.component + '/' + subNode.url + 'Controller.cs', 'GET', false);
+    var ajaxCSHTML = new ej.base.Ajax(baseurl + 'Home/GetHtml?path=Views/' + subNode.component + '/' + subNode.url + '.cshtml', 'GET', false);
     var add = [ajaxCSHTML, ajaxCS];
     var cs = subNode.url + 'controller.cs';
     var cshtml = subNode.url + '.cshtml';
@@ -1156,11 +1205,11 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
         breadCrumbSample.innerHTML = subNode.name;
     }
     var title = document.querySelector('title');
-    title.innerHTML = node.name + ' · ' + subNode.url + ' · Essential JS 2 for ASP.NET MVC · Syncfusion ';
-    var ext,ajaxJS;
+    title.innerHTML = node.name + ' · ' + subNode.url + ' · Syncfusion ASP.NET MVC UI Controls ';
+    var ext, ajaxJS;
     if (subNode.sourceFiles) {
-        add=[];
-        name=[];
+        add = [];
+        name = [];
         for (var i = 0; i < subNode.sourceFiles.length; i++) {
             var ajaxAdd = new ej.base.Ajax(subNode.sourceFiles[i].path, 'GET', false);
             add.push(ajaxAdd);
@@ -1176,55 +1225,56 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
                 value = value.replace(/@section (ActionDescription|Description){[^}]*}/g, '');
                 content = value.replace(/&/g, '&amp;')
                     .replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            }
-            else {
+            } else {
                 content = value.replace(/&/g, '&amp;')
                     .replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             }
             items.push({
-                header: { text: name[subfile] },
+                header: {
+                    text: name[subfile]
+                },
                 data: content,
                 content: name[subfile]
             })
             subfile++;
         });
     }
-        ArrayItem = items;
-        currentControlID = controlID;
-        currentSampleID = sampleID;
-        currentControl = node.directory;
-        var curIndex = samplesAr.indexOf(getSamplePath());
-        var samLength = samplesAr.length - 1;
-        if (curIndex === samLength) {
-            toggleButtonState('next-sample', true);
-        } else {
-            toggleButtonState('next-sample', false);
-        }
-        if (curIndex === 0) {
-            toggleButtonState('prev-sample', true);
-        } else {
-            toggleButtonState('prev-sample', false);
-        }
-        ej.base.select('#control-content').classList.remove('error-content');
+    ArrayItem = items;
+    currentControlID = controlID;
+    currentSampleID = sampleID;
+    currentControl = node.directory;
+    var curIndex = samplesAr.indexOf(getSamplePath());
+    var samLength = samplesAr.length - 1;
+    if (curIndex === samLength) {
+        toggleButtonState('next-sample', true);
+    } else {
+        toggleButtonState('next-sample', false);
+    }
+    if (curIndex === 0) {
+        toggleButtonState('prev-sample', true);
+    } else {
+        toggleButtonState('prev-sample', false);
+    }
+    ej.base.select('#control-content').classList.remove('error-content');
 
-        renderPropertyPane('#property');
-        window.navigateSample();
-        isExternalNavigation = defaultTree = false;
-        setPropertySectionHeight();
-        removeOverlay();
-        var mobilePropPane = ej.base.select('.sb-mobile-prop-pane .property-section');
-        if (mobilePropPane) {
-            ej.base.detach(mobilePropPane);
+    renderPropertyPane('#property');
+    window.navigateSample();
+    isExternalNavigation = defaultTree = false;
+    setPropertySectionHeight();
+    removeOverlay();
+    var mobilePropPane = ej.base.select('.sb-mobile-prop-pane .property-section');
+    if (mobilePropPane) {
+        ej.base.detach(mobilePropPane);
+    }
+    var propPanel = ej.base.select('#control-content .property-section');
+    if (isMobile) {
+        if (propPanel) {
+            ej.base.select('.sb-mobile-setting').classList.remove('sb-hide');
+            ej.base.select('.sb-mobile-prop-pane').appendChild(propPanel);
+        } else {
+            ej.base.select('.sb-mobile-setting').classList.add('sb-hide');
         }
-        var propPanel = ej.base.select('#control-content .property-section');
-        if (isMobile) {
-            if (propPanel) {
-                ej.base.select('.sb-mobile-setting').classList.remove('sb-hide');
-                ej.base.select('.sb-mobile-prop-pane').appendChild(propPanel);
-            } else {
-                ej.base.select('.sb-mobile-setting').classList.add('sb-hide');
-            }
-        }
+    }
 }
 
 function removeOverlay() {
@@ -1329,6 +1379,7 @@ function loadJSON() {
 
     overlay();
     changeMouseOrTouch(switchText);
+    // localStorage.removeItem('ej2-switch');
     ej.base.enableRipple(selectedTheme === 'material' || !selectedTheme);
     loadTheme(selectedTheme);
 }

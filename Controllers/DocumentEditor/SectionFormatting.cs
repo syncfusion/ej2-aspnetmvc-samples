@@ -11,12 +11,8 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
     {
         public ActionResult SectionFormatting()
         {
+            this.DocumentEditorViewResultHelper();
             return View();
-        }
-
-        public ActionResult SectionFormat()
-        {
-            return this.DocumentEditorViewResultHelper();
-        }
+        }    
     }
 }

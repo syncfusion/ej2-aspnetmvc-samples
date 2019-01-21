@@ -15,40 +15,37 @@ namespace EJ2MVCSampleBrowser.Controllers
                                     <p><b> Toolbar </b></p>
                                     <ol>          
                                         <li>          
-                                            <p> Toolbar contains commands to align the text, insert link, insert image, insert list, undo / redo operations, HTML view, etc </p>          
+                                            <p>Toolbar contains commands to align the text, insert link, insert image, insert list, undo / redo operations, HTML view, etc </p>          
                                         </li>
                                         <li>
-                                            <p> Toolbar is fully customizable </p>
+                                            <p>Toolbar is fully customizable </p>
                                         </li>
                                     </ol>
                                     <p><b> Links </b></p>
                                     <ol>
                                         <li>
-                                            <p> You can insert a hyperlink with its corresponding dialog</p>
+                                            <p>You can insert a hyperlink with its corresponding dialog</p>
                                         </li>
                                         <li>
-                                            <p> Attach a hyperlink to the displayed text. </p>
+                                            <p>Attach a hyperlink to the displayed text. </p>
                                         </li>
                                         <li>
-                                            <p> Customize the quick toolbar based on the hyperlink </p>
+                                            <p>Customize the quick toolbar based on the hyperlink </p>
                                         </li>
                                     </ol>
                                     <p><b> Image.</b></p>
                                     <ol>
                                         <li>
-                                            <p> Allows you to insert images from an online source as well as the local computer</p>
+                                            <p>Allows you to insert images from an online source as well as the local computer</p>
                                         </li>
                                         <li>
-                                            <p> You can upload an image</p>
+                                            <p>You can upload an image</p>
                                         </li>
                                         <li>
-                                            <p> Provides an option to customize quick toolbar for an image </p>
+                                            <p>Provides an option to customize quick toolbar for an image </p>
                                         </li>
                                     </ol>
-                                    <img alt = 'Logo' src ='/Content/images/RichTextEditor/RTEImage-Feather.png' style='width: 300px'/>
-                                     </div>
-                                </div>
-                            </div>";
+                                    <img alt = 'Logo' src ="+ @Url.Content("/Content/images/RichTextEditor/RTEImage-Feather.png") + " style='width: 300px'/></div></div></div>";
 
 
             ViewBag.tools = new[] { "Bold", "Italic", "Underline", "StrikeThrough",

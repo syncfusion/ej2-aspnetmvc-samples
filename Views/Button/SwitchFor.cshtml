@@ -1,5 +1,5 @@
 @using Syncfusion.EJ2
-@model EJ2MVCSampleBrowser.Models.SwitchModel
+@model EJ2MVCSampleBrowser.Controllers.Button.SwitchModel
 
 @section ControlsSection{
 <div class="control-section">
@@ -23,16 +23,16 @@
 }
 @section ActionDescription{
     <div id="action-description">
-        <p>Click the submit button to post the current state of the Switch. When submitting the Switch in `off` state, validation error message will be shown.</p>
+        <p>Click the submit button to post the current state of the Switch. When submitting the Switch in `off` state, validation error message will be shown by using Data Annotation.</p>
     </div>
     }
 @section Description{
     <div id="description">
-        <p>This sample demonstrates Strongly Typed support in Switch. You can bind model property to the Switch by using Lambda Expression.
-     While submitting form, the model property will be based on `checked` state of the Switch.</p>
+        <p>This sample demonstrates strongly typed support in Switch. You can bind model property to the Switch by using Lambda Expression.
+     While submitting form, the model property will be based on <code>checked</code> state of the Switch.</p>
         <p>
             More information on Switch can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/switch/getting-started-mvc.html">
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/switch/getting-started">
                 documentation section
             </a>.
         </p>

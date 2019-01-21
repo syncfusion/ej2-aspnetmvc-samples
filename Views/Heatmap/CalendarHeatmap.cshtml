@@ -9,7 +9,8 @@
                            xAxis =>
                            {
                                xAxis.Minimum(new System.DateTime(2017, 6, 23)).Maximum(new System.DateTime(2018, 6, 30)).IntervalType(Syncfusion.EJ2.HeatMap.IntervalType.Days).ValueType(Syncfusion.EJ2.HeatMap.ValueType.DateTime).ShowLabelOn(Syncfusion.EJ2.HeatMap.LabelType.Months).
-                               LabelFormat("MMM").OpposedPosition(true).Increment(7);
+                               LabelFormat("MMM").OpposedPosition(true).
+                               LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.Rotate45).Increment(7);
                            }).YAxis(yaxis =>
                            {
                                yaxis.Labels(ViewBag.yLabels).IsInversed(true);

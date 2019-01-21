@@ -14,9 +14,9 @@
             <div class='control-wrapper'>
                 <h4>Remote Data</h4>
 
-                @Html.EJS().MultiSelect("remote").Placeholder("Select customer").SortOrder((string)ViewBag.sort).Query((string)ViewBag.query).DataSource(
-                   obj => obj.Url("https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Customers").CrossDomain(true).Adaptor("ODataAdaptor")).Fields(
-                   new MultiSelectFieldSettings { Text = "ContactName", Value = "CustomerID" }).Value((string[])ViewBag.val).Render()
+                @Html.EJS().MultiSelect("remote").Placeholder("Select names").SortOrder((string)ViewBag.sort).Query((string)ViewBag.query).DataSource(
+                   obj => obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").CrossDomain(true).Adaptor("WebApiAdaptor")).Fields(
+                   new MultiSelectFieldSettings { Text = "FirstName", Value = "EmployeeID" }).Value((string[])ViewBag.val).Render()
             </div>
         </div>
     </div>

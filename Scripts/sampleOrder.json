@@ -1,9 +1,14 @@
 {
-  "Grid": [ "Grid" ],
-  "Data Visualization": [ "Chart", "Maps", "TreeMap" ,"CircularGauge", "LinearGauge", "RangeNavigator", "Sparkline", "Smith Chart" ],
-  "Calendar": [ "Schedule", "Calendar" ],
-  "Editors": [ "AutoComplete", "Button", "ComboBox", "DatePicker", "DateRangePicker", "DateTimePicker", "DropDownList", "MultiSelect", "MaskedTextBox", "NumericTextBox", "Slider", "TextBoxes", "TimePicker", "ColorPicker", "Uploader" , "RichTextEditor"],
-  "Layout": [ "ListView", "Dialog", "Tooltip", "Card" ],
-  "Navigators": [ "Sidebar", "TreeView", "Tab", "Toolbar", "ContextMenu", "Accordion" ],
-  "File Formats": ["XlsIO","PDF","DocIO", "Presentation"]
+"Grid": [ "Grid", "PivotView", "TreeGrid" ],
+"Data Visualization": [ "Chart", "StockChart", "CircularGauge", "Diagram", "Heatmap", "LinearGauge", "Maps", "RangeNavigator", "Smithchart", "Sparkline", "TreeMap" ],
+"Editors": [ "RichTextEditor", "DocumentEditor", "Chips", "Button" ],
+"Calendars": [ "Schedule", "Calendar", "DatePicker", "DateRangePicker", "DateTimePicker", "TimePicker" ],
+"Dropdowns": [ "AutoComplete", "ComboBox", "DropDownList", "MultiSelect" ],
+"Navigation": [ "Accordion", "ContextMenu", "Menu", "Sidebar", "Tab", "Toolbar", "TreeView" ],
+"Notifications": [ "Badge", "Toast" ],
+"Inputs": [ "TextBoxes", "MaskedTextBox", "NumericTextBox", "ColorPicker", "Uploader", "Slider" ],
+"Layout": [ "Avatar", "Card", "Dialog", "ListView", "Tooltip", "Splitter" ],
+"Forms": [ "InPlaceEditor", "QueryBuilder" ],
+"File Formats": [ "DocIO", "PDF", "Presentation", "XlsIO" ],
+"Viewer": [ "PdfViewer" ]
 }

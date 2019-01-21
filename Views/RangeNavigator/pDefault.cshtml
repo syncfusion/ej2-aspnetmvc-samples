@@ -119,7 +119,7 @@
         var zoomFactor, zoomPosition, startDate, endDate;
         var selectedTheme = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
         var load = function (args) {
             args.rangeNavigator.theme = theme;
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";

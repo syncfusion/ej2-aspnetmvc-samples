@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").ResourceHeaderTemplate("#resourceTemplate").Group(group => group.Resources(ViewBag.Resources)).Resources(res => { res.DataSource(ViewBag.Doctors).Field("DoctorId").Title("Doctor Name").Name("Doctors").TextField("text").IdField("id").ColorField("color").WorkDaysField("workDays").StartHourField("startHour").EndHourField("endHour").Add(); }).Views(view => { view.Option(View.WorkWeek).Add(); view.Option(View.Month).Add(); }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Service Type")).Location(loc => loc.Name("Location").Title("Patient Name")).Description(des => des.Name("Description").Title("Summary")).StartTime(st => st.Name("StartTime").Title("From")).EndTime(et => et.Name("EndTime").Title("To"))).DataSource(ViewBag.datasource)).SelectedDate(new DateTime(2018, 4, 1)).PopupOpen("onPopupOpen").ActionBegin("onActionBegin").RenderCell("onRenderCell").ResizeStart("onResizeStart").DragStart("onDragStart").Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").AllowDragAndDrop(false).AllowResizing(false).ResourceHeaderTemplate("#resourceTemplate").Group(group => group.Resources(ViewBag.Resources)).Resources(res => { res.DataSource(ViewBag.Doctors).Field("DoctorId").Title("Doctor Name").Name("Doctors").TextField("text").IdField("id").ColorField("color").WorkDaysField("workDays").StartHourField("startHour").EndHourField("endHour").Add(); }).Views(view => { view.Option(View.WorkWeek).Add(); view.Option(View.Month).Add(); }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Service Type")).Location(loc => loc.Name("Location").Title("Patient Name")).Description(des => des.Name("Description").Title("Summary")).StartTime(st => st.Name("StartTime").Title("From")).EndTime(et => et.Name("EndTime").Title("To"))).DataSource(ViewBag.datasource)).SelectedDate(new DateTime(2018, 4, 1)).PopupOpen("onPopupOpen").ActionBegin("onActionBegin").RenderCell("onRenderCell").ResizeStart("onResizeStart").DragStart("onDragStart").Render()
         </div>
     </div>
     <style>
@@ -95,15 +95,25 @@
             }
         }
         function onActionBegin(args) {
-            if (args.requestType === 'eventCreate' && args.data.length > 0) {
+            var isEventChange = (args.requestType === 'eventChange');
+            if ((args.requestType === 'eventCreate' && args.data.length > 0) || isEventChange) {
                 var scheduleObj = document.getElementById('schedule').ej2_instances[0];
-                var eventData = args.data[0];
+                var eventData = (isEventChange) ? args.data : args.data[0];
                 var eventField = scheduleObj.eventFields;
                 var startDate = eventData[eventField.startTime];
                 var endDate = eventData[eventField.endTime];
                 var resourceIndex = [1, 2, 3].indexOf(eventData.DoctorId);
-                args.cancel = !scheduleObj.isSlotAvailable(startDate, endDate, resourceIndex);
+                args.cancel = !isValidateTime(startDate, endDate, resourceIndex, scheduleObj);
+                if (!args.cancel) {
+                    args.cancel = !scheduleObj.isSlotAvailable(startDate, endDate, resourceIndex);
+                }
             }
+        }
+        function isValidateTime(startDate, endDate, resIndex, scheduleObj) {
+            var resource = scheduleObj.getResourcesByIndex(resIndex);
+            var startHour = parseInt(resource.resourceData.startHour.toString().slice(0, 2), 10);
+            var endHour = parseInt(resource.resourceData.endHour.toString().slice(0, 2), 10);
+            return (startHour <= startDate.getHours() && endHour >= endDate.getHours());
         }
         function onRenderCell(args) {
             if (args.element.classList.contains('e-work-hours') || args.element.classList.contains('e-work-cells')) {
@@ -119,7 +129,7 @@
     </script>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Schedule control shows how to set different working days for each of the resources." />
+    <meta name="description" content="This demo for Essential JS2 Scheduler control shows how to set different working days for each of the resources." />
 }
 @section ActionDescription{
     <div id="action-description">
@@ -148,7 +158,7 @@
             more appointments can be added to that cell which has been prevented by making use of the
             <code>isSlotAvailable</code> function within the
             <code>ActionBegin</code> event checking for
-            <code>EventCreate</code> request type. The resource header is customized by making use of the
+            <code>EventCreate</code> and <code>eventChange</code> request type. The resource header is customized by making use of the
             <code>ResourceHeaderTemplate</code> option.
         </p>
     </div>

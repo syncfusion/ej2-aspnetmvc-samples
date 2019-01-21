@@ -44,6 +44,8 @@
         </div>
     </div>
     <script type="text/javascript">
+        function getAbsoluteURL() { return "@Url.Content("~/")"; };
+        var baseurl = window.baseurl = getAbsoluteURL();
         var documenteditor;
         var containerPanel;
         document.addEventListener('DOMContentLoaded', function () {
@@ -186,6 +188,7 @@
         }
 
         .e-de-statusbar-zoom {
+            height: 22px;
             float: right;
             text-align: center;
             padding: 2px;
@@ -221,9 +224,9 @@
             outline: none;
         }
 
-        .single-line:hover {
-            border-color: #e4e4e4 !important;
-        }
+            .single-line:hover {
+                border-color: #e4e4e4 !important;
+            }
 
         [contenteditable="true"].single-line {
             white-space: nowrap;

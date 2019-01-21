@@ -1,0 +1,48 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+@{
+    ViewBag.Title = "DefaultFunctionalities";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        @(Html.EJS().TreeGrid("TreeGrid")
+            .AllowPaging()
+            .AllowResizing()
+            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .Columns(col =>
+               {
+                   col.Field("TaskId").HeaderText("Task ID").Width(90).TextAlign(TextAlign.Right).Add();
+                   col.Field("TaskName").HeaderText("Task Name").Width(220).MinWidth(120).MaxWidth(300).Add();
+                   col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(135).Add();
+                   col.Field("EndDate").HeaderText("End Date").Format("yMd").TextAlign(TextAlign.Right).Width(135).Add();
+                   col.Field("Duration").HeaderText("Duration").Width(110).AllowResizing(false).TextAlign(TextAlign.Right).Add();
+                   col.Field("Progress").HeaderText("Progress").Width(120).TextAlign(TextAlign.Right).Add();
+                   col.Field("Priority").HeaderText("Priority").Width(110).Add();
+               })
+           .ChildMapping("Children")
+           .TreeColumnIndex(1)
+       .Render()
+       )
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This demo explains how to resize the width of the treegrid columns in Essential JS2 TreeGrid control." />
+}
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>In this demo, resizing feature is enabled by setting the <code>AllowResizing</code> property as true and Task Name column can be resized between the range of minWidth (120px) and maxWidth (300px). Also, column resizing has been disabled for Duration column. </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>The TreeGrid columns can be resized by clicking and dragging at the right edge of columns header. Set <code>AllowResizing</code> property as true, to enable column resizing behavior in treegrid. You can also prevent the resize of the specific column by setting <code>Columns->AllowResizing</code> as false in columns definition.
+        </p>
+        <p> More information on the data binding can be found in this documentation section.
+        </p>
+    </div>
+}

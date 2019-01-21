@@ -13,7 +13,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             ViewBag.localdata = new GameList().GameLists();
             ViewBag.sort = "Ascending";
-            ViewBag.query = "new ej.data.Query().select(['ContactName', 'CustomerID']).take(25)";
+            ViewBag.query = "new ej.data.Query().select(['FirstName', 'EmployeeID']).take(10).requiresCount()";
             return View();
         }
     }

@@ -45,14 +45,12 @@
     }
 </style>
 
-@section Meta{
-    <meta name="description" content="Highly flexible DatePicker for ASP.NET MVC with customizable options for date and time formats based on the preferred culture for improved readability" />
-}
-
 @section ActionDescription{
     <div id="action-description">
         <p>
-            In this sample, the DatePicker has been configured with the <code>dd-MMM-yy</code> date format. To change this current date format, go to the properties panel at the right side and select a date format from the dropdown options.
+            In this sample, the DatePicker has been configured with the <code>dd-MMM-yy</code> date format.
+        To change this current date format, go to the properties panel at the right side and select a date format from the available options.
+        For mobile mode touch the icon at the right side and select a date format from the available options.
         </p>
     </div>
 }
@@ -64,8 +62,13 @@
             panel.
         </p>
         <p>
-            More information on the date format configuration can be found in the <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/datepicker/date-format.html" target="_blank">documentation section</a>.
+            More information on the date format configuration can be found in the <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/datepicker/date-format/"
+                                                                                     target="_blank">documentation section</a>.
         </p>
     </div>
 }
 
+@section Meta{
+
+       <meta content= "This example demonstrates how to change the date time format in the input field based on the format in a ASP.NET MVC DatePicker"/>
+}

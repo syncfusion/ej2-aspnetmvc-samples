@@ -17,13 +17,26 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 40%">
-                        <div style="padding:0px">Legend Type</div>
+                    <td style="width: 10%">
+                        <div class="property-text" style="padding: 0px;">Type</div>
                     </td>
-                    <td style="width: 80%; height:30%">
+                    <td style="width: 30%">
                         <select name="selectIndex" autocomplete="off" id="layoutMode" style="width:60%;">
-                            <option value="Default" selected="">Default</option>
+                            <option value="Default" selected>Default</option>
                             <option value="Interactive">Interactive</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 40%">
+                        <div class="property-text" style="padding: 0px;">Position</div>
+                    </td>
+                    <td style="width: 30%">
+                        <select name="selectIndex" autocomplete="off" id="legendPosition" style="width:60%;">
+                            <option value="Top" selected>Top</option>
+                            <option value="Bottom">Bottom</option>
+                            <option value="Left">Left</option>
+                            <option value="Right">Right</option>
                         </select>
                     </td>
                 </tr>
@@ -99,13 +112,55 @@
         var mode = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select legend type',
-            width: 90,
-            change: () => {
+            width: 100,
+            change: function () {
                 treemap.legendSettings.mode = mode.value;
+                if (mode.value === 'Interactive') {
+                    if (treemap.legendSettings.orientation === 'Horizontal' || treemap.legendSettings.orientation === 'None') {
+                        treemap.legendSettings.height = '10';
+                        treemap.legendSettings.width = '';
+                    }
+                    else {
+                        treemap.legendSettings.height = '70%';
+                        treemap.legendSettings.width = '10';
+                    }
+                }
+                else {
+                    treemap.legendSettings.height = '';
+                    treemap.legendSettings.width = '';
+                }
                 treemap.refresh();
             }
         });
         mode.appendTo('#layoutMode');
+        var legendPosition = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Legend Position',
+            width: '100%',
+            change: function () {
+                treemap.legendSettings.position = legendPosition.value;
+                if (legendPosition.value === 'Left' || legendPosition.value === 'Right') {
+                    treemap.legendSettings.orientation = 'Vertical';
+                    if (treemap.legendSettings.mode === 'Interactive') {
+                        treemap.legendSettings.height = '70%';
+                        treemap.legendSettings.width = '10';
+                    }
+                    else {
+                        treemap.legendSettings.height = '';
+                        treemap.legendSettings.width = '';
+                    }
+                }
+                else {
+                    treemap.legendSettings.orientation = 'Horizontal';
+                    if (treemap.legendSettings.mode === 'Interactive') {
+                        treemap.legendSettings.height = '10';
+                        treemap.legendSettings.width = '';
+                    }
+                }
+                treemap.refresh();
+            }
+        });
+        legendPosition.appendTo('#legendPosition');
     </script>
 }
 @section ActionDescription{

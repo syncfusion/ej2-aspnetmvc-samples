@@ -1,0 +1,42 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+@{
+    ViewBag.Title = "RowHover";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().TreeGrid("RowHover").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+       {
+           col.Field("TaskId").HeaderText("Task ID").Width(90).TextAlign(TextAlign.Right).Add();
+           col.Field("TaskName").HeaderText("Task Name").Width(180).Add();
+           col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(120).Add();
+           col.Field("EndDate").HeaderText("End Date").Format("yMd").TextAlign(TextAlign.Right).Width(120).Add();
+           col.Field("Duration").HeaderText("Duration").Width(90).TextAlign(TextAlign.Right).Add();
+           col.Field("Progress").HeaderText("Progress").Width(90).TextAlign(TextAlign.Right).Add();
+
+       }).EnableHover().Height(350).ChildMapping("Children").TreeColumnIndex(1).Render()
+    </div>
+
+}
+
+@section Meta{
+    <meta name="description" content="This demo explains how the treegrid row color is changed while move the mouse over a row in Syncfusion Essential JS2 TreeGrid content." />
+}
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the TreeGrid component with the row hover feature. Move the mouse over the TreeGrid rows to see the hover effect.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            Row Hover feature enables us to identify the current row by highlighting them with the mouse hovers. This can be enabled by setting the <code>EnableHover</code> property as true.
+        </p>
+        <p>In this demo, by enabling the <code>EnableHover</code> property, you can move the mouse over TreeGrid rows to see the hover effect
+        </p>
+    </div>
+}

@@ -8,11 +8,11 @@
     <div class="control-section">
         @Html.EJS().Grid("DialogTemplateEdit").DataSource((IEnumerable<object>)ViewBag.dataSource).ActionComplete("actionComplete").Columns(col =>
    {
-       col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 3 }).Add();
-       col.Field("Freight").HeaderText("Freight").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("OrderDate").HeaderText("Order Date").ValidationRules(new { required = true, date = true }).Format("yMd").Width("150").Add();
-       col.Field("ShipCountry").HeaderText("Ship Country").Width("150").Add();
+       col.Field("Freight").HeaderText("Freight").Width("120").EditType("numericedit").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("OrderDate").HeaderText("Order Date").EditType("datepickeredit").Format("yMd").Width("150").Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").EditType("dropdownedit").Width("150").Add();
    }).AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog).Template("#dialogtemplate"); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
     </div>
    
@@ -64,7 +64,7 @@
         #ShipAddress {
             resize: vertical;
         }
-        :-ms-fullscreen, .e-grid .e-dialog {
+        :-ms-fullscreen, .e-dialog {
             max-width: 552px;
         }
         @@media only screen and (max-width: 991px) {
@@ -73,13 +73,13 @@
             }    
         }
         @@media only screen and (min-width: 992px) {
-            .e-grid .e-dialog.e-control.e-popup {
+            .e-dialog.e-control.e-popup {
                 min-width: 550px !important;
                 min-height: 415px;
             }
 
-            .e-grid.e-bigger .e-dialog.e-control.e-popup,
-            .e-bigger .e-grid .e-dialog.e-control.e-popup {
+            .e-bigger.e-dialog.e-control.e-popup,
+            .e-bigger .e-dialog.e-control.e-popup {
                 min-height: 496px;
             }
         }

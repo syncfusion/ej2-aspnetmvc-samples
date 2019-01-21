@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "Pickers";
+}
+
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.InPlaceEditor;
+@using Syncfusion.EJ2.DropDowns;
+@section ControlsSection{
+   <div class="col-lg-8 control-section inplace-control-section pickers-layout">
+    <div class="control_wrapper form-horizontal ">
+        <table>
+            <tr>
+                <td>
+                    <label class="control-label" style="text-align: left;font-size: 14px;font-weight: 400">
+                        DatePicker
+                    </label>
+                </td>
+                <td>
+                    @Html.EJS().InPlaceEditor("datePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Date).Value(ViewBag.dateValue).Model(ViewBag.dateData).Render()
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label" style="text-align: left;font-size: 14px;font-weight: 400">
+                        TimePicker
+                    </label>
+                </td>
+                <td>
+                    @Html.EJS().InPlaceEditor("timePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Time).Value(ViewBag.dateValue).Model(ViewBag.timeData).Render()
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label" style="text-align: left;font-size: 14px;font-weight: 400">
+                        DateTimePicker
+                    </label>
+                </td>
+                <td>
+                    @Html.EJS().InPlaceEditor("dateTimePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.DateTime).Value(ViewBag.dateValue).Model(ViewBag.dateTimeData).Render()
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label" style="text-align: left;font-size: 14px;font-weight: 400">
+                        DateRangePicker
+                    </label>
+                </td>
+                <td>
+                     @Html.EJS().InPlaceEditor("dateRangePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.DateRange).Value(ViewBag.daterangeValue).Model(ViewBag.dateRangeData).Render()
+                </td>
+            </tr>
+        </table>
+    </div>
+   </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties">
+            <tr>
+                <td style="width: 50%;">
+                    <div>Mode</div>
+                </td>
+                <td style="width: 50%;">
+                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewBag.modeData).Value("Inline").Change("changeEditorMode").Render()
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+<style>
+       .e-inplaceeditor-tip .e-editable-component .e-input-group .e-clear-icon.e-clear-icon-hide,
+       .inplace-control-section.pickers-layout .e-inplaceeditor .e-editable-component .e-clear-icon-hide {
+          display: block;
+          visibility: hidden;
+       }
+
+      .inplace-control-section .control_wrapper {
+            margin: auto;
+            max-width: 400px;
+        }
+
+        .inplace-control-section .control_wrapper table {
+            margin: auto;
+        }
+
+        .inplace-control-section .control_wrapper table td {
+            width: 200px;
+            height: 100px;
+        }
+
+        .inplace-control-section.pickers-layout .control_wrapper table td .control-label {
+            margin-bottom: 0px;
+        }
+</style>
+
+@section PreScripts {
+    <script>
+        var editEle1 = document.getElementById("datePickerEle");
+        var editEle2 = document.getElementById("timePickerEle");
+        var editEle3 = document.getElementById("dateTimePickerEle");
+        var editEle4 = document.getElementById("dateRangePickerEle");
+        function changeEditorMode(e) {
+            if (e.itemData.text === 'Popup') {
+                editEle1.ej2_instances[0].mode = editEle2.ej2_instances[0].mode = editEle3.ej2_instances[0].mode = editEle4.ej2_instances[0].mode = 'Popup';
+            } else {
+                editEle1.ej2_instances[0].mode = editEle2.ej2_instances[0].mode = editEle3.ej2_instances[0].mode = editEle4.ej2_instances[0].mode = 'Inline';
+            }
+            editEle1.ej2_instances[0].dataBind();
+            editEle2.ej2_instances[0].dataBind();
+            editEle3.ej2_instances[0].dataBind();
+            editEle4.ej2_instances[0].dataBind();
+        }
+        document.getElementById('right-pane').onscroll = function () {
+            var mode = document.getElementById("editorMode")
+            if (mode.ej2_instances[0].value === 'Inline') { return; }
+            if (editEle1.querySelectorAll('.e-editable-open').length > 0)
+                editEle1.ej2_instances[0].enableEditMode = false;
+            if (editEle2.querySelectorAll('.e-editable-open').length > 0)
+                editEle2.ej2_instances[0].enableEditMode = false;
+            if (editEle3.querySelectorAll('.e-editable-open').length > 0)
+                editEle3.ej2_instances[0].enableEditMode = false;
+            if (editEle4.querySelectorAll('.e-editable-open').length > 0)
+                editEle4.ej2_instances[0].enableEditMode = false;
+        }
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample demonstrates the usage of picker components such as Date, Time, DateTime, and DateRange. Click on the dotted input element to switch to the editable state of the corresponding integrated component.
+    </p>
+}
+@section Description{
+    <p>
+    This sample illustrates the way to integrate picker components with the <code>In-place Editor</code> component. The
+    applicable types of
+    components are:
+</p>
+<p>
+</p>
+<ul>
+    <li>
+        <code>DatePicker</code>
+    </li>
+    <li>
+        <code>TimePicker</code>
+    </li>
+    <li>
+        <code>DateTimePicker</code>
+    </li>
+    <li>
+        <code>DateRangePicker</code>
+    </li>
+</ul>
+<p></p>
+<p>
+    The above components and their features are editable in place and can be customized with the model
+    properties
+    of the specific component.
+</p>
+<p>
+    More information on the <code>In-place Editor</code> instantiation can be found in the&nbsp;<a target="_blank" href="https://ej2.syncfusion.com/documentation/inplaceeditor/getting-started.html">
+        documentation section
+    </a>.
+</p>
+}

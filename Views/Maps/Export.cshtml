@@ -14,20 +14,10 @@
 
 }
 @section ControlsSection{
-    <style>
-        #button-control {
-            width: 100%;
-            text-align: center;
-        }
-
+    <style>        
         #control-container {
             padding: 0px !important;
         }
-
-        .e-play-icon::before {
-            content: '\e728';
-        }
-
         #container {
             display: table;
             margin: 0 auto;
@@ -88,8 +78,8 @@
             </tr>
             <tr id="button-control" style="height: 50px" align='center'>
                 <td>
-                    <div>
-                        @Html.EJS().Button("togglebtn").IconCss("e-icons e-play-icon").Content("Export").CssClass("e-flat").Render()
+                    <div style="margin-left:50%;width:80px;">
+                        @Html.EJS().Button("togglebtn").Content("Export").CssClass("e-info").Render()
                     </div>
                 </td>
             </tr>

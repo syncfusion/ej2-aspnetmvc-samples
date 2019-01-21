@@ -1,0 +1,53 @@
+﻿@using Syncfusion.EJ2;
+<script src="~/Scripts/StockChartData/indicator-data.js"></script>
+@section ControlsSection{
+    <style>
+        #container {
+            display: block;
+        }
+
+        #container_stock_border {
+            pointer-events: none;
+        }
+    </style>
+    <div class="control-section">
+        <div>
+            @(Html.EJS().StockChart("container").Load("load").EnableSelector(false)
+                                      .Series(sr =>
+                                      {
+                                          sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).DataSource("data").XName("date").Add();
+                                      })
+                                      .Render())
+        </div>
+    </div>
+    <script>
+        var data = window.chartData;
+        var load = function (args) {
+            args.stockChart.chartArea = { border: { width: 0 } };
+            args.stockChart.tooltip.enable = true;
+            args.stockChart.crosshair.enable = true;
+            args.stockChart.primaryXAxis = { valueType: 'DateTime', majorGridLines: { width: 0 }, crosshairTooltip: { enable: true } };
+            args.stockChart.primaryYAxis = {
+                lineStyle: { color: 'transparent' }, crosshairTooltip: { enable: false },
+                majorTickLines: { color: 'transparent', width: 0 }
+            };
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Stock Chart control shows how to render the Stock Chart without Navigator." />
+}
+@section ActionDescription{
+    <p>
+        This sample renders the stock chart without range selector, data's can be navigated through period selector.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the Stock chart.
+        <code>AreaSeries</code> is used to represent selected data value.
+    </p>
+}

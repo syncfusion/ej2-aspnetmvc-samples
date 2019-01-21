@@ -17,10 +17,12 @@
                          {
                              palette.Value(0).Color("#6EB5D0").Add();
                              palette.Value(10).Color("#7EDCA2").Add();
-                             palette.Value(20).Color("#DCD57E").Add();
+                             palette.Value(19).Color("#DCD57E").Add();
+                             palette.Value(22).Color("#DCD57E").Add();
                          })).CellSettings(cs =>
                          cs.ShowLabel(false).Format("{value} C")).LegendSettings(ls =>
-                         ls.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Left)).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
+                         ls.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Left).
+                         LabelFormat("{value}\xB0 C")).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
                 </div>
             </div>
         </div>
@@ -61,6 +63,7 @@
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.heatmap.legendSettings.labelFormat = "{value}\xB0 C";
         };
         var legentListObj = new ej.dropdowns.DropDownList({
             index: 0,
