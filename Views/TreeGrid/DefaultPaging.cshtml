@@ -1,0 +1,53 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+@{
+    ViewBag.Title = "Pager";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        @(Html.EJS().TreeGrid("Pager")
+            .AllowPaging()
+            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .PageSettings(page => page.PageSizes(true).PageCount(2))
+            .Columns(col =>
+            {
+                col.Field("TaskId").HeaderText("Task ID").Width(70).TextAlign(TextAlign.Right).Add();
+                col.Field("TaskName").HeaderText("Task Name").Width(200).Add();
+                col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(90).Add();
+                col.Field("EndDate").HeaderText("End Date").Format("yMd").TextAlign(TextAlign.Right).Width(90).Add();
+                col.Field("Duration").HeaderText("Duration").Width(80).TextAlign(TextAlign.Right).Add();
+                col.Field("Progress").HeaderText("Progress").Width(80).TextAlign(TextAlign.Right).Add();
+                col.Field("Priority").HeaderText("Priority").Width(90).Add();
+            })
+            .ChildMapping("Children")
+            .TreeColumnIndex(1)
+            .Render()
+        )
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This demo explains how to display the records in paginated view in Essential JS2 TreeGrid control" />
+}
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the TreeGrid paging feature. In this sample, click the numeric items to navigate to another page.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+           Paging allows you to display the contents of the TreeGrid in page segments. By default, paging is disabled. 
+           To enable paging, set <code>AllowPaging</code> property to true. 
+        </p>
+        <p>
+            In this demo, the TreeGrid is rendered with <code>PageSettings->PageSizes</code> set to true and have an option to change the pagesize of treegrid dynamically.
+        </p>
+        <p>More information on the paging configuration can be found in this documentation section.
+        </p>
+    </div>
+}

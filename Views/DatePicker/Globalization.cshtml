@@ -24,66 +24,66 @@
     </div>
 }
 
-<script>
-    function onLocaleChange(args) {
-        /*Apply selected format to the component*/
-        var culture = args.value;
-        datepicker.locale = culture;
-        datepicker.enableRtl = datepicker.locale === 'ar' ? true : false;
-        if (culture !== 'en') {
-            loadCultureFiles(culture);
-        }
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-        datepicker = document.getElementById('datepicker').ej2_instances[0];
-        var L10n = ej.base.L10n;
-        L10n.load({
-            'de': {
-                'datepicker': {
-                    placeholder: 'Wählen Sie ein Datum',
-                    today: 'heute'
-                }
-            },
-            'en': {
-                'datepicker': {
-                    placeholder: 'Choose a date',
-                    today: 'Today'
-                }
-            },
-            'ar': {
-                'datepicker': {
-                    placeholder: 'اختر تاريخا',
-                    today: 'اليوم'
-                }
+    <script>
+        function onLocaleChange(args) {
+            /*Apply selected format to the component*/
+            var culture = args.value;
+            datepicker.locale = culture;
+            datepicker.enableRtl = datepicker.locale === 'ar' ? true : false;
+            if (culture !== 'en') {
+                loadCultureFiles(culture);
             }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            datepicker = document.getElementById('datepicker').ej2_instances[0];
+            var L10n = ej.base.L10n;
+            L10n.load({
+                'de': {
+                    'datepicker': {
+                        placeholder: 'Wählen Sie ein Datum',
+                        today: 'heute'
+                    }
+                },
+                'en': {
+                    'datepicker': {
+                        placeholder: 'Choose a date',
+                        today: 'Today'
+                    }
+                },
+                'ar': {
+                    'datepicker': {
+                        placeholder: 'اختر تاريخا',
+                        today: 'اليوم'
+                    }
+                }
+            });
+            loadCultureFiles('de');
+            datepicker.locale = 'de';
         });
-        loadCultureFiles('de');
-        datepicker.locale = 'de';
-    });
-    function loadCultureFiles(name) {
-        var files = ['ca-gregorian.json', 'numbers.json', 'timeZoneNames.json'];
-        if (name === 'ar') {
-            files.push('numberingSystems.json');
-        }
-        var loader = ej.base.loadCldr;
-        var loadCulture = function (prop) {
-            var val, ajax;
-            if (name === 'ar' && prop === files.length - 1) {
-                ajax = new ej.base.Ajax(location.origin + location.pathname + '/../../scripts/cldr-data/supplemental/' + files[prop], 'GET', false);
-            } else {
-                ajax = new ej.base.Ajax(location.origin + location.pathname + '/../../scripts/cldr-data/main/' + name + '/' + files[prop], 'GET', false);
+        function loadCultureFiles(name) {
+            var files = ['ca-gregorian.json', 'numbers.json', 'timeZoneNames.json'];
+            if (name === 'ar') {
+                files.push('numberingSystems.json');
             }
-            ajax.onSuccess = function (value) {
-                val = value;
+            var loader = ej.base.loadCldr;
+            var loadCulture = function (prop) {
+                var val, ajax;
+                if (name === 'ar' && prop === files.length - 1) {
+                    ajax = new ej.base.Ajax(location.origin + location.pathname + '/../../scripts/cldr-data/supplemental/' + files[prop], 'GET', false);
+                } else {
+                    ajax = new ej.base.Ajax(location.origin + location.pathname + '/../../scripts/cldr-data/main/' + name + '/' + files[prop], 'GET', false);
+                }
+                ajax.onSuccess = function (value) {
+                    val = value;
+                };
+                ajax.send();
+                loader(JSON.parse(val));
             };
-            ajax.send();
-            loader(JSON.parse(val));
-        };
-        for (var prop = 0; prop < files.length; prop++) {
-            loadCulture(prop);
+            for (var prop = 0; prop < files.length; prop++) {
+                loadCulture(prop);
+            }
         }
-    }
-</script>
+    </script>
 
 <style>
     #date_label {
@@ -109,16 +109,12 @@
     }
 </style>
 
-@section Meta{
-    <meta name="description" content="DatePicker for ASP.NET MVC supports globalization(Internationalization and localization) by adapting to specific cultures/ languages by translating messages" />
-}
-
 @section ActionDescription{
     <div id="action-description">
         <p>
             In this sample, the DatePicker has been configured with
             <code>German</code> culture. To change this current culture, go to the properties panel at the right side and select a culture from
-            the dropdown options.
+            the available options. For mobile mode touch the icon at the right side and select a culture from the available options.
         </p>
     </div>
 
@@ -132,7 +128,7 @@
         </p>
         <p>
             More information on the globalization configuration can be found in the
-            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/datepicker/globalization.html" target="_blank"> documentation section</a>.
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/datepicker/globalization/" target="_blank"> documentation section</a>.
         </p>
     </div>
 

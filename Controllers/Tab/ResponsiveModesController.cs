@@ -13,6 +13,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
         public ActionResult ResponsiveModes()
         {
             ViewBag.positionData = new string[] { "Scrollable", "Popup" };
+            ViewBag.orientationData = new string[] { "Top", "Bottom", "Left", "Right" };
 
             adaptiveItems.Add(new TabTabItem { Header = new TabHeader { Text = "HTML" }, Content = "HyperText Markup Language, commonly referred to as HTML, is the standard markup language used to create web pages.Along with CSS, and JavaScript, HTML is a cornerstone technology, used by most websites to create visually engaging web pages, user interfaces for web applications, and user interfaces for many mobile applications.[1] Web browsers can read HTML files and render them into visible or audible web pages.HTML describes the structure of a website semantically along with cues for presentation, making it a markup language, rather than a programming language." });
             adaptiveItems.Add(new TabTabItem { Header = new TabHeader { Text = "C Sharp(C#)" }, Content = "C# is intended to be a simple, modern, general-purpose, object-oriented programming language. Its development team is led by Anders Hejlsberg.The most recent version is C# 5.0, which was released on August 15, 2012." });

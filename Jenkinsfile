@@ -3,6 +3,11 @@
 node('EJ2Samples') {
     try {
         deleteDir();
+        stage('Import') {
+            git url: 'https://gitlab.syncfusion.com/essential-studio/ej2-groovy-scripts.git', branch: 'master', credentialsId: env.JENKINS_CREDENTIAL_ID;
+            shared = load 'src/shared.groovy';
+        }
+
         stage('Checkout') {
             checkout scm
         }
@@ -16,15 +21,14 @@ node('EJ2Samples') {
         }
 
         stage('Build') {
-            runShell('nuget locals all -Clear')
-            runShell('nuget restore');
-            runShell('msbuild /verbosity:m ./EJ2MVCSampleBrowser.csproj');
+            runShell('nuget locals all -Clear');
+            runShell('npm run build');
+            runShell('gulp aspmvc-build --option ./EJ2MVCSampleBrowser.csproj')
         }
 
         stage('Publish') {
-            if(env.BRANCH_NAME == 'development' || env.BRANCH_NAME == 'master') {
-                def appPath = env.BRANCH_NAME == 'master' ? 'ej2aspmvc' : 'ej2aspmvcapp';
-                runShell('npm run deploy');
+            if(shared.isProtectedBranch()) {
+                runShell('npm run publish');
             }
         }
     }

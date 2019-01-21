@@ -5,16 +5,6 @@
         #control-container {
             padding: 0px !important;
         }
-
-        #button-control {
-            width: 100%;
-            text-align: center;
-        }
-
-        .e-play-icon::before {
-            content: '\e813';
-        }
-
         #container {
             display: table;
             margin: 0 auto;
@@ -68,8 +58,8 @@
         <table id="property" title="Properties" style="width: 100%">
             <tr id="button-control" style="height: 50px">
                 <td align='center'>
-                    <div>
-                        @Html.EJS().Button("togglebtn").IconCss("e-icons e-play-icon").Content("Print").CssClass("e-flat").Render()
+                    <div style="width:80px;">
+                        @Html.EJS().Button("togglebtn").Content("Print").CssClass("e-info").Render()
                     </div>
                 </td>
             </tr>

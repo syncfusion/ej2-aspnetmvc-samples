@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Uploader
         public ActionResult PreloadFiles()
         {
             list.Add(new UploaderUploadedFiles { Name = "Nature", Size = 500000, Type = ".png" });
-            list.Add(new UploaderUploadedFiles { Name = "TypeScript Succintly", Size = 12000, Type = ".pdf" });
+            list.Add(new UploaderUploadedFiles { Name = "TypeScript Succinctly", Size = 12000, Type = ".pdf" });
             list.Add(new UploaderUploadedFiles { Name = "ASP.NET Webhooks", Size = 500000, Type = ".docx" });
 
             ViewBag.datasource = list;

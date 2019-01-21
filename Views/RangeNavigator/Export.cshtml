@@ -109,7 +109,7 @@
         var zoomFactor, zoomPosition;
         var selectedTheme = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
         var themes = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast']
         var borderColor = ['#FF4081', '#007897', '#428BCA', '#FFD939'];
         var regionColor = ['rgba(255, 64, 129, 0.3)', ' rgba(0, 120, 151, 0.3)',
@@ -149,7 +149,7 @@
             var chart = document.getElementById('chart').ej2_instances[0];
             var dropdown = document.getElementById('Export').ej2_instances[0];
             var fileName = (document.getElementById('fileName')).value;
-            range.export(dropdown.value, fileName, null, [range, chart]);
+            chart.exportModule.export(dropdown.value, fileName, null, [range, chart]);
         };
         document.getElementById('printBtn').onclick = function () {
             var range = document.getElementById('container').ej2_instances[0];

@@ -5,7 +5,8 @@
 }
 
 @section ControlsSection{
-    <div class="col-lg-8 control-section">
+<div class="e-tab-section">
+    <div class="col-lg-8 content-wrapper control-section">
         <div class="e-sample-resize-container">
             <div id="rome" style="display: none">
                 <div class="content-title">
@@ -54,6 +55,7 @@
             </tbody>
         </table>
     </div>
+    </div>
 }
 
 @section ActionDescription{
@@ -64,7 +66,7 @@
 
 @section Description{
     <p>
-        The <code>Tab</code> allows to place the header section inside the Tab component either at <code>top / bottom</code> position by using <code>headerPlacement</code> property.
+        The <code>Tab</code> allows to place the header section inside the Tab component either at <code>top / bottom / left / right</code> position by using <code>headerPlacement</code> property.
     </p>
     <p>
         This sample illustrates the use of header placement and <code>showCloseButton</code> property.
@@ -171,9 +173,62 @@
     .property-panel-content {
         padding: 10px;
     }
-    
+
     #orientationTab .e-listview:not(.e-list-template) .e-list-item {
         height: 63px;
+    }
+
+    #orientationTab .e-tab-text {
+        display: inherit;
+    }
+
+    .e-vertical-tab .e-content .e-item.e-active,
+    .e-vertical-tab .e-content .e-item.e-active ul.e-list-parent {
+        width: 100%;
+    }
+
+    @@media screen and (min-width: 768px) {
+        .e-sample-resize-container {
+            width: 75%;
+            margin: 0 auto;
+        }
+    }
+
+    @@media screen and (max-width: 481px) {
+        .control-section.e-tab-section,
+        .container-fluid,
+        .e-tab-section .content-wrapper,
+        .sb-sample-content-area .e-active {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    @@media screen and (max-width: 376px) {
+        #orientationTab .e-listview:not(.e-list-template) .e-list-item {
+            padding: 0;
+        }
+
+        .e-sample-resize-container {
+            padding: 0 5px;
+        }
+
+        .e-tab .e-content.sb-sample-content-area .e-item.e-active {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .template-container {
+            padding: 7px 5px 0;
+        }
+
+        #orientationTab .e-content .e-item.e-active {
+            padding: 10px 0;
+        }
+
+        .info {
+            padding: 7px 0 0 8px;
+        }
     }
 </style>
 
@@ -185,18 +240,14 @@
 
     // Change event funtion for DropDownList component
     function changeHeaderPosition(e) {
-        if (e.itemData.value != null && e.itemData.value === 'Bottom') {
-            tabObj.headerPlacement = 'Bottom';
-        } else {
-            tabObj.headerPlacement = 'Top';
-        }
+        tabObj.headerPlacement = e.itemData.value;
         tabObj.dataBind();
     }
 
     // Change event funtion for DropDownList component
     function changeHeaderStyle(e) {
         removeStyleClass();
-         let name = e.itemData.value;
+        let name = e.itemData.value;
         if (e.itemData.value != null && name === 'Fill') {
             tabObj.element.classList.add('e-fill');
         } else if (e.itemData.value != null && name === 'Accent') {

@@ -1,8 +1,12 @@
-﻿@using Syncfusion.EJ2
+﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Navigations;
+@using Syncfusion.EJ2.DropDowns;
+
 @section ControlsSection{
-    <div class="col-lg-8 control-section">
+<div class="e-tab-section">
+    <div class="col-lg-8 content-wrapper control-section">
         <div class="e-sample-resize-container">
-            @Html.EJS().Tab("adaptiveTab").Created("tabCreated").Items(ViewBag.adaptiveItems).Render()
+            @Html.EJS().Tab("adaptiveTab").Created("tabCreated").HeightAdjustMode(HeightStyles.None).Height("250px").Items(ViewBag.adaptiveItems).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">
@@ -18,9 +22,20 @@
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <td style="width: 50%;">
+                        <div>Header Placement</div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div>
+                            @Html.EJS().DropDownList("orientation").Width("90%").DataSource(ViewBag.orientationData).Value("Top").Change("changeHeaderPosition").Render()
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
+</div>
 }
 
 @section ActionDescription{
@@ -32,6 +47,9 @@
 @section Description{
     <p>
         The <code>Tab</code> is adaptable to the available space when the tab items exceed the view space.
+    </p>
+    <p>
+        The <code>Tab</code> allows to place the header section inside the Tab component either at <code>top / bottom / left / right</code> position by using <code>headerPlacement</code> property.
     </p>
     <p>
         You can assign overflowMode property value as <code>Scrollable / Popup</code>. By default scrollable mode of tab is enabled when tab item exceeds the view range.
@@ -73,6 +91,32 @@
             width: 75%;
         }
     }
+
+    #adaptiveTab .e-tab-text {
+        display: inherit;
+    }
+
+    @@media screen and (max-width: 481px) {
+        .control-section.e-tab-section,
+        .container-fluid {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    @@media screen and (max-width: 425px) {
+        #adaptiveTab {
+            overflow: hidden;
+        }
+
+            #adaptiveTab .e-content {
+                height: inherit !important;
+            }
+
+            #adaptiveTab .e-item.e-active {
+                overflow: scroll;
+            }
+    }
 </style>
 
 <script>
@@ -80,6 +124,14 @@
     function tabCreated() {
         tabObj = document.getElementById('adaptiveTab').ej2_instances[0];
     }
+
+    // Change event funtion for DropDownList component
+    function changeHeaderPosition(e) {
+        tabObj.headerPlacement = e.itemData.value;
+        tabObj.dataBind();
+    }
+
+    // Change event funtion for DropDownList component
     function changeOverFlowMode(e) {
         if (e.itemData.value != null && e.itemData.value === 'Scrollable') {
             tabObj.overflowMode = 'Scrollable';

@@ -18,7 +18,7 @@
             @Html.EJS().PivotView("pivotview").Width("860").Height("300").EnableVirtualization(true).DataSource(dataSource => dataSource.ExpandAll(true).EnableSorting(false)
            .FormatSettings(formatsettings => { formatsettings.Name("Price").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add(); })
                              .Rows(rows => { rows.Name("ProductID").Add(); }).Columns(columns => { columns.Name("Year").Add(); })
-           .Values(values => { values.Name("Price").Caption("Unit Price").Add(); values.Name("Price").Caption("Unit Price").Add(); })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DataBound("onDataBound").Render()
+           .Values(values => { values.Name("Price").Caption("Unit Price").Add(); values.Name("Sold").Caption("Unit Sold").Add(); })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DataBound("onDataBound").Render()
         </div>
     </div>
 

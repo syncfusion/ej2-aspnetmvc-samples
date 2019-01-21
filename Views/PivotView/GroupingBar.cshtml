@@ -6,7 +6,7 @@
 }
 @section ControlsSection{
 
-    <div class="col-lg-9 control-section">
+    <div class="col-lg-9 control-section" id="pivot-grid-section">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("300").ShowFieldList(true).ShowGroupingBar(true).DataSource(dataSource => dataSource.Data((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
            .FormatSettings(formatsettings => { formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add(); })
@@ -43,6 +43,13 @@
                 <tr style="height: 50px">
                     <td>
                         <div>
+                            @Html.EJS().CheckBox("summary").Checked(true).Label("Show Value Type Icon").Change("onChange").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div>
                             @Html.EJS().CheckBox("remove").Checked(true).Label("Show Remove Icon").Change("onChange").Render()
                         </div>
                     </td>
@@ -57,7 +64,7 @@
             height: 100%;
         }
         @@media only screen and (max-width: 400px) {
-            .control-section {
+            #pivot-grid-section {
                 overflow: auto;
             }
         }
@@ -71,8 +78,10 @@
             else if (args.event.target.id === 'sort') {
                 pivotGridObj.groupingBarSettings.showSortIcon = args.checked;
             }
-            else {
+            else if (args.event.target.id === 'remove') {
                 pivotGridObj.groupingBarSettings.showRemoveIcon = args.checked;
+            } else {
+                pivotGridObj.groupingBarSettings.showValueTypeIcon = args.checked;
             }
         }
     </script>
@@ -102,7 +111,8 @@
             <code>showGroupingBar</code> property as true.
         </p>
         <p>
-            Filter and sort icons allow displaying selective records and ordering them in ascending or descending order. The remove icon
+            Filter and sort icons allow displaying selective records and ordering them in ascending or descending order. The value type icon
+            allows to display values based on selected aggregate type. The remove icon
             allows the user to remove the field from the report.
         </p>
     </div>

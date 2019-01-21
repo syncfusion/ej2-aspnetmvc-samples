@@ -166,7 +166,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
             //string dataPath = string.Format("{0}\\Common\\Images\\XlsIO\\", Request.PhysicalPath.ToLower().Split(new string[] { "\\mvc (html5)" }, StringSplitOptions.None));
             //return string.Format("{0}\\{1}", dataPath, fileName);
             string folderName = "XlsIO";
-            string dataPath = Server.MapPath("\\Content");
+            string dataPath = new System.IO.DirectoryInfo(Server.MapPath("~\\Content")).FullName;
             if (folderName != string.Empty)
                 dataPath += "\\" + folderName;
             return string.Format("{0}\\{1}", dataPath, fileName);
@@ -177,7 +177,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
             //return string.Format("{0}\\{1}", dataPath, fileName);
 
             string folderName = "XlsIO";
-            string dataPath = Server.MapPath("\\App_Data");
+            string dataPath = new System.IO.DirectoryInfo(Server.MapPath("~\\App_Data")).FullName;
             if (folderName != string.Empty)
                 dataPath += "\\" + folderName;
             return string.Format("{0}\\{1}", dataPath, fileName);

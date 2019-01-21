@@ -13,7 +13,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Dialog
         public ActionResult AjaxContent()
         {
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
-            buttons.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new AjaxButtonModel() { content = "MORE DETAILS", isPrimary = true } });
+            buttons.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new AjaxButtonModel() { content = "More Details", isPrimary = true } });
             ViewBag.ajaxbutton = buttons;
             return View();
         }

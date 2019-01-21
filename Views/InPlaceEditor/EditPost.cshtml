@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "Forms";
+}
+
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.InPlaceEditor;
+@using Syncfusion.EJ2.DropDowns;
+@using Syncfusion.EJ2.Popups;
+@section ControlsSection{
+<div class="col-lg-8 control-section inplace-editor-control-section form-layout" id='inplace-editor-control'>
+        <div class="content-wrapper" style="margin-bottom: 25px">
+            <div id="confirmation">
+                <div id="submitDialog"></div>
+                <form id="formId" class="form-horizontal" action="http://172.16.104.41/Editor/api/WebApi/" method="POST">
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" style="text-align: left;font-size: 14px;">
+                            Title
+                        </label>
+                        @Html.EJS().InPlaceEditor("inplace_title_editor").Mode(RenderMode.Inline).EmptyText("Enter your question title").Name("Title").ValidationRules(ViewBag.titleValidation).Model(ViewBag.titleData).Value("Succinctly E-Book about TypeScript").Render()
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" style="text-align: left;font-size: 14px;">
+                            Comments
+                        </label>
+                        @Html.EJS().InPlaceEditor("inplace_comment_editor").Mode(RenderMode.Inline).EditableOn(EditableType.EditIconClick).SubmitOnEnter(false).Type(Syncfusion.EJ2.InPlaceEditor.InputType.RTE).Name("rte").EmptyText("Enter your comment").Model(ViewBag.commentData).ValidationRules(ViewBag.commentValidation).Value("The extensive adoption of JavaScript for application development, and the ability to use HTML and JavaScript to create Windows Store apps, has made JavaScript a vital part of the Windows development ecosystem. Microsoft has done extensive work to make JavaScript easier to use.").Render()
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label" style="text-align: left;font-size: 14px;">
+                            Tags
+                        </label>
+                        @Html.EJS().InPlaceEditor("inplace_tag_editor").Mode(RenderMode.Inline).Value(new string[2] { "TypeScript", "JavaScript" }).ActionOnBlur(ActionBlur.Ignore).Name("Tag").Type(Syncfusion.EJ2.InPlaceEditor.InputType.MultiSelect).EmptyText("Enter your tags").Model(ViewBag.tagData).ValidationRules(ViewBag.tagValidation).PopupSettings(new InPlaceEditorPopupSettings { Model = new { width= "auto" } }).ActionSuccess("actionSuccess").Render()
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties">
+            <tr>
+                <td style="width: 50%;">
+                    <div>Mode</div>
+                </td>
+                <td style="width: 50%;">
+                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewBag.modeData).Value("Inline").Change("changeEditorMode").Render()
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+<style>
+    .inplace-editor-control-section.form-layout .e-inplaceeditor .e-editable-component .e-clear-icon-hide,
+    .e-inplaceeditor-tip .e-editable-component .e-input-group .e-clear-icon.e-clear-icon-hide {
+        display: block;
+        visibility: hidden;
+    }
+
+   .inplace-editor-control-section #confirmation {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .inplace-editor-control-section #formId {
+        padding-top: 20px;
+        margin-bottom: 45px;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+        border-radius: 5px;
+    }
+
+    .inplace-editor-control-section .form-horizontal .form-group {
+        margin: 0 20px;
+    }
+
+    .inplace-editor-control-section .form-horizontal .form-group > * {
+        width: 100%;
+    }
+
+    .inplace-editor-control-section .form-horizontal .form-group:last-child {
+        padding-bottom: 40px;
+    }
+
+    .inplace-editor-control-section .form-title {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 16px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.70);
+    }
+
+    .inplace-editor-control-section .submit {
+        margin: auto;
+        width: 50%;
+        text-align: center;
+    }
+
+    .inplace-editor-control-section.form-layout .content-wrapper .form-horizontal .control-label {
+        padding: 15px 15px 15px 0;
+        font-weight: 600;
+    }
+
+    @@media (max-width: 768px) {
+        .inplace-editor-control-section.form-layout .content-wrapper .form-horizontal .control-label {
+            padding-top: 7px;
+            margin-bottom: 0;
+        }
+    }
+    
+</style>
+
+@section PreScripts {
+    <script>
+        var editEle1 = document.getElementById("inplace_title_editor");
+        var editEle2 = document.getElementById("inplace_comment_editor");
+        var editEle3 = document.getElementById("inplace_tag_editor");
+        function changeEditorMode(e) {
+            if (e.itemData.text === 'Popup') {
+                editEle1.ej2_instances[0].mode = editEle2.ej2_instances[0].mode = editEle3.ej2_instances[0].mode = 'Popup';
+                editEle2.ej2_instances[0].popupSettings.model = { width: document.querySelector('#inplace-editor-control.form-layout ').offsetWidth };
+            } else {
+                editEle1.ej2_instances[0].mode = editEle2.ej2_instances[0].mode = editEle3.ej2_instances[0].mode = 'Inline';
+            }
+            editEle1.ej2_instances[0].dataBind();
+            editEle2.ej2_instances[0].dataBind();
+            editEle3.ej2_instances[0].dataBind();
+        }
+        function actionSuccess(e) {
+            e.value = chipCreation(e.value.split(','));
+        }
+        function chipOnCreate() {
+            editEle3.querySelector('.e-editable-value').innerHTML = chipCreation(editEle3.ej2_instances[0].value);
+        }
+        function chipCreation(data) {
+            var value = '<div class="e-chip-list">';
+            [].slice.call(data).forEach((val) => {
+                value += '<div class="e-chip"> <span class="e-chip-text"> ' + val + '</span></div>';
+            });
+            value += '</div>';
+            return value;
+        }
+        setTimeout(function () {
+            chipOnCreate();
+            editEle1.setAttribute("data-underline", false);
+            editEle2.setAttribute("data-underline", false);
+            editEle3.setAttribute("data-underline", false);
+        }, 500);
+        document.getElementById('right-pane').onscroll = function () {
+            var mode = document.getElementById("editorMode")
+            if (mode.ej2_instances[0].value === 'Inline') { return; }
+            if (editEle1.querySelectorAll('.e-editable-open').length > 0)
+                editEle1.ej2_instances[0].enableEditMode = false;
+            if (editEle2.querySelectorAll('.e-editable-open').length > 0)
+                editEle2.ej2_instances[0].enableEditMode = false;
+            if (editEle3.querySelectorAll('.e-editable-open').length > 0)
+                editEle3.ej2_instances[0].enableEditMode = false;
+        }
+    </script>
+}
+@section ActionDescription{
+    <p>
+        The sample demonstrates <code>In-Place Editor</code> component usage with a form element. Edit the values in place and post the question.
+    </p>
+}
+@section Description{
+   <p>
+    This sample demos placing the <code>In-place Editor</code> component with a form..
+</p>
+<p>
+    More information on the <code>In-place Editor</code> instantiation can be found in the&nbsp;<a target="_blank" href="https://ej2.syncfusion.com/documentation/inplaceeditor/getting-started.html">
+        documentation section
+    </a>.
+</p>
+}

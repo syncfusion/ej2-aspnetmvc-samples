@@ -1,0 +1,176 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+<div class="col-md-8 control-section" align="center">
+    @Html.EJS().CircularGauge("container").Load("gaugeLoad").Axes(axes=>axes.StartAngle(270).EndAngle(90).LabelStyle(labelStyle=>labelStyle.Position(Position.Outside)
+.AutoAngle(true)).Radius("80%").Minimum(0).Maximum(100).Pointers(pointers=>pointers.Animation(animation=>animation.Enable(false))
+.Value(30).Radius("75%").Color("#FF9200").PointerWidth(7).Cap(cap=>cap.Radius(8).Color("#565656").Border(border=>border.Width(0)))
+.NeedleTail(needleTail=>needleTail.Length("13%").Color("#FF9200")).Add()).Add()).Render()
+</div>
+    <div class="col-md-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tr style="height: 50px">
+                <td>
+                    <div id='rangeStart'>Start Angle <span> &nbsp;&nbsp;&nbsp;270°</span> </div>
+                </td>
+                <td>
+                    <div>
+                        <input type="range" id="start" value="270" min="0" max="360" style="width:90%" />
+                    </div>
+                </td>
+            </tr>
+
+            <tr style="height: 50px">
+                <td>
+                    <div id='rangeEnd'>End Angle<span> &nbsp;&nbsp;&nbsp;90°</span> </div>
+                </td>
+                <td>
+                    <div>
+                        <input type="range" id="end" value="90" min="0" max="360" style="width:90%" />
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td>
+                    <div id='radius1'>Radius <span> &nbsp;&nbsp;&nbsp;80%</span> </div>
+                </td>
+                <td>
+                    <div>
+                        <input type="range" id="radius" value="80" min="0" max="100" style="width:90%" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 40%">
+                    <div class="property-text"> Radius based on angle</div>
+                </td>
+                <td style="width: 40%;">
+                    <div>
+                        <input type="checkbox" id="angle" checked />
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td>
+                    <div id='center1'>Center X <span> &nbsp;&nbsp;&nbsp;50%</span> </div>
+                </td>
+                <td>
+                    <div>
+                        <input type="range" id="centerX" value="50" min="0" max="100" style="width:90%" />
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td>
+                    <div id='center2'>Center Y <span> &nbsp;&nbsp;&nbsp;50%</span> </div>
+                </td>
+                <td>
+                    <div>
+                        <input type="range" id="centerY" value="50" min="0" max="100" style="width:90%" />
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <script type="text/javascript">
+        var circulargauge;
+        function gaugeLoad(sender) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            if (!circulargauge) {
+                circulargauge = sender.gauge;
+                sender.gauge.axes[0].lineStyle.width = 0;
+                sender.gauge.axes[0].labelStyle.font.fontWeight = 'normal';
+                sender.gauge.axes[0].majorTicks = {
+                    position: 'Inside', width: 2, height: 12, interval: 20
+                };
+                sender.gauge.axes[0].minorTicks = {
+                    position: 'Inside', height: 5, width: 1, interval: 2
+                };
+            }
+        }
+        var opacity;
+        var highlightCheckBox = new ej.buttons.CheckBox({
+            change: opacity, checked: false,
+        }, '#angle');
+        highlightCheckBox.change = opacity = function (e) {
+            var centerX = document.getElementById('centerX');
+            var centerY = document.getElementById('centerY');
+            if (e.checked) {
+                circulargauge.centerX = null;
+                circulargauge.centerY = null;
+                circulargauge.moveToCenter = true;
+                centerX.disabled = true;
+                centerY.disabled = true;
+            }
+            else {
+                circulargauge.centerX = centerX.value + '%';
+                circulargauge.centerY = centerY.value + '%';
+                centerX.disabled = false;
+                centerY.disabled = false;
+                circulargauge.moveToCenter = false;
+            }
+            circulargauge.refresh();
+        };
+        document.getElementById('start').onpointermove = document.getElementById('start').ontouchmove =
+            document.getElementById('start').onchange = function () {
+                var min = parseInt(document.getElementById('start').value, 10);
+                document.getElementById('rangeStart').innerHTML = 'Start Angle <span> &nbsp;&nbsp;&nbsp;' + min + '°';
+                circulargauge.axes[0].startAngle = min;
+                circulargauge.refresh();
+            };
+        document.getElementById('end').onpointermove = document.getElementById('end').ontouchmove =
+            document.getElementById('end').onchange = function () {
+                var max = parseInt(document.getElementById('end').value, 10);
+                document.getElementById('rangeEnd').innerHTML = 'End Angle <span> &nbsp;&nbsp;&nbsp;' + max + '°';
+                circulargauge.axes[0].endAngle = max;
+                circulargauge.refresh();
+            };
+        document.getElementById('radius').onpointermove = document.getElementById('radius').ontouchmove =
+            document.getElementById('radius').onchange = function () {
+                var max = parseInt(document.getElementById('radius').value, 10);
+                document.getElementById('radius1').innerHTML = 'Radius <span> &nbsp;&nbsp;&nbsp;' + max + '%';
+                circulargauge.axes[0].radius = '' + max + '%';
+                circulargauge.refresh();
+            };
+        document.getElementById('centerX').onpointermove = document.getElementById('centerX').ontouchmove =
+            document.getElementById('centerX').onchange = function () {
+                if (!highlightCheckBox.checked) {
+                    var max = parseInt(document.getElementById('centerX').value, 10);
+                    document.getElementById('center1').innerHTML = 'Center X <span> &nbsp;&nbsp;&nbsp;' + max + '%';
+                    circulargauge.centerX = '' + max + '%';
+                    circulargauge.refresh();
+                }
+            };
+        document.getElementById('centerY').onpointermove = document.getElementById('centerY').ontouchmove =
+            document.getElementById('centerY').onchange = function () {
+                if (!highlightCheckBox.checked) {
+                    var max = parseInt(document.getElementById('centerY').value, 10);
+                    document.getElementById('center2').innerHTML = 'Center Y <span> &nbsp;&nbsp;&nbsp;' + max + '%';
+                    circulargauge.centerY = '' + max + '%';
+                    circulargauge.refresh();
+                }
+            };
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the rendering of circular gauge with modified start and end angles. The radius, start angle, end angle, center X, and center Y of the circular gauge can be customized using the options in properties panel.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render the circular gauge with modified start and end angles to form semi or quarter circular gauges. By enabling the radius based on angle option, the radius of circular gauge will be calculated based on the start and end angles.
+        </p>
+        <p>
+            For more information on ranges, refer to this
+            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation</a> section.
+        </p>
+    </div>
+}

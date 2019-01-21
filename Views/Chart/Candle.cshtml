@@ -4,24 +4,7 @@
     <div class="control-section">
         <div align="center">
             <h4 id="days" style="font-family: Segoe UI;font-weight: 500; font-style:normal; font-size:15px;">AAPL Historical</h4>
-           </div> 
-           <div align="center" style="transform:translateX(10%)">
-                @(Html.EJS().RangeNavigator("selector")
-                            .LabelPosition(Syncfusion.EJ2.Charts.AxisPosition.Outside)
-                    .ValueType(Syncfusion.EJ2.Charts.RangeValueType.DateTime)
-                    .XName("x").YName("close").DataSource("chartData")
-                    .DisableRangeSelector(true)
-                    .PeriodSelectorSettings(ps => ps.Position(Syncfusion.EJ2.Charts.PeriodSelectorPosition.Top)
-                     .Periods(periods =>
-                         { periods.Text("1M").Interval(1).IntervalType(Syncfusion.EJ2.Charts.RangeIntervalType.Months).Add();
-                          periods.Text("3M").Interval(2).IntervalType(Syncfusion.EJ2.Charts.RangeIntervalType.Months).Add(); 
-                          periods.Text("2Q").Interval(2).IntervalType(Syncfusion.EJ2.Charts.RangeIntervalType.Quarter).Add(); 
-                          periods.Text("1Y").Interval(1).Add(); 
-                          periods.Text("2Y").Interval(2).Selected(true).Add(); 
-                          periods.Text("YTD").Add();
-                     })).Load("load").Loaded("loaded").Changed("changed").Render()
-                )
-            </div>
+           </div>
             <div style="text-align:center">
 
                 @Html.EJS().Chart("container").Rows(rows =>
@@ -40,8 +23,8 @@
            }
            ).Series(series =>
            {
-               series.Animation(animation=>animation.Enable(true)).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).XName("x").High("high").Low("low").Close("close").Open("open").DataSource("chartData1").YAxisName("secondary").Name("Apple Inc").Add();
-               series.Animation(animation => animation.Enable(true)).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("volume").Name("Volume").DataSource("chartData1").Add();
+               series.Animation(animation=>animation.Enable(true)).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).XName("x").High("high").Low("low").Close("close").Open("open").DataSource("chartData").YAxisName("secondary").Name("Apple Inc").Add();
+               series.Animation(animation => animation.Enable(true)).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("volume").Name("Volume").DataSource("chartData").Add();
            }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).MajorGridLines(mg=>mg.Width(0)).CrosshairTooltip(ct=>ct.Enable(true))
        ).PrimaryYAxis(py => py.RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
        .StripLines(sl=>sl.End("1300000000").Text("").StartFromAxis(true).Color("black").Opacity(0.03).Visible(true).ZIndex(Syncfusion.EJ2.Charts.ZIndex.Behind))
@@ -59,19 +42,13 @@
         }
     </style>
     <script>
-        var chartData1 = [];
         var chartData = chartData;
         var pointColors = [];
         var zoomFactor, zoomPosition;
         var selectedTheme = location.hash.split('/')[1];
         selectedTheme = selectedTheme ? selectedTheme : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
-        var load = function (args) {
-            args.rangeNavigator.theme = theme;
-            args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
-            args.rangeNavigator.dataSource = chartData;
-            args.rangeNavigator.periodSelectorSettings.height = document.body.className.indexOf('e-bigger') > -1 ? 56 : 42;
-        }
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+        
         var tooltipRender = function (args) {
             if (args.series.index) {
                 args.text = 'Volume : <b>' + getLabelText(args.text.split('<b>')[1].split('</b>')[0]) + '</b>';
@@ -94,28 +71,9 @@
             return (((value) / 1000000000)).toFixed(1) + 'bn';
         };
        
-        var changed = function (args) {
-            if ((document.getElementById('container').childNodes.length > 1)) {
-                var chart = document.getElementById('container').ej2_instances[0];
-                chart.primaryXAxis.zoomFactor = 1;
-                chart.primaryXAxis.zoomPosition = 0;
-                var filterData = chartData.filter(function (data) {
-                    return (data['x'].getTime() >= (args.start) && data['x'].getTime() <= (args.end));
-                });
-                chartData1 = filterData;
-                pointColors = [];
-                chart.series[0].animation.enable = false;
-                chart.series[0].dataSource = filterData;
-                chart.series[1].animation.enable = false;
-                chart.series[1].dataSource = filterData;
-                chart.refresh();
-            }
-        }
         var chartload = function (args) {
             args.chart.theme = theme;
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
-            args.chart.series[0].dataSource = chartData1;
-            args.chart.series[1].dataSource = chartData1;
         }
         var loaded = function (args) {
             if (!ej.base.Browser.isDevice && document.getElementById('container_Secondary_Element')) {

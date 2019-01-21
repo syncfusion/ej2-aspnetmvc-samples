@@ -6,7 +6,7 @@
 }
 @section ControlsSection{
 
-    <div class="col-lg-8 control-section">
+    <div class="col-lg-8 control-section" style="overflow:auto">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSource(dataSource => dataSource.Data((IEnumerable<object>
                 )ViewBag.Data).ExpandAll(false).EnableSorting(true)
@@ -79,7 +79,7 @@
                     <td></td>
                     <td>
                         <div style="float:right;margin-right: 4px">
-                            @Html.EJS().Button("apply-btn").IconCss("e-icons e-play-icon").CssClass("e-flat").Content("Apply").IsPrimary(true).Disabled(true).Render()
+                            @Html.EJS().Button("apply-btn").CssClass("e-flat").Content("Apply").IsPrimary(true).Disabled(true).Render()
                         </div>
                     </td>
                 </tr>
@@ -97,9 +97,6 @@
         }
         .e-disabled {
             display: none !important;
-        }
-        .e-play-icon::before {
-            content: '\e728';
         }
         .valuecls {
             margin-top: 13px;
@@ -293,21 +290,20 @@
 }
 
 @section ActionDescription{
-   <div id="action-description">
-       <p>This sample demonstrates ordering of fields either in ascending or descending order.</p>
-    </div>
+	<div id="action-description">
+		<p>This sample demonstrates filtering of field headers either by including or excluding them.</p>
+	</div>
 }
 
 @section Description{
-    <div id="description">
-        <p>
-            In this sample, any field can be selected from the
-            <b>Fields</b> dropdown list and its order can be changed to display headers either in ascending or descending order.
-            It can be enabled using the
-            <code>enableSorting</code> property and it can be configured using the
-            <code>name</code> and
-            <code>order</code> options inside the
-            <code>sortSettings</code> property in the pivotgrid widget.
-        </p>
-    </div>
+	<div id="description">
+		<p>In this sample, any field can be selected from
+			<b>Fields</b> dropdown list along with its members from be subsequent
+			<b>Members</b> dropdown list and finally select whether to include or exclude them from filtering. It can be achieved
+			using the
+			<code>name</code> and
+			<code>items</code> options inside the
+			<code>filterSettings</code> property in the pivotgrid widget.
+		</p>
+	</div>
 }

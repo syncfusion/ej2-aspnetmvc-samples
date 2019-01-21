@@ -6,9 +6,45 @@
 // applicable laws. 
 #endregion
 
+using Syncfusion.XlsIO;
 using System.Drawing;
 namespace EJ2MVCSampleBrowser.Controllers.XlsIO
 {
+    #region Hyperlink Class
+
+    public class Hyperlink : IHyperLink
+    {
+        public IApplication Application { get; private set; }
+        public object Parent { get; private set; }
+        public string Address { get; set; }
+        public string Name { get; private set; }
+        public IRange Range { get; private set; }
+        public string ScreenTip { get; set; }
+        public string SubAddress { get; set; }
+        public string TextToDisplay { get; set; }
+        public ExcelHyperLinkType Type { get; set; }
+        public IShape Shape { get; private set; }
+        public ExcelHyperlinkAttachedType AttachedType { get; private set; }
+        public byte[] Image { get; set; }
+
+        public Hyperlink(string address, string subAddress, string screenTip, string textToDisplay, ExcelHyperLinkType type, byte[] image)
+        {
+            Address = address;
+            ScreenTip = screenTip;
+            SubAddress = subAddress;
+            TextToDisplay = textToDisplay;
+            Type = type;
+            Image = image;
+        }
+    }
+
+    public class Company
+    {
+        public string Name { get; set; }
+        public Hyperlink Link { get; set; }
+    }
+
+    #endregion
     class Customer
     {
         #region Members
@@ -17,6 +53,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
         private int m_salesJulyDec;
         private int m_change;
         private byte[] m_image;
+        private Hyperlink m_hyperlink;
         #endregion
 
         #region Properties
@@ -67,7 +104,21 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
             }
 
         }
-        public byte[] Image 
+
+        public Hyperlink Hyperlink
+        {
+            get
+            {
+                return m_hyperlink;
+            }
+            set
+            {
+                m_hyperlink = value;
+            }
+
+        }
+
+        public byte[] Image
         {
             get
             {
@@ -84,7 +135,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
         public Customer()
         {
         }
-        public Customer(string name, int juneToJuly, int julyToDec,int change,byte[] image)
+        public Customer(string name, int juneToJuly, int julyToDec, int change, byte[] image)
         {
             this.m_salesPerson = name;
             this.m_salesJanJune = juneToJuly;
@@ -93,7 +144,5 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
             this.m_image = image;
         }
         #endregion
-
-       
     }
 }

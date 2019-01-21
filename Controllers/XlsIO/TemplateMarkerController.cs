@@ -170,8 +170,9 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
 
                 #endregion
 
-                if (type == "DataTable")
+                if (type == "datatable")
                 {
+                    sheet1["A5"].Value = sheet1["A5"].Value.Replace("Customers.Hyperlink.", "Customers.");
                     //Northwind customers table            
                     marker.AddVariable("Customers", northwindDt);
                 }
@@ -219,7 +220,15 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
         {
             DataSet customersDataSet = new DataSet();
             customersDataSet.ReadXml(ResolveApplicationDataPath("Customers.xml"), XmlReadMode.ReadSchema);
-            northwindDt = customersDataSet.Tables[0];
+            northwindDt = customersDataSet.Tables[0].Copy();
+            //Changing the column data type from string to Byte Array
+            northwindDt.Columns.Remove("Image");
+            northwindDt.Columns.Add("Image", typeof(byte[]));
+            //Get the path of Image File and convert it into bytes
+            for (int j = 0; j < customersDataSet.Tables[0].Rows.Count; j++)
+            {
+                northwindDt.Rows[j]["Image"] = System.IO.File.ReadAllBytes(ResolveApplicationDataPath(@"Template_Marker_Images\" + customersDataSet.Tables[0].Rows[j]["Image"].ToString().Trim()));
+            }
             IList<Customer> tmpCustomers = new List<Customer>();
             Customer customer = new Customer();
             numbersDt = GetTable();
@@ -231,7 +240,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
                 customer.SalesJanJune = Convert.ToInt32(row[1]);
                 customer.SalesJulyDec = Convert.ToInt32(row[2]);
                 customer.Change = Convert.ToInt32(row[3]);
-                customer.Image = System.IO.File.ReadAllBytes(ResolveApplicationDataPath(@"Template_Marker_Images\" + row[4].ToString()));
+                customer.Hyperlink = new Hyperlink("https://help.syncfusion.com/file-formats/xlsio/working-with-template-markers", "", "Hyperlink", "Syncfusion", ExcelHyperLinkType.Url, (byte[])row[4]);
                 tmpCustomers.Add(customer);
             }
             return tmpCustomers;

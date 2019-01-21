@@ -12,7 +12,7 @@
     col.Field("NumberofPatentFamilies").HeaderText("No of Patent Families").Width("195").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
     col.Field("Country").HeaderText("Country").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
     col.Field("Active").HeaderText("Active").Width("120").Add();
-    col.Field("Mainfieldsofinvention").HeaderText("Main fields of invention").AllowGrouping(false).Width("200").Add();
+    col.Field("Mainfieldsofinvention").HeaderText("Main fields of invention").Width("200").Add();
 
 }).AllowPaging().PageSettings(page => page.PageCount(5)).AllowGrouping().GroupSettings(group=>group.Columns(new string[] { "Country" })).Render()
 

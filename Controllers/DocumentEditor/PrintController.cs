@@ -29,7 +29,6 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
             zoomItems.Add(new { text = "Fit one page" });
             zoomItems.Add(new { text = "Fit page width" });
             ViewBag.zoomList = zoomItems;
-
             return PartialView();
         }
     }

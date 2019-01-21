@@ -1,11 +1,11 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.DropDowns;
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
             @(Html.EJS().Diagram("container").Width("100%").Height("645px").GetNodeDefaults("getNodeDefaults").SelectionChange("selectionChange")
-                                .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes)
-                                .Connectors(ViewBag.connectors).Render()
+                        .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes)
+                        .Connectors(ViewBag.connectors).Render()
             )
         </div>
     </div>
@@ -61,6 +61,22 @@
                 <div class="col-xs-4 column-style">
                     @Html.EJS().DropDownList("fontFamily").Enabled(false).Placeholder("Select a font type").Index(0).PopupWidth("150").DataSource(ViewBag.font).Created("diagramCreated").Fields(new DropDownListFieldSettings() { Value = "Name", Text = "Name" }).Change("fontChange").Render()
                 </div>
+            </div>
+        </div>
+        <div class="row property-panel-content" style="padding-top: 10px">
+            <div class="row row-header">
+                Templates
+            </div>
+            <div class="row col-xs-8" style="padding-left: 0px; padding-top: 8px">
+                @Html.EJS().DropDownList("template").Placeholder("Select a template").PopupWidth("200").Width("100%").DataSource(ViewBag.templateList).Fields(new DropDownListFieldSettings() { Value = "Value", Text = "Text" }).Change("onLabelTemplateChange").Render()
+            </div>
+        </div>
+        <div class="row" style="padding-top: 10px">
+            <div class="row row-header">
+                Behaviour
+            </div>
+            <div class="row" style="padding-top: 8px">
+                @Html.EJS().CheckBox("labelConstraints").Label("Label interaction").Checked(false).Change("onLabelInteractionChange").Render()
             </div>
         </div>
     </div>
@@ -286,6 +302,14 @@
             updateAnnotation('fontfamily', args.value);
         }
 
+        function onLabelTemplateChange(args) {
+            updateAnnotation('template', args.value);
+        }
+
+        function onLabelInteractionChange(args) {
+            updateAnnotation('interaction', '');
+        }
+
         document.getElementById('appearance').onclick = function (args) {
             var target = args.target;
             var selectedElement = document.getElementsByClassName('e-selected-style');
@@ -314,6 +338,18 @@
                         annotationStyle.italic = true;
                     } else if (name === 'fontcolor') {
                         annotationStyle.color = true;
+                    } else if (name === 'template') {
+                        if (value === 'none') {
+                            node.annotations[j].template = '';
+                            node.annotations[j].width = undefined;
+                            node.annotations[j].height = undefined;
+                        } else {
+                            node.annotations[j].width = 25;
+                            node.annotations[j].height = 25;
+                            node.annotations[j].template = '<img src="/Content/images/Diagram/annotation/' + value + '.svg" style="width:100%;height:100%" />';
+                        }
+                    } else if (name === 'interaction') {
+                        node.annotations[j].constraints = node.annotations[j].constraints ^ ej.diagrams.AnnotationConstraints.Interaction;
                     }
                     diagram.dataBind();
                 }

@@ -9,22 +9,22 @@
                         @Html.EJS().ProgressButton("spinleft").Content("Spin Left").IsPrimary(true).Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("spinright").Content("Spin Right").IsPrimary(true).SpinSettings(ViewBag.spinSettings[0]).Render()
+                        @Html.EJS().ProgressButton("spinright").Content("Spin Right").IsPrimary(true).SpinSettings(ViewBag.spinRight).Render()
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("spintop").Content("Spin Top").IsPrimary(true).SpinSettings(ViewBag.spinSettings[1]).Render()
+                        @Html.EJS().ProgressButton("spintop").Content("Spin Top").IsPrimary(true).SpinSettings(ViewBag.spinTop).Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("spinbottom").Content("Spin Bottom").IsPrimary(true).SpinSettings(ViewBag.spinSettings[2]).Render()
+                        @Html.EJS().ProgressButton("spinbottom").Content("Spin Bottom").IsPrimary(true).SpinSettings(ViewBag.spinBottom).Render()
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("roundbtn").SpinSettings(ViewBag.spinSettings[3]).AnimationSettings(ViewBag.animationSettings[3]).CssClass("e-round e-small e-success").IconCss("e-icons e-play-icon").Render()
+                        @Html.EJS().ProgressButton("roundbtn").SpinSettings(ViewBag.spinCenter).AnimationSettings(ViewBag.zoomOut).CssClass("e-round e-small e-success").IconCss("e-btn-sb-icons e-play-icon").Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                         @Html.EJS().ProgressButton("contract").Content("Contract").EnableProgress(true).CssClass("e-small e-success").Begin("contractBegin").End("contractEnd").Render()
@@ -32,25 +32,25 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("slideleft").Content("Slide Left").EnableProgress(true).SpinSettings(ViewBag.spinSettings[3]).AnimationSettings(ViewBag.animationSettings[0]).CssClass("e-flat e-success").Render()
+                        @Html.EJS().ProgressButton("slideleft").Content("Slide Left").EnableProgress(true).SpinSettings(ViewBag.spinCenter).AnimationSettings(ViewBag.slideLeft).CssClass("e-flat e-success").Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("slideright").Content("Slide Right").EnableProgress(true).SpinSettings(ViewBag.spinSettings[3]).AnimationSettings(ViewBag.animationSettings[1]).CssClass("e-outline e-success").Render()
+                        @Html.EJS().ProgressButton("slideright").Content("Slide Right").EnableProgress(true).SpinSettings(ViewBag.spinCenter).AnimationSettings(ViewBag.slideRight).CssClass("e-outline e-success").Render()
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("zoomin").Content("Zoom In").EnableProgress(true).SpinSettings(ViewBag.spinSettings[3]).AnimationSettings(ViewBag.animationSettings[2]).CssClass("e-round-corner e-danger").Render()
+                        @Html.EJS().ProgressButton("zoomin").Content("Zoom In").EnableProgress(true).SpinSettings(ViewBag.spinCenter).AnimationSettings(ViewBag.zoomIn).CssClass("e-round-corner e-danger").Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("zoomout").Content("Zoom Out").EnableProgress(true).SpinSettings(ViewBag.spinSettings[3]).AnimationSettings(ViewBag.animationSettings[3]).CssClass("e-small e-danger").Render()
+                        @Html.EJS().ProgressButton("zoomout").Content("Zoom Out").EnableProgress(true).SpinSettings(ViewBag.spinCenter).AnimationSettings(ViewBag.zoomOut).CssClass("e-small e-danger").Render()
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("download").Content("Download").EnableProgress(true).Duration(4000).CssClass("e-hide-spinner e-progress-top").IconCss("e-icons e-download-icon").Render()
+                        @Html.EJS().ProgressButton("download").Content("Download").EnableProgress(true).Duration(4000).CssClass("e-hide-spinner e-progress-top").IconCss("e-btn-sb-icons e-download-icon").Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                         @Html.EJS().ProgressButton("disabled").Content("Disabled").Disabled(true).Render()
@@ -83,21 +83,21 @@
         In this sample, the progress button contains the content, spinner, progress indicator, and a list of related features that
         can be achieved using
         <code>
-                    <a target="_blank" class="code" href="http://ej2.syncfusion.com/aspnetmvc/documentation/progress-button/api-progressButton.html#content">content,
+                    <a target="_blank" class="code" href="https://help.syncfusion.com/cr/cref_files/aspnetmvc-js2/Syncfusion.EJ2~Syncfusion.EJ2.SplitButtons.ProgressButton~Content.html">content,
                     </a>
         </code>
         <code>
-                    <a target="_blank" class="code" href="http://ej2.syncfusion.com/aspnetmvc/documentation/progress-button/api-progressButton.html#cssClass">cssClass,
+                    <a target="_blank" class="code" href="https://help.syncfusion.com/cr/cref_files/aspnetmvc-js2/Syncfusion.EJ2~Syncfusion.EJ2.SplitButtons.ProgressButton~CssClass.html">cssClass,
                     </a>
         </code>and
         <code>
-                <a target="_blank" class="code" href="http://ej2.syncfusion.com/aspnetmvc/documentation/progress-button/api-progressButton.html#enableProgress">enableProgress
+                <a target="_blank" class="code" href="https://help.syncfusion.com/cr/cref_files/aspnetmvc-js2/Syncfusion.EJ2~Syncfusion.EJ2.SplitButtons.ProgressButton~EnableProgress.html">enableProgress
                 </a>
         </code>property.
     </p>
     <p>
         More information about progress button can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/aspnetmvc/documentation/progress-button/getting-started.html">
+        <a target="_blank" href="http://ej2.syncfusion.com/aspnetmvc/documentation/progress-button/getting-started">
             documentation section</a>.
     </p>
 </div>
@@ -143,8 +143,26 @@
         transition: all .3s cubic-bezier(.175, .885, .32, 1) 100ms;
     }
 
+    @@font-face {
+        font-family: 'button-icons';
+        src:url(data:application/x-font-ttf;charset=utf-8;base64,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) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .e-btn-sb-icons {
+        font-family: 'button-icons';
+        line-height: 1;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
     .e-play-icon::before {
-        content: '\e798';
+        content: '\e701';
         font-size: 12px;
     }
 
@@ -153,7 +171,7 @@
     }
 
     .e-download-icon::before {
-        content: '\e824';
+        content: '\e702';
     }
 
     #roundbtn .e-play-icon {

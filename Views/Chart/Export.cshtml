@@ -80,7 +80,7 @@
             var load = function (args) {
                 var selectedTheme = location.hash.split('/')[1];
                 selectedTheme = selectedTheme ? selectedTheme : 'Material';
-                args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+                args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
             };
             var labelRender = function (args) {
                 var selectedTheme = location.hash.split('/')[1];
@@ -103,7 +103,7 @@
             document.getElementById('togglebtn').onclick = function () {
                 var chart = document.getElementById('export-container').ej2_instances[0];
                 var fileName = (document.getElementById('fileName')).value;
-                chart.export(mode, fileName);
+                chart.exportModule.export(mode, fileName);
             };
     </script>
 }

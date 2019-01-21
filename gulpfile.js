@@ -5,8 +5,9 @@ var shelljs = require('shelljs');
 module.exports = gulp;
 var window = {};
 var elasticlunr = require('elasticlunr');
-var config = require('./scripts/samplelist.js');
+var config = require('./Scripts/samplelist');
 var beautify = require('json-beautify');
+require("@syncfusion/ej2-staging");
 
 gulp.task('deploy', function(done) {
     // remove clone folder
@@ -17,7 +18,7 @@ gulp.task('deploy', function(done) {
     fs.mkdirSync('./ej2aspmvc');
     // navigate to clone location
     shelljs.cd('./ej2aspmvc');
-    var appPath = process.env.BRANCH_NAME == 'master' ? 'ej2aspmvc' : 'ej2aspmvcapp';
+    var appPath = process.env.BRANCH_NAME == 'master' ? 'ej2aspmvc' : 'ej2aspnetmvc';
     // get git url for pull the repository
     var remotePath = 'https://' + process.env.EJ2_AZURE_CRED + '@' + appPath + '.scm.azurewebsites.net:443/' + appPath + '.git';
     shelljs.exec('git init && git fetch ' + remotePath + ' master && git checkout master');
@@ -111,7 +112,7 @@ function generateSearchIndex(data) {
     });
     for (sampleCollection of data) {
 
-        var component = sampleCollection.name;
+        var component = sampleCollection.directory;
         var directory = sampleCollection.directory;
         var puid = sampleCollection.uid;
         for (sample of sampleCollection.samples) {
@@ -132,8 +133,75 @@ function generateSearchIndex(data) {
 }
 function getSamples(data, component) {
     for (var i = 0; i < data.length; i++) {
-        if (component === data[i].name) {
+        if (component === data[i].directory) {
             return data[i];
         }
     }
+}
+gulp.task('create-locale', function (done) {
+    createLocale(done);
+});
+
+function createLocale(done) {
+    var fileExt = '.js';
+    var localePath = './Scripts';
+    if (!fs.existsSync(localePath)) {
+        shelljs.mkdir('-p', localePath);
+    }
+    var localeJson = glob.sync('./Views/**/locale.json', {
+        silent: true
+    });
+    if (localeJson.length) {
+        // baseUtil;
+        var obj = {};
+        for (var i = 0; i < localeJson.length; i++) {
+            var compentLocale = JSON.parse(fs.readFileSync(localeJson[i]));
+            obj = extend({}, obj, compentLocale, true);
+        }
+        fs.writeFileSync(`${localePath}/locale-string${fileExt}`,
+            'window.Locale=' + JSON.stringify(obj) + ';');
+        done();
+    } else {
+        fs.writeFileSync(`${localePath}/locale-string${fileExt}`,
+            'window.Locale={}');
+        done();
+    }
+}
+function extend(copied, first, second, deep) {
+    var result = copied || {};
+    var length = arguments.length;
+    if (deep) {
+        length = length - 1;
+    }
+    var _loop_1 = function (i) {
+        if (!arguments_1[i]) {
+            return 'continue';
+        }
+        var obj1 = arguments_1[i];
+        Object.keys(obj1).forEach(function (key) {
+            var src = result[key];
+            var copy = obj1[key];
+            var clone;
+            if (deep && isObject(copy)) {
+                clone = isObject(src) ? src : {};
+                result[key] = extend({}, clone, copy, true);
+            }
+            else {
+                result[key] = copy;
+            }
+        });
+    };
+    var arguments_1 = arguments;
+    for (var i = 1; i < length; i++) {
+        _loop_1(i);
+    }
+    return result;
+}
+
+function isObject(obj) {
+    var objCon = {};
+    return (!isNullOrUndefined(obj) && obj.constructor === objCon.constructor);
+}
+function isNullOrUndefined(value) {
+    return value === undefined || value === null;
 }

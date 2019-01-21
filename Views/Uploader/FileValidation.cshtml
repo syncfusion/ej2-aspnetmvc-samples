@@ -4,7 +4,7 @@
 @section ControlsSection{
 <div class="col-lg-12 control-section">
     <div class="control_wrapper">
-        @Html.EJS().Uploader("UploadFiles").DropArea(".control-fluid").AutoUpload(false).AllowedExtensions(".doc, .docx, .xls, .xlsx").MinFileSize(10000).Removing("onFileRemove").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("/Uploader/Save"), RemoveUrl = @Url.Content("/Uploader/Remove") }).Selected("onFileSelected").Render()
+        @Html.EJS().Uploader("UploadFiles").DropArea(".control-fluid").AutoUpload(false).AllowedExtensions(".doc, .docx, .xls, .xlsx").MinFileSize(10000).Removing("onFileRemove").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("~/Uploader/Save"), RemoveUrl = @Url.Content("~/Uploader/Remove") }).Selected("onFileSelected").Render()
     </div>
 </div>
 }
@@ -48,7 +48,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample demonstrates how to validate the files before uploading it to server. Only document files (DOC, DOCX, XLS, XLSX),
+            This example demonstrates how to validate the files before uploading it to server. Only document files (DOC, DOCX, XLS, XLSX),
             and the files should contain minimum 10 KB and maximum 4 MB sizes to upload it into server.This sample limits maximum files count as 5 to upload.
         </p>
 
@@ -57,7 +57,7 @@
 @section Description{
     <div id="description">
         <p>
-            The Uploader component allows to validate the file’s type, and limit the file size using allowedExtensions, minFileSize, and maxFileSize properties.
+            The Uploader control allows to validate the file’s type, and limit the file size using allowedExtensions, minFileSize, and maxFileSize properties.
             You can also achieve limit the files count before uploading it using select event.
         </p>
 

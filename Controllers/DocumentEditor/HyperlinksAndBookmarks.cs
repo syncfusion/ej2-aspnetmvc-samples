@@ -11,12 +11,8 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
     {
         public ActionResult HyperlinksAndBookmarks()
         {
+            this.DocumentEditorViewResultHelper();
             return View();
-        }
-
-        public ActionResult HyperlinkAndBookmark()
-        {
-            return this.DocumentEditorViewResultHelper();
-        }
+        }        
     }
 }

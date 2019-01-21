@@ -44,15 +44,15 @@
                 </tr>
                 <tr id="button-control" style="height: 50px" align='center'>
                     <td>
-                        <div style="margin-left: 40%;">
-                            <button id="togglebtn1">Export</button>
+                        <div style="margin-left: 50%;">
+                            <button id="togglebtn1" style="text-transform:none !important;width:80px;">Export</button>
                         </div>
                     </td>
                 </tr>
                 <tr id="button-control" style="height: 50px">
                     <td align="center">
-                        <div style="margin-left: 40%;">
-                            <button id="togglebtn">Print</button>
+                        <div style="margin-left: 50%;">
+                            <button id="togglebtn" style="text-transform:none !important;width:80px;">Print</button>
                         </div>
                     </td>
                 </tr>
@@ -62,30 +62,8 @@
     </div>
 
     <style>
-        #button-control {
-            width: 100%;
-            text-align: center;
-        }
-
         #control-container {
             padding: 0px !important;
-        }
-
-        .e-play-icon::before {
-            content: '\e813';
-        }
-
-        #button-control {
-            width: 100%;
-            text-align: center;
-        }
-
-        #control-container {
-            padding: 0px !important;
-        }
-
-        .e-play-icon::before {
-            content: '\e728';
         }
     </style>
 
@@ -119,7 +97,7 @@
             treemap = args.treemap;
         }
         var togglebtn = new ej.buttons.Button({
-            iconCss: 'e-icons e-play-icon', cssClass: 'e-flat', isPrimary: true,
+            cssClass: 'e-info', isPrimary: true
         });
         togglebtn.appendTo('#togglebtn');
         document.getElementById('togglebtn').onclick = () => {
@@ -131,7 +109,7 @@
         });
         mode.appendTo('#mode');
         var togglebtn1 = new ej.buttons.Button({
-            iconCss: 'e-icons e-play-icon', cssClass: 'e-flat', isPrimary: true,
+            cssClass: 'e-info', isPrimary: true
         });
         togglebtn1.appendTo('#togglebtn1');
         document.getElementById('togglebtn1').onclick = () => {

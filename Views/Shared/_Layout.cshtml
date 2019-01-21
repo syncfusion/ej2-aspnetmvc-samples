@@ -4,9 +4,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Essential JS 2 for ASP.NET MVC</title>
+    <title>Demos, Examples of Syncfusion ASP.NET MVC UI Controls</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <meta name="description" content="Essential JS 2 for ASP.NET MVC" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="author" content="Syncfusion" />
       @if (IsSectionDefined("Meta"))
@@ -40,6 +39,7 @@
     <script src="~/Scripts/samplelist.js"></script>
     <script src="~/Scripts/search-index.js"></script>
     <script src="~/Scripts/ej2.min.js"></script>
+    <script src="~/Scripts/documenteditor/default-properties.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     @Styles.Render("~/Content/css")
 </head>
@@ -75,12 +75,12 @@
             <div class='sb-left-footer'>
                 <div class="sb-mobile-header-buttons">
                     <a href='https://www.syncfusion.com/products/aspnetmvc' target="_blank">
-                        <div class="sb-mobile-header-button">
+                        <div class="sb-mobile-header-about">
                             About
                         </div>
                     </a>
                     <a href='https://www.syncfusion.com/downloads/aspnetmvc-js2' target="_blank">
-                        <div class="sb-mobile-header-button">Pricing</div>
+                        <div class="sb-mobile-header-price">Pricing</div>
                     </a>
                 </div>
                 <div class='sb-left-footer-links'>
@@ -114,12 +114,6 @@
                 <div class='sb-header-item sb-table-cell sb-lang-toggler-wrapper'>
                     <span id='sb-switcher' role="button" tabindex="0" class='sb-lang-toggler sb-icons sb-icon-Dropdown' aria-label="change the samplebrowser"></span>
                 </div>
-                @*// <div class='sb-header-item sb-table-cell sb-preview-wrapper'>
-                //   <div>
-                //     <img src='~/Content/images/Vol 3 beta_Option 2.svg'>
-                //   </div>
-                // </div>*@ 
-
             </div>
             <div class='sb-header-right sb-right sb-table'>
                 <div class="sb-header-item sb-table-cell">
@@ -228,39 +222,7 @@
                             <div id='mouse' role="button" tabindex="0" class="sb-responsive-items set-border-radious-mouse" title="Default control sizes, optimized for use with mouse">Mouse</div>
                         </div>
                     </div>
-                                    <!-- <div class='sb-setting-item sb-setting-culture'>
-                    <div class='setting-label'>
-                        <div class='sb-icons sb-setting-icons sb-icon-Localization'></div>
-                        <div class='sb-setting-text'>Localization</div>
-                    </div>
-                    <div class='setting-content'>
-                        <select id='sb-setting-culture' class='sb-setting-culture-select'>
-                            <option value="en">English*</option>
-                            <option value="de">German - Germany*</option>
-                            <option value="fr-CH">French - Switzerland*</option>
-                            <option value="ar">Arabic*</option>
-                            <option value="zh">Chinese - China*</option>
-                        </select>
-                    </div>
-                    <div class="sb-setting-translate">
-                        <span>* Translated by Google Translator</span>
-                    </div>
-                </div>
-                <div class='sb-setting-item sb-setting-currency'>
-                    <div class='setting-label'>
-                        <div class='sb-icons sb-setting-icons sb-icon-Currency'></div>
-                        <div class='sb-setting-text'>Currency</div>
-                    </div>
-                    <div class='setting-content'>
-                        <select id='sb-setting-currency' class='sb-setting-currency-content'>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="AED">AED</option>
-                            <option value="CHF">CHF</option>
-                            <option value="CNY">CNY</option>
-                        </select>
-                    </div>
-                </div> -->
+                
             </div>
         </div>
     </div>
@@ -349,7 +311,7 @@
                                     <div class="sb-footer-link">Knowledge Base</div>
                                 </a>
                             </div>
-                            <div class="sb-footer-copyright">Copyright © 2001-2018 Syncfusion Inc.</div>
+                            <div class="sb-footer-copyright">Copyright © 2001-2019 Syncfusion Inc.</div>
                         </div>
                         <div class="sb-footer-logo">
                             <a href="https://www.syncfusion.com/" target="_blank">
@@ -395,7 +357,7 @@
     <script>
         var win = window;
         win.isManualResizeTrigger = true;
-        setTimeout(() => { win.dispatchEvent(new Event('resize')); }, 500);
+        setTimeout(function() { win.dispatchEvent(new Event('resize')); }, 500);
     </script>
 </body>
 </html>

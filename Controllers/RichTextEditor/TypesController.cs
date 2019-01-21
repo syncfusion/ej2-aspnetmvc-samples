@@ -24,9 +24,9 @@ namespace EJ2MVCSampleBrowser.Controllers
 
 
                 <ol>
-                <li> <p> Toolbar contains commands to align the text, insert link, insert image, insert list, undo / redo operations, HTML view, etc </p></li>
+                <li> <p>Toolbar contains commands to align the text, insert link, insert image, insert list, undo / redo operations, HTML view, etc </p></li>
 
-                        <li> <p> Toolbar is fully customizable </p></li>
+                        <li> <p>Toolbar is fully customizable </p></li>
 
                         </ol>
 
@@ -35,38 +35,38 @@ namespace EJ2MVCSampleBrowser.Controllers
 
                         <ol>
 
-                        <li><p> You can insert a hyperlink with its corresponding dialog</p> </li>
+                        <li><p>You can insert a hyperlink with its corresponding dialog</p> </li>
 
-                            <li> <p> Attach a hyperlink to the displayed text. </p></li>
+                            <li> <p>Attach a hyperlink to the displayed text. </p></li>
             
-                                <li><p> Customize the quick toolbar based on the hyperlink </p> </li>
+                                <li><p>Customize the quick toolbar based on the hyperlink </p> </li>
                 
                                     </ol>
                 
 
-                                    <p><b> Validation </b></p>
+                                    <p><b>Validation </b></p>
                 
-                                    <ul><li><p> The editor’s content can be validated on form submission by applying validation rules and validation message </p></li></ul>
+                                    <ul><li><p>The editor’s content can be validated on form submission by applying validation rules and validation message </p></li></ul>
                         
 
-                                            <p><b> Locale.</p></b></p>
+                                            <p><b>Locale.</p></b></p>
                         
-                                            <ul><li><p> The editor provides an option to localize its static strings to adapt the editor to a local language.</p></li></ul>
+                                            <ul><li><p>The editor provides an option to localize its static strings to adapt the editor to a local language.</p></li></ul>
                                 
 
                                                     <p><b> Image.</p></b></p>
                                 
                                                     <ol>
                                 
-                                                    <li><p> Allows you to insert images from an online source as well as the local computer</p> </li>
+                                                    <li><p>Allows you to insert images from an online source as well as the local computer</p> </li>
                                 
-                                                    <li><p> You can upload an image</p></li>
+                                                    <li><p>You can upload an image</p></li>
                                     
-                                                        <li> <p> Provides an option to customize quick toolbar for an image </p> </li>
+                                                        <li> <p>Provides an option to customize quick toolbar for an image </p> </li>
                                         
                                                             </ol>
                                 
-                                                    <img alt = 'Logo' src = '/Content/images/RichTextEditor/RTEImage-Feather.png' />";
+                                                    <img alt = 'Logo' src = " + @Url.Content("/Content/images/RichTextEditor/RTEImage-Feather.png") +" />";
             ViewBag.items = new[] {"Bold", "Italic", "Underline", "StrikeThrough",
                 "FontName", "FontSize", "FontColor", "BackgroundColor",
                 "LowerCase", "UpperCase", "|",

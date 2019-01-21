@@ -16,11 +16,11 @@
             <div class='content'>
                 <h4>Remote Data</h4>
                 @Html.EJS().AutoComplete("products").Placeholder("e.g. " +
-               "Alice Mutton").Autofill(true).SuggestionCount(5).FilterType(FilterType.StartsWith).DataSource(obj =>
-               obj.Url("https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Products").Adaptor("" +
-               "ODataAdaptor").CrossDomain(true)).Fields(new AutoCompleteFieldSettings { Value =
-               "ProductName" }).SortOrder((object)ViewBag.sort).Query("new " +
-               "ej.data.Query().select(['ProductID', 'ProductName'])").Render()
+               "Andrew Fuller").Autofill(true).SuggestionCount(5).FilterType(FilterType.StartsWith).DataSource(obj =>
+               obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").Adaptor("" +
+               "WebApiAdaptor").CrossDomain(true)).Fields(new AutoCompleteFieldSettings { Value =
+               "FirstName" }).SortOrder((object)ViewBag.sort).Query("new " +
+               "ej.data.Query().select(['FirstName', 'EmployeeID']).requiresCount()").Render()
             </div>
         </div>
     </div>

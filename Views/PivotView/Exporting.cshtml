@@ -59,7 +59,7 @@
                     <td></td>
                     <td>
                         <div style="float: right">
-                            @Html.EJS().Button("export-btn").IconCss("e-icons e-play-icon").CssClass("e-flat").Content("Export").IsPrimary(true).Render()
+                            @Html.EJS().Button("export-btn").CssClass("e-flat").Content("Export").IsPrimary(true).Render()
                         </div>
                     </td>
                 </tr>
@@ -71,9 +71,6 @@
         #pivotview {
             width: 100%;
             height: 100%;
-        }
-        .e-play-icon::before {
-            content: '\e728';
         }
     </style>
     <script>

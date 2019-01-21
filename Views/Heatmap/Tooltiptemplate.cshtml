@@ -29,7 +29,9 @@
                   palette.Value(8).Color("#1B5761").Add();
                   palette.Value(9).Color("#15464D").Add();
                   palette.Value(9.5).Color("#000000").Add();
-              }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed)).CellSettings(cs =>
+              }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed)).TooltipSettings(ts =>
+              ts.Fill("#265259").Border(br => br.Color("#98BABF").Width(1)).TextStyle(style =>
+              style.Color("#FFFFFF").Size("12px"))).CellSettings(cs =>
               cs.Border(ViewBag.border).Format("{value} M")).Load("load").TooltipRender("tooltipRender").DataSource(ViewBag.dataSource).Render()
         </div>
     </div>

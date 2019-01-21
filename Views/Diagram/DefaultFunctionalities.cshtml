@@ -3,9 +3,9 @@
 
     <div class="control-section">
             <div class="sb-mobile-palette-bar">
-                <div id="paletteIcon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
+                <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
-            <div id="paletteSpace" class="sb-mobile-palette">
+            <div id="palette-space" class="sb-mobile-palette">
                 @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode("Multiple").Width("100%").Height("700px")
                     .SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).SymbolHeight(60).SymbolWidth(60)
                     .GetNodeDefaults("getSymbolNodes").Render()
@@ -125,7 +125,7 @@
             left: 0px;
         }
 
-        #paletteIcon {
+        #palette-icon {
             font-size: 20px;
         }
     }
@@ -211,7 +211,7 @@
         function addEvents() {
             var isMobile = window.matchMedia('(max-width:550px)').matches;
             if (isMobile) {
-                var paletteIcon = document.getElementById('paletteIcon');
+                var paletteIcon = document.getElementById('palette-icon');
                 if (paletteIcon) {
                     paletteIcon.addEventListener('click', openPalette, false);
                 }
@@ -219,7 +219,7 @@
         }
 
         function openPalette() {
-            var paletteSpace = document.getElementById('paletteSpace');
+            var paletteSpace = document.getElementById('palette-space');
             var isMobile = window.matchMedia('(max-width:550px)').matches;
             if (isMobile) {
                 if (!paletteSpace.classList.contains('sb-mobile-palette-open')) {

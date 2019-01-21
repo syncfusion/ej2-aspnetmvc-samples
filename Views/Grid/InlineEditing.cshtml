@@ -5,19 +5,43 @@
 
 @using Syncfusion.EJ2
 @section ControlsSection{
-    <div class="control-section">
+    <div class="col-lg-9 control-section">
         @Html.EJS().Grid("InlineEditing").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
    {
 
-       col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("140").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 3 }).Add();
-       col.Field("Freight").HeaderText("Freight").Width("120").EditType("numericedit").ValidationRules(new { required = true }).Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("Freight").HeaderText("Freight").Width("140").EditType("numericedit").ValidationRules(new { required = true }).Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("OrderDate").HeaderText("Order Date").EditType("datetimepickeredit").Width("150").Add();
        col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
        col.Field("Verified").HeaderText("Verified").EditType("booleanedit").DisplayAsCheckBox(true).Type("boolean").Width("150").Add();
 
-   }).Load("load").AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+   }).Load("load").ActionBegin("actionBegin").AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
     </div>
+
+
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tr>
+                <td style="width: 100%">
+                    <div style="padding-top: 7px">Add New Row Position</div>
+                </td>
+                <td style="width: 50%;padding-right: 10px">
+                    <div id='typeddl'>
+                @Html.EJS().DropDownList("AddNewRowPosition").DataSource((IEnumerable<object>)ViewBag.ddData).Value("Top").Change("rowPositionChange").Render()
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <style>
+        #typeddl {
+            min-width: 100px;
+        }
+    </style>
     <script>
         function load() {
             var gridobj = document.getElementById("InlineEditing").ej2_instances[0];
@@ -27,7 +51,20 @@
                 }
             }
         }
-
+        function rowPositionChange(args) {
+            var grid = document.getElementById("InlineEditing").ej2_instances[0];
+            grid.editSettings.newRowPosition = this.value;
+        }
+        function actionBegin(args) {
+            var grid = document.getElementById("InlineEditing").ej2_instances[0];
+            if (args.requestType === 'save') {
+                if (grid.pageSettings.currentPage !== 1 && grid.editSettings.newRowPosition === 'Top') {
+                    args.index = (grid.pageSettings.currentPage * grid.pageSettings.pageSize) - grid.pageSettings.pageSize;
+                } else if (grid.editSettings.newRowPosition === 'Bottom') {
+                    args.index = (grid.pageSettings.currentPage * grid.pageSettings.pageSize) - 1;
+                }
+            }
+        }
     </Script >
 }
 @section ActionDescription{
@@ -39,6 +76,7 @@
 			<li><code>Delete</code> - To delete record, click toolbar Delete button after selected a row </li>
 			<li><code>Update</code>,<code>Cancel</code> - You can save or discard changes by click toolbar Update and Cancel button respectively</li>
 		</ul>
+        <p>By default, a new row will be added at the top of the grid. You can change it by setting <code>editSettings.newRowPosition</code> as <code>Bottom</code></p>
 	</div>
 }
 

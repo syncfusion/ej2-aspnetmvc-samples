@@ -90,13 +90,13 @@
             fullPreview({ mode: true, type: 'preview' });
                        if (e.currentTarget.classList.contains('e-active')) {
                 defaultRTE.disableToolbarItem(['Bold', 'Italic', 'StrikeThrough', '|',
-                    'Formats', 'OrderedList', 'UnorderedList', '|',
+                    'Formats', 'OrderedList', 'UnorderedList', '|',  'CreateTable',
                     'CreateLink', 'Image', 'Undo', 'Redo']);
                 e.currentTarget.parentElement.nextElementSibling.classList.add('e-overlay');
             }
             else {
                 defaultRTE.enableToolbarItem(['Bold', 'Italic', 'StrikeThrough', '|',
-                    'Formats', 'OrderedList', 'UnorderedList', '|',
+                    'Formats', 'OrderedList', 'UnorderedList', '|', 'CreateTable',
                     'CreateLink', 'Image', 'Undo', 'Redo']);
                 e.currentTarget.parentElement.nextElementSibling.classList.remove('e-overlay');
 

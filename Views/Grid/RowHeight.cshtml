@@ -9,6 +9,7 @@
         toolbar.Add(new { prefixIcon = "e-medium-icon", id = "medium", align = "Right" });
         toolbar.Add(new { prefixIcon = "e-big-icon", id = "small", align = "Right" });
     }
+<link href="~/Content/grid/gridfont.css" rel="stylesheet" />
     <div class="control-section">
         @Html.EJS().Grid("RowHeight").DataSource((IEnumerable<object>)ViewBag.dataSource).RowHeight(20).Height("400").Columns(col =>
    {
@@ -24,15 +25,19 @@
    }).Toolbar(toolbar).ToolbarClick("toolbarClick").Render()
         </div>
 <style>
-    .e-small-icon::before {
+ 
+
+   .e-grid .e-small-icon::before {
+       font-family: 'e-grid-rowheight';
         content: '\e997';
     }
 
-    .e-medium-icon::before {
+   .e-grid .e-medium-icon::before {
         content: '\e94c';
     }
 
-    .e-big-icon::before {
+    .e-grid .e-big-icon::before {
+        font-family: 'e-grid-rowheight';
         content: '\e74c';
     }
 </style>
