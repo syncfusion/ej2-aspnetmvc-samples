@@ -11,7 +11,7 @@
         .AllowSorting()
         .AllowExcelExport()
         .AllowPdfExport()
-        .EditSettings(edit => edit.AllowAdding(true).AllowDeleting(true).AllowEditing(true))
+        .EditSettings(edit => edit.AllowAdding(true).AllowDeleting(true).AllowEditing(true).Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row))
             .PageSettings(page => page.PageSize(10))
             .DataSource((IEnumerable<object>)ViewBag.datasource)
             .ContextMenuItems(

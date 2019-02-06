@@ -9,7 +9,7 @@
        col.Field("HireDate").Label("Hire Date").Type("date").Format("dd/MM/yyyy").Add();
        col.Field("Country").Label("Country").Type("string").Add();
        col.Field("City").Label("City").Type("string").Add();
-   }).Rule(ViewBag.rule).DataSource(ViewBag.dataSource).MaxGroupCount(5).Render()
+   }).Rule(ViewBag.rule).DataSource(ViewBag.dataSource).MaxGroupCount(5).Created("createdControl").Render()
     </div>
 }
 @section Meta{
@@ -36,6 +36,14 @@
         </p>
     </div>
 }
+<script>
+    function createdControl() {
+         if(ej.base.Browser.isDevice) {
+               var qryBldrObj = ej.base.getComponent(document.getElementById("querybuilder"), 'query-builder');
+               qryBldrObj.summaryView = true;
+         }
+    }
+ </script>   
 <style>
     .e-query-builder {
         margin: 0 auto;

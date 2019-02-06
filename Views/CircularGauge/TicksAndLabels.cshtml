@@ -13,7 +13,7 @@
    .Pointers(ViewBag.Pointers)
    .Annotations(ViewBag.Annotations)
    .Ranges(ViewBag.ranges)
-   .Maximum(180).Minimum(0)
+   .Maximum(170).Minimum(0)
    .LineStyle(new CircularGaugeLine { Width = 2, Color = "#9E9E9E" })
    .MinorTicks(new CircularGaugeTick { Position = Position.Inside, Color = "#757575", Height = 5, Width = 2, Interval = 10 })
    .MajorTicks(new CircularGaugeTick { Position = Position.Inside, Color = "#757575", Width = 2, Height = 10, Interval = 20 }).Add()
@@ -89,6 +89,16 @@
                     <td>
                         <div>
                             <input type="range" id="labelOffset" value="0" min="0" max="50" style="width:90%">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="enablePointer">Show Last Label </div>
+                    </td>
+                    <td>
+                        <div>
+                            <input type="checkbox" id="enable" style="width:90%">
                         </div>
                     </td>
                 </tr>
@@ -193,6 +203,11 @@
                 document.getElementById('labelOffsetValue').innerHTML = 'Label Offset <span>   ' + value;
                 circulargauge.refresh();
             };
+        document.getElementById('enable').onchange = function () {
+            var showLastLabel = document.getElementById('enable').checked;
+            circulargauge.axes[0].showLastLabel = showLastLabel;
+            circulargauge.refresh();
+        };
     </script>
 }
 @section ActionDescription{

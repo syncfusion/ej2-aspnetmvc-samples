@@ -12,7 +12,7 @@
                     .DataSource((IEnumerable<object>)ViewBag.datasource)
                     .AllowFiltering()
                     .AllowPaging()
-                    .FilterSettings(f => f.Type(FilterType.Menu))
+                    .FilterSettings(f => f.Type(Syncfusion.EJ2.TreeGrid.FilterType.Menu))
                     .PageSettings(page => page.PageSize(10))
                     .Columns(col =>
                     {
@@ -30,8 +30,14 @@
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%;">
-            <tr>
+        	<tr>
                 <td class="left-side">Filter Type</td>
+                <td>
+                    @Html.EJS().DropDownList("FilterType").DataSource((IEnumerable<object>)ViewBag.typedropdata).Value("Menu").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "type" }).Change("Change").Render()
+                </td>
+            </tr>
+            <tr>
+                <td class="left-side">Hierarchy Mode</td>
                 <td>
                     @Html.EJS().DropDownList("FilterMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text="id", Value="mode" }).Change("onChange").Render()
                 </td>
@@ -46,6 +52,11 @@
             treegrid.filterSettings.hierarchyMode = mode;
             treegrid.clearFiltering();
         }
+        function Change(e) {
+            var type = e.value;
+            var treegrid = document.getElementById("Filtering").ej2_instances[0];
+            treegrid.filterSettings.type = type;
+        }
     </script>
 }
 
@@ -56,7 +67,9 @@
 
 @section ActionDescription{
     <div id="action-description">
-        <p>This sample demonstrates the way of filtering TreeGrid columns using menu filter type UI. In this sample, click the filtering icon from column header to show filter UI for a particular column. You can also change the hierarchy mode of filtering from the properties panel.</p>
+        <p> This sample demonstrates the way of filtering TreeGrid columns using menu and excel filter UI. In this sample, click the filtering
+            icon from column header to show filter UI for a particular column. You can change the filter type from the properties
+            panel.</p>
     </div>
 }
 
@@ -68,6 +81,13 @@
                 AllowFiltering
             </code> property as true.
         </p>
+        <p>TreeGrid supports the following filter types. They are </p>
+    <ul>
+        <li><code>FilterBar</code></li>
+        <li><code>Menu</code></li>
+        <li><code>Excel</code></li>
+    </ul>
+    you can change the filter type by setting <code>filterSettings->type</code>
         <p>TreeGrid provides support for a set of filtering modes with <code>HierarchyMode</code> property. The below are the type of filter mode available in TreeGrid. </p>
         <ul>
             <li>

@@ -163,7 +163,7 @@ function renderSbPopups() {
         width: '282',
         zIndex: '1003',
         showBackdrop: true,
-        type: 'over',
+        type: 'Over',
         enableGestures: false,
 
         closeOnDocumentClick: true

@@ -26,6 +26,7 @@
                 edit.AllowAdding(true);
                 edit.AllowDeleting(true);
                 edit.AllowEditing(true);
+                edit.Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row);
             })
             .Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })
             .Columns(col =>
