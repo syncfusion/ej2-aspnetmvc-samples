@@ -19,6 +19,7 @@
                 edit.AllowAdding(true);
                 edit.AllowDeleting(true);
                 edit.AllowEditing(true);
+                edit.Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row);
                 edit.NewRowPosition(Syncfusion.EJ2.TreeGrid.RowPosition.Below);
             })
             .Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })
@@ -66,7 +67,7 @@
 }
 
 @section Meta{
-    <meta name="description" content="This example shows how the Essential JS2 TreeGrid Control looks with its default configuration." />
+    <meta name="description" content="This example shows how to add and edit row or cell inline on the Essential JS2 TreeGrid control." />
 }
 
 

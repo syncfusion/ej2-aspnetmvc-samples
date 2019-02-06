@@ -599,16 +599,6 @@ window.samplesList = [
             "dir": "TreeGrid",
             "parentId": "036"
         },
-        {
-            "url": "DefaultContextMenu",
-            "name": "Context Menu",
-            "category": "Tree Grid",
-            "uid": "003100559",
-            "order": 0,
-            "component": "TreeGrid",
-            "dir": "TreeGrid",
-            "parentId": "036"
-        },
 		{
             "url": "ColumnFormatting",
             "name": "Column Formatting",
@@ -821,7 +811,8 @@ window.samplesList = [
         },
         {
             "url": "FilterMenu",
-            "name": "Filter Menu",
+            "name": "Menu Filter",
+            "type": "update",
             "category": "Filtering",
             "uid": "003100580",
             "order": 6,
@@ -878,13 +869,56 @@ window.samplesList = [
             "component": "TreeGrid",
             "dir": "TreeGrid",
             "parentId": "036"
-        },
+            },
+            {
+                "url": "DefaultAggregate",
+                "name": "Default Aggregate",
+                "type": "update",
+                "category": "Aggregates",
+                "uid": "003100592",
+                "order": 9,
+                "component": "TreeGrid",
+                "dir": "TreeGrid",
+                "parentId": "036"
+            },
+            {
+                "url": "CustomAggregate",
+                "name": "Custom Aggregate",
+                "type": "new",
+                "category": "Aggregates",
+                "uid": "003100591",
+                "order": 9,
+                "component": "TreeGrid",
+                "dir": "TreeGrid",
+                "parentId": "036"
+            },
+            {
+                "url": "DefaultContextMenu",
+                "name": "Default ContextMenu",
+                "category": "Context Menu",
+                "uid": "003100559",
+                "order": 10,
+                "component": "TreeGrid",
+                "dir": "TreeGrid",
+                "parentId": "036"
+            },
+            {
+                "url": "CustomContextMenu",
+                "name": "Custom ContextMenu",
+                "type": "new",
+                "category": "Context Menu",
+                "uid": "003100590",
+                "order": 10,
+                "component": "TreeGrid",
+                "dir": "TreeGrid",
+                "parentId": "036"
+            },
         {
             "url": "DefaultExporting",
             "name": "Default Exporting",
             "category": "Exporting",
             "uid": "003100586",
-            "order": 9,
+            "order": 11,
             "component": "TreeGrid",
             "dir": "TreeGrid",
             "parentId": "036"
@@ -894,7 +928,7 @@ window.samplesList = [
             "name": "Print",
             "category": "Exporting",
             "uid": "003100587",
-            "order": 9,
+            "order": 11,
             "component": "TreeGrid",
             "dir": "TreeGrid",
             "parentId": "036"
@@ -904,17 +938,50 @@ window.samplesList = [
             "name": "Conditional Formatting",
             "category": "Miscellaneous",
             "uid": "003100588",
-            "order": 10,
+            "order": 12,
             "component": "TreeGrid",
             "dir": "TreeGrid",
             "parentId": "036"
-        },
+            },
+            {
+                "url": "ToolbarTemplate",
+                "name": "Toolbar Template",
+                "type": "new",
+                "category": "Miscellaneous",
+                "uid": "003100593",
+                "order": 12,
+                "component": "TreeGrid",
+                "dir": "TreeGrid",
+                "parentId": "036"
+            },
+            {
+                "url": "Events",
+                "name": "Events",
+                "type": "new",
+                "category": "Miscellaneous",
+                "uid": "003100594",
+                "order": 12,
+                "component": "TreeGrid",
+                "dir": "TreeGrid",
+                "parentId": "036"
+            },
+            {
+                "url": "KeyboardInteraction",
+                "name": "Keyboard Interaction",
+                "type": "new",
+                "category": "Miscellaneous",
+                "uid": "003100595",
+                "order": 12,
+                "component": "TreeGrid",
+                "dir": "TreeGrid",
+                "parentId": "036"
+            },
         {
             "url": "GridLines",
             "name": "Grid Lines",
             "category": "Miscellaneous",
             "uid": "003100589",
-            "order": 10,
+            "order": 12,
             "component": "TreeGrid",
             "dir": "TreeGrid",
             "parentId": "036"
@@ -2314,6 +2381,7 @@ window.samplesList = [
                 "uid": "00222",
                 "component": "CircularGauge",
                 "dir": "CircularGauge",
+                "type": "update",
                 "parentId": "02"
             },
             {
@@ -2442,6 +2510,95 @@ window.samplesList = [
         ],
         "order": 0,
         "uid": "02"
+    },
+    {
+        "name": "Linear Gauge",
+        "directory": "LinearGauge",
+        "category": "Data Visualization",
+        "samples": [
+            {
+                "url": "DefaultFunctionalities",
+                "name": "DefaultFunctionalities",
+                "category": "Linear Gauge",
+                "order": 0,
+                "uid": "00330",
+                "component": "LinearGauge",
+                "dir": "LinearGauge",
+                "parentId": "03"
+            },
+            {
+                "url": "Container",
+                "name": "Container",
+                "category": "Linear Gauge",
+                "order": 0,
+                "uid": "00331",
+                "component": "LinearGauge",
+                "dir": "LinearGauge",
+                "parentId": "03"
+            },
+            {
+                "url": "Range",
+                "name": "Range",
+                "category": "Linear Gauge",
+                "order": 0,
+                "uid": "00332",
+                "component": "LinearGauge",
+                "dir": "LinearGauge",
+                "parentId": "03"
+            },
+            {
+                "url": "DataSample",
+                "name": "DataSample",
+                "category": "Linear Gauge",
+                "order": 0,
+                "uid": "00333",
+                "component": "LinearGauge",
+                "dir": "LinearGauge",
+                "parentId": "03"
+            },
+            {
+                "url": "AxesAndPointers",
+                "name": "AxesAndPointers",
+                "category": "Linear Gauge",
+                "order": 0,
+                "uid": "00334",
+                "component": "LinearGauge",
+                "dir": "LinearGauge",
+                "parentId": "03"
+            },
+            {
+                "url": "Annotation",
+                "name": "Annotation",
+                "category": "Linear Gauge",
+                "order": 0,
+                "uid": "00335",
+                "component": "LinearGauge",
+                "dir": "LinearGauge",
+                "parentId": "03"
+            },
+            {
+                "url": "Tooltip",
+                "name": "Tooltip",
+                "category": "Linear Gauge",
+                "order": 0,
+                "uid": "00336",
+                "component": "LinearGauge",
+                "dir": "LinearGauge",
+                "parentId": "03"
+            },
+            {
+                "url": "Styles",
+                "name": "Styles",
+                "category": "Linear Gauge",
+                "order": 0,
+                "uid": "00337",
+                "component": "LinearGauge",
+                "dir": "LinearGauge",
+                "parentId": "03"
+            }
+        ],
+        "order": 0,
+        "uid": "03"
     },
 {
         "name": "Diagram",
@@ -2949,95 +3106,6 @@ window.samplesList = [
         "uid": "34"
     },
 {
-        "name": "Linear Gauge",
-        "directory": "LinearGauge",
-        "category": "Data Visualization",
-        "samples": [
-            {
-                "url": "DefaultFunctionalities",
-                "name": "DefaultFunctionalities",
-                "category": "Linear Gauge",
-                "order": 0,
-                "uid": "00330",
-                "component": "LinearGauge",
-                "dir": "LinearGauge",
-                "parentId": "03"
-            },
-            {
-                "url": "Container",
-                "name": "Container",
-                "category": "Linear Gauge",
-                "order": 0,
-                "uid": "00331",
-                "component": "LinearGauge",
-                "dir": "LinearGauge",
-                "parentId": "03"
-            },
-            {
-                "url": "Range",
-                "name": "Range",
-                "category": "Linear Gauge",
-                "order": 0,
-                "uid": "00332",
-                "component": "LinearGauge",
-                "dir": "LinearGauge",
-                "parentId": "03"
-            },
-            {
-                "url": "DataSample",
-                "name": "DataSample",
-                "category": "Linear Gauge",
-                "order": 0,
-                "uid": "00333",
-                "component": "LinearGauge",
-                "dir": "LinearGauge",
-                "parentId": "03"
-            },
-            {
-                "url": "AxesAndPointers",
-                "name": "AxesAndPointers",
-                "category": "Linear Gauge",
-                "order": 0,
-                "uid": "00334",
-                "component": "LinearGauge",
-                "dir": "LinearGauge",
-                "parentId": "03"
-            },
-            {
-                "url": "Annotation",
-                "name": "Annotation",
-                "category": "Linear Gauge",
-                "order": 0,
-                "uid": "00335",
-                "component": "LinearGauge",
-                "dir": "LinearGauge",
-                "parentId": "03"
-            },
-            {
-                "url": "Tooltip",
-                "name": "Tooltip",
-                "category": "Linear Gauge",
-                "order": 0,
-                "uid": "00336",
-                "component": "LinearGauge",
-                "dir": "LinearGauge",
-                "parentId": "03"
-            },
-            {
-                "url": "Styles",
-                "name": "Styles",
-                "category": "Linear Gauge",
-                "order": 0,
-                "uid": "00337",
-                "component": "LinearGauge",
-                "dir": "LinearGauge",
-                "parentId": "03"
-            }
-        ],
-        "order": 0,
-        "uid": "03"
-    },
-{
     "name": "Maps",
     "directory": "Maps",
     "category": "Data Visualization",
@@ -3126,12 +3194,12 @@ window.samplesList = [
       {
         "url": "Legend",
         "name": "Legend",
-        "type": "update",
         "category": "Features",
         "uid": "00118",
         "order": 1,
         "component": "Maps",
         "dir": "Maps",
+        "type": "update",
         "parentId": "01"
       },
        {
@@ -3142,8 +3210,8 @@ window.samplesList = [
            "order": 1,
            "component": "Maps",
            "dir": "Maps",
-           "parentId": "01",
-           "type": "new"
+           "type": "new",
+           "parentId": "01"
        },
       {
         "url": "Annotation",
@@ -3158,34 +3226,34 @@ window.samplesList = [
       {
           "url": "OSM",
           "name": "OpenStreetMap",
-          "type": "new",
           "category": "Map Providers",
           "order": 2,
           "uid": "00121",
           "component": "Maps",
           "dir": "Maps",
+          "type": "new",
           "parentId": "01"
       },
         {
             "url": "OSMWithNavigationLine",
             "name": "OSM With Navigation Line",
-            "type": "new",
             "category": "Map Providers",
             "order": 2,
             "uid": "00122",
             "component": "Maps",
             "dir": "Maps",
+            "type": "new",
             "parentId": "01"
         },
           {
               "url": "OSMWithSubLayer",
               "name": "OSM With SubLayer",
               "category": "Map Providers",
-              "type": "new",
               "order": 2,
               "uid": "00123",
               "component": "Maps",
               "dir": "Maps",
+              "type": "new",
               "parentId": "01"
           },
       {
@@ -3301,12 +3369,12 @@ window.samplesList = [
         {
             "url": "MapWithSlider",
             "name": "Map With Slider",
-            "type": "new",
             "category": "Use Cases",
             "order": 5,
             "uid": "001121",
             "component": "Maps",
             "dir": "Maps",
+            "type": "new",
             "parentId": "01"
         },
       {
@@ -3496,6 +3564,7 @@ window.samplesList = [
         "name": "Sparkline Charts",
         "directory": "Sparkline",
         "category": "Data Visualization",
+        "type": "update",
         "samples": [
             {
                 "url": "Default",
@@ -3545,6 +3614,7 @@ window.samplesList = [
                 "order": 0,
                 "component": "Sparkline",
                 "dir": "Sparkline",
+                "type": "update",
                 "parentId": "05"
             },
             {
@@ -3576,7 +3646,7 @@ window.samplesList = [
       "name": "TreeMap",
       "directory": "TreeMap",
       "category": "Data Visualization",
-	  "type" : "update",
+      "type": "update",
       "samples": [
           {
               "url": "Default",
@@ -3646,8 +3716,8 @@ window.samplesList = [
               "order": 0,
               "component": "TreeMap",
               "dir": "TreeMap",
-              "parentId": "05",
-			  "type": "update"
+              "type": "update",
+              "parentId": "05"
           },
 		  {
               "url": "ColorMapping",
@@ -3657,8 +3727,8 @@ window.samplesList = [
               "order": 0,
               "component": "TreeMap",
               "dir": "TreeMap",
-              "parentId": "05",
-              "type": "new"
+              "type": "new",
+              "parentId": "05"
           },
           {
               "url": "Selection",

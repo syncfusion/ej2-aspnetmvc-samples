@@ -125,6 +125,14 @@
                 </tr>
                 <tr style="height: 30px">
                     <td style="width: 50%">
+                        Enable RTL
+                    </td>
+                    <td style="width: 50%">
+                        <input type="checkbox" name="enableRTL" id="enableRTL">
+                    </td>
+                </tr>
+                <tr style="height: 30px">
+                    <td style="width: 50%">
                         Tooltip
                     </td>
                     <td style="width: 50%">
@@ -220,6 +228,10 @@
         var datalabelCheckBox = new ej.buttons.CheckBox({
             change: datalabelchange
         }, '#datalabel');
+        var enableRTLchange;
+        var enableRTLCheckBox = new ej.buttons.CheckBox({
+            change: enableRTLchange
+        }, '#enableRTL');
         var tooltipchange;
         var tooltipCheckBox = new ej.buttons.CheckBox({
             change: tooltipchange
@@ -301,6 +313,24 @@
                 }
                 else {
                     spark.dataLabelSettings.visible = [];
+                }
+                spark.refresh();
+            };
+            if ((drop.value === 'salespercentage' && percentage.enableRtl === true) ||
+                (drop.value === 'salescount' && sales.enableRtl === true)) {
+                enableRTLCheckBox.checked = true;
+            }
+            else {
+                enableRTLCheckBox.checked = false;
+            }
+            enableRTLCheckBox.change = enableRTLchange = function (e) {
+                var boolean = e.checked;
+                var spark = drop.value === 'salespercentage' ? percentage : sales;
+                if (boolean) {
+                    spark.enableRtl = true;
+                }
+                else {
+                    spark.enableRtl = false;
                 }
                 spark.refresh();
             };
@@ -461,6 +491,12 @@
             else {
                 spark.dataLabelSettings.visible = [];
             }
+            spark.refresh();
+        };
+        enableRTLCheckBox.change = enableRTLchange = function (e) {
+            var boolean = e.checked;
+            var spark = sampleValue.value === 'salespercentage' ? percentage : sales;
+            spark.enableRtl = boolean;
             spark.refresh();
         };
         tooltipCheckBox.change = tooltipchange = function (e) {

@@ -105,63 +105,63 @@
             var listid = e.item.dataset.uid;
             switch (listid) {
                 case '1':
-                    var ajax = new ej.base.Ajax('./../Content/splitter/aspnet-grid-ajax.html', 'GET', true);
+                    var ajax = new ej.base.Ajax(baseurl + 'Content/splitter/aspnet-grid-ajax.html', 'GET', true);
                     ajax.send().then();
                     ajax.onSuccess = function (data) {
                         document.getElementById('content').innerHTML = data;
                     };
                     break;
                 case '2':
-                    var ajax1 = new ej.base.Ajax('./../Content/splitter/aspnet-schedule-ajax.html', 'GET', true);
+                    var ajax1 = new ej.base.Ajax(baseurl + 'Content/splitter/aspnet-schedule-ajax.html', 'GET', true);
                     ajax1.send().then();
                     ajax1.onSuccess = function (data) {
                         document.getElementById('content').innerHTML = data;
                     };
                     break;
                 case '3':
-                    var ajax2 = new ej.base.Ajax('./../Content/splitter/aspnetmvc-grid-ajax.html', 'GET', true);
+                    var ajax2 = new ej.base.Ajax(baseurl + 'Content/splitter/aspnetmvc-grid-ajax.html', 'GET', true);
                     ajax2.send().then();
                     ajax2.onSuccess = function (data1) {
                         document.getElementById('content').innerHTML = data1;
                     };
                     break;
                 case '4':
-                    var ajax3 = new ej.base.Ajax('./../Content/splitter/aspnetmvc-schedule-ajax.html', 'GET', true);
+                    var ajax3 = new ej.base.Ajax(baseurl + 'Content/splitter/aspnetmvc-schedule-ajax.html', 'GET', true);
                     ajax3.send().then();
                     ajax3.onSuccess = function (data1) {
                         document.getElementById('content').innerHTML = data1;
                     };
                     break;
                 case '5':
-                    var ajax4 = new ej.base.Ajax('./../Content/splitter/javascript-grid-ajax.html', 'GET', true);
+                    var ajax4 = new ej.base.Ajax(baseurl + 'Content/splitter/javascript-grid-ajax.html', 'GET', true);
                     ajax4.send().then();
                     ajax4.onSuccess = function (data2) {
                         document.getElementById('content').innerHTML = data2;
                     };
                     break;
                 case '6':
-                    var ajax5 = new ej.base.Ajax('./../Content/splitter/javascript-schedule-ajax.html', 'GET', true);
+                    var ajax5 = new ej.base.Ajax(baseurl + 'Content/splitter/javascript-schedule-ajax.html', 'GET', true);
                     ajax5.send().then();
                     ajax5.onSuccess = function (data2) {
                         document.getElementById('content').innerHTML = data2;
                     };
                     break;
                 case '7':
-                    var ajax6 = new ej.base.Ajax('./../Content/splitter/aspnet-chart-ajax.html', 'GET', true);
+                    var ajax6 = new ej.base.Ajax(baseurl + 'Content/splitter/aspnet-chart-ajax.html', 'GET', true);
                     ajax6.send().then();
                     ajax6.onSuccess = function (data) {
                         document.getElementById('content').innerHTML = data;
                     };
                     break;
                 case '8':
-                    var ajax7 = new ej.base.Ajax('./../Content/splitter/aspnetmvc-chart-ajax.html', 'GET', true);
+                    var ajax7 = new ej.base.Ajax(baseurl + 'Content/splitter/aspnetmvc-chart-ajax.html', 'GET', true);
                     ajax7.send().then();
                     ajax7.onSuccess = function (data1) {
                         document.getElementById('content').innerHTML = data1;
                     };
                     break;
                 case '9':
-                    var ajax8 = new ej.base.Ajax('./../Content/splitter/javascript-chart-ajax.html', 'GET', true);
+                    var ajax8 = new ej.base.Ajax(baseurl + 'Content/splitter/javascript-chart-ajax.html', 'GET', true);
                     ajax8.send().then();
                     ajax8.onSuccess = function (data2) {
                         document.getElementById('content').innerHTML = data2;

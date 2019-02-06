@@ -66,7 +66,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                                         
                                                             </ol>
                                 
-                                                    <img alt = 'Logo' src = " + @Url.Content("/Content/images/RichTextEditor/RTEImage-Feather.png") +" />";
+                                                    <img alt = 'Logo' src = " + @Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png") +" />";
             ViewBag.items = new[] {"Bold", "Italic", "Underline", "StrikeThrough",
                 "FontName", "FontSize", "FontColor", "BackgroundColor",
                 "LowerCase", "UpperCase", "|",

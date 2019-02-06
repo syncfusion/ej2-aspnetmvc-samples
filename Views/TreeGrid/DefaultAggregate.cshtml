@@ -1,76 +1,105 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
 @{
-    ViewBag.Title = "Aggregate";
+    ViewBag.Title = "DefaultAggregate";
 }
-
 @section ControlsSection{
-    <div class="control-section">
-        @(Html.EJS().TreeGrid("Aggregate")
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
-            .Columns(col =>
-            {
-                col.Field("orderID").HeaderText("Order ID").Width(110).TextAlign(TextAlign.Right).Add();
-                col.Field("orderName").HeaderText("Order Name").Width(210).Add();
-                col.Field("orderDate").HeaderText("Order Date").Format("yMd").Width(210).Add();
-                col.Field("units").HeaderText("Units").TextAlign(TextAlign.Right).Width(190).Add();
-                col.Field("unitPrice").HeaderText("Unit Price").TextAlign(TextAlign.Right).Width(120).Add();
-            })
-           .Aggregates(agg =>
-           {
-               agg.Columns(new List<Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn>() {
+    <div class="col-lg-9 control-section">
+        <div class="control-section">
+            @(Html.EJS().TreeGrid("DefaultAggregate")
+                                                .DataSource((IEnumerable<object>)ViewBag.datasource)
+                                                .Columns(col =>
+                                                {
+                                                    col.Field("orderID").HeaderText("Order ID").Width(90).TextAlign(TextAlign.Right).Add();
+                                                    col.Field("orderName").HeaderText("Order Name").Width(190).Add();
+                                                    col.Field("orderDate").HeaderText("Order Date").Format("yMd").Width(140).Add();
+                                                    col.Field("units").HeaderText("Units").TextAlign(TextAlign.Right).Width(130).Add();
+                                                    col.Field("unitPrice").HeaderText("Unit Price").TextAlign(TextAlign.Right).Width(130).Add();
+                                                })
+                                               .Aggregates(agg =>
+                                               {
+                                                   agg.ShowChildSummary(true);
+                                                   agg.Columns(new List<Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn>() {
                     new Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn() {
                         Field = "units", ColumnName = "units", Type = "Min", FooterTemplate = "Minimum: ${Min}" },
                      new Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn() {
                        Field = "unitPrice", ColumnName = "unitPrice", Type = "Max", FooterTemplate = "Maximum: ${Max}" }
-               }).Add();
-           })
-           .ChildMapping("subTasks")
-           .TreeColumnIndex(1)
-           .Render()
-         )
+                                                   }).Add();
+                                               })
+                                               .Height(400)
+                                               .ChildMapping("subTasks")
+                                               .TreeColumnIndex(1)
+                                               .Render()
+            )
+        </div>
     </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tr>
+                <td style="width: 50%">
+                    <div>Show Child Summary</div>
+                </td>
+                <td style="width: 50%;padding-right: 10px;">
+                    <div>
+                        @Html.EJS().CheckBox("checked").Change("OnChange").Checked(true).Render()
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>function OnChange(args) {
+            if (args.checked) {
+                var treegrid = document.getElementById("DefaultAggregate").ej2_instances[0];
+                treegrid.aggregates[0].showChildSummary = true;
+                treegrid.refresh();
+            } else {
+                var treegrid = document.getElementById("DefaultAggregate").ej2_instances[0];
+                treegrid.aggregates[0].showChildSummary = false;
+                treegrid.refresh();
+            }
+        }</script>
 }
-
 @section Meta{
     <meta name="description" content="This demo explains how to display the summary values such as average, minimum, etc., for the columns in Essential JS2 TreeGrid control." />
 }
 
-
 @section ActionDescription{
     <div id="action-description">
-        <p>This sample demonstrates aggregate functionality of the TreeGrid. In this sample, the aggregate value for the columns “Total Units”, “Total Cost” and “Unit Weight” is displayed in column footer and provide an option to show child summary.</p>
+        <p>This sample demonstrates aggregate functionality of the TreeGrid. In this sample, the aggregate value for the columns "Units" and "Unit Price" is displayed in column footer and provide an option to show child summary.</p>
     </div>
 }
-
 @section Description{
-<div id="description">
-    <p>The TreeGrid supports aggregates which will be displayed at the footer and every hierarchy level.
-    The aggregate configurations can be provided by the <code>
-        aggregates</code> property.</p>
-    <p>The built-in aggregates are,</p>
-     <ul>
-        <li><code>Sum</code></li>     
-        <li><code>Average</code></li>     
-        <li><code>Min</code></li>     
-        <li><code>Max</code></li>     
-        <li><code>Count</code></li>     
-        <li><code>TrueCount</code></li>     
-        <li><code>FalseCount</code></li>     
-        <li><code>Custom</code> - Requires the <code>customAggregate</code> property to perform aggregation.
-        The custom aggregate value can be accessed inside template using the key <code>${custom}</code></li>     
-    </ul>    
-    <p>
-        In this demo, the <code>footerTemplate</code> property is used to display three different aggregates in the TreeGrid footer. 
+    <div id="description">
+        <p>
+            The TreeGrid supports aggregates which will be displayed at the footer and every hierarchy level.
+            The aggregate configurations can be provided by the <code>
+                aggregates
+            </code> property.
+        </p>
+        <p>The built-in aggregates are,</p>
         <ul>
-            <li>Showing minimum aggregate for "Units” column and the footerTemplate using its type name as <code>(${Min})</code>.</li>
-            <li>Showing maximum aggregate for "Unit Price" column and the footerTemplate using its type name as <code>(${Max})</code>.</li>
-      </ul>
-    </p>
-    <p>The template expression should be provided inside <code>${...}</code> the interpolation syntax.</p>
-    <p>
-        More information about aggregate can be found in this documentation section.
-    </p>
-</div>
-
+            <li><code>Sum</code></li>
+            <li><code>Average</code></li>
+            <li><code>Min</code></li>
+            <li><code>Max</code></li>
+            <li><code>Count</code></li>
+            <li><code>TrueCount</code></li>
+            <li><code>FalseCount</code></li>
+            <li>
+                <code>Custom</code> - Requires the <code>customAggregate</code> property to perform aggregation.
+                The custom aggregate value can be accessed inside template using the key <code>${custom}</code>
+            </li>
+        </ul>
+        <p>
+            In this demo, the <code>footerTemplate</code> property is used to display three different aggregates in the TreeGrid footer.
+            <ul>
+                <li>Showing minimum aggregate for "Units" column and the footerTemplate using its type name as <code>(${Min})</code>.</li>
+                <li>Showing maximum aggregate for "Unit Price" column and the footerTemplate using its type name as <code>(${Max})</code>.</li>
+            </ul>
+        </p>
+        <p>The template expression should be provided inside <code>${...}</code> the interpolation syntax.</p>
+        <p>
+            More information about aggregate can be found in this documentation section.
+        </p>
+    </div>
 }
