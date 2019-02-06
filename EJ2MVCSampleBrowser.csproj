@@ -54,6 +54,9 @@
     <Reference Include="Syncfusion.DocIO.Base, Version=16.4450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.16.4.0.52\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.DocToPdfConverter.Base, Version=16.4450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.DocToPDFConverter.AspNet.Mvc5.16.4.0.52\lib\net45\Syncfusion.DocToPdfConverter.Base.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.EJ2, Version=16.4500.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.EJ2.MVC5.16.4.0.52\lib\net45\Syncfusion.EJ2.dll</HintPath>
     </Reference>
@@ -75,9 +78,6 @@
     <Reference Include="Syncfusion.Licensing, Version=16.4450.0.52, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.Licensing.16.4.0.52\lib\net45\Syncfusion.Licensing.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.DocToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.16.3.0.17\lib\net45\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
-    </Reference>
     <Reference Include="Syncfusion.OfficeChart.Base, Version=16.4450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.16.4.0.52\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
     </Reference>
@@ -90,8 +90,8 @@
     <Reference Include="Syncfusion.Presentation.Base, Version=16.4450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.16.4.0.52\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.PresentationToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.16.3.0.17\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
+    <Reference Include="Syncfusion.PresentationToPdfConverter.Base, Version=16.4450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.16.4.0.52\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.WPF, Version=16.4450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.16.4.0.52\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
