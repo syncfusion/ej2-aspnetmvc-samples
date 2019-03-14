@@ -72,7 +72,7 @@
           display: block;
           visibility: hidden;
        }
-
+      /* custom code start */
       .inplace-control-section .control_wrapper {
             margin: auto;
             max-width: 400px;
@@ -90,6 +90,7 @@
         .inplace-control-section.pickers-layout .control_wrapper table td .control-label {
             margin-bottom: 0px;
         }
+        /* custom code end */
 </style>
 
 @section PreScripts {
@@ -163,8 +164,12 @@
 </p>
 }
 
+@*custom code start*@
+
 @section Meta{
 
     <meta name="description" content="This sample demonstrates the usage of picker controls such as Date, Time, DateTime, and DateRange in ASP.NET MVC platform." />
 
 }
+
+@*custom code end*@

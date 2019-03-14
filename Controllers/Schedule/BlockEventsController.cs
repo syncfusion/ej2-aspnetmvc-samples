@@ -1,10 +1,6 @@
-﻿using System;
+﻿using EJ2MVCSampleBrowser.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Syncfusion.EJ2.Schedule;
-using EJ2MVCSampleBrowser.Models;
 
 namespace EJ2MVCSampleBrowser.Controllers.Schedule
 {
@@ -25,6 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             ViewBag.Resources = new string[] { "Employee" };
             return View();
         }
+
         public class EmployeeData
         {
             public string text { set; get; }
@@ -33,5 +30,5 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             public string color { set; get; }
             public string designation { set; get; }
         }
-    }    
+    }
 }

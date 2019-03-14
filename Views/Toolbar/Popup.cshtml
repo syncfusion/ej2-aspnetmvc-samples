@@ -58,6 +58,7 @@
 
 }
 
+@*custom code start*@
 <style>
     @@font-face {
         font-family: 'Material_toolbar';
@@ -226,8 +227,73 @@
         height: 42px;
     }
 
+    .fabric .e-icon-day:before {            
+      content: '\e317';
+    }
+
+    .fabric .e-icon-month:before {
+      content: '\e93a';
+    }
+
+    .fabric .e-icon-week:before {
+      content: '\e31f';
+    }
+
+    .fabric .e-reccurence-icon:before,
+    .highcontrast .e-reccurence-icon:before {      
+      content: '\e309';
+      font-weight: 700;      
+    }
+
+    .fabric .e-print:before,
+    .highcontrast .e-print:before,
+    .bootstrap .e-print:before {      
+      content: '\e7df';
+    }
+
+    .highcontrast .e-icon-day:before {      
+      content: '\e317';
+    }
+
+    .highcontrast .e-icon-month:before {
+      content: '\e93a';
+    }
+
+    .highcontrast .e-icon-week:before {
+      content: "\e31f";
+    }
+
+    .bootstrap .e-icon-day:before {            
+      content: '\e318';
+    }
+
+    .bootstrap .e-icon-week:before {
+      content: '\e320';
+    }
+
+    .bootstrap .e-icon-month:before {
+      content: '\e960';
+    }
+
+    .bootstrap .e-reccurence-icon:before {      
+      content: '\e308';
+      font-weight: 700;      
+    }
+
+    .fabric .e-icon-year:before {
+       content: "\e317";
+    }
+
+    .material .e-icon-year:before {
+       content: "\e31b";
+    }
+
+     .highcontrast .e-icon-year:before {
+       content: "\e317";
+    }
+
     .e-icon-week:before {
-        content: '\e319';
+        content: '\e315';
     }
 
     .e-print:before {
@@ -243,7 +309,7 @@
     }
 
     .e-reccurence-icon:before {
-        content: '\e309';
+        content: '\e308';
         font-weight: 700;
     }
 
@@ -274,3 +340,4 @@
         font-size: 16px;
     }
 </style>
+ @*custom code end*@

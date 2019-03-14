@@ -33,7 +33,7 @@
     </div>
 </div>
 
-
+ @*custom code start*@
 <style>
     #control-container {
         padding: 0px !important;
@@ -45,6 +45,7 @@
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
         };
+ @*custom code end*@
         var valueChange = function () {
             var chart = document.getElementById('container').ej2_instances[0];
             var polarType = document.getElementById("dropdown").ej2_instances[0];
@@ -64,9 +65,11 @@
         }
 </script>
 }
+ @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control shows how to render wind rose using stacking column in polar and radar charts." />
 }
+ @*custom code end*@
 @section ActionDescription{
     <p>
     This sample demonstrates polar series with stacking column type. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.

@@ -102,11 +102,13 @@
         var regionColor = ['rgba(0, 189, 174, 0.3)', 'rgba(68, 114, 196, 0.3)',
             'rgba(161, 110, 229, 0.3)', 'rgba(121, 236, 228, 0.3)'];
         var load = function (args) {
+                         @*custom code start*@
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
             var theme = args.rangeNavigator.theme;
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
+                        @*custom code end*@
             args.rangeNavigator.series[0].dataSource = data;
             args.rangeNavigator.value = [4, 6];
             args.rangeNavigator.series[0].border = { width: 2, color: borderColor[themes.indexOf(theme)] };
@@ -140,9 +142,11 @@
         }
     </script>
 }
+             @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Range Navigator control shows how to visualize the logarithmic scale when data has values with both lower (e.g.: 10^-6) and higher (e.g.: 10^6) orders of magnitude." />
 }
+             @*custom code end*@
 @section ActionDescription{
     <p>
         This sample demonstrates rendering logarithmic axis in the range navigator.

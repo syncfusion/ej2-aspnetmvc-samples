@@ -25,7 +25,7 @@
        ).LegendSettings(lg => lg.Visible(false)).Title("Olympic Medal Counts - RIO").Load("load").Render()
         </div>
     </div>
-
+ @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
@@ -39,10 +39,13 @@
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
         }
     </script>
+     @*custom code end*@
 }
+ @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control shows how to render the column series." />
 }
+ @*custom code end*@
 @section ActionDescription{
     <p>
         This sample visualizes the Olympic medal count in Rio with default column series in the chart. 

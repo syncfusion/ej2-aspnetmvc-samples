@@ -12,6 +12,10 @@
 }
 
 <style>
+    .e-btn-hide {
+        display: none;
+    }
+    /* custom code start */
     #control-container {
         padding: 0px !important;
     }
@@ -19,11 +23,6 @@
     #confirmDialog {
         height: 135px;
     }
-
-    .e-btn-hide {
-        display: none;
-    }
-
     .dlgbtn {
         margin-right: 10px;
     }
@@ -43,6 +42,7 @@
             margin-bottom: 0px;
         }
     }
+    /* custom code end */
 </style>
 
 @section PreScripts {
@@ -81,6 +81,10 @@
     </div>
 }
 
+@*custom code start*@
+
 @section Meta{
-    <meta name="description" content="This sample shows how to enable drag-and-drop actions in the dialog component to help reposition the dialog efficiently." />
+    <meta name="description" content="This example shows how to enable drag-and-drop actions in the ASP.NET MVC dialog control to help reposition the dialog efficiently." />
 }
+
+@*custom code end*@

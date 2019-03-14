@@ -1,9 +1,14 @@
 @using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Grids;
 @using Syncfusion.EJ2.DropDowns;
+
+@*custom code start*@
+
 @{
     ViewBag.Title = "LockRow";
 }
+
+@*custom code end*@
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
@@ -90,7 +95,12 @@
         .material .disableRow .e-rowcell{
             color: rgba(0, 0, 0, .38);
         }
-        .fabric .disableRow .e-rowcell{
+    </style>
+
+    @*custom code start*@
+
+        <style>
+        .fabric .disableRow .e-rowcell {
             color: #c8c8c8;
         }
         .bootstrap .disableRow .e-rowcell{
@@ -101,7 +111,11 @@
         }
     </style>
 
+    @*custom code end*@
+
 }
+
+@*custom code start*@
 
 @section Meta{
     <meta name="description" content="This demo explains how to disable editing for specific rows dynamically in Syncfusion Essential JS2 TreeGrid control.." />
@@ -132,3 +146,5 @@
         </p>
     </div>
 }
+
+@*custom code end*@

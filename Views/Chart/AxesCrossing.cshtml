@@ -94,7 +94,7 @@
     </div>
 </div>
 
-
+@*custom code start*@
 <style>
     #control-container {
         padding: 0px !important;
@@ -107,7 +107,7 @@
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
 
         };       
-        
+ @*custom code end*@       
         document.getElementById('axisElements').onchange = function (e) {
             var chart = document.getElementById('container-vertical').ej2_instances[0];
             var axes = document.getElementById("selectAxis").ej2_instances[0];
@@ -149,9 +149,11 @@
         }
     </script>
 }
+@*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control demonstrates the axis crossing behavior in chart." />
 }
+@*custom code end*@
 @section ActionDescription{
     <p>
         This sample illustrates an interpolation of data points between linear and cubic by using spline and line series.

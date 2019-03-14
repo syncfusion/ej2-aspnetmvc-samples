@@ -1,11 +1,10 @@
 ﻿@using Syncfusion.EJ2
-@using EJ2MVCSampleBrowser.Models
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2019, 1, 10)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -39,9 +38,11 @@
         }
     </script>
 }
+@*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Scheduler control shows the way of manually scrolling to specific time on scheduler." />
 }
+@*custom code end*@
 @section ActionDescription{
     <div id="action-description">
         <p>

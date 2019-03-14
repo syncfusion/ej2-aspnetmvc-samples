@@ -89,12 +89,17 @@
         margin: 100px 20px;
         width: 100%;
     }
-
+    /* custom code start */
     .inplace-control-section .control_wrapper {
         width: 100%;
         max-width: 400px;
         margin: auto;
     }
+    .inplace-control-section .control_wrapper table td {
+        width: 200px;
+        height: 100px;
+    }
+    /* custom code end */
 
     .inplace-control-section .control_wrapper .control-center {
         text-align: center;
@@ -102,11 +107,6 @@
 
     .inplace-control-section .e-inplaceeditor {
         height: auto;
-    }
-
-    .inplace-control-section .control_wrapper table td {
-        width: 200px;
-        height: 100px;
     }
 
     .inplace-control-section.input-layout .control_wrapper table td .control-label {
@@ -229,8 +229,12 @@
 </p>
 }
 
+@*custom code start*@
+
 @section Meta{
 
     <meta name="description" content="This sample demonstrates the default behavior of the In-place Editor control, which works by editing the values in inline and popup in ASP.NET MVC platform." />
 
 }
+
+@*custom code end*@

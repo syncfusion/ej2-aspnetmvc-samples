@@ -13,14 +13,13 @@
 }
 
 <style>
-    #control-container {
-        padding: 0px !important;
-    }
-
     .e-btn-hide {
         display: none;
     }
-
+    /* custom code start */
+    #control-container {
+        padding: 0px !important;
+    }
     .dlgbtn {
         margin-right: 10px;
     }
@@ -40,6 +39,7 @@
             margin-bottom: 0px;
         }
     }
+    /* custom code end */
 </style>
 
 @section PreScripts {
@@ -93,6 +93,10 @@
     </div>
 }
 
+@*custom code start*@
+
 @section Meta{
-    <meta name="description" content="This sample demonstrates how to display multiple dialogs sequentially and how to open multiple dialogs simultaneously for both modal and modeless dialogs." />
+    <meta name="description" content="This example shows how to display multiple dialogs sequentially and open multiple dialogs simultaneously for both modal and modeless ASP.NET MVC dialogs." />
 }
+
+@*custom code end*@

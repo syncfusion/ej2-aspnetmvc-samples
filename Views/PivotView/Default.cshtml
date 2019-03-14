@@ -12,7 +12,7 @@
            .FormatSettings(formatsettings => { formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add(); })
            .Rows(rows => { rows.Name("Country").Add(); rows.Name("Products").Add(); })
            .Columns(columns => { columns.Name("Year").Add(); columns.Name("Quarter").Add(); })
-           .Values(values => { values.Name("Sold").Caption("Units Sold").Add(); values.Name("Amount").Caption("Sold Amount").Add(); })).ShowFieldList(true).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).Render()
+           .Values(values => { values.Name("Sold").Caption("Units Sold").Add(); values.Name("Amount").Caption("Sold Amount").Add(); })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).Render()
         </div>
     </div>
 

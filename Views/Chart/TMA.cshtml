@@ -5,7 +5,6 @@
         <div style="text-align:center">
             @Html.EJS().Chart("container-vertical").Series(series =>
        {
-
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).XName("x").YName("y").Animation(animation=>animation.Enable(false))
 .High("high").Low("low").Open("open").Close("close").Volume("volume").BearFillColor("#2ecd71").BullFillColor("#e74c3d").DataSource("dataSource").Name("Apple Inc").Width(2).Add();
 
@@ -21,7 +20,7 @@
         </div>
     </div>
 
-
+   @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
@@ -37,10 +36,13 @@
 
         };
     </script>
+       @*custom code end*@
 }
+   @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the triangular moving average indicator." />
 }
+   @*custom code end*@
 @section ActionDescription{
     <p>
     This sample illustrates a stock chart with candle series and a Triangle Moving Average indicator. Trackball shows the information about the stock and signal value of a day.

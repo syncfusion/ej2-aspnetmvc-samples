@@ -1,5 +1,4 @@
 ﻿@using Syncfusion.EJ2
-@using EJ2MVCSampleBrowser.Models
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
@@ -9,7 +8,7 @@
                 <div class="title-container">
                     <h1 class="title-text">Doctor's Appointments</h1>
                 </div>
-                @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CssClass("schedule-drag-drop").Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineMonth).Add(); }).CurrentView(View.TimelineDay).SelectedDate(new DateTime(2018, 7, 1)).StartHour("08:00").EndHour("18:00").Group(group => group.EnableCompactView(false).Resources(ViewBag.Resources)).Resources(res =>
+                @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CssClass("schedule-drag-drop").Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineMonth).Add(); }).CurrentView(View.TimelineDay).SelectedDate(new DateTime(2018, 7, 1)).WorkHours(new ScheduleWorkHours { Highlight = true, Start = "08:00", End = "18:00" }).Group(group => group.EnableCompactView(false).Resources(ViewBag.Resources)).Resources(res =>
       {
           res.DataSource(ViewBag.Departments).Field("DepartmentID").Title("Department").Name("Departments").TextField("text").IdField("id").ColorField("color").Add();
           res.DataSource(ViewBag.Consultants).Field("ConsultantID").Title("Consultant").Name("Consultants").TextField("text").IdField("id").ColorField("color").GroupIDField("groupId").AllowMultiple(false).Add();
@@ -25,6 +24,7 @@
     </div>
 
     <style>
+        /* custom code start*/
         .content-wrapper {
             display: -ms-flexbox;
             display: flex;
@@ -42,6 +42,14 @@
         .title-container {
             padding-bottom: 10px;
         }
+
+        .title-text {
+            font-size: 18px;
+            margin: 0px;
+            font-weight: bold;
+            text-align: center;
+        }
+        /* custom code end*/
 
         .treeview-external-drag #waiting {
             height: 100%;
@@ -162,13 +170,6 @@
             padding: 0 10px
         }
 
-        .title-text {
-            font-size: 18px;
-            margin: 0px;
-            font-weight: bold;
-            text-align: center;
-        }
-
         .e-schedule.schedule-drag-drop .e-resource-cells.e-child-node .specialist-category .specialist-image {
             width: 45px;
             height: 40px;
@@ -204,6 +205,7 @@
         }
 
         @@media (max-width: 550px) {
+            /* custom code start*/
             .content-wrapper {
                 display: block;
             }
@@ -211,6 +213,7 @@
             .schedule-container {
                 padding-bottom: 10px
             }
+            /* custom code end*/
 
             .treeview-external-drag.e-treeview,
             .e-bigger .treeview-external-drag.e-treeview {
@@ -322,7 +325,7 @@
                     var treeviewData = this.fields.dataSource;
                     if (event.target.classList.contains('e-work-cells')) {
                         var filteredData =
-                            treeviewData.filter(function (item) { return item.Id === parseInt(event.draggedNodeData.id, 10); });                        
+                            treeviewData.filter(function (item) { return item.Id === parseInt(event.draggedNodeData.id, 10); });
                         var cellData = scheduleObj.getCellDetails(event.target);
                         var resourceDetails = scheduleObj.getResourcesByIndex(cellData.groupIndex);
                         var eventData = {
@@ -343,9 +346,11 @@
         }
     </script>
 }
+@*custom code start*@
 @section Meta{
     <meta name="description" content="This example shows how to drag and drop the events from an external source into ASP.NET MVC scheduler." />
 }
+@*custom code end*@
 @section ActionDescription{
     <div id="action-description">
         <p>

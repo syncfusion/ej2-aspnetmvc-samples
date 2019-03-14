@@ -1,63 +1,49 @@
 ﻿@using Syncfusion.EJ2;
 @section ControlsSection{
-<script src="~/Scripts/theme-color.js"></script>
-    <div class="control-section">
-        <div style="text-align:center">
+	<script src="~/Scripts/theme-color.js"></script>
+	<div class="control-section">
+		<div style="text-align:center">
 
-       @Html.EJS().Chart("container").Series(series =>
-  {
-      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("y")
-      .CornerRadius(cr=>cr.BottomLeft(10).BottomRight(10).TopLeft(10).TopRight(10))
-      .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ViewBag.font)))
-      .DataSource(ViewBag.dataSource).Name("Tiger").Add();
+			@Html.EJS().Chart("container").Series(series =>
+	   {
+		   series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("y")
+		   .CornerRadius(cr=>cr.BottomLeft(10).BottomRight(10).TopLeft(10).TopRight(10))
+		   .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ViewBag.font)))
+		   .DataSource(ViewBag.dataSource).Name("Tiger").Add();
 
-  }).PrimaryXAxis(px => px.Interval(1).MajorGridLines(mg=>mg.Width(0))
-  .LabelStyle(ls=>ls.Color("#ffffff")).TickPosition(Syncfusion.EJ2.Charts.AxisPosition.Inside)
-  .LabelPosition(Syncfusion.EJ2.Charts.AxisPosition.Inside).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-       ).PrimaryYAxis(py => py.Minimum(0).Maximum(300).Interval(50)
-       .MajorGridLines(mg => mg.Width(0)).LabelStyle(ls=>ls.Color("transparent"))
-       .MajorTickLines(mg => mg.Width(0)).LineStyle(mg => mg.Width(0))
-       ).Title("Tiger Population - 2016").ChartArea(area => area.Border(br=>br.Color("transparent"))
-       ).Tooltip(tt => tt.Enable(true)).LegendSettings(lg => lg.Visible(false)
-       ).Load("load").PointRender("pointRender").TooltipRender("tooltipRender").Render()
-        </div>
-        <div style="float: right; margin-right: 10px;">
-            Source:
-            <a href="https://blogs.scientificamerican.com/extinction-countdown/tiger-populations-increasing/" target="_blank">blogs.scientificamerican.com</a>
-        </div>
-    </div>
+	   }).PrimaryXAxis(px => px.Interval(1).MajorGridLines(mg=>mg.Width(0))
+	   .LabelStyle(ls=>ls.Color("#ffffff")).TickPosition(Syncfusion.EJ2.Charts.AxisPosition.Inside)
+	   .LabelPosition(Syncfusion.EJ2.Charts.AxisPosition.Inside).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+			).PrimaryYAxis(py => py.Minimum(0).Maximum(300).Interval(50)
+			.MajorGridLines(mg => mg.Width(0)).LabelStyle(ls=>ls.Color("transparent"))
+			.MajorTickLines(mg => mg.Width(0)).LineStyle(mg => mg.Width(0))
+			).Title("Trade in Food Groups").ChartArea(area => area.Border(br=>br.Color("transparent"))
+			).Tooltip(tt => tt.Enable(false)).LegendSettings(lg => lg.Visible(false)
+			).Load("load").PointRender("pointRender").Loaded("loaded").Render()
+		</div>
+		<div style="float: right; margin-right: 10px;">
+			Source:
+			<a href="https://blogs.scientificamerican.com/extinction-countdown/tiger-populations-increasing/" target="_blank">blogs.scientificamerican.com</a>
+		</div>
+	</div>
+	@*custom code start*@
+	<style>
+		#control-container {
+			padding: 0px !important;
+		}
+	</style>
+	@*custom code end*@
+	<script>
 
-    <style>
-        #control-container {
-            padding: 0px !important;
-        }
-    </style>
-    <script>       
+             @*custom code start*@
         var load = function (args) {
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
         };
-        var tooltipRender = function (args) {
-            var tooltip = args.text;
-            if (tooltip.indexOf('BGD') > -1) {
-                tooltip = tooltip.replace('BGD', 'Bangladesh');
-            }
-            else if (tooltip.indexOf('BTN') > -1) {
-                tooltip = tooltip.replace('BTN', 'Bhutan');
-            }
-            else if (tooltip.indexOf('NPL') > -1) {
-                tooltip = tooltip.replace('NPL', 'Nepal');
-            }
-            else if (tooltip.indexOf('THA') > -1) {
-                tooltip = tooltip.replace('THA', 'Thailand');
-            }
-            else {
-                tooltip = tooltip.replace('MYS', 'Malaysia');
-            }
-            args.text = tooltip;
-        };
+                 @*custom code end*@
+        
         var pointRender = function (args) {
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -70,30 +56,72 @@
             else {
                 args.fill = bootstrapColors[args.point.index % 10];
             }
-        };
-    </script>
+		};
+		var count = 0;
+		var loaded = function (args) {
+			args.chart.loaded = null;
+			setInterval(
+				function () {
+					if (count === 0) {
+						args.chart.series[0].dataSource = [
+							{ x: 'Tea', y: 206, text: 'Bangaladesh' },
+							{ x: 'Misc', y: 123, text: 'Bhutn' },
+							{ x: 'Fish', y: 48, text: 'Nepal' },
+							{ x: 'Egg', y: 240, text: 'Thiland' },
+							{ x: 'Fruits', y: 170, text: 'Malaysia' }
+						];
+						args.chart.animate();
+						count++;
+					}
+					else if (count === 1) {
+						args.chart.series[0].dataSource = [
+							{ x: 'Tea', y: 86, text: 'Bangaladesh' },
+							{ x: 'Misc', y: 173, text: 'Bhutn' },
+							{ x: 'Fish', y: 188, text: 'Nepal' },
+							{ x: 'Egg', y: 109, text: 'Thiland' },
+							{ x: 'Fruits', y: 100, text: 'Malaysia' }
+						];
+						args.chart.animate();
+						count++;
+					}
+					else if (count === 2) {
+						args.chart.series[0].dataSource = [
+							{ x: 'Tea', y: 156, text: 'Bangaladesh' },
+							{ x: 'Misc', y: 33, text: 'Bhutn' },
+							{ x: 'Fish', y: 260, text: 'Nepal' },
+							{ x: 'Egg', y: 200, text: 'Thiland' },
+							{ x: 'Fruits', y: 30, text: 'Malaysia' }
+						];
+						args.chart.animate();
+						count = 0;
+					}
+				}, 2000);
+		}
+	</script>
 }
+@*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render the rounded column series." />
+	<meta name="description" content="This demo for Essential JS2 Chart control shows how to render the rounded column series." />
 }
+@*custom code end*@
 @section ActionDescription{
-    <p>
-    This sample illustrates a rounded column series. Data points values are showed by using data label.
-</p>
+	<p>
+		This sample illustrates a rounded column series. Data points values are showed by using data label.
+	</p>
 }
 @section Description{
-    <p>
-    In this example, you can see how to render and configure the column type charts with rounded corners. Column type charts are used for comparing
-    the frequency, count, total or average of data in different categories. You can use <code>border</code>,
-    <code>fill</code> properties to customize the vertical rect. <code>dataLabel</code> is used to represent individual
-    data and its value.
-</p>
-<p>
-    Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-</p>
-<br>
-<p>
-    More information on the column series can be found in this
-    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-</p>
+	<p>
+		In this example, you can see how to render and configure the column type charts with rounded corners. Column type charts are used for comparing
+		the frequency, count, total or average of data in different categories. You can use <code>border</code>,
+		<code>fill</code> properties to customize the vertical rect. <code>dataLabel</code> is used to represent individual
+		data and its value.
+	</p>
+	<p>
+		Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+	</p>
+	<br>
+	<p>
+		More information on the column series can be found in this
+		<a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+	</p>
 }

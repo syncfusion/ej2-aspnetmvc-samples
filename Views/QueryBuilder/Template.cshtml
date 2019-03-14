@@ -10,7 +10,7 @@
     col.Field("Description").Label("Description").Type("string").Add();
     col.Field("Date").Label("Date").Type("date").Add();
     col.Field("Amount").Label("Amount").Type("number").Template(new { create = "amountCreate", destroy = "amountDestroy", write = "amountWrite" }).Operators(ViewBag.amountOperator).Add();
-}).DataSource(ViewBag.dataSource).Rule(ViewBag.rule).MaxGroupCount(5).Width("100%").ConditionChanged("updateRule").FieldChanged("updateRule").ValueChanged("updateRule").OperatorChanged("updateRule").RuleDelete("updateRule").GroupDelete("updateRule").RuleInsert("updateRule").GroupInsert("updateRule").Render()
+}).DataSource(ViewBag.dataSource).Rule(ViewBag.rule).MaxGroupCount(5).Width("100%").Change("updateRule").Render()
     </div>
 
 <div class="col-lg-4 property-section">
@@ -35,6 +35,7 @@
     </table>
 </div>
 }
+
 @section Meta{
     <meta name="description" content="This sample demonstrates the default functionalities of the Query Builder component. Click the plus button to add group or rules." />
 }
@@ -126,8 +127,6 @@
             inputobj.value = args.values;
             inputobj.dataBind();
         }
-
-
     }
     function paymentCreate() {
         var elem = document.createElement('input');
@@ -258,7 +257,7 @@
     }
 
 </script>
-
+@*custom code start*@
 <style>
    .e-control-wrapper.e-slider-container.e-horizontal {
         height: 0;
@@ -288,3 +287,4 @@
 	  background-color: #000;
 	}
 </style>
+@*custom code end*@

@@ -2,6 +2,7 @@
 <script src="~/Scripts/StockChartData/indicator-data.js"></script>
 @section ControlsSection{
     <style>
+
         #container {
             display: block;
         }
@@ -13,11 +14,11 @@
     <div class="control-section">
         <div>
             @(Html.EJS().StockChart("container").Load("load").EnableSelector(false)
-                                      .Series(sr =>
-                                      {
-                                          sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).DataSource("data").XName("date").Add();
-                                      })
-                                      .Render())
+                                              .Series(sr =>
+                                              {
+                                                  sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).DataSource("data").XName("date").Add();
+                                              })
+                                              .Render())
         </div>
     </div>
     <script>

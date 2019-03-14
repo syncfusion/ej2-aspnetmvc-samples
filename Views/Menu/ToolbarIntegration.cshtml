@@ -3,6 +3,7 @@
 @section Meta{
     <meta name="description" content="This example demonstrates the real use case of the Syncfusion ASP.NET MVC Menu in web application. It is integrated with toolbar control." />
 }
+
 @section ControlsSection{
     <div class="control-section">
         <div class="toolbar-menu-control">
@@ -10,6 +11,7 @@
         </div>
     </div>
 }
+
 @section ActionDescription{
     <div id="action-description">
         <p>This sample demonstrates the real use case of <code>menu</code> component in web application.</p>
@@ -28,6 +30,7 @@
         </p>
     </div>
 }
+
 <script>
     //Menu items definition
     var menuItems = [
@@ -208,9 +211,16 @@
     .fabric .toolbar-menu-control .e-toolbar-items .e-dropdown-btn {
         background-color: transparent;
     }
+
+</style>
+@*custom code start*@
+<style>
+
     @@media only screen and (max-width: 1300px) {
         .toolbar-menu-control {
             width: auto;
         }
     }
+
 </style>
+@*custom code end*@

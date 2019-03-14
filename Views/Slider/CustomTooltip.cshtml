@@ -8,13 +8,13 @@
                 <label class="labeltext userselect">
                     <span class="label-text">Background color</span>
                 </label>
-                @Html.EJS().Slider("timeObj").Min(1373693400000).Max(1373736600000).Enabled(true).Created("createdTimeHandler").TooltipChange("tooltipChangeHandler").RenderingTicks("renderingTicksHandler").Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before, CssClass = "e-tooltip-cutomization"}).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 3 * 3600000, SmallStep = 3600000, ShowSmallTicks = true }).Type(SliderType.Range).Value(ViewBag.timeValue).Render()
+                @Html.EJS().Slider("timeObj").Min(1373693400000).Max(1373736600000).Enabled(true).TooltipChange("tooltipChangeHandler").RenderingTicks("renderingTicksHandler").Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before, CssClass = "e-tooltip-cutomization"}).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 3 * 3600000, SmallStep = 3600000, ShowSmallTicks = true }).Type(SliderType.Range).Value(ViewBag.timeValue).Render()
             </div>
             <div class="sliderwrap">
                 <label class="labeltext userselect">
                     <span class="label-text">Color and text</span>
                 </label>
-                @Html.EJS().Slider("out").Min(1373693400000).Max(1373736600000).Enabled(true).TooltipChange("tooltipChangeHandler").RenderingTicks("renderingTicksHandler").Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before, CssClass = "e-tooltip-cutomization" }).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 3 * 3600000, SmallStep = 3600000, ShowSmallTicks = true }).Type(SliderType.MinRange).Value(1373715000000).Render()
+                @Html.EJS().Slider("out").Min(1373693400000).Max(1373736600000).Enabled(true).Created("createdTimeHandler").TooltipChange("tooltipChangeHandler").RenderingTicks("renderingTicksHandler").Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before, CssClass = "e-tooltip-cutomization" }).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 3 * 3600000, SmallStep = 3600000, ShowSmallTicks = true }).Type(SliderType.MinRange).Value(1373715000000).Render()
             </div>
         </div>
     </div>
@@ -36,8 +36,8 @@
         margin-top: 40px;
     }
 
-    #timeObj .e-material-handle,
-    #out .e-material-handle,
+      #timeObj .e-handle,
+    #out .e-handle,
     .bootstrap #out .e-handle,
     .bootstrap #timeObj .e-handle,
     .fabric #out .e-handle,
@@ -47,6 +47,10 @@
         background-color: #ffd939;
         border-color: #ffd939;
         z-index: 1;
+    }
+
+    .e-bigger .content-wrapper {
+        width: 80%;
     }
 
     .sliderwrap label {
@@ -74,16 +78,15 @@
         color: #333;
     }
 
-    .e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range .e-arrow-tip-inner {
+    .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-inner{
         color: #ffd939;
     }
 
-    .e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range.e-slider-horizontal-before .e-arrow-tip-outer {
+    .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-outer {
         border-top-color: #ffd939;
-
     }
 
-    .e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range.e-slider-horizontal-after .e-arrow-tip-outer {
+    .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup .e-arrow-tip-outer {
         border-bottom-color: #ffd939;
     }
 
@@ -92,9 +95,9 @@
         background-color: #0375be;
         z-index: unset;
     }
-
-    .e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-range,
-    .e-slider-tooltip.e-tooltip-wrap.e-popup {
+    .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-default.e-slider-horizontal-after,
+    .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup.e-material-default.e-slider-horizontal-before,
+    .e-tooltip-cutomization.e-slider-tooltip.e-tooltip-wrap.e-popup {
         background-color: #ffd939;
         border-color: #ffd939;
     }
@@ -146,9 +149,9 @@
         }
 
         function createdTimeHandler() {
-            let timeObj = document.getElementById('timeObj').ej2_instances[0];
-            timeObj.keyUp({ keyCode: 9, target: timeObj.secondHandle });
-            timeObj.secondHandle.focus();
+            let outbj = document.getElementById('out').ej2_instances[0];
+            outbj.keyUp({ keyCode: 9, target: outbj.firstHandle });
+            outbj.firstHandle.focus();
             if(document.getElementById('right-pane')) {
             document.getElementById('right-pane').addEventListener('scroll', onScroll);
             }
@@ -158,8 +161,8 @@
         function onScroll() {
             let timeObj = document.getElementById('timeObj');
             let outObj = document.getElementById('out');
-            timeObj.ej2_instances[0].refreshTooltip();
-            outObj.ej2_instances[0].refreshTooltip();
+            timeObj.ej2_instances[0].refreshTooltip(timeObj.ej2_instances[0].tooltipTarget);
+            outObj.ej2_instances[0].refreshTooltip(outObj.ej2_instances[0].tooltipTarget);
         }
 
     </script>

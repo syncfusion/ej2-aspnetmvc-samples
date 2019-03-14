@@ -7,6 +7,7 @@
         </div>
     </div>
 }
+
 @section Meta{
     <meta name="description" content="This example demonstrates the Syncfusion ASP.NET MVC ContextMenu items with icons, text and separator." />
 }
@@ -78,37 +79,6 @@
         font-weight: normal;
         line-height: 1;
         text-transform: none;
-    }
-
-    .contextmenu-control {
-        margin: 5% 25%;
-        width: auto;
-        -webkit-touch-callout: none;
-        /* iOS Safari */
-        -webkit-user-select: none;
-        /* Safari */
-    }
-
-    #contextmenutarget {
-        border: 1px dashed;
-        height: 250px;
-        padding: 10px;
-        position: relative;
-        text-align: center;
-        color: gray;
-        line-height: 17;
-        font-size: 14px;
-    }
-
-    @@media only screen and (max-width: 700px) {
-        .contextmenu-control {
-            margin: 5% 10%;
-            width: auto;
-        }
-        #contextmenutarget {
-            line-height: 19;
-            font-size: 12px;
-        }
     }
 
     #listview .e-list-icon {
@@ -220,6 +190,42 @@
         width: 186px;
     }
 </style>
+@*custom code start*@
+<style>
+
+    .contextmenu-control {
+        margin: 5% 25%;
+        width: auto;
+        -webkit-touch-callout: none;
+        /* iOS Safari */
+        -webkit-user-select: none;
+        /* Safari */
+    }
+
+    #contextmenutarget {
+        border: 1px dashed;
+        height: 250px;
+        padding: 10px;
+        position: relative;
+        text-align: center;
+        color: gray;
+        line-height: 17;
+        font-size: 14px;
+    }
+
+    @@media only screen and (max-width: 700px) {
+        .contextmenu-control {
+            margin: 5% 10%;
+            width: auto;
+        }
+        #contextmenutarget {
+            line-height: 19;
+            font-size: 12px;
+        }
+    }
+
+</style>
+
 <script>
     function beforeItemRender(args) {
         if (args.item.text === 'Link') {
@@ -227,3 +233,4 @@
         }
     }
 </script>
+@*custom code end*@

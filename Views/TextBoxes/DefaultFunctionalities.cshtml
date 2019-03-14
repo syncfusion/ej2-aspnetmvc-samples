@@ -164,6 +164,7 @@
         }
     </script>
 }
+    @*custom code start*@
 <style>
     .e-input-picture:before {
         content: '\e335';
@@ -175,6 +176,23 @@
         font-family: e-icons;
         font-size: 13px;
     }
+
+    .fabric .e-input-calendar:before {
+        content: '\e93a';
+    }
+
+    .bootstrap .e-input-calendar:before {
+        content: '\e960';
+    }
+
+    .bootstrap4 .e-input-calendar:before {
+        content: '\e7be';
+    }
+
+    .highcontrast .e-input-calendar:before {
+        content: '\e93a';
+    }
+
 
     .content-wrapper {
         width: 90%;
@@ -202,6 +220,7 @@
         vertical-align: top;
     }
 </style>
+    @*custom code end*@
 
 @section ActionDescription{
     <div id="action-description">
@@ -320,5 +339,5 @@
 }
 
 @section Meta{
-    <meta name="description" content="The example demonstrates key features of text box such as a floating label, input group, placeholders, validation states, sizing, types, RTL, and more." />
+    <meta name="description" content="The example describes key features of ASP.NET MVC text box such as a floating label, input group, placeholder, validation states, sizing, types, and more." />
 }

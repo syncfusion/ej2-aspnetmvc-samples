@@ -56,31 +56,26 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             return bookmarks;
         }
 
-        //public PdfBookmark AddSection(PdfBookmark bookmark, PdfPage page, string title, PointF point, bool isSubSection)
-        //{
-        //    PdfGraphics graphics = page.Graphics;
-        //    //Add bookmark in PDF document
-        //    PdfBookmark bookmarks = bookmark.Add(title);
-
-        //    //Draw the content in the PDF page
-        //    graphics.DrawString(title, font, brush, new PointF(point.X, point.Y));
-
-        //    //Adding bookmark with named destination
-        //    PdfNamedDestination namedDestination = new PdfNamedDestination(title);
-        //    namedDestination.Destination = new PdfDestination(page, new PointF(point.X, point.Y));
-        //    if (isSubSection == true)
-        //    {
-        //        namedDestination.Destination.Zoom = 2f;
-        //    }
-        //    else
-        //    {
-        //        namedDestination.Destination.Zoom = 1f;
-        //    }
-        //    document.NamedDestinationCollection.Add(namedDestination);
-        //    bookmarks.NamedDestination = namedDestination;
-
-        //    return bookmarks;
-        //}
+         public PdfBookmark AddSection(PdfBookmark bookmark, PdfPage page, string title, PointF point, bool isnamaedDestination)
+        {
+            PdfBookmark bookMarks = bookmark.Add(title);
+            PdfGraphics graphics = page.Graphics;
+            graphics.DrawString(title, font, brush, new PointF(point.X, point.Y));
+            if (isnamaedDestination == true)
+            {
+                PdfNamedDestination namedDestination = new PdfNamedDestination(title);
+                namedDestination.Destination = new PdfDestination(page, new PointF(point.X, point.Y));
+                namedDestination.Destination.Zoom = 1f;
+                document.NamedDestinationCollection.Add(namedDestination);
+                bookMarks.NamedDestination = namedDestination;
+            }
+            else
+            {
+                bookMarks.Destination = new PdfDestination(page, new PointF(point.X, point.Y));
+                bookMarks.Destination.Zoom = 1f;
+            }
+            return bookMarks;
+        }
         #endregion
 
         [AcceptVerbs(HttpVerbs.Post)]

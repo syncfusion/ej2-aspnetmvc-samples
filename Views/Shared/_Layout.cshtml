@@ -1,4 +1,4 @@
-﻿@using EJ2MVCSampleBrowser.Helpers;
+@using EJ2MVCSampleBrowser.Helpers;
 @using Syncfusion.EJ2;
 <!DOCTYPE html>
 <html>
@@ -77,7 +77,7 @@
                 <div id="controlTree" class='e-view'></div>
                 <div id="controlSamples">
                     <div id="sb-left-back" class="back" role="button" tabindex="0">
-                        <div class="e-icons back-icon"></div>
+                        <div class="sb-icons sb-icon-Back"></div>
                         <div class='control-name'>All Controls</div>
                     </div>
                     <div id="controlList" class='e-view sb-control-list-top'></div>
@@ -150,7 +150,7 @@
                 <div class="sb-header-item sb-table-cell  sb-header-settings sb-icons"></div>
                 <div class="sb-header-splitter sb-download-splitter"></div>
                 <div class='sb-header-item sb-table-cell sb-download-wrapper'>
-                    <a href='https://www.syncfusion.com/downloads/essential-js2' target="_blank">
+                    <a href='https://www.syncfusion.com/downloads/aspnetmvc-js2' target="_blank">
                         <button id='download-now' class='sb-download-btn'>
                             <span class='sb-download-text'>Download Now</span>
                         </button>
@@ -196,6 +196,10 @@
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Bootstrap</span>
                     </li>
+                    @*<li class="e-list" id="bootstrap4" role="listitem">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Bootstrap v4</span>
+                    </li>*@
                     <li class="e-list" id="highcontrast">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">High Contrast</span>
@@ -219,6 +223,7 @@
                                 <option value="material">Material</option>
                                 <option value="fabric">Fabric</option>
                                 <option value="bootstrap">Bootstrap</option>
+                                @*<option value="bootstrap4">Bootstrap v4</option>*@
                                 <option value="highcontrast">High Contrast</option>
                             </select>
                         </div>

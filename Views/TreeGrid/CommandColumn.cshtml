@@ -1,8 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
 @{
     ViewBag.Title = "InlineEditing";
 }
+
+@*custom code end*@
 
 @section ControlsSection{
     <div class="control-section">
@@ -28,7 +33,6 @@
                 edit.AllowEditing(true);
                 edit.Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row);
             })
-            .Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })
             .Columns(col =>
             {
                 col.Field("TaskId").HeaderText("Task ID").IsPrimaryKey(true).Width(80)
@@ -56,6 +60,8 @@
            .TreeColumnIndex(1).Render());
     </div>
 }
+
+@*custom code start*@
 
 @section Meta{
     <meta name="description" content="This demo explains how to include CRUD action buttons as one of the columns in Essential JS2 TreeGrid control." />
@@ -90,3 +96,5 @@
         </p>
     </div>
 }
+
+@*custom code end*@

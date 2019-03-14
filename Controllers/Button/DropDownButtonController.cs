@@ -8,7 +8,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Button
 {
     public partial class ButtonController : Controller
     {
-        public ActionResult DropDownButton()
+        public ActionResult DropdownButton()
         {
             List<object> items = new List<object>();
             items.Add(new

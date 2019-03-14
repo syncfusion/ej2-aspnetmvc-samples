@@ -1,9 +1,5 @@
-﻿using EJ2MVCSampleBrowser.Controllers.Heatmap;
-using Syncfusion.EJ2.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EJ2MVCSampleBrowser.Controllers.Schedule
@@ -18,6 +14,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             ViewBag.Resource = resources;
             return View();
         }
+
+        //custom code start
         private List<ResourceData> GenerateResourceData(int start, int end)
         {
             List<ResourceData> resources = new List<ResourceData>(300);
@@ -37,6 +35,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             }
             return resources;
         }
+
         private List<EventData> generateStaticEvents(DateTime date, int v1, int v2)
         {
             List<EventData> data = new List<EventData>(3600);
@@ -71,8 +70,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             }
             return data;
         }
+        //custom code end
     }
-    class EventData
+
+    //custom code start
+    internal class EventData
     {
         public int Id { get; set; }
         public string Subject { get; set; }
@@ -82,11 +84,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
         public int ResourceId { get; set; }
     }
 
-    class ResourceData
+    internal class ResourceData
     {
         public int Id { get; set; }
         public string Text { get; set; }
         public string Color { get; set; }
     }
+    //custom code end
 }
-

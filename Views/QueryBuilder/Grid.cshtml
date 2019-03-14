@@ -10,7 +10,7 @@
        col.Field("SerialNo").Label("Serial No").Type("string").Add();
        col.Field("InvoiceNo").Label("Invoice No").Type("string").Add();
        col.Field("Status").Label("Status").Type("string").Add();
-   }).DataSource(ViewBag.dataSource).Rule(ViewBag.rule).MaxGroupCount(5).ConditionChanged("updateRule").FieldChanged("updateRule").ValueChanged("updateRule").OperatorChanged("updateRule").RuleDelete("updateRule").GroupDelete("updateRule").RuleInsert("updateRule").GroupInsert("updateRule").Render()
+   }).DataSource(ViewBag.dataSource).Rule(ViewBag.rule).MaxGroupCount(5).Change("updateRule").Render()
     </div>
     <div class="col-lg-12 control-section">
         <div class="content-wrapper">
@@ -26,6 +26,7 @@
         </div>
     </div>
 }
+
 @section Meta{
     <meta name="description" content="This sample demonstrates the integration of Grid component to showcase the data population based on the created filters using Query Builder component." />
 }
@@ -79,6 +80,7 @@
             grid.refresh();
     }
 </script>
+@*custom code start*@
 <style>
     #grid {
         margin: 0 auto;
@@ -88,3 +90,4 @@
         margin: 4% auto;
     }
 </style>
+@*custom code end*@

@@ -43,7 +43,7 @@
                 <!-- normal state element declaration -->
                 <div id="close" class="e-icons" (click)="closeClick()"></div>
                 <div class="content-area">
-                    <!--List view element declaration-->
+                    <!--ListView element declaration-->
                     @Html.EJS().ListView("menulist").Enable(true).Select("onSelect").Fields(new ListViewFieldSettings { Tooltip = "text" }).DataSource(ViewBag.dataSource).Render()
                 </div>
                 <!-- end of normal state element declaration -->
@@ -89,7 +89,7 @@
         line-height: 300px;
         padding: 15px;
     }
-
+    /* custom code start */
     @@media(max-width:550px) {
         #head .text {
             display: none;
@@ -110,8 +110,9 @@
 
     .col-lg-12.col-sm-12.col-md-12,
     .control-section {
-        padding: 0px;
+        padding: 0;
     }
+    /* custom code end */
     /* end of main content area styles */
     /* Header area styles */
 
@@ -121,19 +122,19 @@
         width: 100%;
         height: 50px;
         color: #fff;
-        padding: 0 30px;
+        padding: 0 15px;
         position: relative;
     }
-
+    /* custom code start */
     body {
-        margin: 0px;
+        margin: 0;
     }
-
+    /* custom code end */
     #hamburger.menu {
         font-size: 25px;
         cursor: pointer;
         float: left;
-        line-height: 50px;
+        line-height: 55px;
         position: absolute;
     }
 
@@ -159,11 +160,11 @@
     }
     /* end of header area styles */
     /* sidebar styles */
-
+    /* custom code start */
     .sb-content-tab #wrapper {
         display: none;
     }
-
+    /* custom code end */
     #sidebar-menu {
         background: #f5f5f5;
         padding: 20px;

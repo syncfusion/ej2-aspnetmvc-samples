@@ -106,7 +106,7 @@
         var slider = [document.getElementById("slider01").ej2_instances[0], document.getElementById("slider02").ej2_instances[0], document.getElementById("default03").ej2_instances[0]];
         slider.forEach(function (slider) {
             // Refreshing each slider tooltip object position
-            slider.refreshTooltip();
+            slider.refreshTooltip(slider.tooltipTarget);
         });
     }
     </script>

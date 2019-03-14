@@ -2,6 +2,7 @@
 <script src="~/Scripts/StockChartData/aapl.js"></script>
 @section ControlsSection{
     <style>
+
         #container {
             display: block;
         }
@@ -13,14 +14,15 @@
     <div class="control-section">
         <div>
             @(Html.EJS().StockChart("container").Load("load").EnablePeriodSelector(false)
-                                                                      .Series(sr =>
-                                                                      {
-                                                                          sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("open").Fill("url(#gradient-chart)").Add();
-                                                                      })
-                                                                      .Render())
+                                                                              .Series(sr =>
+                                                                              {
+                                                                                  sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("open").Fill("url(#gradient-chart)").Add();
+                                                                              })
+                                                                              .Render())
         </div>
     </div>
     <style>
+
         #gradient-chart stop {
             stop-color: #BDEDE9;
         }
@@ -45,8 +47,7 @@
             </linearGradient>
         </defs>
     </svg>
-    <script>
-        var data = window.aapl;
+    <script>var data = window.aapl;
         var load = function (args) {
             args.stockChart.chartArea = { border: { width: 0 } };
             args.stockChart.border = { width: 1 };
@@ -65,8 +66,7 @@
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
-        }
-    </script>
+        }</script>
 }
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Stock Chart control shows how to render the Stock Chart without Period Selector." />

@@ -1,8 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
 @{
     ViewBag.Title = "InlineEditing";
 }
+
+@*custom code end*@
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
@@ -19,10 +24,9 @@
                 edit.AllowAdding(true);
                 edit.AllowDeleting(true);
                 edit.AllowEditing(true);
-                edit.Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row);
                 edit.NewRowPosition(Syncfusion.EJ2.TreeGrid.RowPosition.Below);
             })
-            .Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })
+            .Toolbar(new List<string>() { "Add", "Delete", "Update", "Cancel" })
             .Columns(col =>
             {
                 col.Field("TaskId").HeaderText("Task ID").IsPrimaryKey(true).Width(90)
@@ -45,14 +49,14 @@
            .TreeColumnIndex(1).Render());
         </div>
     </div>
-    <div class="col-lg-3 property-section">
+    <div class="col-lg-2 property-section">
         <table id="property" title="Properties" style="width: 100%">
             <tr style="height: 50px">
                 <td style="width: 30%">
                     <div>Edit Mode</div>
                 </td>
-                <td style="width: 70%%;padding-right: 10px">
-                    @Html.EJS().DropDownList("EditMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Row").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onChange").Render()
+                <td style="width: 50%;padding-right: 10px;padding-left: 10px;">
+                    @Html.EJS().DropDownList("EditMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Width("120").Value("Cell").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onChange").Render()
                 </td>
             </tr>
         </table>
@@ -65,6 +69,8 @@
         }
     </script>
 }
+
+@*custom code start*@
 
 @section Meta{
     <meta name="description" content="This example shows how to add and edit row or cell inline on the Essential JS2 TreeGrid control." />
@@ -103,3 +109,5 @@
         </p>
     </div>
 }
+
+@*custom code end*@

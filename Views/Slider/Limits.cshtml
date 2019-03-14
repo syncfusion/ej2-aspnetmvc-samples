@@ -118,7 +118,7 @@
         function onScroll() {
             var slider = [minrangeObj, rangeObj];
             slider.forEach((slider) => {
-                slider.refreshTooltip();
+                slider.refreshTooltip(slider.tooltipTarget);
             });
         }
 

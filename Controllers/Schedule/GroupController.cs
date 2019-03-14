@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using Syncfusion.EJ2.Schedule;
-using EJ2MVCSampleBrowser.Models;
 
 namespace EJ2MVCSampleBrowser.Controllers.Schedule
 {
@@ -12,7 +7,6 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult Group()
         {
-
             List<AirlineRes> airlines = new List<AirlineRes>();
             airlines.Add(new AirlineRes { AirlineName = "Airways 1", AirlineId = 1, AirlineColor = "#EA7A57" });
             airlines.Add(new AirlineRes { AirlineName = "Airways 2", AirlineId = 2, AirlineColor = "#357cd2" });
@@ -24,6 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             return View();
         }
     }
+
     public class AirlineRes
     {
         public string AirlineName { set; get; }

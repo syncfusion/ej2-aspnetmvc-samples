@@ -173,6 +173,17 @@
     content: '\e91b';
 }
 
+.sb-icon-Back:before {
+    content: '\e962';
+    font-size: 17px;
+}
+
+.sb-icons.sb-icon-Back {
+    vertical-align: middle;
+    display: table-cell;
+    width: 17px;
+}
+
 .sb-icons-plnkr:before {
     content: '\e911';
 }
@@ -823,6 +834,7 @@
     font-size: 18px;
     margin: 0px;
     font-weight: bold;
+    font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
 }
 
 .sb-left-pane {

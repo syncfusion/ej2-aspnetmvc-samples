@@ -69,7 +69,7 @@
         var slider = [document.getElementById("minrange").ej2_instances[0]];
         slider.forEach(function (slider) {
             // Refreshing each slider tooltip object position
-            slider.refreshTooltip();
+            slider.refreshTooltip(slider.tooltipTarget);
         });
     }
 

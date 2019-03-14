@@ -3,7 +3,7 @@
     <div class="control-section">
         @Html.EJS().LinearGauge("tooltipContainer").Width("80%").Resized("gaugeResized").Loaded("onGaugeLoaded").TooltipRender("onTooltipRendering").AxisLabelRender("onAxisLabelRendering").Load("onGaugeLoad").Container(new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer {
        Width = 140, Border = new Syncfusion.EJ2.LinearGauge.LinearGaugeBorder { Width = 2, Color = "#a6a6a6" }
-   }).Tooltip(new Syncfusion.EJ2.LinearGauge.LinearGaugeTooltipSettings { Enable = true, Fill= "#fffff", TextStyle=new Syncfusion.EJ2.LinearGauge.LinearGaugeFont { Color= "#fffff", Opacity=1 } }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+   }).Tooltip(new Syncfusion.EJ2.LinearGauge.LinearGaugeTooltipSettings { Enable = true }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
        new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
        {
            Maximum = 10,

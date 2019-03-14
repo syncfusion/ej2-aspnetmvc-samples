@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
                 new { id = "None", mode = "None" }
             };
             ViewBag.dropdata = dropData;
-            List<Object> typedropData = new List<object>() {
+			List<Object> typedropData = new List<object>() {
 				new { id = "Menu", type = "Menu" },
                 new { id = "Excel", type = "Excel" }
             };

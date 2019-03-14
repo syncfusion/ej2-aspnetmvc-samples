@@ -20,7 +20,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
-                            @Html.EJS().DatePicker("date").Placeholder("Journey Date").Width("100%").Min("ViewBag.min").Max("ViewBag.max").Value("ViewBag.value").Render()
+                            @Html.EJS().DatePicker("date").Placeholder("Journey Date").Width("100%").Min(ViewBag.min).Max(ViewBag.max).Value(ViewBag.value).Render()
                         </div>
                         <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
                             @Html.EJS().DropDownList("quota").Placeholder("Ticket type").DataSource(
@@ -423,11 +423,13 @@
         padding-top: 10px;
     }
 
+@*custom code start*@
     @@media (max-width: 450px) {
         .e-sample-resize-container {
             height: 450px;
         }
-
+ @*custom code end*@
+ 
         .responsive-align {
             width: 75%;
             margin: 0 auto;

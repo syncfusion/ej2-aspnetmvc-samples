@@ -50,12 +50,13 @@
         </div>
     </div>
 
-
+         @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
     </style>
+             @*custom code end*@
         <script>
             var dataValues = [
          { x: 'Asia', car: 120, trucks: 90, bike: 180, cycle: 90 },
@@ -65,11 +66,13 @@
          { x: 'Mexico', car: 40, trucks: 50, bike: 80, cycle: 50 },
          { x: 'US', car: 140, trucks: 90, bike: 75, cycle: 70 }
             ];
+                     @*custom code start*@
             var load = function (args) {
                 var selectedTheme = location.hash.split('/')[1];
                 selectedTheme = selectedTheme ? selectedTheme : 'Material';
                 args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
             }
+                     @*custom code end*@
             document.getElementById('decending').onchange = function () {
                 var sortMode = document.getElementById('sortmode').ej2_instances[0];
                 sortDataSource(sortMode.value + '');
@@ -106,9 +109,11 @@
             }
         </script>
     }
+             @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control shows how to sort the series data in chart." />
 }
+         @*custom code end*@
 @section ActionDescription{
     <p>
     This sample visualizes sales for vehicle range for different zone with default stacked column series in chart. Legend in

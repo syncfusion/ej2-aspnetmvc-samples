@@ -1,7 +1,4 @@
 ﻿@using Syncfusion.EJ2
-@using EJ2MVCSampleBrowser.Models
-@using Syncfusion.EJ2.Schedule
-@using Syncfusion.EJ2.Buttons
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
@@ -39,6 +36,7 @@
         </table>
     </div>
     <style>
+        /* custom code start*/
         .property-panel-content .e-checkbox-wrapper.personal .e-label {
             color: #808080;
         }
@@ -63,13 +61,14 @@
             border-color: transparent;
         }
 
-        .e-schedule .e-month-view .e-appointment {
-            border-color: transparent;
-        }
-
         .highcontrast .property-panel-content .e-checkbox-wrapper .e-frame.e-check,
         .bootstrap .property-panel-content .e-checkbox-wrapper .e-frame.e-check {
             color: #fff;
+        }
+        /* custom code end*/
+
+        .e-schedule .e-month-view .e-appointment {
+            border-color: transparent;
         }
 
         .e-schedule .e-timeline-view .e-resource-left-td,
@@ -101,9 +100,11 @@
         }
     </script>
 }
+@*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Scheduler control shows how to dynamically add or remove the resources to and from the scheduler layout." />
 }
+@*custom code end*@
 @section ActionDescription{
     <div id="action-description">
         <p>

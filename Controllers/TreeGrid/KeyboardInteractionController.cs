@@ -17,5 +17,4 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
             return View();
         }
     }
-
 }

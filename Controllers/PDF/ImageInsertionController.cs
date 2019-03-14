@@ -54,15 +54,6 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             page.Graphics.DrawString("Image mask", font, brush, new PointF(10, 0));
             g.DrawImage(image, 80, 40);
 
-            //Metafile
-            PdfMetafile metafile;
-
-            page = section.Pages.Add();
-            g = page.Graphics;
-            metafile = new PdfMetafile(emfImage);
-            page.Graphics.DrawString("Metafile", font, brush, new PointF(10, 0));
-            g.DrawImage(metafile, new PointF(0, 50));
-
             //Image pagination -jpg
             image = new PdfBitmap(jpgImage);
 

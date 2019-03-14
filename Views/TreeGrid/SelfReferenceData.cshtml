@@ -1,8 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
 @{
     ViewBag.Title = "SelfReferenceData";
 }
+
+@*custom code end*@
 
 @section ControlsSection{
     <div class="control-section">
@@ -19,6 +24,8 @@
        }).Height(400).TreeColumnIndex(1).Render()
     </div>
 }
+
+@*custom code start*@
 
 @section Meta{
     <meta name="description" content="This example illustrates binding self-referential flat data with parent ID to a Essential JS2 TreeGrid control." />
@@ -41,3 +48,5 @@
         </p>
     </div>
 }
+
+@*custom code end*@

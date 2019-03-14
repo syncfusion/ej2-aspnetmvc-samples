@@ -4,7 +4,7 @@
     <div class="col-lg-9 control-section">
         <div id="outer" style="width:100%">
             <div id="container" style="width:100%">
-                @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("US presidential election result - 2016").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Population").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = " <b>${Winner}<b><br>State : ${State}<br>Trump : ${Trump} %<br>Clinton : ${Clinton} %" }).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top).Shape(Syncfusion.EJ2.TreeMap.LegendShape.Rectangle).Height("10")).Format("n").UseGroupingSeparator(true).RangeColorValuePath("WinPercentage").EqualColorValuePath("Winner").LeafItemSettings(leaf =>
+                @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("US presidential election result - 2016").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Population").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = " <b>${Winner}</b><br>State : ${State}<br>Trump : ${Trump} %<br>Clinton : ${Clinton} %" }).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top).Shape(Syncfusion.EJ2.TreeMap.LegendShape.Rectangle).Height("10")).Format("n").UseGroupingSeparator(true).RangeColorValuePath("WinPercentage").EqualColorValuePath("Winner").LeafItemSettings(leaf =>
   leaf.LabelPath("State").Fill("#6699cc").Border(new TreeMapBorder { Color = "white", Width = 0.5 })).Render()
             </div>
             <div style="margin-left: 75%">
@@ -37,6 +37,7 @@
                             <option value="Bottom">Bottom</option>
                             <option value="Left">Left</option>
                             <option value="Right">Right</option>
+                            <option value="Auto">Auto</option>
                         </select>
                     </td>
                 </tr>
@@ -150,6 +151,27 @@
                         treemap.legendSettings.width = '';
                     }
                 }
+                else if (legendPosition.value === 'Auto') {
+                    if (treemap.availableSize.width > treemap.availableSize.height) {
+                        treemap.legendSettings.orientation = 'Vertical';
+                        if (treemap.legendSettings.mode === 'Interactive') {
+                            treemap.legendSettings.height = '70%';
+                            treemap.legendSettings.width = '10';
+                        } else {
+                            treemap.legendSettings.height = '';
+                            treemap.legendSettings.width = '';
+                        }
+                    } else {
+                        treemap.legendSettings.orientation = 'Horizontal';
+                        if (treemap.legendSettings.mode === 'Interactive') {
+                            treemap.legendSettings.height = '10';
+                            treemap.legendSettings.width = '';
+                        } else {
+                            treemap.legendSettings.height = '';
+                            treemap.legendSettings.width = '';
+                        }
+                    }
+                }
                 else {
                     treemap.legendSettings.orientation = 'Horizontal';
                     if (treemap.legendSettings.mode === 'Interactive') {
@@ -161,6 +183,8 @@
             }
         });
         legendPosition.appendTo('#legendPosition');
+
+        
     </script>
 }
 @section ActionDescription{

@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2;
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
-    <div class="control-section">
+    <div class="col-lg-9 control-section">
         <div id="container" style="width:100%">
             @Html.EJS().TreeMap("container").Width("100%").EnableDrillDown(true).TitleSettings(title => title.Text("List of countries by population").TextStyle(new TreeMapFont { Size = "15px" })).Format("n").UseGroupingSeparator(true).WeightValuePath("Population").Palette(new string[] { "#9999ff", "#CCFF99", "#FFFF99", "#FF9999", "#FF99FF", "#FFCC66" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Name} : ${Population}" }).Load("load").DrillStart("drillstart").TooltipRendering("tooltiprendering").Levels(level =>
        {
@@ -15,7 +15,72 @@
             Source:<a href="https//www.factorywarrantylist.com/car-sales-by-country.html/" target="_blank"> www.factorywarrantylist.com</a>
         </div>
     </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr>
+                    <td style="width: 70%">
+                        <div class="property-text">Drilldown View</div>
+                    </td>
+                    <td style="width: 70%;">
+                        <div>
+                            <input type="checkbox" id="drillView" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 70%">
+                        <div class="property-text">Enable Breadcrumb</div>
+                    </td>
+                    <td style="width: 70%;">
+                        <div>
+                            <input type="checkbox" id="breadCrumb" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 70%">
+                        <div class="property-text">Breadcrumb Connector</div>
+                    </td>
+                    <td style="width: 70%;">
+                        <div>
+                            <input type="text" id="connectorText" value=' - ' disabled=true style="width:70px;margin-left:10px" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:40%;">
+                        <div class="property-text">Header Alignment</div>
+                    </td>
+                    <td style="width: 60%;">
+                        <div style="margin-left:10px">
+                            <select name="selectIndex" id="header">
+                                <option value="Near" selected>Near</option>
+                                <option value="Far">Far</option>
+                                <option value="Center">Center</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:40%;">
+                        <div class="property-text">Label Alignment</div>
+                    </td>
+                    <td style="width: 60%;">
+                        <div style="margin-left:10px">
+                            <select name="selectIndex" id="label">
+                                <option value="Near" selected>Near</option>
+                                <option value="Far">Far</option>
+                                <option value="Center">Center</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <script>
+        var treemap;
         function load(args) {
             var theme = location.hash.split('/')[1];
             theme = theme ? theme : 'Material';
@@ -310,6 +375,7 @@
                     ]
                 }
             ];
+            treemap = args.treemap;
         }
         function drillstart(args) {
             if (args.item[Object.keys(args.item)[0]].length === 1) {
@@ -323,6 +389,56 @@
                 args.cancel = true;
             }
         }
+        var header = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Selection selection type',
+            width: 80,
+            change: () => {
+                for (var i = 0; i < treemap.levels.length - 1;i++){
+                    treemap.levels[i].headerAlignment = header.value;
+                } 
+                treemap.refresh();
+            }
+        });
+        header.appendTo('#header');
+        // Label Selection type (Near, Far, Center)
+        var label = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Selection selection type',
+            width: 80,
+            change: () => {                
+                    treemap.levels[2].headerAlignment = label.value;                
+                treemap.refresh();
+            }
+        });
+        label.appendTo('#label');
+        var drillChange;
+        var drillViewCheckBox = new ej.buttons.CheckBox({
+            change: drillChange, checked: false
+        }, '#drillView');
+        drillViewCheckBox.change = drillChange = function (e) {
+            treemap.drillDownView  = e.checked;
+            treemap.refresh();
+        };
+        var breadCrumbChange;
+        var breadCrumbCheckBox = new ej.buttons.CheckBox({
+            change: breadCrumbChange , checked: false
+        }, '#breadCrumb');
+        breadCrumbCheckBox.change = breadCrumbChange = function (e) {
+            treemap.enableBreadcrumb = e.checked;
+            var breadCrumbText = document.getElementById('connectorText');
+            if (e.checked) {
+                breadCrumbText.disabled = false;
+            } else {
+                breadCrumbText.disabled = true;
+            }
+            treemap.refresh();
+        }
+        document.getElementById('connectorText').onchange = () => {
+            var value = (document.getElementById('connectorText')).value;
+            treemap.breadcrumbConnector = value;
+            treemap.refresh();
+        }
     </script>
 }
 @section Meta{
@@ -330,15 +446,15 @@
 }
 @section ActionDescription{
     <div id="action-description">
-    <p>
-        This sample demonstrates drill down with the continents in top level, followed by regions and countries. By clicking a continent, you can view the items available in that continent more clearly.
-    </p>
-</div>
+        <p>
+            This sample demonstrates drill down with the continents in top level, followed by regions and countries. By clicking a continent, you can view the items available in that continent more clearly.
+        </p>
+    </div>
 }
 @section Description{
-<div id="description">
-    <p>
-        In this example you can see how to render treemap with multiple items and drill it further.Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item in touch enabled devices.
-    </p>
-</div>
+    <div id="description">
+        <p>
+            In this example you can see how to render treemap with multiple items and drill it further.Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item in touch enabled devices.
+        </p>
+    </div>
 }

@@ -14,10 +14,13 @@
         var textRender = function (args) {
             args.text = args.text;
         };
+
         var load = function(args) {
+                 @*custom code start*@
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+            @*custom code end*@
             if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
                 args.accumulation.series[0].width = '80%';
                 args.accumulation.series[0].height = '60%';
@@ -36,9 +39,11 @@
         }
     </script>
 }
+         @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the pyramid charts." />
 }
+         @*custom code end*@
 @section ActionDescription{
     <p>
     This sample visualizes food comparison data by using pyramid series.

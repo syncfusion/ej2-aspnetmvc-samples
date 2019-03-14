@@ -220,12 +220,20 @@
 
         function selectionChange(arg) {
             if (arg.state === 'Changed') {
+                @*custom code start*@
                 var selectedElement = document.getElementsByClassName('e-selected-style');
                 if (selectedElement.length) {
                     selectedElement[0].classList.remove('e-selected-style');
                 }
+                @*custom code end*@
                 if (arg.newValue[0]) {
                     var node = arg.newValue[0];
+                    var checkBoxObj = document.getElementById('labelConstraints');
+                    if (checkBoxObj.ej2_instances) {
+                        var checkBoxInstance = checkBoxObj.ej2_instances[0];
+                        var constraintEnabled = node.annotations[0].constraints & ej.diagrams.AnnotationConstraints.Interaction;
+                        checkBoxInstance.checked = constraintEnabled ? true : false;
+                    }
                     var offset = node.annotations[0].offset;
                     if (offset.x === 0 && offset.y === 0) {
                         updatePosition('left');
@@ -309,7 +317,7 @@
         function onLabelInteractionChange(args) {
             updateAnnotation('interaction', '');
         }
-
+        @*custom code start*@
         document.getElementById('appearance').onclick = function (args) {
             var target = args.target;
             var selectedElement = document.getElementsByClassName('e-selected-style');
@@ -320,7 +328,7 @@
                 updatePosition(target.id);
             }
         };
-
+        @*custom code end*@
         function updateAnnotation(name, value) {
             for (var i = 0; i < diagram.selectedItems.nodes.length; i++) {
                 var node = diagram.selectedItems.nodes[i];
@@ -406,7 +414,9 @@
                             annotation.horizontalAlignment = 'Center';
                             break;
                     }
+                    @*custom code start*@
                     target.classList.add('e-selected-style');
+                    @*custom code end*@
                 }
             }
         }

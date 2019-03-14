@@ -79,11 +79,11 @@ namespace EJ2MVCSampleBrowser.Controllers
             return (GetPlainText(documentBase));
         }
         [HttpPost]
-        public HttpResponseMessage PrintImages(Dictionary<string, string> jsonObject)
+        public object PrintImages(Dictionary<string, string> jsonObject)
         {
             PdfRenderer pdfviewer = new PdfRenderer();
-            string pageImage = pdfviewer.GetPrintImage(jsonObject);
-            return (GetPlainText(pageImage));
+            object pageImage = pdfviewer.GetPrintImage(jsonObject);
+            return (pageImage);
         }
         private HttpResponseMessage GetPlainText(string pageImage)
         {
