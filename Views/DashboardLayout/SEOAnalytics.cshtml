@@ -124,7 +124,7 @@
                                                                   ).PrimaryXAxis(px => px.Interval(1)
                                                                   .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0))
                                                                   ).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br => br.Color("transparent"))
-                                                                  ).LegendSettings(lg => lg.Visible(false)).Render())
+                                                                  ).LegendSettings(lg => lg.Visible(false)).Load("loadLinechart").Render())
     </div>
 
     @*pie chart*@
@@ -134,7 +134,7 @@
                .XName("Device").YName("Amount").Name("Revenue").Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).Radius("100%").StartAngle(0).Palettes(ViewBag.pallets).EndAngle(360)
                .Explode(false).DataSource(ViewBag.PieData1).Add();})
          .EnableSmartLabels(true).EnableAnimation(false).Width("100%").Height("100%").LegendSettings(ls => ls.Visible(false).ToggleVisibility(false)).Tooltip(tp => tp.Enable(true).Header("<b>${point.x}</b>").Format("Composition : <b>${point.y}%</b>"))
-                                                                                                   .Render()        )
+                              .Load("loadPiechart").Render()        )
     </div>
     @*pie chart*@
     <div id="pieChartContainer" class="edit-content">
@@ -157,6 +157,7 @@
                                                                                              .EnableAnimation(false)
                                                                                              .LegendSettings(ls => ls.Visible(false).ToggleVisibility(false))
                                                                                              .Tooltip(tp => tp.Enable(true).Header("<b>${point.x}</b>").Format("Composition : <b>${point.y}%</b>"))
+                                                                                             .Load("loadPiechart")
                                                                                              .Render()
         )
     </div>
@@ -165,14 +166,14 @@
     <div id="visitorContainer" class="edit-content">
         @(Html.EJS().Chart("spline").Series(series =>
                                                   {
-                                                      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Fill("#db3673c4").Opacity(0.5).XName("x").YName("y").DataSource(ViewBag.LineData).Name("Jan").Add();
+                                                      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Fill("rgb(239, 183, 202)").Opacity(0.5).XName("x").YName("y").DataSource(ViewBag.LineData).Name("Jan").Add();
                                                       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Fill("rgb(14, 64, 152, .6)").Opacity(0.5).XName("x").YName("y").DataSource(ViewBag.LineData1).Name("Feb").Add();
 
                                                   }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
                                                   .MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
                                                   .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Months).LabelFormat("MMM")
                                                                ).PrimaryYAxis(py => py.LabelFormat("{value}%").MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
-                                                               ).ChartArea(area => area.Border(br => br.Color("transparent"))).Render())
+                                                               ).ChartArea(area => area.Border(br => br.Color("transparent"))).Load("loadLinechart").Render())
     </div>
     <div id="content"></div>
 }
@@ -370,7 +371,6 @@
     }
 
     .analysis {
-      margin-left: 13px;
       font-size: 18px;
       padding: 12px;
       text-align: left;
@@ -396,7 +396,7 @@
 
     .card-content.text {
       font-size: 15px;
-      text-align: end;
+      text-align: right;
       color: #66696b;
     }
 
@@ -407,7 +407,7 @@
 
     .card-content.number {
       font-size: 16px;
-      text-align: end;
+      text-align: right;
       padding-top: 10px;
     }
 
@@ -444,13 +444,12 @@
 
     .searchContent {
       display: inline-block;
-      margin-left: 5px;
       position: absolute;
-      left: 7%;
+      left: 60px;
     }
 
     .e-panel-content {
-      height: calc(100% - 35px);
+      height: calc(100% - 35px) !important;
       width: 100%;
     }
 
@@ -505,10 +504,42 @@
           width: 100% !important;
           height: 100% !important;
     }
+
+    /* styles for highcontrast theme */
+
+    body.highcontrast #sidebar-section{
+        border: 1px solid #969696;
+    }
+
+    body.highcontrast .header{
+        border-bottom: 1px solid #969696;
+    }
+
+    body.highcontrast #dockSidebar .e-icons::before {
+        color: #fff;
+    }
+
+    body.highcontrast #dockSidebar li.sidebar-item.filterHover, body.highcontrast #dockSidebar {
+        background: #000;
+    }
+
     </style>
 <script>
 
+    var loadLinechart = function (args) {
+        var selectedTheme = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+    }
+    var loadPiechart = function (args) {
+        var selectedTheme = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+    }
     function mapsLoad(args) {
+        var theme = location.hash.split('/')[1];
+        theme = theme ? theme : 'Material';
+        args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
             args.maps.layers[0].markerSettings = [
                         {
                             visible: true,
@@ -620,7 +651,7 @@
 @section Description{
     <div id="description">
         <p>
-            The sample demonstrates the realtime SEO data analytics dasboard layout.
+            The sample demonstrates the realtime SEO data analytics dashboard layout.
         </p>
     </div>
 }

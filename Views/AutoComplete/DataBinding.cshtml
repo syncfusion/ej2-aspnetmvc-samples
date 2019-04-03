@@ -6,7 +6,7 @@
     <div class="control-section col-lg-9">
         <div id='local-data' class='col-lg-6' style='padding-top:15px'>
             <div class='content'>
-                <h4> Local Data</h4>
+                <h3> Local Data</h3>
                 @Html.EJS().AutoComplete("country").DataSource((IEnumerable<Countries>)ViewBag.localdata).Placeholder("" +
                "e.g. Australia").SortOrder((object)ViewBag.sort).Autofill(true).FilterType(FilterType.StartsWith).Fields(new AutoCompleteFieldSettings {
                    Value = "Name" }).Render()
@@ -14,7 +14,7 @@
         </div>
         <div id='remote-data' class='col-lg-6' style='padding-top:15px'>
             <div class='content'>
-                <h4>Remote Data</h4>
+                <h3>Remote Data</h3>
                 @Html.EJS().AutoComplete("products").Placeholder("e.g. " +
                "Andrew Fuller").Autofill(true).SuggestionCount(5).FilterType(FilterType.StartsWith).DataSource(obj =>
                obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").Adaptor("" +

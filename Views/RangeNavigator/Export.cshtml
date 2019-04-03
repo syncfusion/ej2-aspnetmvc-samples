@@ -96,19 +96,18 @@
         padding: 0px !important;
     }
      .e-export-icon::before {
-        content: '\e728';
+        content: '\e720';
     }
 
      .e-print-icon::before {
-        content: '\e813';
+        content: '\e34b';
     }
     </style>
     <script src="~/Scripts/datasource.js"></script>
 <script>
         var dateTimeData = dataCollection;
         var zoomFactor, zoomPosition;
-        var selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        var selectedTheme = themeName ? themeName : 'Material';
         var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
         var themes = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast']
         var borderColor = ['#FF4081', '#007897', '#428BCA', '#FFD939'];

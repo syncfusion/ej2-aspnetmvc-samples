@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             List<CircularGaugeAnnotation> annotations = new List<CircularGaugeAnnotation>();
 
             CircularGaugeAnnotation annotation1 = new CircularGaugeAnnotation();
-            annotation1.Content = "12 M";
+            annotation1.Content = "12M";
             annotation1.Radius = "108%";
             annotation1.Angle = 98;
             annotation1.ZIndex = "1";
@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
 
 
             CircularGaugeAnnotation annotation2 = new CircularGaugeAnnotation();
-            annotation2.Content = "11 M";
+            annotation2.Content = "11M";
             annotation2.Radius = "80%";
             annotation2.Angle = 81;
             annotation2.ZIndex = "1";
@@ -35,7 +35,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             annotations.Add(annotation2);
 
             CircularGaugeAnnotation annotation3 = new CircularGaugeAnnotation();
-            annotation3.Content = "10 M";
+            annotation3.Content = "10M";
             annotation3.Radius = "50%";
             annotation3.Angle = 69;
             annotation3.ZIndex = "1";

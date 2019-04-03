@@ -94,8 +94,7 @@
     <script>
         var seatInfo = document.getElementById('selectedseats');
         function mapsLoad(args) {
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
+            var theme = themeName ? themeName : 'Material';
             args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
         }
         function itemSelection(args) {

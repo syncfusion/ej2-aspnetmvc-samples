@@ -21,9 +21,9 @@ node('EJ2Samples') {
         }
 
         stage('Build') {
-            runShell('nuget locals all -Clear');
             runShell('npm run build');
-            runShell('gulp aspmvc-build --option ./EJ2MVCSampleBrowser.csproj')
+            runShell('gulp aspmvc-build --option ./EJ2MVCSampleBrowser.csproj');
+            shared.artifactFiles();
         }
 
         stage('Publish') {

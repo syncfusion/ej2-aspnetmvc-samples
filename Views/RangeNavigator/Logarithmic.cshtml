@@ -103,8 +103,7 @@
             'rgba(161, 110, 229, 0.3)', 'rgba(121, 236, 228, 0.3)'];
         var load = function (args) {
                          @*custom code start*@
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
             var theme = args.rangeNavigator.theme;
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";

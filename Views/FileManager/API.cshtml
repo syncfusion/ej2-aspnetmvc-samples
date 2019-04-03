@@ -2,28 +2,29 @@
 @using Syncfusion.EJ2.FileManager
 @using EJ2MVCSampleBrowser.Models
 @section ControlsSection{
-    <div class="control-section">
-        <div class="col-lg-8  control-section">
+    <div class="col-lg-8 control-section">
+        <div class="control_wrapper">
             @Html.EJS().FileManager("filemanager").AjaxSettings(new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings{
-            Url = "https://ej2services.syncfusion.com/production/web-services/api/FileManager/FileOperations"
-            }).NavigationPaneSettings(ls => ls.Visible(true)).ToolbarSettings(ls => ls.Visible(true)).Render()
+            Url = "https://ng2jq.syncfusion.com/ej2services/api/FileManager/FileOperations"
+            }).NavigationPaneSettings(ls => ls.Visible(false)).ToolbarSettings(ls => ls.Visible(true)).Render()
         </div>
-        <div class="col-lg-4 property-section" id="all-option-table">
-                <table id="property" title="Properties">
-                    <tbody>
-                        <tr>
-                            <td style="width: 50%">
-                                <div>Toolbar</div>
-                            </td>
-                            <td style="width: 50%;padding-right: 10px">
-                                <div>
-                                    @Html.EJS().CheckBox("tool_toggle").Checked(true).CssClass("e-flat e-primary").Change("onToolbarChange").Render()
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-           
+    </div>
+    <div class="col-lg-4 property-section">
+        <div id="property" title="Properties">
+            <table id="property" title="Properties">
+                <tbody>
+                    <tr>
+                        <td style="width: 50%">
+                            <div>Toolbar</div>
+                        </td>
+                        <td style="width: 50%;padding-right: 10px;text-align: center;">
+                            <div>
+                                @Html.EJS().CheckBox("tool_toggle").Checked(true).CssClass("e-flat e-primary").Change("onToolbarChange").Render()
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 }
@@ -42,7 +43,7 @@
 
 @section Scripts{
     <script>
-        var hostUrl = 'https://ej2services.syncfusion.com/production/web-services/';
+        var hostUrl = 'https://ng2jq.syncfusion.com/ej2services/';
         var fileObject = document.getElementById('filemanager').ej2_instances[0];
         fileObject.ajaxSettings.url = hostUrl + 'api/FileManager/FileOperations';
         fileObject.ajaxSettings.getImageUrl = hostUrl + 'api/FileManager/GetImage',

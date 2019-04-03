@@ -65,8 +65,7 @@
     </style>
     <script>
         var load = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
         };
         var xlistObj = new ej.buttons.CheckBox({ label: 'Reverse X-Axis Origin', checked: true, change: valueXChange });

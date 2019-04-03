@@ -39,7 +39,6 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             CircularGaugeRange range1 = new CircularGaugeRange();
             range1.Start = 7;
             range1.End = 7  ;
-            range1.Color = "#f03e3e";
             ranges.Add(range1);
             ViewBag.Ranges = ranges;
             return View();

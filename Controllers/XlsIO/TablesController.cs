@@ -110,6 +110,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
 
             worksheet.UsedRange.AutofitColumns();
             worksheet.SetColumnWidth(2, 12.43);
+            worksheet.SetColumnWidth(4, 12.43);
 
             try
             {

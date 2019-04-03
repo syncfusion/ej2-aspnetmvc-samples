@@ -22,7 +22,7 @@
                     <div class="form-group row">
                         <label for="settings-margin-input" class="col-sm-4 col-form-label form-label">CellSpacing</label>
                         <div class="col-sm-8">
-                            @Html.EJS().NumericTextBox("cellspacing").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Never).Placeholder("EX: 10").Change("valueChange").Value(10).Render()
+                            @Html.EJS().NumericTextBox("cellspacing").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Never).Placeholder("EX: 10").Min(1).Max(20).Change("valueChange").Value(10).Render()
                         </div>
                     </div>
                     <div class="form-group row">
@@ -53,19 +53,21 @@
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('remove').onclick = function (e) {
             var dashboardObject = document.getElementById('dynamicLayout').ej2_instances[0];
-            for (var i = dashboardObject.panels.length - 1; i < dashboardObject.panels.length; i++) {
-                dashboardObject.removePanel(dashboardObject.panels[dashboardObject.panels.length - 1 - i].id);
-            }
+            if (dashboardObject.panels.length != 0) {
+                for (var i = dashboardObject.panels.length - 1; i < dashboardObject.panels.length; i++) {
+                    dashboardObject.removePanel(dashboardObject.panels[dashboardObject.panels.length - 1 - i].id);
+                }
+            } 
         };
-        var count = 4;
+        var count = 5;
         document.getElementById('add').onclick = function (e) {
+            count = count + 1;
             var dashboardObject = document.getElementById('dynamicLayout').ej2_instances[0];
             var panel = [{
                 'id': count.toString() + '_layout', 'sizeX': 2, 'sizeY': 2, 'row': 0, 'col': 0,
                 content: "<div></div>",
-                header: "<div>Panel" + count.toString() + "</div>"
+                header: "<div>Panel " + count.toString() + "</div>"
             }];
-            count = count + 1;
             dashboardObject.addPanel(panel[0]);
         };
     });
@@ -108,7 +110,6 @@
         line-height: 1.5;
         font-size: 13px;
         font-weight: 500;
-        color: rgba(0, 0, 0, 0.61);
     }
 
     .e-panel-header {
@@ -117,9 +118,6 @@
         background-color: rgba(0, 0, 0, .03);
     }
 
-    .e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header {
-        color: rgba(0, 0, 0, 0.61);
-    }
 
     .e-panel .e-header-text {
         padding: 12px 0 12px 0;
@@ -129,18 +127,13 @@
         border-bottom: 1px solid #888383;
     }
 
-    .e-dashboardlayout.e-control .e-panel:hover {
-        border: 0px;
-    }
-
     .e-dashboardlayout.e-control .e-panel .e-panel-header {
         font-size: 15px;
         font-weight: 500;
         height: 37px;
         padding: 10px;
         vertical-align: middle;
-        /* text-align: left; */
-        border-bottom: 0.5px solid rgba(0, 0, 0, .125);
+        border-bottom: 0.5px solid #e3e3e3;
     }
 
     .row {
@@ -215,17 +208,12 @@
         border: 1px solid lightgray;
     }
 
-    .e-dashboardlayout.e-control .e-panel,
-    .e-dashboardlayout.e-control .e-panel:hover,
-    .e-dashboardlayout.e-control .e-panel:active {
-        border: 1px solid rgba(0, 0, 0, .125);
-    }
 </style>
 
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample demonstrates the properties of DashboardLayout component from the property pane. Select any combination of properties from the property pane to customize the Dashboardlayout.
+            This sample demonstrates the properties of DashboardLayout component from the property pane. Select any combination of properties from the property pane to customize the DashboardLayout.
         </p>
     </div>
 
@@ -234,7 +222,8 @@
 @section Description{
     <div id="description">
         <p>
-            This sample allows to configure the cellSpacing, allowFloating and allowPushing properties of the dashboardlayout component.
+            This sample allows to configure the <code>cellSize</code>, <code>cellSpacing</code>, <code>allowFloating</code> and
+            <code>allowPushing</code> properties of the dashboard layout component.
         </p>
     </div>
 

@@ -34,8 +34,7 @@
                 stripLines: [{ start: 340, end: 380, color: '#3CB371', opacity: 0.1 }]
             };
             @*custom code start*@
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
              @*custom code end*@
             args.stockChart.indicatorType = [];

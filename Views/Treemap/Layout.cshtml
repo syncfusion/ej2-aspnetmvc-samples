@@ -45,8 +45,7 @@
     <script>
         var treemap;
         function load(sender) {
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
+            var theme = themeName ? themeName : 'Material';
             sender.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
 
             var data = [{ State: "United States", GDP: 17946, percentage: 11.08, Rank: 1 },

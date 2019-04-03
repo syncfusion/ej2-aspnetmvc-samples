@@ -63,8 +63,7 @@
                 crosshairTooltip: { enable: false },
                 majorTickLines: { color: 'transparent', width: 0 }
             };
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
         }</script>
 }

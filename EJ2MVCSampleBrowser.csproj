@@ -53,10 +53,10 @@
     </Reference>
     <Reference Include="Syncfusion.HtmlConverter.Base">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.HtmlConverter.IE.AspNet.Mvc5.16.3.0.17\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.HtmlToPdfConverter.IE.AspNet.Mvc5.16.3.0.17\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base">
-      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.16.3.0.17\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.17.1.0.38\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocIO.Base">
       <SpecificVersion>False</SpecificVersion>
@@ -188,8 +188,9 @@
     <Compile Include="Controllers\DashboardLayout\EditableLayoutController.cs" />
     <Compile Include="Controllers\DashboardLayout\PredefinedLayoutsController.cs" />
     <Compile Include="Controllers\DashboardLayout\SEOAnalyticsController.cs" />
+    <Compile Include="Controllers\DocumentEditor\CustomContextMenu.cs" />
     <Compile Include="Controllers\DocumentEditor\RightToLeft.cs" />
-    <Compile Include="Controllers\FileManager\API.cs" />
+    <Compile Include="Controllers\FileManager\APIController.cs" />
     <Compile Include="Controllers\FileManager\CustomThumbnailController.cs" />
     <Compile Include="Controllers\Gantt\BaselineController.cs" />
     <Compile Include="Controllers\Gantt\DefaultFunctionalitiesController.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Controllers\Gantt\RemoteDataController.cs" />
     <Compile Include="Controllers\Gantt\TaskbarTemplateController.cs" />
     <Compile Include="Controllers\Gantt\TimelineController.cs" />
+    <Compile Include="Controllers\Gantt\UnscheduledTaskController.cs" />
     <Compile Include="Controllers\Grid\DragAndDropWithInGridController.cs" />
     <Compile Include="Controllers\Grid\MasterDetailsExportController.cs" />
     <Compile Include="Controllers\Accordion\AjaxContentController.cs" />
@@ -378,6 +380,11 @@
     <Compile Include="Controllers\ContextMenu\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Grid\RowSpanningController.cs" />
     <Compile Include="Controllers\Heatmap\CellSelectionController.cs" />
+    <Compile Include="Controllers\ListBox\ApiController.cs" />
+    <Compile Include="Controllers\ListBox\CheckBoxController.cs" />
+    <Compile Include="Controllers\ListBox\DefaultFunctionalitiesController.cs" />
+    <Compile Include="Controllers\ListBox\DragAndDropController.cs" />
+    <Compile Include="Controllers\ListBox\DualListBoxController.cs" />
     <Compile Include="Controllers\Maps\ColorMappingController.cs" />
     <Compile Include="Controllers\Maps\MapWithSliderController.cs" />
     <Compile Include="Controllers\Menu\DefaultFunctionalitiesController.cs" />
@@ -815,7 +822,7 @@
     <Compile Include="Controllers\Schedule\RecurrenceRuleGeneratorController.cs" />
     <Compile Include="Controllers\Schedule\RemoteDataController.cs" />
     <Compile Include="Controllers\Schedule\ResourceController.cs" />
-    <Compile Include="Controllers\Schedule\ResourcesController.cs" />
+    <Compile Include="Controllers\Schedule\FareCalendarController.cs" />
     <Compile Include="Controllers\Schedule\ScrollTimeController.cs" />
     <Compile Include="Controllers\Schedule\SearchEventsController.cs" />
     <Compile Include="Controllers\Schedule\TimelineResourcesController.cs" />
@@ -1318,6 +1325,7 @@
     <Content Include="Content\avatar\images\pic04.png" />
     <Content Include="Content\avatar\images\pic05.png" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\styles\bootstrap4.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\card\1.png" />
     <Content Include="Content\card\2.png" />
@@ -1430,6 +1438,9 @@
     <Content Include="Content\dropdownlist\images\Employees\7.png" />
     <Content Include="Content\dropdownlist\images\Employees\8.png" />
     <Content Include="Content\dropdownlist\images\Employees\9.png" />
+    <Content Include="Content\gantt\images\face-mask.svg" />
+    <Content Include="Content\gantt\images\moments.svg" />
+    <Content Include="Content\gantt\images\oscar.svg" />
     <Content Include="Content\grid\Insufficient.png" />
     <Content Include="Content\grid\Map.png" />
     <Content Include="Content\grid\Perfect.png" />
@@ -1569,6 +1580,7 @@
     <Content Include="Content\images\sb-icons\Syncfusion-mobile-logo.svg" />
     <Content Include="Content\LinearGauge\Cycling.png" />
     <Content Include="Content\LinearGauge\Cycling.svg" />
+	<Content Include="Content\LinearGauge\Cycling1.svg" />
     <Content Include="Content\LinearGauge\Diastolic.png" />
     <Content Include="Content\LinearGauge\Diastolic.svg" />
     <Content Include="Content\LinearGauge\Exercise_Tracking.png" />
@@ -1583,10 +1595,12 @@
     <Content Include="Content\LinearGauge\Pulse.svg" />
     <Content Include="Content\LinearGauge\Running.png" />
     <Content Include="Content\LinearGauge\Running.svg" />
+	<Content Include="Content\LinearGauge\Running1.svg" />
     <Content Include="Content\LinearGauge\Systolic.png" />
     <Content Include="Content\LinearGauge\Systolic.svg" />
     <Content Include="Content\LinearGauge\Walking.png" />
     <Content Include="Content\LinearGauge\Walking.svg" />
+	<Content Include="Content\LinearGauge\Walking1.svg" />
     <Content Include="Content\Maps\atm.png" />
     <Content Include="Content\Maps\ballon.png" />
     <Content Include="Content\Maps\bus-icon.png" />
@@ -2517,7 +2531,7 @@
     <Content Include="Views\Schedule\RecurrencePopulateRule.cshtml" />
     <Content Include="Views\Schedule\RecurrenceRuleGenerator.cshtml" />
     <Content Include="Views\Schedule\RemoteData.cshtml" />
-    <Content Include="Views\Schedule\Resources.cshtml" />
+    <Content Include="Views\Schedule\FareCalendar.cshtml" />
     <Content Include="Views\Schedule\ScrollTime.cshtml" />
     <Content Include="Views\Schedule\Timeline.cshtml" />
     <Content Include="Views\Schedule\TimelineResourceGroup.cshtml" />
@@ -2817,6 +2831,11 @@
     <Content Include="Views\Sidebar\ResponsivePanel.cshtml" />
     <Content Include="Views\Sidebar\SidebarMenu.cshtml" />
     <Content Include="Views\Sidebar\SidebarWithMenu.cshtml" />
+    <Content Include="Views\ListBox\Api.cshtml" />
+    <Content Include="Views\ListBox\Checkbox.cshtml" />
+    <Content Include="Views\ListBox\DefaultFunctionalities.cshtml" />
+    <Content Include="Views\ListBox\DragAndDrop.cshtml" />
+    <Content Include="Views\ListBox\DualListBox.cshtml" />
     <Content Include="Views\FileManager\CustomThumbnail.cshtml" />
     <Content Include="Views\FileManager\API.cshtml" />
     <Content Include="Views\Chart\LazyLoading.cshtml" />
@@ -2824,6 +2843,8 @@
     <Content Include="Views\StockChart\HideNavigator.cshtml" />
     <Content Include="Views\StockChart\HidePeriod.cshtml" />
     <Content Include="Views\StockChart\MultiPane.cshtml" />
+    <Content Include="Views\DocumentEditor\CustomContextMenu.cshtml" />
+    <Content Include="Views\Gantt\UnscheduledTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\MapData\Africa_continent.json" />

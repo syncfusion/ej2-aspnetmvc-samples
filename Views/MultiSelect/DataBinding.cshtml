@@ -5,14 +5,14 @@
     <div class="control-section">
         <div id='local-data'>
             <div class='control-wrapper'>
-                <h4> Local Data</h4>
+                <h3> Local Data</h3>
 
                 @Html.EJS().MultiSelect("local").Placeholder("Select countries").DataSource((IEnumerable<Countries>)ViewBag.localdata).Fields(new MultiSelectFieldSettings { Text = "Name", Value = "Code" }).Value((string[])ViewBag.val).Render()
             </div>
         </div>
         <div id='remote-data'>
             <div class='control-wrapper'>
-                <h4>Remote Data</h4>
+                <h3>Remote Data</h3>
 
                 @Html.EJS().MultiSelect("remote").Placeholder("Select names").SortOrder((string)ViewBag.sort).Query((string)ViewBag.query).DataSource(
                    obj => obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").CrossDomain(true).Adaptor("WebApiAdaptor")).Fields(

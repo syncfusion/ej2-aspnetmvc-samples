@@ -31,8 +31,7 @@
             args.content = [value + " " + args.yLabel + " : " + args.value + " flight arrivals"];
         };
         var load = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
         };
     </script>

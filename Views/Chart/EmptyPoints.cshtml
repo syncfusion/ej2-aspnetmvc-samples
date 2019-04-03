@@ -51,8 +51,7 @@
     <script>
         var load = function (args) {
             args.accumulation.dataSource = [{ x: "Rice", y: 80 },{ x: "Wheat", y: null },{ x: "Oil", y: 70 },{ x: "Corn", y: 60 },{ x: "Gram", y: null },{ x: "Milk", y: 70 },{ x: "Peas", y: 80 },{ x: "Fruit", y: 60 },{ x: "Butter", y: null }]; 
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
         }
         function changeEmptyPointMode() {

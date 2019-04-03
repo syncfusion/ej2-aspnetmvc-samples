@@ -8,14 +8,14 @@
         <div class="content-wrapper">
             @(Html.EJS().Gantt("Baseline").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").RenderBaseline(true)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").BaselineStartDate("BaselineStartDate")
-                .BaselineEndDate("BaselineEndDate").Child("SubTasks")).Columns(col =>
+                .BaselineEndDate("BaselineEndDate")).Columns(col =>
                 {
                     col.Field("TaskName").HeaderText("Service Name").Width(250).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
-                    col.Field("BaselineStartDate").HeaderText("Planned start time").Format("hm").Add();
-                    col.Field("BaselineEndDate").HeaderText("Planned end time").Format("hm").Add();
-                    col.Field("StartDate").HeaderText("Start time").Format("hm").Add();
-                    col.Field("EndDate").HeaderText("End time").Format("hm").Add();
-                }).TreeColumnIndex(1).AllowSelection(true).IncludeWeekend(true)
+                    col.Field("BaselineStartDate").HeaderText("Planned start time").Add();
+                    col.Field("BaselineEndDate").HeaderText("Planned end time").Add();
+                    col.Field("StartDate").HeaderText("Start time").Add();
+                    col.Field("EndDate").HeaderText("End time").Add();
+                }).AllowSelection(true).IncludeWeekend(true)
                 .TimelineSettings(ts => ts.TimelineUnitSize(65).TopTier(tt => tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.None))
                     .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Minutes).Count(15).Format("hh:mm a")))
                 .TooltipSettings(ts => ts.Taskbar("#tooltip")).DurationUnit(Syncfusion.EJ2.Gantt.DurationUnit.Minute)
@@ -87,11 +87,6 @@
             properties.
             The baseline will appear for all type of tasks in the project such as child tasks, parent tasks and also for
             milestones. You can change the color for the baselines using <code>BaselineColor</code> property.
-        </p>
-        <p style="font-weight: 500">Injecting Module:</p>
-        <p>
-            Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
-            Selection module using the <code>Gantt.Inject(Selection)</code> method.
         </p>
     </div>
 }

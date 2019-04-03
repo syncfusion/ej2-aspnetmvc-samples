@@ -244,8 +244,24 @@
             content: '\e932';
         }
 
+    .bootstrap4 .close-icon-container.e-icons::before {
+        left: 7px;
+        position: inherit;
+        top: 7px;
+        content: '\e745';
+    }
+
+        .bootstrap4 .file-lists {
+            background: #fff;
+        }
+
+
         .close-icon-container.delete-icon::before {
             content: '\e94a';
+        }
+
+        .bootstrap4 .close-icon-container.delete-icon::before {
+            content: '\e773';
         }
 
         .close-icon-container:hover {
@@ -259,6 +275,14 @@
         background-color: #ffd939;
         color: black;
     }
+
+    .bootstrap4 .close-icon-container:hover {
+        background-color: #e9ecef;
+        border-color: transparent;
+        border-radius: 4px;
+        box-shadow: 0 0 0 transparent;
+    }
+
 
     .highcontrast .close-icon-container {
         color: #ffffff;
@@ -277,6 +301,16 @@
         background-color: #ffffff;
         border-radius: 2px;
     }
+    .bootstrap4 #dropArea progress {
+        background-color: #dee2e6;
+        border-radius: 4px;
+    }
+
+    .bootstrap4 progress::-webkit-progress-value {
+        background-color: #007bff;
+        border-radius: 4px;
+    }
+
 
     #dropArea progress {
         border: 1px solid lightgrey;

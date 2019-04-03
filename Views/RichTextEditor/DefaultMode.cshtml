@@ -24,6 +24,14 @@
         .e-icon-btn .e-md-preview::before {
             content: '\e345';
         }
+       .bootstrap4 .e-icon-btn.e-active .e-md-preview::before {
+         content: '\e790';
+        }
+
+        .bootstrap4 .e-icon-btn .e-md-preview::before {
+         content: '\e787';
+        }
+
     </style>
 
 
@@ -68,7 +76,7 @@
         defaultRTE = this;
         textArea = defaultRTE.contentModule.getEditPanel();
         textArea.addEventListener('keyup', function (e) {
-            markDownConversion();
+            MarkDownConversion();
         });
         mdsource = document.getElementById('preview-code');
         mdsource.addEventListener('click', function (e) {
@@ -117,7 +125,7 @@
             mdsource.parentElement.title = 'Code View';
         }
     }
-    function markDownConversion() {
+    function MarkDownConversion() {
         if (mdsource.classList.contains('e-active')) {
             var id = defaultRTE.getID() + 'html-preview';
             var htmlPreview = defaultRTE.element.querySelector('#' + id);

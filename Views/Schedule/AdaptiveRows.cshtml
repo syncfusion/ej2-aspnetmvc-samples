@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EnableAdaptiveRows(true).SelectedDate(new DateTime(2018, 8, 1)).CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); }).Group(group => group.EnableCompactView(false).Resources(ViewBag.ResourceNames)).Resources(res => { res.DataSource(ViewBag.RoomDatas).Field("RoomId").Title("Room Type").Name("MeetingRoom").TextField("name").IdField("id").ColorField("color").AllowMultiple(true).Add(); }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Location(loc => loc.Name("Location").Title("Location")).Description(des => des.Name("Description").Title("Comments")).StartTime(st => st.Name("StartTime").Title("From")).EndTime(et => et.Name("EndTime").Title("To"))).DataSource(ViewBag.datasource)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").RowAutoHeight(true).SelectedDate(new DateTime(2018, 8, 1)).CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); }).Group(group => group.EnableCompactView(false).Resources(ViewBag.ResourceNames)).Resources(res => { res.DataSource(ViewBag.RoomDatas).Field("RoomId").Title("Room Type").Name("MeetingRoom").TextField("name").IdField("id").ColorField("color").AllowMultiple(true).Add(); }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Location(loc => loc.Name("Location").Title("Location")).Description(des => des.Name("Description").Title("Comments")).StartTime(st => st.Name("StartTime").Title("From")).EndTime(et => et.Name("EndTime").Title("To"))).DataSource(ViewBag.datasource)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -12,7 +12,7 @@
             <tbody>
                 <tr style="height: 50px">
                     <td style="width: 100%">
-                        @Html.EJS().CheckBox("adaptive-rows").Change("onChange").Checked(true).Label("Enable Adaptive rows").Render()
+                        @Html.EJS().CheckBox("adaptive-rows").Change("onChange").Checked(true).Label("Row Auto Height").Render()
                     </td>
                 </tr>
             </tbody>
@@ -22,7 +22,6 @@
         .e-schedule .e-timeline-view .e-resource-left-td {
             width: 120px;
         }
-
         .e-schedule .e-timeline-view .e-resource-text {
             padding-left: 20px;
         }
@@ -30,7 +29,7 @@
     <script type="text/javascript">
         function onChange(args) {
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
-            scheduleObj.enableAdaptiveRows = args.checked;
+            scheduleObj.rowAutoHeight = args.checked;
         }
     </script>
 }
@@ -48,7 +47,7 @@
 @section Description{
     <div id="description">
         <p>
-            In this example, <code>enableAdaptiveRows</code> property is set as <code>true</code> to auto-adjust the height
+            In this example, <code>rowAutoHeight</code> property is set as <code>true</code> to auto-adjust the height
             of work cells based
             on the number of appointments present in the same time ranges. Also, this functionality is applicable only on
             all the timeline views as well as on the calendar month view. When this option is disabled, the height of the

@@ -5,7 +5,7 @@
     <div class="control-section">
         <div class="sample-container">
             @Html.EJS().FileManager("filemanager").AjaxSettings(new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings{
-                 Url = "https://ej2services.syncfusion.com/production/web-services/api/FileManager/FileOperations"
+                 Url = "https://ng2jq.syncfusion.com/ej2services/api/FileManager/FileOperations"
             }).View(Syncfusion.EJ2.FileManager.ViewType.Details).Render()
         </div>
     </div>
@@ -25,7 +25,7 @@
 
 @section Scripts{
     <script>
-        var hostUrl = 'https://ej2services.syncfusion.com/production/web-services/';
+        var hostUrl = 'https://ng2jq.syncfusion.com/ej2services/';
         var fileObj = document.getElementById('filemanager').ej2_instances[0];
         fileObj.ajaxSettings.url = hostUrl + 'api/FileManager/FileOperations';
         fileObj.ajaxSettings.getImageUrl = hostUrl + 'api/FileManager/GetImage',

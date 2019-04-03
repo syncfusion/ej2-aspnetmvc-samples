@@ -10,16 +10,16 @@
                         .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
                         .Dependency("Predecessor").Child("SubTasks")).Columns(col =>
                         {
-                            col.Field("TaskName").Width(250).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+                            col.Field("TaskName").HeaderText("Task Name").Width(250).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
                             col.Field("StartDate").Add();
                             col.Field("Duration").Add();
                             col.Field("EndDate").Add();
-                            col.Field("Predecessor").Add();
+                            col.Field("Predecessor").HeaderText("Predecessor").Add();
                         })
                         .TreeColumnIndex(0).Toolbar(new List<string> { "Search" }).AllowFiltering(true).IncludeWeekend(true).Height("450px")
                         .TimelineSettings(tl => tl.TopTier(tt => tt.Format("MMM dd, yyyy").Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))
                         .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Hour).Format("h.mm a")).TimelineUnitSize(60))
-                        .SplitterSettings(ss => ss.ColumnIndex(3)).DurationUnit(Syncfusion.EJ2.Gantt.DurationUnit.Hour)
+                        .SplitterSettings(ss => ss.ColumnIndex(4)).DurationUnit(Syncfusion.EJ2.Gantt.DurationUnit.Hour)
                         .DayWorkingTime(dw =>
                         {
                             dw.From(0).To(24).Add();
@@ -36,8 +36,8 @@
     <script>
         function actionComplete(args) {
             if (args.requestType == "filterafteropen" && (args.columnName === "StartDate" || args.columnName === "EndDate")) {
-                args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].min = new Date(1969, 5, 16);
-                args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].max = new Date(1969, 8, 16);
+                args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].min = new Date(1969, 5, 1);
+                args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].max = new Date(1969, 8, 30);
                 args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].showTodayButton = false;
                 args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].dataBind();
             }
@@ -85,14 +85,6 @@
                 not have any parent and child record then only the filtered records are displayed.
             </li>
             <li><code>None</code> - Only the filtered records are displayed.</li>
-        </p>
-        <p style="font-weight: 500">Injecting Module:</p>
-        <p>
-            Gantt component features are segregated into individual feature-wise modules. To use filtering feature, we need
-            to inject <code>Filter</code> using the <code>Gantt.Inject(Filter)</code> method, and use a toolbar by injecting
-            the Toolbar
-            module using
-            the <code>Gantt.Inject(Toolbar)</code> method.
         </p>
     </div>
 }

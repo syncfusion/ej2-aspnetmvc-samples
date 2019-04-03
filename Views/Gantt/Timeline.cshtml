@@ -8,7 +8,7 @@
             <div class="control-section">
                 @(Html.EJS().Gantt("Timeline").DataSource((IEnumerable<object>)ViewBag.DataSource)
                     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate")
-                    .Duration("Duration").Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Info").ResourceInfo("ResourceId"))
+                    .Duration("Duration").Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Notes").ResourceInfo("ResourceId"))
                     .Height("450px").HighlightWeekends(true).ProjectStartDate("02/03/2019").ProjectEndDate("03/23/2019")
                     .ResourceNameMapping("ResourceName").ResourceIDMapping("ResourceId")
                     .TimelineSettings(ts => ts.TopTier(tt => tt.Format("MMM dd, yyyy").Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week))
@@ -32,6 +32,16 @@
                 <col style="width:70%" />
             </colgroup>
             <tr>
+                <td style="width: 30%">
+                    <div>Unit width</div>
+                </td>
+                <td style="width: 70%;">
+                    <div>
+                        @Html.EJS().NumericTextBox("unitWidth").Value(33).Change("onUnitWidthChange").Min(10).Format("n").Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td style="width:30%;"><div><b>Top tier</b></div></td>
                 <td style="width:70%;">
                     <div>
@@ -44,7 +54,7 @@
                 <td style="width:30%;"> <div style="padding-top: 8px">Count</div></td>
                 <td style="width:70%;">
                     <div>
-                        @Html.EJS().NumericTextBox("TopTierCount").Format("##").Min(1).Max(50).Value(1).Change("TopCountChange").Render()
+                        @Html.EJS().NumericTextBox("TopTierCount").Format("n").Min(1).Max(50).Value(1).Change("TopCountChange").Render()
                     </div>
                 </td>
             </tr>
@@ -92,7 +102,7 @@
                 </td>
                 <td style="width:70%;">
                     <div>
-                        @Html.EJS().NumericTextBox("BottomTierCount").Format("##").Min(1).Max(50).Value(1).Change("BottomCountChange").Render()
+                        @Html.EJS().NumericTextBox("BottomTierCount").Format("n").Min(1).Max(50).Value(1).Change("BottomCountChange").Render()
                     </div>
                 </td>
             </tr>
@@ -127,6 +137,10 @@
         </table>
     </div>
     <script>
+        function onUnitWidthChange(args) {
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            gantt.timelineSettings.timelineUnitSize = args.value;
+        }
         function TopTierChange() {
             var checkBox = document.getElementById("TopTierCheck").ej2_instances[0];
             var gantt = document.getElementById("Timeline").ej2_instances[0];
@@ -194,7 +208,7 @@
             var unit = args.value;
             var gantt = document.getElementById("Timeline").ej2_instances[0];
             var topFormatDropDown = document.getElementById("TopTierFormat").ej2_instances[0];
-            gantt.timelineSettings.topTier.unit = unit;
+            
             if (unit === 'Year') {
                 topFormatDropDown.dataSource = yearformat;
             } else if (unit === 'Month') {
@@ -207,13 +221,47 @@
                 topFormatDropDown.dataSource = hourformat;
             }
             topFormatDropDown.refresh();
+            updateUnitWidth(unit, 'top');
+            gantt.timelineSettings.topTier.unit = unit;
         }
+        function updateUnitWidth(unit, tier) {
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            var topUnit = tier === 'top' ? unit : gantt.timelineSettings.topTier.unit;
+            var bottomUnit = tier === 'bottom' ? unit : gantt.timelineSettings.bottomTier.unit;
+            var units = ['None', 'Hour', 'Day', 'Week', 'Month', 'Year'];
+            var bootomCellUnit;
+            var unitWidth;
+            if (units.indexOf(topUnit) === 0 && units.indexOf(bottomUnit) === 0) {
+                bootomCellUnit = 'Day';
+            } else if (units.indexOf(topUnit) === 0 && units.indexOf(bottomUnit) > 0) {
+                bootomCellUnit = bottomUnit;
+            } else if (units.indexOf(topUnit) > 0 && units.indexOf(bottomUnit) === 0) {
+                bootomCellUnit = topUnit;
+            } else if (units.indexOf(topUnit) <= units.indexOf(bottomUnit)) {
+                bootomCellUnit = topUnit;
+            } else {
+                bootomCellUnit = bottomUnit;
+            }
+            if (bootomCellUnit === 'Year') {
+                unitWidth = 2000;
+            } else if (bootomCellUnit === 'Month') {
+                unitWidth = 300;
+            } else if (bootomCellUnit === 'Week') {
+                unitWidth = 150;
+            } else if (bootomCellUnit === 'Day') {
+                unitWidth = 33;
+            } else if (bootomCellUnit === 'Hour') {
+                unitWidth = 25;
+            }
+            var NumericBox = document.getElementById("unitWidth").ej2_instances[0];
+            NumericBox.value = unitWidth;
+        }  
 
         function BottomUnitChange(args) {
             var unit = args.value;
             var gantt = document.getElementById("Timeline").ej2_instances[0];
             var bottomFormatDropDown = document.getElementById("BottomTierFormat").ej2_instances[0];
-            gantt.timelineSettings.bottomTier.unit = unit;
+         
             if (unit === 'Year') {
                 bottomFormatDropDown.dataSource = yearformat;
             } else if (unit === 'Month') {
@@ -226,6 +274,8 @@
                 bottomFormatDropDown.dataSource = hourformat;
             }
             bottomFormatDropDown.refresh();
+            updateUnitWidth(unit, 'bottom');
+            gantt.timelineSettings.bottomTier.unit = unit;
         }
 
         var yearformat = [
@@ -284,14 +334,6 @@
         <p>
             Tooltip is enabled by default for the timeline headers, to see the tooltip in action, hover a point or tap on a
             point in touch enabled devices.
-        </p>
-        <p style="font-weight: 500">Injecting Module:</p>
-        <p>
-            Gantt component features are segregated into individual feature-wise modules. To use a selection, inject the
-            Selection module using the <code>Gantt.Inject(Selection)</code> method, and use a sort by injecting the Sort
-            module using
-            the <code>Gantt.Inject(Sort)</code> method. To use markers, inject the
-            DayMarkers module using the <code>Gantt.Inject(DayMarkers)</code> method.
         </p>
     </div>
 }

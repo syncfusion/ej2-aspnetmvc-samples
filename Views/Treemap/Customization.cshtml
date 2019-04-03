@@ -14,8 +14,7 @@
     </div>
     <script>
         function load(args) {
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
+            var theme = themeName ? themeName : 'Material';
             args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
             args.treemap.dataSource = [
                 { Sport: "Swimming", Gold: 16, GameImage: 'Swimming.svg', ItemHeight: "180px", ItemWidth: '180px' },

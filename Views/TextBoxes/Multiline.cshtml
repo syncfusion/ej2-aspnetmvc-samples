@@ -19,9 +19,9 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="left-side">Enabled</td>
+                    <td class="left-side">Disabled</td>
                     <td>
-                        @Html.EJS().CheckBox("sample").Change("enabledHandler").Checked(true).CssClass("multiline").Render()
+                        @Html.EJS().CheckBox("sample").Change("enabledHandler").Checked(false).CssClass("multiline").Render()
                     </td>
                 </tr>
                 <tr>
@@ -73,7 +73,7 @@
         }
         function enabledHandler(args) {
             var textareaObj = document.getElementById('default').ej2_instances[0];
-            textareaObj.enabled = args.checked;
+            textareaObj.enabled = !args.checked;
         }
         function readonlyHandler(args) {
             var textareaObj = document.getElementById('default').ej2_instances[0];

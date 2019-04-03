@@ -50,8 +50,7 @@
         var circulargauge;
         var sliderValue = 60;
         function gaugeLoad(args) {
-            var arctheme = location.hash.split('/')[1];
-            arctheme = arctheme ? arctheme : 'Material';
+            var arctheme = themeName ? themeName : 'Material';
             args.gauge.theme = (arctheme.charAt(0).toUpperCase() + arctheme.slice(1));
             if (!circulargauge) {
                 circulargauge = args.gauge;

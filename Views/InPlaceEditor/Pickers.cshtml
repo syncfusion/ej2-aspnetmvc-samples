@@ -90,6 +90,21 @@
         .inplace-control-section.pickers-layout .control_wrapper table td .control-label {
             margin-bottom: 0px;
         }
+
+        @@media (max-width: 768px) {
+            .inplace-control-section.pickers-layout {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .inplace-control-section .control_wrapper table tr td:nth-child(1) {
+                width: 130px;
+            }
+
+            .inplace-control-section .control_wrapper table tr td:nth-child(2) {
+                width: 200px;
+            }
+        }
         /* custom code end */
 </style>
 

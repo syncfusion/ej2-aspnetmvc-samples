@@ -23,20 +23,20 @@
 
     @*Dialog*@
     <div id="target">
-        @Html.EJS().Dialog("dialog").Width("435px").Target("#target").Header("Add a Widget").ZIndex(20).ShowCloseIcon(true).IsModal(true).Visible(false).Height("43%").Content("<div><div id='linetemplate'><p class='dialog-text'>Linechart (1x1) </p></div><div id='pietemplate'><p class='dialog-text'>Piechart (1x1) </p></div><div id='splinetemplate'><p class='dialog-text'>Splinechart (2x1) </p></div></div>").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.Zoom }).Render()
+        @Html.EJS().Dialog("dialog").Width("435px").Height("260px").Target("#target").Header("Add a Widget").ZIndex(20).ShowCloseIcon(true).IsModal(true).Visible(false).Content("<div><div id='linetemplate'><p class='dialog-text'>Linechart (1x1) </p></div><div id='pietemplate'><p class='dialog-text'>Piechart (1x1) </p></div><div id='splinetemplate'><p class='dialog-text'>Splinechart (2x1) </p></div></div>").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.Zoom }).Render()
     </div>
     @*column chart*@
     <div id="lineContainer">
         @(Html.EJS().Chart("linechart").Series(series =>
                                     {
                                         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
-                                        .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").Fill("#00bdaed1")
+                                        .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").Fill("#00bdae")
                                         .YName("y").DataSource(ViewBag.lineSource1).Name("Jan").Width(2).Add();
                                         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
-                                         .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y").Fill("#e56691e8").DataSource(ViewBag.lineSource)
+                                         .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y").Fill("#e56691").DataSource(ViewBag.lineSource)
                                         .Name("Feb").Width(2).Add();
                                         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
-                                         .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").Fill("#357cd2bf")
+                                         .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").Fill("#357cd2")
                                          .YName("y").DataSource(ViewBag.lineSource2).Name("Mar").Width(2).Add();
 
                                     }).PrimaryYAxis(px => px.LabelStyle(ls => ls.Color("transparent")).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
@@ -44,12 +44,12 @@
                                            ).PrimaryXAxis(px => px.Interval(1)
                                            .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0))
                                            ).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br => br.Color("transparent"))
-                                           ).LegendSettings(lg => lg.Visible(true)).Render())
+                                           ).LegendSettings(lg => lg.Visible(true)).Load("loadLinechart").Render())
     </div>
 
     @*pie chart*@
     <div id="pieContainer" >
-        <div>
+        <div style="width:100%; height:100%">
             @(Html.EJS().AccumulationChart("pie").Series(series =>
                                                                       {
                                                                           series.DataLabel(dl => dl.Visible(true).Name("value").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside)).InnerRadius("40%")
@@ -68,6 +68,7 @@
                                                                       .EnableAnimation(false)
                                                                       .LegendSettings(ls => ls.Visible(false).ToggleVisibility(false))
                                                                       .Tooltip(tp => tp.Enable(true).Header("<b>${point.x}</b>").Format("Composition : <b>${point.y}%</b>"))
+                                                                      .Load("loadPiechart")
                                                                       .Render()
             )
         </div>
@@ -77,14 +78,14 @@
     <div id="splineContainer">
         @(Html.EJS().Chart("spline").Series(series =>
                             {
-                                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").DataSource(ViewBag.splineSource1).Name("Jan").Add();
-                                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").DataSource(ViewBag.splineSource2).Name("Feb").Add();
+                                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").Fill("rgb(239, 183, 202)").DataSource(ViewBag.splineSource1).Name("Jan").Add();
+                                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").Fill("rgb(0, 189, 174)").DataSource(ViewBag.splineSource2).Name("Feb").Add();
 
                             }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
                             .MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
                             .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Months).LabelFormat("MMM")
                                          ).PrimaryYAxis(py => py.LabelFormat("{value}%").MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
-                                         ).ChartArea(area => area.Border(br => br.Color("transparent"))).Render())
+                                         ).ChartArea(area => area.Border(br => br.Color("transparent"))).Load("loadSplinechart").Render())
     </div>
 
     <div id="content"></div>
@@ -141,7 +142,7 @@
                     //Initializing Chart Series
                     series: [
                         {
-                            type: 'Column', xName: 'x', width: 2, yName: 'y', name: 'Jan', fill: '#00bdaed1',
+                            type: 'Column', xName: 'x', width: 2, yName: 'y', name: 'Jan', fill: '#00bdae',
                             dataSource: [{ x: 'Jan', y: 46 }, { x: 'Feb', y: 27 }, { x: 'Mar', y: 26 }],
                             marker: {
                                 dataLabel: {
@@ -152,12 +153,12 @@
                             }
                         },
                         {
-                            type: 'Column', xName: 'x', width: 2, yName: 'y', name: 'Feb', fill: '#e56691e8',
+                            type: 'Column', xName: 'x', width: 2, yName: 'y', name: 'Feb', fill: '#e56691',
                             dataSource: [{ x: 'Jan', y: 37 }, { x: 'Feb', y: 23 }, { x: 'Mar', y: 18 }],
                             marker: { dataLabel: { visible: false, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } }
                         },
                         {
-                            type: 'Column', xName: 'x', width: 2, yName: 'y', name: 'Mar', fill: '#357cd2bf',
+                            type: 'Column', xName: 'x', width: 2, yName: 'y', name: 'Mar', fill: '#357cd2',
                             dataSource: [{ x: 'Jan', y: 38 }, { x: 'Feb', y: 17 }, { x: 'Mar', y: 26 }],
                             marker: { dataLabel: { visible: false, position: 'Top', font: { fontWeight: '600', color: '#ffffff' } } }
                         }
@@ -167,11 +168,6 @@
                         selectedTheme = selectedTheme ? selectedTheme : 'Material';
                         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() +
                             selectedTheme.slice(1)).replace(/-dark/i, 'Dark');
-                        if (selectedTheme === 'highcontrast') {
-                            args.chart.series[0].marker.dataLabel.font.color = '#000000';
-                            args.chart.series[1].marker.dataLabel.font.color = '#000000';
-                            args.chart.series[2].marker.dataLabel.font.color = '#000000';
-                        }
                     }
                 });
                 linechartObj.appendTo('#' + '_line' + countValue);
@@ -182,7 +178,7 @@
                 var countValue = count.toString();
                 var panel = [{
                     'id': '_layout' + countValue, 'sizeX': 1, 'sizeY': 1, 'row': 0, 'col': 0,
-                    header: '<div>Pie Chart</div>', content: '<div id=_pie' + countValue + ' style="height:100%; width:100%"></div>'
+                    header: '<div>Pie Chart</div>', content: '<div id=_pie' + countValue + ' style="height:87%; width:90%; margin: 5% auto;"></div>'
                 }];
                 count = count + 1;
                 dashboardObject.addPanel(panel[0]);
@@ -194,7 +190,7 @@
                                 { 'x': 'Feb', y: 25, text: 'February' },
                                 { 'x': 'Mar', y: 50, text: 'March' },
                             ],
-                            palettes: ['#00bdaed1', '#357cd2bf', '#e56691e8'],
+                            palettes: ['#00bdae', '#357cd2', '#e56691'],
                             radius: '100%', xName: 'x', yName: 'y', startAngle: 0, endAngle: 360, innerRadius: '40%', name: 'Earnings',
                             dataLabel: {
                                 visible: true,
@@ -214,7 +210,12 @@
                         visible: false, toggleVisibility: false
                     },
                     width: '99%',
-                    height: '100%'
+                    height: '100%',
+                    load: function (args) {
+                        var selectedTheme = location.hash.split('/')[1];
+                        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+                        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+                    }
                 });
                 pie.appendTo('#' + '_pie' + countValue);
                 pie.refresh();
@@ -262,7 +263,7 @@
                             ],
                             name: 'Jan', xName: 'x', yName: 'y', type: 'SplineArea',
                             border: { color: 'transparent' },
-                            fill: '#e56590e6',
+                            fill: 'rgb(239, 183, 202)',
                             opacity: 0.5
                         },
                         {
@@ -309,7 +310,24 @@
                 document.getElementById('dialogBtn').style.display = 'none';
             }
         }
-    });</script>
+    });
+    var loadLinechart = function (args) {
+        var selectedTheme = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+    }
+
+    var loadPiechart = function (args) {
+        var selectedTheme = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+    }
+    var loadSplinechart = function (args) {
+        var selectedTheme = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+    }
+</script>
 <style>
 
     #dialogBtn {
@@ -369,7 +387,7 @@
     }
 
     .e-panel-content {
-        height: calc(100% - 35px);
+        height: calc(100% - 35px) !important;
         overflow: hidden;
         width: 100%;
     }
@@ -429,15 +447,19 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            The following sample demonstrates a editable dashboard layout. Initially the dashboardlayout component doesn't allow to drag, resize or reorder the panels. After clicking the edit button, the layout becomes editable which allows to drag and reorder the
-            panels as per the requirement and also you can add new panels to the layout with predefined templates by clicking the add new button and reorder them by dragging and placing in the required position.Drag and resizing of the panles are not applicable in mobile resolution.
+            The following sample demonstrates a editable dashboard layout. Initially the DashboardLayout component doesn't
+            allow to drag, resize or reorder the panels. After clicking the edit button, the layout becomes editable which
+            allows to drag and reorder the
+            panels as per the requirement and also you can add new panels to the layout with predefined templates by
+            clicking the add new button and reorder them by dragging and placing in the required position. Drag and resizing
+            of the panles are not applicable in mobile resolution.
         </p>
     </div>
 }
 @section Description{
     <div id="description">
         <p>
-            The following sample demonstrates about using the dashboardlayout as an editable layout.
+            The following sample demonstrates about using the dashboard layout as an editable layout.
         </p>
     </div>
 }

@@ -129,8 +129,7 @@
         var maps;
         function mapsLoad(args) {
             maps = args.maps;
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
+            var theme = themeName ? themeName : 'Material';
             args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
             args.maps.legendSettings = {
                 visible: true,
@@ -139,11 +138,7 @@
                 width: '80%',
                 mode: 'Interactive',
                 titleStyle: {
-                    size: '18px',
-                    fontStyle: 'Medium',
-                    fontFamily: 'Roboto, Noto, Sans-serif',
-                    fontWeight: 'Medium',
-                    opacity: 0.5
+                    size: '18px'
                 },
                 title: {
                     text: 'Inches'

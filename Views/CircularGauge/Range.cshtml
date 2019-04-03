@@ -7,13 +7,12 @@
    .Radius("80%").StartAngle(230).EndAngle(130).LabelStyle(new CircularGaugeLabel
    {
        Position = Position.Inside,
-       UseRangeColor = false,
-       Font = new CircularGaugeFont { Size = "12px", Color = "#424242", FontFamily = "Roboto", FontStyle = "Regular", Opacity = 1 },
+       Font = new CircularGaugeFont { Size = "12px", FontFamily = "Roboto", FontStyle = "Regular", Opacity = 1 },
    }).Pointers(ViewBag.Pointers).Ranges(ViewBag.Ranges)
    .Annotations(ViewBag.Annotations)
    .StartAngle(210).EndAngle(150).Minimum(0).Maximum(120).Radius("80%")
    .LineStyle(new CircularGaugeLine{ Width = 10, Color = "transparent" })
-   .MinorTicks(new CircularGaugeTick { Height = 0, Width = 0, Color = "transparent" }).MajorTicks(new CircularGaugeTick { Height = 10, Offset = 5, Color = "#9E9E9E" }).Add()
+   .MinorTicks(new CircularGaugeTick { Height = 0, Width = 0, Color = "transparent" }).MajorTicks(new CircularGaugeTick { Height = 10, Offset = 5 }).Add()
    ).Render()
         </div>
     </div>
@@ -125,8 +124,7 @@
                 if (gaugeWidth != svgWidth)
                     sender.gauge.refresh();
             }, 200);
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
             circulargauge = sender.gauge;
             for (var i = 0; i < sender.gauge.axes[0].annotations.length; i++) {

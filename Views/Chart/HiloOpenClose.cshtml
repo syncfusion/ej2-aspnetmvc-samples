@@ -30,8 +30,7 @@
     <script>
         var chartData = chartData;
          @*custom code start*@
-        var selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        var selectedTheme = themeName ? themeName : 'Material';
         var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
          @*custom code end*@
         var axisLabelRender = function (args) {

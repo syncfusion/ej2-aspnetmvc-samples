@@ -24,8 +24,7 @@
     <script>
         var chart, chart1, chart2, chart3, chart4, chart5;
         function mapsload(args) {
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
+            var theme = themeName ? themeName : 'Material';
             args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
             args.maps.layers[0].markerSettings = [
                 {

@@ -47,7 +47,7 @@
                 </ul>
             </div>
             <!-- sidebar element declaration-->
-            @{Html.EJS().Sidebar("sidebar-menu").Type(Syncfusion.EJ2.Navigations.SidebarType.Push).Width("220px").Target(".main-content").EnableDock(true).DockSize("50px").ContentTemplate(@<div class="dock-menu">
+            @{Html.EJS().Sidebar("sidebar-menu").Width("220px").Target(".main-content").EnableDock(true).DockSize("50px").ContentTemplate(@<div class="dock-menu">
         <!-- normal state element declaration -->
         <div class="main-menu">
 
@@ -118,15 +118,14 @@
         padding-left: 15px;
         margin: 0;
     }
-    /* custom code start */
-    @@media(max-width:500px) {
-
-        #header .right-header.list.support,
+	
+	@@media(max-width:500px) {
+	    #header .right-header.list.support,
         #header .right-header.list.tour {
-            display: none;
-        }
-    }
-    /* custom code end */
+        display: none;
+	    }
+	}
+	
     /* text input styles */
     #header .search-icon {
         float: left;
