@@ -60,7 +60,7 @@
     </Reference>
     <Reference Include="Syncfusion.DocIO.Base">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.16.3.0.17\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.17.1.0.38\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.DocumentEditor">
       <SpecificVersion>False</SpecificVersion>
@@ -73,13 +73,13 @@
       <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.16.3.0.17\lib\net45\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.16.3.0.17\lib\net45\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.17.1.0.38\lib\net45\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Base">
       <HintPath>packages\Syncfusion.Compression.Base.16.3.0.17\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChart.Base">
-      <HintPath>packages\Syncfusion.OfficeChart.Base.16.3.0.17\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChart.Base.17.1.0.38\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Presentation.Base">
       <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.16.3.0.17\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
