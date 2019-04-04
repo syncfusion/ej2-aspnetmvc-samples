@@ -26,28 +26,32 @@
                 </tr>
                 <tr>
                     <td style="width: 40%">
-                        <div class="property-text"> Change Opacity</div>
+                        <div class="property-text" id="text1" style="display: none;"> Change Opacity</div>
                     </td>
                     <td style="width: 40%;">
-                        <div>
+                        <div id="input1" style="display: none">
                             <input type="checkbox" id="opacity" />
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 50%">
-                        <div class="property-text" style="margin-top:12%">Min Opacity</div>
+                        <div class="property-text" id="text2" style="margin-top:12%; display: none">Min Opacity</div>
                     </td>
                     <td style="width: 50%;">
-                        <input type="range" id="minopacity" step="0.1" value="0.5" min="0" max="1" style="width:100%;margin-top: 20%" disabled />
+                        <div id="input2" style="display: none">
+                            <input type="range" id="minopacity" step="0.1" value="0.5" min="0" max="1" style="width:100%;margin-top: 20%" />
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 50%">
-                        <div class="property-text" style="margin-top:12%">Max Opacity</div>
+                        <div class="property-text" id="text3" style="margin-top:12%; display: none">Max Opacity</div>
                     </td>
                     <td style="width: 50%;">
-                        <input type="range" id="maxopacity" step="0.1" value="1" min="0" max="1" style="width:100%;margin-top: 20%" disabled />
+                        <div id="input3" style="display: none">
+                            <input type="range" id="maxopacity" step="0.1" value="1" min="0" max="1" style="width:100%;margin-top: 20%" />
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -56,8 +60,7 @@
     <script>
         var treemap;
         function load(args) {
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
+            var theme = themeName ? themeName : 'Material';
             args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
             if (!treemap) {
                 args.treemap.leafItemSettings.colorMapping = [
@@ -85,12 +88,16 @@
         }
         var opacity;
         var highlightCheckBox = new ej.buttons.CheckBox({
-            change: opacity, checked: false, disabled: true
+            change: opacity, checked: false
         }, '#opacity');
         highlightCheckBox.change = opacity = function (e) {
             var minOpacity = document.getElementById('minopacity');
             var maxOpacity = document.getElementById('maxopacity');
             if (e.checked) {
+                document.getElementById('text2').style.display = 'block';
+                document.getElementById('input2').style.display = 'block';
+                document.getElementById('text3').style.display = 'block';
+                document.getElementById('input3').style.display = 'block';
                 treemap.leafItemSettings.colorMapping[0].minOpacity = parseFloat(minOpacity.value);
                 treemap.leafItemSettings.colorMapping[0].maxOpacity = parseFloat(maxOpacity.value);
                 treemap.leafItemSettings.colorMapping[1].minOpacity = parseFloat(minOpacity.value);
@@ -99,6 +106,10 @@
                 maxOpacity.disabled = false;
             }
             else {
+                document.getElementById('text2').style.display = 'none';
+                document.getElementById('input2').style.display = 'none';
+                document.getElementById('text3').style.display = 'none';
+                document.getElementById('input3').style.display = 'none';
                 treemap.leafItemSettings.colorMapping[0].minOpacity = null;
                 treemap.leafItemSettings.colorMapping[0].maxOpacity = null;
                 treemap.leafItemSettings.colorMapping[1].minOpacity = null;
@@ -135,7 +146,12 @@
             change: function () {
                 var element = sampleValue.value.toString();
                 if (element === 'RangeColorMapping') {
-                    highlightCheckBox.disabled = true;
+                    document.getElementById('text1').style.display = 'none';
+                    document.getElementById('input1').style.display = 'none';
+                    document.getElementById('text2').style.display = 'none';
+                    document.getElementById('input2').style.display = 'none';
+                    document.getElementById('text3').style.display = 'none';
+                    document.getElementById('input3').style.display = 'none';
                     treemap.rangeColorValuePath = 'Area';
                     treemap.leafItemSettings.colorMapping[2].minOpacity = null;
                     treemap.leafItemSettings.colorMapping[2].maxOpacity = null;
@@ -184,7 +200,12 @@
                     treemap.refresh();
                 }
                 else if (element === 'EqualColorMapping') {
-                    highlightCheckBox.disabled = true;
+                    document.getElementById('text1').style.display = 'none';
+                    document.getElementById('input1').style.display = 'none';
+                    document.getElementById('text2').style.display = 'none';
+                    document.getElementById('input2').style.display = 'none';
+                    document.getElementById('text3').style.display = 'none';
+                    document.getElementById('input3').style.display = 'none';
                     treemap.rangeColorValuePath = null;
                     treemap.leafItemSettings.colorMapping[0].from = null;
                     treemap.leafItemSettings.colorMapping[0].to = null;
@@ -226,7 +247,8 @@
                     treemap.refresh();
                 }
                 else if (element === 'DesaturationColorMapping') {
-                    highlightCheckBox.disabled = false;
+                    document.getElementById('text1').style.display = 'block';
+                    document.getElementById('input1').style.display = 'block';
                     treemap.rangeColorValuePath = 'Area';
                     treemap.equalColorValuePath = null;
                     var minOpacity = document.getElementById('minopacity');
@@ -250,6 +272,10 @@
                     treemap.leafItemSettings.colorMapping[3].color = null;
                     treemap.leafItemSettings.colorMapping[0].color = ['#F0D6AD', '#19547B'];
                     if (highlightCheckBox.checked) {
+                        document.getElementById('text2').style.display = 'block';
+                        document.getElementById('input2').style.display = 'block';
+                        document.getElementById('text3').style.display = 'block';
+                        document.getElementById('input3').style.display = 'block';
                         treemap.leafItemSettings.colorMapping[0].minOpacity = parseFloat(minOpacity.value);
                         treemap.leafItemSettings.colorMapping[0].maxOpacity = parseFloat(maxOpacity.value);
                     }

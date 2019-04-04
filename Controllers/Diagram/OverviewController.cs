@@ -13,7 +13,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         public ActionResult Overview()
         {
              
-           ViewBag.Nodes = OverviewData.GetAllRecords(Url);
+           ViewBag.Nodes = OverviewData.GetAllRecords(Server);
             return View();
         }
     }

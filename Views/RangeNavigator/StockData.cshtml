@@ -85,8 +85,7 @@
         var chartData1 = chartData;
         var index = 0;
         var zoomFactor, zoomPosition;
-        var selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        var selectedTheme = themeName ? themeName : 'Material';
         var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
         var annotationString = '<div id="annotation" style="line-height: 18px;' +
                                 ' font-size: 13px;background: #fff; opacity:0.9; color: #464e56; ' +
@@ -214,9 +213,11 @@
         }
     </script>
 }
+@*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Range Navigator control shows how to render the stock charts with specified periods using period selector." />
 }
+@*custom code end*@
 @section ActionDescription{
     <p>
         This sample illustrates a stock chart with MACD indicator.

@@ -15,6 +15,9 @@
     color: rgba(0, 0, 0, .57);
 }
 
+.bootstrap4 .e-list-icon {
+    color: #495057;
+}
 
 
 .highcontrast .e-list-icon {

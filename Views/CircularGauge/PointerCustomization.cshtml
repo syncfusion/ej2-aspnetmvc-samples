@@ -143,8 +143,7 @@
     </div>
     <script type="text/javascript">
         function onGaugeLoad(args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
             for (var i = 0; i < args.gauge.axes[0].annotations.length; i++) {
                 args.gauge.axes[0].annotations[i].zIndex = "1";

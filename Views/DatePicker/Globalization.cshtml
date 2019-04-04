@@ -24,67 +24,68 @@
     </div>
 }
 
-    <script>
-        function onLocaleChange(args) {
-            /*Apply selected format to the component*/
-            var culture = args.value;
-            datepicker.locale = culture;
-            datepicker.enableRtl = datepicker.locale === 'ar' ? true : false;
-            if (culture !== 'en') {
-                loadCultureFiles(culture);
-            }
+<script>
+    function onLocaleChange(args) {
+        /*Apply selected format to the component*/
+        var culture = args.value;
+        datepicker.locale = culture;
+        datepicker.enableRtl = datepicker.locale === 'ar' ? true : false;
+        if (culture !== 'en') {
+            loadCultureFiles(culture);
         }
-        document.addEventListener('DOMContentLoaded', function () {
-            datepicker = document.getElementById('datepicker').ej2_instances[0];
-            var L10n = ej.base.L10n;
-            L10n.load({
-                'de': {
-                    'datepicker': {
-                        placeholder: 'Wählen Sie ein Datum',
-                        today: 'heute'
-                    }
-                },
-                'en': {
-                    'datepicker': {
-                        placeholder: 'Choose a date',
-                        today: 'Today'
-                    }
-                },
-                'ar': {
-                    'datepicker': {
-                        placeholder: 'اختر تاريخا',
-                        today: 'اليوم'
-                    }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        datepicker = document.getElementById('datepicker').ej2_instances[0];
+        var L10n = ej.base.L10n;
+        L10n.load({
+            'de': {
+                'datepicker': {
+                    placeholder: 'Wählen Sie ein Datum',
+                    today: 'heute'
                 }
-            });
-            loadCultureFiles('de');
-            datepicker.locale = 'de';
+            },
+            'en': {
+                'datepicker': {
+                    placeholder: 'Choose a date',
+                    today: 'Today'
+                }
+            },
+            'ar': {
+                'datepicker': {
+                    placeholder: 'اختر تاريخا',
+                    today: 'اليوم'
+                }
+            }
         });
-        function loadCultureFiles(name) {
-            var files = ['ca-gregorian.json', 'numbers.json', 'timeZoneNames.json'];
-            if (name === 'ar') {
-                files.push('numberingSystems.json');
-            }
-            var loader = ej.base.loadCldr;
-            var loadCulture = function (prop) {
-                var val, ajax;
-                if (name === 'ar' && prop === files.length - 1) {
-                    ajax = new ej.base.Ajax(location.origin + location.pathname + '/../../scripts/cldr-data/supplemental/' + files[prop], 'GET', false);
-                } else {
-                    ajax = new ej.base.Ajax(location.origin + location.pathname + '/../../scripts/cldr-data/main/' + name + '/' + files[prop], 'GET', false);
-                }
-                ajax.onSuccess = function (value) {
-                    val = value;
-                };
-                ajax.send();
-                loader(JSON.parse(val));
-            };
-            for (var prop = 0; prop < files.length; prop++) {
-                loadCulture(prop);
-            }
+        loadCultureFiles('de');
+        datepicker.locale = 'de';
+    });
+    function loadCultureFiles(name) {
+        var files = ['ca-gregorian.json', 'numbers.json', 'timeZoneNames.json'];
+        if (name === 'ar') {
+            files.push('numberingSystems.json');
         }
-    </script>
+        var loader = ej.base.loadCldr;
+        var loadCulture = function (prop) {
+            var val, ajax;
+            if (name === 'ar' && prop === files.length - 1) {
+                ajax = new ej.base.Ajax(location.origin + location.pathname + '/../../scripts/cldr-data/supplemental/' + files[prop], 'GET', false);
+            } else {
+                ajax = new ej.base.Ajax(location.origin + location.pathname + '/../../scripts/cldr-data/main/' + name + '/' + files[prop], 'GET', false);
+            }
+            ajax.onSuccess = function (value) {
+                val = value;
+            };
+            ajax.send();
+            loader(JSON.parse(val));
+        };
+        for (var prop = 0; prop < files.length; prop++) {
+            loadCulture(prop);
+        }
+    }
+</script>
 
+@*custom code start*@
 <style>
     #date_label {
         display: block;
@@ -108,6 +109,7 @@
         margin: 0 auto;
     }
 </style>
+@*custom code end*@
 
 @section ActionDescription{
     <div id="action-description">

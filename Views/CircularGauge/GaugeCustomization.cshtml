@@ -112,6 +112,11 @@
             gauge = random = sender.gauge;
             usage = new ej.circulargauge.CircularGauge(customGauge2());
         }
+        function gaugeLoad(args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+        }
         barColor = new ej.dropdowns.DropDownList({
             index: 0,
             width: 120,
@@ -209,7 +214,7 @@
                 document.getElementById('currentPointerValue').innerHTML = 'Current Value <span>    ' + value + '</span>';
             };
 
-        var selectedTheme = location.hash.split('/')[1];
+        var selectedTheme =  themeName ? themeName : 'Material';
         var color;
         if (selectedTheme === 'bootstrap') {
             color = '#a16ee5';
@@ -227,6 +232,7 @@
 
         function customGauge2() {
             var customGauge2 = new ej.circulargauge.CircularGauge({
+                load: gaugeLoad,
                 axes: [{
                     annotations: [{
                         content: '<div style="color:#666666;font-size:35px;">50.5GB</div>',

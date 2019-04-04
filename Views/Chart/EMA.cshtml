@@ -39,7 +39,7 @@
    )
         </div>
     </div>
-
+ @*custom code start*@
 
     <style>
         #control-container {
@@ -49,17 +49,19 @@
     <script>
         var dataSource = window.chartData;
         var load = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
 
         };
     </script>
+ @*custom code end*@
 }
+ @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the exponential moving average indicator." />
 }
+ @*custom code end*@
 @section ActionDescription{
     <p>
         This sample illustrates a stock chart with candle series and an Exponential Moving Average indicator. 

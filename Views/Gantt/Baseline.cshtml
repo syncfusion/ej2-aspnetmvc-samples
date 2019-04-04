@@ -1,0 +1,92 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "Baseline";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("Baseline").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").RenderBaseline(true)
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").BaselineStartDate("BaselineStartDate")
+                .BaselineEndDate("BaselineEndDate")).Columns(col =>
+                {
+                    col.Field("TaskName").HeaderText("Service Name").Width(250).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+                    col.Field("BaselineStartDate").HeaderText("Planned start time").Add();
+                    col.Field("BaselineEndDate").HeaderText("Planned end time").Add();
+                    col.Field("StartDate").HeaderText("Start time").Add();
+                    col.Field("EndDate").HeaderText("End time").Add();
+                }).AllowSelection(true).IncludeWeekend(true)
+                .TimelineSettings(ts => ts.TimelineUnitSize(65).TopTier(tt => tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.None))
+                    .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Minutes).Count(15).Format("hh:mm a")))
+                .TooltipSettings(ts => ts.Taskbar("#tooltip")).DurationUnit(Syncfusion.EJ2.Gantt.DurationUnit.Minute)
+                .DateFormat("hh:mm a").Height("450px")
+                .DayWorkingTime(dw =>
+                {
+                    dw.From(0).To(24).Add();
+                }).ProjectStartDate("03/05/2018 09:30:00 AM").ProjectEndDate("03/05/2018 07:00:00 PM")
+                .Render()
+            )
+        </div>
+        <div style="float: right; margin:10px 10px 0px 0px;">
+            Source:
+            <a href="https://en.wikipedia.org/wiki/Service_(motor_vehicle)" target='_blank'>https://en.wikipedia.org/</a>
+        </div>
+    </div>
+
+    <script type="text/x-jsrender" id="tooltip">
+        <table>
+            <tbody>
+                <tr><td colspan="3">${TaskName}</td></tr>
+                <tr>
+                    <td> Start Time </td>
+                    <td>:</td>
+                    <td>${this.getFormatedDate(StartDate)}</td>
+                </tr>
+                <tr>
+                    <td> End Time</td>
+                    <td>:</td>
+                    <td>${this.getFormatedDate(EndDate)}</td>
+                </tr>
+                <tr>
+                    <td> Planned start time</td>
+                    <td>:</td>
+                    <td>${this.getFormatedDate(BaselineStartDate)}</td>
+                </tr>
+                <tr>
+                    <td> Planned end time</td>
+                    <td>:</td>
+                    <td>${this.getFormatedDate(BaselineEndDate)}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </script>
+});
+
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the complete service schedule for a car. Baselines are enabled to view the deviation between the planned dates and actual dates.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="Baselines are enabled to view the deviation between the planned dates of tasks and actual progress of task dates" />
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The baseline feature enables the user to view the deviation between the planned dates and the actual dates of
+            the tasks in a project. Baselines can be enabled in Gantt chart by enabling the <code>RenderBaseline</code>
+            property along
+            with mapping the data source values for <code>BaselineStartDate</code> and <code>BaselineEndDate</code>
+            properties.
+            The baseline will appear for all type of tasks in the project such as child tasks, parent tasks and also for
+            milestones. You can change the color for the baselines using <code>BaselineColor</code> property.
+        </p>
+    </div>
+}

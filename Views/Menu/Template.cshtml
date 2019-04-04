@@ -3,6 +3,7 @@
 @section Meta{
     <meta name="description" content="This example demonstrates how to customize Syncfusion ASP.NET MVC Menu popup items by using templates." />
 }
+
 @section ControlsSection{
     <div class="control-section">
         <div class="menu-control">
@@ -10,6 +11,7 @@
         </div>
     </div>
 }
+
 @section ActionDescription{
     <div id="action-description">
         <p>
@@ -41,6 +43,7 @@
         </p>
     </div>
 }
+
 <!-- Template to render Menu -->
 <script id="menuTemplate" type="text/x-template">
         ${if(category)}
@@ -73,7 +76,9 @@
         </div>
         ${/if}
 </script>
+@*custom code start*@
 <style>
+
     /**
     * ej2 Menu template styles
     */
@@ -93,6 +98,10 @@
         padding: 0 10px;
         outline-color: transparent;
     }
+
+</style>
+@*custom code end*@
+<style>
 
     /** Avatar customization */
     .e-menu-wrapper ul .e-menu-item .e-avatar {

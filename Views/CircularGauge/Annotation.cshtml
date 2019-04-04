@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().CircularGauge("clockgauge").Loaded("onGaugeLoaded").Load("onGaugeLoad").CenterY("45%").TitleStyle(new CircularGaugeFont { Color = "black", Size = "16px" }).Axes(axes => axes
+        @Html.EJS().CircularGauge("clockgauge").Loaded("onGaugeLoaded").Load("onGaugeLoad").CenterY("45%").TitleStyle(new CircularGaugeFont {  Size = "16px" }).Axes(axes => axes
           .StartAngle(0).EndAngle(0).LineStyle(new CircularGaugeLine { Width = 0 }).Radius("70%").LabelStyle(new CircularGaugeLabel
           {
               HiddenLabel = HiddenLabel.First,
@@ -32,7 +32,7 @@ new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
   new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
 {
     Angle = 90,Radius ="40%",ZIndex = "1",
-    Content = "<div id=hr style=background-color:rgba(29,29,29,0.6); color: white; font - size:12px;>11:11 AM</div>"
+    Content = "<div id=hr style=background-color:rgb(128,128,128); color: white; font - size:12px;>11:11 AM</div>"
 },
     new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
 {
@@ -56,8 +56,7 @@ new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
                 if (gaugeWidth != svgWidth)
                     sender.gauge.refresh();
             }, 300);
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
             for (var i = 0; i < sender.gauge.axes[0].annotations.length; i++) {
                 sender.gauge.axes[0].annotations[i].zIndex = "1";
@@ -88,20 +87,21 @@ new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
         function updateSubGauge2() {
             var _this = this;
             subGauge2 = new ej.circulargauge.CircularGauge({
+                background: 'transparent',
                 axes: [{
-                    ranges: [{ start: 0, end: 3, startWidth: 4, endWidth: 4, color: 'rgba(29,29,29,0.4)' },
-                    { start: 3, end: 12, startWidth: 4, endWidth: 4, color: 'rgba(168,145,102,0.1)' }],
+                    ranges: [{ start: 0, end: 3, startWidth: 4, endWidth: 4, color: 'rgb(128,128,128)' },
+                        { start: 3, end: 12, startWidth: 4, endWidth: 4, color: 'rgb(192,192,192)' }],
                     annotations: [{ angle: 270, radius: '40%', content: null },
                     { angle: 180, radius: '40%', content: null },
                     { angle: 90, radius: '50%', content: null },
                     { angle: 360, radius: '35%', zIndex: '1', content: '<div id="tm" style="font-size:10px;">21-06-17</div>' }],
                     majorTicks: { width: 1, height: 5, interval: 1 },
-                    labelStyle: { hiddenLabel: 'First', font: { color: '#8c8c8c', size: '0px' }, autoAngle: false },
+                    labelStyle: { hiddenLabel: 'First', font: {  size: '0px' }, autoAngle: false },
                     pointers: [{
                         cap: {
-                            color: 'rgba(29,29,29,1)', radius: 2, border: { width: 0.2, color: 'rgba(168,145,102,1)' }
-                        }, needleTail: { color: 'rgba(168,145,102,1)', length: '10%' }, animation: { enable: false, duration: 500 },
-                        radius: '70%', pointerWidth: 2, color: 'rgba(29,29,29,1)'
+                             radius: 2, border: { width: 0.2 }
+                        }, needleTail: {  length: '10%' }, animation: { enable: false, duration: 500 },
+                        radius: '70%', pointerWidth: 2
                     }], startAngle: 0, endAngle: 0, lineStyle: { width: 0 },
                     minorTicks: { height: 3, width: 0.5, interval: 0.2 }, minimum: 0, maximum: 12,
                 }],
@@ -174,8 +174,8 @@ new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
                 gauge.setPointerValue(0, 1, minutes);
                 gauge.setPointerValue(0, 2, seconds);
                 hourValue = (Math.floor(returnTime.getHours()) % 12);
-                content = '<div id="hr" style="background-color:rgba(226, 226, 226, 0.4);' +
-                    'color:rgba(29,29,29,0.9);padding:4px;font-size:12px;">' +
+                content = '<div id="hr" style="background-color:rgb(128,128,128)' +
+                    'color:white;padding:4px;font-size:12px;">' +
                     (hourValue === 0 ? 12 : hourValue) + ':' + Math.floor(returnTime.getMinutes()) +
                     (returnTime.getHours() >= 12 ? ' PM' : ' AM') + '</div>';
                 gauge.setAnnotationValue(0, 2, content);
@@ -197,6 +197,7 @@ new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
 
         function gauge2() {
             var gauge2 = new ej.circulargauge.CircularGauge({
+                background: 'transparent',
                 titleStyle: { color: 'black' },
                 axes: [
                     {
@@ -205,9 +206,9 @@ new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
                             {
                                 startWidth: 4, endWidth: 4,
                                 start: 0, end: 3,
-                                color: 'rgba(29,29,29,0.4)'
+                                color: 'rgb(128,128,128)'
                             }, {
-                                color: 'rgba(168,145,102,0.1)',
+                                color: 'rgb(192,192,192)',
                                 start: 3, end: 12,
                                 startWidth: 4, endWidth: 4
                             }
@@ -237,7 +238,6 @@ new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
                         labelStyle: {
                             hiddenLabel: 'First',
                             font: {
-                                color: '#8c8c8c',
                                 size: '0px'
                             },
                             autoAngle: false
@@ -251,17 +251,13 @@ new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
                         pointers: [{
                             radius: '70%',
                             pointerWidth: 2,
-                            color: 'rgba(29,29,29,1)',
                             cap: {
-                                color: 'rgba(29,29,29,1)',
                                 radius: 2,
                                 border: {
-                                    width: 0.2,
-                                    color: 'rgba(168,145,102,1)'
+                                    width: 0.2
                                 }
                             },
                             needleTail: {
-                                color: 'rgba(168,145,102,1)',
                                 length: '10%'
                             }, animation: {
                                 enable: false,

@@ -1,40 +1,37 @@
 ﻿@using Syncfusion.EJ2;
 @section ControlsSection{
-<div class="control-section" style="margin-left:120px">
-    @(Html.EJS().AccumulationChart("container").Load("load")
-    .Series(sr =>
-    {
-    sr.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
+    <div class="control-section" style="margin-left:120px">
+        @(Html.EJS().AccumulationChart("container").Load("load")
+                .Series(sr =>
+                {
+                    sr.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
     .XName("xValue")
     .YName("yValue")
     .DataLabel(dl => dl.Visible(true).Name("xValue").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside))
     .InnerRadius("20%")
     .Radius("r")
     .DataSource(ViewBag.dataSource).Add();
-    })
-    .EnableSmartLabels(true)
-    .EnableAnimation(true)
-    .Tooltip(tp => tp.Enable(true).Format("${point.x} <br />Composition: <b>${point.y}</b>"))
-    .LegendSettings(leg => leg.Visible(true)).Render()
-    )
-</div>
-<script>
-    var load = function (args) {
-        var selectedTheme = location.hash.split('/')[1];
-        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+                })
+                .EnableSmartLabels(true)
+                .EnableAnimation(true)
+                .Tooltip(tp => tp.Enable(true).Format("${point.x} <br />Composition: <b>${point.y}</b>"))
+                .LegendSettings(leg => leg.Visible(true)).Render()
+        )
+    </div>
+    <script>var load = function (args) {
+        var selectedTheme = themeName ? themeName : 'Material';
         args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
-    }
-</script>
+    }</script>
 }
 @section Meta{
-<meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the legends in pie charts." />
+    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the legends in pie charts." />
 }
 @section ActionDescription{
-<p>
-    This sample compares countries by population density and total area by using the <code>various radius</code> in pie series.
-</p>
+    <p>
+        This sample compares countries by population density and total area by using the <code>various radius</code> in pie series.
+    </p>
 }
 @section Description{
-<p> In this example, you can see how to render doughnut chart with different <code>radius</code>. You can use <code>radius</code> mapping property to achieve this feature. <code>dataLabel</code> is used to represent individual data and its value.</p>
-<p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+    <p> In this example, you can see how to render doughnut chart with different <code>radius</code>. You can use <code>radius</code> mapping property to achieve this feature. <code>dataLabel</code> is used to represent individual data and its value.</p>
+    <p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
 }

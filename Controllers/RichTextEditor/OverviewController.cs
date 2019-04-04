@@ -11,7 +11,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Overview()
         {
-            ViewBag.value = @"<p>The rich text editor is WYSIWYG ('what you see is what you get') editor useful to create and edit content, and return the valid <a href='rte / rich - text - editor.html'>HTML markup</a> or <a href='rte / markdown - editor.html'>markdown</a> of the content</p>
+            ViewBag.value = @"<p>The rich text editor is WYSIWYG ('what you see is what you get') editor useful to create and edit content, and return the valid <a href='https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/formation/?no-cache=1#markdown-editor'>HTML markup</a> or <a href='https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/formation/?no-cache=1#html-editor'>markdown</a> of the content</p>
                                     <p><b> Toolbar </b></p>
                                     <ol>          
                                         <li>          

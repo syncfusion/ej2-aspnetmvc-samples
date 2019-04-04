@@ -1,0 +1,90 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "Filtering";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("Filtering").DataSource((IEnumerable<object>)ViewBag.DataSource).DateFormat("MM/dd/yyyy hh:mm:ss")
+                        .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
+                        .Dependency("Predecessor").Child("SubTasks")).Columns(col =>
+                        {
+                            col.Field("TaskName").HeaderText("Task Name").Width(250).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+                            col.Field("StartDate").Add();
+                            col.Field("Duration").Add();
+                            col.Field("EndDate").Add();
+                            col.Field("Predecessor").HeaderText("Predecessor").Add();
+                        })
+                        .TreeColumnIndex(0).Toolbar(new List<string> { "Search" }).AllowFiltering(true).IncludeWeekend(true).Height("450px")
+                        .TimelineSettings(tl => tl.TopTier(tt => tt.Format("MMM dd, yyyy").Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))
+                        .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Hour).Format("h.mm a")).TimelineUnitSize(60))
+                        .SplitterSettings(ss => ss.ColumnIndex(4)).DurationUnit(Syncfusion.EJ2.Gantt.DurationUnit.Hour)
+                        .DayWorkingTime(dw =>
+                        {
+                            dw.From(0).To(24).Add();
+                        })
+                        .LabelSettings(ls => ls.RightLabel("TaskName")).ProjectStartDate("07/16/1969 01:00:00")
+                        .ProjectEndDate("07/25/1969 00:00:00").ActionComplete("actionComplete").Render()
+            )
+        </div>
+        <div style="float: right; margin:10px 10px 0px 0px;">
+            Source:
+            <a href="https://en.wikipedia.org/wiki/Apollo_11#Launch_and_flight_to_lunar_orbit" target='_blank'>https://en.wikipedia.org/</a>
+        </div>
+    </div>
+    <script>
+        function actionComplete(args) {
+            if (args.requestType == "filterafteropen" && (args.columnName === "StartDate" || args.columnName === "EndDate")) {
+                args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].min = new Date(1969, 5, 1);
+                args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].max = new Date(1969, 8, 30);
+                args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].showTodayButton = false;
+                args.filterModel.dlgDiv.querySelector('.e-datetimepicker').ej2_instances[0].dataBind();
+            }
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the manned lunar mission, which landed the first human on the Moon using the Apollo 11 spacecraft in the year 1969. It also demonstrates the filtering feature available in the Gantt chart. You can filter a particular column using the filter menu available in the columns. This sample is also enabled with the toolbar searching option to filter the Gantt content across all the columns.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the filtering support with filter menu option for various types of columns in Gantt" />
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The filtering feature enables the user to view reduced amount of records based on filter criteria. The column
+            menu filtering can be enabled by setting <code>AllowFiltering</code> property as <code>true</code> and toolbar
+            search box can
+            be enabled
+            by including the search item in the <code>Toolbar</code> property.
+            Gantt chart also provides support for a set of filtering modes with <code>HierarchyMode</code> property. The
+            below are the
+            type of filter mode available in Gantt chart.
+            <li>
+                <code>Parent</code> - This is the default filter hierarchy mode in Gantt chart. The filtered records are
+                displayed with its
+                parent records, if the filtered records not have any parent record then the filtered record alone will be
+                displayed.
+            </li>
+            <li>
+                <code>Child</code> - The filtered records are displayed with its child record, if the filtered records do
+                not have any
+                child record then only the filtered records are displayed.
+            </li>
+            <li>
+                <code>Both</code> - The filtered records are displayed with its both parent and child record. If the
+                filtered records do
+                not have any parent and child record then only the filtered records are displayed.
+            </li>
+            <li><code>None</code> - Only the filtered records are displayed.</li>
+        </p>
+    </div>
+}

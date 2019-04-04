@@ -1,8 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
 @{
     ViewBag.Title = "DefaultFunctionalities";
 }
+
+@*custom code end*@
 
 @section ControlsSection{
     <div class="control-section">
@@ -13,7 +18,7 @@
             .AllowResizing()
             .ShowColumnMenu()
             .PageSettings(p => p.PageSize(10))
-            .FilterSettings(f=>f.Type(FilterType.Menu))
+            .FilterSettings(f=>f.Type(Syncfusion.EJ2.TreeGrid.FilterType.Menu))
             .DataSource((IEnumerable<object>)ViewBag.datasource)
             .Columns(col =>
             {
@@ -33,10 +38,11 @@
     </div>
 }
 
+@*custom code start*@
+
 @section Meta{
     <meta name="description" content="This demo explains the default functionalities of the Column Menu in Essential JS2 TreeGrid control." />
 }
-
 
 @section ActionDescription{
     <div id="action-description">
@@ -62,3 +68,5 @@
         </p>
     </div>
 }
+
+@*custom code end*@

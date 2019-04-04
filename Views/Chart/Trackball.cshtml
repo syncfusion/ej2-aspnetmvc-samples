@@ -16,30 +16,32 @@
              ).ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tl =>tl.Enable(true).Shared(true)).Crosshair(cr => cr.Enable(true).LineType(Syncfusion.EJ2.Charts.LineType.Vertical)).Title("Average Sales per Person").Load("load").Render()
         </div>
     </div>
-
-
+  @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
     </style>
+  @*custom code end*@
     <script>
         var john = john;
         var andrew = andrew;
         var thomas = thomas;
-
+    @*custom code start*@
         var load = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
 
         };
+      @*custom code end*@
     </script>
 }
+  @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control demonstrates the trackball behavior in chart." />
 }
+  @*custom code end*@
 @section ActionDescription{
    <p>
     This sample illustrates trackball feature in chart. To show trackball, hover or long press the chart and you can see the point value near to the mouse point.

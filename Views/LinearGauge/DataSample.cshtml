@@ -1,177 +1,224 @@
 ﻿@using Syncfusion.EJ2
 @section ControlsSection{
-    <div class="control-section">
-        <script id='exetracking' type="text/x-template">
-            <div id='title' style="width:300px">
-                <img style=float:left src="@Url.Content("~/Content/LinearGauge/Exercise_Tracking.svg")" />
-                <p style="font-size:18px;color:#4285F4;float:left;margin-left:12px;margin-top:4px">Exercise Tracking </p>
-            </div>
-        </script>
-        <script id="runningexe" type="text/x-template">
-            <div id="running" style="width:100px" ;>
-                <img style="height:25px;width:25px;float:left;" src="@Url.Content("~/Content/LinearGauge/Running.svg")">
-                <p style="float:left;margin-left:10px;">Running</p>
-            </div>
-        </script>
-        <script id="cycle" type="text/x-template">
-            <div id="Cycling" style="width:100px;">
-                <img style="height:25px;width:25px;float:left;" src="@Url.Content("~/Content/LinearGauge/Cycling.svg")">
-                <p style=float:left;margin-left:10px;>Cycling</p>
-            </div>
-        </script>
-        <script id="walk" type="text/x-template">
-            <div id="running" style="width:100px;">
-                <img style="height:25px;width:25px;float:left;" src="@Url.Content("~/Content/LinearGauge/Walking.svg")">
-                <p style=float:left;margin-left:10px;>Walking</p>
-            </div>
-        </script>
-        <div class="row">
-            <div id="container1" style="height:300px;">
-                @Html.EJS().LinearGauge("container1").Width("80%").Load("onGaugeLoad").Container(
-               new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
-               {
-                   Width = 30,
-                   BackgroundColor = "#e0e0e0",
-                   Border = new Syncfusion.EJ2.LinearGauge.LinearGaugeBorder { Width = 0 },
-                   Offset = 30
-               }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
-           {
-               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Offset = 30 },
-               Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
-               {
-                    new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
-                   {
-                       Start = 0.01, End = 10, Color = "#30b32d",StartWidth = 30, EndWidth = 30
-                   }
-               },
-               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
-               {
-                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
-                   {
-                       Value = 10, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#424242",
-                       Offset =-60,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
-                   }
-               },
-               LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Offset = 50 },
-           }
-       }).Annotations(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation> {
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
-           {
-               Content = "#exetracking",
-               AxisIndex = 0, AxisValue = 0.1 ,X =150, ZIndex = "1", Y = -180
-           },
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
-           {
-               Content = "#runningexe",
-               AxisIndex = 0 , AxisValue = 0.1 ,ZIndex = "1", X = 50 , Y = -130
-           },
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
-           {
-               Content = "<div id=pointerText style=width:60px;><p style=font-size:15px;color:#30b32d;>10 MPH</p></div>",
-               AxisValue = 10, Y = -65
-           }
-       }).Render();
-            </div>
+<div class="control-section">
+    <script id='exetracking' type="text/x-template">
+        <div id='title' style="width:300px">
+            <img style=float:left src="@Url.Content("~/Content/LinearGauge/Exercise_Tracking.svg")" />
+            <p style="font-size:18px;color:#4285F4;float:left;margin-left:12px;margin-top:4px">Exercise Tracking </p>
         </div>
-        <div class="row">
-            <div id="container2" style="height:250px;">
-                @Html.EJS().LinearGauge("container2").Width("80%").Load("onGaugeLoad").Container(
-               new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
-               {
-                   Width = 30,
-                   BackgroundColor = "#e0e0e0",
-                   Border = new  Syncfusion.EJ2.LinearGauge.LinearGaugeBorder { Width = 0 },
-                   Offset = 30
-               }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
-           {
-               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Offset = 30 },
-               Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
-               {
-                    new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
-                   {
-                       Start = 0.01, End = 28, Color = "#30b32d",StartWidth = 30, EndWidth = 30
-                   }
-               },
-               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
-               {
-                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
-                   {
-                       Value = 28, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#424242",
-                       Offset =-60,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
-                   }
-               },
-               LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Offset = 50 },
-           }
-       }).Annotations(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation> {
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
-           {
-               Content = "#cycle",
-               AxisIndex = 0 , AxisValue = 0.1 ,ZIndex = "1", X = 50 , Y = -130
-           },
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
-           {
-               Content = "<div id=pointerText style=width:60px;><p style=font-size:15px;color:#30b32d;>28 MPH</p></div>",
-               AxisValue = 28, Y = -65
-           }
-       }).Render();
-            </div>
+    </script>
+    <script id="runningexe" type="text/x-template">
+        <div id="running" style="width:100px" ;>
+            <img style="height:25px;width:25px;float:left;" src="@Url.Content("~/Content/LinearGauge/Running.svg")">
+            <p style="float:left;margin-left:10px;">Running</p>
         </div>
-        <div class="row">
-            <div id="container3" style="height:250px;">
-                @Html.EJS().LinearGauge("container3").Width("80%").Load("onGaugeLoad").Container(
-               new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
-               {
-                   Width = 30,
-                   BackgroundColor = "#e0e0e0",
-                   Border = new Syncfusion.EJ2.LinearGauge.LinearGaugeBorder { Width = 0 },
-                   Offset = 30
-               }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+    </script>
+    <script id="runningexe1" type="text/x-template">
+        <div id="running" style="width:100px" ;>
+            <img style="height:25px;width:25px;float:left;" src="@Url.Content("~/Content/LinearGauge/Running1.svg")">
+            <p style="float:left;margin-left:10px;">Running</p>
+        </div>
+    </script>
+    <script id="cycle" type="text/x-template">
+        <div id="Cycling" style="width:100px;">
+            <img style="height:25px;width:25px;float:left;" src="@Url.Content("~/Content/LinearGauge/Cycling.svg")">
+            <p style=float:left;margin-left:10px;>Cycling</p>
+        </div>
+    </script>
+    <script id="cycle1" type="text/x-template">
+        <div id="Cycling" style="width:100px;">
+            <img style="height:25px;width:25px;float:left;" src="@Url.Content("~/Content/LinearGauge/Cycling1.svg")">
+            <p style=float:left;margin-left:10px;>Cycling</p>
+        </div>
+    </script>
+    <script id="walk" type="text/x-template">
+        <div id="running" style="width:100px;">
+            <img style="height:25px;width:25px;float:left;" src="@Url.Content("~/Content/LinearGauge/Walking.svg")">
+            <p style=float:left;margin-left:10px;>Walking</p>
+        </div>
+    </script>
+    <script id="walk1" type="text/x-template">
+        <div id="running" style="width:100px;">
+            <img style="height:25px;width:25px;float:left;" src="@Url.Content("~/Content/LinearGauge/Walking1.svg")">
+            <p style=float:left;margin-left:10px;>Walking</p>
+        </div>
+    </script>
+    <div class="row">
+        <div id="container1" style="height:300px;">
+            @Html.EJS().LinearGauge("container1").Width("80%").Load("onGaugeLoad").Container(
+           new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
            {
-               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Offset = 30 },
-               Maximum = 10,
-               Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
-               {
-                    new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
-                   {
-                       Start = 0.01, End = 2, Color = "#30b32d",StartWidth = 30, EndWidth = 30
-                   }
-               },
-               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
-               {
-                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
-                   {
-                       Value = 2, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#424242",
-                       Offset =-60,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
-                   }
-               },
-               LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel {  Format="{value}k", Offset = 50 },
-           }
-       }).Annotations(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation> {
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+               Width = 30,
+               Border = new Syncfusion.EJ2.LinearGauge.LinearGaugeBorder { Width = 0 },
+               Offset = 30
+           }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+       {
+           Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Offset = 30 },
+           Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
            {
-               Content = "#walk",
-               AxisIndex = 0 , AxisValue = 0.1 ,ZIndex = "1", X = 50 , Y = -130
+                new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+               {
+                   Start = 0.01, End = 10, Color = "#30b32d",StartWidth = 30, EndWidth = 30
+               }
            },
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+           Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
            {
-               Content = "<div id=pointerText style=width:10    0px;><p style=font-size:15px;color:#30b32d;>2000 Steps</p></div>",
-               AxisValue = 2, Y = -65
-           }
-       }).Render();
-            </div>
+               new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+               {
+                   Value = 10, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#424242",
+                   Offset =-60,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+               }
+           },
+           LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Offset = 50 },
+       }
+   }).Annotations(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation> {
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "#exetracking",
+           AxisIndex = 0, AxisValue = 0.1 ,X =150, ZIndex = "1", Y = -180
+       },
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "#runningexe",
+           AxisIndex = 0 , AxisValue = 0.1 ,ZIndex = "1", X = 50 , Y = -130
+       },
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "<div id=pointerText style=width:60px;><p style=font-size:15px;color:#30b32d;>10 MPH</p></div>",
+           AxisValue = 10, Y = -65
+       }
+   }).Render();
         </div>
     </div>
+    <div class="row">
+        <div id="container2" style="height:250px;">
+            @Html.EJS().LinearGauge("container2").Width("80%").Load("onGaugeLoad1").Container(
+           new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
+           {
+               Width = 30,
+               Border = new  Syncfusion.EJ2.LinearGauge.LinearGaugeBorder { Width = 0 },
+               Offset = 30
+           }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+       {
+           Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Offset = 30 },
+           Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
+           {
+                new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+               {
+                   Start = 0.01, End = 28, Color = "#30b32d",StartWidth = 30, EndWidth = 30
+               }
+           },
+           Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+           {
+               new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+               {
+                   Value = 28, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#424242",
+                   Offset =-60,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+               }
+           },
+           LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Offset = 50 },
+       }
+   }).Annotations(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation> {
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "#cycle",
+           AxisIndex = 0 , AxisValue = 0.1 ,ZIndex = "1", X = 50 , Y = -130
+       },
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "<div id=pointerText style=width:60px;><p style=font-size:15px;color:#30b32d;>28 MPH</p></div>",
+           AxisValue = 28, Y = -65
+       }
+   }).Render();
+        </div>
+    </div>
+    <div class="row">
+        <div id="container3" style="height:250px;">
+            @Html.EJS().LinearGauge("container3").Width("80%").Load("onGaugeLoad2").Container(
+           new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
+           {
+               Width = 30,
+               Border = new Syncfusion.EJ2.LinearGauge.LinearGaugeBorder { Width = 0 },
+               Offset = 30
+           }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+       {
+           Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Offset = 30 },
+           Maximum = 10,
+           Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
+           {
+                new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+               {
+                   Start = 0.01, End = 2, Color = "#30b32d",StartWidth = 30, EndWidth = 30
+               }
+           },
+           Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+           {
+               new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+               {
+                   Value = 2, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#424242",
+                   Offset =-60,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+               }
+           },
+           LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel {  Format="{value}k", Offset = 50 },
+       }
+   }).Annotations(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation> {
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "#walk",
+           AxisIndex = 0 , AxisValue = 0.1 ,ZIndex = "1", X = 50 , Y = -130
+       },
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
+       {
+           Content = "<div id=pointerText style=width:10    0px;><p style=font-size:15px;color:#30b32d;>2000 Steps</p></div>",
+           AxisValue = 2, Y = -65
+       }
+   }).Render();
+        </div>
+    </div>
+</div>
     <script type="text/javascript">
         function onGaugeLoad(sender) {
+            var gauge;
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.orientation = "Horizontal";
+            for (var i = 0; i < sender.gauge.annotations.length; i++) {
+                sender.gauge.annotations[i].zIndex = "1";
+            }
+            gauge = sender.gauge;
+            if (gauge.theme.toLowerCase().indexOf('dark') > 1 || gauge.theme.toLowerCase() === 'highcontrast') {
+                gauge.annotations[1].content = "#runningexe1";
+            }
+        }
+        function onGaugeLoad1(sender) {
+            var gauge;
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
             sender.gauge.orientation = "Horizontal";
             for (var i = 0; i < sender.gauge.annotations.length; i++) {
                 sender.gauge.annotations[i].zIndex = "1";
+            }
+            gauge = sender.gauge;
+            if (gauge.theme.toLowerCase().indexOf('dark') > 1 || gauge.theme.toLowerCase() === 'highcontrast') {
+                gauge.annotations[0].content = "#cycle1";
+            }
+        }
+        function onGaugeLoad2(sender) {
+            var gauge;
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.orientation = "Horizontal";
+            for (var i = 0; i < sender.gauge.annotations.length; i++) {
+                sender.gauge.annotations[i].zIndex = "1";
+            }
+            gauge = sender.gauge;
+            if (gauge.theme.toLowerCase().indexOf('dark') > 1 || gauge.theme.toLowerCase() === 'highcontrast') {
+                gauge.annotations[0].content = "#walk1";
             }
         }
     </script>

@@ -9,11 +9,6 @@
     </div>
 }
 <style>
-    #target {
-        height: 100%;
-        min-height: 350px;
-    }
-
     .control-wrapper {
         height: 250px;
         width: 500px;
@@ -21,6 +16,10 @@
 
     .bootstrap .e-dialog .e-dlg-header >img.img1 {
         margin-top: 1px;
+    }
+
+    .bootstrap4 .e-dialog .e-dlg-header >img.img1 {
+        margin-top: 0px;
     }
 
     .control-section {
@@ -31,15 +30,24 @@
         min-height: 65px;
     }
 
+    .bootstrap4 .e-dlg-header-content {
+        min-height: 50px;
+    }
+
     .e-bigger .e-dialog .e-icon-dlg-close::before {
         top: 0px;
     }
-
+    /* custom code start */
+    #target {
+        height: 100%;
+        min-height: 350px;
+    }
     @@media screen and (min-width: 150px) and (max-width: 480px) {
         .control-section {
             margin-bottom: 30px;
         }
     }
+    /* custom code end */
     .material .e-dialog {
         height: 260px;
     }
@@ -110,6 +118,11 @@
             </p>
         </div>
     }
+
+    @*custom code start*@
+
     @section Meta{
-        <meta name="description" content="This sample demonstrates how to load the content of the dialog component from external sources such as a file or website using the Essential JS 2 Ajax library." />
+        <meta name="description" content="The example demonstrates how to load the content of the ASP.NET MVC dialog control from external sources such as a file or website using Ajax library." />
     }
+
+    @*custom code end*@

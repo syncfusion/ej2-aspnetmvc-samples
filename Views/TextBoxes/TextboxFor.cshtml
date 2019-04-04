@@ -20,6 +20,7 @@
 
     }
 
+    @*custom code start*@
     <style>
         #wrapper {
             max-width: 246px;
@@ -36,6 +37,7 @@
             color: red;
         }
     </style>
+    @*custom code end*@
 
 }
 @section ActionDescription{
@@ -51,4 +53,7 @@
             In this sample, the TextBox is rendered with strongly typed helper(FOR control) and bind its value from Controller using model binding. The modified value is bind to controller action "TextboxFor" when submit a page.
         </p>
     </div>
+}
+@section Meta{
+    <meta name="description" content="The example demonstrates strongly typed helper of ASP.NET MVC textbox, such as its value is binded from Controller using model binding." />
 }

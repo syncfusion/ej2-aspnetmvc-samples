@@ -122,14 +122,14 @@
     </div>
 </div>
     <script>
+     @*custom code start*@
         var load = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
             args.accumulation.series[0].explodeOffset = "10%";
             args.accumulation.series[0].explodeIndex = 0;
         }
-       
+     @*custom code end*@   
         function anglechange(value) {
             var pie = document.getElementById("container").ej2_instances[0];
             pie.series[0].startAngle = +value;
@@ -202,9 +202,11 @@
 
     </script>
 }
+ @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the pie charts." />
 }
+ @*custom code end*@
 @section ActionDescription{
     <p>
         This sample demonstrates pie chart for mobile browser usage statistics. <code>Datalabel</code> shows the Information about the points.

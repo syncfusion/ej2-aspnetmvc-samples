@@ -1,6 +1,7 @@
 ﻿@using Syncfusion.EJ2;
 <script src="~/Scripts/StockChartData/aapl.js"></script>
 @section ControlsSection{
+     @*custom code start*@
     <style>
         #container {
             display: block;
@@ -12,40 +13,47 @@
             pointer-events: none;
         }
     </style>
+     @*custom code end*@
     <div class="control-section">
         <div>
             @(Html.EJS().StockChart("container").Load("load").Title("AAPL Stock Price")
-                                                                .Series(sr =>
-                                                                {
-                                                                    sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("high").Fill("#BDEDE9").Name("google").Add();
-                                                                })
-                                                                .Render())
+              .Series(sr =>
+               {
+               sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("high").Fill("#BDEDE9").Name("google").Add();
+               }
+            ).PrimaryXAxis(xaxis =>xaxis.MajorGridLines(mg=>mg.Color("transparent")
+             ).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).CrosshairTooltip(ct=>ct.Enable(true)))
+            .PrimaryYAxis(yaxis =>yaxis.MajorTickLines(mt=>mt.Color("transparent")
+            ).LineStyle(ls=>ls.Color("transparent")).CrosshairTooltip(ct=>ct.Enable(false)))
+            .Crosshair(cr=>cr.Enable(true))
+            .Tooltip(tp => tp.Enable(true))
+            .ChartArea(area => area.Border(br=>br.Width(0)))
+           .Render())
         </div>
     </div>
+     @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
     </style>
+     @*custom code end*@
     <script>
         var data = window.aapl;
         var load = function (args) {
-            args.stockChart.chartArea = { border: { width: 0 } };
-            args.stockChart.tooltip.enable = true;
-            args.stockChart.crosshair.enable = true;
             args.stockChart.seriesType = [];
             args.stockChart.indicatorType = [];
-            args.stockChart.primaryXAxis = { valueType: 'DateTime', majorGridLines: { color: 'transparent' }, crosshairTooltip: { enable: true } };
-            args.stockChart.primaryYAxis = { lineStyle: { color: 'transparent' }, majorTickLines: { color: 'transparent' }, crosshairTooltip: { enable: false } };
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+        @*custom code end*@
         }
     </script>
 }
+ @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Stock Chart control shows how to render the Area single series chart." />
 }
+ @*custom code end*@
 @section ActionDescription{
     <p>
         This sample visualizes stock data with area. Period and range selector help us to navigate different of data.

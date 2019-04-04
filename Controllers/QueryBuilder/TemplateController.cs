@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Syncfusion.EJ2.QueryBuilder;
-
+using EJ2MVCSampleBrowser.Models;
 namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
 {
     public partial class QueryBuilderController : Controller
@@ -12,7 +12,7 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
         // GET= DefaultFunctionalities
         public ActionResult Template()
         {
-            QueryBuilderRule rule = new QueryBuilderRule()
+            QueryBuilderRules rule = new QueryBuilderRules()
             {
                 Condition = "and",
                 Rules = new List<QueryBuilderRules>()
@@ -28,9 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
 
             List<object> paymentOperator = new List<object> {
                 new { key = "Equal", value = "equal" },
-                new { key = "Not Equal", value = "notequal" },
-                new { key = "In", value = "in" },
-                new { key = "Not In", value = "notin" }
+                new { key = "Not Equal", value = "notequal" }
             };
 
             List<object> transactionOperator = new List<object> {
@@ -51,6 +49,7 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
             ViewBag.paymentOperator = paymentOperator;
             ViewBag.transactionOperator = transactionOperator;
             ViewBag.amountOperator = amountOperator;
+            ViewBag.dataSource = QueryBuilderData.expenseData;
             return View();
         }
     }

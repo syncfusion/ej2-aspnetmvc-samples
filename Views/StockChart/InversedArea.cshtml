@@ -16,36 +16,37 @@
     </style>
     <div class="control-section">
         @(Html.EJS().StockChart("container").Load("load").Title("AAPL Stock Price")
-                                    .Series(sr =>
-                                    {
-                                        sr.Name("google").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("high").Fill("#BDEDE9").Add();
-                                    })
-                                    .Render())
+        .PrimaryXAxis(xaxis =>xaxis.MajorGridLines(mg=>mg.Width(0)
+        ).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).CrosshairTooltip(ct=>ct.Enable(true)).IsInversed(true))
+        .PrimaryYAxis(yaxis =>yaxis.MajorTickLines(mt=>mt.Color("transparent").Width(0)
+        ).LineStyle(ls=>ls.Color("transparent")).CrosshairTooltip(ct=>ct.Enable(false)).IsInversed(true))
+         .Series(sr =>
+         {
+             sr.Name("google").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("high").Fill("#BDEDE9").Add();
+         })
+        .Crosshair(cr=>cr.Enable(true))
+        .Tooltip(tp => tp.Enable(true))
+        .ChartArea(area => area.Border(br=>br.Width(0)))
+        .Border(br => br.Width(1))
+         .Render())
     </div>
     <script>
         var data = window.aapl;
         var load = function (args) {
-            args.stockChart.chartArea = { border: { width: 0 } };
-            args.stockChart.border = { width: 1 };
-            args.stockChart.tooltip.enable = true;
-            args.stockChart.crosshair.enable = true;
             args.stockChart.seriesType = [];
             args.stockChart.indicatorType = [];
-            args.stockChart.primaryXAxis = { valueType: 'DateTime', isInversed: true, majorGridLines: { width: 0 }, crosshairTooltip: { enable: true } };
-            args.stockChart.primaryYAxis = {
-                lineStyle: { color: 'transparent' },
-                crosshairTooltip: { enable: false },
-                majorTickLines: { color: 'transparent', width: 0 }, isInversed: true
-            };
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+             @*custom code start*@
+            var selectedTheme = themeName ? themeName : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+             @*custom code end*@
         }
     </script>
 }
+ @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Stock Chart control shows how to render the default single series chart." />
 }
+ @*custom code end*@
 @section ActionDescription{
     <p>
         This sample visualizes stock data with inversed axis. Period and range selector help us to navigate different of data.

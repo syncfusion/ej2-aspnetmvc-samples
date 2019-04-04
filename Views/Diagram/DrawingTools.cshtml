@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+﻿
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         @Html.EJS().Diagram("diagram").Created("diagramCreated").Width("100%").Height("540px").SnapSettings(s => s.HorizontalGridlines(ViewBag.gridLines).VerticalGridlines(ViewBag.gridLines)).RulerSettings(r => r.ShowRulers(true).DynamicGrid(true)).Render()
@@ -128,10 +128,12 @@
 
         document.getElementById('appearance').onclick = function (args) {
             var target = args.target;
+            @*custom code start*@
             var selectedElement = document.getElementsByClassName('e-selected-style');
             if (selectedElement.length && target.id !== '' && target.id !== 'checked') {
                 selectedElement[0].classList.remove('e-selected-style');
             }
+            @*custom code end*@
             if (target.className === 'image-pattern-style') {
                 switch (target.id) {
                     case 'shape1':
@@ -168,7 +170,7 @@
                         };
                         break;
                     case 'image':
-                        drawingObject = { shape: { type: 'Image', source: 'src/diagram/employees/Clayton.png' } };
+                        drawingObject = { shape: { type: 'Image', source: '/Content/images/diagram/Images/drawingTool/DrawingTool_7.png' } };
                         break;
                     case 'svg':
                         drawingObject = { shape: { type: 'Native', content: getNativeContent() } };
@@ -182,7 +184,9 @@
                     diagram.drawingObject = drawingObject;
                     diagram.tool = checkBoxObj.checked ? ej.diagrams.DiagramTools.ContinuousDraw : ej.diagrams.DiagramTools.DrawOnce;
                     diagram.dataBind();
+                    @*custom code start*@
                     target.classList.add('e-selected-style');
+                    @*custom code end*@
                 }
             }
         };

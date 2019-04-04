@@ -5,8 +5,6 @@
     <div class="col-lg-12 control-section" style="height: 400px;">
         <div class='control-wrapper'>
             <div style='padding-top:75px;'>
-
-
                 @Html.EJS().DropDownList("employees").DataSource((IEnumerable<Employees>)ViewBag.data).Placeholder("Select an employee").PopupHeight("270px").Fields(new DropDownListFieldSettings { Value = "Name" }).ItemTemplate(
                   "<div><img class=\"empImage\" src=\"../Content/dropdownlist/images/Employees/${Eimg}.png\" alt=\"employee\"/><div class=\"ename\"> ${Name} </div><div class=\"job\"> ${Designation} </div></div>").HeaderTemplate(
                   "<div class=\"header\"> <span>Photo</span> <span class=\"info\">Employee Info</span></div>)").ValueTemplate(
@@ -60,6 +58,9 @@
             color: #fff;
             background-color: #000;
         }
+       .bootstrap4 .header {
+            color: #6c757d;
+        }
         .bootstrap .info,
         .e-bigger.bootstrap .info {
             margin-left: 25px;
@@ -105,7 +106,8 @@
             margin-left: 5px;
         }
 
-        .bootstrap .name {
+        .bootstrap .name,
+        .bootstrap4 .name {
             padding: 9px 42px;
         }
 
@@ -172,8 +174,19 @@
         .e-bigger:not(.bootstrap) #employees_popup.e-popup .empImage {
             margin: 10px 16px;
         }
+
+        .bootstrap4 #employees_popup.e-popup .empImage {
+            margin: 0px 16px;
+        }
+
+        .bootstrap4 #employees_popup.e-popup .job {
+            margin-top: 0;
+        }
     </style>
 
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates how to customize the appearance of each item in the ASP.NET MVC drop-down list control pop-up list using the template."/>
 }
 @section ActionDescription{
     <div id="action-description">

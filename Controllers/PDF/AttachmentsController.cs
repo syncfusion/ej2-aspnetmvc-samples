@@ -23,7 +23,9 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
     {
         //
         // GET: /Attachments/
-
+        PdfDocument doc = null;
+        PdfFont font = null;
+        PdfBrush brush = new PdfSolidBrush(Color.Black);
         public ActionResult Attachments()
         {
             return View();

@@ -1,6 +1,4 @@
 ﻿@using Syncfusion.EJ2
-@using EJ2MVCSampleBrowser.Models
-@using Syncfusion.EJ2.Schedule
 @using Syncfusion.EJ2.DropDowns
 @section ControlsSection{
 
@@ -13,6 +11,7 @@
             @Html.EJS().RecurrenceEditor("RecurrenceEditor").Render()
         </div>
     </div>
+    @*custom code start*@
     <style>
         .recurrence-editor-wrap {
             margin: 0 25%;
@@ -24,6 +23,7 @@
             }
         }
     </style>
+    @*custom code end*@
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {
             var recObject = document.getElementById('RecurrenceEditor').ej2_instances[0];
@@ -35,9 +35,11 @@
         }
     </script>
 }
+@*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Scheduler control shows how to fill the recurrence editor fields with values based on the provided recurrence rule string." />
 }
+@*custom code end*@
 @section ActionDescription{
     <div id="action-description">
         <p>

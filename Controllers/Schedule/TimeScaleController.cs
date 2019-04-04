@@ -1,9 +1,6 @@
-﻿using System;
+﻿using EJ2MVCSampleBrowser.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using EJ2MVCSampleBrowser.Models;
 
 namespace EJ2MVCSampleBrowser.Controllers.Schedule
 {
@@ -63,6 +60,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             return options;
         }
     }
+
     public class TimeScaleDropDownModel
     {
         public string Text { get; set; }

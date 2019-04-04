@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace EJ2MVCSampleBrowser.Controllers.StockChart
 {
-    public partial class StockChartController: Controller
+    public partial class StockChartController : Controller
     {
         // GET: MultiPane
         public ActionResult MultiPane()

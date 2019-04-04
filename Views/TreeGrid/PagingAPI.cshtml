@@ -1,8 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
 @{
     ViewBag.Title = "TreeGrid";
 }
+
+@*custom code end*@
 
 @section ControlsSection{
      <div class="col-lg-9 control-section">
@@ -57,7 +62,7 @@
                 </td>
                 <td style="width: 50%;  padding:10px 10px 10px 0px">
                     <div id='numericbox'>
-                        @Html.EJS().NumericTextBox("pagesize").Format("##").Value(10).Max(36).Min(1).Render()
+                        @Html.EJS().NumericTextBox("pagesize").Format("##").Value(10).Max(36).Min(1).Change("pageSizeChange").Render()
                     </div>
                 </td>
             </tr>
@@ -94,7 +99,7 @@
             if (args.requestType === 'paging')
                 currentPage.value = parseInt(args.currentPage, 10);
         }
-        function pageSizechange(args) {
+        function pageSizeChange(args) {
             var treegrid = document.getElementById("TreeGrid").ej2_instances[0];
             var currentPage = document.getElementById("currentpage").ej2_instances[0];
             this.value = this.value > treegrid.pageSettings.totalRecordsCount ?
@@ -148,6 +153,8 @@
 
 }
 
+@*custom code start*@
+
 @section Meta{
     <meta name="description" content="This demo explains how to display the records in paginated view in Syncfusion Essential JS2 TreeGrid control." />
 }
@@ -185,3 +192,5 @@
     </div>
 
 }
+
+@*custom code end*@

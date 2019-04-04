@@ -1,35 +1,40 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
 @{
     ViewBag.Title = "DefaultAggregate";
 }
+
+@*custom code end*@
+
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="control-section">
             @(Html.EJS().TreeGrid("DefaultAggregate")
-                                                .DataSource((IEnumerable<object>)ViewBag.datasource)
-                                                .Columns(col =>
-                                                {
-                                                    col.Field("orderID").HeaderText("Order ID").Width(90).TextAlign(TextAlign.Right).Add();
-                                                    col.Field("orderName").HeaderText("Order Name").Width(190).Add();
-                                                    col.Field("orderDate").HeaderText("Order Date").Format("yMd").Width(140).Add();
-                                                    col.Field("units").HeaderText("Units").TextAlign(TextAlign.Right).Width(130).Add();
-                                                    col.Field("unitPrice").HeaderText("Unit Price").TextAlign(TextAlign.Right).Width(130).Add();
-                                                })
-                                               .Aggregates(agg =>
-                                               {
-                                                   agg.ShowChildSummary(true);
-                                                   agg.Columns(new List<Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn>() {
+                                        .DataSource((IEnumerable<object>)ViewBag.datasource)
+                                        .Columns(col =>
+                                        {
+                                            col.Field("orderID").HeaderText("Order ID").Width(90).TextAlign(TextAlign.Right).Add();
+                                            col.Field("orderName").HeaderText("Order Name").Width(190).Add();
+                                            col.Field("orderDate").HeaderText("Order Date").Format("yMd").Width(140).Add();
+                                            col.Field("units").HeaderText("Units").TextAlign(TextAlign.Right).Width(130).Add();
+                                            col.Field("unitPrice").HeaderText("Unit Price").TextAlign(TextAlign.Right).Width(130).Add();
+                                        })
+                                       .Aggregates(agg =>
+                                       {
+                                           agg.ShowChildSummary(true);
+                                           agg.Columns(new List<Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn>() {
                     new Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn() {
                         Field = "units", ColumnName = "units", Type = "Min", FooterTemplate = "Minimum: ${Min}" },
                      new Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn() {
                        Field = "unitPrice", ColumnName = "unitPrice", Type = "Max", FooterTemplate = "Maximum: ${Max}" }
-                                                   }).Add();
-                                               })
-                                               .Height(400)
-                                               .ChildMapping("subTasks")
-                                               .TreeColumnIndex(1)
-                                               .Render()
+                                           }).Add();
+                                       })
+                                       .ChildMapping("subTasks")
+                                       .TreeColumnIndex(1)
+                                       .Render()
             )
         </div>
     </div>
@@ -47,7 +52,8 @@
             </tr>
         </table>
     </div>
-    <script>function OnChange(args) {
+    <script>
+        function OnChange(args) {
             if (args.checked) {
                 var treegrid = document.getElementById("DefaultAggregate").ej2_instances[0];
                 treegrid.aggregates[0].showChildSummary = true;
@@ -57,17 +63,23 @@
                 treegrid.aggregates[0].showChildSummary = false;
                 treegrid.refresh();
             }
-        }</script>
+        }
+     </script>
 }
+
+@*custom code start*@
+
 @section Meta{
     <meta name="description" content="This demo explains how to display the summary values such as average, minimum, etc., for the columns in Essential JS2 TreeGrid control." />
 }
+
 
 @section ActionDescription{
     <div id="action-description">
         <p>This sample demonstrates aggregate functionality of the TreeGrid. In this sample, the aggregate value for the columns "Units" and "Unit Price" is displayed in column footer and provide an option to show child summary.</p>
     </div>
 }
+
 @section Description{
     <div id="description">
         <p>
@@ -102,4 +114,7 @@
             More information about aggregate can be found in this documentation section.
         </p>
     </div>
+
 }
+
+@*custom code end*@

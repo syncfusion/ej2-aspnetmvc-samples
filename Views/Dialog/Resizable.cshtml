@@ -7,7 +7,10 @@
     </div>
 }
 <style>
-
+    .e-btn-hide {
+        display: none;
+    }
+    /* custom code start */
     #control-container {
         padding: 0px !important;
     }
@@ -15,11 +18,6 @@
     #confirmDialog {
         height: 135px;
     }
-
-    .e-btn-hide {
-        display: none;
-    }
-
     .dlgbtn {
         margin-right: 10px;
     }
@@ -39,6 +37,14 @@
             margin-bottom: 0px;
         }
     }
+    .material #resizeDialog.e-dialog, .bootstrap #resizeDialog.e-dialog, 
+    .bootstrap4 #resizeDialog.e-dialog {
+        min-height: 125px;
+    }
+    .fabric #resizeDialog.e-dialog, .highcontrast #resizeDialog.e-dialog {
+        min-height: 135px;
+    }
+    /* custom code end */
 </style>
 @section PreScripts {
     <script>
@@ -70,6 +76,11 @@
         </p>
     </div>
 }
+
+@*custom code start*@
+
 @section Meta{
-    <meta name="description" content="This sample shows how to create resizable modal in dialog to change the size of a dialog efficiently and view its content more comfortably." />
+    <meta name="description" content="This example shows how to create resizable modal in the ASP.NET MVC dialog to change the size of a dialog efficiently and view its content more comfortably." />
 }
+
+@*custom code end*@

@@ -48,6 +48,7 @@
         args.element.appendChild(span);
     }
 </script>
+    @*custom code start*@
 
 <style>
     .control_wrapper {
@@ -68,22 +69,34 @@
     .e-custom-style.e-timepicker.e-popup li span {
         color: #b7b1b1;
     }
+    body.bootstrap4 .e-custom-style.e-timepicker.e-popup li span {
+        color: #6c757d;
+    }
 
+    body.bootstrap4 .e-custom-style.e-timepicker.e-popup li.e-disabled span {
+        color: #adb5bd;
+    }
     .highcontrast .e-custom-style.e-timepicker.e-popup li.e-hover span:hover,
     .highcontrast .e-custom-style.e-timepicker.e-popup li.e-active.e-hover span {
         color: #fff;
     }
-
+    body.bootstrap4 .e-custom-style.e-timepicker.e-popup li.e-hover span:hover,
+    body.bootstrap4 .e-custom-style.e-timepicker.e-popup li.e-active.e-hover span {
+        color: #6c757d;
+    }
     .highcontrast .e-custom-style.e-timepicker.e-popup li.e-active span {
         color: #000;
     }
-
+    body.bootstrap4 .e-custom-style.e-timepicker.e-popup li.e-active span {
+        color: #fff;
+    }
     .e-custom-style.e-timepicker.e-popup li.e-disabled span {
         height: 25px;
         width: 25px;
         font-size: 15px;
     }
 </style>
+    @*custom code end*@
 
 
 
@@ -110,9 +123,8 @@
     </div>
 
 }
+
 @section Meta{
 
-       <meta content= "This example demonstrates how to disable specific times like past time, current time in a ASP.NET MVC TimePicker"  />
+       <meta content= "This example demonstrates how to disable specific times like past time and current time in the ASP.NET MVC TimePicker"  />
 }
-
-

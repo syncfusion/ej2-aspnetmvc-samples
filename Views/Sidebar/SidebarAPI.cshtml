@@ -64,25 +64,30 @@
                             <p class="inline-element" style="width:70%">
                                 <b>Toggle</b> - Toggles the sidebar to be open or closed state.
                             </p>
+                            <!-- Button element declaration-->
                             @Html.EJS().Button("togglesidebar").Content("Toggle").CssClass("inline-element right e-info").IsToggle(true).Render()
                         </div>
                         <div id="text">
                             <p class="inline-element" style="width:70%">
                                 <b>Position</b> - Allows to place the sidebar in right or left side of the page.
                             </p>
+                            <!-- Button element declaration-->
                             @Html.EJS().Button("positionbutton").CssClass("e-info inline-element right").IsToggle(true).Content("Right").Render()
                         </div>
                         <div id="text">
                             <p class="inline-element" style="width:70%"><b>Types </b> - Specifies the act of expanding or collapsing the sidebar with main content.</p>
                             <div class="inline-element right">
+                                <!-- DropDownList element declaration-->
                                 @Html.EJS().DropDownList("types").Width("75px").PopupHeight("200px").Index(3).CssClass("right").Change("onChange").DataSource(ViewBag.data).Render()
                             </div>
                         </div>
                         <div id="text">
                             <p class="inline-element" style="width:70%"><b>Closing on document click</b> - Allows to collapse / close the sidebar on document click.</p>
+                            <!-- Button element declaration-->
                             @Html.EJS().Button("documentclick").Content("True").CssClass("e-info inline-element right").IsToggle(true).Render()
                         </div>
                         <p class="inline-element" style="width:70%"><b>Backdrop</b> - Sets the backdrop over the main content area on open / expanded state.</p>
+                        <!-- Button element declaration-->
                         @Html.EJS().Button("backdrop").Content("True").CssClass("e-info inline-element right").IsToggle(true).Render()
                     </div>
                 </div>
@@ -156,6 +161,7 @@
     }
 </script>
 <style>
+    /* custom code start */
     .responsive {
         width: 80%;
     }
@@ -163,31 +169,32 @@
     #overview,
     #properties,
     #content {
-        padding: 0px 0px 22px
+        padding: 0 0 22px
     }
 
     #text {
-        padding: 0px 0px 17px;
+        padding: 0 0 17px;
     }
 
     .center-align {
         text-align: center;
         padding: 20px;
     }
-
+     /* custom code end */
     .title {
         color: #000000;
         font-weight: 500;
         line-height: 24px;
         font-size: 18px;
-        margin: 0px;
+        margin: 0;
     }
-
+    /* custom code start */
     body {
         font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
         margin: 0px;
         font-size: 14px;
     }
+    /* custom code end */
     /* End of content area styles */
     /* property content styles */
 
@@ -202,7 +209,7 @@
         border: none;
         width: 75px;
     }
-
+    /* custom code start */
     .inline-element {
         display: inline-block;
     }
@@ -210,13 +217,13 @@
     .right {
         float: right;
     }
-
+    /* custom code end */
     .list-group-item {
         border: none;
         padding: 60px 10px 10px 45px;
         font-size: 14px;
     }
-
+    /* custom code start */
     .center {
         text-align: center;
         display: none;
@@ -224,7 +231,7 @@
         font-weight: 400;
         margin-top: 20px;
     }
-
+    
     .sb-content-tab .center {
         display: block;
     }
@@ -234,7 +241,7 @@
     .sb-content-tab #wrapper {
         display: none;
     }
-
+     /* custom code end */
     .content {
         margin-bottom: 20px;
         overflow-y: auto;

@@ -13,7 +13,7 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
         // GET= DefaultFunctionalities
         public ActionResult DefaultFunctionalities()
         {
-            QueryBuilderRule rule = new QueryBuilderRule()
+            QueryBuilderRules rule = new QueryBuilderRules()
             {
                 Condition = "and",
                 Rules = new List<QueryBuilderRules>()

@@ -11,10 +11,11 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
     {
         public ActionResult Print()
         {
+            this.StatusBar();
             return View();
         }
 
-        public ActionResult Index()
+        public PartialViewResult StatusBar()
         {
             List<object> zoomItems = new List<object>();
             zoomItems.Add(new { text = "200%" });

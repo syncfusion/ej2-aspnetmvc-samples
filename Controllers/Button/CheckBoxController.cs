@@ -8,7 +8,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Button
 {
     public partial class ButtonController : Controller
     {
-        public ActionResult CheckBox()
+        public ActionResult Checkbox()
         {
             return View();
         }

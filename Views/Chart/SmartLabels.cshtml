@@ -13,17 +13,20 @@
 
        </div>
     </div>
+             @*custom code start*@
     <script>
         var load = function(args){
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
         }
     </script>
+             @*custom code end*@
 }
+         @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control shows how to arrange the labels smartly without overlapping with each other." />
 }
+         @*custom code end*@
 @section ActionDescription{
     <p>
     This sample illustrates the Rio Olympic’s gold medal count by using smart labels in the chart. The smart label placement for a series can be shown, when it contains more of points.

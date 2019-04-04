@@ -33,8 +33,7 @@
     <script>
         var treemap;
         function load(args) {
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
+            var theme = themeName ? themeName : 'Material';
             args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
             args.treemap.dataSource = [
                 { Country: "China", Population: 1388232693 },

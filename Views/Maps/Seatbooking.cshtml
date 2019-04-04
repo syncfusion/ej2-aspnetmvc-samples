@@ -94,8 +94,7 @@
     <script>
         var seatInfo = document.getElementById('selectedseats');
         function mapsLoad(args) {
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
+            var theme = themeName ? themeName : 'Material';
             args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
         }
         function itemSelection(args) {
@@ -151,7 +150,7 @@
 @section Description{
     <div id="description">
         <p>
-            In this example, you can see how to render the normal geometry type shapes on the map to visualize a seating chart. Selection is enabled in this sample. You can use the <code>fill</code>, <code>width</code>, and <code>color</code> properties in the <code>selectionSettings</code> to customize the appearance of the shapes after selection.
+            In this example, you can see how to render the normal geometry type shapes on the map. Selection is enabled in this sample. You can use the <code>fill</code>, <code>width</code>, and <code>color</code> properties in the <code>selectionSettings</code> to customize the appearance of the shapes after selection.
         </p>
         <br />
         <p style="font-weight: 500">Injecting Module</p>

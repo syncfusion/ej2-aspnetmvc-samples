@@ -30,11 +30,12 @@
             left: calc(50% - 1.5em);
             box-shadow: 0 16px 28px -8px rgba(0, 0, 0, .36), 0 4px 15px 0 rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
         }
-
+        /* custom code start */
         #target {
             margin: 20px auto;
             max-width: 710px;
         }
+        /* custom code end */
         /* ListView template customization */
 
         #ui-list.e-listview .showUI {
@@ -164,3 +165,11 @@
         The Splitter is the layout user interface (UI) control, which integrates other JavaScript UI controls within its pane. In this sample, the JavaScript ListView control is integrated within left pane to display the employee list and right pane to display the corresponding employee details.
     </div>
 }
+
+@*custom code start*@
+
+@section Meta{
+    <meta name="description" content="The example demonstrates how to create employee details view layout using panes of ASP.NET MVC Splitter and ListView with navigation." />
+}
+
+@*custom code end*@

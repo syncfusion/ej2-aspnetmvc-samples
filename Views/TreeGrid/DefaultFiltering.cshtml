@@ -1,8 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
 @{
     ViewBag.Title = "Filtering";
 }
+
+@*custom code end*@
 
 @section ControlsSection{
 
@@ -16,7 +21,7 @@
                     .PageSettings(page => page.PageSize(10))
                     .FilterSettings(filter =>
                     {
-                        filter.Type(FilterType.FilterBar);
+                        filter.Type(Syncfusion.EJ2.TreeGrid.FilterType.FilterBar);
                         filter.HierarchyMode(Syncfusion.EJ2.TreeGrid.FilterHierarchyMode.Parent);
                         filter.Mode(FilterBarMode.Immediate);
                     })
@@ -88,6 +93,8 @@
     </script>
 }
 
+@*custom code start*@
+
 @section Meta{
     <meta name="description" content="This demo explains the default functionalities of filtering and how to define the template for filter bar in Essential JS2 TreeGrid Control." />
 }
@@ -137,3 +144,5 @@
         </p>
     </div>
 }
+
+@*custom code end*@

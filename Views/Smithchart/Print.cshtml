@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+﻿﻿@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Charts
 @section ControlsSection{
     <div class="control-section col-lg-9">
@@ -33,7 +33,7 @@
                     </td>
                     <td style="width: 60%;">
                         <div class="e-float-input" style="margin-top: 0px;">
-                            <input type="text" value="Smith chart" id="fileName" style="margin-left: -10px;width: 70px">
+                            <input type="text" value="Smith chart" id="fileName" style="margin-left: -10px;width: 100px">
                         </div>
                     </td>
                 </tr>
@@ -68,8 +68,7 @@
     <script>
         var smithchart;
         function load(args) {
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
+            var theme = themeName ? themeName : 'Material';
             args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
             args.smithchart.series[0].points = [
                 { resistance: 0.15, reactance: 0 },
@@ -99,7 +98,7 @@
         }
         var mode = new ej.dropdowns.DropDownList({
             index: 0,
-            width: 70
+            width: 100
         });
         mode.appendTo('#mode');
         var togglebtn1 = new ej.buttons.Button({

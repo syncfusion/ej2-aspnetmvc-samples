@@ -5,7 +5,7 @@
     <div class="col-lg-12 control-section">
         <div id='groupList' class='col-lg-6' style='padding-top:15px'>
             <div class='content'>
-                <h4>Grouping</h4>
+                <h3>Grouping</h3>
 
                 @Html.EJS().DropDownList("vegetables").Placeholder("Select a vegetable").PopupHeight("200px").DataSource(
                               (IEnumerable<Vegetables>)ViewBag.groupdata).Fields(new DropDownListFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).Render()
@@ -14,7 +14,7 @@
         </div>
         <div id='iconList' class='col-lg-6' style='padding-top:15px'>
             <div class='content'>
-                <h4> Icons</h4>
+                <h3> Icons</h3>
 
                 @Html.EJS().DropDownList("icons").Placeholder("Select a social media").PopupHeight("200px").DataSource(
                               (IEnumerable<SocialMedia>)ViewBag.icondata).Fields(new DropDownListFieldSettings { Text = "SocialMediaName", IconCss = "Class", Value = "Id" }).Render()
@@ -23,12 +23,17 @@
         </div>
     </div>
     <link href="../Content/dropdownlist/grouping.css" rel="stylesheet" />
+    @*custom code start*@
     <style>
         .content {
             margin: 0 auto;
             width: 250px;
         }
     </style>
+    @*custom code end*@
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates how to group based on the different categories with individual header and icon support using ASP.NET MVC drop-down list control."/>
 }
 @section ActionDescription{
     <div id="action-description">

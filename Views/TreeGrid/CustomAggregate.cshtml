@@ -1,27 +1,34 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
 @{
     ViewBag.Title = "CustomAggregate";
 }
+
+@*custom code end*@
+
 @section ControlsSection{
     <div class="control-section">
         @(Html.EJS().TreeGrid("CustomAggregate").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
-                            {
-                                col.Field("ID").HeaderText("Order ID").Width(60).TextAlign(TextAlign.Right).Add();
-                                col.Field("Name").HeaderText("Shipment Name").Width(170).Add();
-                                col.Field("Category").HeaderText("Category").Width(180).Add();
-                                col.Field("Units").HeaderText("Units").TextAlign(TextAlign.Right).Width(60).Add();
-                                col.Field("UnitPrice").HeaderText("Unit Price").TextAlign(TextAlign.Right).Width(85).Format("C0").Add();
-                                col.Field("Units").HeaderText("Units").TextAlign(TextAlign.Right).Format("C0").Width(90).Add();
+                    {
+                        col.Field("ID").HeaderText("Order ID").Width(60).TextAlign(TextAlign.Right).Add();
+                        col.Field("Name").HeaderText("Shipment Name").Width(170).Add();
+                        col.Field("Category").HeaderText("Category").Width(180).Add();
+                        col.Field("Units").HeaderText("Units").TextAlign(TextAlign.Right).Width(60).Add();
+                        col.Field("UnitPrice").HeaderText("Unit Price").TextAlign(TextAlign.Right).Width(85).Format("C0").Add();
+                        col.Field("Units").HeaderText("Units").TextAlign(TextAlign.Right).Format("C0").Width(90).Add();
 
-                            })
-                           .Aggregates(agg =>
-                           {
-                               agg.Columns(new List<Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn>() { new Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn() { Field = "Category", Type = "Custom", FooterTemplate = "Count of <input type='text' id='dropdown' /> : ${Custom}", CustomAggregate = "customAggregateFn" } }).Add();
-                           }).ChildMapping("Children").Height(400).Width("Auto").DataBound("ondataBound").TreeColumnIndex(1).Render()
+                    })
+                   .Aggregates(agg =>
+                   {
+                       agg.Columns(new List<Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn>() { new Syncfusion.EJ2.TreeGrid.TreeGridAggregateColumn() { Field = "Category", Type = "Custom", FooterTemplate = "Count of <input type='text' id='dropdown' /> : ${Custom}", CustomAggregate = "customAggregateFn" } }).Add();
+                   }).ChildMapping("Children").Height(400).Width("Auto").DataBound("ondataBound").TreeColumnIndex(1).Render()
         )
     </div>
-    <script>var value = "Frozen Seafood";
+    <script>
+        var value = "Frozen Seafood";
         var listObj;
         var foods = [
             { food: 'Frozen Seafood' },
@@ -60,9 +67,12 @@
                 }
             });
             return countLength;
-        };</script>
-    <style>
+        };
+    </script>
 
+    @*custom code start*@
+
+    <style>
         .e-input {
             padding-bottom: 1px !important;
         }
@@ -71,16 +81,23 @@
             pointer-events: visible !important;
         }
     </style>
+
+    @*custom code end*@
 }
+
+@*custom code start*@
+
 @section Meta{
     <meta name="description" content="This demo explains how to display the custom aggregate for the columns in Syncfusion Essential JS2 TreeGrid control." />
 }
+
 
 @section ActionDescription{
     <div id="action-description">
         <p>This sample demonstrates custom aggregate functionality of the TreeGrid. In this sample, the custom aggregate value for the columns "Category" is displayed in column footer with dropdown to display the count of selected category name.</p>
     </div>
 }
+
 @section Description{
     <div id="description">
         <p>
@@ -109,4 +126,7 @@
             More information about aggregate can be found in this documentation section.
         </p>
     </div>
+
 }
+
+@*custom code end*@

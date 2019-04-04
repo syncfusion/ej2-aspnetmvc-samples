@@ -7,19 +7,22 @@
       }).PrimaryXAxis(px => px.Title("Time (s)").MajorGridLines(mg=>mg.Width(0))).PrimaryYAxis(py => py.Title("Velocity (m/s)").MajorGridLines(mg=>mg.Width(0)).LabelFormat("{value}M").Minimum(-15).Maximum(15).Interval(5)
     ).Title("Indonesia - Seismograph Analysis").IsTransposed(true).Load("load").Loaded("loaded").Render()
     </div>
+     @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
     </style>
+     @*custom code end*@
     <script>
         var series1 = [{ x: 0, y: 0 }];
         var chart;
         var load = function (args) {
             chart = args.chart;
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+             @*custom code start*@
+            var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+             @*custom code end*@
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "70%";
             args.chart.chartArea.border.width = 0;
         };
@@ -66,9 +69,11 @@
         }
     </script>
 }
+ @*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the vertical type charts." />
 }
+ @*custom code end*@
 @section ActionDescription{
     <p>
     This sample illustrates the vertical chart by changing the orientation of x-axis to vertical and y-axis to horizontal.

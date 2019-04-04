@@ -1,8 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
 @{
     ViewBag.Title = "InlineEditing";
 }
+
+@*custom code end*@
 
 @section ControlsSection{
     <div class="control-section">
@@ -18,6 +23,7 @@
                 edit.AllowAdding(true);
                 edit.AllowDeleting(true);
                 edit.AllowEditing(true);
+				edit.Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row);
                 edit.NewRowPosition(Syncfusion.EJ2.TreeGrid.RowPosition.Below);
             })
             .Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })
@@ -73,6 +79,8 @@
     </script>
 }
 
+@*custom code start*@
+
 @section Meta{
     <meta name="description" content="This demo explains how create a custom editor control for the treegrid cells when a row is edited in Essential JS2 TreeGrid Control." />
 }
@@ -104,3 +112,5 @@
         </p>
     </div>
 }
+
+@*custom code end*@

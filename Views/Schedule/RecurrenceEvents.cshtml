@@ -1,5 +1,4 @@
 ﻿@using Syncfusion.EJ2
-@using EJ2MVCSampleBrowser.Models
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
@@ -16,9 +15,11 @@
         }
     </script>
 }
+@*custom code start*@
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Scheduler control shows the scheduler with recurring meetings handled on a regular pattern." />
 }
+@*custom code end*@
 @section ActionDescription{
     <div id="action-description">
         <p>
@@ -42,8 +43,10 @@
             reference.
         </p>
         <p>
-            Scheduler requires only the <code>startTime</code> and <code>endTime<code> fields as mandatory to be mapped from the dataSource. 
-            The Scheduler events can be categorized into 3 types based on its time range and all-day type.
+            Scheduler requires only the <code>startTime</code> and <code>
+                endTime<code>
+                    fields as mandatory to be mapped from the dataSource.
+                    The Scheduler events can be categorized into 3 types based on its time range and all-day type.
         </p>
         <table style="width:100%">
             <tr>

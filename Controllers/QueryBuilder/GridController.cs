@@ -13,7 +13,7 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
         // GET= DefaultFunctionalities
         public ActionResult Grid()
         {
-            QueryBuilderRule rule = new QueryBuilderRule()
+            QueryBuilderRules rule = new QueryBuilderRules()
             {
                 Condition = "or",
                 Rules = new List<QueryBuilderRules>()

@@ -16,7 +16,7 @@
        col.Field("OrderDate").HeaderText("Order Date").EditType("datepickeredit").Format("yMd").Width("150").Add();
        col.Field("ShipCountry").HeaderText("Ship Country").EditType("dropdownedit").Width("150").Add();
    
-   }).AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Batch); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+   }).AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Batch); }).Toolbar(new List<string>() { "Add", "Delete", "Update", "Cancel" }).Render()
     </div>
     
 }

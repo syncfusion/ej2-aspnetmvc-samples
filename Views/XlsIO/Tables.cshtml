@@ -20,6 +20,7 @@
     <ul>
         <li>Adding tables to a spreadsheet</li>
         <li>Advanced options of Excel tables such as Total Rows and Styles</li>
+		<li>Advanced options of Excel tables such as Custom Table Styles</li>
     </ul>
     <br />
 }
@@ -34,13 +35,22 @@
         <br />
         <div class="rowdiv">
             <div class="celldiv">
+                @Html.EJS().CheckBox("Checkbox").Label("Apply custom style").Value("customStyle").Render()
+            </div>
+        </div>
+        <br />
+        <div class="rowdiv">
+            <div class="celldiv">
                 @Html.EJS().Button("createbtn").Content("Create Document").Render()
             </div>
         </div>
         <br />
         <script>
-            document.getElementById('createbtn').onclick = function () {
-                location.href = '@Url.Action("Tables", new { button = "Create"})';
+            document.getElementById('createbtn').onclick = function () {                
+                if (document.getElementById('Checkbox').checked == true)
+                    location.href = '@Html.Raw(@Url.Action("Tables", new { @button = "Create", @customStyle = "ApplyCustomStyle" }))';
+                else
+                    location.href = '@Html.Raw(@Url.Action("Tables", new { @button = "Create" }))';
             };
         </script>
     </div>

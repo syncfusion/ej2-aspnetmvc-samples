@@ -14,7 +14,6 @@
     "url": "https://gitlab.syncfusion.com/essential-studio/ej2-aspmvc-samples.git"
   },
   "devDependencies": {
-    "@syncfusion/ej2-staging": "*",
     "json-beautify": "^1.0.1",
     "gulp-dotnet-cli": "^1.0.2",
     "require-dir": "^0.3.2",
@@ -25,7 +24,7 @@
     "shelljs": "^0.8.1"
   },
   "scripts": {
-    "build": "gulp generate-searchlist",
+    "build": "gulp generate-searchlist && gulp desValidation",
     "publish": "gulp azure-mvc-publish"
   }
 }

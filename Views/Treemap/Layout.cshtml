@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div id="container" align="center">
-            @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("Top 10 countries by GDP Nominal - 2015").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("GDP").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${State}<br>Rank : ${Rank}" }).RangeColorValuePath("GDP").LeafItemSettings(leaf => leaf.LabelPath("State").LabelFormat("${State}<br>$${GDP} Trillion<br>(${percentage} %)").LabelStyle(new TreeMapFont { Color = "#000000" }).Border(new TreeMapBorder { Color = "#000000", Width = 0.5 })).Render()
+            @Html.EJS().TreeMap("container").Load("load").RenderDirection(RenderingMode.TopLeftBottomRight).TitleSettings(title => title.Text("Top 10 countries by GDP Nominal - 2015").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("GDP").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${State}<br>Rank : ${Rank}" }).RangeColorValuePath("GDP").LeafItemSettings(leaf => leaf.LabelPath("State").LabelFormat("${State}<br>$${GDP} Trillion<br>(${percentage} %)").LabelStyle(new TreeMapFont { Color = "#000000" }).Border(new TreeMapBorder { Color = "#000000", Width = 0.5 })).Render()
         </div>
         <div style="float: right; margin-right: 10px;">
             Source:
@@ -26,14 +26,26 @@
                         </select>
                     </td>
                 </tr>
+                <tr style="height: 50px">
+                    <td style="width: 60%">
+                        <div class="property-text" style="padding-top: 0px !important">Render Direction</div>
+                    </td>
+                    <td style="width: 40%;">
+                        <select name="selectIndex" autocomplete="off" id="renderDirection" style="width:60%;">
+                            <option value="TopLeftBottomRight" selected>TopLeftBottomRight</option>
+                            <option value="TopRightBottomLeft">TopRightBottomLeft</option>
+                            <option value="BottomLeftTopRight">BottomLeftTopRight</option>
+                            <option value="BottomRightTopLeft">BottomRightTopLeft</option>
+                        </select>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
     <script>
         var treemap;
         function load(sender) {
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
+            var theme = themeName ? themeName : 'Material';
             sender.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
 
             var data = [{ State: "United States", GDP: 17946, percentage: 11.08, Rank: 1 },
@@ -66,6 +78,16 @@
             }
         });
         layoutMode.appendTo('#layoutMode');
+        var direction = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select layoutMode type',
+            width: 115,
+            change: () => {
+                treemap.renderDirection = direction.value;
+                treemap.refresh();
+            }
+        });
+        direction.appendTo('#renderDirection');
     </script>
 }
 @section ActionDescription{

@@ -1,0 +1,316 @@
+﻿﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <style>
+        .panel {
+            width: 105% !important;
+            height: 80px !important;
+            margin-left: 5% !important;
+            margin-top: 15% !important;
+            border-color: lightgray;
+            float: left;
+            background-color: transparent;
+        }
+
+        .content {
+            float: left !important;
+            margin-left: 62px !important;
+            margin-top: 6% !important;
+            text-align: left !important;
+            position: absolute;
+        }
+    </style>
+
+    <style type="text/css" media="screen and (max-width:1160px)">
+        .panel {
+            width: 115% !important;
+        }
+        .firstcontent {
+            font-size: 13px !important;
+        }
+        .secondcontent {
+            font-size: 15px !important;
+        }
+    </style>
+
+    <style type="text/css" media="screen and (max-width:990px)">
+        .panel {
+            width: 50% !important;
+            height: 80px !important;
+            margin-left: 27% !important;
+            margin-top: 0% !important;
+        }
+        .subgauge {
+            margin-left: 8% !important;
+            margin-top: 1% !important;
+        }
+        .content {
+            margin-left: 18% !important;
+            margin-top: 2% !important;
+        }
+        .firstcontent {
+            font-size: 16px !important;
+        }
+        .secondcontent {
+            font-size: 18px !important;
+        }
+    </style>
+
+    <style type="text/css" media="screen and (max-width:410px)">
+        #column1 {
+            margin-left: -9% !important;
+        }
+        .subgauge {
+            margin-left: 3% !important;
+        }
+        .panel {
+            width: 52% !important;
+        }
+        .content {
+            margin-top: 3% !important;
+        }
+    </style>
+    <div>
+        <script id='exetracking1' type="text/x-template">
+            <div id='annotation' style="width:300px">
+                <img style="height:22px;width:22px" src="@Url.Content("~/Content/CircularGauge/Images/image1.svg")" />
+            </div>
+        </script>
+        <script id="exetracking2" type="text/x-template">
+            <div id="annotation" style="width:100px" ;>
+                <img style="height:20px;width:20px" src="@Url.Content("~/Content/CircularGauge/Images/image2.svg")">
+            </div>
+        </script>
+        <script id="exetracking3" type="text/x-template">
+            <div id="annotation" style="width:100px" ;>
+                <img style="height:22px;width:22px" src="@Url.Content("~/Content/CircularGauge/Images/image3.svg")">
+            </div>
+        </script>
+        <script id="exetracking4" type="text/x-template">
+            <div id="annotation" style="width:100px;">
+                <img style="height:17px;width:17px" src="@Url.Content("~/Content/CircularGauge/Images/image4.svg")">
+            </div>
+        </script>
+        <script id="exetracking5" type="text/x-template">
+            <div id="annotation" style="width:100px;">
+                <img style="height:15px;width:15px" src="@Url.Content("~/Content/CircularGauge/Images/image5.svg")">
+            </div>
+        </script>
+        <script id="exetracking6" type="text/x-template">
+            <div id="annotation" style="width:100px;">
+                <img style="height:17px;width:17px" src="@Url.Content("~/Content/CircularGauge/Images/image6.svg")">
+            </div>
+        </script>
+        <div class="col-lg-9 col-md-9 control-section" id="column1" style="margin-left: -5%" align="center">
+            @Html.EJS().CircularGauge("gauge1").Width("400px").Height("400px").Load("gaugeLoad1").Axes(axes => axes
+            .StartAngle(0).EndAngle(360).LabelStyle(ls => ls.Position(Position.Inside).Font(ViewBag.Font).UseRangeColor(true))
+            .LineStyle(lin => lin.Width(0)).Minimum(0).Maximum(100)
+            .Annotations(new List<Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation> {
+                new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
+                {
+                    Angle = 8, Radius = "80%", ZIndex = "2",
+                    Content = "#exetracking1"
+                },
+                new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
+                {
+                    Angle = 11, Radius = "58%", ZIndex = "2",
+                    Content = "#exetracking2"
+                },
+                new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
+                {
+                    Angle = 16, Radius = "36%", ZIndex = "2",
+                    Content = "#exetracking3"
+                }
+            })
+            .Ranges(ViewBag.Ranges).Pointers(ViewBag.Pointers)
+            .Add()).Render()
+        </div>
+        <div class="col-lg-3 col-md-3 control-section" style="margin-left: -9%" align="center">
+            <div class="panel" id="panel1" align="center">
+                <div class="subgauge" style="float: left; margin-top: 3%">
+                    @Html.EJS().CircularGauge("gauge2").Width("65px").Height("65px").Load("gaugeLoad2").Axes(axes => axes
+                    .StartAngle(0).EndAngle(360).LabelStyle(ls => ls.Position(Position.Inside).Font(ViewBag.Font).UseRangeColor(true))
+                    .LineStyle(lin => lin.Width(0)).Minimum(0).Maximum(100)
+                    .Annotations(new List<Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation> {
+                        new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
+                        {
+                            Angle = 0, Radius = "0%", ZIndex = "2",
+                            Content = "#exetracking1"
+                        }
+                    })
+                    .Ranges(new List<Syncfusion.EJ2.CircularGauge.CircularGaugeRange> {
+                        new Syncfusion.EJ2.CircularGauge.CircularGaugeRange
+                        {
+                            Start = 0, End = 100,
+                            Radius = "100%",
+                            StartWidth = "8", EndWidth = "8",
+                            Color = "#E30219", Opacity = 0.2
+                        }
+                    })
+                    .Pointers(new List<Syncfusion.EJ2.CircularGauge.CircularGaugePointer> {
+                        new Syncfusion.EJ2.CircularGauge.CircularGaugePointer
+                        {
+                            RoundedCornerRadius = 5,
+                            Value = 65,
+                            Type = PointerType.RangeBar,
+                            Radius = "100%",
+                            Color = "#E2011A",
+                            Animation = new CircularGaugeAnimation { Enable = true },
+                            PointerWidth = 8
+                        }
+                    })
+                    .Add()).Render()
+                </div>
+                <div class="content">
+                    <span class="firstcontent" style="font-size: 17px;">MOVE</span>
+                    <span class="firstcontent" style="font-size: 17px;color: #E7092E">65%</span><br />
+                    <span class="secondcontent" style="color: #E7092E; font-size: 19px">338/520 CAL</span>
+                </div>
+            </div>
+
+            <div class="panel" id="panel2" align="center">
+                <div class="subgauge" style="float: left; margin-top: 3%">
+                    @Html.EJS().CircularGauge("gauge3").Width("65px").Height("65px").Load("gaugeLoad3").Axes(axes => axes
+                    .StartAngle(0).EndAngle(360).LabelStyle(ls => ls.Position(Position.Inside).Font(ViewBag.Font).UseRangeColor(true))
+                    .LineStyle(lin => lin.Width(0)).Minimum(0).Maximum(100)
+                    .Annotations(new List<Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation> {
+                        new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
+                        {
+                            Angle = 0, Radius = "0%", ZIndex = "2",
+                            Content = "#exetracking2"
+                        }
+                    })
+                    .Ranges(new List<Syncfusion.EJ2.CircularGauge.CircularGaugeRange> {
+                        new Syncfusion.EJ2.CircularGauge.CircularGaugeRange
+                        {
+                            Start = 0, End = 100,
+                            Radius = "100%",
+                            StartWidth = "8", EndWidth = "8",
+                            Color = "#3EDE00", Opacity = 0.2
+                        }
+                    })
+                    .Pointers(new List<Syncfusion.EJ2.CircularGauge.CircularGaugePointer> {
+                        new Syncfusion.EJ2.CircularGauge.CircularGaugePointer
+                        {
+                            RoundedCornerRadius = 5,
+                            Value = 43,
+                            Type = PointerType.RangeBar,
+                            Radius = "100%",
+                            Color = "#3FE000",
+                            Animation = new CircularGaugeAnimation { Enable = true },
+                            PointerWidth = 8
+                        }
+                    })
+                    .Add()).Render()
+                </div>
+                <div class="content">
+                    <span class="firstcontent" style="font-size: 17px;">EXERCISE</span>
+                    <span class="firstcontent" style="font-size: 17px;color: #52E908">43%</span><br />
+                    <span class="secondcontent" style="color: #52E908; font-size: 19px">13/30 MIN</span>
+                </div>
+            </div>
+
+            <div class="panel" id="panel3" align="center">
+                <div class="subgauge" style="float: left; margin-top: 3%">
+                    @Html.EJS().CircularGauge("gauge4").Width("65px").Height("65px").Load("gaugeLoad4").Axes(axes => axes
+                    .StartAngle(0).EndAngle(360).LabelStyle(ls => ls.Position(Position.Inside).Font(ViewBag.Font).UseRangeColor(true))
+                    .LineStyle(lin => lin.Width(0)).Minimum(0).Maximum(100)
+                    .Annotations(new List<Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation> {
+                        new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
+                        {
+                            Angle = 0, Radius = "0%", ZIndex = "2",
+                            Content = "#exetracking3"
+                        }
+                    })
+                    .Ranges(new List<Syncfusion.EJ2.CircularGauge.CircularGaugeRange> {
+                        new Syncfusion.EJ2.CircularGauge.CircularGaugeRange
+                        {
+                            Start = 0, End = 100,
+                            Radius = "100%",
+                            StartWidth = "8", EndWidth = "8",
+                            Color = "#18F8F6", Opacity = 0.2
+                        }
+                    })
+                    .Pointers(new List<Syncfusion.EJ2.CircularGauge.CircularGaugePointer> {
+                        new Syncfusion.EJ2.CircularGauge.CircularGaugePointer
+                        {
+                            RoundedCornerRadius = 5,
+                            Value = 58,
+                            Type = PointerType.RangeBar,
+                            Radius = "100%",
+                            Color = "#00C9E6",
+                            Animation = new CircularGaugeAnimation { Enable = true },
+                            PointerWidth = 8
+                        }
+                    })
+                    .Add()).Render()
+                </div>
+                <div class="content">
+                    <span class="firstcontent" style="font-size: 17px;">STAND</span>
+                    <span class="firstcontent" style="font-size: 17px;color: #04CBF3">58%</span><br />
+                    <span class="secondcontent" style="color: #04CBF3; font-size: 19px">7/12 HR</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function gaugeLoad1(sender) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.axes[0].minorTicks.height = 0;
+            sender.gauge.axes[0].majorTicks.height = 0;
+        }
+        function gaugeLoad2(sender) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.axes[0].minorTicks.height = 0;
+            sender.gauge.axes[0].majorTicks.height = 0;
+            if (selectedTheme === 'highcontrast') {
+                sender.gauge.axes[0].annotations[0].content = "#exetracking4";
+            }
+        }
+        function gaugeLoad3(sender) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.axes[0].minorTicks.height = 0;
+            sender.gauge.axes[0].majorTicks.height = 0;
+            if (selectedTheme === 'highcontrast') {
+                sender.gauge.axes[0].annotations[0].content = "#exetracking5";
+            }
+        }
+        function gaugeLoad4(sender) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.axes[0].minorTicks.height = 0;
+            sender.gauge.axes[0].majorTicks.height = 0;
+            if (selectedTheme === 'highcontrast') {
+                sender.gauge.axes[0].annotations[0].content = "#exetracking6";
+            }
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample resembles the appearance of Apple watch rings. This functions similar to an activity tracker that denotes the move, exercise, and stand details.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Circular Gauge control illustrates the default rendering of circular gauge." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to make the circular gauge look like the Apple watch rings. Ranges are rendered with rounded corners and annotations are placed to denote the move, exercise, and stand values.
+        </p>
+        <p>
+            For more information on ranges, refer to this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/gauge-ranges/">documentation section</a>.
+        </p>
+    </div>
+}

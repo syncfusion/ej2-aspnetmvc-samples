@@ -1,12 +1,11 @@
-﻿@using Syncfusion.EJ2
+﻿﻿@using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <div class="col-md-8 control-section">
         <div class="content-wrapper">
             @Html.EJS().CircularGauge("container").Load("onGaugeLoad").AxisLabelRender("onAxesLabelRendering").Axes(axes => axes.Radius("70%")
-         .LineStyle(new CircularGaugeLine{ Width = 10, Color = "#E0E0E0" }).LabelStyle(new CircularGaugeLabel
+         .LineStyle(new CircularGaugeLine{ Width = 10 }).LabelStyle(new CircularGaugeLabel
          {
-             UseRangeColor = true,
              AutoAngle = true,
              HiddenLabel = HiddenLabel.Last,
              Font = new
@@ -17,13 +16,11 @@
          }).MajorTicks(new CircularGaugeTick
          {
              Height = 15,
-             Interval = 1,
-             Color = "#9E9E9E"
+             Interval = 1
          }).MinorTicks(new CircularGaugeTick
          {
              Height = 10,
-             Interval = 0.5,
-             Color = "#9E9E9E"
+             Interval = 0.5
          }).Pointers(ViewBag.Pointers).Ranges(ViewBag.Ranges).Minimum(0).Maximum(8).Add()).Render()
         </div>
     </div>
@@ -81,8 +78,7 @@
                 if (gaugeWidth != svgWidth)
                     sender.gauge.refresh();
             }, 200);
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            var selectedTheme = themeName ? themeName : 'Material';
             sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
             circulargauge = sender.gauge;
         }

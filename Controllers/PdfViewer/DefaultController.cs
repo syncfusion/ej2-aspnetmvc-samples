@@ -116,8 +116,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
         {
             PdfRenderer pdfviewer = new PdfRenderer();
             var jsonData = JsonConverter(jsonObject);
-            string pageImage = pdfviewer.GetPrintImage(jsonData);
-            return Content(pageImage);
+            object pageImage = pdfviewer.GetPrintImage(jsonData);
+            return Content(JsonConvert.SerializeObject(pageImage));
         }
         private string GetDocumentPath(string document)
         {

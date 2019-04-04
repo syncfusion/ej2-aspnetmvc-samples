@@ -9,13 +9,11 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
 {
     public partial class TreeGridController : Controller
     {
-        // GET: CustomContextMenu
         public ActionResult CustomContextMenu()
         {
             var treeData = TreeGridItems.GetTreeData();
             ViewBag.datasource = treeData;
             return View();
         }
-
     }
 }
