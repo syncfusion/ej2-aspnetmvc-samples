@@ -13,12 +13,12 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
         // GET= DefaultFunctionalities
         public ActionResult Grid()
         {
-            QueryBuilderRules rule = new QueryBuilderRules()
+            QueryBuilderRule rule = new QueryBuilderRule()
             {
                 Condition = "or",
-                Rules = new List<QueryBuilderRules>()
+                Rules = new List<QueryBuilderRule>()
                 {
-                    new QueryBuilderRules { Label="Category", Field="Category", Type="string", Operator="equal", Value = "Laptop" }
+                    new QueryBuilderRule { Label="Category", Field="Category", Type="string", Operator="equal", Value = "Laptop" }
                 }
             };
 

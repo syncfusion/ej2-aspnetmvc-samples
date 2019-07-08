@@ -43,7 +43,7 @@
                     <div style="padding-left:30px;font-size:18px;font-weight:400;">ATM locations in Oklahoma, USA</div>
                 </div>
             </div>
-            @Html.EJS().Maps("container").Load("mapLoad").CenterPosition(new { latitude = 35.65, longitude = -97.3 }).ZoomSettings(new Syncfusion.EJ2.Maps.MapsZoomSettings
+            @Html.EJS().Maps("container").Load("mapLoad").CenterPosition(new MapsCenterPosition { Latitude = 35.65, Longitude = -97.3 }).ZoomSettings(new Syncfusion.EJ2.Maps.MapsZoomSettings
    {
        Enable = false,
        ZoomFactor = 2.5

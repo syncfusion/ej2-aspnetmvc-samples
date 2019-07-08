@@ -777,7 +777,6 @@
 
 .sb-left-pane .e-listview .e-list-item.e-active {
     background-color: #d2ebff;
-    color:#000000;
 }
 
 #controlTree ul.e-list-parent {
@@ -800,7 +799,6 @@
     position: absolute;
     padding-left: 5px;
     -webkit-overflow-scrolling: touch;
-    border: none;
 }
 
 .sb-control-list-top {
@@ -1851,7 +1849,6 @@ body.highcontrast,
 
 .sb-left-pane .e-treeview .e-list-text {
     width: 100%;
-    font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
 }
 
 .sb-left-pane .e-treeview .e-text-content {

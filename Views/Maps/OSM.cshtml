@@ -4,7 +4,7 @@
 @section ControlsSection{
 <div class="control-section">
     <div class="control_wrapper" style="width:100%" align="center">
-        @Html.EJS().Maps("container").Load("mapsLoad").TitleSettings(title => title.Text("Headquarters of United Nation").TextStyle(new MapsFont { Size = "16px" })).CenterPosition(new { latitude = 40.7489, longitude = -73.9680 }
+        @Html.EJS().Maps("container").Load("mapsLoad").TitleSettings(title => title.Text("Headquarters of United Nation").TextStyle(new MapsFont { Size = "16px" })).CenterPosition(new MapsCenterPosition { Latitude = 40.7489, Longitude = -73.9680 }
 ).ZoomSettings(new Syncfusion.EJ2.Maps.MapsZoomSettings
 {
     ZoomFactor = 10,

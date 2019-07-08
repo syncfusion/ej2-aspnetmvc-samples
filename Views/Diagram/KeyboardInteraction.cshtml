@@ -5,7 +5,7 @@
         @(Html.EJS().Diagram("diagram").Width("100%").Height("645px").CommandManager(c => c.Commands(ViewBag.commands))
                 .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).GetNodeDefaults("getNodeDefaults").ContextMenuSettings(s => s.Show(true))
                 .Layout(s => s.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree))
-                .DataSourceSettings(d => d.Id("id").ParentId("ancestor").DataManager(new DataManager() { Data = new List<KeyboardInformation>(ViewBag.Nodes) })).Render())
+                .DataSourceSettings(d => d.Id("id").ParentId("ancestor").DataSource(new DataManager() { Data = new List<KeyboardInformation>(ViewBag.Nodes) })).Render())
     </div>
     <div class="col-lg-4 property-section">
         <div>

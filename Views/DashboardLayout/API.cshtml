@@ -53,7 +53,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('remove').onclick = function (e) {
             var dashboardObject = document.getElementById('dynamicLayout').ej2_instances[0];
-            if (dashboardObject.panels.length != 0) {
+            if (dashboardObject.panels.length > 0) {
                 for (var i = dashboardObject.panels.length - 1; i < dashboardObject.panels.length; i++) {
                     dashboardObject.removePanel(dashboardObject.panels[dashboardObject.panels.length - 1 - i].id);
                 }
@@ -79,19 +79,10 @@
     function onChange(args) {
         var dashboardObject = document.getElementById('dynamicLayout').ej2_instances[0];
         if (args.event.currentTarget.id === "floating") {
-            if (args.checked) {
-                dashboardObject.allowFloating = true;
-            } else {
-                dashboardObject.allowFloating = false;
-            }
+            dashboardObject.allowFloating = args.checked;
         }
         if (args.event.currentTarget.id === "resizing") {
-            if (args.checked) {
-                dashboardObject.allowResizing = true;
-            } else {
-
-                dashboardObject.allowResizing = false;
-            }
+            dashboardObject.allowResizing = args.checked;
         }
     }
 

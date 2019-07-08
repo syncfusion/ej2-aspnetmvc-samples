@@ -21,9 +21,9 @@
                     })
                     .EnableSmartLabels(true)
                      .Tooltip(tp => tp.Enable(true).Format("${point.x} <br/>Composition: <b>${point.y}%</b>"))
-                     .LegendSettings(leg => leg.ToggleVisibility(false))
+                     .LegendSettings(leg => leg.Visible(false))
                      .Load("load").Resized("resize")
-                     .Title("Website Visitors").Render()
+                                                 .Title("Top populated countries in 2017").Render()
                 )
             </div>
         </div>
@@ -69,7 +69,7 @@
        @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
        @*custom code end*@
             if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
                 args.accumulation.series[0].width = '80%';
@@ -123,7 +123,17 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample visualizes the data about website visitors by using default funnel series. Datalabel shows the Information about the points.
+        This sample visualizes the population data of different countries using the default funnel series.
+        Data label shows the information about the <code>points</code>, and they are arranged smartly
+    </p>
+    <br>
+    <p>
+        In this example, you can see how to render the funnel chart. Data label is used to represent <code>individual data and its value</code>.
+        Here, the labels are arranged smartly to avoid overlapping.
+    </p>
+    <br>
+    <p>
+        Tooltip is enabled in this example, to see the tooltip in action, hover the mouse over a point or tap a point in the touch-enabled devices.
     </p>
 }
 @section Description{

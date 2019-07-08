@@ -5,7 +5,7 @@
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
             @Html.EJS().Diagram("diagram").Created("create").Width("100%").Height("500px").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults").DataSourceSettings(ss => ss.Id("Name").ParentId("Category")
-.DataManager(new DataManager() { Data = (List<HierarchicalDetails>)ViewBag.Nodes })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render()
+.DataSource(new DataManager() { Data = (List<HierarchicalDetails>)ViewBag.Nodes })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">

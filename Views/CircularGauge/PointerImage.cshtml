@@ -5,7 +5,7 @@
         @Html.EJS().CircularGauge("container").Width("80%").Load("onGaugeLoad").CenterY("57%").Title("Short Put Distance").TitleStyle(new CircularGaugeFont{ Size = "18px", Opacity = 1 }).Axes(axes => axes
       .StartAngle(200).EndAngle(130).LineStyle(new CircularGaugeLine{ Width = 0, Color="tranparent" }).Radius("90%").LabelStyle(new CircularGaugeLabel
       {
-          Font = new { size = "0px" }
+          Font = new CircularGaugeFont { Size = "0px" }
       }).MajorTicks(new CircularGaugeTick
       {
           Color = "transparent",

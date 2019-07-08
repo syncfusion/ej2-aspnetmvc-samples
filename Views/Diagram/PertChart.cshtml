@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="col-xs-12 control-section">
             @(Html.EJS().Diagram("container").Width("100%").Height("700px").Created("create").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
-                .GetConnectorDefaults("getConnectorDefaults").GetNodeDefaults("getNodeDefaults").SetNodeTemplate("setNodeTemplate").DataSourceSettings(ss => ss.Id("Id").ParentId("Category").DataManager(new DataManager() { Data = (List<pertChartDataDetails>)ViewBag.Nodes }))
+                .GetConnectorDefaults("getConnectorDefaults").GetNodeDefaults("getNodeDefaults").SetNodeTemplate("setNodeTemplate").DataSourceSettings(ss => ss.Id("Id").ParentId("Category").DataSource(new DataManager() { Data = (List<pertChartDataDetails>)ViewBag.Nodes }))
                 .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.ComplexHierarchicalTree).Orientation(Syncfusion.EJ2.Diagrams.LayoutOrientation.LeftToRight).VerticalSpacing(100).HorizontalSpacing(70))
                 .Render()
             )

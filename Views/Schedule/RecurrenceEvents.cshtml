@@ -2,16 +2,31 @@
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
-    <div class="control-section">
+    <div class="col-lg-9 control-section">
         <div class="content-wrapper">
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 2, 20)).Render()
         </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50%">
+                    <td style="width: 100%">
+                        @Html.EJS().CheckBox("editFollowingEvents").Change("onChange").Checked(false).Label("Enable Following Events").Render()
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
     <script type="text/javascript">
         function onEventRendered(args) {
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
             applyCategoryColor(args, scheduleObj.currentView);
+        }
+        function onChange(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.eventSettings.editFollowingEvents = args.checked;
         }
     </script>
 }

@@ -21,58 +21,38 @@
 }
 @section ControlsSection{
     <div class="control-section">
-        <h5>
-            Click the button below to convert the Excel worksheet to image using Essential XlsIO.
-        </h5>
-        <br />
-        <h5>  Convert to </h5>
-        <div class="celldiv">
-            <table>
-                <tr>
-                    <td>
-                        @Html.EJS().RadioButton("radio1").Label("PNG").Name("select").Value("PNG").Checked(true).Render()
-                    </td>
-                    <td>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
-                    <td>
-                        @Html.EJS().RadioButton("radio2").Label("JPEG").Name("select").Value("JPEG").Checked(false).Render()
-                    </td>
-                    <td>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
-                    <td>
-                        @Html.EJS().RadioButton("radio3").Label("BMP").Name("select").Value("BMP").Checked(false).Render()
-                    </td>
-                    <td>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
-                    <td>
-                        @Html.EJS().RadioButton("radio4").Label("EMF").Name("select").Value("EMF").Checked(false).Render()
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <br />
-        <div class="celldiv">
-            @Html.EJS().Button("createbtn").Content("Convert To Image").Render()
-            @Html.EJS().Button("inputbtn").Content("Input Template").Render()
-        </div>
+        @{Html.BeginForm("WorksheetToImage", "XlsIO", FormMethod.Post);
+            <h5>
+                Click the button below to convert the Excel worksheet to image using Essential XlsIO.
+            </h5>
+            <br />
+            <h5>  Convert to </h5>
+            <div class="celldiv">
+                <table>
+                    <tr>
+                        <td>
+                            @Html.EJS().RadioButton("radio1").Label("PNG").Name("Group1").Value("PNG").Checked(true).Render()
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            @Html.EJS().RadioButton("radio2").Label("JPEG").Name("Group1").Value("JPEG").Checked(false).Render()
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            @Html.EJS().RadioButton("radio3").Label("BMP").Name("Group1").Value("BMP").Checked(false).Render()
+                        </td>                       
+                    </tr>
+                </table>
+            </div>
+            <br />
+            <div class="celldiv">
+                <input id="inputbtn" class="e-btn" type="submit" name="button" value="Input Template" style="width:160px;" />
+                <input id="createbtn" class="e-btn" type="submit" name="button" value="Convert To Image" style="width:160px;" />
+            </div>
+        }
     </div>
-    <script>
-    document.getElementById('createbtn').onclick = function () {
-        if (document.getElementById('radio1').checked == true)
-            location.href = '@Html.Raw(@Url.Action("WorksheetToImage", new { @button = "Create", @Group1 = "PNG" }))';
-        else if (document.getElementById('radio2').checked == true)
-            location.href = '@Html.Raw(@Url.Action("WorksheetToImage", new { @button = "Create", @Group1 = "JPEG" }))';
-        else if (document.getElementById('radio3').checked == true)
-            location.href = '@Html.Raw(@Url.Action("WorksheetToImage", new { @button = "Create", @Group1 = "BMP" }))';
-        else
-            location.href = '@Html.Raw(@Url.Action("WorksheetToImage", new { @button = "Create", @Group1 = "EMF" }))';
-        };
-        document.getElementById('inputbtn').onclick = function () {
-            location.href = '@Html.Raw(@Url.Action("WorksheetToImage", new { @button = "Input Template", @Group1 = "PNG" }))';
-        };
-    </script>
-
 }

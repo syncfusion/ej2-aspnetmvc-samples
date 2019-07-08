@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2.Diagrams;
+@using Syncfusion.EJ2.Diagrams;
 @using Syncfusion.EJ2.Inputs;
 @section ControlsSection{
     <div class="control-section">
@@ -11,7 +11,7 @@
                 @*Initialize Diagram control.*@
                 @(Html.EJS().Diagram("diagram").Width("100%").Height("600px")
                         .GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults")
-                    .DataSourceSettings(ss => ss.Id("Name").CrudAction(ViewBag.NodeCrud).ConnectionDataSource(ViewBag.DataSource))
+                    .DataSourceSettings((DiagramDataSource)ViewBag.DataSourceSettings)
                     .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree).VerticalSpacing(40))
                     .SelectionChange("selectionChange").SourcePointChange("connectionChange").TargetPointChange("connectionChange").SetNodeTemplate("setNodeTemplate")
                     .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render()

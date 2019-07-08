@@ -48,7 +48,7 @@
                 </td>
                 <td style="width: 70%;padding-right: 10px">
                     <div id='numericbox'>
-                        @Html.EJS().NumericTextBox("start").Format("##").Max(9).Min(0).Render()
+                        @Html.EJS().NumericTextBox("start").Width(100).Format("##").Max(9).Min(0).Render()
                     </div>
                 </td>
             </tr>
@@ -58,7 +58,7 @@
                 </td>
                 <td style="width: 70%;padding-right: 10px">
                     <div>
-                        @Html.EJS().NumericTextBox("to").Format("##").Max(9).Min(0).Render()
+                        @Html.EJS().NumericTextBox("to").Width(100).Format("##").Max(9).Min(0).Render()
                     </div>
                 </td>
             </tr>

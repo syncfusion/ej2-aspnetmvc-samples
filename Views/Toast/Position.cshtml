@@ -6,7 +6,7 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section toast-pos-section">
         <div class="control_wrapper" id="toast_pos_target">
-            @Html.EJS().Toast("toast_pos").Title("Matt sent you a friend request").Content("You have a friend request yet to accept.").Icon("e-laura").Position(p => p.X("Right").Y("Bottom")).TimeOut(5000).Width(350).Close("onclose").BeforeOpen("onBeforeOpen").Render()
+            @Html.EJS().Toast("toast_pos").Title("Matt sent you a friend request").Content("You have a friend request yet to accept.").Icon("e-laura").Position(p => p.X("Right").Y("Bottom")).TimeOut(5000).Width(350).Close("onclose").BeforeOpen("onBeforeOpen").Created("onCreate").Render()
             <div id="toast_pos_property">
                 <table style="width: 100%">
                     <tbody>
@@ -72,14 +72,7 @@
         </div>
     </div>
     <script type="text/javascript">
-        setTimeout(
-            () => {
-                toastObj = document.getElementById('toast_pos').ej2_instances[0];
-                toastObj.show({
-                    target: document.body
-                });
-            }, 500);
-
+        var toastObj;
 
         function toastShow(timeOutDelay) {
             setTimeout(function () {
@@ -107,6 +100,13 @@
                 toastObj.hide('All');
             }
         };
+
+        function onCreate() {
+            toastObj = document.getElementById('toast_pos').ej2_instances[0];
+            setTimeout(() => {
+                toastObj.show({ target: document.body });
+            }, 500);
+        }
 
         function onclose(e) {
             if (e.toastContainer.childElementCount === 0) {

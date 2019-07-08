@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
 
             ViewBag.tbItems = items;
 
-            CRUDAction nodeCrud = new CRUDAction()
+            DiagramCrudAction nodeCrud = new DiagramCrudAction()
             {
                 //Define URL to perform CRUD operations with nodes records in database.
                 Read = "https://js.syncfusion.com/demos/ejServices/api/Diagram/GetNodes",
@@ -38,6 +38,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 CustomFields = new object[] { "Id", "Description", "Color" },
             };
             ViewBag.NodeCrud = nodeCrud;
+
+           
 
 
             ConnectionDataSource dataSource = new ConnectionDataSource()
@@ -57,6 +59,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 }
             };
             ViewBag.DataSource = dataSource;
+
+            DiagramDataSource DataSourceSettings = new DiagramDataSource();
+            DataSourceSettings.Id = "Name";
+            DataSourceSettings.CrudAction = nodeCrud;
+            DataSourceSettings.ConnectionDataSource = dataSource;
+            ViewBag.DataSourceSettings = DataSourceSettings;
 
             //Button control rendered in dialog to update node bgColor and label.
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
@@ -99,7 +107,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         public object[] CustomFields { get; set; }
     }
 
-    public class ConnectionDataSource
+    public class ConnectionDataSource : DiagramConnectionDataSource
     {
         [DefaultValue(null)]
         [HtmlAttributeName("id")]

@@ -34,7 +34,7 @@
              args.stockChart.indicatorType = [];
              args.stockChart.trendlineType = [];
             var selectedTheme = themeName ? themeName : 'Material';
-            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
 
             args.stockChart.stockEvents = [
                 { date: new Date(2012, 3, 1), text: 'Q2', description: '2012 Quarter2 starts', type: 'Flag', background: '#6c6d6d', border: { color: '#6c6d6d' } },

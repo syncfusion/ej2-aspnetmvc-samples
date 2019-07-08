@@ -42,7 +42,7 @@
         var load = function (args) {
                          @*custom code start*@
             var selectedTheme = themeName ? themeName : 'Material';
-            args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+            args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
                          @*custom code end*@
             args.rangeNavigator.dataSource = employeeData;

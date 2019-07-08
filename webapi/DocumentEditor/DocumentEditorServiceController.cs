@@ -33,6 +33,30 @@ namespace EJ2MVCSampleBrowser.Controllers
             document.Dispose();
             return new HttpResponseMessage() { Content = new StringContent(json) };
         }
+
+        [HttpPost]
+        [Route("SystemClipboard")]
+        public string SystemClipboard([FromBody]CustomParameter param)
+        {
+            if (param.content != null && param.content != "")
+            {
+                Syncfusion.EJ2.DocumentEditor.WordDocument document = Syncfusion.EJ2.DocumentEditor.WordDocument.LoadString(param.content, GetFormatType(param.type.ToLower()));
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(document);
+                document.Dispose();
+                return json;
+            }
+            return "";
+        }
+
+        [HttpPost]
+        [Route("RestrictEditing")]
+        public string[] RestrictEditing([FromBody]CustomRestrictParameter param)
+        {
+            if (param.passwordBase64 == "" && param.passwordBase64 == null)
+                return null;
+            return Syncfusion.EJ2.DocumentEditor.WordDocument.ComputeHash(param.passwordBase64, param.saltBase64, param.spinCount);
+        }
+
         internal static Syncfusion.EJ2.DocumentEditor.FormatType GetFormatType(string format)
         {
             if (string.IsNullOrEmpty(format))
@@ -66,5 +90,18 @@ namespace EJ2MVCSampleBrowser.Controllers
             document.Dispose();
             return sfdtText;
         }
+    }
+
+    public class CustomParameter
+    {
+        public string content { get; set; }
+        public string type { get; set; }
+    }
+
+    public class CustomRestrictParameter
+    {
+        public string passwordBase64 { get; set; }
+        public string saltBase64 { get; set; }
+        public int spinCount { get; set; }
     }
 }

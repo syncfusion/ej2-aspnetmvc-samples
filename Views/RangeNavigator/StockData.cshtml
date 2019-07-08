@@ -86,7 +86,7 @@
         var index = 0;
         var zoomFactor, zoomPosition;
         var selectedTheme = themeName ? themeName : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         var annotationString = '<div id="annotation" style="line-height: 18px;' +
                                 ' font-size: 13px;background: #fff; opacity:0.9; color: #464e56; ' +
                                 ' box-shadow:0 0 8px 0 rgba(70,78,86,.25); padding: 7px 10px;' +

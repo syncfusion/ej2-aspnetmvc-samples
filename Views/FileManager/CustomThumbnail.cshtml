@@ -4,35 +4,40 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="sample-container">
-            @Html.EJS().FileManager("file").AjaxSettings(new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings{
-                 Url = "https://ng2jq.syncfusion.com/ej2services/api/FileManager/FileOperations"
-            }).View(Syncfusion.EJ2.FileManager.ViewType.LargeIcons).ShowThumbnail(false).Render()
+            <!-- File Manager custom thumbnail sample -->
+            @Html.EJS().FileManager("file").AjaxSettings(
+              new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings {
+                  Url = "/FileManager/FileOperations",
+                  DownloadUrl = "/FileManager/Download",
+                  UploadUrl = "/FileManager/Upload",
+                  GetImageUrl = "/FileManager/GetImage"
+              }).View(Syncfusion.EJ2.FileManager.ViewType.LargeIcons).ShowThumbnail(false).Render()
         </div>
     </div>
 }
 
 @section ActionDescription{
     <div id="action-description">
-        <p>This sample demonstrates the custom thumbnail of the File Manager you can customize with your own icon.</p>
+        <p>This sample demonstrates the custom thumbnail of the File Manager you can customize with your own icon using <a target="_blank" href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.FileManager.FileManager~ShowThumbnail.html"> showThumbnail </a> property.</p>
     </div>
 }
 
 @section Description{
     <div id="description">
         <p>The File Manager component is used to explore a file system through a web application, similar to the windows explorer for windows. It supports all the basic file operations such as create, rename, delete and so on.</p>
+
+        <p>
+            <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install
+            <a target="_blank" href="https://www.syncfusion.com/downloads">Syncfusion Essential Studio </a>on your machine and run the demo.
+        </p>
     </div>
 }
 
-@section Scripts{
-    <script>
-        var hostUrl = 'https://ng2jq.syncfusion.com/ej2services/';
-        var fileObj = document.getElementById('file').ej2_instances[0];
-        fileObj.ajaxSettings.url = hostUrl + 'api/FileManager/FileOperations';
-        fileObj.ajaxSettings.getImageUrl = hostUrl + 'api/FileManager/GetImage',
-        fileObj.ajaxSettings.uploadUrl = hostUrl + 'api/FileManager/Upload';
-        fileObj.ajaxSettings.downloadUrl = hostUrl + 'api/FileManager/Download';
-    </script>
+@section Meta{
+
+    <meta content="This example demonstrates how to use the custom thumbnails in a ASP.NET MVC File Manager." />
 }
+
 
 <style>
 

@@ -5,7 +5,7 @@
     <script src="~/Scripts/PenisularLocation.js"></script>
     <div class="control-section">
         <div id="outer" style="width:100%">
-            @Html.EJS().Maps("container").Load("mapsLoad").CenterPosition(new { latitude = 25.54244147012483, longitude = -89.62646484375 }).ZoomSettings(zoom => zoom.Enable(false).ZoomFactor(13)).MapsArea(map => map.Background("#4863A0")).TitleSettings(title => title.Text("Shipping sea route between various cities").TextStyle(new MapsFont{ Size = "18px", Opacity = 1 })).Layers(layer =>
+            @Html.EJS().Maps("container").Load("mapsLoad").CenterPosition(new MapsCenterPosition { Latitude = 25.54244147012483, Longitude = -89.62646484375 }).ZoomSettings(zoom => zoom.Enable(false).ZoomFactor(13)).MapsArea(map => map.Background("#4863A0")).TitleSettings(title => title.Text("Shipping sea route between various cities").TextStyle(new MapsFont{ Size = "18px", Opacity = 1 })).Layers(layer =>
         {
             layer.ShapeSettings(new MapsShapeSettings{ Fill = "#789071" }).ShapeData(ViewBag.shapeData).Add();
         }).Render()

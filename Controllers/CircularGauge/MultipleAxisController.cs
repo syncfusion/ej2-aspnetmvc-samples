@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
                 Position = Position.Inside,
                 AutoAngle = true,
                 HiddenLabel =HiddenLabel.None,
-                Font = new { color = "#333333" }
+                Font = new CircularGaugeFont { Color = "#333333" }
             };
             axis1.MajorTicks = new CircularGaugeTick
             {
@@ -63,7 +63,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
                 Position = Position.Outside,
                 AutoAngle = true,
                 HiddenLabel = HiddenLabel.None,
-                Font = new { color = "#E84011" }
+                Font = new CircularGaugeFont { Color = "#E84011" }
             };
             axis2.MajorTicks = new CircularGaugeTick
             {

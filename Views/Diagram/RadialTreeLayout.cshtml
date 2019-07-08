@@ -8,7 +8,7 @@
         </div>
         @(Html.EJS().Diagram("diagram").Width("100%").Height("600px").GetNodeDefaults("getNodeDefaults").Created("diagramCreated")
         .GetConnectorDefaults("getConnectorDefaults").DataSourceSettings(ss => ss.Id("Id").ParentId("ReportingPerson")
-        .DataManager(new DataManager() { Data = (List<RadialTreeDetails>
+        .DataSource(new DataManager() { Data = (List<RadialTreeDetails>
             )ViewBag.Nodes }))
             .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.RadialTree).VerticalSpacing(30).HorizontalSpacing(20).Root("Category"))
             .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render())

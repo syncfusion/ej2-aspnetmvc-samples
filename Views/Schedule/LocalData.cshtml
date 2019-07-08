@@ -7,11 +7,18 @@
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 2, 15)).Render()
         </div>
     </div>
-    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
     <script type="text/javascript">
         function onEventRendered(args) {
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
-            applyCategoryColor(args, scheduleObj.currentView);
+            var categoryColor = args.data.CategoryColor;
+            if (!args.element || !categoryColor) {
+                return;
+            }
+            if (scheduleObj.currentView === 'Agenda') {
+                (args.element.firstChild).style.borderLeftColor = categoryColor;
+            } else {
+                args.element.style.backgroundColor = categoryColor;
+            }
         }
     </script>
 }
@@ -35,5 +42,6 @@
             <code>DataSource</code> property available within the
             <code>EventSettings</code> needs to be assigned with the valid local JSON data.
         </p>
+        <p>The <code>EventRendered</code> event is used to customize the events. In this sample, background color of the event is changed based on the custom field 'CategoryColor'</p>
     </div>
 }

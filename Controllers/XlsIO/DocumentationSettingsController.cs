@@ -163,8 +163,6 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
         }
         protected string ResolveApplicationImagePath(string fileName)
         {
-            //string dataPath = string.Format("{0}\\Common\\Images\\XlsIO\\", Request.PhysicalPath.ToLower().Split(new string[] { "\\mvc (html5)" }, StringSplitOptions.None));
-            //return string.Format("{0}\\{1}", dataPath, fileName);
             string folderName = "XlsIO";
             string dataPath = new System.IO.DirectoryInfo(Server.MapPath("~\\Content")).FullName;
             if (folderName != string.Empty)
@@ -173,9 +171,6 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
         }
         private string ResolveApplicationDataPath(string fileName)
         {
-            //string dataPath = string.Format("{0}\\Common\\Data\\XlsIO\\", Request.PhysicalPath.ToLower().Split(new string[] { "\\XlsIO" }, StringSplitOptions.None));
-            //return string.Format("{0}\\{1}", dataPath, fileName);
-
             string folderName = "XlsIO";
             string dataPath = new System.IO.DirectoryInfo(Server.MapPath("~\\App_Data")).FullName;
             if (folderName != string.Empty)

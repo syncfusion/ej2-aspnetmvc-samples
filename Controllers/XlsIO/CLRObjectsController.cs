@@ -74,7 +74,6 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
                 ViewBag.exportButtonState = "";
                 button = null;
                 return View();
-                //return new CustomResult(HttpContext.ApplicationInstance.Response);
             }
             else
             {

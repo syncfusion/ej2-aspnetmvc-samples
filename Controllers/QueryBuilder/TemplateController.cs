@@ -12,17 +12,17 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
         // GET= DefaultFunctionalities
         public ActionResult Template()
         {
-            QueryBuilderRules rule = new QueryBuilderRules()
+            QueryBuilderRule rule = new QueryBuilderRule()
             {
                 Condition = "and",
-                Rules = new List<QueryBuilderRules>()
+                Rules = new List<QueryBuilderRule>()
                 {
-                    new QueryBuilderRules { Label="Category", Field="Category", Type="string", Operator="equal", Value = new string[] { "Clothing" } },
-                    new QueryBuilderRules { Condition="or", Rules = new List<QueryBuilderRules>() {
-                        new QueryBuilderRules { Label="Transaction Type", Field="TransactionType", Type="boolean", Operator="equal", Value = "Income" },
-                        new QueryBuilderRules { Label="Payment Mode", Field="PaymentMode", Type="string", Operator="equal", Value = "Cash" }
+                    new QueryBuilderRule { Label="Category", Field="Category", Type="string", Operator="equal", Value = new string[] { "Clothing" } },
+                    new QueryBuilderRule { Condition="or", Rules = new List<QueryBuilderRule>() {
+                        new QueryBuilderRule { Label="Transaction Type", Field="TransactionType", Type="boolean", Operator="equal", Value = "Income" },
+                        new QueryBuilderRule { Label="Payment Mode", Field="PaymentMode", Type="string", Operator="equal", Value = "Cash" }
                     } },
-                    new QueryBuilderRules { Label="Amount", Field="Amount", Type="number", Operator="equal", Value = 10 }
+                    new QueryBuilderRule { Label="Amount", Field="Amount", Type="number", Operator="equal", Value = 10 }
                 }
             };
 

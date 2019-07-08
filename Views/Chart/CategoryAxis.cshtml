@@ -12,9 +12,9 @@
     .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ViewBag.font)))
     .XName("x").YName("y").DataSource(ViewBag.dataSource).Name("December 2007").Width(2).Add();
 
-}).PrimaryYAxis(px => px.Minimum(0).Maximum(800).LabelStyle(ls => ls.Color("transparent")).LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).MajorGridLines(mg => mg.Width(0)).LabelFormat("{value}M").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+}).PrimaryYAxis(px => px.Minimum(0).Maximum(800).LabelStyle(ls => ls.Color("transparent")).LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
        ).PrimaryXAxis(px => px.EnableTrim(false).Title("Country").ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0))
-       ).Tooltip(tr => tr.Enable(true)).ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tt => tt.Enable(true)).LegendSettings(lg => lg.Visible(false)).Title("Internet Users in Million – 2016").PointRender("labelRender").Load("load").Render()
+       ).Tooltip(tr => tr.Enable(true)).ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tt => tt.Enable(true)).LegendSettings(lg => lg.Visible(false)).PointRender("labelRender").Load("load").Render()
 
 
 
@@ -48,13 +48,13 @@
 
         var load = function (args) {
             @*custom code start*@
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
             @*custom code end*@
             args.chart.tooltip.format = "${point.tooltip}";
-
+            args.chart.primaryYAxis.labelFormat = ej.base.Browser.isDevice ? '{value}' : '{value}M';
+            args.chart.title = ej.base.Browser.isDevice ? 'Internet Users in Million – 2016' : 'Internet Users – 2016';
         }
     </script>
     }

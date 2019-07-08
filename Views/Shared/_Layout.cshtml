@@ -27,18 +27,7 @@
     <script type="text/javascript">
         function getAbsoluteURL() { return "@Url.Content("~/")"; };
         var baseurl = window.baseurl = getAbsoluteURL();
-         if (location.hash) {
-            themeName = location.hash.split('#/')[1];
-            location.href = location.href.replace(location.hash, '') + '?theme=' + themeName;
-        }
-         function getParam(name) {
-            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(location.href);
-            if (!results) {
-                return null;
-            }
-            return decodeURI(results[1]) || 0;
-        }
-        var themeName = getParam('theme');
+        var themeName = location.hash.split('#/')[1];
         themeName = themeName ? themeName : 'material';
         document.write('<link href="' + baseurl + 'Content/styles/' + themeName + '.css" rel="stylesheet" />');
         if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
@@ -173,22 +162,22 @@
             <div id='sb-switcher-popup' role='navigation' class='sb-switch-popup'>
                 <ul id='switch-sb' role="list">
                     <li class='sb-current' role="listitem">ASP.NET MVC</li>
-                    <li role="listiem">
+                    <li role="listitem">
                         <a id='javascript'>JavaScript (ES5)</a>
                     </li>
-                    <li role="listiem">
+                    <li role="listitem">
                         <a id='angular'>Angular</a>
                     </li>
-                    <li role="listiem">
+                    <li role="listitem">
                         <a id='react'>React</a>
                     </li>
-                    <li role="listiem">
+                    <li role="listitem">
                         <a id='typescript'>JavaScript</a>
                     </li>
-                    <li role="listiem">
+                    <li role="listitem">
                         <a id='aspcore'>ASP.NET Core</a>
                     </li>
-                    <li role="listiem">
+                    <li role="listitem">
                         <a id='vue'>Vue</a>
                     </li>
                 </ul>

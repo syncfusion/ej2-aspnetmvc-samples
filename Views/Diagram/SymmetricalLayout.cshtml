@@ -6,7 +6,7 @@
         <div class="content-wrapper">
             @(Html.EJS().Diagram("diagram").Width("100%").Height("550px").Created("create").GetNodeDefaults("nodeDefaults")
             .GetConnectorDefaults("connectorDefaults").SetNodeTemplate("setNodeTemplate")
-            .DataSourceSettings(ss => ss.Id("Id").ParentId("Source").DataManager(new DataManager() { Data = (List<SymmetricalDetails>
+            .DataSourceSettings(ss => ss.Id("Id").ParentId("Source").DataSource(new DataManager() { Data = (List<SymmetricalDetails>
                 )ViewBag.Nodes }))
                 .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.SymmetricalLayout).SpringLength(80).SpringFactor(0.8).MaxIteration(500))
                 .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render())

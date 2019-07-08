@@ -17,7 +17,7 @@ new ToolbarItem { Type = ItemType.Input, Template="<div class=''><span class='e-
 new ToolbarItem { Type = ItemType.Button,  PrefixIcon = "e-pv-print-document-icon" ,TooltipText = "Print",Align=ItemAlign.Right,Click="printClicked"},
 new ToolbarItem { Type = ItemType.Button,  PrefixIcon = "e-pv-download-document-icon" ,TooltipText = "Download",Align=ItemAlign.Right,Click="downloadClicked"},
 }).Render()
-    @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/api/PdfViewer/")).EnableToolbar(false).EnableThumbnail(false).DocumentLoad("documentLoaded").PageChange("pageChanged").DocumentPath("Hive_Succinctly.pdf").Render()
+    @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/api/PdfViewer/")).EnableToolbar(false).EnableNavigationToolbar(false).EnableThumbnail(false).DocumentLoad("documentLoaded").PageChange("pageChanged").DocumentPath("Hive_Succinctly.pdf").Render()
         <input type ="file" id="fileUpload" accept=".pdf" style="display:block;visibility:hidden;width:0;height:0;">
             <div id="magnificationToolbarItems">
                 @Html.EJS().Toolbar("magnificationToolbar").Items(new List<ToolbarItem> {

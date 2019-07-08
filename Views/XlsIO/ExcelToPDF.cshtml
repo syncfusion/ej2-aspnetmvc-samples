@@ -26,56 +26,44 @@
 }
 @section ControlsSection{
     <div class="control-section">
-        <h5>
-            Clicking the button below will result in a PDF document being converted from Excel document using Essential XlsIO and Essential PDF.
-            Please note that you need to have a PDF viewer installed in order to view the generated PDF file.
-        </h5>
-        <br />
-        <h5>  PDF Page Setup options </h5>
-        <div class="celldiv">
-            <table>
-                <tr>
-                    <td>
-                        @Html.EJS().RadioButton("radio1").Label("NoScaling").Name("select").Value("NoScaling").Checked(false).Render()
-                    </td>
-                    <td>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
-                    <td>
-                        @Html.EJS().RadioButton("radio2").Label("FitAllRowsOnOnePage").Name("select").Value("FitAllRowsOnOnePage").Checked(false).Render()
-                    </td>
-                </tr>
-                <tr style="height:5px">
-
-                </tr>
-                <tr>
-                    <td>
-                        @Html.EJS().RadioButton("radio3").Label("FitAllColumnsOnOnePage").Name("select").Value("FitAllColumnsOnOnePage").Checked(false).Render()
-                    </td>
-                    <td>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </td>
-                    <td>
-                        @Html.EJS().RadioButton("radio4").Label("FitSheetOnOnePage").Name("select").Value("FitSheetOnOnePage").Checked(true).Render()
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <br />
-        <div class="celldiv">
-            @Html.EJS().Button("createbtn").Content("Convert to PDF").Render()
-        </div>
-    </div>
-    <script>
-    document.getElementById('createbtn').onclick = function () {
-        if (document.getElementById('radio1').checked == true)
-            location.href = '@Html.Raw(@Url.Action("ExcelToPDF", new { @button = "Create", @Group1 = "NoScaling" }))';
-        else if (document.getElementById('radio2').checked == true)
-            location.href = '@Html.Raw(@Url.Action("ExcelToPDF", new { @button = "Create", @Group1 = "FitAllRowsOnOnePage" }))';
-        else if (document.getElementById('radio3').checked == true)
-            location.href = '@Html.Raw(@Url.Action("ExcelToPDF", new { @button = "Create", @Group1 = "FitAllColumnsOnOnePage" }))';
-        else
-            location.href = '@Html.Raw(@Url.Action("ExcelToPDF", new { @button = "Create", @Group1 = "FitSheetOnOnePage" }))';
-    };
-    </script>
+        @{Html.BeginForm("ExcelToPDF", "XlsIO", FormMethod.Post);
+            <h5>
+                Clicking the button below will result in a PDF document being converted from Excel document using Essential XlsIO and Essential PDF.
+                Please note that you need to have a PDF viewer installed in order to view the generated PDF file.
+            </h5>
+            <br />
+            <h5>  PDF Page Setup options </h5>
+            <div class="celldiv">
+                <table>
+                    <tr>
+                        <td>
+                            @Html.EJS().RadioButton("radio1").Label("NoScaling").Name("Group1").Value("NoScaling").Checked(false).Render()
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            @Html.EJS().RadioButton("radio2").Label("FitAllRowsOnOnePage").Name("Group1").Value("FitAllRowsOnOnePage").Checked(false).Render()
+                        </td>
+                    </tr>
+                    <tr style="height:5px"></tr>
+                    <tr>
+                        <td>
+                            @Html.EJS().RadioButton("radio3").Label("FitAllColumnsOnOnePage").Name("Group1").Value("FitAllColumnsOnOnePage").Checked(false).Render()
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            @Html.EJS().RadioButton("radio4").Label("FitSheetOnOnePage").Name("Group1").Value("FitSheetOnOnePage").Checked(true).Render()
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <br />
+            <div class="celldiv">
+                <input id="generate" class="e-btn" type="submit" name="button" value="Create" style="width:160px;" />
+            </div>
+            }
+        </div>   
 }

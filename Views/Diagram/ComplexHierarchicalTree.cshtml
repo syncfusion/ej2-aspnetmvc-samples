@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         @Html.EJS().Diagram("diagram").Width("100%").Height("580px").Created("create").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults").DataSourceSettings(ss => ss.Id("Name").ParentId("ReportingPersons")
-.DataManager(new DataManager() { Data = (List<ComplexHierarchicalDataDetails>)ViewBag.Nodes })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.ComplexHierarchicalTree).HorizontalSpacing(40).VerticalSpacing(40)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render();
+.DataSource(new DataManager() { Data = (List<ComplexHierarchicalDataDetails>)ViewBag.Nodes })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.ComplexHierarchicalTree).HorizontalSpacing(40).VerticalSpacing(40)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render();
     </div>
     <div class="col-lg-4 property-section">
         <div class="property-panel-header">

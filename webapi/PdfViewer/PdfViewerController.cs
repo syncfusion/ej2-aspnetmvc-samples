@@ -48,7 +48,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             PdfRenderer pdfviewer = new PdfRenderer();
             var jsonResult = pdfviewer.GetBookmarks(jsonObject);
-            return (JsonConvert.SerializeObject(jsonResult));
+            return (jsonResult);
         }
         [HttpPost]
         public object RenderPdfPages(Dictionary<string, string> jsonObject)
@@ -56,6 +56,13 @@ namespace EJ2MVCSampleBrowser.Controllers
             PdfRenderer pdfviewer = new PdfRenderer();
             object jsonResult = pdfviewer.GetPage(jsonObject);
             return (JsonConvert.SerializeObject(jsonResult));
+        }
+        [HttpPost]
+        public object RenderAnnotationComments(Dictionary<string, string> jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            object jsonResult = pdfviewer.GetAnnotationComments(jsonObject);
+            return (jsonResult);
         }
         [HttpPost]
         public object RenderThumbnailImages(Dictionary<string, string> jsonObject)

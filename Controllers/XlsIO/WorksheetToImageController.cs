@@ -77,16 +77,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
                     else if (Group1 == "JPEG")
                     {
                         ExportAsImage(image, "WordToImage_1.jpeg", ImageFormat.Jpeg, HttpContext.ApplicationInstance.Response);
-                    }
-                    //Save as EMF image
-                    else if (Group1 == "EMF")
-                    {
-                        MemoryStream stream = new MemoryStream();// (MemoryStream)document.RenderAsImages(0, ImageFormat.Emf);
-                        sheet.ConvertToImage(1, 1, lastRow, lastColumn, EmfType.EmfOnly, stream);
-                        stream.Position = 0;
-                        stream.WriteTo(Response.OutputStream);
-                        ExportAsImage(image, "WordToImage_1.emf", ImageFormat.Emf, HttpContext.ApplicationInstance.Response);
-                    }
+                    }                    
 
                     workbook.Close();
                     excelEngine.Dispose();
