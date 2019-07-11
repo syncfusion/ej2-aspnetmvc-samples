@@ -31,7 +31,7 @@
         var chartData = chartData;
          @*custom code start*@
         var selectedTheme = themeName ? themeName : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
          @*custom code end*@
         var axisLabelRender = function (args) {
             if (args.axis.title === 'Price') {

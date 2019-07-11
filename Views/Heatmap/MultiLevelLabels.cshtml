@@ -15,7 +15,7 @@
                 palette.Color("#19307B").Add();
 
             })).LegendSettings(ls => ls.Visible(false)).CellSettings(cs =>
-            cs.Border(ViewBag.border)).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
+            cs.Border(ViewBag.border)).TooltipRender("tooltipRender").CellRender("cellRender").Load("load").DataSource(ViewBag.dataSource).Render()
         </div>
     </div>
 

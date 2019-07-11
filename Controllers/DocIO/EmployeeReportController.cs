@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -21,6 +20,7 @@ using Syncfusion.DocIO.DLS;
 using Syncfusion.DocToPDFConverter;
 using Syncfusion.Pdf;
 using Syncfusion.Mvc.Pdf;
+using System.Data.OleDb;
 
 namespace EJ2MVCSampleBrowser.Controllers.DocIO
 {
@@ -34,16 +34,13 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             if (Button == "View Template")
                 return new TemplateResult("EmployeesReportDemo.doc", ResolveApplicationDataPath("Data\\DocIO"), HttpContext.ApplicationInstance.Response);
 
-            AppDomain.CurrentDomain.SetData("SQLServerCompactEditionUnderWebHosting", true);
             DataSet dataset = new DataSet();
-            //Access the database and get the NorthWind
-            SqlCeConnection conn = new SqlCeConnection();
-            if (conn.ServerVersion.StartsWith("3.5"))
-                conn.ConnectionString = "Data Source = " + ResolveApplicationDataPath("NorthwindIO_3.5.sdf", "Data");
-            else
-                conn.ConnectionString = "Data Source = " + ResolveApplicationDataPath("NorthwindIO.sdf", "Data");
+            //Access the database and get the NorthWind.
+            string connectionstring = "Data Source = " + ResolveApplicationDataPath("Northwind.mdb", "Data");
+            OleDbConnection conn = new OleDbConnection();
+            conn.ConnectionString = "Provider=Microsoft.JET.OLEDB.4.0;Password=\"\";User ID=Admin;" + connectionstring;
             conn.Open();
-            SqlCeDataAdapter adapter = new SqlCeDataAdapter("Select TOP(5) * from EmployeesReport", conn);
+            OleDbDataAdapter adapter = new OleDbDataAdapter("Select TOP 5 * from EmployeesReport", conn);
             adapter.Fill(dataset);
             adapter.Dispose();
             conn.Close();

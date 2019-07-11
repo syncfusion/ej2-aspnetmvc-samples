@@ -77,6 +77,15 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
         }
 
         [System.Web.Mvc.HttpPost]
+        public ActionResult RenderAnnotationComments(jsonObjects jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            var jsonData = JsonConverter(jsonObject);
+            object jsonResult = pdfviewer.GetAnnotationComments(jsonData);
+            return Content(JsonConvert.SerializeObject(jsonResult));
+        }
+
+        [System.Web.Mvc.HttpPost]
         public ActionResult Unload(jsonObjects jsonObject)
         {
             PdfRenderer pdfviewer = new PdfRenderer();
@@ -230,5 +239,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
         public string sizeY { get; set; }
         public string startPage { get; set; }
         public string endPage { get; set; }
+        public string stampAnnotations { get; set; }
+        public string textMarkupAnnotations { get; set; }
+        public string stickyNotesAnnotation { get; set; }
+        public string shapeAnnotations { get; set; }
+        public string measureShapeAnnotations { get; set; }
+        public string action { get; set; }
     }
 }

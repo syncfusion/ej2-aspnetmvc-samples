@@ -127,13 +127,13 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                                 product.productName = reader.ReadString();
                                 break;
                             case "Price":
-                                product.Price = float.Parse(reader.ReadString());
+                                product.Price = float.Parse(reader.ReadString(), System.Globalization.CultureInfo.InvariantCulture);
                                 break;
                             case "Quantity":
-                                product.Quantity = float.Parse(reader.ReadString());
+                                product.Quantity = float.Parse(reader.ReadString(), System.Globalization.CultureInfo.InvariantCulture);
                                 break;
                             case "Total":
-                                product.Total = float.Parse(reader.ReadString());
+                                product.Total = float.Parse(reader.ReadString(), System.Globalization.CultureInfo.InvariantCulture);
                                 total += product.Total;
                                 invoice.AddProduct(product.ProductID, product.productName, product.Price, product.Quantity, product.Total);
                                 break;
@@ -395,8 +395,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             for (int i = 0; i < grid.Rows.Count; i++)
             {
                 string cellValue = grid.Rows[i].Cells[grid.Columns.Count - 1].Value.ToString();
-                float result;
-                Total += float.TryParse(cellValue, out result) ? result : 0;
+                float result = float.Parse(cellValue, System.Globalization.CultureInfo.InvariantCulture);
+                Total +=  result;
             }
             return Total;
 

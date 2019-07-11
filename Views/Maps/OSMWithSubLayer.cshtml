@@ -8,8 +8,7 @@
         @Html.EJS().Maps("container").Load("mapsload").TitleSettings(title => title.Text("Location of Africa continent in the World map").TextStyle(new MapsFont { Size = "16px" })).ZoomSettings(
         new Syncfusion.EJ2.Maps.MapsZoomSettings
         {
-            ZoomFactor = 2,
-            Enable = false
+            Enable = true
         }).Annotations(new List<Syncfusion.EJ2.Maps.MapsAnnotation>
      {
        new Syncfusion.EJ2.Maps.MapsAnnotation

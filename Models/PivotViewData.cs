@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EJ2MVCSampleBrowser.Models
 {
-    public class PivotViewData
+    public class PivotTableData
     {
         public List<RData> GetRData()
         {

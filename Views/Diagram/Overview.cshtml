@@ -9,7 +9,7 @@
             .GetConnectorDefaults("getConnectorDefaults")
             .ScrollSettings(s => s.ScrollLimit(Syncfusion.EJ2.Diagrams.ScrollLimit.Infinity))
             .DataSourceSettings(ss => ss.Id("Id").ParentId("ReportingPerson")
-            .DataManager(new DataManager()
+            .DataSource(new DataManager()
             {
                 Data = (List<OverviewData>
                 )ViewBag.Nodes

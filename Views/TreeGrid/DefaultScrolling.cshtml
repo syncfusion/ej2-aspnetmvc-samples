@@ -1,0 +1,67 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+@{
+    ViewBag.Title = "DefaultScrolling";
+}
+
+<h2>DefaultScrolling</h2>
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().TreeGrid("DefaultScrolling").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+    {
+        col.Field("TaskId").HeaderText("Task ID").Width(70).TextAlign(TextAlign.Right).Add();
+        col.Field("TaskName").HeaderText("Task Name").Width(200).Add();
+        col.Field("StartDate").HeaderText("Start Date").Width(90).TextAlign(TextAlign.Right).Format("yMd").Add();
+        col.Field("EndDate").HeaderText("End Date").Width(90).TextAlign(TextAlign.Right).Format("yMd").Add();
+        col.Field("Duration").HeaderText("Duration").Width(80).TextAlign(TextAlign.Right).Add();
+        col.Field("Progress").HeaderText("Progress").Width(80).TextAlign(TextAlign.Right).Add();
+        col.Field("Priority").HeaderText("Priority").Width(90).Add();
+    }).Height(400).ChildMapping("Children").TreeColumnIndex(1).Render()
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the TreeGrid component with the horizontal and vertical scrollbars to view the exceeded TreeGrid content.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The TreeGrid will show scrollbar when the content exceeds the element width or height.
+            The vertical and horizontal scrollbar will be displayed based on the following criteria.
+        </p>
+        <ul>
+            <li>
+                The vertical scrollbar appears
+                when the total height of rows present in TreeGrid exceeds its element height.
+            </li>
+            <li>
+                The horizontal scrollbar appears
+                when the sum of column`s width exceeds TreeGrid element width.
+            </li>
+        </ul>
+        <p>
+            The <code>
+                    Height
+            </code> and <code>
+                    Width
+            </code> property is used to set the TreeGrid Height and Width respectively.
+            The value of these properties can be a numeric value, pixel(<code>px</code>) or percentage (<code>%</code>).
+        </p>
+
+        <p>
+            In this demo, the <code>
+                    Height
+            </code> and <code>
+                    Width
+            </code> property of the TreeGrid is set to <strong><em>400</em></strong> and <strong><em>auto</em></strong>
+            respectively. Now, the TreeGrid will render with vertical scrollbar when the total height of rows
+            exceeds its element height and horizontal scrollbar will appear when the
+            total column width exceeds the element width.
+        </p>
+    </div>
+}

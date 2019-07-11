@@ -3,7 +3,7 @@
     <div class="col-lg-8 control-section">
         <div class="control-wrapper">
             <div class="control-section">
-                @Html.EJS().RichTextEditor("inline").InlineMode((object)ViewBag.inline).ToolbarSettings(e => e.Items((object)ViewBag.items)).Created("created").FontFamily((object)ViewBag.width).Format((object)ViewBag.width).Value((string)ViewBag.value).Render()
+                @Html.EJS().RichTextEditor("inline").InlineMode(e=>e.Enable(true).OnSelection(true)).ToolbarSettings(e => e.Items((object)ViewBag.items)).Created("created").FontFamily(f=>f.Width("auto")).Format(f=>f.Width("auto")).Value((string)ViewBag.value).Render()
             </div>
         </div>
     </div>

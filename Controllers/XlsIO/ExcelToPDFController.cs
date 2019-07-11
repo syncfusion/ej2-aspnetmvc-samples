@@ -54,7 +54,6 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
             {
 
               pdfDoc.Save("ExcelToPDF.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
-             // return new Syncfusion.Mvc.Pdf.PdfResult(pdfDoc, "ExcelToPDF.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
             }
             catch (Exception)
             { }

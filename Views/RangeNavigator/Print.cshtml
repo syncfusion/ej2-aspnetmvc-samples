@@ -87,7 +87,7 @@
         }
         var zoomFactor, zoomPosition;
         var selectedTheme = themeName ? themeName : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         var load = function (args) {
             args.rangeNavigator.theme = theme;
             args.rangeNavigator.series[0].dataSource = series1;

@@ -16,7 +16,7 @@
             </div>
             <div class="treeview-container">
                 <div class="title-container">
-                    <h1 class="title-text">Waiting List</h1>
+                    <h2 class="title-text">Waiting List</h2>
                 </div>
                 @Html.EJS().TreeView("tree").Fields(fields => fields.DataSource(ViewBag.treeDataSource).Id("Id").Text("Name")).AllowDragAndDrop(true).NodeDragStop("OnTreeDragStop").NodeDragging("OnItemDrag").NodeTemplate("#treeTemplate").CssClass("treeview-external-drag").Render()
             </div>

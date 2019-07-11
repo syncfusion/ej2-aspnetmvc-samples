@@ -3,12 +3,12 @@
 
 @section ControlsSection {
 
-    <div class="control-section" style="width:100%;height:100%;float:left;">
-        @Html.EJS().Diagram("diagram").Width("1000px").Height("500px").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults")
-        .DataSourceSettings(ss => ss.Id("EmployeeID").ParentId("ReportsTo")
-        .DataManager(new DataManager() { Url = "https://mvc.syncfusion.com/Services/Northwnd.svc/", CrossDomain=true, }))
-        .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree)).SnapSettings(s => s.Constraints(0)).Render();
-    </div>
+<div class="control-section" style="width:100%;height:100%;float:left;">
+    @Html.EJS().Diagram("diagram").Width("1000px").Height("500px").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults")
+    .DataSourceSettings(ss => ss.Id("EmployeeID").ParentId("ReportsTo")
+    .DataSource(new DataManager() { Url = "https://mvc.syncfusion.com/Services/Northwnd.svc/", CrossDomain=true, }))
+    .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree)).SnapSettings(s => s.Constraints(0)).Render();
+</div>
 
     <style>
         #control-diagram {

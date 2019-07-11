@@ -64,7 +64,7 @@
                 majorTickLines: { color: 'transparent', width: 0 }
             };
             var selectedTheme = themeName ? themeName : 'Material';
-            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         }</script>
 }
 @section Meta{

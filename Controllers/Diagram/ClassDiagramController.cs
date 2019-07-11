@@ -76,7 +76,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     Shape = new UmlClassifierShapeModel()
                     {
                         Type = "UmlClassifier",
-                        Class = new Class()
+                        ClassShapes = new ClassShapes()
                         {
                             Name = "Patient",
                             Attributes = patientProperty,
@@ -94,7 +94,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     Shape = new UmlClassifierShapeModel()
                     {
                         Type = "UmlClassifier",
-                        Class = new Class()
+                        ClassShapes = new ClassShapes()
                         {
                             Name = "Doctor",
                             Attributes = doctorProperty
@@ -111,7 +111,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                    Shape = new UmlClassifierShapeModel()
                    {
                        Type = "UmlClassifier",
-                       Class = new Class()
+                       ClassShapes = new ClassShapes()
                        {
                            Name = "Person",
                            Attributes = personProperty
@@ -128,7 +128,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                   Shape = new UmlClassifierShapeModel()
                   {
                       Type = "UmlClassifier",
-                      Class = new Class()
+                      ClassShapes = new ClassShapes()
                       {
                           Name = "Hospital",
                           Attributes = hospitalProperty,
@@ -146,7 +146,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                  Shape = new UmlClassifierShapeModel()
                  {
                      Type = "UmlClassifier",
-                     Class = new Class()
+                     ClassShapes = new ClassShapes()
                      {
                          Name = "Department",
                          Methods = departmentMethods
@@ -163,7 +163,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                   Shape = new UmlClassifierShapeModel()
                   {
                       Type = "UmlClassifier",
-                      Class = new Class()
+                      ClassShapes = new ClassShapes()
                       {
                           Name = "Staff",
                           Attributes = staffProperty,
@@ -216,7 +216,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             node.Shape = new UmlClassifierShapeModel
             {
                 Type = "UmlClassifier",
-                Class = new Class()
+                ClassShapes = new ClassShapes()
                 {
                     Name = className
                 },
@@ -261,16 +261,16 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         }
 
         [DefaultValue(null)]
-        [HtmlAttributeName("class")]
-        [JsonProperty("class")]
-        public Class Class
+        [HtmlAttributeName("ClassShapes")]
+        [JsonProperty("classShape")]
+        public ClassShapes ClassShapes
         {
             get;
             set;
         }
     }
 
-    public class Class
+    public class ClassShapes
     {
         [DefaultValue(null)]
         [HtmlAttributeName("name")]

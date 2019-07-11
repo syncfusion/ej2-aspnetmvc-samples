@@ -62,7 +62,7 @@
                 </td>
                 <td style="width: 50%;  padding:10px 10px 10px 0px">
                     <div id='numericbox'>
-                        @Html.EJS().NumericTextBox("pagesize").Format("##").Value(10).Max(36).Min(1).Change("pageSizeChange").Render()
+                        @Html.EJS().NumericTextBox("pagesize").Width(100).Format("##").Value(10).Max(36).Min(1).Change("pageSizeChange").Render()
                     </div>
                 </td>
             </tr>
@@ -74,7 +74,7 @@
                 </td>
                 <td style="width: 50%; padding:10px 10px 10px 0px">
                     <div>
-                        @Html.EJS().NumericTextBox("pagecount").Format("##").Value(2).Max(4).Min(1).Change("pageCountChange").Render()
+                        @Html.EJS().NumericTextBox("pagecount").Width(100).Format("##").Value(2).Max(4).Min(1).Change("pageCountChange").Render()
                     </div>
                 </td>
             </tr>
@@ -86,7 +86,7 @@
                 </td>
                 <td style="width: 50%; padding:10px 10px 10px 0px">
                     <div>
-                        @Html.EJS().NumericTextBox("currentpage").Format("##").Value(1).Max(17).Min(1).Change("currentPageChange").Render()
+                        @Html.EJS().NumericTextBox("currentpage").Width(100).Format("##").Value(1).Max(17).Min(1).Change("currentPageChange").Render()
                     </div>
                 </td>
             </tr>

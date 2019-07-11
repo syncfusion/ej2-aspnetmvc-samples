@@ -12,11 +12,11 @@
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("140").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 3 }).Add();
        col.Field("Freight").HeaderText("Freight").Width("140").EditType("numericedit").ValidationRules(new { required = true }).Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("OrderDate").HeaderText("Order Date").EditType("datetimepickeredit").Width("150").Add();
+       col.Field("OrderDate").HeaderText("Order Date").EditType("datetimepickeredit").Width("150").Format(new { type = "datetime", format = "M/d/y hh:mm a" }).Add();
        col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
        col.Field("Verified").HeaderText("Verified").EditType("booleanedit").DisplayAsCheckBox(true).Type("boolean").Width("150").Add();
 
-   }).Load("load").ActionBegin("actionBegin").AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+   }).ActionBegin("actionBegin").AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
     </div>
 
 
@@ -43,14 +43,6 @@
         }
     </style>
     <script>
-        function load() {
-            var gridobj = document.getElementById("InlineEditing").ej2_instances[0];
-            for (i = 0; i < gridobj.columnModel.length; i++) {
-                if (gridobj.columnModel[i].field == "OrderDate") {
-                    gridobj.columnModel[i].format = { type: 'dateTime', format: 'M/d/y hh:mm a' };
-                }
-            }
-        }
         function rowPositionChange(args) {
             var grid = document.getElementById("InlineEditing").ej2_instances[0];
             grid.editSettings.newRowPosition = this.value;

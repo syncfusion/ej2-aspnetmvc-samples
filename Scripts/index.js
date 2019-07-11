@@ -1,4 +1,4 @@
-﻿var switcherPopup;
+﻿﻿var switcherPopup;
 var themeSwitherPopup;
 var openedPopup;
 var searchPopup;
@@ -47,7 +47,7 @@ var setResponsiveElement = ej.base.select('.setting-responsive');
 var isMobile = window.matchMedia('(max-width:550px)').matches;
 var isTablet = window.matchMedia('(min-width:600px) and (max-width: 850px)').matches;
 var isPc = window.matchMedia('(min-width:850px)').matches;
-var selectedTheme = getParam('theme') || 'material';
+var selectedTheme = location.hash.split('/')[1] || 'material';
 var toggleAnim = new ej.base.Animation({
     duration: 500,
     timingFunction: 'ease'
@@ -411,11 +411,12 @@ function changeTheme(e) {
     switchTheme(themeName);
 }
 
-function switchTheme(curTheme) {
-    var prevTheme = getParam('theme');
-    if (prevTheme !== curTheme) {
-        localStorage.setItem('ej2-theme', curTheme);
-        updateQueryString(location.href, 'theme', curTheme);
+function switchTheme(str) {
+    var hash = location.hash.split('/');
+    if (hash[1] !== str) {
+        hash[1] = str;
+        localStorage.setItem('ej2-switch', ej.base.select('.sb-responsive-section .active').id);
+        location.hash = hash.join('/');
     }
 }
 
@@ -524,6 +525,34 @@ function setMouseOrTouch(e) {
     sbHeaderClick('closePopup');
     localStorage.setItem('ej2-switch', switchType);
     location.reload();
+}
+
+function onNextButtonClick(arg) {
+    sampleOverlay();
+    var theme = location.href.split('/')[5] || 'material';
+    var curSampleUrl = location.pathname;
+    var inx = samplesAr.indexOf(curSampleUrl);
+    if (inx !== -1) {
+        var prevhref = samplesAr[inx];
+        var curhref = samplesAr[inx + 1];
+        location.href = location.origin + curhref + '#/' + theme;
+    }
+    window.hashString = location.origin + '/' + curhref + '#/' + theme;
+    setSelectList();
+}
+
+function onPrevButtonClick(arg) {
+    sampleOverlay();
+    var theme = location.href.split('/')[5] || 'material';
+    var curSampleUrl = location.pathname;
+    var inx = samplesAr.indexOf(curSampleUrl);
+    if (inx !== -1) {
+        var prevhref = samplesAr[inx];
+        var curhref = samplesAr[inx - 1];
+        location.href = location.origin + curhref + '#/' + theme;
+    }
+    window.hashString = location.origin + '/' + curhref + '#/' + theme;
+    setSelectList();
 }
 
 function processResize(e) {
@@ -721,8 +750,9 @@ function onNextPrevButtonClick(arg) {
     if (inx !== -1) {
         var prevhref = samplesAr[inx];
         var curhref = (this.id === 'next-sample' || this.id === 'mobile-next-sample') ? samplesAr[inx + 1] : samplesAr[inx - 1];
-        updateQueryString(location.origin + getPathName() + curhref, 'theme', theme);
+        location.href = location.origin + getPathName() + curhref + '#/' + theme;
     }
+    window.hashString = location.origin + getPathName() + curhref + '#/' + theme;
     setSelectList();
 }
 
@@ -795,6 +825,9 @@ function loadTheme(theme) {
     }
     elasticlunr.clearStopWords();
     searchInstance = elasticlunr.Index.load(window.searchIndex);
+    hasher.initialized.add(parseHash);
+    hasher.changed.add(parseHash);
+    hasher.init();
 }
 
 function toggleMobileOverlay() {
@@ -871,7 +904,7 @@ function getSampleList() {
                         });
                     }, 200);
                     setTimeout(function () {
-                        location.href = location.origin + getPathName() + 'grid/gridoverview'
+                        location.href = location.origin + getPathName() + 'Grid/GridOverview#/material'
                     }, 2000)
                 }
                 continue;
@@ -902,7 +935,7 @@ function renderLeftPaneComponents() {
             '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type} tree tree-badge">${type}</span>${/if}${/if}</div>'
     }, '#controlTree');
     var controlList = new ej.lists.ListView({
-        dataSource: controlSampleData[location.pathname.split('/').slice(-2)[0]] || controlSampleData.button,
+        dataSource: controlSampleData[location.pathname.split('/').slice(-2)[0]] || controlSampleData.Button,
         fields: {
             id: 'uid',
             text: 'name',
@@ -922,28 +955,12 @@ function renderLeftPaneComponents() {
 }
 
 function getThemeName() {
-    var themeName = getParam('theme');
-    return themeName ? themeName : 'material';
+    return location.hash.split('/')[1] ? location.hash.split('/')[1] : 'material';
 }
 
 function getPathName() {
     var samplePath = getSamplePath();
-    return location.pathname.replace(samplePath, '').toLowerCase();
-}
-
-function updateQueryString (uriPath, param, value) {
-    var i = uriPath.indexOf('#');
-    var hash = i === -1 ? ''  : uriPath.substr(i);
-    uriPath = i === -1 ? uriPath : uriPath.substr(0, i);
-
-    var regex = new RegExp("([?&])" + param + "=.*?(&|$)", "i");
-    var separator = uriPath.indexOf('?') !== -1 ? "&" : "?";
-    if (uriPath.match(regex)) {
-        uriPath = uriPath.replace(regex, '$1' + param + "=" + value + '$2');
-    } else {
-        uriPath = uriPath + separator + param + "=" + value;
-    }
-    location.href = uriPath.toLowerCase() + hash;
+    return location.pathname.replace(samplePath, '');
 }
 
 function getSamplePath() {
@@ -974,11 +991,11 @@ function getTreeviewList(list) {
             name: list[i].name,
             type: list[i].type,
             url: {
-                'data-path': ('/' + list[i].directory + '/' + list[i].samples[0].url).toLowerCase(),
-                'control-name': list[i].directory.toLowerCase(),
+                'data-path': '/' + list[i].directory + '/' + list[i].samples[0].url,
+                'control-name': list[i].directory,
             }
         });
-        controlSampleData[list[i].directory.toLowerCase()] = getSamples(list[i].samples);
+        controlSampleData[list[i].directory] = getSamples(list[i].samples);
     }
     return tempList;
 }
@@ -988,8 +1005,8 @@ function getSamples(samples) {
     for (var i = 0; i < samples.length; i++) {
         tempSamples[i] = samples[i];
         tempSamples[i].data = {
-            'sample-name': samples[i].url.toLowerCase(),
-            'data-path': ('/' + samples[i].dir + '/' + samples[i].url).toLowerCase()
+            'sample-name': samples[i].url,
+            'data-path': '/' + samples[i].dir + '/' + samples[i].url
         };
     }
     return tempSamples;
@@ -997,12 +1014,14 @@ function getSamples(samples) {
 
 function controlSelect(arg) {
     var path = (arg.node || arg.item).getAttribute('data-path');
+    if (path === null && arg.data) {
+        path = arg.data.component + '/' + arg.data.url;
+    }
     var curHashCollection = '/' + location.href.split('/').slice(3).join('/');
     var theme = getThemeName();
     if (!arg.item || path.split('/')[1] === curHashCollection.split('/').slice(-2)[1]) {
         controlListRefresh(arg.node || arg.item);
     }
-    path = path.toLowerCase();
     if (path) {
         if (curHashCollection.indexOf(path) === -1) {
             sampleOverlay();
@@ -1013,8 +1032,11 @@ function controlSelect(arg) {
 
             if (arg.data) {
                 var pathName = location.pathname.replace(getSamplePath(), '');
-                updateQueryString(location.origin + pathName + arg.data.dir + '/' + arg.data.url, 'theme', theme);
+                location.href = location.origin + pathName + arg.data.component + '/' + arg.data.url + '#/' + theme;
             }
+        } else {
+            var hashName = location.hash.length ? '' : '#/' + theme
+            location.href = location.href + hashName;
         }
     }
 }
@@ -1078,7 +1100,7 @@ function setSelectList() {
     var control = ej.base.select('[control-name="' + controlName + '"]');
 
     if (control) {
-        var selectSample = ej.base.select('[sample-name="' + sampleName.replace('#', '') + '"]') || ej.base.select('[sample-name="' + list.localData[0].url.toLowerCase() + '"]');
+        var selectSample = ej.base.select('[sample-name="' + sampleName.replace('#', '') + '"]') || ej.base.select('[sample-name="' + list.localData[0].url + '"]');
         if (selectSample) {
             if (ej.base.select('#controlTree').style.display !== 'none') {
                 showHideControlTree();
@@ -1146,10 +1168,11 @@ function sampleArray() {
         var dataManager = new ej.data.DataManager(samplesList[node].samples);
         var samples = dataManager.executeLocal(new ej.data.Query().sortBy('order', 'ascending'));
         for (var sample in samples) {
+            var selectedTheme = location.hash.split('/')[1] ? location.hash.split('/')[1] : 'material';
             var control = samplesList[node].directory;
             var sampleUrl = samples[sample].url;
             var loc = control + '/' + sampleUrl;
-            samplesAr.push(loc.toLowerCase());
+            samplesAr.push(loc);
         }
     }
 }
@@ -1165,8 +1188,9 @@ function addRoutes(samplesList) {
             samplePath = samplePath.concat(control + '/' + sample);
             var sampleName = node.name + ' / ' + ((node.name !== subNode.category) ?
                 (subNode.category + ' / ') : '') + subNode.url;
+            var selectedTheme = location.hash.split('/')[1] ? location.hash.split('/')[1] : 'material';
             var urlString = control + '/' + sample;
-            if (getSamplePath() === urlString.toLowerCase()) {
+            if (getSamplePath() === urlString) {
                 var dataSourceLoad = document.getElementById(node.dataSourcePath);
                 if (node.dataSourcePath && !dataSourceLoad) {
                     var dataAjax = new ej.base.Ajax(node.dataSourcePath, 'GET', true);
@@ -1218,7 +1242,7 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
         breadCrumbSubCategory.style.display = 'none';
         breadCrumSeperator.style.display = 'none';
     }
-    if (getSamplePath() == subNode.component + '/' + subNode.url.toLowerCase()) {
+    if (getSamplePath() == subNode.component + '/' + subNode.url) {
         breadCrumbSample.innerHTML = subNode.name;
     }
     var title = document.querySelector('title');
@@ -1336,6 +1360,16 @@ function mobNavOverlay(isOverlay) {
             mobileFoorter.classList.remove('sb-right-pane-overlay');
         }
     }
+}
+
+function parseHash(newHash, oldHash) {
+    var newTheme = newHash.split('/')[0];
+    var control = newHash.split('/')[1];
+    if (newTheme !== selectedTheme && themeCollection.indexOf(newTheme) !== -1) {
+        location.reload();
+        crossroads.parse(newHash);
+    }
+    crossroads.parse(newHash);
 }
 
 function processDeviceDependables() {

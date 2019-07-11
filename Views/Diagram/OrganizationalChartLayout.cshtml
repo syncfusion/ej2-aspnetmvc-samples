@@ -6,7 +6,7 @@
         <div class="content-wrapper">
             @(Html.EJS().Diagram("diagram").Width("100%").Height("700px").Created("create")
                         .GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults")
-                    .DataSourceSettings(ss => ss.Id("Id").ParentId("Manager").DataManager(new DataManager() { Data = (List<OrganizationalDetails>)ViewBag.Nodes }))
+                    .DataSourceSettings(ss => ss.Id("Id").ParentId("Manager").DataSource(new DataManager() { Data = (List<OrganizationalDetails>)ViewBag.Nodes }))
                     .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.OrganizationalChart).GetLayoutInfo("getLayoutInfo"))
                     .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render())
         </div>

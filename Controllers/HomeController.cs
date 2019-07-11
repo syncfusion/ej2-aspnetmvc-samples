@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToAction("gridoverview", "grid");
+            return RedirectToAction("GridOverview", "Grid");
         }
         public ActionResult SitemapXml()
         {

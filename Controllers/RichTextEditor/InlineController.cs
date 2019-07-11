@@ -14,16 +14,9 @@ namespace EJ2MVCSampleBrowser.Controllers
             ViewBag.items = new[] { "Bold", "Italic", "Underline",
                 "Formats", "-", "Alignments", "OrderedList", "UnorderedList",
                 "CreateLink" };
-            ViewBag.width = new
-            {
-                width = "auto"
-            };
             ViewBag.value = @"<p>The sample is configured with inline mode of editor. Initially, the editor is rendered without a 
                             <a href='https://ej2.syncfusion.com/home/'>toolbar</a>. 
                             The toolbar becomes visible only when the content is selected.</p>";
-
-            ViewBag.inline = new { enable = true,
-                onSelection = true };
             return View();
         }
     }

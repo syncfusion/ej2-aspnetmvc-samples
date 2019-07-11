@@ -33,6 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
                 ExcelEngine excelEngine = new ExcelEngine();
                 //Step 2 : Instantiate the excel application object.
                 IApplication application = excelEngine.Excel;
+                application.EnablePartialTrustCode = true;
                 IWorkbook workbook = application.Workbooks.Open(ResolveApplicationDataPath(@"BudgetPlanner.xls"));
                 return excelEngine.SaveAsActionResult(workbook, "Template.xls", HttpContext.ApplicationInstance.Response, ExcelDownloadType.PromptDialog, ExcelHttpContentType.Excel97);
                 
@@ -44,7 +45,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
                 ExcelEngine excelEngine = new ExcelEngine();
                 //Step 2 : Instantiate the excel application object.
                 IApplication application = excelEngine.Excel;
-
+                application.EnablePartialTrustCode = true;
                 //A new workbook is created.[Equivalent to creating a new workbook in Microsoft Excel]
                 //The new workbook will have 12 worksheets
                 IWorkbook workbook = application.Workbooks.Open(ResolveApplicationDataPath(@"BudgetPlanner.xls"));
@@ -435,13 +436,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
                 workbook.Close();
                 excelEngine.Dispose();
                 return View();
-            }
-
-            //protected string ResolveApplicationDataFullPath(string fileName)
-            //{
-            //    string dataPath = string.Format("{0}\\Common\\Data\\XlsIO\\", Request.PhysicalPath.ToLower().Split(new string[] { "\\mvc (html5)" }, StringSplitOptions.None));
-            //    return string.Format("{0}\\{1}", dataPath, fileName);
-            //}
+            }           
         }
     }
 }

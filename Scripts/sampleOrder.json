@@ -1,6 +1,6 @@
 {
-"Grid": [ "Grid", "PivotView", "TreeGrid" ],
-"Data Visualization": [ "Chart", "StockChart", "CircularGauge", "Diagram", "Heatmap", "LinearGauge", "Maps", "RangeNavigator", "Smithchart", "Sparkline", "TreeMap" ],
+"Grid": [ "Grid", "PivotTable", "TreeGrid" ],
+"Data Visualization": [ "Chart", "StockChart", "CircularGauge", "Diagram", "Heatmap", "LinearGauge", "Maps", "RangeNavigator", "Smithchart", "Sparkline","Barcode", "TreeMap" ],
 "Editors": [ "RichTextEditor", "DocumentEditor", "Chips", "Button", "InPlaceEditor" ],
 "Calendars": [ "Schedule", "Gantt", "Calendar", "DatePicker", "DateRangePicker", "DateTimePicker", "TimePicker" ],
 "Dropdowns": [ "AutoComplete", "ComboBox", "DropDownList", "MultiSelect", "ListBox" ],

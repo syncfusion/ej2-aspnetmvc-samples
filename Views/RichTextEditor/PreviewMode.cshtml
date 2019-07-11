@@ -58,6 +58,13 @@
     .sb-header {
         z-index: 100;
     }
+
+    .sb-content.e-view.hide-header {
+        top: 0 !important;
+    }
+    .sb-header.e-view.hide-header {
+        display: none;
+    }
     /* custom code end */
 
 </style>
@@ -98,7 +105,7 @@
      function created () {
         defaultRTE = this;
         textArea = defaultRTE.contentModule.getEditPanel();
-        textArea.addEventListener('keyup', function (e) { MarkDownConversion(); });
+        textArea.addEventListener('keyup', function (e) { markdownConversion(); });
         var rteObj = defaultRTE;
         mdsource = document.getElementById('preview-code');
         mdsource.addEventListener('click', function (e) {
@@ -143,11 +150,11 @@
                 mdSplit.classList.remove('e-active');
                 mdsource.classList.remove('e-active');
             }
-            MarkDownConversion();
+            markdownConversion();
         }
         setTimeout(function () { defaultRTE.toolbarModule.refreshToolbarOverflow(); }, 400);
     }
-    function MarkDownConversion() {
+    function markdownConversion() {
         if (mdSplit.classList.contains('e-active')) {
             var id = defaultRTE.getID() + 'html-preview';
             var htmlPreview = defaultRTE.element.querySelector('#' + id);
@@ -185,6 +192,8 @@
         }
     }
     function handleFullScreen(e) {
+        var sbCntEle = document.querySelector('.sb-content.e-view');
+        var sbHdrEle = document.querySelector('.sb-header.e-view');
         var leftBar;
         var transformElement;
         if (ej.base.Browser.isDevice) {
@@ -196,6 +205,9 @@
             transformElement = document.querySelector('#right-pane');
         }
         if (e.targetItem === 'Maximize') {
+            if (ej.base.Browser.isDevice &&  ej.base.Browser.isIos) {
+                ej.base.addClass([sbCntEle, sbHdrEle], ['hide-header']);
+            }
             ej.base.addClass([leftBar], ['e-close']);
             ej.base.removeClass([leftBar], ['e-open']);
             if (!ej.base.Browser.isDevice) {
@@ -205,6 +217,9 @@
             transformElement.style.zIndex = 1001;
         }
         else if (e.targetItem === 'Minimize') {
+            if (ej.base.Browser.isDevice &&  ej.base.Browser.isIos) {
+                ej.base.removeClass([sbCntEle, sbHdrEle], ['hide-header']);
+            }
             ej.base.removeClass([leftBar], ['e-close']);
             if (!ej.base.Browser.isDevice) {
                 ej.base.addClass([leftBar], ['e-open']);

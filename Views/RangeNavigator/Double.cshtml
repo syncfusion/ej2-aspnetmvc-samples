@@ -54,7 +54,7 @@
     <script src="~/Scripts/datasource.js"></script>
     <script>
         var selectedTheme = themeName ? themeName : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         var backgroundColor = theme === 'Highcontrast' ? 'black' : 'white';
         var slData = sl;
         var ausData = aus;      

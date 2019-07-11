@@ -47,7 +47,7 @@
         var pointColors = [];
         var zoomFactor, zoomPosition;
         var selectedTheme = themeName ? themeName : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         
         var tooltipRender = function (args) {
             if (args.series.index) {

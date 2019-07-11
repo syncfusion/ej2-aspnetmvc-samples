@@ -16,6 +16,8 @@
                       .EndAngle(360)
                       .InnerRadius("0%")
                       .Explode(true)
+                      .ExplodeOffset("10%")
+                      .ExplodeIndex(5)
                       .DataSource(ViewBag.dataSource).Add();
             })
             .EnableSmartLabels(true)
@@ -61,7 +63,7 @@
                     <td style="width: 30%">
                         <div>
                             Explode Radius:
-                            <p id="exploderadius" style="font-weight: normal;">0.1</p>
+                            <p id="exploderadius" style="font-weight: normal;">0.10</p>
                         </div>
                     </td>
                     <td style="width: 70%;">
@@ -74,12 +76,12 @@
                     <td style="width: 30%">
                         <div>
                             Explode Index:
-                            <p id="explodeindex" style="font-weight: normal;">0</p>
+                            <p id="explodeindex" style="font-weight: normal;">5</p>
                         </div>
                     </td>
                     <td style="width: 70%;">
                         <div data-role="rangeslider">
-                            <input type="range" name="range-min" id="pieexplodeindex" value="0" min="0" max="6" style="width:90%">
+                            <input type="range" name="range-min" id="pieexplodeindex" value="5" min="0" max="5" style="width:90%">
                         </div>
                     </td>
                 </tr>
@@ -125,9 +127,7 @@
      @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
-            args.accumulation.series[0].explodeOffset = "10%";
-            args.accumulation.series[0].explodeIndex = 0;
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         }
      @*custom code end*@   
         function anglechange(value) {
@@ -157,7 +157,8 @@
             };
         function exploderadius(value) {
             var pie = document.getElementById("container").ej2_instances[0];
-            pie.visibleSeries[0].explodeOffset = value + '%';
+            pie.series[0].explodeOffset = value + '%';
+            pie.series[0].animation.enable = false;
             document.getElementById('exploderadius').innerHTML = (value / 100).toFixed(2);
             pie.removeSvg();
             pie.refreshSeries();

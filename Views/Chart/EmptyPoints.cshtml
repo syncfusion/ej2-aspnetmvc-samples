@@ -52,7 +52,7 @@
         var load = function (args) {
             args.accumulation.dataSource = [{ x: "Rice", y: 80 },{ x: "Wheat", y: null },{ x: "Oil", y: 70 },{ x: "Corn", y: 60 },{ x: "Gram", y: null },{ x: "Milk", y: 70 },{ x: "Peas", y: 80 },{ x: "Fruit", y: 60 },{ x: "Butter", y: null }]; 
             var selectedTheme = themeName ? themeName : 'Material';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         }
         function changeEmptyPointMode() {
             var chart = document.getElementById("container").ej2_instances[0];
