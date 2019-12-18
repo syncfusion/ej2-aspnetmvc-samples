@@ -28,7 +28,11 @@
 <script>
     function startDate(args) {
         /*Displays selected date in the label*/
-        (document.getElementById('date_label')).textContent = 'Selected Value: ' + args.value.toLocaleDateString();
+        globalize = new ej.base.Internationalization(calendarObject.locale);
+        if (calendarObject.value) {
+            var dateString = globalize.formatDate(calendarObject.value);
+            (document.getElementById('date_label')).textContent = 'Selected Value: ' + dateString;
+        }
     }
 
     function onLocaleChange(args) {
@@ -153,3 +157,13 @@
 
 }
 
+
+@section Title{
+                 <title>ASP.NET MVC Calendar Globalization Example - Syncfusion Demos </title>
+             }
+@section Meta{
+                <meta name="description" content="This example demonstrates the Globalization in ASP.NET MVC Calendar control. Explore here for more details."/>
+            }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Globalization in ASP.NET MVC Calendar Control</h1>
+            }

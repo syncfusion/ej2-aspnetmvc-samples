@@ -1,7 +1,7 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
-    <div class="control-section">
+   <div class="col-lg-12 control-section">
         <div id="outer" style="width:100%">
             <div id="container">
                 @Html.EJS().TreeMap("container").UseGroupingSeparator(true).Format("n").TooltipRendering("tooltiprendering").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Gender} : ${Population}" }).Load("load").Loaded("loaded").Resize("resize").TitleSettings(title=>title.Text("Population of the continents based on gender and age group - 2011").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Population").LeafItemSettings(leaf=>
@@ -195,8 +195,8 @@
     </p>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 TreeMap control visualizes the population level of various continents in 2011 based on the gender and age group." />
-}
+                    <meta name="description" content="This example demonstrates the TreeMap with Pie in ASP.NET MVC TreeMap control. Explore here for more details."/>
+                }
 @section Description{
     <p>
         In this example, you can see how to render a pie chart as a template for leaf items in treemap. Any custom HTML element can be rendered as label template.
@@ -205,3 +205,10 @@
         Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item in touch enabled devices.
     </p>
 }
+
+@section Title{
+                 <title>ASP.NET MVC TreeMap TreeMap with Pie Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for TreeMap with Pie in ASP.NET MVC TreeMap Control</h1>
+            }

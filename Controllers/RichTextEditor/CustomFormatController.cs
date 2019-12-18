@@ -11,9 +11,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult CustomFormat()
         {
-            ViewBag.value = @"The sample is configured with customized markdown syntax using the __formatter__ property. Type the content and click the toolbar item to view customized markdown syntax. For unordered list, 
-                you need to add a plus sign before the word (e.g., + list1). Or To make a phrase bold,you need to add two underscores before and after the phrase (e.g., __this text is bold__).";
-            ViewBag.items = new object[] {"Bold", "Italic", "StrikeThrough", "|",
+            ViewBag.Items = new object[] {"Bold", "Italic", "StrikeThrough", "|",
                 "Formats", "OrderedList", "UnorderedList", "|",
                 "CreateLink", "Image", "|",
                 new {

@@ -1,4 +1,4 @@
-@using EJ2MVCSampleBrowser.Helpers;
+﻿@using EJ2MVCSampleBrowser.Helpers;
 @using Syncfusion.EJ2;
 <!DOCTYPE html>
 <html>
@@ -11,13 +11,16 @@
     })(window,document,'script','dataLayer','GTM-WLQL39J');</script>
     <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
-    <title>Demos, Examples of Syncfusion ASP.NET MVC UI Controls</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="author" content="Syncfusion" />
       @if (IsSectionDefined("Meta"))
     {
         @RenderSection("Meta", required: false)
+    }
+    @if (IsSectionDefined("Title"))
+    {
+        @RenderSection("Title", required: false)
     }
     <link rel="shortcut icon" href="~/favicon.ico" />
     <link href="~/Content/styles/roboto.css" rel="stylesheet">
@@ -32,6 +35,7 @@
         document.write('<link href="' + baseurl + 'Content/styles/' + themeName + '.css" rel="stylesheet" />');
         if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
             document.write('<script src="' + baseurl + 'Scripts/bluebird.min.js"><\/script>');
+            document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/shim.min.js"><\/script>');
         }
     </script>
     <script id='sample-datasource' type='text/javascript'></script>
@@ -62,7 +66,7 @@
                 <div class="sb-header-top">
                     <div class="sb-ej2">
                         <div class="sb-mobile-logo"></div>
-                        <div class="sb-name">Essential JS 2</div>
+                        <div class="sb-name">Essential Studio</div>
                     </div>
                 </div>
             </div>
@@ -118,7 +122,7 @@
                 </div>
                 <div class='sb-header-item sb-table-cell'>
                     <div id='sb-header-text' class='e-sb-header-text'>
-                        <span class='sb-header-text-left'>Essential JS 2 for</span>
+                        <span class='sb-header-text-left'>Essential Studio for</span>
                         <span class='sb-header-text-right'>ASP.NET MVC</span>
                     </div>
                 </div>
@@ -179,6 +183,9 @@
                     </li>
                     <li role="listitem">
                         <a id='vue'>Vue</a>
+                    </li>
+                    <li role="listitem">
+                        <a id='blazor'>Blazor</a>
                     </li>
                 </ul>
             </div>
@@ -253,7 +260,10 @@
                 </div>
                 <div class='sb-desktop-wrapper'>
                     <div id='component-name' role='header' class='sb-component-name sb-rightpane-padding'>
-                         <h1 class='sb-sample-text'>Chart</h1>
+                         @if (IsSectionDefined("Header"))
+                        {
+                            @RenderSection("Header", required: false)
+                        }
                     </div>
                     <div id='sample-bread-crumb' class='sb-bread-crumb sb-rightpane-padding'>
                         <div class='sb-bread-crumb-text'>

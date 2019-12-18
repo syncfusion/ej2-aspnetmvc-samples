@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
 <div>
     <div class="col-lg-9 control-section">
@@ -12,6 +12,7 @@
             .High("high")
             .Low("low")
             .Width(2)
+            .Marker(mr => mr.DataLabel(dl => dl.Visible(true).EnableRotation(true).Font(ft=>ft.Color("#ffffff").FontWeight("600")).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)))
             .Border(br => br.Color("white").Width(3))
             .DataSource(ViewBag.dataSource).Add();
     })
@@ -27,12 +28,12 @@
           yaxis.LabelFormat("{value}˚C")
                  .Interval(5)
                  .Minimum(0)
-                 .Maximum(20)
+                 .Maximum(15)
       )
       .Title("Maximum and Minimum Temperature")
       .Tooltip(tp => tp.Enable(true))
       .LegendSettings(lg => lg.Visible(false))
-      .Load("load").Render()
+      .Load("load").TextRender("textRender").Render()
 )
     </div>
     <div class="col-lg-3 property-section">
@@ -69,6 +70,9 @@
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
 
         };
+        function textRender(args) {
+            args.text = args.text.replace('˚C', '');
+        }
  @*custom code end*@
         var valueChange = function () {
             var chart = document.getElementById('container').ej2_instances[0];
@@ -82,8 +86,8 @@
 }
  @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render range column in polar and radar charts." />
-}
+                    <meta name="description" content="This example demonstrates the RangeColumn in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
  @*custom code end*@
 @section ActionDescription{
     <p>
@@ -104,3 +108,9 @@
     <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
 </p>
 }
+@section Title{
+                 <title>ASP.NET MVC Chart RangeColumn Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for RangeColumn in ASP.NET MVC Chart Control</h1>
+            }

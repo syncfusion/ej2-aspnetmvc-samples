@@ -70,7 +70,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
             //Creating Hyperlink for a Website
             IHyperLink hyperlink = sheet.HyperLinks.Add(sheet.Range["C5"]);
             hyperlink.Type = ExcelHyperLinkType.Url;
-            hyperlink.Address = "//www.syncfusion.com/products/windows-forms/xlsio";
+            hyperlink.Address = "http://www.syncfusion.com/products/windows-forms/xlsio";
             hyperlink.ScreenTip = "To know more About XlsIO go through this link";
 
             //Creating Hyperlink for e-mail

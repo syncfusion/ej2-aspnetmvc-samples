@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <style>
@@ -15,7 +15,7 @@
     </style>
     <script id='germany' type="text/x-template">
         <div id='templateWrap'>
-            <img src="@Url.Content("~/Content/CircularGauge/Images/positive.png")" />
+            <img src="@Url.Content("~/Content/CircularGauge/Images/positive.png")" alt="Positive Value for Germany"/>
             <div class='des'>
                 <div style="color:#424242;font-size:20px;font-family:Roboto">${pointers[0].value}%</div>
             </div>
@@ -23,7 +23,7 @@
     </script>
     <script id='usa' type="text/x-template">
         <div id='templateWrap'>
-            <img src="@Url.Content("~/Content/CircularGauge/Images/positive.png")" />
+            <img src="@Url.Content("~/Content/CircularGauge/Images/positive.png")" alt="Positive Value for USA" />
             <div class='des'>
                 <div style="color:#424242;font-size:20px;font-family:Roboto">${pointers[0].value}%</div>
             </div>
@@ -31,7 +31,7 @@
     </script>
     <script id='uk' type="text/x-template">
         <div id='templateWrap'>
-            <img src="@Url.Content("~/Content/CircularGauge/Images/negative.png")" />
+            <img src="@Url.Content("~/Content/CircularGauge/Images/negative.png")" alt="Negative Value for UK"/>
             <div class='des'>
                 <div style="color:#424242;font-size:20px;font-family:Roboto">${pointers[0].value}%</div>
             </div>
@@ -253,8 +253,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Circular Gauge control demonstrates live data, along with the data grid control." />
-}
+                    <meta name="description" content="This example demonstrates the DataSample in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -268,3 +268,10 @@
     </div>
 }
 
+
+@section Title{
+                 <title>ASP.NET MVC Circular Gauge DataSample Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for DataSample in ASP.NET MVC Circular Gauge Control</h1>
+            }

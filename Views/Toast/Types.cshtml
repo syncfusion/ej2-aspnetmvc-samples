@@ -1,32 +1,31 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Notifications;
 @section ControlsSection{
     <div class="col-lg-12 control-section toast-default-section">
         <div class="control_wrapper">
-            @Html.EJS().Toast("toast_type").Position(p => p.X("Right")).TimeOut(5000).Close("onclose").BeforeOpen("onBeforeOpen").Render()
+            @Html.EJS().Toast("toast_type").Position(p => p.X("Right")).TimeOut(5000).Close("onclose").Created("created").BeforeOpen("onBeforeOpen").Render()
             <div id="toast_types">
                 <div>
-                    <button class="e-btn e-control e-info" id="info_Toast"> Info Message </button>
-                    <button class="e-btn e-contro e-success" id="success_Toast"> Success Message </button>
-                    <button class="e-btn e-control e-warning" id="warning_Toast"> Warning Message </button>
-                    <button class="e-btn e-control e-danger" id="error_Toast"> Danger Message </button>
+                    @Html.EJS().Button("info_Toast").CssClass("e-btn e-control e-info").Content("Info Message").Render()
+                    @Html.EJS().Button("success_Toast").CssClass("e-btn e-contro e-success").Content("Success Message").Render()
+                    @Html.EJS().Button("warning_Toast").CssClass("e-btn e-control e-warning").Content("Warning Message").Render()
+                    @Html.EJS().Button("error_Toast").CssClass("e-btn e-control e-danger").Content("Danger Message").Render()
                 </div>
                 <div style="padding-top: 15px">
-                    <button class="e-btn e-control" id="hideTosat" style="display: none"> Hide All </button>
+                    @Html.EJS().Button("hideToast").CssClass("e-btn e-control").Content("Hide All").Render()
                 </div>
             </div>
         </div>
     </div>
     <script type="text/javascript">
-
         var toasts = [
             { title: 'Warning!', content: 'There was a problem with your network connection.', cssClass: 'e-toast-warning', icon: 'e-warning toast-icons' },
             { title: 'Success!', content: 'Your message has been sent successfully.', cssClass: 'e-toast-success', icon: 'e-success toast-icons' },
             { title: 'Error!', content: 'A problem has been occurred while submitting your data.', cssClass: 'e-toast-danger', icon: 'e-error toast-icons' },
             { title: 'Information!', content: 'Please read the comments carefully.', cssClass: 'e-toast-info', icon: 'e-info toast-icons' }];
-        var btnEleHide = document.getElementById('hideTosat');
+        var btnEleHide = document.getElementById('hideToast');
+        var toastObj;
         setTimeout(function () {
-            var toastObj = document.getElementById('toast_type').ej2_instances[0];
             toastObj.target = document.body;
             toastObj.show(toasts[3]);
         }, 500);
@@ -41,27 +40,24 @@
             }
         };
 
-        document.getElementById('hideTosat').onclick = function () {
-            var toastObj = document.getElementById('toast_type').ej2_instances[0];
+        document.getElementById('hideToast').onclick = function () {
             toastObj.hide('All');
         };
         infoBtn.onclick = function () {
-            var toastObj = document.getElementById('toast_type').ej2_instances[0];
             toastObj.show(toasts[3]);
         };
         warnBtn.onclick = function () {
-            var toastObj = document.getElementById('toast_type').ej2_instances[0];
             toastObj.show(toasts[0]);
         };
         successBtn.onclick = function () {
-            var toastObj = document.getElementById('toast_type').ej2_instances[0];
             toastObj.show(toasts[1]);
         };
         errorBtn.onclick = function () {
-            var toastObj = document.getElementById('toast_type').ej2_instances[0];
             toastObj.show(toasts[2]);
         };
-
+        function created() {
+            toastObj = this;
+        }
         function onclose(e) {
             if (e.toastContainer.childElementCount === 0) {
                 btnEleHide.style.display = 'none';
@@ -158,7 +154,7 @@
         </ul>
         <p>
             More information about Toast can be found in this
-            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/toast/getting-started-asp-mvc/" target="_blank"> documentation section</a>.
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/toast/getting-started/" target="_blank"> documentation section</a>.
         </p>
     </div>
 
@@ -168,9 +164,14 @@
 @*custom code start*@
 
 @section Meta{
-
-    <meta name="description" content="The sample demonstrates how to design success, warning, information, and error messages using Toast control based on CSS classes in ASP.NET MVC platform." />
-
-}
+                    <meta name="description" content="This example demonstrates the Types in ASP.NET MVC Toast control. Explore here for more details."/>
+                }
 
 @*custom code end*@
+
+@section Title{
+                 <title>ASP.NET MVC Toast Types Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Types in ASP.NET MVC Toast Control</h1>
+            }

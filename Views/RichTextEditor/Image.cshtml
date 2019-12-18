@@ -1,13 +1,44 @@
 @using Syncfusion.EJ2
+@using EJ2CoreSampleBrowser.Models;
+@using Syncfusion.EJ2.DropDowns;
 @section ControlsSection{
-    <div class="control-section">
-        <div class="control-wrapper">
-            <div class="control-section">
-                @Html.EJS().RichTextEditor("image").Created("created").ToolbarClick("onToolbarClick").QuickToolbarSettings(e => { e.Image((object)ViewBag.image); }).Value("<p>Rich Text Editor allows to insert images from online source as well as local computer where you want to insert the image in your content.</p><p><b>Get started Quick Toolbar to click on the image</b></p><p>It is possible to add custom style on the selected image inside the RichTextEditor through quick toolbar.</p><img alt='Logo' style='width: 300px; height: 300px; transform: rotate(0deg);' src="+ @Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png") +" />").Render()
-            </div>
+   <div class="col-lg-8 control-section">
+    <div class="content-wrapper" id="all-option-sample">
+            @Html.EJS().RichTextEditor("image").Created("created").ToolbarClick("onToolbarClick").QuickToolbarSettings(e => { e.Image((object)ViewBag.Image); }).ContentTemplate(@<div><p>Rich Text Editor allows to insert images from online source as well as local computer where you want to insert the image in your content.</p><p><b>Get started Quick Toolbar to click on the image</b></p><p>It is possible to add custom style on the selected image inside the RichTextEditor through quick toolbar.</p><img alt='Logo' style='width: 300px; height: 300px; transform: rotate(0deg);' src="@Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png")" /></div>).Render()
+      </div>
+</div>
+
+    <div class="col-lg-4 property-section" id="all-option-table">
+        <div>
+            <table id="property" title="Properties">
+                <tbody>
+                    <tr>
+                        <td style="width: 50%">
+                            <div class="userselect">EnableAutoUrl </div>
+                        </td>
+                        <td style="width: 50%;padding-right: 10px">
+                            <div style="padding-left: 0;padding-top: 0">
+                                @Html.EJS().CheckBox("readonly").Checked(false).Change("readOnly_onChange").Render()
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div>Format Option </div>
+                        </td>
+                        <td>
+                            <div>
+                                @Html.EJS().DropDownList("format").PopupHeight("200px").Index(0).DataSource(
+                    (IEnumerable<FormatOption>)ViewBag.Data).Change("formatChange").Fields(new DropDownListFieldSettings { Text = "Format", Value = "Id" }).Render()
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-<style>
+
+    <style>
         .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-left::before {
             content: "\e341";
         }
@@ -15,37 +46,53 @@
         .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-right::before {
             content: "\e354";
         }
-        
+
         .bootstrap4 .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-left::before {
             content: "\e752";
         }
-        
+
         .bootstrap4 .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-right::before {
             content: "\e778";
         }
     </style>
 
     <script type="text/javascript">
-        var defaultRTE;
+        var rteObj;
         function created() {
-            defaultRTE = this;
+            rteObj = this;
+        }
+        function formatChange() {
+            if (format.value === 'Base64') {
+                rteObj.insertImageSettings.saveFormat = 'Base64';
+            } else {
+                rteObj.insertImageSettings.saveFormat = 'Blob';
+            }
         }
         function onToolbarClick(e) {
             var nodeObj = new ej.richtexteditor.NodeSelection();
-            var range = nodeObj.getRange(defaultRTE.contentModule.getDocument());
+            var range = nodeObj.getRange(rteObj.contentModule.getDocument());
             var imgEle = nodeObj.getNodeCollection(range)[0];
             var transform;
             if (e.item.tooltipText === 'Rotate Right') {
                 transform = (imgEle.style.transform === '') ? 0 :
                     parseInt(imgEle.style.transform.split('(')[1].split(')')[0], 10);
                 imgEle.style.transform = 'rotate(' + (transform + 90) + 'deg)';
+                rteObj.formatter.saveData();
+                rteObj.formatter.enableUndo(rteObj);
             }
             else if (e.item.tooltipText === 'Rotate Left') {
                 transform = (imgEle.style.transform === '') ? 0 :
                     Math.abs(parseInt(imgEle.style.transform.split('(')[1].split(')')[0], 10));
                 imgEle.style.transform = 'rotate(-' + (transform + 90) + 'deg)';
+                rteObj.formatter.saveData();
+                rteObj.formatter.enableUndo(rteObj);
             }
         }
+
+        function readOnly_onChange(args) {
+            rteObj.enableAutoUrl = args.checked;
+        }
+
     </script>
 
 }
@@ -53,15 +100,15 @@
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This demo for Essential JS 2  rich text editor control shows the option to insert images with image caption and link URLs to the images."/>
-}
+                    <meta name="description" content="This example demonstrates the Image in ASP.NET MVC Rich Text Editor control. Explore here for more details."/>
+                }
 
 @*custom code end*@
 
 @section ActionDescription{
     <div id="action-description">
         <p>
-                        This sample demonstrates the option to insert the image to the RichTextEditor content. Click the image button from the
+            This sample demonstrates the option to insert the image to the RichTextEditor content. Click the image button from the
             toolbar item to insert the image.
         </p>
     </div>
@@ -69,7 +116,7 @@
 @section Description{
     <div id="description">
         <p>
-                        Image tools used to insert an image to the RichTextEditor and click on the image to easily customize the image using quick toolbar.
+            Image tools used to insert an image to the RichTextEditor and click on the image to easily customize the image using quick toolbar.
             The quick toolbar has the following items
         </p>
         <ul>
@@ -89,3 +136,10 @@
     </div>
 }
 
+
+@section Title{
+                 <title>ASP.NET MVC Rich Text Editor Image Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Image in ASP.NET MVC Rich Text Editor Control</h1>
+            }

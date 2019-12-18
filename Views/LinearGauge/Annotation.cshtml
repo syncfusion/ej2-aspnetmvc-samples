@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
         <script id='highimg' type="text/x-template">
@@ -10,7 +10,7 @@
         <script id='moderateimg' type="text/x-template">
             <div id="moderate"><img style="height:25px;width:25px;" src="@Url.Content("~/Content/LinearGauge/Moderate.png")"></div>
         </script>
-        @Html.EJS().LinearGauge("container").Width("80%").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+        @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
        new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
        {
            Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0 },
@@ -100,8 +100,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Linear Gauge control illustrates the CPU Utilization of a resource by using annotation feature." />
-}
+                    <meta name="description" content="This example demonstrates the Annotation in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
 
@@ -126,3 +126,10 @@
 
 
 
+
+@section Title{
+                 <title>ASP.NET MVC Linear Gauge Annotation Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Annotation in ASP.NET MVC Linear Gauge Control</h1>
+            }

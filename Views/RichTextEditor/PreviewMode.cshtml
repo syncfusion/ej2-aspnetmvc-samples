@@ -3,9 +3,7 @@
 
     <div class="control-section">
         <div class="control-wrapper">
-            <div class="control-section">
-                @Html.EJS().RichTextEditor("default").Value((string)ViewBag.value).Created("created").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ActionBegin("handleFullScreen").ActionComplete("actionComplete").ToolbarSettings(e => e.Items((object)ViewBag.items)).Render()
-            </div>
+                @Html.EJS().RichTextEditor("previewMode").Value((string)ViewBag.Value).Created("created").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ActionBegin("handleFullScreen").ActionComplete("actionComplete").ToolbarSettings(e => e.Items((object)ViewBag.Items)).Render()
         </div>
     </div>
 <style>
@@ -73,8 +71,8 @@
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This demo for Essential JS 2  rich text editor control shows the users to switch between editing content and its visual preview in Markdown Editor."/>
-}
+                    <meta name="description" content="This example demonstrates the Preview in ASP.NET MVC Rich Text Editor control. Explore here for more details."/>
+                }
 
 @*custom code end*@
 
@@ -96,28 +94,22 @@
     </div>
 }
 <script>
-    var defaultRTE;
-    var textArea;
-    var mdsource;
-    var mdSplit;
-    var htmlPreview;
-
+    var rteObj, textArea, mdsource, mdSplit, htmlPreview;
      function created () {
-        defaultRTE = this;
-        textArea = defaultRTE.contentModule.getEditPanel();
+        rteObj = this;
+        textArea = rteObj.contentModule.getEditPanel();
         textArea.addEventListener('keyup', function (e) { markdownConversion(); });
-        var rteObj = defaultRTE;
         mdsource = document.getElementById('preview-code');
         mdsource.addEventListener('click', function (e) {
             fullPreview({ mode: true, type: 'preview' });
                        if (e.currentTarget.classList.contains('e-active')) {
-                defaultRTE.disableToolbarItem(['Bold', 'Italic', 'StrikeThrough', '|',
+                rteObj.disableToolbarItem(['Bold', 'Italic', 'StrikeThrough', '|',
                     'Formats', 'OrderedList', 'UnorderedList', '|',  'CreateTable',
                     'CreateLink', 'Image', 'Undo', 'Redo']);
                 e.currentTarget.parentElement.nextElementSibling.classList.add('e-overlay');
             }
             else {
-                defaultRTE.enableToolbarItem(['Bold', 'Italic', 'StrikeThrough', '|',
+                rteObj.enableToolbarItem(['Bold', 'Italic', 'StrikeThrough', '|',
                     'Formats', 'OrderedList', 'UnorderedList', '|', 'CreateTable',
                     'CreateLink', 'Image', 'Undo', 'Redo']);
                 e.currentTarget.parentElement.nextElementSibling.classList.remove('e-overlay');
@@ -126,18 +118,17 @@
         });
         mdSplit = document.getElementById('MD_Preview');
         mdSplit.addEventListener('click', function (e) {
-            if (defaultRTE.element.classList.contains('e-rte-full-screen')) {
+            if (rteObj.element.classList.contains('e-rte-full-screen')) {
                 fullPreview({ mode: true, type: '' });
             }
             mdsource.classList.remove('e-active');
-            if (!defaultRTE.element.classList.contains('e-rte-full-screen')) {
-                defaultRTE.showFullScreen();
+            if (!rteObj.element.classList.contains('e-rte-full-screen')) {
+                rteObj.showFullScreen();
             }
         });
     }
     function actionComplete(e) {
         if (e.targetItem === 'Maximize' && ej.base.isNullOrUndefined(e.args)) {
-
             fullPreview({ mode: true, type: '' });
         }
                 else if (!mdSplit.parentElement.classList.contains('e-overlay')) {
@@ -152,18 +143,18 @@
             }
             markdownConversion();
         }
-        setTimeout(function () { defaultRTE.toolbarModule.refreshToolbarOverflow(); }, 400);
+        setTimeout(function () { rteObj.refreshUI(); }, 400);
     }
     function markdownConversion() {
         if (mdSplit.classList.contains('e-active')) {
-            var id = defaultRTE.getID() + 'html-preview';
-            var htmlPreview = defaultRTE.element.querySelector('#' + id);
-            htmlPreview.innerHTML = marked(defaultRTE.contentModule.getEditPanel().value);
+            var id = rteObj.getID() + 'html-preview';
+            var htmlPreview = rteObj.element.querySelector('#' + id);
+            htmlPreview.innerHTML = marked(rteObj.contentModule.getEditPanel().value);
         }
     }
     function fullPreview(e) {
-        var id = defaultRTE.getID() + 'html-preview';
-        htmlPreview = defaultRTE.element.querySelector('#' + id);
+        var id = rteObj.getID() + 'html-preview';
+        htmlPreview = rteObj.element.querySelector('#' + id);
         if ((mdsource.classList.contains('e-active') || mdSplit.classList.contains('e-active')) && e.mode) {
             mdsource.classList.remove('e-active');
             mdSplit.classList.remove('e-active');
@@ -187,7 +178,7 @@
                 textArea.style.width = '50%';
             }
             htmlPreview.style.display = 'block';
-            htmlPreview.innerHTML = marked(defaultRTE.contentModule.getEditPanel().value);
+            htmlPreview.innerHTML = marked(rteObj.contentModule.getEditPanel().value);
             mdsource.parentElement.title = 'Code View';
         }
     }
@@ -237,3 +228,10 @@
         document.getElementsByTagName('head')[0].appendChild(script);
     }
 </script>
+
+@section Title{
+                 <title>ASP.NET MVC Rich Text Editor Preview Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Preview in ASP.NET MVC Rich Text Editor Control</h1>
+            }

@@ -14,18 +14,47 @@ using Syncfusion.XlsIO;
 using Syncfusion.ExcelToPdfConverter;
 using Syncfusion.Pdf;
 using Syncfusion.ExcelChartToImageConverter;
+using System.IO;
+
 namespace EJ2MVCSampleBrowser.Controllers.XlsIO
 {
     public partial class XlsIOController : Controller
     {
         //
         // GET: /ExcelToPDF/
-
-        public ActionResult ExcelToPDF(string button, string Group1)
+        string checkfontName = null;
+        string checkfontStream = null;
+        public ActionResult ExcelToPDF(string button, string checkboxStream, string checkboxName, string Group1)
         {
             if (button == null)
                 return View();
-            ExcelToPdfConverter converter = new ExcelToPdfConverter(ResolveApplicationDataPath("ExcelTopdfwithChart.xlsx"));
+            ExcelEngine excelEngine = new ExcelEngine();
+            IApplication application = excelEngine.Excel;
+            IWorkbook workbook;
+            if (button == "Input Template")
+            {
+                if (checkboxStream != null || checkboxName != null)
+                {
+                    workbook = application.Workbooks.Open(ResolveApplicationDataPath(@"invoiceTemplate.xlsx"), ExcelOpenType.Automatic);
+                    return excelEngine.SaveAsActionResult(workbook, "invoiceTemplate.xlsx", HttpContext.ApplicationInstance.Response, ExcelDownloadType.PromptDialog, ExcelHttpContentType.Excel2016);
+                }
+                else
+                {
+                    workbook = application.Workbooks.Open(ResolveApplicationDataPath(@"ExcelTopdfwithChart.xlsx"), ExcelOpenType.Automatic);
+                    return excelEngine.SaveAsActionResult(workbook, "ExcelTopdfwithChart.xlsx", HttpContext.ApplicationInstance.Response, ExcelDownloadType.PromptDialog, ExcelHttpContentType.Excel2016);
+                }
+            }
+            checkfontName = checkboxName;
+            checkfontStream = checkboxStream;
+            if (checkboxStream != null || checkboxName != null)
+            {
+                application.SubstituteFont += new Syncfusion.XlsIO.Implementation.SubstituteFontEventHandler(SubstituteFont);
+                workbook = application.Workbooks.Open(ResolveApplicationDataPath("invoiceTemplate.xlsx"));
+            }
+            else
+                workbook = application.Workbooks.Open(ResolveApplicationDataPath("ExcelTopdfwithChart.xlsx"));
+
+            ExcelToPdfConverter converter = new ExcelToPdfConverter(workbook);
             converter.ChartToImageConverter = new ChartToImageConverter();
             //Set the image quality
             converter.ChartToImageConverter.ScalingMode = ScalingMode.Best;
@@ -62,6 +91,33 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
 
             }
             return View();
+        }
+
+        private void SubstituteFont(object sender, Syncfusion.XlsIO.Implementation.SubstituteFontEventArgs args)
+        {
+            if (checkfontName != null && (args.OriginalFontName == "Bahnschrift Pro SemiBold" || args.OriginalFontName == "Georgia Pro Semibold"))
+            {
+                args.AlternateFontName = "Calibri";
+            }
+            if (checkfontStream != null)
+            {
+                if (args.OriginalFontName == "Georgia Pro Semibold")
+                {
+                    FileStream fileStream = new FileStream(ResolveApplicationDataPath("georgiab.ttf"), FileMode.Open);
+                    MemoryStream memoryStream = new MemoryStream();
+                    fileStream.CopyTo(memoryStream);
+                    fileStream.Close();
+                    args.AlternateFontStream = memoryStream;
+                }
+                else if (args.OriginalFontName == "Bahnschrift Pro SemiBold")
+                {
+                    FileStream fileStream = new FileStream(ResolveApplicationDataPath("bahnschrift.ttf"), FileMode.Open);
+                    MemoryStream memoryStream = new MemoryStream();
+                    fileStream.CopyTo(memoryStream);
+                    fileStream.Close();
+                    args.AlternateFontStream = memoryStream;
+                }
+            }
         }
 
     }

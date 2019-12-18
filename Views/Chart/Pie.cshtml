@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{   
 <div>
     <div class="col-lg-9 control-section">
@@ -34,55 +34,63 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 30%">
+                    <td style="width: 50%">
                         <div>
                             Pie Angle:
-                            <p id="anglevalue" style="font-weight: normal;">0</p>
                         </div>
                     </td>
-                    <td style="width: 70%;">
+                    <td style="width: 40%;">
                         <div data-role="rangeslider">
                             <input type="range" name="range-min" id="pieangle" value="0" min="0" max="360" style="width:90%">
                         </div>
+                    </td>
+                    <td style="width: 30%;">
+                        <p id="anglevalue" style="font-weight: normal;padding-top:15px">0</p>
                     </td>
                 </tr>
                 <tr style="height: 50px">
                     <td style="width: 30%">
                         <div>
                             Outer Radius:
-                            <p id="radius" style="font-weight: normal;">0.70</p>
                         </div>
                     </td>
-                    <td style="width: 70%;">
+                    <td style="width: 40%;">
                         <div data-role="rangeslider">
                             <input type="range" name="range-min" id="pieradius" value="70" min="0" max="80" style="width:90%">
                         </div>
+                    </td>
+                    <td style="width: 30%;">
+                        <p id="radius" style="font-weight: normal;padding-top:15px">0.70</p>
                     </td>
                 </tr>
                 <tr style="height: 50px">
                     <td style="width: 30%">
                         <div>
                             Explode Radius:
-                            <p id="exploderadius" style="font-weight: normal;">0.10</p>
                         </div>
                     </td>
-                    <td style="width: 70%;">
+                    <td style="width: 40%;">
                         <div data-role="rangeslider">
                             <input type="range" name="range-min" id="pieexploderadius" value="10" min="0" max="40" style="width:90%">
                         </div>
+                    </td>
+                    <td style="width: 30%;">
+                        <p id="exploderadius" style="font-weight: normal;padding-top:15px">0.10</p>
                     </td>
                 </tr>
                 <tr style="height: 50px">
                     <td style="width: 30%">
                         <div>
                             Explode Index:
-                            <p id="explodeindex" style="font-weight: normal;">5</p>
                         </div>
                     </td>
                     <td style="width: 70%;">
                         <div data-role="rangeslider">
                             <input type="range" name="range-min" id="pieexplodeindex" value="5" min="0" max="5" style="width:90%">
                         </div>
+                    </td>
+                    <td style="width: 30%;">
+                        <p id="explodeindex" style="font-weight: normal;padding-top:15px">5</p>
                     </td>
                 </tr>
                 <tr style="height: 50px">
@@ -205,15 +213,22 @@
 }
  @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the pie charts." />
-}
+                    <meta name="description" content="This example demonstrates the Pie in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
  @*custom code end*@
 @section ActionDescription{
     <p>
         This sample demonstrates pie chart for mobile browser usage statistics. <code>Datalabel</code> shows the Information about the points.
+        While hovering on the slice, border will be highlighted.
     </p>
 }
 @section Description{
     <p> In this example, you can see how to render and configure the pie chart. You can use <code>border</code>, <code>fill</code> properties to customize the pie point. <code>dataLabel</code> is used to represent individual data and its value.</p>
 <p> <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
 }
+@section Title{
+                 <title>ASP.NET MVC Chart Pie Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Pie in ASP.NET MVC Chart Control</h1>
+            }

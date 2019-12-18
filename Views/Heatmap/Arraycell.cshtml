@@ -1,7 +1,7 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Heatmap control demonstrates how to bind the array data with values for each cell to heatmap" />
-}
+                    <meta name="description" content="This example demonstrates the Cell in ASP.NET MVC Heatmap Chart control. Explore here for more details."/>
+                }
 @section ControlsSection{
     <div class="control-section">
         <div id="container" align="center">
@@ -13,7 +13,7 @@
                       palette.Color("#2C3E50").Add();
 
                   })).CellSettings(cs =>
-                  cs.Border(ViewBag.border).TextStyle(ViewBag.cellTextStyle).Format("{value} %")).LegendSettings(ls => ls.Visible(false)).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
+                  cs.Border(ViewBag.border).TextStyle(ViewBag.cellTextStyle).Format("{value} %")).LegendSettings(ls => ls.Visible(false)).TooltipRender("tooltipRender").DataSourceSettings(ds => { ds.IsJsonData(false).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Cell); }).DataSource(ViewBag.dataSource).Load("load").Render()
         </div>
     </div>
 
@@ -51,3 +51,10 @@
         Heatmap component features are segregated into individual feature-wise modules. To use data adaptor support, we need to inject <code>Adaptor </code>module using <code>Heatmap.Inject(Adaptor) </code> method and to use a tooltip, inject the <code>Tooltip </code> module using the <code>Heatmap.Inject(Tooltip) </code> method.
     </p>
 }
+
+@section Title{
+                 <title>ASP.NET MVC Heatmap Chart Cell Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Cell in ASP.NET MVC Heatmap Chart Control</h1>
+            }

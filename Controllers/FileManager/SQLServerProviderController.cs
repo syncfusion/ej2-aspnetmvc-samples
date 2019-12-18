@@ -8,7 +8,7 @@ namespace EJ2MVCSampleBrowser.Controllers
 {
     public partial class FileManagerController : Controller
     {
-        // GET: Azure
+        // GET: SQLServerProvider
         public ActionResult SQLServerProvider()
         {
             return View();

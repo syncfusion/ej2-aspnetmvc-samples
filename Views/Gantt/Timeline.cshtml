@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @{
     ViewBag.Title = "Timeline";
 }
@@ -14,10 +14,6 @@
                     .TimelineSettings(ts => ts.TopTier(tt => tt.Format("MMM dd, yyyy").Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week))
                     .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day)))
                     .SplitterSettings(ss => ss.ColumnIndex(0)).TreeColumnIndex(1).LabelSettings(ls => ls.RightLabel("TaskName"))
-                    .EventMarkers(em =>
-                    {
-                        em.Day("02/08/2019").Label("Project kick-off").Add();
-                    })
                     .Resources(ViewBag.Resources)
                     .Render()
                 )
@@ -315,8 +311,8 @@
 }
 
 @section Meta{
-    <meta name="description" content="This example demonstrates the various timeline mode options and properties available to customize the timeline in Gantt" />
-}
+                    <meta name="description" content="This example demonstrates the Timeline API in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
 
 @section Description{
     <div id="description">
@@ -337,3 +333,9 @@
         </p>
     </div>
 }
+@section Title{
+                 <title>ASP.NET MVC Gantt Timeline API Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Timeline API in ASP.NET MVC Gantt Control</h1>
+            }

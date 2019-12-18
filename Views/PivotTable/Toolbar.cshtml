@@ -2,8 +2,8 @@
 @using EJ2MVCSampleBrowser.Models
 @using Syncfusion.EJ2.PivotView
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 ASP.NET MVC Pivot Table control demonstrate the toolbar feature of the pivot table" />
-}
+                    <meta name="description" content="This example demonstrates the Toolbar in ASP.NET MVC Pivot Table control. Explore here for more details."/>
+                }
 @section ControlsSection{
 
     <div class="col-lg control-section" id="pivot-table-section">
@@ -20,7 +20,7 @@
            .Filters(filters =>
            {
                filters.Name("Product_Categories").Caption("Product Categories").Add();
-           })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DisplayOption(new PivotViewDisplayOption { View = View.Both }).Toolbar(new List<string>
+           })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DisplayOption(new PivotViewDisplayOption { View = View.Both }).ChartSettings(new PivotViewChartSettings { Load="onChartLoad" }).Toolbar(new List<string>
                 () { "New", "Save", "SaveAs", "Rename", "Remove", "Load",
                 "Grid", "Chart", "Export", "SubTotal", "GrandTotal", "ConditionalFormatting", "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").Render()
         </div>
@@ -38,6 +38,11 @@
         }
     </style>
     <script>
+        function onChartLoad(args) {
+            var selectedTheme = location.hash.split("/")[1];
+            selectedTheme = selectedTheme ? selectedTheme : "Material";
+            args.chart.theme = selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1);
+        }
         function saveReport(args) {
             var reports = [];
             var isSaved = false;
@@ -222,3 +227,10 @@
         </table>
     </div>
 }
+
+@section Title{
+                 <title>ASP.NET MVC Pivot Table Toolbar Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Toolbar in ASP.NET MVC Pivot Table Control</h1>
+            }

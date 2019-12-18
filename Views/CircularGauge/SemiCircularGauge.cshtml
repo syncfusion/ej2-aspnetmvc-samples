@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
 <div class="col-md-8 control-section" align="center">
-    @Html.EJS().CircularGauge("container").Load("gaugeLoad").Axes(axes=>axes.StartAngle(270).EndAngle(90).LabelStyle(labelStyle=>labelStyle.Position(Position.Outside)
+    @Html.EJS().CircularGauge("container").Load("gaugeLoad").Axes(axes=>axes.StartAngle(270).EndAngle(90).MajorTicks(majorTicks=>majorTicks.Interval(4)).MinorTicks(minorTicks=>minorTicks.Interval(2)).LabelStyle(labelStyle=>labelStyle.Position(Position.Outside)
 .AutoAngle(true)).Radius("80%").Minimum(0).Maximum(100).Pointers(pointers=>pointers.Animation(animation=>animation.Enable(false))
 .Value(30).Radius("75%").Color("#FF9200").PointerWidth(7).Cap(cap=>cap.Radius(8).Color("#565656").Border(border=>border.Width(0)))
 .NeedleTail(needleTail=>needleTail.Length("13%").Color("#FF9200")).Add()).Add()).Render()
@@ -70,7 +70,16 @@
                     </div>
                 </td>
             </tr>
-
+            <tr>
+                <td style="width: 40%">
+                    <div class="property-text"> Hide intersecting label</div>
+                </td>
+                <td style="width: 40%;">
+                    <div style="padding-top:0px">
+                        <input type="checkbox" id="hideLabel" checked />
+                    </div>
+                </td>
+            </tr>
         </table>
     </div>
     <script type="text/javascript">
@@ -81,9 +90,10 @@
             if (!circulargauge) {
                 circulargauge = sender.gauge;
                 sender.gauge.axes[0].lineStyle.width = 0;
+                sender.gauge.axes[0].hideIntersectingLabel = true;
                 sender.gauge.axes[0].labelStyle.font.fontWeight = 'normal';
                 sender.gauge.axes[0].majorTicks = {
-                    position: 'Inside', width: 2, height: 12, interval: 20
+                    position: 'Inside', width: 2, height: 12, interval: 4
                 };
                 sender.gauge.axes[0].minorTicks = {
                     position: 'Inside', height: 5, width: 1, interval: 2
@@ -113,6 +123,14 @@
             }
             circulargauge.refresh();
         };
+        var hideCheckBox = new ej.buttons.CheckBox(
+            {
+                change: (args) => {
+                    circulargauge.axes[0].hideIntersectingLabel = args.checked;
+                    circulargauge.refresh();
+                },
+                checked: true
+            }, '#hideLabel');
         document.getElementById('start').onpointermove = document.getElementById('start').ontouchmove =
             document.getElementById('start').onchange = function () {
                 var min = parseInt(document.getElementById('start').value, 10);
@@ -165,7 +183,7 @@
 @section Description{
     <div id="description">
         <p>
-            In this example, you can see how to render the circular gauge with modified start and end angles to form semi or quarter circular gauges. By enabling the radius based on angle option, the radius of circular gauge will be calculated based on the start and end angles.
+            In this example, you can see how to render the circular gauge with modified start and end angles to form semi or quarter circular gauges. By enabling the radius based on angle option, the radius of circular gauge will be calculated based on the start and end angles. You can also hide the intersect labels using 'hideIntersectingLabel' property.
         </p>
         <p>
             For more information on ranges, refer to this
@@ -173,3 +191,12 @@
         </p>
     </div>
 }
+@section Title{
+                 <title>ASP.NET MVC Circular Gauge SemiCircularGauge Example - Syncfusion Demos </title>
+             }
+@section Meta{
+                <meta name="description" content="This example demonstrates the SemiCircularGauge in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+            }
+@section Header{
+                <h1 class='sb-sample-text'>Example for SemiCircularGauge in ASP.NET MVC Circular Gauge Control</h1>
+            }

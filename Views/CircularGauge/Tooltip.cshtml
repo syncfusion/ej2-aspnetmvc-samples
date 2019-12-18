@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
 
@@ -22,7 +22,7 @@
     </style>
     
     <div class="control-section" style="margin-left:120px">
-        @Html.EJS().CircularGauge("container").Load("gaugeLoad").EnablePointerDrag(true).TooltipRender("tooltipRender").Width("80%").Title("Tooltip Customization").Tooltip(new CircularGaugeTooltipSettings{Enable=true, EnableAnimation=false  }).TitleStyle(
+        @Html.EJS().CircularGauge("container").Load("gaugeLoad").EnablePointerDrag(true).TooltipRender("tooltipRender").DragEnd("dragEnd").Width("80%").Title("Tooltip Customization").Tooltip(new CircularGaugeTooltipSettings{Enable=true, EnableAnimation=false, Type=new string[] { "Range", "Pointer" } }).TitleStyle(
      new CircularGaugeFont{ Size="15px", Color="grey", Opacity = 1 }).Axes(axes =>
    axes.EndAngle(120).StartAngle(240).LineStyle(new CircularGaugeLine{ Width = 0, Color = "transparent" }).Radius("90%")
 .Minimum(0).Maximum(120).MajorTicks(new CircularGaugeTick{ Color="white", Offset=-5, Height=12 }).MinorTicks(new CircularGaugeTick{ Width=0, Color="transparent" })
@@ -55,40 +55,80 @@
             gauge = args.gauge;
         }
         function tooltipRender(args) {
-            var imageName = ((args.pointer.currentValue >= 0 && args.pointer.currentValue <= 50) ? 'range1' : 'range3');
-            var borderColor = ((args.pointer.currentValue >= 0 && args.pointer.currentValue <= 50) ? '#3A5DC8' : '#33BCBD');
-            args.tooltip.template = '<div id="templateWrap" style="border:2px solid ' + borderColor +
-           '"><img src="../Content/CircularGauge/Images/' + imageName + '.png"/><div class="des" style="color: ' +
-           borderColor + '"><span>${value} MPH</span></div></div>';
+		var imageName, borderColor, textColor;
+            if (args.pointer) {
+                imageName = ((args.pointer.currentValue >= 0 && args.pointer.currentValue <= 50) ? 'range1' : 'range3');
+                borderColor = ((args.pointer.currentValue >= 0 && args.pointer.currentValue <= 50) ? '#3A5DC8' : '#33BCBD');
+                textColor = gauge.theme.toLowerCase() === 'highcontrast' ? 'White' : borderColor;
+                if (gauge.theme.toLowerCase() === 'highcontrast') {
+                    args.tooltip.template = '<div id="templateWrap" style="border:2px solid ' + borderColor +
+                        ';background-color:black"><img src="../Content/CircularGauge/Images/' + imageName + '.png"/><div class="des" style="color: ' +
+                        textColor + '"><span>${value} MPH</span></div></div>';
+                } else {
+                     args.tooltip.template = '<div id="templateWrap" style="border:2px solid ' + borderColor +
+                        '"><img src="../Content/CircularGauge/Images/' + imageName + '.png"/><div class="des" style="color: ' +
+                        borderColor + '"><span>${value} MPH</span></div></div>';
+                }
+               
+            } else if (args.range) {
+				imageName = ((args.range.start >= 0 && args.range.end <= 50)) ? 'range1' : 'range3';
+				borderColor = ((args.range.start >= 0 && args.range.end <= 50)) ? '#3A5DC8' : '#33BCBD';
+				textColor = gauge.theme.toLowerCase() === 'highcontrast' ? 'White' : borderColor;
+				var start = args.range.start;
+                var end = args.range.end;
+                if (gauge.theme.toLowerCase() === 'highcontrast') {
+                    args.tooltip.rangeSettings.template = '<div id=templateWrap style="padding:5px;border:2px solid' + borderColor + ';color: ' +
+                        textColor + ';background-color:black"><img src="../Content/CircularGauge/Images/' + imageName +
+                        '.png"/> <span>' + start + ' - ' + end + ' MPH  </span> </div>';
+                } else {
+                    args.tooltip.rangeSettings.template = '<div id=templateWrap style="padding:5px;border:2px solid' + borderColor + ';color: ' +
+				    borderColor + '"><img src="../Content/CircularGauge/Images/' + imageName +
+				    '.png"/> <span>' + start + ' - ' + end + ' MPH  </span> </div>';
+                }
+				
+			}   
         }
+		function dragEnd(args) {
+		if (args.currentValue >= 0 && args.currentValue <= 50) {
+            args.pointer.color = "#3A5DC8";
+            args.pointer.cap.border.color = "#3A5DC8";
+        } else {
+            args.pointer.color = "#33BCBD";
+            args.pointer.cap.border.color = "#33BCBD";
+        }
+		args.pointer.value = args.currentValue;
+        args.pointer.animation.enable = false;
+        gauge.refresh();
+		}
     </script>
 }
 
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample visualizes the tooltip of pointer value in gauge. To see the tooltip in action, hover pointer or tap the pointer.
+            This sample visualizes the tooltip of pointer value and ranges in gauge. To see the tooltip in action, hover pointer or tap the pointer.
         </p>
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Circular Gauge control visualizes the tooltip template for circular gauge pointer." />
-}
+                    <meta name="description" content="This example demonstrates the Tooltip in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
-            In this example, you can see how to show the tooltip for pointer in gauge, to see the tooltip in action, hover pointer or
-            tap on pointer in touch enabled devices.
+            In this example, you can see how to show the tooltip for pointer and ranges in gauge, to see the tooltip in action, hover pointer or range bar or tap on pointer or range bar in touch enabled devices
         </p>
-        <br>
-        <p style="font-weight: 500">Injecting Module</p>
-        <p>
-            Circular gauge component features are segregated into individual feature-wise modules. To use tooltip, we need to inject
-            <code>GaugeTooltip</code> module using CircularGauge.Inject(GaugeTooltip) method.
-        </p>
+        <br>       
         <p>
             More information on the tooltip can be found in this
             <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
         </p>
     </div>
 }
+
+@section Title{
+                 <title>ASP.NET MVC Circular Gauge Tooltip Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Tooltip in ASP.NET MVC Circular Gauge Control</h1>
+            }

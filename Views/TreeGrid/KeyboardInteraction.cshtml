@@ -27,9 +27,9 @@
        {
                 col.Field("TaskId").HeaderText("Task ID").IsPrimaryKey(true).Width(90)
                     .TextAlign(TextAlign.Right).Add();
-                col.Field("TaskName").HeaderText("Task Name").EditType("stringedit").Width(220)
+                col.Field("TaskName").HeaderText("Task Name").EditType("stringedit").Width(240)
                     .ValidationRules(new { required = true }).Add();
-                col.Field("StartDate").HeaderText("Start Date").Width(140).Format("yMd")
+                col.Field("StartDate").HeaderText("Start Date").Width(105).Format("yMd")
                     .EditType("datepickeredit")
                     .ValidationRules(new { date = true })
                     .TextAlign(TextAlign.Right).Add();
@@ -197,8 +197,8 @@
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This demo explains the key combinations used to perform corresponding treegrid actions in Syncfusion Essential JS2 TreeGrid control." />
-}
+                    <meta name="description" content="This example demonstrates the Keyboard Interaction in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
 
 
 @section ActionDescription{
@@ -257,3 +257,9 @@
 }
 
 @*custom code end*@
+@section Title{
+                 <title>ASP.NET MVC Tree Grid Keyboard Interaction Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Keyboard Interaction in ASP.NET MVC Tree Grid Control</h1>
+            }

@@ -1,11 +1,11 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section">
     <div style="text-align:center">
 
         @Html.EJS().Chart("container").Series(series =>
    {
-       series.Width(2).XName("xValue").YName("yValue").Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Font(ViewBag.font))).IntermediateSumIndexes(ViewBag.intermediateSumIndexes).SumIndexes(ViewBag.sumIndexes).NegativeFillColor("#e56590").Name("USA").ColumnWidth(0.9).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Waterfall).DataSource(ViewBag.dataSource).Add();
+       series.Width(2).XName("xValue").YName("yValue").Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Font(ff => ff.FontWeight("600").Color("#ffffff")))).IntermediateSumIndexes(ViewBag.intermediateSumIndexes).SumIndexes(ViewBag.sumIndexes).NegativeFillColor("#e56590").Name("USA").ColumnWidth(0.9).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Waterfall).DataSource(ViewBag.dataSource).Add();
    }
    ).ChartArea(area => area.Border(br=>br.Width(0.1))).PrimaryXAxis(py => py.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).PlotOffset(20)).PrimaryYAxis(py => py.Minimum(0).Maximum(5000).Interval(1000).MajorGridLines(mg=>mg.Width(0)).Title("Expenditure")).Title("Company Revenue and Profit").LegendSettings(lg => lg.Visible(true)).Tooltip(tl => tl.Enable(true)).Load("load").TextRender("textRender").AxisLabelRender("axisLabelRender").Render()
     </div>
@@ -59,8 +59,8 @@
 }
  @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render the waterfall series." />
-}
+                    <meta name="description" content="This example demonstrates the Waterfall in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
  @*custom code end*@
 @section ActionDescription{
     <p>
@@ -81,3 +81,9 @@
     <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
 </p>
 }
+@section Title{
+                 <title>ASP.NET MVC Chart Waterfall Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Waterfall in ASP.NET MVC Chart Control</h1>
+            }

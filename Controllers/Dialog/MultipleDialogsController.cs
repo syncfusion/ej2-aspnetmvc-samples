@@ -14,10 +14,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Dialog
         {
             List<DialogDialogButton> button = new List<DialogDialogButton>() { };
             button.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new default1Button() { content = "Next", isPrimary = true } });
-            ViewBag.default1Button = button;
+            ViewBag.NextButton = button;
             List<DialogDialogButton> button1 = new List<DialogDialogButton>() { };
             button1.Add(new DialogDialogButton() { Click = "dlg2ButtonClick", ButtonModel = new default2Button() { content = "Close", isPrimary = true } });
-            ViewBag.default2Button = button1;
+            ViewBag.CloseButton = button1;
             return View();
         }
     }

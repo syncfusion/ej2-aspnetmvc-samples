@@ -30,14 +30,15 @@ var urlRegex = /(npmci\.syncfusion\.com|ej2\.syncfusion\.com)(\/)(development|pr
 //Regex for removing hidden
 var reg = /.*custom code start([\S\s]*?)custom code end.*/g;
 var sampleRegex = /#\/(([^\/]+\/)+[^\/\.]+)/;
-var sbArray = ['javascript', 'angular', 'react', 'typescript', 'aspcore', 'vue'];
+var sbArray = ['javascript', 'angular', 'react', 'typescript', 'aspcore', 'vue', 'blazor'];
 var sbObj = {
     'javascript': 'javascript',
     'angular': 'angular',
     'typescript': '',
     'react': 'react',
     'aspcore': 'aspcore',
-    'vue': 'vue'
+    'vue': 'vue',
+    'blazor': 'blazor'
 };
 var searchEle = ej.base.select('#search-popup');
 var inputele = ej.base.select('#search-input');
@@ -45,6 +46,7 @@ var searchOverlay = ej.base.select('.e-search-overlay');
 var searchButton = document.getElementById('sb-trigger-search');
 var setResponsiveElement = ej.base.select('.setting-responsive');
 var isMobile = window.matchMedia('(max-width:550px)').matches;
+var isCheck = window.matchMedia('(max-width:600px)').matches;
 var isTablet = window.matchMedia('(min-width:600px) and (max-width: 850px)').matches;
 var isPc = window.matchMedia('(min-width:850px)').matches;
 var selectedTheme = location.hash.split('/')[1] || 'material';
@@ -62,7 +64,7 @@ var breadCrumbComponent = document.querySelector('.sb-bread-crumb-text>.category
 var breadCrumSeperator = ej.base.select('.category-seperator');
 var breadCrumbSubCategory = document.querySelector('.sb-bread-crumb-text>.component');
 var breadCrumbSample = document.querySelector('.sb-bread-crumb-text>.crumb-sample');
-var sampleNavigation = "<div class=\"sb-custom-item sample-navigation\"><button id='prev-sample' class=\"sb-navigation-prev\" \n    aria-label=\"previous sample\">\n<span class='sb-icons sb-icon-Previous'></span>\n</button>\n<button  id='next-sample' class=\"sb-navigation-next\" aria-label=\"next sample\">\n<span class='sb-icons sb-icon-Next'></span>\n</button>\n</div>";
+var sampleNavigation = "<div class=\"sb-custom-item sample-navigation\"><button id='prev-sample' type='button' class=\"sb-navigation-prev\" \n    aria-label=\"previous sample\">\n<span class='sb-icons sb-icon-Previous'></span>\n</button>\n<button  id='next-sample' type='button' class=\"sb-navigation-next\" aria-label=\"next sample\">\n<span class='sb-icons sb-icon-Next'></span>\n</button>\n</div>";
 var contentToolbarTemplate = '<div class="sb-desktop-setting"><button id="open-plnkr" class="sb-custom-item sb-plnr-section">' +
     '</button>' + '</div>' + sampleNavigation + '<div class="sb-icons sb-mobile-setting"></div>';
 var tabContentToolbar = ej.base.createElement('div', {
@@ -88,7 +90,8 @@ if (ej.base.Browser.isDevice || isMobile) {
         width: '280px',
         showBackdrop: true,
         closeOnDocumentClick: true,
-        enableGestures: false
+        enableGestures: false,
+        change:resizeFunction
     });
     sidebar.appendTo('#left-sidebar');
     sidebar.hide();
@@ -99,9 +102,28 @@ if (ej.base.Browser.isDevice || isMobile) {
         showBackdrop: false,
         closeOnDocumentClick: false,
         enableGestures: false,
-        mediaQuery: window.matchMedia('(min-width:550px)')
+        change:resizeFunction
+        //mediaQuery: window.matchMedia('(min-width:550px)')
     });
     sidebar.appendTo('#left-sidebar');
+}
+
+function resizeFunction() {
+    if (!isMobile || isCheck) {
+        resizeManualTrigger = true;
+        setTimeout(cusResize(), 400);
+    }
+}
+
+function cusResize() {
+    var event;
+    if (typeof (Event) === 'function') {
+        event = new Event('resize');
+    } else {
+        event = document.createEvent('Event');
+        event.initEvent('resize', true, true);
+    }
+    window.dispatchEvent(event);
 }
 
 setTimeout(function () {
@@ -220,7 +242,7 @@ function renderSbPopups() {
             if (e.isSwiped) {
                 e.cancel = true;
             }
-            var sourceEle = document.querySelector('#sb-source-tab > .e-content > #e-content_' + e.selectedIndex).children[0];
+            var sourceEle = document.querySelector('#sb-source-tab > .e-content > #e-content' + this.tabId + '_' + e.selectedIndex).children[0];
             sourceEle.innerHTML = items[e.selectedIndex].data;
             sourceEle.innerHTML = sourceEle.innerHTML.replace(reg, '');
             sourceEle.classList.add('sb-src-code');
@@ -286,11 +308,11 @@ function dynamicTabCreation(obj) {
     } else {
         tabObj = this;
     }
-    var contentEle = tabObj.element.querySelector('#e-content_' + tabObj.selectedItem);
+    var contentEle = tabObj.element.querySelector('#e-content' + tabObj.tabId + '_' + tabObj.selectedItem);
     if (!contentEle) {
         return;
     }
-    var blockEle = tabObj.element.querySelector('#e-content_' + tabObj.selectedItem).children[0];
+    var blockEle = tabObj.element.querySelector('#e-content' + tabObj.tabId + '_' + tabObj.selectedItem).children[0];
     blockEle.innerHTML = tabObj.items[tabObj.selectedItem].data;
     blockEle.innerHTML = blockEle.innerHTML.replace(reg, '');
     blockEle.classList.add('sb-src-code');
@@ -854,13 +876,20 @@ function setLeftPaneHeight() {
 
 function toggleLeftPane() {
     var reverse = sidebar.isOpen;
+    ej.base.select('#left-sidebar').classList.remove('sb-hide');
     if (!reverse) {
         leftToggle.classList.add('toggle-active');
     } else {
         leftToggle.classList.remove('toggle-active');
     }
+
     if (sidebar) {
-        sidebar.toggle();
+        reverse = sidebar.isOpen;
+        if (reverse) {
+            sidebar.hide();
+        } else {
+            sidebar.show();
+        }
     }
 }
 
@@ -1222,15 +1251,15 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
     var controlID = node.uid;
     var sampleID = subNode.uid;
     setSbLink();
-    var ajaxCS = new ej.base.Ajax(baseurl + 'Controllers/' + subNode.component + '/' + subNode.url + 'Controller.cs', 'GET', false);
-    var ajaxCSHTML = new ej.base.Ajax(baseurl + 'Home/GetHtml?path=Views/' + subNode.component + '/' + subNode.url + '.cshtml', 'GET', false);
+    var ajaxCS = new ej.base.Ajax((window.hasher.getBaseURL().includes('ej2.syncfusion.com') ? 'https://aspnetmvc.syncfusion.com/aspnetmvc/' :baseurl) + 'Controllers/' + subNode.component + '/' + subNode.url + 'Controller.cs', 'GET', false);
+    var ajaxCSHTML = new ej.base.Ajax((window.hasher.getBaseURL().includes('ej2.syncfusion.com') ? 'https://aspnetmvc.syncfusion.com/aspnetmvc/' :baseurl) + 'Home/GetHtml?path=Views/' + subNode.component + '/' + subNode.url + '.cshtml', 'GET', false);
     var add = [ajaxCSHTML, ajaxCS];
     var cs = subNode.url + 'controller.cs';
     var cshtml = subNode.url + '.cshtml';
     var name = [cshtml, cs];
     //var p2 = loadScriptfile('src/' + control + '/' + sample + '.js');
     //var ajaxJs = new ej.base.Ajax('src/' + control + '/' + sample + '.js', 'GET', true);
-    sampleNameElement.innerHTML = node.name;
+    //sampleNameElement.innerHTML = node.name;
     sourceTab.selectedItem = 0;
     contentTab.selectedItem = 0;
     breadCrumbComponent.innerHTML = node.name;
@@ -1245,14 +1274,14 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
     if (getSamplePath() == subNode.component + '/' + subNode.url) {
         breadCrumbSample.innerHTML = subNode.name;
     }
-    var title = document.querySelector('title');
-    title.innerHTML = node.name + ' · ' + subNode.url + ' · Syncfusion ASP.NET MVC UI Controls ';
     var ext, ajaxJS;
     if (subNode.sourceFiles) {
         add = [];
         name = [];
         for (var i = 0; i < subNode.sourceFiles.length; i++) {
-            var ajaxAdd = new ej.base.Ajax(subNode.sourceFiles[i].path, 'GET', false);
+            var srcPath = (subNode.sourceFiles[i].path).includes('.cshtml') && window.hasher.getBaseURL().includes('ej2.syncfusion.com') ?
+                subNode.sourceFiles[i].path.replace('..', 'https://aspnetmvc.syncfusion.com/aspnetmvc') : subNode.sourceFiles[i].path;
+            var ajaxAdd = new ej.base.Ajax(srcPath, 'GET', false);
             add.push(ajaxAdd);
             var optional = subNode.sourceFiles[i].displayName;
             name.push(optional);
@@ -1263,7 +1292,7 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
         add[file].send().then(function (value) {
             var content;
             if (/html/g.test(name[subfile])) {
-                value = value.replace(/@section (ActionDescription|Description|Meta){[^}]*}/g, '');
+                value = value.replace(/@section (ActionDescription|Title|Description|Meta|Header){[^}]*}/g, '').trim();
                 content = value.replace(/&/g, '&amp;')
                     .replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             } else {

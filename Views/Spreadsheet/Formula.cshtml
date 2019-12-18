@@ -1,0 +1,97 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Spreadsheet
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).DataBound("dataBoundEvent").Sheets(sheet =>
+   {
+       sheet.Name("Stock Details").SelectedRange("F15").RangeSettings(rangesetting =>
+       {
+           rangesetting.DataSource((IEnumerable<object>)ViewBag.formulaData).Add();
+       }).Rows(row =>{
+           row.Height(40).Cells(cell => {
+               cell.Index(3).Value("High (+)").Add();
+               cell.Value("Low (-)").Add();
+           }).Add();
+           row.Height(25).Index(11).Cells(cell => {
+               cell.Index(3).Value("Average profit:").Add();
+               cell.Index(5).Formula("=AVERAGE(F2:F11)").Format("0.00").Add();
+           }).Add();
+           row.Height(25).Cells(cell => {
+               cell.Index(3).Value("Maximum stock value:").Add();
+               cell.Index(5).Formula("=MAX(D2:D11)").Format("0.00").Add();
+           }).Add();
+           row.Height(25).Cells(cell => {
+               cell.Index(3).Value("Minimum stock value:").Add();
+               cell.Index(5).Formula("=MIN(E2:E11)").Add();
+           }).Add();
+           row.Height(25).Cells(cell => {
+               cell.Index(3).Value("Non-profitable days:").Add();
+               cell.Index(5).Formula("=COUNTIF(F2:F11,'<=0')").Add();
+           }).Add();
+       }).Columns(column => {
+           column.Width(100).Add();
+           column.Width(130).Add();
+           column.Width(140).Add();
+           column.Width(140).Add();
+           column.Width(130).Add();
+           column.Width(130).Add();
+       }).Add();
+   }).Render()
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Formula in ASP.NET MVC Spreadsheet control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the analysis of a company's stock value for a certain period with formula feature.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The <code>Spreadsheet</code> component provides a built-in calculation library that supports most commonly used
+            formulas.
+            In this demo, a formula is specified to a cell using the <code>formula</code> property.
+        </p>
+        <p>
+            More information about formula support can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started">
+                documentation
+            </a> section.
+        </p>
+    </div>
+}
+
+<script>
+    function dataBoundEvent() {
+        if (this.activeSheetTab === 1 && this.sheets[this.activeSheetTab - 1].name === 'Stock Details') {
+            this.cellFormat({ fontWeight: 'bold', backgroundColor: '#4ECDC4', textAlign: 'center', fontSize: '14px' }, 'A1:F1');
+            this.cellFormat({ backgroundColor: '#F2F2F2' }, 'A2:F11');
+            this.cellFormat({ fontWeight: 'bold', backgroundColor: '#C6EFCE' }, 'A12:F15');
+            this.numberFormat('0.00', 'F2:F11');
+        }
+    }
+</script>
+
+@*custom code start*@
+<style>
+    .control-section {
+        height: 550px;
+    }
+    #sb-content .e-spreadsheet .e-tab .e-tab-text {
+        display: inherit;
+    }
+</style>
+@*custom code end*@
+
+@section Title{
+                 <title>ASP.NET MVC Spreadsheet Formula Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Formula in ASP.NET MVC Spreadsheet Control</h1>
+            }

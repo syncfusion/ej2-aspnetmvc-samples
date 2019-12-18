@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @{
     ViewBag.Title = "Editing";
 }
@@ -17,14 +17,14 @@
                   tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week).Format("MMM dd, y")).
                 BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))).Columns(col =>
                 {
-                    col.Field("TaskId").Width(50).Add();
+                    col.Field("TaskId").Width(60).Add();
                     col.Field("TaskName").HeaderText("Job Name").Width(250).Add();
                     col.Field("StartDate").Add();
                     col.Field("Duration").Add();
                     col.Field("Progress").Add();
                     col.Field("Predecessor").Add();
                 }).LabelSettings(ls => ls.LeftLabel("TaskName")
-                .RightLabel("ResourceId"))
+                .RightLabel("${if(taskData.SubTasks)}${taskData.Duration} ${else if(ResourceId)}${ResourceId}${/if}"))
                 .EditDialogFields(edf =>
                 {
                     edf.Type(Syncfusion.EJ2.Gantt.DialogFieldType.General).Add();
@@ -75,8 +75,8 @@
 }
 
 @section Meta{
-    <meta name="description" content="This example demonstrates the cell editing, dialog editing, taskbar editing and dependency editing support in Gantt" />
-}
+                    <meta name="description" content="This example demonstrates the Editing in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
 
 @section Description{
     <div id="description">
@@ -95,3 +95,10 @@
         </p>
     </div>
 }
+
+@section Title{
+                 <title>ASP.NET MVC Gantt Editing Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Editing in ASP.NET MVC Gantt Control</h1>
+            }

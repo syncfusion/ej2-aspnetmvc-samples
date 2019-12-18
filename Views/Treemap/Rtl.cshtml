@@ -1,8 +1,7 @@
-﻿
 @using Syncfusion.EJ2;
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
-    <div class="control-section">
+	<div class="col-lg-12 control-section">
         <div id="container" style="width:100%">
             @Html.EJS().TreeMap("container").Width("100%").EnableRtl(true).EnableDrillDown(true).TitleSettings(title => title.Text("List of countries by unemployment rate").TextStyle(new TreeMapFont { Size = "15px" })).Format("n").RenderDirection(RenderingMode.TopRightBottomLeft).UseGroupingSeparator(true).WeightValuePath("Size").Palette(new string[] { "#5B244D", "#6F3953", "#87525A", "#A26F63", "#BA896B", "#D5A574", "#F1C37D" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Size} : ${Name}" }).Load("load").Levels(level =>
        {
@@ -248,8 +247,8 @@
     </script>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 TreeMap control demonstrates drill-down with the continents at the top level followed by regions and countries." />
-}
+                    <meta name="description" content="This example demonstrates the RTL in ASP.NET MVC TreeMap control. Explore here for more details."/>
+                }
 @section ActionDescription{
     <div id="action-description">
         <p>
@@ -265,3 +264,9 @@
         </p>
     </div>
 }
+@section Title{
+                 <title>ASP.NET MVC TreeMap RTL Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for RTL in ASP.NET MVC TreeMap Control</h1>
+            }

@@ -1,13 +1,13 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Heatmap control shows how to place the heatmap legend in different positions" />
-}
+                    <meta name="description" content="This example demonstrates the Legend Placement in ASP.NET MVC Heatmap Chart control. Explore here for more details."/>
+                }
 @section ControlsSection{
     <div>
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Hourly Weather Forecast (in Celsius)").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Hourly Weather Forecast").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
                          {
                              xAxis.Labels(ViewBag.xLabels);
                          }).YAxis(yaxis =>
@@ -21,8 +21,8 @@
                              palette.Value(22).Color("#DCD57E").Add();
                          })).CellSettings(cs =>
                          cs.ShowLabel(false).Format("{value} C")).LegendSettings(ls =>
-                         ls.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Left).
-                         LabelFormat("{value}\xB0 C")).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
+                         ls.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).
+                         LabelFormat("{value}\xB0 C").Title(title=>title.Text("Celsius"))).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
             args.heatmap.legendSettings.labelFormat = "{value}\xB0 C";
         };
         var legentListObj = new ej.dropdowns.DropDownList({
-            index: 0,
+            index: 3,
             popupHeight: '200px',
             change: function () { valueXChange(); }
         });
@@ -98,3 +98,10 @@
         Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the <code>Tooltip </code>  module using the <code>Heatmap.Inject(Tooltip) </code> method, and use a legend by injecting the <code>Legend </code>  module using the <code>Heatmap.Inject(Legend) </code>  method.
     </p>
 }
+
+@section Title{
+                 <title>ASP.NET MVC Heatmap Chart Legend Placement Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Legend Placement in ASP.NET MVC Heatmap Chart Control</h1>
+            }

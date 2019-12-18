@@ -1,36 +1,25 @@
-﻿
-
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Maps
 @section ControlsSection{
 <div class="control-section">
-    <div class="control_wrapper">
-        @Html.EJS().Maps("container").Load("mapsload").TitleSettings(title => title.Text("Location of Africa continent in the World map").TextStyle(new MapsFont { Size = "16px" })).ZoomSettings(
-        new Syncfusion.EJ2.Maps.MapsZoomSettings
-        {
-            Enable = true
-        }).Annotations(new List<Syncfusion.EJ2.Maps.MapsAnnotation>
-     {
-       new Syncfusion.EJ2.Maps.MapsAnnotation
-       {
-           Content = "<div style=height:18px;width:170px;background:white;text-align:center> <a href=https://www.openstreetmap.org/copyright target =_blank> © OpenStreetMap contributors </a></div >",
-           VerticalAlignment = Syncfusion.EJ2.Maps.AnnotationAlignment.Far,
-           ZIndex = "1",X = "-40", Y = "-20",
-           HorizontalAlignment = Syncfusion.EJ2.Maps.AnnotationAlignment.Far
-       }
-     }).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer> {
-        new Syncfusion.EJ2.Maps.MapsLayer
-        {
-            LayerType = Syncfusion.EJ2.Maps.ShapeLayerType.OSM
-        },
-        new Syncfusion.EJ2.Maps.MapsLayer
-        {
-            Type = Syncfusion.EJ2.Maps.Type.SubLayer,
-            ShapeData = ViewBag.shapeData,
-            ShapeSettings = new MapsShapeSettings{ Fill="#5100a3", Opacity = 0.4 }
-        }
-     }).Render()
-    </div>
+	<div class="control_wrapper">
+		@Html.EJS().Maps("container").Load("mapsload").TitleSettings(title => title.Text("Location of Africa continent in the World map").TextStyle(new MapsFont { Size = "16px" })).ZoomSettings(new Syncfusion.EJ2.Maps.MapsZoomSettings
+		{
+		Enable = true
+		}).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer>
+			{
+			new Syncfusion.EJ2.Maps.MapsLayer
+			{
+			LayerType = Syncfusion.EJ2.Maps.ShapeLayerType.OSM
+			},
+			new Syncfusion.EJ2.Maps.MapsLayer
+			{
+			Type = Syncfusion.EJ2.Maps.Type.SubLayer,
+			ShapeData = ViewBag.shapeData,
+			ShapeSettings = new MapsShapeSettings{ Fill="#5100a3", Opacity = 0.4 }
+			}
+			}).Render()
+	</div>
     <div style="float: right">
         <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>
     </div>
@@ -47,10 +36,9 @@
         }
     </script>
     <style>
-        .control_wrapper {
-            max-width: 600px;
-            margin: auto;
-        }
+		#container {
+		display: block;
+		}
     </style>
 }
 @section ActionDescription{
@@ -61,8 +49,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Maps control shows continents in the world by rendering these in a map layer. Markers denote the office location of YouTube." />
-}
+                    <meta name="description" content="This example demonstrates the OSM With SubLayer in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -80,3 +68,10 @@
 }
 
 
+
+@section Title{
+                 <title>ASP.NET MVC Maps OSM With SubLayer Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for OSM With SubLayer in ASP.NET MVC Maps Control</h1>
+            }

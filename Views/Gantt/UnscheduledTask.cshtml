@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @{
     ViewBag.Title = "Unscheduled Task";
 }
@@ -26,7 +26,7 @@
             .AllowUnscheduledTasks(true)
             .Columns(col =>
             {
-                col.Field("TaskId").HeaderText("Id").Width(60).Add();
+                col.Field("TaskId").HeaderText("Id").Width(75).Add();
                 col.Field("TaskName").HeaderText("Name").Width(80).Add();
                 col.Field("StartDate").HeaderText("Start Date").Width(120).Add();
                 col.Field("EndDate").HeaderText("End date").Width(120).Add();
@@ -74,8 +74,8 @@
 }
 
 @section Meta{
-    <meta name="description" content="This example demonstrates the unscheduled tasks in Gantt with custom toolbar item and dynamic add support." />
-}
+                    <meta name="description" content="This example demonstrates the Unscheduled Tasks in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
 
 @section Description{
     <div id="description">
@@ -94,3 +94,9 @@
         </p>      
     </div>
 }
+@section Title{
+                 <title>ASP.NET MVC Gantt Unscheduled Tasks Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Unscheduled Tasks in ASP.NET MVC Gantt Control</h1>
+            }

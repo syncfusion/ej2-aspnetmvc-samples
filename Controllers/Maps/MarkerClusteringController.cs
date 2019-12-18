@@ -16,14 +16,21 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: MarkerClustering
         public ActionResult MarkerClustering()
         {
-            ViewBag.shapeData = this.getWorldMap();
-            ViewBag.ClusterData = this.ClusterData();
-            return View();
-        }
-        public object ClusterData()
-        {
-            string allText = System.IO.File.ReadAllText(Server.MapPath("~/App_Data/MapData/ClusterData.json"));
-            return JsonConvert.DeserializeObject(allText, typeof(object));
+            ViewBag.shapeData = this.GetWorldMap();
+            string population = System.IO.File.ReadAllText(Server.MapPath("~/App_Data/MapData/ClusterData.js"));
+            object datasrc = JsonConvert.DeserializeObject(population, typeof(object));
+            MapsMarker marker = new MapsMarker();
+            marker.Visible = true;
+            marker.DataSource = JsonConvert.DeserializeObject(population, typeof(object));
+            marker.AnimationDuration = 0;
+            marker.Shape = MarkerType.Image;
+            marker.Width = 20;
+            marker.Height = 20;
+            marker.TooltipSettings = new MapsTooltipSettings { Visible = true, ValuePath = "area", Template ="#template" };
+            List<MapsMarker> markerSettings = new List<MapsMarker>();
+            markerSettings.Add(marker);
+            ViewBag.markerSettings = markerSettings;
+            return View(); ;
         }
     }
 }

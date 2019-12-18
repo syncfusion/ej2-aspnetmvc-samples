@@ -36,16 +36,16 @@ namespace EJ2MVCSampleBrowser.Controllers
 
         [HttpPost]
         [Route("SystemClipboard")]
-        public string SystemClipboard([FromBody]CustomParameter param)
+        public HttpResponseMessage SystemClipboard([FromBody]CustomParameter param)
         {
             if (param.content != null && param.content != "")
             {
                 Syncfusion.EJ2.DocumentEditor.WordDocument document = Syncfusion.EJ2.DocumentEditor.WordDocument.LoadString(param.content, GetFormatType(param.type.ToLower()));
                 string json = Newtonsoft.Json.JsonConvert.SerializeObject(document);
                 document.Dispose();
-                return json;
+                return new HttpResponseMessage() { Content = new StringContent(json) };
             }
-            return "";
+            return new HttpResponseMessage() { Content = new StringContent("") };
         }
 
         [HttpPost]
@@ -77,6 +77,8 @@ namespace EJ2MVCSampleBrowser.Controllers
                     return Syncfusion.EJ2.DocumentEditor.FormatType.Txt;
                 case ".xml":
                     return Syncfusion.EJ2.DocumentEditor.FormatType.WordML;
+                case ".html":
+                    return Syncfusion.EJ2.DocumentEditor.FormatType.Html;
                 default:
                     throw new NotSupportedException("EJ2 DocumentEditor does not support this file format.");
             }

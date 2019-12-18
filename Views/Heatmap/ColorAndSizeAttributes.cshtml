@@ -1,7 +1,7 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Heatmap control shows how to bind the multiple data to bubble heat map" />
-}
+                    <meta name="description" content="This example demonstrates the Color and Size Attributes in ASP.NET MVC Heatmap Chart control. Explore here for more details."/>
+                }
 @section ControlsSection{
     <div>
         <div class="control-section">
@@ -17,7 +17,7 @@
                                             palette.Color("#355C7D").Add();
                                         }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Gradient)).CellSettings(cs =>
                                         cs.ShowLabel(false).Border(ViewBag.border).TileType(Syncfusion.EJ2.HeatMap.CellType.Bubble).BubbleType(Syncfusion.EJ2.HeatMap.BubbleType.SizeAndColor)).LegendSettings(ls =>
-                                        ls.Visible(true)).TooltipRender("tooltipRender").Load("load").Render()
+                                        ls.Visible(true)).TooltipRender("tooltipRender").DataSourceSettings(ds => { ds.IsJsonData(true).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Cell).XDataMapping("Year").YDataMapping("Months").BubbleDataMapping(bm => { bm.Size("Accidents").Color("Fatalities"); }); }).Load("load").Render()
         </div>
         <div style="float: right; margin-right: 10px;">
             Source:
@@ -40,8 +40,7 @@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
         };
-        var dataSource = {
-            data: [
+        var dataSource = [
                 { Year: '2017', Months: 'Jan-Feb', Accidents: 4, Fatalities: 39 },
                 { Year: '2017', Months: 'Mar-Apr', Accidents: 3, Fatalities: 8 },
                 { Year: '2017', Months: 'May-Jun', Accidents: 1, Fatalities: 3 },
@@ -83,13 +82,8 @@
                 { Year: '2012', Months: 'Jul-Aug', Accidents: 0, Fatalities: 0 },
                 { Year: '2012', Months: 'Sep-Oct', Accidents: 3, Fatalities: 33 },
                 { Year: '2012', Months: 'Nov-Dec', Accidents: 4, Fatalities: 42 }
-            ],
-            isJsonData: true,
-            adaptorType: 'Cell',
-            xDataMapping: 'Year',
-            yDataMapping: 'Months',
-            bubbleDataMapping: { size: 'Accidents', color: 'Fatalities' }
-        };
+            ];
+
     </script>
 }
 @section ActionDescription{
@@ -110,3 +104,10 @@
         Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the <code>Tooltip </code> module using the <code>Heatmap.Inject(Tooltip) </code> method.
     </p>
 }
+
+@section Title{
+                 <title>ASP.NET MVC Heatmap Chart Color and Size Attributes Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Color and Size Attributes in ASP.NET MVC Heatmap Chart Control</h1>
+            }

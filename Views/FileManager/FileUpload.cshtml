@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.FileManager
 @using Syncfusion.EJ2.Inputs
 @using Syncfusion.EJ2.Buttons
@@ -20,10 +20,10 @@
                 @*Dialog*@
                 @Html.EJS().Dialog("dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("onDialogLoad").Close("dialogClose").Open("dialogOpen").Header("Select a file").Visible(false).ShowCloseIcon(true).Width("850px").Target("#target").ContentTemplate(@<div class='dialogContent'>
                     @Html.EJS().FileManager("filemanager").AjaxSettings(new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings  {
-                   Url = "/FileManager/FileOperations",
-                   DownloadUrl = "/FileManager/Download",
-                   UploadUrl = "/FileManager/Upload",
-                   GetImageUrl = "/FileManager/GetImage"
+                   Url = "FileOperations",
+                   DownloadUrl = "Download",
+                   UploadUrl = "Upload",
+                   GetImageUrl = "GetImage"
                }).ToolbarSettings(new Syncfusion.EJ2.FileManager.FileManagerToolbarSettings() { Items = items }).ContextMenuSettings(new Syncfusion.EJ2.FileManager.FileManagerContextMenuSettings() {
                    File = contextmenuItems, Folder = contextmenuItems }).FileOpen("onFileOpen").Render()</div>).Render()
             </div>
@@ -84,9 +84,8 @@
 }
 
 @section Meta{
-
-    <meta content="This example demonstrates how to render the File Manager component inside the Dialog component in a ASP.NET MVC File Manager." />
-}
+                    <meta name="description" content="This example demonstrates the File Upload in ASP.NET MVC File Manager control. Explore here for more details."/>
+                }
 
 <style>
     .fileupload {
@@ -112,3 +111,10 @@
         display: none;
     }
 </style>
+
+@section Title{
+                 <title>ASP.NET MVC File Manager File Upload Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for File Upload in ASP.NET MVC File Manager Control</h1>
+            }

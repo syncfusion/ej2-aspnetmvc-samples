@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <script src="~/Scripts/theme-color.js"></script>
     <div class="col-lg-9 control-section">
@@ -68,8 +68,8 @@
 }
          @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control demonstrates the selection behavior in chart." />
-}
+                    <meta name="description" content="This example demonstrates the Selection in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
          @*custom code end*@
 @section ActionDescription{
    <p>
@@ -87,7 +87,7 @@
     Tap to select a point or series, double tap and drag to enable rectangular selection in touch enabled devices.
 </p>
 <p>
-    Chart supports five mode of selection which can be set using
+    Chart supports seven mode of selection which can be set using
     <code>SelectionMode</code> property.
 </p>
 <ul>
@@ -109,6 +109,15 @@
     <li>
         <code>DragY</code> - Rectangular selection with respect to vertical axis.
     </li>
+    <li>
+        <code>Lasso</code> - Select free form of selection area points.
+    </li>
 </ul>
 <br>
 }
+@section Title{
+                 <title>ASP.NET MVC Chart Selection Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Selection in ASP.NET MVC Chart Control</h1>
+            }

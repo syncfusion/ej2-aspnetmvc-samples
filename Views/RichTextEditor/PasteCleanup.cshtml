@@ -4,10 +4,43 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="content-wrapper" id="all-option-sample">
-            <div class="control-section">
-                @Html.EJS().RichTextEditor("pastecleanup").Value((string)ViewBag.value).Created("created").PasteCleanupSettings(p => p.Prompt(true)).Render()
-            </div>
-        </div>
+                @Html.EJS().RichTextEditor("pasteCleanUp").ContentTemplate(@<div>
+    <p>
+        RichTextEditor is a WYSIWYG editing control which will reduce the effort for users while
+        trying to express their formatting word content as HTML or Markdown format.
+    </p>
+    <p><b>Paste Cleanup properties:</b></p>
+    <ul>
+        <li>
+            <p>prompt - specifies whether to enable the prompt when pasting in RichTextEditor.</p>
+        </li>
+        <li>
+            <p>plainText - specifies whether to paste as plain text or not in RichTextEditor.</p>
+        </li>
+        <li>
+            <p>
+                keepFormat- specifies whether to keep or remove the format when pasting in
+                RichTextEditor.
+            </p>
+        </li>
+        <li>
+            <p>deniedTags - specifies the tags to restrict when pasting in RichTextEditor.</p>
+        </li>
+        <li>
+            <p>
+                deniedAttributes - specifies the attributes to restrict when pasting in
+                RichTextEditor.
+            </p>
+        </li>
+        <li>
+            <p>
+                allowedStyleProperties - specifies the allowed style properties when pasting in
+                RichTextEditor.
+            </p>
+        </li>
+    </ul>
+</div>).Created("created").PasteCleanupSettings(p => p.Prompt(true)).Render()
+          </div>
     </div>
 
     <div class="col-lg-4 property-section" id="all-option-table">
@@ -21,7 +54,7 @@
                         <td>
                             <div>
                                 @Html.EJS().DropDownList("format").PopupHeight("200px").Index(0).DataSource(
-                    (IEnumerable<FormatOption>)ViewBag.data).Change("formatChange").Fields(new DropDownListFieldSettings { Text = "Format", Value = "Id" }).Render()
+                    (IEnumerable<FormatOption>)ViewBag.Data).Change("formatChange").Fields(new DropDownListFieldSettings { Text = "Format", Value = "Id" }).Render()
                             </div>
                         </td>
                     </tr>
@@ -41,7 +74,7 @@
                         </td>
                         <td>
                             <div>
-                                @Html.EJS().TextBox("deniedAttributes").Change("deniedTagsChange").Placeholder("'id', 'title'").Render()
+                                @Html.EJS().TextBox("deniedAttributes").Change("deniedAttrsChange").Placeholder("'id', 'title'").Render()
                             </div>
                         </td>
                     </tr>
@@ -51,7 +84,7 @@
                         </td>
                         <td>
                             <div>
-                                @Html.EJS().TextBox("allowedstyleproperties").Change("allowedStyleChange").Placeholder("'href', 'style'").Render()
+                                @Html.EJS().TextBox("allowedStyleProperties").Change("allowedStyleChange").Placeholder("'href', 'style'").Render()
                             </div>
                         </td>
                     </tr>
@@ -61,16 +94,9 @@
     </div>
 }
 
-@section Scripts{
-    <script>
-
-
-    </script>
-}
-
 @section Meta{
-    <meta name="description" content="This example explains how to clean up HTML when pasting content in the editor. It is used to paste content as plain text and deny specific tags, attributes, and properties." />
-}
+                    <meta name="description" content="This example demonstrates the Paste from MS Word in ASP.NET MVC Rich Text Editor control. Explore here for more details."/>
+                }
 @section ActionDescription{
     <div id="action-description">
         <p>This example demonstrates the paste cleanup feature of the Rich Text Editor control. Copy your content from MS Word or other website, and paste it within the editor to cleanup.</p>
@@ -120,41 +146,43 @@
 }
 
 <script>
-    var defaultAPI;
+    var rteObj;
     function created() {
-        defaultAPI = this;
+        rteObj = this;
     }
-
     function formatChange() {
         if (format.value === 'Prompt') {
-            defaultAPI.pasteCleanupSettings.prompt = true;
+            rteObj.pasteCleanupSettings.prompt = true;
         } else if (format.value === 'Plain Text') {
-            defaultAPI.pasteCleanupSettings.prompt = false;
-            defaultAPI.pasteCleanupSettings.plainText = true;
+            rteObj.pasteCleanupSettings.prompt = false;
+            rteObj.pasteCleanupSettings.plainText = true;
         } else if (format.value === 'Keep Format') {
-            defaultAPI.pasteCleanupSettings.prompt = false;
-            defaultAPI.pasteCleanupSettings.plainText = false;
-            defaultAPI.pasteCleanupSettings.keepFormat = true;
+            rteObj.pasteCleanupSettings.prompt = false;
+            rteObj.pasteCleanupSettings.plainText = false;
+            rteObj.pasteCleanupSettings.keepFormat = true;
         } else if (format.value === 'Clean Format') {
-            defaultAPI.pasteCleanupSettings.prompt = false;
-            defaultAPI.pasteCleanupSettings.plainText = false;
-            defaultAPI.pasteCleanupSettings.keepFormat = false;
+            rteObj.pasteCleanupSettings.prompt = false;
+            rteObj.pasteCleanupSettings.plainText = false;
+            rteObj.pasteCleanupSettings.keepFormat = false;
         }
-        defaultAPI.dataBind();
-    }
+   }
 
     function deniedTagsChange(args) {
-        defaultAPI.pasteCleanupSettings.deniedTags = (eval)('[' + deniedTags.value + ']');// jshint ignore:line
-        defaultAPI.dataBind();
-    }
+        rteObj.pasteCleanupSettings.deniedTags = (eval)('[' + deniedTags.value + ']');// jshint ignore:line
+     }
 
     function deniedAttrsChange(args) {
-        defaultAPI.pasteCleanupSettings.deniedAttrs = (eval)('[' + deniedAttributes.value + ']');// jshint ignore:line
-        defaultAPI.dataBind();
+        rteObj.pasteCleanupSettings.deniedAttrs = (eval)('[' + deniedAttributes.value + ']');// jshint ignore:line
     }
 
     function allowedStyleChange(args) {
-        defaultAPI.pasteCleanupSettings.allowedStyleProps = (eval)('[' + allowedstyleproperties.value + ']');// jshint ignore:line
-        defaultAPI.dataBind();
+        rteObj.pasteCleanupSettings.allowedStyleProps = (eval)('[' + allowedStyleProperties.value + ']');// jshint ignore:line
     }
 </script>
+
+@section Title{
+                 <title>ASP.NET MVC Rich Text Editor Paste from MS Word Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Paste from MS Word in ASP.NET MVC Rich Text Editor Control</h1>
+            }

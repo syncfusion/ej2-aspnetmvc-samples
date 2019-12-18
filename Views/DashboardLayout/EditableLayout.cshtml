@@ -15,79 +15,94 @@
 
         @Html.EJS().DashboardLayout("editableLayout").Columns(2).ResizeStop("onPanelResize").AllowDragging(false).CellSpacing(Model.cellSpacing).Panels(Panel =>
     {
-        Panel.SizeX(1).SizeY(1).Row(0).Col(0).Header("<div>Line Chart</div>").Content("#lineContainer").Add();
-        Panel.SizeX(1).SizeY(1).Row(0).Col(1).Header("<div>Pie Chart</div>").Content("#pieContainer").Add();
-        Panel.SizeX(2).SizeY(1).Row(1).Col(0).Header("<div>Spline Chart</div>").Content("#splineContainer").Add();
-    }).Render()
+        Panel.SizeX(1).SizeY(1).Row(0).Col(0).ContentTemplate(
+                                                                            @<div>
+                                                                                <div class="e-panel-container">
+                                                                                    <div class="e-panel-header">
+                                                                                        <div>
+                                                                                            Line Chart
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="e-panel-content">
+                                                                                        @(Html.EJS().Chart("linechart").Series(series =>
+                                                                {
+                                                                                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+                                                                        .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").Fill("#00bdae")
+                                                                        .YName("y").DataSource(ViewBag.lineSource1).Name("Jan").Width(2).Add();
+                                                                                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+                                                                        .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y").Fill("#e56691").DataSource(ViewBag.lineSource)
+                                                                        .Name("Feb").Width(2).Add();
+                                                                                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+                                                                        .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").Fill("#357cd2")
+                                                                        .YName("y").DataSource(ViewBag.lineSource2).Name("Mar").Width(2).Add();
+
+                                                                                 }).PrimaryYAxis(px => px.LabelStyle(ls => ls.Color("transparent")).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
+                                                                                 .MajorGridLines(mg => mg.Width(0))
+                                                                ).PrimaryXAxis(px => px.Interval(1)
+                                                                .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0))
+                                                                ).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br => br.Color("transparent"))
+                                                                ).LegendSettings(lg => lg.Visible(true)).Load("loadLinechart").Render())
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+             ).Add();
+                     Panel.SizeX(1).SizeY(1).Row(0).Col(1).ContentTemplate( @<div>
+                        <div class="e-panel-container">
+                            <div class="e-panel-header">
+                                <div>
+                                    Pie Chart
+                                </div>
+                            </div>
+                            <div class="e-panel-content">
+                                <div style="width:100%; height:100%">
+                                    @(Html.EJS().AccumulationChart("pie").Series(series =>
+                                                             {
+                                                                                                  series.DataLabel(dl => dl.Visible(true).Name("value")
+                                                                                     .Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside))
+                                                                                     .InnerRadius("40%").XName("x").YName("y").Name("Earnings")
+                                                                                     .Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).Radius("85%")
+                                                                                     .StartAngle(0).Palettes(ViewBag.pallets).EndAngle(360).Explode(false)
+                                                                                     .DataSource(ViewBag.pieSource).Add();
+                                                                                              }).EnableSmartLabels(true).EnableAnimation(false)
+                                                         .LegendSettings(ls => ls.Visible(false).ToggleVisibility(false))
+                                                         .Tooltip(tp => tp.Enable(true).Header("<b>${point.x}</b>").Format("Composition : <b>${point.y}%</b>"))
+                                                         .Load("loadPiechart").Render()
+                                    )
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ).Add();
+                             Panel.SizeX(2).SizeY(1).Row(1).Col(0).ContentTemplate(@<div>
+                                <div class="e-panel-container">
+                                    <div class="e-panel-header">
+                                        <div>
+                                            Spline Chart
+                                        </div>
+                                    </div>
+                                    <div class="e-panel-content">
+                                        @(Html.EJS().Chart("spline").Series(series =>
+                                    {
+                                                                             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").Fill("rgb(239, 183, 202)").DataSource(ViewBag.splineSource1).Name("Jan").Add();
+                                                                             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").Fill("rgb(0, 189, 174)").DataSource(ViewBag.splineSource2).Name("Feb").Add();
+
+                                                                         }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
+                                                                         .MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+                                                                         .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Months).LabelFormat("MMM")
+                                                 ).PrimaryYAxis(py => py.LabelFormat("{value}%").MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
+                                                 ).ChartArea(area => area.Border(br => br.Color("transparent"))).Load("loadSplinechart").Render())
+
+                                    </div>
+                                </div>
+                            </div>
+                        ).Add();
+                                 }).Render()
     </div>
 
     @*Dialog*@
     <div id="target">
         @Html.EJS().Dialog("dialog").Width("435px").Height("260px").Target("#target").Header("Add a Widget").ZIndex(20).ShowCloseIcon(true).IsModal(true).Visible(false).Content("<div><div id='linetemplate'><p class='dialog-text'>Linechart (1x1) </p></div><div id='pietemplate'><p class='dialog-text'>Piechart (1x1) </p></div><div id='splinetemplate'><p class='dialog-text'>Splinechart (2x1) </p></div></div>").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.Zoom }).Render()
     </div>
-    @*column chart*@
-    <div id="lineContainer">
-        @(Html.EJS().Chart("linechart").Series(series =>
-                                    {
-                                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
-                                        .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").Fill("#00bdae")
-                                        .YName("y").DataSource(ViewBag.lineSource1).Name("Jan").Width(2).Add();
-                                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
-                                         .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y").Fill("#e56691").DataSource(ViewBag.lineSource)
-                                        .Name("Feb").Width(2).Add();
-                                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
-                                         .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").Fill("#357cd2")
-                                         .YName("y").DataSource(ViewBag.lineSource2).Name("Mar").Width(2).Add();
-
-                                    }).PrimaryYAxis(px => px.LabelStyle(ls => ls.Color("transparent")).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
-                                    .MajorGridLines(mg => mg.Width(0))
-                                           ).PrimaryXAxis(px => px.Interval(1)
-                                           .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0))
-                                           ).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br => br.Color("transparent"))
-                                           ).LegendSettings(lg => lg.Visible(true)).Load("loadLinechart").Render())
-    </div>
-
-    @*pie chart*@
-    <div id="pieContainer" >
-        <div style="width:100%; height:100%">
-            @(Html.EJS().AccumulationChart("pie").Series(series =>
-                                                                      {
-                                                                          series.DataLabel(dl => dl.Visible(true).Name("value").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside)).InnerRadius("40%")
-                                                                                .XName("x")
-                                                                                .YName("y")
-                                                                                .Name("Earnings")
-                                                                                .Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
-                                                                                .Radius("85%")
-                                                                                .StartAngle(0)
-                                                                                .Palettes(ViewBag.pallets)
-                                                                                .EndAngle(360)
-                                                                                .Explode(false)
-                                                                                .DataSource(ViewBag.pieSource).Add();
-                                                                      })
-                                                                      .EnableSmartLabels(true)
-                                                                      .EnableAnimation(false)
-                                                                      .LegendSettings(ls => ls.Visible(false).ToggleVisibility(false))
-                                                                      .Tooltip(tp => tp.Enable(true).Header("<b>${point.x}</b>").Format("Composition : <b>${point.y}%</b>"))
-                                                                      .Load("loadPiechart")
-                                                                      .Render()
-            )
-        </div>
-    </div>
-
-    @*spline chart*@
-    <div id="splineContainer">
-        @(Html.EJS().Chart("spline").Series(series =>
-                            {
-                                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").Fill("rgb(239, 183, 202)").DataSource(ViewBag.splineSource1).Name("Jan").Add();
-                                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").Fill("rgb(0, 189, 174)").DataSource(ViewBag.splineSource2).Name("Feb").Add();
-
-                            }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
-                            .MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
-                            .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Months).LabelFormat("MMM")
-                                         ).PrimaryYAxis(py => py.LabelFormat("{value}%").MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
-                                         ).ChartArea(area => area.Border(br => br.Color("transparent"))).Load("loadSplinechart").Render())
-    </div>
-
     <div id="content"></div>
 }
 
@@ -95,12 +110,9 @@
 
     function onPanelResize(args) {
         var dashboardObject = document.getElementById("editableLayout").ej2_instances[0];
-        if (args.element && args.element.querySelector('.e-panel-container .e-panel-content chart') &&
-            dashboardObject.element.querySelector('.e-holder')) {
-            let chartObj = (args.element.querySelector('.e-panel-container .e-panel-content chart')).ej2_instances[0];
-            let holderElementHeight = parseInt((dashboardObject.element.querySelector('.e-holder')).style.height, 10);
-            let panelContanierElement = args.element.querySelector('.e-panel-content');
-            panelContanierElement.style.height = holderElementHeight - 35 + 'px';
+        var chartElement = args.element ? (args.element.querySelector('.e-panel-container .e-panel-content .e-control')) : null;
+        if (chartElement) {
+            let chartObj = (chartElement).ej2_instances[0];
             chartObj.height = '95%';
             chartObj.width = '100%';
             chartObj.refresh();
@@ -333,9 +345,11 @@
     #dialogBtn {
         display: none;
     }
+
     .e-dlg-container.e-dlg-center-center {
         z-index: 2000 !important;
     }
+
     .e-btn,
     .e-css.e-btn {
         display: block;
@@ -448,7 +462,9 @@
     <div id="action-description">
         <p>
             The following sample demonstrates a editable dashboard layout. Initially the DashboardLayout component doesn't
-            allow to drag, resize or reorder the panels. After clicking the edit button, the layout becomes editable which
+            allow to <a href="https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.Layouts.DashboardLayout~AllowDragging.html" target="_blank">drag</a>,
+            <a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.Layouts.DashboardLayout~AllowResizing.html" target="_blank">resize</a> or reorder the panels.
+            After clicking the edit button, the layout becomes editable which
             allows to drag and reorder the
             panels as per the requirement and also you can add new panels to the layout with predefined templates by
             clicking the add new button and reorder them by dragging and placing in the required position. Drag and resizing
@@ -463,3 +479,13 @@
         </p>
     </div>
 }
+
+@section Title{
+                 <title>ASP.NET MVC Dashboard Layout Editable Dashboard Example - Syncfusion Demos </title>
+             }
+@section Meta{
+                <meta name="description" content="This example demonstrates the Editable Dashboard in ASP.NET MVC Dashboard Layout control. Explore here for more details."/>
+            }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Editable Dashboard in ASP.NET MVC Dashboard Layout Control</h1>
+            }

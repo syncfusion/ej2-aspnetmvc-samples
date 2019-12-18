@@ -1,29 +1,25 @@
 @using Syncfusion.EJ2.PivotView
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 ASP.NET MVC Pivot Table control demonstrate integration of pivot table data into a simple pivot chart" />
-}
+                    <meta name="description" content="This example demonstrates the Pivot Chart in ASP.NET MVC Pivot Table control. Explore here for more details."/>
+                }
 @section ControlsSection{
 
-    <div class="col-lg-9 control-section">
+    <div class="col-lg-9 control-section" style="overflow:auto">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("450").DisplayOption(new PivotViewDisplayOption { View = View.Chart }).ShowFieldList(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false)
             .EnableSorting(true).Rows(rows =>
             {
-                rows.Name("Year").Add();
-                rows.Name("Order_Source").Caption("Order Source").Add();
+                rows.Name("Country").Add();
+                rows.Name("Products").Add();
             })
             .Columns(columns =>
             {
-                columns.Name("Country").Add();
-                columns.Name("Products").Add();
+                columns.Name("Year").Add();
+                columns.Name("Order_Source").Caption("Order Source").Add();
             })
             .Values(values =>
             {
                 values.Name("Amount").Caption("Sales Amount").Add();
-            })
-            .DrilledMembers(drilledmembers =>
-            {
-                drilledmembers.Name("Year").Items(ViewBag.drilledMembers).Add();
             })
             .FormatSettings(formatsettings =>
             {
@@ -67,6 +63,14 @@
             </tbody>
         </table>
     </div>
+
+    <style>
+        #pivotview {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
 
     <script>
         function onChartLoad(args) {
@@ -147,3 +151,10 @@
         </p>
     </div>
 }
+
+@section Title{
+                 <title>ASP.NET MVC Pivot Table Pivot Chart Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Pivot Chart in ASP.NET MVC Pivot Table Control</h1>
+            }

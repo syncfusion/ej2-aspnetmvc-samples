@@ -1,7 +1,7 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
-    <div class="control-section">
+	<div class="col-lg-12 control-section">
         <div id="container" style="width:100%">
             @Html.EJS().TreeMap("container").Load("load").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Template = "#Tooltip" }).TitleSettings(title => title.Text("Country wise International Airport count in South America").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Count").EqualColorValuePath("Count").LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top).Shape(Syncfusion.EJ2.TreeMap.LegendShape.Rectangle)).LeafItemSettings(leaf => leaf.ShowLabels(true).LabelPath("State").LabelPosition(Syncfusion.EJ2.TreeMap.LabelPosition.Center).LabelStyle(new TreeMapFont { Size = "13px" }).Fill("#6699cc").Border(new TreeMapBorder { Color = "white", Width = 1 })).Render()
         </div>
@@ -123,8 +123,8 @@
     </p>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 TreeMap control depicts the number of international airports available in various countries in South America along with tooltip." />
-}
+                    <meta name="description" content="This example demonstrates the Tooltip in ASP.NET MVC TreeMap control. Explore here for more details."/>
+                }
 @section Description{
     <p>
         In this example, you can see how to apply equal color mapping and apply colors for treemap items based on certain value.
@@ -134,3 +134,10 @@
     </p>
 }
 
+
+@section Title{
+                 <title>ASP.NET MVC TreeMap Tooltip Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Tooltip in ASP.NET MVC TreeMap Control</h1>
+            }

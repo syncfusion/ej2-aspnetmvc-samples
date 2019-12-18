@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @{
     ViewBag.Title = "DefaultFunctionalities";
 }
@@ -8,13 +8,8 @@
 
         @(Html.EJS().Gantt("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true)
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
-            .Dependency("Predecessor").Child("SubTasks")).EventMarkers(em =>
-            {
-                em.Day("04/09/2019").Label("Research phase").Add();
-                em.Day("04/30/2019").Label("Design phase").Add();
-                em.Day("05/23/2019").Label("Production phase").Add();
-                em.Day("06/20/2019").Label("Sales and marketing phase").Add();
-            }).LabelSettings(ls=>ls.LeftLabel("TaskName"))
+            .Dependency("Predecessor").Child("SubTasks"))
+            .LabelSettings(ls=>ls.LeftLabel("TaskName"))
             .ProjectStartDate("03/24/2019")
             .ProjectEndDate("07/06/2019")
             .Render()
@@ -31,8 +26,8 @@
 }
 
 @section Meta{
-    <meta name="description" content="This example demonstrates the simple Gantt chart with summary task, child tasks, milestone tasks, dependencies with event markers of project" />
-}
+                    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
 
 @section Description{
     <div id="description">
@@ -47,3 +42,9 @@
         </p>
     </div>
 }
+@section Title{
+                 <title>ASP.NET MVC Gantt Default Functionalities Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Default Functionalities in ASP.NET MVC Gantt Control</h1>
+            }

@@ -1,20 +1,20 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section">
         <div style="text-align:center">
             @Html.EJS().Chart("container").Series(
 series => {
     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Total").XName("x").YName("yValue")
-    .Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ViewBag.font)))
+    .Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
     .DataSource(ViewBag.dataSource).Width(2).ColumnWidth(0.5).Add();
     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Apple").XName("x").YName("yValue1")
-   .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ViewBag.font)))
+   .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
     .DataSource(ViewBag.dataSource).Width(2).ColumnWidth(0.4).Add();
     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Orange").XName("x").YName("yValue2")
-    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ViewBag.font)))
+    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
     .DataSource(ViewBag.dataSource).Width(2).ColumnWidth(0.3).Add();
     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Grapes").XName("x").YName("yValue3")
-    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ViewBag.font)))
+    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
     .DataSource(ViewBag.dataSource).Width(2).ColumnWidth(0.3).Add();
 
 }).PrimaryXAxis(px => {
@@ -51,8 +51,8 @@ series => {
 }
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the column charts." />
-}
+                    <meta name="description" content="This example demonstrates the Back To Back Column in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
 @*custom code end*@
 @section ActionDescription{
     <p>
@@ -75,3 +75,9 @@ series => {
         <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
     </p>
 }
+@section Title{
+                 <title>ASP.NET MVC Chart Back To Back Column Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Back To Back Column in ASP.NET MVC Chart Control</h1>
+            }

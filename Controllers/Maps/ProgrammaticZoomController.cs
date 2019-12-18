@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Syncfusion.EJ2.Maps;
+using Newtonsoft.Json;
+
+namespace EJ2MVCSampleBrowser.Controllers.Maps
+{
+    public partial class MapsController : Controller
+    {
+        // GET: Marker
+        public ActionResult ProgrammaticZoom()
+        {
+            ViewBag.shapeData = this.GetWorldMap();
+            string capitals = System.IO.File.ReadAllText(Server.MapPath("~/App_Data/MapData/SouthAmericanCountryCapitals.js"));
+            object datasrc = JsonConvert.DeserializeObject(capitals, typeof(object));
+            MapsMarker marker = new MapsMarker();
+            marker.Visible = true;
+            marker.DataSource = JsonConvert.DeserializeObject(capitals, typeof(object));
+            marker.AnimationDuration = 0;
+            marker.Shape = MarkerType.Image;
+            marker.Height = 20;
+            marker.Width = 20;
+            marker.TooltipSettings = new MapsTooltipSettings{ Visible = true, ValuePath = "name", Format = "<b>Capital</b> : ${name}<br><b>Country</b> : ${Country}" };
+            List<MapsMarker> markerSettings = new List<MapsMarker>();
+            markerSettings.Add(marker);
+            ViewBag.markerSettings = markerSettings;
+            return View();
+        }
+    }
+}

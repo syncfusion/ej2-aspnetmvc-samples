@@ -8,10 +8,10 @@
             @Html.EJS().FileManager("filemanager").AjaxSettings(
               new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
               {
-                  Url = "/FileManager/FileOperations",
-                  DownloadUrl = "/FileManager/Download",
-                  UploadUrl= "/FileManager/Upload",
-                  GetImageUrl= "/FileManager/GetImage"
+                  Url = "FileOperations",
+                  DownloadUrl = "Download",
+                  UploadUrl= "Upload",
+                  GetImageUrl= "GetImage"
               }).NavigationPaneSettings(ls => ls.Visible(false)).ToolbarSettings(ls => ls.Visible(true)).Render()
         </div>
     </div>
@@ -53,9 +53,8 @@
 }
 
 @section Meta{
-
-    <meta content="This example demonstrates how to render the File Manager without the navigation pane in a ASP.NET MVC File Manager." />
-}
+                    <meta name="description" content="This example demonstrates the API in ASP.NET MVC File Manager control. Explore here for more details."/>
+                }
 
 <script>
     function onToolbarChange(args) {
@@ -76,3 +75,9 @@
     }
 
 </style>
+@section Title{
+                 <title>ASP.NET MVC File Manager API Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for API in ASP.NET MVC File Manager Control</h1>
+            }
