@@ -1,0 +1,70 @@
+@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "Exporting";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("GanttExport")
+                .DataSource((IEnumerable<object>)ViewBag.DataSource)
+                .AllowExcelExport(true)
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
+                    .Progress("Progress").Dependency("Predecessor").Child("SubTasks").ResourceInfo("ResourceId"))
+                .Toolbar(new List<string>() { "ExcelExport", "CsvExport" })
+                .AllowSelection(true)
+                .GridLines(Syncfusion.EJ2.Gantt.GridLine.Both)
+                .Height("450px")
+                .TreeColumnIndex(1)
+                .ResourceNameMapping("ResourceName")
+                .ResourceIDMapping("ResourceId")
+                .Resources((IEnumerable<object>)ViewBag.Resources)
+                .HighlightWeekends(true)
+                .TimelineSettings(tl => tl.TopTier(tt =>
+                    tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week).Format("MMM dd, y")).
+                    BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day)))
+                .LabelSettings(ls => ls.LeftLabel("TaskName")
+                .RightLabel("${if(taskData.SubTasks)}${taskData.Duration} ${else if(ResourceId)}${ResourceId}${/if}"))
+                .ToolbarClick("toolbarClick")
+                .ProjectStartDate("03/25/2019")
+                .ProjectEndDate("07/28/2019")
+                .Render()
+            )
+        </div>
+        <script>
+            function toolbarClick(args) {
+                if (args.item.id === "GanttExport_excelexport") {
+                    this.excelExport();
+                }
+                else if (args.item.id === "GanttExport_csvexport") {
+                    this.csvExport();
+                }
+            }
+        </script>
+    </div>
+});
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates client-side exporting of the Gantt, which allows you to export Gantt data to Excel and CSV formats. Using the Gantt toolbar buttons, you can export Gantt data to the desired format. </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Exporting in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>Gantt supports client-side exporting, which allows you to export its data to the Excel and CSV formats. </p>
+        <p>In this demo, we have defined actions in the <code>ToolbarClick</code> event to export the Gantt data using the <code>excelExport</code> and <code>csvExport</code> methods.</p>
+    </div>
+}
+
+@section Title{
+                 <title>ASP.NET MVC Gantt Exporting Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Exporting in ASP.NET MVC Gantt Control</h1>
+            }

@@ -1,9 +1,8 @@
-﻿
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-md-8 control-section">
         <div class="content-wrapper">
-            @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Width("80%").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+            @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
            new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
            {
                Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
@@ -215,8 +214,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Linear Gauge control shows various properties available to customize the axes and pointers." />
-}
+                    <meta name="description" content="This example demonstrates the AxesAndPointers in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -236,3 +235,10 @@
 }
 
 
+
+@section Title{
+                 <title>ASP.NET MVC Linear Gauge AxesAndPointers Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for AxesAndPointers in ASP.NET MVC Linear Gauge Control</h1>
+            }

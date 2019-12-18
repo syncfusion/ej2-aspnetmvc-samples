@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.FileManager
 @using EJ2MVCSampleBrowser.Models
 @section ControlsSection{
@@ -7,10 +7,10 @@
             <!-- File Manager custom thumbnail sample -->
             @Html.EJS().FileManager("file").AjaxSettings(
               new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings {
-                  Url = "/FileManager/FileOperations",
-                  DownloadUrl = "/FileManager/Download",
-                  UploadUrl = "/FileManager/Upload",
-                  GetImageUrl = "/FileManager/GetImage"
+                  Url = "FileOperations",
+                  DownloadUrl = "Download",
+                  UploadUrl = "Upload",
+                  GetImageUrl = "GetImage"
               }).View(Syncfusion.EJ2.FileManager.ViewType.LargeIcons).ShowThumbnail(false).Render()
         </div>
     </div>
@@ -34,9 +34,8 @@
 }
 
 @section Meta{
-
-    <meta content="This example demonstrates how to use the custom thumbnails in a ASP.NET MVC File Manager." />
-}
+                    <meta name="description" content="This example demonstrates the Custom Thumbnails in ASP.NET MVC File Manager control. Explore here for more details."/>
+                }
 
 
 <style>
@@ -115,3 +114,9 @@
     }
 
 </style>
+@section Title{
+                 <title>ASP.NET MVC File Manager Custom Thumbnails Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Custom Thumbnails in ASP.NET MVC File Manager Control</h1>
+            }

@@ -1,7 +1,7 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Heatmap control demonstrates how to bind the JSON object with data for each columns to heatmap" />
-}
+                    <meta name="description" content="This example demonstrates the JSON Row in ASP.NET MVC Heatmap Chart control. Explore here for more details."/>
+                }
 @section ControlsSection{
     <div class="control-section">
         <div id="container" style="width:100%">
@@ -20,7 +20,7 @@
                      palette.Color("#F0C27B").Add();
                      palette.Color("#4B1248").Add();
                  })).CellSettings(cs =>
-                 cs.Border(ViewBag.border)).DataSource("dataSource").TooltipRender("tooltipRender").Load("load").Render()
+                 cs.Border(ViewBag.border)).DataSource("dataSource").TooltipRender("tooltipRender").DataSourceSettings(ds => { ds.IsJsonData(true).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Table).XDataMapping("Region"); }).Load("load").Render()
         </div>
         <div style="float: right; margin-right: 10px;">
             Source:
@@ -40,22 +40,16 @@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
         };
-        var dataSource = {
-            data: [
-                { "Region": "USA", "2000": 93, "2004": 101, "2008": 112, "2012": 103, "2016": 121 },
-                { "Region": "GBR", "2000": 28, "2004": 30, "2008": 49, "2012": 65, "2016": 67 },
-                { "Region": "China", "2000": 58, "2004": 63, "2008": 100, "2012": 91, "2016": 70 },
-                { "Region": "Russia", "2000": 89, "2004": 90, "2008": 60, "2012": 69, "2016": 55 },
-                { "Region": "Germany", "2000": 56, "2004": 49, "2008": 41, "2012": 44, "2016": 42 },
-                { "Region": "Japan", "2000": 18, "2004": 37, "2008": 25, "2012": 38, "2016": 41 },
-                { "Region": "France", "2000": 38, "2004": 33, "2008": 43, "2012": 35, "2016": 42 },
-                { "Region": "KOR", "2000": 28, "2004": 30, "2008": 32, "2012": 30, "2016": 21 },
-                { "Region": "Italy", "2000": 34, "2004": 32, "2008": 27, "2012": 28, "2016": 28 }],
-            isJsonData: true,
-            adaptorType: "Table",
-            xDataMapping: "Region",
-        };
-
+        var dataSource = [
+            { "Region": "USA", "2000": 93, "2004": 101, "2008": 112, "2012": 103, "2016": 121 },
+            { "Region": "GBR", "2000": 28, "2004": 30, "2008": 49, "2012": 65, "2016": 67 },
+            { "Region": "China", "2000": 58, "2004": 63, "2008": 100, "2012": 91, "2016": 70 },
+            { "Region": "Russia", "2000": 89, "2004": 90, "2008": 60, "2012": 69, "2016": 55 },
+            { "Region": "Germany", "2000": 56, "2004": 49, "2008": 41, "2012": 44, "2016": 42 },
+            { "Region": "Japan", "2000": 18, "2004": 37, "2008": 25, "2012": 38, "2016": 41 },
+            { "Region": "France", "2000": 38, "2004": 33, "2008": 43, "2012": 35, "2016": 42 },
+            { "Region": "KOR", "2000": 28, "2004": 30, "2008": 32, "2012": 30, "2016": 21 },
+            { "Region": "Italy", "2000": 34, "2004": 32, "2008": 27, "2012": 28, "2016": 28 }];
 
     </script>
 }
@@ -77,3 +71,10 @@
         Heatmap component features are segregated into individual feature-wise modules. To use data adaptor support, we need to inject <code>Adaptor</code> module using <code>Heatmap.Inject(Adaptor)</code> method, to use a tooltip, inject the <code>Tooltip</code> module using the <code>Heatmap.Inject(Tooltip)</code> method, and use a legend by injecting the <code>Legend</code> module using the <code>Heatmap.Inject(Legend)</code> method.
     </p>
 }
+
+@section Title{
+                 <title>ASP.NET MVC Heatmap Chart JSON Row Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for JSON Row in ASP.NET MVC Heatmap Chart Control</h1>
+            }

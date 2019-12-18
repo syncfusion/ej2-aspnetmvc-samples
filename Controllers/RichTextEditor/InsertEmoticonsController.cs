@@ -15,22 +15,22 @@ namespace EJ2MVCSampleBrowser.Controllers
              List<TabTabItem> tabItems = new List<TabTabItem>();
             tabItems.Add(new TabTabItem { Header = new TabHeader { Text = "&#128578;" }, Content = "#rteEmoticons-smiley" });
             tabItems.Add(new TabTabItem { Header = new TabHeader { Text = "&#128053;" }, Content = "#rteEmoticons-animal" });
-            ViewBag.tabItems = tabItems;
+            ViewBag.TabItems = tabItems;
             var tools = new
             {
                 tooltipText = "Insert Emoticons",
                 template = "<button class='e-tbar-btn e-btn' tabindex='-1' id='emot_tbar'  style='width:100%'><div class='e-tbar-btn-text rtecustomtool' style='font-weight: 500;'> &#128578;</div></button>"
             };
-            ViewBag.items = new object[] { "Bold", "Italic", "Underline", "|", "Formats", "Alignments", "OrderedList",
+            ViewBag.Items = new object[] { "Bold", "Italic", "Underline", "|", "Formats", "Alignments", "OrderedList",
                 "UnorderedList", "|", "CreateLink", "Image", "|", "SourceCode", tools
                 , "|", "Undo", "Redo"
             };
-            ViewBag.button = new
+            ViewBag.InsertBtn = new
             {
                 content = "Insert",
                 isPrimary = true
             };
-            ViewBag.button1 = new
+            ViewBag.CancelBtn = new
             {
                 content = "Cancel"
             };

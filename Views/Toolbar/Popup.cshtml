@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="e-sample-resize-container">
@@ -53,12 +53,9 @@
 }
 
 @section Meta{
+                    <meta name="description" content="This example demonstrates the Popup in ASP.NET MVC Toolbar control. Explore here for more details."/>
+                }
 
-    <meta name="description" content="The sample exposes popup mode of Toolbar control which configures overflowing toolbar commands inside a popup based on priority in ASP.NET MVC platform." />
-
-}
-
-@*custom code start*@
 <style>
     @@font-face {
         font-family: 'Material_toolbar';
@@ -200,7 +197,7 @@
         content: '\e701'
     }
 
-    .e-redo-icon:before {
+    .e-tbar-redo-icon:before {
         content: "\e713"
     }
 
@@ -220,7 +217,7 @@
         content: "\e714"
     }
 
-    .e-undo-icon:before {
+    .e-tbar-undo-icon:before {
         content: "\e708"
     }
 
@@ -286,4 +283,10 @@
         font-size: 16px;
     }
 </style>
- @*custom code end*@
+ 
+@section Title{
+                 <title>ASP.NET MVC Toolbar Popup Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Popup in ASP.NET MVC Toolbar Control</h1>
+            }

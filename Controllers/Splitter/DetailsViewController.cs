@@ -11,6 +11,13 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: DetailsView
         public ActionResult DetailsView()
         {
+            List<object> data = new List<object>();
+            data.Add(new { name = "Margaret", imgUrl = @Url.Content("~/Content/splitter/images/margaret.png"), id = "1" });
+            data.Add(new { name = "Laura", imgUrl = @Url.Content("~/Content/splitter/images/laura.png"), id = "2" });
+            data.Add(new { name = "Robert", imgUrl = @Url.Content("~/Content/splitter/images/robert.png"), id = "3" });
+            data.Add(new { name = "Michale", imgUrl = @Url.Content("~/Content/splitter/images/michale.png"), id = "4" });
+            data.Add(new { name = "Albert", imgUrl = @Url.Content("~/Content/splitter/images/albert.png"), id = "5" });
+            ViewBag.DataSource = data;
             return View();
         }
     }

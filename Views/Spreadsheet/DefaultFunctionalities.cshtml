@@ -1,0 +1,95 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Spreadsheet
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Spreadsheet("spreadsheet").OpenUrl("Open").SaveUrl("Save").DataBound("dataBoundEvent").Sheets(sheet =>
+   {
+       sheet.Name("Car Sales Report").RangeSettings(rangesetting =>
+       {
+           rangesetting.DataSource((IEnumerable<object>)ViewBag.DefaultData).Add();
+       }).Rows(row => {
+           row.Cells(cell =>
+           {
+               cell.Value("Customer Name").Add();
+               cell.Index(3).Value("Payment Mode").Add();
+               cell.Value("Delivery Date").Add();
+           }).Add();
+           row.Index(30).Cells(cell =>
+           {
+               cell.Index(4).Value("Total Amount:").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Right }).Add();
+               cell.Formula("=SUM(F2:F30)").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold }).Add();
+           }).Add();
+       }).Columns(column =>
+       {
+           column.Width(180).Add();
+           column.Width(130).Add();
+           column.Width(130).Add();
+           column.Width(180).Add();
+           column.Width(130).Add();
+           column.Width(120).Add();
+       }).Add();
+   }).Render()
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC Spreadsheet control. Explore here for more details."/>
+                }
+        @section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the <code>Spreadsheet</code> component and its features such as editing, formulas,
+            formatting, importing, and exporting.
+        </p>
+    </div>
+        }
+        @section Description{
+    <div id="description">
+        <p>
+            The <code>Spreadsheet</code> component is used to organize and analyze data in a tabular format.
+            It has a built-in calculation library that supports most commonly used formulas. Excel workbook files can be
+            imported and exported by providing <code>openUrl</code> &
+            <code>saveUrl</code> property.
+        </p>
+        <p>
+            Data binding can be achieved by setting a list objects or an instance of Data Manager to the
+            <code>dataSource</code> property under the rangeSettings of sheet. The <code>cellFormat</code> and
+            <code>numberFormat</code>
+            methods are used to apply format to a range of cells in the <code>dataBound</code> event.
+        </p>
+        <p>
+            More information about the Spreadsheet component can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started">
+                documentation
+            </a> section.
+        </p>
+    </div>
+        }
+
+<script>
+    function dataBoundEvent() {
+        if (this.activeSheetTab === 1 && this.sheets[this.activeSheetTab - 1].name === 'Car Sales Report') {
+            this.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle' }, 'A1:F1');
+            this.numberFormat('$#,##0.00', 'F2:F31');
+        }
+    }
+</script>
+
+@*custom code start*@
+<style>
+    .control-section {
+        height: 550px;
+    }
+    #sb-content .e-spreadsheet .e-tab .e-tab-text {
+        display: inherit;
+    }
+</style>
+@*custom code end*@
+
+@section Title{
+                 <title>ASP.NET MVC Spreadsheet Default Functionalities Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Default Functionalities in ASP.NET MVC Spreadsheet Control</h1>
+            }

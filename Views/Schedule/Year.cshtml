@@ -1,0 +1,69 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+@using Syncfusion.EJ2.DropDowns
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineYear).EventRendered("onEventRendered").Views(view => { view.Option(View.TimelineYear).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).Render()
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 30%">
+                        <div>
+                            Orientation
+                        </div>
+                    </td>
+                    <td style="width: 70%;">
+                        <div>
+                            @Html.EJS().DropDownList("orientation").Value("Horizontal").PopupHeight("250px").DataSource(ViewBag.orientation).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onOrientationChange").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
+    <script type="text/javascript">
+        function onOrientationChange(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.views = [{ option: 'TimelineYear', orientation: args.value }];
+            scheduleObj.dataBind();
+        }
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            applyCategoryColor(args, scheduleObj.currentView);
+        }
+    </script>
+}
+
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Year View in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo showcases how the scheduler looks like in Year view with its default set of configurations.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            This demo showcases how the scheduler looks like in Year view with its default set of configurations. In this demo, the active view of Scheduler is set to
+            <code>Vertical Year</code> and <code>Horizontal Year</code> view options are provided to
+            <code>views</code> property.
+        </p>
+    </div>
+}
+@section Title{
+                 <title>ASP.NET MVC Scheduler Year View Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Year View in ASP.NET MVC Scheduler Control</h1>
+            }

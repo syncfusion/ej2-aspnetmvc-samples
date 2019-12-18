@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Popups
 
 @section ControlsSection{
@@ -20,7 +20,7 @@
                 @Html.EJS().Button("FlipYRight").CssClass("e-outline").IsPrimary(true).Content("FlipY Right").Render()
             </div>
 
-            @Html.EJS().Dialog("defaultDialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.Zoom }).Header("Animation Dialog").Content("<span>The dialog is configured with animation effect. It is opened or closed with 'Zoom In or Out' animation.</span>").IsModal(true).ShowCloseIcon(true).CloseOnEscape(true).Width("285px").Target("#target").Buttons(ViewBag.defaultButton).Render()
+            @Html.EJS().Dialog("animationDialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.Zoom }).Header("Animation Dialog").Created("created").ContentTemplate(@<div><span>The dialog is configured with animation effect. It is opened or closed with 'Zoom In or Out' animation.</span></div>).IsModal(true).ShowCloseIcon(true).CloseOnEscape(true).Width("285px").Target("#target").Buttons(ViewBag.DefaultButton).Render()
 
         </div>
     </div>
@@ -61,7 +61,7 @@
 
 @section PreScripts {
     <script>
-        var dialog = document.getElementById('defaultDialog');
+        var dialogObj;
         var list = document.getElementsByClassName('animate');
         for (var i = 0; i < list.length; i++) {
             list[i].addEventListener('click', function (e) {
@@ -72,13 +72,15 @@
             var effects = e.target.id;
             var txt = e.target.parentElement.innerText;
             txt = (txt == "Zoom In/Out") ? "Zoom In or Out" : txt;
-            dialog.ej2_instances[0].content = 'The dialog is configured with animation effect. It is opened or closed with "' + txt + '" animation.';
-            dialog.ej2_instances[0].animationSettings = { effect: effects, duration: 400 };
-            dialog.ej2_instances[0].show();
+            dialogObj.content = 'The dialog is configured with animation effect. It is opened or closed with "' + txt + '" animation.';
+            dialogObj.animationSettings = { effect: effects, duration: 400 };
+            dialogObj.show();
         }
         function dlgButtonClick() {
-            var dialogObj = document.getElementById('defaultDialog').ej2_instances[0];
             dialogObj.hide();
+        }
+        function created() {
+            dialogObj = this;
         }
     </script>
 }
@@ -104,7 +106,13 @@
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This example demonstrates how to open or close the ASP.NET MVC dialog with various animation effects, and how to customize the animation duration and delay." />
-}
+                    <meta name="description" content="This example demonstrates the Animation in ASP.NET MVC Dialog control. Explore here for more details."/>
+                }
 
 @*custom code end*@
+@section Title{
+                 <title>ASP.NET MVC Dialog Animation Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Animation in ASP.NET MVC Dialog Control</h1>
+            }

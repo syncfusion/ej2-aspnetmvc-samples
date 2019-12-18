@@ -1,4 +1,4 @@
-﻿﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <div class="col-md-8 control-section">
@@ -100,7 +100,7 @@
             width: 120,
             change: function () {
                 var rangeColor = labelColor.value.toString();
-                circulargauge.axes[0].ranges[0].color = rangeColor;
+                circulargauge.axes[0].labelStyle.font.color = rangeColor;
                 circulargauge.refresh();
             }
         });
@@ -118,8 +118,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Circular Gauge control illustrates how to make a direction compass by using the circular gauge." />
-}
+                    <meta name="description" content="This example demonstrates the DirectionCompass in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -134,3 +134,10 @@
 }
 
 
+
+@section Title{
+                 <title>ASP.NET MVC Circular Gauge DirectionCompass Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for DirectionCompass in ASP.NET MVC Circular Gauge Control</h1>
+            }

@@ -1,9 +1,9 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
-<div class="control-section">
-    <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
-    @Html.EJS().DocumentEditorContainer("container").EnableToolbar(true).EnableRtl(true).Locale("ar-AE").Render()
-</div>
+    <div class="control-section">
+        <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
+        @Html.EJS().DocumentEditorContainer("container").EnableToolbar(true).EnableRtl(true).Locale("ar-AE").Render()
+    </div>
     <script>
         ej.base.L10n.load({
             'ar-AE': {
@@ -325,8 +325,26 @@
                     'Error in establishing connection with web server': 'خطأ في تأسيس اتصال مع ملقم ويب',
                     'Highlight the regions I can edit': 'تسليط الضوء على المناطق التي يمكنني تحريرها',
                     'Show All Regions I Can Edit': 'إظهار كافة المناطق التي يمكنني تحريرها',
-                    'Find Next Region I Can Edit': 'البحث عن المنطقة التالية التي يمكنني تحريرها'
-                },
+                    'Find Next Region I Can Edit': 'البحث عن المنطقة التالية التي يمكنني تحريرها',
+                'Keep source formatting': 'الاحتفاظ بتنسيق المصدر',
+            'Match destination formatting': 'مطابقه تنسيق الوجهة',
+            'Text only': 'النص فقط',
+            'Comments': 'تعليقات',
+            'Type your comment': 'اكتب تعليقك',
+            'Post': 'وظيفه',
+            'Reply': 'الرد',
+            'New Comment': 'تعليق جديد',
+            'Edit': 'تحرير',
+            'Resolve': 'حل',
+            'Reopen': 'فتح',
+            'No comments in this document': 'لا توجد تعليقات في هذا المستند',
+            'more': 'اكثر',
+            'Type your comment hear': 'اكتب تعليقك الاستماع',
+            'Next Comment': 'التعليق التالي',
+            'Previous Comment': 'التعليق السابق',
+            "Un-posted comments": "Un-نشر التعليقات",
+            "Added comments not posted. If you continue, that comment will be discarded.": "لم يتم نشر التعليقات المضافة. إذا قمت بالمتابعة ، سيتم تجاهل هذا التعليق."
+        },
                 'documenteditorcontainer': {
                     'New': 'الجديد',
                     'Open': 'فتح',
@@ -481,7 +499,12 @@
                     'Stop Protection': 'إيقاف الحماية',
                     'Unprotect Document': 'إلغاء حماية المستند',
                     'Password': 'كلمه المرور',
-                    'Protections': 'الحمايه'
+                    'Protections': 'الحمايه',
+					'Error in establishing connection with web server': 'خطا في تاسيس اتصال مع ملقم ويب',
+            'Single': 'واحد',
+            'Double': 'انقر نقرا مزدوجا',
+            "New comment": "تعليق جديد",
+            'Comments': 'تعليقات'
                 },
                 'colorpicker': {
                     'Apply': 'تطبيق',
@@ -505,7 +528,7 @@
         <div>
             <p>In this example, you can see document-editor right-to-left and the locale set in arabic[locale value is ar-AE]</p>
             <p>By default, locale value is en-US. If you want to change the en-US culture to a different culture, you have to change the locale accordingly.</p>
-        </div>                  
+        </div>
         <p style="display: block">
             More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/document-editor/getting-started/">documentation section.</a>
         </p>
@@ -519,7 +542,9 @@
         var documenteditorElement = document.getElementById("container");
         documenteditorElement.style.height = "590px";
         documenteditorElement.style.width = "100%";
-        documenteditor = documenteditorElement.ej2_instances[0].documentEditor;
+        var container = documenteditorElement.ej2_instances[0];
+        container.showPropertiesPane = true;
+        documenteditor = container.documentEditor;
         documenteditorElement.ej2_instances[0].serviceUrl = window.baseurl + 'api/documenteditorservice/';
         documenteditor.serviceUrl = window.baseurl + 'api/documenteditorservice/';
         var ajax = new ej.base.Ajax("@Url.Content("~/scripts/documenteditor/data-right-to-left.json")", 'GET', true);
@@ -529,7 +554,7 @@
             documenteditor.documentName = 'الشروع';
             updateDocumentTitle();
         };
-        documenteditor.documentChange = function (args) {
+        container.documentChange = function (args) {
             updateDocumentTitle();
         };
         titleBarDiv = document.getElementById('documenteditor_titlebar');
@@ -539,14 +564,15 @@
 }
 
 @section Meta{
-    <meta name="description" content="The Document Editor supports right to left for users who use right-to-left languages (Arabic, Hebrew, Urdu, etc.) in ASP.NET MVC." />
-}
+                    <meta name="description" content="This example demonstrates the Right To Left in ASP.NET MVC DocumentEditor control. Explore here for more details."/>
+                }
 
 <style>
     #container {
-        display:block;
-        height:500px;
+        display: block;
+        height: 500px;
     }
+
     #documenteditor_titlebar {
         border-bottom: 1px solid #2B3481;
         height: 36px;
@@ -615,3 +641,9 @@
 
     /** sample level font icons ends*/
 </style>
+@section Title{
+                 <title>ASP.NET MVC DocumentEditor Right To Left Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Right To Left in ASP.NET MVC DocumentEditor Control</h1>
+            }

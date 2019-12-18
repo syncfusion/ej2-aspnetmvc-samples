@@ -256,7 +256,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             //Setting height of the barcode
             code93ext.BarHeight = 45;
             code93ext.EncodeStartStopSymbols = true;
-            code93ext.Text = "(abc) 123456789";
+            code93ext.Text = "(abc) 123456";
 
             //Printing barcode on to the Pdf.
             page = document.Pages.Add();

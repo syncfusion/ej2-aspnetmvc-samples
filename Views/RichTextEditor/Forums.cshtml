@@ -12,7 +12,7 @@
                                         <div class='questionar'> </div>
                                     </td>
                                     <td>
-                                        <div class='Questionarname'>Kimberly</div>
+                                        <div class='QuestionarName'>Kimberly</div>
                                     </td>
                                 </tr>
                             </table>
@@ -69,7 +69,7 @@
                                         <div class='logos'> </div>
                                     </td>
                                     <td>
-                                        <div class='authorname'>Mabel Weber</div>
+                                        <div class='authorName'>Mabel Weber</div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -106,7 +106,7 @@
                         </div>
                     </div>
 
-                    <div id="createpostholder">
+                    <div id="createPostHolder">
                         <form novalidate="novalidate">
 							@Html.EJS().RichTextEditor("forums").Created("created").Placeholder("Write a reply").Render()
                             <div id='buttonSection'>
@@ -123,7 +123,6 @@
                                     </tr>
                                 </table>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -281,7 +280,7 @@
             height: 34px;
         }
 
-        .Questionarname {
+        .QuestionarName {
             margin-top: 13px;
             float: left;
             font-weight: 500;
@@ -363,13 +362,13 @@
             color: #fff;
         }
 
-        .authorname {
+        .authorName {
             font-family: SegoeUI-Semibold;
             color: #000000;
             font-size: 13px;
         }
 
-        .highcontrast .authorname {
+        .highcontrast .authorName {
             color: #fff;
         }
 
@@ -389,7 +388,7 @@
                 margin-right: 11px;
             }
 
-        .authorname,
+        .authorName,
         .detailsAnswer {
             margin-left: 11px;
         }
@@ -419,21 +418,15 @@
             padding: 15px 0;
         }
 
-        #createpostholder {
+        #createPostHolder {
             margin-top: 25px;
         }
     </style>
-    <script>
-    var defaultRTE
-    function created() {
-        defaultRTE = this;
-        }
-    </script>
-
 }
 
 @section Scripts{
 <script>
+    
     function getMonthName(index) {
         var month = [];
         month[0] = 'January';
@@ -453,22 +446,21 @@
     var buttonEle = document.getElementById('rteSubmit');
     var cancelEle = document.getElementById('rteCancel');
     cancelEle.addEventListener('click', function (e) {
-        var answerElement = defaultRTE.contentModule.getEditPanel();
+        var answerElement = rteObj.contentModule.getEditPanel();
         answerElement.innerHTML = '';
-        defaultRTE.value = '';
-        defaultRTE.dataBind();
-        defaultRTE.refresh();
+        rteObj.value = '';
+        rteObj.refresh();
     });
     var empCount = 0;
     buttonEle.addEventListener('click', function (e) {
-        var answerElement = defaultRTE.contentModule.getEditPanel();
+        var answerElement = rteObj.contentModule.getEditPanel();
         var comment = answerElement.innerHTML;
         var empList = ['emp1', 'emp2', 'emp3'];
         var nameListList = ['Anne Dodsworth', 'Janet Leverling', 'Laura Callahan'];
         if (comment !== null && comment.trim() !== '' && answerElement.innerText.trim() !== '') {
             var answer = document.querySelector('.answer');
             var cloneAnswer = answer.cloneNode(true);
-            var authorName = cloneAnswer.querySelector('.authorname');
+            var authorName = cloneAnswer.querySelector('.authorName');
             var logo = cloneAnswer.querySelector('.logos');
             logo.classList.remove('logos');
             if (empCount < 3) {
@@ -499,9 +491,8 @@
             count = count + 1;
             countEle.innerHTML = count.toString() + ' Answers';
             answerElement.innerHTML = '';
-            defaultRTE.value = '';
-            defaultRTE.dataBind();
-            defaultRTE.refresh();
+            rteObj.value = '';
+            rteObj.refresh();
             e.preventDefault();
         }
     });
@@ -512,8 +503,8 @@
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This demo for Essential JS 2  rich text editor control demonstrates how to design forum application using rich text editor."/>
-}
+                    <meta name="description" content="This example demonstrates the Use Case in ASP.NET MVC Rich Text Editor control. Explore here for more details."/>
+                }
 
 @*custom code end*@
 
@@ -534,4 +525,16 @@
         </p>
     </div>
 }
+<script>
+      var rteObj
+    function created() {
+        rteObj = this;
+        }
+</script>
 
+@section Title{
+                 <title>ASP.NET MVC Rich Text Editor Use Case Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Use Case in ASP.NET MVC Rich Text Editor Control</h1>
+            }

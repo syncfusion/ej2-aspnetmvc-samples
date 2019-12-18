@@ -62,7 +62,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             PdfRenderer pdfviewer = new PdfRenderer();
             object jsonResult = pdfviewer.GetAnnotationComments(jsonObject);
-            return (jsonResult);
+            return (JsonConvert.SerializeObject(jsonResult));
         }
         [HttpPost]
         public object RenderThumbnailImages(Dictionary<string, string> jsonObject)
@@ -91,6 +91,32 @@ namespace EJ2MVCSampleBrowser.Controllers
             PdfRenderer pdfviewer = new PdfRenderer();
             object pageImage = pdfviewer.GetPrintImage(jsonObject);
             return (pageImage);
+        }
+        [HttpPost]
+        public object ExportAnnotations([FromBody] Dictionary<string, string> jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            string jsonResult = pdfviewer.GetAnnotations(jsonObject);
+            return (GetPlainText(jsonResult));
+        }
+        [HttpPost]
+        public object ImportAnnotations([FromBody] Dictionary<string, string> jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            string jsonResult = string.Empty;
+            if (jsonObject != null && jsonObject.ContainsKey("fileName"))
+            {
+                 string documentPath = GetDocumentPath(jsonObject["fileName"]);
+                 if (!string.IsNullOrEmpty(documentPath))
+                 {
+                      jsonResult = System.IO.File.ReadAllText(documentPath);
+                 }
+                 else
+                 {
+                     return (jsonObject["document"] + " is not found");
+                 }
+            }
+            return (GetPlainText(jsonResult));
         }
         private HttpResponseMessage GetPlainText(string pageImage)
         {

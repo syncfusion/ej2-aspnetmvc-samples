@@ -1,0 +1,110 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Spreadsheet
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).ShowFormulaBar(false).DataBound("dataBoundEvent").Sheets(sheet =>
+        {
+            sheet.Name("Restaurant Invoice").SelectedRange("E17").RangeSettings(rangesetting =>
+            {
+                rangesetting.DataSource((IEnumerable<object>)ViewBag.numberFormatData).StartCell("A3").Add();
+            }).Rows(row =>{
+                row.Height(30).Cells(cell =>{
+                    cell.Value("Customer Name").Add();
+                    cell.Value("Cristi Espinos").Add();
+                    cell.Index(3).Value("Waiter Name").Add();
+                    cell.Value("Raye Whines").Add();
+                }).Add();
+                row.Height(30).Cells(cell =>{
+                    cell.Value("Table No.").Add();
+                    cell.Value("8").Add();
+                    cell.Index(3).Value("Date").Add();
+                    cell.Value("5/7/2019").Add();
+                }).Add();
+                row.Index(14).Cells(cell =>{
+                    cell.Index(1).Value("Subtotal:").Add();
+                    cell.Index(4).Formula("=SUBTOTAL(9,E4:E14)").Format("$#,##0.00").Add();
+                }).Add();
+                row.Cells(cell =>{
+                    cell.Index(1).Value("Discount (8%):").Add();
+                    cell.Index(4).Formula("=PRODUCT(8,E15)/100").Format("$#,##0.00").Add();
+                }).Add();
+                row.Cells(cell =>{
+                    cell.Index(1).Value("Total Amount:").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold }).Add();
+                    cell.Index(4).Formula("=SUM(E15-E16)").Format("getAccountingFormat").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold }).Add();
+                }).Add();
+        }).Columns(column =>
+       {
+           column.Width(120).Add();
+           column.Width(180).Add();
+           column.Width(100).Add();
+           column.Width(120).Add();
+           column.Width(120).Add();
+       }).Add();
+    }).Render()
+  </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Number Formatting in ASP.NET MVC Spreadsheet control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates number formatting feature with a restaurant invoice.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, number formatting is applied to specific cells by using the <code>format</code> property,
+            and a range of cells by using the <code>numberFormat</code> method.
+        </p>
+        <p>
+            More information about number formatting can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started">
+                documentation
+            </a> section.
+        </p>
+    </div>
+}
+
+<script>
+    function dataBoundEvent() {
+        if (this.activeSheetTab === 1 && this.sheets[this.activeSheetTab - 1].name === 'Restaurant Invoice') {
+            this.cellFormat({ fontWeight: 'bold' }, 'A1:E2');
+            this.cellFormat({ textAlign: 'center', fontWeight: 'bold' }, 'A3:E3');
+            this.cellFormat({ textAlign: 'center' }, 'A4:A14');
+            this.cellFormat({ textAlign: 'center' }, 'C4:C14');
+            this.cellFormat({ backgroundColor: '#F9FBE7' }, 'A4:E15');
+            this.cellFormat({ backgroundColor: '#1E88E5', color: '#F5F5F5' }, 'A1:E2');
+            this.cellFormat({ backgroundColor: '#BBDEFB' }, 'A3:E3');
+            this.cellFormat({ backgroundColor: '#B3E5FC' }, 'A15:E17');
+            this.numberFormat('$#,##0.00', 'D4:E14');
+            this.numberFormat('$#,##0.00', 'E15:E17');
+        }
+    }
+
+    function getAccountingFormat() {
+        return ejs.spreadsheet.getFormatFromType("Accounting");
+    }
+</script>
+
+@*custom code start*@
+<style>
+.control-section {
+    height: 550px;
+}
+#sb-content .e-spreadsheet .e-tab .e-tab-text {
+    display: inherit;
+}
+</style>
+@*custom code end*@
+
+@section Title{
+                 <title>ASP.NET MVC Spreadsheet Number Formatting Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Number Formatting in ASP.NET MVC Spreadsheet Control</h1>
+            }

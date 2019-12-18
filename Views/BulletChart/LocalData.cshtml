@@ -1,0 +1,108 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+<div class="control-section">
+    <div style="text-align:center">
+        @(Html.EJS().BulletChart("container")
+            .Tooltip(tp => tp.Enable(true))
+            .ValueField("completedStories")
+            .Width("700")
+            .Height("400")
+            .TargetField("requiredStories")
+            .CategoryField("name")
+            .Animation(an => an.Enable(false))
+            .Ranges(rn =>
+            {
+                rn.End(25).Opacity(1).Color("#DBE7F3").Add();
+                rn.End(37).Opacity(1).Color("#BBCEE7").Add();
+                rn.End(45).Opacity(1).Color("#96B2D7").Add();
+            })
+            .Minimum(5).Maximum(45).Interval(5)
+            .Title("Sprint Planning")
+            .Subtitle("Estimated in story points")
+            .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Top)
+            .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
+            .DataSource("localData")
+            .Load("load")
+            .Render()
+        )
+    </div>
+</div>
+    @*custom code start*@
+    <style>
+
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+        var localData = [
+            {
+                requiredStories: 20,
+                completedStories: 25,
+                name: 'David'
+            },
+            {
+                requiredStories: 25,
+                completedStories: 20,
+                name: 'Asif'
+            },
+            {
+                requiredStories: 15,
+                completedStories: 10,
+                name: 'Thomas'
+            },
+            {
+                requiredStories: 40,
+                completedStories: 39,
+                name: 'Rohit'
+            },
+            {
+                requiredStories: 35,
+                completedStories: 40,
+                name: 'Virat'
+            },
+            {
+                requiredStories: 28,
+                completedStories: 25,
+                name: 'Jude'
+            },
+            {
+                requiredStories: 10,
+                completedStories: 18,
+                name: 'Warner'
+            },
+            {
+                requiredStories: 30,
+                completedStories: 28,
+                name: 'Malik'
+            }
+
+        ];
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").replace(/light/i, 'Light').replace(/contrast/i, 'Contrast');
+         }
+    </script>
+    @*custom code end*@
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Multiple Data in ASP.NET MVC Bullet Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates a bullet chart with multiple local data. It displays multiple data in bullet chart.
+    </p>
+}
+@section Description{
+    <p>
+        Tooltip is enabled in this example, to see the tooltip in action, hover a feature bar or comparative bar on the bullet chart.
+    </p>    
+}
+@section Title{
+                 <title>ASP.NET MVC Bullet Chart Multiple Data Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Multiple Data in ASP.NET MVC Bullet Chart Control</h1>
+            }

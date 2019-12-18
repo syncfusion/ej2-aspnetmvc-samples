@@ -33,6 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             if (file != null)
             {
                 var extension = Path.GetExtension(file.FileName).ToLower();
+                string output = Path.GetFileNameWithoutExtension(file.FileName);
                 if (extension == ".doc" || extension == ".docx" || extension == ".dot" || extension == ".dotx" || extension == ".dotm" || extension == ".docm"
                    || extension == ".xml"  || extension == ".rtf")
                 {
@@ -63,7 +64,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
                     PdfDocument pdfDoc = converter.ConvertToPDF(document);
                     try
                     {
-                        return pdfDoc.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
+                        return pdfDoc.ExportAsActionResult( output + ".pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
                     }
                     catch (Exception)
                     { }

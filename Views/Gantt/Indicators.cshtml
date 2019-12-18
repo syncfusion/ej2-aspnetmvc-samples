@@ -1,0 +1,76 @@
+@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "Indicators";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("Indicators").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true)
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+                .Dependency("Predecessor").Indicators("Indicators").Child("SubTasks"))
+                .LabelSettings(ls => ls.LeftLabel("TaskName"))
+                .ProjectStartDate("03/24/2019")
+                .ProjectEndDate("07/06/2019")
+                .Render()
+            )
+        </div>
+    </div>
+
+    <style>
+
+        #Indicators .okIcon::before {
+            content: '\ea84';
+        }
+
+        #Indicators .description::before {
+            content: '\e30d';
+        }
+
+        .bootstrap4 #Indicators .okIcon::before {
+            content: '\e7d9';
+        }
+
+        .bootstrap4 #Indicators .description::before {
+            content: '\e7cb';
+        }
+
+        .fabric #Indicators .description::before {
+            content: '\e310';
+        }
+
+        .highcontrast #Indicators .description::before {
+            content: '\e310';
+        }
+    </style>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes how to mention special moment in any mentioned day for a particular task with different icon and label.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Indicators in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            In this example, <code>Indicators</code> are displayed with some custom text in specified day of task, which are defined in dataSource. You can define the indicators with the following properties for tasks:
+            <li><code>date</code>: Defines the date value to where we want to display the indicators.</li>
+            <li><code>iconClass </code>: Defines the icon to highlight the indicator.</li>
+            <li><code>name</code>: Defines text to be displayed in the mentioned date.</li>
+            <li><code>tooltip</code>: The text to be displayed when hover the mouse over the indicator.</li>
+        </p>
+    </div>
+}
+@section Title{
+                 <title>ASP.NET MVC Gantt Indicators Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Indicators in ASP.NET MVC Gantt Control</h1>
+            }

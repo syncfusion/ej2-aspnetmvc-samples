@@ -128,6 +128,34 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
             object pageImage = pdfviewer.GetPrintImage(jsonData);
             return Content(JsonConvert.SerializeObject(pageImage));
         }
+        [System.Web.Mvc.HttpPost]
+        public ActionResult ExportAnnotations(jsonObjects jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            var jsonData = JsonConverter(jsonObject);
+            string jsonResult = pdfviewer.GetAnnotations(jsonData);
+            return Content(jsonResult);
+        }
+        [System.Web.Mvc.HttpPost]
+        public ActionResult ImportAnnotations(jsonObjects jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            string jsonResult = string.Empty;
+            var jsonData = JsonConverter(jsonObject);
+            if (jsonObject != null && jsonData.ContainsKey("fileName"))
+            {
+                 string documentPath = GetDocumentPath(jsonData["fileName"]);
+                 if (!string.IsNullOrEmpty(documentPath))
+                 {
+                      jsonResult = System.IO.File.ReadAllText(documentPath);
+                 }
+                 else
+                 {
+                     return Content (jsonData["document"] + " is not found");
+                 }
+            }
+            return Content (jsonResult);
+        }
         private string GetDocumentPath(string document)
         {
             string documentPath = string.Empty;
@@ -239,11 +267,5 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
         public string sizeY { get; set; }
         public string startPage { get; set; }
         public string endPage { get; set; }
-        public string stampAnnotations { get; set; }
-        public string textMarkupAnnotations { get; set; }
-        public string stickyNotesAnnotation { get; set; }
-        public string shapeAnnotations { get; set; }
-        public string measureShapeAnnotations { get; set; }
-        public string action { get; set; }
     }
 }

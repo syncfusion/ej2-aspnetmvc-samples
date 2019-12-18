@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section">
         <div align="center">
@@ -8,7 +8,7 @@
 
            series.DataSource("dataValues").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Histogram).YName("y")
            .BinInterval(20).ShowNormalDistribution(true).ColumnWidth(0.99).Name("Score")
-           .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ViewBag.font))).Add();
+           .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff")))).Add();
        }).PrimaryXAxis(px => px.Maximum(100).Minimum(0).Title("Score of Final Examination").MajorGridLines(mg=>mg.Width(0))
        ).PrimaryYAxis(px => px.Minimum(0).Maximum(50).Interval(10).Title("Number of Student").LineStyle(ls=>ls.Width(0)).MajorTickLines(mt=>mt.Width(0))
        ).Title("Examination Result").ChartArea(ca => ca.Border(br=>br.Width(0))).LegendSettings(lg=>lg.Visible(false)).Tooltip(tt => tt.Enable(true)).Width("60%").Load("load").Render()
@@ -54,8 +54,8 @@
 }
  @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render the histogram series." />
-}
+                    <meta name="description" content="This example demonstrates the Histogram in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
  @*custom code end*@
 @section ActionDescription{
     <p>
@@ -85,3 +85,9 @@
         <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
     </p>
 }
+@section Title{
+                 <title>ASP.NET MVC Chart Histogram Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Histogram in ASP.NET MVC Chart Control</h1>
+            }

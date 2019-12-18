@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Maps
 @section ControlsSection{
     <style>
@@ -20,13 +20,17 @@
                 <span class="listing1">Country : </span><span class="listing2">${Country}</span>
             </div>
             <div>
+                <span class="listing1">Continent : </span><span class="listing2">${Continent}</span>
+            </div>
+            <div>
                 <span class="listing1">Population : </span><span class="listing2">${population}</span>
             </div>
         </div>
 
     </div>
-    <div class="control-section">
+     <div class="col-lg-9 control-section">
         <div id="outer" style="width:100%">
+            <div class="content-wrapper">
             @Html.EJS().Maps("container").UseGroupingSeparator(true).Format("n").Load("load").TitleSettings(title => title.Text("Top 25 populated cities in the world").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).Layers(layer =>
    {
        layer.MarkerSettings(ViewBag.markerSettings).ShapeSettings(new MapsShapeSettings { Fill = "#C3E6ED" }).ShapeData(ViewBag.shapeData).Add();
@@ -37,10 +41,66 @@
             </div>
         </div>
     </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 70%">
+                        <div class="property-text" style="padding: 0px;">Bind markers shape from data source</div>
+                    </td>
+                    <td style="width: 30%">
+                        <div>
+                            <input type="checkbox" id="shape" />
+                        </div>
+                    </td>
+                </tr>
+                 <tr style="height: 50px">
+                    <td style="width: 70%">
+                        <div class="property-text" style="padding: 0px;">Bind markers color from data source</div>
+                    </td>
+                    <td style="width: 30%">
+                        <div style="padding-top:0px">
+                            <input type="checkbox" id="color" />
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <script>
         function load(args) {
             var theme = themeName ? themeName : 'Material';
             args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            maps = args.maps;
+        }
+        window.onload = function () {
+            var shapeCheckBox = new ej.buttons.CheckBox(
+                    {
+                        change: (args) => {
+                            if (args.checked) {
+                                maps.layers[0].markerSettings[0].shapeValuePath = 'shape';
+                            } else {
+                                maps.layers[0].markerSettings[0].shapeValuePath = null;
+                            }
+                            maps.refresh();
+                        },
+                        checked: false
+                    },
+                    '#shape');
+            var colorCheckBox = new ej.buttons.CheckBox(
+                    {
+                        change: (args) => {
+                            if (args.checked) {
+                                maps.layers[0].markerSettings[0].colorValuePath = 'color';
+                            } else {
+                                maps.layers[0].markerSettings[0].colorValuePath = null;
+                            }
+                            maps.refresh();
+                        },
+                        checked: false
+                    },
+                    '#color');
         }
     </script>
     <style>
@@ -77,13 +137,15 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Maps control shows the top 25 populated cities in the world by displaying the markers in their locations." />
-}
+                    <meta name="description" content="This example demonstrates the Marker in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
-            In this example, you can see how to render the markers in a map. Markers are used to indicate or mark a particular location on the map with desired symbols.
-
+            In this example, you can see how to render the markers in a map. Markers are used to indicate or mark a particular
+            location on the map with desired symbols. Also, options have been provided to bind the shapes and colors to the
+            markers based on the continent from the data source. This is achieved using the <code>shapeValuePath</code> and <code>colorValuePath</code>
+            properties of the marker.
         </p>
         <p>
             Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.
@@ -91,7 +153,14 @@
         <br />
         <p style="font-weight: 500">Injecting Module</p>
         <p>
-            Maps component features are segregated into individual feature-wise modules. To use a marker, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
+            Maps component features are segregated into individual feature-wise modules. To use a marker, inject the
+            <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
         </p>
     </div>
 }
+@section Title{
+                 <title>ASP.NET MVC Maps Marker Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Marker in ASP.NET MVC Maps Control</h1>
+            }

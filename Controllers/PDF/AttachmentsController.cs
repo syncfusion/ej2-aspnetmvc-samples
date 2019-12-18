@@ -16,6 +16,7 @@ using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Interactive;
 using System.Drawing;
+using Syncfusion.Pdf.Security;
 
 namespace EJ2MVCSampleBrowser.Controllers.PDF
 {
@@ -32,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Attachments(string Browser)
+        public ActionResult Attachments(string Browser, string encrypt, string password)
         {
              //Creates a new PDF document.
              doc = new PdfDocument();
@@ -91,6 +92,15 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             attachment.MimeType = "application/txt";
 
             doc.Attachments.Add(attachment);
+
+            //Set Encryption password
+            if (!string.IsNullOrEmpty(encrypt) && !string.IsNullOrEmpty(password))
+            {
+                PdfSecurity security = doc.Security;
+                security.UserPassword = password;
+                security.Algorithm = PdfEncryptionAlgorithm.AES;
+                security.EncryptionOptions = PdfEncryptionOptions.EncryptOnlyAttachments;
+            }
 
             //Set document viewerpreference.
             doc.ViewerPreferences.HideWindowUI = false;

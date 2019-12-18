@@ -17,16 +17,16 @@ namespace EJ2MVCSampleBrowser.Controllers
                 tooltipText = "Insert Symbol",
                 template = "<button class='e-tbar-btn e-btn' tabindex='-1' id='custom_tbar'  style='width:100%'><div class='e-tbar-btn-text rtecustomtool' style='font-weight: 500;'> &#937;</div></button>"
             };
-            ViewBag.items = new object[] { "Bold", "Italic", "Underline", "|", "Formats", "Alignments", "OrderedList",
+            ViewBag.Items = new object[] { "Bold", "Italic", "Underline", "|", "Formats", "Alignments", "OrderedList",
         "UnorderedList", "|", "CreateLink", "Image", "CreateTable", "|", "SourceCode", tools
         , "|", "Undo", "Redo"
             };
-            ViewBag.button = new
+            ViewBag.InsertBtn = new
             {
                 content = "Insert",
                 isPrimary = true
             };
-            ViewBag.button1 = new
+            ViewBag.CancelBtn = new
             {
                 content = "Cancel"
             };

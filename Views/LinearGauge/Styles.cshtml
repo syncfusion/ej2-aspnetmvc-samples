@@ -1,9 +1,9 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
         <div class="row">
             <div id="container1" style="height:100px;">
-                @Html.EJS().LinearGauge("container1").Width("80%").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+                @Html.EJS().LinearGauge("container1").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
            new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
            {
                Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Color = "#9E9E9E" },
@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             <div id="container2" style="height:100px;">
-                @Html.EJS().LinearGauge("container2").Width("80%").Load("onGaugeLoad").Container(new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
+                @Html.EJS().LinearGauge("container2").Load("onGaugeLoad").Container(new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
            {
                Width = 30,
                BackgroundColor = "#e0e0e0",
@@ -54,7 +54,7 @@
         </div>
         <div class="row">
             <div id="container3" style="height:150px;;margin-top:20px;">
-                @Html.EJS().LinearGauge("container3").Width("80%").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+                @Html.EJS().LinearGauge("container3").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
            new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
            {
                Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Offset = -20, Color=  "#9E9E9E" },
@@ -76,7 +76,7 @@
         </div>
         <div class="row">
             <div id="container4" style="height:150px;;margin-top:-30px;">
-                @Html.EJS().LinearGauge("container4").Width("80%").Load("onGaugeLoad").Container(new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
+                @Html.EJS().LinearGauge("container4").Load("onGaugeLoad").Container(new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
        {
            Width = 30,
            Offset = 0,
@@ -125,8 +125,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Linear Gauge control visualizes the available options for customization." />
-}
+                    <meta name="description" content="This example demonstrates the Styles in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -139,3 +139,10 @@
         </p>
     </div>
 }
+
+@section Title{
+                 <title>ASP.NET MVC Linear Gauge Styles Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Styles in ASP.NET MVC Linear Gauge Control</h1>
+            }

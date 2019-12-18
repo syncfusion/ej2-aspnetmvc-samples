@@ -12,14 +12,14 @@ namespace EJ2MVCSampleBrowser.Controllers.InPlaceEditor
         List<clickTypes> type = new List<clickTypes>(); 
         public ActionResult DefaultFunctionalities()
         {
-            ViewBag.modeData = new string[] { "Inline", "Popup" };
+            ViewBag.ModeData = new string[] { "Inline", "Popup" };
             type.Add(new clickTypes { Id = "Click", ClickType = "Click" });
             type.Add(new clickTypes { Id = "DblClick", ClickType = "Double Click" });
             type.Add(new clickTypes { Id = "EditIconClick", ClickType = "Edit Icon Click" });
-            ViewBag.modalData = new { placeholder = "Enter employee name" };
-            ViewBag.maskData = new { mask = "000-000-0000" };
-            ViewBag.numericData = new { placeholder = "Currency format", value = 100, format = "c2" };
-            ViewBag.clickData = type;
+            ViewBag.ModalData = new { placeholder = "Enter employee name" };
+            ViewBag.MaskData = new { mask = "000-000-0000" };
+            ViewBag.NumericData = new { placeholder = "Currency format", value = 100, format = "c2" };
+            ViewBag.ClickData = type;
             return View();
         }
     }

@@ -1,7 +1,7 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().LinearGauge("tooltipContainer").Width("80%").Resized("gaugeResized").Loaded("onGaugeLoaded").TooltipRender("onTooltipRendering").AxisLabelRender("onAxisLabelRendering").Load("onGaugeLoad").Container(new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer {
+        @Html.EJS().LinearGauge("tooltipContainer").Resized("gaugeResized").Loaded("onGaugeLoaded").TooltipRender("onTooltipRendering").AxisLabelRender("onAxisLabelRendering").Load("onGaugeLoad").Container(new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer {
        Width = 140, Border = new Syncfusion.EJ2.LinearGauge.LinearGaugeBorder { Width = 2, Color = "#a6a6a6" }
    }).Tooltip(new Syncfusion.EJ2.LinearGauge.LinearGaugeTooltipSettings { Enable = true }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
        new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
@@ -133,8 +133,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Linear Gauge control visualizes the tooltip functionality for bar pointer." />
-}
+                    <meta name="description" content="This example demonstrates the Tooltip in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -160,3 +160,10 @@
 
 
 
+
+@section Title{
+                 <title>ASP.NET MVC Linear Gauge Tooltip Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Tooltip in ASP.NET MVC Linear Gauge Control</h1>
+            }

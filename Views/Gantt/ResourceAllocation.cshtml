@@ -1,0 +1,58 @@
+@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "ResourceAllocation";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("ResourceAllocation").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true)
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+                .Dependency("Predecessor").ResourceInfo("ResourceId").Child("SubTasks"))
+                .ResourceNameMapping("ResourceName").ResourceIDMapping("ResourceId").Resources((IEnumerable<object>)ViewBag.Resources)
+                .Columns(col =>
+                {
+                    col.Field("TaskId").Width(100).Add();
+                    col.Field("TaskName").HeaderText("Job Name").Width(150).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+                    col.Field("ResourceId").Width(200).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("Duration").Add();
+                    col.Field("Progress").Add();
+                    col.Field("Predecessor").Add();
+                })
+                .LabelSettings(ls => ls.LeftLabel("TaskName").RightLabel("ResourceId"))
+                .SplitterSettings(sp => sp.ColumnIndex(3))
+                .ProjectStartDate("03/24/2019")
+                .ProjectEndDate("07/28/2019")
+                .Render()
+            )
+        </div>
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the options to allocate one or more resources to tasks based on the task requirement.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Resource Allocation in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to allocate single or multiple resources for the task. Based on the task complexity and the resource availability, you can plan and allocate the resources to task in the project. In this demo, there is a set of predefined resources and those IDs are assigned to the task. Resource information can be shown in Gantt chart by using the <code>LabelSettings</code> property.
+        </p>
+    </div>
+}
+
+@section Title{
+                 <title>ASP.NET MVC Gantt Resource Allocation Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Resource Allocation in ASP.NET MVC Gantt Control</h1>
+            }

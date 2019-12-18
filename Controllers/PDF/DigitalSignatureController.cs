@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
         PdfCertificate pdfCert;         
 
         [HttpPost]
-        public ActionResult DigitalSignature(string Browser, string password, string Reason, string Contact, string Location, HttpPostedFileBase pdfdocument, HttpPostedFileBase certificate, string RadioButtonList2, string NewPDF, string submit)
+        public ActionResult DigitalSignature(string Browser, string password, string Reason, string Contact, string Location, HttpPostedFileBase pdfdocument, HttpPostedFileBase certificate, string RadioButtonList2, string NewPDF, string submit, string Cryptographic, string digestAlgorithm)
         {
             if (submit == "Create Sign PDF")
             {
@@ -77,6 +77,9 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                     string validto = "Valid To: " + signature.Certificate.ValidTo.ToString();
                     string validfrom = "Valid From: " + signature.Certificate.ValidFrom.ToString();
 
+                    SetCryptographicStandard(Cryptographic, signature);
+                    SetDigestAlgorithm(digestAlgorithm, signature);
+
                     // Save the pdf document to the Stream.
                     MemoryStream stream = new MemoryStream();
                     ldoc.Save(stream);
@@ -109,7 +112,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                 PdfFont font = new PdfStandardFont(PdfFontFamily.Courier, 12, PdfFontStyle.Regular);
                 try
                 {
-                    pdfCert = new PdfCertificate(ResolveApplicationDataPath("PDF.pfx"), "syncfusion");
+                    pdfCert = new PdfCertificate(ResolveApplicationDataPath("PDF.pfx"), "password123");
                     signature = new PdfSignature(page, pdfCert, "Signature");
                     bmp = new PdfBitmap(ResolveApplicationImagePath("syncfusion_logo.gif"));
 
@@ -123,6 +126,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                     else
                         signature.Certificated = false;
                     graphics = signature.Appearence.Normal.Graphics;
+                    SetCryptographicStandard(Cryptographic, signature);
+                    SetDigestAlgorithm(digestAlgorithm, signature);
                 }
                 catch (Exception)
                 {
@@ -165,6 +170,42 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                 doc.Close();
                 return View();
             }          
+        }
+        private void SetCryptographicStandard(string cryptographic, PdfSignature signature)
+        {
+            if (cryptographic != null)
+            {
+                 if (cryptographic == "CAdES")
+                 signature.Settings.CryptographicStandard = CryptographicStandard.CADES;
+                 else
+                signature.Settings.CryptographicStandard = CryptographicStandard.CMS;
+            }
+
+        }
+
+        private void SetDigestAlgorithm(string digestAlgorithm, PdfSignature signature)
+        {
+            if (digestAlgorithm != null)
+            {
+                switch (digestAlgorithm)
+                {
+                    case "SHA1":
+                         signature.Settings.DigestAlgorithm = DigestAlgorithm.SHA1;
+                        break;
+                    case "SHA384":
+                        signature.Settings.DigestAlgorithm = DigestAlgorithm.SHA384;
+                        break;
+                    case "SHA512":
+                        signature.Settings.DigestAlgorithm = DigestAlgorithm.SHA512;
+                        break;
+                    case "RIPEMD160":
+                        signature.Settings.DigestAlgorithm = DigestAlgorithm.RIPEMD160;
+                        break;
+                    default:
+                        signature.Settings.DigestAlgorithm = DigestAlgorithm.SHA256;
+                        break;
+                }
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
 <script src="~/Scripts/theme-color.js"></script>
 <style>
@@ -33,8 +33,8 @@
 
     @Html.EJS().Chart("container").Series(series =>
 {
-    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Assignee").Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ViewBag.font)))
-.YName("Estimate").DataSource("dataManager").Query("query").Name("Story Point").Add();
+    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("CustomerID").Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
+.YName("Freight").DataSource("dataManager").Query("query").Name("Story Point").Add();
 
 }).PrimaryXAxis(px => px.Title("Assignee").RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.Additional).MajorGridLines(mg=>mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
        ).ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tl => tl.Enable(true)).PrimaryYAxis(py => py.MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).LabelStyle(ls=>ls.Color("transparent"))).Title("Sprint Task Analysis").Tooltip(tt => tt.Enable(true)).LegendSettings(lg => lg.Visible(false)).PointRender("pointRender").AxisLabelRender("labelRender").Load("load").Loaded("loadedChart").Render()
@@ -46,7 +46,7 @@
 </div>
     <script>
         var dataManager = new ej.data.DataManager({
-            url: 'https://mvc.syncfusion.com/Services/Northwnd.svc/Tasks/'
+            url: 'https://ej2services.syncfusion.com/production/web-services/api/Orders'
         });
 
         var query = new ej.data.Query().take(5).where('Estimate', 'lessThan', 3, false);
@@ -87,8 +87,8 @@
 }
          @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control shows how to consume data from remote data service." />
-}
+                    <meta name="description" content="This example demonstrates the Remote Data in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
          @*custom code end*@
 @section ActionDescription{
     <p>
@@ -140,3 +140,9 @@
     </code> property.
 </p>
 }
+@section Title{
+                 <title>ASP.NET MVC Chart Remote Data Example - Syncfusion Demos </title>
+             }
+@section Header{
+                <h1 class='sb-sample-text'>Example for Remote Data in ASP.NET MVC Chart Control</h1>
+            }

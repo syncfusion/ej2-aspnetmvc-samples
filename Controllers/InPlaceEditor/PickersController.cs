@@ -11,13 +11,13 @@ namespace EJ2MVCSampleBrowser.Controllers.InPlaceEditor
         // GET: Pickers
         public ActionResult Pickers()
         {
-            ViewBag.modeData = new string[] { "Inline", "Popup" };
-            ViewBag.dateData = new { placeholder = "Select a date" };
-            ViewBag.timeData = new { placeholder = "Select a time" };
-            ViewBag.dateTimeData = new { placeholder = "Select a date and time" };
-            ViewBag.dateRangeData = new { placeholder = "Select a date range" };
-            ViewBag.dateRangeValue = new DateTime[2] { new DateTime(2017, 05, 23), new DateTime(2017, 07, 05) };
-            ViewBag.dateValue =new DateTime(2017, 05, 23);
+            ViewBag.ModeData = new string[] { "Inline", "Popup" };
+            ViewBag.DateData = new { placeholder = "Select a date" };
+            ViewBag.TimeData = new { placeholder = "Select a time" };
+            ViewBag.DateTimeData = new { placeholder = "Select a date and time" };
+            ViewBag.DateRangeData = new { placeholder = "Select a date range" };
+            ViewBag.DateRangeValue = new DateTime[2] { new DateTime(2017, 05, 23), new DateTime(2017, 07, 05) };
+            ViewBag.DateValue =new DateTime(2017, 05, 23);
             return View();
         }
     }
