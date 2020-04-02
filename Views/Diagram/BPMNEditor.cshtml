@@ -1,4 +1,5 @@
 @using Syncfusion.EJ2.Diagrams;
+@using Syncfusion.EJ2.Navigations;
 @using EJ2MVCSampleBrowser.Models;
 @section ControlsSection{
 
@@ -7,7 +8,7 @@
             <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
         </div>
         <div id="palette-space" class="sb-mobile-palette">
-            @(Html.EJS().SymbolPalette("symbolpalette").ExpandMode("Multiple").Width("100%").Height("445px")
+            @(Html.EJS().SymbolPalette("symbolpalette").ExpandMode(ExpandMode.Multiple).Width("100%").Height("445px")
                     .SymbolHeight(60).SymbolWidth(60).Palettes(ViewBag.Palettes).SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).Render())
         </div>
         <div id="diagram-space" class="sb-mobile-diagram sb-bpmn-editor">
@@ -774,8 +775,8 @@
 
 
 @section Title{
-                 <title>ASP.NET MVC Diagram BPMN Editor Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Diagram BPMN Editor Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for BPMN Editor in ASP.NET MVC Diagram Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of BPMN Editor in ASP.NET MVC Diagram Control</h1>
+                }

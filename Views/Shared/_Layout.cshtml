@@ -36,6 +36,9 @@
         if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
             document.write('<script src="' + baseurl + 'Scripts/bluebird.min.js"><\/script>');
             document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/shim.min.js"><\/script>');
+             if (window.NodeList && !NodeList.prototype.forEach) {
+                NodeList.prototype.forEach = Array.prototype.forEach;
+            }
         }
     </script>
     <script id='sample-datasource' type='text/javascript'></script>
@@ -213,6 +216,7 @@
                     </li>
                 </ul>
             </div>
+            
             <div id='settings-popup' class='sb-setting-popup'>
                 <div class='sb-setting-header'>
                     <span>
@@ -244,11 +248,43 @@
                             <div id='touch' role="button" tabindex="0" class="sb-responsive-items set-border-radious-touch" title="Increased padding for actionable items to accommodate user touches">Touch</div>
                             <div id='mouse' role="button" tabindex="0" class="sb-responsive-items set-border-radious-mouse" title="Default control sizes, optimized for use with mouse">Mouse</div>
                         </div>
+                        <div class='sb-setting-item sb-setting-culture'>
+                            <div class='setting-label'>
+                                <div class='sb-icons sb-setting-icons sb-icon-Localization'></div>
+                                <div class='sb-setting-text'>Localization</div>
+                            </div>
+                            <div class='setting-content'>
+                                <select id='sb-setting-culture'>
+                                    <option value="en">English</option>
+                                    <option value="de">German - Germany*</option>
+                                    <option value="fr-CH">French - Switzerland*</option>
+                                    <option value="ar">Arabic*</option>
+                                    <option value="zh">Chinese - China*</option>
+                                </select>
+                            </div>
+                            <div class="sb-setting-translate">
+                                <span>*Translated by Google Translator.</span>
+                            </div>
+                        </div>
+                        <div class='sb-setting-item sb-setting-currency'>
+                            <div class='setting-label'>
+                                <div class='sb-icons sb-setting-icons sb-icon-Currency'></div>
+                                <div class='sb-setting-text'>Currency</div>
+                            </div>
+                            <div class='setting-content'>
+                                <select id='sb-setting-currency' class='sb-setting-currency-content'>
+                                    <option value="USD">USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="AED">AED</option>
+                                    <option value="CHF">CHF</option>
+                                    <option value="CNY">CNY</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                
+                </div>
             </div>
         </div>
-    </div>
         <div class="sb-content e-view">
             <div class='sb-right-pane e-view' id='right-pane'>
                 <div class="sb-content-overlay">
@@ -337,7 +373,7 @@
                                     <div class="sb-footer-link">Knowledge Base</div>
                                 </a>
                             </div>
-                            <div class="sb-footer-copyright">Copyright © 2001-2019 Syncfusion Inc.</div>
+                            <div class="sb-footer-copyright"></div>
                         </div>
                         <div class="sb-footer-logo">
                             <a href="https://www.syncfusion.com/" target="_blank">

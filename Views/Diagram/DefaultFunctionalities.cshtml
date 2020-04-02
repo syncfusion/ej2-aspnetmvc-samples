@@ -1,4 +1,5 @@
 @using Syncfusion.EJ2.Diagrams;
+@using Syncfusion.EJ2.Navigations;
 @section ControlsSection{
 
     <div class="control-section">
@@ -6,7 +7,7 @@
                 <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode("Multiple").Width("100%").Height("700px")
+            @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("700px")
                     .SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).SymbolHeight(60).SymbolWidth(60)
                     .GetNodeDefaults("getSymbolNodes").Render()
                 )
@@ -262,8 +263,8 @@
     <br>
 }
 @section Title{
-                 <title>ASP.NET MVC Diagram Default Functionalities Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Diagram Default Functionalities Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Default Functionalities in ASP.NET MVC Diagram Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC Diagram Control</h1>
+                }

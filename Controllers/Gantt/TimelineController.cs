@@ -37,8 +37,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
             {
                 List<DayFormat> formats = new List<DayFormat>();
                 formats.Add(new DayFormat() { Id = "EEE, dd", Format = "Mon, 01" });
-                formats.Add(new DayFormat() { Id = "E", Format = "Mon" });
+                formats.Add(new DayFormat() { Id = "EEE", Format = "Mon" });
                 formats.Add(new DayFormat() { Id = "dd", Format = "01" });
+                formats.Add(new DayFormat() { Id = "E", Format = "M" });
                 return formats;
             }
         }

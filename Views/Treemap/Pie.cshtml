@@ -2,17 +2,15 @@
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
    <div class="col-lg-12 control-section">
-        <div id="outer" style="width:100%">
-            <div id="container">
-                @Html.EJS().TreeMap("container").UseGroupingSeparator(true).Format("n").TooltipRendering("tooltiprendering").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Gender} : ${Population}" }).Load("load").Loaded("loaded").Resize("resize").TitleSettings(title=>title.Text("Population of the continents based on gender and age group - 2011").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Population").LeafItemSettings(leaf=>
+            <div style="width:100%">
+                @Html.EJS().TreeMap("container").Width("870px").UseGroupingSeparator(true).Format("n").TooltipRendering("tooltiprendering").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Gender} : ${Population}" }).Load("load").Loaded("loaded").Resize("resize").TitleSettings(title=>title.Text("Population of the continents based on gender and age group - 2011").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Population").LeafItemSettings(leaf=>
            leaf.LabelPath("Gender").Fill("#A1317D").ShowLabels(false).Border(new TreeMapBorder { Color = "black", Width = 0.5 }).LabelFormat("${Gender} : ${Population}").TemplatePosition(Syncfusion.EJ2.TreeMap.LabelPosition.Center).LabelTemplate("<div style='height:{{:PieHeight}};width:{{:PieWidth}};' id ={{:Id}}></div>")).Levels(level=> {
                level.GroupPath("Continent").Fill("#7E2361").Border(new TreeMapBorder { Color = "black", Width = 1 }).HeaderAlignment(Syncfusion.EJ2.TreeMap.Alignment.Center).GroupGap(0).HeaderStyle( new TreeMapFont { Size = "14px" }).Add();
            }).Render()
             </div>
-            <div style="margin-left: 75%">
+            <div style="margin-left: 85%">
                 Source:<a href="http//en.worldstat.info/Asia/" target="_blank">en.worldstat.info</a>
             </div>
-        </div>
     </div>
     <script>
         function load(args) {
@@ -207,8 +205,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC TreeMap TreeMap with Pie Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC TreeMap TreeMap with Pie Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for TreeMap with Pie in ASP.NET MVC TreeMap Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of TreeMap with Pie in ASP.NET MVC TreeMap Control</h1>
+                }

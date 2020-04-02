@@ -20,7 +20,7 @@
                             .Toolbar(new List<string>() { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll" })
                             .AllowSelection(true).GridLines(Syncfusion.EJ2.Gantt.GridLine.Both).EnableContextMenu(true).AllowResizing(true).AllowSorting(true)
                             .ContextMenuItems(contextItems).ContextMenuOpen("ContextMenuOpen").ContextMenuClick("ContextMenuClick")
-                            .Height("450px").TreeColumnIndex(1).ResourceNameMapping("ResourceName").ResourceIDMapping("ResourceId")
+                            .Height("450px").TreeColumnIndex(1).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName"))
                             .Resources((IEnumerable<object>)ViewBag.Resources).HighlightWeekends(true).TimelineSettings(tl => tl.TopTier(tt =>
                               tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week).Format("MMM dd, y")).
                             BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))).Columns(col =>
@@ -151,8 +151,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Gantt Context Menu Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Gantt Context Menu Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Context Menu in ASP.NET MVC Gantt Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Context Menu in ASP.NET MVC Gantt Control</h1>
+                }

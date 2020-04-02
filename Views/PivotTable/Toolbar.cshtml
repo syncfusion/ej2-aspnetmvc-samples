@@ -8,21 +8,21 @@
 
     <div class="col-lg control-section" id="pivot-table-section">
         <div class="content-wrapper">
-            @Html.EJS().PivotView("pivotview").Width("100%").Height("300").ShowToolbar(true).ShowFieldList(true).AllowExcelExport(true).AllowConditionalFormatting(true).AllowPdfExport(true).ShowToolbar(true).AllowCalculatedField(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("600").ShowToolbar(true).ShowFieldList(true).AllowExcelExport(true).AllowNumberFormatting(true).AllowConditionalFormatting(true).AllowPdfExport(true).ShowToolbar(true).AllowCalculatedField(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
            .FormatSettings(formatsettings => { formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add(); })
            .Rows(rows => { rows.Name("Country").Add(); rows.Name("Products").Add(); })
            .Columns(columns => { columns.Name("Year").Add(); columns.Name("Order_Source").Caption("Order Source").Add(); })
            .Values(values =>
            {
-               values.Name("In_Stock").Caption("In Stock").Add(); values.Name("Sold").Caption("Units Sold").Add();
+               values.Name("Sold").Caption("Units Sold").Add();
                values.Name("Amount").Caption("Sold Amount").Add();
            })
            .Filters(filters =>
            {
                filters.Name("Product_Categories").Caption("Product Categories").Add();
-           })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DisplayOption(new PivotViewDisplayOption { View = View.Both }).ChartSettings(new PivotViewChartSettings { Load="onChartLoad" }).Toolbar(new List<string>
+           })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DisplayOption(new PivotViewDisplayOption { View = View.Both }).ChartSettings(new PivotViewChartSettings { Title="Sales Analysis" , Load="onChartLoad" }).Toolbar(new List<string>
                 () { "New", "Save", "SaveAs", "Rename", "Remove", "Load",
-                "Grid", "Chart", "Export", "SubTotal", "GrandTotal", "ConditionalFormatting", "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").Render()
+                "Grid", "Chart", "Export", "SubTotal", "GrandTotal", "Formatting", "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").Render()
         </div>
     </div>
 
@@ -35,6 +35,12 @@
             #pivot-table-section {
                 overflow: auto;
             }
+        }
+        .sb-sample-content-area {
+            min-height: 255px !important;
+        }
+        .control-section {
+            min-height: 255px !important;
         }
     </style>
     <script>
@@ -106,6 +112,13 @@
             var reportCollection = [];
             if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
                 reportCollection = JSON.parse(localStorage.pivotviewReports);
+            }
+            if (args.isReportExists) {
+                for (var i = 0; i < reportCollection.length; i++) {
+                    if (reportCollection[i].reportName === args.rename) {
+                        reportCollection.splice(i, 1);
+                    }
+                }
             }
             reportCollection.map(function (item) {
                 if (args.reportName === item.reportName) {
@@ -220,6 +233,12 @@
             </tr>
             <tr>
                 <td style="vertical-align: top;padding: 4px 0;">
+                    <code>Number formatting:</code>
+                </td>
+                <td>Allows user to dynamically apply number formatting to value fields.</td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top;padding: 4px 0;">
                     <code>Field List:</code>
                 </td>
                 <td>Provides option to alter the report dynamically through UI.</td>
@@ -229,8 +248,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Pivot Table Toolbar Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Pivot Table Toolbar Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Toolbar in ASP.NET MVC Pivot Table Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Toolbar in ASP.NET MVC Pivot Table Control</h1>
+                }

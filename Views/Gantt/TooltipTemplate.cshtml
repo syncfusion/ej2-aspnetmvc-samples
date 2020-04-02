@@ -22,7 +22,7 @@
                     col.Field("BaselineEndDate").Add();
                     col.Field("ResourceId").Add();
                 })
-                .ResourceNameMapping("ResourceName").ResourceIDMapping("ResourceId").Resources((IEnumerable<object>)ViewBag.Resources)
+                .ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName")).Resources((IEnumerable<object>)ViewBag.Resources)
                 .TooltipSettings(ts => ts.ShowTooltip(true).Taskbar("#TaskbarTooltip").Baseline("#BaselineTooltip"))
                 .LabelSettings(ls => ls.LeftLabel("TaskName").RightLabel("ResourceId"))
                 .SplitterSettings(sp => sp.ColumnIndex(2))
@@ -104,8 +104,8 @@
     </div>
 }
 @section Title{
-                 <title>ASP.NET MVC Gantt Tooltip Template Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Gantt Tooltip Template Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Tooltip Template in ASP.NET MVC Gantt Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Tooltip Template in ASP.NET MVC Gantt Control</h1>
+                }

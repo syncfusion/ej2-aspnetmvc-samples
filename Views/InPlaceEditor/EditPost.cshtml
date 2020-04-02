@@ -22,7 +22,7 @@
                         <label class="col-sm-6 control-label" style="text-align: left;font-size: 14px;">
                             Comments
                         </label>
-                        @Html.EJS().InPlaceEditor("inplace_comment_editor").Mode(RenderMode.Inline).EditableOn(EditableType.EditIconClick).SubmitOnEnter(false).Type(Syncfusion.EJ2.InPlaceEditor.InputType.RTE).Name("rte").Created("commentCreated").EmptyText("Enter your comment").Model(ViewBag.CommentData).ValidationRules(ViewBag.CommentValidation).Value("The extensive adoption of JavaScript for application development, and the ability to use HTML and JavaScript to create Windows Store apps, has made JavaScript a vital part of the Windows development ecosystem. Microsoft has done extensive work to make JavaScript easier to use.").Render()
+                        @Html.EJS().InPlaceEditor("inplace_comment_editor").Mode(RenderMode.Inline).EditableOn(EditableType.EditIconClick).SubmitOnEnter(false).Type(Syncfusion.EJ2.InPlaceEditor.InputType.RTE).Name("rte").Created("commentCreated").EmptyText("Enter your comment").Model(ViewBag.CommentData).ValidationRules(ViewBag.CommentValidation).Value("<p>The extensive adoption of JavaScript for application development, and the ability to use HTML and JavaScript to create Windows Store apps, has made JavaScript a vital part of the Windows development ecosystem. Microsoft has done extensive work to make JavaScript easier to use.</p>").Render()
                     </div>
                     <div class="form-group">
                         <label class="col-sm-6 control-label" style="text-align: left;font-size: 14px;">
@@ -184,8 +184,8 @@
 
 @*custom code end*@
 @section Title{
-                 <title>ASP.NET MVC In-place Editor Edit Post Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC In-place Editor Edit Post Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Edit Post in ASP.NET MVC In-place Editor Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Edit Post in ASP.NET MVC In-place Editor Control</h1>
+                }

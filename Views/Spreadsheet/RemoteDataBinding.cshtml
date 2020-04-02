@@ -4,9 +4,9 @@
     <div class="control-section">
        @Html.EJS().Spreadsheet("spreadsheet").OpenUrl("RemoteDataOpen").SaveUrl("RemoteDataSave").DataBound("dataBoundEvent").Sheets(sheet =>
   {
-      sheet.Name("Shipment Details").RangeSettings(rangesetting =>
+      sheet.Name("Shipment Details").Range(ranges =>
       {
-          rangesetting.ShowFieldAsHeader(false).StartCell("A2").Query("new ej.data.Query().select(['OrderID', 'CustomerID', 'ShipName', 'ShipCity', 'ShipCountry', 'Freight']).take(200)").DataSource(dataManger =>
+          ranges.ShowFieldAsHeader(false).StartCell("A2").Query("new ej.data.Query().select(['OrderID', 'CustomerID', 'ShipName', 'ShipCity', 'ShipCountry', 'Freight']).take(200)").DataSource(dataManger =>
    {
        dataManger.Url("https://js.syncfusion.com/demos/ejServices//wcf/Northwind.svc/Orders").CrossDomain(true);
    }).Add();
@@ -79,7 +79,7 @@
         </p>
         <p>
             In this demo, remote data is bound by assigning service data as an instance of <code>DataManager</code> to the
-            <code>dataSource</code> property under the rangeSettings of sheet.
+            <code>dataSource</code> property under the range of sheet.
         </p>
         <p>
             More information about remote data binding can be found in this
@@ -92,7 +92,7 @@
 
 <script>
     function dataBoundEvent() {
-        if (this.activeSheetTab === 1 && this.sheets[this.activeSheetTab - 1].name === 'Shipment Details') {
+        if (this.activeSheetIndex === 0 && this.sheets[this.activeSheetIndex].name === 'Shipment Details') {
             this.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A1:G1');
         }
     }
@@ -110,8 +110,8 @@
 @*custom code end*@
 
 @section Title{
-                 <title>ASP.NET MVC Spreadsheet Remote Data Binding Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Spreadsheet Remote Data Binding Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Remote Data Binding in ASP.NET MVC Spreadsheet Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Remote Data Binding in ASP.NET MVC Spreadsheet Control</h1>
+                }

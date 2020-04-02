@@ -21,7 +21,7 @@
                     col.Field("Progress").Add();
                     col.Field("ResourceId").Add();
                 })
-                .ResourceNameMapping("ResourceName").ResourceIDMapping("ResourceId").Resources((IEnumerable<object>)ViewBag.Resources)
+                .ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName")).Resources((IEnumerable<object>)ViewBag.Resources)
                 .LabelSettings(ls => ls.LeftLabel("#leftLabel").RightLabel("#rightLabel").TaskLabel("${Progress}%"))
                 .SplitterSettings(sp => sp.ColumnIndex(2))
                 .ProjectStartDate("03/24/2019")
@@ -93,8 +93,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Gantt Task Label Template Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Gantt Task Label Template Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Task Label Template in ASP.NET MVC Gantt Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Task Label Template in ASP.NET MVC Gantt Control</h1>
+                }

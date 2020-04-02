@@ -1,11 +1,12 @@
 @using Syncfusion.EJ2.Diagrams;
+@using Syncfusion.EJ2.Navigations;
 @section ControlsSection{
 
     <div class="control-section">
         <div id="toolbar">
         </div>
         <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).ExpandMode("Multiple").GetNodeDefaults("getNodeDefaults").Width("100%").Height("645px")
+            @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).ExpandMode(ExpandMode.Multiple).GetNodeDefaults("getNodeDefaults").Width("100%").Height("645px")
                             .SymbolHeight(60).SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).SymbolWidth(60).GetSymbolInfo("getSymbolInfo").Render()
                 )
         </div>
@@ -261,7 +262,8 @@
                 saveUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Save',
                 removeUrl: 'https://aspnetmvc.syncfusion.com/services/api/uploadbox/Remove'
             },
-            success: onUploadSuccess
+            success: onUploadSuccess,
+            showFileList: false
         });
         uploadObj.appendTo('#fileupload');
 
@@ -345,8 +347,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Diagram Save and Load Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Diagram Save and Load Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Save and Load in ASP.NET MVC Diagram Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Save and Load in ASP.NET MVC Diagram Control</h1>
+                }

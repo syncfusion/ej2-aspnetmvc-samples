@@ -97,7 +97,6 @@
                 circulargauge.axes[axisIndex].direction = direction.value.toString();
                 circulargauge.axes[0].pointers[0].animation.enable = false;
                 circulargauge.axes[1].pointers[0].animation.enable = false;
-                circulargauge.refresh();
             }
         });
         direction.appendTo('#axisDirection');
@@ -111,7 +110,6 @@
                 circulargauge.axes[axisIndex].labelStyle.hiddenLabel =
                     ej.circulargauge.isCompleteAngle(circulargauge.axes[axisIndex].startAngle, circulargauge.axes[axisIndex].endAngle) ?
                         'First' : 'None';
-                circulargauge.refresh();
             };
         document.getElementById('endAngle').onpointermove = document.getElementById('endAngle').ontouchmove =
             document.getElementById('endAngle').onchange = function () {
@@ -123,7 +121,6 @@
                 circulargauge.axes[axisIndex].labelStyle.hiddenLabel =
                     ej.circulargauge.isCompleteAngle(circulargauge.axes[axisIndex].startAngle, circulargauge.axes[axisIndex].endAngle) ?
                         'First' : 'None';
-                circulargauge.refresh();
             };
     </script>
 }
@@ -160,8 +157,8 @@
 
 
 @section Title{
-                 <title>ASP.NET MVC Circular Gauge MultipleAxis Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Circular Gauge MultipleAxis Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for MultipleAxis in ASP.NET MVC Circular Gauge Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of MultipleAxis in ASP.NET MVC Circular Gauge Control</h1>
+                }

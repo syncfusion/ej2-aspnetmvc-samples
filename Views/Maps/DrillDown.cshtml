@@ -75,6 +75,7 @@
                    ShapeSettings = new MapsShapeSettings{  Fill="#462A6D" },
                    HighlightSettings = new MapsHighlightSettings{ Enable = true, Fill="#462A6D" },
                    TooltipSettings = new MapsTooltipSettings{ Visible = true,  ValuePath="name" }
+
                },
                  new Syncfusion.EJ2.Maps.MapsLayer
                {
@@ -111,9 +112,6 @@
         args.maps.layers[0].markerSettings = [
             {
                 visible: true,
-                tooltipSettings: {
-                    visible: true
-                },
                 template: '<div id="marker1" class="markerTemplate">Asia' +
                     '</div>',
                 dataSource: [
@@ -234,8 +232,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Maps Drill Down Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Maps Drill Down Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Drill Down in ASP.NET MVC Maps Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Drill Down in ASP.NET MVC Maps Control</h1>
+                }

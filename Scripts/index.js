@@ -40,6 +40,13 @@ var sbObj = {
     'vue': 'vue',
     'blazor': 'blazor'
 };
+var matchedCurrency = {
+    'en': 'USD',
+    'de': 'EUR',
+    'ar': 'AED',
+    'zh': 'CNY',
+    'fr-CH': 'CHF'
+};
 var searchEle = ej.base.select('#search-popup');
 var inputele = ej.base.select('#search-input');
 var searchOverlay = ej.base.select('.e-search-overlay');
@@ -81,6 +88,9 @@ var samplesAr = [];
 var currentControlID;
 var currentSampleID;
 var currentControl;
+var newYear = new Date().getFullYear();
+var copyRight = document.querySelector('.sb-footer-copyright');
+copyRight.innerHTML = "Copyright © 2001 - " + newYear + " Syncfusion Inc.";
 isMobile = window.matchMedia('(max-width:550px)').matches;
 if (ej.base.Browser.isDevice || isMobile) {
     if (sidebar) {
@@ -216,7 +226,25 @@ function renderSbPopups() {
         }
     });
     themeDropDown.appendTo('#sb-setting-theme');
-   
+    cultureDropDown = new ej.dropdowns.DropDownList({
+        value: sessionStorage.getItem("ej2-culture") || 'en',
+        change: function (e) {
+            sessionStorage.setItem('ej2-culture', e.value);
+            sessionStorage.removeItem('ej2-currency');
+            cultureDropDown.hidePopup();
+            location.reload();
+        }
+    });
+    currencyDropDown = new ej.dropdowns.DropDownList({
+        value: sessionStorage.getItem("ej2-currency") || matchedCurrency[cultureDropDown.value],
+        change: function (e) {
+            ej.base.setCurrencyCode(e.value);
+            sessionStorage.setItem('ej2-currency', e.value);
+            currencyDropDown.hidePopup();
+        }
+    });
+    currencyDropDown.appendTo('#sb-setting-currency');
+    cultureDropDown.appendTo('#sb-setting-culture');
     contentTab = new ej.navigations.Tab({
         selected: changeTab,
         selecting: preventTabSwipe,
@@ -272,7 +300,40 @@ function renderSbPopups() {
 
     next.appendTo('#next-sample');
 }
-
+function loadCulture(cul) {
+	if (cul != 'en') {
+		var locale = new ej.base.Ajax('../Scripts/locale/' + cul + '.json', 'GET', false);
+		locale.send().then(function (value) {
+			ej.base.L10n.load(JSON.parse(value));
+		});
+		var ajax = new ej.base.Ajax('../Scripts/cldr-data/main/' + cul + '/all.json', 'GET', false);
+		ajax.send().then(function (result) {
+			ej.base.loadCldr(JSON.parse(result));
+			changeCulture(cul);
+		});
+	}
+}
+function changeCulture(cul) {
+    if (cul === 'ar') {
+        changeRtl(true);
+    }
+    ej.base.setCurrencyCode(sessionStorage.getItem("ej2-currency") || matchedCurrency[cul]);
+    ej.base.setCulture(cul);
+}
+function changeRtl(bool) {
+    setTimeout(function () {
+        var elementlist = ej.base.selectAll('.e-control', ej.base.select('.control-section'));
+        for (var i = 0; i < elementlist.length; i++) {
+            var control = elementlist[i];
+            if (control.ej2_instances) {
+                for (var a = 0; a < control.ej2_instances.length; a++) {
+                    var instance = control.ej2_instances[a];
+                    instance.enableRtl = bool;
+                }
+            }
+        }
+    }, 400);
+}
 function renderCopyCode() {
     var ele = ej.base.createElement('div', {
         className: 'copy-tooltip',
@@ -666,8 +727,8 @@ function processResize(e) {
             toggleRightPane();
         }
     }
-    if (switcherPopup) {
-        switcherPopup.refresh();
+    if (!switcherPopup.element.classList.contains('e-popup-close')) {
+        switcherPopup.hide();
     }
 }
 
@@ -800,8 +861,8 @@ function setSbLink() {
             ele.href = 'https://ej2.syncfusion.com/aspnetcore/';
         } else {
             ele.href = ((link) ? ('http://' + link[1] + '/' + (link[3] ? (link[3] + '/') : '')) :
-                    ('https://ej2.syncfusion.com/')) + (sbObj[sb] ? (sb + '/') : '') +
-                'demos/#/' + (sample ? (sample[1] + (sb !== 'typescript' ? '' : '.html')) : '');
+                ('https://ej2.syncfusion.com/')) + (sbObj[sb] ? (sb + '/') : '') + ((sb === 'blazor') ? 'demos/' : 'demos/#/')
+                    + (sample ? (sample[1] + (sb !== 'typescript' ? '' : '.html')) : '');
         }
     }
 
@@ -1431,6 +1492,7 @@ function renderPropertyPane(ele) {
 
 function loadJSON() {
     var switchText = localStorage.getItem('ej2-switch') || 'mouse';
+    var switchlocalization = sessionStorage.getItem('ej2-culture') || 'en';
     if (ej.base.Browser.isDevice || window.screen.width <= 850) {
         switchText = 'touch';
     }
@@ -1452,5 +1514,6 @@ function loadJSON() {
     // localStorage.removeItem('ej2-switch');
     ej.base.enableRipple(selectedTheme === 'material' || !selectedTheme);
     loadTheme(selectedTheme);
+    loadCulture(switchlocalization);
 }
 loadJSON();

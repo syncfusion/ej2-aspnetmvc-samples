@@ -1,4 +1,5 @@
 @using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Navigations;
 @section ControlsSection{
 
     <div class="control-section">
@@ -7,7 +8,7 @@
                 <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).ExpandMode("Multiple").GetNodeDefaults("getSymbolDefaults").Width("100%").Height("calc(100% - 50px)")
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).ExpandMode(ExpandMode.Multiple).GetNodeDefaults("getSymbolDefaults").Width("100%").Height("calc(100% - 50px)")
                                     .SymbolHeight(48).SymbolWidth(48).GetSymbolInfo("getSymbolInfo").Render()
                 )
                 <div id='dropArea'>
@@ -354,8 +355,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Diagram Network Diagram Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Diagram Network Diagram Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Network Diagram in ASP.NET MVC Diagram Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Network Diagram in ASP.NET MVC Diagram Control</h1>
+                }

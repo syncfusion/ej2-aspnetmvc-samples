@@ -118,7 +118,7 @@
             var data = args.data;
             if (args.type === 'QuickInfo' || args.type === 'Editor' || args.type === 'RecurrenceAlert' || args.type === 'DeleteAlert') {
                 var target = (args.type === 'RecurrenceAlert' ||
-                    args.type === 'DeleteAlert') ? data.element[0] : args.target;
+                    args.type === 'DeleteAlert') ? args.element[0] : args.target;
                 if (!ej.base.isNullOrUndefined(target) && target.classList.contains('e-work-cells')) {
                     if ((target.classList.contains('e-read-only-cells')) || (!this.isSlotAvailable(data))) {
                         args.cancel = true;
@@ -200,8 +200,8 @@
     </div>
 }
 @section Title{
-                 <title>ASP.NET MVC Scheduler Room Scheduler Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Scheduler Room Scheduler Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Room Scheduler in ASP.NET MVC Scheduler Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Room Scheduler in ASP.NET MVC Scheduler Control</h1>
+                }

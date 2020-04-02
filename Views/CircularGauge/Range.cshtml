@@ -159,7 +159,7 @@
             index: 0, width: 120,
             change: function () {
                 circulargauge.axes[0].ranges[+listObj.value].color = colortObj.value.toString();
-                circulargauge.axes[0].pointers[0].animation.enable = false; circulargauge.refresh();
+                circulargauge.axes[0].pointers[0].animation.enable = false;
             }
         });
         colortObj.appendTo('#rangeColor');
@@ -169,7 +169,7 @@
                 var min = parseInt((document.getElementById('start')).value, 10);
                 document.getElementById('rangeStart').innerHTML = 'Range Start <span>    ' + min;
                 circulargauge.axes[0].ranges[+listObj.value].start = min;
-                circulargauge.axes[0].pointers[0].animation.enable = false; circulargauge.refresh();
+                circulargauge.axes[0].pointers[0].animation.enable = false;
             };
 
         document.getElementById('end').onpointermove = document.getElementById('end').ontouchmove =
@@ -177,7 +177,7 @@
                 var max = parseInt((document.getElementById('end')).value, 10);
                 document.getElementById('rangeEnd').innerHTML = 'Range End <span>    ' + max;
                 circulargauge.axes[0].ranges[+listObj.value].end = max;
-                circulargauge.axes[0].pointers[0].animation.enable = false; circulargauge.refresh();
+            circulargauge.axes[0].pointers[0].animation.enable = false;
             };
 
         document.getElementById('startWidth').onpointermove = document.getElementById('startWidth').ontouchmove =
@@ -185,7 +185,7 @@
                 var startWidth = parseInt((document.getElementById('startWidth')).value, 10);
                 document.getElementById('rangeStartWidth').innerHTML = 'Start Width <span>    ' + startWidth;
                 circulargauge.axes[0].ranges[+listObj.value].startWidth = startWidth;
-                circulargauge.axes[0].pointers[0].animation.enable = false; circulargauge.refresh();
+            circulargauge.axes[0].pointers[0].animation.enable = false;
             };
 
         document.getElementById('endWidth').onpointermove = document.getElementById('endWidth').ontouchmove =
@@ -193,7 +193,7 @@
                 var endWidth = parseInt((document.getElementById('endWidth')).value, 10);
                 document.getElementById('rangeEndWidth').innerHTML = 'End Width <span>    ' + endWidth;
                 circulargauge.axes[0].ranges[+listObj.value].endWidth = endWidth;
-                circulargauge.axes[0].pointers[0].animation.enable = false; circulargauge.refresh();
+            circulargauge.axes[0].pointers[0].animation.enable = false;
             };
 
         document.getElementById('radius').onpointermove = document.getElementById('radius').ontouchmove =
@@ -201,7 +201,7 @@
                 var radius = parseInt((document.getElementById('radius')).value, 10);
                 document.getElementById('roundedRadius').innerHTML = 'Corner Radius <span>    ' + radius;
                 circulargauge.axes[0].ranges[+listObj.value].roundedCornerRadius = radius;
-                circulargauge.axes[0].pointers[0].animation.enable = false; circulargauge.refresh();
+            circulargauge.axes[0].pointers[0].animation.enable = false;
             };
 
         document.getElementById('enable').onchange = function () {
@@ -209,7 +209,7 @@
             circulargauge.axes[0].labelStyle.useRangeColor = useRangeColor;
             circulargauge.axes[0].majorTicks.useRangeColor = useRangeColor;
             circulargauge.axes[0].minorTicks.useRangeColor = useRangeColor;
-            circulargauge.axes[0].pointers[0].animation.enable = false; circulargauge.refresh();
+            circulargauge.axes[0].pointers[0].animation.enable = false;
         };
     </script>
 }
@@ -242,8 +242,8 @@
 
 
 @section Title{
-                 <title>ASP.NET MVC Circular Gauge Range Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Circular Gauge Range Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Range in ASP.NET MVC Circular Gauge Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Range in ASP.NET MVC Circular Gauge Control</h1>
+                }

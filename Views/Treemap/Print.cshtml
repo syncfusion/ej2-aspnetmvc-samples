@@ -2,15 +2,13 @@
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        <div id="outer" style="width:100%">
-            <div id="container" style="width:100%">
+            <div style="width:100%">
                 @Html.EJS().TreeMap("container").Load("load").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Product} (+${Percentage})" }).TitleSettings(title=>title.Text("Top 10 best selling smartphone brands - 2017").TextStyle(new TreeMapFont { Size = "15px" })).LayoutType(Syncfusion.EJ2.TreeMap.LayoutMode.SliceAndDiceVertical).WeightValuePath("Percentage").RangeColorValuePath("Percentage").LeafItemSettings(leaf=>
            leaf.Fill("#6699cc").LabelPath("Product").Border(new TreeMapBorder { Color= "black", Width= 0.5 }).LabelPosition(Syncfusion.EJ2.TreeMap.LabelPosition.Center).InterSectAction(Syncfusion.EJ2.TreeMap.LabelAlignment.Hide).LabelFormat("${Product} (+${Percentage}) %")).Render()
             </div>
-            <div style="margin-left: 75%">
+            <div style="margin-left: 70%">
                 Source:<a href="http//zeenews.india.com/photos/business/worlds-10-best-selling-smartphone-brands-2033958/samsung-2033959" target="_blank">zeenews.india.com</a>
             </div>
-        </div>
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">
@@ -132,8 +130,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC TreeMap Print & Export Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC TreeMap Print & Export Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Print & Export in ASP.NET MVC TreeMap Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Print & Export in ASP.NET MVC TreeMap Control</h1>
+                }

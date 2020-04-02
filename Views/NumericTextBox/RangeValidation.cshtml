@@ -88,7 +88,7 @@
         var step = parseFloat(document.getElementById('step').value);
         numeric.min = min;
         numeric.max = max;
-        numeric.step = step;
+        numeric.step = isNaN(step) ? 1 : step;
     };
 </script>
 }
@@ -139,8 +139,8 @@
 
 
 @section Title{
-                 <title>ASP.NET MVC Numeric Textbox Range Validation Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Numeric Textbox Range Validation Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Range Validation in ASP.NET MVC Numeric Textbox Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Range Validation in ASP.NET MVC Numeric Textbox Control</h1>
+                }

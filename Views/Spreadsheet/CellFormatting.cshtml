@@ -3,11 +3,11 @@
 
 @section ControlsSection{
 <div class="control-section">
-    @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).ShowFormulaBar(false).BeforeDataBound("beforeDataBound").BeforeCellRender("beforeCellRender").Sheets(sheet =>
+    @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).ShowFormulaBar(false).Created("createdHandler").BeforeCellRender("beforeCellRender").Sheets(sheet =>
     {
-    sheet.Name("Order Details").ShowGridLines(false).RangeSettings(rangesetting =>
+    sheet.Name("Order Details").ShowGridLines(false).Range(ranges =>
     {
-        rangesetting.DataSource((IEnumerable<object>)ViewBag.orderDetails).Add();
+        ranges.DataSource((IEnumerable<object>)ViewBag.orderDetails).Add();
         }).Rows(row =>{
         row.Height(36).Cells(cell =>{
             cell.Value("Order ID").Style(new SpreadsheetCellStyle() { TextAlign = TextAlign.Right }).Add();
@@ -86,10 +86,10 @@
     }
 
     <script>
-        function beforeDataBound() {
-            if (this.activeSheetTab === 1 && this.sheets[this.activeSheetTab - 1].name === 'Order Details') {
+        function createdHandler() {
+            if (this.activeSheetIndex === 0 && this.sheets[this.activeSheetIndex].name === 'Order Details') {
                 // Skip setting cell formatting for other sheets
-                if (this.sheets[this.activeSheetTab - 1].name !== 'Order Details') { return; }
+                if (this.sheets[this.activeSheetIndex].name !== 'Order Details') { return; }
                 // Applying cell formatting dynamically using cellFormat method
                 this.cellFormat({ fontWeight: 'bold', backgroundColor: '#4b5366', color: '#ffffff', fontSize: '12pt' }, 'A1:I1');
                 this.cellFormat({ fontWeight: 'bold', textIndent: '2pt' }, 'B2:B16');
@@ -98,11 +98,14 @@
                 this.cellFormat({ textIndent: '2pt' }, 'G1:G16');
                 this.cellFormat({ textAlign: 'center', fontWeight: 'bold' }, 'H2:H16');
                 this.cellFormat({ fontFamily: 'Helvetica New', verticalAlign: 'middle' }, 'A1:I16');
+                //Applying border to a range
+                this.setBorder({ border: '1px solid #e0e0e0' }, 'A1:I16', 'Outer');
+                this.setBorder({ border: '1px solid #e0e0e0' }, 'A2:I15', 'Horizontal');
             }
         }
 
         function beforeCellRender(args) {
-            if (this.activeSheetTab === 1 && this.sheets[this.activeSheetTab - 1].name === 'Order Details') {
+            if (this.activeSheetIndex === 0 && this.sheets[this.activeSheetIndex].name === 'Order Details') {
                 if (args.cell && args.cell.value) {
                     // Applying cell formatting before rendering the particular cell
                     switch (args.cell.value) {
@@ -137,8 +140,8 @@
     @*custom code end*@
 
 @section Title{
-                 <title>ASP.NET MVC Spreadsheet Cell Formatting Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Spreadsheet Cell Formatting Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Cell Formatting in ASP.NET MVC Spreadsheet Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Cell Formatting in ASP.NET MVC Spreadsheet Control</h1>
+                }

@@ -20,7 +20,7 @@
             return instance.formatDate(value.date, { skeleton: 'yMMMM' });
         };
         window.getWeekDetails = function (value) {
-            return 'Week ' + ej.schedule.getWeekNumber(value.date);
+            return 'Week ' + ej.schedule.getWeekNumber(ej.schedule.getWeekLastDate(value.date, 0));
         };
         function onEventRendered(args) {
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
@@ -60,8 +60,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Scheduler Header Rows Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Scheduler Header Rows Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Header Rows in ASP.NET MVC Scheduler Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Header Rows in ASP.NET MVC Scheduler Control</h1>
+                }

@@ -7,7 +7,7 @@
 @section ControlsSection{
     <div class="control-section" style="overflow:auto">
     <div class="content-wrapper">
-        @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
+        @Html.EJS().PivotView("pivotview").Width("100%").Height("290").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
            .DrilledMembers(drilledmembers =>
            {
                drilledmembers.Name("EnerType").Items(ViewBag.drilledMembers).Add();
@@ -37,6 +37,12 @@
             width: 100%;
             height: 100%;
         }
+        .sb-sample-content-area {
+            min-height: 255px !important;
+        }
+        .control-section {
+            min-height: 255px !important;
+        }
     </style>
 }
 
@@ -63,8 +69,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Pivot Table Local Data Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Pivot Table Local Data Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Local Data in ASP.NET MVC Pivot Table Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Local Data in ASP.NET MVC Pivot Table Control</h1>
+                }

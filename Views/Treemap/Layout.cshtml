@@ -2,10 +2,10 @@
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        <div id="container" align="center">
+        <div>
             @Html.EJS().TreeMap("container").Load("load").RenderDirection(RenderingMode.TopLeftBottomRight).TitleSettings(title => title.Text("Top 10 countries by GDP Nominal - 2015").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("GDP").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${State}<br>Rank : ${Rank}" }).RangeColorValuePath("GDP").LeafItemSettings(leaf => leaf.LabelPath("State").LabelFormat("${State}<br>$${GDP} Trillion<br>(${percentage} %)").LabelStyle(new TreeMapFont { Color = "#000000" }).Border(new TreeMapBorder { Color = "#000000", Width = 0.5 })).Render()
         </div>
-        <div style="float: right; margin-right: 10px;">
+        <div style="margin-left: 65%;">
             Source:
             <a href="https//www.reinisfischer.com/top-10-largest-economies-world-gdp-nominal-2015" target="_blank">www.reinisfischer.com</a>
         </div>
@@ -110,8 +110,8 @@
 
 
 @section Title{
-                 <title>ASP.NET MVC TreeMap Layout Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC TreeMap Layout Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Layout in ASP.NET MVC TreeMap Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Layout in ASP.NET MVC TreeMap Control</h1>
+                }

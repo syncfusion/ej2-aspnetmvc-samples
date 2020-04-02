@@ -1,14 +1,14 @@
 @using Syncfusion.EJ2;
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
-	<div class="col-lg-12 control-section">
-        <div id="container" style="width:100%">
-            @Html.EJS().TreeMap("container").Load("load").TitleSettings(title=>title.Text("US Gold medal categories in Summer Olympics - 2016").TextStyle(new TreeMapFont{ Size = "15px" })).WeightValuePath("Gold").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Sport} : ${Gold}" }).LeafItemSettings(leaf=>
+	<div class="control-section">
+        <div style="width:100%">
+            @Html.EJS().TreeMap("container").Width("870px").Load("load").TitleSettings(title=>title.Text("US Gold medal categories in Summer Olympics - 2016").TextStyle(new TreeMapFont{ Size = "15px" })).WeightValuePath("Gold").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Sport} : ${Gold}" }).LeafItemSettings(leaf=>
        leaf.ShowLabels(true).LabelPath("Sport").Fill("#993399").TemplatePosition(Syncfusion.EJ2.TreeMap.LabelPosition.Center)
        .Border(new TreeMapBorder { Color="black", Width=0.5 }).LabelFormat("${Sport} - ${Gold}").LabelTemplate(ViewBag.imagedata)
        ).Render()
         </div>
-        <div style="margin-left: 75%">
+        <div style="margin-left: 80%">
             Source:<a href="https//en.wikipedia.org/wiki/United_States_at_the_2016_Summer_Olympics" target="_blank"> en.wikipedia.org</a>
         </div>
     </div>
@@ -50,8 +50,8 @@
 
 }
 @section Title{
-                 <title>ASP.NET MVC TreeMap Customization Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC TreeMap Customization Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Customization in ASP.NET MVC TreeMap Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Customization in ASP.NET MVC TreeMap Control</h1>
+                }
