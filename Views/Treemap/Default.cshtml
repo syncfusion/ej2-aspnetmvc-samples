@@ -1,9 +1,9 @@
 @using Syncfusion.EJ2;
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
-	<div class="col-lg-12 control-section">
-        <div id="container" style="width:100%">
-            @Html.EJS().TreeMap("container").Width("100%").ItemMove("itemMove").ItemClick("itemMove").TitleSettings(title => title.Text("Car Sales by Country - 2017").TextStyle(new TreeMapFont { Size = "15px" })).RangeColorValuePath("Sales").Format("n").UseGroupingSeparator(true).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top).Shape(Syncfusion.EJ2.TreeMap.LegendShape.Rectangle)).WeightValuePath("Sales").Palette(new string[] { "#C33764", "#AB3566", "#993367", "#853169", "#742F6A", "#632D6C", "#532C6D", "#412A6F", "#312870", "#1D2671" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true }).Load("load").Levels(level =>
+	<div class="control-section">
+        <div style="width:100%">
+            @Html.EJS().TreeMap("container").Width("900px").ItemMove("itemMove").ItemClick("itemMove").TitleSettings(title => title.Text("Car Sales by Country - 2017").TextStyle(new TreeMapFont { Size = "15px" })).RangeColorValuePath("Sales").Format("n").UseGroupingSeparator(true).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top).Shape(Syncfusion.EJ2.TreeMap.LegendShape.Rectangle)).WeightValuePath("Sales").Palette(new string[] { "#C33764", "#AB3566", "#993367", "#853169", "#742F6A", "#632D6C", "#532C6D", "#412A6F", "#312870", "#1D2671" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true }).Load("load").Levels(level =>
        {
            level.GroupPath("Continent").Border(new TreeMapBorder{ Color = "white", Width = 0.5 }).Add();
        }).LeafItemSettings(leaf => leaf.LabelPath("Company").Border(new TreeMapBorder { Color = "white", Width = 0.5 })).Render()
@@ -76,8 +76,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC TreeMap Default Functionalities Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC TreeMap Default Functionalities Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Default Functionalities in ASP.NET MVC TreeMap Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC TreeMap Control</h1>
+                }

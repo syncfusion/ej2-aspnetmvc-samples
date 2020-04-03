@@ -9,6 +9,9 @@
             display: table;
             margin: 0 auto;
         }
+        .e-play-icon::before {
+            content: '\e34b';
+        }
     </style>
     <div class="col-lg-9 control-section">
         <div id="outer" style="width:100%">
@@ -59,7 +62,7 @@
             <tr id="button-control" style="height: 50px">
                 <td align='center'>
                     <div style="width:80px;">
-                        @Html.EJS().Button("togglebtn").Content("Print").CssClass("e-info").Render()
+                        @Html.EJS().Button("togglebtn").Content("Print").CssClass("e-flat").IconCss("e-icons e-play-icon").IsPrimary(true).Render()
                     </div>
                 </td>
             </tr>
@@ -131,8 +134,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Maps Print Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Maps Print Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Print in ASP.NET MVC Maps Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Print in ASP.NET MVC Maps Control</h1>
+                }

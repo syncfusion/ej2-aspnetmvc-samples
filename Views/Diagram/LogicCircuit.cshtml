@@ -1,3 +1,4 @@
+@using Syncfusion.EJ2.Navigations;
 @section ControlsSection{
 
     <div class="control-section">
@@ -6,7 +7,7 @@
                 <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode("Multiple").Width("100%").Height("600px")
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("600px")
                                                     .SymbolHeight(60).SymbolWidth(62).GetNodeDefaults("getSymbolNodes").Render()
                 )
             </div>
@@ -237,8 +238,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Diagram Logic Circuit Diagram Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Diagram Logic Circuit Diagram Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Logic Circuit Diagram in ASP.NET MVC Diagram Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Logic Circuit Diagram in ASP.NET MVC Diagram Control</h1>
+                }

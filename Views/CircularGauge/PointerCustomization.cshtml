@@ -51,10 +51,10 @@
                     <div class="col-sm-4">
                         <div id="container3" style="height:250px;">
                             @Html.EJS().CircularGauge("container3").Load("onGaugeLoad").Axes(axes => axes.Radius("70%").StartAngle(270).EndAngle(90)
-                   .LineStyle(new CircularGaugeLine{ Width = 3, Color = "#1E7145" }).LabelStyle(new CircularGaugeLabel
+                   .LineStyle(new CircularGaugeLine{ Width = 3, Color = "#9250e6" }).LabelStyle(new CircularGaugeLabel
                    {
                        Position = Position.Outside,
-                       Font = new CircularGaugeFont { Size = "0px", Color = "#1E7145" }
+                       Font = new CircularGaugeFont { Size = "0px", Color = "#9250e6" }
                    }).MajorTicks(new CircularGaugeTick
                    {
                        Width = 1,
@@ -77,10 +77,10 @@
                     <div class="col-sm-4">
                         <div id="container4" style="height:250px;">
                             @Html.EJS().CircularGauge("container4").Load("onGaugeLoad").Axes(axes => axes.Radius("70%").StartAngle(270).EndAngle(90)
-                   .LineStyle(new  CircularGaugeLine{ Width = 3, Color = "#9250e6" }).LabelStyle(new CircularGaugeLabel
+                   .LineStyle(new  CircularGaugeLine{ Width = 3, Color = "#1E7145" }).LabelStyle(new CircularGaugeLabel
                    {
                        Position = Position.Outside,
-                       Font = new CircularGaugeFont { Size = "0px", Color = "#9250e6" }
+                       Font = new CircularGaugeFont { Size = "0px", Color = "#1E7145" }
                    }).MajorTicks(new CircularGaugeTick
                    {
                        Width = 0,
@@ -148,13 +148,18 @@
             for (var i = 0; i < args.gauge.axes[0].annotations.length; i++) {
                 args.gauge.axes[0].annotations[i].zIndex = "1";
             }
+            if (args.gauge.element.id == "container4") {
+                var circularGauge4 = document.getElementById('container4').ej2_instances[0];
+                circularGauge4.axes[0].pointers[0].needleStartWidth = 4;
+                circularGauge4.axes[0].pointers[0].needleEndWidth = 4
+            }
         }
 
 
         var pointeGauge5Interval1 = setInterval(function () {
             var newVal = Math.random() * (90 - 20) + 20;
-            if (document.getElementById('container4')) {
-                document.getElementById('container4').ej2_instances[0].setPointerValue(0, 0, newVal);
+            if (document.getElementById('container3')) {
+                document.getElementById('container3').ej2_instances[0].setPointerValue(0, 0, newVal);
             }
             else {
                 clearInterval(pointeGauge5Interval1);
@@ -201,10 +206,9 @@
 }
 
 
-
 @section Title{
                  <title>ASP.NET MVC Circular Gauge PointerCustomization Example - Syncfusion Demos </title>
              }
 @section Header{
-                <h1 class='sb-sample-text'>Example for PointerCustomization in ASP.NET MVC Circular Gauge Control</h1>
+                <h1 class='sb-sample-text'>Example of PointerCustomization in ASP.NET MVC Circular Gauge Control</h1>
             }

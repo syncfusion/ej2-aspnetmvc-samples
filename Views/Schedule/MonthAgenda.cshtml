@@ -7,7 +7,6 @@
             @Html.EJS().Schedule("schedule").Width("100%").Height("510px").Views(ViewBag.view).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 6, 20)).Render()
         </div>
     </div>
-    @*custom code start*@
     <style>
         @@media (min-width: 481px) {
             .schedule-wrapper {
@@ -15,7 +14,6 @@
             }
         }
     </style>
-    @*custom code end*@
 }
 @*custom code start*@
 @section Meta{
@@ -46,8 +44,8 @@
     </div>
 }
 @section Title{
-                 <title>ASP.NET MVC Scheduler Month Agenda View Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Scheduler Month Agenda View Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Month Agenda View in ASP.NET MVC Scheduler Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Month Agenda View in ASP.NET MVC Scheduler Control</h1>
+                }

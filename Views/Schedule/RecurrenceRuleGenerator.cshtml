@@ -12,7 +12,6 @@
             @Html.EJS().RecurrenceEditor("RecurrenceEditor").SelectedType(1).Change("onChange").Render()
         </div>
     </div>
-    @*custom code start*@
     <style>
         .recurrence-editor-wrap {
             margin: 0 25%;
@@ -37,7 +36,6 @@
             }
         }
     </style>
-    @*custom code end*@
     <script type="text/javascript">
         function onChange(args) {
             var element = document.querySelector('#rule-output');
@@ -73,8 +71,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Scheduler Rule Generator Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Scheduler Rule Generator Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Rule Generator in ASP.NET MVC Scheduler Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Rule Generator in ASP.NET MVC Scheduler Control</h1>
+                }

@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="col-md-8 control-section">
         <div class="content-wrapper">
-            @Html.EJS().CircularGauge("container").Load("onGaugeLoad").DragEnd("onDragEnd").DragMove("onDragMove").EnablePointerDrag(true).Axes(axes =>
+            @Html.EJS().CircularGauge("container").Load("onGaugeLoad").EnablePointerDrag(true).DragEnd("onDragEnd").DragMove("onDragMove").Axes(axes =>
          axes.EndAngle(140).StartAngle(220).LineStyle(new CircularGaugeLine { Width = 0, Color = "transparent" }).Radius("80%")
          .Minimum(0).Maximum(120).MajorTicks(new CircularGaugeTick{ UseRangeColor = true }).MinorTicks(new CircularGaugeTick{ UseRangeColor = true })
          .LabelStyle(new CircularGaugeLabel{ UseRangeColor = true }).Ranges(
@@ -60,14 +60,25 @@
                 </tr>
                 <tr style="height: 50px">
                     <td style="width: 20%">
-                        <div id="enablePointer">Enable Drag</div>
+                        <div id="enablePointer">Allow Pointer Drag</div>
                     </td>
                     <td style="width: 40%;">
                         <div>
-                            <input type="checkbox" id="enable" checked="true" style="width:90%">
+                            <input type="checkbox" id="enable" checked="true"/>
                         </div>
                     </td>
                 </tr>
+                <tr style="height: 50px">
+                    <td style="width: 20%">
+                        <div id='enableRange'>Allow Ranges Drag</div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div>
+                            <input type="checkbox" id="enable1" />
+                        </div>
+                    </td>
+                </tr>
+
             </tbody>
         </table>
     </div>
@@ -95,23 +106,28 @@
 
         }
         function onDragEnd(args) {
-            pointerValue = Math.round(args.currentValue);
-            setPointersValue(circulargauge, pointerValue);
+             pointerValue = Math.round(args.currentValue);
+             if (isNaN(args.rangeIndex)) {
+                 setPointersValue(circulargauge, pointerValue);
+             }
+
         }
 
         function onDragMove(args) {
-            pointerValue = Math.round(args.currentValue);
-            document.getElementById('pointerValue').innerHTML = 'Pointer Value <span>    ' + pointerValue;
-            document.getElementById('value').value = pointerValue.toString();
-            circulargauge.setAnnotationValue(0, 0, content + pointerValue + ' MPH</span></div>');
+            if (isNaN(args.rangeIndex)) {
+                pointerValue = Math.round(args.currentValue);
+                document.getElementById('pointerValue').innerHTML = 'Pointer Value <span>    ' + pointerValue;
+                document.getElementById('value').value = pointerValue.toString();
+                circulargauge.setAnnotationValue(0, 0, content + pointerValue + ' MPH</span></div>');
+            }
         }
 
         function setPointersValue(circulargauge, pointerValue) {
             var color = ej.circulargauge.getRangeColor(pointerValue, (circulargauge.axes[0].ranges), circulargauge.axes[0].pointers[0].color);
             circulargauge.axes[0].pointers[0].color = color;
             circulargauge.axes[0].pointers[1].color = color;
-            circulargauge.axes[0].pointers[0].animation.enable = true;
-            circulargauge.axes[0].pointers[1].animation.enable = true;
+            circulargauge.axes[0].pointers[0].animation.enable = false;
+            circulargauge.axes[0].pointers[1].animation.enable = false;
             circulargauge.axes[0].pointers[0].needleTail.color = color;
             circulargauge.axes[0].pointers[1].needleTail.color = color;
             circulargauge.axes[0].pointers[0].cap.border.color = color;
@@ -131,6 +147,11 @@
             var value = document.getElementById('enable').checked;
             circulargauge.enablePointerDrag = value;
         };
+        document.getElementById('enable1').onchange = () => {
+            var value= (document.getElementById('enable1')).checked;
+            circulargauge.enableRangeDrag = value;
+        };
+
 
 
     </script>
@@ -144,7 +165,7 @@
     </div>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the PointerDrag in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+                    <meta name="description" content="This example demonstrates the Pointer & Ranges Drag in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
                 }
 @section Description{
     <div id="description">
@@ -166,8 +187,8 @@
 
 
 @section Title{
-                 <title>ASP.NET MVC Circular Gauge PointerDrag Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Circular Gauge Pointer & Ranges Drag Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for PointerDrag in ASP.NET MVC Circular Gauge Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Pointer & Ranges Drag in ASP.NET MVC Circular Gauge Control</h1>
+                }

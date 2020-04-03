@@ -3,11 +3,11 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).DataBound("dataBoundEvent").Sheets(sheet =>
+        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).Created("createdHandler").Sheets(sheet =>
    {
-       sheet.Name("Stock Details").SelectedRange("F15").RangeSettings(rangesetting =>
+       sheet.Name("Stock Details").SelectedRange("F15").Range(ranges =>
        {
-           rangesetting.DataSource((IEnumerable<object>)ViewBag.formulaData).Add();
+           ranges.DataSource((IEnumerable<object>)ViewBag.formulaData).Add();
        }).Rows(row =>{
            row.Height(40).Cells(cell => {
                cell.Index(3).Value("High (+)").Add();
@@ -15,11 +15,11 @@
            }).Add();
            row.Height(25).Index(11).Cells(cell => {
                cell.Index(3).Value("Average profit:").Add();
-               cell.Index(5).Formula("=AVERAGE(F2:F11)").Format("0.00").Add();
+               cell.Index(5).Formula("=AVERAGE(Profit)").Format("0.00").Add();
            }).Add();
            row.Height(25).Cells(cell => {
                cell.Index(3).Value("Maximum stock value:").Add();
-               cell.Index(5).Formula("=MAX(D2:D11)").Format("0.00").Add();
+               cell.Index(5).Formula("=MAX(High)").Format("0.00").Add();
            }).Add();
            row.Height(25).Cells(cell => {
                cell.Index(3).Value("Minimum stock value:").Add();
@@ -27,7 +27,7 @@
            }).Add();
            row.Height(25).Cells(cell => {
                cell.Index(3).Value("Non-profitable days:").Add();
-               cell.Index(5).Formula("=COUNTIF(F2:F11,'<=0')").Add();
+               cell.Index(5).Formula("=COUNTIF(F2:F11,\"<=0\")").Add();
            }).Add();
        }).Columns(column => {
            column.Width(100).Add();
@@ -37,6 +37,9 @@
            column.Width(130).Add();
            column.Width(130).Add();
        }).Add();
+   }).DefinedNames(definedName => {
+       definedName.Name("Profit").RefersTo("=F2:F11").Add();
+       definedName.Name("High").RefersTo("=D2:D11").Add();
    }).Render()
     </div>
 }
@@ -47,7 +50,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample demonstrates the analysis of a company's stock value for a certain period with formula feature.
+            This sample demonstrates the analysis of a company's stock value for a certain period with formula and named range feature.
         </p>
     </div>
 }
@@ -56,10 +59,11 @@
         <p>
             The <code>Spreadsheet</code> component provides a built-in calculation library that supports most commonly used
             formulas.
-            In this demo, a formula is specified to a cell using the <code>formula</code> property.
+            In this demo, a formula is specified to a cell using the <code>formula</code> property. The ranges are specified
+            using its name and its defined using <code>definedNames</code> property.
         </p>
         <p>
-            More information about formula support can be found in this
+            More information about formula and named range support can be found in this
             <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started">
                 documentation
             </a> section.
@@ -68,11 +72,11 @@
 }
 
 <script>
-    function dataBoundEvent() {
-        if (this.activeSheetTab === 1 && this.sheets[this.activeSheetTab - 1].name === 'Stock Details') {
-            this.cellFormat({ fontWeight: 'bold', backgroundColor: '#4ECDC4', textAlign: 'center', fontSize: '14px' }, 'A1:F1');
+    function createdHandler() {
+        if (this.activeSheetIndex === 0 && this.sheets[this.activeSheetIndex].name === 'Stock Details') {
+            this.cellFormat({ fontWeight: 'bold', backgroundColor: '#279377', color: '#fff', textAlign: 'center', fontSize: '14px' }, 'A1:F1');
             this.cellFormat({ backgroundColor: '#F2F2F2' }, 'A2:F11');
-            this.cellFormat({ fontWeight: 'bold', backgroundColor: '#C6EFCE' }, 'A12:F15');
+            this.cellFormat({ fontWeight: 'bold', backgroundColor: '#EEEEEE' }, 'A12:F15');
             this.numberFormat('0.00', 'F2:F11');
         }
     }
@@ -90,8 +94,8 @@
 @*custom code end*@
 
 @section Title{
-                 <title>ASP.NET MVC Spreadsheet Formula Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Spreadsheet Formula Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Formula in ASP.NET MVC Spreadsheet Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Formula in ASP.NET MVC Spreadsheet Control</h1>
+                }

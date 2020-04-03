@@ -17,173 +17,307 @@ using System.IO;
 using System.Data.OleDb;
 using System.Data;
 using Syncfusion.OfficeChart;
+using EJ2MVCSampleBrowser.Models;
+using Syncfusion.EJ2.Base;
+using System.Collections;
+using System.Globalization;
 
 namespace EJ2MVCSampleBrowser.Controllers
 {
     public partial class PresentationController : Controller
     {
-        //
-        // GET: /ImportData/
-
+        private List<DataPosition> order1 = new List<DataPosition>();
+        #region Action Methods
+        /// <summary>
+        /// Imports the data to the Grid.
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ImportData()
         {
+            PresentationData.presentationData = new PresentationData().GetAllRecords();
+            order1.Add(new DataPosition() { text = "Top" });
+            order1.Add(new DataPosition() { text = "Bottom" });
+            ViewBag.ddData = order1;
             return View();
         }
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ImportData(string Browser)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="button">Button name to perfrom specific operation</param>
+        /// <param name="Group">Radio button group value</param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult ImportData(string button, string Group)
         {
-            //Gets the path of the Database
-            string path = ResolveApplicationDataPath("DataBase.mdb");
-            //Create a new instance of OleDbConnection
-            OleDbConnection connection = new OleDbConnection();
-            //Sets the string to open a Database
-            connection.ConnectionString = "Provider=Microsoft.JET.OLEDB.4.0;Password=\"\";User ID=Admin;Data Source=" + path;
-            //Opens the Database connection
-            connection.Open();
-            //Get all the data from the Database
-            OleDbCommand query = new OleDbCommand("select * from StockData", connection);
-            //Create a new instance of OleDbDataAdapter
-            OleDbDataAdapter adapter = new OleDbDataAdapter(query);
-            //Create a new instance of DataSet
-            DataSet dataSet = new DataSet();
-            //Adds rows in the Dataset
-            adapter.Fill(dataSet);
-            //Create a DataTable from the Dataset
-            DataTable dataTable = dataSet.Tables[0];
-            //Create a new instance of Presentation
-            IPresentation presentation = Presentation.Create();
-            //Set the number of rows to be present in the DataTable
-            int RowsPerSlide = 5;
-            List<DataTable> dataTables = SplitDataTable(dataTable, RowsPerSlide);
-            int count = 1;
-            //Export the data into the table of the Presentation
-            foreach (DataTable splittedDataTable in dataTables)
+            if (button == null)
+                return View();
+            //Instatiate the presentation
+            IPresentation presentation = null;
+            //Checks whether the export option is table
+            if (Group == "Table")
             {
-                //if the count of the splitted DataTable is equal to 1, then the data willl be imported as Table into the presentation
-                if (count == 1)
-                    ExportToPresentationSlide(presentation, splittedDataTable);
-                //if the count of the splitted DataTable is greater than 1, then the data willl be imported as Chart into the presentation
-                else
-                    CreateChartFromDatatable(presentation, splittedDataTable);
-                count++;
+                //Gets the generated presentation after importing the data to the presentation slide as table
+                presentation = CreateTableFromGrid();
             }
-            //Dispose all the resources
-            connection.Close();
-            connection.Dispose();
-            query.Dispose();
-            adapter.Dispose();
-            dataSet.Dispose();
-            return new PresentationResult(presentation, "Imported.pptx", HttpContext.ApplicationInstance.Response);
+            else if (Group == "Chart")
+            {
+                //Gets the generated presentation after importing the data to the presentation slide as chart
+                presentation = CreateChartFromGrid();
+            }
+            //Gets the output file nae from the export option
+            string outputFileName = Group.ToString();
+            //return the file
+            return new PresentationResult(presentation, Group + ".pptx", HttpContext.ApplicationInstance.Response);
 
         }
+        /// <summary>
+        /// Update the edited data to the Grid
+        /// </summary>
+        /// <param name="Object"></param>
+        /// <returns></returns>
+        public ActionResult Update(CRUDModel Object)
+        {
+            var ord = Object.Value;
+            PresentationData val = PresentationData.presentationData.Where(or => or.Year == ord.Year).FirstOrDefault();
+            val.Year = ord.Year;
+            val.Jan = ord.Jan;
+            val.Feb = ord.Feb;
+            val.Mar = ord.Mar;
+            val.Apr = ord.Apr;
+            val.May = ord.May;
+            return Json(Object.Value);
+        }
+        /// <summary>
+        /// Delete the specific data from the grid
+        /// </summary>
+        /// <param name="Object"></param>
+        /// <returns></returns>
+        public ActionResult Delete(CRUDModel Object)
+        {
+            var ord = Object.Value;
+            var key = Object.key;
+            PresentationData.presentationData.Remove(PresentationData.presentationData.Where(or => or.Year == int.Parse(key.ToString())).FirstOrDefault());
+            return Json(ord);
+        }
+        /// <summary>
+        /// Insert the data into the start position of the grid
+        /// </summary>
+        /// <param name="Object"></param>
+        /// <returns></returns>
+        public ActionResult Insert(CRUDModel Object)
+        {
+            int insertPosition = 0;
+            string position = PresentationData.dropBoxValue;
+            if(position == "Bottom")
+            {
+                insertPosition = PresentationData.presentationData.Count;
+            }
+            else
+            {
+                insertPosition = 0;
+            }
+            var ord = Object.Value;
+            PresentationData.presentationData.Insert(insertPosition, ord);
+            return Json(Object.Value);
+        }
+        /// <summary>
+        /// Gets the data from server and update it to the grid
+        /// </summary>
+        /// <param name="dm"></param>
+        /// <returns></returns>
+        public ActionResult UrlDatasource(DataManagerRequest dm)
+        {
+            //Gets the data
+            IEnumerable   DataSource = PresentationData.presentationData;
+            //Create a new instance of DataOperations
+            DataOperations operation = new DataOperations();
+            //Gets the count of the data
+            int count = DataSource.Cast<PresentationData>().Count();
+            if (dm.Skip != 0)
+            {
+                DataSource = operation.PerformSkip(DataSource, dm.Skip);
+            }
+            if (dm.Take != 0)
+            {
+                DataSource = operation.PerformTake(DataSource, dm.Take);
+            }
+            return dm.RequiresCounts ? Json(new { result = DataSource, count = count }) : Json(DataSource);
+
+        }
+        /// <summary>
+        /// Gets the current position of Grid to add data into the grid
+        /// </summary>
+        /// <param name="position">Gets the position of the value should get added from the View</param>
+        /// <returns></returns>
+        public ActionResult Dropdown(string position)
+        {
+            PresentationData.dropBoxValue = position;
+            return View();
+        }
+        #endregion
+        #region Helper Methods
+        /// <summary>
+        /// Exports the Data as chart to the PowerPoint Slide
+        /// </summary>
+        /// <returns>Returns the generated presentation</returns>
+        private IPresentation CreateChartFromGrid()
+        {
+            //Create a new instance of Presentation
+            IPresentation presentation = Presentation.Open(ResolveApplicationDataPath("DataTemplate.pptx"));
+            foreach(ISlide slide in presentation.Slides)
+            {
+                //Iterate each shape in the slide
+                for(int i=0;i<slide.Shapes.Count;i++)
+                {
+                    //Retrieves the shape
+                    IShape shape = slide.Shapes[i] as IShape;
+                    //Removes the shape from the shape collection.
+                    slide.Shapes.Remove(shape);
+                }
+            }
+            int slideIndex = 0;
+            //Clone the slide
+            ISlide clonedSlide = presentation.Slides[0].Clone();
+            //Iterate each data of the Grid
+            foreach (PresentationData presentationData in PresentationData.presentationData)
+            {
+                if (slideIndex > 0)
+                {
+                     presentation.Slides.Add(clonedSlide);
+                }
+                //Gets the slide of the presentation
+                ISlide slide = slide = presentation.Slides[slideIndex];
+                //Adds chart to the slide with position and size
+                IPresentationChart chart = slide.Charts.AddChart(100, 10, 700, 500);
+                //Set the first row of the chart values
+                chart.ChartData.SetValue(1, 2, "Jan");
+                chart.ChartData.SetValue(1, 3, "Feb");
+                chart.ChartData.SetValue(1, 4, "Mar");
+                chart.ChartData.SetValue(1, 5, "Apr");
+                chart.ChartData.SetValue(1, 6, "May");
+                //Initalize the row index
+                int rowIndex = 2;
+                int?[] array = new int?[] { presentationData.Year, presentationData.Jan, presentationData.Feb, presentationData.Mar, presentationData.Apr, presentationData.May };
+                for (int i = 0; i < array.Length; i++)
+                {
+                    //Initialize the column index
+                    int columnIndex = i + 1;
+                    //Set the value for chart
+                    chart.ChartData.SetValue(rowIndex, columnIndex, array[i].Value);
+                    if (columnIndex == array.Length)
+                    {
+                        //Creates a new chart series with the name
+                        IOfficeChartSerie series = chart.Series.Add(array[0].Value.ToString());
+
+                        //Sets the data range of chart series – start row, start column, end row, end column
+                        series.Values = chart.ChartData[2, 2, 2, 6];
+
+                        //Sets the data range of the category axis
+                        chart.PrimaryCategoryAxis.CategoryLabels = chart.ChartData[1, 2, 1, 6];
+
+                        //Sets the type of the chart
+                        chart.ChartType = OfficeChartType.Pie;
+
+                        //Sets a value indicates wherher to fill style is visible or not
+                        chart.ChartArea.Fill.Visible = false;
+
+                        IOfficeChartFrameFormat chartPlotArea = chart.PlotArea;
+                        //Sets a value indicates wherher to fill style is visible or not
+                        chartPlotArea.Fill.Visible = false;
+
+                        //Specifies the chart title
+                        chart.ChartTitle = "Sales details of the year " + array[0].Value.ToString();
+
+                        //Sets the legend position
+                        chart.Legend.Position = OfficeLegendPosition.Right;
+                    }
+                }
+                rowIndex++;
+                slideIndex++;
+            }
+            return presentation;
+        }
+
         /// <summary>
         /// Exports the Data as table to the PowerPoint Slide
         /// </summary>
-        /// <param name="presentation">The PowerPoint presentation instance</param>
-        /// <param name="dataTable">The table which has the data</param>
-        private static void ExportToPresentationSlide(IPresentation presentation, DataTable dataTable)
+        /// <returns>Returns the generated presentation</returns>
+        private IPresentation CreateTableFromGrid()
         {
-            //Get a slide from presentation.
-            ISlide slide = presentation.Slides.Add(SlideLayoutType.Blank);
-            //Add table to the slide. 
-            ITable table = slide.Tables.AddTable(dataTable.Rows.Count, dataTable.Columns.Count, 200, 200, 500.2, 165.36);
-            //Disable the header row property
-            table.HasHeaderRow = true;
-            int rowIndex = 0;
-            int colIndex = 0;
-            //Add data to the table in presentation from the DataTable
-            foreach (DataRow row in dataTable.Rows)
+            //Opens the existing presentation document
+            IPresentation presentation = Presentation.Open(ResolveApplicationDataPath("DataTemplate.pptx"));
+            //Clone the first slide of the presentation
+            ISlide clonedSlide = presentation.Slides[0].Clone();
+            //Initialize the slide index value
+            int slideIndex = 0;
+            //Create a new instance of slide
+            ISlide slide = null;
+            //Iterate and get data from Grid
+            foreach (PresentationData presentationData in PresentationData.presentationData)
             {
-                foreach (object val in row.ItemArray)
+                //Fetch all the grid details to array
+                int?[] array = new int?[] { presentationData.Year, presentationData.Jan, presentationData.Feb, presentationData.Mar, presentationData.Apr, presentationData.May };
+                //Check whether the current slide is the first slide or not
+                if (slideIndex > 0)
                 {
-                    ICell cell = table[rowIndex, colIndex];
-                    cell.TextBody.AddParagraph(val.ToString());
-                    colIndex++;
+                    //Adds the cloned slide to the presentation
+                    presentation.Slides.Add(clonedSlide);
                 }
-                colIndex = 0;
-                rowIndex++;
+                //Gets the slide based on slide index from presentation
+                slide = presentation.Slides[slideIndex];
+                //Checks whether the slide has table    
+                if (slide.Tables.Count > 0)
+                {
+                    //Gets the first occurrence of table
+                    ITable oldTable = slide.Tables[0];
+                    //Iterate each data from the grid
+                    for (int i = 0; i < array.Length; i++)
+                    {
+                        //Gets the current instance of table cell
+                        ICell cell = oldTable[i, 1];
+                        //Checks whether the current cell is first row and second column
+                        if (i == 0)
+                        {
+                            //Add paragraph to the cell
+                            cell.TextBody.Paragraphs[0].Text = array[i].Value.ToString();
+                        }
+                        else
+                        {
+                            //Gets the month name
+                            string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i);
+                            //Add paragraph to the cell
+                            cell.TextBody.Paragraphs[0].Text = monthName + " - " + array[i].Value.ToString();
+                        }
+                        //Set the font size of the paragrpah
+                        cell.TextBody.Paragraphs[0].Font.FontSize = 24;
+                    }
+                }
+                slideIndex++;
             }
+            return presentation;
+        }
+        #endregion
+        #region Helper Class
+        /// <summary>
+        /// Gets the data from the Grid
+        /// </summary>
+        public class CRUDModel
+        {
+            public PresentationData Value { get; set; }
+
+            public int key { get; set; }
+
+            public string action { get; set; }
         }
         /// <summary>
-        /// Split the table accoding to the number of rows
+        /// Position of Data in the Grid
         /// </summary>
-        /// <param name="tableToSplit">The table to be splitted</param>
-        /// <param name="countLimit">The number of rows needed in splitted table</param>
-        /// <returns>The splitted table</returns>
-        private static List<DataTable> SplitDataTable(DataTable tableToSplit, int countLimit)
+        public class DataPosition
         {
-            List<DataTable> tables = new List<DataTable>();
-            int count = 0;
-            DataTable copyTable = null;
-            foreach (DataRow dr in tableToSplit.Rows)
-            {
-                if (count == 0 || count == countLimit)
-                {
-                    //Initialize a new instance of Datatable.
-                    copyTable = new DataTable();
-                    // Clone the structure of the table.
-                    copyTable = tableToSplit.Clone();
-                    // Add the new DataTable to the list.
-                    tables.Add(copyTable);
-                }
-                // Import the current row.
-                copyTable.ImportRow(dr);
-                count++;
-            }
-            return tables;
+            //Gets ot sets the position of the data in Grid
+            public string text { get; set; }
+
         }
-
-        /// <summary>
-        /// Exports the tables and charts to the PowerPoint Slide
-        /// </summary>
-        /// <param name="presentation">The PowerPoint presnetation to export the charts and tables</param>
-        /// <param name="dataTable">The table which has the data</param>
-        private static void CreateChartFromDatatable(IPresentation pptxDoc, DataTable dataTable)
-        {
-            //Get the first slide in the PowerPoint presentation
-            ISlide slide = pptxDoc.Slides.Add(SlideLayoutType.Blank);
-            //Create a chart and add to the slide
-            IPresentationChart chart = slide.Charts.AddChart(100, 10, 700, 500);
-            int rowIndex = 1;
-            int colIndex = 1;
-            //Add data to the table in presentation from the DataTable
-            foreach (DataRow row in dataTable.Rows)
-            {
-                foreach (object val in row.ItemArray)
-                {
-                    string value = val.ToString();
-                    chart.ChartData.SetValue(rowIndex, colIndex, value);
-                    colIndex++;
-                }
-                colIndex = 1;
-                rowIndex++;
-            }
-            //Creates a new chart series with the name
-            IOfficeChartSerie openPrice = chart.Series.Add("Open Price");
-
-            //Sets the data range of chart series – start row, start column, end row, end column
-            openPrice.Values = chart.ChartData[2, 2, 5, 2];
-
-            //Creates a new chart series with the name
-            IOfficeChartSerie highPrice = chart.Series.Add("High Price");
-
-            //Sets the data range of chart series – start row, start column, end row, end column
-            highPrice.Values = chart.ChartData[2, 3, 5, 3];
-
-            //Creates a new chart series with the name
-            IOfficeChartSerie lowPrice = chart.Series.Add("Low Price");
-
-            //Sets the data range of chart series – start row, start column, end row, end column
-            lowPrice.Values = chart.ChartData[2, 4, 5, 4];
-
-            //Sets the data range of the category axis
-            chart.PrimaryCategoryAxis.CategoryLabels = chart.ChartData[2, 1, 5, 1];
-
-            //Specifies the chart type
-            chart.ChartType = OfficeChartType.Column_Clustered;
-
-            //Set the title for the chart
-            chart.ChartTitle = "Sales Report";
-        }
+        #endregion
     }
 }

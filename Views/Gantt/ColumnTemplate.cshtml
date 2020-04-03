@@ -6,7 +6,7 @@
 @section ControlsSection{
 <div class="control-section">
 
-    @(Html.EJS().Gantt("ColumnTemplate").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).Resources((IEnumerable<object>)ViewBag.Resources).ResourceNameMapping("ResourceName").ResourceIDMapping("ResourceId")
+    @(Html.EJS().Gantt("ColumnTemplate").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).Resources((IEnumerable<object>)ViewBag.Resources).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName"))
        .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
         .Dependency("Predecessor").Child("SubTasks").ResourceInfo("ResourceId")).Columns(col =>
         {
@@ -62,8 +62,8 @@
     </div>
 }
 @section Title{
-                 <title>ASP.NET MVC Gantt Column Template Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Gantt Column Template Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for Column Template in ASP.NET MVC Gantt Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of Column Template in ASP.NET MVC Gantt Control</h1>
+                }

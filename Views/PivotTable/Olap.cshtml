@@ -15,7 +15,7 @@
         .Values(values => { values.Name("[Measures].[Customer Count]").Caption("Customer Count").Add(); values.Name("[Measures].[Internet Sales Amount]").Caption("Internet Sales Amount").Add(); })
         .Filters(filters => { filters.Name("[Date].[Fiscal]").Caption("Date Fiscal").Add();})
         .FilterSettings(filterSettings => { filterSettings.Name("[Date].[Fiscal]").Items(ViewBag.filterMembers).LevelCount(3).Add();
-        })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DisplayOption(new PivotViewDisplayOption { View = View.Both }).ChartSettings(new PivotViewChartSettings { Load="onChartLoad" }).Toolbar(new List<string>
+        })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DisplayOption(new PivotViewDisplayOption { View = View.Both }).ChartSettings(new PivotViewChartSettings { Title="Sales Analysis" , Load="onChartLoad" }).Toolbar(new List<string>
             () { "New", "Save", "SaveAs", "Rename", "Remove", "Load",
             "Grid", "Chart", "MDX", "Export", "SubTotal", "GrandTotal", "ConditionalFormatting", "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").Render()
         </div>
@@ -82,6 +82,13 @@
             var reportsCollection = [];
             if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
                 reportsCollection = JSON.parse(localStorage.pivotviewReports);
+            }
+            if (args.isReportExists) {
+                for (var i = 0; i < reportsCollection.length; i++) {
+                    if (reportsCollection[i].reportName === args.rename) {
+                        reportsCollection.splice(i, 1);
+                    }
+                }
             }
             reportsCollection.map(function (item) {
                 if (args.reportName === item.reportName) {
@@ -233,8 +240,8 @@
 }
 
 @section Title{
-                 <title>ASP.NET MVC Pivot Table OLAP Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Pivot Table OLAP Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example for OLAP in ASP.NET MVC Pivot Table Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of OLAP in ASP.NET MVC Pivot Table Control</h1>
+                }
