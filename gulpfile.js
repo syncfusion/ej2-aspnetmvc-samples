@@ -275,7 +275,7 @@ gulp.task('title-section', function () {
                 <meta name="description" content="${description}"/>
             }`;
         }
-            let header = `Example for ${featureName} in ASP.NET MVC ${componentName} Control`;
+            let header = `Example of ${featureName} in ASP.NET MVC ${componentName} Control`;
             if(content.includes('@section Header{')){
                 content = content.replace(/@section Header+{([^}]*)}/g, `@section Header{
                     <h1 class='sb-sample-text'>${header}</h1>

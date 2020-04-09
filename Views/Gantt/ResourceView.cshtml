@@ -1,0 +1,75 @@
+
+@{
+    ViewBag.Title = "ResourceView";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("ResourceView").DataSource((IEnumerable<object>
+            )ViewBag.DataSource).Height("450px").ViewType(Syncfusion.EJ2.Gantt.ViewType.ResourceView).HighlightWeekends(true).AllowSelection(true).AllowResizing(true)
+            .TaskFields(ts => ts.Id("TaskId").Name("TaskName").Work("Work").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+            .ResourceInfo("Resources").Child("SubTasks"))
+            .TreeColumnIndex(1).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName").Unit("ResourceUnit").Group("ResourceGroup"))
+            .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
+            .Toolbar(new List<string>() { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll" })
+            .Resources((IEnumerable<object>)ViewBag.Resources)
+            .Columns(col =>
+            {
+                col.Field("TaskId").Visible(false).Add();
+                col.Field("TaskName").HeaderText("Name").Width(250).Add();
+                col.Field("Work").HeaderText("Work").Add();
+                col.Field("Progress").Add();
+                col.Field("ResourceGroup").HeaderText("Group").Add();
+                col.Field("StartDate").Width(100).Add();
+                col.Field("Duration").Width(100).Add();
+            })
+            .LabelSettings(ls => ls.RightLabel("Resources")).SplitterSettings(sp => sp.ColumnIndex(3))
+            .ProjectStartDate("03/28/2019").ProjectEndDate("05/18/2019")
+            .Render()
+            )
+        </div>
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample explains the Resource break down view in the Gantt chart that is how to visualize the list of tasks assigned to each resource in hierarchy manner and switch the resources as per the users need by task editing mode. If the no resources are mapped in a task, then it will come under the “unassigned Tasks” category.
+            This feature can be enabled by setting the <code>viewType</code> property to “ResourceView”.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This sample demonstrates the Resource break down view in the Gantt chart i.e.,visualize the list of tasks which assigned to each resource in hierarchy manner" />
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see the resource break down from a bulk of tasks done by mapping the predefined resource IDs to each task and resource information can be shown by using the <code>labelSetting</code> property.
+            Using the toolbar action, you can perform CRUD operation for resource allocation based on their availability and task complexity.
+            The resources and tasks assigned to those resources can be grouped into categories. Resources can be mapped using the <code>resourceFields:</code>.</br>
+            <code>ID</code>: To map resource ID.</br>
+            <code>Name</code>: To map resource name.</br>
+            <code>Unit</code>: To map resource unit.</br>
+            <code>Group</code>: To map resource group.</br></br>
+
+                                                                                                                                      
+</p>
+        <p style="font-weight: 500">Injecting Module:</p>
+        <p>
+            The Gantt control features are segregated into individual feature-wise modules. To use a selection,
+            inject the <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method.
+            To edit, inject the <code>Toolbar</code> module using the <code>Gantt.Inject(Toolbar)</code> method and Edit module using the <code>Gantt.Inject(Edit)</code> method.
+        </p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Resource View Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Resource View in ASP.NET MVC Gantt Control</h1>
+}
