@@ -2,9 +2,9 @@
 
 @section ControlsSection{
     <div class="control-section">
-       @Html.EJS().Spreadsheet("spreadsheet").OpenUrl("RemoteDataOpen").SaveUrl("RemoteDataSave").DataBound("dataBoundEvent").Sheets(sheet =>
+       @Html.EJS().Spreadsheet("spreadsheet").OpenUrl("RemoteDataOpen").SaveUrl("RemoteDataSave").Created("createdEvent").Sheets(sheet =>
   {
-      sheet.Name("Shipment Details").Range(ranges =>
+      sheet.Name("Shipment Details").Ranges(ranges =>
       {
           ranges.ShowFieldAsHeader(false).StartCell("A2").Query("new ej.data.Query().select(['OrderID', 'CustomerID', 'ShipName', 'ShipCity', 'ShipCountry', 'Freight']).take(200)").DataSource(dataManger =>
    {
@@ -79,7 +79,7 @@
         </p>
         <p>
             In this demo, remote data is bound by assigning service data as an instance of <code>DataManager</code> to the
-            <code>dataSource</code> property under the range of sheet.
+            <code>dataSource</code> property under the <code>ranges</code> of sheet.
         </p>
         <p>
             More information about remote data binding can be found in this
@@ -91,10 +91,8 @@
 }
 
 <script>
-    function dataBoundEvent() {
-        if (this.activeSheetIndex === 0 && this.sheets[this.activeSheetIndex].name === 'Shipment Details') {
-            this.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A1:G1');
-        }
+    function createdEvent() {
+        this.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A1:G1');
     }
 </script>
 

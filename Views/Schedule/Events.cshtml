@@ -5,7 +5,7 @@
 
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventClick("OnEventClick").PopupOpen("OnPopupOpen").Navigating("OnNavigating").Destroyed("OnDestroyed").CellDoubleClick("OnCellDoubleClick").CellClick("OnCellClick").ActionFailure("OnActionFailure").Created("OnCreate").ActionBegin("OnActionBegin").ActionComplete("OnActionComplete").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2019, 1, 10)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventClick("OnEventClick").PopupOpen("OnPopupOpen").Navigating("OnNavigating").Destroyed("OnDestroyed").CellDoubleClick("OnCellDoubleClick").CellClick("OnCellClick").ActionFailure("OnActionFailure").Created("OnCreate").ActionBegin("OnActionBegin").ActionComplete("OnActionComplete").EventRendered("onEventRendered").Select("onSelect").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2019, 1, 10)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -82,6 +82,9 @@
         function onEventRendered(args) {
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
             applyCategoryColor(args, scheduleObj.currentView);
+        }
+        function onSelect(args) {
+            args.showQuickPopup = args.requestType === 'cellSelect';
         }
     </script>
 }

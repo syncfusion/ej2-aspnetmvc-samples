@@ -3,9 +3,9 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).ShowFormulaBar(false).DataBound("dataBoundEvent").Sheets(sheet =>
+        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).ShowFormulaBar(false).Created("createdEvent").Sheets(sheet =>
         {
-            sheet.Name("Restaurant Invoice").SelectedRange("E17").Range(ranges =>
+            sheet.Name("Restaurant Invoice").SelectedRange("E17").Ranges(ranges =>
             {
                 ranges.DataSource((IEnumerable<object>)ViewBag.numberFormatData).StartCell("A3").Add();
             }).Rows(row =>{
@@ -71,19 +71,18 @@
 }
 
 <script>
-    function dataBoundEvent() {
-        if (this.activeSheetIndex === 0 && this.sheets[this.activeSheetIndex].name === 'Restaurant Invoice') {
-            this.cellFormat({ fontWeight: 'bold' }, 'A1:E2');
-            this.cellFormat({ textAlign: 'center', fontWeight: 'bold' }, 'A3:E3');
-            this.cellFormat({ textAlign: 'center' }, 'A4:A14');
-            this.cellFormat({ textAlign: 'center' }, 'C4:C14');
-            this.cellFormat({ backgroundColor: '#F9FBE7' }, 'A4:E15');
-            this.cellFormat({ backgroundColor: '#1E88E5', color: '#F5F5F5' }, 'A1:E2');
-            this.cellFormat({ backgroundColor: '#BBDEFB' }, 'A3:E3');
-            this.cellFormat({ backgroundColor: '#B3E5FC' }, 'A15:E17');
-            this.numberFormat('$#,##0.00', 'D4:E14');
-            this.numberFormat('$#,##0.00', 'E15:E17');
-        }
+    function createdEvent() {
+        // Applies cell and number formatting to specified range of the active sheet
+        this.cellFormat({ fontWeight: 'bold' }, 'A1:E2');
+        this.cellFormat({ textAlign: 'center', fontWeight: 'bold' }, 'A3:E3');
+        this.cellFormat({ textAlign: 'center' }, 'A4:A14');
+        this.cellFormat({ textAlign: 'center' }, 'C4:C14');
+        this.cellFormat({ backgroundColor: '#F9FBE7' }, 'A4:E15');
+        this.cellFormat({ backgroundColor: '#1E88E5', color: '#F5F5F5' }, 'A1:E2');
+        this.cellFormat({ backgroundColor: '#BBDEFB' }, 'A3:E3');
+        this.cellFormat({ backgroundColor: '#B3E5FC' }, 'A15:E17');
+        this.numberFormat('$#,##0.00', 'D4:E14');
+        this.numberFormat('$#,##0.00', 'E15:E17');
     }
 
     function getAccountingFormat() {

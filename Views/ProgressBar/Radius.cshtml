@@ -1,0 +1,138 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section progress-bar-parent">
+        <div class="row" style="margin-top: 8%">
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="full-background">
+                    @(Html.EJS().ProgressBar("full-background").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(60)
+                                                  .Width("160px").Height("160px").Load("progressLoad0").EnableRtl(false)
+                                                  .TrackThickness(80).ProgressThickness(10).Radius("100%").InnerRadius("190%")
+                                                  .ProgressColor("white").CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round)
+                                                  .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                                  .Annotations(an => { an.Content("<div  style='font-size:20px; font-weight:bold; color:#ffffff;fill:#ffffff'><span>60%</span></div>").Add(); }).Render())
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+
+                <div id="outer-radius">
+                    @(Html.EJS().ProgressBar("outer-radius").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(90)
+                                                  .Width("160px").Height("160px").Load("progressLoad")
+                                                  .ProgressThickness(8).InnerRadius("72")
+                                                  .CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round)
+                                                  .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                                  .Render())
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="on-radius">
+                    @(Html.EJS().ProgressBar("on-radius").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(90)
+                                                  .Width("160px").Height("160px").Load("progressLoad")
+                                                  .TrackThickness(3).ProgressThickness(8)
+                                                  .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                                  .Render())
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="pie">
+                    @(Html.EJS().ProgressBar("pie").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(70)
+                                                  .Width("160px").Height("160px").Load("progressLoad").EnablePieProgress(true)
+                                                  .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                                  .Render())
+                </div>
+            </div>
+        </div>
+        <div class="row linear-parent">
+            <button id="reLoad" class="e-control e-btn e-lib e-outline e-primary">Reload</button>
+        </div>
+    </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+
+        #reLoad {
+            border-radius: 4px;
+            text-transform: capitalize;
+            margin-top: 3%;
+        }
+
+        #full-background_Circulartrack {
+            opacity: 1 !important;
+        }
+
+        .linear-parent {
+            text-align: center;
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+    <script>
+        var progressLoad0 = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
+                selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
+            switch (selectedTheme) {
+                case 'material':
+                    args.progressBar.trackColor = '#e91e63';
+                    break;
+                case 'fabric':
+                    args.progressBar.trackColor = '#0078D6';
+                    break;
+                case 'bootstrap':
+                    args.progressBar.trackColor = '#317ab9';
+                    break;
+                case 'highcontrast':
+                    args.progressBar.trackColor = '#FFD939';
+                    break;
+                default:
+                    args.progressBar.trackColor = '#007bff';
+                    break;
+            }
+        };
+        var progressLoad = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Material';
+            args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
+                selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
+        }
+
+        var replayBtn = document.getElementById('reLoad');
+        replayBtn.onclick = function () {
+            var FullProgress = document.getElementById('full-background').ej2_instances[0];
+            var OuterProgress = document.getElementById('outer-radius').ej2_instances[0];
+            var OnProgress = document.getElementById('on-radius').ej2_instances[0];
+            var pie = document.getElementById('pie').ej2_instances[0];
+            FullProgress.refresh();
+            OuterProgress.refresh();
+            OnProgress.refresh();
+            pie.refresh();
+        };
+    </script>
+    @*custom code end*@
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Angle in ASP.NET MVC Progress Bar control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates a circular progress bar with customization options like radius, inner-radius, track and progress thickness.
+    </p>
+}
+@section Description{
+    <p>
+        This demo for Essential JS2 Progress Bar control shows the customizing options for radius, inner-radius, track and progress thickness.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC Progress Bar Angle Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Angle in ASP.NET MVC Progress Bar Control</h1>
+}
