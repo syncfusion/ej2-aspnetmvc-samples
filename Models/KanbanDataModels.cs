@@ -199,10 +199,10 @@ namespace EJ2MVCSampleBrowser.Models
         public List<KanbanDialogModels> DialogField()
         {
             List<KanbanDialogModels> DialogFields = new List<KanbanDialogModels>();
-            DialogFields.Add(new KanbanDialogModels { text = "ID" , key= "Id" , type ="Input"});
+            DialogFields.Add(new KanbanDialogModels { text = "ID" , key= "Id" , type ="TextBox"});
             DialogFields.Add(new KanbanDialogModels { key = "Category", type = "DropDown" });
-            DialogFields.Add(new KanbanDialogModels { key = "Title", type = "Input" });
-            DialogFields.Add(new KanbanDialogModels { key = "Size", type = "Input" });
+            DialogFields.Add(new KanbanDialogModels { key = "Title", type = "TextBox" });
+            DialogFields.Add(new KanbanDialogModels { key = "Size", type = "TextBox" });
             DialogFields.Add(new KanbanDialogModels { key = "Description", type = "TextArea" });
             return DialogFields;
         }
@@ -210,10 +210,10 @@ namespace EJ2MVCSampleBrowser.Models
         public List<KanbanDialogModels> DialogCardField()
         {
             List<KanbanDialogModels> DialogCardFields = new List<KanbanDialogModels>();
-            DialogCardFields.Add(new KanbanDialogModels { text = "ID", key = "Title", type = "Input" });
+            DialogCardFields.Add(new KanbanDialogModels { text = "ID", key = "Title", type = "TextBox" });
             DialogCardFields.Add(new KanbanDialogModels { key = "Status", type = "DropDown" });
             DialogCardFields.Add(new KanbanDialogModels { key = "Assignee", type = "DropDown" });
-            DialogCardFields.Add(new KanbanDialogModels { key = "RankId", type = "Input" });
+            DialogCardFields.Add(new KanbanDialogModels { key = "RankId", type = "TextBox" });
             DialogCardFields.Add(new KanbanDialogModels { key = "Summary", type = "TextArea" });
             return DialogCardFields;
         }

@@ -1694,8 +1694,8 @@
     },
     "maps": {
       "Zoom": "Zoom",
-      "ZoomIn": "ZoomIn",
-      "ZoomOut": "ZoomOut",
+      "ZoomIn": "Zoom in",
+      "ZoomOut": "Zoom out",
       "Reset": "Reset",
       "Pan": "Pan",
       "ResetZoom": "Reset Zoom"

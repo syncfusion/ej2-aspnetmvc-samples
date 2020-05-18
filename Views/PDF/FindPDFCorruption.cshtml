@@ -26,20 +26,13 @@
                 Html.EndForm();
             }}
         <br />
-        @Html.TextAreaFor(s => s.Message, 1, 1, new { @style = "width:100%; height:56px" })
+        @Html.TextAreaFor(s => s.Message, 1, 1, new { @style = "width:100%; height:56px",@readonly="readonly" })
     </div>
 
 }
 @section Description{
-    <div style="font-size:medium;color:red">
-        Note:
-    </div>
     <div>
-        <ul>
-            <li>
                 This feature allows you to find only PDF syntax level corruptions.
-            </li>
-        </ul>
     </div>
 }
 @section Meta{

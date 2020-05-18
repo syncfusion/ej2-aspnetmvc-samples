@@ -7,7 +7,6 @@ if (!window) {
     "name": "Data Grid",
     "directory": "Grid",
     "category": "Grids",
-    "type": "update",
     "samples": [
       {
         "url": "GridOverview",
@@ -105,7 +104,6 @@ if (!window) {
         "category": "Scrolling",
         "uid": "00009",
         "order": 1,
-        "type": "new",
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -856,7 +854,6 @@ if (!window) {
   {
     "name": "Tree Grid",
     "directory": "TreeGrid",
-    "type": "update",
     "category": "Grids",
     "samples": [
       {
@@ -885,7 +882,6 @@ if (!window) {
         "category": "Tree Grid",
         "uid": "00222",
         "order": 0,
-        "type": "new",
         "component": "TreeGrid",
         "dir": "TreeGrid",
         "parentId": "02"
@@ -1115,7 +1111,6 @@ if (!window) {
         "name": "Batch Editing",
         "category": "Editing",
         "uid": "002225",
-        "type": "new",
         "order": 4,
         "component": "TreeGrid",
         "dir": "TreeGrid",
