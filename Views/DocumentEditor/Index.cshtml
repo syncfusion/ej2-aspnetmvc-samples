@@ -32,7 +32,7 @@
                 <input type="file" id="uploadfileButton" accept=".doc,.docx,.rtf,.txt,.htm,.html" style="position:fixed; left:-100em" />
                 <div id='documenteditor_titlebar'></div>
                 <div id="documenteditor_container_panel" style="display: flex;position:relative">
-                    @Html.EJS().DocumentEditor("container").EnablePrint(true).Render()
+                    @Html.EJS().DocumentEditor("container").Height("590px").EnablePrint(true).Render()
                 </div>
                 <div id="documenteditor_statusbar"></div>
             </div>
@@ -52,7 +52,6 @@
         document.addEventListener('DOMContentLoaded', function () {
             containerPanel = document.getElementById('documenteditor_container_panel');
             var documenteditorElement = document.getElementById("container");
-            documenteditorElement.style.height = "100%";
             documenteditorElement.style.width = "100%";
             documenteditor = documenteditorElement.ej2_instances[0];
             documenteditor.pageOutline = '#E0E0E0';
