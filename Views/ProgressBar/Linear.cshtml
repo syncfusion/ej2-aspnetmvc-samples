@@ -42,6 +42,21 @@
                                               .Render())
                 </div>
             </div>
+            <div>
+                <div class="col-lg-12 col-sm-12 progressbar-label">Active</div>
+                <div id="linearactive">
+                    @(Html.EJS().ProgressBar("linearactive")
+                                              .Type(Syncfusion.EJ2.ProgressBar.ProgressType.Linear)
+                                              .Value(100)
+                                              .Height("60")
+                                              .Load("Load")
+                                              .Minimum(0)
+                                              .Maximum(100)
+                                              .IsActive(true)
+                                              .Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                              .Render())
+                </div>
+            </div>
         </div>
         <div class="row linear-parent">
             <button id="reLoad" class="e-control e-btn e-lib e-outline e-primary">Reload</button>
@@ -69,7 +84,7 @@
             color: #3D3E3C;
             margin-left: 10px;
             padding: 0px;
-            top: 20px;
+            top: 10px;
         }
 
         #reLoad {
@@ -78,22 +93,30 @@
         }
     </style>
     <script>
+        var div = document.getElementsByClassName('progressbar-label');
         var Load = function (args) {
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
                 selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
-        };
+            if (args.progressBar.theme === 'HighContrast') {
+                for (let i = 0; i < div.length; i++) {
+                    div[i].setAttribute('style', 'color:white');
+                }
+            }
+        }
         var replayBtn = document.getElementById('reLoad');
         replayBtn.onclick = function () {
             var lineardeterminate = document.getElementById('lineardeterminate').ej2_instances[0];
             var linearindeterminate = document.getElementById('linearindeterminate').ej2_instances[0];
             var linearbuffer = document.getElementById('linearbuffer').ej2_instances[0];
             var linearsegment = document.getElementById('linearsegment').ej2_instances[0];
+            var linearactive = document.getElementById('linearsegment').ej2_instances[0];
             lineardeterminate.refresh();
             linearindeterminate.refresh();
             linearbuffer.refresh();
             linearsegment.refresh();
+            linearactive.refresh();
         };
     </script>
     @*custom code end*@

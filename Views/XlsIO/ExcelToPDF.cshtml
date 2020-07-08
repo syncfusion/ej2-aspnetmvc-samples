@@ -14,7 +14,7 @@
         This sample illustrates the conversion of Microsoft Excel document to PDF.
     </p>
     <br />
-    <br />Essential XlsIO allows to export Excel document to PDF by using the <b>Convert</b> method of <b>ExcelToPDFConverter</b> class.
+    <br />Essential XlsIO allows to export Excel document to PDF by using the <i>Convert</i> method of <i>ExcelToPDFConverter</i> class.
     <br />
     <br /><b>Features:</b>
     <br />
@@ -29,11 +29,14 @@
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("ExcelToPDF", "XlsIO", FormMethod.Post);
-        <p>
-            Clicking the 'Convert to PDF' button will convert the Excel document to PDF. PDF viewer is needed to view the converted PDF document.
-        </p>
+        <p style="font-weight:normal">
+			Click the "Input Template" button to view the input Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+		</p>
+        <p style="font-weight:normal">
+			Click the "Convert to PDF" button will convert the Excel document to PDF. PDF viewer is needed to view the converted PDF document.
+		</p>
             <br />
-            <label>  PDF Page Setup options </label>
+            <label style="font-weight:normal">  PDF Page Setup options </label>
             <div class="celldiv">
                 &nbsp; &nbsp; &nbsp;
                 <table>
@@ -42,13 +45,15 @@
                             &nbsp; &nbsp; &nbsp;
                         </td>
                         <td>
-                            @Html.EJS().RadioButton("radio1").Label("NoScaling").Name("Group1").Value("NoScaling").Checked(false).Render()
+                            <input type="radio" id="NoScaling" name="Group1" value="NoScaling" />
+							<label for="NoScaling" style="font-weight:normal">NoScaling</label>
                         </td>
                         <td>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                         <td>
-                            @Html.EJS().RadioButton("radio2").Label("FitAllRowsOnOnePage").Name("Group1").Value("FitAllRowsOnOnePage").Checked(false).Render()
+                            <input type="radio" id="FitAllRowsOnOnePage" name="Group1" value="FitAllRowsOnOnePage" />
+							<label for="FitAllRowsOnOnePage" style="font-weight:normal">FitAllRowsOnOnePage</label>
                         </td>
                     </tr>
                     <tr style="height:20px"></tr>
@@ -57,33 +62,35 @@
                             &nbsp; &nbsp; &nbsp;
                         </td>
                         <td>
-                            @Html.EJS().RadioButton("radio3").Label("FitAllColumnsOnOnePage").Name("Group1").Value("FitAllColumnsOnOnePage").Checked(false).Render()
+                            <input type="radio" id="FitAllColumnsOnOnePage" name="Group1" value="FitAllColumnsOnOnePage" />
+							<label for="FitAllColumnsOnOnePage" style="font-weight:normal">FitAllColumnsOnOnePage</label>
                         </td>
                         <td>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
                         <td>
-                            @Html.EJS().RadioButton("radio4").Label("FitSheetOnOnePage").Name("Group1").Value("FitSheetOnOnePage").Checked(true).Render()
+                            <input type="radio" id="FitSheetOnOnePage" name="Group1" value="FitSheetOnOnePage" checked="checked" />
+							<label for="FitSheetOnOnePage" style="font-weight:normal">FitSheetOnOnePage</label>
                         </td>
                     </tr>
                 </table>
             </div>
             <br />
             <div class="rowdiv">
-                <label>  Substitute Fonts </label>
+                <label style="font-weight:normal">  Substitute Fonts </label>
             </div>
             <br />
             <div class="rowdiv">
                 <div class="celldiv">
                     &nbsp; &nbsp; &nbsp;
                     <input type="checkbox" id="checkfontName" name="checkboxName" value="Font Name" />
-                    <label for="checkfontName">
+                    <label for="checkfontName" style="font-weight:normal">
                         Font Name
                     </label>
                     <H6>&nbsp; &nbsp; &nbsp;&nbsp;Missing fonts in the device will be substituted to Calibri.</H6>
                     &nbsp; &nbsp; &nbsp;
                     <input type="checkbox" id="checkfontStream" name="checkboxStream" value="Font Stream" />
-                    <label for="checkfontStream">
+                    <label for="checkfontStream" style="font-weight:normal">
                         Font Stream
                     </label>
                     <H6>&nbsp; &nbsp; &nbsp;&nbsp;Missing fonts in the device will be substituted from embedded resource.</H6>
@@ -93,11 +100,11 @@
                     <table>
                         <tr>
                             <td>
-                                <input id="viewtemplate" class="buttonStyle" type="submit" name="button" value="Input Template" style="width:140px;" />
+                                <input id="viewtemplate" class="e-btn" type="submit" name="button" value="Input Template" style="width:140px;" />
                             </td>
                             <td style="width:10px;"></td>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             <td>
-                                <input class="buttonStyle" type="submit" value="Convert to PDF" name="button" style="width:140px;" />
+                                <input class="e-btn" type="submit" value="Convert to PDF" name="button" style="width:140px;" />
                             </td>
                         </tr>
                     </table>

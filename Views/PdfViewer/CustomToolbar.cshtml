@@ -12,7 +12,7 @@
 new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-pv-open-document-icon",TooltipText = "Open",Align=ItemAlign.Left,Click="openFile"},
 new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-pv-previous-page-navigation-icon",TooltipText = "Previous Page",Align=ItemAlign.Center,Click="previousClicked",Id="previousPage"},
 new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-pv-next-page-navigation-icon", TooltipText = "Next Page",Align=ItemAlign.Center,Click="nextClicked",Id="nextPage"},
-new ToolbarItem {Template="<div class=''><input type='text' class='e-input-group e-pv-current-page-number' id='currentPage' onKeyPress='onCurrentPageBoxKeypress(event)'/></div>" ,PrefixIcon = "e-pv-next-page-navigation-icon", TooltipText = "Page Number",Align=ItemAlign.Center},
+new ToolbarItem {Template="<div class=''><input type='text' class='e-input-group e-pv-current-page-number' id='currentPage'/></div>" ,PrefixIcon = "e-pv-next-page-navigation-icon", TooltipText = "Page Number",Align=ItemAlign.Center},
 new ToolbarItem { Type = ItemType.Input, Template="<div class=''><span class='e-pv-total-page-number' id='totalPage'>of 0</span></div>" , PrefixIcon = "e-pv-next-page-navigation-icon", TooltipText = "Page Number",Click="currentPageClicked",Align=ItemAlign.Center},
 new ToolbarItem { Type = ItemType.Button,  PrefixIcon = "e-pv-print-document-icon" ,TooltipText = "Print",Align=ItemAlign.Right,Click="printClicked"},
 new ToolbarItem { Type = ItemType.Button,  PrefixIcon = "e-pv-download-document-icon" ,TooltipText = "Download",Align=ItemAlign.Right,Click="downloadClicked"},
@@ -175,6 +175,24 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-pv-zoom-out-icon", Too
         currentPageBox = document.getElementById('currentPage');
         currentPageBox.value = '1';
         document.getElementById('fileUpload').addEventListener('change', readFile, false);
+        currentPageBox.addEventListener('keypress', () => {
+            var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+            var currentPage = document.getElementById('currentPage');
+            if ((event.which < 48 || event.which > 57) && event.which !== 8 && event.which !== 13) {
+                event.preventDefault();
+                return false;
+            } else {
+                var currentPageNumber = parseInt((currentPage).value);
+                if (event.which === 13) {
+                    if (currentPageNumber > 0 && currentPageNumber <= pdfViewer.pageCount) {
+                        pdfViewer.navigation.goToPage(currentPageNumber);
+                    } else {
+                        (currentPage).value = pdfViewer.currentPageNumber.toString();
+                    }
+                }
+                return true;
+            }
+        });
     }
     function openFile() {
         document.getElementById('fileUpload').click();

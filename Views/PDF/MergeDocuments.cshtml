@@ -15,8 +15,7 @@
                     <div class="rowdiv">
                         <div class="celldiv">
                             <div>
-                                <input id="OptimizeResources" type="checkbox" checked="checked" name="OptimizeResources" value="OptimizeResources" style="margin-top:10px;" />
-                                Optimize PDF Resources
+                                @Html.EJS().CheckBox("OptimizeResources").Name("OptimizeResources").Value("OptimizeResources").Checked(true).Label("Optimize PDF Resources").Render()
                             </div>
                         </div>
                     </div>

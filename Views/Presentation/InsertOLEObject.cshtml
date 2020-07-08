@@ -1,7 +1,22 @@
-@using Syncfusion.EJ2
+﻿@using Syncfusion.EJ2
 
 @section ActionDescription{
-    This sample demonstrates how to insert an OLE Object in a PowerPoint presentation.
+    This sample demonstrates how to insert and extract a OLE Object in a PowerPoint presentation.
+}
+
+@section Description{
+    <b>Features:</b>
+    <br />
+    <br />
+    <div>
+        <ul>
+            <li>Add new OLE Object into a PowerPoint slide.</li>
+            <li>Extract a embedded OLE Object data.</li>
+            <li>Gets the file path of a linked OLE Object</li>
+            <li>Gets the file name of a OLE Object.</li>
+        </ul>
+    </div>
+    <br />    
 }
 
 @section ControlsSection{
@@ -22,7 +37,29 @@
                         <table width="100%">
                             <tr>
                                 <td align="left" width="100%">
-                                    <label><input id="submit" type="submit" class="e-btn" value="Create Presentation" /></label>
+                                    <label><input id="submit" type="submit" class="e-btn" name="button" value="Create Presentation" /></label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+		<div class="tablediv">
+            <text class="rowdiv">
+                Click the button to view a embedded OLE document opened by Essential Presentation. Please note that Microsoft Word is required to view the embedded Docx document.
+            </text>
+        </div>
+        <br />
+        <div class="tablediv">
+            <div class="rowdiv">
+                <div class="celldiv">
+                    <div style="border: solid 0px #EDEDED; padding: 5px 7px 5px 7px;">
+                        <table width="100%">
+                            <tr>
+                                <td align="left" width="100%">
+                                    <label><input id="submit1" type="submit" class="e-btn" name="button" value="Open Embedded File" /></label>
                                 </td>
                             </tr>
                         </table>

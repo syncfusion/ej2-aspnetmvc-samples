@@ -1,69 +1,89 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
-@using Syncfusion.EJ2.DropDowns
 
 @section ControlsSection{
-    <div class="col-lg-9 control-section">
+    <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineYear).EventRendered("onEventRendered").Views(view => { view.Option(View.TimelineYear).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineYear).Views(view => { view.Option(View.Year).Add(); view.Option(View.TimelineYear).DisplayName("Horizontal Timeline Year").IsSelected(true).Add(); view.Option(View.TimelineYear).DisplayName("Vertical Timeline Year").Orientation(Orientation.Vertical).Group(new ScheduleGroup { Resources = ViewBag.Resources }).Add(); }).EventRendered("onEventRendered").Resources(res =>
+       {
+           res.DataSource(ViewBag.Categories).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
+       }).EventSettings(e => e.DataSource("generateEvents()")).Render()
         </div>
     </div>
-    <div class="col-lg-3 property-section">
-        <table id="property" title="Properties" style="width: 100%">
-            <tbody>
-                <tr style="height: 50px">
-                    <td style="width: 30%">
-                        <div>
-                            Orientation
-                        </div>
-                    </td>
-                    <td style="width: 70%;">
-                        <div>
-                            @Html.EJS().DropDownList("orientation").Value("Horizontal").PopupHeight("250px").DataSource(ViewBag.orientation).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onOrientationChange").Render()
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
     <script type="text/javascript">
-        function onOrientationChange(args) {
-            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
-            scheduleObj.views = [{ option: 'TimelineYear', orientation: args.value }];
-            scheduleObj.dataBind();
+        function generateEvents(count, date) {
+            if (count === void 0) { count = 250; }
+            if (date === void 0) { date = new Date(); }
+            var names = [
+                'Bering Sea Gold', 'Technology', 'Maintenance', 'Meeting', 'Travelling', 'Annual Conference', 'Birthday Celebration',
+                'Farewell Celebration', 'Wedding Aniversary', 'Alaska: The Last Frontier', 'Deadest Catch', 'Sports Day',
+                'MoonShiners', 'Close Encounters', 'HighWay Thru Hell', 'Daily Planet', 'Cash Cab', 'Basketball Practice',
+                'Rugby Match', 'Guitar Class', 'Music Lessons', 'Doctor checkup', 'Brazil - Mexico', 'Opening ceremony', 'Final presentation'
+            ];
+            var colors = [
+                '#ff8787', '#9775fa', '#748ffc', '#3bc9db', '#69db7c',
+                '#fdd835', '#748ffc', '#9775fa', '#df5286', '#7fa900',
+                '#fec200', '#5978ee', '#00bdae', '#ea80fc'
+            ];
+            var startDate = new Date(date.getFullYear() - 2, 0, 1);
+            var endDate = new Date(date.getFullYear() + 2, 11, 31);
+            var dateCollections = [];
+            for (var a = 0, id = 1; a < count; a++) {
+                var start = new Date(Math.random() * (endDate.getTime() - startDate.getTime()) + startDate.getTime());
+                var end = new Date(new Date(start.getTime()).setHours(start.getHours() + 1));
+                var nCount = Math.floor(Math.random() * names.length);
+                var n = Math.floor(Math.random() * colors.length);
+                dateCollections.push({
+                    Id: id,
+                    Subject: names[nCount],
+                    StartTime: new Date(start.getTime()),
+                    EndTime: new Date(end.getTime()),
+                    IsAllDay: (id % 10) ? true : false,
+                    EventColor: colors[n],
+                    TaskId: (id % 5) + 1
+                });
+                id++;
+            }
+            return dateCollections;
         }
         function onEventRendered(args) {
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
-            applyCategoryColor(args, scheduleObj.currentView);
+            var categoryColor = args.data.CategoryColor;
+            if (!args.element || !categoryColor) {
+                return;
+            }
+            if (scheduleObj.currentView === 'Agenda') {
+                (args.element.firstChild).style.borderLeftColor = categoryColor;
+            } else {
+                args.element.style.backgroundColor = categoryColor;
+            }
         }
     </script>
 }
-
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Year View in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="The example showcases the year view and Timeline year view of the JavaScript Scheduler. The views are helpful to view the events in an annual calendar view." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This demo showcases how the scheduler looks like in Year view with its default set of configurations.
+            This demo shows the experience of showing the annual year events in a single view with different orientations.
         </p>
     </div>
 }
 @section Description{
     <div id="description">
         <p>
-            This demo showcases how the scheduler looks like in Year view with its default set of configurations. In this demo, the active view of Scheduler is set to
-            <code>Vertical Year</code> and <code>Horizontal Year</code> view options are provided to
-            <code>views</code> property.
+            In this demo, we have showcased the year and timeline year views that help to view the appointment in an annual calendar view. The view options are enabled by using the views property.
+            In the <code>TimelineYear</code>, <code>Horizontal</code> and <code>Vertical</code> orientations are available to view the events with a different layout.
         </p>
+        <p><strong>Note:-</strong> Inject <code>Year</code> and <code>TimelineYear</code> modules for loading these year views.</p>
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Year View Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Year View Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Year View in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Year View in ASP.NET MVC Scheduler Control</h1>
+}

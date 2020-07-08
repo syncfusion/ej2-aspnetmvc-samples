@@ -35,33 +35,27 @@
                                                 </tr>
                                                 <tr>
                                                     <td align="left">
-                                                        <input id="header" type="checkbox" name="Header" checked="checked" value="header" />
-                                                        <text for="Hader row">Header row</text>
+                                                        @Html.EJS().CheckBox("header").Name("Header").Value("header").Checked(true).Label("Header row").Render()
                                                     </td>
                                                     <td align="left">
-                                                        <input id="bandedrow" type="checkbox" name="Bandedrow" checked="checked" value="bandedrow" />
-                                                        <text for="Banded row"> Banded row</text>
+                                                        @Html.EJS().CheckBox("bandedrow").Name("Bandedrow").Value("bandedrow").Checked(true).Label("Banded row").Render()
                                                     </td>
                                                     <td align="left">
-                                                        <input id="firstcolumn" type="checkbox" name="Firstcolumn" value="firstcolumn" />
-                                                        <text for="First column">First column</text>
+                                                        @Html.EJS().CheckBox("firstcolumn").Name("Firstcolumn").Value("firstcolumn").Label("First column").Render()
                                                     </td>
 
 
                                                 </tr>
                                                 <tr>
                                                     <td align="left">
-                                                        <input id="lastrow" type="checkbox" name="Lastrow" value="lastrow" />
-                                                        <text for="Last row">Last row</text>
+                                                        @Html.EJS().CheckBox("lastrow").Name("Lastrow").Value("lastrow").Label("Last row").Render()
                                                     </td>
 
                                                     <td align="left">
-                                                        <input id="bandedcolumn" type="checkbox" name="Bandedcolumn" value="bandedcolumn" />
-                                                        <text for="Banded column">Banded column</text>
+                                                        @Html.EJS().CheckBox("bandedcolumn").Name("Bandedcolumn").Value("bandedcolumn").Label("Banded column").Render()
                                                     </td>
                                                     <td align="left">
-                                                        <input id="lastcolumn" type="checkbox" name="Lastcolumn" value="lastcolumn" />
-                                                        <text for="Last column">Last column</text>
+                                                        @Html.EJS().CheckBox("lastcolumn").Name("Lastcolumn").Value("lastcolumn").Label("Last column").Render()
                                                     </td>
 
                                                 </tr>

@@ -1,0 +1,91 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Spreadsheet
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Spreadsheet("spreadsheet").OpenUrl("ConditionalFormattingOpen").SaveUrl("ConditionalFormattingSave").Created("createdHandler").Sheets(sheet =>
+    {
+       sheet.Name("Inventory List").Rows(row =>
+       {
+           row.Height(30).Cells(cell =>
+                {
+               cell.Index(1).Value("Inventory List").Add();
+                }).Add();
+       }).ConditionalFormats(conditionalformat =>
+       {
+           conditionalformat.Type("GYRColorScale").Range("C3:C18").Add();
+           conditionalformat.Type("LessThan").CFColor(CFColor.RedFT).Value("8/30/2019").Range("F3:F18").Add();
+       }).Ranges(ranges =>
+            {
+           ranges.DataSource(ViewBag.ConditionalFormattingData).StartCell("A2").Add();
+           }).Columns(column =>
+       {
+           column.Width(100).Add();
+           column.Width(158).Add();
+           column.Width(72).Add();
+           column.Width(113).Add();
+           column.Width(113).Add();
+           column.Width(97).Add();
+           column.Width(73).Add();
+       }).Add();
+   }).Render()
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Conditional Formatting functionalities in ASP.NET Core Spreadsheet control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates about the conditional formatting features like highlight cell rules, data bars, color scales, and icon sets by using the inventory list details.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            This feature allows you to format a cell or range of cells based on the conditions applied. You can enable or disable conditional formats by using the <code>allowConditionalFormat</code> property.
+        </p>
+        <p>
+            In this sample, we have applied conditional formatting color scales in Quantity column, data bars in Purchase price and selling price column, highlight cell rules in last updated column and rating icon sets applied in rating column by using the <code>conditionalFormat</code> method and <code>conditionalFormats</code> property in sheets model.
+        </p>
+        <p>
+            More information about the Spreadsheet component can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/documentation/spreadsheet/getting-started">
+                documentation
+            </a> section.
+        </p>
+    </div>
+}
+
+<script>
+    function createdHandler() {
+        var excelObj = this;
+        excelObj.merge('A1:G1');
+        excelObj.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A2:G2');
+        excelObj.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle', fontSize: '13pt' }, 'A1:G1');
+        excelObj.conditionalFormat({ type: 'BlueDataBar', range: 'D3:D18' });
+        excelObj.conditionalFormat({ type: 'OrangeDataBar', range: 'E3:E18' });
+        excelObj.conditionalFormat({ type: 'ThreeStars', range: 'G3:G18' });
+    }
+</script>
+
+@*custom code start*@
+
+<style>
+    .control-section {
+        height: 550px;
+    }
+
+    #sb-content .e-spreadsheet .e-tab .e-tab-text {
+        display: inherit;
+    }
+</style>
+
+@*custom code end*@
+@section Title{
+    <title>ASP.NET Core Spreadsheet Conditional Formatting Functionalities Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example for Conditional Formatting Functionalities in ASP.NET Core Spreadsheet Control</h1>
+}

@@ -55,17 +55,17 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             //Save as .doc format
             if (Group1 == "WordDoc")
             {
-                return document.ExportAsActionResult("Sample.doc", FormatType.Doc, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+                return document.ExportAsActionResult("Update Fields.doc", FormatType.Doc, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
             }
             //Save as .docx format
             else if (Group1 == "WordDocx")
             {
-                return document.ExportAsActionResult("Sample.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+                return document.ExportAsActionResult("Update Fields.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
             }
             // Save as WordML(.xml) format
             else if (Group1 == "WordML")
             {
-                return document.ExportAsActionResult("Sample.xml", FormatType.WordML, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+                return document.ExportAsActionResult("Update Fields.xml", FormatType.WordML, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
             }
             //Save as .pdf format
             else if (Group1 == "Pdf")
@@ -73,7 +73,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
                 DocToPDFConverter converter = new DocToPDFConverter();
                 PdfDocument pdfDoc = converter.ConvertToPDF(document);
 
-                return pdfDoc.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
+                return pdfDoc.ExportAsActionResult("Update Fields.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
             } 
             #endregion saveOption
             return View();

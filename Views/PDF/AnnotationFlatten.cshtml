@@ -15,8 +15,7 @@
                                     <tr>
                                         <td>
                                             <br />
-                                            <input id="checkboxFlatten" type="checkbox" name="checkboxFlatten" value="Flatten">
-                                            <text for="Opentype">Flatten annotation</text>
+                                            @Html.EJS().CheckBox("checkboxFlatten").Name("checkboxFlatten").Value("Flatten").Label("Flatten annotation").Render()
                                         </td>
                                     </tr>
                                     <tr>

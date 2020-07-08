@@ -22,7 +22,7 @@
 <div class="col-lg-9 control-section">
 	<div id="outer" style="width:100%">
 		<div class="content-wrapper">
-			@Html.EJS().CircularGauge("container").Width("50%").Load("gaugeLoad").Axes(axes => axes
+			@Html.EJS().CircularGauge("container").Width("50%").Load("gaugeLoad").AllowPrint(true).AllowImageExport(true).AllowPdfExport(true).Axes(axes => axes
             .Radius("80%").Direction(GaugeDirection.AntiClockWise).StartAngle(0).EndAngle(0).LabelStyle(ls => ls.Position(Position.Outside).Font(ViewBag.labelFont).Offset(2).UseRangeColor(true))
             .LineStyle(lin => lin.Width(0))
             .MinorTicks(mi => mi.Width(1).Height(8).Position(Position.Outside).Interval(2).UseRangeColor(true)).MajorTicks(mj => mj.Width(1).Height(25).Position(Position.Outside).Interval(10).UseRangeColor(true)).Pointers(ViewBag.Pointers).Ranges(ViewBag.Ranges).Add()).Render()
@@ -38,7 +38,7 @@
 				</div>
 			</td>
 			<td style="width: 60%;">
-				<div style="margin-left: -10px">
+				<div style="margin-left: -30px">
 					@Html.EJS().DropDownList("Export").Index(0).Width("80px").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
 				</div>
 			</td>
@@ -49,7 +49,7 @@
 			</td>
 			<td style="width: 40%;">
 				<div class="e-float-input" style='margin-top: 0px;'>
-					<input type="text" value="Gauge" id="fileName" style="margin-left: -10px">
+					<input type="text" value="Gauge" id="fileName" style="margin-left: -30px">
 				</div>
 			</td>
 		</tr>
@@ -107,11 +107,11 @@
 		@section Description{
 <div id="description">
     <p>
-        In this example, you can see how to export and print the rendered circular gauge. The Circular Gauge can be exported to JPEG, PNG, SVG, and PDF formats.
+        In this example, you can see how to export and print the rendered circular gauge. The Circular Gauge can be exported to JPEG, PNG, SVG, and PDF formats. Print functionality is done by <code>print</code> method when <code>AllowPrint</code> is set as true. Export functionality is done by <code>export</code> method when <code>AllowImageExport</code> and <code>AllowPdfExport</code> is set as true.
     </p>
 	<p>
-		More information on the gauge can be found in this
-		<a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+		More information on the print and export can be found in this
+		<a target="_blank" href="https://ej2.syncfusion.com/documentation/circular-gauge/gauge-print-and-export/">documentation section</a>.
 	</p>
 </div>
 		}
