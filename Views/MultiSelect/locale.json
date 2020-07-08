@@ -19,8 +19,8 @@
     },
     "en": {
         "dropdowns": {
-            "noRecordsTemplate": "No Records Found",
-            "actionFailureTemplate": "The Request Failed",
+            "noRecordsTemplate": "No records found",
+            "actionFailureTemplate": "Request failed",
             "overflowCountTemplate": "+${count} more..",
             "selectAllText": "Select All",
             "unSelectAllText": "Unselect All"

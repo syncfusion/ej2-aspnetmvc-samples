@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Models
         public static List<Customer> GetAllRecords()
         {
             List<Customer> cust = new List<Customer>();           
-            cust.Add(new Customer("ALFKI", "Maria ", "Alfreds Futterkiste", "Obere Str. 57", "Germany"));
+            cust.Add(new Customer("ALFKI", "Maria", "Alfreds Futterkiste", "Obere Str. 57", "Germany"));
             cust.Add(new Customer("ANATR", "Ana Trujillo", "Ana Trujillo Emparedados y helados", "Avda. de la Constitución 2222", "Mexico"));           
             cust.Add(new Customer("BLONP", "Frédérique Citeaux", "Blondesddsl père et fils", "24, place Kléber", "France"));
             cust.Add(new Customer("BOLID", "Martín Sommer", "Bólido Comidas preparadas", "C/ Araquil, 67", "Spain"));

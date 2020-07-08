@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
-        @Html.EJS().DocumentEditorContainer("container").Height("590px").EnableToolbar(true).Render()
+        @Html.EJS().DocumentEditorContainer("container").Height("590px").CurrentUser( "Nancy Davolio").UserColor("#b70f34").EnableToolbar(true).Render()
     </div>
 }
 @section ActionDescription{
@@ -32,9 +32,7 @@
             documenteditorElement.style.width = "100%";
             var container = documenteditorElement.ej2_instances[0];
             container.showPropertiesPane = false;
-            documenteditor = container.documentEditor;
-            documenteditor.showComments = true;
-            documenteditor.currentUser = "Nancy Davolio";
+            documenteditor = container.documentEditor;                      
             documenteditorElement.ej2_instances[0].serviceUrl = window.baseurl + 'api/documenteditorservice/';
             documenteditor.serviceUrl = window.baseurl + 'api/documenteditorservice/';
             var ajax = new ej.base.Ajax("@Url.Content("~/scripts/documenteditor/data-comments.json")", 'GET', true);
@@ -42,14 +40,27 @@
             ajax.onSuccess = function (data) {
                 documenteditor.open(data);
                 documenteditor.documentName = 'Comments';
+                documenteditor.showComments = true;
                 updateDocumentTitle();
             };
             container.documentChange = function (args) {
-                updateDocumentTitle();
+                 updateDocumentTitle();		    
             };
+            container.commentDelete = function (args) {
+                if (args.author !== documenteditor.currentUser) {
+                    args.cancel = true;
+                    ejs.popups.DialogUtility.alert({
+                        title: 'Information',
+                        content: 'Delete restriction enabled. Only the author of the comment can delete it.',
+                        showCloseIcon: true,
+                        closeOnEscape: true,
+                    });
+                }
+            }; 
             titleBarDiv = document.getElementById('documenteditor_titlebar');
-            initComponentAndWireEvent();
+            initComponentAndWireEvent();                 
         });
+        
     </script>
 }
 

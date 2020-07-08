@@ -27,15 +27,15 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
 
     public partial class DocIOController : Controller
     {
-        public ActionResult CreateEquation(string Button)
+        public ActionResult CreateEquation(string Button, string Group1)
         {
             if (Button == null)
                 return View();
 
-            //Creates a new word document instance
-            WordDocument document = new WordDocument();
-            //Adds new section to the document
-            IWSection section = document.AddSection();
+            //Opens an existing Word document
+            WordDocument document = new WordDocument(ResolveApplicationDataPath("Create Equation.docx", "Data\\DocIO"));
+            //Gets the last section in the document
+            WSection section = document.LastSection;
             //Sets page margins
             document.LastSection.PageSetup.Margins.All = 72;
             //Adds new paragraph to the section
@@ -82,7 +82,22 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             CreateVectorRelation(paragraph);
             #endregion
 
-            return document.ExportAsActionResult("Sample.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+            //Save as .docx format
+            if (Group1== "WordDocx")
+            {
+                return document.ExportAsActionResult("CreateEquation.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+            }
+            //Save as .pdf format
+            else if (Group1 == "Pdf")
+            {
+                DocToPDFConverter converter = new DocToPDFConverter();
+                PdfDocument pdfDoc = converter.ConvertToPDF(document);
+                document.Close();
+                converter.Dispose();
+                return pdfDoc.ExportAsActionResult("CreateEquation.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
+            }
+            
+            return View();
         }
         #region Helper Methods
         /// <summary>

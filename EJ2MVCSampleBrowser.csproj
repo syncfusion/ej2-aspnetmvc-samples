@@ -67,62 +67,62 @@
       <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2">
-      <HintPath>packages\Syncfusion.EJ2.MVC5.18.1.0.52\lib\net45\Syncfusion.EJ2.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.MVC5.18.2.0.44\lib\net45\Syncfusion.EJ2.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.HtmlConverter.Base">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Syncfusion.HtmlConverter.IE.AspNet.Mvc5.16.4.0.42\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base">
-      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocIO.Base">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.DocumentEditor">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.PdfViewer">
-      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChartToImageConverter.Wpf">
-      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.OfficeChartToImageConverter.Wpf.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.OfficeChartToImageConverter.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.DocToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.DocToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Base">
-      <HintPath>packages\Syncfusion.Compression.Base.18.1.0.52\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Compression.Base.18.2.0.44\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChart.Base">
-      <HintPath>packages\Syncfusion.OfficeChart.Base.18.1.0.52\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChart.Base.18.2.0.44\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Presentation.Base">
-      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PresentationToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelChartToImageConverter.Wpf">
-      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.ExcelChartToImageConverter.Wpf.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.ExcelChartToImageConverter.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.ExcelToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.ExcelToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.WPF">
-      <HintPath>packages\Syncfusion.SfChart.WPF.18.1.0.52\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.SfChart.WPF.18.2.0.44\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.Base">
-      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.18.1.0.52\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.18.2.0.44\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.Spreadsheet">
-      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.18.1.0.52\lib\net45\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.18.2.0.44\lib\net45\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.Licensing.18.1.0.52\lib\net45\Syncfusion.Licensing.dll</HintPath>
+      <HintPath>packages\Syncfusion.Licensing.18.2.0.44\lib\net45\Syncfusion.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -234,6 +234,7 @@
     <Compile Include="Controllers\DocumentEditor\ToolbarCustomizationController.cs" />
     <Compile Include="Controllers\DocumentEditor\DocumentProtectionController.cs" />
     <Compile Include="Controllers\DocumentEditor\RightToLeft.cs" />
+    <Compile Include="Controllers\Gantt\ResourceMultiTaskbarController.cs" />
     <Compile Include="Controllers\Gantt\ResourceViewController.cs" />
     <Compile Include="Controllers\Gantt\TaskModeController.cs" />
     <Compile Include="Controllers\Gantt\BaselineController.cs" />
@@ -434,6 +435,7 @@
     <Compile Include="Controllers\CircularGauge\DirectionCompassController.cs" />
     <Compile Include="Controllers\CircularGauge\GaugeCustomizationController.cs" />
     <Compile Include="Controllers\CircularGauge\LegendController.cs" />
+    <Compile Include="Controllers\CircularGauge\GradientColorController.cs" />
     <Compile Include="Controllers\CircularGauge\MultipleAxisController.cs" />
     <Compile Include="Controllers\CircularGauge\PointerCustomizationController.cs" />
     <Compile Include="Controllers\CircularGauge\PointerDragController.cs" />
@@ -462,8 +464,11 @@
     <Compile Include="Controllers\ComboBox\ComboboxForController.cs" />
     <Compile Include="Controllers\ContextMenu\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Grid\RowSpanningController.cs" />
-    <Compile Include="Controllers\Heatmap\CellSelectionController.cs" />
+    <Compile Include="Controllers\HeatMapChart\CellSelectionController.cs" />
+    <Compile Include="Controllers\HeatMapChart\ColorRangeController.cs" />
     <Compile Include="Controllers\Kanban\DialogEditingController.cs" />
+    <Compile Include="Controllers\Kanban\SearchFilterController.cs" />
+    <Compile Include="Controllers\Kanban\SortingController.cs" />
     <Compile Include="Controllers\Kanban\SwimlaneController.cs" />
     <Compile Include="Controllers\Kanban\StackedHeaderController.cs" />
     <Compile Include="Controllers\Kanban\LocalDataController.cs" />
@@ -601,6 +606,7 @@
     <Compile Include="Controllers\DocIO\XMLMappingController.cs" />
     <Compile Include="Controllers\DocIO\CreateEquationController.cs" />
     <Compile Include="Controllers\DocIO\EditEquationController.cs" />
+    <Compile Include="Controllers\DocIO\TrackChangesController.cs" />
     <Compile Include="Controllers\DocumentEditor\BulletsAndNumbering.cs" />
     <Compile Include="Controllers\DocumentEditor\CharacterFormatting.cs" />
     <Compile Include="Controllers\DocumentEditor\DefaultFunctionalitiesController.cs" />
@@ -706,29 +712,31 @@
     <Compile Include="Controllers\ProgressBar\PasswordController.cs" />
     <Compile Include="Controllers\ProgressBar\SegmentController.cs" />
     <Compile Include="Controllers\ProgressBar\SemiCircularController.cs" />
-	<Compile Include="Controllers\ProgressBar\SizeController.cs" />
-	<Compile Include="Controllers\ProgressBar\RadiusController.cs" />
+    <Compile Include="Controllers\ProgressBar\SizeController.cs" />
+    <Compile Include="Controllers\ProgressBar\RadiusController.cs" />
     <Compile Include="Controllers\ProgressBar\LabelsController.cs" />
+    <Compile Include="Controllers\ProgressBar\ProgressSegmentController.cs" />
+    <Compile Include="Controllers\ProgressBar\StripesController.cs" />
     <Compile Include="Controllers\QueryBuilder\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\QueryBuilder\GridController.cs" />
     <Compile Include="Controllers\QueryBuilder\TemplateController.cs" />
-    <Compile Include="Controllers\Heatmap\ArraycellController.cs" />
-    <Compile Include="Controllers\Heatmap\ArrayrowController.cs" />
-    <Compile Include="Controllers\Heatmap\BubbleTypesController.cs" />
-    <Compile Include="Controllers\Heatmap\CalendarHeatmapController.cs" />
-    <Compile Include="Controllers\Heatmap\CelljsonController.cs" />
-    <Compile Include="Controllers\Heatmap\DefaultController.cs" />
-    <Compile Include="Controllers\Heatmap\EmptypointsController.cs" />
-    <Compile Include="Controllers\Heatmap\InversedController.cs" />
-    <Compile Include="Controllers\Heatmap\LargedataController.cs" />
-    <Compile Include="Controllers\Heatmap\LegendController.cs" />
-    <Compile Include="Controllers\Heatmap\ColorAndSizeAttributesController.cs" />
-    <Compile Include="Controllers\Heatmap\OpposedController.cs" />
-    <Compile Include="Controllers\Heatmap\MultiLevelLabelsController.cs" />
-    <Compile Include="Controllers\Heatmap\PaletteController.cs" />
-    <Compile Include="Controllers\Heatmap\RendermodeController.cs" />
-    <Compile Include="Controllers\Heatmap\RowjsonController.cs" />
-    <Compile Include="Controllers\Heatmap\TooltiptemplateController.cs" />
+    <Compile Include="Controllers\HeatMapChart\ArraycellController.cs" />
+    <Compile Include="Controllers\HeatMapChart\ArrayrowController.cs" />
+    <Compile Include="Controllers\HeatMapChart\BubbleTypesController.cs" />
+    <Compile Include="Controllers\HeatMapChart\CalendarHeatmapController.cs" />
+    <Compile Include="Controllers\HeatMapChart\CelljsonController.cs" />
+    <Compile Include="Controllers\HeatMapChart\DefaultController.cs" />
+    <Compile Include="Controllers\HeatMapChart\EmptypointsController.cs" />
+    <Compile Include="Controllers\HeatMapChart\InversedController.cs" />
+    <Compile Include="Controllers\HeatMapChart\LargedataController.cs" />
+    <Compile Include="Controllers\HeatMapChart\LegendController.cs" />
+    <Compile Include="Controllers\HeatMapChart\ColorAndSizeAttributesController.cs" />
+    <Compile Include="Controllers\HeatMapChart\OpposedController.cs" />
+    <Compile Include="Controllers\HeatMapChart\MultiLevelLabelsController.cs" />
+    <Compile Include="Controllers\HeatMapChart\PaletteController.cs" />
+    <Compile Include="Controllers\HeatMapChart\RendermodeController.cs" />
+    <Compile Include="Controllers\HeatMapChart\RowjsonController.cs" />
+    <Compile Include="Controllers\HeatMapChart\TooltiptemplateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LinearGauge\AnnotationController.cs" />
     <Compile Include="Controllers\LinearGauge\ExportController.cs" />
@@ -739,6 +747,7 @@
     <Compile Include="Controllers\LinearGauge\RangeController.cs" />
     <Compile Include="Controllers\LinearGauge\StylesController.cs" />
     <Compile Include="Controllers\LinearGauge\TooltipController.cs" />
+    <Compile Include="Controllers\LinearGauge\GradientColorController.cs" />
     <Compile Include="Controllers\ListView\CallHistoryController.cs" />
     <Compile Include="Controllers\ListView\ChecklistController.cs" />
     <Compile Include="Controllers\ListView\DefaultFunctionalitiesController.cs" />
@@ -933,6 +942,8 @@
     <Compile Include="Controllers\Schedule\CalendarIntegrationController.cs" />
     <Compile Include="Controllers\Schedule\CellDimensionController.cs" />
     <Compile Include="Controllers\Schedule\CellTemplateController.cs" />
+    <Compile Include="Controllers\Schedule\QuickInfoTemplateController.cs" />
+    <Compile Include="Controllers\Schedule\InlineEditingController.cs" />
     <Compile Include="Controllers\Schedule\ContextMenuController.cs" />
     <Compile Include="Controllers\Schedule\DateHeaderController.cs" />
     <Compile Include="Controllers\Schedule\DayHourLimitController.cs" />
@@ -985,6 +996,7 @@
     <Compile Include="Controllers\Spreadsheet\CellTemplatesController.cs" />
     <Compile Include="Controllers\Spreadsheet\FormulaController.cs" />
     <Compile Include="Controllers\Spreadsheet\NumberFormattingController.cs" />
+    <Compile Include="Controllers\Spreadsheet\ConditionalFormattingController.cs" />
     <Compile Include="Controllers\Spreadsheet\ProtectSheetController.cs" />
     <Compile Include="Controllers\Spreadsheet\RemoteDataBindingController.cs" />
     <Compile Include="Controllers\Spreadsheet\DefaultFunctionalitiesController.cs" />
@@ -992,10 +1004,10 @@
     <Compile Include="Controllers\Sidebar\ResponsivePanelController.cs" />
     <Compile Include="Controllers\Sidebar\SidebarMenuController.cs" />
     <Compile Include="Controllers\Sidebar\SidebarWithMenuController.cs" />
-    <Compile Include="Controllers\Slider\APIController.cs" />
-    <Compile Include="Controllers\Slider\CloudPricingController.cs" />
-    <Compile Include="Controllers\Slider\LimitsController.cs" />
-    <Compile Include="Controllers\Slider\EventsController.cs" />
+    <Compile Include="Controllers\RangeSlider\APIController.cs" />
+    <Compile Include="Controllers\RangeSlider\CloudPricingController.cs" />
+    <Compile Include="Controllers\RangeSlider\LimitsController.cs" />
+    <Compile Include="Controllers\RangeSlider\EventsController.cs" />
     <Compile Include="Controllers\Smithchart\CustomizationController.cs" />
     <Compile Include="Controllers\Smithchart\DefaultController.cs" />
     <Compile Include="Controllers\Smithchart\PrintController.cs" />
@@ -1035,15 +1047,15 @@
     <Compile Include="Controllers\TextBoxes\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\TextBoxes\MultilineController.cs" />
     <Compile Include="Controllers\TextBoxes\TextboxForController.cs" />
-    <Compile Include="Controllers\Slider\BarController.cs" />
-    <Compile Include="Controllers\Slider\CustomTicksController.cs" />
-    <Compile Include="Controllers\Slider\CustomTooltipController.cs" />
-    <Compile Include="Controllers\Slider\DefaultController.cs" />
-    <Compile Include="Controllers\Slider\FormattingController.cs" />
-    <Compile Include="Controllers\Slider\OrientationController.cs" />
-    <Compile Include="Controllers\Slider\ThumbController.cs" />
-    <Compile Include="Controllers\Slider\TicksController.cs" />
-    <Compile Include="Controllers\Slider\TooltipController.cs" />
+    <Compile Include="Controllers\RangeSlider\BarController.cs" />
+    <Compile Include="Controllers\RangeSlider\CustomTicksController.cs" />
+    <Compile Include="Controllers\RangeSlider\CustomTooltipController.cs" />
+    <Compile Include="Controllers\RangeSlider\DefaultController.cs" />
+    <Compile Include="Controllers\RangeSlider\FormattingController.cs" />
+    <Compile Include="Controllers\RangeSlider\OrientationController.cs" />
+    <Compile Include="Controllers\RangeSlider\ThumbController.cs" />
+    <Compile Include="Controllers\RangeSlider\TicksController.cs" />
+    <Compile Include="Controllers\RangeSlider\TooltipController.cs" />
     <Compile Include="Controllers\TimePicker\TimePickerForController.cs" />
     <Compile Include="Controllers\Toast\APIController.cs" />
     <Compile Include="Controllers\Toast\DefaultFunctionalitiesController.cs" />
@@ -1067,6 +1079,7 @@
     <Compile Include="Controllers\TreeGrid\ClipboardController.cs" />
     <Compile Include="Controllers\TreeGrid\CheckboxColumnController.cs" />
     <Compile Include="Controllers\TreeGrid\CheckboxSelectionController.cs" />
+    <Compile Include="Controllers\TreeGrid\ColumnChooserController.cs" />
     <Compile Include="Controllers\TreeGrid\ColumnTemplateController.cs" />
     <Compile Include="Controllers\TreeGrid\ConditionalFormattingController.cs" />
     <Compile Include="Controllers\TreeGrid\CustomAggregateController.cs" />
@@ -1183,6 +1196,8 @@
     <Compile Include="Controllers\XlsIO\AutoShapesController.cs" />
     <Compile Include="Controllers\XlsIO\BoxAndWhiskerController.cs" />
     <Compile Include="Controllers\XlsIO\CollectionObjectsController.cs" />
+    <Compile Include="Controllers\XlsIO\HTMLToWorksheetController.cs" />
+    <Compile Include="Controllers\XlsIO\ExcelToJSONController.cs" />
     <Compile Include="Controllers\XlsIO\ImportNestedCollectionController.cs" />
     <Compile Include="Controllers\XlsIO\BudgetPlannerController.cs" />
     <Compile Include="Controllers\XlsIO\ChartWorksheetController.cs" />
@@ -1290,16 +1305,20 @@
     <Compile Include="Models\FindPDFCorruptionMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Controllers\DocumentEditor\TrackChangesController.cs" />
+    <Compile Include="Controllers\DocumentEditor\FormFieldsController.cs" />
+    <Content Include="Views\XlsIO\HTMLToWorksheet.cshtml" />
     <Compile Include="webapi\DocumentEditor\DocumentEditorServiceController.cs" />
     <Compile Include="webapi\PdfViewer\PdfViewerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Data\DocIO\Adventure.doc" />
     <Content Include="App_Data\Data\DocIO\Adventure.docx" />
-    <Content Include="App_Data\Data\DocIO\BkmkDocumentPart_Template.doc" />
-    <Content Include="App_Data\Data\DocIO\Bookmark_Template.doc" />
+    <Content Include="App_Data\Data\DocIO\BkmkDocumentPart_Template.docx" />
+    <Content Include="App_Data\Data\DocIO\Bookmark_Template.docx" />
     <Content Include="App_Data\Data\DocIO\ContentControlTemplate.docx" />
     <Content Include="App_Data\Data\DocIO\Mathematical Equation.docx" />
+    <Content Include="App_Data\Data\DocIO\Create Equation.docx" />
     <Content Include="App_Data\Data\DocIO\Doc to EPub.doc" />
     <Content Include="App_Data\Data\DocIO\Doc to HTML.doc" />
     <Content Include="App_Data\Data\DocIO\DocToImage.docx" />
@@ -1326,7 +1345,7 @@
     <Content Include="App_Data\Data\DocIO\Replace.doc" />
     <Content Include="App_Data\Data\DocIO\RTFtoDoc.rtf" />
     <Content Include="App_Data\Data\DocIO\SalesInvoiceDemo.doc" />
-    <Content Include="App_Data\Data\DocIO\Security Settings.doc" />
+    <Content Include="App_Data\Data\DocIO\Security Settings.docx" />
     <Content Include="App_Data\Data\DocIO\SourceTemplate1.doc" />
     <Content Include="App_Data\Data\DocIO\SourceTemplate2.doc" />
     <Content Include="App_Data\Data\DocIO\Template.doc" />
@@ -1340,6 +1359,7 @@
     <Content Include="App_Data\Data\DocIO\TemplateSource2.doc" />
     <Content Include="App_Data\Data\DocIO\TemplateTableStyle.doc" />
     <Content Include="App_Data\Data\DocIO\TemplateUpdateFields.docx" />
+    <Content Include="App_Data\Data\DocIO\TrackChangesTemplate.docx" />
     <Content Include="App_Data\Data\DocIO\Watermark.doc" />
     <Content Include="App_Data\Data\DocIO\Word to ODT.docx" />
     <Content Include="App_Data\Data\DocIO\Animation.gif" />
@@ -2205,6 +2225,8 @@
     <Content Include="Scripts\locale\en.json" />
     <Content Include="Scripts\locale\fr-CH.json" />
     <Content Include="Scripts\locale\zh.json" />
+    <Content Include="Scripts\documenteditor\data-FormFields.json" />
+    <Content Include="Scripts\documenteditor\data-TrackChanges.json" />
     <None Include="Scripts\_references.js" />
     <Content Include="SyncfusionLicense.txt" />
     <EmbeddedResource Include="App_Data\XlsIO\bahnschrift.ttf" />
@@ -2370,6 +2392,7 @@
     <Content Include="Views\CircularGauge\TicksAndLabels.cshtml" />
     <Content Include="Views\CircularGauge\Tooltip.cshtml" />
     <Content Include="Views\CircularGauge\AppleWatchRings.cshtml" />
+    <Content Include="Views\CircularGauge\GradientColor.cshtml" />
     <Content Include="Views\ColorPicker\Api.cshtml" />
     <Content Include="Views\ColorPicker\Custom.cshtml" />
     <Content Include="Views\ColorPicker\DefaultFunctionalities.cshtml" />
@@ -2499,6 +2522,7 @@
     <Content Include="Views\DocIO\XMLMapping.cshtml" />
     <Content Include="Views\DocIO\CreateEquation.cshtml" />
     <Content Include="Views\DocIO\EditEquation.cshtml" />
+    <Content Include="Views\DocIO\TrackChanges.cshtml" />
     <Content Include="Views\DocumentEditor\BulletsAndNumbering.cshtml" />
     <Content Include="Views\DocumentEditor\CharacterFormatting.cshtml" />
     <Content Include="Views\DocumentEditor\ToolbarCustomization.cshtml" />
@@ -2575,22 +2599,22 @@
     <Content Include="Views\Grid\StackedHeader.cshtml" />
     <Content Include="Views\Grid\UrlAdaptor.cshtml" />
     <Content Include="Views\Grid\VirtualScrolling.cshtml" />
-    <Content Include="Views\Heatmap\Arraycell.cshtml" />
-    <Content Include="Views\Heatmap\Arrayrow.cshtml" />
-    <Content Include="Views\Heatmap\BubbleTypes.cshtml" />
-    <Content Include="Views\Heatmap\CalendarHeatmap.cshtml" />
-    <Content Include="Views\Heatmap\Celljson.cshtml" />
-    <Content Include="Views\Heatmap\ColorAndSizeAttributes.cshtml" />
-    <Content Include="Views\Heatmap\Default.cshtml" />
-    <Content Include="Views\Heatmap\Emptypoints.cshtml" />
-    <Content Include="Views\Heatmap\inversed.cshtml" />
-    <Content Include="Views\Heatmap\Largedata.cshtml" />
-    <Content Include="Views\Heatmap\Legend.cshtml" />
-    <Content Include="Views\Heatmap\Opposed.cshtml" />
-    <Content Include="Views\Heatmap\Palette.cshtml" />
-    <Content Include="Views\Heatmap\Rendermode.cshtml" />
-    <Content Include="Views\Heatmap\Rowjson.cshtml" />
-    <Content Include="Views\Heatmap\Tooltiptemplate.cshtml" />
+    <Content Include="Views\HeatMapChart\Arraycell.cshtml" />
+    <Content Include="Views\HeatMapChart\Arrayrow.cshtml" />
+    <Content Include="Views\HeatMapChart\BubbleTypes.cshtml" />
+    <Content Include="Views\HeatMapChart\CalendarHeatmap.cshtml" />
+    <Content Include="Views\HeatMapChart\Celljson.cshtml" />
+    <Content Include="Views\HeatMapChart\ColorAndSizeAttributes.cshtml" />
+    <Content Include="Views\HeatMapChart\Default.cshtml" />
+    <Content Include="Views\HeatMapChart\Emptypoints.cshtml" />
+    <Content Include="Views\HeatMapChart\inversed.cshtml" />
+    <Content Include="Views\HeatMapChart\Largedata.cshtml" />
+    <Content Include="Views\HeatMapChart\Legend.cshtml" />
+    <Content Include="Views\HeatMapChart\Opposed.cshtml" />
+    <Content Include="Views\HeatMapChart\Palette.cshtml" />
+    <Content Include="Views\HeatMapChart\Rendermode.cshtml" />
+    <Content Include="Views\HeatMapChart\Rowjson.cshtml" />
+    <Content Include="Views\HeatMapChart\Tooltiptemplate.cshtml" />
     <Content Include="Views\LinearGauge\Annotation.cshtml" />
     <Content Include="Views\LinearGauge\AxesAndPointers.cshtml" />
     <Content Include="Views\LinearGauge\Export.cshtml" />
@@ -2600,6 +2624,7 @@
     <Content Include="Views\LinearGauge\Range.cshtml" />
     <Content Include="Views\LinearGauge\Styles.cshtml" />
     <Content Include="Views\LinearGauge\Tooltip.cshtml" />
+    <Content Include="Views\LinearGauge\GradientColor.cshtml" />
     <Content Include="Views\ListView\CallHistory.cshtml" />
     <Content Include="Views\ListView\Checklist.cshtml" />
     <Content Include="Views\ListView\DefaultFunctionalities.cshtml" />
@@ -2772,8 +2797,10 @@
     <Content Include="Views\ProgressBar\Password.cshtml" />
     <Content Include="Views\ProgressBar\Segment.cshtml" />
     <Content Include="Views\ProgressBar\SemiCircular.cshtml" />
-	<Content Include="Views\ProgressBar\Size.cshtml" />
-	<Content Include="Views\ProgressBar\Radius.cshtml" />
+    <Content Include="Views\ProgressBar\Size.cshtml" />
+    <Content Include="Views\ProgressBar\Radius.cshtml" />
+    <Content Include="Views\ProgressBar\ProgressSegment.cshtml" />
+    <Content Include="Views\ProgressBar\Stripes.cshtml" />
     <Content Include="Views\RangeNavigator\DateTime.cshtml" />
     <Content Include="Views\RangeNavigator\Default.cshtml" />
     <Content Include="Views\RangeNavigator\Double.cshtml" />
@@ -2859,19 +2886,19 @@
     <Content Include="Views\Sidebar\SidebarDock.cshtml" />
     <Content Include="Views\Sidebar\SidebarList.cshtml" />
     <Content Include="Views\Sidebar\SidebarWithListView.cshtml" />
-    <Content Include="Views\Slider\API.cshtml" />
-    <Content Include="Views\Slider\Bar.cshtml" />
-    <Content Include="Views\Slider\CloudPricing.cshtml" />
-    <Content Include="Views\Slider\CustomTicks.cshtml" />
-    <Content Include="Views\Slider\CustomTooltip.cshtml" />
-    <Content Include="Views\Slider\Default.cshtml" />
-    <Content Include="Views\Slider\Events.cshtml" />
-    <Content Include="Views\Slider\Formatting.cshtml" />
-    <Content Include="Views\Slider\Limits.cshtml" />
-    <Content Include="Views\Slider\Orientation.cshtml" />
-    <Content Include="Views\Slider\Thumb.cshtml" />
-    <Content Include="Views\Slider\Ticks.cshtml" />
-    <Content Include="Views\Slider\Tooltip.cshtml" />
+    <Content Include="Views\RangeSlider\API.cshtml" />
+    <Content Include="Views\RangeSlider\Bar.cshtml" />
+    <Content Include="Views\RangeSlider\CloudPricing.cshtml" />
+    <Content Include="Views\RangeSlider\CustomTicks.cshtml" />
+    <Content Include="Views\RangeSlider\CustomTooltip.cshtml" />
+    <Content Include="Views\RangeSlider\Default.cshtml" />
+    <Content Include="Views\RangeSlider\Events.cshtml" />
+    <Content Include="Views\RangeSlider\Formatting.cshtml" />
+    <Content Include="Views\RangeSlider\Limits.cshtml" />
+    <Content Include="Views\RangeSlider\Orientation.cshtml" />
+    <Content Include="Views\RangeSlider\Thumb.cshtml" />
+    <Content Include="Views\RangeSlider\Ticks.cshtml" />
+    <Content Include="Views\RangeSlider\Tooltip.cshtml" />
     <Content Include="Views\Smithchart\Customization.cshtml" />
     <Content Include="Views\Smithchart\Default.cshtml" />
     <Content Include="Views\Smithchart\Print.cshtml" />
@@ -3094,6 +3121,7 @@
     <Content Include="Views\TreeGrid\StackedHeader.cshtml" />
     <Content Include="Views\TreeGrid\TextWrap.cshtml" />
     <Content Include="Views\TreeGrid\Events.cshtml" />
+    <Content Include="Views\TreeGrid\ColumnChooser.cshtml" />
     <Content Include="Views\TreeGrid\RowTemplate.cshtml" />
     <Content Include="Views\TreeGrid\DefaultScrolling.cshtml" />
     <Content Include="Views\TreeGrid\VirtualScrolling.cshtml" />
@@ -3116,7 +3144,7 @@
     <Content Include="Views\Barcode\qrcode.cshtml" />
     <Content Include="Views\Barcode\datamatrix.cshtml" />
     <Content Include="Views\Grid\DragAndDropWithInGrid.cshtml" />
-    <Content Include="Views\Heatmap\MultiLevelLabels.cshtml" />
+    <Content Include="Views\HeatMapChart\MultiLevelLabels.cshtml" />
     <Content Include="Views\Grid\RowSpanning.cshtml" />
     <Content Include="Views\PdfViewer\CustomToolbar.cshtml" />
     <Content Include="Views\PdfViewer\Default.cshtml" />
@@ -3126,7 +3154,8 @@
     <Content Include="Views\Splitter\OutlookStyleLayout.cshtml" />
     <Content Include="Views\Splitter\CodeEditorLayout.cshtml" />
     <Content Include="Views\Splitter\ExpandCollapse.cshtml" />
-    <Content Include="Views\Heatmap\CellSelection.cshtml" />
+    <Content Include="Views\HeatMapChart\CellSelection.cshtml" />
+    <Content Include="Views\HeatMapChart\ColorRange.cshtml" />
     <Content Include="Views\DashboardLayout\API.cshtml" />
     <Content Include="Views\DashboardLayout\DefaultFunctionalities.cshtml" />
     <Content Include="Views\DashboardLayout\EditableLayout.cshtml" />
@@ -3234,6 +3263,8 @@
     <Content Include="Views\TreeGrid\BatchEditing.cshtml" />
     <Content Include="Views\Kanban\DefaultFunctionalities.cshtml" />
     <Content Include="Views\Kanban\DialogEditing.cshtml" />
+    <Content Include="Views\Kanban\SearchFilter.cshtml" />
+    <Content Include="Views\Kanban\Sorting.cshtml" />
     <Content Include="Views\Kanban\LocalData.cshtml" />
     <Content Include="Views\Kanban\RemoteData.cshtml" />
     <Content Include="Views\Kanban\HeaderTemplate.cshtml" />
@@ -3257,6 +3288,13 @@
     <Content Include="Views\Spreadsheet\SortingFiltering.cshtml" />
     <Content Include="Views\Spreadsheet\ProtectSheet.cshtml" />
     <Content Include="Views\Maps\locale.json" />
+    <Content Include="Views\DocumentEditor\FormFields.cshtml" />
+    <Content Include="Views\DocumentEditor\TrackChanges.cshtml" />
+    <Content Include="Views\XlsIO\ExcelToJSON.cshtml" />
+    <Content Include="Views\Schedule\InlineEditing.cshtml" />
+    <Content Include="Views\Schedule\QuickInfoTemplate.cshtml" />
+    <Content Include="Views\Gantt\ResourceMultiTaskbar.cshtml" />
+    <Content Include="Views\Spreadsheet\ConditionalFormatting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\MapData\Africa_continent.json" />
@@ -3289,6 +3327,7 @@
     <Content Include="App_Data\Presentation\Animation.pptx" />
     <Content Include="App_Data\Presentation\Transition.pptx" />
     <Content Include="App_Data\Presentation\HeaderFooter.pptx" />
+    <Content Include="App_Data\Presentation\EmbeddedOleObject.pptx" />
     <Content Include="App_Data\Presentation\ChartInput.pptx" />
     <Content Include="App_Data\Presentation\Essential Presentation.pptx" />
     <Content Include="App_Data\Presentation\Excel_Template.xlsx" />
@@ -3297,7 +3336,7 @@
     <Content Include="App_Data\Presentation\DataBase.mdb" />
     <Content Include="App_Data\Presentation\MergeContent.pptx" />
     <Content Include="App_Data\Presentation\NewCharts.pptx" />
-    <Content Include="App_Data\Presentation\OleTemplate.xlsx" />
+    <Content Include="App_Data\Presentation\OleTemplate.docx" />
     <Content Include="App_Data\Presentation\PPTX_Viewer_UWP_Input.pptx" />
     <Content Include="App_Data\Presentation\ShapeWithAnimation.pptx" />
     <Content Include="App_Data\Presentation\Slides.pptx" />
@@ -3406,6 +3445,7 @@
     <Folder Include="Views\CheckboxSelection\" />
     <Folder Include="Views\ChunkUpload\" />
     <Folder Include="Views\ColorMapping\" />
+    <Folder Include="Views\ColumnChooser\" />
     <Folder Include="Views\CustomAggregates\" />
     <Folder Include="Views\CustomsContextMenu\" />
     <Folder Include="Views\Default\" />

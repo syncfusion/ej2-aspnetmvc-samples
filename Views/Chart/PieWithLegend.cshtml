@@ -57,7 +57,7 @@
                 }
             }
         }
-        document.getElementById('container').appendChild(centerTitle);
+        
 
          @*custom code start*@
         var load = function(args) {
@@ -128,8 +128,10 @@
                     }
                 },
                 3000);
+            centerTitle.style.top = (args.accumulation.origin.y - rect.height / 2) + 'px';
+            centerTitle.style.left = (args.accumulation.origin.x - rect.width / 2) + 'px';
         }
-
+        document.getElementById('container').appendChild(centerTitle);
         
         function getFontSize(width) {
             if (width > 300) {

@@ -32,11 +32,10 @@
                                                            <td valign="middle" style="padding-left: 0px; width: 100%;">
                                                                <span id="label4">Cryptographic Standard: </span>
                                                                <span style="margin-left: 10px">
-                                                                   <input type="radio" checked="checked" value="CMS" name="Cryptographic" id="RadioButtonList1"><text for="Cryptographic">CMS</text>
+                                                                   @Html.EJS().RadioButton("RadioButtonList1_0").Label("CMS").Name("Cryptographic").Value("CMS").Checked(true).Render()
                                                                </span>
                                                                <span style="margin-left: 20px">
-                                                                   <input type="radio" value="CAdES"
-                                                                          name="Cryptographic" id="RadioButtonList2_1"><text for="Cryptographic">CAdES</text>
+                                                                   @Html.EJS().RadioButton("RadioButtonList1_1").Label("CAdES").Name("Cryptographic").Value("CAdES").Render()
                                                                </span>
                                                            </td>
 
@@ -46,23 +45,19 @@
                                                                <br />
                                                                <span id="label4">Digest Algorithm: </span>
                                                                <span style="margin-left: 10px">
-                                                                   <input type="radio" value="SHA1" name="digestAlgorithm" id="RadioButtonList1"><text for="Cryptographic">SHA1</text>
+                                                                   @Html.EJS().RadioButton("RadioButtonList3_0").Label("SHA1").Name("digestAlgorithm").Value("SHA1").Render()
                                                                </span>
                                                                <span style="margin-left: 20px">
-                                                                   <input type="radio" value="SHA256" checked="checked"
-                                                                          name="digestAlgorithm" id="RadioButtonList3_1"><text for="digestAlgorithm">SHA256</text>
+                                                                   @Html.EJS().RadioButton("RadioButtonList3_1").Label("SHA256").Name("digestAlgorithm").Value("SHA256").Checked(true).Render()
                                                                </span>
                                                                <span style="margin-left: 20px">
-                                                                   <input type="radio" value="SHA384"
-                                                                          name="digestAlgorithm" id="RadioButtonList3_2"><text for="digestAlgorithm">SHA384</text>
+                                                                   @Html.EJS().RadioButton("RadioButtonList3_2").Label("SHA384").Name("digestAlgorithm").Value("SHA384").Render()
                                                                </span>
                                                                <span style="margin-left: 20px">
-                                                                   <input type="radio" value="SHA512"
-                                                                          name="digestAlgorithm" id="RadioButtonList3_3"><text for="digestAlgorithm">SHA512</text>
+                                                                   @Html.EJS().RadioButton("RadioButtonList3_3").Label("SHA512").Name("digestAlgorithm").Value("SHA512").Render()
                                                                </span>
                                                                <span style="margin-left: 20px">
-                                                                   <input type="radio" value="RIPEMD160"
-                                                                          name="digestAlgorithm" id="RadioButtonList3_4"><text for="digestAlgorithm">RIPEMD160</text>
+                                                                   @Html.EJS().RadioButton("RadioButtonList3_4").Label("RIPEMD160").Name("digestAlgorithm").Value("RIPEMD160").Render()
                                                                </span>
                                                            </td>
 
@@ -92,11 +87,10 @@
                                                            <td valign="middle" style="padding-left: 0px; width: 100%;">
                                                                <span id="label4">Standard Type: </span>
                                                                <span style="margin-left: 10px">
-                                                                   <input type="radio" checked="checked" value="Standard" name="RadioButtonList2" id="RadioButtonList1"><text for="RadioButtonList2_0">Standard</text>
+                                                                   @Html.EJS().RadioButton("RadioButtonList2_0").Label("Standard").Name("RadioButtonList2").Value("Standard").Checked(true).Render()
                                                                </span>
                                                                <span style="margin-left: 20px">
-                                                                   <input type="radio" value="Author"
-                                                                          name="RadioButtonList2" id="RadioButtonList2_1"><text for="RadioButtonList2">Author</text>
+                                                                   @Html.EJS().RadioButton("RadioButtonList2_1").Label("Author").Name("RadioButtonList2").Value("Author").Render()
                                                                </span>
                                                            </td>
 

@@ -1,0 +1,212 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <div class="col-md-8 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().CircularGauge("gauge").Load("onGaugeLoad").Axes(axes => axes.Radius("80%")
+            .LineStyle(new CircularGaugeLine { Width = 0, Color = "transparent" }).LabelStyle(new CircularGaugeLabel
+            {
+                Offset= 15,
+                Font = new CircularGaugeFont
+                {
+                    FontFamily= "Roboto",
+                    Size= "12px"
+                }
+            }).MajorTicks(new CircularGaugeTick
+            {
+                Width= 0.1, Interval= 10,
+                Height = 0.1,
+            }).MinorTicks(new CircularGaugeTick
+            {
+                Width= 0.1, Height=0.1,
+            }).Pointers(ViewBag.Pointers).Ranges(ViewBag.Ranges).Minimum(0).Maximum(120).Add()).Render()
+        </div>
+    </div>
+    <div class="col-md-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td>
+                        <div style="margin-top:25px;width: 120px; margin-left:-10px;" id="">Gradient Type</div>
+                    </td>
+                    <td>
+                        <div  style="margin-top:25px;width: 120px; margin-left:-18px;">
+                            <select id="gradient" class="form-control">
+                                <option value="linear" selected="true">Linear Gradient</option>
+                                <option value="radial">Radial Gradient</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div style="margin-top:25px; margin-left:-10px" id="">Elements</div>
+                    </td>
+                    <td>
+                        <div style="margin-top:25px; margin-left:-18px">
+                            <select id="element" class="form-control">
+                                <option value="range" selected="true">Range</option>
+                                <option value="pointer">Pointer</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var circulargauge;
+        var rangeLinearGradient = {
+            startValue: '0%',
+            endValue: '100%',
+            colorStop: [
+                { color: '#9E40DC', offset: '0%', opacity: 0.9 },
+                { color: '#E63B86', offset: '70%', opacity: 0.9 },
+            ]
+        }
+        var rangeRadialGradient = {
+            radius: '50%',
+            innerPosition: { x: '50%', y: '50%' },
+            outerPosition: { x: '50%', y: '50%' },
+            colorStop: [
+                { color: '#9E40DC', offset: '90%', opacity: 0.9 },
+                { color: '#E63B86', offset: '160%', opacity: 0.9 }]
+        }
+        var pointerLinearGradient = {
+            startValue: '0%',
+            endValue: '100%',
+            colorStop: [
+                { color: '#FEF3F9', offset: '0%', opacity: 0.9 },
+                { color: '#E63B86', offset: '70%', opacity: 0.9 }]
+        }
+        var pointerRadialGradient = {
+            radius: '50%',
+            innerPosition: { x: '50%', y: '50%' },
+            outerPosition: { x: '50%', y: '50%' },
+            colorStop: [
+                { color: '#FEF3F9', offset: '0%', opacity: 0.9 },
+                { color: '#E63B86', offset: '60%', opacity: 0.9 }]
+
+        }
+        var circulargauge;
+        var rangeCheck = false;
+        function onGaugeLoad(sender) {
+            if (window.gaugeLoaded)
+                return;
+            window.gaugeLoaded = true;
+            sender.gauge.axes[0].startAngle = 210;
+            sender.gauge.axes[0].endAngle = 150;
+            sender.gauge.axes[0].minimum = 0;
+            sender.gauge.axes[0].maximum = 100;            
+            window.setTimeout(function () {
+                var gaugeWidth = document.getElementById('gauge').offsetWidth;
+                var svgWidth = document.getElementById('gauge_svg').offsetWidth;
+                if (gaugeWidth != svgWidth)
+                    sender.gauge.refresh();
+            }, 200);
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            if (!rangeCheck) {
+                sender.gauge.axes[0].ranges[0].linearGradient = rangeLinearGradient;
+                rangeCheck= true;
+            }
+            circulargauge = sender.gauge;
+        }
+
+        var gradientType = new ej.dropdowns.DropDownList({
+            index: 0,
+            width: 145,
+            change: function () {
+                if (gradientType.value === 'radial' && element.value === 'range') {
+                    circulargauge.axes[0].ranges[0].linearGradient = null;
+                    circulargauge.axes[0].ranges[0].radialGradient = rangeRadialGradient;
+                    circulargauge.axes[0].pointers[0].linearGradient = null;
+                    circulargauge.axes[0].pointers[0].radialGradient = null;
+                    circulargauge.refresh();
+                }
+                if (element.value === 'range' && gradientType.value === 'linear') {
+                    circulargauge.axes[0].ranges[0].linearGradient = rangeLinearGradient;
+                    circulargauge.axes[0].ranges[0].radialGradient = null;
+                    circulargauge.axes[0].pointers[0].linearGradient = null;
+                    circulargauge.axes[0].pointers[0].radialGradient = null;
+                    circulargauge.refresh();
+                }
+                if (gradientType.value === 'radial' && element.value === 'pointer') {
+                    circulargauge.axes[0].pointers[0].radialGradient = pointerRadialGradient;
+                    circulargauge.axes[0].pointers[0].linearGradient = null;
+                    circulargauge.axes[0].ranges[0].linearGradient = null;
+                    circulargauge.axes[0].ranges[0].radialGradient = null;
+                    circulargauge.refresh();
+                }
+                if (gradientType.value === 'linear' && element.value === 'pointer') {
+                    circulargauge.axes[0].pointers[0].linearGradient = pointerLinearGradient;
+                    circulargauge.axes[0].pointers[0].radialGradient = null;
+                    circulargauge.axes[0].ranges[0].linearGradient = null;
+                    circulargauge.axes[0].ranges[0].radialGradient = null;
+                    circulargauge.refresh();
+                }
+            }
+        });
+        gradientType.appendTo('#gradient');
+        var element = new ej.dropdowns.DropDownList({
+            index: 0,
+            width: 145,
+            change: function () {
+                if (gradientType.value === 'radial' && element.value === 'range') {
+                    circulargauge.axes[0].ranges[0].linearGradient = null;
+                    circulargauge.axes[0].ranges[0].radialGradient = rangeRadialGradient;
+                    circulargauge.axes[0].pointers[0].linearGradient = null;
+                    circulargauge.axes[0].pointers[0].radialGradient = null;
+                    circulargauge.refresh();
+                }
+                if (element.value === 'range' && gradientType.value === 'linear') {
+                    circulargauge.axes[0].ranges[0].linearGradient = rangeLinearGradient;
+                    circulargauge.axes[0].ranges[0].radialGradient = null;
+                    circulargauge.axes[0].pointers[0].linearGradient = null;
+                    circulargauge.axes[0].pointers[0].radialGradient = null;
+                    circulargauge.refresh();
+                }
+                if (gradientType.value === 'radial' && element.value === 'pointer') {
+                    circulargauge.axes[0].pointers[0].radialGradient = pointerRadialGradient;
+                    circulargauge.axes[0].pointers[0].linearGradient = null;
+                    circulargauge.axes[0].ranges[0].linearGradient = null;
+                    circulargauge.axes[0].ranges[0].radialGradient = null;
+                    circulargauge.refresh();
+                }
+                if (gradientType.value === 'linear' && element.value === 'pointer') {
+                    circulargauge.axes[0].pointers[0].linearGradient = pointerLinearGradient;
+                    circulargauge.axes[0].pointers[0].radialGradient = null;
+                    circulargauge.axes[0].ranges[0].linearGradient = null;
+                    circulargauge.axes[0].ranges[0].radialGradient = null;
+                    circulargauge.refresh();
+                }
+            }
+        });
+        element.appendTo('#element');
+    </script>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample shows how linear gradient color and radial gradient color are applied to the circular gauge elements.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Gradient color in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            The circular gauge supports gradient coloring in a linear or radial manner. The gradient type can be changed
+            using the <b>Gradient Type</b> dropdown list in the properties panel. In the same way, the element for which the gradient color
+            should be applied is decided by the <b>Elements</b> dropdown list.
+        </p>        
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC Circular Gauge Gradient Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Gradient color in ASP.NET MVC Circular Gauge Control</h1>
+}

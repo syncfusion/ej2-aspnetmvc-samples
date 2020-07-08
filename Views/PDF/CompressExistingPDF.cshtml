@@ -45,11 +45,8 @@
                         <table width="100%">
                             <tr>
                                 <td align="left" width="50%" style="padding:5px 7px 5px 7px">
-                                    <input type="checkbox" name="compressImage" value="true" checked="checked" onchange="isCompressImageOnChanged(this)" />
-                                    <text for="Opentype">
-                                        Compress Image
-                                    </text>
-                                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                    @Html.EJS().CheckBox("compressImage").Name("compressImage").Value("true").Change("isCompressImageOnChanged").Checked(true).Label("Compress Image").Render()
+                                       &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                                     <text for="Opentype">
                                         Image Quality &nbsp;&nbsp;&nbsp;&nbsp;
                                     </text>
@@ -58,23 +55,14 @@
                             </tr>
                             <tr>
                                 <td align="left" width="50%" style="padding:5px 7px 5px 7px">
-                                    <input type="checkbox" name="optPageContents" value="true" checked="checked" />
-                                    <text for="Opentype">
-                                        Optimize Page Contents
-                                    </text>
+                                    @Html.EJS().CheckBox("optPageContents").Name("optPageContents").Value("true").Checked(true).Label("Optimize Page Contents").Render()
                                     &emsp;&emsp;&emsp;&emsp;
-                                    <input type="checkbox" name="removeMetaData" value="true" checked="checked" />
-                                    <text for="Opentype">
-                                        Remove Metadata Information
-                                    </text>
+                                    @Html.EJS().CheckBox("removeMetaData").Name("removeMetaData").Value("true").Checked(true).Label("Remove Metadata Information").Render()
                                 </td>
                             </tr>
                             <tr>
                                 <td align="left" width="50%" style="padding:5px 7px 5px 7px">
-                                    <input type="checkbox" name="optFont" value="true" checked="checked" />
-                                    <text for="Opentype">
-                                        Optimize Font
-                                    </text>
+                                    @Html.EJS().CheckBox("optFont").Name("optFont").Value("true").Checked(true).Label("Optimize Font").Render()
                                 </td>
                                 <td align="right" width="50%" style="padding:5px 7px 5px 7px">
                                     <p for="Opentype">

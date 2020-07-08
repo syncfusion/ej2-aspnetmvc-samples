@@ -17,6 +17,8 @@ using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using Syncfusion.DocIO;
 using Syncfusion.DocIO.DLS;
+using Syncfusion.DocToPDFConverter;
+using Syncfusion.Pdf;
 using Syncfusion.Mvc.Pdf;
 using Syncfusion.Office;
 
@@ -25,12 +27,14 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
 
     public partial class DocIOController : Controller
     {
-        public ActionResult EditEquation(string Button)
+        public ActionResult EditEquation(string Button, string Group1)
         {
             if (Button == null)
                 return View();
-            
-           //Opens an existing Word document
+            if (Button == "View Template")
+                return new TemplateResult("Mathematical Equation.docx", ResolveApplicationDataPath("Data\\DocIO"), HttpContext.ApplicationInstance.Response);
+
+            //Opens an existing Word document
             WordDocument document = new WordDocument(ResolveApplicationDataPath("Mathematical Equation.docx", "Data\\DocIO"));
             //Gets the last section in the document
             WSection section = document.LastSection;
@@ -85,7 +89,22 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             //Gets the math text
             (mathParaItem.Item as WTextRange).Text = "x";
 
-            return document.ExportAsActionResult("Sample.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+            //Save as .docx format
+            if (Group1== "WordDocx")
+            {
+                return document.ExportAsActionResult("EditEquation.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+            }
+            //Save as .pdf format
+            else if (Group1 == "Pdf")
+            {
+                DocToPDFConverter converter = new DocToPDFConverter();
+                PdfDocument pdfDoc = converter.ConvertToPDF(document);
+                document.Close();
+                converter.Dispose();
+                return pdfDoc.ExportAsActionResult("EditEquation.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
+            }
+			
+            return View();
         }
     }
 

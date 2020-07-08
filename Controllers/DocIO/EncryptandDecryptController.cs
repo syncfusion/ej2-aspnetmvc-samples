@@ -50,7 +50,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             {
                 document = new WordDocument();
                 // Open an existing template document.
-                document.Open(ResolveApplicationDataPath("Security Settings.doc", "Data\\DocIO"), FormatType.Doc, "syncfusion");
+                document.Open(ResolveApplicationDataPath("Security Settings.docx", "Data\\DocIO"), FormatType.Doc, "syncfusion");
 
                 // Getting last section of the document.
                 IWSection section = document.LastSection;

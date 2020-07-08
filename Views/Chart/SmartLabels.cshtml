@@ -4,11 +4,11 @@
         <div id="container" style="text-align:center">
 
 
-        @Html.EJS().AccumulationChart("container").Series(series =>
+        @Html.EJS().AccumulationChart("container").EnableBorderOnMouseMove(false).Series(series =>
    {
-       series.StartAngle(0).EndAngle(360).InnerRadius("0%").DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs => cs.Length("10%"))).Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).XName("xValue").YName("yValue").DataSource(ViewBag.dataSource).Name("RIO").Add();
+       series.StartAngle(60).InnerRadius("0%").DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs => cs.Length("10%").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve))).Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).XName("xValue").YName("yValue").DataSource(ViewBag.dataSource).Name("RIO").Add();
    }
-    ).Tooltip(tp => tp.Enable(true).Format("${point.x} : <b>${point.y}%</b>")).LegendSettings(ls => ls.Visible(false)).Title("RIO Olympics Gold").Load("load").Render()
+    ).Tooltip(tp => tp.Enable(true).Format("${point.x} : <b>${point.y}%</b>")).LegendSettings(ls => ls.Visible(false)).Title("Rio Olympics Gold").Load("load").Render()
 
        </div>
     </div>

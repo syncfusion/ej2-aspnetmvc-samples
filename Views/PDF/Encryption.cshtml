@@ -20,31 +20,16 @@
                         <label style="font-weight:normal">
                             Encryption Type&nbsp;&nbsp;&nbsp;:
                         </label>
+                        @Html.EJS().RadioButton("rdButton40").Label("40 Bit RC4").Name("encryptionType").Value("40_RC4").Change("hideDropDownList").Render()
+                        &nbsp;&nbsp;
+                        @Html.EJS().RadioButton("rdButton128RC4").Label("128 Bit RC4").Name("encryptionType").Value("128_RC4").Change("hideDropDownList").Render()
+                        &nbsp;&nbsp;
+                        @Html.EJS().RadioButton("rdButton128AES").Label("128 Bit AES").Name("encryptionType").Value("128_AES").Change("hideDropDownList").Checked(true).Render()
+                        &nbsp;&nbsp;
+                        @Html.EJS().RadioButton("rdButton256").Label("256 Bit AES").Name("encryptionType").Value("256_AES").Change("hideDropDownList").Render()
+                        &nbsp;&nbsp;
+                        @Html.EJS().RadioButton("rdButton256Revision6").Label("256 Bit AES Revision 6").Name("encryptionType").Value("256_AES_Revision_6").Change("hideDropDownList").Render()
 
-                        <input type="radio" id="rdButton40" name="encryptionType" value="40_RC4" onclick="hideDropDownList();">
-                        <label style="font-weight: normal" for="rdButton40">
-                            40 Bit RC4 &nbsp;&nbsp;
-                        </label>
-
-                        <input type="radio" id="rdButton128RC4" name="encryptionType" value="128_RC4" onclick="hideDropDownList();">
-                        <label for="rdButton128RC4" style="font-weight: normal">
-                            128 Bit RC4 &nbsp;&nbsp;
-                        </label>
-
-                        <input type="radio" id="rdButton128AES" name="encryptionType" value="128_AES" checked="checked" onclick="hideDropDownList();">
-                        <label style="font-weight: normal" for="rdButton128AES">
-                            128 Bit AES &nbsp;&nbsp;
-                        </label>
-
-                        <input type="radio" id="rdButton256" name="encryptionType" value="256_AES" onclick="hideDropDownList();">
-                        <label for="rdButton256" style="font-weight: normal">
-                            256 Bit AES &nbsp;&nbsp;
-                        </label>
-
-                        <input type="radio" id="rdButton256Revision6" name="encryptionType" value="256_AES_Revision_6" onclick="hideDropDownList();">
-                        <label for="rdButton256" style="font-weight: normal">
-                            256 Bit AES Revision 6
-                        </label>
                         <div style="margin-top: 10px">
                             <div style="width:60%" id="dropDownBox">
                                 <label style="font-weight:bold">

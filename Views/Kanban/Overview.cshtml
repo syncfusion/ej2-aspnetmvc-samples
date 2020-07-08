@@ -11,10 +11,10 @@
            col.HeaderText("In Review").KeyField("Review").Template("#headerTemplate").AllowToggle(true).Add();
            col.HeaderText("Done").KeyField("Close").Template("#headerTemplate").AllowToggle(true).Add();
        }).CardSettings(card =>  {
-            card.HeaderField("Title").Template("#cardTemplate").SelectionType(SelectionType.Multiple).Priority("RankId");
+            card.HeaderField("Title").Template("#cardTemplate").SelectionType(SelectionType.Multiple);
             }).SwimlaneSettings(swim => {
             swim.KeyField("Assignee");
-            }).DialogSettings((item)=>item.Fields(ViewBag.dialogData)).Render()
+            }).DialogSettings((item)=>item.Fields(ViewBag.dialogData)).CardRendered("cardRendered").Render()
         </div>
     </div>
     <script id="headerTemplate" type="text/x-jsrender">
@@ -24,7 +24,7 @@
         </div>
     </script>
     <script id="cardTemplate" type="text/x-jsrender">
-        <div class='card-template ${Priority}'>
+        <div class='card-template'>
             <div class='e-card-header'>
                 <div class='e-card-header-caption'>
                     <div class='e-card-header-title e-tooltip-text'>${Title}</div>
@@ -33,7 +33,7 @@
             <div class='e-card-content e-tooltip-text'>
                 <div class='e-text'>${Summary}</div>
             </div>
-            <div class='e-card-footer'>
+            <div class='e-card-custom-footer'>
                 ${getTags(data)}
                 <div class='e-card-avatar'> ${getString(data.Assignee)}</div>
             </div>
@@ -47,15 +47,15 @@
             font-weight: 500;
         }
 
-            .e-kanban .header-template-wrap .header-icon {
-                font-family: 'Kanban priority icons';
-                margin-top: 3px;
-                width: 10%;
-            }
+        .e-kanban .header-template-wrap .header-icon {
+            font-family: 'Kanban priority icons';
+            margin-top: 3px;
+            width: 10%;
+        }
 
-            .e-kanban .header-template-wrap .header-text {
-                margin-left: 15px;
-            }
+        .e-kanban .header-template-wrap .header-text {
+            margin-left: 15px;
+        }
 
         .e-kanban.e-rtl .header-template-wrap .header-text {
             margin-right: 15px;
@@ -111,7 +111,7 @@
             font-size: 16px;
         }
 
-        .e-kanban .e-card .e-card-tag {
+        .e-kanban .e-card .e-card-tag-field {
             background: #ececec;
             color: #6b6b6b;
             margin-right: 5px;
@@ -121,48 +121,36 @@
             padding: 4px;
         }
 
-        .e-kanban .e-card-footer {
+        .e-kanban .e-card-custom-footer {
             display: flex;
             padding: 0px 12px 12px;
             line-height: 1;
             height: 35px;
         }
 
-        .card-template.Low {
-            border-left: 3px solid #ffd600
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Low,
+        .e-kanban.e-rtl .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Low {
+            border-left: 3px solid #ffd600;
         }
 
-        .card-template.High {
-            border-left: 3px solid #990099
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.High,
+        .e-kanban.e-rtl .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.High {
+            border-left: 3px solid #990099;
         }
 
-        .card-template.Normal {
-            border-left: 3px solid #66cc33
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Normal,
+        .e-kanban.e-rtl .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Normal {
+            border-left: 3px solid #66cc33;
         }
 
-        .card-template.Critical {
-            border-left: 3px solid #cc0000
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Critical,
+        .e-kanban.e-rtl .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Critical {
+            border-left: 3px solid #cc0000;
         }
 
-        .e-kanban.e-rtl .card-template {
-            border-left: none
+        .e-kanban.e-rtl .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card {
+            border-left: none;
         }
-
-            .e-kanban.e-rtl .card-template.Low {
-                border-right: 3px solid #ffd600
-            }
-
-            .e-kanban.e-rtl .card-template.High {
-                border-right: 3px solid #990099
-            }
-
-            .e-kanban.e-rtl .card-template.Normal {
-                border-right: 3px solid #66cc33
-            }
-
-            .e-kanban.e-rtl .card-template.Critical {
-                border-right: 3px solid #cc0000
-            }
 
         @@font-face {
             font-family: 'Kanban priority icons';
@@ -192,13 +180,17 @@
             var tags = data.Tags.split(',');
             for (var a = 0; a < tags.length; a++) {
                 var tag = tags[a];
-                tagDiv += '<div class="e-card-tag e-tooltip-text">' + tag + '</div>';
+                tagDiv += '<div class="e-card-tag-field e-tooltip-text">' + tag + '</div>';
             }
             return tagDiv;
         }
 
         function getString(assignee) {
             return assignee.match(/\b(\w)/g).join('').toUpperCase();
+        }
+        function cardRendered(args) {
+            var val = args.data.Priority;
+            ej.base.addClass([args.element], val);
         }
     </script>
 }
@@ -226,12 +218,12 @@
 }
 
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Overview in ASP.NET MVC Kanban control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Overview in ASP.NET MVC Kanban control. Explore here for more details." />
+}
 
 @section Title{
-                 <title>ASP.NET MVC Kanban Overview Example - Syncfusion Demos </title>
-             }
+    <title>ASP.NET MVC Kanban Overview Example - Syncfusion Demos </title>
+}
 @section Header{
-                <h1 class='sb-sample-text'>Example of Overview in ASP.NET MVC Kanban Control</h1>
-            }
+    <h1 class='sb-sample-text'>Example of Overview in ASP.NET MVC Kanban Control</h1>
+}

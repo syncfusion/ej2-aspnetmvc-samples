@@ -18,12 +18,10 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
-                                            <br />
-                                            <input type="checkbox" name="Flatten" value="Flatten" id="Flatten" /><text>
-                                                Flatten XFA Form
-                                            </text>
-                                        </td>
+                                                <td>
+                                                    <br />
+                                                    @Html.EJS().CheckBox("Flatten").Name("Flatten").Value("Flatten").Label("Flatten XFA Form").Render()
+                                                </td>
                                     </tr>
                                     <tr>
                                         <td align="left" width="100%">
