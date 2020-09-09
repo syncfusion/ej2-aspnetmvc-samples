@@ -1,8 +1,8 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-md-8 control-section">
         <div class="content-wrapper">
-            @Html.EJS().LinearGauge("container").Width("80%").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+            @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
            new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
            {
                Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0 },
@@ -26,7 +26,7 @@
                    new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
                    {
                        Value = 35, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#757575",
-                       Offset =-40,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+                       Offset ="-40",MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
                    }
                },
                MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Height = 0, Width = 0 },
@@ -235,8 +235,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Linear Gauge control illustrates how to highlight specific regions in an axis by using ranges." />
-}
+                    <meta name="description" content="This example demonstrates the Range in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -258,3 +258,10 @@
 }
 
 
+
+@section Title{
+                    <title>ASP.NET MVC Linear Gauge Range Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Range in ASP.NET MVC Linear Gauge Control</h1>
+                }

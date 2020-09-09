@@ -1,0 +1,63 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+<div class="control-section">
+    <div style="text-align:center">
+        @(Html.EJS().BulletChart("container")
+            .Tooltip(tp => tp.Enable(true))
+            .ValueField("value")
+            .Width("700")
+            .TargetField("target")
+            .Animation(an => an.Enable(false))
+            .Ranges(rn =>
+            {
+                rn.End(150).Color("#7f7f7f").Add();
+                rn.End(250).Color("#d8d8d8").Add();
+                rn.End(300).Color("#ebebeb").Add();
+            })
+            .Minimum(0).Maximum(300).Interval(50)
+            .Title("Revenue YTD")
+            .LabelFormat("${value}K")
+            .EnableRtl(true)
+            .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
+            .DataSource(ViewBag.dataSource)
+			.Load("load")
+            .Render()
+        )    
+    </div>
+</div>
+    @*custom code start*@
+    <style>
+
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+		var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").replace(/light/i, 'Light').replace(/contrast/i, 'Contrast');
+         }
+    </script>
+    @*custom code end*@
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the RTL in ASP.NET MVC Bullet Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates bullet chart with diferent mode and orientation such as like right to left or left to right.
+    </p>
+}
+@section Description{
+    <p>
+        Tooltip is enabled in this example, to see the tooltip in action, hover a feature bar or comparative bar on the bullet chart.
+    </p>    
+}
+@section Title{
+                    <title>ASP.NET MVC Bullet Chart RTL Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of RTL in ASP.NET MVC Bullet Chart Control</h1>
+                }

@@ -23,11 +23,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult MergeDocuments(string InsideBrowser)
+        public ActionResult MergeDocuments(string InsideBrowser, string OptimizeResources)
         {
 
-            Stream stream1 = new FileStream(ResolveApplicationDataPath("Essential_Pdf.pdf"), FileMode.Open, FileAccess.Read);
-            Stream stream2 = new FileStream(ResolveApplicationDataPath("Essential_XlsIO.pdf"), FileMode.Open, FileAccess.Read);
+            Stream stream1 = new FileStream(ResolveApplicationDataPath("HTTP Succinctly.pdf"), FileMode.Open, FileAccess.Read);
+            Stream stream2 = new FileStream(ResolveApplicationDataPath("HTTP Succinctly.pdf"), FileMode.Open, FileAccess.Read);
 
             //Load the documents as streams
             PdfLoadedDocument doc1 = new PdfLoadedDocument(stream1);
@@ -35,6 +35,18 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
             object[] dobj = { doc1, doc2 };
             PdfDocument doc = new PdfDocument();
+
+            if(OptimizeResources == "OptimizeResources")
+            {
+                PdfMergeOptions mergeOption = new PdfMergeOptions();
+                mergeOption.OptimizeResources = true;
+                PdfDocument.Merge(doc, mergeOption, dobj);
+            }
+            else
+            {
+                PdfDocument.Merge(doc, dobj);
+            }
+
             PdfDocument.Merge(doc, dobj);
 
             if (InsideBrowser == "Browser")

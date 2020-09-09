@@ -1,4 +1,3 @@
-﻿
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Maps
 @section ControlsSection{
@@ -9,15 +8,6 @@
     {
         ZoomFactor = 5,
         Enable = false
-    }).Annotations(new List<Syncfusion.EJ2.Maps.MapsAnnotation>
-    {
-               new Syncfusion.EJ2.Maps.MapsAnnotation
-               {
-                   Content = "<div style=height:18px;width:170px;background:white;text-align:center> <a href=https://www.openstreetmap.org/copyright target =_blank> © OpenStreetMap contributors </a></div >",
-                   VerticalAlignment = Syncfusion.EJ2.Maps.AnnotationAlignment.Far,
-                   ZIndex = "1",X = "-40", Y = "-20",
-                   HorizontalAlignment = Syncfusion.EJ2.Maps.AnnotationAlignment.Far
-               }
     }).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer> {
         new Syncfusion.EJ2.Maps.MapsLayer
         {
@@ -38,7 +28,6 @@
                       new Syncfusion.EJ2.Maps.MapsMarker
                       {
                           Visible = true,
-                          Offset = new { x = 2, y = -7 },
                           DataSource = new [] { new { name = "Mexico City", latitude = 24.2005, longitude = -102.832 } },
                           Template = "<div><img src=../Content/Maps/ballon.png style=height:30px; width: 20px;></img></div>",
                           TooltipSettings = new MapsTooltipSettings{ Visible=true, ValuePath="name" },
@@ -46,7 +35,6 @@
                        new Syncfusion.EJ2.Maps.MapsMarker
                       {
                           Visible = true,
-                          Offset = new { x = 2, y = -7 },
                           DataSource = new [] { new { name = "Mexico City", latitude = 24.0005, longitude = -101.200 } },
                           Template = "<div style=font-weight:500;font-size:13px;text-align:left>Mexico</div>",
                           TooltipSettings = new MapsTooltipSettings{ Visible=true, ValuePath="name" },
@@ -92,10 +80,9 @@
         }
     </script>
     <style>
-        .control_wrapper {
-            max-width: 600px;
-            margin: auto;
-        }
+		#container {
+		display: block;
+		}
     </style>
 }
 @section ActionDescription{
@@ -106,8 +93,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Maps control shows continents in the world by rendering these in a map layer. Markers denote the office location of YouTube." />
-}
+                    <meta name="description" content="This example demonstrates the OSM With Navigation Line in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -125,3 +112,10 @@
 }
 
 
+
+@section Title{
+                    <title>ASP.NET MVC Maps OSM With Navigation Line Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of OSM With Navigation Line in ASP.NET MVC Maps Control</h1>
+                }

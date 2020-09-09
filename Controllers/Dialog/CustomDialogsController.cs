@@ -13,18 +13,17 @@ namespace EJ2MVCSampleBrowser.Controllers.Dialog
         public ActionResult CustomDialogs()
         {
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
-            buttons.Add(new DialogDialogButton() { Click = "alertBtnClick", ButtonModel = new customButtonModel() { content = "DISMISS", isPrimary = true } });
-            ViewBag.alertbutton = buttons;
+            buttons.Add(new DialogDialogButton() { Click = "alertBtnClick", ButtonModel = new customButtonModel() { content = "Dismiss", isPrimary = true } });
+            ViewBag.AlertButton = buttons;
             List<DialogDialogButton> button = new List<DialogDialogButton>() { };
-            button.Add(new DialogDialogButton() { Click = "confirmBtnClick", ButtonModel = new confirmButtonModel() { content = "YES", isPrimary = true } });
-            button.Add(new DialogDialogButton() { Click = "confirmBtnClick", ButtonModel = new confirmButtonModel() { content = "NO"} });
-            ViewBag.confirmbutton = button;
+            button.Add(new DialogDialogButton() { Click = "confirmBtnClick", ButtonModel = new confirmButtonModel() { content = "Yes", isPrimary = true } });
+            button.Add(new DialogDialogButton() { Click = "confirmBtnClick", ButtonModel = new confirmButtonModel() { content = "No"} });
+            ViewBag.ConfirmButton = button;
             List<DialogDialogButton> btn = new List<DialogDialogButton>() { };
-            btn.Add(new DialogDialogButton() { Click = "promptBtnClick", ButtonModel = new promptButtonModel() { content = "CONNECT", isPrimary = true } });
-            btn.Add(new DialogDialogButton() { Click = "promptBtnClick", ButtonModel = new promptButtonModel() { content = "CANCEL" } });
-            ViewBag.promptbutton = btn;
-            return View();
-            
+            btn.Add(new DialogDialogButton() { Click = "promptBtnClick", ButtonModel = new promptButtonModel() { content = "Connect", isPrimary = true } });
+            btn.Add(new DialogDialogButton() { Click = "promptBtnClick", ButtonModel = new promptButtonModel() { content = "Cancel" } });
+            ViewBag.PromptButton = btn;
+            return View();            
         }
     }
     public class customButtonModel

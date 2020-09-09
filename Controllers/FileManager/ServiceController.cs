@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -58,6 +58,10 @@ namespace EJ2MVCSampleBrowser.Controllers
                     return Json(operation.ToCamelCase(this.operation.Move(args.Path, args.TargetPath, args.Names, args.RenameFiles, args.TargetData)));
                 case "details":
                     // Path - Current path where details of file/folder is requested; Name - Names of the requested folders
+                    if (args.Names == null)
+                    {
+                        args.Names = new string[] { };
+                    }
                     return Json(operation.ToCamelCase(this.operation.Details(args.Path, args.Names)));
                 case "create":
                     // Path - Current path where the folder is to be created; Name - Name of the new folder
@@ -85,7 +89,8 @@ namespace EJ2MVCSampleBrowser.Controllers
                 Response.End();
             }
             // Use below code for performing upload operation
-            else {
+            else
+            {
                 FileManagerResponse uploadResponse;
                 // Invoking upload operation with the required paramaters
                 // path - Current path where the file is to uploaded; uploadFiles - Files to be uploaded; action - name of the operation(upload)

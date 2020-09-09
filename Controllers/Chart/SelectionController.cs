@@ -22,6 +22,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
             };
             ViewBag.dataSource = chartData;
             ViewBag.data = new string[] { "Point", "Series", "Cluster"};
+            ViewBag.datapattern = new string[] { "None", "Turquoise", "Chessboard", "Triangle", "Box", "Bubble" };
             return View();
         }
         public class SelectionChartData

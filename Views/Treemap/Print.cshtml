@@ -1,16 +1,14 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        <div id="outer" style="width:100%">
-            <div id="container" style="width:100%">
-                @Html.EJS().TreeMap("container").Load("load").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Product} (+${Percentage})" }).TitleSettings(title=>title.Text("Top 10 best selling smartphone brands - 2017").TextStyle(new TreeMapFont { Size = "15px" })).LayoutType(Syncfusion.EJ2.TreeMap.LayoutMode.SliceAndDiceVertical).WeightValuePath("Percentage").RangeColorValuePath("Percentage").LeafItemSettings(leaf=>
+            <div style="width:100%">
+                @Html.EJS().TreeMap("container").Load("load").AllowPrint(true).AllowImageExport(true).AllowPdfExport(true).TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Product} (+${Percentage})" }).TitleSettings(title=>title.Text("Top 10 best selling smartphone brands - 2017").TextStyle(new TreeMapFont { Size = "15px" })).LayoutType(Syncfusion.EJ2.TreeMap.LayoutMode.SliceAndDiceVertical).WeightValuePath("Percentage").RangeColorValuePath("Percentage").LeafItemSettings(leaf=>
            leaf.Fill("#6699cc").LabelPath("Product").Border(new TreeMapBorder { Color= "black", Width= 0.5 }).LabelPosition(Syncfusion.EJ2.TreeMap.LabelPosition.Center).InterSectAction(Syncfusion.EJ2.TreeMap.LabelAlignment.Hide).LabelFormat("${Product} (+${Percentage}) %")).Render()
             </div>
-            <div style="margin-left: 75%">
+            <div style="margin-left: 70%">
                 Source:<a href="http//zeenews.india.com/photos/business/worlds-10-best-selling-smartphone-brands-2033958/samsung-2033959" target="_blank">zeenews.india.com</a>
             </div>
-        </div>
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">
@@ -123,10 +121,22 @@
     </p>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 TreeMap control depicts the top 10 best-selling smartphone brands. Print and export options have been enabled." />
-}
+                    <meta name="description" content="This example demonstrates the Print & Export in ASP.NET MVC TreeMap control. Explore here for more details."/>
+                }
 @section Description{
     <p>
-        In this example, you can see how to export and print the rendered treemap. Treemap can be exported to JPEG, PNG, SVG and PDF formats.
+        In this example, you can see how to export and print the rendered treemap. The TreeMap can be exported to JPEG, PNG, SVG, and PDF formats. Print functionality is done by <code>print</code> method when <code>AllowPrint</code> is set as true. Export functionality is done by <code>export</code> method when <code>AllowImageExport</code> and <code>AllowPdfExport</code> is set as true.
+    </p>
+
+    <p>
+        More information about print and export can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/documentation/treemap/print-and-export/">documentation section</a>.
     </p>
 }
+
+@section Title{
+                    <title>ASP.NET MVC TreeMap Print & Export Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Print & Export in ASP.NET MVC TreeMap Control</h1>
+                }

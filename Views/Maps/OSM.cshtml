@@ -1,23 +1,13 @@
-﻿
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Maps
 @section ControlsSection{
 <div class="control-section">
-    <div class="control_wrapper" style="width:100%" align="center">
+    <div class="control_wrapper">
         @Html.EJS().Maps("container").Load("mapsLoad").TitleSettings(title => title.Text("Headquarters of United Nation").TextStyle(new MapsFont { Size = "16px" })).CenterPosition(new MapsCenterPosition { Latitude = 40.7489, Longitude = -73.9680 }
 ).ZoomSettings(new Syncfusion.EJ2.Maps.MapsZoomSettings
 {
     ZoomFactor = 10,
     Enable = false
-}).Annotations(new List<Syncfusion.EJ2.Maps.MapsAnnotation>
-{
-           new Syncfusion.EJ2.Maps.MapsAnnotation
-           {
-               Content = "<div style=height:18px;width:170px;background:white;text-align:center> <a href=https://www.openstreetmap.org/copyright target =_blank> © OpenStreetMap contributors </a></div >",
-               VerticalAlignment = Syncfusion.EJ2.Maps.AnnotationAlignment.Far,
-               ZIndex = "1",X = "-40", Y = "-20",
-               HorizontalAlignment = Syncfusion.EJ2.Maps.AnnotationAlignment.Far
-           }
 }).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer> {
             new Syncfusion.EJ2.Maps.MapsLayer
             {
@@ -45,21 +35,15 @@
     </div>
 
 </div>
-    <style>
-        .control_wrapper {
-            max-width: 600px;
-            margin: auto;
-        }
+	<style>
+		#container {
+			display: block;
+		}
     </style>
     <script type="text/javascript">
         function mapsLoad(args) {            
             var theme = themeName ? themeName : 'Material';
             args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
-            args.maps.layers[0].markerSettings[0].dataSource = [{
-                name: 'Manhattan, New York, USA',
-                latitude: 40.7488758,
-                longitude: -73.9730091
-            }];
         }
     </script>
 }
@@ -71,8 +55,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Maps control shows continents in the world by rendering these in a map layer. Markers denote the office location of YouTube." />
-}
+                    <meta name="description" content="This example demonstrates the OpenStreetMap in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -90,3 +74,10 @@
 }
 
 
+
+@section Title{
+                    <title>ASP.NET MVC Maps OpenStreetMap Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of OpenStreetMap in ASP.NET MVC Maps Control</h1>
+                }

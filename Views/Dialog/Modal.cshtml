@@ -1,10 +1,10 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Popups
 
 @section ControlsSection{
     <div class="col-lg-8 control-section" id="target">
         @Html.EJS().Button("dialogButton").Content("Open").Render()
-        @Html.EJS().Dialog("modal_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).IsModal(true).Open("dialogOpen").Close("dialogClose").Header("Software Update").Content("Your current software version is up to date.").CloseOnEscape(true).Width("335px").Target("#target").Buttons(ViewBag.modalbutton).Render()
+        @Html.EJS().Dialog("modal_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).IsModal(true).Open("dialogOpen").Close("dialogClose").Header("Software Update").ContentTemplate(@<div>Your current software version is up to date.</div>).CloseOnEscape(true).Width("335px").Created("created").Target("#target").Buttons(ViewBag.ModalButton).Render()
     </div>
     <div class="col-lg-4 property-section">
         <table id="property" title="Properties">
@@ -13,8 +13,8 @@
                     <td style="width:60%;">
                         <div style="font-size:13px;">Close on overlay click</div>
                     </td>
-                    <td>                        
-                        @Html.EJS().CheckBox("checkbox").Change("onChange").Checked(false).Render()                       
+                    <td>
+                        @Html.EJS().CheckBox("checkbox").Change("onChange").Checked(false).Render()
                     </td>
                 </tr>
             </tbody>
@@ -44,18 +44,21 @@
 
 @section PreScripts {
     <script>
+        var dialogObj;
+        var btnElement = document.getElementById('dialogButton');
         function dialogClose() {
-            document.getElementById('dialogButton').style.display = 'inline-block';
+            btnElement.style.display = 'inline-block';
         }
         function dialogOpen() {
-            document.getElementById('dialogButton').style.display = 'none';
+            btnElement.style.display = 'none';
         }
-        document.getElementById('dialogButton').onclick = function () {
-            var dialogObj = document.getElementById('modal_dialog').ej2_instances[0];
+        btnElement.onclick = function () {
             dialogObj.show();
         };
+        function created() {
+            dialogObj = this;
+        }
         function onChange(args) {
-            var dialogObj = document.getElementById("modal_dialog").ej2_instances[0];
             if (args.checked) {
                 dialogObj.overlayClick = function () {
                     dialogObj.hide();
@@ -68,36 +71,42 @@
             }
         }
         function dlgButtonClick() {
-            var dialogObj = document.getElementById("modal_dialog")
-            dialogObj.ej2_instances[0].hide();
+            dialogObj.hide();
         }
     </script>
- }
-    @section ActionDescription{
-        <div id="action-description">
-            <p>
-                This example demonstrates that the modal behavior of Dialog control.
-                Choose "Close on overlay" option from property panel to decide whether the Dialog will be closed on click on the overlay.
-                Click on “Open” button to show the Dialog again if it is closed.
-            </p>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This example demonstrates that the modal behavior of Dialog control.
+            Choose "Close on overlay" option from property panel to decide whether the Dialog will be closed on click on the overlay.
+            Click on “Open” button to show the Dialog again if it is closed.
+        </p>
 
-        </div>
-    }
-    @section Description{
-        <div id="description">
-            <p>
-                A modal prevents the access to the parent application, so that the user should interact with the Dialog compulsory before continuing
-                the parent application.
-            </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            A modal prevents the access to the parent application, so that the user should interact with the Dialog compulsory before continuing
+            the parent application.
+        </p>
 
-        </div>
-    }
+    </div>
+}
 
-    @*custom code start*@
+@*custom code start*@
 
-    @section Meta{
-        <meta name="description" content="This example demonstrates the modal pop-up behavior of the ASP.NET MVC dialog control, which helps display critical information such as errors and warnings." />
-    }
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Modal in ASP.NET MVC Dialog control. Explore here for more details."/>
+                }
 
-    @*custom code end*@
+@*custom code end*@
 
+
+@section Title{
+                    <title>ASP.NET MVC Dialog Modal Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Modal in ASP.NET MVC Dialog Control</h1>
+                }

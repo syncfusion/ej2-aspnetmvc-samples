@@ -1,11 +1,11 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Popups
 
 @section ControlsSection{
     <div id="target" class="col-lg-12 control-section">
-        @Html.EJS().Button("dialogBtn").CssClass(".dlgbtn").Content("Open Dialog").Render()
+        @Html.EJS().Button("dialogBtn").CssClass("dlgbtn").Content("Open Dialog").Render()
 
-        @Html.EJS().Dialog("defaultDialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Choose a Dialog Position").Close("dialogClose").Open("dialogOpen").ShowCloseIcon(true).CloseOnEscape(true).Width("427px").Target("#target").ContentTemplate(@<table style='width:390px;' id='poschange'><tr><td>@Html.EJS().RadioButton("radio1").Name("xy").Label("Left Top").Value("left top").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio2").Name("xy").Label("Center Top").Value("center top").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio3").Name("xy").Label("Right Top").Value("right top").Change("onChangeHandler").Render()</td></tr><tr><td>@Html.EJS().RadioButton("radio4").Name("xy").Label("Left Center").Value("left center").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio5").Name("xy").Label("Center Center").Value("center center").Checked(true).Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio6").Name("xy").Label("Right Center").Value("right center").Change("onChangeHandler").Render()</td></tr><tr><td>@Html.EJS().RadioButton("radio7").Name("xy").Label("Left Bottom").Value("left bottom").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio8").Name("xy").Label("Center Bottom").Value("center bottom").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio9").Name("xy").Label("Right Bottom").Value("right bottom").Change("onChangeHandler").Render()</td></tr></table>).FooterTemplate("<span id='posvalue' style='float:left; margin - left:8px; padding: 10px; '>Position: { X: 'Center', Y: 'Center' }</span>").Position(obj => obj.X("center").Y("center")).Render()
+        @Html.EJS().Dialog("positionDialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("created").Header("Choose a Dialog Position").Close("dialogClose").Open("dialogOpen").ShowCloseIcon(true).CloseOnEscape(true).Width("427px").Target("#target").ContentTemplate(@<table style='width:390px;' id='poschange'><tr><td>@Html.EJS().RadioButton("radio1").Name("xy").Label("Left Top").Value("left top").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio2").Name("xy").Label("Center Top").Value("center top").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio3").Name("xy").Label("Right Top").Value("right top").Change("onChangeHandler").Render()</td></tr><tr><td>@Html.EJS().RadioButton("radio4").Name("xy").Label("Left Center").Value("left center").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio5").Name("xy").Label("Center Center").Value("center center").Checked(true).Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio6").Name("xy").Label("Right Center").Value("right center").Change("onChangeHandler").Render()</td></tr><tr><td>@Html.EJS().RadioButton("radio7").Name("xy").Label("Left Bottom").Value("left bottom").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio8").Name("xy").Label("Center Bottom").Value("center bottom").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio9").Name("xy").Label("Right Bottom").Value("right bottom").Change("onChangeHandler").Render()</td></tr></table>).FooterTemplate("<span id='posvalue' style='float:left; margin - left:8px; padding: 10px; '>Position: { X: 'Center', Y: 'Center' }</span>").Position(obj => obj.X("center").Y("center")).Render()
 
     </div>
 }
@@ -75,22 +75,26 @@
 
 @section PreScripts {
     <script>
-        var dialog = document.getElementById('defaultDialog');
+        var dialogObj;
+        var dialog = document.getElementById('positionDialog');
+        var btnElement = document.getElementById('dialogBtn');
         var onChangeHandler = function (args) {
-            dialog.ej2_instances[0].position.X = args.value.split(" ")[0];
-            dialog.ej2_instances[0].position.Y = args.value.split(" ")[1];
+            dialogObj.position.X = args.value.split(" ")[0];
+            dialogObj.position.Y = args.value.split(" ")[1];
             var txt = args.event.target.parentElement.querySelector('.e-label').innerText.split(" ");
             document.getElementById("posvalue").innerHTML = 'Position: { X: "' + txt[0] + '", Y: "' + txt[1] + '" }';
         };
-        document.getElementById('dialogBtn').onclick = function () {
-            var dialogObj = document.getElementById('defaultDialog').ej2_instances[0];
+        btnElement.onclick = function () {
             dialogObj.show();
         };
         function dialogClose() {
-            document.getElementById('dialogBtn').style.display = 'block';
+            btnElement.style.display = 'block';
         }
         function dialogOpen() {
-            document.getElementById('dialogBtn').style.display = 'none';
+            btnElement.style.display = 'none';
+        }
+        function created() {
+            dialogObj = this;
         }
     </script>
 }
@@ -119,7 +123,13 @@
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This example demonstrates how to display the ASP.NET MVC dialog control at various built-in and custom positions." />
-}
+                    <meta name="description" content="This example demonstrates the Positioning in ASP.NET MVC Dialog control. Explore here for more details."/>
+                }
 
 @*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Dialog Positioning Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Positioning in ASP.NET MVC Dialog Control</h1>
+                }

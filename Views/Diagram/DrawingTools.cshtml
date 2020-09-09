@@ -1,4 +1,3 @@
-﻿
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         @Html.EJS().Diagram("diagram").Created("diagramCreated").Width("100%").Height("540px").SnapSettings(s => s.HorizontalGridlines(ViewBag.gridLines).VerticalGridlines(ViewBag.gridLines)).RulerSettings(r => r.ShowRulers(true).DynamicGrid(true)).Render()
@@ -225,8 +224,8 @@
     </p>
 }
 @section Meta{
-    <meta name="description" content="This demo for EJ2 ASP.NET MVC Diagram control shows how to build a diagram interactively using drawing tools. Options are enabled to align the diagram easily." />
-}
+                    <meta name="description" content="This example demonstrates the Drawing Tools in ASP.NET MVC Diagram control. Explore here for more details."/>
+                }
 @section Description{
     <p>
         This example shows how to draw shapes and connections interactively. In addition to that, rulers, gridlines, and snapping options are enabled to assist drawing.
@@ -241,3 +240,10 @@
     </p>
 }
 
+
+@section Title{
+                    <title>ASP.NET MVC Diagram Drawing Tools Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Drawing Tools in ASP.NET MVC Diagram Control</h1>
+                }

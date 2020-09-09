@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <div class="col-md-8 control-section">
@@ -42,10 +42,11 @@
                     </td>
                     <td>
                         <div>
-                            <select id="tickposition" class="form-control" style="width:90%">
-                                <option value="Inside" selected="true">Inside</option>
-                                <option value="Outside">Outside</option>
-                            </select>
+							<select id="tickposition" class="form-control" style="width:90%">
+								<option value="Inside" selected="true">Inside</option>
+								<option value="Cross">Cross</option>
+								<option value="Outside">Outside</option>
+							</select>
                         </div>
                     </td>
                 </tr>
@@ -55,10 +56,11 @@
                     </td>
                     <td>
                         <div>
-                            <select id="labelposition" class="form-control" style="width:90%">
-                                <option value="Outside">Outside</option>
-                                <option value="Inside">Inside</option>
-                            </select>
+							<select id="labelposition" class="form-control" style="width:90%">
+								<option value="Outside">Outside</option>
+								<option value="Cross">Cross</option>
+								<option value="Inside">Inside</option>
+							</select>
                         </div>
                     </td>
                 </tr>
@@ -159,7 +161,6 @@
                 else {
                     circulargauge.axes[0].minorTicks.position = value;
                 }
-                circulargauge.refresh();
             }
         });
         tickPosition.appendTo('#tickposition');
@@ -181,7 +182,6 @@
                     circulargauge.axes[0].minorTicks.offset = value;
                 }
                 document.getElementById('offset').innerHTML = 'Tick Offset <span>   ' + value;
-                circulargauge.refresh();
             };
         document.getElementById('tickHeight').onpointermove = document.getElementById('tickHeight').ontouchmove =
             document.getElementById('tickHeight').onchange = function () {
@@ -193,19 +193,16 @@
                     circulargauge.axes[0].minorTicks.height = value;
                 }
                 document.getElementById('height').innerHTML = 'Tick Height <span>   ' + value;
-                circulargauge.refresh();
             };
         document.getElementById('labelOffset').onpointermove = document.getElementById('labelOffset').ontouchmove =
             document.getElementById('labelOffset').onchange = function () {
                 var value = parseInt(document.getElementById('labelOffset').value, 10);
                 circulargauge.axes[0].labelStyle.offset = value;
                 document.getElementById('labelOffsetValue').innerHTML = 'Label Offset <span>   ' + value;
-                circulargauge.refresh();
             };
         document.getElementById('enable').onchange = function () {
             var showLastLabel = document.getElementById('enable').checked;
             circulargauge.axes[0].showLastLabel = showLastLabel;
-            circulargauge.refresh();
         };
     </script>
 }
@@ -218,8 +215,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Circular Gauge control shows various properties available to customize the ticks and labels of an axis." />
-}
+                    <meta name="description" content="This example demonstrates the TicksAndLabels in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -236,3 +233,9 @@
         </p>
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC Circular Gauge TicksAndLabels Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of TicksAndLabels in ASP.NET MVC Circular Gauge Control</h1>
+                }

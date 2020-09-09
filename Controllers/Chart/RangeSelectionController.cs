@@ -61,7 +61,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new RangeSelectionChartData { xValue = 2015, yValue = 32, yValue1 = 58 }
             };
             ViewBag.dataSource = chartData;
-            ViewBag.data = new string[] { "DragXY", "DragX", "DragY"};
+            ViewBag.data = new string[] { "DragXY", "DragX", "DragY", "Lasso"};
             return View();
         }
         public class RangeSelectionChartData

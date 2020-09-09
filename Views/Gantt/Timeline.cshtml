@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @{
     ViewBag.Title = "Timeline";
 }
@@ -8,17 +8,11 @@
             <div class="control-section">
                 @(Html.EJS().Gantt("Timeline").DataSource((IEnumerable<object>)ViewBag.DataSource)
                     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate")
-                    .Duration("Duration").Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Notes").ResourceInfo("ResourceId"))
+                    .Duration("Duration").Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Notes"))
                     .Height("450px").HighlightWeekends(true).ProjectStartDate("02/03/2019").ProjectEndDate("03/23/2019")
-                    .ResourceNameMapping("ResourceName").ResourceIDMapping("ResourceId")
                     .TimelineSettings(ts => ts.TopTier(tt => tt.Format("MMM dd, yyyy").Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week))
                     .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day)))
                     .SplitterSettings(ss => ss.ColumnIndex(0)).TreeColumnIndex(1).LabelSettings(ls => ls.RightLabel("TaskName"))
-                    .EventMarkers(em =>
-                    {
-                        em.Day("02/08/2019").Label("Project kick-off").Add();
-                    })
-                    .Resources(ViewBag.Resources)
                     .Render()
                 )
             </div>
@@ -129,7 +123,7 @@
                 <td style="width:70%;">
                     <div>
                         @(Html.EJS().DropDownList("BottomTierFormat").DataSource((IEnumerable<Object>)ViewBag.DayFormat)
-                            .Fields(fs => fs.Text("Format").Value("Id")).Change("BottomFormatChange").Render()
+                            .Fields(fs => fs.Text("Format").Value("Id")).Index(3).Change("BottomFormatChange").Render()
                         )
                     </div>
                 </td>
@@ -199,6 +193,8 @@
 
         function BottomFormatChange(args) {
             var format = args.value;
+            if (format == 'E')
+                format = '';
             var gantt = document.getElementById("Timeline").ej2_instances[0];
             gantt.timelineSettings.bottomTier.format = format.toString();
         }
@@ -295,8 +291,9 @@
         ];
         var dayformat = [
             { Id: 'EEE, dd', Format: 'Mon, 01' },
-            { Id: 'E', Format: 'Mon' },
+            { Id: 'EEE', Format: 'Mon' },
             { Id: 'dd', Format: '01' },
+            { Id: 'E', Format: 'M' },
         ];
         var hourformat = [
             { Id: 'hh', Format: '00' },
@@ -315,8 +312,8 @@
 }
 
 @section Meta{
-    <meta name="description" content="This example demonstrates the various timeline mode options and properties available to customize the timeline in Gantt" />
-}
+                    <meta name="description" content="This example demonstrates the Timeline API in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
 
 @section Description{
     <div id="description">
@@ -337,3 +334,9 @@
         </p>
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC Gantt Timeline API Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Timeline API in ASP.NET MVC Gantt Control</h1>
+                }

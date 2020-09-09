@@ -1,9 +1,9 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
-<div class="control-section">
-    <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
-    @Html.EJS().DocumentEditorContainer("container").EnableToolbar(true).EnableRtl(true).Locale("ar-AE").Render()
-</div>
+    <div class="control-section">
+        <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
+        @Html.EJS().DocumentEditorContainer("container").Height("590px").EnableToolbar(true).EnableRtl(true).Locale("ar-AE").Render()
+    </div>
     <script>
         ej.base.L10n.load({
             'ar-AE': {
@@ -235,6 +235,7 @@
                     'Formatting': 'التنسيق',
                     'Numbering and Bullets': 'الترقيم والتعداد النقطي',
                     'Numbering': 'ترقيم',
+                    'Form Fields': 'حقول النموذج',
                     'Update Field': 'تحديث الحقل',
                     'Edit Field': 'تحرير الحقل',
                     'Bookmark': 'الإشارة المرجعية',
@@ -325,163 +326,214 @@
                     'Error in establishing connection with web server': 'خطأ في تأسيس اتصال مع ملقم ويب',
                     'Highlight the regions I can edit': 'تسليط الضوء على المناطق التي يمكنني تحريرها',
                     'Show All Regions I Can Edit': 'إظهار كافة المناطق التي يمكنني تحريرها',
-                    'Find Next Region I Can Edit': 'البحث عن المنطقة التالية التي يمكنني تحريرها'
-                },
+                    'Find Next Region I Can Edit': 'البحث عن المنطقة التالية التي يمكنني تحريرها',
+                'Keep source formatting': 'الاحتفاظ بتنسيق المصدر',
+            'Match destination formatting': 'مطابقه تنسيق الوجهة',
+            'Text only': 'النص فقط',
+            'Comments': 'تعليقات',
+            'Type your comment': 'اكتب تعليقك',
+            'Post': 'وظيفه',
+            'Reply': 'الرد',
+            'New Comment': 'تعليق جديد',
+            'Edit': 'تحرير',
+            'Resolve': 'حل',
+            'Reopen': 'فتح',
+            'No comments in this document': 'لا توجد تعليقات في هذا المستند',
+            'more': 'اكثر',
+            'Type your comment hear': 'اكتب تعليقك الاستماع',
+            'Next Comment': 'التعليق التالي',
+            'Previous Comment': 'التعليق السابق',
+            "Un-posted comments": "Un-نشر التعليقات",
+            "Added comments not posted. If you continue, that comment will be discarded.": "لم يتم نشر التعليقات المضافة. إذا قمت بالمتابعة ، سيتم تجاهل هذا التعليق.",
+            "Drop Down Form Field": "حقل نموذج منسدل",
+            "Drop-down items": "عناصر منسدلة",
+            "Items in drop-down list": "العناصر في القائمة المنسدلة",
+            "ADD": "أضف",
+            "REMOVE": "إزالة",
+            "Field settings": "الإعدادات الميدانية",
+            "Tooltip": "تلميح",
+            "Drop-down enabled": "تم تمكين القائمة المنسدلة",
+            "Check Box Form Field": "حقل نموذج خانة الاختيار",
+            "Check box size": "حجم خانة الاختيار",
+            "Auto": "تلقاءي",
+            "Default value": "القيمة الافتراضية",
+            "Not checked": "غير مدقق",
+            "Checked": "التحقق",
+            "Check box enabled": "تم تمكين خانة الاختيار",
+            "Text Form Field": "حقل نموذج نصي",
+            "Type": "نوع",
+            "Default text": "النص الافتراضي",
+            "Maximum length": "الحد الأقصى لطول",
+            "Text format": "تنسيق النص",
+            "Fill-in enabled": "تم تمكين التعبئة",
+            "Default number": "الرقم الافتراضي",
+            "Default date": "التاريخ الافتراضي",
+            "Date format": "صيغة التاريخ",
+            "Merge Track": "لن يتم وضع علامة على هذا الإجراء كتغيير. هل تريد الاستمرار?",
+            "UnTrack": "لا يمكن تعقبها",
+            "Accept": "قبول",
+            "Reject": "رفض",
+            "Previous Changes": "التغييرات السابقة",
+            "Next Changes": "التغييرات القادمة",
+            "Inserted": "تم إدراجها",
+            "Deleted": "تم الحذف",
+            "Changes": "التغييرات",
+            "Accept all": "قبول الكل",
+            "Reject all": "رفض الكل",
+            "No changes": "لا تغييرات",
+            "Accept Changes": "قبول التغييرات",
+            "Reject Changes": "رفض التغييرات",
+            "User": "المستعمل",
+            "View": "رأي"
+        },
                 'documenteditorcontainer': {
-                    'New': 'الجديد',
-                    'Open': 'فتح',
-                    'Undo': 'التراجع عن',
-                    'Redo': 'اعاده',
-                    'Image': 'الصوره',
-                    'Table': 'الجدول',
-                    'Link': 'الارتباط',
-                    'of': 'من',
-                    'Fit one page': 'احتواء صفحه واحد',
-                    'Fit page width': 'احتواء عرض الصفحة',
-                    'Page': 'صفحه',
-                    'Bookmark': 'الاشاره المرجعيه',
-                    'Table of Contents': 'جدول المحتويات',
-                    'HEADING - - - - 1': 'عنوان - - - - 1',
-                    'HEADING - - - - 2': 'عنوان - - - - 2',
-                    'HEADING - - - - 3': 'عنوان - - - - 3',
-                    'Header': 'راس',
-                    'Footer': 'تذييل الصفحه',
-                    'Page Setup': 'اعداد الصفحة',
-                    'Page Number': 'رقم الصفحة',
-                    'Break': 'كسر',
-                    'Find': 'العثور',
-                    'Local Clipboard': 'الحافظة المحلية',
-                    'Restrict Editing': 'تقييد التحرير',
-                    'Upload from computer': 'تحميل من الكمبيوتر',
-                    'By URL': 'حسب عنوان رابط',
-                    'Page Break': 'فاصل صفحات',
-                    'Section Break': 'فاصل المقطع',
-                    'Header & Footer': 'راس وتذييل الصفحة',
-                    'Options': 'خيارات',
-                    'Levels': 'مستويات',
-                    'Different First Page': 'الصفحة الاولي مختلفه',
-                    'Different header and footer for odd and even pages.': 'راس وتذييل مختلفين للصفحات الفردية والزوجية',
-                    'Different Odd & Even Pages': 'مختلف الصفحات الفردية والزوجية',
-                    'Different header and footer for first page.': 'راس وتذييل مختلفين للصفحة الاولي',
-                    'Position': 'موقف',
-                    'Header from Top': 'راس من اعلي',
-                    'Footer from Bottom': 'تذييل الصفحة من الأسفل',
-                    'Distance from top of the page to top of the header.': 'المسافة من اعلي الصفحة إلى اعلي الراس',
-                    'Distance from bottom of the page to bottom of the footer.': 'المسافة من أسفل الصفحة إلى أسفل التذييل',
-                    'Aspect ratio': 'نسبه العرض إلى الارتفاع',
-                    'W': 'في',
-                    'H': 'ح',
-                    'Width': 'عرض',
-                    'Height': 'ارتفاع',
-                    'Text': 'النص',
-                    'Paragraph': 'الفقره',
-                    'Fill': 'ملء',
-                    'Fill color': 'لون التعبئة',
-                    'Border Style': 'نمط الحدود',
-                    'Outside borders': 'خارج الحدود',
-                    'All borders': 'جميع الحدود',
-                    'Inside borders': 'داخل الحدود',
-                    'Left border': 'الحدود اليسرى',
-                    'Inside vertical border': 'داخل الحدود العمودية',
-                    'Right border': 'الحدود اليمني',
-                    'Top border': 'اعلي الحدود',
-                    'Inside horizontal border': 'داخل الحدود الافقي',
-                    'Bottom border': 'الحد السفلي',
-                    'Border color': 'لون الحدود',
-                    'Border width': 'عرض الحدود',
-                    'Cell': 'الخليه',
-                    'Merge cells': 'دمج الخلايا',
-                    'Insert / Delete': 'ادراج/حذف',
-                    'Insert columns to the left': 'ادراج أعمده إلى اليسار',
-                    'Insert columns to the right': 'ادراج أعمده إلى اليمين',
-                    'Insert rows above': 'ادراج صفوف أعلا',
-                    'Insert rows below': 'ادراج صفوف أدنا',
-                    'Delete rows': 'حذف صفوف',
-                    'Delete columns': 'حذف أعمده',
-                    'Cell Margin': 'هامش الخلية',
-                    'Top': 'أعلى',
-                    'Bottom': 'اسفل',
-                    'Left': 'اليسار',
-                    'Right': 'الحق',
-                    'Align Text': 'محاذاة النص',
-                    'Align top': 'محاذاة إلى الأعلى',
-                    'Align bottom': 'محاذاة إلى الأسفل',
-                    'Align center': 'محاذاة إلى الوسط',
-                    // tslint:disable-next-line:max-line-length
-                    'Number of heading or outline levels to be shown in table of contents.': 'عدد مستويات العناوين أو المخططات التفصيلية التي ستظهر في جدول المحتويات',
-                    'Show page numbers': 'إظهار أرقام الصفحات',
-                    'Show page numbers in table of contents.': 'إظهار أرقام الصفحات في جدول المحتويات',
-                    'Right align page numbers': 'محاذاة أرقام الصفحات إلى اليمين',
-                    'Right align page numbers in table of contents.': 'محاذاة أرقام الصفحات الصحيحة في جدول المحتويات',
-                    'Use hyperlinks': 'استخدام الارتباطات التشعبية',
-                    'Use hyperlinks instead of page numbers.': 'استخدام الارتباطات التشعبية بدلا من أرقام الصفحات.',
-                    'Font': 'الخط',
-                    'Font Size': 'حجم الخط',
-                    'Font color': 'لون الخط',
-                    'Text highlight color': 'لون تمييز النص',
-                    'Clear all formatting': 'مسح كافة التنسيقات',
-                    'Bold (Ctrl+B)': 'غامق (Ctrl + B)',
-                    'Italic (Ctrl+I)': 'مائل (Ctrl + I)',
-                    'Underline (Ctrl+U)': 'تسطير (Ctrl + U)',
-                    'Strikethrough': 'يتوسطه',
-                    'Superscript (Ctrl+Shift++)': 'مرتفع (Ctrl + Shift + +)',
-                    'Subscript (Ctrl+=)': 'منخفض (Ctrl + =)',
-                    'Align left (Ctrl+L)': 'محاذاة إلى اليسار (Ctrl + L)',
-                    'Center (Ctrl+E)': 'المركز (Ctrl + E)',
-                    'Align right (Ctrl+R)': 'محاذاة إلى اليمين (Ctrl + R)',
-                    'Justify (Ctrl+J)': 'ضبط (Ctrl + J)',
-                    'Decrease indent': 'إنقاص المسافة البادئة',
-                    'Increase indent': 'زيادة المسافة البادئة',
-                    'Line spacing': 'تباعد الأسطر',
-                    'Bullets': 'الرصاص',
-                    'Numbering': 'ترقيم',
-                    'Styles': 'انماط',
-                    'Manage Styles': 'أداره الأنماط',
-                    'Update': 'تحديث',
-                    'Cancel': 'إلغاء الأمر',
-                    'Insert': 'ادراج',
-                    'No Border': ' لا حدود ',
-                    'Create a new document.': 'إنشاء مستند جديد',
-                    'Open a document.': 'فتح مستند',
-                    'Undo the last operation (Ctrl+Z).': 'التراجع عن العملية الاخيره (Ctrl + Z)',
-                    'Redo the last operation (Ctrl+Y).': 'أعاده العملية الاخيره (Ctrl + Y)',
-                    'Insert inline picture from a file.': 'ادراج صوره مضمنه من ملف',
-                    'Insert a table into the document': 'ادراج جدول في المستند',
-                    // tslint:disable-next-line:max-line-length
-                    'Create a link in your document for quick access to webpages and files (Ctrl+K).': 'إنشاء ارتباط في المستند للوصول السريع إلى صفحات ويب والملفات (Ctrl + K)',
-                    'Insert a bookmark in a specific place in this document.': 'ادراج اشاره مرجعيه في مكان معين في هذا المستند',
-                    // tslint:disable-next-line:max-line-length
-                    'Provide an overview of your document by adding a table of contents.': 'توفير نظره عامه حول المستند باضافه جدول محتويات',
-                    'Add or edit the header.': 'أضافه الراس أو تحريره',
-                    'Add or edit the footer.': 'أضافه تذييل الصفحة أو تحريره',
-                    'Open the page setup dialog.': 'فتح مربع حوار اعداد الصفحة',
-                    'Add page numbers.': 'أضافه أرقام الصفحات',
-                    'Find text in the document (Ctrl+F).': 'البحث عن نص في المستند (Ctrl + F)',
-                    // tslint:disable-next-line:max-line-length
-                    'Toggle between the internal clipboard and system clipboard': 'التبديل بين الحافظة الداخلية وحافظه النظام' + '</br>' +
-                        'تم رفض الوصول إلى حافظه النظام من خلال البرنامج النصي بسبب نهج أمان المستعرضات. بدلا ' + '</br>' +
-                        '1. يمكنك تمكين الحافظة الداخلية لقطع ونسخ ولصق داخل المكون' + '</br>' +
-                        '2. يمكنك استخدام اختصارات لوحه المفاتيح (ctrl + X ، ctrl + C و ctrl + V) لقص ونسخ ولصق مع الحافظة النظام',
-                    'Restrict editing.': 'تقييد التحرير',
-                    'Format restrictions': 'قيود التنسيق',
-                    'Allow formatting': 'السماح بالتنسيق',
-                    'Editing restrictions': 'قيود التحرير',
-                    'Read only': 'للقراءة فقط',
-                    'User permissions': 'أذونات المستخدم',
-                    'Everyone': 'الجميع',
-                    'Add Users': 'أضافه مستخدمين',
-                    'Enforcing Protection': 'فرض الحماية',
-                    'Enter User': 'ادخل المستخدم',
-                    'Users': 'المستخدمين',
-                    'Enter new password': 'ادخل كلمه مرور جديد',
-                    'Reenter new password': 'أعاده إدخال كلمه مرور جديده',
-                    'Your permissions': 'الأذونات الخاصة بك',
-                    'This document is protected from unintenional editing.You may edit in this region,but all changes will be tracked.': 'هذا المستند محمي من التحرير غير الموجه. يمكنك التحرير في هذه المنطقة ، ولكن سيتم تعقب كافة التغييرات',
-                    'You may format text only with certain styles.': 'يمكنك تنسيق النص فقط مع أنماط معينه',
-                    'Stop Protection': 'إيقاف الحماية',
-                    'Unprotect Document': 'إلغاء حماية المستند',
-                    'Password': 'كلمه المرور',
-                    'Protections': 'الحمايه'
+                    "New": "الجديد",
+            "Open": "فتح",
+            "Undo": "التراجع عن",
+            "Redo": "اعاده",
+            "Image": "الصوره",
+            "Table": "الجدول",
+            "Link": "الارتباط",
+            "Bookmark": "الاشاره المرجعيه",
+            "Table of Contents": "جدول المحتويات",
+            "HEADING - - - - 1": "العنوان----1",
+            "HEADING - - - - 2": "العنوان----2",
+            "HEADING - - - - 3": "العنوان----3",
+            "Header": "راس",
+            "Footer": "تذييل الصفحه",
+            "Page Setup": "اعداد الصفحة",
+            "Page Number": "رقم الصفحة",
+            "Break": "كسر",
+            "Find": "العثور",
+            "Local Clipboard": "الحافظة المحلية",
+            "Restrict Editing": "تقييد التحرير",
+            "Upload from computer": "التحميل من الكمبيوتر",
+            "By URL": "حسب عنوان URL",
+            "Page Break": "فاصل الصفحات",
+            "Section Break": "فاصل المقطع",
+            "Header And Footer": "راس & تذييل",
+            "Options": "خيارات",
+            "Levels": "مستويات",
+            "Different First Page": "الصفحة الاولي المختلفة",
+            "Different header and footer for odd and even pages": "راس وتذييل مختلف للصفحات الفردية والزوجية.",
+            "Different Odd And Even Pages": "مختلف الفردية & حتى صفحات",
+            "Different header and footer for first page": "راس وتذييل الصفحة المختلفة للصفحة الاولي.",
+            "Position": "موقف",
+            "Header from Top": "راس من الأعلى",
+            "Footer from Bottom": "تذييل من الأسفل",
+            "Distance from top of the page to top of the header.": "المسافة من اعلي الصفحة إلى اعلي الراس.",
+            "Distance from bottom of the page to bottom of the footer": "المسافة من أسفل الصفحة إلى أسفل التذييل.",
+            "Aspect ratio": "نسبه العرض إلى الارتفاع",
+            "W": "ث",
+            "H": "ح",
+            "Width": "عرض",
+            "Height": "ارتفاع",
+            "Text": "النص",
+            "Paragraph": "الفقره",
+            "Fill": "ملء",
+            "Fill color": "لون التعبئة",
+            "Border Style": "نمط الحدود",
+            "Outside borders": "خارج الحدود",
+            "All borders": "جميع الحدود",
+            "Inside borders": "داخل الحدود",
+            "Left border": "الحد الأيسر",
+            "Inside vertical border": "داخل الحدود العمودية",
+            "Right border": "الحدود اليمني",
+            "Top border": "الحد العلوي",
+            "Inside horizontal border": "داخل الحدود الافقيه",
+            "Bottom border": "الحد السفلي",
+            "Border color": "لون الحدود",
+            "Border width": "عرض الحدود",
+            "Cell": "الخليه",
+            "Merge cells": "دمج الخلايا",
+            "Insert Or Delete": "ادراج/حذف",
+            "Insert columns to the left": "ادراج أعمده إلى اليسار",
+            "Insert columns to the right": "ادراج أعمده إلى اليمين",
+            "Insert rows above": "ادراج صفوف أعلاه",
+            "Insert rows below": "ادراج صفوف أدناه",
+            "Delete rows": "حذف الصفوف",
+            "Delete columns": "حذف الاعمده",
+            "Cell Margin": "هامش الخلية",
+            "Top": "أعلى",
+            "Bottom": "اسفل",
+            "Left": "اليسار",
+            "Right": "الحق",
+            "Align Text": "محاذاة النص",
+            "Align top": "محاذاة لاعلي",
+            "Align bottom": "محاذاة إلى الأسفل",
+            "Align center": "محاذاة المركز",
+            "Number of heading or outline levels to be shown in table of contents": "عدد مستويات العنوان أو المخطط التفصيلي التي ستظهر في جدول المحتويات.",
+            "Show page numbers": "إظهار أرقام الصفحات",
+            "Show page numbers in table of contents": "إظهار أرقام الصفحات في جدول المحتويات.",
+            "Right align page numbers": "محاذاة أرقام الصفحات إلى اليمين",
+            "Right align page numbers in table of contents": "محاذاة أرقام الصفحات إلى اليمين في جدول المحتويات.",
+            "Use hyperlinks": "استخدام الارتباطات التشعبية",
+            "Use hyperlinks instead of page numbers": "استخدام الارتباطات التشعبية بدلا من أرقام الصفحات.",
+            "Font": "الخط",
+            "Font Size": "حجم الخط",
+            "Font color": "لون الخط",
+            "Text highlight color": "لون تمييز النص",
+            "Clear all formatting": "مسح كافة التنسيقات",
+            "Bold Tooltip": "غامق (Ctrl + B)",
+            "Italic Tooltip": "مائل (Ctrl + I)",
+            "Underline Tooltip": "تسطير (Ctrl + U)",
+            "Strikethrough": "يتوسطه",
+            "Superscript Tooltip": "مرتفع (Ctrl + Shift + +)",
+            "Subscript Tooltip": "منخفض (Ctrl + =)",
+            "Align left Tooltip": "محاذاة إلى اليسار (Ctrl + L)",
+            "Center Tooltip": "المركز (Ctrl + E)",
+            "Align right Tooltip": "محاذاة إلى اليمين (Ctrl + R)",
+            "Justify Tooltip": "ضبط (Ctrl + J)",
+            "Decrease indent": "إنقاص المسافة البادئة",
+            "Increase indent": "زيادة المسافة البادئة",
+            "Line spacing": "تباعد الأسطر",
+            "Bullets": "الرصاص",
+            "Numbering": "ترقيم",
+            "Styles": "انماط",
+            "Manage Styles": "أداره الأنماط",
+            "Page": "صفحه",
+            "of": "من",
+            "Fit one page": "احتواء صفحه واحده",
+            "Spell Check": "التدقيق الإملائي",
+            "Underline errors": "أخطاء التسطير",
+            "Fit page width": "احتواء عرض الصفحة",
+            "Update": "تحديث",
+            "Cancel": "إلغاء الأمر",
+            "Insert": "ادراج",
+            "No Border": "بلا حدود",
+            "Create a new document": "إنشاء مستند جديد.",
+            "Open a document": "افتح مستندا.",
+            "Undo Tooltip": "التراجع عن العملية الاخيره (Ctrl + Z).",
+            "Redo Tooltip": "أعاده العملية الاخيره (Ctrl + Y).",
+            "Insert inline picture from a file": "ادراج صوره مضمنه من ملف.",
+            "Insert a table into the document": "ادراج جدول في المستند",
+            "Create Hyperlink": "إنشاء ارتباط في المستند للوصول السريع إلى صفحات الويب والملفات (Ctrl + K).",
+            "Insert a bookmark in a specific place in this document": "ادراج اشاره مرجعيه في مكان محدد في هذا المستند.",
+            "Provide an overview of your document by adding a table of contents": "توفير نظره عامه حول المستند عن طريق أضافه جدول محتويات.",
+            "Add or edit the header": "أضافه الراس أو تحريره.",
+            "Add or edit the footer": "أضافه تذييل الصفحة أو تحريره.",
+            "Open the page setup dialog": "افتح مربع حوار اعداد الصفحة.",
+            "Add page numbers": "أضافه أرقام الصفحات.",
+            "Find Text": "البحث عن نص في المستند (Ctrl + F).",
+            "Toggle between the internal clipboard and system clipboard": "التبديل بين الحافظة الداخلية وحافظه النظام. </br > تم رفض الوصول إلى حافظه النظام من خلال البرنامج النصي بسبب نهج أمان المستعرضات. بدلا من ذلك ، </br > 1. يمكنك تمكين الحافظة الداخلية للقطع والنسخ واللصق داخل المكون. </br > 2. يمكنك استخدام اختصارات لوحه المفاتيح (Ctrl + X و Ctrl + C و Ctrl + V) للقطع والنسخ واللصق مع حافظه النظام.",
+            "Restrict editing.": "تقييد التحرير.",
+            "Current Page Number": "رقم الصفحة الحالي في المستند. انقر أو اضغط للانتقال إلى صفحه معينه.",
+            "Read only": "للقراءة فقط",
+            "Protections": "الحمايه",
+            "Error in establishing connection with web server": "خطا في تاسيس اتصال مع ملقم ويب",
+            "Single": "واحد",
+            "Double": "انقر نقرا مزدوجا",
+            "New comment": "تعليق جديد",
+            "Comments": "تعليقات",
+            "Web layout": "تخطيط ويب",
+            "Text Form": "شكل نصي",
+            "Check Box": "خانة اختيار",
+            "DropDown": "اسقاط",
+            "Update Fields": "تحديث الحقول",
+            "Update cross reference fields": "تحديث حقول الإسناد الترافقي",
+            "Track Changes": "تتبع التغييرات التي تم إجراؤها في المستند",
+            "TrackChanges": "تعقب التغيرات"
+
                 },
                 'colorpicker': {
                     'Apply': 'تطبيق',
@@ -505,7 +557,7 @@
         <div>
             <p>In this example, you can see document-editor right-to-left and the locale set in arabic[locale value is ar-AE]</p>
             <p>By default, locale value is en-US. If you want to change the en-US culture to a different culture, you have to change the locale accordingly.</p>
-        </div>                  
+        </div>
         <p style="display: block">
             More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/document-editor/getting-started/">documentation section.</a>
         </p>
@@ -519,7 +571,9 @@
         var documenteditorElement = document.getElementById("container");
         documenteditorElement.style.height = "590px";
         documenteditorElement.style.width = "100%";
-        documenteditor = documenteditorElement.ej2_instances[0].documentEditor;
+        var container = documenteditorElement.ej2_instances[0];
+        container.showPropertiesPane = true;
+        documenteditor = container.documentEditor;
         documenteditorElement.ej2_instances[0].serviceUrl = window.baseurl + 'api/documenteditorservice/';
         documenteditor.serviceUrl = window.baseurl + 'api/documenteditorservice/';
         var ajax = new ej.base.Ajax("@Url.Content("~/scripts/documenteditor/data-right-to-left.json")", 'GET', true);
@@ -529,7 +583,7 @@
             documenteditor.documentName = 'الشروع';
             updateDocumentTitle();
         };
-        documenteditor.documentChange = function (args) {
+        container.documentChange = function (args) {
             updateDocumentTitle();
         };
         titleBarDiv = document.getElementById('documenteditor_titlebar');
@@ -539,14 +593,15 @@
 }
 
 @section Meta{
-    <meta name="description" content="The Document Editor supports right to left for users who use right-to-left languages (Arabic, Hebrew, Urdu, etc.) in ASP.NET MVC." />
-}
+                    <meta name="description" content="This example demonstrates the Right To Left in ASP.NET MVC DocumentEditor control. Explore here for more details."/>
+                }
 
 <style>
     #container {
-        display:block;
-        height:500px;
+        display: block;
+        height: 500px;
     }
+
     #documenteditor_titlebar {
         border-bottom: 1px solid #2B3481;
         height: 36px;
@@ -615,3 +670,9 @@
 
     /** sample level font icons ends*/
 </style>
+@section Title{
+                    <title>ASP.NET MVC DocumentEditor Right To Left Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Right To Left in ASP.NET MVC DocumentEditor Control</h1>
+                }

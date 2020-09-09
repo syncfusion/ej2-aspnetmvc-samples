@@ -1,15 +1,13 @@
-﻿
-
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Maps
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div style="width:200px;margin:auto;padding-bottom:20px">
-            <img src='@Url.Content("~/Content/Maps/bus-icon.png")' style="width:25px;height:25px;float:left">
+            <img src='@Url.Content("~/Content/Maps/bus-icon.png")' alt="Bus icon" style="width:25px;height:25px;float:left">
             <div style="padding-left:30px;font-size:20px;font-weight:400;">Bus seat selection</div>
         </div>
         <div style="border: 3px solid darkgray;width:200px;display:block;margin:auto;border-radius:5px">
-            <img src='@Url.Content("~/Content/Maps/wheel.png")' style="width:30px;height:30px;margin-left:15%;margin-top:10px">
+            <img src='@Url.Content("~/Content/Maps/wheel.png")' alt="Steering wheel icon" style="width:30px;height:30px;margin-left:15%;margin-top:10px">
             <div style="text-align:center">
                 <div id="container"></div>
                 @Html.EJS().Maps("container").ProjectionType(Syncfusion.EJ2.Maps.ProjectionType.Equirectangular).Load("mapsLoad").ItemSelection("itemSelection").Layers(layer =>
@@ -145,8 +143,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Maps control demonstrates the rendering of normal geometry type shapes on the map." />
-}
+                    <meta name="description" content="This example demonstrates the Bus seat booking in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -163,3 +161,10 @@
 
 
 
+
+@section Title{
+                    <title>ASP.NET MVC Maps Bus seat booking Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Bus seat booking in ASP.NET MVC Maps Control</h1>
+                }

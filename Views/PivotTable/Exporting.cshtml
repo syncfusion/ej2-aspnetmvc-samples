@@ -2,8 +2,8 @@
 @using EJ2MVCSampleBrowser.Models
 @using Syncfusion.EJ2.PivotView
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 ASP.NET MVC Pivot Table control demonstrate client-side exporting of the pivot table to Excel, CSV and PDF formats" />
-}
+                    <meta name="description" content="This example demonstrates the Export in ASP.NET MVC Pivot Table control. Explore here for more details."/>
+                }
 @section ControlsSection{
 
     <div class="col-lg-8 control-section">
@@ -72,6 +72,12 @@
             width: 100%;
             height: 100%;
         }
+        .sb-sample-content-area {
+            min-height: 255px !important;
+        }
+        .control-section {
+            min-height: 255px !important;
+        }
     </style>
     <script>
         var exportType = new ej.dropdowns.DropDownList({
@@ -122,3 +128,10 @@
         </p>
     </div>
 }
+
+@section Title{
+                    <title>ASP.NET MVC Pivot Table Export Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Export in ASP.NET MVC Pivot Table Control</h1>
+                }

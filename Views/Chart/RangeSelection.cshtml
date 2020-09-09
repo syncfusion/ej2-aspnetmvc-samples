@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <script src="~/Scripts/theme-color.js"></script>
     <div class="col-md-8 control-section">
@@ -22,9 +22,17 @@
                 <div>Selection Mode:</div>
             </td>
             <td style="width: 40%;">
-                <div style="margin-left: -20px">
+                <div style="margin-left: -70px">
                     @Html.EJS().DropDownList("selmode").Index(0).DataSource(ViewBag.data).Value("DragXY").Change("selectionMode").Render()
                 </div>
+            </td>
+        </tr>
+        <tr id='' style="height: 50px">
+            <td style="width: 80%">
+                <div> Enable Multi Selection:</div>
+            </td>
+            <td>
+                <input type="checkbox" id="select" style="margin-top: 15px; margin-left: -60px">
             </td>
         </tr>
     </table>
@@ -44,18 +52,28 @@
 
         };
                  @*custom code end*@
+        document.getElementById('select').onchange = function () {
+            var chart = document.getElementById('container').ej2_instances[0];
+            var element = (document.getElementById('select'));
+            chart.allowMultiSelection = element.checked;
+            chart.series[0].animation.enable = false;
+            chart.series[1].animation.enable = false;
+            chart.refresh();
+        };
         var selectionMode = function () {
             var chart = document.getElementById('container').ej2_instances[0];
             var mode = document.getElementById('selmode').ej2_instances[0];
             chart.selectionMode = mode.value;
-            chart.dataBind();
+            chart.series[0].animation.enable = false;
+            chart.series[1].animation.enable = false;
+            chart.refresh();
         }
     </script>
 }
          @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control demonstrates the range selection in chart." />
-}
+                    <meta name="description" content="This example demonstrates the Range Selection in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
          @*custom code end*@
 @section ActionDescription{
     <p>
@@ -72,7 +90,7 @@
     Tap to select a point or series, double tap and drag to enable rectangular selection in touch enabled devices.
 </p>
 <p>
-    Chart supports five mode of selection which can be set using <code>SelectionMode</code> property.
+    Chart supports seven mode of selection which can be set using <code>SelectionMode</code> property.
 </p>
 <ul>
     <li><code>Series</code> - Select the series in chart.</li>
@@ -81,6 +99,13 @@
     <li><code>DragXY</code> - Rectangular selection with respect to both axis.</li>
     <li><code>DragX</code> - Rectangular selection with respect to horizontal axis.</li>
     <li><code>DragY</code> - Rectangular selection with respect to vertical axis.</li>
+    <li><code>Lasso</code> - Select free form of selection area points.</li>
 </ul>
 <br>
 }
+@section Title{
+                    <title>ASP.NET MVC Chart Range Selection Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Range Selection in ASP.NET MVC Chart Control</h1>
+                }

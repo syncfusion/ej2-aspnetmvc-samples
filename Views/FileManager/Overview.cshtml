@@ -7,10 +7,10 @@
             <!-- File Manager full functionalities sample -->
             @Html.EJS().FileManager("filemanager").AjaxSettings(
               new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings {
-                  Url = "/FileManager/FileOperations",
-                  DownloadUrl = "/FileManager/Download",
-                  UploadUrl = "/FileManager/Upload",
-                  GetImageUrl = "/FileManager/GetImage"
+                  Url = "FileOperations",
+                  DownloadUrl = "Download",
+                  UploadUrl = "Upload",
+                  GetImageUrl = "GetImage"
               }).View(Syncfusion.EJ2.FileManager.ViewType.Details).Render()
         </div>
     </div>
@@ -18,7 +18,7 @@
 
 @section ActionDescription{
     <div id="action-description">
-        <p>This sample demonstrates the full features of the File Manager that includes <a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.FileManager.FileManager~NavigationPaneSettings.html" target="_blank"> toolbar</a>, <a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.FileManager.FileManager~ToolbarSettings.html" target="_blank"> navigation pane</a> and <a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.FileManager.FileManager~DetailsViewSettings.html" target="_blank"> details view.</a></p>
+        <p>This sample demonstrates the full features of the File Manager that includes <a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.FileManager.FileManager~ToolbarSettings.html" target="_blank"> toolbar</a>, <a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.FileManager.FileManager~NavigationPaneSettings.html" target="_blank"> navigation pane</a> and <a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.FileManager.FileManager~DetailsViewSettings.html" target="_blank"> details view.</a></p>
     </div>
 }
 
@@ -34,6 +34,12 @@
 }
 
 @section Meta{
+                    <meta name="description" content="This example demonstrates the Overview in ASP.NET MVC File Manager control. Explore here for more details."/>
+                }
 
-    <meta content="This example demonstrates full view of the File Manager like a windows explorer UI in a ASP.NET MVC File Manager." />
-}
+@section Title{
+                    <title>ASP.NET MVC File Manager Overview Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Overview in ASP.NET MVC File Manager Control</h1>
+                }

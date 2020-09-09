@@ -1,16 +1,15 @@
-﻿
 @using Syncfusion.EJ2;
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
-    <div class="control-section">
-        <div id="container" style="width:100%">
-            @Html.EJS().TreeMap("container").Width("100%").EnableRtl(true).EnableDrillDown(true).TitleSettings(title => title.Text("List of countries by unemployment rate").TextStyle(new TreeMapFont { Size = "15px" })).Format("n").RenderDirection(RenderingMode.TopRightBottomLeft).UseGroupingSeparator(true).WeightValuePath("Size").Palette(new string[] { "#5B244D", "#6F3953", "#87525A", "#A26F63", "#BA896B", "#D5A574", "#F1C37D" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Size} : ${Name}" }).Load("load").Levels(level =>
+	<div class="col-lg-12 control-section">
+        <div style="width:100%">
+            @Html.EJS().TreeMap("container").Width("870px").EnableRtl(true).EnableDrillDown(true).TitleSettings(title => title.Text("List of countries by unemployment rate").TextStyle(new TreeMapFont { Size = "15px" })).Format("n").RenderDirection(RenderingMode.TopRightBottomLeft).UseGroupingSeparator(true).WeightValuePath("Size").Palette(new string[] { "#5B244D", "#6F3953", "#87525A", "#A26F63", "#BA896B", "#D5A574", "#F1C37D" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Size} : ${Name}" }).Load("load").Levels(level =>
        {
            level.GroupPath("Continent").Border(new TreeMapBorder { Color = "black", Width = 0.5 }).HeaderAlignment(Syncfusion.EJ2.TreeMap.Alignment.Far).Add();
            level.GroupPath("Country").Border(new TreeMapBorder { Color = "black", Width = 0.5 }).HeaderAlignment(Syncfusion.EJ2.TreeMap.Alignment.Far).Add();
        }).LeafItemSettings(leaf => leaf.LabelPath("Name").ShowLabels(false).LabelStyle(new TreeMapFont { Size = "0px" }).Border(new TreeMapBorder { Color = "black", Width = 0.5 })).Render()
         </div>
-        <div style="margin-left: 75%">
+        <div style="margin-left: 80%">
             Source: <a href="https://www.indexmundi.com/facts/visualizations/treemap#SL.UEM.TOTL.ZS:SL.UEM.TOTL.ZS" target="_blank">www.indexmundi.com</a>
 
         </div>
@@ -248,8 +247,8 @@
     </script>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 TreeMap control demonstrates drill-down with the continents at the top level followed by regions and countries." />
-}
+                    <meta name="description" content="This example demonstrates the RTL in ASP.NET MVC TreeMap control. Explore here for more details."/>
+                }
 @section ActionDescription{
     <div id="action-description">
         <p>
@@ -265,3 +264,9 @@
         </p>
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC TreeMap RTL Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of RTL in ASP.NET MVC TreeMap Control</h1>
+                }

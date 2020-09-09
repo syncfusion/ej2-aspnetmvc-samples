@@ -1,11 +1,11 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
 
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventClick("OnEventClick").PopupOpen("OnPopupOpen").Navigating("OnNavigating").Destroyed("OnDestroyed").CellDoubleClick("OnCellDoubleClick").CellClick("OnCellClick").ActionFailure("OnActionFailure").Created("OnCreate").ActionBegin("OnActionBegin").ActionComplete("OnActionComplete").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2019, 1, 10)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventClick("OnEventClick").PopupOpen("OnPopupOpen").Navigating("OnNavigating").Destroyed("OnDestroyed").CellDoubleClick("OnCellDoubleClick").CellClick("OnCellClick").ActionFailure("OnActionFailure").Created("OnCreate").ActionBegin("OnActionBegin").ActionComplete("OnActionComplete").EventRendered("onEventRendered").Select("onSelect").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2019, 1, 10)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -28,7 +28,6 @@
             </tbody>
         </table>
     </div>
-    @*custom code start*@
     <style>
         #EventLog b {
             color: #388e3c;
@@ -39,7 +38,6 @@
             border-top: 1px solid #eee;
         }
     </style>
-    @*custom code end*@
     <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
     <script type="text/javascript">
         document.getElementById('clear').onclick = function () {
@@ -85,12 +83,15 @@
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
             applyCategoryColor(args, scheduleObj.currentView);
         }
+        function onSelect(args) {
+            args.showQuickPopup = args.requestType === 'cellSelect';
+        }
     </script>
 }
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Scheduler control shows the client-side events that triggers on respective scheduler actions." />
-}
+                    <meta name="description" content="This example demonstrates the Events in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -109,3 +110,9 @@
         </p>
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC Scheduler Events Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Events in ASP.NET MVC Scheduler Control</h1>
+                }

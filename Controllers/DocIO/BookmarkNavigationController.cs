@@ -25,10 +25,15 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
 {
     public partial class DocIOController : Controller
     {
-        public ActionResult BookmarkNavigation(string Group1)
+        public ActionResult BookmarkNavigation(string Group1,string Button)
         {
             if (Group1 == null)
                 return View();
+            if (Button == null)
+                return View();
+
+            if (Button == "View Template")
+                return new TemplateResult("Bookmark_Template.docx", ResolveApplicationDataPath("Data\\DocIO"), HttpContext.ApplicationInstance.Response);
             #region BookmarkNavigation
             // Creating a new document.
             WordDocument document = new WordDocument();
@@ -41,9 +46,9 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             document.LastParagraph.AppendText("Northwind database with normalization concept");
             document.LastParagraph.AppendBookmarkEnd("NorthwindDatabase");
             // Open an existing template document with single section to get Northwind.information
-            WordDocument nwdInformation = new WordDocument(ResolveApplicationDataPath("Bookmark_Template.doc", "Data\\DocIO"));
+            WordDocument nwdInformation = new WordDocument(ResolveApplicationDataPath("Bookmark_Template.docx", "Data\\DocIO"));
             // Open an existing template document with multiple section to get Northwind data.
-            WordDocument templateDocument = new WordDocument(ResolveApplicationDataPath("BkmkDocumentPart_Template.doc", "Data\\DocIO"));
+            WordDocument templateDocument = new WordDocument(ResolveApplicationDataPath("BkmkDocumentPart_Template.docx", "Data\\DocIO"));
             // Creating a bookmark navigator. Which help us to navigate through the 
             // bookmarks in the template document.
             BookmarksNavigator bk = new BookmarksNavigator(templateDocument);
@@ -69,6 +74,23 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             bk.MoveToBookmark("Northwind_Information");
             // Replacing content of Northwind_Information bookmark.
             bk.ReplaceBookmarkContent(bodyPart);
+            #region Bookmark selection for table
+            // Creating a bookmark navigator. Which help us to navigate through the 
+            // bookmarks in the Northwind information document.
+            bk = new BookmarksNavigator(nwdInformation);
+            bk.MoveToBookmark("SuppliersTable");
+            //Sets the column index where the bookmark starts within the table
+            //  bk.CurrentBookmark.FirstColumn = 1;
+            //Sets the column index where the bookmark ends within the table
+            //bk.CurrentBookmark.LastColumn = 5;
+            //// Get the content of suppliers table bookmark.
+            bodyPart = bk.GetBookmarkContent();
+            // Creating a bookmark navigator. Which help us to navigate through the 
+            // bookmarks in the destination document.
+            bk = new BookmarksNavigator(document);
+            bk.MoveToBookmark("Table");
+            bk.ReplaceBookmarkContent(bodyPart);
+            #endregion
             // Move to the text bookmark
             bk.MoveToBookmark("Text");
             //Deletes the bookmark content
@@ -179,17 +201,17 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             //Save as .doc format
             if (Group1 == "WordDoc")
             {
-                return document.ExportAsActionResult("Sample.doc", FormatType.Doc, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+                return document.ExportAsActionResult("Bookmark Navigation.doc", FormatType.Doc, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
             }
             //Save as .docx format
             else if (Group1 == "WordDocx")
             {
-                return document.ExportAsActionResult("Sample.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+                return document.ExportAsActionResult("Bookmark Navigation.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
             }
             // Save as WordML(.xml) format
             else if (Group1 == "WordML")
             {
-                return document.ExportAsActionResult("Sample.xml", FormatType.WordML, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+                return document.ExportAsActionResult("Bookmark Navigation.xml", FormatType.WordML, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
             }
             //Save as .pdf format
             else if (Group1 == "Pdf")
@@ -197,7 +219,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
                 DocToPDFConverter converter = new DocToPDFConverter();
                 PdfDocument pdfDoc = converter.ConvertToPDF(document);
 
-                return pdfDoc.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
+                return pdfDoc.ExportAsActionResult("Bookmark Navigation.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
             }
             #endregion Document SaveOption
             return View();

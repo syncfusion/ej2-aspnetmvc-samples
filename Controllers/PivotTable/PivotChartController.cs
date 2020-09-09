@@ -15,7 +15,6 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
         public ActionResult PivotChart()
         {
             ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.drilledMembers = new string[] { "FY 2015" };
             return View();
         }
     }

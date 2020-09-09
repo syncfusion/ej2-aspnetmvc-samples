@@ -1,8 +1,8 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
-        @Html.EJS().DocumentEditorContainer("container").EnableToolbar(true).Render()
+        @Html.EJS().DocumentEditorContainer("container").Height("590px").EnableToolbar(true).Render()
     </div>
     <div class="col-lg-3 property-section">
         <div class="content-wrapper">
@@ -52,7 +52,8 @@
         var documenteditorElement = document.getElementById("container");
         documenteditorElement.style.height = "590px";
         documenteditorElement.style.width = "100%";
-        documenteditor = documenteditorElement.ej2_instances[0].documentEditor;
+        var container = documenteditorElement.ej2_instances[0];
+        documenteditor = container.documentEditor;
         documenteditorElement.ej2_instances[0].showPropertiesPane = false;
         documenteditor.currentUser = "engineer@mycompany.com";
         documenteditorElement.ej2_instances[0].serviceUrl = window.baseurl + 'api/documenteditorservice/';
@@ -64,7 +65,7 @@
             documenteditor.documentName = 'Document Protection';
             updateDocumentTitle();
         };
-        documenteditor.documentChange = function (args) {
+        container.documentChange = function (args) {
             updateDocumentTitle();
         };
         titleBarDiv = document.getElementById('documenteditor_titlebar');
@@ -89,8 +90,8 @@
 }
 
 @section Meta{
-    <meta name="description" content="The Document Editor provides document protection supports to restrict the types of changes can be made to the document by a user/user group." />
-}
+                    <meta name="description" content="This example demonstrates the Document Protection in ASP.NET MVC DocumentEditor control. Explore here for more details."/>
+                }
 
 <style>
     #container {
@@ -173,3 +174,10 @@
 
     /** sample level font icons ends*/
 </style>
+
+@section Title{
+                    <title>ASP.NET MVC DocumentEditor Document Protection Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Document Protection in ASP.NET MVC DocumentEditor Control</h1>
+                }

@@ -1,40 +1,81 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <script src="~/Scripts/theme-color.js"></script>
     <div class="col-lg-9 control-section">
             @(Html.EJS().Chart("container").Series(series =>
-       {
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("xValue").YName("yValue").DataSource(ViewBag.dataSource).Name("Age 0-14").Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("xValue").YName("yValue1").DataSource(ViewBag.dataSource).Name("Age 15-64").Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("xValue").YName("yValue2").DataSource(ViewBag.dataSource).Name("Age 65 & Above").Add();
+        {
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("xValue").YName("yValue").DataSource(ViewBag.dataSource).Name("Age 0-14").Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("xValue").YName("yValue1").DataSource(ViewBag.dataSource).Name("Age 15-64").Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("xValue").YName("yValue2").DataSource(ViewBag.dataSource).Name("Age 65 & Above").Add();
 
-       }).PrimaryXAxis(px => px.Title("Countries").Interval(1).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-       ).PrimaryYAxis(py => py.LabelFormat("{value}%").Title("Distribution").Interval(20)
-       ).Title("Age Distribution by Country").Load("load").SelectionMode(Syncfusion.EJ2.Charts.SelectionMode.Point).Render()     
+        }).PrimaryXAxis(px => px.Title("Countries").Interval(1).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+        .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)).PrimaryYAxis(py => py.LabelFormat("{value}%").Title("Distribution").Interval(20))
+        .LegendSettings(legend => legend.Visible(true).ToggleVisibility(false))
+        .Title("Age Distribution by Country").Load("load").SelectionMode(Syncfusion.EJ2.Charts.SelectionMode.Point).Render()
     )
     </div>
-<div class="col-lg-3 property-section">
-    <table id="property" title="Properties" style="width: 100%">
-        <tr style="height: 50px">
-            <td style="width: 60%">
-                <div>Selection Mode:</div>
-            </td>
-            <td style="width: 40%;">
-                <div style="margin-left: -50px">
-                    @Html.EJS().DropDownList("selmode").Index(0).DataSource(ViewBag.data).Value("Point").Change("selectionMode").Render()
-                </div>
-            </td>
-        </tr>
-        <tr id='' style="height: 50px">
-            <td style="width: 80%">
-                <div> Enable Multi Selection:</div>
-            </td>
-            <td>
-                <input type="checkbox" id="select" style="margin-top: 15px">
-            </td>
-        </tr>
-    </table>
-</div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tr style="height: 50px">
+                <td style="width: 60%">
+                    <div>Selection Mode:</div>
+                </td>
+                <td style="width: 40%;">
+                    <select name="selectIndex" autocomplete="off" id="selmode" style="margin-left: -25px">
+                        <option value="Point">Point</option>
+                        <option value="Series">Series</option>
+                        <option value="Cluster">Cluster</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id='' style="height: 50px">
+                <td style="width: 80%">
+                    <div> Enable Multi-selection:</div>
+                </td>
+                <td>
+                    <input type="checkbox" id="select" style="margin-top: 15px">
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td style="width: 60%">
+                    <div>Selection Patterns:</div>
+                </td>
+                <td style="width: 40%;">
+                    <select name="selectIndex" autocomplete="off" id="selpattern" style="margin-left: -25px; display: none;">
+                        <option value="None" selected>None</option>
+                        <option value="DiagonalForward">DiagonalForward</option>
+                        <option value="Chessboard">Chessboard</option>
+                        <option value="Triangle">Triangle</option>
+                        <option value="Box">Box</option>
+                        <option value="HorizontalDash">HorizontalDash</option>
+                    </select>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td style="width: 50%">
+                    <div> Enable Highlight:</div>
+                </td>
+                <td>
+                    <input type="checkbox" id="highlight" style="margin-top: 15px">
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td style="width: 60%">
+                    <div>Highlight Patterns:</div>
+                </td>
+                <td style="width: 40%;">
+                    <select name="selectIndexpat" autocomplete="off" id="highpattern" style="margin-left: -25px; display: none;">
+                        <option value="None" selected>None</option>
+                        <option value="Dots">Dots</option>
+                        <option value="Chessboard">Chessboard</option>
+                        <option value="Triangle">Triangle</option>
+                        <option value="Tile">Tile</option>
+                        <option value="Grid">Grid</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
 
          @*custom code start*@
     <style>
@@ -44,6 +85,7 @@
     </style>
              @*custom code end*@
     <script>
+        var highlightselect = document.getElementById('highlight');
          @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
@@ -51,29 +93,79 @@
            // args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
 
         }
-         @*custom code end*@
-        document.getElementById('select').onchange = function () {
+        var mode = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select Range Bar Color',
+            width: 120,
+            change: function () {
+                var chart = document.getElementById('container').ej2_instances[0];
+                chart.selectionMode = mode.value;
+                if (highlightselect.checked) {
+                    chart.highlightMode = mode.value;
+                }
+                else {
+                    chart.highlightMode = 'None';
+                }
+                chart.dataBind();
+            }
+        });
+        mode.appendTo('#selmode');
+        document.getElementById('select').onchange = () => {
             var chart = document.getElementById('container').ej2_instances[0];
             var element = (document.getElementById('select'));
             chart.isMultiSelect = element.checked;
+        };
+
+        var pattern = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select pattern values',
+            width: 120,
+            change: function () {
+                var chart = document.getElementById("container").ej2_instances[0];
+                chart.selectionPattern = pattern.value;
+                chart.dataBind();
+            }
+        });
+        pattern.appendTo('#selpattern');
+        var highLight = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select pattern values',
+            width: 120,
+            change: function () {
+                var chart = document.getElementById("container").ej2_instances[0];
+                if (highlightselect.checked) {
+                    chart.highlightPattern = highLight.value;
+                }
+                else {
+                    chart.highlightPattern = 'None';
+                }
+                chart.dataBind();
+            }
+        });
+        highLight.appendTo('#highpattern');
+        document.getElementById('highlight').onchange = function () {
+            var element = (document.getElementById('highlight'));
+            var chart = document.getElementById("container").ej2_instances[0];
+            if (element.checked) {
+                chart.highlightMode = mode.value;
+                chart.highlightPattern = highLight.value;
+            }
+            else {
+                chart.highlightMode = 'None';
+                chart.highlightPattern = 'None';
+            }
             chart.dataBind();
         };
-        var selectionMode = function () {
-            var chart = document.getElementById('container').ej2_instances[0];
-            var mode = document.getElementById('selmode').ej2_instances[0];
-            chart.selectionMode = mode.value;
-            chart.dataBind();
-        }
     </script>
 }
          @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control demonstrates the selection behavior in chart." />
-}
+                    <meta name="description" content="This example demonstrates the Selection in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
          @*custom code end*@
 @section ActionDescription{
    <p>
-    This sample illustrates the selection feature in chart. To select a specific point, click  the point. The selection mode can be changed by changing Selection Mode in panel. <code>Multiple selection</code> also can be enabled by <code>Enable MultipleSelection.</code>
+    This sample illustrates the selection feature in chart. To select a specific point, click  the point. The selection mode can be changed by changing Selection Mode in panel. <code>Multiple Selection</code> also can be enabled by <code>Enable Multiple Selection.</code>
 </p>
 }
 @section Description{
@@ -87,7 +179,7 @@
     Tap to select a point or series, double tap and drag to enable rectangular selection in touch enabled devices.
 </p>
 <p>
-    Chart supports five mode of selection which can be set using
+    Chart supports seven mode of selection which can be set using
     <code>SelectionMode</code> property.
 </p>
 <ul>
@@ -109,6 +201,15 @@
     <li>
         <code>DragY</code> - Rectangular selection with respect to vertical axis.
     </li>
+    <li>
+        <code>Lasso</code> - Select free form of selection area points.
+    </li>
 </ul>
 <br>
 }
+@section Title{
+                    <title>ASP.NET MVC Chart Selection Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Selection in ASP.NET MVC Chart Control</h1>
+                }

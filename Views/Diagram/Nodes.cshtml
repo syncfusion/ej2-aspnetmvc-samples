@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
@@ -86,10 +86,9 @@
     </style>
     <script>
         function getNodeDefaults(node, diagram) {
-            var obj = {};
-            obj.shape = { shape: 'Ellipse' };
-            obj.style = { fill: '#37909A', strokeColor: '#024249' };
-            return obj;
+            node.shape = { shape: 'Ellipse' };
+            node.style = { fill: '#37909A', strokeColor: '#024249' };
+            return node;
         }
         function getConnectorDefaults(connector, diagram) {
             connector.targetDecorator.style = { fill: '#024249', strokeColor: '#024249' };
@@ -235,8 +234,8 @@
     </p>
 }
 @section Meta{
-    <meta name="description" content="This demo for EJ2 ASP.NET MVC Diagram control shows the stages of a software development cycle using circular flow diagram with node customization options."/>
-}
+                    <meta name="description" content="This example demonstrates the Nodes in ASP.NET MVC Diagram control. Explore here for more details."/>
+                }
 @section Description{
     <p>
         This example shows how to add nodes to a diagram control and how to customize the appearance of the nodes. The
@@ -253,3 +252,10 @@
     </p>
     <br>
 }
+
+@section Title{
+                    <title>ASP.NET MVC Diagram Nodes Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Nodes in ASP.NET MVC Diagram Control</h1>
+                }

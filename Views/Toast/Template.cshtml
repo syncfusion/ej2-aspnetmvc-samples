@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Notifications;
 @using Syncfusion.EJ2.DropDowns;
 @section ControlsSection{
@@ -6,16 +6,16 @@
         <div class="control_wrapper">
             <div class="row">
                 <div id="reminder">
-                    <button class="e-btn" id="toast_mail_remainder"> Mail Reminder</button>
-                    <button class="e-btn" id="Alarm_turn_on"> Turn on Alarm</button>
+                    @Html.EJS().Button("toast_mail_remainder").CssClass("e-btn").Content("Mail Reminder").Render()
+                    @Html.EJS().Button("Alarm_turn_on").CssClass("e-btn").Content("Turn on Alarm").Render()
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                    @Html.EJS().Toast("toast_custom").NewestOnTop(true).ShowCloseButton(true).TimeOut(0).Position(p => p.X("Right")).Render()
+                    @Html.EJS().Toast("toast_custom").NewestOnTop(true).ShowCloseButton(true).Created("customCreated").TimeOut(0).Position(p => p.X("Right")).Render()
                 </div>
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-                    @Html.EJS().Toast("toast_template").ExtendedTimeout(0).TimeOut(120000).Open("onOpenToast").Close("onToastClose").BeforeOpen("onToastBeforeOpen").Render()
+                    @Html.EJS().Toast("toast_template").ExtendedTimeout(0).TimeOut(120000).Created("templateCreated").Open("onOpenToast").Close("onToastClose").BeforeOpen("onToastBeforeOpen").Render()
                     <div id="toast_template_target">
                     </div>
                 </div>
@@ -67,13 +67,11 @@
         </div>
     </script>
     <script type="text/javascript">
-        var toastData = [
-            { from: ' Anjolie Stokes', subject: 'Networking Referral', image: { url: '@Url.Content("~/Content/Toast/resource/laura.png")' }, },
+        var toastData = [{ from: ' Anjolie Stokes', subject: 'Networking Referral', image: { url: '@Url.Content("~/Content/Toast/resource/laura.png")' }, },
             { from: ' Ila Russo', subject: 'Business dinner invitation', image: { url: '@Url.Content("~/Content/Toast/resource/janat.png")' }, },
             { from: ' Camden Mcmillan', subject: 'Reference Request - Cameran Hester', image: { url: '@Url.Content("~/Content/Toast/resource/michael.png")' }, },
             { from: ' Chase Solomon', subject: 'New business relationship confirmation', image: { url: ' @Url.Content("~/Content/Toast/resource/janat.png")' }, },
-            {
-                from: ' Inga Scott', subject: 'Application for Sales Associate', image: { url: '@Url.Content("~/Content/Toast/resource/michael.png")' },
+            { from: ' Inga Scott', subject: 'Application for Sales Associate', image: { url: '@Url.Content("~/Content/Toast/resource/michael.png")' },
             }];
         var toastFlag = 0;
 
@@ -81,10 +79,9 @@
         var cardTemplateFn = ej.base.compile(document.getElementById('toastEmail_template').innerHTML.trim());
 
         setTimeout(function () {
-            var toastObjEmail = document.getElementById('toast_custom').ej2_instances[0];
-            toastObjEmail.animation = { hide: { effect: 'SlideRightOut' }, show: { effect: 'SlideRightIn' } };
-            toastObjEmail.target = document.body;
-            toastObjEmail.show({ template: cardTemplateFn(toastData[toastFlag])[0].outerHTML });
+            customObj.animation = { hide: { effect: 'SlideRightOut' }, show: { effect: 'SlideRightIn' } };
+            customObj.target = document.body;
+            customObj.show({ template: cardTemplateFn(toastData[toastFlag])[0].outerHTML });
             ++toastFlag;
         }, 500);
 
@@ -94,25 +91,21 @@
 
         document.onclick = function (e) {
             var closestEle = ej.base.closest(e.target, '.e-toast-container');
-            var toastObjEmail = document.getElementById('toast_custom').ej2_instances[0];
-            var toastObj = document.getElementById('toast_template').ej2_instances[0];
-            if (e.target !== alarm && e.target !== btnEle && closestEle !== toastObj.element && closestEle !== toastObjEmail.element) {
-                toastObj.hide('All');
-                toastObjEmail.hide('All');
+            if (e.target !== alarm && e.target !== btnEle && closestEle !== templateObj.element && closestEle !== customObj.element) {
+                templateObj.hide('All');
+                customObj.hide('All');
             }
         };
 
         btnEle.onclick = function () {
-            var toastObjEmail = document.getElementById('toast_custom').ej2_instances[0];
-            toastObjEmail.show({ template: cardTemplateFn(toastData[toastFlag])[0].outerHTML });
+            customObj.show({ template: cardTemplateFn(toastData[toastFlag])[0].outerHTML });
             ++toastFlag;
             if (toastFlag === (toastData.length)) {
                 toastFlag = 0;
             }
         };
         alarm.onclick = function () {
-            var toastObj = document.getElementById('toast_template').ej2_instances[0];
-            toastObj.show();
+            templateObj.show();
         };
         var listObj = new ej.dropdowns.DropDownList({
             // set the placeholder to DropDownList input element
@@ -123,30 +116,27 @@
         });
 
         function listChange(e) {
-            var toastObj = document.getElementById('toast_template').ej2_instances[0];
             snoozeFlag = true;
-            toastObj.hide();
+            templateObj.hide();
         }
 
         // Toast Open Event Function
         function onOpenToast(e) {
             var dismisBtn = document.getElementById('dismiss');
             var snooze = document.getElementById('snooze');
-            var toastObj = document.getElementById('toast_template').ej2_instances[0];
             snooze.onclick = function () {
                 snoozeFlag = true;
-                toastObj.hide();
+                templateObj.hide();
             };
             dismisBtn.onclick = function () {
-                toastObj.hide();
+                templateObj.hide();
             };
         }
         // Toast Close Event Function
         function onToastClose(e) {
-            var toastObj = document.getElementById('toast_template').ej2_instances[0];
             alarm.style.display = 'inline-block';
             if (snoozeFlag) {
-                toastObj.show({ timeOut: (parseInt(listObj.value.toString(), 10) * 60000) });
+                templateObj.show({ timeOut: (parseInt(listObj.value.toString(), 10) * 60000) });
                 snoozeFlag = false;
             }
         }
@@ -157,12 +147,16 @@
         }
 
         setTimeout(function () {
-            var toastObj = document.getElementById('toast_template').ej2_instances[0];
-            toastObj.target = !ejs.base.Browser.isDevice ? document.body : '#toast_template_target';
-            toastObj.position = !ejs.base.Browser.isDevice ? { X: 'Right', Y: 'Bottom' } : { X: 'Center', Y: 'Top' };
-            toastObj.show({ template: document.getElementById('template_toast_ele').innerHTML });
+            templateObj.target = !ejs.base.Browser.isDevice ? document.body : '#toast_template_target';
+            templateObj.position = !ejs.base.Browser.isDevice ? { X: 'Right', Y: 'Bottom' } : { X: 'Center', Y: 'Top' };
+            templateObj.show({ template: document.getElementById('template_toast_ele').innerHTML });
         }, 500);
-
+        function templateCreated() {
+            templateObj = this;
+    }
+    function customCreated() {
+        customObj = this;
+    }
     </script>
     <style>
         @@font-face {
@@ -343,21 +337,21 @@
 @section Description{
 
 
-  <div id="description">
-    <p>This sample illustrates the way to display the template content on the toast. With the usage of Template, the user can format and structure the HTML content to be displayed on the toast as per their application needs.</p><br />
-    <ul>
-        <li>
-            Alarm toast is integrated with button and drop-down list that allows to set timeOut for toast and close it.
-        </li>
-        <li>
-            Dynamic toast opened based on the data source given to add mail reminder notifications and it can be hidden using the close button available.
-        </li>
-    </ul>
-    <p>
-        More information about Toast can be found in this
-        <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/toast/getting-started-asp-mvc/" target="_blank"> documentation section</a>.
-    </p>
-</div>
+    <div id="description">
+        <p>This sample illustrates the way to display the template content on the toast. With the usage of Template, the user can format and structure the HTML content to be displayed on the toast as per their application needs.</p><br />
+        <ul>
+            <li>
+                Alarm toast is integrated with button and drop-down list that allows to set timeOut for toast and close it.
+            </li>
+            <li>
+                Dynamic toast opened based on the data source given to add mail reminder notifications and it can be hidden using the close button available.
+            </li>
+        </ul>
+        <p>
+            More information about Toast can be found in this
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/toast/getting-started/" target="_blank"> documentation section</a>.
+        </p>
+    </div>
 
 
 }
@@ -365,9 +359,13 @@
 @*custom code start*@
 
 @section Meta{
-
-    <meta name="description" content="The sample demonstrates how to design a reminder application by customizing the content of Toast control using an HTML template in ASP.NET MVC platform." />
-
-}
+                    <meta name="description" content="This example demonstrates the Template in ASP.NET MVC Toast control. Explore here for more details."/>
+                }
 
 @*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Toast Template Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Template in ASP.NET MVC Toast Control</h1>
+                }

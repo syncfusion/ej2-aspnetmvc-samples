@@ -1,4 +1,3 @@
-﻿
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Maps
 @section ControlsSection{
@@ -53,10 +52,6 @@
                             imageUrl: '@Url.Content("~/Content/Maps/ballon.png")',
                             height: 20,
                             width: 20,
-                            offset: {
-                                y: -10,
-                                x: 0
-                            },
                             tooltipSettings: {
                                 visible: true,
                                 valuePath: 'name'
@@ -65,9 +60,6 @@
                         },
                         {
                             visible: true,
-                            tooltipSettings: {
-                                visible: true
-                            },
                             template: '<div id="marker1" class="markerTemplate">Asia' +
                                 '</div>',
                             dataSource: [
@@ -139,8 +131,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Maps control visualizes the continents in the world by rendering those in a map layer." />
-}
+                    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -158,3 +150,10 @@
 }
 
 
+
+@section Title{
+                    <title>ASP.NET MVC Maps Default Functionalities Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC Maps Control</h1>
+                }

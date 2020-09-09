@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
@@ -169,7 +169,6 @@
             }
             return finalData;
         }
-        @* custom code start *@
         function generateEvents(scheduleObj) {
             var collections = [];
             var dataCollections = [
@@ -216,7 +215,6 @@
             var filteredCollection = filterByFare(collections, scheduleObj);
             return filteredCollection;
         }
-        @* custom code end *@
     </script>
     <style type="text/css">
         .e-tooltip-wrap.e-schedule-event-tooltip .airline-flex-row {
@@ -460,8 +458,8 @@
 }
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Scheduler control shows how to customize the scheduler to showcase it as an Airfare calendar." />
-}
+                    <meta name="description" content="This example demonstrates the Fare Calendar in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -494,3 +492,9 @@
         <code>Template</code> option to display the flight details in a customized style.
     </p>
 }
+@section Title{
+                    <title>ASP.NET MVC Scheduler Fare Calendar Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Fare Calendar in ASP.NET MVC Scheduler Control</h1>
+                }

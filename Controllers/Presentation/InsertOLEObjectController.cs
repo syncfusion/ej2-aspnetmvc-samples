@@ -27,47 +27,68 @@ namespace EJ2MVCSampleBrowser.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult InsertOLEObject(string Browser)
+        public ActionResult InsertOLEObject(string Browser, string button)
         {
-            //New Instance of PowerPoint is Created.[Equivalent to launching MS PowerPoint with no slides].
-            IPresentation presentation = Presentation.Create();
+            if (button == "Create Presentation")
+            {
+                //New Instance of PowerPoint is Created.[Equivalent to launching MS PowerPoint with no slides].
+                IPresentation presentation = Presentation.Create();
 
-            ISlide slide = presentation.Slides.Add(SlideLayoutType.TitleOnly);
+                ISlide slide = presentation.Slides.Add(SlideLayoutType.TitleOnly);
 
-            IShape titleShape = slide.Shapes[0] as IShape;
-            titleShape.Left = 0.92 * 72;
-            titleShape.Top = 0.4 * 72;
-            titleShape.Width = 11.5 * 72;
-            titleShape.Height = 1.01 * 72;
-            titleShape.TextBody.AddParagraph("Ole Object Demo");
-            titleShape.TextBody.Paragraphs[0].Font.Bold = true;
-            titleShape.TextBody.Paragraphs[0].HorizontalAlignment = HorizontalAlignmentType.Center;
+                IShape titleShape = slide.Shapes[0] as IShape;
+                titleShape.Left = 0.65 * 72;
+                titleShape.Top = 0.24 * 72;
+                titleShape.Width = 11.5 * 72;
+                titleShape.Height = 1.45 * 72;
+                titleShape.TextBody.AddParagraph("Ole Object");
+                titleShape.TextBody.Paragraphs[0].Font.Bold = true;
+                titleShape.TextBody.Paragraphs[0].HorizontalAlignment = HorizontalAlignmentType.Left;
 
-            IShape heading = slide.Shapes.AddTextBox(100, 100, 100, 100);
-            heading.Left = 3.2 * 72;
-            heading.Top = 1.51 * 72;
-            heading.Width = 1.86 * 72;
-            heading.Height = 0.71 * 72;
-            heading.TextBody.AddParagraph("MS Excel Object");
-            heading.TextBody.Paragraphs[0].Font.Italic = true;
-            heading.TextBody.Paragraphs[0].Font.Bold = true;
-            heading.TextBody.Paragraphs[0].Font.FontSize = 18;
+                IShape heading = slide.Shapes.AddTextBox(100, 100, 100, 100);
+                heading.Left = 0.84 * 72;
+                heading.Top = 1.65 * 72;
+                heading.Width = 2.23 * 72;
+                heading.Height = 0.51 * 72;
+                heading.TextBody.AddParagraph("MS Word Object");
+                heading.TextBody.Paragraphs[0].Font.Italic = true;
+                heading.TextBody.Paragraphs[0].Font.Bold = true;
+                heading.TextBody.Paragraphs[0].Font.FontSize = 18;
 
-            string excelPath = "OleTemplate.xlsx";
-            //Get the excel file as stream
-            Stream excelStream = new FileStream(ResolveApplicationDataPath(excelPath), FileMode.Open);
-            string imagePath = "OlePicture.png";
-            //Image to be displayed, This can be any image
-            Stream imageStream = new FileStream(ResolveApplicationImagePath(imagePath), FileMode.Open);
+                string mswordPath = "OleTemplate.docx";
+                //Get the word file as stream
+                Stream wordStream = new FileStream(ResolveApplicationDataPath(mswordPath), FileMode.Open);
+                string imagePath = "OlePicture.png";
+                //Image to be displayed, This can be any image
+                Stream imageStream = new FileStream(ResolveApplicationImagePath(imagePath), FileMode.Open);
 
-            IOleObject oleObject = slide.Shapes.AddOleObject(imageStream, "Excel.Sheet.12", excelStream);
-			//Set size and position of the ole object
-            oleObject.Left = 3.29 * 72;
-            oleObject.Top = 2.01 * 72;
-            oleObject.Width = 6.94 * 72;
-            oleObject.Height = 5.13 * 72;
-            return new PresentationResult(presentation, "InsertOLEObject.pptx", HttpContext.ApplicationInstance.Response);
-           
+                IOleObject oleObject = slide.Shapes.AddOleObject(imageStream, "Word.Document.12", wordStream);
+                //Set size and position of the ole object
+                oleObject.Left = 4.53 * 72;
+                oleObject.Top = 0.79 * 72;
+                oleObject.Width = 4.26 * 72;
+                oleObject.Height = 5.92 * 72;
+                return new PresentationResult(presentation, "InsertOLEObject.pptx", HttpContext.ApplicationInstance.Response);
+            }
+            else
+            {
+                string file = ResolveApplicationDataPath("EmbeddedOleObject.pptx");
+                IPresentation pptxDoc = Presentation.Open(file);
+                //Gets the first slide of the Presentation
+                ISlide slide = pptxDoc.Slides[0];
+                //Gets the Ole Object of the slide
+                IOleObject oleObject = slide.Shapes[2] as IOleObject;
+                //Gets the file data of embedded Ole Object.
+                byte[] array = oleObject.ObjectData;
+                //Gets the file Name of OLE Object
+                string outputFile = oleObject.FileName;
+
+                //Save the extracted Ole data into file system.
+                MemoryStream memoryStream = new MemoryStream(array);               
+                pptxDoc.Close();
+                return File(memoryStream, "application/word", outputFile);               
+            }
+
         }
     }
 }

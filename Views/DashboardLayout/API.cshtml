@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @model EJ2MVCSampleBrowser.Controllers.DashboardLayoutController.spacingModel
 @section ControlsSection{
     <div>
@@ -71,9 +71,9 @@
             dashboardObject.addPanel(panel[0]);
         };
     });
-    function valueChange() {
+    function valueChange(args) {
         var dashboardObject = document.getElementById('dynamicLayout').ej2_instances[0];
-        dashboardObject.cellSpacing = [parseInt(this.element.value, 10), parseInt(this.element.value, 10)];
+        dashboardObject.cellSpacing = [parseInt(args.value, 10), parseInt(args.value, 10)];
     }
 
     function onChange(args) {
@@ -213,10 +213,21 @@
 @section Description{
     <div id="description">
         <p>
-            This sample allows to configure the <code>cellSize</code>, <code>cellSpacing</code>, <code>allowFloating</code> and
-            <code>allowPushing</code> properties of the dashboard layout component.
+            This sample allows to configure the <code><a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.Layouts.DashboardLayout~CellSpacing.html" target="_blank">cellSpacing</a></code>, 
+            <code><a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.Layouts.DashboardLayout~AllowFloating.html" target="_blank">allowFloating</a></code> and
+            <code><a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.Layouts.DashboardLayout~AllowResizing.html" target="_blank">allowResizing</a></code> properties of the dashboard layout component.
         </p>
     </div>
 
 }
 
+
+@section Title{
+                    <title>ASP.NET MVC Dashboard Layout API Example - Syncfusion Demos </title> 
+                }
+@section Meta{
+                    <meta name="description" content="This example demonstrates the API in ASP.NET MVC Dashboard Layout control. Explore here for more details."/>
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of API in ASP.NET MVC Dashboard Layout Control</h1>
+                }

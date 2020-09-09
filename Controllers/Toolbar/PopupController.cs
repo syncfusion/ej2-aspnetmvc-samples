@@ -24,8 +24,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Toolbar
             popItems.Add(new ToolbarItem { PrefixIcon = "e-bullets-icon tb-icons", TooltipText = "Bullets", Text = "Bullets", Overflow = OverflowOption.Show });
             popItems.Add(new ToolbarItem { PrefixIcon = "e-numbering-icon tb-icons", TooltipText = "Numbering", Text = "Numbering", Overflow = OverflowOption.Show });
             popItems.Add(new ToolbarItem { Type = ItemType.Separator });
-            popItems.Add(new ToolbarItem { PrefixIcon = "e-undo-icon tb-icons", TooltipText = "Undo", Text = "Undo" });
-            popItems.Add(new ToolbarItem { PrefixIcon = "e-redo-icon tb-icons", TooltipText = "Redo", Text = "Redo" });
+            popItems.Add(new ToolbarItem { PrefixIcon = "e-tbar-undo-icon tb-icons", TooltipText = "Undo", Text = "Undo" });
+            popItems.Add(new ToolbarItem { PrefixIcon = "e-tbar-redo-icon tb-icons", TooltipText = "Redo", Text = "Redo" });
             popItems.Add(new ToolbarItem { Type = ItemType.Separator });
             popItems.Add(new ToolbarItem { PrefixIcon = "e-alignleft-icon tb-icons", TooltipText = "Align-Left", Text = "Left", ShowTextOn = DisplayMode.Overflow, Overflow = OverflowOption.Show });
             popItems.Add(new ToolbarItem { PrefixIcon = "e-alignright-icon tb-icons", TooltipText = "Align-Right", Text = "Right", ShowTextOn = DisplayMode.Overflow, Overflow = OverflowOption.Show });

@@ -1,8 +1,7 @@
-﻿
 @section ControlsSection{
 
 <div class="control-section">
-    @{Html.BeginForm("AdventureCycle", "Pdf", FormMethod.Post);
+    @{Html.BeginForm("AdventureCycle", "PDF", FormMethod.Post);
         {
            <div class="tablediv" style="font-size:14px">
                 <div class="rowdiv">
@@ -36,33 +35,27 @@
                                                 </tr>
                                                 <tr>
                                                     <td align="left">
-                                                        <input id="header" type="checkbox" name="Header" checked="checked" value="header" />
-                                                        <text for="Hader row">Header row</text>
+                                                        @Html.EJS().CheckBox("header").Name("Header").Value("header").Checked(true).Label("Header row").Render()
                                                     </td>
                                                     <td align="left">
-                                                        <input id="bandedrow" type="checkbox" name="Bandedrow" checked="checked" value="bandedrow" />
-                                                        <text for="Banded row"> Banded row</text>
+                                                        @Html.EJS().CheckBox("bandedrow").Name("Bandedrow").Value("bandedrow").Checked(true).Label("Banded row").Render()
                                                     </td>
                                                     <td align="left">
-                                                        <input id="firstcolumn" type="checkbox" name="Firstcolumn" value="firstcolumn" />
-                                                        <text for="First column">First column</text>
+                                                        @Html.EJS().CheckBox("firstcolumn").Name("Firstcolumn").Value("firstcolumn").Label("First column").Render()
                                                     </td>
 
 
                                                 </tr>
                                                 <tr>
                                                     <td align="left">
-                                                        <input id="lastrow" type="checkbox" name="Lastrow" value="lastrow" />
-                                                        <text for="Last row">Last row</text>
+                                                        @Html.EJS().CheckBox("lastrow").Name("Lastrow").Value("lastrow").Label("Last row").Render()
                                                     </td>
 
                                                     <td align="left">
-                                                        <input id="bandedcolumn" type="checkbox" name="Bandedcolumn" value="bandedcolumn" />
-                                                        <text for="Banded column">Banded column</text>
+                                                        @Html.EJS().CheckBox("bandedcolumn").Name("Bandedcolumn").Value("bandedcolumn").Label("Banded column").Render()
                                                     </td>
                                                     <td align="left">
-                                                        <input id="lastcolumn" type="checkbox" name="Lastcolumn" value="lastcolumn" />
-                                                        <text for="Last column">Last column</text>
+                                                        @Html.EJS().CheckBox("lastcolumn").Name("Lastcolumn").Value("lastcolumn").Label("Last column").Render()
                                                     </td>
 
                                                 </tr>
@@ -95,8 +88,8 @@
 </div>
 }
 @section Meta{
-    <meta name="description" content="Example [C#] to simple table report in PDF document in ASP.NET MVC using Syncfusion .NET PDF library."/>
-}
+                    <meta name="description" content="This example demonstrates the Adventure Cycle Works in ASP.NET MVC PDF control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description" style="margin-top: 10px">
         More information about the tables can be found in this documentation<a href="https://help.syncfusion.com/file-formats/pdf/working-with-tables"> section.</a>
@@ -105,3 +98,10 @@
 
 
 
+
+@section Title{
+                    <title>ASP.NET MVC PDF Adventure Cycle Works Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Adventure Cycle Works in ASP.NET MVC PDF Control</h1>
+                }

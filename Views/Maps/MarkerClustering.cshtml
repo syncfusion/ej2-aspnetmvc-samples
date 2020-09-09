@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Maps
 @section ControlsSection{
     <style>
@@ -26,48 +26,15 @@
     </div>
     <div class="control-section">
         <div id="outer" style="width:100%">
-            @Html.EJS().Maps("container").UseGroupingSeparator(true).Format("n").Load("load").TitleSettings(title => title.Text("Top 50 largest cities in the World").
-      TextStyle(new MapsFont { Size = "16px" })).ZoomSettings(new Syncfusion.EJ2.Maps.MapsZoomSettings
-      {
-          Enable = true
-      }).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer>
-         {
-                    new Syncfusion.EJ2.Maps.MapsLayer
-                    {
-                        ShapeSettings = new MapsShapeSettings
-                        {
-                            Fill = "#C1DFF5"
-                        },
-                        ShapeData = ViewBag.shapeData,
-                        MarkerClusterSettings = new MapsMarkerClusterSettings
-                        {
-                            AllowClustering = true,
-                            Shape = MarkerType.Image,
-                            Height = 40,
-                            Width = 40,
-                        },
-                        MarkerSettings  = new List<Syncfusion.EJ2.Maps.MapsMarker>
-                        {
-                            new Syncfusion.EJ2.Maps.MapsMarker
-                            {
-                                Visible = true,
-                                DataSource = ViewBag.ClusterData,
-                                Shape=MarkerType.Image,
-                                TooltipSettings = new MapsTooltipSettings {
-                                    Template = "#template",
-                                    Visible = true,
-                                    ValuePath= "area",
-                                },
-                                Height= 20,
-                                Width= 20,
-                                AnimationDuration= 0,
-                            }
-                        }}}).Render()
-                    <div style="float: right; margin-right: 10px;">
-                        Source:
-                        <a href="http://www.citymayors.com/statistics/largest-cities-area-125.html"
-                           target="_blank">www.citymayors.com</a>
-                    </div>
+            @Html.EJS().Maps("container").Width("900px").UseGroupingSeparator(true).Format("n").Load("load").TitleSettings(title => title.Text("Top 50 largest cities in the World").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).ZoomSettings(zoom => zoom.Enable(true)).Layers(layer =>
+            {
+            layer.MarkerSettings(ViewBag.markerSettings).ShapeSettings(new MapsShapeSettings { Fill = "#C3E6ED" }).ShapeData(ViewBag.shapeData).MarkerClusterSettings(new MapsMarkerClusterSettings { AllowClustering= true, Height=40, Width=40, Shape =MarkerType.Image }).Add();
+            }).Render()
+            <div style="float: right; margin-right: 10px;">
+                Source:
+                <a href="http://www.citymayors.com/statistics/largest-cities-area-125.html"
+                   target="_blank">www.citymayors.com</a>
+            </div>
         </div>
     </div>
     <script>
@@ -112,8 +79,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Maps control shows the top 50 cities in the world by displaying the markers in their locations." />
-}
+                    <meta name="description" content="This example demonstrates the Marker clustering in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -133,3 +100,10 @@
         </p>
     </div>
 }
+
+@section Title{
+                    <title>ASP.NET MVC Maps Marker clustering Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Marker clustering in ASP.NET MVC Maps Control</h1>
+                }

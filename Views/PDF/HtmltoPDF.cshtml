@@ -1,16 +1,5 @@
-﻿
 <script language="javascript" type="text/javascript">
-    function ConvertType(type) {
-        if (type == 'metafile') {
-            document.getElementById('chkPDFA').disabled = false;
-            document.getElementById('chkJavaScript').disabled = false;
-            document.getElementById('chktextBreak').disabled = false;
-            document.getElementById('chkHyperlink').disabled = false;
-            document.getElementById('chkImageBreak').disabled = false;
-            document.getElementById('chkPageBreak').disabled = false;
-            document.getElementById('chkTag').disabled = false;
-        }
-        else {
+    function ConvertType() {
             document.getElementById('chkPDFA').disabled = true;
             document.getElementById('chkJavaScript').disabled = true;
             document.getElementById('chktextBreak').disabled = true;
@@ -19,12 +8,11 @@
             document.getElementById('chkPageBreak').disabled = true;
             document.getElementById('chkTag').disabled = true;
         }
-    }
 </script>
 @section ControlsSection{
 
     <div class="control-section">
-        @{Html.BeginForm("HtmltoPDF", "Pdf", FormMethod.Post);
+        @{Html.BeginForm("HtmltoPDF", "PDF", FormMethod.Post);
             {
                 <div class="tablediv" style="font-size:14px">
                     <div class="sample-panel ui-tabs-panel ui-widget-content ui-corner-bottom" id="sample">
@@ -63,19 +51,18 @@
                                                         <td align="left" style="width: 50%">
                                                             <div style="border: solid 1px #788DB3; padding: 10px;">
                                                                 <span id="RadioButtonList1">
-                                                                    <span style="margin-right: 10px">
-                                                                        <input type="radio" checked="checked" value="Metafile" onclick="ConvertType('metafile')"
-                                                                               name="RadioButtonList1" id="RadioButtonList1_0"><text for="RadioButtonList1_0">Metafile</text>
-                                                                    </span><input type="radio" onclick="ConvertType('bitmap')" value="Bitmap" name="RadioButtonList1"
-                                                                                  id="RadioButtonList1_1"><text for="RadioButtonList1_1">Bitmap</text>
+                                                                            <span style="margin-right: 10px">
+                                                                                @Html.EJS().RadioButton("RadioButtonList1_0").Label("Metafile").Name("RadioButtonList1").Value("Metafile").Checked(true).Render()
+                                                                            </span>
+                                                                                @Html.EJS().RadioButton("RadioButtonList1_1").Label("Bitmap").Name("RadioButtonList1").Value("Bitmap").Change("ConvertType").Render()
                                                                 </span>
                                                             </div>
                                                         </td>
                                                         <td align="left">
                                                             <div style="border: solid 1px #788DB3; padding: 10px; ">
-                                                                <span style="display: inline-block; width: 273px;">
-                                                                    <input type="checkbox" checked="checked" name="chkPDFA" id="chkPDFA"><text for="chkPDFA">PDF/A1-B</text>
-                                                                </span>
+                                                                        <span style="display: inline-block; width: 273px;">
+                                                                            @Html.EJS().CheckBox("chkPDFA").Name("chkPDFA").Checked(true).Label("PDF/A1-B").Render()
+                                                                        </span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -92,30 +79,21 @@
                                                                         <tr>
                                                                             <td valign="middle" align="left" style="padding-bottom: 10px">
                                                                                 <span style="display: inline-block; width: 165px; margin-left: 10px">
-                                                                                    <input type="checkbox" name="chkJavaScript" id="chkJavaScript"><text for="chkJavaScript">
-                                                                                        Enable
-                                                                                        JavaScript
-                                                                                    </text>
+                                                                                    @Html.EJS().CheckBox("chkJavaScript").Name("chkJavaScript").Label("Enable JavaScript").Render()                                                               
                                                                                 </span> <span style="display: inline-block; width: 165px;">
-                                                                                    <input type="checkbox" name="chktextBreak" id="chktextBreak"><text for="chktextBreak">
-                                                                                        Split
-                                                                                        TextLines
-                                                                                    </text>
+                                                                                    @Html.EJS().CheckBox("chktextBreak").Name("chktextBreak").Label("Split TextLines").Render()                                                                                    
                                                                                 </span> <span style="display: inline-block; width: 165px;">
-                                                                                    <input type="checkbox" checked="checked" name="chkHyperlink" id="chkHyperlink"><text for="chkHyperlink">Enable Hyperlinks</text>
+                                                                                    @Html.EJS().CheckBox("chkHyperlink").Name("chkHyperlink").Checked(true).Label("Enable Hyperlinks").Render()
                                                                                 </span>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td valign="middle" align="left">
                                                                                 <span style="display: inline-block; width: 165px; margin-left: 10px">
-                                                                                    <input type="radio" checked="checked" value="chkImageBreak" name="group1" id="chkImageBreak"><text for="chkImageBreak">Split Images</text>
+                                                                                    @Html.EJS().RadioButton("chkImageBreak").Label("Split Images").Name("group1").Value("chkImageBreak").Checked(true).Render()                  
                                                                                 </span> <span style="display: inline-block;
                                                                                     width: 165px;">
-                                                                                    <input type="radio" value="chkPageBreak" name="group1" id="chkPageBreak"><text for="chkPageBreak">
-                                                                                        Activate
-                                                                                        PageBreak
-                                                                                    </text>
+                                                                                    @Html.EJS().RadioButton("chkPageBreak").Label("Activate PageBreak").Name("group1").Value("chkPageBreak").Render() 
                                                                                 </span>
                                                                             </td>
                                                                         </tr>
@@ -194,9 +172,9 @@
                                                                             <td valign="middle" style="padding-left: 20px; width: 50%;">
                                                                                 <span style="margin-right: 5px;" id="label4">Orientation: </span><span id="RadioButtonList2">
                                                                                     <span style="margin-right: 10px">
-                                                                                        <input type="radio" checked="checked" value="Portrait" name="RadioButtonList2" id="RadioButtonList2_0"><text for="RadioButtonList2_0">Portrait</text>
-                                                                                    </span><input type="radio" value="Landscape"
-                                                                                                  name="RadioButtonList2" id="RadioButtonList2_1"><text for="RadioButtonList2_1">Landscape</text>
+                                                                                @Html.EJS().RadioButton("RadioButtonList2_0").Label("Portrait").Name("RadioButtonList2").Value("Portrait").Checked(true).Render()                               
+                                                                                    </span>
+                                                                                @Html.EJS().RadioButton("RadioButtonList2_1").Label("Landscape").Name("RadioButtonList2").Value("Landscape").Render()           
                                                                                 </span>
                                                                             </td>
                                                                         </tr>
@@ -212,9 +190,9 @@
                                                                             </td>
                                                                             <td style="padding-left: 20px; width: 50%;">
                                                                                 <span style="margin-right: 20px">
-                                                                                    <input type="checkbox" name="CheckBox2" id="CheckBox2"><text for="CheckBox2">Show Header</text>
+                                                                                    @Html.EJS().CheckBox("CheckBox2").Name("CheckBox2").Label("Show Header").Render()
                                                                                 </span>
-                                                                                <input type="checkbox" name="CheckBox3" id="CheckBox3"><text for="CheckBox3">Show Footer</text>
+                                                                                @Html.EJS().CheckBox("CheckBox3").Name("CheckBox3").Label("Show Footer").Render()
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -254,10 +232,16 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="Example [C#] to convert HTML to PDF in ASP.NET MVC using Syncfusion .NET PDF library."/>
-}
+                    <meta name="description" content="This example demonstrates the HTML to PDF in ASP.NET MVC PDF control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description" style="margin-top: 10px">
         More information about the HTML to PDF document can be found in this documentation <a href="https://help.syncfusion.com/file-formats/pdf/converting-html-to-pdf">section.</a>
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC PDF HTML to PDF Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of HTML to PDF in ASP.NET MVC PDF Control</h1>
+                }

@@ -1,0 +1,94 @@
+@using Syncfusion.EJ2
+
+@{
+    ViewBag.Title = "HeaderTemplate";
+}
+
+@section ControlsSection{
+
+<div class="control-section">
+    @(Html.EJS().Gantt("HeaderTemplate").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).Resources((IEnumerable<object>)ViewBag.Resources).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName"))
+         .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+          .Dependency("Predecessor").Child("SubTasks").ResourceInfo("ResourceId"))
+         .Columns(col =>
+         {
+             col.Field("TaskName").HeaderText("Job Name").HeaderTemplate("#projectName").Width(250).Add();
+             col.Field("StartDate").HeaderTemplate("#dateTemplate").Add();
+             col.Field("ResourceId").HeaderText("Resources").HeaderTemplate("#resource").Width(150).Add();
+             col.Field("Duration").HeaderTemplate("#durationTemplate").Add();
+             col.Field("Progress").HeaderTemplate("#progressTemplate").Add();
+         }).SplitterSettings(ss => ss.ColumnIndex(4)).LabelSettings(ls => ls.LeftLabel("TaskName"))
+         .ProjectStartDate("03/24/2019")
+         .ProjectEndDate("07/06/2019")
+         .Render()
+    )
+</div>
+    <script type="text/x-template" id="resource">
+        <div>
+            <div>
+                <img src="../Content/gantt/images/Resources.png" width="20" height="20" class="e-image" />
+                <span>&nbsp;Resources</span>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-template" id="projectName">
+        <div>
+            <div>
+                <img src="../Content/gantt/images/Task name.png" width="20" height="20" class="e-image" />
+                <span>&nbsp;Task Name</span>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-template" id="dateTemplate">
+        <div>
+            <div>
+                <img src="../Content/gantt/images/Start date.png" width="20" height="20" class="e-image" />
+                <span>&nbsp;Start Date</span>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-template" id="durationTemplate">
+        <div>
+            <div>
+                <img src="../Content/gantt/images/Duration.png" width="20" height="20" class="e-image" />
+                <span>&nbsp;Duration</span>
+            </div>
+        </div>
+    </script>
+    <script type="text/x-template" id="progressTemplate">
+        <div>
+            <div>
+                <img src="../Content/gantt/images/Progress.png" width="20" height="20" class="e-image" />
+                <span>&nbsp;Progress</span>
+            </div>
+        </div>
+    </script>
+    }
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the Gantt header template feature. In this sample, custom icons have been shown in the column headers.</p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Header Template in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            The Gantt provides a way to define a custom element in header element. The <code>Columns -> HeaderTemplate</code> property accepts either string or HTML element`s ID value,
+            which will be used as the template for the header cell.
+        </p>
+        <p>In this demo, we have rendered the customized template for all column headers.</p>
+        <p>More information about the header template can be found in documentation section.</p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Gantt Header Template Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Header Template in ASP.NET MVC Gantt Control</h1>
+                }

@@ -1,6 +1,6 @@
-﻿@section ControlsSection{
+@section ControlsSection{
     <div class="control-section">
-        @{Html.BeginForm("Booklet", "Pdf", FormMethod.Post);
+        @{Html.BeginForm("Booklet", "PDF", FormMethod.Post);
             {
                 <div style="font-size:14px">
                     <table>
@@ -17,14 +17,13 @@
                 </p>
 
                 <div class="tablediv" style="font-size:14px">
-                    <div>                       
+                    <div>
                         <label style="font-weight:normal"> Page Width: &nbsp;&nbsp;</label>
                         <input id="pagewidth" type="text" class="e-input" value="595" name="PageWidth" style="width:150px" />
                         <label style="font-weight:normal">&nbsp;Page Height: &nbsp;</label>
                         <input id="pageheight" type="text" name="PageHeight" class="e-input" style="width:150px" value="550" />
                         <br />
-                        <input id="doubleside" type="checkbox" name="CheckBoxDoubleSide" value="DoubleSide" style="margin-top:10px;" />
-                        Double Side
+                        @Html.EJS().CheckBox("doubleside").Name("CheckBoxDoubleSide").Value("DoubleSide").Label("Double Side").Render()
                     </div>
                 </div>
                 <div class="LineSpace">
@@ -58,10 +57,16 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="Example [C#] to create a booklet from the existing PDF document in ASP.NET MVC using Syncfusion .NET PDF library."/>
-}
+                    <meta name="description" content="This example demonstrates the Booklet in ASP.NET MVC PDF control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description" style="margin-top: 10px">
         This feature can be used to print the PDF document in book format.
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC PDF Booklet Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Booklet in ASP.NET MVC PDF Control</h1>
+                }

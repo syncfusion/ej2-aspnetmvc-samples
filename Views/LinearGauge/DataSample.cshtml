@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
 <div class="control-section">
     <script id='exetracking' type="text/x-template">
@@ -45,7 +45,7 @@
     </script>
     <div class="row">
         <div id="container1" style="height:300px;">
-            @Html.EJS().LinearGauge("container1").Width("80%").Load("onGaugeLoad").Container(
+            @Html.EJS().LinearGauge("container1").Load("onGaugeLoad").Container(
            new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
            {
                Width = 30,
@@ -67,7 +67,7 @@
                new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
                {
                    Value = 10, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#424242",
-                   Offset =-60,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+                   Offset ="-60",MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
                }
            },
            LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Offset = 50 },
@@ -93,7 +93,7 @@
     </div>
     <div class="row">
         <div id="container2" style="height:250px;">
-            @Html.EJS().LinearGauge("container2").Width("80%").Load("onGaugeLoad1").Container(
+            @Html.EJS().LinearGauge("container2").Load("onGaugeLoad1").Container(
            new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
            {
                Width = 30,
@@ -115,7 +115,7 @@
                new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
                {
                    Value = 28, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#424242",
-                   Offset =-60,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+                   Offset ="-60",MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
                }
            },
            LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Offset = 50 },
@@ -136,7 +136,7 @@
     </div>
     <div class="row">
         <div id="container3" style="height:250px;">
-            @Html.EJS().LinearGauge("container3").Width("80%").Load("onGaugeLoad2").Container(
+            @Html.EJS().LinearGauge("container3").Load("onGaugeLoad2").Container(
            new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
            {
                Width = 30,
@@ -159,7 +159,7 @@
                new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
                {
                    Value = 2, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#424242",
-                   Offset =-60,MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+                   Offset ="-60",MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
                }
            },
            LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel {  Format="{value}k", Offset = 50 },
@@ -232,8 +232,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Linear Gauge control illustrates exercise tracking of an athlete by using ranges, pointers, and annotation features." />
-}
+                    <meta name="description" content="This example demonstrates the DataSample in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -248,3 +248,10 @@
 }
 
 
+
+@section Title{
+                    <title>ASP.NET MVC Linear Gauge DataSample Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of DataSample in ASP.NET MVC Linear Gauge Control</h1>
+                }

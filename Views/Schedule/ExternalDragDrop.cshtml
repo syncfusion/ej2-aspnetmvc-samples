@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
@@ -24,7 +24,6 @@
     </div>
 
     <style>
-        /* custom code start*/
         .content-wrapper {
             display: -ms-flexbox;
             display: flex;
@@ -49,7 +48,6 @@
             font-weight: bold;
             text-align: center;
         }
-        /* custom code end*/
 
         .treeview-external-drag #waiting {
             height: 100%;
@@ -287,6 +285,7 @@
                     ej.base.addClass([event.target], 'e-device-hover');
                 }
             }
+            document.body.style.position = 'fixed';
             if (document.body.style.cursor === 'not-allowed') {
                 document.body.style.cursor = '';
             }
@@ -348,8 +347,8 @@
 }
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="This example shows how to drag and drop the events from an external source into ASP.NET MVC scheduler." />
-}
+                    <meta name="description" content="This example demonstrates the External Drag and Drop in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -368,3 +367,9 @@
         </p>
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC Scheduler External Drag and Drop Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of External Drag and Drop in ASP.NET MVC Scheduler Control</h1>
+                }

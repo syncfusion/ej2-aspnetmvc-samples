@@ -1,10 +1,10 @@
-﻿@using Syncfusion.EJ2.Diagrams;
-
+@using Syncfusion.EJ2.Diagrams;
+@using Syncfusion.EJ2.Navigations;
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div id="diagramEventsControlSection" class="content-wrapper" style="width:100%;background: white">
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolpalette").Palettes(ViewBag.Palettes).GetSymbolInfo("getSymbolInfo").ExpandMode("Multiple").Width("100%").Height("700px")
+                @(Html.EJS().SymbolPalette("symbolpalette").Palettes(ViewBag.Palettes).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("700px")
                     .SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).SymbolHeight(60).SymbolWidth(60)
                     .GetNodeDefaults("getSymbolDefaults").Render()
                 )
@@ -350,8 +350,8 @@
     </p>
 }
 @section Meta{
-    <meta name="description" content="This sample visualize what are the client side events are available in the diagram." />
-}
+                    <meta name="description" content="This example demonstrates the Events in ASP.NET MVC Diagram control. Explore here for more details."/>
+                }
 
 @section Description{
     <p>
@@ -366,3 +366,10 @@
 
 
 
+
+@section Title{
+                    <title>ASP.NET MVC Diagram Events Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Events in ASP.NET MVC Diagram Control</h1>
+                }

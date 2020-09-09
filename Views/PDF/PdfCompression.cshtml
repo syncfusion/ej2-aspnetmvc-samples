@@ -1,9 +1,8 @@
-﻿
 @section ControlsSection{
 
 
     <div class="control-section">
-        @{Html.BeginForm("PDFCompression", "Pdf", FormMethod.Post);
+        @{Html.BeginForm("PDFCompression", "PDF", FormMethod.Post);
             {
 
                <div class="rowdiv" style="font-size:14px">
@@ -51,10 +50,16 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="Example [C#] to create compressed PDF in ASP.NET MVC using Syncfusion .NET PDF library."/>
-}
+                    <meta name="description" content="This example demonstrates the PDF Compression Level in ASP.NET MVC PDF control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description" style="margin-top: 10px">
         It is also possible to  <a href="https://help.syncfusion.com/file-formats/pdf/working-with-compression#compressing-existing-pdf-document">compress the existing PDF document</a> by removing the metadata, optimizing the font, and page content.
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC PDF PDF Compression Level Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of PDF Compression Level in ASP.NET MVC PDF Control</h1>
+                }

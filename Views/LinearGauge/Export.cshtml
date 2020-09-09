@@ -1,0 +1,172 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+	<style>
+		#control-container {
+			padding: 0px !important;
+		}
+
+		#container {
+			display: table;
+			margin: 0 auto;
+		}
+        .e-play-icon::before {
+            content: '\e34b';
+        }
+
+        .e-play-icon1::before {
+            content: '\e728';
+        }
+
+	</style>
+	   <div class="col-lg-9 control-section">
+        <div id="outer" style="width:100%">
+            <div class="content-wrapper">
+			@Html.EJS().LinearGauge("container").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).AllowPrint(true).AllowPdfExport(true).AllowImageExport(true).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+       new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+       {
+            Minimum = 0, Maximum = 120,
+            Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0 },
+              Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
+               {
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                   {
+                       Start = 0, End = 20, Color = "#82b944",StartWidth = 15, EndWidth = 25
+                   },
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                   {
+                       Start = 20, End = 40, Color = "#a1cb43",StartWidth = 25, EndWidth = 35
+                   },
+                    new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                   {
+                       Start = 40, End = 60, Color = "#ddec12",StartWidth = 35, EndWidth = 45
+                   },
+                  new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                   {
+                       Start = 60, End = 80, Color = "#ffbc00",StartWidth = 45, EndWidth = 55
+                   },
+                    new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                   {
+                       Start = 80, End = 100, Color = "#ff6000",StartWidth = 55, EndWidth = 65
+                   },
+                      new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                   {
+                       Start = 100, End = 120, Color = "red",StartWidth = 65, EndWidth = 75
+                   }
+               },
+           Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+           {
+               new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+               {
+                   Value = 80, Height=23,Width=35,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,Color="#757575",Offset="-55",
+                   MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+               }
+           },
+           MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick {  Interval=20, Height=0, Width=0 },
+           MinorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick {  Interval = 4, Height=7, Width=0 },
+           LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel {  Offset = 4 },
+       }
+   }).Render();
+		</div>
+	</div>
+		   </div>
+	 <div class="col-lg-3 property-section">
+		 <table id="property" title="Properties" style="width: 100%">
+		 	<tr style="height: 50px">
+		 		<td style="width: 40%">
+		 			<div>
+		 				Export Type
+		 			</div>
+		 		</td>
+		 		<td style="width: 60%;">
+		 			<div style="margin-left: -10px">
+		 				@Html.EJS().DropDownList("Export").Index(0).Width("80px").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
+		 		</div>
+		 	</td>
+		 </tr>
+		 <tr style="height: 50px">
+		 	<td style="width: 40%">
+		 		<div>File Name</div>
+		 	</td>
+		 	<td style="width: 40%;">
+		 		<div class="e-float-input" style='margin-top: 0px;'>
+		 			<input type="text" value="Gauge" id="fileName" style="margin-left: -15px">
+		 		</div>
+		 	</td>
+		 </tr>
+         <tr id="button-control" style="height: 50px" align='center'>
+             <td>
+                 <div style="margin-left:20px;">
+                     @Html.EJS().Button("export").Content("Export").CssClass("e-flat").IconCss("e-icons e-play-icon1").IsPrimary(true).Render()
+                 </div>
+             </td>
+             </tr>
+             <tr>
+             <td>
+                 <div style="margin-left:28px;">
+                     @Html.EJS().Button("print").Content("Print").CssClass("e-flat").IconCss("e-icons e-play-icon").IsPrimary(true).Render()
+                 </div>
+             </td>
+         </tr>
+		 </table>
+    </div>
+
+	<script type="text/javascript">
+		var gauge;
+		function onGaugeLoad(sender) {
+			var selectedTheme = themeName ? themeName : 'Material';
+			sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+			sender.gauge.orientation = "Horizontal";
+			for (var i = 0; i < sender.gauge.annotations.length; i++) {
+				sender.gauge.annotations[i].zIndex = "1";
+			}
+            gauge = sender.gauge;
+			gauge.axes[0].labelStyle.position = "Outside";
+		}
+		var mode = "JPEG";
+		function valueChange() {
+			var exportType = document.getElementById('Export').ej2_instances[0];
+			mode = exportType.value;
+		}
+		document.getElementById('export').onclick = function () {
+			var gauge = document.getElementById('container').ej2_instances[0];
+			var fileName = (document.getElementById('fileName')).value;
+			gauge.export(mode, fileName);
+		};
+		document.getElementById('print').onclick = function () {
+			var gauge = document.getElementById('container').ej2_instances[0];
+			gauge.print();
+		};
+	</script>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+        <p>
+            This sample demonstrates the print and export functionality of linear gauge.
+        </p>
+	</div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Print & Export in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
+                }
+@section Description{
+	<div id="description">
+        <p>
+            In this example, you can see how to export and print the rendered linear gauge. The Linear Gauge can be exported to JPEG, PNG, SVG, and PDF formats. Print functionality is done by <code>print</code> method when <code>AllowPrint</code> is set as true. Export functionality is done by <code>export</code> method when <code>AllowImageExport</code> and <code>AllowPdfExport</code> is set as true.
+        </p>
+		<p>
+			More information about print and export can be found in this
+			<a target="_blank" href="https://ej2.syncfusion.com/documentation/linear-gauge/linear-gauge-print-and-export">documentation section</a>.
+		</p>
+	</div>
+
+}
+
+
+
+@section Title{
+                    <title>ASP.NET MVC Linear Gauge Print & Export Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Print & Export in ASP.NET MVC Linear Gauge Control</h1>
+                }

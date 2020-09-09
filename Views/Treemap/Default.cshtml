@@ -1,10 +1,9 @@
-﻿
 @using Syncfusion.EJ2;
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
-    <div class="control-section">
-        <div id="container" style="width:100%">
-            @Html.EJS().TreeMap("container").Width("100%").ItemMove("itemMove").ItemClick("itemMove").TitleSettings(title => title.Text("Car Sales by Country - 2017").TextStyle(new TreeMapFont { Size = "15px" })).RangeColorValuePath("Sales").Format("n").UseGroupingSeparator(true).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top).Shape(Syncfusion.EJ2.TreeMap.LegendShape.Rectangle)).WeightValuePath("Sales").Palette(new string[] { "#C33764", "#AB3566", "#993367", "#853169", "#742F6A", "#632D6C", "#532C6D", "#412A6F", "#312870", "#1D2671" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true }).Load("load").Levels(level =>
+	<div class="control-section">
+        <div style="width:100%">
+            @Html.EJS().TreeMap("container").Width("900px").ItemMove("itemMove").ItemClick("itemMove").TitleSettings(title => title.Text("Car Sales by Country - 2017").TextStyle(new TreeMapFont { Size = "15px" })).RangeColorValuePath("Sales").Format("n").UseGroupingSeparator(true).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top).Shape(Syncfusion.EJ2.TreeMap.LegendShape.Rectangle)).WeightValuePath("Sales").Palette(new string[] { "#C33764", "#AB3566", "#993367", "#853169", "#742F6A", "#632D6C", "#532C6D", "#412A6F", "#312870", "#1D2671" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true }).Load("load").Levels(level =>
        {
            level.GroupPath("Continent").Border(new TreeMapBorder{ Color = "white", Width = 0.5 }).Add();
        }).LeafItemSettings(leaf => leaf.LabelPath("Company").Border(new TreeMapBorder { Color = "white", Width = 0.5 })).Render()
@@ -64,8 +63,8 @@
     </p>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 TreeMap control visualizes the sales of cars across various countries in 2017." />
-}
+                    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC TreeMap control. Explore here for more details."/>
+                }
 @section Description{
     <p>
         In this example, you can see how to render a TreeMap with the provided data source. The palette color is applied to the items in TreeMap. The default legend is enabled in this example to represent the items at the top level.
@@ -75,3 +74,10 @@
     </p>
     <br />
 }
+
+@section Title{
+                    <title>ASP.NET MVC TreeMap Default Functionalities Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC TreeMap Control</h1>
+                }

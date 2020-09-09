@@ -1,3 +1,4 @@
+@using Syncfusion.EJ2.Navigations;
 @section ControlsSection{
 
     <div class="control-section">
@@ -6,7 +7,7 @@
                 <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode("Multiple").Width("100%").Height("505px")
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("505px")
                                 .SymbolHeight(55).SymbolWidth(55).GetNodeDefaults("getSymbolNodes").SymbolMargin(ViewBag.margin).Render()
                 )
             </div>
@@ -221,8 +222,8 @@
     </p>
 }
 @section Meta{
-    <meta name="description" content="This sample represents the message flow from one activity to another in customer service using built-in UML activity shapes." />
-}
+                    <meta name="description" content="This example demonstrates the UML Activity Diagram in ASP.NET MVC Diagram control. Explore here for more details."/>
+                }
 @section Description{
     <p>
         This example shows how to create activity shapes using diagram <code>UMLActivity</code> shapes. The <code>type</code> property of the
@@ -230,3 +231,10 @@
         activity shapes.
     </p>
 }
+
+@section Title{
+                    <title>ASP.NET MVC Diagram UML Activity Diagram Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of UML Activity Diagram in ASP.NET MVC Diagram Control</h1>
+                }

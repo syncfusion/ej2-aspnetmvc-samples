@@ -7,7 +7,9 @@
                 <div style="margin-top: 10px">
                     Select Document
                     <br />
-                    @Html.TextBox("file", "", new { type = "file", accept = ".doc,.docx,.rtf,.dot,.dotm,.dotx,docm,.xml" })
+                    <input type="file" name="file" id="fileUpload" accept=".doc,.docx,.rtf,.dot,.dotm,.dotx,docm,.xml" style="display:block;visibility:hidden;width:0;height:0;" />
+                    <input type="button" name="uploadButton" value="Choose File" onclick="openFile()" />
+                    <input type="text" id="fileName" value="DocToPDF.docx" style="border:none;" readonly="readonly"/>
                     <div style="margin-top: 10px">
                         Click the button to view the resultant PDF document being converted from Word
                         document using Essential DocIO and Essential PDF. Please note that PDF viewer is required to view the resultant PDF.
@@ -92,7 +94,24 @@
         <a href="https://help.syncfusion.com/file-formats/docio/word-to-pdf">documentation</a>
         section.
     </div>
+    <script>
+         function openFile() {
+             document.getElementById('fileUpload').click();
+             document.getElementById('fileUpload').addEventListener('change', updateFileName, false);
+        }
+        function updateFileName(evt) {
+            var upoadedFiles = evt.target.files;
+            filename = upoadedFiles[0].name;
+            document.getElementById('fileName').value = filename;
+        }
+    </script>
 }
 @section Meta{
-    <meta name="description" content="Example [C#] to convert Word document to PDF with several conversion options in ASP.NET MVC using Syncfusion .NET Word (DocIO) and PDF libraries." />
-}
+                    <meta name="description" content="This example demonstrates the Word to PDF in ASP.NET MVC DocIO control. Explore here for more details."/>
+                }
+@section Title{
+                    <title>ASP.NET MVC DocIO Word to PDF Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Word to PDF in ASP.NET MVC DocIO Control</h1>
+                }

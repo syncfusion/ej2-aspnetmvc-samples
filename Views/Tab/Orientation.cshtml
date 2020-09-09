@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 
 @{
     var template = "<div class='template-container'><div class='left'><img class='empImg' src=${imgSrc} alt='${Id}' /></div><div class='left empl-info'><div class='name'>${Name}</div> <div class='role'>${Role}</div></div></div>";
@@ -87,10 +87,8 @@
 }
 
 @section Meta{
-
-    <meta name="description" content="The sample demonstrates how to customize the orientation of Tab control along with feasibility to customize the Tab header styles in ASP.NET MVC platform." />
-
-}
+                    <meta name="description" content="This example demonstrates the Orientation in ASP.NET MVC Tabs control. Explore here for more details."/>
+                }
 
 <style>
     .e-content .e-item {
@@ -264,3 +262,10 @@
         tabObj.element.classList.remove('e-accent');
     }
 </script>
+
+@section Title{
+                    <title>ASP.NET MVC Tabs Orientation Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Orientation in ASP.NET MVC Tabs Control</h1>
+                }

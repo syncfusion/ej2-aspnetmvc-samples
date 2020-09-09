@@ -1,8 +1,8 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
-        @Html.EJS().DocumentEditorContainer("container").EnableToolbar(true).Render()
+        @Html.EJS().DocumentEditorContainer("container").Height("590px").EnableToolbar(true).Render()
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Auto save log">
@@ -47,6 +47,7 @@
         documenteditorElement.style.height = "590px";
         documenteditorElement.style.width = "100%";
         var container = documenteditorElement.ej2_instances[0];
+        container.showPropertiesPane = true;
         documenteditor = container.documentEditor;
         documenteditorElement.ej2_instances[0].serviceUrl = window.baseurl + 'api/documenteditorservice/';
         documenteditor.serviceUrl = window.baseurl + 'api/documenteditorservice/';
@@ -57,13 +58,10 @@
             documenteditor.documentName = 'Auto Save';
             updateDocumentTitle();
         };
-        documenteditor.documentChange = function (args) {
-            updateDocumentTitle();
-        };
         titleBarDiv = document.getElementById('documenteditor_titlebar');
         initComponentAndWireEvent();
 
-        container.documentEditor.documentChange = function () {
+        container.documentChange = function () {
             updateDocumentTitle();
             documenteditor.focusIn();
         };
@@ -99,8 +97,8 @@
 }
 
 @section Meta{
-    <meta name="description" content="The Document Editor supports auto save functionality to let the users for saving the documents automatically at customized time interval." />
-}
+                    <meta name="description" content="This example demonstrates the Auto Save in ASP.NET MVC DocumentEditor control. Explore here for more details."/>
+                }
 
 <style>
     #container {
@@ -174,3 +172,10 @@
 
     /** sample level font icons ends*/
 </style>
+
+@section Title{
+                    <title>ASP.NET MVC DocumentEditor Auto Save Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Auto Save in ASP.NET MVC DocumentEditor Control</h1>
+                }

@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.FileManager
 @using EJ2MVCSampleBrowser.Models
 @section ControlsSection{
@@ -7,10 +7,10 @@
             <!-- File Manager Drag and Drop feature sample -->
             @Html.EJS().FileManager("filemanager").AjaxSettings(
               new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings {
-                  Url = "/FileManager/FileOperations",
-                  DownloadUrl = "/FileManager/Download",
-                  UploadUrl = "/FileManager/Upload",
-                  GetImageUrl = "/FileManager/GetImage"
+                  Url = "FileOperations",
+                  DownloadUrl = "Download",
+                  UploadUrl = "Upload",
+                  GetImageUrl = "GetImage"
               }).AllowDragAndDrop(true).Render()
         </div>
     </div>
@@ -34,6 +34,11 @@
 }
 
 @section Meta{
-
-    <meta content="This example demonstrates how to drag and drop the files in a ASP.NET MVC File Manager." />
-}
+                    <meta name="description" content="This example demonstrates the Drag and Drop in ASP.NET MVC File Manager control. Explore here for more details."/>
+                }
+@section Title{
+                    <title>ASP.NET MVC File Manager Drag and Drop Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Drag and Drop in ASP.NET MVC File Manager Control</h1>
+                }

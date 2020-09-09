@@ -3,9 +3,43 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            <div class="control-section">
-                @Html.EJS().RichTextEditor("default").ToolbarSettings(e=>e.Items((object)ViewBag.tools)).Value((string)ViewBag.value).ShowCharCount(true).MaxLength(2000).Created("created").ActionBegin("handleFullScreen").ActionComplete("actionCompleteHandler").Render()
-            </div>
+            @Html.EJS().RichTextEditor("default").ContentTemplate(@<div>
+                <p>The Rich Text Editor is WYSIWYG ('what you see is what you get') editor useful to create and edit content, and return the valid <a href='https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/formation/?no-cache=1#markdown-editor'>HTML markup</a> or <a href='https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/formation/?no-cache=1#html-editor'>markdown</a> of the content</p>
+                <p><b> Toolbar </b></p>
+                <ol>
+                    <li>
+                        <p>Toolbar contains commands to align the text, insert link, insert image, insert list, undo / redo operations, HTML view, etc </p>
+                    </li>
+                    <li>
+                        <p>Toolbar is fully customizable </p>
+                    </li>
+                </ol>
+                <p><b> Links </b></p>
+                <ol>
+                    <li>
+                        <p>You can insert a hyperlink with its corresponding dialog</p>
+                    </li>
+                    <li>
+                        <p>Attach a hyperlink to the displayed text. </p>
+                    </li>
+                    <li>
+                        <p>Customize the quick toolbar based on the hyperlink </p>
+                    </li>
+                </ol>
+                <p><b> Image.</b></p>
+                <ol>
+                    <li>
+                        <p>Allows you to insert images from an online source as well as the local computer</p>
+                    </li>
+                    <li>
+                        <p>You can upload an image</p>
+                    </li>
+                    <li>
+                        <p>Provides an option to customize quick toolbar for an image </p>
+                    </li>
+                </ol>
+                <img alt='Logo' src=@Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png") style='width: 300px' />
+            </div>).ToolbarSettings(e => e.Items((object)ViewBag.Tools)).ShowCharCount(true).MaxLength(2000).Created("created").ActionBegin("handleFullScreen").ActionComplete("actionCompleteHandler").Render()
         </div>
     </div>
 <link href="~/Content/RichTextEditor/codemirror.css" rel="stylesheet" />
@@ -41,111 +75,107 @@
         }
     </style>
     <script type="text/javascript">
-        var defaultRTE;
-        var divPreview;
-        var myCodeMirror;
-        var textArea
-        divPreview = document.getElementById('DIV_Preview');
-        function created() {
-            defaultRTE = this;
-            textArea = defaultRTE.contentModule.getEditPanel();
+        var rteObj, divPreview, myCodeMirror, textArea;
+    divPreview = document.getElementById('DIV_Preview');
+    function created() {
+        rteObj = this;
+        textArea = rteObj.contentModule.getEditPanel();
+    }
+    function mirrorConversion(e) {
+        var id = rteObj.getID() + 'mirror-view';
+        var mirrorView = rteObj.element.querySelector('#' + id);
+        var charCount = rteObj.element.querySelector('.e-rte-character-count');
+        if (e.targetItem === 'Preview') {
+            textArea.style.display = 'block';
+            mirrorView.style.display = 'none';
+            textArea.innerHTML = myCodeMirror.getValue();
+            charCount.style.display = 'block';
+        }
+        else {
+            if (!mirrorView) {
+                mirrorView = ej.base.createElement('div', { className: 'e-content' });
+                mirrorView.id = id;
+                textArea.parentNode.appendChild(mirrorView);
+            }
+            else {
+                mirrorView.innerHTML = '';
+            }
+            textArea.style.display = 'none';
+            mirrorView.style.display = 'block';
+            renderCodeMirror(mirrorView, rteObj.value);
+            charCount.style.display = 'none';
+        }
+    }
+    function renderCodeMirror(mirrorView, content) {
+        myCodeMirror = CodeMirror(mirrorView, {
+            value: content,
+            lineNumbers: true,
+            mode: 'text/html',
+            lineWrapping: true,
+        });
+    }
+    function handleFullScreen(e) {
+        var sbCntEle = document.querySelector('.sb-content.e-view');
+        var sbHdrEle = document.querySelector('.sb-header.e-view');
+        var leftBar;
+        var transformElement;
+        if (ej.base.Browser.isDevice) {
+            leftBar = document.querySelector('#right-sidebar');
+            transformElement = document.querySelector('.sample-browser.e-view.e-content-animation');
+        }
+        else {
+            leftBar = document.querySelector('.sb-left-pane');
+            transformElement = document.querySelector('#right-pane');
+        }
+        if (e.targetItem === 'Maximize') {
+            if (ej.base.Browser.isDevice && ej.base.Browser.isIos) {
+                ej.base.addClass([sbCntEle, sbHdrEle], ['hide-header']);
+            }
+            ej.base.addClass([leftBar], ['e-close']);
+            ej.base.removeClass([leftBar], ['e-open']);
+            if (!ej.base.Browser.isDevice) {
+                transformElement.style.marginLeft = '0px';
+            }
 
+            transformElement.style.transform = 'inherit';
+            transformElement.style.zIndex = 1001;
         }
-        function mirrorConversion(e) {
-            var id = defaultRTE.getID() + 'mirror-view';
-            var mirrorView = defaultRTE.element.querySelector('#' + id);
-            var charCount = defaultRTE.element.querySelector('.e-rte-character-count');
-            if (e.targetItem === 'Preview') {
-                textArea.style.display = 'block';
-                mirrorView.style.display = 'none';
-                textArea.innerHTML = myCodeMirror.getValue();
-                charCount.style.display = 'block';
+        else if (e.targetItem === 'Minimize') {
+            if (ej.base.Browser.isDevice && ej.base.Browser.isIos) {
+                ej.base.removeClass([sbCntEle, sbHdrEle], ['hide-header']);
             }
-            else {
-                if (!mirrorView) {
-                    mirrorView = ej.base.createElement('div', { className: 'e-content' });
-                    mirrorView.id = id;
-                    textArea.parentNode.appendChild(mirrorView);
-                }
-                else {
-                    mirrorView.innerHTML = '';
-                }
-                textArea.style.display = 'none';
-                mirrorView.style.display = 'block';
-                renderCodeMirror(mirrorView, defaultRTE.value);
-                charCount.style.display = 'none';
+            ej.base.removeClass([leftBar], ['e-close']);
+            if (!ej.base.Browser.isDevice) {
+                ej.base.addClass([leftBar], ['e-open']);
+                transformElement.style.marginLeft = leftBar.offsetWidth + 'px';
             }
+            transformElement.style.transform = 'translateX(0px)';
+            transformElement.style.zIndex = "";
         }
-        function renderCodeMirror(mirrorView, content) {
-            myCodeMirror = CodeMirror(mirrorView, {
-                value: content,
-                lineNumbers: true,
-                mode: 'text/html',
-                lineWrapping: true,
-            });
+    }
+    function actionCompleteHandler(e) {
+        if (e.targetItem && (e.targetItem === 'SourceCode' || e.targetItem === 'Preview')) {
+            this.sourceCodeModule.getPanel().style.display = 'none';
+            mirrorConversion(e);
         }
-        function handleFullScreen(e) {
-            var sbCntEle = document.querySelector('.sb-content.e-view');
-            var sbHdrEle = document.querySelector('.sb-header.e-view');
-            var leftBar;
-            var transformElement;
-            if (ej.base.Browser.isDevice) {
-                leftBar = document.querySelector('#right-sidebar');
-                transformElement = document.querySelector('.sample-browser.e-view.e-content-animation');
-            }
-            else {
-                leftBar = document.querySelector('.sb-left-pane');
-                transformElement = document.querySelector('#right-pane');
-            }
-            if (e.targetItem === 'Maximize') {
-                if (ej.base.Browser.isDevice &&  ej.base.Browser.isIos) {
-                    ej.base.addClass([sbCntEle, sbHdrEle], ['hide-header']);
-                }
-                ej.base.addClass([leftBar], ['e-close']);
-                ej.base.removeClass([leftBar], ['e-open']);
-                if (!ej.base.Browser.isDevice) {
-                    transformElement.style.marginLeft = '0px';
-                }
-
-                transformElement.style.transform = 'inherit';
-                transformElement.style.zIndex = 1001;
-            }
-            else if (e.targetItem === 'Minimize') {
-                if (ej.base.Browser.isDevice &&  ej.base.Browser.isIos) {
-                    ej.base.removeClass([sbCntEle, sbHdrEle], ['hide-header']);
-                }
-                ej.base.removeClass([leftBar], ['e-close']);
-                if (!ej.base.Browser.isDevice) {
-                    ej.base.addClass([leftBar], ['e-open']);
-                    transformElement.style.marginLeft = leftBar.offsetWidth + 'px';
-                }
-                transformElement.style.transform = 'translateX(0px)';
-                transformElement.style.zIndex = "";
-            }
+        else {
+            setTimeout(function () { rteObj.refreshUI(); }, 400);
         }
-        function actionCompleteHandler(e) {
-            if (e.targetItem && (e.targetItem === 'SourceCode' || e.targetItem === 'Preview')) {
-                this.sourceCodeModule.getPanel().style.display = 'none';
-                mirrorConversion(e);
-            }
-            else {
-                setTimeout(function () { defaultRTE.toolbarModule.refreshToolbarOverflow(); }, 400);
-            }
-        }
+    }
     </script>
 }
 
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This demo for Essential JS 2  rich text editor control shows the overview of an HTML and markdown editor."/>
-}
+                    <meta name="description" content="This example demonstrates the Overview in ASP.NET MVC Rich Text Editor control. Explore here for more details."/>
+                }
 
 @*custom code end*@
 
 @section ActionDescription{
     <div id="action-description">
-        <p>This sample demonstrates the full features of rich text editor that includes all the tools and functionalities.</p>
+        <p>This sample demonstrates the full features of Rich Text Editor that includes all the tools and functionalities.</p>
     </div>
 }
 @section Description{
@@ -170,3 +200,10 @@
     </div>
 }
 
+
+@section Title{
+                    <title>ASP.NET MVC Rich Text Editor Overview Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Overview in ASP.NET MVC Rich Text Editor Control</h1>
+                }

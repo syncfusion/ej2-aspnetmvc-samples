@@ -2,10 +2,8 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            <div class="control-section">
                 @Html.EJS().RichTextEditor("ajax").Created("onCreated").Render()
-            </div>
-        </div>
+           </div>
     </div>
 
 }
@@ -13,8 +11,8 @@
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This demo for Essential JS 2  rich text editor control demonstrates how to load content to the editor from an external source using Ajax library."/>
-}
+                    <meta name="description" content="This example demonstrates the Ajax Content in ASP.NET MVC Rich Text Editor control. Explore here for more details."/>
+                }
 
 @*custom code end*@
 
@@ -28,20 +26,27 @@
 @section Description{
     <div id="description">
         <p>
-            The rich text editor allows you to load content from an external source. The sample content is loaded from “Ajax_content.html” file using AJAX library, and when the event is <code>successful</code> the content is loaded into the editor using <code>value</code> property
+            The Rich Text Editor allows you to load content from an external source. The sample content is loaded from “Ajax_content.html” file using AJAX library, and when the event is <code>successful</code> the content is loaded into the editor using <code>value</code> property
         </p>
     </div>
 }
 
 <script>
-    var defaultRTE;
+    var rteObj;
 
     function onCreated() {
-        defaultRTE = this;
+        rteObj = this;
         var ajax = new ej.base.Ajax('../Content/RichTextEditor/Ajax_content.html', 'GET', true);
         ajax.send().then();
         ajax.onSuccess = function (data) {
-            defaultRTE.setProperties({ value: data });
+            rteObj.value = data;
         };
     }
 </script>
+
+@section Title{
+                    <title>ASP.NET MVC Rich Text Editor Ajax Content Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Ajax Content in ASP.NET MVC Rich Text Editor Control</h1>
+                }

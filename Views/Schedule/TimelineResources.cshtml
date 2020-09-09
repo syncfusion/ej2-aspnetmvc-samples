@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
@@ -118,7 +118,7 @@
             var data = args.data;
             if (args.type === 'QuickInfo' || args.type === 'Editor' || args.type === 'RecurrenceAlert' || args.type === 'DeleteAlert') {
                 var target = (args.type === 'RecurrenceAlert' ||
-                    args.type === 'DeleteAlert') ? data.element[0] : args.target;
+                    args.type === 'DeleteAlert') ? args.element[0] : args.target;
                 if (!ej.base.isNullOrUndefined(target) && target.classList.contains('e-work-cells')) {
                     if ((target.classList.contains('e-read-only-cells')) || (!this.isSlotAvailable(data))) {
                         args.cancel = true;
@@ -166,8 +166,8 @@
 }
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Scheduler control shows how to design the room scheduling calendar and manage the events booked on a particular time interval." />
-}
+                    <meta name="description" content="This example demonstrates the Room Scheduler in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -199,3 +199,9 @@
         </p>
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC Scheduler Room Scheduler Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Room Scheduler in ASP.NET MVC Scheduler Control</h1>
+                }

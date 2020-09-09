@@ -11,12 +11,12 @@ namespace EJ2MVCSampleBrowser.Controllers.InPlaceEditor
     {
         public ActionResult DropDowns()
         {
-            ViewBag.modeData = new string[] { "Inline", "Popup" };
+            ViewBag.ModeData = new string[] { "Inline", "Popup" };
             string[] data = new string[] { "Australia", "Bermuda", "Canada", "Cameroon", "Denmark", "Finland", "Greenland", "Poland" };
-            ViewBag.multiSelectData = new { placeholder = "Choose the countries", dataSource = data, mode="Box" };
-            ViewBag.dropdownData = new { placeholder = "Find a country", dataSource = data };
-            ViewBag.autocompleteData = new { placeholder = "Type to search country", dataSource = data };
-            ViewBag.comboData = new { placeholder = "Find a country", dataSource = data };
+            ViewBag.MultiSelectData = new { placeholder = "Choose the countries", dataSource = data, mode="Box" };
+            ViewBag.DropDownData = new { placeholder = "Find a country", dataSource = data };
+            ViewBag.AutoCompleteData = new { placeholder = "Type to search country", dataSource = data };
+            ViewBag.ComboData = new { placeholder = "Find a country", dataSource = data };
             return View();
         }
     }

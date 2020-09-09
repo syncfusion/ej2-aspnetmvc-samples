@@ -1,8 +1,8 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <div class="col-md-8 control-section">
-        <div id="cutomization-container">
+        <div id="cutomization-container" style="display: block">
             @Html.EJS().CircularGauge("cutomization-container").Load("onGaugeLoad").CenterY("70%").Axes(axes => axes
         .Pointers(ViewBag.Pointers)
         .LabelStyle(new CircularGaugeLabel
@@ -15,17 +15,19 @@
         .Radius("80%").StartAngle(300).EndAngle(60).Add()
        ).Render()
         </div>
+		<div id="cutomization-container1" style="display: none">
+		</div>
     </div>
     <div class="col-md-4 property-section">
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
                     <td>
-                        <img id="random" src="~/Content/CircularGauge/Images/gauge1.png" style="margin-left:25px;margin-top:10px;">
+                        <img id="random" src="~/Content/CircularGauge/Images/gauge1.png" alt="Customized gauge 1" style="margin-left:25px;margin-top:10px;">
                         <div id="random_line" style="display:block;left: 0px;background: #ff4081;padding-top: 0px;height: 2px !important;width: 85px;margin: 2px 2px 2px 17px;"></div>
                     </td>
                     <td>
-                        <img id="usage" src="~/Content/CircularGauge/Images/gauge2.png" style="margin-left:25px;margin-top:10px;">
+                        <img id="usage" src="~/Content/CircularGauge/Images/gauge2.png" alt="Customized gauge 2" style="margin-left:25px;margin-top:10px;">
                         <div id="usage_line" style="display:none;left: 0px;background: #ff4081;padding-top: 0px;height: 2px !important;width: 85px;margin: 2px 2px 2px 17px;"></div>
                     </td>
                 </tr>
@@ -110,8 +112,9 @@
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
             gauge = random = sender.gauge;
-            usage = new ej.circulargauge.CircularGauge(customGauge2());
-        }
+			usage = new ej.circulargauge.CircularGauge(customGauge2());
+			usage.appendTo('#cutomization-container1');
+		}
         function gaugeLoad(args) {
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
@@ -150,9 +153,9 @@
         });
         pointerColor.appendTo('#pointerColor');
 
-        document.getElementById('usage').onclick = function () {
-            random.destroy();
-            usage.appendTo('#cutomization-container');
+		document.getElementById('usage').onclick = function () {
+			document.getElementById('cutomization-container').style.display = 'none';
+			document.getElementById('cutomization-container1').style.display = 'block';
             gauge = usage;
             isUsage = true;
             var element = document.getElementById('currentValue');
@@ -176,8 +179,8 @@
 
 
         document.getElementById('random').onclick = function () {
-            usage.destroy();
-            random.appendTo('#cutomization-container');
+			document.getElementById('cutomization-container1').style.display = 'none';
+			document.getElementById('cutomization-container').style.display = 'block';
             gauge = random;
             isUsage = false;
             var currentElement = document.getElementById('random');
@@ -282,8 +285,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Circular Gauge control shows the properties required to customize the pointers." />
-}
+                    <meta name="description" content="This example demonstrates the GaugeCustomization in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -299,3 +302,10 @@
 }
 
 
+
+@section Title{
+                    <title>ASP.NET MVC Circular Gauge GaugeCustomization Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of GaugeCustomization in ASP.NET MVC Circular Gauge Control</h1>
+                }

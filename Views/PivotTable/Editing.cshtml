@@ -2,13 +2,13 @@
 @using EJ2MVCSampleBrowser.Models
 @using Syncfusion.EJ2.PivotView
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 ASP.NET MVC Pivot Table control demonstrate CRUD operations performed in the raw items of any value cell" />
-}
+                    <meta name="description" content="This example demonstrates the Editing in ASP.NET MVC Pivot Table control. Explore here for more details."/>
+                }
 @section ControlsSection{
 
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("290").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
            .FormatSettings(formatsettings =>
            {
                formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
@@ -73,6 +73,12 @@
         #pivotview {
             width: 100%;
             height: 100%;
+        }
+        .sb-sample-content-area {
+            min-height: 255px !important;
+        }
+        .control-section {
+            min-height: 255px !important;
         }
     </style>
     <script>
@@ -145,3 +151,10 @@
       </ul>
     </div>
 }
+
+@section Title{
+                    <title>ASP.NET MVC Pivot Table Editing Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Editing in ASP.NET MVC Pivot Table Control</h1>
+                }

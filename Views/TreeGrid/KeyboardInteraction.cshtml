@@ -27,9 +27,9 @@
        {
                 col.Field("TaskId").HeaderText("Task ID").IsPrimaryKey(true).Width(90)
                     .TextAlign(TextAlign.Right).Add();
-                col.Field("TaskName").HeaderText("Task Name").EditType("stringedit").Width(220)
+                col.Field("TaskName").HeaderText("Task Name").EditType("stringedit").Width(240)
                     .ValidationRules(new { required = true }).Add();
-                col.Field("StartDate").HeaderText("Start Date").Width(140).Format("yMd")
+                col.Field("StartDate").HeaderText("Start Date").Width(105).Format("yMd")
                     .EditType("datepickeredit")
                     .ValidationRules(new { date = true })
                     .TextAlign(TextAlign.Right).Add();
@@ -187,7 +187,7 @@
                 <b>Ctrl + j</b>
             </td>
             <td style="width: 50%">
-                Focus TreeGrid element
+                Focus Tree Grid element
             </td>
         </tr>
     </table>
@@ -197,21 +197,21 @@
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This demo explains the key combinations used to perform corresponding treegrid actions in Syncfusion Essential JS2 TreeGrid control." />
-}
+                    <meta name="description" content="This example demonstrates the Keyboard Interaction in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
 
 
 @section ActionDescription{
     <div id="action-description">
-        <p>This demo showcases the keyboard shortcuts applicable on TreeGrid and also lists out in below description, how those applicable 
-        shortcuts interacts with TreeGrid actions.</p>
+        <p>This demo showcases the keyboard shortcuts applicable on Tree Grid and also lists out in below description, how those applicable 
+        shortcuts interacts with Tree Grid actions.</p>
     </div>
 }
 
 @section Description{
     <div id="description">
           <p>
-        All the TreeGrid actions can be controlled via keyboard keys. The applicable key 
+        All the Tree Grid actions can be controlled via keyboard keys. The applicable key 
           combinations and its relative functionalities are listed below.
     </p>
     <p>
@@ -238,7 +238,7 @@
             <tr><td style="width:70%"><code>Shift + Right/Left/Down/Up</code></td><td>Multiple Cell Selection</td></tr>
             <tr><td><code>Ctrl + Shift + Up Arrow</code></td><td>Collapse selected parent row</td></tr>
             <tr><td><code>Ctrl + Shift + Down Arrow</code></td><td>Expand selected parent row</td></tr>
-            <tr><td><code>Ctrl + j</code></td><td>Focus TreeGrid element</td></tr>
+            <tr><td><code>Ctrl + j</code></td><td>Focus Tree Grid element</td></tr>
             <tr><td><code>Tab</code></td><td>Go to next cell for editing</td></tr>
             <tr><td><code>Shift + Tab</code></td><td>Go to previous cell for editing</td></tr>
             <tr><td><code>PageDown</code></td><td>Go to Next page</td></tr>
@@ -251,9 +251,15 @@
     </p>
 
     <p>
-        More information on the TreeGrid keyboard interaction can be found in the documentation section.
+        More information on the Tree Grid keyboard interaction can be found in the documentation section.
     </p>
     </div>
 }
 
 @*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Tree Grid Keyboard Interaction Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Keyboard Interaction in ASP.NET MVC Tree Grid Control</h1>
+                }

@@ -1,0 +1,86 @@
+﻿@using Syncfusion.EJ2
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Spreadsheet("spreadsheet").Created("createdHandler").Sheets(sheet =>
+   {
+       sheet.Name("Employee Details").Ranges(ranges =>
+            {
+           ranges.DataSource(ViewBag.FilteringData).ShowFieldAsHeader(true).Add();
+           }).Columns(column =>
+       {
+           column.Width(110).Add();
+           column.Width(142).Add();
+           column.Width(80).Add();
+           column.Width(137).Add();
+           column.Width(122).Add();
+           column.Width(92).Add();
+           column.Width(124).Add();
+       }).Add();
+   }).Render()
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Sorting and Filtering functionalities in ASP.NET MVC Spreadsheet control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates sorting and filtering feature using employee details.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, sorting is applied to B(Employee Name) column in ascending order using <code>sort</code> method.
+            The sort order can be specified in <code>order</code> property with following values `Ascending` or `Descending` and its
+            default value is `Ascending`.
+
+        The sorted data is filtered with value 'Services' in `D` column using <code>
+            <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/spreadsheet/#applyfilter">applyFilter</a>
+            </code> method in call back function of <code>
+                <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/spreadsheet/#sort">sort</a>
+                </code> method.
+    </p>
+        <p>
+            More information about sorting and filtering feature can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started">
+                documentation
+            </a> section.
+        </p>
+    </div>
+}
+
+<script>
+    function createdHandler() {
+        var excelObj = this;
+        excelObj.cellFormat({ textAlign: 'center', fontWeight: 'bold' }, 'A1:G1');
+        // Sorted B(Employee Name field) column in ascending order
+        excelObj.sort({ sortDescriptors: { field: 'B' } }, 'A2:G51').then(function () {
+            // Filtered D(Department  field) column with value 'Services'
+            excelObj.applyFilter([{ field: 'D', operator: 'equal', value: 'Services' }], 'A1:G51');
+        });
+    }
+</script>
+
+@*custom code start*@
+
+<style>
+    .control-section {
+        height: 550px;
+    }
+
+    #sb-content .e-spreadsheet .e-tab .e-tab-text {
+        display: inherit;
+    }
+</style>
+
+@*custom code end*@
+@section Title{
+    <title>ASP.NET MVC Spreadsheet Sorting and Filtering Functionalities Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example for  Sorting and Filtering Functionalities in ASP.NET MVC Spreadsheet Control</h1>
+}

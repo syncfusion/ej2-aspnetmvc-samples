@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2.Navigations
+@using Syncfusion.EJ2.Navigations
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
@@ -26,6 +26,24 @@
     .material .treeCount.e-badge {
         vertical-align: middle;
     }
+
+    .nodetext {
+        float: left;
+    }
+
+    .e-rtl .nodetext {
+        float: right;
+    }
+
+    .nodebadge {
+        float: right;
+        margin-right: 5px
+    }
+
+    .e-rtl .nodebadge {
+        float: left;
+        margin-left: 5px
+    }
 </style>
 @*custom code end*@    
 }
@@ -34,11 +52,11 @@
     <script id="treeTemplate" type="text/x-template">
         <div>
             <div class="treeviewdiv">
-                <div style="float:left">
+                <div class="nodetext">
                     <span class="treeName">${name}</span>
                 </div>
                 ${if(count)}
-                <div style="margin-right: 5px; float:right">
+                <div class="nodebadge">
                     <span class="treeCount e-badge e-badge-primary">${count}</span>
                 </div>
                 ${/if}
@@ -48,8 +66,8 @@
 }
 
 @section Meta{
-    <meta name="description" content= " The tree view node can be customized through the template option. In this demo the tree view nodes are templated like an mail system." />
-}
+                    <meta name="description" content="This example demonstrates the Template in ASP.NET MVC TreeView control. Explore here for more details."/>
+                }
 
 @section ActionDescription{
 
@@ -69,3 +87,10 @@
 }
 
 
+
+@section Title{
+                    <title>ASP.NET MVC TreeView Template Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Template in ASP.NET MVC TreeView Control</h1>
+                }

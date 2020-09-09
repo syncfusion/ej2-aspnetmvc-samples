@@ -17,16 +17,36 @@ namespace EJ2MVCSampleBrowser.Models
             public DateTime BaselineStartDate { get; set; }
             public DateTime BaselineEndDate { get; set; }
             public int? Duration { get; set; }
+            public bool IsManual { get; set; }
             public int Progress { get; set; }
             public string Predecessor { get; set; }
             public List<GanttDataSource> SubTasks { get; set; }
             public int[] ResourceId { get; set; }
+            public List<ResourceModel> Resources { get; set; }
             public string Notes { get; set; }
+            public int? Work { get; set; }
+            public int ParentID { get; set; }
+            public List<IndicatorsModel> Indicators { get; set; }
+        }
+
+        public class ResourceModel
+        {
+            public int ResourceId { get; set; }
+            public Nullable<int> ResourceUnit { get; set; }
         }
         public class GanttResources
         {
             public int ResourceId { get; set; }
             public string ResourceName { get; set; }
+            public int Unit { get; set; }
+        }
+
+        public class ResourceGroupCollection
+        {
+            public int ResourceId { get; set; }
+            public string ResourceName { get; set; }
+            public string ResourceGroup { get; set; }
+            public bool IsExpand { get; set; }
         }
         public class TaskbarData : GanttDataSource
         {
@@ -35,9 +55,21 @@ namespace EJ2MVCSampleBrowser.Models
             public string Movie { get; set; }
 
         }
+        public class IndicatorsModel
+        {
+            public string date { get; set; }
+            public string iconClass { get; set; }
+            public string name { get; set; }
+            public string tooltip { get; set; }
+        }
+       
+
+       
         public static List<GanttDataSource> ProjectNewData()
         {
             List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
+
+            List<IndicatorsModel> Indicators = new List<IndicatorsModel>();
 
             GanttDataSource Record1 = new GanttDataSource()
             {
@@ -85,6 +117,9 @@ namespace EJ2MVCSampleBrowser.Models
                 StartDate = new DateTime(2019, 04, 02),
                 Duration = 0,
                 Predecessor = "3, 4",
+                Indicators = new List<IndicatorsModel>() {
+                    new IndicatorsModel() { date = "04/10/2019", name= "Design Phase", tooltip="Design phase completed", iconClass="okIcon e-icons" }
+                }
             };
 
             GanttDataSource Record3 = new GanttDataSource()
@@ -150,6 +185,9 @@ namespace EJ2MVCSampleBrowser.Models
                 StartDate = new DateTime(2019, 04, 04),
                 Duration = 0,
                 Predecessor = "10",
+                Indicators = new List<IndicatorsModel>() {
+                    new IndicatorsModel() { date = "04/20/2019", name= "Research completed", tooltip="Research completed", iconClass="description e-icons" }
+                }
             };
             Record3.SubTasks.Add(Record6Child1);
             Record3.SubTasks.Add(Record6Child2);
@@ -302,7 +340,10 @@ namespace EJ2MVCSampleBrowser.Models
                 TaskName = "Include feedback",
                 StartDate = new DateTime(2019, 04, 04),
                 Duration = 4,
-                Predecessor = "28ss"
+                Predecessor = "28ss",
+                Indicators = new List<IndicatorsModel>() {
+                    new IndicatorsModel() { date = "05/24/2019", name= "Production phase", tooltip="Production phase completed", iconClass="okIcon e-icons" }
+                }
             };
             GanttDataSource Record7 = new GanttDataSource()
             {
@@ -384,6 +425,9 @@ namespace EJ2MVCSampleBrowser.Models
                 Duration = 4,
                 Progress = 30,
                 Predecessor = "36ss",
+                Indicators = new List<IndicatorsModel>() {
+                    new IndicatorsModel() { date = "06/21/2019", name= "Sales and marketing", tooltip="Sales and marketing", iconClass="description e-icons" }
+                }
             };
             Record10.SubTasks.Add(Record10Child1);
             Record10.SubTasks.Add(Record10Child2);
@@ -428,6 +472,179 @@ namespace EJ2MVCSampleBrowser.Models
             return GanttDataSourceCollection;
         }
 
+        public static List<ResourceGroupCollection> GetResourceGroup()
+        {
+            List<ResourceGroupCollection> GanttResourcesCollection = new List<ResourceGroupCollection>();
+
+            ResourceGroupCollection Record1 = new ResourceGroupCollection()
+            {
+                ResourceId = 1,
+                ResourceName = "Martin Tamer",
+                ResourceGroup = "Planning Team"
+            };
+            ResourceGroupCollection Record2 = new ResourceGroupCollection()
+            {
+                ResourceId = 2,
+                ResourceName = "Rose Fuller",
+                ResourceGroup = "Testing Team"
+            };
+            ResourceGroupCollection Record3 = new ResourceGroupCollection()
+            {
+                ResourceId = 3,
+                ResourceName = "Margaret Buchanan",
+                ResourceGroup = "Approval Team"
+            };
+            ResourceGroupCollection Record4 = new ResourceGroupCollection()
+            {
+                ResourceId = 4,
+                ResourceName = "Fuller King",
+                ResourceGroup = "Development Team"
+            };
+            ResourceGroupCollection Record5 = new ResourceGroupCollection()
+            {
+                ResourceId = 5,
+                ResourceName = "Davolio Fuller",
+                ResourceGroup = "Approval Team"
+            };
+            ResourceGroupCollection Record6 = new ResourceGroupCollection()
+            {
+                ResourceId = 6,
+                ResourceName = "Van Jack",
+                ResourceGroup = "Development Team"
+            };
+            GanttResourcesCollection.Add(Record1);
+            GanttResourcesCollection.Add(Record2);
+            GanttResourcesCollection.Add(Record3);
+            GanttResourcesCollection.Add(Record4);
+            GanttResourcesCollection.Add(Record5);
+            GanttResourcesCollection.Add(Record6);
+            return GanttResourcesCollection;
+        }
+        public static List<GanttDataSource> TemplateData()
+        {
+            List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
+
+            GanttDataSource Record1 = new GanttDataSource()
+            {
+                TaskId = 1,
+                TaskName = "Product concept",
+                StartDate = new DateTime(2019, 04, 02),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+
+            GanttDataSource Child11 = new GanttDataSource()
+            {
+                TaskId = 2,
+                TaskName = "Defining the product and its usage",
+                StartDate = new DateTime(2019, 04, 02),
+                Progress = 30,
+                ResourceId = new int[] { 2 },
+                Duration = 3,
+            };
+
+            GanttDataSource Child12 = new GanttDataSource()
+            {
+                TaskId = 3,
+                TaskName = "Defining target audience",
+                StartDate = new DateTime(2019, 04, 02),
+                ResourceId = new int[] { 3 },
+                Duration = 3,
+            };
+
+            GanttDataSource Child13 = new GanttDataSource()
+            {
+                TaskId = 4,
+                TaskName = "Prepare product sketch and notes",
+                StartDate = new DateTime(2019, 04, 02),
+                Progress = 30,
+                Duration = 2,
+                ResourceId = new int[] { 4 },
+                Predecessor = "2"
+            };
+            Record1.SubTasks.Add(Child11);
+            Record1.SubTasks.Add(Child12);
+            Record1.SubTasks.Add(Child13);
+
+            GanttDataSource Record2 = new GanttDataSource()
+            {
+                TaskId = 5,
+                TaskName = "Concept approval",
+                StartDate = new DateTime(2019, 04, 02),
+                Duration = 0,
+                ResourceId = new int[] { 1 },
+                Predecessor = "3, 4",
+            };
+
+            GanttDataSource Record3 = new GanttDataSource()
+            {
+                TaskId = 6,
+                TaskName = "Market research",
+                StartDate = new DateTime(2019, 04, 02),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+
+            GanttDataSource Record6Child1 = new GanttDataSource()
+            {
+                TaskId = 7,
+                TaskName = "Demand analysis",
+                StartDate = new DateTime(2019, 04, 04),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+
+            GanttDataSource Record7Child1 = new GanttDataSource()
+            {
+                TaskId = 8,
+                TaskName = "Customer strength",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 4,
+                Predecessor = "5",
+                ResourceId = new int[] { 5 },
+                Progress = 30
+            };
+
+            GanttDataSource Record7Child2 = new GanttDataSource()
+            {
+                TaskId = 9,
+                TaskName = "Market opportunity analysis",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 4,
+                ResourceId = new int[] { 6 },
+                Predecessor = "5",
+            };
+            Record6Child1.SubTasks.Add(Record7Child1);
+            Record6Child1.SubTasks.Add(Record7Child2);
+
+            GanttDataSource Record6Child2 = new GanttDataSource()
+            {
+                TaskId = 10,
+                TaskName = "Competitor analysis",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 4,
+                Predecessor = "7, 8",
+                ResourceId = new int[] { 4 },
+                Progress = 30,
+            };
+            GanttDataSource Record6Child3 = new GanttDataSource()
+            {
+                TaskId = 11,
+                TaskName = "Product strength analsysis",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 4,
+                ResourceId = new int[] { 8 },
+                Predecessor = "9",
+            };
+            Record3.SubTasks.Add(Record6Child1);
+            Record3.SubTasks.Add(Record6Child2);
+            Record3.SubTasks.Add(Record6Child3);
+            GanttDataSourceCollection.Add(Record1);
+            GanttDataSourceCollection.Add(Record2);
+            GanttDataSourceCollection.Add(Record3);
+
+            return GanttDataSourceCollection;
+        }
         public static List<GanttDataSource> ZoomingData()
         {
             List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
@@ -551,7 +768,7 @@ namespace EJ2MVCSampleBrowser.Models
             GanttDataSourceCollection.Add(Record1);
             GanttDataSourceCollection.Add(Record2);
             GanttDataSourceCollection.Add(Record3);
-           
+
             return GanttDataSourceCollection;
         }
         public static List<GanttResources> EditingResources()
@@ -1780,7 +1997,7 @@ namespace EJ2MVCSampleBrowser.Models
                 EndDate = new DateTime(2019, 02, 12),
                 Duration = 5,
                 Progress = 100,
-                ResourceId = new int[] {1}
+                ResourceId = new int[] { 1 }
             };
             GanttDataSource Record2Child2 = new GanttDataSource()
             {
@@ -2425,13 +2642,13 @@ namespace EJ2MVCSampleBrowser.Models
         public static List<TaskbarData> TaskbarTemplateData()
         {
             List<TaskbarData> GanttDataSourceCollection = new List<TaskbarData>();
-           
+
             TaskbarData Record2 = new TaskbarData()
             {
                 TaskId = 1,
                 TaskName = "Oscar moments",
                 StartDate = new DateTime(2018, 03, 05, 18, 0, 0),
-                EndDate = new DateTime(2018, 03, 05, 18, 15, 0),              
+                EndDate = new DateTime(2018, 03, 05, 18, 15, 0),
                 Winner = "",
                 Performance = "90th Academy awards kicks-off and Jimmy kimmel hosts the show"
             };
@@ -2726,7 +2943,7 @@ namespace EJ2MVCSampleBrowser.Models
                 StartDate = new DateTime(2018, 03, 05, 21, 30, 0),
                 EndDate = new DateTime(2018, 03, 05, 21, 30, 0),
                 Predecessor = "31",
-                Duration = 0,                
+                Duration = 0,
                 Performance = "90th Academy awards wind-up"
             };
             GanttDataSourceCollection.Add(Record2);
@@ -2770,8 +2987,8 @@ namespace EJ2MVCSampleBrowser.Models
             {
                 TaskId = 1,
                 TaskName = "Task 1",
-                StartDate= new DateTime(2019, 01, 03),
-                EndDate= new DateTime(2019, 01, 08),
+                StartDate = new DateTime(2019, 01, 03),
+                EndDate = new DateTime(2019, 01, 08),
                 Duration = 5,
                 TaskType = "",
             };
@@ -3200,6 +3417,1111 @@ namespace EJ2MVCSampleBrowser.Models
             GanttDataSourceCollection.Add(Record6);
             GanttDataSourceCollection.Add(Record7);
             return GanttDataSourceCollection;
+        }
+
+        public static List<GanttDataSource> SelfData()
+        {
+            List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
+
+            GanttDataSource Record1 = new GanttDataSource()
+            {
+                TaskId = 1,
+                TaskName = "Project schedule",
+                StartDate = new DateTime(2019, 02, 04),
+                EndDate = new DateTime(2019, 03, 10)
+            };
+            GanttDataSource Record2 = new GanttDataSource()
+            {
+                TaskId = 2,
+                TaskName = "Planning",
+                StartDate = new DateTime(2019, 02, 04),
+                EndDate = new DateTime(2019, 02, 10),
+                ParentID = 1
+            };
+            GanttDataSource Record3 = new GanttDataSource()
+            {
+                TaskId = 3,
+                TaskName = "Plan timeline",
+                StartDate = new DateTime(2019, 02, 04),
+                EndDate = new DateTime(2019, 02, 10),
+                Duration = 6,
+                Progress = 60,
+                ParentID = 2
+            };
+            GanttDataSource Record4 = new GanttDataSource()
+            {
+                TaskId = 4,
+                TaskName = "Plan budget",
+                StartDate = new DateTime(2019, 02, 04),
+                EndDate = new DateTime(2019, 02, 10),
+                Duration = 6,
+                Progress = 90,
+                ParentID = 2
+            };
+            GanttDataSource Record5 = new GanttDataSource()
+            {
+                TaskId = 5,
+                TaskName = "Allocate resources",
+                StartDate = new DateTime(2019, 02, 04),
+                EndDate = new DateTime(2019, 02, 10),
+                Duration = 6,
+                Progress = 75,
+                ParentID = 2
+            };
+            GanttDataSource Record6 = new GanttDataSource()
+            {
+                TaskId = 6,
+                TaskName = "Planning complete",
+                StartDate = new DateTime(2019, 02, 06),
+                EndDate = new DateTime(2019, 02, 10),
+                Duration = 0,
+                Predecessor = "3, 4, 5",
+                ParentID = 2
+            };
+            GanttDataSource Record7 = new GanttDataSource()
+            {
+                TaskId = 7,
+                TaskName = "Design",
+                StartDate = new DateTime(2019, 02, 13),
+                EndDate = new DateTime(2019, 02, 17),
+                ParentID = 1
+            };
+            GanttDataSource Record8 = new GanttDataSource()
+            {
+                TaskId = 8,
+                TaskName = "Software specification",
+                StartDate = new DateTime(2019, 02, 13),
+                EndDate = new DateTime(2019, 02, 15),
+                Duration = 3,
+                Progress = 60,
+                Predecessor = "6",
+                ParentID = 7
+            };
+            GanttDataSource Record9 = new GanttDataSource()
+            {
+                TaskId = 9,
+                TaskName = "Develop prototype",
+                StartDate = new DateTime(2019, 02, 13),
+                EndDate = new DateTime(2019, 02, 15),
+                Duration = 3,
+                Progress = 100,
+                Predecessor = "6",
+                ParentID = 7
+            };
+            GanttDataSource Record10 = new GanttDataSource()
+            {
+                TaskId = 10,
+                TaskName = "Get approval from customer",
+                StartDate = new DateTime(2019, 02, 16),
+                EndDate = new DateTime(2019, 02, 17),
+                Duration = 2,
+                Progress = 100,
+                Predecessor = "9",
+                ParentID = 7
+            };
+            GanttDataSource Record11 = new GanttDataSource()
+            {
+                TaskId = 11,
+                TaskName = "Design complete",
+                StartDate = new DateTime(2019, 02, 17),
+                EndDate = new DateTime(2019, 02, 17),
+                Duration = 0,
+                Predecessor = "10",
+                ParentID = 7
+            };
+            GanttDataSourceCollection.Add(Record1);
+            GanttDataSourceCollection.Add(Record2);
+            GanttDataSourceCollection.Add(Record3);
+            GanttDataSourceCollection.Add(Record4);
+            GanttDataSourceCollection.Add(Record5);
+            GanttDataSourceCollection.Add(Record6);
+            GanttDataSourceCollection.Add(Record7);
+            GanttDataSourceCollection.Add(Record8);
+            GanttDataSourceCollection.Add(Record9);
+            GanttDataSourceCollection.Add(Record10);
+            GanttDataSourceCollection.Add(Record11);
+
+            return GanttDataSourceCollection;
+        }
+
+        public static List<GanttDataSource> LabelData()
+        {
+            List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
+
+            GanttDataSource Record1 = new GanttDataSource()
+            {
+                TaskId = 1,
+                TaskName = "Project initiation",
+                StartDate = new DateTime(2019, 04, 02),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record1Child1 = new GanttDataSource()
+            {
+                TaskId = 2,
+                TaskName = "Identify Site location",
+                StartDate = new DateTime(2019, 04, 02),
+                Duration = 0,
+                Progress = 30,
+                ResourceId = new int[] { 1 },
+                Notes = "Measure the total property area alloted for construction",
+                BaselineStartDate = new DateTime(2019, 04, 02),
+                BaselineEndDate = new DateTime(2019, 04, 02)
+            };
+            GanttDataSource Record1Child2 = new GanttDataSource()
+            {
+                TaskId = 3,
+                TaskName = "Perform soil test",
+                StartDate = new DateTime(2019, 04, 02),
+                Duration = 4,
+                Predecessor = "2",
+                ResourceId = new int[] { 2, 3, 5 },
+                Notes = "Obtain an engineered soil test of lot where construction is planned.From an engineer or company specializing in soil testing",
+                BaselineStartDate = new DateTime(2019, 04, 01),
+                BaselineEndDate = new DateTime(2019, 04, 04)
+            };
+            GanttDataSource Record1Child3 = new GanttDataSource()
+            {
+                TaskId = 4,
+                TaskName = "Soil test approval",
+                StartDate = new DateTime(2019, 04, 02),
+                Duration = 0,
+                Progress = 30,
+                Predecessor = "3",
+                BaselineStartDate = new DateTime(2019, 04, 06),
+                BaselineEndDate = new DateTime(2019, 04, 06)
+            };
+            Record1.SubTasks.Add(Record1Child1);
+            Record1.SubTasks.Add(Record1Child2);
+            Record1.SubTasks.Add(Record1Child3);
+
+            GanttDataSource Record2 = new GanttDataSource()
+            {
+                TaskId = 5,
+                TaskName = "Project estimation",
+                StartDate = new DateTime(2019, 04, 02),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record2Child1 = new GanttDataSource()
+            {
+                TaskId = 6,
+                TaskName = "Develop floor plan for estimation",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 3,
+                Progress = 30,
+                Predecessor = "4",
+                ResourceId = new int[] { 4 },
+                Notes = "Develop floor plans and obtain a materials list for estimations",
+                BaselineStartDate = new DateTime(2019, 04, 05),
+                BaselineEndDate = new DateTime(2019, 04, 07)
+            };
+            GanttDataSource Record2Child2 = new GanttDataSource()
+            {
+                TaskId = 7,
+                TaskName = "List materials",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 3,
+                Predecessor = "6",
+                ResourceId = new int[] { 4, 8 },
+                Notes = "",
+                BaselineStartDate = new DateTime(2019, 04, 09),
+                BaselineEndDate = new DateTime(2019, 04, 12)
+            };
+            GanttDataSource Record2Child3 = new GanttDataSource()
+            {
+                TaskId = 8,
+                TaskName = "Estimation approval",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 0,
+                Predecessor = "7",
+                ResourceId = new int[] { 12, 5 },
+                Notes = "",
+                BaselineStartDate = new DateTime(2019, 04, 16),
+                BaselineEndDate = new DateTime(2019, 04, 16)
+            };
+            Record2.SubTasks.Add(Record2Child1);
+            Record2.SubTasks.Add(Record2Child2);
+            Record2.SubTasks.Add(Record2Child3);
+
+            GanttDataSource Record3 = new GanttDataSource()
+            {
+                TaskId = 9,
+                TaskName = "Sign contract",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 1,
+                Predecessor = "8",
+                Progress = 30,
+                ResourceId = new int[] { 12 },
+                Notes = "If required obtain approval from HOA (homeowners association) or ARC (architectural review committee)",
+                BaselineStartDate = new DateTime(2019, 04, 16),
+                BaselineEndDate = new DateTime(2019, 04, 17)
+            };
+
+            GanttDataSource Record4 = new GanttDataSource()
+            {
+                TaskId = 10,
+                TaskName = "Project approval and kick off",
+                StartDate = new DateTime(2019, 04, 04),
+                EndDate = new DateTime(2019, 04, 21),
+                Duration = 0,
+                Predecessor = "9",
+                BaselineStartDate = new DateTime(2019, 04, 17),
+                BaselineEndDate = new DateTime(2019, 04, 17)
+            };
+
+            GanttDataSource Record5 = new GanttDataSource()
+            {
+                TaskId = 11,
+                TaskName = "Site wwork",
+                StartDate = new DateTime(2019, 04, 04),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record5Child1 = new GanttDataSource()
+            {
+                TaskId = 12,
+                TaskName = "Clear the building site",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 2,
+                Progress = 30,
+                Predecessor = "9",
+                Notes = "Clear the building site (demolition of existing home if necessary)",
+                BaselineStartDate = new DateTime(2019, 04, 16),
+                BaselineEndDate = new DateTime(2019, 04, 18)
+            };
+            GanttDataSource Record5Child2 = new GanttDataSource()
+            {
+                TaskId = 13,
+                TaskName = "Install temporary power service",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 2,
+                Predecessor = "12",
+                Notes = "",
+                BaselineStartDate = new DateTime(2019, 04, 17),
+                BaselineEndDate = new DateTime(2019, 04, 19)
+            };
+            Record5.SubTasks.Add(Record5Child1);
+            Record5.SubTasks.Add(Record5Child2);
+
+            GanttDataSourceCollection.Add(Record1);
+            GanttDataSourceCollection.Add(Record2);
+            GanttDataSourceCollection.Add(Record3);
+            GanttDataSourceCollection.Add(Record4);
+            GanttDataSourceCollection.Add(Record5);
+
+            return GanttDataSourceCollection;
+        }
+        public static List<GanttDataSource> ResourceViewData()
+        {
+            List<GanttDataSource> GanttResourceSampleCollection = new List<GanttDataSource>();
+
+            GanttDataSource Record1 = new GanttDataSource()
+            {
+                TaskId = 1,
+                TaskName = "Project initiation",
+                StartDate = new DateTime(2019, 03, 29),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record1Child1 = new GanttDataSource()
+            {
+                TaskId = 2,
+                TaskName = "Identify Site location",
+                StartDate = new DateTime(2019, 03, 29),
+                Duration = 3,
+                Progress = 30,
+                Work = 10,
+                Resources = new List<ResourceModel>
+                {
+                   new ResourceModel{  ResourceId = 1, ResourceUnit = 50 }
+                }
+            };
+            GanttDataSource Record1Child2 = new GanttDataSource()
+            {
+                TaskId = 3,
+                TaskName = "Perform soil test",
+                StartDate = new DateTime(2019, 03, 29),
+                Duration = 4,
+                Progress = 30,
+                Work = 20,
+                Resources = new List<ResourceModel>
+                {
+                   new ResourceModel {  ResourceId = 2, ResourceUnit = 70 }
+                }
+            };
+            GanttDataSource Record1Child3 = new GanttDataSource()
+            {
+                TaskId = 4,
+                TaskName = "Soil test approval",
+                StartDate = new DateTime(2019, 03, 29),
+                Duration = 4,
+                Progress = 30,
+                Work = 10,
+                Resources = new List<ResourceModel> {
+                   new ResourceModel { ResourceId = 1, ResourceUnit = 75 },
+                },
+                Predecessor = "2"
+                
+            };
+            Record1.SubTasks.Add(Record1Child1);
+            Record1.SubTasks.Add(Record1Child2);
+            Record1.SubTasks.Add(Record1Child3);
+
+            GanttDataSource Record2 = new GanttDataSource()
+            {
+                TaskId = 5,
+                TaskName = "Project estimation",
+                StartDate = new DateTime(2019, 03, 29),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record2Child1 = new GanttDataSource()
+            {
+                TaskId = 6,
+                TaskName = "Develop floor plan for estimation",
+                StartDate = new DateTime(2019, 03, 29),
+                Duration = 3,
+                Progress = 30,
+                Work = 30,
+                Resources = new List<ResourceModel>
+                {
+                   new ResourceModel{ ResourceId = 2, ResourceUnit = 70 }
+                },
+                Predecessor = "3FS+2"
+            };
+            GanttDataSource Record2Child2 = new GanttDataSource()
+            {
+                TaskId = 7,
+                TaskName = "List materials",
+                StartDate = new DateTime(2019, 04, 08),
+                Duration = 12,
+                Progress = 30,
+                Work = 40,
+                Resources = new List<ResourceModel>
+                {
+                   new ResourceModel{ ResourceId = 6, ResourceUnit = 40 }
+                }
+            };
+            GanttDataSource Record2Child3 = new GanttDataSource()
+            {
+                TaskId = 8,
+                TaskName = "Estimation approval",
+                StartDate = new DateTime(2019, 04, 03),
+                Duration = 10,
+                Progress = 30,
+                Work = 60,
+                Resources = new List<ResourceModel>
+                {
+                   new ResourceModel{ ResourceId = 5, ResourceUnit = 75 }
+                }
+            };
+            GanttDataSource Record2Child4 = new GanttDataSource()
+            {
+                TaskId = 9,
+                TaskName = "Excavate for foundations",
+                StartDate = new DateTime(2019, 04, 01),
+                Duration = 4,
+                Progress = 30,
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 4 }
+                }
+            };
+            GanttDataSource Record2Child5 = new GanttDataSource()
+            {
+                TaskId = 10,
+                TaskName = "Install Plumbing grounds",
+                StartDate = new DateTime(2019, 04, 01),
+                Duration = 4,
+                Progress = 30,
+                Predecessor = "9SS",
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 3 }
+                }
+            };
+            GanttDataSource Record2Child6 = new GanttDataSource()
+            {
+                TaskId = 11,
+                TaskName = "Dig Footer",
+                StartDate = new DateTime(2019, 04, 08),
+                Duration = 3,
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 2 }
+                }
+            };
+            GanttDataSource Record2Child7 = new GanttDataSource()
+            {
+                TaskId = 12,
+                TaskName = "Electrical Utilites",
+                StartDate = new DateTime(2019, 04, 03),
+                Duration = 4,
+                Progress = 30,
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 3 }
+                }
+            };
+            Record2.SubTasks.Add(Record2Child1);
+            Record2.SubTasks.Add(Record2Child2);
+            Record2.SubTasks.Add(Record2Child3);
+            Record2.SubTasks.Add(Record2Child4);
+            Record2.SubTasks.Add(Record2Child5);
+            Record2.SubTasks.Add(Record2Child6);
+            Record2.SubTasks.Add(Record2Child7);
+
+            GanttDataSource Record3 = new GanttDataSource()
+            {
+                TaskId = 13,
+                TaskName = "Sign contract",
+                StartDate = new DateTime(2019, 04, 01),
+                Duration = 1,
+                Progress = 30,
+            };
+            GanttResourceSampleCollection.Add(Record1);
+            GanttResourceSampleCollection.Add(Record2);
+            GanttResourceSampleCollection.Add(Record3);
+            return GanttResourceSampleCollection;
+        }
+        public static List<GanttDataSource> TooltipData()
+        {
+            List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
+
+            GanttDataSource Record1 = new GanttDataSource()
+            {
+                TaskId = 1,
+                TaskName = "Project initiation",
+                StartDate = new DateTime(2019, 04, 02),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record1Child1 = new GanttDataSource()
+            {
+                TaskId = 2,
+                TaskName = "Identify Site location",
+                StartDate = new DateTime(2019, 04, 02),
+                Duration = 0,
+                Progress = 30,
+                ResourceId = new int[] { 1 },
+                Notes = "Measure the total property area alloted for construction",
+                BaselineStartDate = new DateTime(2019, 04, 02),
+                BaselineEndDate = new DateTime(2019, 04, 02)
+            };
+            GanttDataSource Record1Child2 = new GanttDataSource()
+            {
+                TaskId = 3,
+                TaskName = "Perform soil test",
+                StartDate = new DateTime(2019, 04, 02),
+                Duration = 4,
+                Predecessor = "2",
+                ResourceId = new int[] { 2 },
+                Notes = "Obtain an engineered soil test of lot where construction is planned.From an engineer or company specializing in soil testing",
+                BaselineStartDate = new DateTime(2019, 04, 01),
+                BaselineEndDate = new DateTime(2019, 04, 04)
+            };
+            GanttDataSource Record1Child3 = new GanttDataSource()
+            {
+                TaskId = 4,
+                TaskName = "Soil test approval",
+                StartDate = new DateTime(2019, 04, 02),
+                Duration = 0,
+                Progress = 30,
+                Predecessor = "3",
+                BaselineStartDate = new DateTime(2019, 04, 06),
+                BaselineEndDate = new DateTime(2019, 04, 06)
+            };
+            Record1.SubTasks.Add(Record1Child1);
+            Record1.SubTasks.Add(Record1Child2);
+            Record1.SubTasks.Add(Record1Child3);
+
+            GanttDataSource Record2 = new GanttDataSource()
+            {
+                TaskId = 5,
+                TaskName = "Project estimation",
+                StartDate = new DateTime(2019, 04, 02),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record2Child1 = new GanttDataSource()
+            {
+                TaskId = 6,
+                TaskName = "Develop floor plan for estimation",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 3,
+                Progress = 30,
+                Predecessor = "4",
+                ResourceId = new int[] { 4 },
+                Notes = "Develop floor plans and obtain a materials list for estimations",
+                BaselineStartDate = new DateTime(2019, 04, 05),
+                BaselineEndDate = new DateTime(2019, 04, 07)
+            };
+            GanttDataSource Record2Child2 = new GanttDataSource()
+            {
+                TaskId = 7,
+                TaskName = "List materials",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 3,
+                Predecessor = "6",
+                ResourceId = new int[] { 4 },
+                Notes = "",
+                BaselineStartDate = new DateTime(2019, 04, 09),
+                BaselineEndDate = new DateTime(2019, 04, 12)
+            };
+            GanttDataSource Record2Child3 = new GanttDataSource()
+            {
+                TaskId = 8,
+                TaskName = "Estimation approval",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 0,
+                Predecessor = "7",
+                ResourceId = new int[] { 12 },
+                Notes = "",
+                BaselineStartDate = new DateTime(2019, 04, 16),
+                BaselineEndDate = new DateTime(2019, 04, 16)
+            };
+            Record2.SubTasks.Add(Record2Child1);
+            Record2.SubTasks.Add(Record2Child2);
+            Record2.SubTasks.Add(Record2Child3);
+
+            GanttDataSource Record3 = new GanttDataSource()
+            {
+                TaskId = 9,
+                TaskName = "Sign contract",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 1,
+                Predecessor = "8",
+                Progress = 30,
+                ResourceId = new int[] { 12 },
+                Notes = "If required obtain approval from HOA (homeowners association) or ARC (architectural review committee)",
+                BaselineStartDate = new DateTime(2019, 04, 16),
+                BaselineEndDate = new DateTime(2019, 04, 17)
+            };
+
+            GanttDataSource Record4 = new GanttDataSource()
+            {
+                TaskId = 10,
+                TaskName = "Project approval and kick off",
+                StartDate = new DateTime(2019, 04, 04),
+                EndDate = new DateTime(2019, 04, 21),
+                Duration = 0,
+                Predecessor = "9",
+                BaselineStartDate = new DateTime(2019, 04, 17),
+                BaselineEndDate = new DateTime(2019, 04, 17)
+            };
+
+            GanttDataSource Record5 = new GanttDataSource()
+            {
+                TaskId = 11,
+                TaskName = "Site wwork",
+                StartDate = new DateTime(2019, 04, 04),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record5Child1 = new GanttDataSource()
+            {
+                TaskId = 12,
+                TaskName = "Clear the building site",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 2,
+                Progress = 30,
+                Predecessor = "9",
+                Notes = "Clear the building site (demolition of existing home if necessary)",
+                BaselineStartDate = new DateTime(2019, 04, 16),
+                BaselineEndDate = new DateTime(2019, 04, 18)
+            };
+            GanttDataSource Record5Child2 = new GanttDataSource()
+            {
+                TaskId = 13,
+                TaskName = "Install temporary power service",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 2,
+                Predecessor = "12",
+                Notes = "",
+                BaselineStartDate = new DateTime(2019, 04, 17),
+                BaselineEndDate = new DateTime(2019, 04, 19)
+            };
+            Record5.SubTasks.Add(Record5Child1);
+            Record5.SubTasks.Add(Record5Child2);
+
+            GanttDataSourceCollection.Add(Record1);
+            GanttDataSourceCollection.Add(Record2);
+            GanttDataSourceCollection.Add(Record3);
+            GanttDataSourceCollection.Add(Record4);
+            GanttDataSourceCollection.Add(Record5);
+
+            return GanttDataSourceCollection;
+        }
+        
+        public static List<GanttDataSource> TaskModeData()
+        {
+            List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
+
+            GanttDataSource Record1 = new GanttDataSource()
+            {
+                TaskId = 1,
+                TaskName = "Parent Task 1",
+                StartDate = new DateTime(2017, 02, 27),
+                EndDate = new DateTime(2017, 03, 03),
+                Progress = 40,
+                IsManual = true,
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record1Child1 = new GanttDataSource()
+            {
+                TaskId = 2,
+                TaskName = "Child Task 1",
+                StartDate = new DateTime(2017, 02, 27),
+                EndDate = new DateTime(2017, 03, 03),
+                Progress = 40
+            };
+            GanttDataSource Record1Child2 = new GanttDataSource()
+            {
+                TaskId = 3,
+                TaskName = "Child Task 2",
+                StartDate = new DateTime(2017, 02, 26),
+                EndDate = new DateTime(2017, 03, 03),
+                Progress = 40,
+                IsManual = true
+            };
+            GanttDataSource Record1Child3 = new GanttDataSource()
+            {
+                TaskId = 4,
+                TaskName = "Child Task 3",
+                StartDate = new DateTime(2017, 02, 27),
+                Duration = 5,
+                Progress = 40,
+                EndDate = new DateTime(2017, 03, 03)
+            };
+            Record1.SubTasks.Add(Record1Child1);
+            Record1.SubTasks.Add(Record1Child2);
+            Record1.SubTasks.Add(Record1Child3);
+
+            GanttDataSource Record2 = new GanttDataSource()
+            {
+                TaskId = 5,
+                TaskName = "Parent Task 2",
+                StartDate = new DateTime(2017, 03, 05),
+                EndDate = new DateTime(2017, 03, 09),
+                Progress = 40,
+                IsManual = true,
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record2Child1 = new GanttDataSource()
+            {
+                TaskId = 6,
+                TaskName = "Child Task 1",
+                StartDate = new DateTime(2017, 03, 06),
+                EndDate = new DateTime(2017, 03, 09),
+                Progress = 40,
+            };
+            GanttDataSource Record2Child2 = new GanttDataSource()
+            {
+                TaskId = 7,
+                TaskName = "Child Task 2",
+                StartDate = new DateTime(2017, 03, 06),
+                EndDate = new DateTime(2017, 03, 09),
+                Progress = 40
+            };
+            GanttDataSource Record2Child3 = new GanttDataSource()
+            {
+                TaskId = 8,
+                TaskName = "Child Task 3",
+                StartDate = new DateTime(2017, 02, 28),
+                EndDate = new DateTime(2017, 03, 05),
+                Progress = 40,
+                IsManual = true
+            };
+            GanttDataSource Record2Child4 = new GanttDataSource()
+            {
+                TaskId = 9,
+                TaskName = "Child Task 4",
+                StartDate = new DateTime(2017, 03, 04),
+                EndDate = new DateTime(2017, 03, 09),
+                Progress = 40,
+                IsManual = true
+            };
+            Record2.SubTasks.Add(Record2Child1);
+            Record2.SubTasks.Add(Record2Child2);
+            Record2.SubTasks.Add(Record2Child3);
+            Record2.SubTasks.Add(Record2Child4);
+
+            GanttDataSource Record3 = new GanttDataSource()
+            {
+                TaskId = 10,
+                TaskName = "Parent Task 3",
+                StartDate = new DateTime(2017, 03, 13),
+                EndDate = new DateTime(2017, 03, 17),
+                Progress = 40,
+                IsManual = true,
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record3Child1 = new GanttDataSource()
+            {
+                TaskId = 11,
+                TaskName = "Child Task 1",
+                StartDate = new DateTime(2017, 03, 13),
+                EndDate = new DateTime(2017, 03, 17),
+                Progress = 40
+            };
+            GanttDataSource Record3Child2 = new GanttDataSource()
+            {
+                TaskId = 12,
+                TaskName = "Child Task 2",
+                StartDate = new DateTime(2017, 03, 13),
+                EndDate = new DateTime(2017, 03, 17),
+                Progress = 40
+            };
+            GanttDataSource Record3Child3 = new GanttDataSource()
+            {
+                TaskId = 13,
+                TaskName = "Child Task 3",
+                StartDate = new DateTime(2017, 03, 13),
+                EndDate = new DateTime(2017, 03, 17),
+                Progress = 40
+            };
+            GanttDataSource Record3Child4 = new GanttDataSource()
+            {
+                TaskId = 14,
+                TaskName = "Child Task 4",
+                StartDate = new DateTime(2017, 03, 12),
+                EndDate = new DateTime(2017, 03, 17),
+                Progress = 40,
+                IsManual = true
+            };
+            GanttDataSource Record3Child5 = new GanttDataSource()
+            {
+                TaskId = 15,
+                TaskName = "Child Task 5",
+                StartDate = new DateTime(2017, 03, 13),
+                EndDate = new DateTime(2017, 03, 17),
+                Progress = 40,
+            };
+            Record3.SubTasks.Add(Record3Child1);
+            Record3.SubTasks.Add(Record3Child2);
+            Record3.SubTasks.Add(Record3Child3);
+            Record3.SubTasks.Add(Record3Child4);
+            Record3.SubTasks.Add(Record3Child5);
+
+            GanttDataSourceCollection.Add(Record1);
+            GanttDataSourceCollection.Add(Record2);
+            GanttDataSourceCollection.Add(Record3);
+            return GanttDataSourceCollection;
+        }
+
+        public static List<GanttDataSource> MultiTaskbarData()
+        {
+            List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
+
+            GanttDataSource Record1 = new GanttDataSource()
+            {
+                TaskId = 1,
+                TaskName = "Project Initiation",
+                StartDate = new DateTime(2019, 03, 29),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>(),
+            };
+            GanttDataSource Record1Child1 = new GanttDataSource()
+            {
+                TaskId = 2,
+                TaskName = "Identify Site Location",
+                StartDate = new DateTime(2019, 03, 29),
+                Duration = 3,
+                Progress = 30,
+                Work = 10,
+                Resources = new List<ResourceModel>
+                {
+                   new ResourceModel { ResourceId = 1, ResourceUnit = 50 }
+                }
+            };
+            GanttDataSource Record1Child2 = new GanttDataSource()
+            {
+                TaskId = 3,
+                TaskName = "Perform Soil Test",
+                StartDate = new DateTime(2019, 04, 03),
+                Duration = 4,
+                Resources = new List<ResourceModel>
+                {
+                   new ResourceModel { ResourceId = 1, ResourceUnit = 70 }
+                },
+                Predecessor = "2",
+                Progress = 30,
+                Work = 20
+            };
+            GanttDataSource Record1Child3 = new GanttDataSource()
+            {
+                TaskId = 4,
+                TaskName = "Soil Test Approval",
+                StartDate = new DateTime(2019, 04, 09),
+                Duration = 4,
+                Resources = new List<ResourceModel>
+                {
+                   new ResourceModel { ResourceId = 1, ResourceUnit = 25 }
+                },
+                Predecessor = "3",
+                Progress = 30,
+                Work = 10
+            };
+            Record1.SubTasks.Add(Record1Child1);
+            Record1.SubTasks.Add(Record1Child2);
+            Record1.SubTasks.Add(Record1Child3);
+
+            GanttDataSource Record2 = new GanttDataSource()
+            {
+                TaskId = 5,
+                TaskName = "Project Estimation",
+                StartDate = new DateTime(2019, 03, 29),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record2Child1 = new GanttDataSource()
+            {
+                TaskId = 6,
+                TaskName = "Develop Floor Plan for Estimation",
+                StartDate = new DateTime(2019, 04, 01),
+                Duration = 5,
+                Progress = 30,
+                Resources = new List<ResourceModel>
+                {
+                   new ResourceModel { ResourceId = 2, ResourceUnit = 50 }
+                },
+                Work = 50
+            };
+            GanttDataSource Record2Child2 = new GanttDataSource()
+            {
+                TaskId = 7,
+                TaskName = "List Materials",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 4,
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 2, ResourceUnit = 40}
+                },
+                Predecessor = "6FS-2",
+                Progress = 30,
+                Work = 40
+            };
+            GanttDataSource Record2Child3 = new GanttDataSource()
+            {
+                TaskId = 8,
+                TaskName = "Estimation Approval",
+                StartDate = new DateTime(2019, 04, 09),
+                Duration = 4,
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 2, ResourceUnit = 75}
+                },
+                Predecessor = "7FS-1",
+                Progress = 30,
+                Work = 60
+            };
+            Record2.SubTasks.Add(Record2Child1);
+            Record2.SubTasks.Add(Record2Child2);
+            Record2.SubTasks.Add(Record2Child3);
+
+            GanttDataSource Record3 = new GanttDataSource()
+            {
+                TaskId = 9,
+                TaskName = "Site Work",
+                StartDate = new DateTime(2019, 04, 04),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record3Child1 = new GanttDataSource()
+            {
+                TaskId = 10,
+                TaskName = "Install Temporary Power Service",
+                StartDate = new DateTime(2019, 04, 01),
+                Duration = 14,
+                Progress = 30,
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 3, ResourceUnit = 75}
+                },
+            };
+            GanttDataSource Record3Child2 = new GanttDataSource()
+            {
+                TaskId = 11,
+                TaskName = "Clear the building site",
+                StartDate = new DateTime(2019, 04, 08),
+                Duration = 9,
+                Progress = 30,
+                Predecessor = "10FS-9",
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 3 }
+                },
+            };
+
+            GanttDataSource Record3Child3 = new GanttDataSource()
+            {
+                TaskId = 12,
+                TaskName = "Sign Contract",
+                StartDate = new DateTime(2019, 04, 12),
+                Duration = 5,
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 3 }
+                },
+                Predecessor = "11FS-5"
+            };
+            Record3.SubTasks.Add(Record3Child1);
+            Record3.SubTasks.Add(Record3Child2);
+            Record3.SubTasks.Add(Record3Child3);
+
+            GanttDataSource Record4 = new GanttDataSource()
+            {
+                TaskId = 13,
+                TaskName = "Foundation",
+                StartDate = new DateTime(2019, 04, 01),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record4Child1 = new GanttDataSource()
+            {
+                TaskId = 14,
+                TaskName = "Excavate for Foundations",
+                StartDate = new DateTime(2019, 04, 01),
+                Duration = 2,
+                Progress = 30,
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 4 }
+                }
+            };
+            GanttDataSource Record4Child2 = new GanttDataSource()
+            {
+                TaskId = 15,
+                TaskName = "Dig Footer",
+                StartDate = new DateTime(2019, 04, 04),
+                Duration = 2,
+                Predecessor = "14FS+1",
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 4}
+                }
+            };
+            GanttDataSource Record4Child3 = new GanttDataSource()
+            {
+                TaskId = 16,
+                TaskName = "Install plumbing grounds",
+                StartDate = new DateTime(2019, 04, 08),
+                Duration = 2,
+                Progress = 30,
+                Predecessor = "15",
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 4 }
+                }
+            };
+            Record4.SubTasks.Add(Record4Child1);
+            Record4.SubTasks.Add(Record4Child2);
+            Record4.SubTasks.Add(Record4Child3);
+
+            GanttDataSource Record5 = new GanttDataSource()
+            {
+                TaskId = 17,
+                TaskName = "Framing",
+                StartDate = new DateTime(2019, 04, 04),
+                EndDate = new DateTime(2019, 04, 21),
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record5Child1 = new GanttDataSource()
+            {
+                TaskId = 18,
+                TaskName = "Add load-bearing structure",
+                StartDate = new DateTime(2019, 04, 03),
+                Duration = 2,
+                Progress = 30,
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 5 }
+                }
+            };
+
+            GanttDataSource Record5Child2 = new GanttDataSource()
+            {
+                TaskId = 19,
+                TaskName = "Natural Gas Utilities",
+                StartDate = new DateTime(2019, 04, 08),
+                Duration = 4,
+                Predecessor = "18",
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 5 }
+                }
+            };
+            GanttDataSource Record5Child3 = new GanttDataSource()
+            {
+                TaskId = 20,
+                TaskName = "Electrical utilitites",
+                StartDate = new DateTime(2019, 04, 11),
+                Duration = 2,
+                Progress = 30,
+                Predecessor = "19FS+1",
+                Resources = new List<ResourceModel>
+                {
+                    new ResourceModel { ResourceId = 5 }
+                }
+            };
+            Record5.SubTasks.Add(Record5Child1);
+            Record5.SubTasks.Add(Record5Child2);
+            Record5.SubTasks.Add(Record5Child3);
+
+
+            GanttDataSourceCollection.Add(Record1);
+            GanttDataSourceCollection.Add(Record2);
+            GanttDataSourceCollection.Add(Record3);
+            GanttDataSourceCollection.Add(Record4);
+            GanttDataSourceCollection.Add(Record5);
+            return GanttDataSourceCollection;
+        }
+		public static List<ResourceGroupCollection> MultiTaskbarResource()
+        {
+            List<ResourceGroupCollection> GanttResourcesCollection = new List<ResourceGroupCollection>();
+
+            ResourceGroupCollection Record1 = new ResourceGroupCollection()
+            {
+                ResourceId = 1,
+                ResourceName = "Martin Tamer",
+                ResourceGroup = "Planning Team",
+                IsExpand = false
+            };
+            ResourceGroupCollection Record2 = new ResourceGroupCollection()
+            {
+                ResourceId = 2,
+                ResourceName = "Rose Fuller",
+                ResourceGroup = "Testing Team",
+                IsExpand = true
+            };
+            ResourceGroupCollection Record3 = new ResourceGroupCollection()
+            {
+                ResourceId = 3,
+                ResourceName = "Margaret Buchanan",
+                ResourceGroup = "Approval Team",
+                IsExpand = false
+            };
+            ResourceGroupCollection Record4 = new ResourceGroupCollection()
+            {
+                ResourceId = 4,
+                ResourceName = "Fuller King",
+                ResourceGroup = "Development Team",
+                IsExpand = false
+            };
+            ResourceGroupCollection Record5 = new ResourceGroupCollection()
+            {
+                ResourceId = 5,
+                ResourceName = "Davolio Fuller",
+                ResourceGroup = "Approval Team",
+                IsExpand = true
+            };
+            GanttResourcesCollection.Add(Record1);
+            GanttResourcesCollection.Add(Record2);
+            GanttResourcesCollection.Add(Record3);
+            GanttResourcesCollection.Add(Record4);
+            GanttResourcesCollection.Add(Record5);
+            return GanttResourcesCollection;
         }
     }
 }

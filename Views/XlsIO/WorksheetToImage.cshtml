@@ -1,11 +1,11 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 
 @section ActionDescription{
     This sample demonstrates how to convert spreadsheets to image using XlsIO.
 }
 @section Meta{
-    <meta name="description" content="This sample demonstrates how to convert Excel worksheet to image in ASP.NET MVC using Syncfusion XlsIO (Excel) library." />
-}
+                    <meta name="description" content="This example demonstrates the Worksheet To Image in ASP.NET MVC XlsIO control. Explore here for more details."/>
+                }
 @section Description{
     A worksheet can be converted to an image that is subject to few limitations. The image can be of any format, and it can also be saved as a memory stream.
     <br />
@@ -22,32 +22,24 @@
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("WorksheetToImage", "XlsIO", FormMethod.Post);
-            <h5>
-                Click the button below to convert the Excel worksheet to image using Essential XlsIO.
-            </h5>
+            <p style="font-weight:normal">
+				Click the "Input Template" button to view the input Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+			</p>
+			<p style="font-weight:normal">
+				Click the "Convert To Image" button to view the converted image.
+			</p>
             <br />
-            <h5>  Convert to </h5>
-            <div class="celldiv">
-                <table>
-                    <tr>
-                        <td>
-                            @Html.EJS().RadioButton("radio1").Label("PNG").Name("Group1").Value("PNG").Checked(true).Render()
-                        </td>
-                        <td>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            @Html.EJS().RadioButton("radio2").Label("JPEG").Name("Group1").Value("JPEG").Checked(false).Render()
-                        </td>
-                        <td>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </td>
-                        <td>
-                            @Html.EJS().RadioButton("radio3").Label("BMP").Name("Group1").Value("BMP").Checked(false).Render()
-                        </td>                       
-                    </tr>
-                </table>
-            </div>
+            <div>
+				Image Format :
+				<input type="radio" id="PNG" name="Group1" value="PNG" checked="checked"/>
+				<label for="PNG" style="font-weight:normal">PNG</label>
+				&nbsp;
+				<input type="radio" id="JPEG" name="Group1" value="JPEG" />
+				<label for="JPEG" style="font-weight:normal">JPEG</label>
+				&nbsp;
+				<input type="radio" id="BMP" name="Group1" value="BMP" />
+				<label for="BMP" style="font-weight:normal">BMP</label>
+			</div>
             <br />
             <div class="celldiv">
                 <input id="inputbtn" class="e-btn" type="submit" name="button" value="Input Template" style="width:160px;" />
@@ -56,3 +48,10 @@
         }
     </div>
 }
+
+@section Title{
+                    <title>ASP.NET MVC XlsIO Worksheet To Image Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Worksheet To Image in ASP.NET MVC XlsIO Control</h1>
+                }

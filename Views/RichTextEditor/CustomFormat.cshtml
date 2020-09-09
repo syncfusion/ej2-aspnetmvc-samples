@@ -2,10 +2,11 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            <div class="control-section">
-                @Html.EJS().RichTextEditor("customformat").Value((string)ViewBag.value).Created("created").Height("150px").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewBag.items)).Render()
-            </div>
-        </div>
+                @Html.EJS().RichTextEditor("customFormat").ContentTemplate(@<div>
+    The sample is configured with customized markdown syntax using the __formatter__ property. Type the content and click the toolbar item to view customized markdown syntax. For unordered list,
+    you need to add a plus sign before the word (e.g., + list1). Or To make a phrase bold,you need to add two underscores before and after the phrase (e.g., __this text is bold__).
+</div>).Created("created").Height("150px").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewBag.Items)).Render()
+          </div>
     </div>
 <style>
     .e-richtexteditor textarea.e-content {
@@ -44,7 +45,7 @@
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This demo for Essential JS 2  rich text editor control demonstrates on how to customize tags of markdown formatting in rich text editor."/>
+    <meta name="description" content="This demo explains how to convert markdown content (with the custom format) to valid HTML markup using Markdown-to-HTML of the markdown parser in ASP.NET MVC."/>
 }
 
 @*custom code end*@
@@ -59,17 +60,14 @@
 }
 @section Description{
     <div id="description">
-        The rich text editor allows you to customize the markdown syntax by overriding its default syntax. Configure the customized
+        The Rich Text Editor allows you to customize the markdown syntax by overriding its default syntax. Configure the customized
         markdown syntax using the <code>formatter</code>property
 
         <p>The third-party library <code>Marked</code> is used in this sample to convert markdown into HTML content.</p>
     </div>
 }
 <script>
-    var defaultRTE;
-    var textArea;
-    var mdPreview;
-    var mdsource;
+    var defaultRTE, textArea, mdPreview, mdsource;
     function created() {
         defaultRTE = this;
             mdPreview = document.getElementById('MD_Preview');

@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{   
 <div>
     <div class="col-lg-9 control-section">
@@ -15,7 +15,7 @@
              ).PrimaryYAxis(py => py.Title("Rupees against Dollars").Interval(10)
              .MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
              ).ChartArea(area => area.Border(br=>br.Color("transparent"))
-             ).Title("Historical Indian Rupee Rate (INR USD)").LegendSettings(lg => lg.Visible(false)
+             ).Title("Historical Indian Rupee Rate (INR USD)").LegendSettings(lg => lg.Visible(true)
              ).Tooltip(tt => tt.Enable(true)).Load("load").Render()
             </div>
     </div>
@@ -213,8 +213,8 @@
 }
  @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Chart control shows how to render and configure the trend lines in charts." />
-}
+                    <meta name="description" content="This example demonstrates the Trendlines in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
  @*custom code end*@
 @section ActionDescription{
     <p>
@@ -237,3 +237,9 @@
     <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
 </p>
 }
+@section Title{
+                    <title>ASP.NET MVC Chart Trendlines Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Trendlines in ASP.NET MVC Chart Control</h1>
+                }

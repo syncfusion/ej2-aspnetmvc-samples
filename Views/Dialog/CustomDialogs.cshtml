@@ -1,16 +1,16 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Popups
 
 @section ControlsSection{
     <div id="target" class="col-lg-12 control-section">
 
-        @Html.EJS().Button("alertBtn").CssClass(".dlgbtn").Content("Alert").Render()
-        @Html.EJS().Button("confirmBtn").CssClass(".dlgbtn").Content("Confirm").Render()
-        @Html.EJS().Button("promptBtn").CssClass(".dlgbtn").Content("Prompt").Render()
+        @Html.EJS().Button("alertBtn").CssClass("dlgbtn").Content("Alert").Render()
+        @Html.EJS().Button("confirmBtn").CssClass("dlgbtn").Content("Confirm").Render()
+        @Html.EJS().Button("promptBtn").CssClass("dlgbtn").Content("Prompt").Render()
 
-        @Html.EJS().Dialog("alert_dialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("onLoadalert").Header("Low Battery").Close("dialogClose").Open("dialogOpen").Content("<div>10% of battery remaining</div>").CloseOnEscape(true).Visible(false).Width("250px").Target("#target").Buttons(ViewBag.alertbutton).Render()
-        @Html.EJS().Dialog("confirm_dialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("onLoadconfirm").Header("Delete Multiple Items").Close("dialogClose").Open("dialogOpen").Content("<span>Are you sure you want to permanently delete these items ?</span>").Visible(false).ShowCloseIcon(true).CloseOnEscape(true).Width("400px").Target("#target").Buttons(ViewBag.confirmbutton).Render()
-        @Html.EJS().Dialog("prompt_dialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("onLoadprompt").Header("Join Wi-Fi network").Visible(false).Close("dialogClose").Open("dialogOpen").Content("<table class='Table'><tbody><tr><td>SSID:</td></tr><tr><td><b>AndroidAP</b></td></tr><tr><td>Password:</td></tr><tr><td><span class='e-input-group'><input type='password' id='password' name='Required' class='e-input'></span></td></tr></tbody></table>").ShowCloseIcon(true).CloseOnEscape(true).Width("330px").Target("#target").Buttons(ViewBag.promptbutton).Render()
+        @Html.EJS().Dialog("alert_dialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("onLoadalert").Header("Low Battery").Close("dialogClose").Open("dialogOpen").ContentTemplate(@<div>10% of battery remaining</div>).CloseOnEscape(true).Visible(false).Width("250px").Target("#target").Buttons(ViewBag.AlertButton).Render()
+        @Html.EJS().Dialog("confirm_dialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("onLoadconfirm").Header("Delete Multiple Items").Close("dialogClose").Open("dialogOpen").ContentTemplate(@<span>Are you sure you want to permanently delete these items ?</span>).Visible(false).ShowCloseIcon(true).CloseOnEscape(true).Width("400px").Target("#target").Buttons(ViewBag.ConfirmButton).Render()
+        @Html.EJS().Dialog("prompt_dialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("onLoadprompt").Header("Join Wi-Fi network").Visible(false).Close("dialogClose").Open("dialogOpen").ContentTemplate(@<table class='Table'><tbody><tr><td>SSID:</td></tr><tr><td><b>AndroidAP</b></td></tr><tr><td>Password:</td></tr><tr><td><span class='e-input-group'><input type='password' id='password' name='Required' class='e-input'></span></td></tr></tbody></table>).ShowCloseIcon(true).CloseOnEscape(true).Width("330px").Target("#target").Buttons(ViewBag.PromptButton).Render()
 
     </div>
 }
@@ -22,7 +22,7 @@
     .Table {
         border-collapse: separate;
         border-spacing: 10px;
-        width:85%;
+        width: 85%;
         margin: 0px -5px 0px;
     }
 
@@ -53,22 +53,23 @@
 
 @section PreScripts {
     <script>
+        var alertObj, confirmObj, promptObj;
         function onLoadalert() {
+            alertObj = this;
             document.getElementById('alertBtn').onclick = function () {
-                var dialogObj = document.getElementById('alert_dialog').ej2_instances[0];
-                dialogObj.show();
+                alertObj.show();
             };
         }
         function onLoadconfirm() {
+            confirmObj = this;
             document.getElementById('confirmBtn').onclick = function () {
-                var dialogObj = document.getElementById('confirm_dialog').ej2_instances[0];
-                dialogObj.show();
+                confirmObj.show();
             };
         }
         function onLoadprompt() {
+            promptObj = this;
             document.getElementById('promptBtn').onclick = function () {
-                var dialogObj = document.getElementById('prompt_dialog').ej2_instances[0];
-                dialogObj.show();
+                promptObj.show();
             };
             document.getElementById('password').addEventListener('focus', function () {
                 this.parentElement.classList.add('e-input-focus');
@@ -78,16 +79,13 @@
             });
         }
         function alertBtnClick() {
-            var dialogObj = document.getElementById('alert_dialog').ej2_instances[0];
-            dialogObj.hide();
+            alertObj.hide();
         }
         function confirmBtnClick() {
-            var dialogObj = document.getElementById('confirm_dialog').ej2_instances[0];
-            dialogObj.hide();
+            confirmObj.hide();
         }
         function promptBtnClick() {
-            var dialogObj = document.getElementById('prompt_dialog').ej2_instances[0];
-            dialogObj.hide();
+            promptObj.hide();
         }
         function dialogOpen() {
             document.getElementById('alertBtn').style.display = 'none';
@@ -129,7 +127,13 @@
 @*custom code start*@
 
 @section Meta{
-    <meta name="description" content="This example demonstrates how to create custom dialogs such as alert dialogs, confirmation dialogs, and prompt dialogs using the ASP.NET MVC dialog control." />
-}
+                    <meta name="description" content="This example demonstrates the Custom Dialogs in ASP.NET MVC Dialog control. Explore here for more details."/>
+                }
 
 @*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Dialog Custom Dialogs Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Custom Dialogs in ASP.NET MVC Dialog Control</h1>
+                }

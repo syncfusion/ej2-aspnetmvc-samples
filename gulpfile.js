@@ -242,3 +242,51 @@ gulp.task('desValidation', function (done) {
         done();
     }
 });
+
+gulp.task('title-section', function () {
+    var samplelists = config.window.samplesList;
+    for (let component of samplelists) {
+        var samples = component.samples;
+        for(let sample of samples){
+            let componentName = component.name;
+            let featureName = sample.name;
+            let url = sample.url;
+            let dir = sample.component; 
+            let path = `./Views/${dir}/${url}.cshtml`;
+            let content = fs.existsSync(path) ? fs.readFileSync(path, 'utf8') : '';
+            let title = `ASP.NET MVC ${componentName} ${featureName} Example - Syncfusion Demos `;
+            if(content !== ''){
+            if(content.includes('@section Title{')){
+                content = content.replace(/@section Title+{([^}]*)}/g, `@section Title{
+                    <title>${title}</title> 
+                }`).trim();
+            }else {
+             content = content + `\n@section Title{
+                 <title>${title}</title>
+             }`;
+            }
+            let description = `This example demonstrates the ${featureName} in ASP.NET MVC ${componentName} control. Explore here for more details.`;
+            if(content.includes('@section Meta{')){
+                content = content.replace(/@section Meta+{([^}]*)}/g, `@section Meta{
+                    <meta name="description" content="${description}"/>
+                }`).trim();
+            }else{
+            content = content + `\n@section Meta{
+                <meta name="description" content="${description}"/>
+            }`;
+        }
+            let header = `Example of ${featureName} in ASP.NET MVC ${componentName} Control`;
+            if(content.includes('@section Header{')){
+                content = content.replace(/@section Header+{([^}]*)}/g, `@section Header{
+                    <h1 class='sb-sample-text'>${header}</h1>
+                }`).trim();
+            }else{
+            content = content + `\n@section Header{
+                <h1 class='sb-sample-text'>${header}</h1>
+            }`;
+        }
+             fs.writeFileSync(path, content, 'utf-8');
+    }
+        }
+    }
+});

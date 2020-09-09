@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @{
     ViewBag.Title = "Taskbar Template";
 }
@@ -102,7 +102,7 @@
     <script type="text/x-jsrender" id="childtask">
         ${if(TaskName == 'Oscar moments')}
         <div class="e-gantt-child-taskbar e-custom-moments" style="height:100%;border-radius:5px;">
-            ${if(taskDuration < 4)}
+            ${if(ganttProperties.duration < 4)}
             <img class="moments" height="32" width="32" src="@Url.Content("~/Content/gantt/images/moments.svg")" />
             ${else}
             <img class="moments" height="32" width="32" src="@Url.Content("~/Content/gantt/images/moments.svg")" />
@@ -112,7 +112,7 @@
         </div>
         ${else if(TaskName == 'Oscar performance')}
         <div class="e-gantt-child-taskbar e-custom-performance" style="height:100%;border-radius:5px;">
-            ${if(taskDuration <= 5)}
+            ${if(ganttProperties.duration <= 5)}
             <img class="face-mask" height="32" width="32" src="@Url.Content("~/Content/gantt/images/face-mask.svg")" />
             ${else}
             <img class="face-mask" height="32" width="32" src="@Url.Content("~/Content/gantt/images/face-mask.svg")" />
@@ -121,16 +121,16 @@
         </div>
         ${else}
         <div class="e-gantt-parent-taskbar e-custom-parent" style="height:100%;border-radius:5px;text-overflow:ellipsis;">
-            ${if(taskDuration < 4)}
+            ${if(ganttProperties.duration < 4)}
             <img class="oscar" height="32" width="32" src="@Url.Content("~/Content/gantt/images/oscar.svg")" />
             ${else}
-            ${if(Winner && Movie)}
+            ${if(taskData.Winner && taskData.Movie)}
             <img class="oscar" height="32" width="32" src="@Url.Content("~/Content/gantt/images/oscar.svg")" />
-            <span class="e-task-label" style="position:absolute; top:13px;font-size:14px;">${Winner}</span>
-            <span class="e-task-label" style="position:absolute;top:33px;font-size:10px;text-overflow:ellipsis;">${Movie}</span>
-            ${else if(Movie)}
+            <span class="e-task-label" style="position:absolute; top:13px;font-size:14px;">${taskData.Winner}</span>
+            <span class="e-task-label" style="position:absolute;top:33px;font-size:10px;text-overflow:ellipsis;">${taskData.Movie}</span>
+            ${else if(taskData.Movie)}
             <img class="oscar" height="32" width="32" src="@Url.Content("~/Content/gantt/images/oscar.svg")" />
-            <span class="e-task-label" style="position:absolute; top:0px;font-size:12px;text-overflow:ellipsis;"></br> ${Movie} </span>
+            <span class="e-task-label" style="position:absolute; top:0px;font-size:12px;text-overflow:ellipsis;"></br> ${taskData.Movie} </span>
             ${else}
             <span class="e-task-label"></span>
             ${/if}
@@ -154,16 +154,15 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample visualizes the complete event schedule of the 90th Academy awards.
+            This sample visualizes how to customize the Gantt taskbar.
             Taskbars are customized using template support and timeline header is customized for a better view of the data.
         </p>
     </div>
 }
 
 @section Meta{
-    <meta name="description" content="This sample visualizes the various phases involved in a manufacturing process of a product which transforms from
-        a conceptual model to a sellable product." />
-}
+                    <meta name="description" content="This example demonstrates the Taskbar Template in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
 
 @section Description{
     <div id="description">
@@ -179,3 +178,9 @@
         </p>
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC Gantt Taskbar Template Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Taskbar Template in ASP.NET MVC Gantt Control</h1>
+                }

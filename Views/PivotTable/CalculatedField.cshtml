@@ -2,8 +2,8 @@
 @using EJ2MVCSampleBrowser.Models
 @using Syncfusion.EJ2.PivotView
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 ASP.NET MVC Pivot Table control shows calculated field, and it allows users to add calculated items through a dialog" />
-}
+                    <meta name="description" content="This example demonstrates the Calculated Field in ASP.NET MVC Pivot Table control. Explore here for more details."/>
+                }
 @section ControlsSection{
     @{var stock = "\"" + "Sum(In_Stock)" + "\"";}
     @{var sold = "\"" + "Sum(Sold)" + "\"";}
@@ -62,6 +62,12 @@
             width: 100%;
             height: 100%;
         }
+        .sb-sample-content-area {
+            min-height: 255px !important;
+        }
+        .control-section {
+            min-height: 255px !important;
+        }
     </style>
     <script>
         document.getElementById("calculated-field-btn").addEventListener('click', function () {
@@ -95,3 +101,10 @@
         </p>
     </div>
 }
+
+@section Title{
+                    <title>ASP.NET MVC Pivot Table Calculated Field Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Calculated Field in ASP.NET MVC Pivot Table Control</h1>
+                }

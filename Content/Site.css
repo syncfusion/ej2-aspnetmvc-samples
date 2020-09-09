@@ -141,7 +141,7 @@
 .sb-icon-Chart:before {
     content: '\e906';
 }
-#sb-content .e-tab-text{
+#sb-content-header .e-tab-text{
     display: table;
 }
 
@@ -690,7 +690,10 @@
     content: '\e70a';
     font-size: 25px;
 }
-
+.bootstrap4 .copycode::before{
+    content:'\e77b';
+    font-size:25px;
+}
 .copy-tooltip {
     height: 32px;
     width: 32px;
@@ -831,10 +834,10 @@
     width: 17px;
 }
 .sb-component-name h1 {
-    font-size: 18px;
-    margin: 0px;
-    font-weight: bold;
     font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
+    font-size: 22px;
+    padding-bottom: 10px; 
+    margin: 0;
 }
 
 .sb-left-pane {
@@ -894,6 +897,10 @@
 
 .sb-right-pane-overlay {
     pointer-events: none;
+}
+
+.description-section code {
+  text-transform: capitalize;
 }
 
 .description-section {

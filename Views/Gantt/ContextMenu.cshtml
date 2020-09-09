@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @{
     ViewBag.Title = "ContextMenu";
 }
@@ -6,7 +6,7 @@
 @section ControlsSection{
     @{
         List<object> contextItems = new List<object> { "AutoFitAll", "AutoFit", "TaskInformation", "DeleteTask", "Save", "Cancel",
-             "SortAscending", "SortDescending", "Add", "DeleteDependency", "Convert"};
+             "SortAscending", "SortDescending", "Add", "DeleteDependency", "Convert", "Indent", "Outdent"};
         contextItems.Add(new { text = "Collapse the Row", target = ".e-content", id = "collapserow" });
         contextItems.Add(new { text = "Expand the Row", target = ".e-content", id = "expandrow" });
 
@@ -20,7 +20,7 @@
                             .Toolbar(new List<string>() { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll" })
                             .AllowSelection(true).GridLines(Syncfusion.EJ2.Gantt.GridLine.Both).EnableContextMenu(true).AllowResizing(true).AllowSorting(true)
                             .ContextMenuItems(contextItems).ContextMenuOpen("ContextMenuOpen").ContextMenuClick("ContextMenuClick")
-                            .Height("450px").TreeColumnIndex(1).ResourceNameMapping("ResourceName").ResourceIDMapping("ResourceId")
+                            .Height("450px").TreeColumnIndex(1).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName"))
                             .Resources((IEnumerable<object>)ViewBag.Resources).HighlightWeekends(true).TimelineSettings(tl => tl.TopTier(tt =>
                               tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week).Format("MMM dd, y")).
                             BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))).Columns(col =>
@@ -32,7 +32,7 @@
                                 col.Field("Progress").Add();
                                 col.Field("Predecessor").Add();
                             }).LabelSettings(ls => ls.LeftLabel("TaskName")
-                            .RightLabel("ResourceId"))
+                            .RightLabel("${if(taskData.SubTasks)}${taskData.Duration} ${else if(ResourceId)}${ResourceId}${/if}"))
                             .EditDialogFields(edf =>
                             {
                                 edf.Type(Syncfusion.EJ2.Gantt.DialogFieldType.General).Add();
@@ -57,14 +57,14 @@
             var record = args.rowData;
             if (args.type !== 'Header') {
                 if (!record.hasChildRecords) {
-                    document.querySelectorAll('li#expandrow')[0].setAttribute('style', 'display: none;');
-                    document.querySelectorAll('li#collapserow')[0].setAttribute('style', 'display: none;');
+                    args.hideItems.push('Collapse the Row');
+                    args.hideItems.push('Expand the Row');
                 } else {
-                    var flag = record.expanded;
-                    var val = flag ? 'none' : 'block';
-                    document.querySelectorAll('li#expandrow')[0].setAttribute('style', 'display: ' + val + ';');
-                    val = !flag ? 'none' : 'block';
-                    document.querySelectorAll('li#collapserow')[0].setAttribute('style', 'display: ' + val + ';');
+                    if (record.expanded) {
+                        args.hideItems.push('Expand the Row');
+                    } else {
+                        args.hideItems.push('Collapse the Row');
+                    }
                 }
             }
     }
@@ -94,35 +94,37 @@
     <p>
         This sample demonstrates the various phases involved in constructing a residential house, from testing
         the soil to handing over the fully constructed property to the owner. This also demonstrates the usage of
-        default and custom context menu in Gantt component.
+        default and custom context menu in Gantt control.
     </p>
 </div>
 }
 
 @section Meta{
-    <meta name="description" content="This demo explains the usage of context menu and the default context menu items in Syncfusion Gantt control." />
-}
+                    <meta name="description" content="This example demonstrates the Context Menu in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
 
 @section Description{
     <div id="description">
         <p>
             Gantt has an option to show the context menu while performing right click on it. You can configure the default
-            and custom menu items in the context menu using the <code>contextMenuItems</code> property.
+            and custom menu items in the context menu using the <code>ContextMenuItems</code> property.
             Each menu item will be displayed contextually based on its target. In this demo we have rendered following
-            default and custom menu items
+            default and custom menu items.
         </p>
         <p style="font-weight: 500">Default items:</p>
         <ul>
             <li><code>AutoFitAll</code> - Auto fit all columns.</li>
             <li><code>AutoFit</code> - Auto fit the current column.</li>
             <li><code>TaskInformation</code> - Edit the current record.</li>
+            <li><code>Indent</code> - Indent the selected record to one level</li>
+            <li><code>Outdent</code> - Outdent the selected record to one level</li>
             <li><code>DeleteTask</code> - Delete the current record.</li>
             <li><code>Save</code> - Save the edited record.</li>
             <li><code>Cancel</code> - Cancel the edited state.</li>
             <li><code>SortAscending </code> - Sort the current column in ascending order.</li>
             <li><code>SortDescending </code> - Sort the current column in descending order.</li>
             <li><code>DeleteDependency </code> - Delete the dependency of the current record.</li>
-            <li><code>Convert </code> - Convert the normal task in to milestone task and vice versa.</li>
+            <li><code>Convert </code> - Convert the normal task into milestone task and vice versa.</li>
             <li>
                 <code>Add</code>
                 <ul>
@@ -149,3 +151,10 @@
         </p>
     </div>
 }
+
+@section Title{
+                    <title>ASP.NET MVC Gantt Context Menu Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Context Menu in ASP.NET MVC Gantt Control</h1>
+                }

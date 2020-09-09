@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 
 @section ControlsSection{
     <div class="control-section">
@@ -12,7 +12,6 @@
             @Html.EJS().RecurrenceEditor("RecurrenceEditor").SelectedType(1).Change("onChange").Render()
         </div>
     </div>
-    @*custom code start*@
     <style>
         .recurrence-editor-wrap {
             margin: 0 25%;
@@ -37,7 +36,6 @@
             }
         }
     </style>
-    @*custom code end*@
     <script type="text/javascript">
         function onChange(args) {
             var element = document.querySelector('#rule-output');
@@ -47,8 +45,8 @@
 }
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Scheduler control showcases the recurrence rule generation based on the options selected from the recurrence editor." />
-}
+                    <meta name="description" content="This example demonstrates the Rule Generator in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -71,3 +69,10 @@
         </p>
     </div>
 }
+
+@section Title{
+                    <title>ASP.NET MVC Scheduler Rule Generator Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Rule Generator in ASP.NET MVC Scheduler Control</h1>
+                }

@@ -4,7 +4,7 @@
     <div class="control-section">
         @{Html.BeginForm("BookmarkNavigation", "DocIO", FormMethod.Post);
             {
-                <div style="margin-top: 10px">
+                <div style="margin-top: 10px; font-size:14px">
                     Click the button to view the generated Word document or PDF. Please note that Microsoft Word Viewer or Microsoft Word is required to view the resultant Word document and PDF viewer is required to view the resultant PDF.
                     <div style="margin-top: 10px">
                         Save As :
@@ -21,7 +21,9 @@
                         <label for="rdButtonPdf" style="font-size:13px;font-weight:normal;text-align:match-parent" data-toggle="tooltip" title="Saves the resultant document as PDF">PDF</label>
                     </div>
                     <div style="margin-top: 8px">
-                        <input class="e-btn" type="submit" value="Generate Document" style="width:170px; text-transform:capitalize" />
+                        <input id="viewtemplate" name="Button" class="e-btn" type="submit" value="View Template" style="width: 150px; text-transform:capitalize" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="generate" name="Button" class="e-btn" type="submit" value="Generate Document" style="width:170px; text-transform:capitalize" />
                     </div>
                 </div>
                 Html.EndForm();
@@ -47,6 +49,9 @@
             <li>
                 You can insert, replace or delete the contents of a specific bookmark in the Word document.
             </li>
+            <li>
+                You can select the column range for bookmarks inside tables in Word documents using FirstColumn and LastColumn APIs.
+            </li>
         </ul>
     </div>
     <div style="margin-top: 15px">
@@ -56,5 +61,11 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="Example [C#] to navigate between the bookmarks in a Word document and edit its content in ASP.NET MVC using Syncfusion .NET Word (DocIO) library." />
-}
+                    <meta name="description" content="This example demonstrates the Bookmark Navigation in ASP.NET MVC DocIO control. Explore here for more details."/>
+                }
+@section Title{
+                    <title>ASP.NET MVC DocIO Bookmark Navigation Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Bookmark Navigation in ASP.NET MVC DocIO Control</h1>
+                }

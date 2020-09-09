@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewBag.Title = "DefaultFunctionalities";
 }
 
@@ -6,84 +6,83 @@
 @using Syncfusion.EJ2.InPlaceEditor;
 @using Syncfusion.EJ2.DropDowns;
 @section ControlsSection{
-
-<div class="col-lg-8 control-section inplace-control-section default_layout">
-    <div class="control_wrapper">
-        <table>
+    <div class="col-lg-8 control-section inplace-control-section default_layout">
+        <div class="control_wrapper">
+            <table>
+                <tr>
+                    <td>
+                        <label class="control-label" style="text-align: left;font-size: 14px;font-weight: 400">
+                            TextBox
+                        </label>
+                    </td>
+                    <td>
+                        @Html.EJS().InPlaceEditor("inplace_editor").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Text).Value("Andrew").Created("inplaceCreated").SubmitOnEnter(true).PopupSettings(new InPlaceEditorPopupSettings { Title = "Enter Employee Name" }).Model(ViewBag.ModalData).Render()
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" style="text-align: left;font-size: 14px;font-weight: 400">
+                            NumericTextBox
+                        </label>
+                    </td>
+                    <td>
+                        @Html.EJS().InPlaceEditor("numericTextBoxEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Numeric).Created("numericCreated").Value("$100.00").Model(ViewBag.NumericData).Render()
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" style="text-align: left;font-size: 14px;font-weight: 400">
+                            MaskedTextBox
+                        </label>
+                    </td>
+                    <td>
+                        @Html.EJS().InPlaceEditor("maskedTextBoxEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Mask).Created("maskedCreated").Value("012-345-6789").Model(ViewBag.MaskData).Render()
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties">
             <tr>
-                <td>
-                    <label class="control-label" style="text-align: left;font-size: 14px;font-weight: 400">
-                        TextBox
-                    </label>
+                <td style="width: 50%;">
+                    <div>Mode</div>
                 </td>
-                <td>
-                    @Html.EJS().InPlaceEditor("inplace_editor").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Text).Value("Andrew").SubmitOnEnter(true).PopupSettings(new InPlaceEditorPopupSettings { Title = "Enter Employee Name" }).Model(ViewBag.modalData).Render()
+                <td style="width: 50%;">
+                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewBag.ModeData).Value("Inline").Change("changeEditorMode").Render()
                 </td>
             </tr>
             <tr>
-            <td>
-                <label class="control-label" style="text-align: left;font-size: 14px;font-weight: 400">
-                    NumericTextBox
-                </label>
-            </td>
-            <td>
-                @Html.EJS().InPlaceEditor("numericTextBoxEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Numeric).Value("$100.00").Model(ViewBag.numericData).Render()
-            </td>
+                <td style="width: 50%;">
+                    <div>Editable On</div>
+                </td>
+                <td style="width: 50%;">
+                    @Html.EJS().DropDownList("editableOn").Width("90%").DataSource((IEnumerable<object>)ViewBag.ClickData).Value("Click").Fields(new DropDownListFieldSettings { Text = "ClickType", Value = "Id" }).Change("onEditableOn").Render()
+                </td>
             </tr>
             <tr>
-                <td>
-                    <label class="control-label" style="text-align: left;font-size: 14px;font-weight: 400">
-                        MaskedTextBox
-                    </label>
+                <td style="width: 50%;">
+                    <div>Show Buttons</div>
                 </td>
-                <td>
-                    @Html.EJS().InPlaceEditor("maskedTextBoxEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Mask).Value("012-345-6789").Model(ViewBag.maskData).Render()
+                <td style="width: 50%;">
+                    <div>
+                        @Html.EJS().CheckBox("showButtons").Change("onChange").Checked(true).LabelPosition(Syncfusion.EJ2.Buttons.LabelPosition.Before).Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%;">
+                    <div>Disable</div>
+                </td>
+                <td style="width: 50%;">
+                    <div>
+                        @Html.EJS().CheckBox("editorEnable").Change("onChangeEnable").LabelPosition(Syncfusion.EJ2.Buttons.LabelPosition.Before).Render()
+                    </div>
                 </td>
             </tr>
         </table>
     </div>
-</div>
-<div class="col-lg-4 property-section">
-    <table id="property" title="Properties">
-        <tr>
-            <td style="width: 50%;">
-                <div>Mode</div>
-            </td>
-            <td style="width: 50%;">
-                @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewBag.modeData).Value("Inline").Change("changeEditorMode").Render()
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 50%;">
-                <div>Editable On</div>
-            </td>
-            <td style="width: 50%;">
-                @Html.EJS().DropDownList("editableon").Width("90%").DataSource((IEnumerable<object>)ViewBag.clickData).Value("Click").Fields(new DropDownListFieldSettings { Text = "ClickType", Value = "Id" }).Change("onEditableOn").Render()
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 50%;">
-                <div>Show Buttons</div>
-            </td>
-            <td style="width: 50%;">
-                <div>
-                   @Html.EJS().CheckBox("showbuttons").Change("onChange").Checked(true).LabelPosition(Syncfusion.EJ2.Buttons.LabelPosition.Before).Render()
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td style="width: 50%;">
-                <div>Disable</div>
-            </td>
-            <td style="width: 50%;">
-                <div>
-                    @Html.EJS().CheckBox("editorEnable").Change("onChangeEnable").LabelPosition(Syncfusion.EJ2.Buttons.LabelPosition.Before).Render()
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
-    }
+}
 <style>
     .inplace-control-section .control_wrapper {
         margin: 100px 20px;
@@ -95,15 +94,16 @@
         max-width: 400px;
         margin: auto;
     }
-    .inplace-control-section .control_wrapper table td {
-        width: 200px;
-        height: 100px;
-    }
-    /* custom code end */
 
-    .inplace-control-section .control_wrapper .control-center {
-        text-align: center;
-    }
+        .inplace-control-section .control_wrapper table td {
+            width: 200px;
+            height: 100px;
+        }
+        /* custom code end */
+
+        .inplace-control-section .control_wrapper .control-center {
+            text-align: center;
+        }
 
     .inplace-control-section .e-inplaceeditor {
         height: auto;
@@ -138,81 +138,80 @@
         display: block;
         visibility: hidden;
     }
-
-
 </style>
 
 @section PreScripts {
-<script>
-    var editEle1 = document.getElementById("inplace_editor");
-    var editEle2 = document.getElementById("numericTextBoxEle");
-    var editEle3 = document.getElementById("maskedTextBoxEle");
-    function changeEditorMode(e) {
-        if (e.itemData.text === 'Popup') {
-            editEle1.ej2_instances[0].mode = editEle2.ej2_instances[0].mode = editEle3.ej2_instances[0].mode = 'Popup';
-        } else {
-            editEle1.ej2_instances[0].mode = editEle2.ej2_instances[0].mode = editEle3.ej2_instances[0].mode = 'Inline';
+    <script>
+        var inplaceObj, numericObj, maskedObj;
+        function inplaceCreated() {
+            inplaceObj = this;
         }
-        editEle1.ej2_instances[0].dataBind();
-        editEle2.ej2_instances[0].dataBind();
-        editEle3.ej2_instances[0].dataBind();
-    }
-    function onChange(args) {
-        editEle1.ej2_instances[0].showButtons = editEle2.ej2_instances[0].showButtons = editEle3.ej2_instances[0].showButtons = args.checked;
-    }
-    function onChangeEnable(args) {
-        editEle1.ej2_instances[0].disabled = editEle2.ej2_instances[0].disabled = editEle3.ej2_instances[0].disabled = args.checked;
-    }
-    function onEditableOn(e) {
-        if (e.itemData.Id === 'Click') {
-            editEle1.ej2_instances[0].editableOn = editEle2.ej2_instances[0].editableOn = editEle3.ej2_instances[0].editableOn = 'Click';
-        } else if (e.itemData.Id === 'DblClick') {
-            editEle1.ej2_instances[0].editableOn = editEle2.ej2_instances[0].editableOn = editEle3.ej2_instances[0].editableOn = 'DblClick';
-        } else {
-            editEle1.ej2_instances[0].editableOn = editEle2.ej2_instances[0].editableOn = editEle3.ej2_instances[0].editableOn = 'EditIconClick';
+        function numericCreated() {
+            numericObj = this;
         }
-        editEle1.ej2_instances[0].dataBind();
-        editEle2.ej2_instances[0].dataBind();
-        editEle3.ej2_instances[0].dataBind();
-    }
-    document.getElementById('right-pane').onscroll = function () {
-        var mode = document.getElementById("editorMode")
-        if (mode.ej2_instances[0].value === 'Inline') { return; }
-        if (editEle1.querySelectorAll('.e-editable-open').length > 0) 
-            editEle1.ej2_instances[0].enableEditMode = false;
-        if (editEle2.querySelectorAll('.e-editable-open').length > 0)
-            editEle2.ej2_instances[0].enableEditMode = false;
-        if (editEle3.querySelectorAll('.e-editable-open').length > 0) 
-            editEle3.ej2_instances[0].enableEditMode = false;
-    }
-</script>
+        function maskedCreated() {
+            maskedObj = this;
+        }
+        function changeEditorMode(e) {
+            if (e.itemData.text === 'Popup') {
+                inplaceObj.mode = numericObj.mode = maskedObj.mode = 'Popup';
+            } else {
+                inplaceObj.mode = numericObj.mode = maskedObj.mode = 'Inline';
+            }
+        }
+        function onChange(args) {
+            inplaceObj.showButtons = numericObj.showButtons = maskedObj.showButtons = args.checked;
+        }
+        function onChangeEnable(args) {
+            inplaceObj.disabled = numericObj.disabled = maskedObj.disabled = args.checked;
+        }
+        function onEditableOn(e) {
+            if (e.itemData.Id === 'Click') {
+                inplaceObj.editableOn = numericObj.editableOn = maskedObj.editableOn = 'Click';
+            } else if (e.itemData.Id === 'DblClick') {
+                inplaceObj.editableOn = numericObj.editableOn = maskedObj.editableOn = 'DblClick';
+            } else {
+                inplaceObj.editableOn = numericObj.editableOn = maskedObj.editableOn = 'EditIconClick';
+            }
+        }
+        document.getElementById('right-pane').onscroll = function () {
+            var mode = document.getElementById("editorMode")
+            if (mode.ej2_instances[0].value === 'Inline') { return; }
+            if (inplaceObj.element.querySelectorAll('.e-editable-open').length > 0)
+                inplaceObj.enableEditMode = false;
+            if (numericObj.element.querySelectorAll('.e-editable-open').length > 0)
+                numericObj.enableEditMode = false;
+            if (maskedObj.element.querySelectorAll('.e-editable-open').length > 0)
+                maskedObj.enableEditMode = false;
+        }
+    </script>
 }
 @section ActionDescription{
     <p>
-        This sample demonstrates the default functionalities of the <code>In-Place Editor</code> component. Click on the dotted input element to switch to the editable state and save or cancel it by clicking the actions buttons.
+        This sample demonstrates the default functionalities of the <code>In-place Editor</code> component. Click on the dotted input element to switch to the editable state and save or cancel it by clicking the actions buttons.
     </p>
 }
 @section Description{
     <p>
-    The <code>In-Place Editor</code> component is used to edit values in place and update them to the server.
-</p>
-<p>
-    <code>In-Place Editor</code> modes can be switched by selecting the appropriate values provided in a drop-down.
-    The applicable tooltip positions are as follows:
-</p>
-<p>
-
-<ul>
-    <li>
-        <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/inplace-editor/#mode"> Inline</a>
-    </li>
-    <li>
-        <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/inplace-editor/#mode"> Pop-up</a>
-    </li>
-</ul>
-</p>
+        The <code>In-place Editor</code> component is used to edit values in place and update them to the server.
+    </p>
     <p>
-        The edit on modes of In-place editor can be switched by selecting the appropriate values provided in a
+        <code>In-place Editor</code> modes can be switched by selecting the appropriate values provided in a drop-down.
+        The applicable tooltip positions are as follows:
+    </p>
+    <p>
+
+        <ul>
+            <li>
+                <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/inplace-editor/#mode"> Inline</a>
+            </li>
+            <li>
+                <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/inplace-editor/#mode"> Pop-up</a>
+            </li>
+        </ul>
+    </p>
+    <p>
+        The edit on modes of <code>In-place Editor</code> can be switched by selecting the appropriate values provided in a
         drop-down. The applicable modes are as follows:
         <ul>
             <li>Click - Editor opens the edit input with single click of textbox.</li>
@@ -220,25 +219,29 @@
             <li>EditIconClick - Edit mode can be open with the use of edit icon only which is visible on hover of textbox.</li>
         </ul>
     </p>
-<p>
-    The Save and Cancel buttons of the <code>In-Place Editor</code> component can be shown or hidden by switching the Show Button check box
-    state. If the
-    action buttons are hidden, then you can save the data by clicking outside the target or by pressing the Enter key.
-    You can cancel the edit request by pressing the Esc key.
-</p>
-<p>
-    More information on the <code>In-Place Editor</code> instantiation can be found in the&nbsp;<a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/inplace-editor/getting-started-asp-mvc/">
-        documentation section
-    </a>.
-</p>
+    <p>
+        The Save and Cancel buttons of the <code>In-place Editor</code> component can be shown or hidden by switching the Show Button check box
+        state. If the
+        action buttons are hidden, then you can save the data by clicking outside the target or by pressing the Enter key.
+        You can cancel the edit request by pressing the Esc key.
+    </p>
+    <p>
+        More information on the <code>In-place Editor</code> instantiation can be found in the&nbsp;<a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/in-place-editor/getting-started/">
+            documentation section
+        </a>.
+    </p>
 }
 
 @*custom code start*@
 
 @section Meta{
-
-    <meta name="description" content="This sample demonstrates the default behavior of the In-place Editor control, which works by editing the values in inline and popup in ASP.NET MVC platform." />
-
-}
+                    <meta name="description" content="This example demonstrates the Overview in ASP.NET MVC In-place Editor control. Explore here for more details."/>
+                }
 
 @*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC In-place Editor Overview Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Overview in ASP.NET MVC In-place Editor Control</h1>
+                }

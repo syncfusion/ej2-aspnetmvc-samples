@@ -1,8 +1,8 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
         <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
-        @Html.EJS().DocumentEditorContainer("container").EnableToolbar(true).Render()
+        @Html.EJS().DocumentEditorContainer("container").Height("590px").EnableToolbar(true).Render()
     </div>
 }
 @section ActionDescription{
@@ -27,7 +27,9 @@
             var documenteditorElement = document.getElementById("container");
             documenteditorElement.style.height = "590px";
             documenteditorElement.style.width = "100%";
-            documenteditor = documenteditorElement.ej2_instances[0].documentEditor;
+            var container = documenteditorElement.ej2_instances[0];
+            container.showPropertiesPane = true;
+            documenteditor = container.documentEditor;
             documenteditorElement.ej2_instances[0].serviceUrl = window.baseurl + 'api/documenteditorservice/';
             documenteditor.serviceUrl = window.baseurl + 'api/documenteditorservice/';
             var ajax = new ej.base.Ajax("@Url.Content("~/scripts/documenteditor/data-bullets-and-numbering.json")", 'GET', true);
@@ -37,7 +39,7 @@
                 documenteditor.documentName = 'Bullets and Numbering';
                 updateDocumentTitle();
             };
-            documenteditor.documentChange = function (args) {
+            container.documentChange = function (args) {
                 updateDocumentTitle();
             };
             titleBarDiv = document.getElementById('documenteditor_titlebar');
@@ -47,8 +49,8 @@
 }
 
 @section Meta{
-    <meta name="description" content="The Document Editor supports bullets and numbering. Both single list and multi-level lists can be added." />
-}
+                    <meta name="description" content="This example demonstrates the Bullets and Numbering in ASP.NET MVC DocumentEditor control. Explore here for more details."/>
+                }
 
 <style>
     #container {
@@ -117,3 +119,10 @@
 
     /** sample level font icons ends*/
 </style>
+
+@section Title{
+                    <title>ASP.NET MVC DocumentEditor Bullets and Numbering Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Bullets and Numbering in ASP.NET MVC DocumentEditor Control</h1>
+                }

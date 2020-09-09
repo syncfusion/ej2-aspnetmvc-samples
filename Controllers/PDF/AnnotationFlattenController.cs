@@ -62,39 +62,39 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             {
                 textMarkupAnnot.Flatten = true;
             }
-			//Create a new comment.
-			PdfPopupAnnotation userQuery = new PdfPopupAnnotation();
-			userQuery.Author = "John";
-			userQuery.Text = "Can you please change South Asian to Asian?";
-			userQuery.ModifiedDate = new DateTime(2015, 1, 18);
-			//Add comment to the annotation
-			textMarkupAnnot.Comments.Add(userQuery);
+            //Create a new comment.
+            PdfPopupAnnotation userQuery = new PdfPopupAnnotation();
+            userQuery.Author = "John";
+            userQuery.Text = "Can you please change South Asian to Asian?";
+            userQuery.ModifiedDate = new DateTime(2015, 1, 18);
+            //Add comment to the annotation
+            textMarkupAnnot.Comments.Add(userQuery);
 
-			//Creates a new comment
-			PdfPopupAnnotation userAnswer = new PdfPopupAnnotation();
-			userAnswer.Author = "Smith";
-			userAnswer.Text = "South Asian has changed as Asian";
-			userAnswer.ModifiedDate = new DateTime(2015, 1, 18);
-			//Add comment to the annotation
-			textMarkupAnnot.Comments.Add(userAnswer);
+            //Creates a new comment
+            PdfPopupAnnotation userAnswer = new PdfPopupAnnotation();
+            userAnswer.Author = "Smith";
+            userAnswer.Text = "South Asian has changed as Asian";
+            userAnswer.ModifiedDate = new DateTime(2015, 1, 18);
+            //Add comment to the annotation
+            textMarkupAnnot.Comments.Add(userAnswer);
 
-			//Creates a new review
-			PdfPopupAnnotation userAnswerReview = new PdfPopupAnnotation();
-			userAnswerReview.Author = "Smith";
-			userAnswerReview.State = PdfAnnotationState.Completed;
-			userAnswerReview.StateModel = PdfAnnotationStateModel.Review;
-			userAnswerReview.ModifiedDate = new DateTime(2015, 1, 18);
-			//Add review to the comment
-			userAnswer.ReviewHistory.Add(userAnswerReview);
+            //Creates a new review
+            PdfPopupAnnotation userAnswerReview = new PdfPopupAnnotation();
+            userAnswerReview.Author = "Smith";
+            userAnswerReview.State = PdfAnnotationState.Completed;
+            userAnswerReview.StateModel = PdfAnnotationStateModel.Review;
+            userAnswerReview.ModifiedDate = new DateTime(2015, 1, 18);
+            //Add review to the comment
+            userAnswer.ReviewHistory.Add(userAnswerReview);
 
-			//Creates a new review
-			PdfPopupAnnotation userAnswerReviewJohn = new PdfPopupAnnotation();
-			userAnswerReviewJohn.Author = "John";
-			userAnswerReviewJohn.State = PdfAnnotationState.Accepted;
-			userAnswerReviewJohn.StateModel = PdfAnnotationStateModel.Review;
-			userAnswerReviewJohn.ModifiedDate = new DateTime(2015, 1, 18);
-			//Add review to the comment
-			userAnswer.ReviewHistory.Add(userAnswerReviewJohn);
+            //Creates a new review
+            PdfPopupAnnotation userAnswerReviewJohn = new PdfPopupAnnotation();
+            userAnswerReviewJohn.Author = "John";
+            userAnswerReviewJohn.State = PdfAnnotationState.Accepted;
+            userAnswerReviewJohn.StateModel = PdfAnnotationStateModel.Review;
+            userAnswerReviewJohn.ModifiedDate = new DateTime(2015, 1, 18);
+            //Add review to the comment
+            userAnswer.ReviewHistory.Add(userAnswerReviewJohn);
 
             //Add annotation to the page
             page.Annotations.Add(textMarkupAnnot);
@@ -186,7 +186,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             //Creates a new TextMarkup annotation.
             string s = "This is TextMarkup annotation!!!";
             secondPage.Graphics.DrawString(s, font, brush, new PointF(30, 70));
-            PdfTextMarkupAnnotation textannot = new PdfTextMarkupAnnotation("sample", "Highlight", s, new PointF(30, 70), font);
+            PdfTextMarkupAnnotation textannot = new PdfTextMarkupAnnotation("sample", "Strikeout", s, new PointF(30, 70), font);
             textannot.Author = "Annotation";
             textannot.Opacity = 1.0f;
             textannot.Subject = "pdftextmarkupannotation";
@@ -195,6 +195,10 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             textannot.TextMarkupColor = new PdfColor(Color.Yellow);
             textannot.InnerColor = new PdfColor(Color.Red);
             textannot.Color = new PdfColor(Color.Yellow);
+            if (checkboxFlatten == "Flatten")
+            {
+                textannot.Flatten = true;
+            }
             secondPage.Graphics.DrawString("TextMarkup Annotation", font, brush, new PointF(30, 40));
             secondPage.Annotations.Add(textannot);
 
@@ -255,31 +259,57 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                 freeText0.Flatten = true;
             }
             secondPage.Annotations.Add(freeText0);
+               
+			PdfRectangleAnnotation cloudannotation = new PdfRectangleAnnotation(new RectangleF(30, 300, 100, 50), "Rectangle Cloud Annoatation");
+            cloudannotation.Border.BorderWidth = 1;
+            cloudannotation.Color = Color.Red;
+            cloudannotation.InnerColor = Color.Blue;
+            PdfBorderEffect bordereffect = new PdfBorderEffect();
+            bordereffect.Intensity = 2;
+            bordereffect.Style = PdfBorderEffectStyle.Cloudy;
+            cloudannotation.BorderEffect = bordereffect;
+            secondPage.Graphics.DrawString("Cloud Annotation", font, brush, new PointF(40, 260));
+            secondPage.Annotations.Add(cloudannotation);
 
+            PdfRedactionAnnotation redactionannot = new PdfRedactionAnnotation();
+            redactionannot.Bounds = new RectangleF(350, 300, 100, 50);
+            redactionannot.Text = "Redaction Annotation";
+            redactionannot.InnerColor = Color.Orange;
+            redactionannot.BorderColor = Color.Red;
+            redactionannot.Font = new PdfStandardFont(PdfFontFamily.Helvetica, 13);
+            redactionannot.TextColor = Color.Green;
+            redactionannot.OverlayText = "REDACTED";
+            redactionannot.RepeatText = true;
+            redactionannot.TextAlignment = PdfTextAlignment.Left;
+            redactionannot.SetAppearance(true);
+            secondPage.Graphics.DrawString("Redaction Annotation", font, brush, new PointF(350, 260));
+            secondPage.Annotations.Add(redactionannot);
+			
             MemoryStream SourceStream = new MemoryStream();
             document.Save(SourceStream);
             document.Close(true);
 
             //Creates a new Loaded document.
             PdfLoadedDocument lDoc = new PdfLoadedDocument(SourceStream);
-            PdfLoadedPage lpage = lDoc.Pages[0] as PdfLoadedPage;
+            PdfLoadedPage lpage1 = lDoc.Pages[0] as PdfLoadedPage;
+            PdfLoadedPage lpage2 = lDoc.Pages[1] as PdfLoadedPage;
 
             if (checkboxFlatten == "Flatten")
             {
-                lpage.Annotations.Flatten = true;
+                lpage1.Annotations.Flatten = true;
+                lpage2.Annotations.Flatten = true;
             }
 
             //Save to disk
             if (InsideBrowser == "Browser")
-                {                    
-                    return lDoc.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Open);
-                }
-                else
-                {
-                    return lDoc.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
-                }
+            {                    
+                return lDoc.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Open);
+            }
+            else
+            {
+                return lDoc.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
             }
         }
-
     }
+}
 

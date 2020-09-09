@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
             ViewBag.shapeData = this.WorldMap();
             ViewBag.dataSource = this.getUNOData();
             ViewBag.format = new string[] { "JPEG", "PNG", "SVG", "PDF" };
-
+            ViewBag.format1 = new string[] { "Geometry", "OSM" };
             return View();
         }
     }

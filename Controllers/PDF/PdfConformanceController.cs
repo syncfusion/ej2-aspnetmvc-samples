@@ -20,26 +20,54 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
         public ActionResult PdfConformance()
         {
+            ViewBag.data = new string[] { "PDF/A-1a", "PDF/A-1b", "PDF/A-2a", "PDF/A-2b", "PDF/A-2u", "PDF/A-3a", "PDF/A-3b", "PDF/A-3u", "PDF/X-1a 2001"};
             return View();
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult PdfConformance(string Browser, string radioButton)
+        [HttpPost]
+        public ActionResult PdfConformance(string Browser, string conformance)
         {
             PdfDocument doc = null;
  
-            if (radioButton == "Pdf_A1B")
+            if (conformance == "PDF/A-1a")
             {
                 //Create a new document with PDF/A standard.
+                doc = new PdfDocument(PdfConformanceLevel.Pdf_A1A);
+            }
+            else if (conformance== "PDF/A-1b")
+            {
                 doc = new PdfDocument(PdfConformanceLevel.Pdf_A1B);
             }
-            else if (radioButton == "Pdf_A2B")
+            else if (conformance == "PDF/A-2a")
+            {
+                doc = new PdfDocument(PdfConformanceLevel.Pdf_A2A);
+            }
+            else if (conformance == "PDF/A-2b")
             {
                 doc = new PdfDocument(PdfConformanceLevel.Pdf_A2B);
             }
-            else if (radioButton == "Pdf_A3B")
+            else if (conformance == "PDF/A-2u")
             {
-                doc = new PdfDocument(PdfConformanceLevel.Pdf_A3B);
+                doc = new PdfDocument(PdfConformanceLevel.Pdf_A2U);
+            }
+            else if (conformance == "PDF/X-1a 2001")
+            {
+                doc = new PdfDocument(PdfConformanceLevel.Pdf_X1A2001);
+            }
+            else 
+            {
+                if (conformance == "PDF/A-3a")
+                {
+                    doc = new PdfDocument(PdfConformanceLevel.Pdf_A3A);
+                }
+                else if (conformance == "PDF/A-3b")
+                {
+                    doc = new PdfDocument(PdfConformanceLevel.Pdf_A3B);
+                }
+                else if (conformance == "PDF/A-3u")
+                {
+                    doc = new PdfDocument(PdfConformanceLevel.Pdf_A3U);
+                }
                 PdfAttachment attachment = new PdfAttachment(ResolveApplicationDataPath("PDF_A.rtf"));
                 attachment.Relationship = PdfAttachmentRelationship.Alternative;
                 attachment.ModificationDate = DateTime.Now;
@@ -50,10 +78,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
                 doc.Attachments.Add(attachment);
 	        }
-			else if (radioButton == "Pdf_X1A2001")
-			{
-				doc = new PdfDocument(PdfConformanceLevel.Pdf_X1A2001);
-			}
+			
             //Add a page
             PdfPage page = doc.Pages.Add();
 

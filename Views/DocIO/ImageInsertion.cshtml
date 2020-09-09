@@ -4,7 +4,7 @@
     <div class="control-section">
         @{Html.BeginForm("ImageInsertion", "DocIO", FormMethod.Post);
             {
-                <div style="margin-top: 10px">
+                <div style="margin-top: 10px; font-size:14px">
                     Click the button to view the generated Word document or PDF. Please note that Microsoft Word Viewer or Microsoft Word is required to view the resultant Word document and PDF viewer is required to view the resultant PDF.
                     <div style="margin-top: 10px">
                         Save As :
@@ -51,7 +51,7 @@
                 You can make images in the Word document accessible by defining alternate text.
             </li>
             <li>
-                You can also add caption to an image.
+                You can add caption to an image and update the caption numbers (Sequence fields).
             </li>
         </ul>
     </div>
@@ -62,5 +62,11 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="Example [C#] to insert images (picture) into the Word document in ASP.NET MVC using Syncfusion .NET Word (DocIO) library." />
-}
+                    <meta name="description" content="This example demonstrates the Image Insertion in ASP.NET MVC DocIO control. Explore here for more details."/>
+                }
+@section Title{
+                    <title>ASP.NET MVC DocIO Image Insertion Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Image Insertion in ASP.NET MVC DocIO Control</h1>
+                }

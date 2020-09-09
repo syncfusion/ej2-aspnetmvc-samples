@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Maps
 @section ControlsSection{
     <div class="control-section">
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div id="compass-maps" style="display: none;">
-                <img src="~/Content/Maps/compass.svg" style="width: 75px; height: 75px">
+                <img src="~/Content/Maps/compass.svg" alt="Direction compass" style="width: 75px; height: 75px">
             </div>
         </div>
     </div>
@@ -57,7 +57,7 @@
             args.maps.annotations = [
             {
                 content: '#maps-annotation',
-                x: '0%', y: '70%'
+                x: '-30%', y: '70%'
             }, {
                 content: '#compass-maps',
                 x: '80%', y: '5%'
@@ -113,8 +113,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Maps control depicts the facts about Africa continent and a direction compass in an annotation." />
-}
+                    <meta name="description" content="This example demonstrates the Annotations in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p style="font-weight: 500">Injecting Module</p>
@@ -128,3 +128,9 @@
         </p>
     </div>
 }
+@section Title{
+                    <title>ASP.NET MVC Maps Annotations Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Annotations in ASP.NET MVC Maps Control</h1>
+                }

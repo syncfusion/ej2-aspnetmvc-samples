@@ -15,11 +15,12 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
         // GET: /Encryption/
         public ActionResult Encryption()
         {
+            ViewBag.data = new string[] { "Encrypt all contents", "Encrypt all contents except metadata", "Encrypt only attachments [For AES only]" };
             return View();
         }
 
         [HttpPost]
-        public ActionResult Encryption(string InsideBrowser, string encryptionType)
+        public ActionResult Encryption(string InsideBrowser, string encryptionType, string encryptOptionType)
         {
             PdfDocument document = new PdfDocument();
             PdfPage page = document.Pages.Add();
@@ -61,6 +62,28 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                 security.KeySize = PdfEncryptionKeySize.Key256BitRevision6;
                 security.Algorithm = PdfEncryptionAlgorithm.AES;
             }
+            //set Encryption options
+            if (encryptOptionType == "Encrypt only attachments [For AES only]")
+            {
+                //Creates an attachment
+                PdfAttachment attachment = new PdfAttachment(ResolveApplicationDataPath("Products.xml"));
+
+                attachment.ModificationDate = DateTime.Now;
+
+                attachment.Description = "About Syncfusion";
+
+                attachment.MimeType = "application/txt";
+
+                //Adds the attachment to the document
+                document.Attachments.Add(attachment);
+
+                security.EncryptionOptions = PdfEncryptionOptions.EncryptOnlyAttachments;
+            }
+
+            else if (encryptOptionType == "Encrypt all contents except metadata")
+                security.EncryptionOptions = PdfEncryptionOptions.EncryptAllContentsExceptMetadata;
+            else
+                security.EncryptionOptions = PdfEncryptionOptions.EncryptAllContents;
 
             security.OwnerPassword = "syncfusion";
             security.Permissions = PdfPermissionsFlags.Print | PdfPermissionsFlags.FullQualityPrint;

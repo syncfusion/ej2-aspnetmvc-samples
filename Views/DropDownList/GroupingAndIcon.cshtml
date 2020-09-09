@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.DropDowns
 @using EJ2MVCSampleBrowser.Models
 @section ControlsSection{
@@ -29,12 +29,22 @@
             margin: 0 auto;
             width: 250px;
         }
+
+        .e-rtl .e-dropdownbase .e-fixed-head� {
+            left: auto;
+        }
+
+        .e-rtl .e-dropdownbase .e-list-item .e-list-icon {
+            font-size: 16px;
+            vertical-align: middle;
+            padding: 0 0 0 16px;
+        }
     </style>
     @*custom code end*@
 }
 @section Meta{
-    <meta name="description" content="This example demonstrates how to group based on the different categories with individual header and icon support using ASP.NET MVC drop-down list control."/>
-}
+                    <meta name="description" content="This example demonstrates the Grouping and Icon in ASP.NET MVC Dropdown List control. Explore here for more details."/>
+                }
 @section ActionDescription{
     <div id="action-description">
         <p>This sample demonstrates the grouping and icons supports of the DropDownList. Click the DropDownList element and select an item from the categorized list/icons list.</p>
@@ -53,3 +63,10 @@
         </p>
     </div>
 }
+
+@section Title{
+                    <title>ASP.NET MVC Dropdown List Grouping and Icon Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Grouping and Icon in ASP.NET MVC Dropdown List Control</h1>
+                }

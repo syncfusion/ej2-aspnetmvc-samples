@@ -1,17 +1,17 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        <div id="outer" style="width:100%">
-            <div id="container" style="width:100%">
+       
+            <div style="width:100%">
                 @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("US presidential election result - 2016").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Population").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = " <b>${Winner}</b><br>State : ${State}<br>Trump : ${Trump} %<br>Clinton : ${Clinton} %" }).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top).Shape(Syncfusion.EJ2.TreeMap.LegendShape.Rectangle).Height("10")).Format("n").UseGroupingSeparator(true).RangeColorValuePath("WinPercentage").EqualColorValuePath("Winner").LeafItemSettings(leaf =>
   leaf.LabelPath("State").Fill("#6699cc").Border(new TreeMapBorder { Color = "white", Width = 0.5 })).Render()
             </div>
-            <div style="margin-left: 75%">
+            <div style="margin-left: 70%">
                 Source:
                 <a href="https//en.wikipedia.org/wiki/United_States_presidential_election,_2016" target="_blank">en.wikipedia.org</a>
             </div>
-        </div>
+       
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">
@@ -192,8 +192,8 @@
     </p>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 TreeMap control visualizes the 2016 U.S.A. presidential election results. Default and interactive are the two types of legend." />
-}
+                    <meta name="description" content="This example demonstrates the Legend in ASP.NET MVC TreeMap control. Explore here for more details."/>
+                }
 @section Description{
     <p>
         In this example, you can see the type of legend available in treemap. And we have applied equal color mapping based on certain value.
@@ -202,3 +202,10 @@
         Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item in touch enabled devices
     </p>
 }
+
+@section Title{
+                    <title>ASP.NET MVC TreeMap Legend Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Legend in ASP.NET MVC TreeMap Control</h1>
+                }

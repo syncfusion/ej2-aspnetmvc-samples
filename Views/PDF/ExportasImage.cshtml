@@ -1,6 +1,6 @@
-﻿@section ControlsSection{
+@section ControlsSection{
     <div class="control-section">
-        @{Html.BeginForm("ExportasImage", "Pdf", FormMethod.Post);
+        @{Html.BeginForm("ExportasImage", "PDF", FormMethod.Post);
             {
                 <div class="tablediv" style="font-size:14px">
                     <div class="rowdiv">
@@ -40,11 +40,18 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="Example [C#] to convert PDF to image in ASP.NET MVC using Syncfusion .NET PDF library."/>
-}
+                    <meta name="description" content="This example demonstrates the Export as Image in ASP.NET MVC PDF control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description" style="margin-top: 10px">
         This feature will be used to convert PDF to rasterized images to reduce the file size, prevent editing capability, prevent text extraction, and view document content without PDF viewing software.
         More information about export as image can be found in this documentation <a href="https://help.syncfusion.com/file-formats/pdf/working-with-document-conversions#converting-pdf-to-image">section.</a>
     </div>
 }
+
+@section Title{
+                    <title>ASP.NET MVC PDF Export as Image Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Export as Image in ASP.NET MVC PDF Control</h1>
+                }
