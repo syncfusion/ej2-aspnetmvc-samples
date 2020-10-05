@@ -24,7 +24,7 @@
                     col.Field("Progress").Add();
                     col.Field("Predecessor").Add();
                 }).LabelSettings(ls => ls.LeftLabel("TaskName")
-                .RightLabel("${if(taskData.SubTasks)}${taskData.Duration} ${else if(ResourceId)}${ResourceId}${/if}"))
+                .RightLabel("ResourceId"))
                 .EditDialogFields(edf =>
                 {
                     edf.Type(Syncfusion.EJ2.Gantt.DialogFieldType.General).Add();

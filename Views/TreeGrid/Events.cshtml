@@ -29,7 +29,7 @@
        col.Field("Progress").HeaderText("Progress").Width(110).EditType("numericedit")
        .ValidationRules(dict).Edit(new { @params = new { format = "n" } }).TextAlign(TextAlign.Right).Add();
 
-   }).ChildMapping("Children").AllowReordering().AllowSorting().AllowPaging().PageSettings(page => page.PageSize(11).PageCount(5)).TreeColumnIndex(1).DataBound("dataBound").ActionBegin("actionBegin").ActionComplete("actionComplete").Load("load").Created("create").BeginEdit("beginEdit").RowSelecting("rowSelecting").RowSelected("rowSelected").RowDeselecting("rowDeselecting").RowDeselected("rowDeselected").ColumnDragStart("columnDragStart").ColumnDrag("columnDrag").ColumnDrop("columnDrop").Collapsing("collapsing").Collapsed("collapsed").Expanding("expanding").Expanded("expanded").Render()
+   }).ChildMapping("Children").AllowReordering().AllowSorting().AllowPaging().PageSettings(page => page.PageSize(11).PageCount(5)).Height(350).TreeColumnIndex(1).DataBound("dataBound").ActionBegin("actionBegin").ActionComplete("actionComplete").Load("load").Created("create").BeginEdit("beginEdit").RowSelecting("rowSelecting").RowSelected("rowSelected").RowDeselecting("rowDeselecting").RowDeselected("rowDeselected").ColumnDragStart("columnDragStart").ColumnDrag("columnDrag").ColumnDrop("columnDrop").Collapsing("collapsing").Collapsed("collapsed").Expanding("expanding").Expanded("expanded").Render()
     </div>
     </div>
         <div class="col-lg-3 property-section">

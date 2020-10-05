@@ -80,9 +80,9 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             bk = new BookmarksNavigator(nwdInformation);
             bk.MoveToBookmark("SuppliersTable");
             //Sets the column index where the bookmark starts within the table
-            //  bk.CurrentBookmark.FirstColumn = 1;
+              bk.CurrentBookmark.FirstColumn = 1;
             //Sets the column index where the bookmark ends within the table
-            //bk.CurrentBookmark.LastColumn = 5;
+            bk.CurrentBookmark.LastColumn = 5;
             //// Get the content of suppliers table bookmark.
             bodyPart = bk.GetBookmarkContent();
             // Creating a bookmark navigator. Which help us to navigate through the 

@@ -31,7 +31,7 @@
                     col.Field("orderDate").HeaderText("Order Date").Format("yMd").TextAlign(TextAlign.Right).Width(150).Add();
                     col.Field("units").HeaderText("Units").TextAlign(TextAlign.Right).Width(110).Add();
 
-                }).ChildMapping("subTasks").TreeColumnIndex(0).Render()
+                }).ChildMapping("subTasks").Height(400).TreeColumnIndex(0).Render()
             );
         </div>
     </div>

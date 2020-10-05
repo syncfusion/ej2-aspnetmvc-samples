@@ -45,6 +45,7 @@
 
                 })
                 .AllowPaging().ChildMapping("Children")
+                .Height(350)
                 .EnableHover(false).PageSettings(page=>page.PageSize(2)
                 .PageSizeMode(Syncfusion.EJ2.TreeGrid.PageSizeMode.Root))
                 .RowDataBound("onrowDataBound").BeginEdit("onBeginEdit").TreeColumnIndex(1)

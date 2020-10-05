@@ -19,7 +19,7 @@
                 col.Field("orderName").HeaderText("Order Name").Width(210).Add();
                 col.Field("shippedDate").HeaderText("Shipped Date").TextAlign(TextAlign.Right).Width(190).Add();
                 col.Field("price").HeaderText("Price").Format("yMd").TextAlign(TextAlign.Right).Width(120).Format("c2").Add();
-            }).ChildMapping("subTasks").TreeColumnIndex(1).Render()
+            }).ChildMapping("subTasks").Height(350).TreeColumnIndex(1).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">

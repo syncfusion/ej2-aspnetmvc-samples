@@ -15,7 +15,7 @@
             .DataSource((IEnumerable<object>)ViewBag.datasource)
             .AllowTextWrap()
             .AllowPaging()
-            .PageSettings(p => p.PageSize(8))
+            .PageSettings(p => p.PageSize(10))
             .Columns(col =>
                {
                    col.Field("TaskId").HeaderText("Task ID").Width(90).TextAlign(TextAlign.Right).Add();
@@ -27,6 +27,7 @@
                })
             .ChildMapping("Children")
             .TreeColumnIndex(1)
+            .Height(350)
             .Render()
        )
     </div>

@@ -32,22 +32,23 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
                 if (extension == ".rtf")
                 {
                     WordDocument document = new WordDocument(file.InputStream, FormatType.Rtf);
+                    string outputFileName = Path.GetFileNameWithoutExtension(file.FileName);
 
                     #region Document save option
                     //Save as .doc format
                     if (Group1 == "WordDoc")
                     {
-                        return document.ExportAsActionResult("Sample.doc", FormatType.Doc, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+                        return document.ExportAsActionResult(outputFileName + ".doc", FormatType.Doc, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
                     }
                     //Save as .docx format
                     else if (Group1 == "WordDocx")
                     {
-                        return document.ExportAsActionResult("Sample.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+                        return document.ExportAsActionResult(outputFileName + ".docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
                     }
                     // Save as WordML(.xml) format
                     else if (Group1 == "WordML")
                     {
-                        return document.ExportAsActionResult("Sample.xml", FormatType.WordML, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+                        return document.ExportAsActionResult(outputFileName + ".xml", FormatType.WordML, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
                     }
                     #endregion Document save option
                 }

@@ -7,7 +7,7 @@ if (!window) {
     "name": "Data Grid",
     "directory": "Grid",
     "category": "Grids",
-    "type": "update",
+	"type": "update",
     "samples": [
       {
         "url": "GridOverview",
@@ -31,14 +31,25 @@ if (!window) {
       },
       {
         "url": "Grouping",
-        "name": "Grouping",
-        "category": "Data Grid",
+        "name": "Default Grouping",
+         "category": "Grouping",
         "uid": "00002",
-        "order": 0,
+        "order": 1,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
-      },
+        },
+        {
+            "url": "LazyLoadGroup",
+            "name": "Lazy Load Grouping",
+            "type": "new",
+            "category": "Grouping",
+            "uid": "88888",
+            "order": 1,
+            "component": "Grid",
+            "dir": "Grid",
+            "parentId": "00"
+        },
       {
         "url": "GridLines",
         "name": "GridLines",
@@ -84,7 +95,7 @@ if (!window) {
         "name": "Default Scrolling",
         "category": "Scrolling",
         "uid": "00007",
-        "order": 1,
+        "order": 2,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -94,7 +105,7 @@ if (!window) {
         "name": "Virtual Scrolling",
         "category": "Scrolling",
         "uid": "00008",
-        "order": 1,
+        "order": 2,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -104,7 +115,7 @@ if (!window) {
         "name": "Infinite Scrolling",
         "category": "Scrolling",
         "uid": "00009",
-        "order": 1,
+        "order": 2,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -114,7 +125,7 @@ if (!window) {
         "name": "List Binding",
         "category": "DataBinding",
         "uid": "000010",
-        "order": 2,
+        "order": 3,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -124,7 +135,7 @@ if (!window) {
         "name": "Remote Data",
         "category": "DataBinding",
         "uid": "000011",
-        "order": 2,
+        "order": 3,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -134,7 +145,7 @@ if (!window) {
         "name": "DataTable Binding",
         "category": "DataBinding",
         "uid": "000012",
-        "order": 2,
+        "order": 3,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -144,7 +155,7 @@ if (!window) {
         "name": "URL Adaptor",
         "category": "DataBinding",
         "uid": "000013",
-        "order": 2,
+        "order": 3,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -154,7 +165,7 @@ if (!window) {
         "name": "AutoWrap Column Cells",
         "category": "Columns",
         "uid": "000014",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -164,7 +175,7 @@ if (!window) {
         "name": "Show or Hide Column",
         "category": "Columns",
         "uid": "000015",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -174,7 +185,7 @@ if (!window) {
         "name": "Column Template",
         "category": "Columns",
         "uid": "000016",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -184,7 +195,7 @@ if (!window) {
         "name": "Stacked Header",
         "category": "Columns",
         "uid": "000017",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -194,7 +205,7 @@ if (!window) {
         "name": "Reorder",
         "category": "Columns",
         "uid": "000018",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -204,7 +215,7 @@ if (!window) {
         "name": "Column Chooser",
         "category": "Columns",
         "uid": "000019",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -214,7 +225,7 @@ if (!window) {
         "name": "Header Template",
         "category": "Columns",
         "uid": "000020",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -224,7 +235,7 @@ if (!window) {
         "name": "Column Resize",
         "category": "Columns",
         "uid": "000021",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -234,7 +245,7 @@ if (!window) {
         "name": "Column Spanning",
         "category": "Columns",
         "uid": "000022",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -244,7 +255,7 @@ if (!window) {
         "name": "Frozen Rows And Columns",
         "category": "Columns",
         "uid": "000023",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -254,7 +265,7 @@ if (!window) {
         "name": "Column Menu",
         "category": "Columns",
         "uid": "000024",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -264,7 +275,7 @@ if (!window) {
         "name": "Foreign Key Column",
         "category": "Columns",
         "uid": "000025",
-        "order": 3,
+        "order": 4,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -274,7 +285,7 @@ if (!window) {
         "name": "Row Template",
         "category": "Rows",
         "uid": "000026",
-        "order": 4,
+        "order": 5,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -284,7 +295,7 @@ if (!window) {
         "name": "Detail Template",
         "category": "Rows",
         "uid": "000027",
-        "order": 4,
+        "order": 5,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -294,7 +305,7 @@ if (!window) {
         "name": "Row Hover",
         "category": "Rows",
         "uid": "000028",
-        "order": 4,
+        "order": 5,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -304,7 +315,7 @@ if (!window) {
         "name": "Row Height",
         "category": "Rows",
         "uid": "000029",
-        "order": 4,
+        "order": 5,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -314,7 +325,7 @@ if (!window) {
         "name": "Row Drag And Drop",
         "category": "Rows",
         "uid": "000030",
-        "order": 4,
+        "order": 5,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -324,7 +335,7 @@ if (!window) {
         "name": "Row Drag And Drop Within Grid",
         "category": "Rows",
         "uid": "000031",
-        "order": 4,
+        "order": 5,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -334,7 +345,7 @@ if (!window) {
         "name": "Row Spanning",
         "category": "Rows",
         "uid": "000032",
-        "order": 4,
+        "order": 5,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -344,7 +355,7 @@ if (!window) {
         "name": "Multi Sorting",
         "category": "Sorting",
         "uid": "000033",
-        "order": 5,
+        "order": 6,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -354,7 +365,7 @@ if (!window) {
         "name": "Sorting API",
         "category": "Sorting",
         "uid": "000034",
-        "order": 5,
+        "order": 6,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -364,8 +375,7 @@ if (!window) {
         "name": "Default Filtering",
         "category": "Filtering",
         "uid": "000035",
-        "order": 6,
-        "type": "update",
+        "order": 7,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -375,7 +385,7 @@ if (!window) {
         "name": "Filter Menu",
         "category": "Filtering",
         "uid": "000036",
-        "order": 6,
+        "order": 7,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -385,7 +395,7 @@ if (!window) {
         "name": "Search",
         "category": "Filtering",
         "uid": "000037",
-        "order": 6,
+        "order": 7,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -395,7 +405,7 @@ if (!window) {
         "name": "Default Paging",
         "category": "Paging",
         "uid": "000038",
-        "order": 7,
+        "order": 8,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -405,7 +415,7 @@ if (!window) {
         "name": "Paging API",
         "category": "Paging",
         "uid": "000039",
-        "order": 7,
+        "order": 8,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -415,7 +425,7 @@ if (!window) {
         "name": "Default Selection",
         "category": "Selection",
         "uid": "000040",
-        "order": 8,
+        "order": 9,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -425,7 +435,7 @@ if (!window) {
         "name": "Selection API",
         "category": "Selection",
         "uid": "000041",
-        "order": 8,
+        "order": 9,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -435,7 +445,7 @@ if (!window) {
         "name": "Checkbox Selection",
         "category": "Selection",
         "uid": "000042",
-        "order": 8,
+        "order": 9,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -445,7 +455,7 @@ if (!window) {
         "name": "Default Aggregate",
         "category": "Aggregates",
         "uid": "000043",
-        "order": 9,
+        "order": 10,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -455,7 +465,7 @@ if (!window) {
         "name": "Group and Caption Aggregate",
         "category": "Aggregates",
         "uid": "000044",
-        "order": 9,
+        "order": 10,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -465,7 +475,7 @@ if (!window) {
         "name": "Inline Editing",
         "category": "Editing",
         "uid": "000045",
-        "order": 10,
+        "order": 11,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -475,7 +485,7 @@ if (!window) {
         "name": "Dialog Editing",
         "category": "Editing",
         "uid": "000046",
-        "order": 10,
+        "order": 11,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -485,7 +495,7 @@ if (!window) {
         "name": "Dialog Template",
         "category": "Editing",
         "uid": "000047",
-        "order": 10,
+        "order": 11,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00",
@@ -513,7 +523,7 @@ if (!window) {
         "name": "Batch Editing",
         "category": "Editing",
         "uid": "000048",
-        "order": 10,
+        "order": 11,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -523,7 +533,7 @@ if (!window) {
         "name": "Command Column",
         "category": "Editing",
         "uid": "000049",
-        "order": 10,
+        "order": 11,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -533,7 +543,7 @@ if (!window) {
         "name": "Default Exporting",
         "category": "Exporting",
         "uid": "000050",
-        "order": 11,
+        "order": 12,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -543,7 +553,7 @@ if (!window) {
         "name": "Advanced Exporting",
         "category": "Exporting",
         "uid": "000051",
-        "order": 11,
+        "order": 12,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -553,7 +563,7 @@ if (!window) {
         "name": "Hierarchy Export",
         "category": "Exporting",
         "uid": "000052",
-        "order": 11,
+        "order": 12,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -563,7 +573,7 @@ if (!window) {
         "name": "Print",
         "category": "Exporting",
         "uid": "000053",
-        "order": 11,
+        "order": 12,
         "component": "Grid",
         "dir": "Grid",
         "parentId": "00"
@@ -576,7 +586,6 @@ if (!window) {
     "name": "Pivot Table",
     "directory": "PivotTable",
     "category": "Grids",
-    "type": "update",
     "samples": [
       {
         "url": "Default",
@@ -592,7 +601,6 @@ if (!window) {
         "url": "LocalData",
         "name": "Local Data",
         "category": "Data Binding",
-        "type": "update",
         "uid": "00111",
         "order": 1,
         "component": "PivotTable",
@@ -603,7 +611,6 @@ if (!window) {
         "url": "RemoteData",
         "name": "Remote Data",
         "category": "Data Binding",
-        "type": "update",
         "uid": "00112",
         "order": 1,
         "component": "PivotTable",
@@ -626,7 +633,6 @@ if (!window) {
         "category": "Integration",
         "uid": "00114",
         "order": 2,
-        "type": "update",
         "component": "PivotTable",
         "dir": "PivotTable",
         "parentId": "01"
@@ -707,7 +713,6 @@ if (!window) {
         "category": "User Interaction",
         "uid": "001112",
         "order": 3,
-        "type": "update",
         "component": "PivotTable",
         "dir": "PivotTable",
         "parentId": "01"
@@ -859,7 +864,6 @@ if (!window) {
   {
     "name": "Tree Grid",
     "directory": "TreeGrid",
-    "type": "update",
     "category": "Grids",
     "samples": [
       {
@@ -938,7 +942,6 @@ if (!window) {
         "category": "Columns",
         "uid": "002253",
         "order": 2,
-        "type": "new",
         "component": "TreeGrid",
         "dir": "TreeGrid",
         "parentId": "02"
@@ -1489,7 +1492,7 @@ if (!window) {
           "category": "Formatting",
           "component": "Spreadsheet",
           "dir": "Spreadsheet",
-          "type": "new",
+          "type": "update",
           "order": 2,
           "parentId": "03",
           "uid": "00337"
@@ -1502,7 +1505,18 @@ if (!window) {
             "dir": "Spreadsheet",
             "order": 3,
             "parentId": "03",
-            "uid": "0337"
+            "uid": "0338"
+        },
+        {
+            "url": "Image",
+            "name": "Image",
+            "category": "Illustrations",
+            "component": "Spreadsheet",
+            "dir": "Spreadsheet",
+            "type": "new",
+            "order": 4,
+            "parentId": "03",
+            "uid": "0339"
         },
         {
             "url": "CellTemplates",
@@ -1510,9 +1524,9 @@ if (!window) {
             "category": "Templates",
             "component": "Spreadsheet",
             "dir": "Spreadsheet",
-            "order": 4,
+            "order": 5,
             "parentId": "03",
-            "uid": "0338"
+            "uid": "0340"
         }
     ],
     "order": 0,
@@ -1663,7 +1677,18 @@ if (!window) {
         "component": "Chart",
         "dir": "Chart",
         "parentId": "04"
-      },
+        },
+       {
+         "url": "StackedStepArea",
+         "name": "Stacked Step Area",
+         "category": "Area Charts",
+         "type": "new",
+         "uid": "004500",
+         "order": 1,
+         "component": "Chart",
+         "dir": "Chart",
+         "parentId": "04"
+       },
       {
         "url": "StackedArea100",
         "name": "100% Stacked Area",
@@ -2107,7 +2132,6 @@ if (!window) {
       {
         "url": "SmartLabels",
         "name": "Smart Labels",
-        "type": "update",
         "category": "Accumulation Charts",
         "uid": "004458",
         "order": 8,
@@ -2682,7 +2706,6 @@ if (!window) {
     "name": "Circular Gauge",
     "directory": "CircularGauge",
     "category": "Data Visualization",
-    "type": "update",
     "samples": [
       {
         "url": "DefaultFunctionalities",
@@ -2770,7 +2793,6 @@ if (!window) {
             "category": "Circular Gauge",
             "order": 0,
             "uid": "00668",
-            "type": "new",
             "component": "CircularGauge",
             "dir": "CircularGauge",
             "parentId": "06"
@@ -2841,7 +2863,6 @@ if (!window) {
         "category": "Export",
         "order": 4,
         "uid": "006615",
-        "type": "update",
         "component": "CircularGauge",
         "dir": "CircularGauge",
         "parentId": "06"
@@ -3254,7 +3275,6 @@ if (!window) {
     "name": "HeatMap Chart",
     "directory": "HeatMapChart",
     "category": "Data Visualization",
-    "type": "update",
     "samples": [
       {
         "url": "Default",
@@ -3420,7 +3440,6 @@ if (!window) {
         "url": "ColorRange",
         "name": "Color Range",
         "component": "HeatMapChart",
-        "type": "new",
         "order": 3,
         "uid": "0088151",
         "parentId": "08",
@@ -3455,7 +3474,6 @@ if (!window) {
     "name": "Linear Gauge",
     "directory": "LinearGauge",
     "category": "Data Visualization",
-    "type": "update",
     "samples": [
       {
         "url": "DefaultFunctionalities",
@@ -3523,7 +3541,6 @@ if (!window) {
             "category": "Linear Gauge",
             "order": 0,
             "uid": "00996",
-            "type": "new",
             "component": "LinearGauge",
             "dir": "LinearGauge",
             "parentId": "09"
@@ -3553,7 +3570,6 @@ if (!window) {
         "name": "Print & Export",
         "category": "Linear Gauge",
         "order": 0,
-        "type": "update",
         "uid": "00999",
         "component": "LinearGauge",
         "dir": "LinearGauge",
@@ -3567,7 +3583,6 @@ if (!window) {
     "name": "Maps",
     "directory": "Maps",
     "category": "Data Visualization",
-    "type": "update",
     "samples": [
       {
         "url": "Default",
@@ -3774,7 +3789,6 @@ if (!window) {
         "name": "Print",
         "category": "Print and Export",
         "order": 4,
-        "type": "update",
         "uid": "00101020",
         "component": "Maps",
         "dir": "Maps",
@@ -3784,7 +3798,6 @@ if (!window) {
         "url": "Export",
         "name": "Export",
         "category": "Print and Export",
-        "type": "update",
         "order": 4,
         "uid": "00101021",
         "component": "Maps",
@@ -4305,7 +4318,6 @@ if (!window) {
     "name": "TreeMap",
     "directory": "TreeMap",
     "category": "Data Visualization",
-    "type": "update",
     "samples": [
       {
         "url": "Default",
@@ -4406,7 +4418,6 @@ if (!window) {
         "component": "TreeMap",
         "dir": "TreeMap",
         "parentId": "015",
-        "type": "update"
       },
       {
         "url": "Pie",
@@ -4516,7 +4527,6 @@ if (!window) {
     "directory": "Kanban",
     "category": "Data Visualization",
     "ftName": "Kanban",
-    "type": "preview",
     "samples": [
       {
         "url": "Overview",
@@ -4532,7 +4542,6 @@ if (!window) {
         "url": "DefaultFunctionalities",
         "name": "Default Functionalities",
         "category": "Kanban",
-        "type": "update",
         "uid": "0017171",
         "order": 0,
         "component": "Kanban",
@@ -4576,7 +4585,6 @@ if (!window) {
         "uid": "0017175",
         "order": 0,
         "component": "Kanban",
-        "type": "new",
         "dir": "Kanban",
         "parentId": "017"
       },
@@ -4587,7 +4595,6 @@ if (!window) {
         "uid": "0017176",
         "order": 0,
         "component": "Kanban",
-        "type": "new",
         "dir": "Kanban",
         "parentId": "017"
       },
@@ -5039,8 +5046,7 @@ if (!window) {
         "order": 1,
         "component": "DocumentEditor",
         "dir": "DocumentEditor",
-		"type": "new",
-        "parentId": "020",
+		"parentId": "020",
         "hideOnDevice": true
       },
       {
@@ -5138,8 +5144,7 @@ if (!window) {
         "order": 8,
         "component": "DocumentEditor",
         "dir": "DocumentEditor",
-		"type": "update",
-        "parentId": "020",
+		"parentId": "020",
         "uid": "00202018",
         "hideOnDevice": true
       },
@@ -5151,10 +5156,22 @@ if (!window) {
         "order": 8,		
         "component": "DocumentEditor",
         "dir": "DocumentEditor",
+        "parentId": "020",
+        "hideOnDevice": true
+       },      
+      {
+        "url": "MailMerge",
+        "name": "Mail Merge",
+        "category": "Mail Merge",
+        "uid": "00202021",
+        "order": 9,
+        "component": "DocumentEditor",
+        "dir": "DocumentEditor",
         "type": "new",
         "parentId": "020",
         "hideOnDevice": true
-	  }
+      }
+
     ],
     "order": 2,
     "uid": "020"
@@ -5375,7 +5392,6 @@ if (!window) {
     "name": "Scheduler",
     "directory": "Schedule",
     "category": "Calendars",
-    "type": "update",
     "ftName": "scheduler",
     "samples": [
       {
@@ -5505,7 +5521,6 @@ if (!window) {
         "name": "Inline Editing",
         "category": "Appointments",
         "uid": "0024250",
-        "type": "new",
         "order": 2,
         "component": "Schedule",
         "dir": "Schedule",
@@ -5566,7 +5581,6 @@ if (!window) {
         "name": "Year View",
         "category": "Views",
         "uid": "00242415",
-        "type": "update",
         "order": 4,
         "component": "Schedule",
         "dir": "Schedule",
@@ -5746,7 +5760,6 @@ if (!window) {
         "url": "quickInfoTemplate",
         "name": "Quick Info Template",
         "category": "Templates",
-        "type": "new",
         "uid": "00242433",
         "order": 7,
         "component": "Schedule",
@@ -5971,7 +5984,6 @@ if (!window) {
     "name": "Gantt",
     "directory": "Gantt",
     "category": "Calendars",
-    "type": "update",
     "uid": "025",
     "order": 3,
     "samples": [
@@ -5991,7 +6003,6 @@ if (!window) {
         "category": "Gantt",
         "uid": "0025251",
         "order": 0,
-        "type": "update",
         "component": "Gantt",
         "dir": "Gantt",
         "parentId": "025"
@@ -6012,7 +6023,6 @@ if (!window) {
         "category": "Gantt",
         "uid": "0025253",
         "order": 0,
-		"type": "update",
         "component": "Gantt",
         "dir": "Gantt",
         "parentId": "025"
@@ -6112,7 +6122,6 @@ if (!window) {
         "name": "Resource View",
         "category": "Resources",
         "uid": "00252513",
-        "type": "update",
         "order": 2,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6123,7 +6132,6 @@ if (!window) {
 		  "name": "Resource Multi Taskbar",
 		  "category": "Resources",
 		  "uid": "00252514",
-		  "type": "new",
 		  "order": 2,
 		  "component": "Gantt",
 		  "dir": "Gantt",
@@ -6133,7 +6141,7 @@ if (!window) {
         "url": "WorkWeek",
         "name": "Workweek",
         "category": "Scheduling Concepts",
-        "uid": "00252514",
+        "uid": "00252515",
         "order": 3,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6143,27 +6151,7 @@ if (!window) {
         "url": "WorkingTimeRange",
         "name": "Working Time Range",
         "category": "Scheduling Concepts",
-        "uid": "00252515",
-        "order": 3,
-        "component": "Gantt",
-        "dir": "Gantt",
-        "parentId": "025"
-      },
-      {
-        "url": "TaskMode",
-        "name": "Task Scheduling Mode",
-        "category": "Scheduling Concepts",
         "uid": "00252516",
-        "order": 3,
-        "component": "Gantt",
-        "dir": "Gantt",
-        "parentId": "025"
-      },
-      {
-        "url": "EventMarkers",
-        "name": "Event Markers",
-        "category": "Scheduling Concepts",
-        "uid": "00252517",
         "order": 3,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6173,7 +6161,27 @@ if (!window) {
         "url": "Holidays",
         "name": "Holidays",
         "category": "Scheduling Concepts",
+        "uid": "00252517",
+        "order": 3,
+        "component": "Gantt",
+        "dir": "Gantt",
+        "parentId": "025"
+      },
+      {
+        "url": "TaskMode",
+        "name": "Task Scheduling Mode",
+        "category": "Scheduling Concepts",
         "uid": "00252518",
+        "order": 3,
+        "component": "Gantt",
+        "dir": "Gantt",
+        "parentId": "025"
+      },
+      {
+        "url": "EventMarkers",
+        "name": "Event Markers",
+        "category": "Scheduling Concepts",
+        "uid": "00252519",
         "order": 3,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6183,7 +6191,7 @@ if (!window) {
         "url": "Indicators",
         "name": "Indicators",
         "category": "Scheduling Concepts",
-        "uid": "00252519",
+        "uid": "00252520",
         "order": 3,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6193,7 +6201,7 @@ if (!window) {
         "url": "Baseline",
         "name": "Baseline",
         "category": "Scheduling Concepts",
-        "uid": "00252520",
+        "uid": "00252521",
         "order": 3,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6203,7 +6211,7 @@ if (!window) {
         "url": "UnscheduledTask",
         "name": "Unscheduled Tasks",
         "category": "Scheduling Concepts",
-        "uid": "00252521",
+        "uid": "00252522",
         "order": 3,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6213,7 +6221,7 @@ if (!window) {
         "url": "Timeline",
         "name": "Timeline API",
         "category": "Timeline",
-        "uid": "00252522",
+        "uid": "00252523",
         "order": 4,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6223,7 +6231,7 @@ if (!window) {
         "url": "Zooming",
         "name": "Zooming",
         "category": "Timeline",
-        "uid": "00252523",
+        "uid": "00252524",
         "order": 4,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6233,7 +6241,7 @@ if (!window) {
         "url": "ColumnMenu",
         "name": "Column Menu",
         "category": "Columns",
-        "uid": "00252524",
+        "uid": "00252525",
         "order": 5,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6243,7 +6251,7 @@ if (!window) {
         "url": "ShowHide",
         "name": "Show or Hide Column",
         "category": "Columns",
-        "uid": "00252525",
+        "uid": "00252526",
         "order": 5,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6253,7 +6261,7 @@ if (!window) {
         "url": "reorder",
         "name": "Column Reorder",
         "category": "Columns",
-        "uid": "00252526",
+        "uid": "00252527",
         "order": 5,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6263,7 +6271,7 @@ if (!window) {
         "url": "resizing",
         "name": "Column Resize",
         "category": "Columns",
-        "uid": "00252527",
+        "uid": "00252528",
         "order": 5,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6273,7 +6281,7 @@ if (!window) {
         "url": "ColumnTemplate",
         "name": "Column Template",
         "category": "Columns",
-        "uid": "00252528",
+        "uid": "00252529",
         "order": 5,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6283,7 +6291,7 @@ if (!window) {
         "url": "HeaderTemplate",
         "name": "Header Template",
         "category": "Columns",
-        "uid": "00252529",
+        "uid": "00252530",
         "order": 5,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6293,7 +6301,7 @@ if (!window) {
         "url": "TaskbarTemplate",
         "name": "Taskbar Template",
         "category": "Customization",
-        "uid": "00252530",
+        "uid": "00252531",
         "order": 6,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6303,7 +6311,7 @@ if (!window) {
         "url": "TaskLabelTemplate",
         "name": "Task Label Template",
         "category": "Customization",
-        "uid": "00252531",
+        "uid": "00252532",
         "order": 6,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6313,7 +6321,7 @@ if (!window) {
         "url": "TooltipTemplate",
         "name": "Tooltip Template",
         "category": "Customization",
-        "uid": "00252532",
+        "uid": "00252533",
         "order": 6,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6323,7 +6331,7 @@ if (!window) {
         "url": "ToolbarTemplate",
         "name": "ToolbarTemplate",
         "category": "Customization",
-        "uid": "00252533",
+        "uid": "00252534",
         "order": 6,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6333,7 +6341,7 @@ if (!window) {
         "url": "GridLines",
         "name": "Grid Lines",
         "category": "Customization",
-        "uid": "00252534",
+        "uid": "00252535",
         "order": 6,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6343,7 +6351,7 @@ if (!window) {
         "url": "Sorting",
         "name": "Default",
         "category": "Sorting",
-        "uid": "00252535",
+        "uid": "00252536",
         "order": 7,
         "component": "Gantt",
         "dir": "Gantt",
@@ -6353,7 +6361,7 @@ if (!window) {
         "url": "SortingAPI",
         "name": "Sorting API",
         "category": "Sorting",
-        "uid": "00252536",
+        "uid": "00252537",
         "order": 7,
         "component": "Gantt",
         "dir": "Gantt",
@@ -7020,10 +7028,60 @@ if (!window) {
         "parentId": "066"
       },
       {
+        "url": "IconsAndImages",
+        "name": "Icons and Images",
+        "category": "Dropdown Tree",
+        "uid": "0066661",
+        "order": 0,
+        "component": "DropDownTree",
+        "dir": "DropDownTree",
+        "parentId": "066",
+      },
+      {
+        "url": "Checkbox",
+        "name": "Checkbox",
+        "category": "Dropdown Tree",
+        "uid": "0066662",
+        "order": 0,
+        "component": "DropDownTree",
+        "dir": "DropDownTree",
+        "parentId": "066",
+      },
+      {
+        "url": "MultipleSelection",
+        "name": "Multiple Selection",
+        "category": "Dropdown Tree",
+        "uid": "0066663",
+        "order": 0,
+        "component": "DropDownTree",
+        "dir": "DropDownTree",
+        "parentId": "066",
+      },
+      {
+        "url": "Template",
+        "name": "Template",
+        "category": "Dropdown Tree",
+        "uid": "0066664",
+        "order": 0,
+        "component": "DropDownTree",
+        "dir": "DropDownTree",
+        "parentId": "066",
+      },
+      {
+        "url": "Filtering",
+        "name": "Filtering",
+        "category": "Dropdown Tree",
+        "uid": "0066665",
+        "order": 0,
+        "component": "DropDownTree",
+        "dir": "DropDownTree",
+        "parentId": "066",
+      },
+      {
         "url": "LocalData",
         "name": "Local Data",
         "category": "Data Binding",
-        "uid": "0066661",
+        "uid": "0066666",
         "order": 1,
         "component": "DropDownTree",
         "dir": "DropDownTree",
@@ -7033,7 +7091,7 @@ if (!window) {
         "url": "RemoteData",
         "name": "Remote Data",
         "category": "Data Binding",
-        "uid": "0066662",
+        "uid": "0066667",
         "order": 1,
         "component": "DropDownTree",
         "dir": "DropDownTree",
@@ -7896,12 +7954,10 @@ if (!window) {
     "name": "Progress Bar",
     "directory": "ProgressBar",
     "category": "Notification",
-    "type": "update",
     "samples": [
         {
             "url": "Linear",
             "name": "Linear",
-            "type": "update",
             "category": "ProgressBar",
             "uid": "0018180",
             "order": 0,
@@ -7942,7 +7998,6 @@ if (!window) {
         {
             "url": "Labels",
             "name": "Labels",
-            "type": "update",
             "category": "ProgressBar",
             "uid": "0018185",
             "order": 0,
@@ -7963,7 +8018,6 @@ if (!window) {
         {
             "url": "Stripes",
             "name": "Stripes",
-            "type": "new",
             "category": "ProgressBar",
             "uid": "0018187",
             "order": 0,
@@ -7974,7 +8028,6 @@ if (!window) {
         {
             "url": "ProgressSegment",
             "name": "Progress Segment",
-            "type": "new",
             "category": "ProgressBar",
             "uid": "0018188",
             "order": 0,
@@ -9056,7 +9109,6 @@ if (!window) {
         "name": "Bookmark Navigation",
         "category": "Editing",
         "order": 2,
-        "type": "update",
         "component": "DocIO",
         "dir": "DocIO",
         "parentId": "060",
@@ -9107,7 +9159,6 @@ if (!window) {
         "name": "Create Equation",
         "category": "Mathematical Equation",
         "order": 4,
-        "type": "update",
         "component": "DocIO",
         "dir": "DocIO",
         "parentId": "060",
@@ -9118,7 +9169,6 @@ if (!window) {
         "name": "Edit Equation",
         "category": "Mathematical Equation",
         "order": 4,
-        "type": "update",
         "component": "DocIO",
         "dir": "DocIO",
         "parentId": "060",
@@ -9149,7 +9199,6 @@ if (!window) {
         "name": "Image Insertion",
         "category": "Insert Content",
         "order": 5,
-        "type": "update",
         "component": "DocIO",
         "dir": "DocIO",
         "parentId": "060",
@@ -9301,6 +9350,7 @@ if (!window) {
         "name": "RTF to Word",
         "category": "Import and Export",
         "order": 8,
+        "type": "update",
         "component": "DocIO",
         "dir": "DocIO",
         "parentId": "060",
@@ -9461,7 +9511,6 @@ if (!window) {
         "name": "Track Changes",
         "category": "Review",
         "order": 15,
-        "type": "new",
         "component": "DocIO",
         "dir": "DocIO",
         "parentId": "060",
@@ -9542,6 +9591,7 @@ if (!window) {
         "name": "Barcode",
         "category": "Graphics",
         "order": 4,
+        "type": "update",
         "component": "PDF",
         "dir": "PDF",
         "parentId": "061",
@@ -9760,7 +9810,6 @@ if (!window) {
       {
         "url": "AnnotationFlatten",
         "name": "Annotations",
-		"type": "update",
         "category": "User Interaction",
         "order": 10,
         "component": "PDF",
@@ -9851,6 +9900,7 @@ if (!window) {
       {
         "url": "HTMLtoPDF",
         "name": "HTML to PDF",
+		"type": "update",
         "category": "Import and Export",
         "order": 11,
         "component": "PDF",
@@ -9909,10 +9959,11 @@ if (!window) {
         "uid": "00616142"
       },
       {
-        "url": "PdfA1bConverter",
-        "name": "PDF to PDFA1b",
+        "url": "PdfToPdfAConverter",
+        "name": "PDF to PDFA",
         "category": "Conformance",
         "order": 12,
+		"type": "update",
         "component": "PDF",
         "dir": "PDF",
         "parentId": "061",
@@ -10112,7 +10163,6 @@ if (!window) {
         "url": "InsertOLEObject",
         "name": "OLE Object",
         "category": "Slide Elements",
-        "type": "update",
         "order": 2,
         "component": "Presentation",
         "dir": "Presentation",
@@ -10176,6 +10226,7 @@ if (!window) {
         "order": 3,
         "component": "Presentation",
         "dir": "Presentation",
+		"type": "update",
         "parentId": "062",
         "uid": "00626212"
       },
@@ -10350,6 +10401,16 @@ if (!window) {
         "uid": "0063632"
       },
       {
+        "url": "CallCenterDashboard",
+        "name": "Call Center Dashboard",
+        "category": "Product Showcase",
+        "order": 1,
+        "component": "XlsIO",
+        "dir": "XlsIO",
+        "parentId": "063",
+        "uid": "0063633"
+      },
+      {
         "url": "Create",
         "name": "Create",
         "category": "Getting Started",
@@ -10357,7 +10418,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "0063633"
+        "uid": "0063634"
       },
       {
         "url": "FindAndExtract",
@@ -10367,7 +10428,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "0063634"
+        "uid": "0063635"
       },
       {
         "url": "ReplaceOptions",
@@ -10377,7 +10438,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "0063635"
+        "uid": "0063636"
       },
       {
         "url": "FormatCells",
@@ -10387,7 +10448,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "0063636"
+        "uid": "0063637"
       },
       {
         "url": "StylesandFormatting",
@@ -10397,7 +10458,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "0063637"
+        "uid": "0063638"
       },
       {
         "url": "ConditionalFormatting",
@@ -10407,7 +10468,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "0063638"
+        "uid": "0063639"
       },
       {
         "url": "ChartWorksheet",
@@ -10417,7 +10478,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "0063639"
+        "uid": "0063610"
       },
       {
         "url": "EmbeddedChart",
@@ -10427,7 +10488,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636310"
+        "uid": "00636311"
       },
       {
         "url": "Sparklines",
@@ -10437,7 +10498,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636311"
+        "uid": "00636312"
       },
       {
         "url": "BoxAndWhisker",
@@ -10447,7 +10508,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636312"
+        "uid": "00636313"
       },
       {
         "url": "FunnelChart",
@@ -10457,7 +10518,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636313"
+        "uid": "00636314"
       },
       {
         "url": "Treemap",
@@ -10467,7 +10528,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636314"
+        "uid": "00636315"
       },
       {
         "url": "Sunburst",
@@ -10477,7 +10538,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636315"
+        "uid": "00636316"
       },
       {
         "url": "Formulas",
@@ -10487,7 +10548,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636316"
+        "uid": "00636317"
       },
       {
         "url": "ComputeAllformulas",
@@ -10497,7 +10558,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636317"
+        "uid": "00636318"
       },
       {
         "url": "TableFormula",
@@ -10507,7 +10568,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636318"
+        "uid": "00636319"
       },
       {
         "url": "ExternalFormula",
@@ -10517,7 +10578,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636319"
+        "uid": "00636320"
       },
       {
         "url": "RangeManipulation",
@@ -10527,7 +10588,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636320"
+        "uid": "00636321"
       },
       {
         "url": "DataValidation",
@@ -10537,7 +10598,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636321"
+        "uid": "00636322"
       },
       {
         "url": "Performance",
@@ -10547,7 +10608,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636322"
+        "uid": "00636323"
       },
       {
         "url": "InteractiveFeatures",
@@ -10557,7 +10618,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636323"
+        "uid": "00636324"
       },
       {
         "url": "FormControls",
@@ -10567,7 +10628,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636324"
+        "uid": "00636325"
       },
       {
         "url": "DataSorting",
@@ -10577,7 +10638,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636325"
+        "uid": "00636326"
       },
       {
         "url": "AutoFilter",
@@ -10587,7 +10648,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636326"
+        "uid": "00636327"
       },
       {
         "url": "TemplateMarker",
@@ -10597,7 +10658,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636327"
+        "uid": "00636328"
       },
       {
         "url": "CollectionObjects",
@@ -10607,7 +10668,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636328"
+        "uid": "00636329"
       },
       {
         "url": "ImportNestedCollection",
@@ -10617,7 +10678,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636329"
+        "uid": "00636330"
       },
       {
         "url": "ImportJSON",
@@ -10627,18 +10688,17 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636330"
+        "uid": "00636331"
       },
 	  {
         "url": "HTMLToWorksheet",
         "name": "Import HTML Table",
         "category": "Data Binding",
-        "type": "new",
         "order": 7,
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636331"
+        "uid": "00636332"
       },
       {
         "url": "RowColumnManipulation",
@@ -10648,7 +10708,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636332"
+        "uid": "00636333"
       },
       {
         "url": "WorksheetManipulation",
@@ -10658,17 +10718,18 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636333"
+        "uid": "00636334"
       },
       {
         "url": "ExcelToPDF",
         "name": "Excel To PDF",
         "category": "Export",
         "order": 9,
+        "type": "update",
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636334"
+        "uid": "00636335"
       },
       {
         "url": "WorksheetToImage",
@@ -10678,7 +10739,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636335"
+        "uid": "00636336"
       },
       {
         "url": "ExcelToODS",
@@ -10688,18 +10749,17 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636336"
+        "uid": "00636337"
       },
 	  {
         "url": "ExcelToJSON",
         "name": "Excel To JSON",
         "category": "Export",
-		"type": "new",
         "order": 9,
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636337"
+        "uid": "00636338"
       },
       {
         "url": "DocumentationSettings",
@@ -10709,7 +10769,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636338"
+        "uid": "00636339"
       },
       {
         "url": "WorksheetProtection",
@@ -10719,7 +10779,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636339"
+        "uid": "00636340"
       },
       {
         "url": "WorkbookProtection",
@@ -10729,7 +10789,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636340"
+        "uid": "00636341"
       },
       {
         "url": "EncryptAndDecrypt",
@@ -10739,7 +10799,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636341"
+        "uid": "00636342"
       },
       {
         "url": "Tables",
@@ -10749,7 +10809,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636342"
+        "uid": "00636343"
       },
       {
         "url": "PivotTable",
@@ -10759,7 +10819,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636343"
+        "uid": "00636344"
       },
       {
         "url": "PivotChart",
@@ -10769,7 +10829,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636344"
+        "uid": "00636345"
       },
       {
         "url": "PivotLayout",
@@ -10779,7 +10839,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636345"
+        "uid": "00636346"
       },
       {
         "url": "AutoShapes",
@@ -10789,7 +10849,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636346"
+        "uid": "00636347"
       },
       {
         "url": "GroupShapes",
@@ -10799,7 +10859,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636347"
+        "uid": "00636348"
       },
       {
         "url": "CreateMacro",
@@ -10809,7 +10869,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636348"
+        "uid": "00636349"
       },
       {
         "url": "EditMacro",
@@ -10819,7 +10879,7 @@ if (!window) {
         "component": "XlsIO",
         "dir": "XlsIO",
         "parentId": "063",
-        "uid": "00636349"
+        "uid": "00636350"
       }
     ],
     "order": 10,
@@ -10829,14 +10889,12 @@ if (!window) {
     "name": "PDF Viewer",
     "directory": "PdfViewer",
     "category": "Viewer",
-    "type": "update",
     "samples": [
       {
         "url": "Default",
         "name": "Default Functionalities",
         "category": "PDF Viewer",
         "order": 0,
-        "type": "update",
         "component": "PdfViewer",
         "dir": "PdfViewer",
         "parentId": "064",
