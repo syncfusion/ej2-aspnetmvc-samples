@@ -23,34 +23,48 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
     public partial class PdfController : Controller
     {
         //
-        // GET: /PdfA1bConverter/
+        // GET: /PdfToPdfAConverter/
 
-        public ActionResult PdfA1bConverter()
+        public ActionResult PdfToPdfAConverter()
         {
+            ViewData.Add("conformance", new SelectList(new string[] { "PDF/A-1b", "PDF/A-2b", "PDF/A-3b" }));
             return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult PdfA1bConverter(string Browser, HttpPostedFileBase file = null)
+        public ActionResult PdfToPdfAConverter(string Browser, string conformance, HttpPostedFileBase file = null)
         {
             if (file != null && file.ContentLength > 0)
             {
                 //Load an existing PDF.
                 PdfLoadedDocument doc = new PdfLoadedDocument(file.InputStream);
 
-                //Set the conformance for PDF/A-1b conversion.
-                doc.Conformance = PdfConformanceLevel.Pdf_A1B;
+                if (conformance == "PDF/A-1b")
+                {
+                    //Create a new document with PDF/A standard.
+                    doc.Conformance = PdfConformanceLevel.Pdf_A1B;
+                }
+                else if (conformance == "PDF/A-2b")
+                {
+                    //Create a new document with PDF/A standard.
+                    doc.Conformance = PdfConformanceLevel.Pdf_A2B;
+                }
+                else if (conformance == "PDF/A-3b")
+                {
+                    //Create a new document with PDF/A standard.
+                    doc.Conformance = PdfConformanceLevel.Pdf_A3B;
+                }
 
                 string[] fileName = file.FileName.Split(new string[] { ".pdf" }, StringSplitOptions.RemoveEmptyEntries);
 
                 //Stream the output to the browser.    
                 if (Browser == "Browser")
                 {
-                    return doc.ExportAsActionResult(fileName[0] + "_A1b.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Open);
+                    return doc.ExportAsActionResult(fileName[0] + "_A.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Open);
                 }
                 else
                 {
-                    return doc.ExportAsActionResult(fileName[0] + "_A1b.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
+                    return doc.ExportAsActionResult(fileName[0] + "_A.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
                 }
             }
             else

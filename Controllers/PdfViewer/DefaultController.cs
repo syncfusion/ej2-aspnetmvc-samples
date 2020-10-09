@@ -156,6 +156,31 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
             }
             return Content (jsonResult);
         }
+        [System.Web.Mvc.HttpPost]
+        public ActionResult RenderPdfTexts(jsonObjects jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            var jsonData = JsonConverter(jsonObject);
+            object result = pdfviewer.GetDocumentText(jsonData);
+            return Content(JsonConvert.SerializeObject(result));
+        }
+        [System.Web.Mvc.HttpPost]
+        public ActionResult ExportFormFields(jsonObjects jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            var jsonData = JsonConverter(jsonObject);
+            string jsonResult = pdfviewer.ExportFormFields(jsonData);
+            return Content(jsonResult);
+        }
+        [System.Web.Mvc.HttpPost]
+        public ActionResult ImportFormFields(jsonObjects jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            var jsonData = JsonConverter(jsonObject);
+            jsonData["data"] = GetDocumentPath(jsonData["data"]);
+            object jsonResult = pdfviewer.ImportFormFields(jsonData);
+            return Content(JsonConvert.SerializeObject(jsonResult));
+        }
         private string GetDocumentPath(string document)
         {
             string documentPath = string.Empty;
@@ -267,5 +292,26 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
         public string sizeY { get; set; }
         public string startPage { get; set; }
         public string endPage { get; set; }
+        public string stampAnnotations { get; set; }
+        public string textMarkupAnnotations { get; set; }
+        public string stickyNotesAnnotation { get; set; }
+        public string shapeAnnotations { get; set; }
+        public string measureShapeAnnotations { get; set; }
+        public string action { get; set; }
+        public string pageStartIndex { get; set; }
+        public string pageEndIndex { get; set; }
+        public string fileName { get; set; }
+        public string elementId { get; set; }
+        public string pdfAnnotation { get; set; }
+        public string importPageList { get; set; }
+        public string uniqueId { get; set; }
+        public string data { get; set; }
+        public string viwePortWidth { get; set; }
+        public string viewportHeight { get; set; }
+        public string tilecount { get; set; }
+        public string isCompletePageSizeNotReceived { get; set; }
+        public string freeTextAnnotation { get; set; }
+        public string fieldsData { get; set; }
+        public string signatureData { get; set; }
     }
 }

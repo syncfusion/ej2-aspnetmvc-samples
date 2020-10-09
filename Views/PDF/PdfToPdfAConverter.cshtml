@@ -1,7 +1,7 @@
 @section ControlsSection{
 
 <div class="control-section">
-    @{Html.BeginForm("PdfA1bConverter", "PDF", FormMethod.Post, new { enctype = "multipart/form-data" });
+    @{Html.BeginForm("PdfToPdfAConverter", "PDF", FormMethod.Post, new { enctype = "multipart/form-data" });
         {
             <div style="font-size:14px">
                 <table>
@@ -28,18 +28,26 @@
                                 </td>
                             </tr>
                         </table>
-                        <div id="errorlabel" value="error">
-                            <br />
-                            <p style="color: #FF0000;">
-                                @Html.Label("", (string)ViewBag.lab)
-                        </div>
                         <table width="100%">
                             <tr>
-                                <td align="left">
-                                    <input id="submit" type="submit" class="e-btn" value="Convert PDF" style="width:150px; text-transform:capitalize" />
-                                </td>
+                                <td align="left" width="50%" style="padding:15px 7px 5px 0px">
+                                    <text>Please select the conformance&nbsp;&nbsp;:&nbsp;&nbsp;</text>
+                                    @Html.DropDownList("conformance", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "e-btn" })
+                               </td>
                             </tr>
-                        </table>
+                            </table>
+                            <div id="errorlabel" value="error">
+                                <br />
+                                <p style="color: #FF0000;">
+                                    @Html.Label("", (string)ViewBag.lab)
+                            </div>
+                            <table width="100%">
+                                <tr>
+                                    <td align="left">
+                                        <input id="submit" type="submit" class="e-btn" value="Convert PDF" style="width:150px; text-transform:capitalize" />
+                                    </td>
+                                </tr>
+                            </table>
                     </div>
                 </div>
             </div>
@@ -53,7 +61,7 @@
     </div>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the PDF to PDFA1b in ASP.NET MVC PDF control. Explore here for more details."/>
+                    <meta name="description" content="This example demonstrates the PDF to PDFA in ASP.NET MVC PDF control. Explore here for more details."/>
                 }
 @section Description{
     <div id="description" style="margin-top: 10px">
@@ -64,8 +72,8 @@
 
 
 @section Title{
-                    <title>ASP.NET MVC PDF PDF to PDFA1b Example - Syncfusion Demos </title> 
+                    <title>ASP.NET MVC PDF PDF to PDFA Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of PDF to PDFA1b in ASP.NET MVC PDF Control</h1>
+                    <h1 class='sb-sample-text'>Example of PDF to PDFA in ASP.NET MVC PDF Control</h1>
                 }

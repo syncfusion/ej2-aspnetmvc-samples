@@ -25,6 +25,7 @@
             })
            .AllowPaging()
             .PageSettings(page=>page.PageSize(10))
+            .Height(350)
            .ChildMapping("Children")
            .TreeColumnIndex(1).Render());
         </div>

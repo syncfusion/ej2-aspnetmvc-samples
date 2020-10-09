@@ -9,6 +9,11 @@
             document.getElementById('chkTag').disabled = true;
         }
 </script>
+<script language="javascript" type="text/javascript">
+    function TaggedPDF() {
+        document.getElementById('chkHyperlink').disabled = true;
+    }
+</script>
 @section ControlsSection{
 
     <div class="control-section">
@@ -84,6 +89,8 @@
                                                                                     @Html.EJS().CheckBox("chktextBreak").Name("chktextBreak").Label("Split TextLines").Render()                                                                                    
                                                                                 </span> <span style="display: inline-block; width: 165px;">
                                                                                     @Html.EJS().CheckBox("chkHyperlink").Name("chkHyperlink").Checked(true).Label("Enable Hyperlinks").Render()
+                                                                                </span> <span style="display: inline-block; width: 165px;">
+                                                                                    @Html.EJS().CheckBox("chkTag").Name("chkTag").Label("Tagged PDF").Change("TaggedPDF").Render()
                                                                                 </span>
                                                                             </td>
                                                                         </tr>

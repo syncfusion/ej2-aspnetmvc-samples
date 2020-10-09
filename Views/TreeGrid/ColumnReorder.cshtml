@@ -16,7 +16,7 @@
                 @(Html.EJS().TreeGrid("Reorder").AllowReordering()
                     .DataSource((IEnumerable<object>)ViewBag.datasource)
                     .AllowPaging()
-                    .PageSettings(p=>p.PageSize(8))
+                    .PageSettings(p=>p.PageSize(10))
                     .Columns(col =>
                     {
                         col.Field("TaskId").HeaderText("Task ID").Width(80).TextAlign(TextAlign.Right).Add();
@@ -27,6 +27,7 @@
                     })
                     .ActionComplete("onComplete")
                     .ChildMapping("Children")
+                    .Height(350)
                     .TreeColumnIndex(1).Render()
                 );
             </div>

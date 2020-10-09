@@ -20,7 +20,7 @@
        col.Field("Duration").HeaderText("Duration").Width(90).TextAlign(TextAlign.Right).Add();
        col.Field("Progress").HeaderText("Progress").Width(90).TextAlign(TextAlign.Right).Add();
 
-   }).ChildMapping("Children").TreeColumnIndex(1).AllowPaging().PageSettings(page => page.PageCount(5)).Toolbar(new List<string>() { "ColumnChooser" }).Render()
+   }).ChildMapping("Children").Height(350).TreeColumnIndex(1).AllowPaging().PageSettings(page => page.PageCount(5)).Toolbar(new List<string>() { "ColumnChooser" }).Render()
     </div>
 }
 

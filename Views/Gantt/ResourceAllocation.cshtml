@@ -9,7 +9,7 @@
             @(Html.EJS().Gantt("ResourceAllocation").DataSource((IEnumerable<object>
     )ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true)
     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").Work("Work").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
-    .Dependency("Predecessor").ResourceInfo("Resources").Child("SubTasks"))    
+    .Dependency("Predecessor").ResourceInfo("Resources").Type("TaskType").Child("SubTasks"))    
     .TreeColumnIndex(1)
     .ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName").Unit("ResourceUnit"))
     .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
@@ -23,7 +23,7 @@
             col.Field("Resources").HeaderText("Resources").Width(160).Add();
             col.Field("Work").Width(110).Add();
             col.Field("Duration").Width(100).Add();
-            col.Field("taskType").Width(110).Add();
+            col.Field("TaskType").Width(110).Add();
             })
             .LabelSettings(ls => ls.RightLabel("Resources"))
             .SplitterSettings(sp => sp.ColumnIndex(5.1))

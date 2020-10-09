@@ -25,7 +25,8 @@
 
             }).AllowPaging()
             .ChildMapping("Children")
-            .PageSettings(page=>page.PageSize(8))
+            .Height(350)
+            .PageSettings(page=>page.PageSize(10))
             .QueryCellInfo("queryCellInfo")
             .TreeColumnIndex(1).Render()
         )

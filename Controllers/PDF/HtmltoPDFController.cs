@@ -34,13 +34,14 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
         string activatePageBreak = string.Empty;
         string showHeader = string.Empty;
         string showFooter = string.Empty;
+        string chkTag = string.Empty;
 
         public ActionResult HtmltoPDF()
         {
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult HtmlToPDF(string TextBox1, string InsideBrowser, string chkPDFA, string DropDownList1, string RadioButtonList2, string DropDownList2, string chkTag, string CheckBox2, string CheckBox3, string chkJavaScript, string chkPageBreak, string chkHyperlink, string RadioButtonList1, string chktextBreak, string chkImageBreak)
+        public ActionResult HtmlToPDF(string TextBox1, string InsideBrowser, string chkPDFA, string DropDownList1, string RadioButtonList2, string DropDownList2,string CheckBox2, string CheckBox3, string chkJavaScript, string chkPageBreak, string chkHyperlink, string RadioButtonList1, string chktextBreak, string chkImageBreak,string chktag)
         {
             sourceUrl = TextBox1;
             chkInsideBrowser = InsideBrowser;
@@ -56,6 +57,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             activatePageBreak = chkPageBreak;
             showHeader = CheckBox2;
             showFooter = CheckBox3;
+            chkTag = chktag;
             //Single threaded call.
             Thread t = new Thread(CreateDocument);
             t.SetApartmentState(ApartmentState.STA);
@@ -104,12 +106,19 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             float height = -1;
 
 
-            page = Pdfdoc.Pages.Add();
+            if (chkTag !="on")
+            {
+                page = Pdfdoc.Pages.Add();
 
-            pageSize = page.GetClientSize();
+                pageSize = page.GetClientSize();
 
-            width = convertor.ConvertToPixels(page.GetClientSize().Width, PdfGraphicsUnit.Point);
-
+                width = convertor.ConvertToPixels(page.GetClientSize().Width, PdfGraphicsUnit.Point);
+            }
+            else
+            {
+                width = convertor.ConvertToPixels(Pdfdoc.PageSettings.Width, PdfGraphicsUnit.Point);
+                height = convertor.ConvertToPixels(Pdfdoc.PageSettings.Height, PdfGraphicsUnit.Point);
+            }
 
             //Adding Header
             if (showHeader == "on")
@@ -128,7 +137,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                 //// set hyperlink
                 html.EnableHyperlinks = chkEnableHyperlink == "on" ? true : false;
 
-                if (convertType == "Metafile")
+                if (convertType == "Metafile" && chkTag != "on")
                 {
                     HtmlToPdfResult result = html.Convert(sourceUrl, Syncfusion.HtmlConverter.ImageType.Metafile, (int)width, (int)height, AspectRatio.KeepWidth);
 
@@ -173,6 +182,10 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                         else
                             Response.Write("Warning ! Please check the HTML link");
                     }
+                }
+                else if(chkTag=="on")
+                {
+                     html.ConvertToTaggedPDF(Pdfdoc,sourceUrl);
                 }
 
         }
