@@ -34,11 +34,16 @@
     </div>
     <script>
         function onToolbarClick(args) {
-            if (args.item.text === 'Excel Export') {
+            if (args.item.id === this.grid.element.id + '_excelexport') {
                 this.excelExport();
-            } else if (args.item.text === 'PDF Export') {
-                this.pdfExport();
-            } else if (args.item.text === 'CSV Export') {
+            } else if (args.item.id === this.grid.element.id + '_pdfexport') {
+                if (this.enableRtl === true && this.locale === 'ar') {
+                    var innercontent = 'You need custom fonts to export Arabic characters, refer this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/pdf-export/#add-custom-font-for-pdf-exporting">documentation section</a>';
+                    ej.popups.DialogUtility.alert({ content: innercontent });
+                } else {
+                    this.pdfExport();
+                }
+            } else if (args.item.id === this.grid.element.id + '_csvexport') {
                 this.csvExport();
             }
         }

@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+﻿﻿@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Lists
 @section ControlsSection{
     <div class="control-section" id="target">
@@ -6,7 +6,7 @@
 
         <div class="col-lg-2 control-section" style="padding-top: 5px;padding-right: inherit; padding-left: 5px;height:590px;border-left: 1px solid rgb(238, 238, 238);border-bottom: 1px solid rgb(238, 238, 238);">
             <h5><label style="display:block;margin:1px;padding-top: 5px">Select Field to Insert</label></h5>
-            @Html.EJS().ListView("listview").DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new ListViewFieldSettings { Tooltip = "category" }).Render()
+            @Html.EJS().ListView("listview").DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new ListViewFieldSettings { Tooltip = "Category" }).Render()
         </div>
         <div class="col-lg-10 control-section" style="padding-left:0px;padding-right:0px;padding-top:0px;">
             <div style="height:590px">
@@ -60,28 +60,7 @@
          container.toolbarItems = [ 'New', 'Open', 'Separator', 'Undo',
             'Redo',
             'Separator',
-            'Table',
-            'Hyperlink',
-            'Bookmark',
-            'TableOfContents',
-            'Separator',
-            'Header',
-            'Footer',
-            'PageSetup',
-            'PageNumber',
-            'Separator',
-            'Find',
-            'Separator',
-            'Comments',
-            'TrackChanges',
-            'Separator',
-            'LocalClipboard',
-            'RestrictEditing',
-            'Separator',
-            'FormFields',
-            'UpdateFields',
-             'Separator',
-             {
+            {
             prefixIcon: "sf-icon-InsertMergeField",
             tooltipText: "Insert Field",
             text: onWrapText("Insert Field"),
@@ -93,7 +72,31 @@
              tooltipText: "Insert Field",
              text: onWrapText("Merge Document"),
              id: "MergeDocument"
-             }];
+             },
+             'Separator',
+            'Image',
+            'Table',
+            'Hyperlink',
+            'Bookmark',
+            'TableOfContents',
+            'Separator',
+            'Header',
+            'Footer',
+            'PageSetup',
+            'PageNumber',
+            'Break',
+            'Separator',
+            'Find',
+            'Separator',
+            'Comments',
+            'TrackChanges',
+            'Separator',
+            'LocalClipboard',
+            'RestrictEditing',
+            'Separator',
+            'FormFields',
+            'UpdateFields'
+             ];
          container.toolbarClick = function (args) {
              switch (args.item.id) {
                  case 'MergeDocument':

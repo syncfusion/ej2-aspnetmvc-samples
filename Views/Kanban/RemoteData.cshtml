@@ -5,7 +5,7 @@
     <div class="control-section">
         <div class="control_wrapper">
             @Html.EJS().Kanban("kanban").KeyField("Status").AllowDragAndDrop(false).DataSource(dataManger =>
-       { dataManger.Url("https://js.syncfusion.com/ejServices/wcf/Northwind.svc/Tasks").CrossDomain(true);
+       { dataManger.Url("https://ej2services.syncfusion.com/production/web-services/api/Kanban").CrossDomain(true);
        }).Columns(col=> {
            col.HeaderText("To Do").KeyField("Open").Add();
            col.HeaderText("In Progress").KeyField("InProgress").Add();

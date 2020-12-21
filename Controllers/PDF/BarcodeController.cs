@@ -343,13 +343,13 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             PdfGS1Code128Barcode gs1Code128 = new PdfGS1Code128Barcode();
             gs1Code128.Text = "(01)12345678901234";
             //Drawing in PDF page
-            gs1Code128.Draw(page, new PointF(25, 460));
+            gs1Code128.Draw(page, new RectangleF(25, 460,150,50));
             page.Graphics.DrawString("Type : GS1Code128", font, brush, new PointF(200, 460));
             page.Graphics.DrawString("Allowed Characters : SPACE (0x20)  0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z  a b c d e f g h i j k l m n o p q r s t u v w x y z", font, brush, new RectangleF(200, 490, 300, 200));
-            g.DrawLine(pen, new PointF(0, 560), new PointF(width, 560));
+            g.DrawLine(pen, new PointF(0, 520), new PointF(width, 520));
             #endregion
-			
-			#region UPC-A
+
+            #region UPC-A
             // Drawing UPC-A barcode
             PdfCodeUpcBarcode upcBarcode = new PdfCodeUpcBarcode();
 
@@ -358,15 +358,40 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             upcBarcode.Text = "01234567890";
 
             //Printing barcode on to the Pdf.
-            upcBarcode.Draw(page, new PointF(25, 570));
+            upcBarcode.Draw(page, new PointF(25, 540));
 
             font = new PdfStandardFont(PdfFontFamily.TimesRoman, 9, PdfFontStyle.Regular);
 
-            g.DrawString("Type : UPC-A", font, brush, new PointF(200, 570));
-            g.DrawString("Allowed Characters : 0-9", font, brush, new PointF(200, 592));
+            g.DrawString("Type : UPC-A", font, brush, new PointF(200, 540));
+            g.DrawString("Allowed Characters : 0-9", font, brush, new PointF(200, 560));
 
-            g.DrawLine(pen, new PointF(0, 630), new PointF(width, 630));
+            g.DrawLine(pen, new PointF(0, 600), new PointF(width, 600));
             #endregion
+
+            #region EAN13
+            PdfEan13Barcode ean13barcode = new PdfEan13Barcode();
+            ean13barcode.Text = "012345678910";
+            ean13barcode.Draw(page, new RectangleF(15, 620, 150, 50));
+            font = new PdfStandardFont(PdfFontFamily.TimesRoman, 9, PdfFontStyle.Regular);
+
+            g.DrawString("Type : EAN-13", font, brush, new PointF(200, 620));
+            g.DrawString("Allowed Characters : 0-9", font, brush, new PointF(200, 640));
+
+            g.DrawLine(pen, new PointF(0, 680), new PointF(width, 680));
+            #endregion
+
+            #region EAN8
+            PdfEan8Barcode ean8barcode = new PdfEan8Barcode();
+            ean8barcode.Text = "0123456";
+            ean8barcode.Draw(page, new RectangleF(25, 700,150,50));
+            font = new PdfStandardFont(PdfFontFamily.TimesRoman, 9, PdfFontStyle.Regular);
+
+            g.DrawString("Type : EAN-8", font, brush, new PointF(200, 700));
+            g.DrawString("Allowed Characters : 0-9", font, brush, new PointF(200, 720));
+
+
+            #endregion
+
             # endregion
 
             //Stream the output to the browser.    

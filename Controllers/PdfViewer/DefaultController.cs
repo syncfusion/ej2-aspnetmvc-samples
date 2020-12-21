@@ -15,7 +15,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
     {
 
         public PdfViewerController()
-         {
+        {
 
         }
 
@@ -133,28 +133,53 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
         {
             PdfRenderer pdfviewer = new PdfRenderer();
             var jsonData = JsonConverter(jsonObject);
-            string jsonResult = pdfviewer.GetAnnotations(jsonData);
-            return Content(jsonResult);
+            string result = pdfviewer.ExportAnnotation(jsonData);
+            return Content(result);
         }
         [System.Web.Mvc.HttpPost]
         public ActionResult ImportAnnotations(jsonObjects jsonObject)
         {
             PdfRenderer pdfviewer = new PdfRenderer();
             string jsonResult = string.Empty;
+            object JsonResult;
             var jsonData = JsonConverter(jsonObject);
             if (jsonObject != null && jsonData.ContainsKey("fileName"))
             {
-                 string documentPath = GetDocumentPath(jsonData["fileName"]);
-                 if (!string.IsNullOrEmpty(documentPath))
-                 {
-                      jsonResult = System.IO.File.ReadAllText(documentPath);
-                 }
-                 else
-                 {
-                     return Content (jsonData["document"] + " is not found");
-                 }
+                string documentPath = GetDocumentPath(jsonData["fileName"]);
+                if (!string.IsNullOrEmpty(documentPath))
+                {
+                    jsonResult = System.IO.File.ReadAllText(documentPath);
+                }
+                else
+                {
+                    return Content(jsonData["document"] + " is not found");
+                }
             }
-            return Content (jsonResult);
+            else
+            {
+                string extension = Path.GetExtension(jsonData["importedData"]);
+                if (extension != ".xfdf")
+                {
+                    JsonResult = pdfviewer.ImportAnnotation(jsonData);
+                    return Content(JsonConvert.SerializeObject(JsonResult));
+                }
+                else
+                {
+                    string documentPath = GetDocumentPath(jsonData["importedData"]);
+                    if (!string.IsNullOrEmpty(documentPath))
+                    {
+                        byte[] bytes = System.IO.File.ReadAllBytes(documentPath);
+                        jsonData["importedData"] = Convert.ToBase64String(bytes);
+                        JsonResult = pdfviewer.ImportAnnotation(jsonData);
+                        return Content(JsonConvert.SerializeObject(JsonResult));
+                    }
+                    else
+                    {
+                        return Content(jsonData["document"] + " is not found");
+                    }
+                }
+            }
+            return Content(jsonResult);
         }
         [System.Web.Mvc.HttpPost]
         public ActionResult RenderPdfTexts(jsonObjects jsonObject)

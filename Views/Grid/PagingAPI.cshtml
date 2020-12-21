@@ -11,7 +11,7 @@
                col.Field("UnitPrice").HeaderText("Unit Price").Format("C2").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
                col.Field("UnitsInStock").HeaderText("Units In Stock").Width("160").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
 
-           }).AllowPaging().PageSettings(page => page.PageCount(2)).ActionComplete("actionComplete").Render()
+           }).AllowPaging().Locale("en-US").PageSettings(page => page.PageCount(2)).ActionComplete("actionComplete").Render()
         </div>
     </div>
 </div>
@@ -48,7 +48,15 @@
 </div>
     <script>
 
-      
+       ej.base.L10n.load({
+            'en-US': {
+                'pager': {
+                    'currentPageInfo': '',
+                    'totalItemsInfo': '{1} to {2} of {0}',
+                }
+            }
+        });
+        
        function pageSizeChange(args) {
            var grid = document.getElementById("Grid").ej2_instances[0];
            this.value = parseInt(this.value, 10) > grid.pageSettings.totalRecordsCount ?
@@ -106,6 +114,7 @@
 			PageSettings->PageCount.</code></li>
 			<li>Change the value of <strong>Current Page</strong> textbox to change<code>
 			PageSettings->CurrentPage.</code></li>
+			<li>Changed default pager details information using the <code>totalItemsInfo</code> locale property.</li>
 		</ul>	
     </div>
 }

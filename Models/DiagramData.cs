@@ -349,7 +349,7 @@ namespace EJ2MVCSampleBrowser.Models
             multiParents.Add(new ComplexHierarchicalDataDetails("node13", "#58b087", new string[] { "node12" }, "#16955e"));
             multiParents.Add(new ComplexHierarchicalDataDetails("node14", "#58b087", new string[] { "node12" }, "#16955e"));
             multiParents.Add(new ComplexHierarchicalDataDetails("node15", "#58b087", new string[] { "node12" }, "#16955e"));
-
+            multiParents.Add(new ComplexHierarchicalDataDetails("node116", "#58b087", new string[] { "node22", "node12" }, "#d3722e"));
             multiParents.Add(new ComplexHierarchicalDataDetails("node16", "#14ad85", new string[] { }, ""));
 
             multiParents.Add(new ComplexHierarchicalDataDetails("node17", "#659be5", new string[] { "node13", "node14", "node15" }, "#3a6eb5"));
@@ -379,12 +379,13 @@ namespace EJ2MVCSampleBrowser.Models
             multiParents.Add(new ComplexHierarchicalDataDetails("node31", "#e7704c", null, "#c15433"));
 
             multiParents.Add(new ComplexHierarchicalDataDetails("node114", "#f3904a", new string[] { "node11", "node21", "node31" }, "#d3722e"));
-            multiParents.Add(new ComplexHierarchicalDataDetails("node116", "#58b087", new string[] { "node12", "node22" }, "#d3722e"));
+            
 
             return multiParents;
         }
-    }
-    public class LocalDataDetails
+    }    
+
+public class LocalDataDetails
     {
         public string Id { get; set; }
         public string Role { get; set; }
@@ -655,6 +656,23 @@ namespace EJ2MVCSampleBrowser.Models
         public string template18 = "<g xmlns='http://www.w3.org/2000/svg' id='Security-camera' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'><path d='M5,14 L31,14 C32.6568542,14 34,12.6568542 34,11 L34,8.1 C34,8.04477153 33.9552285,8 33.9,8 L2.1,8 C2.04477153,8 2,8.04477153 2,8.1 L2,11 C2,12.6568542 3.34314575,14 5,14 Z' id='Fill-60-Copy-7' stroke='#5C90DF' stroke-width='2' fill='#C6D9F6'/><g id='Rectangle-3'>    <use fill='#C6D9F6' fill-rule='evenodd' xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#path-1'/>    <path stroke='#5C90DF' stroke-width='2' d='M6,14 L6,21 C6,27.627417 11.372583,33 18,33 C24.627417,33 30,27.627417 30,21 L30,14 L6,14 Z'/></g>path d='M10.7131909,30.4389491 C10.6918801,30.423109 10.6701242,30.4087605 10.6482026,30.395712 L10.7131909,30.4389491 Z M11,30.6451981 C13.289733,32.2606898 15.7637224,32.9992203 18.4541771,32.8758063 C21.0894422,32.7549239 23.2603428,31.9860703 25,30.5711756 L25,26.6652832 C25,22.79929 21.8659932,19.6652832 18,19.6652832 C14.1340068,19.6652832 11,22.79929 11,26.6652832 C11,27.7731018 11,27.7731018 11,28.8809204 C11,29.8134885 11,29.9610154 11,30.6452056 Z' id='Rectangle-4' stroke='#5C90DF' stroke-width='2'/><path d='M18,30 C19.6568542,30 21,28.6568542 21,27 C21,25.3431458 19.6568542,24 18,24 C16.3431458,24 15,25.3431458 15,27 C15,28.6568542 16.3431458,30 18,30 Z' id='Oval-3' stroke='#5C90DF' stroke-width='2' fill='#FFFFFF'/></g>";
         public string arrow = "M 0 26.4576 L 26.4576 0 L 26.4576 0 L 26.4576 17.46239 L 26.4576 17.46239 L 113.3856 17.46239 L 113.3856 17.46239 L 113.3856 35.45279 L 113.3856 35.45279 L 26.4576 35.45279 L 26.4576 35.45279 L 26.4576 52.91519 L 26.4576 52.91519 L 0 26.4576 Z";
 
+    }
+
+    public class VirtualizationData
+    {
+        public static string[] GetNames()
+        {
+            string[] strArray = { "Isiahi Witcomb","Viola Yorkston","Revkah Ebbett","Jakob Pywell","Hank Fice","Tally Bloxsum","Yardley Beasley","Helaina Ludovico","Leroi Tinn","Flory Cordaroy","Vanya Shorland","Micheal Ronnay","Donetta Doore","Alphard Casazza","Chucho Odcroft","Meridith Kalf","Elizabeth Birrane","Cathrin Gerardet","Mimi Molyneaux","Diego Eborn","Shea Mynett","Pincus Glanfield","Kurtis Crawley","Hermina Giovannacci","Alberta Olpin","Derron Wolpert","Zorine Coatts","Gilli McCanny","Keely Braunds","Sula Hartfleet","Sam Bolderoe","Celle Blei","Bertine Bridgwater",
+"Garfield Hickford","Dom Halle","Fidole Willetts","Izaak Densell","Angelica Ricciardello","Bax Roskam","Gilbertine Peddowe","Dagny Chaundy","Donelle Huxton","Edithe Statefield","Harlene Gravener","Davidde Acton","Jakob Pearsey","Gratia Badham","Bili Puffett","Amelita Chastand","Miner Melding","Tades Stagg","Niels Devas","Cairistiona Mulcock","Kayle Withey","Ashil Caldero","Leesa Okill","Lorant Avrahamof","Staci MacKessock","Darline Goodoune","Theadora Gaitley","Pepe Redhole","Katya Jenckes","Toby Whapham","Cherin Tilly","Merrel Attlee","Hallsy Skalls","Felecia Blythe","Maxy Mirfield",
+"Zebedee Atrill","Mead Monkleigh","Tracy McAuslene","Emyle Olenikov","Sharlene Dell Casa","Jens Rathke","Oliy Riddlesden","Taddeusz Palethorpe","Kermit Emblow","Tammara Naptin","Neall Borghese","Dar Topley","Alex Doodson","Lilith Nowakowska","Dean Adao","Sigfrid O'Corr","Kerry Dinneen","Micky Dane","Christie Kelso","Ceil Tomik","Urbanus Froude","Blaire Adshede","Bobbye Forri","Kory Seedull","Esdras Sarsons","Garret Wozencraft","Lorita Tomasi","Hobey Duckerin","Rolph Chalcot","Emera Phythien","Madeline Reisen","Harald Waterhowse","Kirbee Piwall","Tish Roston","Trenna Spofforth","Basia Crispe",
+"Brandie Thurlbourne","Antoine Chang","Orson Stannus","Benson Perrelle","Nannette Ebbetts","Loreen Petley","Sianna McPharlain","Kaylil Gossan","Kendra Godthaab","Keeley Weerdenburg","Gearard Boulsher","Johnna McDonagh","Dolorita Tugwell","Billy Semmence","Joyann Swatton","Zacharie Mesnard","Terri-jo Cranny","Alaine Lewington","Loralyn Dick","Morton Penella","Yurik Friel","Claudian Rentalll","Maribel Hubery","Enrika Connolly","Marina Garmons","Ariel Ege","Denni Georghiou","Humphrey Grinham","Stanley Kolodziej","Malva Aylett","Mair Wolfinger","Tim Kelberer","Fayette Brocket","Neill Cottrill",
+"Louella Tordoff","Sib Winnister","Patrick Megarry","Shelley Rangle","Andonis Napier","Georgia Tatum","Arlena Lebourn","Gannon Pickworth","Kayle Usherwood","Alaine Lenoir","Bambi Tresler","Austina Braddick","Hester Torrent","Dedie Hobson","Linn Caulier","Dulci Enrico","Jeni Rogge","Hyacinthie Caplis","Marielle Limbourne","Kaia Gamil","Lindon Ganforth","Cyndia Possek","Melisande Maxweell","Cornela Dacks","Chick Heale","Worden Vick","Craggy Nower","Minni Gammel","Hanni Danneil","Agathe Earengey","Roddie Samper","Geneva Parratt","Tandie Weatherup","Emmi Reany","Allissa Kleinplac","Kelsey Vaggs",
+"Chad Knobell","Sibelle Wooller","Chic Sirrell","Griswold Kayes","Shirlee Stackbridge","Ashley Ugo","Henriette Lampens","Zaneta Roussell","Celestia Newvell","Morgana Jervoise","Rhodie Pylkynyton","Fonzie Swiers","Bethanne Sainz","Althea Divill","Lucie Syalvester","Gigi Ciani","Joellen Falconbridge","Hollis Vassall","Lindon Glassborow","Lynde Vivers","Gar Scrigmour","Fredek Sporton","Ardath Schottli","Sol Dwane","Gardner Lownsbrough","Lynna Gorstidge","Antonina Berston","Binny Kingsnode","Janeta Noar","Adorne Emett","Jephthah Montfort","Francisco Patillo","Elle Heyball","Gypsy Picott","Karissa Lownie",
+"Nonie Conry","Aurlie Cordrey","Pru Di Maria","Carling Houldin","Leland Hickin","Ediva Wingfield","Stefano Westcot","Marie-jeanne Davidsson","Liv Davydzenko","Bartlett Hartzenberg","Ashia Diplock","Merilee Clapham","Dugald Baszkiewicz","Xerxes Cutford","Marshall Braunton","Sheilah Vannikov","Grazia Tuiller","Tadeo Stonehewer","Tori Hurdman","Susann Schutte","Brendis Aitken","Malvin Stockford","Callie Poulter","Percival Cornillot","Lezlie Rowley","Lilli Rouchy","Rinaldo Goodredge","Pat Gillio","Raynell Rouge","Adelheid Heatley","Kirstin Ayshford","Lotta Gosland","Hope Watchorn","Lissa Corr","Yehudit Grzelewski",
+"Consalve Goburn","Rolland Brewett","Marcelia Musselwhite","Jaquenetta Gillian","Millie Torri","Collie Whetland","Neil Toppin","Brier McKimmey","Rogers Rannigan","Krista Coldrick","Kathe Turnpenny","Shayne Mapstone","Candida Janicki","Patty Klausen","Tuck Brantzen","Kiah Ilieve","Ronni Gibke","Brok Mansford","Kinny Crasford","Adora Martijn","Tamiko Pavier","Billi Mahon","Arlen Smythe","Arvin Lorkins","Fanechka Ruston","Thelma Halms","Bjorn Koopman","Luella Kleiner","Ester Vedishchev","Daveta Chasney","Elsworth Hobell","Brice Moxsom","Jeannie Danelutti","Akim Kohneke","Sanson Cirlos","Court Egger","Evvy Goodfield",
+"Abey Lamport","Melina Lardeur","Flynn Marchant","Karola Vedenyapin","Demetre Masic","Liane Collimore","Vanda Navarre","Alys Ollivier","Dannye Kilday","Bettine Handforth","Shell Lesurf","Raquela Pargetter","Angeline Childers","Allyn Powell","Caz Hyslop","Jesselyn Andriveaux","Ruggiero Isley","Faustine Trillow","Cecil Dudney","Consolata Taggart"};
+            return strArray;
+        }
     }
 
 }
