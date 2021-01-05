@@ -14,13 +14,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         {
             List<PieRadiusChartData> chartData = new List<PieRadiusChartData>
             {
-                new PieRadiusChartData { xValue = "Argentina", yValue = 505370, r = "100"},
-                new PieRadiusChartData { xValue = "Belgium",    yValue = 551500, r = "118.7"},
-                new PieRadiusChartData { xValue = "Cuba",  yValue = 312685 , r = "124.6"},
-                new PieRadiusChartData { xValue = "Dominican Republic", yValue = 350000 , r = "137.5"},
-                new PieRadiusChartData { xValue = "Egypt", yValue = 301000 , r = "150.8"},
-                new PieRadiusChartData { xValue = "Kazakhstan", yValue = 300000, r = "155.5"},
-                new PieRadiusChartData { xValue = "Somalia",  yValue = 357022, r = "160.6"}
+                new PieRadiusChartData { xValue = "Argentina", yValue = 505370, r = "50%"},
+                new PieRadiusChartData { xValue = "Belgium",    yValue = 551500, r = "70%"},
+                new PieRadiusChartData { xValue = "Cuba",  yValue = 312685 , r = "84%"},
+                new PieRadiusChartData { xValue = "Dominican Republic", yValue = 350000 , r = "97%"},
+                new PieRadiusChartData { xValue = "Egypt", yValue = 301000 , r = "84%"},
+                new PieRadiusChartData { xValue = "Kazakhstan", yValue = 300000, r = "70%"},
+                new PieRadiusChartData { xValue = "Somalia",  yValue = 357022, r = "90%"}
             };
             ViewBag.dataSource = chartData;
             return View();

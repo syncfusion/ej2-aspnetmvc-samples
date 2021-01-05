@@ -16,8 +16,16 @@ namespace EJ2MVCSampleBrowser.Controllers
                 "LowerCase", "UpperCase", "SuperScript", "SubScript", "|",
                 "Formats", "Alignments", "OrderedList", "UnorderedList",
                 "Outdent", "Indent", "|",
-                "CreateTable", "CreateLink", "Image", "|", "ClearFormat", "Print",
+                "CreateTable", "CreateLink", "Image", "FileManager", "|", "ClearFormat", "Print",
                 "SourceCode", "FullScreen", "|", "Undo", "Redo" };
+            string hostUrl = "https://ej2-aspcore-service.azurewebsites.net/";
+            ViewBag.AjaxSettings = new
+            {
+                url = hostUrl + "api/FileManager/FileOperations",
+                getImageUrl = hostUrl + "api/FileManager/GetImage",
+                uploadUrl = hostUrl + "api/FileManager/Upload",
+                downloadUrl = hostUrl + "api/FileManager/Download"
+            };
             return View();
         }
     }

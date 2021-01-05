@@ -14,6 +14,7 @@
                 .Duration("Duration").Dependency("Predecessor").Child("SubTasks"))
                 .Columns(col =>
                 {
+                    col.Field("TaskId").Visible(false).Add();
                     col.Field("TaskName").HeaderText("Task Name").Width(250).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
                     col.Field("StartDate").Add();
                     col.Field("Duration").Add();

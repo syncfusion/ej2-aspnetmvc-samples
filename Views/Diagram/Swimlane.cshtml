@@ -8,7 +8,7 @@
             </div>
             <div id="palette-space" class="sb-mobile-palette">                
                 @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("570px")
-                                .SymbolHeight(48).SymbolWidth(48).SymbolMargin(ViewBag.margin).Render()
+                                .SymbolHeight(48).SymbolWidth(48).SymbolMargin(ViewBag.margin).GetNodeDefaults("getSymbolNodes").Render()
                 )
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
@@ -114,6 +114,12 @@
         }
         function getSymbolInfo(symbol) {
             return { tooltip: symbol.addInfo ? symbol.addInfo.tooltip : symbol.id };
+        }
+        function getSymbolNodes(symbol, diagram) {
+            if (symbol.id === 'Terminator' || symbol.id === 'Process' || symbol.id === 'Document' || symbol.id === 'PreDefinedProcess' || symbol.id === 'data' || symbol.id === 'stackCanvas1' || symbol.id === 'stackCanvas2') {
+                symbol.style.strokeWidth = 1;
+            }
+            symbol.style.strokeColor = "#757575"
         }
         function getNodeDefaults(node) {
             node.style.strokeColor = "black";

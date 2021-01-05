@@ -41,7 +41,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult HtmlToPDF(string TextBox1, string InsideBrowser, string chkPDFA, string DropDownList1, string RadioButtonList2, string DropDownList2,string CheckBox2, string CheckBox3, string chkJavaScript, string chkPageBreak, string chkHyperlink, string RadioButtonList1, string chktextBreak, string chkImageBreak,string chktag)
+        public ActionResult HtmltoPDF(string TextBox1, string InsideBrowser, string chkPDFA, string DropDownList1, string RadioButtonList2, string DropDownList2,string CheckBox2, string CheckBox3, string chkJavaScript, string chkPageBreak, string chkHyperlink, string RadioButtonList1, string chktextBreak, string chkImageBreak,string chktag)
         {
             sourceUrl = TextBox1;
             chkInsideBrowser = InsideBrowser;

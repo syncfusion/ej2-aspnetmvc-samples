@@ -55,7 +55,17 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
                 if (renderingMode5 == "EnablesSubsetFont")
                     converter.Settings.EmbedFonts = true;
                 if (renderingMode6 == "ShowRevisions")
+                {
                     document.RevisionOptions.ShowMarkup = RevisionType.Deletions | RevisionType.Formatting | RevisionType.Insertions;
+                    // Set revision bars color as Black.
+                    document.RevisionOptions.RevisionBarsColor = RevisionColor.Black;
+                    // Set revised properties (Formatting) color as Blue.
+                    document.RevisionOptions.RevisedPropertiesColor = RevisionColor.Blue;
+                    // Set deleted text (Deletions) color as Yellow.
+                    document.RevisionOptions.DeletedTextColor = RevisionColor.Yellow;
+                    // Set inserted text (Insertions) color as Pink.
+                    document.RevisionOptions.InsertedTextColor = RevisionColor.Pink;
+                }
                 //Convert word document into PDF document
                 PdfDocument pdfDoc = converter.ConvertToPDF(document);
                 try

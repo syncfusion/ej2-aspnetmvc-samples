@@ -39,7 +39,7 @@
                     </li>
                 </ol>
                 <img alt='Logo' src=@Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png") style='width: 300px' />
-            </div>).ToolbarSettings(e => e.Items((object)ViewBag.Tools)).ShowCharCount(true).MaxLength(2000).Created("created").ActionBegin("handleFullScreen").ActionComplete("actionCompleteHandler").Render()
+            </div>).ToolbarSettings(e => e.Items((object)ViewBag.Tools)).FileManagerSettings(e => { e.Enable(true); e.Path("/Pictures/Food"); e.AjaxSettings((object)ViewBag.AjaxSettings); }).ShowCharCount(true).MaxLength(2000).Created("created").ActionBegin("handleFullScreen").ActionComplete("actionCompleteHandler").Render()
         </div>
     </div>
 <link href="~/Content/RichTextEditor/codemirror.css" rel="stylesheet" />

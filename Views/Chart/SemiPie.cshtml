@@ -7,7 +7,7 @@
 
   @Html.EJS().AccumulationChart("container").EnableAnimation(false).Series(series =>
 {
-    series.StartAngle(270).EndAngle(90).DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs => cs.Length("10%")).Font(ft => ft.Size("14px"))).Explode(true).Radius("90%").InnerRadius("40%").Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).XName("xName").YName("yValue").DataSource(ViewBag.dataSource).Name("Agricultural").Add();
+    series.StartAngle(270).EndAngle(90).DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs => cs.Length("10%")).Font(ft => ft.Size("14px"))).Explode(true).Radius("90%").InnerRadius("40%").Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).XName("xValue").YName("yValue").DataSource(ViewBag.dataSource).Name("Agricultural").Add();
 }
        ).Tooltip(tp=>tp.Enable(true).Format("${point.x} : <b>${point.y}%</b>")).EnableSmartLabels(true).LegendSettings(lg => lg.Visible(false)).Title("Agricultural Land Percentage").Load("load").Render()
             </div>

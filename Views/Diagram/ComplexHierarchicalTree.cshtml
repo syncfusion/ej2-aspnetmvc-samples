@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         @Html.EJS().Diagram("diagram").Width("100%").Height("580px").Created("create").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults").DataSourceSettings(ss => ss.Id("Name").ParentId("ReportingPersons")
-.DataSource(new DataManager() { Data = (List<ComplexHierarchicalDataDetails>)ViewBag.Nodes })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.ComplexHierarchicalTree).HorizontalSpacing(40).VerticalSpacing(40)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render();
+.DataSource(new DataManager() { Data = (List<ComplexHierarchicalDataDetails>)ViewBag.Nodes })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.ComplexHierarchicalTree).HorizontalSpacing(40).VerticalSpacing(40).ConnectionPointOrigin(Syncfusion.EJ2.Diagrams.ConnectionPointOrigin.DifferentPoint)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render();
     </div>
     <div class="col-lg-4 property-section">
         <div class="property-panel-header">
@@ -63,8 +63,12 @@
                     @Html.EJS().NumericTextBox("vSpacing").Change("vSpacingChange").Width("110px").Min(20).Max(60).Step(1).Format("##.##").Value(40).Render()
                 </div>
             </div>
+            <div class="row" style="padding-top: 10px">
+                @Html.EJS().CheckBox("checked").Checked(true).Label("Prevent Connector Overlapping").Change("onChangeData").Render()
+            </div>
         </div>
     </div>
+    @*custom code start*@
     <style>
         #diagram {
             display: block;
@@ -110,7 +114,7 @@
             padding-right: 0px;
         }
     </style>
-
+    @*custom code end*@
     <script>
         function create() {
             var diagram = document.getElementById("diagram").ej2_instances[0];
@@ -166,6 +170,12 @@
             obj.shape = { type: 'Basic', shape: 'Rectangle', cornerRadius: 7 };
             return obj;
         }
+
+        function onChangeData(args) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.layout.connectionPointOrigin = args.checked ? "DifferentPoint" : "SamePoint";
+        }
+
         document.getElementById('appearance').onclick = function (args) {
             var target = args.target;
             var selectedElement = document.getElementsByClassName('e-selected-style');
@@ -190,8 +200,8 @@
     </p>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Complex Hierarchical Layout in ASP.NET MVC Diagram control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Complex Hierarchical Layout in ASP.NET MVC Diagram control. Explore here for more details." />
+}
 @section Description{
     <p>
         In this example, you can see how to generate a complex hierarchical tree from external data sources. You can also customize spacing between the objects in the tree. You can use the
@@ -205,8 +215,8 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC Diagram Complex Hierarchical Layout Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Diagram Complex Hierarchical Layout Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Complex Hierarchical Layout in ASP.NET MVC Diagram Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Complex Hierarchical Layout in ASP.NET MVC Diagram Control</h1>
+}

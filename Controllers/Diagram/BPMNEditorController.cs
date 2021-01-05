@@ -23,6 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             ViewBag.Nodes = GetBPMNDiagramNodes();
             ViewBag.Connectors = GetBPMNDiagramConnectors();
             ViewBag.Palettes = palettes;
+            ViewBag.getSymbolNode = "getSymbolNodes";
             ViewBag.ContextMenuItems = GetContextMenuItems();
 
 
@@ -324,7 +325,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Height = 35,
                 OffsetX = 700,
                 OffsetY = 700,
-                Shape = new BpmnShapes() { Type = "Bpmn", Shape = "Activity", Activity = new DiagramBpmnActivity() { Activity = BpmnActivities.Task, Task = new DiagramBpmnTask() { Type = BpmnTasks.Service } } }
+                Shape = new BpmnShapes() { Type = "Bpmn", Shape = "Activity", Activity = new DiagramBpmnActivity() { Activity = BpmnActivities.Task, Task = new DiagramBpmnTask() { Type = BpmnTasks.Service } } },
             });
             bpmnNodes.Add(new DiagramNode()
             {
@@ -404,8 +405,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Type = Segments.Orthogonal,
                 SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
                 TargetPoint = new DiagramPoint() { X = 40, Y = 40 },
-                TargetDecorator = new DiagramDecorator() { Shape = DecoratorShapes.Arrow },
-                Style = new DiagramStrokeStyle() { StrokeWidth = 2 }
+                TargetDecorator = new DiagramDecorator() { Shape = DecoratorShapes.Arrow, Style = new DiagramShapeStyle() { StrokeColor = "#757575", Fill = "#757575" } },
+                Style = new DiagramStrokeStyle() { StrokeWidth = 2, StrokeColor = "#757575" }
             });
             connectors.Add(new DiagramConnector()
             {
@@ -413,8 +414,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Type = Segments.Orthogonal,
                 SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
                 TargetPoint = new DiagramPoint() { X = 40, Y = 40 },
-                TargetDecorator = new DiagramDecorator() { Shape = DecoratorShapes.Arrow },
-                Style = new DiagramStrokeStyle() { StrokeWidth = 2, StrokeDashArray = "4 4" }
+                TargetDecorator = new DiagramDecorator() { Shape = DecoratorShapes.Arrow, Style = new DiagramShapeStyle() { StrokeColor = "#757575", Fill = "#757575" } },
+                Style = new DiagramStrokeStyle() { StrokeWidth = 2, StrokeDashArray = "4 4", StrokeColor = "#757575" }
             });
             connectors.Add(new DiagramConnector()
             {
@@ -422,8 +423,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Type = Segments.Straight,
                 SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
                 TargetPoint = new DiagramPoint() { X = 40, Y = 40 },
-                TargetDecorator = new DiagramDecorator() { Shape = DecoratorShapes.Arrow },
-                Style = new DiagramStrokeStyle() { StrokeWidth = 2 }
+                TargetDecorator = new DiagramDecorator() { Shape = DecoratorShapes.Arrow, Style = new DiagramShapeStyle() { StrokeColor = "#757575", Fill = "#757575" } },
+                Style = new DiagramStrokeStyle() { StrokeWidth = 2, StrokeColor = "#757575" }
             });
             connectors.Add(new DiagramConnector()
             {
@@ -431,8 +432,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Type = Segments.Orthogonal,
                 SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
                 TargetPoint = new DiagramPoint() { X = 40, Y = 40 },
+                TargetDecorator = new DiagramDecorator() { Style = new DiagramShapeStyle() { StrokeColor = "#757575", Fill = "#757575" } },
                 Shape = new BpmnConnectors() { Type = "Bpmn", Flow = "Association", Association = "Directional" },
-                Style = new DiagramStrokeStyle() { StrokeDashArray = "2,2" }
+                Style = new DiagramStrokeStyle() { StrokeDashArray = "2,2", StrokeColor = "#757575" }
             });
 
             return connectors;

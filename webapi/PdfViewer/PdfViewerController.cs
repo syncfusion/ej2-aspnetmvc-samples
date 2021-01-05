@@ -96,7 +96,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         public object ExportAnnotations([FromBody] Dictionary<string, string> jsonObject)
         {
             PdfRenderer pdfviewer = new PdfRenderer();
-            string jsonResult = pdfviewer.GetAnnotations(jsonObject);
+            string jsonResult = pdfviewer.ExportAnnotation(jsonObject);
             return (GetPlainText(jsonResult));
         }
         [HttpPost]
@@ -104,17 +104,42 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             PdfRenderer pdfviewer = new PdfRenderer();
             string jsonResult = string.Empty;
+            object JsonResult;
             if (jsonObject != null && jsonObject.ContainsKey("fileName"))
             {
-                 string documentPath = GetDocumentPath(jsonObject["fileName"]);
-                 if (!string.IsNullOrEmpty(documentPath))
-                 {
-                      jsonResult = System.IO.File.ReadAllText(documentPath);
-                 }
-                 else
-                 {
-                     return (jsonObject["document"] + " is not found");
-                 }
+                string documentPath = GetDocumentPath(jsonObject["fileName"]);
+                if (!string.IsNullOrEmpty(documentPath))
+                {
+                    jsonResult = System.IO.File.ReadAllText(documentPath);
+                }
+                else
+                {
+                    return (jsonObject["document"] + " is not found");
+                }
+            }
+            else
+            {
+                string extension = Path.GetExtension(jsonObject["importedData"]);
+                if (extension != ".xfdf")
+                {
+                    JsonResult = pdfviewer.ImportAnnotation(jsonObject);
+                    return (JsonConvert.SerializeObject(JsonResult));
+                }
+                else
+                {
+                    string documentPath = GetDocumentPath(jsonObject["importedData"]);
+                    if (!string.IsNullOrEmpty(documentPath))
+                    {
+                        byte[] bytes = System.IO.File.ReadAllBytes(documentPath);
+                        jsonObject["importedData"] = Convert.ToBase64String(bytes);
+                        JsonResult = pdfviewer.ImportAnnotation(jsonObject);
+                        return (JsonConvert.SerializeObject(JsonResult));
+                    }
+                    else
+                    {
+                        return (jsonObject["document"] + " is not found");
+                    }
+                }
             }
             return (GetPlainText(jsonResult));
         }

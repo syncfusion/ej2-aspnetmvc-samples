@@ -9,7 +9,7 @@
         </div>
         <div id="palette-space" class="sb-mobile-palette">
             @(Html.EJS().SymbolPalette("symbolpalette").ExpandMode(ExpandMode.Multiple).Width("100%").Height("445px")
-                    .SymbolHeight(60).SymbolWidth(60).Palettes(ViewBag.Palettes).SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).Render())
+                    .SymbolHeight(60).SymbolWidth(60).Palettes(ViewBag.Palettes).SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).GetNodeDefaults("getSymbolNodes").Render())
         </div>
         <div id="diagram-space" class="sb-mobile-diagram sb-bpmn-editor">
             @(Html.EJS().Diagram("diagram").Width("100%").Height("443px").ContextMenuSettings(c => c.Show(true).ShowCustomMenuOnly(true).Items(ViewBag.ContextMenuItems))
@@ -707,6 +707,10 @@
                     obj.offsetY += (obj.height - oHeight) / 2;
                 }
             }
+        }
+
+        function getSymbolNodes(symbol, diagram) {
+            symbol.style.strokeColor = '#757575';
         }
 
         function fitToPage() {
