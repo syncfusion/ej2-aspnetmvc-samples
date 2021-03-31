@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.EJ2.Spreadsheet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -28,6 +29,16 @@ namespace EJ2MVCSampleBrowser.Controllers.Spreadsheet
             };
             ViewBag.ProtectSheetData = data;
             return View();
+        }
+
+        public ActionResult ProtectSheetOpen(OpenRequest openRequest)
+        {
+            return Content(Workbook.Open(openRequest));
+        }
+
+        public void ProtectSheetSave(SaveSettings saveSettings)
+        {
+            Workbook.Save(saveSettings);
         }
     }
 }

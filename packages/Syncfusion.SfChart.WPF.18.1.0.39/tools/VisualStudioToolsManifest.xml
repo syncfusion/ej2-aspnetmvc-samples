@@ -1,0 +1,15 @@
+<FileList>
+<File Reference="Syncfusion.SfChart.WPF.dll">
+	<ContainsControls>True</ContainsControls>
+	<ToolboxItems VSCategory="Syncfusion Controls for WPF" BlendCategory="Syncfusion Controls for WPF">
+		<Item Type="Syncfusion.UI.Xaml.Charts.SfChart3D"/>
+		<Item Type="Syncfusion.UI.Xaml.Charts.SfChart"/>
+		<Item Type="Syncfusion.UI.Xaml.Charts.SfDateTimeRangeNavigator"/>
+		<Item Type="Syncfusion.UI.Xaml.Charts.SfRangeNavigator"/>
+		<Item Type="Syncfusion.UI.Xaml.Charts.SfAreaSparkline"/>
+		<Item Type="Syncfusion.UI.Xaml.Charts.SfColumnSparkline"/>
+		<Item Type="Syncfusion.UI.Xaml.Charts.SfLineSparkline"/>
+		<Item Type="Syncfusion.UI.Xaml.Charts.SfWinLossSparkline"/>
+	</ToolboxItems>
+</File>
+</FileList>

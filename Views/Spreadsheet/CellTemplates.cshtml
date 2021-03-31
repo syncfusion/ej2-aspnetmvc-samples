@@ -3,7 +3,7 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).ShowFormulaBar(false).Created("createdHandler").BeforeSelect("beforeSelectHandler").BeforeCellRender("beforeCellRenderHandler").ScrollSettings(scrollSettings =>
+        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).ShowFormulaBar(false).AllowEditing(false).Created("createdHandler").BeforeSelect("beforeSelectHandler").BeforeCellRender("beforeCellRenderHandler").ScrollSettings(scrollSettings =>
    {
        scrollSettings.EnableVirtualization(false).IsFinite(true);
    }).Sheets(sheet =>
@@ -56,7 +56,7 @@
         </p>
         <p>
             More information about cell template feature can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started">
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started-mvc">
                 documentation
             </a> section.
         </p>

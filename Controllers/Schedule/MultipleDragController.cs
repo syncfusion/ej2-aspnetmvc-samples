@@ -1,0 +1,32 @@
+﻿using EJ2MVCSampleBrowser.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace EJ2MVCSampleBrowser.Controllers.Schedule
+{
+    public partial class ScheduleController : Controller
+    {
+        // GET: MultipleDrag
+        public ActionResult MultipleDrag()
+        {
+            ScheduleData data = new ScheduleData();
+            List<ScheduleData.ResourceData> resourceData = data.GetResourceData();
+            List<ScheduleData.ResourceData> timelineResourceData = data.GetTimelineResourceData();
+            ViewBag.datasource = resourceData.Concat(timelineResourceData);
+
+            List<ResourceDataSourceModel> ownerData = new List<ResourceDataSourceModel>();
+            ownerData.Add(new ResourceDataSourceModel { text = "Nancy", id = 1, color = "#df5286" });
+            ownerData.Add(new ResourceDataSourceModel { text = "Steven", id = 2, color = "#7fa900" });
+            ownerData.Add(new ResourceDataSourceModel { text = "Robert", id = 3, color = "#ea7a57" });
+            ownerData.Add(new ResourceDataSourceModel { text = "Smith", id = 4, color = "#5978ee" });
+            ownerData.Add(new ResourceDataSourceModel { text = "Micheal", id = 5, color = "#df5286" });
+            ViewBag.Owners = ownerData;
+
+            ViewBag.Resources = new string[] { "Owners" };
+            return View();
+        }
+    }
+}

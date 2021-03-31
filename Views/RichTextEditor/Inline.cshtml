@@ -3,10 +3,7 @@
     <div class="col-lg-8 control-section">
         <div class="control-wrapper">
             @Html.EJS().RichTextEditor("inline").InlineMode(inline => inline.OnSelection(true).Enable(true)).ToolbarSettings(e => e.Items((object)ViewBag.Items)).Created("created").FontFamily(font => font.Width("auto")).Format(format => format.Width("auto")).ContentTemplate(@<div><p>
-    The sample is configured with inline mode of editor. Initially, the editor is rendered without a
-    <a href='https://ej2.syncfusion.com/home/'>toolbar</a>.
-    The toolbar becomes visible only when the content is selected.
-</p></div>).Render()
+    The sample is configured with the inline mode of the editor. Initially, the editor is rendered without a <a href="https://ej2.syncfusion.com/home/" target='_blank'>toolbar</a>. The toolbar becomes visible only when the content is selected.</p></div>).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section" id="all-option-table">

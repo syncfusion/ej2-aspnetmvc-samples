@@ -1,0 +1,23 @@
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+	<system.web xdt:Transform="InsertIfMissing">
+		<httpHandlers xdt:Transform="InsertIfMissing">
+			<add verb="*" path="captimage.axd" type="Syncfusion.JavaScript.ImageHandler, Syncfusion.EJ, Version=19.1450.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" xdt:Transform="InsertIfMissing" xdt:Locator="Match(type)"/>
+		</httpHandlers>
+		<compilation xdt:Transform="InsertIfMissing"> 
+			<assemblies xdt:Transform="InsertIfMissing">
+			</assemblies>
+		</compilation>
+		<pages xdt:Transform="InsertIfMissing">
+			<namespaces xdt:Transform="InsertIfMissing">
+				
+</namespaces>
+		</pages>
+	</system.web>
+	<system.webServer xdt:Transform="InsertIfMissing">
+		<validation validateIntegratedModeConfiguration="false" xdt:Transform="InsertIfMissing"/>
+		<modules runAllManagedModulesForAllRequests="true" xdt:Transform="InsertIfMissing" />
+		<handlers xdt:Transform="InsertIfMissing">
+			<add verb="*" path="captimage.axd" name="syncfusion_generatetools" type="Syncfusion.JavaScript.ImageHandler, Syncfusion.EJ, Version=19.1450.0.54, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" xdt:Transform="InsertIfMissing" xdt:Locator="Match(type)"/>
+		</handlers>
+	</system.webServer>
+</configuration>

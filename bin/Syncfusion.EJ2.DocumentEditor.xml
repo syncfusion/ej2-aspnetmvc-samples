@@ -1,0 +1,2871 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Syncfusion.EJ2.DocumentEditor</name>
+    </assembly>
+    <members>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.BaselineAlignment">
+            <summary>
+            Specifes the baseline alignment style for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCharacterFormat"/>.
+            </summary>
+            <seealso cref="T:Syncfusion.EJ2.DocumentEditor.WCharacterFormat"/>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.BaselineAlignment.Normal">
+            <summary>
+            Specifies the text to be rendered normally.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.BaselineAlignment.Superscript">
+            <summary>
+            Specifies the text to appear above the baseline of text.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.BaselineAlignment.Subscript">
+            <summary>
+            Specifies the text to appear below the baseline of text.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.Underline">
+            <summary>
+            Specifies the underline style for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCharacterFormat"/>.
+            </summary>
+            <seealso cref="T:Syncfusion.EJ2.DocumentEditor.WCharacterFormat"/>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.None">
+            <summary>
+            No underline will be drawn.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.Single">
+            <summary>
+            Draws single underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.Words">
+            <summary>
+            Draws underline for words only.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.Double">
+            <summary>
+            Draws double underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.Dotted">
+            <summary>
+            Draws dotted underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.Thick">
+            <summary>
+            Draws thick underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.Dash">
+            <summary>
+            Draws dash underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.DashLong">
+            <summary>
+            Draws dash long underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.DotDash">
+            <summary>
+            Draws dot dash underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.DotDotDash">
+            <summary>
+            Draws dot dot dash underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.Wavy">
+            <summary>
+            Draws wavy underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.DottedHeavy">
+            <summary>
+            Draws dotted heavy underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.DashHeavy">
+            <summary>
+            Draws dash heavy underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.DashLongHeavy">
+            <summary>
+            Draws dash long heavy underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.DotDashHeavy">
+            <summary>
+            Draws dot dash heavy underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.DotDotDashHeavy">
+            <summary>
+            Draws dot dot dash heavy underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.WavyHeavy">
+            <summary>
+            Draws wavy heavy underline.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Underline.WavyDouble">
+            <summary>
+            Draws wavy double underline.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.Strikethrough">
+            <summary>
+            Specifies the strike through style for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCharacterFormat"/>.
+            </summary>
+            <seealso cref="T:Syncfusion.EJ2.DocumentEditor.WCharacterFormat"/>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Strikethrough.None">
+            <summary>
+            No strike will be drawn.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Strikethrough.SingleStrike">
+            <summary>
+            Draws single strike.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.Strikethrough.DoubleStrike">
+            <summary>
+            Draws double strike.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.HighlightColor">
+            <summary>
+            Specifies the highlight color for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCharacterFormat"/>.
+            </summary>
+            <seealso cref="T:Syncfusion.EJ2.DocumentEditor.WCharacterFormat"/>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.NoColor">
+            <summary>
+            No highlight color will be applied.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Yellow">
+            <summary>
+            Highlights the content with yellow (#ffffff00) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.BrightGreen">
+            <summary>
+            Highlights the content with bright green (#ff00ff00) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Turquoise">
+            <summary>
+            Highlights the content with turquoise (#ff00ffff) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Pink">
+            <summary>
+            Highlights the content with pink (#ffff00ff) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Blue">
+            <summary>
+            Highlights the content with blue (#ff0000ff) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Red">
+            <summary>
+            Highlights the content with red (#ffff0000) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.DarkBlue">
+            <summary>
+            Highlights the content with dark blue (#ff000080) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Teal">
+            <summary>
+            Highlights the content with teal (#ff008080) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Green">
+            <summary>
+            Highlights the content with green (#ff008000) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Violet">
+            <summary>
+            Highlights the content with violet (#ff800080) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.DarkRed">
+            <summary>
+            Highlights the content with dark red (#ff800000) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.DarkYellow">
+            <summary>
+            Highlights the content with dark yellow (#ff808000)  color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Gray50">
+            <summary>
+            Highlights the content with gray 50 (#ff808080) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Gray25">
+            <summary>
+            Highlights the content with gray 25 (#ffc0c0c0) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HighlightColor.Black">
+            <summary>
+            Highlights the content with black (#ff000000) color.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineSpacingType.AtLeast">
+            <summary>
+            The line spacing can be greater than or equal to, but never less than,
+            the value specified in the LineSpacing property. 
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineSpacingType.Exactly">
+            <summary>
+            The line spacing never changes from the value specified in the LineSpacing property, 
+            even if a larger font is used within the paragraph. 
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineSpacingType.Multiple">
+            <summary>
+            The line spacing is specified in the LineSpacing property as the number of lines. 
+            </summary>
+            <remarks>Single line spacing equals 12 points.</remarks>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.OutlineLevel">
+            <summary>
+            Specifies the outline level to apply to a paragraph.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.OutlineLevel.Level1">
+            <summary>
+            Outline level 1.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.OutlineLevel.Level2">
+            <summary>
+            Outline level 2.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.OutlineLevel.Level3">
+            <summary>
+            Outline level 3.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.OutlineLevel.Level4">
+            <summary>
+            Outline level 4.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.OutlineLevel.Level5">
+            <summary>
+            Outline level 5.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.OutlineLevel.Level6">
+            <summary>
+            Outline level 6.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.OutlineLevel.Level7">
+            <summary>
+            Outline level 7.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.OutlineLevel.Level8">
+            <summary>
+            Outline level 8.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.OutlineLevel.Level9">
+            <summary>
+            Outline level 9.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.OutlineLevel.BodyText">
+            <summary>
+            No outline level.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WidthType">
+            <summary>
+            Specifies the width type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.WidthType.Auto">
+            <summary>
+            Specifies the width to be determined automatically.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.WidthType.Percent">
+            <summary>
+            Specifies the width in percentage.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.WidthType.Point">
+            <summary>
+            Specifies the width in points.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.TableAlignment">
+            <summary>
+            Specifies the table alignment.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TableAlignment.Left">
+            <summary>
+            Aligns the table to the left.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TableAlignment.Center">
+            <summary>
+            Aligns the table to the center.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TableAlignment.Right">
+            <summary>
+            Aligns the table to the right.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.LineStyle">
+            <summary>
+            Specifies the border style.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.None">
+            <summary>
+            No border.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.Single">
+            <summary>
+            A single solid line.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.Dot">
+            <summary>
+            Dots.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.DashSmallGap">
+            <summary>
+            A dash followed by a small gap.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.DashLargeGap">
+            <summary>
+            A dash followed by a large gap.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.DashDot">
+            <summary>
+            A dash followed by a dot.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.DashDotDot">
+            <summary>
+            A dash followed by two dots.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.Double">
+            <summary>
+            Double solid lines.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.Triple">
+            <summary>
+            Three solid thin lines.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.ThinThickSmallGap">
+            <summary>
+            An internal single thin solid line surrounded by a single thick solid line with 
+            a small gap between them.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.ThickThinSmallGap">
+            <summary>
+            An internal single thick solid line surrounded by a single thin solid line with
+            a small gap between them.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.ThinThickThinSmallGap">
+            <summary>
+            An internal single thin solid line surrounded by a single thick solid line surrounded
+            by a single thin solid line with a small gap between all lines.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.ThinThickMediumGap">
+            <summary>
+            An internal single thin solid line surrounded by a single thick solid line with
+            a medium gap between them.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.ThickThinMediumGap">
+            <summary>
+            An internal single thick solid line surrounded by a single thin solid line with
+            a medium gap between them.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.ThinThickThinMediumGap">
+            <summary>
+            An internal single thin solid line surrounded by a single thick solid line surrounded
+            by a single thin solid line with a medium gap between all lines.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.ThinThickLargeGap">
+            <summary>
+            An internal single thin solid line surrounded by a single thick solid line with
+            a large gap between them.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.ThickThinLargeGap">
+            <summary>
+            An internal single thick solid line surrounded by a single thin solid line with
+            a large gap between them.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.ThinThickThinLargeGap">
+            <summary>
+            An internal single thin solid line surrounded by a single thick solid line surrounded
+            by a single thin solid line with a large gap between all lines.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.SingleWavy">
+            <summary>
+            A single wavy solid line.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.DoubleWavy">
+            <summary>
+            Double wavy solid lines.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.DashDotStroked">
+            <summary>
+            A dash followed by a dot stroke, thus rendering a border similar to a barber
+            pole.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.Emboss3D">
+            <summary>
+            The border appears to have a 3-D embossed look.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.Engrave3D">
+            <summary>
+            The border appears to have a 3-D engraved look.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.Outset">
+            <summary>
+            The border appears to be outset.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.Inset">
+            <summary>
+            The border appears to be inset.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.Thick">
+            <summary>
+            Additional enums supported in Microsoft word in the XML level as well as by DocIO.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.LineStyle.Cleared">
+            <summary>
+            Cleared border.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.TextureStyle">
+            <summary>
+            Specifies the texture style.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureNone">
+            <summary>
+             No shading
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture2Pt5Percent">
+            <summary>
+            2.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture5Percent">
+            <summary>
+            5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture7Pt5Percent">
+            <summary>
+            7.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture10Percent">
+            <summary>
+            10 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture12Pt5Percent">
+            <summary>
+            12.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture15Percent">
+            <summary>
+            15 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture17Pt5Percent">
+            <summary>
+            17.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture20Percent">
+            <summary>
+            20 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture22Pt5Percent">
+            <summary>
+            22.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture25Percent">
+            <summary>
+            25 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture27Pt5Percent">
+            <summary>
+            27.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture30Percent">
+            <summary>
+            30 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture32Pt5Percent">
+            <summary>
+            32.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture35Percent">
+            <summary>
+            35 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture37Pt5Percent">
+            <summary>
+            37.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture40Percent">
+            <summary>
+            40 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture42Pt5Percent">
+            <summary>
+            42.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture45Percent">
+            <summary>
+            45 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture47Pt5Percent">
+            <summary>
+            47.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture50Percent">
+            <summary>
+            50 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture52Pt5Percent">
+            <summary>
+            52.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture55Percent">
+            <summary>
+            55 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture57Pt5Percent">
+            <summary>
+            57.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture60Percent">
+            <summary>
+            60 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture62Pt5Percent">
+            <summary>
+            62.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture65Percent">
+            <summary>
+            65 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture67Pt5Percent">
+            <summary>
+            67.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture70Percent">
+            <summary>
+            70 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture72Pt5Percent">
+            <summary>
+            72.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture75Percent">
+            <summary>
+            75 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture77Pt5Percent">
+            <summary>
+            77.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture80Percent">
+            <summary>
+            80 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture82Pt5Percent">
+            <summary>
+            82.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture85Percent">
+            <summary>
+            85 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture87Pt5Percent">
+            <summary>
+            87.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture90Percent">
+            <summary>
+            90 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture92Pt5Percent">
+            <summary>
+            92.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture95Percent">
+            <summary>
+            95 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.Texture97Pt5Percent">
+            <summary>
+            97.5 percent shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureSolid">
+            <summary>
+            Solid shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureDarkHorizontal">
+            <summary>
+            Dark horizontal shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureDarkVertical">
+            <summary>
+            Dark vertical shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureDarkDiagonalDown">
+            <summary>
+            Dark diagonal down shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureDarkDiagonalUp">
+            <summary>
+            Dark diagonal up shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureDarkCross">
+            <summary>
+            Dark horizontal cross shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureDarkDiagonalCross">
+            <summary>
+            Dark diagonal cross shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureHorizontal">
+            <summary>
+            Horizontal shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureVertical">
+            <summary>
+            Vertical shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureDiagonalDown">
+            <summary>
+            Diagonal down shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureDiagonalUp">
+            <summary>
+            Diagonal up shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureCross">
+            <summary>
+            Horizontal cross shading.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.TextureStyle.TextureDiagonalCross">
+            <summary>
+            Diagonal cross shading.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.HeightType">
+            <summary>
+            Specifies the height type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HeightType.Auto">
+            <summary>
+            Specifies the height to be determined automatically.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HeightType.Atleast">
+            <summary>
+            Specifies the least height in points.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.HeightType.Exactly">
+            <summary>
+            Specifies the exact height in points.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.CellVerticalAlignment">
+            <summary>
+            Specifies the vertical alignment.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.CellVerticalAlignment.Top">
+            <summary>
+            Aligns the content to the top.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.CellVerticalAlignment.Center">
+            <summary>
+            Aligns the content to the center.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.CellVerticalAlignment.Bottom">
+            <summary>
+            Aligns the content ot the bottom.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.Arabic">
+            <summary>
+            Specifies the default pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.UpRoman">
+            <summary>
+            Specifies the upper roman (I, II, III, ...) pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.LowRoman">
+            <summary>
+            Specifies the lower roman (i, ii, iii, ...) pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.UpLetter">
+            <summary>
+            Specifies the uppercase letter (A, B, C, ...) pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.LowLetter">
+            <summary>
+            Specifies the lowercase letter (a, b, c, ...) pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.Ordinal">
+            <summary>
+            Specifies the ordinal (1st, 2nd, 3rd, ...) pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.Number">
+            <summary>
+            Specifies the numbering (1, 2, 3, ...) pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>. 
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.OrdinalText">
+            <summary>
+            Specifies the ordinal text (First, Second, Third, ...) pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.LeadingZero">
+            <summary>
+            Specifies the leading zero (01, 02, 03, ...) pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.Bullet">
+            <summary>
+            Specifies the bullet pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.FarEast">
+            <summary>
+            Specifies the far east pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.Special">
+            <summary>
+            Specifies the special pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ListLevelPattern.None">
+            <summary>
+            Specifies no pattern for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.FollowCharacterType">
+            <summary>
+            Specifies the follow character type for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>.
+            </summary>
+            <seealso cref="T:Syncfusion.EJ2.DocumentEditor.WListLevel"/>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.FollowCharacterType.Tab">
+            <summary>
+            Specifies the list value to be followed with a single tab.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.FollowCharacterType.Space">
+            <summary>
+            Specifies the list value to be followed with a single space.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.FollowCharacterType.None">
+            <summary>
+            Specifies the list value to be followed with no follow character.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.StyleType">
+            <summary>
+            Specifies the style type for the <see cref="T:Syncfusion.EJ2.DocumentEditor.WStyle"/>.
+            </summary>
+            <seealso cref="T:Syncfusion.EJ2.DocumentEditor.WStyle"/>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.StyleType.Paragraph">
+            <summary>
+            Specifies Paragraph style.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.StyleType.Character">
+            <summary>
+            Specifies Character style.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ProtectionType.ReadOnly">
+            <summary>
+            Allow read-only access to the document.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ProtectionType.NoProtection">
+            <summary>
+            Do not apply protection to the document.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.ProtectionType.FormFieldsOnly">
+            <summary>
+            Allow Form filling only.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.RevisionType">
+            <summary> 
+            Represents the type of track change revision types. 
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WSectionFormat">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WSectionFormat"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCellFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.DocIO.DLS.CellFormat"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCellFormat.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCellFormat.HasValue">
+            <summary>
+            Return true if any of the cell format property has value
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCellFormat.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.Borders">
+            <summary>
+            Gets or sets the <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorders"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.LeftMargin">
+            <summary>
+            Gets or sets the left margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.RightMargin">
+            <summary>
+            Gets or sets the right margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.TopMargin">
+            <summary>
+            Gets or sets the top margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.BottomMargin">
+            <summary>
+            Gets or sets the bottom margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.CellWidth">
+            <summary>
+            Gets or sets the width of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.ColumnSpan">
+            <summary>
+            Gets or sets the number of columns that the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/> should span.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.RowSpan">
+            <summary>
+            Gets or sets the number of rows that the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/> should span.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.Shading">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.Shading"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.VerticalAlignment">
+            <summary>
+            Gets or sets the <see cref="T:Syncfusion.EJ2.DocumentEditor.CellVerticalAlignment"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.PreferredWidthType">
+            <summary>
+            Gets or sets the <see cref="T:Syncfusion.EJ2.DocumentEditor.WidthType">PreferredWidthType</see> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/>
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.PreferredWidth">
+            <summary>
+            Gets or sets the preferred width of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WCellFormat.IsSamePaddingAsTable">
+            <summary>
+            Check whether it is same padding a Table
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WRowFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.DocIO.DLS.RowFormat"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WRowFormat.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WRowFormat.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.LeftIndent">
+            <summary>
+            Gets or sets the left indent value for <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.LeftMargin">
+            <summary>
+            Gets or sets the default left margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.RightMargin">
+            <summary>
+            Gets or sets the default right margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.TopMargin">
+            <summary>
+            Gets or sets the default top margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.BottomMargin">
+            <summary>
+            Gets or sets the default bottom margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.AllowBreakAcrossPages">
+            <summary>
+            Determines whether the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/> is allowed to break across pages.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.IsHeader">
+            <summary>
+            Determines whether the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/> is header row or not.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.Height">
+            <summary>
+            Gets or sets the height of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.HeightType">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.HeightType"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.GridBefore">
+            <summary>
+            Gets or sets the grid before.
+            </summary>
+            <value>
+            The grid before.
+            </value>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.GridAfter">
+            <summary>
+            Gets or sets the grid after.
+            </summary>
+            <value>
+            The grid after.
+            </value>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.GridBeforeWidthType">
+            <summary>
+            Gets or sets the grid before <see cref="T:Syncfusion.EJ2.DocumentEditor.WidthType"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.GridBeforeWidth">
+            <summary>
+            Gets or sets the grid before width of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.GridAfterWidthType">
+            <summary>
+            Gets or sets the grid afterr <see cref="T:Syncfusion.EJ2.DocumentEditor.WidthType"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.GridAfterWidth">
+            <summary>
+            Gets or sets the grid after width of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.Borders">
+            <summary>
+            Gets or sets the <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorders"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRowFormat.RevisionIds">
+            <summary>
+            Gets the revision information for row format.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WTableFormat">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTableFormat"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WTableFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTableFormat"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WTableFormat.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WTableFormat.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.AllowAutoFit">
+            <summary>
+            Gets or Sets the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/> is allowed to fit automatically.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.Borders">
+            <summary>
+            Gets or sets the <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorders"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.CellSpacing">
+            <summary>
+            Gets or sets the spacing between the cells in the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.LeftMargin">
+            <summary>
+            Gets or sets the default cell left margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.RightMargin">
+            <summary>
+            Gets or sets the default cell right margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.TopMargin">
+            <summary>
+            Gets or sets the default cell top margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.BottomMargin">
+            <summary>
+            Gets or sets the default cell bottom margin of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.LeftIndent">
+            <summary>
+            Gets or sets the left indent of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.Shading">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.Shading"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.TableAlignment">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.TableAlignment"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.PreferredWidth">
+            <summary>
+            Gets or sets the preferred width of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTableFormat.PreferredWidthType">
+            <summary>
+            Gets or sets the preferred width of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WShading">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WShading"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WShading.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WShading.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WShading.BackgroundColor">
+            <summary>
+            Gets or Sets the background.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WShading.ForegroundColor">
+            <summary>
+            Gets or Sets the foreground.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WShading.Texture">
+            <summary>
+            Gets or Sets the texture.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WBorder">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorders"/> class
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WBorder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorders"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WBorder.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WBorder.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorder.Color">
+            <summary>
+            Gets or sets the Color
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorder.LineStyle">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WBorder.LineStyle"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorder.LineWidth">
+            <summary>
+            Gets or sets the line width.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorder.HasNoneStyle">
+            <summary>
+            Determines whether the border has none style or not.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WBorders">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorders"/> class
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WBorders.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorders"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WBorders.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorders.Left">
+            <summary>
+            Gets or sets the left <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorder"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorders.Right">
+            <summary>
+            Gets or sets the right <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorder"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorders.Top">
+            <summary>
+            Gets or sets the top <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorder"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorders.Bottom">
+            <summary>
+            Gets or sets the bottom <see cref="P:Syncfusion.EJ2.DocumentEditor.WBorders.Bottom"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorders.Horizontal">
+            <summary>
+            Gets or sets the horizontal <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorder"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorders.Vertical">
+            <summary>
+            Gets or sets the vertical <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorder"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorders.DiagonalUp">
+            <summary>
+            Gets or sets the diagonal up <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorder"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBorders.DiagonalDown">
+            <summary>
+            Gets or sets the diagonal down <see cref="T:Syncfusion.EJ2.DocumentEditor.WBorder"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartArea">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartArea"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartArea.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartArea.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartArea.ChartAreaBackgroundColor">
+            <summary>
+            Gets or Sets the ChartAreaBackgroundColor of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartArea"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WPlotArea">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WPlotArea"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WPlotArea.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WPlotArea.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WPlotArea.PlotAreaBackgroundColor">
+            <summary>
+            Gets or Sets the PlotAreaBackgroundColor of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WPlotArea"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartTitleArea">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTitleArea"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartTitleArea.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTitleArea"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartTitleArea.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartTitleArea.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTitleArea.FontName">
+            <summary>
+            Gets or Sets the FontName of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTitleArea"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTitleArea.FontSize">
+            <summary>
+            Gets or Sets the FontSize of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTitleArea"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTitleArea.DataFormat">
+            <summary>
+            Gets or sets the <see cref="!:dataFormat"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTitleArea"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTitleArea.Layout">
+            <summary>
+            Gets or Sets the Layout of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTitleArea"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartData">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartData"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartData.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartData.YValue">
+            <summary>
+            Gets or Sets the YValue of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartData"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartData.BubbleSize">
+            <summary>
+            Gets or Sets the BubbleSize of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartData"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartCategory">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartCategory"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartCategory.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartCategory"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartCategory.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartCategory.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartCategory.CategoryXName">
+            <summary>
+            Gets or Sets the CategoryXName of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartCategory"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartCategory.ChartData">
+            <summary>
+            Gets the List of WChartData from the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartCategory"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartDataFormat">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataFormat"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartDataFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartDataFormat.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartDataFormat.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataFormat.Fill">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WChartDataFormat.Fill"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartFill"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataFormat.Line">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WChartDataFormat.Line"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartLine"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartFill">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartFill"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartFill.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartFill.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartFill.FillForeColor">
+            <summary>
+            Gets or Sets the ChartFillProperties FillForeColor of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartFill"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartFill.FillType">
+            <summary>
+            Gets or Sets the ChartFillProperties FillType of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartFill"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartFill.FillForeRGB">
+            <summary>
+            Gets or Sets the ChartFillProperties FillForeRGB of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartFill"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartLine">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartLine"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartLine.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartLine.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartLine.LinePattern">
+            <summary>
+            Gets or Sets the ChartLineProperties LineType of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartLine"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartLine.LineColor">
+            <summary>
+            Gets or Sets the ChartLineProperties LineForeColor of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartLine"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartLine.LineRGB">
+            <summary>
+            Gets or Sets the ChartLineProperties LineForeRGB of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartLine"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartLayout">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartLayout"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartLayout.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartLayout.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartLayout.LayoutX">
+            <summary>
+            Gets or Sets the Chart LayoutX of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartLayout"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartLayout.LayoutY">
+            <summary>
+            Gets or Sets the Chart LayoutY of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartLayout"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartErrorBar">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartErrorBar"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartErrorBar.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartErrorBar.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartErrorBar.Type">
+            <summary>
+            Gets or Sets the Type of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartErrorBar"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartErrorBar.Direction">
+            <summary>
+            Gets or Sets the Direction of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartErrorBar"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartErrorBar.EndStyle">
+            <summary>
+            Gets or Sets the EndStyle of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartErrorBar"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartErrorBar.NumberValue">
+            <summary>
+            Gets or Sets the NumberValue of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartErrorBar"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartSeriesFormat">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartSeriesFormat"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartSeriesFormat.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartSeriesFormat.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartSeriesFormat.MarkerStyle">
+            <summary>
+            Gets or Sets the MarkerStyle of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartSeriesFormat"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartSeriesFormat.MarkerSize">
+            <summary>
+            Gets or Sets the MarkerSize of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartSeriesFormat"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartSeriesFormat.MarkerColor">
+            <summary>
+            Gets or Sets the MarkerColor of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartSeriesFormat"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartTrendLines">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTrendLines"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartTrendLines.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartTrendLines.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTrendLines.Type">
+            <summary>
+            Gets or Sets the Type of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTrendLines"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTrendLines.Name">
+            <summary>
+            Gets or Sets the Name of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTrendLines"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTrendLines.Forward">
+            <summary>
+            Gets or Sets the Forward of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTrendLines"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTrendLines.BackWard">
+            <summary>
+            Gets or Sets the BackWard of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTrendLines"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTrendLines.Intercept">
+            <summary>
+            Gets or Sets the Intercept of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTrendLines"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTrendLines.DisplayRSquared">
+            <summary>
+            Gets or Sets the DisplayRSquared of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTrendLines"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartTrendLines.DisplayEquation">
+            <summary>
+            Gets or Sets the DisplayEquation of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartTrendLines"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WSeries">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WSeries"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WSeries.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WSeries.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WSeries.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WSeries.Name">
+            <summary>
+            Gets or Sets the Name of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WSeries"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WSeries.FirstSliceAngle">
+            <summary>
+            Gets or Sets FirstSliceAngle of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WSeries"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WSeries.HoleSize">
+            <summary>
+            Gets or Sets HoleSize of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WSeries"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WSeries.DataLabel">
+            <summary>
+            Gets or Sets the DataLabel of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WSeries"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WSeries.ErrorBar">
+            <summary>
+            Gets or Sets the ErrorBar of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WSeries"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WSeries.SeriesFormat">
+            <summary>
+            Gets or Sets the SeriesFormat of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WSeries"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WSeries.TrendLines">
+            <summary>
+            Gets or Sets the TrendLines of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WSeries"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WSeries.DataPoints">
+            <summary>
+            Gets the Chart Series collection of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataFormat"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.LabelPosition">
+            <summary>
+            Gets or Sets the LabelPosition of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.IsLegendKey">
+            <summary>
+            Gets or Sets the IsLegendKey of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.IsBubbleSize">
+            <summary>
+            Gets or Sets the IsBubbleSize of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.IsCategoryName">
+            <summary>
+            Gets or Sets the IsCategoryName of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.IsSeriesName">
+            <summary>
+            Gets or Sets the IsSeriesName of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.IsValue">
+            <summary>
+            Gets or Sets the IsValue of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.IsPercentage">
+            <summary>
+            Gets or Sets the IsPercentage of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.ShowLeaderLines">
+            <summary>
+            Gets or Sets the ShowLeaderLines of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.FontName">
+            <summary>
+            Gets or Sets the FontName of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.FontColor">
+            <summary>
+            Gets or Sets the FontColor of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataLabels.FontSize">
+            <summary>
+            Gets or Sets the FontSize of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataLabels"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartLegend">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartLegend"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartLegend.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartLegend.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartLegend.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartLegend.ChartLegendPosition">
+            <summary>
+            Gets or Sets the ChartLegend Position of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartLegend"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartLegend.ChartTitleArea">
+            <summary>
+            Gets or Sets the chartTitleArea of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartDataTable">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataTable"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartDataTable.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartDataTable.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataTable.ShowSeriesKeys">
+            <summary>
+            Gets or Sets the ShowSeriesKeys of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataTable.HasHorzBorder">
+            <summary>
+            Gets or Sets the HasHorzBorder of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataTable.HasVertBorder">
+            <summary>
+            Gets or Sets the HasVertBorder of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartDataTable.HasBorders">
+            <summary>
+            Gets or Sets the HasBorders of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartDataTable"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.Title">
+            <summary>
+            Gets or Sets the Title of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.FontSize">
+            <summary>
+            Gets or Sets the FontSize of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.FontName">
+            <summary>
+            Gets or Sets the FontName of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.HasMajorGridLines">
+            <summary>
+            Gets or Sets the HasMajorGridLines of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.HasMinorGridLines">
+            <summary>
+            Gets or Sets the HasMinorGridLines of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.MajorTickMark">
+            <summary>
+            Gets or Sets the MajorTickMark of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.MinorTickMark">
+            <summary>
+            Gets or Sets the MinorTickMark of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.TickLabelPosition">
+            <summary>
+            Gets or Sets the TickLabelPosition of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.CategoryType">
+            <summary>
+            Gets or Sets the CategoryType of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.NumberFormat">
+            <summary>
+            Gets or Sets the NumberFormat of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.MaximumValue">
+            <summary>
+            Gets or Sets the MaximumValue of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.MinimumValue">
+            <summary>
+            Gets or Sets the MinimumValue of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.MajorUnit">
+            <summary>
+            Gets or Sets the MajorUnit of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis.ChartTitleArea">
+            <summary>
+            Gets or Sets the chartTitleArea of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.Title">
+            <summary>
+            Gets or Sets the Title of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.FontSize">
+            <summary>
+            Gets or Sets the FontSize of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.FontName">
+            <summary>
+            Gets or Sets the FontName of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.HasMajorGridLines">
+            <summary>
+            Gets or Sets the HasMajorGridLines of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.HasMinorGridLines">
+            <summary>
+            Gets or Sets the HasMinorGridLines of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.MajorTickMark">
+            <summary>
+            Gets or Sets the MajorTickMark of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.MinorTickMark">
+            <summary>
+            Gets or Sets the MinorTickMark of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.TickLabelPosition">
+            <summary>
+            Gets or Sets the TickLabelPosition of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.ChartTitleArea">
+            <summary>
+            Gets or Sets the chartTitleArea of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.MaximumValue">
+            <summary>
+            Gets or Sets the MaximumValue of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.MinimumValue">
+            <summary>
+            Gets or Sets the MinimumValue of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis.MajorUnit">
+            <summary>
+            Gets or Sets the MajorUnit of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WChart">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChart.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChart.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WChart.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.ChartTitle">
+            <summary>
+            Gets or Sets the title of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.DataTable">
+            <summary>
+            Gets or Sets the DataTable of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.GapWidth">
+            <summary>
+            Gets or Sets the gapWidth of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.Overlap">
+            <summary>
+            Gets or Sets the overlap of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.ChartPrimaryCategoryAxis">
+            <summary>
+            Gets or Sets the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryCategoryAxis"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.ChartPrimaryValueAxis">
+            <summary>
+            Gets or Sets the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChartPrimaryValueAxis"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.ChartType">
+            <summary>
+            Gets or Sets the type of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.Height">
+            <summary>
+            Gets or Sets the height of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.Width">
+            <summary>
+            Gets or Sets the width of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.Categories">
+            <summary>
+            Gets the Chart Category collection of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.Series">
+            <summary>
+            Gets the Chart Series collection of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.ChartArea">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WChart.ChartArea"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.PlotArea">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WChart.PlotArea"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.ChartTitleArea">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WChart.ChartTitleArea"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WChart.Legend">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WChart.Legend"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WChart"/>.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WInlineContentControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WInlineContentControl"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WShapeCommon.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:WCommonShape"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WShape.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.DocIO.DLS.WTextBox"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WLineFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:WCommonShape"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WFillFormat.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:WCommonShape"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WTextFrame.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:WCommonShape"/> class.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WFieldCharacter">
+            <summary>
+            Represents the base class for <see cref="T:Syncfusion.EJ2.DocumentEditor.WFieldCharacter"/>.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.WFieldCharacter.FieldCharacterType">
+            <summary>
+            Gets or Sets the type of <see cref="T:Syncfusion.DocIO.DLS.FieldCharType"/>.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WFieldCharacter.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Syncfusion.EJ2.DocumentEditor.WFieldCharacter"/>.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WFieldCharacter.#ctor(Syncfusion.DocIO.DLS.FieldCharType)">
+            <summary>
+            Initializes a new instance of <see cref="T:Syncfusion.EJ2.DocumentEditor.WFieldCharacter"/> with the specified <see cref="T:Syncfusion.DocIO.DLS.FieldCharType"/>.
+            </summary>
+            <param name="type">The type of <see cref="T:Syncfusion.EJ2.DocumentEditor.WFieldCharacter"/>.</param>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WFieldBegin">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WFieldBegin"/> class.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.WFieldBegin.HasFieldEnd">
+            <summary>
+            Determines whether field end is present.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WFieldBegin.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WFieldBegin"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.FormFieldData.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Syncfusion.EJ2.DocumentEditor.FormFieldData"/>.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WFieldSeparator">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WFieldSeparator"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WFieldSeparator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WFieldSeparator"/> class.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WFieldEnd">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WFieldEnd"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WFieldEnd.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WFieldEnd"/> class.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WCommentStart">
+            <summary>
+            Represents the <see cref="!:CommentStartAdv"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCommentStart.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:CommentStartAdv"/> class.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WCommentEnd">
+            <summary>
+            Represents the <see cref="!:CommentEndAdv"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCommentEnd.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:CommentEndAdv"/> class.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WComment">
+            <summary>
+            Represents the <see cref="!:CommentAdv"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WComment.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:CommentAdv"/>.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WComment.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WComment.Blocks">
+            <summary>
+            Gets the block collection of the <see cref="!:CommentAdv"/>.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCommentExtended.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCommentExtended"/>.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCommentExtended.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.CustomXml.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.CustomXml"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WBlockContentControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WBlockContentControl"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WContentControlProperties.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WContentControlProperties"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCheckBoxState.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCheckBoxState"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WContentControlListItems.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WContentControlListItems"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.XmlMapping.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.XmlMapping"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.CustomXMLPart.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.CustomXMLPart"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCell.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WCell"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WCell.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WRow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WRow.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WRow.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRow.RowFormat">
+            <summary>
+            Gets or Sets the row format.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WRow.Cells">
+            <summary>
+            Gets the List of WCell from the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </summary>
+            <value>
+            The List of WCell from the <see cref="T:Syncfusion.EJ2.DocumentEditor.WRow"/>.
+            </value>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WTable">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WTable.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WTable.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets the object data.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WTable.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTable.Rows">
+            <summary>
+            Gets the TableRows collection of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTable.Title">
+            <summary>
+            Gets or Sets the title of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTable.Description">
+            <summary>
+            Gets or Sets the description of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WTable.TableFormat">
+            <summary>
+            Gets or sets the <see cref="P:Syncfusion.EJ2.DocumentEditor.WTable.TableFormat"/> of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTable"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WHeaderFooter.Blocks">
+            <summary>
+            Gets the block collection of the <see cref="T:Syncfusion.DocIO.DLS.HeaderFooter"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WHeadersFooters.Header">
+            <summary>
+            Gets or sets the odd page or default header.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WHeadersFooters.Footer">
+            <summary>
+            Gets or sets the odd page or default footer.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WHeadersFooters.EvenHeader">
+            <summary>
+            Gets or sets the even page header.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WHeadersFooters.EvenFooter">
+            <summary>
+            Gets or sets the even page footer.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WHeadersFooters.FirstPageHeader">
+            <summary>
+            Gets or sets the first page header.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WHeadersFooters.FirstPageFooter">
+            <summary>
+            Gets or sets the first page footer.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.Background.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WordDocument">
+            <summary>
+            Represents the root element of the rich text contents in Syncfusion.DocumentEditor.Portable library.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WordDocument.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Syncfusion.EJ2.DocumentEditor.WordDocument"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WordDocument.Load(System.IO.Stream,Syncfusion.EJ2.DocumentEditor.FormatType)">
+            <summary>
+            Loads the stream with the specified <see cref="T:Syncfusion.EJ2.DocumentEditor.FormatType"/>
+            </summary>
+            <param name="stream">The input stream.</param>
+            <param name="type">The format type.</param>
+            <returns>The <see cref="T:Syncfusion.EJ2.DocumentEditor.WordDocument"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">The input stream cannot be null.</exception>
+            
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WordDocument.Save(System.String,Syncfusion.EJ2.DocumentEditor.FormatType)">
+            <summary>
+            Saves the sfdt text with the specified <see cref="T:Syncfusion.EJ2.DocumentEditor.FormatType"/>.
+            </summary>
+            <param name="sfdtText">The stream.</param>
+            <param name="type">The format type.</param>
+            <exception cref="T:System.ArgumentException">The input text cannot be null.</exception>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WordDocument.LoadString(System.String,Syncfusion.EJ2.DocumentEditor.FormatType)">
+            <summary>
+            Load the string
+            </summary>
+            <param name="inputString">The input string</param>
+            <param name="type"> The Format type</param>
+            <returns>The <see cref="T:Syncfusion.EJ2.DocumentEditor.WordDocument"/> instance.</returns>
+            <exception cref="T:System.ArgumentNullException">The input string cannot be null.</exception>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WordDocument.ComputeHash(System.String,System.String,System.Int32)">
+            <summary>
+            Compute SHA 512 hash for restrict editing
+            </summary>
+            <param name="passwordBase64">Base64 string of passowrd</param>
+            <param name="saltBase64">Base64 string of salt</param>
+            <param name="spinCount">Spin count</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WordDocument.CombineByteArrays(System.Byte[],System.Byte[])">
+            <summary>
+            Combines the byte arrays.
+            </summary>
+            <param name="array1">The array1.</param>
+            <param name="array2">The array2.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WordDocument.CreateSalt(System.Int32)">
+            <summary>
+            Creates the salt.
+            </summary>
+            <param name="length">The length.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WordDocument.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Populates a <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with the data needed to serialize the target object.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> to populate with data.</param>
+            <param name="context">The destination (see <see cref="T:System.Runtime.Serialization.StreamingContext"/>) for this serialization.</param>
+            <exception cref="T:System.Security.SecurityException"/>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WordDocument.Dispose">
+            <summary>
+            Releases all resources used by the <see cref="T:Syncfusion.EJ2.DocumentEditor.WordDocument"/> instance.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.FormatType">
+            <summary>
+             Specifies the format type supported by the Syncfusion.DocumentEditor.Portable library.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.FormatType.Doc">
+            <summary>
+            Microsoft Word 97-2003 Format.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.FormatType.Docx">
+            <summary>
+            Microsoft Word Open XML Format.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.FormatType.Rtf">
+            <summary>
+            Rich Text Format.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.FormatType.Txt">
+            <summary>
+            Plain Text Format.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.FormatType.WordML">
+            <summary>
+            Specifies the WordProcessingML (.XML) documents.
+            </summary>
+            <remarks>
+            Provides Read/Write support for Microsoft Office Word  XML format (FlatOPC) documents.
+            Provides read only support for Microsoft Office Word 2003 XML format documents.
+            </remarks>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.FormatType.Html">
+            <summary>
+            Html format
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.BiDirectionalOverride">
+            <summary>
+            Specifies the text rendering direction
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.BiDirectionalOverride.LTR">
+             <summary>
+            Left to Right
+             </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.BiDirectionalOverride.RTL">
+            <summary>
+            Right to left
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WBookmark">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WBookmark"/> class.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.DocumentEditor.WBookmark.Type">
+            <summary>
+            Gets or Sets the type of bookmark (begin / end).
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WBookmark.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WBookmark"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WBookmark.#ctor(System.Byte)">
+            <summary>
+            Initializes a new instance of <see cref="T:Syncfusion.EJ2.DocumentEditor.WBookmark"/> with the specified bookmark type&gt;.
+            </summary>
+            <param name="type">The type of bookmark</param>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WBookmark.Name">
+            <summary>
+            Determines the bookmark name.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.WTabStop">
+            <summary>
+            Represents the <see cref="T:Syncfusion.EJ2.DocumentEditor.WTabStop"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WEditableRangeStart.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WEditableRangeStart"/> class.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WEditableRangeStart.Id">
+            <summary>
+            Gets or Sets the Id of Editable range start.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WEditableRangeStart.ColumnFirst">
+            <summary>
+            Gets or Sets the column first index of table
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WEditableRangeStart.ColumnLast">
+            <summary>
+            Gets or Sets the column last index of table
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WEditableRangeStart.Ed">
+            <summary>
+            Gets or Sets the user name
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.WEditableRangeEnd.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Syncfusion.EJ2.DocumentEditor.WEditableRangeEnd"/> class.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WEditableRangeEnd.Id">
+            <summary>
+            Gets or Sets the Id of Editable range end.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.WEditableRangeEnd.EditableRangeStart">
+            <summary>
+            Gets or Sets the matched editable range start.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.DocxImporting.ParseRevisions(Syncfusion.DocIO.DLS.RevisionCollection,Syncfusion.EJ2.DocumentEditor.WordDocument)">
+            <summary>
+            Parse revisions collection for the word document
+            </summary>
+            <param name="revisions">revisions</param>
+            <param name="document">document</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.DocxImporting.CreateRevision(Syncfusion.DocIO.DLS.Revision)">
+            <summary>
+            Method to create new revision from DOCIO revision
+            </summary>
+            <param name="docRevision">revision</param>
+            <returns>returns document editor revision</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.DocxImporting.ParseRevisionForInLine(Syncfusion.DocIO.DLS.Entity,Syncfusion.EJ2.DocumentEditor.WInline)">
+            <summary>
+            Method to parse inline revisions
+            </summary>
+            <param name="item">entity</param>
+            <param name="range">range</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.DocxImporting.ParseRevisionFormat(Syncfusion.DocIO.DLS.FormatBase,Syncfusion.EJ2.DocumentEditor.WCharacterFormat)">
+            <summary>
+            Method to parse para mark revisions
+            </summary>
+            <param name="item">item</param>
+            <param name="range">range</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.DocxImporting.ParseRevisionRowFormat(Syncfusion.DocIO.DLS.FormatBase,Syncfusion.EJ2.DocumentEditor.WRowFormat,Syncfusion.EJ2.DocumentEditor.WordDocument,System.Boolean@)">
+            <summary>
+            Method to parse row revisions
+            </summary>
+            <param name="item"></param>
+            <param name="range"></param>
+            <param name="document"></param>
+            <param name="removeRowRevision"></param>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.Thickness.#ctor(System.Double)">
+            <summary>
+            This constructur builds a Thickness with a specified value on every side.
+            </summary>
+            <param name="uniformLength">The specified uniform length.</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.Thickness.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            This constructor builds a Thickness with the specified number of points on each side.
+            </summary>
+            <param name="left">The thickness for the left side.</param>
+            <param name="top">The thickness for the top side.</param>
+            <param name="right">The thickness for the right side.</param>
+            <param name="bottom">The thickness for the bottom side.</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.Thickness.Equals(System.Object)">
+            <summary>
+            This function compares to the provided object for type and value equality.
+            </summary>
+            <param name="obj">Object to compare</param>
+            <returns>True if object is a Thickness and all sides of it are equal to this Thickness'.</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.Thickness.Equals(Syncfusion.EJ2.DocumentEditor.Thickness)">
+            <summary>
+            Compares this instance of Thickness with another instance.
+            </summary>
+            <param name="thickness">Thickness instance to compare.</param>
+            <returns><c>true</c>if this Thickness instance has the same value 
+            and unit type as thickness.</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.Thickness.GetHashCode">
+            <summary>
+            This function returns a hash code.
+            </summary>
+            <returns>Hash code</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.Thickness.ToString">
+            <summary>
+            Converts this Thickness object to a string.
+            </summary>
+            <returns>String conversion.</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.Thickness.op_Equality(Syncfusion.EJ2.DocumentEditor.Thickness,Syncfusion.EJ2.DocumentEditor.Thickness)">
+            <summary>
+            Overloaded operator to compare two Thicknesses for equality.
+            </summary>
+            <param name="t1">first Thickness to compare</param>
+            <param name="t2">second Thickness to compare</param>
+            <returns>True if all sides of the Thickness are equal, false otherwise</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.Thickness.op_Inequality(Syncfusion.EJ2.DocumentEditor.Thickness,Syncfusion.EJ2.DocumentEditor.Thickness)">
+            <summary>
+            Overloaded operator to compare two Thicknesses for inequality.
+            </summary>
+            <param name="t1">first Thickness to compare</param>
+            <param name="t2">second Thickness to compare</param>
+            <returns>False if all sides of the Thickness are equal, true otherwise</returns>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.Thickness.Left">
+            <summary>This property is the Length on the thickness' left side</summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.Thickness.Top">
+            <summary>This property is the Length on the thickness' top side</summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.Thickness.Right">
+            <summary>This property is the Length on the thickness' right side</summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.Thickness.Bottom">
+            <summary>
+            This property is the Length on the thickness' bottom side</summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.DocxExporting.RetrieveItemRevisions(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Retrieve revision ID
+            </summary>
+            <param name="inline"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.DocxExporting.AddRevisionsToRange(System.Object,System.Collections.Generic.List{Syncfusion.DocIO.DLS.Revision})">
+            <summary>
+            Adds revision to the range
+            </summary>
+            <param name="item">item</param>
+            <param name="revisions">revisions</param>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.UserActionInfo">
+            <summary>
+            Collaborative editing user action
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.UserActionInfo.UpdateAction(Syncfusion.EJ2.DocumentEditor.CollaborativeEditingEventArgs)">
+            <summary>
+            Update user action in current transaction. 
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.UserActionInfo.GetUserActions(System.Int32)">
+            <summary>
+            Check whether current region can be locked.
+            </summary>
+            <param name="version"></param>
+            <returns>The user action in specific order</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.UserActionInfo.CanLock(Syncfusion.EJ2.DocumentEditor.LockSelectionInfo)">
+            <summary>
+            Get list of user action from specified version. 
+            </summary>
+            <param name="selectionInfo"></param>
+        </member>
+        <member name="M:Syncfusion.EJ2.DocumentEditor.UserActionInfo.Clear">
+            <summary>
+            Clear current user transactions
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.CollaborativeEditingEventArgs">
+            <summary>
+            Collaborative editing user action info
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.CollaborativeEditingEventArgs.Action">
+            <summary>
+            Specifies current action in collaborative session.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.CollaborativeEditingEventArgs.SelectionInfo">
+            <summary>
+            Specifies selection info.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.CollaborativeEditingEventArgs.Version">
+            <summary>
+            Collaborative session version.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.CollaborativeEditingEventArgs.Data">
+            <summary>
+            Specifies modified data in SFDT format.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.CollaborativeEditingEventArgs.Author">
+            <summary>
+            Specifies author of the edit action.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.CollaborativeEditingEventArgs.RoomName">
+            <summary>
+            Specifies collaborative editing room name.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.DocumentEditor.LockSelectionInfo">
+            <summary>
+            Locked region selection info.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.LockSelectionInfo.Start">
+            <summary>
+            Selection start of the locked region.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.LockSelectionInfo.End">
+            <summary>
+            Selection end of the locked region.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.LockSelectionInfo.RoomName">
+            <summary>
+            Specifies collaborative editing room name.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.LockSelectionInfo.Author">
+            <summary>
+            Specifies author of the locked region.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.LockSelectionInfo.Version">
+            <summary>
+            Version of the collaborative editing session.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.DocumentEditor.LockSelectionInfo.PreviousLockInfo">
+            <summary>
+            Specified previous locked region selection info.
+            </summary>
+        </member>
+    </members>
+</doc>

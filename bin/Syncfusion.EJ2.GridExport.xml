@@ -1,0 +1,880 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Syncfusion.EJ2.GridExport</name>
+    </assembly>
+    <members>
+        <member name="T:Syncfusion.EJ2.GridExport.ExportHelper">
+            <summary>
+            Export helper
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.GridExcelExport">
+            <summary>
+            Helper for grid excel export
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.FileName">
+            <summary>
+            Gets or sets the name of the file.	
+            </summary>
+            <value>The name of the file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.Excelversion">
+            <summary>
+            Gets or sets the excel version.	
+            </summary>
+            <value>The excel version.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.Theme">
+            <summary>
+            Gets or sets the Theme of the file.	
+            </summary>
+            <value>The Theme of the file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.FilePath">
+            <summary>
+            Gets or sets the File Path for saving file.	
+            </summary>
+            <value>The File Path for saving file in local.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.LocalSave">
+            <summary>
+            Gets or sets the is file locally saved.	
+            </summary>
+            <value>The LocalSave option for file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.EmptyText">
+            <summary>
+            Gets or sets the Empty record text of the file.	
+            </summary>
+            <value>The name of the file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.DataSource">
+            <summary>
+            Gets or sets the datasource of the grid.	
+            </summary>
+            <value>The Datasource of the grid.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.GroupCaptionText">
+            <summary>
+            Gets or sets the group caption text of the grid.	
+            </summary>
+            <value>The group caption text of the grid.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.IsHideColumnIncude">
+            <summary>
+            Gets or sets the IsHideColumnInclude for grid.	
+            </summary>
+            <value>IsHideColumnInclude in file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.HeaderText">
+            <summary>
+            Gets or sets the Header Text for multiple export.	
+            </summary>
+            <value>HeaderText for multiple export.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.Document">
+            <summary>
+            Gets or sets the Document.	
+            </summary>
+            <value>The Document for exporting.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridExcelExport.WorkBook">
+            <summary>
+            Gets or sets the excel workbook.	
+            </summary>
+            <value>The excel workbook.</value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridExcelExport.ExcelExport``1(Syncfusion.EJ2.Grids.Grid,System.Collections.IEnumerable,Syncfusion.EJ2.GridExport.ExcelExportProperties)">
+            <summary>
+            Gets or sets the excel workbook.	
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridExcelExport.ExportRecordRow(System.String)">
+            <summary>
+            Exports the record row.	
+            </summary>
+            <param name="value">The value.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridExcelExport.GetNumberFormat(System.String)">
+            <summary>
+            Number format for currency, Number and decimal standard formats.	
+            </summary>
+            <param name="formatString">Column Format string.</param>        
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridExcelExport.InitializeExcel(Syncfusion.EJ2.Grids.Grid,Syncfusion.XlsIO.IWorkbook)">
+            <summary>
+            Initializes the excel.	
+            </summary>
+            <param name="model">The model.</param>
+            <param name="book">The book.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridExcelExport.CopyBorders(Syncfusion.EJ2.GridExport.GridTableCellType,Syncfusion.XlsIO.IRange)">
+            <summary>
+            Copies the borders.	
+            </summary>
+            <param name="style">The style.</param>
+            <param name="range">The range.</param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.ServerExcelQueryCellInfoEventArgs">
+            <summary>
+            Defines event argument of excel query cell event.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelQueryCellInfoEventArgs.Cell">
+            <summary>
+            Defines the cell data
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelQueryCellInfoEventArgs.Column">
+            <summary>
+            Defines the column of the current cell.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelQueryCellInfoEventArgs.Data">
+            <summary>
+            Defines the row data associated with this cell.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelQueryCellInfoEventArgs.Style">
+            <summary>
+            Defines the style of the current cell.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelQueryCellInfoEventArgs.Value">
+            <summary>
+            Defines the value of the current cell.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.ServerExcelHeaderQueryCellInfoEventArgs">
+            <summary>
+            Defines event argument of excel header query cell event.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelHeaderQueryCellInfoEventArgs.Cell">
+            <summary>
+            Defines the cell that contains colspan.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelHeaderQueryCellInfoEventArgs.Column">
+            <summary>
+            Defines the Grid cell instance
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelHeaderQueryCellInfoEventArgs.Style">
+            <summary>
+            Defines the style of the current cell.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelHeaderQueryCellInfoEventArgs.Value">
+            <summary>
+            Defines the value of the current cell.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.ServerExcelAggregateQueryCellInfoEventArgs">
+            <summary>
+            Defines event argument of excel aggregate event.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelAggregateQueryCellInfoEventArgs.Cell">
+            <summary>
+            Defines the cell data
+            </summary>       
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelAggregateQueryCellInfoEventArgs.Column">
+            <summary>
+            Defines the aggregate column of the current cell.
+            </summary>        
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelAggregateQueryCellInfoEventArgs.Style">
+            <summary>
+            Defines the style of the current cell.
+            </summary>        
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerExcelAggregateQueryCellInfoEventArgs.Value">
+            <summary>
+            Defines the value of the current cell.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.ExcelExportProperties">
+            <summary>
+            Defines the options for customizing the excel document during export.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ExcelExportProperties.ExportType">
+            <summary>
+            Indicates to export current page or all page
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ExcelExportProperties.FileName">
+            <summary>
+            Defines the file name for the exported file
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ExcelExportProperties.IncludeHiddenColumn">
+            <summary>
+            Indicates whether to show the hidden columns in exported excel
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.Hyperlink">
+            <summary>
+            Defines hyper link options for exporting.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.Hyperlink.DisplayText">
+            <summary>
+            Defines the display text for hyperlink
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.Hyperlink.Target">
+            <summary>
+            Defines the Url for hyperlink
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.FontWeight">
+            <summary>
+            Specifies font weight
+            </summary>
+            <exclude/>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.FontWeight.Bold">
+            <summary>
+            Text is bold
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.FontWeight.Normal">
+            <summary>
+            Text is normal
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.SpannedRow">
+            <summary>
+            spanned row
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.GridTableCellType">
+            <summary>
+            Defines cell types
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.GroupCaptionCell">
+            <summary>
+            Group caption cell.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.GroupHeaderIndentCell">
+            <summary>
+            Indent cell in group header section.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.SummaryFieldCell">
+            <summary>
+            Field cell in summary row.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.IndentCell">
+            <summary>
+            Indent cell in group.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.TopLeftHeaderCell">
+            <summary>
+            The top-left header cell.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.RowHeaderCell">
+            <summary>
+            Any row header cell.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.ColumnHeaderCell">
+            <summary>
+            Column header cell.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.RecordPlusMinusCell">
+            <summary>
+            PlusMinus cell in a record row.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.RecordFieldCell">
+            <summary>
+            Field cell in a non-alternate record row.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.AlternateRecordFieldCell">
+            <summary>
+            Field cell in an alternate record row.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.AlternateRecordRowHeaderCell">
+            <summary>
+            Any header cell in an alternate record row.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.EmptyCell">
+            <summary>
+            Empty cell 
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.CaptionCell">
+            <summary>
+            Caption Cell
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.MasterCell">
+            <summary>
+            Master Cell
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.FirstRecord">
+            <summary>
+            Group caption cell.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.GridTableCellType.MasterHeaderCell">
+            <summary>
+            Master Header Cell
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.TableOptions">
+            <summary>
+            Enum for TableOptions	
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.TableOptions.ColumnHeaderRowHeight">
+            <summary>
+            ColumnHeaderRowHeight	
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.TableOptions.RecordRowHeight">
+            <summary>
+            RecordRowHeight 	
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.TableOptions.CaptionRowHeight">
+            <summary>
+            CaptionRowHeight	
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.TableOptions.IndentCellWidth">
+            <summary>
+            IndentCellWidth	
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.TableOptions.ContentCellWidth">
+            <summary>
+            ContentCellWidth	
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.ExportType">
+            <summary>
+            Defines Export Type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.ExportType.AllPages">
+            <summary>
+            Exports all page of the grid.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.GridExport.ExportType.CurrentPage">
+            <summary>
+            Exports only the current page records of the grid.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.GridColumnModel">
+            <summary>
+            Defines Grid column model
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridColumnModel.columns">
+            <summary>
+            Defines Export columns
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.FontFamily">
+            <summary>
+            Gets or sets a value that indicates the font-family for an element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.FontSize">
+            <summary>
+            Gets or sets a value that indicates the font-size for an element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.BorderSize">
+            <summary>
+            Gets or sets a value that indicates the border-size for an element with four values.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.BorderType">
+            <summary>
+            Gets or sets a value that indicates the border-type for an element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.HeaderBgStColor">
+            <summary>
+            Gets or sets a value that specifies the background start EJ2Color.Color for header element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.HeaderBgEndColor">
+            <summary>
+            Gets or sets a value that specifies the background end EJ2Color.Color for header element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.HeaderBorderBottomColor">
+            <summary>
+            Gets or sets a value that specifies the border bottom EJ2Color.Color for header element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.HeaderBorderColor">
+            <summary>
+            Gets or sets a value that specifies the border EJ2Color.Color for header element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.HeaderFontColor">
+            <summary>
+            Gets or sets a value that specifies the font EJ2Color.Color for header element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.HeaderFontWeight">
+            <summary>
+            Gets or sets how thick or thin characters in text should be displayed for header element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.HeaderFontSize">
+            <summary>
+            Gets or sets a value that specifies the font size for header element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GHeaderBgColor">
+            <summary>
+            Gets or sets a value that specifies the background EJ2Color.Color for the group header.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GHeaderBorderColor">
+            <summary>
+            Gets or sets a value that specifies the border EJ2Color.Color for the group header.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GHeaderFontColor">
+            <summary>
+            Gets or sets a value that specifies the font EJ2Color.Color for the group header.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GHeaderFontSize">
+            <summary>
+            Gets or sets a value that specifies the font size for the group header.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.ContentBgColor">
+            <summary>
+            Gets or sets a value that specifies the background EJ2Color.Color for the group header.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.ContentBorderColor">
+            <summary>
+            Gets or sets a value that specifies the border EJ2Color.Color for the content.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.ContentFontColor">
+            <summary>
+            Gets or sets a value that specifies the font EJ2Color.Color for the content.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.ContentFontWeight">
+            <summary>
+            Gets or sets how thick or thin characters in content should be displayed.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.ContentFontSize">
+            <summary>
+            Gets or sets a value that specifies the font size for the content.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GContentBgColor">
+            <summary>
+            Gets or sets a value that specifies the background EJ2Color.Color for the content.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GContentFontColor">
+            <summary>
+            Gets or sets a value that specifies the font EJ2Color.Color for the groupcontent.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GDropareaStBgColor">
+            <summary>
+            Gets or sets a value that specifies the background start EJ2Color.Color for the groupdroparea.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GDropareaEndBgColor">
+            <summary>
+            Gets or sets a value that specifies the background end EJ2Color.Color for the groupdroparea.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GDropareaBorderColor">
+            <summary>
+            Gets or sets a value that specifies the border EJ2Color.Color for the groupdroparea.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GDropareaFontColor">
+            <summary>
+            Gets or sets a value that specifies the font EJ2Color.Color for the groupdroparea.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.GCaptionBorderColor">
+            <summary>
+            Gets or sets a value that specifies the border EJ2Color.Color for the groupcaption.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.RowBorderColor">
+            <summary>
+            Gets or sets a value that specifies the border EJ2Color.Color for an  row.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.RowSelectionBgColor">
+            <summary>
+            Gets or sets a value that specifies the font EJ2Color.Color for an  row selecting.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.RowSelectionFontColor">
+            <summary>
+            Gets or sets a value that specifies the font EJ2Color.Color for an  row selected.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.AltRowBgColor">
+            <summary>
+            Gets or sets a value that specifies the background EJ2Color.Color for an alternate row.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.DefaultBgStColor">
+            <summary>
+            Gets or sets a value that specifies the default background start EJ2Color.Color for an element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.DefaultBgEndColor">
+            <summary>
+            Gets or sets a value that specifies the default background end EJ2Color.Color for an element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.DefaultBorderColor">
+            <summary>
+            Gets or sets a value that specifies the default border EJ2Color.Color for an element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.DefaultFontColor">
+            <summary>
+            Gets or sets a value that specifies the default font EJ2Color.Color for an element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.CaptionBGColor">
+            <summary>
+            Gets or sets a value that specifies the background EJ2Color.Color for the caption.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.AutoFormat.BlockBGColor">
+            <summary>
+            Gets or sets a value that specifies the background EJ2Color.Color for the block section.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.PdfExportProperties">
+            <summary>
+            Defines pdf export customization options.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.PdfExportProperties.AllowHorizontalOverflow">
+            <summary>
+            Defines the overflow of columns for the pdf grid
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.PdfExportProperties.ExportType">
+            <summary>
+            Indicates to export current page or all page
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.PdfExportProperties.FileName">
+            <summary>
+            Defines the file name for the exported file
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.PdfExportProperties.IsRepeatHeader">
+            <summary>
+            Enable/disbale the PDF header repeats every page
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.PdfExportProperties.IncludeHiddenColumn">
+            <summary>
+            Indicates whether to show the hidden columns in exported Pdf
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.ServerPdfHeaderQueryCellInfoEventArgs">
+            <summary>
+            Defines pdf header query cell event arguments.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfHeaderQueryCellInfoEventArgs.Cell">
+            <summary>
+            Defines the PDF grid current cell.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfHeaderQueryCellInfoEventArgs.Column">
+            <summary>
+            Defines the Grid column of the current cell.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfHeaderQueryCellInfoEventArgs.Style">
+            <summary>
+            Defines the style of the current cell.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.ServerPdfAggregateQueryCellInfoEventArgs">
+            <summary>
+            Defines event argument of pdf aggregate event.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfAggregateQueryCellInfoEventArgs.Cell">
+            <summary>
+            Defines the current Aggregate cell data
+            </summary> 
+            
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfAggregateQueryCellInfoEventArgs.Column">
+            <summary>
+            Defines the aggregate column of the current cell.
+            </summary>        
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfAggregateQueryCellInfoEventArgs.Style">
+            <summary>
+            Defines the style of the current cell.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfAggregateQueryCellInfoEventArgs.Value">
+            <summary>
+            Defines the value of the current cell.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.ServerPdfQueryCellInfoEventArgs">
+            <summary>
+            Defines pdf query cell event argument.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfQueryCellInfoEventArgs.Cell">
+            <summary>
+            Defines the current PDF cell
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfQueryCellInfoEventArgs.Column">
+            <summary>
+            Defines the column of the current cell
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfQueryCellInfoEventArgs.Style">
+            <summary>
+            Defines the style of the current cell.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfQueryCellInfoEventArgs.Data">
+            <summary>
+            Defines the data of the cell
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.ServerPdfQueryCellInfoEventArgs.Value">
+            <summary>
+            Defines the value of the current cell
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.GridExport.GridPdfExport">
+            <summary>
+            Helper for grid pdf export
+            </summary>
+            <typeparam name="T">TValue of grid</typeparam>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.FileName">
+            <summary>
+            Gets or sets the name of the file.	
+            </summary>
+            <value>The name of the file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.FontWeight">
+            <summary>
+            Gets or sets the FontWeight.	
+            </summary>
+            <value>FontWeight.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.Theme">
+            <summary>
+            Gets or sets the Theme of the file.	
+            </summary>
+            <value>The Theme of the file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.FilePath">
+            <summary>
+            Gets or sets the File Path for saving file.	
+            </summary>
+            <value>The File Path for saving file in local.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.AutoFormat">
+            <summary>
+            Gets or sets the AutoFormat of the file.	
+            </summary>
+            <value>The AutoFormat of the file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.EmptyText">
+            <summary>
+            Gets or sets the Empty record text of the file.	
+            </summary>
+            <value>The name of the file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.DataSource">
+            <summary>
+            Gets or sets the datasource of the grid.	
+            </summary>
+            <value>The Datasource of the grid.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.GroupCaptionText">
+            <summary>
+            Gets or sets the group caption text of the grid.	
+            </summary>
+            <value>The group caption text of the grid.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.IsHideColumnIncude">
+            <summary>
+            Gets or sets the IsHideColumnInclude for grid.	
+            </summary>
+            <value>IsHideColumnInclude in file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.IsAutoFit">
+            <summary>
+            Gets or sets the IsAutoFit for grid.	
+            </summary>
+            <value>IsAutoFit in file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.IsSummaryRow">
+            <summary>
+            Gets or sets the IsSummaryRow included in the file.	
+            </summary>
+            <value>IsSummaryRow in file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.IncludeChildGrid">
+            <summary>
+            Gets or sets the IncludeChildGrid to either included/exclude the child Grid.	
+            </summary>
+            <value>true/false</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.ExportType">
+            <summary>
+            Gets or sets the name of the file.	
+            </summary>
+            <value>The name of the file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.Document">
+            <summary>
+            Gets or sets the name of the file.	
+            </summary>
+            <value>The name of the file.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.PdfVersion">
+            <summary>
+            Gets or sets the Pdf version.	
+            </summary>
+            <value>The Pdf version.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.HeaderText">
+            <summary>
+            Gets or sets the Header Text for multiple export.	
+            </summary>
+            <value>HeaderText for multiple export.</value>
+            <remarks></remarks>
+        </member>
+        <member name="P:Syncfusion.EJ2.GridExport.GridPdfExport.CheckRTLText">
+            <summary>
+            Gets or sets the RTL check for RTL languages.	
+            </summary>
+            <value>CheckRTL boolean value</value>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridPdfExport.InitializePdf(Syncfusion.Pdf.PdfDocument,System.String)">
+            <summary>
+            Initializes the excel.	
+            </summary>
+            <param name="pdfDocument">The Pdf document</param>
+            <param name="headerText">The headerText</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridPdfExport.RenderGroupedData(System.Collections.Generic.IEnumerable{Syncfusion.EJ2.Base.Group},System.Int32)">
+             <summary>
+            Perform Sorting.	
+             </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridPdfExport.SetTableOptions(Syncfusion.EJ2.GridExport.TableOptions,System.Int32,System.Int32,Syncfusion.Pdf.Grid.PdfGridRow)">
+            <summary>
+            Sets the table options.	
+            </summary>
+            <param name="tableOptions">The table options.</param>
+            <param name="Idx">The idx.</param>
+            <param name="value">The value.</param>
+            <param name="row"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridPdfExport.ExportRecordRow(System.String,Syncfusion.Pdf.Grid.PdfGridRow)">
+            <summary>
+            Exports the record row.	
+            </summary>
+            <param name="value">The value.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridPdfExport.ExportCaptionRow(System.String,Syncfusion.Pdf.Grid.PdfGridRow)">
+            <summary>
+            Exports the record row.	
+            </summary>
+            <param name="value">The value.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Syncfusion.EJ2.GridExport.GridPdfExport.CopyBorders(Syncfusion.EJ2.GridExport.GridTableCellType,Syncfusion.Pdf.Grid.PdfGridCell)">
+            <summary>
+            Copies the borders.	
+            </summary>
+            <param name="style">The style.</param>
+            <param name="cell">The cell</param>
+            <remarks></remarks>
+        </member>
+    </members>
+</doc>

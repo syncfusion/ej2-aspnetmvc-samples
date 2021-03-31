@@ -875,6 +875,10 @@ namespace EJ2MVCSampleBrowser.Models
         public int FIELD2 { get; set; }
         public int FIELD3 { get; set; }
         public int FIELD4 { get; set; }
+        public int FIELD5 { get; set; }
+        public int FIELD6 { get; set; }
+        public int FIELD7 { get; set; }
+
         public List<VirtualDataFormat> Children { get; set; }
 
 
@@ -908,6 +912,9 @@ namespace EJ2MVCSampleBrowser.Models
                     FIELD2 = 1967 + rand.Next(0, 10),
                     FIELD3 = 395 + rand.Next(100, 600),
                     FIELD4 = 87 + rand.Next(50, 250),
+                    FIELD5 = 147 + rand.Next(50, 250),
+                    FIELD6 = 200 + rand.Next(10, 550),
+                    FIELD7 = 553 + rand.Next(40, 750),
                     Children = new List<VirtualDataFormat>()
                 };
 
@@ -921,6 +928,9 @@ namespace EJ2MVCSampleBrowser.Models
                         FIELD2 = 1967 + rand.Next(0, 10),
                         FIELD3 = 395 + rand.Next(100, 600),
                         FIELD4 = 87 + rand.Next(50, 250),
+                        FIELD5 = 147 + rand.Next(50, 250),
+                        FIELD6 = 200 + rand.Next(10, 550),
+                        FIELD7 = 553 + rand.Next(40, 750),
                     });
                 }
 

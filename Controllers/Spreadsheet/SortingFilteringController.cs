@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.EJ2.Spreadsheet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -64,6 +65,16 @@ namespace EJ2MVCSampleBrowser.Controllers.Spreadsheet
             };
             ViewBag.FilteringData = data;
             return View();
+        }
+
+        public ActionResult FilterOpen(OpenRequest openRequest)
+        {
+            return Content(Workbook.Open(openRequest));
+        }
+
+        public void FilterSave(SaveSettings saveSettings)
+        {
+            Workbook.Save(saveSettings);
         }
     }
 }

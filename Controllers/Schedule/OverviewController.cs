@@ -161,6 +161,16 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             slots.Add(new { Text = "9", Value = "9" });
             slots.Add(new { Text = "10", Value = "10" });
             ViewBag.SlotCounts = slots;
+            List<object> time = new List<object>();
+            time.Add(new { Text = "12 hours", Value = "hh:mm a" });
+            time.Add(new { Text = "24 hours", Value = "HH:mm" });
+            ViewBag.TimeFormat = time;
+            List<object> weekNumbersData = new List<object>();
+            weekNumbersData.Add(new { Text = "Off", Value = "Off" });
+            weekNumbersData.Add(new { Text = "First Day Of Year", Value = "FirstDay" });
+            weekNumbersData.Add(new { Text = "First Full Week", Value = "FirstFullWeek" });
+            weekNumbersData.Add(new { Text = "First Four-Day Week", Value = "FirstFourDayWeek" });
+            ViewBag.WeekNumber = weekNumbersData;
 
             ViewBag.Values = new string[] { "1", "2", "3", "4", "5" };
             ViewBag.ResourceValues = new string[] { "1" };

@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Syncfusion.EJ2.Spreadsheet</name>
+    </assembly>
+    <members>
+        <member name="T:Syncfusion.EJ2.Spreadsheet.Workbook">
+            <summary>
+            Process files using the partial class.
+            </summary>
+            <summary>
+            Represent a class for Spreadsheet Save.
+            Contains methods for performing save opertions.
+            </summary>
+            <remarks>
+            This class can save Spreadsheet as Stream, base64String and downloadable File in Client.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.EJ2.Spreadsheet.Workbook.Open(Syncfusion.EJ2.Spreadsheet.OpenRequest)">
+            <summary>
+            Open the sheet using import request.
+            </summary>
+            <param name="openRequest">The import request.</param>
+            <returns>The sheet settings.</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.Spreadsheet.Workbook.processRequest(Syncfusion.EJ2.Spreadsheet.OpenRequest)">
+            <summary>
+            Process the open request.
+            </summary>
+            <param name="openRequest">The openRequset.</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.Spreadsheet.Workbook.Save(Syncfusion.EJ2.Spreadsheet.SaveSettings)">
+            <summary>
+            Save the spreadsheet into a file.
+            </summary>
+            <param name="saveSettings"><see cref="T:Syncfusion.EJ2.Spreadsheet.SaveSettings"/> object that contains the settings.</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.Spreadsheet.Workbook.Save``1(Syncfusion.EJ2.Spreadsheet.SaveSettings)">
+            <summary>
+            Save the Spreadsheet in defined type.
+            </summary>
+            <typeparam name="T">Return output based on defined type.</typeparam>
+            <param name="saveSettings"><see cref="T:Syncfusion.EJ2.Spreadsheet.SaveSettings"/> object that contains the settings.</param>
+        </member>
+        <member name="T:Syncfusion.EJ2.Spreadsheet.OpenRequest">
+            <summary>
+            Specifies a class for file open request.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.Spreadsheet.OpenRequest.File">
+            <summary>
+            Gets or sets the file.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.Spreadsheet.OpenRequest.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.Spreadsheet.SheetOpen">
+            <summary>
+            Represents a class for sheet open in Spreadsheet.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.Spreadsheet.SheetOpen.ProcessWorkBook(Syncfusion.XlsIO.IWorkbook,Syncfusion.EJ2.Spreadsheet.OpenRequest)">
+            <summary>
+            Process the workbook.
+            </summary>
+            <param name="workbook">Xlsio workbook object.</param>
+            <param name="openReq">Spreadsheet open request.</param>
+        </member>
+        <member name="T:Syncfusion.EJ2.Spreadsheet.SaveSettings">
+            <summary>
+            Represents an Save settings.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.Spreadsheet.SaveSettings.SaveUrl">
+            <summary>
+            Get or set save url.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.Spreadsheet.SaveSettings.JSONData">
+            <summary>
+            Get or Set Spreadsheet JSON data.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.Spreadsheet.SaveSettings.SaveType">
+            <summary>
+            Get or set the type of save in <see cref="T:Syncfusion.EJ2.Spreadsheet.SaveType"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.Spreadsheet.SaveSettings.FileName">
+            <summary>
+            Get or set Filename.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.Spreadsheet.SaveSettings.ContentType">
+            <summary>
+            Get or set the content type in <see cref="T:Syncfusion.EJ2.Spreadsheet.ContentType"/>.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.Spreadsheet.SaveSettings.VersionType">
+            <summary>
+            Get or set the excel version type in <see cref="T:Syncfusion.EJ2.Spreadsheet.VersionType"/>.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.Spreadsheet.SaveSettings.GetContentType">
+            <summary>
+            Method for get the media type for the defined type.
+            </summary>
+            <returns>The media type.</returns>
+        </member>
+        <member name="T:Syncfusion.EJ2.Spreadsheet.ContentType">
+            <summary>
+            Represents possible content type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.ContentType.Excel97">
+            <summary>
+            Represents Excel 97 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.ContentType.Excel2000">
+            <summary>
+            Represents Excel 2000 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.ContentType.Excel2007">
+            <summary>
+            Represents Excel 2007 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.ContentType.Excel2010">
+            <summary>
+             Represents Excel 2010 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.ContentType.Excel2013">
+            <summary>
+            Represents Excel 2013 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.ContentType.Excel2016">
+            <summary>
+            Represents Excel 2016 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.ContentType.Xlsx">
+            <summary>
+             Represents xlsx type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.ContentType.CSV">
+            <summary>
+             Represents CSV type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.ContentType.PDF">
+            <summary>
+             Represents PDF type.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.Spreadsheet.VersionType">
+            <summary>
+            Represents possible versions.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.VersionType.Excel97to2003">
+            <summary>
+             Represents Excel97to2003 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.VersionType.Excel2007">
+            <summary>
+             Represents Excel2007 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.VersionType.Excel2010">
+            <summary>
+             Represents Excel2010 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.VersionType.Excel2013">
+            <summary>
+             Represents Excel2013 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.VersionType.Excel2016">
+            <summary>
+             Represents Excel2016 type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.VersionType.Xlsx">
+            <summary>
+             Represents Xlsx type.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.Spreadsheet.SaveType">
+            <summary>
+            Represents save types.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.SaveType.Xlsx">
+            <summary>
+             Represents Excel xlsx type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.SaveType.Xls">
+            <summary>
+             Represents Excel97to2003 xlsx type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.SaveType.Csv">
+            <summary>
+             Represents Comma Separated Values csv type.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.Spreadsheet.SaveType.Pdf">
+            <summary>
+             Represents Portable Document Format type.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.Spreadsheet.SaveHelper.#ctor(Syncfusion.EJ2.Spreadsheet.SaveSettings)">
+            <summary>
+            Spreadsheet Save helper class.
+            </summary>
+            <param name="saveSettings"></param>
+        </member>
+    </members>
+</doc>

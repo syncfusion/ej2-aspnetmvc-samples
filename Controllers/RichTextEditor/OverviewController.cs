@@ -26,6 +26,9 @@ namespace EJ2MVCSampleBrowser.Controllers
                 uploadUrl = hostUrl + "api/FileManager/Upload",
                 downloadUrl = hostUrl + "api/FileManager/Download"
             };
+            ViewBag.Table = new[] {
+                "TableHeader", "TableRows", "TableColumns", "TableCell", "-", "BackgroundColor", "TableRemove", "TableCellVerticalAlign", "Styles"
+            };
             return View();
         }
     }

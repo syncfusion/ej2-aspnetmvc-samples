@@ -1,0 +1,527 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Syncfusion.EJ2.PdfViewer</name>
+    </assembly>
+    <members>
+        <member name="F:Syncfusion.EJ2.PdfViewer.PdfiumNative.PdfRenderFlags.None">
+            <summary>
+            No flags.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.PdfViewer.PdfiumNative.PdfRenderFlags.ForPrinting">
+            <summary>
+            Render for printing.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.PdfViewer.PdfiumNative.PdfRenderFlags.Annotations">
+            <summary>
+            Set if annotations are to be rendered.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.PdfViewer.PdfiumNative.PdfRenderFlags.LcdText">
+            <summary>
+            Set if using text rendering optimized for LCD display.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.PdfViewer.PdfiumNative.PdfRenderFlags.NoNativeText">
+            <summary>
+            Don't use the native text output available on some platforms.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.PdfViewer.PdfiumNative.PdfRenderFlags.Grayscale">
+            <summary>
+            Grayscale output.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.PdfViewer.PdfiumNative.PdfRenderFlags.LimitImageCacheSize">
+            <summary>
+            Limit image cache size.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.PdfViewer.PdfiumNative.PdfRenderFlags.ForceHalftone">
+            <summary>
+            Always use halftone for image stretching.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.PdfViewer.PdfiumNative.PdfRenderFlags.Transparent">
+            <summary>
+            Render with a transparent background.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.EJ2.PdfViewer.PdfiumNative.PdfRenderFlags.CorrectFromDpi">
+            <summary>
+            Correct height/width for DPI.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfiumNative.Extract(System.String,System.String,System.String)">
+            <summary>
+            Extracts the Pdfium embedded library
+            </summary>
+            <param name="dirName">directory name</param>
+            <param name="assemblyName">assembly/library name</param>
+            <param name="internalPdfiumPath">Pdfium extraction path</param>
+        </member>
+        <member name="T:Syncfusion.EJ2.PdfViewer.PdfRenderer">
+            <summary>
+            Represents the root element of the PDF viewer in Syncfusion.PdfViewer.Portable library.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.PdfViewer.PdfRenderer.PageCount">
+            <summary>
+            Gets the page count of the PDF document
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.PdfViewer.PdfRenderer.ReferencePath">
+            <summary>
+            Specifics the pdfium reference path to the PDF Viewer. 
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.PdfViewer.PdfRenderer.ScaleFactor">
+            <summary>
+            Scales the page while rendering in the PDF Viewer control for improving the quality of the image.
+            Positive float values can be set. Recommended Value is 1 or 1.5f.
+            If the value is greater than the recommended value, there might be any distortion in the performance of the PDF Viewer.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="N:Syncfusion.EJ2.PdfViewer"/> class.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.LoadLibrary(System.String)">
+            <summary>
+            Loads external library
+            </summary>
+            <param name="filePath">library path</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.Load(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Loads a PDF document with the specified filepath
+            </summary>
+            <param name="filePath">The path for the Pdf document.</param>
+            <param name="jsonObject">Current object from the client</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.Load(System.IO.Stream,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Loads the PDF document from the specified stream.
+            </summary>
+            <param name="filestream">The stream that contains the data of the PDF document</param>
+            <param name="jsonObject">Current object from the client</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.Load(System.String)">
+            <summary>
+            Loads a PDF document with the specified filepath
+            </summary>
+            <param name="filePath">The path for the Pdf document.</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.Load(System.String,System.String)">
+            <summary>
+            Loads the encrypted PDF document with the specified filepath
+            </summary>
+            <param name="filePath">The path for the Pdf document.</param>
+            <param name="password">Password for the pdf document.</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.Load(System.IO.Stream)">
+            <summary>
+            Loads the PDF document from the specified stream.
+            </summary>
+            <param name="fileStream">The stream that contains the data of the PDF document</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.Load(System.IO.Stream,System.String)">
+            <summary>
+            Loads the encrypted PDF document from the specified stream.
+            </summary>
+            <param name="fileStream">The stream that contains the data of the PDF document</param>
+            <param name="password">password for the PDF document</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.Load(System.Byte[])">
+            <summary>
+            Loads the PDF document from the specified byte Array.
+            </summary>
+            <param name="byteArray">The byte Array that contains the data of the PDF document</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.Load(System.Byte[],System.String)">
+            <summary>
+            Loads the encrypted PDF document from the specified byte Array.
+            </summary>
+            <param name="byteArray">The byte Array that contains the data of the PDF document</param>
+            <param name="password">password for the PDF document</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetBookmarks(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets the Bookmark Details
+            </summary>
+            <param name="jsonObject">Current object from the client </param>
+            <returns>Returns the Bookmark Details</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetAction(System.IntPtr)">
+            <summary>
+            Get the FileName of Launch action.
+            </summary>
+            <param name="bookmark">Bookmark object</param>
+            <returns>Return the FileName of the launch action</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetThumbnailImages(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets the thumbnail images of the document.
+            </summary>
+            <param name="jsonObject">Current object from the client</param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetPageCount">
+            <summary>
+            Gets the Page counts of the PDF document
+            </summary>
+            <returns>The <see cref="T:System.Int32"/> Page Count</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetPage(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets the specified page as Image
+            </summary>
+            <param name="jsonObject">Current object from the client </param>
+            <returns>Returns the specified page as Json object</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAnnotation(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets the XFdf annotation as base64 string
+            </summary>
+            <param name="jsonObject">Current object from the client </param>
+            <returns>Returns the XFdf annotation as base64 string.</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ImportAnnotation(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets the annotation from  the document
+            </summary>
+            <param name="jsonObject">Current object from the client </param>
+            <returns>Returns the annotations collections as Json object</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetAnnotationComments(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets the annotation comments of the document
+            </summary>
+            <param name="jsonObject">Current object from the client </param>
+            <returns>Returns the annotations comments as Json object</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetPrintImage(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets the page as Image
+            </summary>
+            <param name="jsonObject">Current object from the client </param>
+            <returns>Returns the page as base64 String</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32)">
+            <summary>
+            Exports the specified page as Image
+            </summary>
+            <param name="pageIndex">The page index to be converted into image</param>
+            <returns>Returns the specified page as Image</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Single,System.Single)">
+            <summary>
+            Exports the specified page as Image with respect to dpi specified.
+            </summary>
+            <param name="pageIndex">The page index to be converted into image</param>
+            <param name="dpiX">The horizontal DPI of the resultant image.</param>
+            <param name="dpiY">The vertical DPI of the resultant image.</param>
+            <returns>Returns the specified page as Image  with custom resolution</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Drawing.SizeF,System.Boolean)">
+            <summary>
+            Exports the specified page as Image
+            </summary>
+            <param name="pageIndex">The page index to be converted into image</param>
+            <param name="customSize">The custom size of the converted image</param>
+            <param name="keepAspectRatio">Whether need to keep the aspect ratio of the page</param>
+            <returns>Returns the image with custom size</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Drawing.SizeF,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Exports the specified page as Image
+            </summary>
+            <param name="pageIndex">The page index to be converted into image</param>
+            <param name="customSize">The custom size of the converted image</param>
+            <param name="dpiX">The horizontal DPI of the resultant image.</param>
+            <param name="dpiY">The vertical DPI of the resultant image.</param>
+            <param name="keepAspectRatio">Whether need to keep the aspect ratio of the page</param>
+            <returns>Returns the specified page as image with custom size and resolution</returns>>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Int32)">
+            <summary>
+            Exports the specified pages as Images
+            </summary>
+            <param name="startIndex">The starting page index</param>
+            <param name="endIndex">The ending page index</param>
+            <returns>Returns the specified pages as Images</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Int32,System.Single,System.Single)">
+            <summary>
+            Exports the specified pages as Images with respect to dpi specified.
+            </summary>
+            <param name="startIndex">The starting page index</param>
+            <param name="endIndex">The ending page index</param>
+            <param name="dpiX">The horizontal DPI of the resultant image.</param>
+            <param name="dpiY">The vertical DPI of the resultant image.</param>
+            <returns>Returns the specified pages as Images with custom resolution</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Int32,System.Drawing.SizeF,System.Boolean)">
+            <summary>
+            Exports the specified pages as Images
+            </summary>
+            <param name="startIndex">The starting page index</param>
+            <param name="endIndex">The ending page index</param>
+            <param name="customSize">The custom size of the converted image</param>
+            <param name="keepAspectRatio">Whether need to maintain the pdf page size</param>
+            <returns>Returns the specified pages as images with custom size</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Int32,System.Drawing.SizeF,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Exports the specified pages as Images
+            </summary>
+            <param name="startIndex">The starting page index</param>
+            <param name="endIndex">The ending page index</param>
+            <param name="customSize">The custom size of the converted image</param>
+            <param name="dpiX">The horizontal DPI of the resultant image.</param>
+            <param name="dpiY">The vertical DPI of the resultant image.</param>
+            <param name="keepAspectRatio">Whether need to maintain the pdf page size</param>
+            <returns>Returns the specified pages as images with custom size and resolution</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Single,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Exports the specified page as tile Image
+            </summary>
+            <param name="pageIndex">Specifies the page Number </param>
+            <param name="zoomFactor">Specifies the zoom Factor</param>
+            <param name="tileXCount">Specifies the tiles x dimension of page</param>
+            <param name="tileYCount">Specifies the tiles y dimension of page</param>
+            <param name="tileX">Specifies the x co-orindate of the tiles matrix of page</param>
+            <param name="tileY">Specifies the y co-orindate of the tiles matrix of page</param>
+            <returns>Returns the specified page as Image</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImageForTileRendering(System.Int32,System.Single,System.Int32,System.Int32)">
+            <summary>
+            Exports the specified page as Image
+            </summary>
+            <param name="pageIndex">The page index to be converted into image</param>
+            <param name="zoomFactor">Specifies the zoom Factor</param>
+            <param name="tileXCount">Specifies the tiles x dimension of page</param>
+            <param name="tileYCount">Specifies the tiles y dimension of page</param>
+            <returns>Returns the specified page as Image</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Boolean)">
+            <summary>
+            Exports the specified page as Image
+            </summary>
+            <param name="pageIndex">The page index to be converted into image</param>
+            <param name="isSkipAnnotations">Whether need to keep the annotation of the page</param>
+            <returns>Returns the specified page as Image</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Exports the specified page as Image with respect to dpi specified.
+            </summary>
+            <param name="pageIndex">The page index to be converted into image</param>
+            <param name="dpiX">The horizontal DPI of the resultant image.</param>
+            <param name="dpiY">The vertical DPI of the resultant image.</param>
+            <param name="isSkipAnnotations">Whether need to keep the annotation of the page</param>
+            <returns>Returns the specified page as Image  with custom resolution</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Drawing.SizeF,System.Boolean,System.Boolean)">
+            <summary>
+            Exports the specified page as Image
+            </summary>
+            <param name="pageIndex">The page index to be converted into image</param>
+            <param name="customSize">The custom size of the converted image</param>
+            <param name="keepAspectRatio">Whether need to keep the aspect ratio of the page</param>
+            <param name="isSkipAnnotations">Whether need to keep the annotation of the page</param>
+            <returns>Returns the image with custom size</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Drawing.SizeF,System.Single,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            Exports the specified page as Image
+            </summary>
+            <param name="pageIndex">The page index to be converted into image</param>
+            <param name="customSize">The custom size of the converted image</param>
+            <param name="dpiX">The horizontal DPI of the resultant image.</param>
+            <param name="dpiY">The vertical DPI of the resultant image.</param>
+            <param name="keepAspectRatio">Whether need to keep the aspect ratio of the page</param>
+            <param name="isSkipAnnotations">Whether need to keep the annotation of the page</param>
+            <returns>Returns the specified page as image with custom size and resolution</returns>>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Exports the specified pages as Images
+            </summary>
+            <param name="startIndex">The starting page index</param>
+            <param name="endIndex">The ending page index</param>
+            <param name="isSkipAnnotations">Whether need to keep the annotation of the page</param>
+            <returns>Returns the specified pages as Images</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Int32,System.Single,System.Single,System.Boolean)">
+            <summary>
+            Exports the specified pages as Images with respect to dpi specified.
+            </summary>
+            <param name="startIndex">The starting page index</param>
+            <param name="endIndex">The ending page index</param>
+            <param name="dpiX">The horizontal DPI of the resultant image.</param>
+            <param name="dpiY">The vertical DPI of the resultant image.</param>
+            <param name="isSkipAnnotations">Whether need to keep the annotation of the page</param>
+            <returns>Returns the specified pages as Images with custom resolution</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Int32,System.Drawing.SizeF,System.Boolean,System.Boolean)">
+            <summary>
+            Exports the specified pages as Images
+            </summary>
+            <param name="startIndex">The starting page index</param>
+            <param name="endIndex">The ending page index</param>
+            <param name="customSize">The custom size of the converted image</param>
+            <param name="keepAspectRatio">Whether need to maintain the pdf page size</param>
+            <param name="isSkipAnnotations">Whether need to keep the annotation of the page</param>
+            <returns>Returns the specified pages as images with custom size</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportAsImage(System.Int32,System.Int32,System.Drawing.SizeF,System.Single,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            Exports the specified pages as Images
+            </summary>
+            <param name="startIndex">The starting page index</param>
+            <param name="endIndex">The ending page index</param>
+            <param name="customSize">The custom size of the converted image</param>
+            <param name="dpiX">The horizontal DPI of the resultant image.</param>
+            <param name="dpiY">The vertical DPI of the resultant image.</param>
+            <param name="keepAspectRatio">Whether need to maintain the pdf page size</param>
+            <param name="isSkipAnnotations">Whether need to keep the annotation of the page</param>
+            <returns>Returns the specified pages as images with custom size and resolution</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetPageDetails(System.Int32,System.Single)">
+            <summary>
+            Gets the specified page details
+            </summary>
+            <param name="pageNumber">Specifies the page Number </param>
+            <param name="zoomFactor">Specifies the zoom Factor</param>
+            <returns>Returns the specified page details as object</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetPageDetails(System.Int32,System.Single,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Gets the specified page details
+            </summary>
+            <param name="pageNumber">Specifies the page Number </param>
+            <param name="zoomFactor">Specifies the zoom Factor</param>
+            <param name="tileXCount">Specifies the tiles x dimension of page</param>
+            <param name="tileYCount">Specifies the tiles y dimension of page</param>
+            <param name="tileX">Specifies the x co-orindate of the tiles matrix of page</param>
+            <param name="tileY">Specifies the y co-orindate of the tiles matrix of page</param>
+            <returns>Returns the specified page details as object</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExtractText(System.Int32,System.Collections.Generic.List{Syncfusion.EJ2.PdfViewer.TextData}@)">
+            <summary>
+            Extracts text along with its format.
+            </summary>/// 
+            <param name=" pageIndex">The page index in which the text has be extracted</param>
+            <param name=" textDataCollection">Provides the text data collection </param>
+            <returns>Returns the extracted text for the provided page</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExtractText(System.Int32,System.Collections.Generic.List{Syncfusion.EJ2.PdfViewer.TextData}@,System.Boolean)">
+            <summary>
+            Extracts text along with its format.
+            </summary>/// 
+            <param name=" pageIndex">The page index in which the text has be extracted</param>
+            <param name=" textDataCollection">Provides the text data collection </param>
+            <param name=" isLayout">maintains the layout if it is true </param>
+            <returns>Returns the extracted text for the provided page</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetDocumentAsBase64(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets the PDF document as base64 string
+            </summary>
+            <param name="jsonObject">Current object from the client </param>
+            <returns>Returns the PDF document as base64 string.</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.GetDocumentText(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Gets the PDF document text details
+            </summary>
+            <param name="jsonObject">Current object from the client </param>
+            <returns>Returns PDF document text details</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExtractTextWithPageSize(System.Int32,System.Collections.Generic.Dictionary{System.Int32,Syncfusion.EJ2.PdfViewer.PageTextData}@)">
+            <summary>
+            extracts text along with its format.
+            </summary>/// 
+            <param name=" pageIndex">The page index in which the text has be extracted</param>
+            <param name=" textDataCollection">Provides the text data collection </param>
+            <returns>Returns the extracted text for the provided page</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ExportFormFields(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Export the form fields value from the PDF documents
+            </summary>
+            <param name="jsonObject">Current object from the client </param>
+            <returns>Returns the form fields value as JSON base64 string.</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ImportFormFields(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Import the form fields value to the PDF documents
+            </summary>
+            <param name="jsonObject">Form fields value from the client </param>
+            <returns>Returns the form fields value as JSON string.</returns>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.Dispose">
+            <summary>
+            Dispose the PDF document resources while closing the PdfViewer.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.Dispose(System.Boolean)">
+            <summary>
+            Dispose the PDF document resources while closing the PdfViewer.
+            </summary>
+            <param name="isClearCurrentDocument">If true clears current PDF stream </param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.ClearCache(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Clear the Cache objects while closing the PdfViewer.
+            </summary>
+            <param name="documentID">Current document ID </param>
+        </member>
+        <member name="M:Syncfusion.EJ2.PdfViewer.PdfRenderer.LoadDocument(System.IO.Stream,System.String)">
+            <summary>
+            Loads the encrypted PDF document from the specified stream.
+            </summary>
+            <param name="fileStream">The stream that contains the data of the PDF document</param>
+            <param name="password">password for the PDF document</param>
+        </member>
+        <member name="T:Syncfusion.EJ2.PdfViewer.TextData">
+            <summary>
+            Represents a text informations
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.PdfViewer.TextData.Bounds">
+            <summary>
+            Gets the bounds of the text
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.PdfViewer.TextData.Text">
+            <summary>
+            Gets the text
+            </summary>
+        </member>
+        <member name="T:Syncfusion.EJ2.PdfViewer.PageTextData">
+            <summary>
+            Represents a Page text informations
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.PdfViewer.PageTextData.TextData">
+            <summary>
+            Gets the list of text data for the page
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.PdfViewer.PageTextData.PageText">
+            <summary>
+            Gets the text data for the page
+            </summary>
+        </member>
+        <member name="P:Syncfusion.EJ2.PdfViewer.PageTextData.PageSize">
+            <summary>
+            Gets the page size for the page
+            </summary>
+        </member>
+    </members>
+</doc>
