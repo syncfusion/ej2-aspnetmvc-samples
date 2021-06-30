@@ -8,7 +8,7 @@
                     .Series(sr =>
                     {
                         sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).DataSource("data").YAxisName("yAxis1").Add();
-                        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).DataSource("data").YName("volume").Add();
+                        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).DataSource("data").EnableTooltip(false).YName("volume").Add();
                     })
                     .Render())
         </div>

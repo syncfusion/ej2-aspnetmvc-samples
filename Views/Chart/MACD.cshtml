@@ -18,7 +18,7 @@
            {
                id.Fill("#6063ff").MacdType(Syncfusion.EJ2.Charts.MacdType.Both).MacdPositiveColor("#2ecd71").MacdNegativeColor("#e74c3d").Fill("#6063ff").YAxisName("secondary").FastPeriod(8).SlowPeriod(5).Period(3).Type(Syncfusion.EJ2.Charts.TechnicalIndicators.Macd).Field(Syncfusion.EJ2.Charts.FinancialDataFields.Close).SeriesName("Apple Inc").Add();
            }).ZoomSettings(zn => zn.EnableSelectionZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true)
-           ).PrimaryXAxis(px => px.ZoomFactor(0.2).ZoomPosition(0.6).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).MajorGridLines(mg=>mg.Width(0))
+           ).PrimaryXAxis(px => px.ZoomFactor(0.2).ZoomPosition(0.6).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).MajorGridLines(mg=>mg.Width(0)).CrosshairTooltip(ct => ct.Enable(true))
              ).PrimaryYAxis(py => py.RowIndex(1).OpposedPosition(true).LabelFormat("${value}M").Title("Price").Minimum(50).Maximum(170).Interval(30).LineStyle(ls=>ls.Width(0)).LabelFormat("{value}M").PlotOffset(25)
              ).Title("AAPL 2012-2017").ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tl => tl.Enable(true).Shared(true)).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
         </div>

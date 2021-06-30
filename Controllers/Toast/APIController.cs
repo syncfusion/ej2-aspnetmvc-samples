@@ -15,6 +15,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Toast
             easingData.Add(new { Id = "ease", Value = "Ease" });
             easingData.Add(new { Id = "linear", Value = "Linear" });
             ViewBag.EasingData = easingData;
+            List<object> directionData = new List<object>();
+            directionData.Add(new { Id = "Rtl", Value = "Right to Left" });
+            directionData.Add(new { Id = "Ltr", Value = "Left to Right" });
+            ViewBag.directionData = directionData;
             List<object> animationData = new List<object>();
             animationData.Add(new { Id = "SlideBottomIn", Value = "Slide Bottom In" });
             animationData.Add(new { Id = "FadeIn", Value = "Fade In" });

@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
-    <div class="control-section">
+    <div class="col-lg-8 control-section">
         <div id="panel">
             <input type="file" id="uploadfileButton" accept=".doc,.docx,.rtf,.txt,.htm,.html" style="position:fixed; left:-100em" />
             <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
             <div id="documenteditor_container_panel" style="display: flex;position:relative">
-                @Html.EJS().DocumentEditor("container").EnablePrint(true).Render()
+                @Html.EJS().DocumentEditor("container").Height("600px").EnablePrint(true).Render()
             </div>
             <div id="documenteditor_statusbar"></div>
         </div>
@@ -15,6 +15,24 @@
                 <circle class="circle-path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
             </svg>
         </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <div style="padding-top: 20px">
+            <b>Document Editor settings</b>
+        </div>
+        <table style="padding-bottom: 10px; padding-top: 30px">
+            <tr>
+                <td style="width: 50%">
+                    <span for="numeric" style="padding-right: 10px">Device pixel ratio:</span>
+                </td>
+                <td style="width: 50%">
+                     @Html.EJS().Tooltip("Numeric-Tooltip").Target("#printNumeric").Content("Specifies the device pixel ratio for the image generated while printing the document.").ContentTemplate(@<div>
+                @Html.EJS().NumericTextBox("printNumeric").Value(2).Min(1).Max(10).Step(0.5).Format("n").Decimals(1).Width("120px").Render()
+            </div>).Render()
+            </ejs-tooltip>
+                </td>
+            </tr>
+        </table>
     </div>
 }
 @section ActionDescription{
@@ -37,11 +55,11 @@
             <li>Select contents through touch, mouse, and keyboard.</li>
             <li>Scroll or navigate to specific pages.</li>
             <li>Find text within the documents.</li>
-            <li>Print Word documents.</li>
+            <li>Print Word documents in required quality by using your own device pixel ratio.</li>
         </ul>
         <p style="display: block">
             More information about the document editor features can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/document-editor/getting-started/">documentation section.</a>
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/document-editor/print/">documentation section.</a>
         </p>
     </div>
 }
@@ -51,12 +69,15 @@
         var baseurl = window.baseurl = getAbsoluteURL();
         var documenteditor;
         var containerPanel;
+        var pixelRatioTexBox;
         document.addEventListener('DOMContentLoaded', function () {
             containerPanel = document.getElementById('documenteditor_container_panel');
             var documenteditorElement = document.getElementById("container");
+            pixelRatioTexBox = document.getElementById("printNumeric").ej2_instances[0];
             documenteditorElement.style.width = "100%";
             documenteditor = documenteditorElement.ej2_instances[0];
             documenteditor.pageOutline = '#E0E0E0';
+            documenteditor.documentEditorSettings.printDevicePixelRatio = 2;
             // Toolbar,titlebar and pane changes
             document.getElementById('documenteditor_titlebar').style.display = '';
             document.getElementById('documenteditor_statusbar').style.display = '';
@@ -68,11 +89,14 @@
             wireEventsInStatusbar();
             document.getElementById('uploadfileButton').addEventListener('change', onFileChange);
             document.getElementById('uploadfileButton').setAttribute('accept', '.doc,.docx,.rtf,.txt,.sfdt');
-            updateContainerSize();
             documenteditor.resize();
             documenteditor.zoomFactorChange = function () {
                 updateZoomContent();
             };
+
+            pixelRatioTexBox.change = function (args) {
+                documenteditor.documentEditorSettings.printDevicePixelRatio = args.value;
+            }; 
 
             documenteditor.viewChange = function (e) {
                 onViewChange(e);
@@ -82,6 +106,7 @@
             };
             onLoadDefault();
             applyPageCountAndDocumentTitle();
+            documenteditor.resize();
         });
         function onViewChange(args) {
             updatePageNumberOnViewChange(args);
@@ -120,24 +145,17 @@
             waitingPopUp.style.display = 'none';
             overlay.style.display = 'none';
         }
-
-        function updateContainerSize() {
-            if (containerPanel) {
-                var height = window.innerHeight - (document.getElementById('documenteditor_titlebar').offsetHeight
-                    + document.getElementById('documenteditor_statusbar').offsetHeight) + 'px';
-                containerPanel.style.height = height;
-                documenteditor.height = height;
-            }
-        }
     </script>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Print in ASP.NET MVC DocumentEditor control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Print in ASP.NET MVC DocumentEditor control. Explore here for more details." />
+}
 <style>
 
 
-
+    #Numeric-Tooltip {
+        display: inline-flex;
+    }
     .center {
         text-align: center;
         display: none;
@@ -324,8 +342,8 @@
     }
 </style>
 @section Title{
-                    <title>ASP.NET MVC DocumentEditor Print Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC DocumentEditor Print Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Print in ASP.NET MVC DocumentEditor Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Print in ASP.NET MVC DocumentEditor Control</h1>
+}

@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             ViewBag.Tools = new[] { "Bold", "Italic", "Underline", "StrikeThrough",
                 "FontName", "FontSize", "FontColor", "BackgroundColor",
                 "LowerCase", "UpperCase", "SuperScript", "SubScript", "|",
-                "Formats", "Alignments", "OrderedList", "UnorderedList",
+                "Formats", "Alignments", "NumberFormatList", "BulletFormatList",
                 "Outdent", "Indent", "|",
                 "CreateTable", "CreateLink", "Image", "FileManager", "|", "ClearFormat", "Print",
                 "SourceCode", "FullScreen", "|", "Undo", "Redo" };
@@ -25,6 +25,9 @@ namespace EJ2MVCSampleBrowser.Controllers
                 getImageUrl = hostUrl + "api/FileManager/GetImage",
                 uploadUrl = hostUrl + "api/FileManager/Upload",
                 downloadUrl = hostUrl + "api/FileManager/Download"
+            };
+            ViewBag.Table = new[] {
+                "TableHeader", "TableRows", "TableColumns", "TableCell", "-", "BackgroundColor", "TableRemove", "TableCellVerticalAlign", "Styles"
             };
             return View();
         }

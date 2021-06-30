@@ -4,9 +4,9 @@
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Resources(res =>
-          {
-              res.DataSource(ViewBag.Owners).Field("OwnerId").Title("Owners").Name("Owners").TextField("OwnerText").IdField("OwnerId").ColorField("Color").AllowMultiple(true).Add();
-          }).EventSettings(e => e.DataSource(ViewBag.datasource)).SelectedDate(new DateTime(2018, 6, 5)).Render()
+                {
+                    res.DataSource(ViewBag.Owners).Field("OwnerId").Title("Owners").Name("Owners").TextField("OwnerText").IdField("OwnerId").ColorField("Color").AllowMultiple(true).Add();
+                }).EventSettings(e => e.DataSource(ViewBag.datasource)).SelectedDate(new DateTime(2018, 6, 5)).Render()
         </div>
     </div>
 
@@ -75,8 +75,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Resources in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Resources in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -95,8 +95,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Resources Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Resources Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Resources in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Resources in ASP.NET MVC Scheduler Control</h1>
+}

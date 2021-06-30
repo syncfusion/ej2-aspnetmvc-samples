@@ -14,21 +14,21 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         {
             List<PieWithLegendChartData> chartData = new List<PieWithLegendChartData>
             {
-                new PieWithLegendChartData { xValue = "Net-tution and Fees",           yValue = 21, text = "21%"},
-                new PieWithLegendChartData { xValue = "Self-supporting Operations",    yValue = 21, text = "21%"},
-                new PieWithLegendChartData { xValue = "Private Gifts",                 yValue = 8 , text = "8%"},
-                new PieWithLegendChartData { xValue = "All Other",                     yValue = 8 , text = "8%"},
-                new PieWithLegendChartData { xValue = "Local Revenue",                 yValue = 4 , text = "4%"},
-                new PieWithLegendChartData { xValue = "State Revenue",                 yValue = 21, text = "21%"},
-                new PieWithLegendChartData { xValue = "Federal Revenue",               yValue = 16, text = "16%"}
+                new PieWithLegendChartData { x = "Net-tution and Fees",           y = 21, text = "21%"},
+                new PieWithLegendChartData { x = "Self-supporting Operations",    y = 21, text = "21%"},
+                new PieWithLegendChartData { x = "Private Gifts",                 y = 8 , text = "8%"},
+                new PieWithLegendChartData { x = "All Other",                     y = 8 , text = "8%"},
+                new PieWithLegendChartData { x = "Local Revenue",                 y = 4 , text = "4%"},
+                new PieWithLegendChartData { x = "State Revenue",                 y = 21, text = "21%"},
+                new PieWithLegendChartData { x = "Federal Revenue",               y = 16, text = "16%"}
             };
             ViewBag.dataSource = chartData;
             return View();
         }
         public class PieWithLegendChartData
         {
-            public string xValue;
-            public double yValue;
+            public string x;
+            public double y;
             public string text;
         }
     }

@@ -1,15 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 @{
-                /**/
-
-                var agendaEventTemplate = "<div class='subject'>${Subject}</div>${if(Description !== null && Description !== undefined)}<div class='group'>${Description}</div>${/if}<div class='location'>${getTimeString(data.StartTime)}, ${if(City !== null && City !== undefined)}${City}${/if}</div>";
-                var monthEventTemplate = "<div class='subject'>${Subject}</div>";
-                List<ScheduleView> viewOptions = new List<ScheduleView>();
-                viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Day, StartHour = "07:00", EndHour = "18:00" });
-                viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Week, StartHour = "09:00", EndHour = "19:00", ShowWeekend = false, TimeScale = new ScheduleTimeScale() { Interval = 60, SlotCount = 4 } });
-                viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Month, Group = new ScheduleGroup() { Resources = new string[] { "Owners" } }, EventTemplate = monthEventTemplate });
-                viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Agenda, EventTemplate = agendaEventTemplate });
+    string agendaEventTemplate = "<div class='subject'>${Subject}</div>${if(Description !== null && Description !== undefined)}<div class='group'>${Description}</div>${/if}<div class='location'>${getTimeString(data.StartTime)}, ${if(City !== null && City !== undefined)}${City}${/if}</div>";
+    string monthEventTemplate = "<div class='subject'>${Subject}</div>";
+    List<ScheduleView> viewOptions = new List<ScheduleView>();
+    viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Day, StartHour = "07:00", EndHour = "18:00" });
+    viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Week, StartHour = "09:00", EndHour = "19:00", ShowWeekend = false, TimeScale = new ScheduleTimeScale() { Interval = 60, SlotCount = 4 } });
+    viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Month, Group = new ScheduleGroup() { Resources = new string[] { "Owners" } }, EventTemplate = monthEventTemplate });
+    viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Agenda, EventTemplate = agendaEventTemplate });
 }
 @section ControlsSection{
     <div class="control-section">
@@ -59,8 +57,8 @@
 
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Individual View Settings in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Individual View Settings in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 
 @section ActionDescription{
@@ -88,8 +86,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Individual View Settings Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Individual View Settings Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Individual View Settings in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Individual View Settings in ASP.NET MVC Scheduler Control</h1>
+}

@@ -23,6 +23,8 @@
                 edit.AllowDeleting(true);
                 edit.AllowEditing(true);
                 edit.Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row);
+            }).SelectionSettings(sel=> {
+                    sel.Type(SelectionType.Multiple);
             }).DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
        {
                 col.Field("TaskId").HeaderText("Task ID").IsPrimaryKey(true).Width(90)

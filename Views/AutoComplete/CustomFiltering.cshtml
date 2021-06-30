@@ -34,8 +34,11 @@
             }
             e.updateData(data, null);
             var popupElement = document.getElementById('books_popup');
-            var lists = popupElement.querySelectorAll('.e-list-item');
-            highlightSearch(lists, result);
+            if (popupElement)
+            {
+                var lists = popupElement.querySelectorAll('.e-list-item');
+                highlightSearch(lists, result);
+            }
         }
         function highlightSearch(listItems, result) {
             if (result.length > 0) {

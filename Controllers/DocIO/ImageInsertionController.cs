@@ -43,7 +43,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             dataPath2 = ResolveApplicationDataPath("", "Images\\DocIO");
 
             //Writing text.
-            paragraph.AppendText("This sample demonstrates how to insert Vector and Scalar images inside a document.");
+            paragraph.AppendText("This sample demonstrates how to insert images inside a document.");
 
             //Adding a new paragraph
             paragraph = section.AddParagraph();
@@ -76,20 +76,6 @@ namespace EJ2MVCSampleBrowser.Controllers.DocIO
             picture = (WPicture)paragraph.AppendPicture(Image.FromFile(dataPath2 + "Square.tif"));
             //Adding Image caption
             picture.AddCaption("Figure", CaptionNumberingFormat.Roman, CaptionPosition.AfterImage);
-            ApplyFormattingForCaption(document.LastParagraph);
-
-            //Adding a new paragraph.
-            paragraph = section.AddParagraph();
-            //Setting Alignment for the image.
-            paragraph.ParagraphFormat.HorizontalAlignment = Syncfusion.DocIO.DLS.HorizontalAlignment.Center;
-            //Inserting .wmf Image to the document.
-            WPicture mImage = (WPicture)paragraph.AppendPicture(Image.FromFile(dataPath2 + "Ess chart.emf"));
-            //Scaling Image
-            mImage.HeightScale = 50f;
-            mImage.WidthScale = 50f;
-
-            //Adding Image caption
-            mImage.AddCaption("Figure", CaptionNumberingFormat.Roman, CaptionPosition.AfterImage);
             ApplyFormattingForCaption(document.LastParagraph);
 
             //Updates the fields in Word document

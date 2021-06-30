@@ -26,11 +26,15 @@
                 Html.EndForm();
             }}
         <br />
-        @Html.TextAreaFor(s => s.Message, 1, 1, new { @style = "width:850px; height:175px",@readonly="readonly" })
+        @Html.TextAreaFor(s => s.Message, 1, 1, new { @style = "width:850px; height:175px", @readonly = "readonly" })
     </div>
 
 }
-
+@section ActionDescription{
+    <div id="action-description" style="margin-top: 10px">
+        This sample demonstrates how to validate the digital signatures in existing PDF document.
+    </div>
+}
 @section Meta{
                     <meta name="description" content="This example demonstrates the Digital Signature Validation in ASP.NET MVC PDF control. Explore here for more details."/>
                 }

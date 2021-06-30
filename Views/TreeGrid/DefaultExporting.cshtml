@@ -9,8 +9,9 @@
 @*custom code end*@
 
 @section ControlsSection{
-    <div class="control-section">
-        @(Html.EJS().TreeGrid("Exporting")
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().TreeGrid("Exporting")
             .AllowExcelExport()
             .AllowPdfExport()
             .Height(400)
@@ -31,22 +32,58 @@
             .TreeColumnIndex(1)
             .Render()
         )
+        </div>
     </div>
+
+    <div class="col-lg-2 property-section">
+        <table id="property" title="Export Customization" style="width: 200px">
+            <tr>
+                <td style="width: 20px;">
+                    @Html.EJS().CheckBox("checked").Change("onChange").Checked(true).Label("Persist collapsed state").Render()
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <style>
+        #property td div.e-checkbox-wrapper {
+            padding-left: 0px !important;
+            padding-top: 0px !important;
+        }
+    </style>
+
     <script>
+        var collapsedStatePersist = true;
         function onToolbarClick(args) {
             if (args.item.id === this.grid.element.id + '_excelexport') {
-                this.excelExport();
+                var excelExportProperties = {
+                    isCollapsedStatePersist: collapsedStatePersist
+                };
+                this.excelExport(excelExportProperties);
             } else if (args.item.id === this.grid.element.id + '_pdfexport') {
                 if (this.enableRtl === true && this.locale === 'ar') {
                     var innercontent = 'You need custom fonts to export Arabic characters, refer this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/pdf-export/#add-custom-font-for-pdf-exporting">documentation section</a>';
                     ej.popups.DialogUtility.alert({ content: innercontent });
                 } else {
-                    this.pdfExport();
+                    var pdfExportProperties = {
+                        isCollapsedStatePersist: collapsedStatePersist
+                    };
+                    this.pdfExport(pdfExportProperties);
                 }
             } else if (args.item.id === this.grid.element.id + '_csvexport') {
                 this.csvExport();
             }
         }
+
+        function onChange(args) {
+            if (args.checked) {
+                collapsedStatePersist = true;
+            }
+            else {
+                collapsedStatePersist = false;
+            }
+        }
+
     </script>
 }
 
@@ -60,6 +97,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>This sample demonstrates the client-side exporting of the Tree Grid, which allows you to export its data to the Excel, Pdf and CSV formats. Use the toolbar buttons to export TreeGrid data to desired format.</p>
+        <p>By using the Persist collapsed state checkbox we can persist the Expand/Collpase state of Tree Grid in exported document </p>
     </div>
 }
 

@@ -4,18 +4,16 @@
     <div class="control-section">
         <div class="content-wrapper">
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(es => es.DataSource(dataManger =>
-       {
-           dataManger.Url("https://ej2services.syncfusion.com/production/web-services/api/Schedule")
-          .CrossDomain(true)
-          .Adaptor("WebApiAdaptor");
-       })).Readonly(true).SelectedDate(new DateTime(2020, 10, 22)).Render()
+                {
+                    dataManger.Url("https://ej2services.syncfusion.com/production/web-services/api/Schedule").CrossDomain(true).Adaptor("WebApiAdaptor");
+                })).Readonly(true).SelectedDate(new DateTime(2020, 10, 22)).Render()
         </div>
     </div>
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Remote Data in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Remote Data in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -70,8 +68,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Remote Data Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Remote Data Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Remote Data in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Remote Data in ASP.NET MVC Scheduler Control</h1>
+}

@@ -30,7 +30,7 @@
         .ZoomSettings(zn => zn.EnableSelectionZooming(true)
             .Mode(Syncfusion.EJ2.Charts.ZoomMode.X))
         .Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true))
-        .PrimaryXAxis(px => px.ZoomFactor(0.2).ZoomPosition(0.6).MajorGridLines(mg=>mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime))
+        .PrimaryXAxis(px => px.ZoomFactor(0.2).ZoomPosition(0.6).MajorGridLines(mg=>mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).CrosshairTooltip(ct => ct.Enable(true)))
         .PrimaryYAxis(py => py.Title("Price").Minimum(50).LineStyle(ls=>ls.Width(0)).Maximum(170).Interval(30).LabelFormat("{value}M"))
         .Title("AAPL 2012-2017")
         .Tooltip(tl => tl.Enable(true).Shared(true))

@@ -17,13 +17,16 @@
             content: '\e74e';
         }
 
+        .tailwind .e-schedule .e-schedule-toolbar .e-icon-schedule-excel-export::before {
+            content: '\e780';
+        }
+
         .e-schedule-toolbar .e-toolbar-item.e-today {
             display: none;
         }
     </style>
 
     <script type="text/javascript">
-
         function onActionBegin(args) {
             if (args.requestType === 'toolbarItemRendering') {
                 var exportItem = {
@@ -45,8 +48,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Excel Exporting in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Excel Exporting in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -71,8 +74,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Excel Exporting Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Excel Exporting Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Excel Exporting in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Excel Exporting in ASP.NET MVC Scheduler Control</h1>
+}

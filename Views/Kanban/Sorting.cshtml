@@ -24,7 +24,7 @@
                 </td>
                 <td>
                     @Html.EJS().DropDownList("sortBy").Width("100%").DataSource(
-                    (IEnumerable<object>)ViewBag.SortByData).Change("onChange").Fields(new DropDownListFieldSettings { Text = "Sort", Value = "Id" }).Index(0).Created("sortCreate").Render()
+                    (IEnumerable<object>)ViewBag.SortByData).Change("onChange").Fields(new DropDownListFieldSettings { Text = "Sort", Value = "Id" }).Index(1).Created("sortCreate").Render()
                 </td>
             </tr>
             <tr>
@@ -103,7 +103,7 @@
             setKanbanProperties();
         };
         document.getElementById('clear').onclick = function () {
-            sortObj.value = 'DataSourceOrder';
+            sortObj.value = 'Index';
             directionObj.value = 'Ascending';
             setFieldValue('None');
             setKanbanProperties();

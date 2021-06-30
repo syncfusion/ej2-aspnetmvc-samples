@@ -8,9 +8,9 @@
                 Cheapest one way fares from Barcelona to Los Angeles
             </div>
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").SelectedDate(new DateTime(2018, 4, 5)).Views(v => { v.Option(View.Month).Add(); }).Readonly(true).Resources(res =>
-   {
-       res.Field("AirlineId").Title("Airline").Name("Airlines").AllowMultiple(true).DataSource(ViewBag.airlines).Add();
-   }).EventSettings(new ScheduleEventSettings { Template = "#event-template", EnableTooltip = true, TooltipTemplate = "#tooltip-template" }).ActionBegin("onActionBegin").DataBinding("onDataBinding").DataBound("onDataBound").PopupOpen("onPopupOpen").Render()
+                {
+                    res.Field("AirlineId").Title("Airline").Name("Airlines").AllowMultiple(true).DataSource(ViewBag.airlines).Add();
+                }).EventSettings(new ScheduleEventSettings { Template = "#event-template", EnableTooltip = true, TooltipTemplate = "#tooltip-template" }).ActionBegin("onActionBegin").DataBinding("onDataBinding").DataBound("onDataBound").PopupOpen("onPopupOpen").Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -458,8 +458,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Fare Calendar in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Fare Calendar in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -493,8 +493,8 @@
     </p>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Fare Calendar Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Fare Calendar Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Fare Calendar in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Fare Calendar in ASP.NET MVC Scheduler Control</h1>
+}

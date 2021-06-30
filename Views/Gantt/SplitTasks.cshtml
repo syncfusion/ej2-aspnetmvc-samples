@@ -6,7 +6,7 @@
 @section ControlsSection{
     <div class="control-section">
 
-        @(Html.EJS().Gantt("SplitTasks").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true).EnableContextMenu(true)
+        @(Html.EJS().Gantt("SplitTasks").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").TreeColumnIndex(1).HighlightWeekends(true).AllowSelection(true).EnableContextMenu(true)
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
             .Dependency("Predecessor").Segments("Segments").Child("SubTasks"))
             .Columns(col =>

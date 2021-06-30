@@ -9,16 +9,16 @@
                     <h1 class="title-text">Doctor's Appointments</h1>
                 </div>
                 @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CssClass("schedule-drag-drop").Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineMonth).Add(); }).CurrentView(View.TimelineDay).SelectedDate(new DateTime(2018, 7, 1)).WorkHours(new ScheduleWorkHours { Highlight = true, Start = "08:00", End = "18:00" }).Group(group => group.EnableCompactView(false).Resources(ViewBag.Resources)).Resources(res =>
-      {
-          res.DataSource(ViewBag.Departments).Field("DepartmentID").Title("Department").Name("Departments").TextField("text").IdField("id").ColorField("color").Add();
-          res.DataSource(ViewBag.Consultants).Field("ConsultantID").Title("Consultant").Name("Consultants").TextField("text").IdField("id").ColorField("color").GroupIDField("groupId").AllowMultiple(false).Add();
-      }).ResourceHeaderTemplate("#resource-template").ActionBegin("OnActionBegin").Drag("OnItemDrag").EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Name").Title("Patient Name")).StartTime(start=>start.Name("StartTime").Title("From")).EndTime(end=>end.Name("EndTime").Title("To")).Description(des => des.Name("Description").Title("Reason"))).DataSource(ViewBag.datasource)).Render()
+                    {
+                        res.DataSource(ViewBag.Departments).Field("DepartmentID").Title("Department").Name("Departments").TextField("text").IdField("id").ColorField("color").Add();
+                        res.DataSource(ViewBag.Consultants).Field("ConsultantID").Title("Consultant").Name("Consultants").TextField("text").IdField("id").ColorField("color").GroupIDField("groupId").AllowMultiple(false).Add();
+                    }).ResourceHeaderTemplate("#resource-template").ActionBegin("OnActionBegin").Drag("OnItemDrag").EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Name").Title("Patient Name")).StartTime(start => start.Name("StartTime").Title("From")).EndTime(end => end.Name("EndTime").Title("To")).Description(des => des.Name("Description").Title("Reason"))).DataSource(ViewBag.datasource)).Render()
             </div>
             <div class="treeview-container">
                 <div class="title-container">
                     <h2 class="title-text">Waiting List</h2>
                 </div>
-                @Html.EJS().TreeView("tree").Fields(fields => fields.DataSource(ViewBag.treeDataSource).Id("Id").Text("Name")).AllowDragAndDrop(true).NodeDragStop("OnTreeDragStop").NodeDragging("OnItemDrag").NodeTemplate("#treeTemplate").CssClass("treeview-external-drag").Render()
+                @Html.EJS().TreeView("tree").Fields(fields => fields.DataSource(ViewBag.treeDataSource).Id("Id").Text("Name")).AllowDragAndDrop(true).NodeDragStop("OnTreeDragStop").NodeDragging("OnItemDrag").NodeTemplate("#treeTemplate").DragArea(".content-wrapper").CssClass("treeview-external-drag").Render()
             </div>
         </div>
     </div>
@@ -347,8 +347,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the External Drag and Drop in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the External Drag and Drop in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -368,8 +368,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler External Drag and Drop Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler External Drag and Drop Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of External Drag and Drop in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of External Drag and Drop in ASP.NET MVC Scheduler Control</h1>
+}

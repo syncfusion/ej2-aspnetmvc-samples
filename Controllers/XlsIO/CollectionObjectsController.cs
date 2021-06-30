@@ -21,13 +21,6 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
     public partial class XlsIOController : Controller
     {
         public static List<Brand> _sales = new List<Brand>();
-        public ActionResult UrlDatasource([FromBody]Data dm)
-        {
-            var order = _sales;
-            var Data = order.ToList();
-            int count = order.Count();
-            return dm.requiresCounts ? Json(new { result = Data.Skip(dm.skip).Take(dm.take), count = count }) : Json(Data);
-        }
         //For Session 
         //public HttpSessionStateBase Session { get; }
         public ActionResult CollectionObjects(string saveOption, string button)

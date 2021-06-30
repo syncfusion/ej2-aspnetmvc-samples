@@ -70,6 +70,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             else
             {
                 ViewBag.lab = "Choose a valid PDF file.";
+                ViewData.Add("conformance", new SelectList(new string[] { "PDF/A-1b", "PDF/A-2b", "PDF/A-3b" }));
                 return View();
             }
 

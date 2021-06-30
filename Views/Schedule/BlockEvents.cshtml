@@ -8,7 +8,7 @@
                 @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CssClass("block-events").Views(view => { view.Option(View.Day).Add(); view.Option(View.TimelineDay).Add(); view.Option(View.TimelineMonth).Add(); }).CurrentView(View.TimelineDay).SelectedDate(new DateTime(2018, 8, 1)).Group(group => group.EnableCompactView(false).Resources(ViewBag.Resources)).Resources(res =>
            {
                res.DataSource(ViewBag.Employees).Field("EmployeeId").Title("Employees").Name("Employee").TextField("text").IdField("id").ColorField("color").GroupIDField("groupId").AllowMultiple(false).Add();
-           }).ResourceHeaderTemplate("#resource-template").EventSettings(new ScheduleEventSettings { DataSource= ViewBag.datasource}).Render()
+           }).ResourceHeaderTemplate("#resource-template").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).Render()
             </div>
         </div>
     </div>
@@ -85,8 +85,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Blocking Dates and Time in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Blocking Dates and Time in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -106,8 +106,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Blocking Dates and Time Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Blocking Dates and Time Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Blocking Dates and Time in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Blocking Dates and Time in ASP.NET MVC Scheduler Control</h1>
+}

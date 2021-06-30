@@ -139,7 +139,7 @@ namespace Syncfusion.Zugferd
 
                 writer.WriteStartElement("ram:SpecifiedTradeSettlementMonetarySummation");
 
-                WriteAttribute(writer, "ram:LineTotalAmount", "currencyID", this.Currency.ToString("g"), FormatValue(TotalAmount));
+                WriteAttribute(writer, "ram:LineTotalAmount", "currencyID", this.Currency.ToString("g"), FormatValue(product.Total));
                 writer.WriteEndElement();
                 writer.WriteEndElement();
 
