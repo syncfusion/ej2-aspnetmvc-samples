@@ -17,11 +17,9 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             pointer1.Value = 70;
             pointer1.Radius = "60%";
             pointer1.PointerWidth = 8;
-            pointer1.Color = "#757575";
             pointer1.Cap = new CircularGaugeCap
             {
-                Radius = 7,
-                Color = "#757575"
+                Radius = 7
             };
             pointer1.NeedleTail = new CircularGaugeNeedleTail
             {

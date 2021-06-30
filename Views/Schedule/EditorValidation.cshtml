@@ -1,9 +1,9 @@
 @using Syncfusion.EJ2
 
 @{
-    var validationRules = new Dictionary<string, object>() { { "required", true } };
-    var locationValidationRules = new Dictionary<string, object>() { { "required", true }, { "regex", new string[] { "^[a-zA-Z0-9- ]*$", "Special character(s) not allowed in this field" } } };
-    var descriptionValidationRules = new Dictionary<string, object>() { { "required", true }, { "minLength", 5 }, { "maxLength", 500 } };
+    Dictionary<string, object> validationRules = new Dictionary<string, object>() { { "required", true } };
+    Dictionary<string, object> locationValidationRules = new Dictionary<string, object>() { { "required", true }, { "regex", new string[] { "^[a-zA-Z0-9- ]*$", "Special character(s) not allowed in this field" } } };
+    Dictionary<string, object> descriptionValidationRules = new Dictionary<string, object>() { { "required", true }, { "minLength", 5 }, { "maxLength", 500 } };
 }
 @section ControlsSection{
     <div class="control-section">
@@ -14,7 +14,6 @@
 
     <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
     <script type="text/javascript">
-
         function onEventRendered(args) {
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
             applyCategoryColor(args, scheduleObj.currentView);
@@ -23,8 +22,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Field Validation in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Field Validation in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -62,8 +61,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Field Validation Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Field Validation Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Field Validation in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Field Validation in ASP.NET MVC Scheduler Control</h1>
+}

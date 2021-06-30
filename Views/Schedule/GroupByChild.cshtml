@@ -5,10 +5,10 @@
     <div class="control-section">
         <div class="content-wrapper">
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.WorkWeek).SelectedDate(new DateTime(2018, 6, 5)).StartHour("09:00").EndHour("19:00").Group(group => group.ByGroupID(false).Resources(ViewBag.Resources)).Resources(res =>
-       {
-           res.DataSource(ViewBag.Projects).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
-           res.DataSource(ViewBag.Categories).Field("CategoryId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
-       }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewBag.datasource)).Render()
+                {
+                    res.DataSource(ViewBag.Projects).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
+                    res.DataSource(ViewBag.Categories).Field("CategoryId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
+                }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewBag.datasource)).Render()
         </div>
     </div>
     <style>
@@ -23,8 +23,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Hierarchical Grouping in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Hierarchical Grouping in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -60,8 +60,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Hierarchical Grouping Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Hierarchical Grouping Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Hierarchical Grouping in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Hierarchical Grouping in ASP.NET MVC Scheduler Control</h1>
+}

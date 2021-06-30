@@ -2,7 +2,6 @@
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
-
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventClick("OnEventClick").PopupOpen("OnPopupOpen").Navigating("OnNavigating").Destroyed("OnDestroyed").CellDoubleClick("OnCellDoubleClick").CellClick("OnCellClick").ActionFailure("OnActionFailure").Created("OnCreate").ActionBegin("OnActionBegin").ActionComplete("OnActionComplete").EventRendered("onEventRendered").Select("onSelect").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2019, 1, 10)).Render()
@@ -90,8 +89,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Events in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Events in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -111,8 +110,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Events Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Events Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Events in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Events in ASP.NET MVC Scheduler Control</h1>
+}

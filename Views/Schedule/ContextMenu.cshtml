@@ -28,6 +28,10 @@
             content: '\e322';
         }
 
+        .tailwind .schedule-context-menu .e-menu-item .today::before {
+            content: '\e742';
+        }
+
         /* custom code start*/
         .highcontrast .schedule-context-menu .e-menu-item .today::before,
         .fabric .schedule-context-menu .e-menu-item .today::before {
@@ -56,16 +60,32 @@
             content: '\e78f';
         }
 
+        .tailwind .schedule-context-menu .e-menu-item .edit::before {
+            content: '\e7d2';
+        }
+
         .bootstrap4 .schedule-context-menu .e-menu-item .delete::before {
             content: '\e773';
+        }
+
+        .tailwind .schedule-context-menu .e-menu-item .delete::before {
+            content: '\e78d';
         }
 
         .bootstrap4 .schedule-context-menu .e-menu-item .new::before {
             content: '\e759';
         }
 
+        .tailwind .schedule-context-menu .e-menu-item .new::before {
+            content: '\e78a';
+        }
+
         .bootstrap4 .schedule-context-menu .e-menu-item .recurrence::before {
             content: '\e7c8';
+        }
+
+        .tailwind .schedule-context-menu .e-menu-item .recurrence::before {
+            content: '\e71d';
         }
 
         .highcontrast .schedule-context-menu .e-menu-item .recurrence::before,
@@ -164,8 +184,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Context Menu in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Context Menu in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -187,8 +207,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Context Menu Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Context Menu Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Context Menu in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Context Menu in ASP.NET MVC Scheduler Control</h1>
+}

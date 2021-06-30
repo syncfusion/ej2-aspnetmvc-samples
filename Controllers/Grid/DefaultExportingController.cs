@@ -12,8 +12,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         // GET: DefaultExporting
         public ActionResult DefaultExporting()
         {
-            var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
+            var employee = ExportEmployeeDetails.GetAllRecords();
+            ViewBag.datasource = employee;
             return View();
         }
     }

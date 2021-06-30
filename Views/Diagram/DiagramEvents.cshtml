@@ -329,17 +329,17 @@
             for (var i = 0; i < selectedItems.data.length; i++) {
                 var eventName = selectedItems.data[i].id;
                 if (eventName === args.name) {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
 
         function eventInformation(args) {
             var span = document.createElement('span');
             span.innerHTML = 'Diagram ' + args.name.bold() + ' event called' + '<hr>';
             var log = document.getElementById('EventLog');
-            log.insertBefore(span, log.firstChild);  
+            log.insertBefore(span, log.firstChild);
         }
 
     </script>

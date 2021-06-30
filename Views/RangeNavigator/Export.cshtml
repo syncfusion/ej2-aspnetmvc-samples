@@ -109,10 +109,10 @@
         var zoomFactor, zoomPosition;
         var selectedTheme = themeName ? themeName : 'Material';
         var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-        var themes = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast']
-        var borderColor = ['#FF4081', '#007897', '#428BCA', '#FFD939'];
+        var themes = ['Material', 'Fabric', 'Bootstrap', 'Highcontrast', 'Tailwind'];
+        var borderColor = ['#FF4081', '#007897', '#428BCA', '#FFD939', '#4F46E5'];
         var regionColor = ['rgba(255, 64, 129, 0.3)', ' rgba(0, 120, 151, 0.3)',
-            'rgba(66, 139, 202, 0.3)', 'rgba(255, 217, 57, 0.3)'];
+            'rgba(66, 139, 202, 0.3)', 'rgba(255, 217, 57, 0.3)', 'rgba(79, 70, 229, 0.3)'];
         var load = function (args) {
             args.rangeNavigator.theme = theme;
             args.rangeNavigator.dataSource = dateTimeData;

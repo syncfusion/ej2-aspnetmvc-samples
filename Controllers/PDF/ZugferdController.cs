@@ -43,8 +43,9 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             //Create ZugFerd invoice PDF
             PdfDocument document = new PdfDocument(PdfConformanceLevel.Pdf_A3B);
 
-            document.ZugferdVersion = ZugferdVersion.ZugferdVersion2_0;
-            document.ZugferdConformanceLevel = ZugferdConformanceLevel.Extended;
+            document.ZugferdVersion = ZugferdVersion.ZugferdVersion2_1;
+
+            document.ZugferdConformanceLevel = ZugferdConformanceLevel.Basic_WL;
 
             CreateZugferdInvoicePDF(document);
 
@@ -52,12 +53,10 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             Stream zugferdXmlStream = CreateZugferdXML();
 
             //Creates an attachment.
-            PdfAttachment attachment = new PdfAttachment("ZUGFeRD-invoice.xml", zugferdXmlStream);
+            PdfAttachment attachment = new PdfAttachment("factur-x.xml", zugferdXmlStream);
             attachment.Relationship = PdfAttachmentRelationship.Alternative;
             attachment.ModificationDate = DateTime.Now;
-
-            attachment.Description = "Adventure Invoice";
-
+            attachment.Description = "factur-x";
             attachment.MimeType = "application/xml";
 
             document.Attachments.Add(attachment);                     
@@ -108,6 +107,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             };
 
             float total = 0;
+            List<string> productdetails = new List<string>();
             using (XmlReader reader = XmlReader.Create(ResolveApplicationDataPath("InvoiceProductList.xml")))
             {
                 while (reader.Read())
@@ -119,25 +119,28 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                         Product product = new Product();
 
 
-                        switch (reader.Name.ToString())
+                        if (reader.Name.ToString() == "Productid")
                         {
-                            case "Productid":
-                                product.ProductID = reader.ReadString();
-                                break;
-                            case "Product":
-                                product.productName = reader.ReadString();
-                                break;
-                            case "Price":
-                                product.Price = float.Parse(reader.ReadString(), System.Globalization.CultureInfo.InvariantCulture);
-                                break;
-                            case "Quantity":
-                                product.Quantity = float.Parse(reader.ReadString(), System.Globalization.CultureInfo.InvariantCulture);
-                                break;
-                            case "Total":
-                                product.Total = float.Parse(reader.ReadString(), System.Globalization.CultureInfo.InvariantCulture);
-                                total += product.Total;
-                                invoice.AddProduct(product.ProductID, product.productName, product.Price, product.Quantity, product.Total);
-                                break;
+                            productdetails.Add(reader.ReadString());
+                        }
+                        else if (reader.Name.ToString() == "Product")
+                        {
+                            productdetails.Add(reader.ReadString());
+                        }
+                        else if (reader.Name.ToString() == "Price")
+                        {
+                            productdetails.Add(reader.ReadString());
+                        }
+                        else if (reader.Name.ToString() == "Quantity")
+                        {
+                            productdetails.Add(reader.ReadString());
+                        }
+                        else if (reader.Name.ToString() == "Total")
+                        {
+                            productdetails.Add(reader.ReadString());
+                            invoice.AddProduct(productdetails[0], productdetails[1], float.Parse(productdetails[2], System.Globalization.CultureInfo.InvariantCulture), float.Parse(productdetails[3], System.Globalization.CultureInfo.InvariantCulture), float.Parse(productdetails[4], System.Globalization.CultureInfo.InvariantCulture));
+                            total += float.Parse(productdetails[4], System.Globalization.CultureInfo.InvariantCulture);
+                            productdetails = new List<string>();
                         }
                     }
                 }

@@ -45,8 +45,7 @@
                     .ValidationRules(dict)
                     .Edit(new { @params = new { format = "n" } })
                     .TextAlign(TextAlign.Right).Add();
-                col.Field("Priority").HeaderText("Priority").EditType("dropdownedit").Width(100)
-                    .ValidationRules(new { required = true }).Add();
+                col.Field("Priority").HeaderText("Priority").EditType("dropdownedit").Width(100).Add();
 
             })
            .Height(400)

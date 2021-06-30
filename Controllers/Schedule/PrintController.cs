@@ -10,11 +10,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
         public ActionResult Print()
         {
             ViewBag.datasource = new ScheduleData().GetScheduleData();
-            List<ScheduleView> viewOption = new List<ScheduleView>()
-            {
-                new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Month}
-            };
-            ViewBag.view = viewOption;
+            ViewBag.printHeightAndWidthData = new List<string> { "auto", "100%", "500px" };
             return View();
         }
     }

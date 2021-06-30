@@ -5,7 +5,7 @@
 @section ControlsSection {
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
+            @Html.EJS().Kanban("kanban").KeyField("Status").Height("500px").DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
             {
            col.HeaderText("To Do").KeyField("Open").Add();
            col.HeaderText("In Progress").KeyField("InProgress").Add();
@@ -54,6 +54,14 @@
                     @Html.EJS().CheckBox("itemCount").Checked(true).Change("onChange").Render()
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <div>Enable Frozen Rows</div>
+                </td>
+                <td>
+                    @Html.EJS().CheckBox("frozenRow").Change("onChange").Render()
+                </td>
+            </tr>
         </table>
     </div>
     <script>
@@ -73,6 +81,9 @@
                 case 'itemCount':
                     kanbanObj.swimlaneSettings.showItemCount = args.checked;
                     break;
+                case 'frozenRow':
+                    kanbanObj.swimlaneSettings.enableFrozenRows = args.checked;
+                    break;
                 default:
                     break;
             }
@@ -87,7 +98,7 @@
         <p>
             This example demonstrates the swimlane functionalities of Kanban control. Provided options in the property panel
             to sort
-            the cards, enable drag-and-drop across swimlanes, show or hide the empty row and the items count. Also, you can
+            the cards, enable drag-and-drop across swimlanes, show or hide the empty row, items count and swimlane frozen rows. Also, you can
             expand/collapse the swimlane row in the Kanban board.
         </p>
     </div>
@@ -109,6 +120,7 @@
                 Show or hide the items count in the swimlane header using the <code>SwimlaneSettings.ShowItemCount</code>
                 property.
             </li>
+            <li>Enable or disable the frozen swimlane rows using the <code>SwimlaneSettings.EnableFrozenRows</code> property.</li>
         </ul>
     </div>
 }

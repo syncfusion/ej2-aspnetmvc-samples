@@ -47,14 +47,6 @@
                 }
     </style>
     <script type="text/javascript">
-        window.onload = function (args) {
-            var uploaderObj = document.getElementById("ics-import").ej2_instances[0];
-            uploaderObj.setProperties({
-                buttons: {
-                    browse: 'Choose file',
-                }
-            })
-        }
         document.getElementById('ics-export').onclick = function () {
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
             scheduleObj.exportToICalendar();
@@ -67,8 +59,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Export and Import ICS in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Export and Import ICS in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -94,8 +86,8 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC Scheduler Export and Import ICS Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Export and Import ICS Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Export and Import ICS in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Export and Import ICS in ASP.NET MVC Scheduler Control</h1>
+}

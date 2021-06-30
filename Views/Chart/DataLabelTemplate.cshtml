@@ -144,20 +144,37 @@
         </div>
     </div>
 </script>
- @*custom code start*@
+
+<script id="Male-Tailwind" type="text/x-template">
+    <div id='templateWrap' style="background-color:#5A61F6;border-radius: 3px;">
+        <img src="@Url.Content("~/Content/chart/male.png")" />
+        <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
+            <span>${point.y}M </span>
+        </div>
+    </div>
+</script>
+<script id="Female-Tailwind" type="text/x-template">
+    <div id='templateWrap' style="background-color:#65A30D;border-radius: 3px;">
+        <img src="@Url.Content("~/Content/chart/female.png")" />
+        <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
+            <span>${point.y}M </span>
+        </div>
+    </div>
+</script>
     <script>
         var theme;
+        var textRender = function (args) {
+            args.template = '#' + args.series.name + '-' + theme;
+        };
+        @* custom code start *@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
             theme = args.chart.theme
         };
-        var textRender= function (args) {
-            args.template = '#' + args.series.name + '-' + theme;
-        };
+        @* custom code end *@
     </script>
- @*custom code end*@
 }
  @*custom code start*@
 @section Meta{

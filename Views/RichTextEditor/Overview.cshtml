@@ -3,15 +3,15 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            @Html.EJS().RichTextEditor("default").ContentTemplate(@<div>
-                <p>The Rich Text Editor is WYSIWYG ('what you see is what you get') editor useful to create and edit content, and return the valid <a href='https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/formation/?no-cache=1#markdown-editor'>HTML markup</a> or <a href='https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/formation/?no-cache=1#html-editor'>markdown</a> of the content</p>
+            @Html.EJS().RichTextEditor("default").QuickToolbarSettings(e => { e.Table((object)ViewBag.Table); }).ContentTemplate(@<div>
+                <p>The Rich Text Editor is a WYSIWYG ('what you see is what you get') editor useful to create and edit content and return the valid <a href='https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/formation/?no-cache=1#markdown-editor'>HTML markup</a> or <a href='https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/formation/?no-cache=1#html-editor'>markdown</a> of the content</p>
                 <p><b> Toolbar </b></p>
                 <ol>
                     <li>
-                        <p>Toolbar contains commands to align the text, insert link, insert image, insert list, undo / redo operations, HTML view, etc </p>
+                        <p>The Toolbar contains commands to align the text, insert a link, insert an image, insert list, undo / redo operations, HTML view, etc </p>
                     </li>
                     <li>
-                        <p>Toolbar is fully customizable </p>
+                        <p>The Toolbar is fully customizable </p>
                     </li>
                 </ol>
                 <p><b> Links </b></p>
@@ -35,7 +35,7 @@
                         <p>You can upload an image</p>
                     </li>
                     <li>
-                        <p>Provides an option to customize quick toolbar for an image </p>
+                        <p>Provides an option to customize the quick toolbar for an image </p>
                     </li>
                 </ol>
                 <img alt='Logo' src=@Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png") style='width: 300px' />
@@ -183,7 +183,7 @@
         <p>This sample used <code>Code mirror</code> plugins helps to highlight the HTML content and when changes happens in code view, the same has been reflected in preview mode. </p>
         <p>The editor’s toolbar contains commands to format the content. The toolbar consists of:</p>
         <ul>
-            <li><code>Lists</code> - Ordered and unordered list types.</li>
+            <li><code>Lists</code> - NumberFormat list and BulletFormat list types.</li>
             <li><code>Links</code> - A hyperlink can be inserted into the editor for quick access to related information.</li>
             <li><code>Image</code> - Inserts and manages images.</li>
              <li><code>Table</code> - Inserts and manages Tables.</li>

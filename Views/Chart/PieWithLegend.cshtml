@@ -5,8 +5,8 @@
     .Series(sr =>
     {
         sr.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
-               .XName("xValue")
-               .YName("yValue")
+               .XName("x")
+               .YName("y")
                .DataLabel(dl => dl.Visible(true).Name("${point.y}").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600").Color("white").Size("14px")))
                .StartAngle(0)
                .EndAngle(360)
@@ -41,10 +41,10 @@
             args.series.dataLabel.font.size = getFontSize(pie.initialClipRect.width);
             args.text = args.text + '%';
         }
-
+        var rect;
         var animationComplete = function (args) {
             centerTitle.style.fontSize = getFontSize(args.accumulation.initialClipRect.width);
-            var rect = centerTitle.getBoundingClientRect();
+            rect = centerTitle.getBoundingClientRect();
             centerTitle.style.top = (args.accumulation.origin.y - rect.height / 2) + 'px';
             centerTitle.style.left = (args.accumulation.origin.x - rect.width / 2) + 'px';
             centerTitle.style.visibility = 'visible';

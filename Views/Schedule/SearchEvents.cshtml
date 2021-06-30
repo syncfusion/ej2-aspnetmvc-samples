@@ -148,9 +148,9 @@
         document.getElementById("clear").addEventListener("click", function () {
             var instances = [];
             var elementList = document.querySelectorAll('.event-search .e-control:not(button)');
-            document.getElementById('schedule').style.display = 'block';            
+            document.getElementById('schedule').style.display = 'block';
             elementList.forEach(obj => instances.push(obj.ej2_instances[0]));
-            instances.forEach(i=> { i.value = ''; i.dataBind(); });
+            instances.forEach(i => { i.value = ''; i.dataBind(); });
             showSearchEvents('hide');
         })
 
@@ -205,8 +205,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Search Events in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Search Events in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -226,8 +226,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Search Events Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Search Events Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Search Events in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Search Events in ASP.NET MVC Scheduler Control</h1>
+}

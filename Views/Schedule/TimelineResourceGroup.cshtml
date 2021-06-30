@@ -5,10 +5,10 @@
     <div class="control-section">
         <div class="content-wrapper">
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add(); view.Option(View.Agenda).Add(); }).Group(group => group.Resources(ViewBag.Resources)).Resources(res =>
-       {
-           res.DataSource(ViewBag.Projects).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
-           res.DataSource(ViewBag.Categories).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").GroupIDField("groupId").ColorField("color").AllowMultiple(true).Add();
-       }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewBag.datasource)).SelectedDate(new DateTime(2018, 4, 4)).Render()
+            {
+                res.DataSource(ViewBag.Projects).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
+                res.DataSource(ViewBag.Categories).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").GroupIDField("groupId").ColorField("color").AllowMultiple(true).Add();
+            }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewBag.datasource)).SelectedDate(new DateTime(2018, 4, 4)).Render()
         </div>
     </div>
     <style type="text/css">
@@ -23,8 +23,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Timeline Grouping in ASP.NET MVC Scheduler control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Timeline Grouping in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
@@ -57,8 +57,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Scheduler Timeline Grouping Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Scheduler Timeline Grouping Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Timeline Grouping in ASP.NET MVC Scheduler Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Timeline Grouping in ASP.NET MVC Scheduler Control</h1>
+}
