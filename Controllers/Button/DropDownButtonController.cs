@@ -35,6 +35,5 @@ namespace EJ2MVCSampleBrowser.Controllers.Button
             ViewBag.datasource = items;
             return View();
         }
-
     }
 }

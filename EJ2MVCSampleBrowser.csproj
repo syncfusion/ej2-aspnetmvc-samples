@@ -1783,7 +1783,7 @@
     <Content Include="Content\gantt\images\face-mask.svg" />
     <Content Include="Content\gantt\images\moments.svg" />
     <Content Include="Content\gantt\images\oscar.svg" />
-    <Content Include="Content\grid\Insufficient.png" />
+    <Content Include="Content\grid\InSufficient.png" />
     <Content Include="Content\grid\Map.png" />
     <Content Include="Content\grid\Perfect.png" />
     <Content Include="Content\grid\Sufficient.png" />
