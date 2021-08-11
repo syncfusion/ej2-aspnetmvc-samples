@@ -26,7 +26,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             ViewBag.getSymbolNode = "getSymbolNodes";
             ViewBag.ContextMenuItems = GetContextMenuItems();
 
+
             return View();
+
+
         }
         public ContextMenuItem AddItems(string text, string id, string iconCss, string target, List<ContextMenuItem> content)
         {

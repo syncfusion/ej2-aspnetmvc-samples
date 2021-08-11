@@ -28,4 +28,5 @@ namespace EJ2MVCSampleBrowser.Controllers.Button
         [Range(typeof(bool), "true", "true", ErrorMessage = "You need to agree to the Terms and Conditions")]
         public bool check { get; set; }
     }
+
 }
