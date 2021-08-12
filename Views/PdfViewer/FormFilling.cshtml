@@ -5,13 +5,13 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/api/PdfViewer/")).DocumentPath("FormFillingDocument.pdf").Render()
+        @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/api/PdfViewer/")).DocumentPath("FormFillingDocument.pdf").ValidateFormFields("validateFormFields").EnableFormFieldsValidation(true).ShowNotificationDialog(false).Render()
     </div>
 }
 
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Form Filling in ASP.NET MVC PDF Viewer control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Form Filling in ASP.NET MVC PDF Viewer control. Explore here for more details." />
+}
 @section ActionDescription{
     <div id="action-description">
         <p>This sample demonstrates the form filling features of PDF Viewer and allows you to edit the form fields, download and print the edited form fields PDF documents.</p>
@@ -52,10 +52,54 @@
     }
 </style>
 @*custom code end*@
+<script>
+    function validateFormFields(args) {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var errorMessage = "Required Field(s): ";
+        var forms = viewer.formFieldCollections;
+        var flag = false;
+        var radioGroupName = "";
+        for (var i = 0; i < forms.length; i++) {
+            var text = "";
+            if (forms[i].isRequired == true) {
+                if (forms[i].type.toString() == "Checkbox" && forms[i].isChecked == false) {
+                    text = forms[i].name;
+                }
+                else if (forms[i].type == "RadioButton" && flag == false) {
+                    radioGroupName = forms[i].name;
+                    if (forms[i].isSelected == true)
+                        flag = true;
+                }
+                else if (forms[i].type.toString() != "Checkbox" && forms[i].type != "RadioButton" && forms[i].value == "") {
+                    text = forms[i].name;
+                }
+                if (text != "") {
+                    if (errorMessage == "Required Field(s): ") {
+                        errorMessage += text;
+                    }
+                    else {
+                        errorMessage += ", " + text;
+                    }
+                }
+            }
+        }
+        if (!flag && radioGroupName != "") {
+            if (errorMessage == "Required Field(s): ")
+                errorMessage += radioGroupName;
+            else
+                errorMessage += ", " + radioGroupName;
+        }
+        if (errorMessage != "Required Field(s): ") {
+            viewer.showNotificationPopup(errorMessage);
+        }
+    }
+   
+</script>
+@*custom code end*@
 
 @section Title{
-                    <title>ASP.NET MVC PDF Viewer Form Filling Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC PDF Viewer Form Filling Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Form Filling in ASP.NET MVC PDF Viewer Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Form Filling in ASP.NET MVC PDF Viewer Control</h1>
+}

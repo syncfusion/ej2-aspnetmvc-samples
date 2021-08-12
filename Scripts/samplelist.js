@@ -5105,6 +5105,7 @@ if (!window) {
         "url": "ParagraphFormatting",
         "name": "Paragraph Formatting",
         "category": "Editing Features",
+        "type": "update",
         "uid": "0020202",
         "order": 1,
         "component": "DocumentEditor",
@@ -5149,6 +5150,7 @@ if (!window) {
         "url": "TableFormatting",
         "name": "Table Formatting",
         "category": "Editing Features",
+        "type": "update",
         "uid": "0020206",
         "order": 1,
         "component": "DocumentEditor",
@@ -7487,6 +7489,7 @@ if (!window) {
     "name": "List Box",
     "directory": "ListBox",
     "category": "Dropdowns",
+    "type": "update",
     "samples": [
       {
         "url": "DefaultFunctionalities",
@@ -7502,6 +7505,7 @@ if (!window) {
         "url": "DualListBox",
         "name": "Dual ListBox",
         "category": "List Box",
+        "type": "update",
         "uid": "0035351",
         "order": 0,
         "component": "ListBox",
@@ -7529,10 +7533,21 @@ if (!window) {
         "parentId": "035"
       },
       {
+        "url": "Template",
+        "name": "Template",
+        "category": "List Box",
+        "type": "new",
+        "uid": "0035354",
+        "order": 0,
+        "component": "ListBox",
+        "dir": "ListBox",
+        "parentId": "035"
+      },
+      {
         "url": "Api",
         "name": "API",
         "category": "List Box",
-        "uid": "0035354",
+        "uid": "0035355",
         "order": 0,
         "component": "ListBox",
         "dir": "ListBox",
