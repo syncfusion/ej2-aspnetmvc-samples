@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2;
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Multi Level Labels in ASP.NET MVC Heatmap Chart control. Explore here for more details."/>
+                    <meta name="description" content="This example demonstrates the Multi Level Labels in ASP.NET MVC HeatMap Chart control. Explore here for more details."/>
                 }
 @section ControlsSection{
     <div class="control-section">
@@ -33,7 +33,7 @@
         };
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
-            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
             selectedTheme = selectedTheme.toLowerCase();
             args.heatmap.xAxis.multiLevelLabels = ([
                 {
@@ -65,7 +65,7 @@
                     ]
                 },
             ]);
-            if (selectedTheme === 'highcontrast') {
+            if (selectedTheme === 'highcontrast' || selectedTheme === 'tailwind-dark' || selectedTheme === 'material-dark' || selectedTheme === 'fabric-dark' || selectedTheme === 'bootstrap-dark' || selectedTheme === 'bootstrap5-dark') {
                 args.heatmap.xAxis.textStyle.color = 'White';
                 args.heatmap.yAxis.textStyle.color = 'White';
                 args.heatmap.xAxis.multiLevelLabels[0].textStyle.color = 'White';
@@ -108,8 +108,8 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC Heatmap Chart Multi Level Labels Example - Syncfusion Demos </title> 
+                    <title>ASP.NET MVC HeatMap Chart Multi Level Labels Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Multi Level Labels in ASP.NET MVC Heatmap Chart Control</h1>
+                    <h1 class='sb-sample-text'>Example of Multi Level Labels in ASP.NET MVC HeatMap Chart Control</h1>
                 }

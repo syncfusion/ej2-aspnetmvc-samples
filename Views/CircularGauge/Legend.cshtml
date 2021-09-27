@@ -6,8 +6,7 @@
             @Html.EJS().CircularGauge("legend-container").Load("onGaugeLoad").Title("Measure of wind speed in Km/h").LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.CircularGauge.LegendPosition.Bottom)).Axes(axes => axes
    .Radius("80%").StartAngle(230).EndAngle(130).LabelStyle(new CircularGaugeLabel
    {
-       Position = Position.Inside,
-       Font = new CircularGaugeFont { Size = "12px", Color = "#424242", FontFamily = "Roboto", FontStyle = "Regular" },
+       Position = Position.Inside
    }).Pointers(ViewBag.Pointers).Ranges(ViewBag.Ranges)
    .StartAngle(210).EndAngle(150).Minimum(0).Maximum(120).Radius("80%")
    .LineStyle(new CircularGaugeLine { Width = 2 })
@@ -16,33 +15,34 @@
         </div>
     </div>
     <div class="col-md-4 property-section">
-        <table id="property" title="Properties" style="width: 90%">
+        <table id="property" title="Properties" style="width: 90%; margin-left: -20px">
             <tbody>
                 <tr style="height: 50px">
                     <td style="width: 20%; padding-left: 10px;">
                         <div id="showLegend">Show Legend</div>
                     </td>
                     <td style="width: 40%;">
-                        <div style="padding-top:0px">
+                        <div style="padding-top:0px; margin-left: 57px; margin-top: 10px">
                             <input type="checkbox" checked id="enable">
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
                     <td style="width: 20%; padding-left: 10px;">
-                        <div id="toggleLegend">Show range when the legend item is toggled</div>
+                        <div id="toggleLegend" style="margin-top: 10px">Show range when the legend item is toggled</div>
                     </td>
                     <td style="width: 40%;">
-                        <div>
+                        <div style="margin-left: 57px">
                             <input type="checkbox" checked id="toggle">
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
                     <td style="width: 20%; padding-left: 10px;">
-                        <div class="property-text" style="padding: 10px;">Legend position</div>
+                        <div class="property-text" style="padding: 10px; margin-top: 10px">Legend position</div>
                     </td>
                     <td style="width: 30%">
+                        <div style=" margin-left: 30px; margin-top: 10px">
                         <select name="legendPos" autocomplete="off" id="legendPosition" style="width:60%;">
 							<option value="Bottom" selected>Bottom</option>
 							<option value="Top">Top</option>                            
@@ -50,6 +50,7 @@
                             <option value="Right">Right</option>
                             <option value="Auto">Auto</option>
                         </select>
+                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
@@ -57,11 +58,13 @@
                         <div class="property-text" style="padding: 10px;">Alignment</div>
                     </td>
                     <td style="width: 30%">
+                        <div style=" margin-left: 30px">
                         <select name="Align" autocomplete="off" id="Alignment" style="width:60%;">
 							<option value="Center" selected>Center</option>
 							<option value="Far" >Far</option>
                             <option value="Near">Near</option>
                         </select>
+                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
@@ -69,6 +72,7 @@
                         <div class="property-text" style="padding: 10px;">Shape</div>
                     </td>
                     <td style="width: 30%">
+                        <div style=" margin-left: 30px">
                         <select name="shape" autocomplete="off" id="Shape" style="width:60%;">
                             <option value="Circle" selected>Circle</option>
                             <option value="Rectangle">Rectangle</option>
@@ -76,6 +80,7 @@
                             <option value="Diamond">Diamond</option>
                             <option value="InvertedTriangle">InvertedTriangle</option>
                         </select>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -95,7 +100,7 @@
                     sender.gauge.refresh();
             }, 200);
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             circulargauge = sender.gauge;
             for (var i = 0; i < sender.gauge.axes[0].annotations.length; i++) {
                 sender.gauge.axes[0].annotations[i].zIndex = "1";

@@ -5,10 +5,6 @@
         #container {
             display: block;
         }
-
-        #container_stockChart_chart_Series_0 {
-            opacity: 0.6;
-        }
         #container_stock_border {
             pointer-events: none;
         }
@@ -21,7 +17,7 @@
         ).LineStyle(ls=>ls.Color("transparent")).CrosshairTooltip(ct=>ct.Enable(false)).IsInversed(true))
          .Series(sr =>
          {
-             sr.Name("google").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("high").Fill("#BDEDE9").Add();
+             sr.Name("google").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("high").Opacity(0.5).Add();
          })
         .Crosshair(cr=>cr.Enable(true))
         .Tooltip(tp => tp.Enable(true))

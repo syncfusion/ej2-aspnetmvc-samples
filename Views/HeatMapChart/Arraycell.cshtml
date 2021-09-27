@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2;
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Cell in ASP.NET MVC Heatmap Chart control. Explore here for more details."/>
+                    <meta name="description" content="This example demonstrates the Cell in ASP.NET MVC HeatMap Chart control. Explore here for more details."/>
                 }
 @section ControlsSection{
     <div class="control-section">
@@ -28,7 +28,7 @@
         };
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
-            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
         };
     </script>
 }
@@ -49,8 +49,8 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC Heatmap Chart Cell Example - Syncfusion Demos </title> 
+                    <title>ASP.NET MVC HeatMap Chart Cell Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Cell in ASP.NET MVC Heatmap Chart Control</h1>
+                    <h1 class='sb-sample-text'>Example of Cell in ASP.NET MVC HeatMap Chart Control</h1>
                 }

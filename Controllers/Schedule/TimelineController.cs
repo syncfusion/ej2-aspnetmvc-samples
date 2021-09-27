@@ -13,6 +13,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             List<ScheduleData.AppointmentData> scheduleData = data.GetScheduleData();
             List<ScheduleData.AppointmentData> timelineData = data.GetTimelineData();
             ViewBag.appointments = scheduleData.Concat(timelineData);
+            ViewBag.workDays = new int[] { 0, 1, 2, 3, 4, 5 };
             return View();
         }
     }

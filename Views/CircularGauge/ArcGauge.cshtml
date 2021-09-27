@@ -51,7 +51,7 @@
         var sliderValue = 60;
         function gaugeLoad(args) {
             var arctheme = themeName ? themeName : 'Material';
-            args.gauge.theme = (arctheme.charAt(0).toUpperCase() + arctheme.slice(1));
+            args.gauge.theme = (arctheme.charAt(0).toUpperCase() + arctheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             if (!circulargauge) {
                 circulargauge = args.gauge;
                 args.gauge.axes[0].minorTicks.height = 0;

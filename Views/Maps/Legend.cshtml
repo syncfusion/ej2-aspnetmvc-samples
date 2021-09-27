@@ -26,45 +26,49 @@
                 <tbody>
                     <tr style="height: 50px">
                         <td style="width: 10%">
-                            <div class="property-text" style="padding: 0px;">Legend mode</div>
+                            <div class="property-text" style="padding: 0px; width: 60px">Legend mode</div>
                         </td>
                         <td style="width: 30%;">
+                            <div style="margin-left: -10px">
                             <select name="selectIndex" autocomplete="off" id="legendMode" style="width:60%;">
                                 <option value="Default" selected>Default</option>
                                 <option value="Interactive">Interactive</option>
                             </select>
+                                </div>
                         </td>
                     </tr>
                     <tr style="height: 50px">
                         <td style="width: 10%">
-                            <div class="property-text" style="padding: 0px;">Legend position</div>
+                            <div class="property-text" style="padding: 0px; width: 60px; margin-top: 10px">Legend position</div>
                         </td>
                         <td style="width: 30%">
+                            <div style="margin-left: -10px; margin-top: 10px">
                             <select name="legendPos" autocomplete="off" id="legendPosition" style="width:60%;">
                                 <option value="Top" selected>Top</option>
                                 <option value="Bottom">Bottom</option>
                                 <option value="Left">Left</option>
                                 <option value="Right">Right</option>
                             </select>
+                                </div>
                         </td>
                     </tr>
                     <tr style="height: 50px">
                         <td style="width: 10%">
-                            <div class="property-text" style="padding: 0px;width:100px">Show legend for remaining data source item</div><br/>
+                            <div class="property-text" style="padding: 0px;width:100px; margin-top: 20px">Show legend for remaining data source item</div><br/>
                         </td>
                         <td style="width: 30%">
-                            <div style="height:70px">
-                                <input type="checkbox" id="opacity" />
+                            <div style="height: 70px; margin-left: 15px">
+                                <input type="checkbox" id="opacity" style="margin-top: 20px;" />
                             </div>
                         </td>
                     </tr>
                     <tr style="height: 50px">
                         <td style="width: 10%">
-                            <div class="property-text" style="padding: 0px;width:100px">Show population density when the legend item is toggled</div>
+                            <div class="property-text" style="padding: 0px;width:100px; margin-top: 10px">Show population density when the legend item is toggled</div>
                         </td>
                         <td style="width: 30%">
-                            <div style="height:70px">
-                                <input type="checkbox" id="toggleLegend" />
+                            <div style="height: 70px; margin-left: 15px">
+                                <input type="checkbox" id="toggleLegend" style="margin-top: 10px;" />
                             </div>
                         </td>
                     </tr>
@@ -81,7 +85,7 @@
                 function mapsLoad(args) {
                     
                     var theme = themeName ? themeName : 'Material';
-                    args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+                    args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
                     if (!maps) {
                         args.maps.layers[0].shapeSettings.colorMapping = [
                             {
@@ -111,7 +115,7 @@
                     var legendPosition = new ej.dropdowns.DropDownList({
                         index: 0,
                         placeholder: 'Legend Position',
-                        width: 100,
+                        width: 91,
                         change: () => {
                             maps.legendSettings.position = legendPosition.value;
                             if (legendPosition.value === 'Left' || legendPosition.value === 'Right') {
@@ -137,7 +141,7 @@
                     var mode = new ej.dropdowns.DropDownList({
                         index: 0,
                         placeholder: 'Select layoutMode type',
-                        width: 100,
+                        width: 91,
                         change: () => {
                             maps.legendSettings.mode = mode.value;
                             if (mode.value === 'Interactive') {

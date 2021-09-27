@@ -64,7 +64,7 @@
         var dataFirst = true;
         function load(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             if (dataFirst) {
                 args.maps.layers[0].bubbleSettings[0].dataSource = [
                     { 'rank': 1, 'name': 'China', 'value': bubblesize(746662194), 'color': '#7F38A0', 'population': 746662194 },

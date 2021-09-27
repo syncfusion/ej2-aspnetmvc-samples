@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="schedule-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add(); view.Option(View.Agenda).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.appointments }).SelectedDate(new DateTime(2019, 1, 10)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add(); view.Option(View.Agenda).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.appointments }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).WorkDays(ViewBag.workDays).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -16,7 +16,7 @@
                     </td>
                     <td style="width: 70%">
                         <div class='datepicker-control-section'>
-                            @Html.EJS().DatePicker("scheduledate").Value(new DateTime(2019, 1, 10)).ShowClearButton(false).Change("onChange").Render()
+                            @Html.EJS().DatePicker("scheduledate").Value(new DateTime(DateTime.Today.Year, 1, 10)).ShowClearButton(false).Change("onChange").Render()
                         </div>
                     </td>
                 </tr>

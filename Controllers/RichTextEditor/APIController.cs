@@ -11,7 +11,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: /<controller>/
         public ActionResult API()
         {
-          return View();
+            return View();
         }
     }
 }

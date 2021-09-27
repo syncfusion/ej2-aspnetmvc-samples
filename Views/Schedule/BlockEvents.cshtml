@@ -5,7 +5,7 @@
     <div class="control-section">
         <div class="content-wrapper">
             <div class="schedule-container">
-                @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CssClass("block-events").Views(view => { view.Option(View.Day).Add(); view.Option(View.TimelineDay).Add(); view.Option(View.TimelineMonth).Add(); }).CurrentView(View.TimelineDay).SelectedDate(new DateTime(2018, 8, 1)).Group(group => group.EnableCompactView(false).Resources(ViewBag.Resources)).Resources(res =>
+                @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CssClass("block-events").Views(view => { view.Option(View.Day).Add(); view.Option(View.TimelineDay).Add(); view.Option(View.TimelineMonth).Add(); }).CurrentView(View.TimelineDay).SelectedDate(new DateTime(DateTime.Today.Year, 8, 2)).Group(group => group.EnableCompactView(false).Resources(ViewBag.Resources)).Resources(res =>
            {
                res.DataSource(ViewBag.Employees).Field("EmployeeId").Title("Employees").Name("Employee").TextField("text").IdField("id").ColorField("color").GroupIDField("groupId").AllowMultiple(false).Add();
            }).ResourceHeaderTemplate("#resource-template").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).Render()

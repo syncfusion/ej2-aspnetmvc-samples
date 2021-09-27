@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2;
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Opposed Axis in ASP.NET MVC Heatmap Chart control. Explore here for more details."/>
+                    <meta name="description" content="This example demonstrates the Opposed Axis in ASP.NET MVC HeatMap Chart control. Explore here for more details."/>
                 }
 @section ControlsSection{
     <div>
@@ -49,11 +49,14 @@
         #control-container {
             padding: 0px !important;
         }
+        body.material-dark .property-panel-section {
+            color: #ffffff;
+        }
     </style>
     <script>
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
-            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
         };
         var xlistObj = new ej.buttons.CheckBox({ label: 'Change X-Axis Position', checked: true, change: valueXChange });
         xlistObj.appendTo('#XOpposedPosition');
@@ -88,8 +91,8 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC Heatmap Chart Opposed Axis Example - Syncfusion Demos </title> 
+                    <title>ASP.NET MVC HeatMap Chart Opposed Axis Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Opposed Axis in ASP.NET MVC Heatmap Chart Control</h1>
+                    <h1 class='sb-sample-text'>Example of Opposed Axis in ASP.NET MVC HeatMap Chart Control</h1>
                 }

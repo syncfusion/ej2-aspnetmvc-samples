@@ -30,6 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             ViewBag.Categories = categories;
 
             ViewBag.Resources = new string[] { "Projects", "Categories" };
+            ViewBag.workDays = new int[] { 0, 1, 2, 3, 4, 5 };
             return View();
         }
     }

@@ -31,7 +31,7 @@
         function getAbsoluteURL() { return "@Url.Content("~/")"; };
         var baseurl = window.baseurl = getAbsoluteURL();
         var themeName = location.hash.split('#/')[1];
-        themeName = themeName ? themeName : 'material';
+        themeName = themeName ? themeName : 'bootstrap5';
         document.write('<link href="' + baseurl + 'Content/styles/' + themeName + '.css" rel="stylesheet" />');
         if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
             document.write('<script src="' + baseurl + 'Scripts/bluebird.min.js"><\/script>');
@@ -54,7 +54,7 @@
     <script src="~/Scripts/search-index.js"></script>
     <script src="~/Scripts/ej2.min.js"></script>
     <script src="~/Scripts/documenteditor/default-properties.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
     @Styles.Render("~/Content/css")
 </head>
 <body class="e-view">
@@ -194,29 +194,52 @@
             </div>
             <div id='theme-switcher-popup' class='sb-theme-popup'>
                 <ul id="themelist" class="options" role="list">
-                    <li class='active' id="material" role="listitem">
+                    <li class="active" id="bootstrap5" role="listitem">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Bootstrap v5</span>
+                    </li>
+                    <li class="e-list" id="bootstrap5-dark">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Bootstrap v5 Dark</span>
+                    </li>
+                    <li class="e-list" id="tailwind">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Tailwind CSS</span>
+                    </li>
+                    <li class="e-list" id="tailwind-dark">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Tailwind CSS Dark</span>
+                    </li>
+                    <li class='e-list' id="material" role="listitem">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Material</span>
-                    </li>
-                    <li id="fabric" role="listitem">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Fabric</span>
-                    </li>
-                    <li class="e-list" id="bootstrap" role="listitem">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Bootstrap</span>
                     </li>
                     <li class="e-list" id="bootstrap4" role="listitem">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Bootstrap v4</span>
                     </li>
+                    @if (SampleHelpers.IsDebug)
+                    {
+                        <li class="e-list" id="bootstrap" role="listitem">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Bootstrap</span>
+                        </li>
+                        <li class="e-list" id="bootstrap-dark">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Bootstrap Dark</span>
+                        </li>
+                    }
+                    <li id="fabric" role="listitem">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Fabric</span>
+                    </li>
+                    <li class="e-list" id="fabric-dark">
+                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                        <span class="switch-text">Fabric Dark</span>
+                    </li>
                     <li class="e-list" id="highcontrast">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">High Contrast</span>
-                    </li>
-                    <li class="e-list" id="tailwind">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Tailwind</span>
                     </li>
                 </ul>
             </div>
@@ -235,12 +258,20 @@
                         </div>
                         <div class='setting-content  setting-theme-change'>
                             <select id='sb-setting-theme' class='sb-setting-theme-select'>
+                                <option value="bootstrap5">Bootstrap v5</option>
+                                <option value="bootstrap5-dark">Bootstrap v5 Dark</option>
+                                <option value="tailwind">Tailwind CSS</option>
+                                <option value="tailwind-dark">Tailwind CSS Dark</option>
                                 <option value="material">Material</option>
-                                <option value="fabric">Fabric</option>
-                                <option value="bootstrap">Bootstrap</option>
                                 <option value="bootstrap4">Bootstrap v4</option>
+                                @if (SampleHelpers.IsDebug)
+                                {
+                                    <option value="bootstrap">Bootstrap</option>
+                                    <option value="bootstrap-dark">Bootstrap Dark</option>
+                                }
+                                <option value="fabric">Fabric</option>
+                                <option value="fabric-dark">Fabric Dark</option>
                                 <option value="highcontrast">High Contrast</option>
-                                <option value="tailwind">Tailwind</option>
                             </select>
                         </div>
                     </div>

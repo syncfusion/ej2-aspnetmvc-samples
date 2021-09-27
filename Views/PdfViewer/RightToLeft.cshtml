@@ -5,7 +5,7 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().PdfViewer("pdfviewer").EnableRtl(true).Locale("ar-AE").ServiceUrl(VirtualPathUtility.ToAbsolute("~/api/PdfViewer/")).DocumentPath("RTLText.pdf").Render()
+        @Html.EJS().PdfViewer("pdfviewer").EnableRtl(true).Locale("ar-AE").ServiceUrl(VirtualPathUtility.ToAbsolute("~/api/PdfViewer/")).DocumentPath("RTLText.pdf").DocumentLoad("documentLoad").Render()
     </div>
     <script>
         ej.base.L10n.load({
@@ -44,11 +44,8 @@
                     'Match case': 'حالة مباراة',
                     'Apply': 'تطبيق',
                     'GoToPage': 'انتقل إلى صفحة',
-                    // tslint:disable-next-line:max-line-length
                     'No matches': 'انتهى العارض من البحث في المستند. لم يتم العثور على مزيد من التطابقات',
                     'No Text Found': 'لم يتم العثور على نص',
-                    // tslint:disable-next-line:max-line-length
-                    'Server error': 'خدمة الانترنت لا يستمع. يعتمد قوات الدفاع الشعبي المشاهد على خدمة الويب لجميع ميزاته. يرجى بدء خدمة الويب للمتابعة.',
                     'Undo': 'فك',
                     'Redo': 'فعل ثانية',
                     'Annotation': 'إضافة أو تعديل التعليقات التوضيحية',
@@ -59,9 +56,11 @@
                     'Opacity': 'غموض',
                     'Color edit': 'غير اللون',
                     'Opacity edit': 'تغيير التعتيم',
-                    'Highlight context': 'تسليط الضوء',
-                    'Underline context': 'أكد',
-                    'Strikethrough context': 'يتوسطه',
+                    'highlight': 'تسليط الضوء',
+                    'underline': 'أكد',
+                    'strikethrough': 'يتوسطه',
+                    // tslint:disable-next-line:max-line-length
+                    'Server error': 'خدمة الانترنت لا يستمع. يعتمد قوات الدفاع الشعبي المشاهد على خدمة الويب لجميع ميزاته. يرجى بدء خدمة الويب للمتابعة.',
                     'Open text': 'افتح',
                     'First text': 'الصفحة الأولى',
                     'Previous text': 'الصفحة السابقة',
@@ -72,7 +71,7 @@
                     'Selection text': 'اختيار',
                     'Pan text': 'مقلاة',
                     'Print text': 'طباعة',
-                    'Search text': 'بحث',
+                    'Seach text': 'بحث',
                     'Annotation Edit text': 'تحرير التعليق التوضيحي',
                     'Line Thickness': 'سمك الخط',
                     'Line Properties': 'خط الخصائص',
@@ -153,57 +152,89 @@
                     'Import Failed': 'نوع ملف سلمان أو اسم الملف غير صالح ؛ يرجى تحديد ملف سلمانصالح',
                     'File not found': 'لم يتم العثور على ملف سلمان المستورد في الموقع المطلوب',
                     'Export Failed': 'شل إجراء تصدير التعليقات التوضيحية ؛ يرجى التأكد من إضافة التعليقات التوضيحية بشكل صحيح',
-                    'Draw Ink': 'رسم الحبر',
-                    'Export XFDF': 'تصدير التعليق التوضيحي إلى ملف XFDF',
-                    'Import XFDF': 'استيراد التعليقات التوضيحية من ملف XFDF',
-                    'of': 'من ',
                     'Dynamic': 'متحرك',
                     'Standard Business': 'الأعمال القياسية',
                     'Sign Here': 'وقع هنا',
                     'Custom Stamp': 'ختم مخصص',
-                    'Enter Signature as Name': 'أدخل أسمك',
-                    'Draw-hand Signature': 'رسم',
-                    'Type Signature': 'اكتب',
+                    'InitialFieldDialogHeaderText': 'إضافة الأولية',
+                    'HandwrittenInitialDialogHeaderText': 'إضافة الأولية',
+                    'SignatureFieldDialogHeaderText': 'أضف التوقيع',
+                    'HandwrittenSignatureDialogHeaderText': 'أضف التوقيع',
+                    'Draw-hand Signature': 'يرسم',
+                    'Type Signature': 'نوع',
                     'Upload Signature': 'تحميل',
                     'Browse Signature Image': 'تصفح',
                     'Save Signature': 'احفظ التوقيع',
-					'FormDesigner': 'إضافة وتحرير حقول النموذج',
-					'SubmitForm': 'تقديم النموذج',
-					'Delete FormField': 'حذف حقل النموذج',
-					'List Box': 'مربع القائمة',
-					'Dropdown': 'اسقاط',
-					'Radio Button': 'زر الراديو',
-					'Check Box': 'خانة اختيار',
-					'Password': 'كلمه السر',
-					'Textbox': 'مربع الكتابة',
-					'Draw Initial': 'رسم الأولي',
-					'Save Initial': 'حفظ الأولي',
-					'Appearance': 'مظهر',
-					'General': 'جنرال لواء',
-					'Tooltip': 'تلميح',
-					'Name': 'اسم',
-					'Form Field Visibility': 'رؤية حقل النموذج',
-					'Value': 'قيمة',
-					'Show Printing': 'عرض الطباعة',
-					'Required': 'مطلوب',
-					'Checked': 'التحقق',
-					'Read Only': 'يقرأ فقط',
-					'Formatting': 'صيغة',
-					'Thickness': 'سماكة',
-					'Border': 'حدود',
-					'Fill': 'ملء',
-					'Border Color': 'لون الحدود',
-					'Max Length': 'الحد الاقصى للطول',
-					'Options': 'خيارات',
-					'List Item': 'اسم العنصر',
-					'Export Value': 'قيمة البند',
-					'List Box Item List': 'قائمة عناصر مربع القائمة',
-					'Up': 'أعلى',
-					'Down': 'تحت',
-					'Textbox Properties': 'خصائص مربع النص',
-					'Delete Item': 'حذف',
-					'Dropdown Item List': 'قائمة العناصر المنسدلة'
-					
+                    'Save Initial': 'حفظ الأولي',
+                    'Highlight context': 'تسليط الضوء',
+                    'Underline context': 'تسطير',
+                    'Strikethrough context': 'يتوسطه خط',
+                    'FormDesigner': 'إضافة وتحرير حقل النموذج',
+                    'SubmitForm': 'تقديم النموذج',
+                    'Search text': 'بحث',
+                    'Draw Ink': 'ارسم الحبر',
+                    'Revised': 'مراجعة',
+                    'Reviewed': 'تمت المراجعة',
+                    'Received': 'تم الاستلام',
+                    'Confidential': 'مؤتمن',
+                    'Approved': 'وافق',
+                    'Not Approved': 'غير مقبول',
+                    'Witness': 'الشاهد',
+                    'Initial Here': 'المبدئي هنا',
+                    'Draft': 'مشروع',
+                    'Final': 'أخير',
+                    'For Public Release': 'للنشر العام',
+                    'Not For Public Release': 'ليس للنشر العام',
+                    'For Comment': 'للتعليق',
+                    'Void': 'فارغ',
+                    'Preliminary Results': 'نتائج اولية',
+                    'Information Only': 'المعلومات فقط',
+                    'Enter Signature as Name': 'أدخل أسمك',
+                    'Textbox': 'مربع الكتابة',
+                    'Password': 'كلمه السر',
+                    'Check Box': 'خانة اختيار',
+                    'Radio Button': 'زر الراديو',
+                    'Dropdown': 'اسقاط',
+                    'List Box': 'مربع القائمة',
+                    'Signature': 'إمضاء',
+                    'Delete FormField': 'حذف حقل النموذج',
+                    'FormDesigner Edit text': 'إضافة وتحرير حقل النموذج',
+                    'in': 'في',
+                    'm': 'م',
+                    'ft_in': 'قدم',
+                    'ft': 'قدم',
+                    'p': 'ص',
+                    'cm': 'سم',
+                    'mm': 'مم',
+                    'pt': 'نقطة',
+                    'cu': 'مكعب',
+                    'sq': 'قدم مربع',
+                    'General': 'جنرال لواء',
+                    'Appearance': 'مظهر خارجي',
+                    'Options': 'والخيارات',
+                    'Textbox Properties': 'خصائص مربع النص',
+                    'Name': 'اسم',
+                    'Tooltip': 'تلميح',
+                    'Value': 'القيمة',
+                    'Form Field Visibility': 'رؤية حقل النموذج',
+                    'Read Only': 'يقرأ فقط',
+                    'Required': 'مطلوب',
+                    'Checked': 'التحقق',
+                    'Show Printing': 'عرض الطباعة',
+                    'Formatting': 'صيغة',
+                    'Fill': 'يملأ',
+                    'Border': 'الحدود',
+                    'Border Color': 'لون الحدود',
+                    'Thickness': 'السماكة',
+                    'Max Length': 'الحد الاقصى للطول',
+                    'List Item': 'اسم العنصر',
+                    'Export Value': 'قيمة البند',
+                    'Dropdown Item List': 'قائمة العناصر المنسدلة',
+                    'List Box Item List': 'قائمة عناصر مربع القائمة',
+                    'Delete Item': 'حذف',
+                    'Up': 'فوق',
+                    'Down': 'تحت',
+                    'Multiline': 'متعدد الأسطر',
                 }
             }
         });
@@ -211,8 +242,8 @@
 }
 
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Right To Left in ASP.NET MVC PDF Viewer control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Right To Left in ASP.NET MVC PDF Viewer control. Explore here for more details." />
+}
 @section ActionDescription{
     <div id="action-description">
         <p>RTL provides an option to switch the text direction and layout of the PDF Viewer from right to left. It improves the user experiences and accessibility for users who use right-to-left languages (Arabic, Farsi, Urdu, etc.). To enable RTL PDF Viewer, set the enableRtl to true.</p>
@@ -220,8 +251,8 @@
 }
 @section Description{
     <div id="action-description">
-            <p> In this example, you can see PDF Viewer right-to-left and the locale set in arabic[locale value is ar-AE] </p>          
-            <p> By default, locale value is en-US. If you want to change the en-US culture to a different culture, you have to change the locale accordingly. </p>
+        <p> In this example, you can see PDF Viewer right-to-left and the locale set in arabic[locale value is ar-AE] </p>
+        <p> By default, locale value is en-US. If you want to change the en-US culture to a different culture, you have to change the locale accordingly. </p>
     </div>
     <div id="description">
         <p>
@@ -242,9 +273,16 @@
     }
 </style>
 @*custom code end*@
+<script>
+    function documentLoad() {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        viewer.annotationSettings.author = 'مقبول';
+    }
+</script>
+@*custom code end*@
 @section Title{
-                    <title>ASP.NET MVC PDF Viewer Right To Left Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC PDF Viewer Right To Left Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Right To Left in ASP.NET MVC PDF Viewer Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Right To Left in ASP.NET MVC PDF Viewer Control</h1>
+}

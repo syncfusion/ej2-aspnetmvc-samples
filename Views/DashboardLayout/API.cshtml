@@ -13,7 +13,7 @@
                 }).Render()
             </div>
         </div>
-        <div class="col-lg-4 property-section">
+        <div class="col-lg-4 property-section dashboard">
             <div class="property-panel-header">
                 Properties
             </div>
@@ -89,11 +89,6 @@
 </script>
 
 <style>
-    #sizeX,
-    #sizeY,
-    #cellspacing {
-        height: 18px !important;
-    }
 
     .form-label {
         margin-bottom: 0;
@@ -127,6 +122,10 @@
         border-bottom: 0.5px solid #e3e3e3;
     }
 
+    body.tailwind-dark .e-dashboardlayout.e-control .e-panel {
+        border: 1px solid #d7d7d7;
+    }
+
     .row {
         margin-left: 0px;
         margin-right: 0px;
@@ -150,6 +149,10 @@
         display: block;
         margin: 0 auto;
         width: 90px;
+    }
+
+    body.material-dark .property-section {
+        color: #ffffff;
     }
 
     @@font-face {
@@ -197,6 +200,14 @@
 
     .sb-property-border {
         border: 1px solid lightgray;
+    }
+
+    .tailwind-dark .e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header, .tailwind .e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header {
+        border-radius: 6px;
+    }
+
+    .property-section.dashboard .e-input-group.e-control-wrapper {
+        width: 122px;
     }
 
 </style>

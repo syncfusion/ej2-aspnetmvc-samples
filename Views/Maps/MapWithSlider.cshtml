@@ -28,7 +28,7 @@
     </style>
     <div class="control-section">
         <div id="mapslider">
-            @Html.EJS().Maps("mapslider").Margin(margin=>margin.Bottom(20)).Annotations(a=>a.Content("#mapslider-annotation").HorizontalAlignment(AnnotationAlignment.Center).Add()).TitleSettings(title => title.Text("Average annual population growth in North American countrie").TextStyle(new MapsFont { Size = "16px" })).Load("mapsLoad").Loaded("mapLoaded").Layers(layer =>
+            @Html.EJS().Maps("mapslider").Margin(margin=>margin.Bottom(20)).Annotations(a=>a.Content("#mapslider-annotation").HorizontalAlignment(AnnotationAlignment.Center).Add()).TitleSettings(title => title.Text("Average annual population growth in North American countries").TextStyle(new MapsFont { Size = "16px" })).Load("mapsLoad").Loaded("mapLoaded").Layers(layer =>
        {
            layer.TooltipSettings(t => t.Visible(true).Format("${name} : ${population}%")).DataSource(ViewBag.DataSource).ShapeDataPath("name")
            .ShapePropertyPath("name").ShapeSettings(new MapsShapeSettings
@@ -62,7 +62,7 @@
         function mapsLoad(args) {
             maps = args.maps;
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         }
 
         function mapLoaded(args) {

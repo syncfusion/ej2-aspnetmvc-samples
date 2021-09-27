@@ -93,7 +93,7 @@
 
 @section ActionDescription{
     <p>
-        This sample demonstrates to flip(rotate) the <code>card</code> to show hidden information which is on back side of the card by clicking or focus-out of it.
+        This sample demonstrates how to flip(rotate) the <code>card</code> to show hidden information which is on back side of the card by clicking or focus-out of it.
     </p>
 }
 
@@ -158,6 +158,11 @@
         background-size: cover;
         min-height: 300px;
         justify-content: flex-end;
+    }
+
+    .tailwind-dark .card-control-section.flip_card_layout #card_flip.e-card,
+    .tailwind-dark .card-control-section.flip_card_layout #card_flip_profile.e-card {
+        height: 314px;
     }
 
     .card-control-section.flip_card_layout #card_flip.e-card,

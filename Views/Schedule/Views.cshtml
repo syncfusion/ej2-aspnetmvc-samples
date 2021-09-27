@@ -5,7 +5,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -13,9 +13,7 @@
             <tbody>
                 <tr style="height: 50px">
                     <td style="width: 30%">
-                        <div>
-                            Current View
-                        </div>
+                        <div>Current View</div>
                     </td>
                     <td style="width: 50%;">
                         <div>
@@ -48,7 +46,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This demo showcases the usage of basic views available in Scheduler such as Day, Week, Work Week, Month and Agenda. Here, the wildlife
+            This demo showcases the usage of basic views available in Scheduler such as Day, Week, Work Week, Month, and Agenda. Here, the wildlife
             events being held in zoos are displayed against its respective timings.
         </p>
     </div>
@@ -69,8 +67,7 @@
             The user can navigate between different view options available on the header section just by clicking on it. From any of
             the views, the user can switch back to the day view by clicking dates in the date header section. These view options
             to be displayed on the Scheduler header bar is based on the values ['Day', 'Week', 'WorkWeek', 'Month', 'Agenda'] assigned to
-            the
-            <code>Views</code> property.
+            the <code>Views</code> property.
         </p>
     </div>
 }

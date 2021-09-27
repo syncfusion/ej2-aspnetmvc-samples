@@ -188,7 +188,7 @@
     <script type="text/javascript">
         function onGaugeLoad(sender) {
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             for (var i = 0; i < sender.gauge.axes[0].annotations.length; i++) {
                 sender.gauge.axes[0].annotations[i].zIndex = "1";
             }

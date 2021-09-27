@@ -33,14 +33,16 @@
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties">
             <tr>
-                <td style="width: 30%">
-                    <div>
+                <td style="width: 100%">
+                    <div style="font-size: 15px;">
                         Column
                     </div>
                 </td>
-                <td style="width: 70%;padding-right: 10px">
-                    <div>
-                        @(Html.EJS().DropDownList("Columns").DataSource((IEnumerable<object>)ViewBag.Data1).PopupWidth("100px")
+            </tr>
+            <tr>
+                <td style="width: 100%;padding-right: 10px">
+                    <div style="width: 150px">
+                        @(Html.EJS().DropDownList("Columns").DataSource((IEnumerable<object>)ViewBag.Data1)
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value("TaskId")
                             .Render()
                         )
@@ -48,14 +50,16 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 30%">
-                    <div>
+                <td style="width: 100%">
+                    <div style="font-size: 15px;">
                         Direction
                     </div>
                 </td>
-                <td style="width: 70%;padding-right: 10px">
-                    <div>
-                        @(Html.EJS().DropDownList("Direction").DataSource((IEnumerable<object>)ViewBag.Data2).PopupWidth("100px")
+            </tr>
+            <tr>
+                <td style="width: 100%;padding-right: 10px">
+                    <div style="width: 150px">
+                        @(Html.EJS().DropDownList("Direction").DataSource((IEnumerable<object>)ViewBag.Data2)
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value("Ascending")
                             .Render()
                         )
@@ -63,13 +67,9 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 30%">
+                <td style="width: 100%">
                     <div>
                         @(Html.EJS().Button("Sort").Content("Sort").Render())
-                    </div>
-                </td>
-                <td style="width: 70%;padding:10px 10px 10px 0px;">
-                    <div>
                         @(Html.EJS().Button("Clear").Content("Clear").Render())
                     </div>
                 </td>

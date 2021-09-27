@@ -5,7 +5,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).ShowWeekend(false).SelectedDate(new DateTime(2018, 2, 15)).WorkHours(new ScheduleWorkHours { Start = "08:00" }).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).ShowWeekend(false).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).WorkHours(new ScheduleWorkHours { Start = "08:00" }).Render()
         </div>
     </div>
 
@@ -13,21 +13,16 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr>
-                    <td style="width: 30%">
-                        <div>Working days</div>
-                    </td>
-                    <td style="width: 70%">
+                    <td style="width: 100%">
                         <div>
-                            @Html.EJS().MultiSelect("workdayscheckbox").Mode(VisualMode.CheckBox).PopupWidth("180").ShowDropDownIcon(true).ShowClearButton(false).Value(ViewBag.values).DataSource(
+                            @Html.EJS().MultiSelect("workdayscheckbox").Placeholder("Working days").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Mode(VisualMode.CheckBox).PopupWidth("180").ShowDropDownIcon(true).ShowClearButton(false).Value(ViewBag.values).DataSource(
                             ViewBag.dropdown).Fields(new MultiSelectFieldSettings { Text = "DayText", Value = "DayValue" }).Change("onDayChange").Render()
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 30%">
-                        <div>Non-Working days</div>
-                    </td>
-                    <td style="width: 70%">
+                    <td style="width: 100%">
+                        <div style="font-weight:500">Non-Working days</div>
                         <div>
                             @Html.EJS().Button("showweekendbtn").Content("Show").IsToggle(true).Render()
                         </div>

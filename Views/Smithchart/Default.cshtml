@@ -39,7 +39,7 @@
         var smithchart;
         function load(args) {
             var theme = themeName ? themeName : 'Material';
-            args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.smithchart.series[0].points = [
                 { resistance: 10, reactance: 25 }, { resistance: 8, reactance: 6 },
                 { resistance: 6, reactance: 4.5 }, { resistance: 4.5, reactance: 2 },

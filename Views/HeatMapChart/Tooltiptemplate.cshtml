@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2;
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Tooltip Template in ASP.NET MVC Heatmap Chart control. Explore here for more details."/>
+                    <meta name="description" content="This example demonstrates the Tooltip Template in ASP.NET MVC HeatMap Chart control. Explore here for more details."/>
                 }
 @section ControlsSection{
     <div class="control-section">
@@ -43,7 +43,7 @@
     <script>
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
-            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
         };
 
         var tooltipRender = function (args) {
@@ -66,8 +66,8 @@
     <br>
 }
 @section Title{
-                    <title>ASP.NET MVC Heatmap Chart Tooltip Template Example - Syncfusion Demos </title> 
+                    <title>ASP.NET MVC HeatMap Chart Tooltip Template Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Tooltip Template in ASP.NET MVC Heatmap Chart Control</h1>
+                    <h1 class='sb-sample-text'>Example of Tooltip Template in ASP.NET MVC HeatMap Chart Control</h1>
                 }

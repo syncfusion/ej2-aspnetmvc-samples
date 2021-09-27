@@ -3,7 +3,7 @@
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).WorkHours(new ScheduleWorkHours { Highlight = true, Start = "08:00", End = "20:00" }).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 2, 15)).Render()
+        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).WorkHours(new ScheduleWorkHours { Highlight = true, Start = "08:00", End = "20:00" }).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">
@@ -14,7 +14,7 @@
                     </td>
                     <td style="width: 50%;">
                         <div>
-                            @Html.EJS().TimePicker("startTime").Format("HH:mm").Width("90px").Value(new DateTime(2000, 1, 1, 8, 0, 0)).Render()
+                            @Html.EJS().TimePicker("startTime").Format("HH:mm").Width("120px").Value(new DateTime(2000, 1, 1, 8, 0, 0)).Render()
                         </div>
                     </td>
                 </tr>
@@ -24,7 +24,7 @@
                     </td>
                     <td style="width: 50%;">
                         <div>
-                            @Html.EJS().TimePicker("endTime").Format("HH:mm").Width("90px").Value(new DateTime(2000, 1, 1, 20, 0, 0)).Render()
+                            @Html.EJS().TimePicker("endTime").Format("HH:mm").Width("120px").Value(new DateTime(2000, 1, 1, 20, 0, 0)).Render()
                         </div>
                     </td>
                 </tr>
@@ -73,7 +73,7 @@
             <code>WorkHours</code> property and it usually applies only on the working days defined for the Schedule. It can either be highlighted
             or not by defining the
             <code>Highlight</code> option within the
-            <code>WorkHours</code> property. The working hour range can be defined by making use of the
+            <code>WorkHours</code> property. The working hour range can be defined by using the
             <code>Start</code> and
             <code>End</code> option available within the
             <code>WorkHours</code> property.
@@ -81,7 +81,7 @@
         <p>
             To set discontinuous working hours on a day, then the default
             <code>WorkHours</code> on Scheduler needs to be disabled by setting false to
-            <code>Highlight</code> option within it. Then, make use of the
+            <code>Highlight</code> option within it. Then, use the
             <code>setWorkHours</code> method which accepts the days collection and the start & end hour values as parameters.
         </p>
     </div>

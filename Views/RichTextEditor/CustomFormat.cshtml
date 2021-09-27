@@ -4,7 +4,7 @@
         <div class="control-wrapper">
                 @Html.EJS().RichTextEditor("customFormat").ContentTemplate(@<div>
     The sample is configured with customized markdown syntax using the __formatter__ property. Type the content and click the toolbar item to view customized markdown syntax. For unordered list,
-    you need to add a plus sign before the word (e.g., + list1). Or To make a phrase bold,you need to add two underscores before and after the phrase (e.g., __this text is bold__).
+    you need to add a plus sign before the word (e.g., + list1). To make a phrase bold, you need to add two underscores before and after the phrase (e.g., __this text is bold__).
 </div>).Created("created").Height("150px").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewBag.Items)).Render()
           </div>
     </div>
@@ -34,6 +34,14 @@
 
     .tailwind .e-icon-btn.e-active .e-md-preview::before {
         content: '\e748';
+    }
+    
+    .bootstrap5 .e-icon-btn.e-active .e-md-preview::before {
+        content: '\e80e';
+    }
+
+    .bootstrap5 .e-icon-btn .e-md-preview::before {
+        content: '\e7de';
     }
 
 

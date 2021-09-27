@@ -154,7 +154,7 @@ Panel.SizeX(2).SizeY(2).Row(1).Col(4).ContentTemplate(@<div>
 Panel.SizeX(4).SizeY(2).Row(3).Col(2).ContentTemplate(@<div>
     <div class="e-panel-container">
         <div class="e-panel-header">
-            <div>Traffic Histor</div>
+            <div>Traffic History</div>
         </div>
         <div class="e-panel-content">
             @(Html.EJS().Chart("spline").Series(series =>
@@ -173,7 +173,7 @@ Panel.SizeX(4).SizeY(2).Row(3).Col(2).ContentTemplate(@<div>
 Panel.SizeX(2).SizeY(2).Row(3).Col(0).ContentTemplate(@<div>
     <div class="e-panel-container">
         <div class="e-panel-header">
-            <div>Useage Statistics</div>
+            <div>Usage Statistics</div>
         </div>
         <div class="e-panel-content">
             @(Html.EJS().AccumulationChart("pie").Series(series =>
@@ -212,15 +212,27 @@ Panel.SizeX(2).SizeY(2).Row(3).Col(0).ContentTemplate(@<div>
     }
 
     .e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header {
-      padding: 10px;
       border-bottom: 2px solid #e6e9ed !important;
       height: 35px;
-      margin: 0 15px 0 15px;
+      padding: 0 15px 0 15px;
+      line-height: 35px;
     }
 
     #sidebar-section {
       padding: 0px !important;
       border: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    .bootstrap5-dark .card-content.text,
+    .tailwind-dark .card-content.text,
+    .material-dark .card-content.text,
+    .bootstrap-dark .card-content.text,
+    .highcontrast .card-content.text {
+        color: #ffffff;
+    }
+
+    .fabric-dark .card-content.text {
+        color: #dadada
     }
 
     .e-bigger #search {
@@ -543,6 +555,21 @@ Panel.SizeX(2).SizeY(2).Row(3).Col(0).ContentTemplate(@<div>
         background: #000;
     }
 
+    body.material-dark #sidebar-section {
+        color: #ffffff;
+    }
+
+    .bootstrap-dark li.sidebar-item.filterHover, .fabric-dark li.sidebar-item.filterHover, .material-dark li.sidebar-item.filterHover, .tailwind-dark li.sidebar-item.filterHover, .bootstrap5-dark li.sidebar-item.filterHover {
+        background: inherit;
+    }
+    .tailwind #dockSidebar, .bootstrap5 #dockSidebar {
+        background: #fff;
+    }
+
+    .tailwind-dark .e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header, .tailwind .e-dashboardlayout.e-control .e-panel .e-panel-container .e-panel-header {
+        border-radius: 6px;
+    }
+
 </style>
 <script>
 
@@ -557,9 +584,9 @@ Panel.SizeX(2).SizeY(2).Row(3).Col(0).ContentTemplate(@<div>
         args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
     }
     function mapsLoad(args) {
-        var theme = location.hash.split('/')[1];
-        theme = theme ? theme : 'Material';
-        args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+        var selectedTheme = location.hash.split('/')[1];
+        selectedTheme = selectedTheme ? selectedTheme : 'Material';
+        args.maps.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark');
             args.maps.layers[0].markerSettings = [
                         {
                             visible: true,

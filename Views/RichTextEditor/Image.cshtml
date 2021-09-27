@@ -55,13 +55,25 @@
             content: "\e778";
         }
         
-        .tailwind .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-left::before {
-        content: "\e7bd";
-    }
-    
-    .tailwind .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-right::before {
-        content: "\e7b9";
-    }
+        .tailwind .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-left::before,
+        .tailwind-dark .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-left::before {
+            content: "\e7bd";
+        }
+        
+        .tailwind .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-right::before,
+        .tailwind-dark .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-right::before {
+            content: "\e7b9";
+        }
+
+        .bootstrap5 .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-left::before,
+        .bootstrap5-dark .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-left::before {
+            content: "\e713";
+        }
+
+        .bootstrap5 .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-right::before,
+        .bootstrap5-dark .e-rte-quick-popup .e-rte-quick-toolbar .e-rotate-right::before {
+            content: "\e755";
+        }
     </style>
 
     <script type="text/javascript">
@@ -128,16 +140,16 @@
             The quick toolbar has the following items
         </p>
         <ul>
-            <li><code>Replace</code> – can replace the image with some other image.</li>
+            <li><code>Replace</code> – To replace the image with some other image.</li>
             <li><code>Align</code> – Align the image with left, right and justify.</li>
-            <li><code>Image captions</code> – set the captions for the image.</li>
-            <li><code>Change size</code> – modify width and height of image.</li>
-            <li><code>Delete</code> – delete the image.</li>
-            <li><code>Link</code> – provide the link to the image.</li>
-            <li><code>Display</code> - display the image as inline or with break.</li>
-            <li><code>Alternate text</code> – provide the alternative text for the image if the image is not present in the location.</li>
-            <li><code>Custom Tools</code> - "rotation" related commands are added as custom commands to the image element</li>
-            <li><code>Resize</code> – can resize the image dimension with resize options.</li>
+            <li><code>Image captions</code> – Set the captions for the image.</li>
+            <li><code>Change size</code> – Modify width and height of image.</li>
+            <li><code>Delete</code> – Delete the image.</li>
+            <li><code>Link</code> – Provide the link to the image.</li>
+            <li><code>Display</code> - Display the image as inline or with break.</li>
+            <li><code>Alternate text</code> – Provide the alternative text for the image if the image is not present in the location.</li>
+            <li><code>Custom Tools</code> - "rotation" related commands are added as custom commands to the image element.</li>
+            <li><code>Resize</code> – To resize the image dimension with resize options.</li>
         </ul>
         Quick commands are opened as context-menu on clicking the corresponding element.
         The commands must be passed as string collection to image, text, and link attributes of the quickToolbarSettings property.

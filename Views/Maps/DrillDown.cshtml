@@ -107,7 +107,7 @@
     var maps, touchmove = false;
     function mapLoad(args) {
         var theme = themeName ? themeName : 'Material';
-        args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+        args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         maps = args.maps;
         args.maps.layers[0].markerSettings = [
             {
@@ -225,7 +225,7 @@
 @section Description{
     <div id="description">
         <p>
-            In this example, you can see how to display an another layer by clicking a shape in previous layer.
+            In this example, you can see how to display another layer by clicking a shape in previous layer.
         </p>
     </div>
 

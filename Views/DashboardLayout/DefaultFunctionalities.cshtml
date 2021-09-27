@@ -133,12 +133,24 @@
         cursor: pointer;
     }
 
-    .sb-demo-section .container-fluid {
+    .material .sb-demo-section .container-fluid,
+    .fabric .sb-demo-section .container-fluid,
+    .bootstrap4 .sb-demo-section .container-fluid,
+    .bootstrap .sb-demo-section .container-fluid,
+    .bootstrap5 .sb-demo-section .container-fluid {
         background: #E5E5E5;
     }
 
     .tailwind .sb-demo-section .container-fluid {
         background: #F9FAFB;
+    }
+
+    body.tailwind-dark .e-dashboardlayout.e-control .e-panel {
+        border: 1px solid #d7d7d7;
+    }
+
+    body.material-dark .e-panel {
+        color: #ffffff;
     }
 </style>
 
@@ -153,7 +165,7 @@
 @section Description{
     <div id="description">
         <p>
-            The DashboardLayout component provides the capability to arrange, <a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.Layouts.DashboardLayout~AllowResizing.html" target="_blank">resize</a> and 
+            The DashboardLayout component provides the capability to arrange, <a href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.Layouts.DashboardLayout~AllowResizing.html" target="_blank">resize</a>, and 
                 reorder the panels within the dashboard layout.
         </p>
     </div>

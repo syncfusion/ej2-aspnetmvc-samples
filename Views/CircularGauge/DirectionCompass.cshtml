@@ -21,11 +21,11 @@
          {
              Height = 10,
              Interval = 0.5
-         }).Pointers(ViewBag.Pointers).Ranges(ViewBag.Ranges).Minimum(0).Maximum(8).Add()).Render()
+         }).Pointers(ViewBag.Pointers).Minimum(0).Maximum(8).Add()).Render()
         </div>
     </div>
     <div class="col-md-4 property-section">
-        <table id="property" title="Properties" style="width: 100%">
+        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
             <tbody>
                 <tr style="height: 50px">
                     <td>
@@ -79,7 +79,7 @@
                     sender.gauge.refresh();
             }, 200);
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             circulargauge = sender.gauge;
         }
 

@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
             marker.Shape = MarkerType.Circle;
             marker.Fill = "white";
             marker.Width = 10;
-            marker.Border = new MapsBorder { Width = 2, Color = "#285255" };
+            marker.Border = new MapsBorder { Width = 2, Color = "#285255", Opacity = 1 };
             marker.TooltipSettings = new MapsTooltipSettings{ Visible = true, ValuePath = "population", Template = "#template" };
             List<MapsMarker> markerSettings = new List<MapsMarker>();
             markerSettings.Add(marker);

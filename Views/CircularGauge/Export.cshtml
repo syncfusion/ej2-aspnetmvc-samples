@@ -18,63 +18,109 @@
     .e-play-icon1::before {
         content: '\e728';
     }
+    #export  {
+        width: 90px;
+    }
+    #print  {
+        width: 90px;
+    }
+
+    .e-view.fabric .e-play-icon::before, .e-view.fabric-dark .e-play-icon::before {
+        content: '\e7df';
+    }
+
+    .e-view.fabric .e-play-icon1::before, .e-view.fabric-dark .e-play-icon1::before {
+        content: '\e710';
+    }
+
+    .e-view.bootstrap .e-play-icon::before {
+        content: '\ebd2';
+    }
+
+    .e-view.bootstrap4 .e-play-icon1::before {
+        content: '\e780';
+    }
+
+    .e-view.bootstrap4 .e-play-icon::before {
+        content: '\e743';
+    }
+
+    .e-view.tailwind .e-play-icon::before, .e-view.tailwind-dark .e-play-icon::before {
+        content: '\e76c';
+    }
+
+    .e-view.tailwind .e-play-icon1::before, .e-view.tailwind-dark .e-play-icon1::before {
+        content: '\e7bf';
+    }
+
+    .e-view.highcontrast .e-play-icon::before {
+        content: '\ebf9';
+    }
+
+    .e-view.highcontrast .e-play-icon1::before {
+        content: '\e710';
+    }
+
+    .e-view.bootstrap5 .e-play-icon1::before, .e-view.bootstrap5-dark .e-play-icon1::before {
+        content: '\e72e';
+    }
+    .e-view.bootstrap5 .e-play-icon::before, .e-view.bootstrap5-dark .e-play-icon::before {
+        content: '\e75d';
+    }
 </style>
 <div class="col-lg-9 control-section">
 	<div id="outer" style="width:100%">
 		<div class="content-wrapper">
 			@Html.EJS().CircularGauge("container").Width("50%").Load("gaugeLoad").AllowPrint(true).AllowImageExport(true).AllowPdfExport(true).Axes(axes => axes
-            .Radius("80%").Direction(GaugeDirection.AntiClockWise).StartAngle(0).EndAngle(0).LabelStyle(ls => ls.Position(Position.Outside).Font(ViewBag.labelFont).Offset(2).UseRangeColor(true))
+            .Radius("80%").Direction(GaugeDirection.AntiClockWise).StartAngle(0).EndAngle(0).LabelStyle(ls => ls.Position(Position.Outside).HiddenLabel(HiddenLabel.Last).Font(ViewBag.labelFont).Offset(2).UseRangeColor(true))
             .LineStyle(lin => lin.Width(0))
             .MinorTicks(mi => mi.Width(1).Height(8).Position(Position.Outside).Interval(2).UseRangeColor(true)).MajorTicks(mj => mj.Width(1).Height(25).Position(Position.Outside).Interval(10).UseRangeColor(true)).Pointers(ViewBag.Pointers).Ranges(ViewBag.Ranges).Add()).Render()
 		</div>
 	</div>
 </div>
 <div class="col-lg-3 property-section">
-	<table id="property" title="Properties" style="width: 100%">
+	<table id="property" title="Properties" style="width: 100%; margin-left: -10px">
 		<tr style="height: 50px">
 			<td style="width: 40%">
-				<div>
+				<div style="width:60%">
 					Export Type
 				</div>
 			</td>
 			<td style="width: 60%;">
-				<div style="margin-left: -30px">
-					@Html.EJS().DropDownList("Export").Index(0).Width("80px").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
+				<div style="margin-left: -10px">
+					@Html.EJS().DropDownList("Export").Index(0).Width("90px").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
 				</div>
 			</td>
 		</tr>
 		<tr style="height: 50px">
 			<td style="width: 40%">
-				<div>File Name</div>
+				<div style="width:60%">File Name</div>
 			</td>
 			<td style="width: 40%;">
 				<div class="e-float-input" style='margin-top: 0px;'>
-					<input type="text" value="Gauge" id="fileName" style="margin-left: -30px">
+					<input type="text" value="Gauge" id="fileName" style="margin-left: -10px; width:90px;">
 				</div>
 			</td>
 		</tr>
-        <tr id="button-control" style="height: 50px" align='center'>
+        <tr id="button-control" style="height: 50px">
             <td>
-                <div style="margin-left:25px; ">
+                <div style="margin-top: 20px; margin-left: -10px; width: 100px">
                     @Html.EJS().Button("export").Content("Export").CssClass("e-flat").IconCss("e-icons e-play-icon1").IsPrimary(true).Render()
                 </div>
             </td>
-        </tr>
-        <tr>
             <td>
-                <div  style="margin-left:30px;">
+                <div style="margin-top: 20px; margin-left: 10px; width: 100px">
                     @Html.EJS().Button("print").Content("Print").CssClass("e-flat").IconCss("e-icons e-play-icon").IsPrimary(true).Render()
                 </div>
             </td>
         </tr>
-		
 	</table>
 </div>
 <script type="text/javascript">
 	var gauge;
 	function gaugeLoad(sender) {
 		var selectedTheme = themeName ? themeName : 'Material';
-		sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+        sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
 		var gauge = sender.gauge;
 	}
 	var mode = "JPEG";

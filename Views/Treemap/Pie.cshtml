@@ -15,7 +15,8 @@
     <script>
         function load(args) {
             var theme = themeName ? themeName : 'Material';
-            args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.treemap.theme = ((theme.charAt(0).toUpperCase() +
+                theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast'));
             args.treemap.dataSource = [
                 { Continent: 'Africa', Gender: 'Male', Population: 518636010, Id: "AfricaMale", PieHeight: '90px', PieWidth: '90px' },
                 { Continent: 'Africa', Gender: 'Female', Population: 519058499, Id: "AfricaFemale", PieHeight: '90px', PieWidth: '90px' },

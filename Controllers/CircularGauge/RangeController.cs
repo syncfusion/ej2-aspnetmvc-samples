@@ -15,13 +15,13 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             // Annotations //
             List<CircularGaugeAnnotation> annotations = new List<CircularGaugeAnnotation>();
             CircularGaugeAnnotation annotation1 = new CircularGaugeAnnotation();
-            annotation1.Content = "<div><span style=font-size:14px; color:#9E9E9E; font-family:Regular>Speedometer</span></div>";
+            annotation1.Content = "<div><span style=font-size:14px; font-family:Regular>Speedometer</span></div>";
             annotation1.Radius = "30%";
             annotation1.Angle = 0;
             annotation1.ZIndex = "1";
             annotations.Add(annotation1);
             CircularGaugeAnnotation annotation2 = new CircularGaugeAnnotation();
-            annotation2.Content = "<div><span style=font-size:20px; color:#424242; font-family:Regular>65 MPH</span></div>";
+            annotation2.Content = "<div><span style=font-size:20px; font-family:Regular>65 MPH</span></div>";
             annotation2.Radius = "40%";
             annotation2.Angle = 180;
             annotation2.ZIndex = "1";

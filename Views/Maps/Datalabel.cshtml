@@ -10,19 +10,19 @@
         </div>
     </div>
     <div class="col-lg-3 property-section">
-        <table id="property" title="Properties" style="width: 100%">
+        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
             <tbody>
                 <tr style="height: 50px">
                     <td style="width: 80%">
-                        <div>Show Labels</div>
+                        <div style="width:60px">Show Labels</div>
                     </td>
                     <td>
-                        <input type="checkbox" checked id="select" style="margin-top: 15px">
+                        <input type="checkbox" checked id="select" style="margin-top: 15px; margin-left: 35px">
                     </td>
                 </tr>
                 <tr style="height: 50px">
                     <td style="width: 60%">
-                        <div>Smart label mode</div>
+                        <div style="width:60px">Smart label mode</div>
                     </td>
                     <td style="width: 40%">
                         <select id="smartlabelmode" style="margin-left: -25px">
@@ -34,7 +34,7 @@
                 </tr>
                 <tr style="height: 50px">
                     <td style="width: 60%">
-                        <div>Intersect action</div>
+                        <div style="margin-right: 10px; width: 60px;">Intersect action</div>
                     </td>
                     <td style="width: 40%;">
                         <select id="intersectaction" style="margin-left: -25px">
@@ -58,14 +58,14 @@
     <script>
         var maps; function mapsLoad(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             maps = args.maps;
         }
 
         var intersectaction = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select intersect action',
-            width: 120,
+            width: 90,
             change: function () {
                 maps.layers[0].dataLabelSettings.intersectionAction = intersectaction.value;
                 maps.refresh();
@@ -73,7 +73,7 @@
         }); intersectaction.appendTo('#intersectaction'); var smartlabelmode = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select smartlabel mode',
-            width: 120,
+            width: 90,
             change: function () {
                 maps.layers[0].dataLabelSettings.smartLabelMode = smartlabelmode.value;
                 maps.refresh();

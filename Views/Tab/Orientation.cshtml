@@ -26,7 +26,7 @@
                 </div>
                 @Html.EJS().ListView("londonListView").Template(template).DataSource(ViewBag.londonData).Render()
             </div>
-            @Html.EJS().Tab("orientationTab").Height("320").ShowCloseButton(true).Created("tabCreated").Items(ViewBag.orientationItems).Render();
+            @Html.EJS().Tab("orientationTab").Height("320").ShowCloseButton(true).Created("tabCreated").Items(ViewBag.orientationItems).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">
@@ -174,6 +174,7 @@
 
     #orientationTab .e-listview:not(.e-list-template) .e-list-item {
         height: 63px;
+        padding: 0 16px !important;
     }
 
     #orientationTab .e-tab-text {

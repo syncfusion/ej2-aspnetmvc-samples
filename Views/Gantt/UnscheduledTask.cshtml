@@ -15,7 +15,7 @@
             prefixIcon = "e-add-icon tb-icons"
         });
     }
-    @(Html.EJS().Gantt("UnscehduledTask").DataSource((IEnumerable<object>)ViewBag.DataSource)
+    @(Html.EJS().Gantt("UnscheduledTask").DataSource((IEnumerable<object>)ViewBag.DataSource)
             .Height("450px")
             .HighlightWeekends(true)
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration"))
@@ -31,7 +31,6 @@
                 col.Field("StartDate").HeaderText("Start Date").Width(120).Add();
                 col.Field("EndDate").HeaderText("End date").Width(120).Add();
                 col.Field("Duration").HeaderText("Duration").Width(90).Add();
-                col.Field("TaskType").Visible(false).Add();
             }).SplitterSettings(sl => sl.ColumnIndex(4))
             .ProjectEndDate("01/20/2019")
             .ProjectStartDate("01/01/2019")
@@ -49,19 +48,27 @@
                     EndDate: null,
                     TaskType: ""
                 };
-                var gantt = document.getElementById("UnscehduledTask").ej2_instances[0];
+                var gantt = document.getElementById("UnscheduledTask").ej2_instances[0];
                 gantt.editModule.addRecord(data);
             }
         }
     </script>
     <style>
-        #UnscehduledTask .e-add-icon:before {
+        #UnscheduledTask .e-add-icon:before {
             content: "\e506"
         }
 
-        .bootstrap4 #UnscehduledTask .e-add-icon:before {
+        .bootstrap4 #UnscheduledTask .e-add-icon:before {
             content: "\e783"
         }
+		.tailwind #UnscheduledTask .e-add-icon:before,
+		.tailwind-dark #UnscheduledTask .e-add-icon:before {
+		   content: "\e7dd"
+		}
+		.bootstrap5 #UnscheduledTask .e-add-icon:before,
+		.bootstrap5-dark #UnscheduledTask .e-add-icon:before {
+		   content: "\e836"
+		}
     </style>
 }
 

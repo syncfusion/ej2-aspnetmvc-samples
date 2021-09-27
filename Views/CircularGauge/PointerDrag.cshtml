@@ -46,15 +46,15 @@
         </div>
     </div>
     <div class="col-md-4 property-section">
-        <table id="property" title="Properties" style="width: 100%">
+        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
             <tbody>
                 <tr style="height: 50px">
                     <td style="width: 30%">
                         <div id="pointerValue">Pointer Value <span> &nbsp;&nbsp;&nbsp;70</span> </div>
                     </td>
                     <td style="width: 40%;">
-                        <div>
-                            <input type="range" id="value" value="70" min="0" max="120" style="width:90%">
+                        <div style="margin-left:30px">
+                            <input type="range" id="value" value="70" min="0" max="120" style="width:100px">
                         </div>
                     </td>
                 </tr>
@@ -64,7 +64,7 @@
                     </td>
                     <td style="width: 40%;">
                         <div>
-                            <input type="checkbox" id="enable" checked="true"/>
+                            <input type="checkbox" id="enable" checked="true" style="margin-left:73px"/>
                         </div>
                     </td>
                 </tr>
@@ -74,7 +74,7 @@
                     </td>
                     <td style="width: 40%;">
                         <div>
-                            <input type="checkbox" id="enable1" />
+                            <input type="checkbox" id="enable1" style="margin-left:73px"/>
                         </div>
                     </td>
                 </tr>
@@ -98,7 +98,7 @@
                     sender.gauge.refresh();
             }, 200);
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             circulargauge = sender.gauge;
             for (var i = 0; i < sender.gauge.axes[0].annotations.length; i++) {
                 sender.gauge.axes[0].annotations[i].zIndex = "1";
@@ -116,7 +116,7 @@
         function onDragMove(args) {
             if (isNaN(args.rangeIndex)) {
                 pointerValue = Math.round(args.currentValue);
-                document.getElementById('pointerValue').innerHTML = 'Pointer Value <span>    ' + pointerValue;
+                document.getElementById('pointerValue').innerHTML = 'Pointer Value <span>&nbsp;&nbsp;&nbsp;' + pointerValue;
                 document.getElementById('value').value = pointerValue.toString();
                 circulargauge.setAnnotationValue(0, 0, content + pointerValue + ' MPH</span></div>');
             }
@@ -141,7 +141,7 @@
             document.getElementById('value').onchange = function () {
                 var pointerValue = parseInt(document.getElementById('value').value, 10);
                 setPointersValue(circulargauge, pointerValue);
-                document.getElementById('pointerValue').innerHTML = 'Pointer Value <span>    ' + pointerValue;
+            document.getElementById('pointerValue').innerHTML = 'Pointer Value <span>&nbsp;&nbsp;&nbsp;' + pointerValue;
             };
         document.getElementById('enable').onchange = function () {
             var value = document.getElementById('enable').checked;

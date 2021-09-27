@@ -15,7 +15,7 @@ series => {
     .DataSource(ViewBag.dataSource).Width(2).ColumnWidth(0.3).Add();
     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Grapes").XName("x").YName("yValue3")
     .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-    .DataSource(ViewBag.dataSource).Width(2).ColumnWidth(0.3).Add();
+    .DataSource(ViewBag.dataSource).Width(2).ColumnWidth(0.2).Add();
 
 }).PrimaryXAxis(px => {
     px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).
@@ -56,18 +56,18 @@ series => {
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates four column series. Each column is rendered with different column width and it is placed  behind to another one.
+        This sample illustrates four column series. Each column is rendered with different column width and it is placed behind another one.
     </p>
 }
 @section Description{
     <p>
         In this example, you can see how to render and configure the column type charts. Column type charts are used for comparing
-        the frequency, count, total or average of data in different categories. You can use <code>border</code>,
+        the frequency, count, total or average of data in different categories. You can use the <code>border</code>,
         <code>fill</code> properties to customize the vertical rectangle. <code>dataLabel</code> is used to represent individual
         data and its value.
     </p>
     <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
     </p>
     <br>
     <p>

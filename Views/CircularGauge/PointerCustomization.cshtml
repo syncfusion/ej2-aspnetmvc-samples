@@ -144,7 +144,7 @@
     <script type="text/javascript">
         function onGaugeLoad(args) {
             var selectedTheme = themeName ? themeName : 'Material';
-            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             for (var i = 0; i < args.gauge.axes[0].annotations.length; i++) {
                 args.gauge.axes[0].annotations[i].zIndex = "1";
             }
@@ -207,8 +207,8 @@
 
 
 @section Title{
-                 <title>ASP.NET MVC Circular Gauge PointerCustomization Example - Syncfusion Demos </title>
-             }
+                    <title>ASP.NET MVC Circular Gauge PointerCustomization Example - Syncfusion Demos </title> 
+                }
 @section Header{
-                <h1 class='sb-sample-text'>Example of PointerCustomization in ASP.NET MVC Circular Gauge Control</h1>
-            }
+                    <h1 class='sb-sample-text'>Example of PointerCustomization in ASP.NET MVC Circular Gauge Control</h1>
+                }

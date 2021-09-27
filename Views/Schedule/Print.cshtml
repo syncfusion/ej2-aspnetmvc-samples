@@ -2,12 +2,12 @@
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
-    <div class="col-lg-10 control-section">
+    <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2019, 1, 10)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
         </div>
     </div>
-    <div class="col-lg-2 property-section">
+    <div class="col-lg-3 property-section">
         <table id='property' title='Properties' class='property-panel-table'>
             <tbody>
                 <tr style="height: 50px">
@@ -17,22 +17,22 @@
                 </tr>
                 <tr class="e-height-row e-hide-row">
                     <td>
-                        @Html.EJS().DropDownList("heightElement").Width("auto").Placeholder("Height").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(0).DataSource(ViewBag.printHeightAndWidthData).Render()
+                        @Html.EJS().DropDownList("heightElement").Placeholder("Height").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(0).DataSource(ViewBag.printHeightAndWidthData).Render()
                     </td>
                 </tr>
                 <tr class="e-width-row e-hide-row">
                     <td>
-                        @Html.EJS().DropDownList("widthElement").Width("auto").Placeholder("Width").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(0).DataSource(ViewBag.printHeightAndWidthData).Render()
+                        @Html.EJS().DropDownList("widthElement").Placeholder("Width").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(0).DataSource(ViewBag.printHeightAndWidthData).Render()
                     </td>
                 </tr>
                 <tr class="e-selected-date-row e-hide-row">
                     <td>
-                        @Html.EJS().DatePicker("selectedDateElement").Width("auto").Placeholder("Selected date").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Value(new DateTime(2019, 1, 10)).Render()
+                        @Html.EJS().DatePicker("selectedDateElement").Placeholder("Selected date").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Value(new DateTime(DateTime.Today.Year, 1, 10)).Render()
                     </td>
                 </tr>
                 <tr>
                     <td style="padding: 15px; text-align: center">
-                        @Html.EJS().Button("print-btn").Content("Print").IconCss("e-icons e-icon-schedule-print").CssClass("e-print-btn").Render()
+                        @Html.EJS().Button("print-btn").Content("Print").IconCss("e-icons e-print").CssClass("e-print-btn").Render()
                     </td>
                 </tr>
             </tbody>
@@ -40,27 +40,12 @@
     </div>
 
     <style>
-        @@font-face {
-            font-family: 'Schedule_print';
-            src: url(data:application/x-font-ttf;charset=utf-8;base64,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) format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
         .property-panel-table .e-checkbox-wrapper {
             padding: 0;
         }
 
         .property-panel-table td {
             padding-bottom: 1rem;
-        }
-
-        .e-print-btn .e-icons {
-            font-family: 'Schedule_print', 'e-icons';
-        }
-
-        .e-print-btn .e-icon-schedule-print::before {
-            content: '\e204';
         }
 
         .e-schedule-toolbar .e-toolbar-item.e-today,
@@ -113,10 +98,10 @@
 }
 @section Description{
     <div id="description">
-        <p>In this example, the Scheduler element is Printed by making use of the public method<code>print</code>.</p>
+        <p>In this example, the Scheduler element is Printed by using the public method<code>print</code>.</p>
         <p>
             Also, we can print the schedule based on the custom rendering by passing the <code>ScheduleModel</code> in the <code>print</code> method.
-            In the above demo, we have demonstrated the <code>print</code> method with the below properties of the <code>ScheduleModel</code>.
+            In the above demo, we have demonstrated the <code>print</code> method with the following properties of the <code>ScheduleModel</code>.
         </p>
         <ul>
             <li>height</li>

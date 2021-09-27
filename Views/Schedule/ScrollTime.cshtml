@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2019, 1, 10)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -53,7 +53,7 @@
 @section Description{
     <div id="description">
         <p>
-            In this demo, the way of manually scrolling to specific time on scheduler has been demonstrated by making use of the
+            In this demo, the way of manually scrolling to specific time on scheduler has been demonstrated by using the
             <code>scrollTo</code> method of Schedule.
         </p>
     </div>

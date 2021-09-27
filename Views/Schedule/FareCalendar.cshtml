@@ -7,7 +7,7 @@
             <div class="schedule-demo-heading">
                 Cheapest one way fares from Barcelona to Los Angeles
             </div>
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").SelectedDate(new DateTime(2018, 4, 5)).Views(v => { v.Option(View.Month).Add(); }).Readonly(true).Resources(res =>
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").SelectedDate(new DateTime(DateTime.Today.Year, 4, 5)).Views(v => { v.Option(View.Month).Add(); }).Readonly(true).Resources(res =>
                 {
                     res.Field("AirlineId").Title("Airline").Name("Airlines").AllowMultiple(true).DataSource(ViewBag.airlines).Add();
                 }).EventSettings(new ScheduleEventSettings { Template = "#event-template", EnableTooltip = true, TooltipTemplate = "#tooltip-template" }).ActionBegin("onActionBegin").DataBinding("onDataBinding").DataBound("onDataBound").PopupOpen("onPopupOpen").Render()
@@ -151,8 +151,7 @@
                 var d4 = +(object2.EndTime);
                 return ((d1 - d2) || ((d4 - d2) - (d3 - d1)));
             });
-            var selectedDate = new Date(2018, 3, 1);
-            var currentDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
+            var selectedDate = new Date(new Date().getFullYear(), 3, 1);
             var renderDate = scheduleObj.activeView.getRenderDates();
             var finalData = [];
             for (var i = 0; i < renderDate.length; i++) {
@@ -171,25 +170,26 @@
         }
         function generateEvents(scheduleObj) {
             var collections = [];
+            var year = new Date().getFullYear();
             var dataCollections = [
                 {
                     Id: 100,
-                    StartTime: new Date(2018, 3, 1, 8, 30),
-                    EndTime: new Date(2018, 3, 1, 10, 0),
+                    StartTime: new Date(year, 3, 1, 8, 30),
+                    EndTime: new Date(year, 3, 1, 10, 0),
                     AirlineId: 1
                 }, {
                     Id: 102,
-                    StartTime: new Date(2018, 3, 1, 11, 0),
-                    EndTime: new Date(2018, 3, 1, 12, 0),
+                    StartTime: new Date(year, 3, 1, 11, 0),
+                    EndTime: new Date(year, 3, 1, 12, 0),
                     AirlineId: 2
                 }, {
                     Id: 103,
-                    StartTime: new Date(2018, 3, 1, 14, 0),
-                    EndTime: new Date(2018, 3, 1, 15, 0),
+                    StartTime: new Date(year, 3, 1, 14, 0),
+                    EndTime: new Date(year, 3, 1, 15, 0),
                     AirlineId: 3
                 }
             ];
-            var start = new Date(2018, 3, 1);
+            var start = new Date(year, 3, 1);
             var dateCollections = Array.apply(null, { length: 30 })
                 .map(function (value, index) { return new Date(start.getTime() + (1000 * 60 * 60 * 24 * index)); });
             var id = 1;
@@ -252,8 +252,12 @@
             width: 100%;
         }
 
-        .highcontrast .e-schedule .e-appointment .template-wrap,
-        .highcontrast .e-schedule .best-price:not(.e-work-cells) {
+        .bootstrap5-dark .e-schedule .e-appointment .template-wrap,
+        .tailwind-dark .e-schedule .e-appointment .template-wrap,
+        .bootstrap-dark .e-schedule .e-appointment .template-wrap,
+        .fabric-dark .e-schedule .e-appointment .template-wrap,
+        .material-dark .e-schedule .e-appointment .template-wrap,
+        .highcontrast .e-schedule .e-appointment .template-wrap {
             color: #fff;
         }
 
@@ -270,10 +274,20 @@
             font-size: 12px;
         }
 
+        .bootstrap5-dark .e-schedule .best-price:not(.e-work-cells),
+        .tailwind-dark .e-schedule .best-price:not(.e-work-cells),
+        .bootstrap-dark .e-schedule .best-price:not(.e-work-cells),
+        .fabric-dark .e-schedule .best-price:not(.e-work-cells),
+        .material-dark .e-schedule .best-price:not(.e-work-cells),
         .highcontrast .e-schedule .best-price:not(.e-work-cells) {
             color: #33DB33;
         }
 
+        .bootstrap5-dark .e-schedule .e-work-cells.best-price,
+        .tailwind-dark .e-schedule .e-work-cells.best-price,
+        .bootstrap-dark .e-schedule .e-work-cells.best-price,
+        .fabric-dark .e-schedule .e-work-cells.best-price,
+        .material-dark .e-schedule .e-work-cells.best-price,
         .highcontrast .e-schedule .e-work-cells.best-price {
             background-color: #393939;
         }
@@ -472,12 +486,11 @@
 }
 @section Description{
     <p>
-        In this demo, Scheduler initially displays the fare of the airline service which offers lowest price on each day by comparing
-        between the 3 available airlines. Here, the 3 airline services acts as the Scheduler resources. Appointment collection
+        In this demo, Scheduler initially displays the fare of the airline service which offers lowest price on each day by comparing the 3 available airlines. Here, the 3 airline services acts as the Scheduler resources. Appointment collection
         has been dynamically generated for a month (for all the 3 resources) within the
         <code>generateEvents</code> method and then filtered externally based on the ascending Fare value within the
         <code>filterByFare</code> method. Since each day of the Scheduler needs to display only a single appointment showing the
-        fare value, therefore it's been queried to take only the first 30 values from the sorted list and assigned it to
+        fare value, it's been queried to take only the first 30 values from the sorted list and assigned them to
         the Schedule
         <code>DataSource</code>. Here, the filtering process needs to be carried out during the
         <code>Databinding</code> event and therefore, the dataSource of Scheduler is assigned within this event.

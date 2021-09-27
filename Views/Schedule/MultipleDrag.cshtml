@@ -1,4 +1,4 @@
-﻿﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
@@ -7,7 +7,7 @@
             @Html.EJS().Schedule("Schedule").Width("100%").Height("650px").AllowMultiDrag(true).ShowQuickInfo(false).AllowResizing(false).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); view.Option(View.TimelineMonth).Add(); }).Group(group => group.Resources(ViewBag.Resources)).Resources(res =>
             {
             res.DataSource(ViewBag.Owners).Field("TaskId").Title("Owners").Name("Owners").TextField("text").IdField("id").ColorField("color").Add();
-            }).EventSettings(e => e.DataSource(ViewBag.datasource)).SelectedDate(new DateTime(2018, 4, 4)).Render()
+            }).EventSettings(e => e.DataSource(ViewBag.datasource)).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).Render()
         </div>
     </div>
 }
@@ -26,7 +26,7 @@
 
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo explains you about the ability to select multiple appointments and drag them simultaneously." />
+    <meta name="description" content="This example demonstrates the Multiple Drag in ASP.NET MVC Scheduler control. Explore here for more details." />
 }
 @*custom code end*@
 @section ActionDescription{
@@ -47,9 +47,8 @@
     </div>
 }
 @section Title{
-    <title>ASP.NET MVC Schedule Multiple Drag Example - Syncfusion Demos </title>
+    <title>ASP.NET MVC Scheduler Multiple Drag Example - Syncfusion Demos </title>
 }
 @section Header{
-    <h1 class='sb-sample-text'>Example of Multiple Drag Functionalities in ASP.NET MVC Schedule Control</h1>
+    <h1 class='sb-sample-text'>Example of Multiple Drag in ASP.NET MVC Scheduler Control</h1>
 }
-

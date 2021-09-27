@@ -29,8 +29,8 @@
 }
 
 @section Meta{
-    <meta name="description" content="This example demonstrates the Conditional Formatting functionalities in ASP.NET MVC Spreadsheet control. Explore here for more details." />
-}
+                    <meta name="description" content="This example demonstrates the Conditional Formatting in ASP.NET MVC Spreadsheet control. Explore here for more details."/>
+                }
 @section ActionDescription{
     <div id="action-description">
         <p>
@@ -64,7 +64,7 @@
 		excelObj.merge('A1:H1');
         excelObj.cellFormat({ fontWeight: 'bold', textAlign: 'center' }, 'A2:H2');
         excelObj.cellFormat({ fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle', fontSize: '13pt' }, 'A1:H1');
-		excelObj.numberFormat('$#,##0.00', 'F3:F18');
+		excelObj.numberFormat('$#,##0.00', 'D3:F18');
         excelObj.conditionalFormat({ type: 'BlueDataBar', range: 'D3:D18' });
 		excelObj.conditionalFormat({ type: 'GreenDataBar', range: 'E3:E18' });
         excelObj.conditionalFormat({ type: 'ThreeStars', range: 'H3:H18' });
@@ -91,8 +91,8 @@
 
 @*custom code end*@
 @section Title{
-    <title>ASP.NET MVC Spreadsheet Conditional Formatting Functionalities Example - Syncfusion Demos </title>
-}
+                    <title>ASP.NET MVC Spreadsheet Conditional Formatting Example - Syncfusion Demos </title> 
+                }
 @section Header{
-    <h1 class='sb-sample-text'>Example for Conditional Formatting Functionalities in ASP.NET MVC Spreadsheet Control</h1>
-}
+                    <h1 class='sb-sample-text'>Example of Conditional Formatting in ASP.NET MVC Spreadsheet Control</h1>
+                }

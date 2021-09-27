@@ -33,7 +33,7 @@
            ShapeSettings = new MapsShapeSettings
            {
                Fill = "#fcfbf9",
-               Border = new MapsBorder{ Width = 0.1 , Color = "black" },
+               Border = new MapsBorder{ Width = 0.1 , Color = "black", Opacity = 1 },
                ColorValuePath="name",
                ColorMapping = ViewBag.ColorMapping
            }
@@ -86,7 +86,7 @@
         ];
         function mapLoad(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.maps.layers[0].navigationLineSettings = navigationData;
             args.maps.layers[0].markerSettings = [
                 {

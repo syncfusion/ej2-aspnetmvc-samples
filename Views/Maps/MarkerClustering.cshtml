@@ -40,7 +40,7 @@
     <script>
             function load(args) {
                 var theme = themeName ? themeName : 'Material';
-                args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+                args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
                 args.maps.layers[0].markerSettings[0].imageUrl = '@Url.Content("~/Content/Maps/ballon.png")';
                 args.maps.layers[0].markerClusterSettings.imageUrl = '@Url.Content("~/Content/Maps/cluster.svg")';
             }

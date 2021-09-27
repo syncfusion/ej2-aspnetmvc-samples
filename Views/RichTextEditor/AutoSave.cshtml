@@ -18,8 +18,20 @@
     </div>
 </div>
 <div class="col-lg-4 property-section" id="all-option-table">
-    <label for="checked" style="padding: 10px 70px 10px 0"> Auto Save </label>
-    @Html.EJS().Switch("checked").Checked(true).Change("onChange").Render()
+    <table id="property" title="Properties">
+        <tbody>
+            <tr>
+                <td style="width: 50%">
+                    <label for="checked" style="padding: 10px 70px 10px 0"> Auto Save </label>
+                </td>
+                <td style="width: 50%;padding-right: 10px">
+                    <div>
+                        @Html.EJS().Switch("checked").Checked(true).Change("onChange").Render()
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <style>
     .current-status {
@@ -41,17 +53,29 @@
     .bootstrap4 .e-icons.e-icon-refresh::before {
         content: "\e710";
     }
-
+    
     .bootstrap4 .e-icons.e-icon-tick::before {
         content: "\e718";
     }
-    
-    .tailwind .e-icons.e-icon-refresh::before {
+
+    .tailwind .e-icons.e-icon-refresh::before,
+    .tailwind-dark .e-icons.e-icon-refresh::before {
         content: "\e711";
     }
 
-    .tailwind .e-icons.e-icon-tick::before {
+    .tailwind .e-icons.e-icon-tick::before,
+    .tailwind-dark .e-icons.e-icon-tick::before {
         content: "\e75d";
+    }
+
+    .bootstrap5 .e-icons.e-icon-refresh::before,
+    .bootstrap5-dark .e-icons.e-icon-refresh::before {
+        content: "\e706";
+    }
+
+    .bootstrap5 .e-icons.e-icon-tick::before,
+    .bootstrap5-dark .e-icons.e-icon-tick::before {
+        content: "\e774";
     }
 
     .status-text {
@@ -91,12 +115,12 @@
 
 @section ActionDescription{
    <div id="action-description">
-    <p>Demonstrates how to save the Rich Text Editor’s content automatically with periodic interval. When you type or edit the content, it will be saved automatically by every 5 seconds. </p>
+    <p>This sample demonstrates how to save the Rich Text Editor’s content automatically with periodic interval. When you type or edit the content, it will be saved automatically every 5 seconds. </p>
 </div>
 }
 @section Description{
 <div id="description">
-    <p>The Rich Text Editor provides options to save its content automatically using the ‘saveInterval’ property. By default, the save interval time has 10 seconds from built-in support, but it can be customizable as per the application needs. The interval
+    <p>The Rich Text Editor provides options to save its content automatically using the ‘saveInterval’ property. By default, the save interval time has 10 seconds from built-in support, but it can be customized as per the application needs. The interval
         is calculated based on editing the content and does not considered on idle state.
     </p>
     <p>We have configured save interval as 5 seconds in this example. You can save the content in server also using this ‘auto save’ option.</p>

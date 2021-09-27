@@ -3,7 +3,7 @@
 @using Syncfusion.EJ2.DropDowns
 
 @section ControlsSection{
-    <div class="col-lg-10 control-section">
+    <div class="col-lg-9 control-section">
         <div class="schedule-wrapper">
             @Html.EJS().Schedule("schedule").Width("100%").FirstMonthOfYear(0).MonthsCount(12).CssClass("year-view").Height("650px").Views(view => { view.Option(View.Year).IsSelected(true).Add(); view.Option(View.TimelineYear).DisplayName("Horizontal Timeline Year").Add(); view.Option(View.TimelineYear).DisplayName("Vertical Timeline Year").Orientation(Orientation.Vertical).Group(new ScheduleGroup { Resources = ViewBag.Resources }).Add(); }).EventRendered("onEventRendered").Resources(res =>
             {
@@ -11,7 +11,7 @@
             }).EventSettings(e => e.DataSource("generateEvents()")).Render()
         </div>
     </div>
-    <div class="col-lg-2 property-section">
+    <div class="col-lg-3 property-section">
         <table id='property' title='Properties'>
             <tbody>
                 <tr>
@@ -103,7 +103,7 @@
 }
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="The example showcases the year view and Timeline year view of the JavaScript Scheduler. The views are helpful to view the events in an annual calendar view." />
+    <meta name="description" content="This example demonstrates the Year View in ASP.NET MVC Scheduler control. Explore here for more details." />
 }
 @*custom code end*@
 @section ActionDescription{

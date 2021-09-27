@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2;
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Selection in ASP.NET MVC Heatmap Chart control. Explore here for more details."/>
+                    <meta name="description" content="This example demonstrates the Selection in ASP.NET MVC HeatMap Chart control. Explore here for more details."/>
                 }
 @section ControlsSection{
     <div class="col-md-9 control-section">
@@ -73,6 +73,9 @@
         #control-container {
             padding: 0px !important;
         }
+        body.material-dark .property-panel-section {
+            color: #ffffff;
+        }
     </style>
     <script>
         var cellSelected = function (args) {
@@ -119,13 +122,13 @@
 
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
-            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
             selectedTheme = selectedTheme.toLowerCase();
         };
         var chartLoad = function (args) {
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
 
         };
         var button = new ej.buttons.Button();
@@ -192,8 +195,8 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC Heatmap Chart Selection Example - Syncfusion Demos </title> 
+                    <title>ASP.NET MVC HeatMap Chart Selection Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Selection in ASP.NET MVC Heatmap Chart Control</h1>
+                    <h1 class='sb-sample-text'>Example of Selection in ASP.NET MVC HeatMap Chart Control</h1>
                 }

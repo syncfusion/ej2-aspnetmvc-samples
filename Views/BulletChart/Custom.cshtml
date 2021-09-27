@@ -133,7 +133,7 @@
         }
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
-            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/dark/i, "Dark").replace(/light/i, 'Light').replace(/contrast/i, 'Contrast');
+            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         }
     </script>
     @*custom code end*@
@@ -145,12 +145,12 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates a bullet chart with with different customization in value, range fill, opposed position changes.
+        This sample illustrates a bullet chart with different customization in value, range fill, opposed position changes.
     </p>
 }
 @section Description{
     <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a feature bar or comparative bar on the bullet chart.
+        Tooltip is enabled in this example. To see the tooltip in action, hover a feature bar or comparative bar on the bullet chart.
     </p>
 }
 @section Title{

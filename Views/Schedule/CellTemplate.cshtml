@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Views(ViewBag.view).Height("650px").CellTemplate("#apptemplate").SelectedDate(new DateTime(2017, 12, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Views(ViewBag.view).Height("650px").CellTemplate("#apptemplate").SelectedDate(new DateTime(DateTime.Today.Year, 12, 15)).Render()
         </div>
     </div>
     <style>

@@ -10,7 +10,8 @@ var searchInstance;
 var headerThemeSwitch = document.getElementById('header-theme-switcher');
 var settingElement = ej.base.select('.sb-setting-btn');
 var themeList = document.getElementById('themelist');
-var themeCollection = ['material', 'fabric', 'bootstrap', 'bootstrap4', 'highcontrast','tailwind'];
+var themes = ['bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'material', 'bootstrap4', 'bootstrap', 'bootstrap-dark', 'fabric', 'fabric-dark', 'highcontrast'];
+var defaultTheme = 'bootstrap5';
 var themeDropDown;
 var contentTab;
 var ArrayItem;
@@ -56,7 +57,7 @@ var isMobile = window.matchMedia('(max-width:550px)').matches;
 var isCheck = window.matchMedia('(max-width:600px)').matches;
 var isTablet = window.matchMedia('(min-width:600px) and (max-width: 850px)').matches;
 var isPc = window.matchMedia('(min-width:850px)').matches;
-var selectedTheme = location.hash.split('/')[1] || 'material';
+var selectedTheme = location.hash.split('/')[1] || defaultTheme;
 var toggleAnim = new ej.base.Animation({
     duration: 500,
     timingFunction: 'ease'
@@ -454,7 +455,7 @@ function sbHeaderClick(action, preventSearch) {
         case 'toggleSettings':
             settingElement.classList.toggle('active');
             setPressedAttribute(settingElement);
-            themeDropDown.index = themeCollection.indexOf(selectedTheme);
+            themeDropDown.index = themes.indexOf(selectedTheme);
             curPopup = settingsPopup;
             break;
     }
@@ -612,7 +613,7 @@ function setMouseOrTouch(e) {
 
 function onNextButtonClick(arg) {
     sampleOverlay();
-    var theme = location.href.split('/')[5] || 'material';
+    var theme = location.href.split('/')[5] || defaultTheme;
     var curSampleUrl = location.pathname;
     var inx = samplesAr.indexOf(curSampleUrl);
     if (inx !== -1) {
@@ -626,7 +627,7 @@ function onNextButtonClick(arg) {
 
 function onPrevButtonClick(arg) {
     sampleOverlay();
-    var theme = location.href.split('/')[5] || 'material';
+    var theme = location.href.split('/')[5] || defaultTheme;
     var curSampleUrl = location.pathname;
     var inx = samplesAr.indexOf(curSampleUrl);
     if (inx !== -1) {
@@ -884,8 +885,8 @@ function changeMouseOrTouch(str) {
 function loadTheme(theme) {
     var body = document.body;
     if (body.classList.length > 0) {
-        for (var themeItem in themeCollection) {
-            body.classList.remove(themeCollection[themeItem]);
+        for (var themeItem in themes) {
+            body.classList.remove(themes[themeItem]);
         }
     }
     body.classList.add(theme);
@@ -956,7 +957,7 @@ function toggleLeftPane() {
 
 function toggleRightPane() {
     ej.base.select('#right-sidebar').classList.remove('sb-hide');
-    themeDropDown.index = themeCollection.indexOf(selectedTheme);
+    themeDropDown.index = themes.indexOf(selectedTheme);
     if (isMobile) {
         settingsidebar.toggle();
     }
@@ -994,7 +995,7 @@ function getSampleList() {
                         });
                     }, 200);
                     setTimeout(function () {
-                        location.href = location.origin + getPathName() + 'Grid/GridOverview#/material'
+                        location.href = location.origin + getPathName() + `Grid/GridOverview#/${defaultTheme}`
                     }, 2000)
                 }
                 continue;
@@ -1045,7 +1046,7 @@ function renderLeftPaneComponents() {
 }
 
 function getThemeName() {
-    return location.hash.split('/')[1] ? location.hash.split('/')[1] : 'material';
+    return location.hash.split('/')[1] ? location.hash.split('/')[1] : defaultTheme;
 }
 
 function getPathName() {
@@ -1258,7 +1259,7 @@ function sampleArray() {
         var dataManager = new ej.data.DataManager(samplesList[node].samples);
         var samples = dataManager.executeLocal(new ej.data.Query().sortBy('order', 'ascending'));
         for (var sample in samples) {
-            var selectedTheme = location.hash.split('/')[1] ? location.hash.split('/')[1] : 'material';
+            var selectedTheme = location.hash.split('/')[1] ? location.hash.split('/')[1] : defaultTheme;
             var control = samplesList[node].directory;
             var sampleUrl = samples[sample].url;
             var loc = control + '/' + sampleUrl;
@@ -1278,7 +1279,7 @@ function addRoutes(samplesList) {
             samplePath = samplePath.concat(control + '/' + sample);
             var sampleName = node.name + ' / ' + ((node.name !== subNode.category) ?
                 (subNode.category + ' / ') : '') + subNode.url;
-            var selectedTheme = location.hash.split('/')[1] ? location.hash.split('/')[1] : 'material';
+            var selectedTheme = location.hash.split('/')[1] ? location.hash.split('/')[1] : defaultTheme;
             var urlString = control + '/' + sample;
             if (getSamplePath() === urlString) {
                 var dataSourceLoad = document.getElementById(node.dataSourcePath);
@@ -1455,7 +1456,7 @@ function mobNavOverlay(isOverlay) {
 function parseHash(newHash, oldHash) {
     var newTheme = newHash.split('/')[0];
     var control = newHash.split('/')[1];
-    if (newTheme !== selectedTheme && themeCollection.indexOf(newTheme) !== -1) {
+    if (newTheme !== selectedTheme && themes.indexOf(newTheme) !== -1) {
         location.reload();
         crossroads.parse(newHash);
     }
@@ -1512,7 +1513,7 @@ function loadJSON() {
     overlay();
     changeMouseOrTouch(switchText);
     // localStorage.removeItem('ej2-switch');
-    ej.base.enableRipple(selectedTheme === 'material' || !selectedTheme);
+    ej.base.enableRipple(selectedTheme === defaultTheme || !selectedTheme);
     loadTheme(selectedTheme);
     loadCulture(switchlocalization);
 }

@@ -12,6 +12,32 @@
         .e-play-icon::before {
             content: '\e34b';
         }
+
+        .e-view.fabric .e-play-icon::before, .e-view.fabric-dark .e-play-icon::before {
+            content: '\e7df';
+        }
+
+        .e-view.bootstrap .e-play-icon::before {
+            content: '\ebd2';
+        }
+
+        .e-view.bootstrap4 .e-play-icon::before {
+            content: '\e743';
+        }
+
+        .e-view.tailwind .e-play-icon::before, .e-view.tailwind-dark .e-play-icon::before {
+            content: '\e76c';
+        }
+
+        .e-view.highcontrast .e-play-icon::before {
+            content: '\ebf9';
+        }
+
+        .e-view.bootstrap5 .e-play-icon::before, .e-view.bootstrap5-dark .e-play-icon::before {
+            content: '\e75d';
+        }
+
+
     </style>
     <div class="col-lg-9 control-section">
         <div id="outer" style="width:100%">
@@ -44,7 +70,8 @@
                 ColorValuePath="population",
                 Border = new MapsBorder{
                             Width = 0.5,
-                            Color = "gray"
+                            Color = "gray",
+                            Opacity = 1
                 }
 
            }
@@ -73,7 +100,7 @@
         var maps;
         function loadMaps(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             maps = args.maps;
             args.maps.layers[0].shapeSettings.colorMapping = [
                 {

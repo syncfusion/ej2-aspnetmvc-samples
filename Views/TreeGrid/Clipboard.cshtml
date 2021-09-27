@@ -56,7 +56,7 @@
             <tr>
                 <td class="left-side">Hierarchy Mode</td>
                 <td>
-                    @Html.EJS().DropDownList("SearchMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Render()
+                    @Html.EJS().DropDownList("SearchMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Width("100px").Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Render()
                 </td>
             </tr>
         </table>

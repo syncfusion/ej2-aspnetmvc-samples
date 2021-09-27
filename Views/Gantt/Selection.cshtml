@@ -25,13 +25,15 @@
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties">
             <tr>
-                <td style="width: 30%">
-                    <div>
+                <td style="width: 100%">
+                    <div style="fontSize: 15px">
                         Selection Mode
                     </div>
                 </td>
-                <td style="width: 70%;padding-right: 5px">
-                    <div>
+            </tr>
+            <tr>
+                <td style="width: 100%;padding-right: 5px">
+                    <div style="width: 150px">
                         @(Html.EJS().DropDownList("SelectionModeList").DataSource((IEnumerable<object>)ViewBag.Data1).PopupWidth("100px")
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value("Row")
                             .Render()
@@ -40,13 +42,15 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 30%">
-                    <div>
+                <td style="width: 100%">
+                    <div style="fontSize: 15px">
                         Selection Type
                     </div>
                 </td>
-                <td style="width: 70%;padding-right: 5px">
-                    <div>
+            </tr>
+            <tr>
+                <td style="width: 100%;padding-right: 5px">
+                    <div style="width: 150px">
                         @(Html.EJS().DropDownList("SelectionTypeList").DataSource((IEnumerable<object>)ViewBag.Data2).PopupWidth("100px")
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value("Single")
                             .Render()
@@ -55,13 +59,15 @@
                 </td>
             </tr>
             <tr>
-                <td style="width: 30%">
-                    <div>
+                <td style="width: 100%">
+                    <div style="fontSize: 15px">
                         Toggle Selection
                     </div>
                 </td>
-                <td style="width: 70%;padding-right: 5px">
-                    <div>
+            </tr>
+            <tr>
+                <td style="width: 100%;padding-right: 5px">
+                    <div style="width: 150px">
                         @(Html.EJS().DropDownList("SelectionToggleList").DataSource((IEnumerable<object>)ViewBag.Data3).PopupWidth("100px")
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value(false)
                             .Render()

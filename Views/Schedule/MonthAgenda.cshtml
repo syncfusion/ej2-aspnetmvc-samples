@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper schedule-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("510px").Views(ViewBag.view).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 6, 20)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("510px").Views(ViewBag.view).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 6, 20)).Render()
         </div>
     </div>
     <style>
@@ -33,7 +33,7 @@
             In this demo, the active view of Scheduler is set to
             <code>MonthAgenda</code> and no other view options are provided to
             <code>Views</code> property. This view is designed by considering the combination of both the calendar and agenda layout together,
-            so that whenever a particular date is selected – the events belonging to that date will be displayed on the event
+            so that whenever a particular date is selected the events belonging to that date will be displayed on the event
             section at the bottom. Also, the dates which holds one or more events are marked with a round indicator below that
             date.
         </p>

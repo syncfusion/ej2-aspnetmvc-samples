@@ -32,7 +32,7 @@
     <script>
         function mapsLoad(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.maps.layers[0].markerSettings = [{
                 visible: true,
                 template: '<div><img src="../Content/Maps/gold_ballon.png"' +
@@ -105,7 +105,7 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This demo for Essential JS2 Maps control uses its Bing map support to visualizes the locations of top 10 countries in gold production in 2014." />
+    <meta name="description" content="This demo for Essential JS2 Maps control uses its Bing map support to visualize the locations of top 10 countries in gold production in 2014." />
 }
 @section Description{
     <div id="description">

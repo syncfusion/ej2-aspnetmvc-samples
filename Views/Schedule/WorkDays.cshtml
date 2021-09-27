@@ -5,29 +5,23 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.WorkWeek).Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).WorkDays(ViewBag.workDays).WorkHours(new ScheduleWorkHours { Start = "08:00" }).SelectedDate(new DateTime(2018, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.WorkWeek).Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).WorkDays(ViewBag.workDays).WorkHours(new ScheduleWorkHours { Start = "08:00" }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 30%">
-                        <div>Work days</div>
-                    </td>
-                    <td style="width: 70%;">
+                    <td style="width: 100%;">
                         <div>
-                            @Html.EJS().DropDownList("scheduleworkdays").Value("1,3,5").PopupWidth("auto").DataSource(ViewBag.workDaysdata).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Render()
+                            @Html.EJS().DropDownList("scheduleworkdays").Value("1,3,5").PopupWidth("auto").Placeholder("Work days").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).DataSource(ViewBag.workDaysdata).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Render()
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
-                    <td style="width: 30%">
-                        <div>First day of week</div>
-                    </td>
-                    <td style="width: 70%;">
+                    <td style="width: 100%;">
                         <div>
-                            @Html.EJS().DropDownList("scheduledayofweek").Value("0").PopupHeight("250px").DataSource(ViewBag.dayOfWeek).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("scheduleWeek").Render()
+                            @Html.EJS().DropDownList("scheduledayofweek").Value("0").Placeholder("First day of week").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).PopupHeight("250px").DataSource(ViewBag.dayOfWeek).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("scheduleWeek").Render()
                         </div>
                     </td>
                 </tr>
@@ -75,8 +69,8 @@
             applies only on these given working days.
         </p>
         <p>
-            The first day of the week can also be set on the Scheduler by making use of the
-            <code>FirstDayOfWeek</code> property, doing so which will make the Scheduler to start with that day.
+            The first day of the week can also be set on the Scheduler by using the
+            <code>FirstDayOfWeek</code> property, which will make the Scheduler to start with that day.
         </p>
         <p>
             <strong>Note: </strong> Here, Sunday is always denoted as 0, Monday as 1 and so on.

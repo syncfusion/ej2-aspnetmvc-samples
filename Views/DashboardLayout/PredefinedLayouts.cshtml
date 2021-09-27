@@ -140,6 +140,23 @@
         padding: 12px 0 12px 0;
     }
 
+    body.material-dark .e-panel,
+    body.fabric-dark .e-panel,
+    body.bootstrap-dark .e-panel,
+    body.tailwind-dark .e-panel {
+        color: #ffffff;
+    }
+
+        body.material-dark .e-panel .panel-content,
+        body.material-dark .property-section,
+        body.fabric-dark .e-panel .panel-content,
+        body.highcontrast .e-panel .panel-content,
+        body.bootstrap5-dark .e-panel .panel-content,
+        body.bootstrap-dark .e-panel .panel-content,
+        body.tailwind-dark .e-panel .panel-content {
+            color: #ffffff;
+        }
+
     #dashboard .e-panel-container .e-panel-header {
         border-bottom: 1px solid #d7d7d7;
     }
@@ -287,8 +304,8 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample demonstrates, the functionality of dynamically updating the panels inside the DashboardLayout by selecting it from the pre-defined values in the properties panel. Go to the properties panel section and select any of the pre-defined layout,
-            based on selection the panles are updated in the dashboard layout dynamically inside the DashboardLayout. Click the <code>reset</code> button to reset the panels settings of the layout.
+            This sample demonstrates the functionality of dynamically updating the panels inside the DashboardLayout by selecting it from the pre-defined values in the properties panel. Go to the properties panel section and select any of the pre-defined layout.
+            Based on selection, the panels will be updated in the dashboard layout dynamically inside the DashboardLayout. Click the <code>reset</code> button to reset the panels settings of the layout.
         </p>
     </div>
 

@@ -4,7 +4,7 @@
 ﻿@section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").HeaderRows(headerRow => { headerRow.Option(HeaderRowType.Month).Template("#month-template").Add(); headerRow.Option(HeaderRowType.Week).Template("#week-template").Add(); headerRow.Option(HeaderRowType.Date).Add(); }).Views(view => { view.Option(View.TimelineMonth).Interval(12).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).EventRendered("onEventRendered").SelectedDate(new DateTime(2018, 1, 1)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").HeaderRows(headerRow => { headerRow.Option(HeaderRowType.Month).Template("#month-template").Add(); headerRow.Option(HeaderRowType.Week).Template("#week-template").Add(); headerRow.Option(HeaderRowType.Date).Add(); }).Views(view => { view.Option(View.TimelineMonth).Interval(12).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).EventRendered("onEventRendered").SelectedDate(new DateTime(DateTime.Today.Year, 1, 1)).Render()
         </div>
     </div>
     <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
@@ -45,16 +45,16 @@
 @section Description{
     <div id="description">
         <p>
-            Unlike the usual date and time rows, timeline view can be displayed with additional header rows to display the years, months
+            Unlike the usual date and time rows, timeline view can be displayed with additional header rows to display the years, months,
             and week numbers. To do so, define the
             <code>headerRows</code> property which accepts an array of object and each object includes the
             <code>option</code> API to define the specific header row type such as
             <code>Year</code>,
             <code>Month</code>,
-            <code>Week</code> and
+            <code>Week</code>, and
             <code>Date</code>. The object also includes the
             <code>template</code> option to provide label customization on these rows. This
-            <code>headerRows</code> property is application only on timeline views.
+            <code>headerRows</code> property is applicable only on timeline views.
         </p>
     </div>
 }

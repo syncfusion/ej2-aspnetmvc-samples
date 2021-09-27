@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(view => { view.Option(View.Week).EventTemplate("#event-template").Add(); view.Option(View.TimelineWeek).EventTemplate("#timeline-event-template").Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).Readonly(true).StartHour("08:00").EndHour("18:00").WorkHours(new ScheduleWorkHours { Start = "08:00" }).SelectedDate(new DateTime(2018, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(view => { view.Option(View.Week).EventTemplate("#event-template").Add(); view.Option(View.TimelineWeek).EventTemplate("#timeline-event-template").Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).Readonly(true).StartHour("08:00").EndHour("18:00").WorkHours(new ScheduleWorkHours { Start = "08:00" }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
 }
@@ -91,9 +91,7 @@
     <div class='template-wrap' style='background:${SecondaryColor}'>
         <div class="subject" style='background:${PrimaryColor}'>${Subject}</div>
         <div class="time" style='background:${PrimaryColor}'>Time: ${getTimeString(data.StartTime)} - ${getTimeString(data.EndTime)}</div>
-        <div class="image">
-            <img src="@Url.Content("~/Content/schedule/images/${ImageName}.svg")" alt="${ImageName}" />
-        </div>
+        <div class="image"><img src="@Url.Content("~/Content/schedule/images/${ImageName}.svg")" alt="${ImageName}" /></div>
         <div class="description">${Description}</div>
         <div class="footer" style='background:${PrimaryColor}'></div>
     </div>
@@ -129,7 +127,7 @@
 @section Description{
     <div id="description">
         <p>
-            With the usage of template, the user can format and change the default appearance of the events by making use of the
+            With the usage of template, the user can format and change the default appearance of the events by using the
             <code>Template</code> option which is available within the
             <code>EventSettings</code> property. Here, the HTML template design is compiled and then the resultant output will be displayed directly on
             the events.

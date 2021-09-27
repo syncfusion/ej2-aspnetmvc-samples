@@ -29,18 +29,18 @@
                     Width = 0
                 }
               }
-           } }).Render();
+           } }).Render()
         </div>
     </div>
     <div class="col-md-4 property-section">
-        <table id="property" title="Properties" style="width: 100%">
+        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
             <tbody>
                 <tr>
                     <td>
                         <div>Orientation</div>
                     </td>
                     <td>
-                        <div>
+                        <div style="width:140px;">
                             <select name="selectIndex" autocomplete="off" id="orientationMode" style="width:90%">
                                 <option value="Vertical" selected="">Vertical</option>
                                 <option value="Horizontal">Horizontal</option>
@@ -53,7 +53,7 @@
                         <div>Container Type</div>
                     </td>
                     <td>
-                        <div>
+                        <div style="width:140px;">
                             <select name="selectIndex" autocomplete="off" id="containerMode" style="width:90%">
                                 <option value="Thermometer">Thermometer</option>
                                 <option value="Normal">Normal</option>
@@ -70,14 +70,14 @@
         var gauge;
         function onGaugeLoad(sender) {
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             gauge = sender.gauge;
         }
 
         var containerMode = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select Range Bar Color',
-            width: 120,
+            width: 140,
             change: function () {
                 gauge.container.type = containerMode.value;
                 gauge.refresh();
@@ -87,7 +87,7 @@
         var orientationMode = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select Range Bar Color',
-            width: 120,
+            width: 140,
             change: function () {
                 gauge.orientation = orientationMode.value;
                 gauge.refresh();
@@ -100,7 +100,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample demonstrates the type of containers used in linear gauge. Orientation and container type of linear gauge can be changed by using <code>Orientation</code> and <code>Container Type</code> options
+            This sample demonstrates the type of containers used in linear gauge. Orientation and container type of linear gauge can be changed by using <code>Orientation</code> and <code>Container Type</code> options.
         </p>
     </div>
 }

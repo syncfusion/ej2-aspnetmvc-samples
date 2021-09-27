@@ -6,9 +6,6 @@
         #container {
             display: block;
         }
-        #container_stockChart_chart_Series_0 {
-            opacity: 0.6;
-        }
         #container_stock_border {
             pointer-events: none;
         }
@@ -19,7 +16,7 @@
             @(Html.EJS().StockChart("container").Load("load").Title("AAPL Stock Price")
               .Series(sr =>
                {
-               sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("high").Fill("#BDEDE9").Name("google").Add();
+               sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("high").Opacity(0.5).Name("google").Add();
                }
             ).PrimaryXAxis(xaxis =>xaxis.MajorGridLines(mg=>mg.Color("transparent")
              ).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).CrosshairTooltip(ct=>ct.Enable(true)))
