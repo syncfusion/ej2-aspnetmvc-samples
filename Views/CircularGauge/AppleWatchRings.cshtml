@@ -257,14 +257,14 @@
         function gaugeLoad1(sender) {
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             sender.gauge.axes[0].minorTicks.height = 0;
             sender.gauge.axes[0].majorTicks.height = 0;
         }
         function gaugeLoad2(sender) {
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             sender.gauge.axes[0].minorTicks.height = 0;
             sender.gauge.axes[0].majorTicks.height = 0;
             if (selectedTheme === 'highcontrast') {
@@ -273,7 +273,7 @@
         }
         function gaugeLoad3(sender) {
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             sender.gauge.axes[0].minorTicks.height = 0;
             sender.gauge.axes[0].majorTicks.height = 0;
             if (selectedTheme === 'highcontrast') {
@@ -283,7 +283,7 @@
         function gaugeLoad4(sender) {
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             sender.gauge.axes[0].minorTicks.height = 0;
             sender.gauge.axes[0].majorTicks.height = 0;
             if (selectedTheme === 'highcontrast') {

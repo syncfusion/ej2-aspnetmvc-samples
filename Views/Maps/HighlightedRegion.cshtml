@@ -54,7 +54,7 @@
            ShapeSettings = new MapsShapeSettings
            {
                Fill = "#F5F5F5",
-               Border = new MapsBorder{ Width = 1 , Color = "#EEDA97" },
+               Border = new MapsBorder{ Width = 1 , Color = "#EEDA97", Opacity = 1 },
            },
            MarkerSettings = new List<Syncfusion.EJ2.Maps.MapsMarker>
            {
@@ -94,7 +94,7 @@
     <script type="text/javascript">
         function mapLoad(sender) {
             var theme = themeName ? themeName : 'Material';
-            sender.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            sender.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             sender.maps.layers[0].markerSettings[0].imageUrl = '@Url.Content("~/Content/Maps/ballon.png")';
             sender.maps.layers[0].markerSettings[3].dataSource = [
                             {
@@ -215,7 +215,7 @@
         <br />
         <p style="font-weight: 500">Injecting Module</p>
         <p>
-            Maps component features are segregated into individual feature-wise modules. To use marker template, you need to inject <code>Marker</code> module using <code>Maps.Inject(Marker)</code> method.
+            Maps component features are segregated into individual feature-wise modules. To use marker template, you need to inject <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
         </p>
     </div>
 }

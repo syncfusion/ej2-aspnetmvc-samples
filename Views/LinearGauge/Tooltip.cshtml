@@ -44,14 +44,14 @@
            AxisValue =16.5, X =50, Y = 52,
            AxisIndex = 1
        }
-   }).Render();
+   }).Render()
     </div>
 
     <script type="text/javascript">
         var gauge;
         function onGaugeLoad(sender) {
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             gauge = sender.gauge;
             sender.gauge.orientation = "Horizontal";
             for (var i = 0; i < sender.gauge.annotations.length; i++) {

@@ -25,7 +25,7 @@
       col.Field("CurrentSalary").HeaderText("Current Salary").Filter(new { type = "Menu" }).Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("160").Add();
       col.Field("Address").HeaderText("Address").Width("240").Filter(new { type = "Menu" }).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
 
-  }).EnableVirtualization(true).Height("600").RowHeight(38).EnableHover(false).AllowSorting(true).Load("load").QueryCellInfo("queryCellInfo").DataBound("startTimer").ActionComplete("complete").AllowSelection(true).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple).PersistSelection(true).CheckboxOnly(true)).Render()
+  }).EnableVirtualization(true).Height("600").RowHeight(38).EnableHover(false).EnableHeaderFocus(true).AllowSorting(true).Load("load").QueryCellInfo("queryCellInfo").DataBound("startTimer").ActionComplete("complete").AllowSelection(true).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple).PersistSelection(true).CheckboxOnly(true)).Render()
     </div>
 
 
@@ -313,8 +313,9 @@
         .bootstrap .empimg {
             background-color: #0078d6;
         }
-        
-        .bootstrap4 .empimg {
+
+        .bootstrap4 .empimg,
+        .bootstrap5 .empimg {
             background-color: #0078d6;
         }
         
@@ -393,6 +394,27 @@
             position: relative;
             top: 9px;
         }
+
+        .bootstrap5 td.e-rowcell .statustxt.e-inactivecolor,
+        .bootstrap5 td.e-rowcell .statustxt.e-activecolor {
+            top: 8px;
+        }
+
+        .bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-activecolor,
+        .bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-inactivecolor {
+            position: relative;
+            top: 1.5px;
+        }
+
+        .e-bigger.bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-activecolor,
+        .e-bigger.bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-inactivecolor {
+            top: -0.5px;
+        }
+
+        .bootstrap5 .e-checkboxfiltertext #Trusttext {
+            margin-left: -4px;
+        }
+
         .statustemp.e-inactivecolor {
             background-color: #ffd7cc;
         }

@@ -30,9 +30,10 @@
             <tbody>
                 <tr style="height: 50px">
                     <td style="width: 60%">
-                        <div>Projection Type</div>
+                        <div style="margin-left: -10px">Projection Type</div>
                     </td>
                     <td style="width: 40%;">
+                        <div style="width: -10px; margin-left: 10px">
                         <select name="projectionType" id="projectiontype" style="margin-left: -25px">
                             <option value="Mercator">Mercator</option>
                             <option value="Equirectangular">Equirectangular</option>
@@ -43,6 +44,7 @@
                             <option value="Winkel3">Winkel3</option>
                             <option value="AitOff">AitOff</option>
                         </select>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -52,13 +54,13 @@
         var maps;
         function loadMaps(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             maps = args.maps;
         }
         var projection = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select projection type',
-            width: 120,
+            width: 105,
             change: function () {
                 maps.projectionType = projection.value;
                 maps.refresh();

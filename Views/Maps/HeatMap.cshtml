@@ -35,7 +35,7 @@
        },
        ShapeSettings = new MapsShapeSettings
        {
-           Border = new MapsBorder{ Width = 0.2, Color = "white" },
+           Border = new MapsBorder{ Width = 0.2, Color = "white", Opacity = 1 },
            ColorValuePath = "population",
            ColorMapping = ViewBag.ColorMapping
        }
@@ -49,7 +49,7 @@
     <script type="text/javascript">
         function mapLoad(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         }
     </script>
 }

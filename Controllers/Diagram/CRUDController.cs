@@ -25,6 +25,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             items.Add(new ToolbarItem { TooltipText = "Edit", Id = "Edit", PrefixIcon = "e-ddb-icons e-update", Text = "Edit" });
             items.Add(new ToolbarItem { Type = ItemType.Separator });
             items.Add(new ToolbarItem { TooltipText = "Delete", Id = "Delete", PrefixIcon = "e-ddb-icons e-delete", Text = "Delete" });
+            items.Add(new ToolbarItem { Type = ItemType.Separator });
+            items.Add(new ToolbarItem { TooltipText = "Reset", Id = "Reset", PrefixIcon = "e-ddc-icons e-reset", Text = "Reset" });
 
             ViewBag.tbItems = items;
 

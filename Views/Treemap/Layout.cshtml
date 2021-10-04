@@ -46,7 +46,8 @@
         var treemap;
         function load(sender) {
             var theme = themeName ? themeName : 'Material';
-            sender.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            sender.treemap.theme = ((theme.charAt(0).toUpperCase() +
+                theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast'));
 
             var data = [{ State: "United States", GDP: 17946, percentage: 11.08, Rank: 1 },
             { State: "China", GDP: 10866, percentage: 28.42, Rank: 2 },

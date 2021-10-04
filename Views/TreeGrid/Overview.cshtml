@@ -42,6 +42,7 @@
     window.utcZone = function (data) {
         var img = document.createElement('img');
         img.src = "../Content/images/treegrid/__Normal.png";
+        img.style.filter = "brightness(150%)";
         if (data.timezone.indexOf('-') !== -1) {
             img.className = 'negativeTimeZone';
         }
@@ -91,7 +92,7 @@
     </span>
 </script>
 <script id="locationtemplate" type="text/x-template">
-    <div class="image">
+    <div class="image" id="coordinates">
         <img src="../Content/images/treegrid/Map.png" class="e-image" /> &nbsp
         <a target="_blank" href="https://www.google.com/maps/place/${coordinates}">${coordinates}</a>
     </div>
@@ -140,9 +141,14 @@
         height: 19px;
         border-radius: 15px;
         text-align: center;
-        background-color: #cff0dc;
+        background-color: #C3F1D0;
         color: #00752F;
         width: 47px;
+    }
+
+    .tailwind .e-grid .statustemp, .tailwind-dark .e-grid .statustemp,
+    .bootstrap5 .e-grid .statustemp, .bootstrap5-dark .e-grid .statustemp {
+        padding-top: 2px;
     }
 
         .statustemp.e-lowgdp {
@@ -151,7 +157,7 @@
         }
 
     td.e-rowcell .statustxt {
-        color: #00cc00;
+        color: #398120;
         position: relative;
     }
 
@@ -166,7 +172,7 @@
     }
 
         .rating .star.checked {
-            color: #ffa600;
+            color: #EE9E54;
         }
 
         .rating .star:before {
@@ -197,7 +203,7 @@
     }
 
     .highcontrast .e-grid #myProgress {
-        background-color: black;
+        background-color: whitesmoke;
     }
 
     #myProgress {
@@ -205,7 +211,16 @@
         height: 18px;
         width: 10em;
         text-align: left;
-        background-color: white;
+        background-color: whitesmoke;
+    }
+
+    .tailwind .e-grid #coordinates.e-checkbox-wrapper .e-label, .e-css.e-checkbox-wrapper .e-label,
+    .tailwind-dark .e-grid #coordinates.e-checkbox-wrapper .e-label, .e-css.e-checkbox-wrapper .e-label {
+        display: inline;
+    }
+
+    #coordinates .e-image {
+        filter: brightness(180%);
     }
 
     #myBar.progressdisable {
@@ -218,12 +233,14 @@
 @*custom code start*@
 
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Overview in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                    <meta name="description" content="This ASP.NET MVC Tree Grid example demonstrates the overview in ASP.NET MVC Tree Grid Component. Explore here for more details."/>
                 }
 
 @section ActionDescription{
     <div id="action-description">
-        <p>This sample demonstrates the overview of basic Tree Grid features such as sorting, filtering, conditional formatting, column template and scrolling.</p>
+        <p>This <a target="_blank" 
+        href="https://www.syncfusion.com/aspnet-mvc-ui-controls/tree-grid">
+        ASP.NET MVC Tree Grid</a> example demonstrates the overview of basic Tree Grid features such as sorting, filtering, conditional formatting, column template and scrolling.</p>
     </div>
 }
 

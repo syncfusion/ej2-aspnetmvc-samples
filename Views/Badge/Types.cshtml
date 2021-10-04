@@ -135,12 +135,12 @@
                 }
 
 @section ActionDescription{
-    <p>This sample demonstrates the 8-predefined badge color for various scenario which can be applied from modifier class.</p>
+    <p>This sample demonstrates the 8-predefined badge colors for various scenarios which can be applied from modifier class.</p>
 }
 
 @section Description{
     <p>
-        The badge supports 8 different essential colours for various situations. they are listed below.
+        The badge supports 8 different essential colours for various situations. They are listed below.
         <i>
             All the class needs to be added along with the
             <code>.e-badge class.</code>
@@ -203,6 +203,13 @@
 
     .badge-types .e-btn {
         position: relative;
+    }
+
+    body.material-dark .e-badge-showcase.e-card,
+    body.tailwind-dark .e-badge-showcase.e-card,
+    body.bootstrap-dark .e-badge-showcase.e-card,
+    body.fabric-dark .e-badge-showcase.e-card {
+        background-color: inherit;
     }
 
     /* Media queries for Multiple devices */

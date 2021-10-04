@@ -13,7 +13,7 @@
                       {
                           res.DataSource(ViewBag.Projects).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
                           res.DataSource(ViewBag.Categories).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").GroupIDField("groupId").ColorField("color").AllowMultiple(true).Add();
-                      }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewBag.datasource)).SelectedDate(new DateTime(2018, 4, 4)).Render()
+                      }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewBag.datasource)).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).Render()
         </div>
     </div>
 
@@ -28,7 +28,7 @@
 
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="This demo showcases how multiple resources are grouped in compact view and how events are portrayed in the scheduler view layouts." />
+    <meta name="description" content="This example demonstrates the Adaptive Grouping in ASP.NET MVC Scheduler control. Explore here for more details." />
 }
 @*custom code end*@
 
@@ -47,8 +47,8 @@
     </div>
 }
 @section Title{
-    <title>ASP.NET MVC Schedule Adaptive Grouping Example - Syncfusion Demos</title>
+    <title>ASP.NET MVC Scheduler Adaptive Grouping Example - Syncfusion Demos </title>
 }
 @section Header{
-    <h1 class='sb-sample-text'>Example of Adaptive Grouping in ASP.NET MVC Schedule Control</h1>
+    <h1 class='sb-sample-text'>Example of Adaptive Grouping in ASP.NET MVC Scheduler Control</h1>
 }

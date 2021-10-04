@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).RenderCell("onRenderCell").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).CssClass("schedule-date-header-template").DateHeaderTemplate("#template").SelectedDate(new DateTime(2019, 1, 10)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).RenderCell("onRenderCell").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).CssClass("schedule-date-header-template").DateHeaderTemplate("#template").SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
         </div>
     </div>
 
@@ -40,6 +40,11 @@
             margin: -20px 2px 0 0;
             width: 20px;
             height: 20px;
+        }
+
+        .tailwind .schedule-date-header-template.e-schedule .e-left-indent .e-header-cells,
+        .tailwind-dark .schedule-date-header-template.e-schedule .e-left-indent .e-header-cells {
+            height: 66px;
         }
     </style>
     <script id="template" type="text/template">
@@ -93,7 +98,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This demo depicts the way to add images and custom text to the date header bar by making use of the date header template
+            This demo depicts the way to add images and custom text to the date header bar by using the date header template
             option.
         </p>
     </div>
@@ -102,9 +107,8 @@
     <div id="description">
         <p>
             In this demo, the
-            <code>DateHeaderTemplate</code> option is used to customize the date header cells of day, week and workweek views. In month view, the date header
-            is not applicable and therefore the same customizations can be added beside the date text in the month cells by making
-            use of the
+            <code>DateHeaderTemplate</code> option is used to customize the date header cells of day, week, and workweek views. In month view, the date header
+            is not applicable and therefore the same customizations can be added beside the date text in the month cells by using the
             <code>RenderCell</code> event.
         </p>
     </div>

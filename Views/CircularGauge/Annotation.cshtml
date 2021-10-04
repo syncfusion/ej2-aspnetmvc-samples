@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
 	<div class="control-section">
-		@Html.EJS().CircularGauge("clockgauge").Loaded("onGaugeLoaded").CenterY("45%").TitleStyle(new CircularGaugeFont { Size = "16px" }).Axes(axes => axes
+		@Html.EJS().CircularGauge("clockgauge").Load("onLoad").Loaded("onGaugeLoaded").CenterY("45%").TitleStyle(new CircularGaugeFont { Size = "16px" }).Axes(axes => axes
 		  .StartAngle(0).EndAngle(0).LineStyle(new CircularGaugeLine { Width = 0 }).Radius("70%").LabelStyle(new CircularGaugeLabel
 		  {
 			  HiddenLabel = HiddenLabel.First,
@@ -23,161 +23,162 @@
 	</div>
 
 	<script type="text/javascript">
-			var circulargauge;
-			var subgauge1;
-			var subgauge2;
-			function onGaugeLoaded(sender) {
-				circulargauge = sender.gauge;
-				var selectedTheme = themeName ? themeName : 'Material';
-				sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
-				subgauge1 = new ej.circulargauge.CircularGauge({
-					titleStyle: { color: 'black' },
-					background: 'transparent',
-					width: '75px', height: '75px',
-					axes: [
-						{
-							startAngle: 0, endAngle: 0,
-							lineStyle: { width: 0 },
-							ranges: [
-								{
-									start: 0, end: 3,
-									startWidth: 4, endWidth: 4,
-									color: 'rgba(29,29,29,0.4)'
-								}, {
-									start: 3, end: 12,
-									startWidth: 4, endWidth: 4,
-									color: 'rgba(168,145,102,0.1)'
-								}
-							],
-							labelStyle: {
-								hiddenLabel: 'First',
-								font: {
-									color: '#8c8c8c',
-									size: '0px'
-								},
-								autoAngle: false
-							}, majorTicks: {
-								width: 1,
-								height: 5,
-								interval: 1
-							}, minorTicks: {
-								height: 3,
-								width: 0.5,
-								interval: 0.2
+		var circulargauge;
+		var subgauge1;
+		var subgauge2;
+		function onLoad(sender) {
+		circulargauge = sender.gauge;
+			var selectedTheme = themeName ? themeName : 'Material';
+			sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+		}
+		function onGaugeLoaded(sender) {
+			subgauge1 = new ej.circulargauge.CircularGauge({
+				titleStyle: { color: 'black' },
+				background: 'transparent',
+				width: '75px', height: '75px',
+				axes: [
+					{
+						startAngle: 0, endAngle: 0,
+						lineStyle: { width: 0 },
+						ranges: [
+							{
+								start: 0, end: 3,
+								startWidth: 4, endWidth: 4,
+								color: 'rgba(29,29,29,0.4)'
+							}, {
+								start: 3, end: 12,
+								startWidth: 4, endWidth: 4,
+								color: 'rgba(168,145,102,0.1)'
+							}
+						],
+						labelStyle: {
+							hiddenLabel: 'First',
+							font: {
+								color: '#8c8c8c',
+								size: '0px'
 							},
-							minimum: 0,
-							maximum: 12,
-							pointers: [{
-								radius: '70%',
-								pointerWidth: 2,
-								color: 'rgba(29,29,29,1)',
-								cap: {
-									color: 'rgba(29,29,29,1)',
-									radius: 2,
-									border: {
-										width: 0.2,
-										color: 'rgba(168,145,102,1)'
-									}
-								},
-								needleTail: {
-									color: 'rgba(168,145,102,1)',
-									length: '10%'
-								}, animation: {
-									enable: false,
-									duration: 500
-								}
-							}]
-						}
-					],
-
-				});
-
-				subgauge2 = new ej.circulargauge.CircularGauge({
-					width: '75px', height: '75px',
-					background: 'transparent',
-					axes: [{
-						ranges: [{ start: 0, end: 3, startWidth: 4, endWidth: 4, color: 'rgb(128,128,128)' },
-						{ start: 3, end: 12, startWidth: 4, endWidth: 4, color: 'rgb(192,192,192)' }],
-						labelStyle: { hiddenLabel: 'First', font: { size: '0px' }, autoAngle: false },
-						majorTicks: { width: 1, height: 5, interval: 1 },
-						minorTicks: { height: 3, width: 0.5, interval: 0.2 }, minimum: 0, maximum: 12,
+							autoAngle: false
+						}, majorTicks: {
+							width: 1,
+							height: 5,
+							interval: 1
+						}, minorTicks: {
+							height: 3,
+							width: 0.5,
+							interval: 0.2
+						},
+						minimum: 0,
+						maximum: 12,
 						pointers: [{
-							radius: '70%', pointerWidth: 2,
+							radius: '70%',
+							pointerWidth: 2,
+							color: 'rgba(29,29,29,1)',
 							cap: {
-								radius: 2, border: { width: 0.2 }
-							}, needleTail: { length: '10%' }, animation: { enable: false, duration: 500 }
-						}], startAngle: 0, endAngle: 0, lineStyle: { width: 0 }
+								color: 'rgba(29,29,29,1)',
+								radius: 2,
+								border: {
+									width: 0.2,
+									color: 'rgba(168,145,102,1)'
+								}
+							},
+							needleTail: {
+								color: 'rgba(168,145,102,1)',
+								length: '10%'
+							}, animation: {
+								enable: false,
+								duration: 500
+							}
 						}]
- 
-				});
-				subgauge1.appendTo('#minutes');
-				subgauge2.appendTo('#seconds');
+					}
+				],
 
-				var axis = circulargauge.axes[0];
-				axis.annotations = [{
-					angle: 270, radius: '50%', zIndex: '1',
-					content: '<div id="minutes" style="width:75px;height:75px;"></div>'
-				}, {
-					angle: 180, radius: '50%', zIndex: '1',
-					content: '<div id="seconds" style="width:75px;height:75px;"></div>'
-				}, {
-					angle: 90, zIndex: '1',
-					radius: '40%',
-					content: '<div id="hr" style="background-color:rgba(29,29,29,0.6); color:white;font-size:12px;">11:11 AM</div>'
-				}, {
-					angle: 360, radius: '50%', zIndex: '1',
-					content: '<div id="tm" style="font-size:10px;">' + new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-'
+			});
+
+			subgauge2 = new ej.circulargauge.CircularGauge({
+				background: 'transparent',
+				width: '75px', height: '75px',
+				axes: [{
+					ranges: [{ start: 0, end: 3, startWidth: 4, endWidth: 4, color: 'rgb(128,128,128)' },
+					{ start: 3, end: 12, startWidth: 4, endWidth: 4, color: 'rgb(192,192,192)' }],
+					labelStyle: { hiddenLabel: 'First', font: { size: '0px' }, autoAngle: false },
+					majorTicks: { width: 1, height: 5, interval: 1 },
+					minorTicks: { height: 3, width: 0.5, interval: 0.2 }, minimum: 0, maximum: 12,
+					pointers: [{
+						radius: '70%', pointerWidth: 2,
+						cap: {
+							radius: 2, border: { width: 0.2 }
+						}, needleTail: { length: '10%' }, animation: { enable: false, duration: 500 }
+					}], startAngle: 0, endAngle: 0, lineStyle: { width: 0 }
+				}]
+			});
+			subgauge1.appendTo('#minutes');
+			subgauge2.appendTo('#seconds');
+
+			var axis = circulargauge.axes[0];
+			axis.annotations = [{
+				angle: 270, radius: '50%', zIndex: '1',
+				content: '<div id="minutes" style="width:75px;height:75px;"></div>'
+			}, {
+				angle: 180, radius: '50%', zIndex: '1',
+				content: '<div id="seconds" style="width:75px;height:75px;"></div>'
+			}, {
+				angle: 90, zIndex: '1',
+				radius: '40%',
+				content: '<div id="hr" style="background-color:rgba(29,29,29,0.6); color:white;font-size:12px;">11:11 AM</div>'
+			}, {
+				angle: 360, radius: '50%', zIndex: '1',
+				content: '<div id="tm" style="font-size:10px;">' + new Date().getDate() + '-' + (new Date().getMonth() + 1) + '-'
 							  + new Date().getFullYear() + '</div>'
-				}];
+			}];
+		}
+		var gauge5Interval1 = setInterval(function () {
+			var date = new Date();
+			var content;
+			var hour = (date.getHours() + date.getMinutes() / 60) % 12;
+			var minutes = date.getMinutes() * 12 / 60 + date.getSeconds() * 12 / 3600;
+			var seconds = date.getSeconds() * 12 / 60;
+			var hourValue = (Math.floor(date.getHours()) % 12);
+			subgauge1.appendTo('#minutes');
+			subgauge2.appendTo('#seconds');
+			if (!document.getElementById('minutes') || !document.getElementById('seconds')) {
+				return;
 			}
-			var gauge5Interval1 = setInterval(function () {
-				var date = new Date();
-				var content;
-				var hour = (date.getHours() + date.getMinutes() / 60) % 12;
-				var minutes = date.getMinutes() * 12 / 60 + date.getSeconds() * 12 / 3600;
-				var seconds = date.getSeconds() * 12 / 60;
-				var hourValue = (Math.floor(date.getHours()) % 12);
-				subgauge1.appendTo('#minutes');
-				subgauge2.appendTo('#seconds');
-				if (!document.getElementById('minutes') || !document.getElementById('seconds')) {
-					return;
-				}
-				if (!document.getElementById('seconds').childElementCount > 1 || !document.getElementById('minutes').childElementCount > 1) {
-					return
-				}
-				seconds = seconds === 0 ? 12 : seconds;
-				circulargauge.axes[0].pointers[2].currentValue = seconds === 0.2 ? 0 : circulargauge.axes[0].pointers[2].currentValue;
-				subgauge2.axes[0].pointers[0].currentValue = seconds === 0.2 ? 0 : subgauge2.axes[0].pointers[0].currentValue;
-				circulargauge.setPointerValue(0, 0, hour);
-				circulargauge.setPointerValue(0, 1, minutes);
-				circulargauge.setPointerValue(0, 2, seconds);
-				subgauge2.setPointerValue(0, 0, seconds);
-				subgauge1.setPointerValue(0, 0, minutes);
+			if (!document.getElementById('seconds').childElementCount > 1 || !document.getElementById('minutes').childElementCount > 1) {
+				return
+			}
+			seconds = seconds === 0 ? 12 : seconds;
+			circulargauge.axes[0].pointers[2].currentValue = seconds === 0.2 ? 0 : circulargauge.axes[0].pointers[2].currentValue;
+			subgauge2.axes[0].pointers[0].currentValue = seconds === 0.2 ? 0 : subgauge2.axes[0].pointers[0].currentValue;
+			circulargauge.setPointerValue(0, 0, hour);
+			circulargauge.setPointerValue(0, 1, minutes);
+			circulargauge.setPointerValue(0, 2, seconds);
+			subgauge2.setPointerValue(0, 0, seconds);
+			subgauge1.setPointerValue(0, 0, minutes);
 				
-				content = '<div id="hr" style="background-color:rgba(226, 226, 226, 0.4);' +
-					'color:rgba(29,29,29,0.9);padding:4px;font-size:12px;">' +
-					(hourValue === 0 ? 12 : hourValue) + ':' + Math.floor(date.getMinutes()) +
-					(date.getHours() >= 12 ? ' PM' : ' AM') + '</div>';
-				circulargauge.setAnnotationValue(0, 2, content);
-				content = '<div id="tm" style="font-size:10px;">' + date.getDate() + '-' +
-					(date.getMonth() + 1) + '-' + date.getFullYear() + '</div>';
-				circulargauge.setAnnotationValue(0, 3, content);
-				content = '<div id="tm" style="font-size:8px;">' + Math.floor(date.getMinutes()) + ' M</div>';
-				if (document.getElementById('minutes').childElementCount > 1) {
-					subgauge1.axes[0].annotations[0] = {
-						angle: 360, zIndex: '1',
-						radius: '35%',
-						content: content
-					}
+			content = '<div id="hr" style="background-color:rgba(226, 226, 226, 0.4);' +
+				'color:rgba(29,29,29,0.9);padding:4px;font-size:12px;">' +
+				(hourValue === 0 ? 12 : hourValue) + ':' + Math.floor(date.getMinutes()) +
+				(date.getHours() >= 12 ? ' PM' : ' AM') + '</div>';
+			circulargauge.setAnnotationValue(0, 2, content);
+			content = '<div id="tm" style="font-size:10px;">' + date.getDate() + '-' +
+				(date.getMonth() + 1) + '-' + date.getFullYear() + '</div>';
+			circulargauge.setAnnotationValue(0, 3, content);
+			content = '<div id="tm" style="font-size:8px;">' + Math.floor(date.getMinutes()) + ' M</div>';
+			if (document.getElementById('minutes').childElementCount > 1) {
+				subgauge1.axes[0].annotations[0] = {
+					angle: 360, zIndex: '1',
+					radius: '35%',
+					content: content
 				}
-				content = '<div id="tm" style="font-size:8px;">' + Math.floor(date.getSeconds()) + ' S' + '</div>';
-				if (document.getElementById('seconds').childElementCount > 1) {
-					subgauge2.axes[0].annotations[0] = {
-						angle: 360, radius: '35%', zIndex: '1',
-						content: content
-					}
+			}
+			content = '<div id="tm" style="font-size:8px;">' + Math.floor(date.getSeconds()) + ' S' + '</div>';
+			if (document.getElementById('seconds').childElementCount > 1) {
+				subgauge2.axes[0].annotations[0] = {
+					angle: 360, radius: '35%', zIndex: '1',
+					content: content
 				}
-			}, 1000);
+			}
+		}, 1000);
 
 		</script>
 }
@@ -190,8 +191,8 @@
 	</div>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Annotation in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
-                }
+		<meta name="description" content="This example demonstrates the Annotation in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+}
 @section Description{
 	<div id="description">
 		<p>
@@ -216,8 +217,8 @@
 
 
 @section Title{
-                    <title>ASP.NET MVC Circular Gauge Annotation Example - Syncfusion Demos </title> 
-                }
+		<title>ASP.NET MVC Circular Gauge Annotation Example - Syncfusion Demos </title> 
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Annotation in ASP.NET MVC Circular Gauge Control</h1>
-                }
+		<h1 class='sb-sample-text'>Example of Annotation in ASP.NET MVC Circular Gauge Control</h1>
+}

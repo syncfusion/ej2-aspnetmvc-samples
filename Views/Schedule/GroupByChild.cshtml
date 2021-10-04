@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.WorkWeek).SelectedDate(new DateTime(2018, 6, 5)).StartHour("09:00").EndHour("19:00").Group(group => group.ByGroupID(false).Resources(ViewBag.Resources)).Resources(res =>
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.WorkWeek).SelectedDate(new DateTime(DateTime.Today.Year, 6, 5)).StartHour("09:00").EndHour("19:00").Group(group => group.ByGroupID(false).Resources(ViewBag.Resources)).Resources(res =>
                 {
                     res.DataSource(ViewBag.Projects).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
                     res.DataSource(ViewBag.Categories).Field("CategoryId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
@@ -38,16 +38,16 @@
     <div id="description">
         <p>
             In this demo, there are two resource levels defined under the
-            <code>Resources</code> property - one with the name
+            <code>Resources</code> property. One with the name
             <code>Projects</code> and other with the name
             <code>Categories</code> respectively. Also, both the names are defined in the
             <code>Group</code> property to allow two level hierarchical grouping. The order of grouping depends on the order of names passed onto
             the
             <code>Resources</code> option within
-            <code>Group</code>. The requirement here is to categorize the sub-options that are common to both the projects and therefore to enable
+            <code>Group</code>. The requirement here is to categorize the sub-options that are common to both the projects. To enable
             such grouping, it is necessary to set
             <code>ByGroupID</code> option within the
-            <code>groupID</code> - whereby allowing all the resources available in each child level to group under its parent resources. With this
+            <code>groupID</code> to allow all the resources available in each child level to group under its parent resources. With this
             option available, we can avoid the need to provide multiple definitions of the same data to be grouped under different
             parent.
         </p>

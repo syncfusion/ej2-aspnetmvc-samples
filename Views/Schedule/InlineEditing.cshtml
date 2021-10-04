@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
@@ -7,9 +7,15 @@
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").AllowInline(true).CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineMonth).Add(); }).EventRendered("onEventRendered").Group(group => group.Resources(ViewBag.Resources)).Resources(res =>
                 {
                     res.DataSource(ViewBag.Categories).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
-                }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 4, 4)).Render()
+                }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).WorkDays(ViewBag.workDays).Render()
         </div>
     </div>
+    <style>
+        .e-schedule .e-timeline-view .e-resource-left-td,
+        .e-schedule .e-timeline-month-view .e-resource-left-td {
+            width: 150px;
+        }
+    </style>
     <script type="text/javascript">
         function onEventRendered(args) {
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
@@ -27,7 +33,7 @@
 }
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="The example showcases the inline mode of the JS Scheduler that is used to create an appointment or edit an existing appointment's subject easily and quickly. " />
+    <meta name="description" content="This example demonstrates the Inline Editing in ASP.NET MVC Scheduler control. Explore here for more details." />
 }
 @*custom code end*@
 @section ActionDescription{

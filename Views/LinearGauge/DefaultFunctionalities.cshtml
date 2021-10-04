@@ -30,14 +30,14 @@
            Content = "<div id=pointer style=width:70px><h1 style=font-size:14px;>10 MPH</h1></div>",
            AxisIndex = 0, AxisValue = 10,X = 10, ZIndex = "1", Y = -70
        }
-   }).Render();
+   }).Render()
         </div>
     </div>
 
     <script type="text/javascript">
         function onGaugeLoad(sender) {
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             sender.gauge.orientation = "Horizontal";
             for (var i = 0; i < sender.gauge.annotations.length; i++) {
                 sender.gauge.annotations[i].zIndex = "1";
@@ -61,8 +61,8 @@
         <p>
             This sample demonstrates the default linear gauge. The linear gauge control indicates the values of scales in horizontal
             or vertical sliding meter. You can use <code>axes</code>,
-            <code>ranges</code>, <code>pointers</code> and <code>container</code> properties to customize the appearance of the
-            gauge. an axis, annotation and a pointer has been used.
+            <code>ranges</code>, <code>pointers</code>, and <code>container</code> properties to customize the appearance of the
+            gauge. An axis, annotation, and a pointer have been used.
         </p>
         <br>
         <p>

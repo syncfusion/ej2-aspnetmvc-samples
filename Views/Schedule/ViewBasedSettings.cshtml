@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.Schedule
 @{
     string agendaEventTemplate = "<div class='subject'>${Subject}</div>${if(Description !== null && Description !== undefined)}<div class='group'>${Description}</div>${/if}<div class='location'>${getTimeString(data.StartTime)}, ${if(City !== null && City !== undefined)}${City}${/if}</div>";
-    string monthEventTemplate = "<div class='subject'>${Subject}</div>";
+    string monthEventTemplate = "<div class='e-subject'>${Subject}</div>";
     List<ScheduleView> viewOptions = new List<ScheduleView>();
     viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Day, StartHour = "07:00", EndHour = "18:00" });
     viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Week, StartHour = "09:00", EndHour = "19:00", ShowWeekend = false, TimeScale = new ScheduleTimeScale() { Interval = 60, SlotCount = 4 } });
@@ -15,7 +15,7 @@
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Resources(res =>
        {
            res.Field("GroupId").Title("Owner").Name("Owners").DataSource(ViewBag.resourceData).TextField("GroupText").IdField("GroupId").ColorField("GroupColor").Add();
-       }).Views(viewOptions).CurrentView(View.Month).EventRendered("onEventRendered").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 6, 20)).Render()
+       }).Views(viewOptions).CurrentView(View.Month).EventRendered("onEventRendered").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 6, 20)).Render()
         </div>
     </div>
     <style>

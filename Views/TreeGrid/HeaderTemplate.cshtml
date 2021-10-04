@@ -23,7 +23,7 @@
     <script type="text/x-template" id="resource">
         <div>
             <div>
-                <img src="../Content/images/treegrid/Resources.png" width="20" height="20" class="e-image" />
+                <img src="../Content/images/treegrid/Resources.png" width="20" height="20" style="padding-bottom: 1px" class="resources" />
                 <span>&nbsp;Resources</span>
             </div>
         </div>
@@ -31,7 +31,7 @@
     <script type="text/x-template" id="projectName">
         <div>
             <div>
-                <img src="../Content/images/treegrid/Taskname.png" width="20" height="20" class="e-image" />  
+                <img src="../Content/images/treegrid/Taskname.png" width="20" height="20" style="padding-bottom: 1px" class="taskname" />  
                 <span>&nbsp;Task Name</span>
             </div>
         </div>
@@ -39,7 +39,7 @@
     <script type="text/x-template" id="dateTemplate">
         <div>
             <div>
-                <img src="../Content/images/treegrid/Startdate.png" width="20" height="20" class="e-image" />
+                <img src="../Content/images/treegrid/Startdate.png" width="20" height="20" style="padding-bottom: 1px" class="startdate" />
                 <span>&nbsp;Start Date</span>
             </div>
         </div>
@@ -47,7 +47,7 @@
     <script type="text/x-template" id="durationTemplate">
         <div>
             <div>
-                <img src="../Content/images/treegrid/duration.png" width="20" height="20" class="e-image" /> 
+                <img src="../Content/images/treegrid/duration.png" width="20" height="20" style="padding-bottom: 2px" class="duration" /> 
                 <span>&nbsp;Duration</span>
             </div>
         </div>
@@ -55,7 +55,7 @@
     <script type="text/x-template" id="progressTemplate">
         <div>
             <div>
-                <img src="../Content/images/treegrid/progress.png" width="20" height="20" class="e-image" />  
+                <img src="../Content/images/treegrid/progress.png" width="20" height="20" style="padding-bottom: 2px" class="Progress" />  
                 <span>&nbsp;Progress</span>
             </div>
         </div>
@@ -64,6 +64,28 @@
 }
 
 @*custom code start*@
+<style>
+    .material-dark img.resources, .fabric-dark img.resources, .bootstrap-dark img.resources, .bootstrap4-dark img.resources, .bootstrap5-dark img.resources, .highcontrast img.resources,
+    .tailwind-dark img.resources {
+        content: url('../../Content/treegrid/darkResources.png');
+    }
+    .material-dark img.taskname, .fabric-dark img.taskname, .bootstrap-dark img.taskname, .bootstrap4-dark img.taskname, .bootstrap5-dark img.taskname, .highcontrast img.taskname,
+    .tailwind-dark img.taskname {
+        content: url('../../Content/treegrid/darkTaskname.png');
+    }
+    .material-dark img.startdate, .fabric-dark img.startdate, .bootstrap-dark img.startdate, .bootstrap4-dark img.startdate, .bootstrap5-dark img.startdate, .highcontrast img.startdate,
+    .tailwind-dark img.startdate {
+        content: url('../../Content/treegrid/darkStartname.png');
+    }
+    .material-dark img.duration, .fabric-dark img.duration, .bootstrap-dark img.duration, .bootstrap4-dark img.duration, .bootstrap5-dark img.duration, .highcontrast img.duration,
+    .tailwind-dark img.duration {
+        content: url('../../Content/treegrid/darkduration.png');
+    }
+    .material-dark img.Progress, .fabric-dark img.Progress, .bootstrap-dark img.Progress, .bootstrap4-dark img.Progress, .bootstrap5-dark img.Progress, .highcontrast img.Progress,
+    .tailwind-dark img.Progress {
+        content: url('../../Content/treegrid/darkprogress.png');
+    }
+</style>
 
 @section Meta{
                     <meta name="description" content="This example demonstrates the Header Template in ASP.NET MVC Tree Grid control. Explore here for more details."/>

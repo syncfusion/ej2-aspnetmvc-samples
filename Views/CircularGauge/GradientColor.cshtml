@@ -105,7 +105,7 @@
                     sender.gauge.refresh();
             }, 200);
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             if (!rangeCheck) {
                 sender.gauge.axes[0].ranges[0].linearGradient = rangeLinearGradient;
                 rangeCheck= true;
@@ -193,8 +193,8 @@
     </div>
 }
 @section Meta{
-    <meta name="description" content="This example demonstrates the Gradient color in ASP.NET MVC Circular Gauge control. Explore here for more details." />
-}
+                    <meta name="description" content="This example demonstrates the Gradient Color in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+                }
 @section Description{
     <div id="description">
         <p>
@@ -205,8 +205,8 @@
     </div>
 }
 @section Title{
-    <title>ASP.NET MVC Circular Gauge Gradient Example - Syncfusion Demos </title>
-}
+                    <title>ASP.NET MVC Circular Gauge Gradient Color Example - Syncfusion Demos </title> 
+                }
 @section Header{
-    <h1 class='sb-sample-text'>Example of Gradient color in ASP.NET MVC Circular Gauge Control</h1>
-}
+                    <h1 class='sb-sample-text'>Example of Gradient Color in ASP.NET MVC Circular Gauge Control</h1>
+                }

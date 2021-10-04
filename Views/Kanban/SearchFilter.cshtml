@@ -87,8 +87,8 @@
 
         function statusSelect(args) {
             var filterQuery = new ej.data.Query();
-            if (args.itemData.value !== 'None') {
-                filterQuery = new ej.data.Query().where('Status', 'equal', args.itemData.value);
+            if (args.itemData.Value !== 'None') {
+                filterQuery = new ej.data.Query().where('Status', 'equal', args.itemData.Value);
             }
             priorityObj.value = 'None';
             kanbanObj.query = filterQuery;
@@ -157,7 +157,7 @@
 @section Description{
     <div id="description">
         <p>
-            The Kanban provides an option to filter or search the cards and displayed on Kanban board using <code>query</code> property.
+            The Kanban provides an option to filter or search the cards and display them on the Kanban board using the <code>query</code> property.
         </p>
         <ul>
             <li>In query, <code>where</code> used for filtering the Kanban cards.</li>
@@ -167,12 +167,12 @@
 }
 
 @section Meta{
-    <meta name="description" content="The example demo shows how to filter the cards and make searching when more number of cards on a JavaScript Kanban board that helps you to focus." />
-}
+                    <meta name="description" content="This example demonstrates the Search and Filter Cards in ASP.NET MVC Kanban control. Explore here for more details."/>
+                }
 
 @section Title{
-    <title>ASP.NET MVC Kanban Search and Filter Example - Syncfusion Demos </title>
-}
+                    <title>ASP.NET MVC Kanban Search and Filter Cards Example - Syncfusion Demos </title> 
+                }
 @section Header{
-    <h1 class='sb-sample-text'>Example of Search and Filter in ASP.NET MVC Kanban Control</h1>
-}
+                    <h1 class='sb-sample-text'>Example of Search and Filter Cards in ASP.NET MVC Kanban Control</h1>
+                }

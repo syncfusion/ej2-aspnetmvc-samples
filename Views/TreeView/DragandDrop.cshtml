@@ -133,6 +133,11 @@
     }
     #list {
         min-height: 288px;
+        border: 0;
+    }
+    .material-dark .custom-delete::before, .fabric-dark .custom-delete::before, .bootstrap-dark .custom-delete::before, .tailwind-dark .custom-delete::before,
+    .bootstrap5-dark .custom-delete::before {
+        color: rgba(255, 255, 255, 0.54);
     }
 	.e-bigger #list, .e-bigger #tree1, .e-bigger #tree2 {
 		height: 354px;
@@ -158,6 +163,7 @@
     }
     
     .fabric.e-bigger #list.e-listview .e-list-item,
+    .fabric-dark.e-bigger #list.e-listview .e-list-item,
     .highcontrast.e-bigger #list.e-listview .e-list-item {
         line-height: 43px;
     }
@@ -177,6 +183,11 @@
     .custom-delete {
         float: right;
         font-family: 'cross-circle';
+    }
+
+    .bootstrap5 .custom-delete,
+    .bootstrap5-dark .custom-delete {
+        margin-top: 3px;
     }
 
     .e-rtl .custom-delete {

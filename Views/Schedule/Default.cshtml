@@ -4,19 +4,16 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2019, 1, 10)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 30%">
-                        <div>Current Date</div>
-                    </td>
-                    <td style="width: 70%;">
+                    <td style="width: 100%;">
                         <div>
-                            @Html.EJS().DatePicker("scheduledate").Value(new DateTime(2019, 1, 10)).ShowClearButton(false).Change("onChange").Render()
+                            @Html.EJS().DatePicker("scheduledate").Placeholder("Current Date").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Value(new DateTime(DateTime.Today.Year, 1, 10)).ShowClearButton(false).Change("onChange").Render()
                         </div>
                     </td>
                 </tr>
@@ -87,9 +84,9 @@
                 <td style="vertical-align: top;padding:4px 0">Single Tap</td>
                 <td>
                     <ol style="padding-left:12px;">
-                        <li>Single tapping on events, opens the popup showing event information</li>
+                        <li>Single tapping on events opens the popup showing event information.</li>
                         <li>
-                            Single tapping on cells, will display a “+” icon on the cell. Again tapping on it will open the
+                            Single tapping on cells will display a “+” icon on the cell. Again tapping on it will open the
                             new event editor.
                         </li>
                     </ol>
@@ -119,10 +116,10 @@
         <p>
             The key Scheduler functionalities are maintained as individual feature-wise modules. Therefore to avail with a
             particular feature, appropriate module needs to be injected using <code>Schedule.Inject()</code> method. For
-            example, to work with the day view on Scheduler – it is necessary to inject the Day module like <code>Schedule.Inject(Day)</code>.
+            example, to work with the day view on Scheduler, it is necessary to inject the Day module like <code>Schedule.Inject(Day)</code>.
         </p>
         <p>
-            <strong> Note:</strong>In case, if the module of active view is not injected from the application end – then
+            <strong> Note:</strong>In case, if the module of active view is not injected from the application end, then
             the Scheduler is configured to display the first available option in the <code>views</code> property.
         </p>
     </div>

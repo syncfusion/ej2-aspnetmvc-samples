@@ -8,34 +8,34 @@
                 <p><b> Toolbar </b></p>
                 <ol>
                     <li>
-                        <p>The Toolbar contains commands to align the text, insert a link, insert an image, insert list, undo / redo operations, HTML view, etc </p>
+                        <p>The Toolbar contains commands to align the text, insert a link, insert an image, insert list, undo / redo operations, HTML view, etc. </p>
                     </li>
                     <li>
-                        <p>The Toolbar is fully customizable </p>
+                        <p>The Toolbar is fully customizable. </p>
                     </li>
                 </ol>
                 <p><b> Links </b></p>
                 <ol>
                     <li>
-                        <p>You can insert a hyperlink with its corresponding dialog</p>
+                        <p>You can insert a hyperlink with its corresponding dialog.</p>
                     </li>
                     <li>
                         <p>Attach a hyperlink to the displayed text. </p>
                     </li>
                     <li>
-                        <p>Customize the quick toolbar based on the hyperlink </p>
+                        <p>Customize the quick toolbar based on the hyperlink. </p>
                     </li>
                 </ol>
                 <p><b> Image.</b></p>
                 <ol>
                     <li>
-                        <p>Allows you to insert images from an online source as well as the local computer</p>
+                        <p>Allows you to insert images from an online source as well as the local computer.</p>
                     </li>
                     <li>
-                        <p>You can upload an image</p>
+                        <p>You can upload an image.</p>
                     </li>
                     <li>
-                        <p>Provides an option to customize the quick toolbar for an image </p>
+                        <p>Provides an option to customize the quick toolbar for an image. </p>
                     </li>
                 </ol>
                 <img alt='Logo' src=@Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png") style='width: 300px' />
@@ -72,6 +72,58 @@
 
         .sb-header.e-view.hide-header {
             display: none;
+        }
+
+        .fabric-dark .cm-s-default .cm-tag,
+        .bootstrap5-dark .cm-s-default .cm-tag,
+        .material-dark .cm-s-default .cm-tag,
+        .tailwind-dark .cm-s-default .cm-tag,
+        .highcontrast .cm-s-default .cm-tag {
+            color: #00ff00;
+        }
+
+        .fabric-dark .cm-s-default .cm-string,
+        .bootstrap5-dark .cm-s-default .cm-string,
+        .material-dark .cm-s-default .cm-string,
+        .tailwind-dark .cm-s-default .cm-string {
+            color: blue;
+        }
+
+        .highcontrast .cm-s-default .cm-string {
+            color: #ffd939;
+        }
+
+        .fabric-dark .cm-s-default .cm-attribute,
+        .bootstrap5-dark .cm-s-default .cm-attribute,
+        .material-dark .cm-s-default .cm-attribute,
+        .tailwind-dark .cm-s-default .cm-attribute,
+        .highcontrast .cm-s-default .cm-attribute {
+            color: #f00;
+        }
+        
+        .fabric-dark .CodeMirror,
+        .bootstrap5-dark .CodeMirror,
+        .material-dark .CodeMirror,
+        .tailwind-dark .CodeMirror {
+            background:  #303030;
+        }
+
+        .highcontrast .CodeMirror {
+            background: black;
+        }
+
+        .e-richtexteditor .e-rte-content .e-content pre {
+            padding: 10px;
+            background: #F4F5F7;
+        }
+
+        .fabric-dark .e-richtexteditor .e-rte-content .e-content pre,
+        .bootstrap5-dark .e-richtexteditor .e-rte-content .e-content pre,
+        .material-dark .e-richtexteditor .e-rte-content .e-content pre,
+        .tailwind-dark .e-richtexteditor .e-rte-content .e-content pre,
+        .highcontrast .e-richtexteditor .e-rte-content .e-content pre {
+            padding: 10px;
+            background: #303030;
         }
     </style>
     <script type="text/javascript">
@@ -159,7 +211,7 @@
             mirrorConversion(e);
         }
         else {
-            setTimeout(function () { rteObj.refreshUI(); }, 400);
+            setTimeout(function () { rteObj.refreshUI(); }, 1000);
         }
     }
     </script>
@@ -180,7 +232,7 @@
 }
 @section Description{
     <div id="description">
-        <p>This sample used <code>Code mirror</code> plugins helps to highlight the HTML content and when changes happens in code view, the same has been reflected in preview mode. </p>
+        <p>This sample used <code>Code mirror</code> plugins that helps to highlight the HTML content. When changes are made in code view, the same will be reflected in preview mode. </p>
         <p>The editor’s toolbar contains commands to format the content. The toolbar consists of:</p>
         <ul>
             <li><code>Lists</code> - NumberFormat list and BulletFormat list types.</li>
@@ -190,11 +242,11 @@
             <li><code>Alignment</code> - Aligns the content with left, center, and right margins.</li>
             <li><code>Undo/Redo</code> - Allows undo/redo operations.</li>
             <li><code>Indent/ Outdent</code> - Increases/decreases the indent level of the content.</li>
-            <li><code>Font</code> - Able to do styling on text like font family, size, fore color and background color.</li>
+            <li><code>Font</code> - Able to do styling on text like font family, size, fore color, and background color.</li>
             <li><code>Lower / Upper case</code> – Changes the casing of the selected text.</li>
             <li><code>SubScript / SuperScript</code> - Makes the selected text as subscript (lower)/superscript(upper).</li>
             <li><code>FullScreen</code> - Stretches the editor to the maximum width and height of the browser window.</li>
-            <li><code>Format</code> – Formats the sentence in different ways such as heading level, quotation, and code snippet</li>
+            <li><code>Format</code> – Formats the sentence in different ways such as heading level, quotation, and code snippet.</li>
             <li><code>Styles</code> – Allows you to apply inline styles to the selected content like bold, italic, and more.</li>
         </ul>
     </div>

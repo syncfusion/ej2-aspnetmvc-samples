@@ -88,7 +88,7 @@
            Content = "<div id=pointerText style=width:60px;><p style=font-size:15px;color:#30b32d;>10 MPH</p></div>",
            AxisValue = 10, Y = -65
        }
-   }).Render();
+   }).Render()
         </div>
     </div>
     <div class="row">
@@ -131,7 +131,7 @@
            Content = "<div id=pointerText style=width:60px;><p style=font-size:15px;color:#30b32d;>28 MPH</p></div>",
            AxisValue = 28, Y = -65
        }
-   }).Render();
+   }).Render()
         </div>
     </div>
     <div class="row">
@@ -175,7 +175,7 @@
            Content = "<div id=pointerText style=width:10    0px;><p style=font-size:15px;color:#30b32d;>2000 Steps</p></div>",
            AxisValue = 2, Y = -65
        }
-   }).Render();
+   }).Render()
         </div>
     </div>
 </div>
@@ -183,7 +183,7 @@
         function onGaugeLoad(sender) {
             var gauge;
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             sender.gauge.orientation = "Horizontal";
             for (var i = 0; i < sender.gauge.annotations.length; i++) {
                 sender.gauge.annotations[i].zIndex = "1";
@@ -197,7 +197,7 @@
             var gauge;
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             sender.gauge.orientation = "Horizontal";
             for (var i = 0; i < sender.gauge.annotations.length; i++) {
                 sender.gauge.annotations[i].zIndex = "1";
@@ -211,7 +211,7 @@
             var gauge;
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             sender.gauge.orientation = "Horizontal";
             for (var i = 0; i < sender.gauge.annotations.length; i++) {
                 sender.gauge.annotations[i].zIndex = "1";
@@ -237,7 +237,7 @@
 @section Description{
     <div id="description">
         <p>
-            Pointer values in the gauge can be updated dynamically by using <code>setPointerValue</code> method. In this example, a stock price changes over the countries, are showed by using a gauge.
+            Pointer values in the gauge can be updated dynamically by using <code>setPointerValue</code> method. In this example, a stock price changes over the countries are shown by using a gauge.
         </p>
         <br>
         <p>

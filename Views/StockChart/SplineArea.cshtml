@@ -9,7 +9,7 @@
         ).LineStyle(ls=>ls.Color("transparent")).CrosshairTooltip(ct=>ct.Enable(false)))
          .Series(sr =>
            {
-             sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).DataSource("data").XName("x").YName("high").Fill("#BDEDE9").Add();
+             sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).DataSource("data").XName("x").YName("high").Opacity(0.5).Add();
            })
         .Crosshair(cr=>cr.Enable(true))
         .ChartArea(area => area.Border(br=>br.Width(0)))
@@ -24,9 +24,6 @@
             display: block;
         }
 
-        #container_stockChart_chart_Series_0 {
-            opacity: 0.6;
-        }
         #container_stock_border {
             pointer-events: none;
         }

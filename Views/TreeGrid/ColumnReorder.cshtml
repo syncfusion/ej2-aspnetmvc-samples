@@ -39,7 +39,7 @@
                 <td style="width: 30%">
                     <div style="padding-top: 10px">Column</div>
                 </td>
-                <td style="width: 50%;padding-right: 10px">
+                <td style="width: 70%;padding-right: 3px">
                     <div>
                      @Html.EJS().DropDownList("columns").DataSource((IEnumerable<object>)ViewBag.columns).Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onColumnChange").Render()
                     </div>
@@ -49,7 +49,7 @@
                 <td style="width: 30%">
                     <div>Column Index</div>
                 </td>
-                <td style="width: 30%;padding: 10px 10px 10px 0px">
+                <td style="width: 50%;padding: 10px 3px 10px 0px">
                     <div>
                      @Html.EJS().DropDownList("columnIndex").DataSource((IEnumerable<object>)ViewBag.index).Index(0).Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("indexChange").Render()
                     </div>

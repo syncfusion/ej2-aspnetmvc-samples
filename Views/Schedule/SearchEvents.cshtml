@@ -5,7 +5,7 @@
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
             <div class="col-md-12">
-                @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2019, 1, 10)).Render()
+                @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
                 <div id="grid"></div>
             </div>
         </div>
@@ -17,9 +17,7 @@
                 @Html.EJS().TextBox("events-search").CssClass("e-input").Type("text").Placeholder("Enter the Search text").Render()
             </div>
             <form class="event-search" id="form-search">
-                <p class="property-panel-header  header-customization" style="width: 100%">
-                    Search by specific event fields
-                </p>
+                <p class="property-panel-header  header-customization" style="width: 100%">Search by specific event fields</p>
                 <table id="property-specific" style="width: 100%">
                     <tbody>
                         <tr class="row">

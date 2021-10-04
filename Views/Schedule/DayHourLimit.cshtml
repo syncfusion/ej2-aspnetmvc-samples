@@ -3,7 +3,7 @@
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).WorkHours(new ScheduleWorkHours { Highlight = false }).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).StartHour("08:00").EndHour("20:00").SelectedDate(new DateTime(2018, 2, 15)).Render()
+        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).WorkHours(new ScheduleWorkHours { Highlight = false }).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).StartHour("08:00").EndHour("20:00").SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">

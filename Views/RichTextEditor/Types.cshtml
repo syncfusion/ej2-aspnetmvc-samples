@@ -4,28 +4,28 @@
     <div class="col-lg-8 control-section">
         <div class="content-wrapper" id="all-option-sample">
             @Html.EJS().RichTextEditor("types").ContentTemplate(@<div>
-                <p>The Rich Text Editor is a WYSIWYG ('what you see is what you get') editor useful to create and edit content and return the valid HTML markup or markdown of the content</p>
+                <p>The Rich Text Editor is a WYSIWYG ('what you see is what you get') editor useful to create and edit content and return the valid HTML markup or markdown of the content.</p>
                 <p><b> Toolbar </b></p>
                 <ol>
-                    <li> <p>The Toolbar contains commands to align the text, insert a link, insert an image, insert list, undo / redo operations, HTML view, etc </p></li>
-                    <li> <p>The Toolbar is fully customizable </p></li>
+                    <li> <p>The Toolbar contains commands to align the text, insert a link, insert an image, insert list, undo/redo operations, HTML view, etc. </p></li>
+                    <li> <p>The Toolbar is fully customizable. </p></li>
                 </ol>
                 <p><b> Links </b></p>
                 <ol>
-                    <li><p>You can insert a hyperlink with its corresponding dialog</p> </li>
+                    <li><p>You can insert a hyperlink with its corresponding dialog.</p> </li>
                     <li> <p>Attach a hyperlink to the displayed text. </p></li>
-                    <li><p>Customize the quick toolbar based on the hyperlink </p> </li>
+                    <li><p>Customize the quick toolbar based on the hyperlink. </p> </li>
                 </ol>
                 <p><b>Validation </b></p>
-                <ul><li><p>The editor�s content can be validated on form submission by applying validation rules and validation message </p></li></ul>
+                <ul><li><p>The editor&rsquo;s content can be validated on form submission by applying validation rules and validation message. </p></li></ul>
                 <p><b>Locale.</b></p>
                 <ul><li><p>The editor provides an option to localize its static strings to adapt the editor to a local language.</p></li></ul>
                 <p><b> Image.</b></p>
                 <p><b>Image.</b></p>
                 <ol>
-                    <li><p>Allows you to insert images from an online source as well as the local computer</p></li>
-                    <li><p>You can upload an image</p></li>
-                    <li><p>Provides an option to customize the quick toolbar for an image</p></li>
+                    <li><p>Allows you to insert images from an online source as well as the local computer.</p></li>
+                    <li><p>You can upload an image.</p></li>
+                    <li><p>Provides an option to customize the quick toolbar for an image.</p></li>
                 </ol><img alt='Logo' src=@Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png") />
             </div>).Created("created").ActionBegin("handleFullScreen").ActionComplete("actionCompleteHandler").Height("720px").ToolbarSettings(e => { e.Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false).Items((object)ViewBag.Items); }).Render()
         </div>
@@ -86,7 +86,7 @@
 
 @section ActionDescription{
     <div id="action-description">
-            <p>This sample demonstrates the different behavior of toolbar support in the Rich Text Editor. Change the toolbar type as multiRow or expand from the property panel to see its appearance . Check or uncheck the floating toolbar in property panel to have a view of its behavior.</p>
+            <p>This sample demonstrates the different behavior of toolbar support in the Rich Text Editor. Change the toolbar type as multiRow or expand from the property panel to see its appearance. Check or uncheck the floating toolbar in property panel to view its behavior.</p>
 
     </div>
 }
@@ -98,7 +98,7 @@
             toolbar are:
         </p>
         <ul>
-            <li><code>Expand</code>: The toolbar hides the overflowing items in the next row. Click the expand arrow to view overflowing toolbar items</li>
+            <li><code>Expand</code>: The toolbar hides the overflowing items in the next row. Click the expand arrow to view overflowing toolbar items.</li>
             <li><code>Multi Row</code>: The toolbar hides the overflowing items in the next row.</li>
             <li><code>Floating</code>: set boolean value to toolbarSettings.enableFloating property to enable or disable the floating toolbar. </li>
         </ul>

@@ -19,7 +19,7 @@
 		</div>
     </div>
     <div class="col-md-4 property-section">
-        <table id="property" title="Properties" style="width: 100%">
+        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
             <tbody>
                 <tr style="height: 50px">
                     <td>
@@ -37,7 +37,7 @@
                     </td>
                     <td>
                         <div>
-                            <input type="range" id="currentValue" value="1800" min="1000" max="2000">
+                            <input type="range" id="currentValue" value="1800" min="1000" max="2000" style="width:120px; margin-left: 20px">
                         </div>
                     </td>
                 </tr>
@@ -46,7 +46,7 @@
                         <div id="rangebarColor">RangeBar Color</div>
                     </td>
                     <td>
-                        <div>
+                        <div style="margin-left: 20px">
                             <select id="barColor" class="form-control">
                                 <option value="#FFDD00" selected="true">#FFDD00</option>
                                 <option value="#00bdae">#00bdae</option>
@@ -60,7 +60,7 @@
                         <div id="range">Range Color</div>
                     </td>
                     <td>
-                        <div>
+                        <div style="margin-left: 20px">
                             <select id="rangeColor" class="form-control">
                                 <option value="#E0E0E0" selected="true">#E0E0E0</option>
                                 <option value="#7bb4eb">#7bb4eb</option>
@@ -74,7 +74,7 @@
                         <div id="pointColor">Pointer Color</div>
                     </td>
                     <td>
-                        <div>
+                        <div style="margin-left: 20px">
                             <select id="pointerColor" class="form-control">
                                 <option value="#424242" selected="true">#424242</option>
                                 <option value="#6f6fe2">#6f6fe2</option>
@@ -110,7 +110,7 @@
             }, 200);
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             gauge = random = sender.gauge;
 			usage = new ej.circulargauge.CircularGauge(customGauge2());
 			usage.appendTo('#cutomization-container1');
@@ -118,7 +118,7 @@
         function gaugeLoad(args) {
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
-            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         }
         barColor = new ej.dropdowns.DropDownList({
             index: 0,
@@ -196,7 +196,7 @@
             element.min = '1000';
             element.max = '2000';
             element.value = random.axes[0].pointers[0].value.toString();
-            document.getElementById('currentPointerValue').innerHTML = 'Current Value <span>    ' +
+            document.getElementById('currentPointerValue').innerHTML = 'Current Value <span>&nbsp;&nbsp;&nbsp;' +
                 random.axes[0].pointers[0].value + '</span>';
             barColor.value = random.axes[0].pointers[0].color;
             rangeColor.value = random.axes[0].ranges[0].color;
@@ -214,7 +214,7 @@
                     gauge.setPointerValue(0, 1, value);
                 }
                 gauge.setAnnotationValue(0, 0, '<div style="color:#666666;font-size:35px;">' + value + (isUsage ? 'GB' : '') + '</div>');
-                document.getElementById('currentPointerValue').innerHTML = 'Current Value <span>    ' + value + '</span>';
+            document.getElementById('currentPointerValue').innerHTML = 'Current Value <span>&nbsp;&nbsp;&nbsp;' + value + '</span>';
             };
 
         var selectedTheme =  themeName ? themeName : 'Material';

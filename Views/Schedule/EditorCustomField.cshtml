@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).PopupOpen("onPopupOpen").SelectedDate(new DateTime(2018, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).PopupOpen("onPopupOpen").SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
     <style>
@@ -65,13 +65,13 @@
 @section Description{
     <div id="description">
         <p>
-            In this demo, the additional field is added to the default event editor by making use of the
-            <code>PopupOpen</code> event which gets triggered before the event editor getting opened on Schedule.
-            <code>PopupOpen</code> is a client-side event that triggers before any of the popups getting opened on Schedule.
+            In this demo, the additional field is added to the default event editor by using the
+            <code>PopupOpen</code> event which gets triggered before the event editor is opened on Schedule.
+            <code>PopupOpen</code> is a client-side event that triggers before any of the popups are opened on Schedule.
         </p>
         <p>
-            Here, the additional field (any of the form elements) is needed to be provided with the common class
-            <code>e-field</code>, so as to handle and process those additional data into the default event object.
+            Here, the additional field (any of the form elements) must be provided with the common class
+            <code>e-field</code> to handle and process those additional data into the default event object.
         </p>
     </div>
 }

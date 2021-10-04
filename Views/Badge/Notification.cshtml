@@ -96,7 +96,7 @@
 
 @section ActionDescription{
     <p>
-        This sample demonstrates the type of the notification badge. To apply the notification badge add
+        This sample demonstrates the type of the notification badge. To apply the notification badge, add
         <code>.e-badge-notification</code> class or
         <code>.e-badge-dot</code> class for dot badge along with the
         <code>.e-badge class</code>.
@@ -159,6 +159,15 @@
         background: #000;
     }
 
+    body.material-dark .sample_container.badge-notification .layout,
+    body.tailwind-dark .sample_container.badge-notification .layout,
+    body.bootstrap-dark .sample_container.badge-notification .layout,
+    body.fabric-dark .sample_container.badge-notification .layout,
+    body.bootstrap5-dark .sample_container.badge-notification .layout {
+        background: inherit;
+        border: 1px solid white;
+    }
+
     .margin {
         margin: 15px 0;
     }
@@ -173,6 +182,15 @@
         font-size: 16px;
     }
 
+    body.fabric-dark .margin.fontSize,
+    body.tailwind-dark .margin.fontSize,
+    body.bootstrap-dark .margin.fontSize {
+        color: inherit;
+    }
+
+    body.material-dark .margin.fontSize{
+        color: #ffffff;
+    }
     .contact.svg_icons + .e-badge-dot,
     .pinterest.svg_icons + .e-badge-dot {
         left: 90%;

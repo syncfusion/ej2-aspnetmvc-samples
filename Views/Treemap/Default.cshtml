@@ -48,7 +48,8 @@
             ];
             args.treemap.dataSource = data;
             var theme = themeName ? themeName : 'Material';
-            args.treemap.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.treemap.theme = ((theme.charAt(0).toUpperCase() +
+                theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast'));
         }
         function itemMove(args) {
             args.item['data'].Sales = args.item['weight'];

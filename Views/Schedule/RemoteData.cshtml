@@ -6,7 +6,7 @@
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(es => es.DataSource(dataManger =>
                 {
                     dataManger.Url("https://ej2services.syncfusion.com/production/web-services/api/Schedule").CrossDomain(true).Adaptor("WebApiAdaptor");
-                })).Readonly(true).SelectedDate(new DateTime(2020, 10, 22)).Render()
+                })).Readonly(true).Render()
         </div>
     </div>
 }

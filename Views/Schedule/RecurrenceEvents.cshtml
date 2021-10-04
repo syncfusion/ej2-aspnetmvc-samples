@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 2, 20)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 20)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -58,10 +58,9 @@
             reference.
         </p>
         <p>
-            Scheduler requires only the <code>startTime</code> and <code>
-                endTime<code>
-                    fields as mandatory to be mapped from the dataSource.
-                    The Scheduler events can be categorized into 3 types based on its time range and all-day type.
+            Scheduler requires only the <code>startTime</code> and <code>endTime</code>
+            fields as mandatory to be mapped from the dataSource.
+            The Scheduler events can be categorized into 3 types based on its time range and all-day type.
         </p>
         <table style="width:100%">
             <tr>

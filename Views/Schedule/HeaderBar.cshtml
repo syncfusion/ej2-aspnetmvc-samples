@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).ActionComplete("onActionComplete").ActionBegin("onActionBegin").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(2018, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).ActionComplete("onActionComplete").ActionBegin("onActionBegin").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -97,9 +97,10 @@
             margin-top: 4px;
         }
 
-        .e-profile-wrapper .status {
-            font-size: 11px;
-        }
+            .e-profile-wrapper .status {
+                font-size: 11px;
+                line-height: normal;
+            }
 
         .highcontrast .e-profile-wrapper {
             border: 1px solid #969696
@@ -107,6 +108,39 @@
 
         .highcontrast .e-profile-wrapper .profile-container {
             background-color: #000;
+        }
+
+        .tailwind-dark .e-profile-wrapper {
+            background-color: #374151;
+            border: 0.5px solid #4b5563;
+        }
+
+        .bootstrap5-dark .e-profile-wrapper {
+            background-color: rgb(40, 45, 49);
+            border: 0.5px solid #4b5563;
+        }
+
+            .tailwind .e-profile-wrapper .destination,
+            .tailwind-dark .e-profile-wrapper .destination {
+                font-size: 11px;
+            }
+
+        .bootstrap-dark .e-profile-wrapper {
+            background-color: #1a1a1a;
+        }
+
+        .fabric-dark .e-profile-wrapper {
+            background-color: #333232;
+        }
+
+        .material-dark .property-panel-header {
+            color: #fff;
+        }
+
+        .material-dark .e-profile-wrapper {
+            color: #fff;
+            border: 0.5px solid #616161;
+            background-color: #212121;
         }
     </style>
     <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
@@ -192,13 +226,13 @@
             <code>ToolbarItemRendering</code> which triggers at the time of header bar items rendering on the Schedule.
         </p>
         <p>
-            Once the items are added, the click action is being bound to it in the
+            Once the items are added, the click action is bound to them in the
             <code>ActionComplete</code> event by checking for the request type as
             <code>ToolbarItemRendered</code> which triggers after the items are rendered on the Schedule. The appropriate action of showing or hiding the popup
             on clicking the custom item has been done within it.
         </p>
         <p>
-            In case, if the header bar of Scheduler needs to be hidden, it can be done by setting false to
+            In case, if the header bar of Scheduler needs to be hidden, it can be done by setting false to the
             <code>ShowHeaderBar</code> property.
         </p>
     </div>

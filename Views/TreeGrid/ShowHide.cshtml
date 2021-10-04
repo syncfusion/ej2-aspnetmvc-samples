@@ -14,11 +14,11 @@
         <div class="control-section">
         @Html.EJS().TreeGrid("ShowHide").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
        {
-           col.Field("TaskId").HeaderText("Task ID").Width(80).TextAlign(TextAlign.Right).Add();
+           col.Field("TaskId").HeaderText("Task ID").Width(120).TextAlign(TextAlign.Right).Add();
            col.Field("TaskName").HeaderText("Task Name").Width(200).Add();
            col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(105).Add();
-           col.Field("Duration").HeaderText("Duration").Width(81).TextAlign(TextAlign.Right).Add();
-           col.Field("Progress").HeaderText("Progress").Width(84).TextAlign(TextAlign.Right).Add();
+           col.Field("Duration").HeaderText("Duration").Width(110).TextAlign(TextAlign.Right).Add();
+           col.Field("Progress").HeaderText("Progress").Width(110).TextAlign(TextAlign.Right).Add();
 
        }).Height(400).ChildMapping("Children").TreeColumnIndex(1).Render()
     </div>

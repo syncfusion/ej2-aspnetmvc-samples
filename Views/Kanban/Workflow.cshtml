@@ -16,7 +16,7 @@
            col.HeaderText("Delivered").KeyField("Delivered, Served").AllowToggle(true).AllowDrag(false).Add();
        }).CardSettings(card =>
        {
-           card.HeaderField("Id").Template("#cardTemplate");
+           card.HeaderField("Id").ContentField("Description").Template("#cardTemplate");
        }).Render()
         </div>
     </div>
@@ -101,7 +101,7 @@
 }
 @section Description{
     <div id="description">
-        <p>In this sample, you can drag the cards from the `Order` column and drop them into `Ready to Serve` and `Home Delivery` columns. Also, you couldn't drag the cards from the `Delivered` column and drop the cards in the `Order` column.  The action is controlled using the below properties.</p>
+        <p>In this sample, you can drag the cards from the `Order` column and drop them into `Ready to Serve` and `Home Delivery` columns. Also, you couldn't drag the cards from the `Delivered` column and drop the cards in the `Order` column.  The action is controlled using the following properties.</p>
         <ul>
             <li>The <code>transitionColumns</code> property is used to allow the card transition to specified columns.</li>
             <li>The <code>allowDrag</code> property is used to enable/disable the drag action of columns.</li>
@@ -111,12 +111,12 @@
 }
 
 @section Meta{
-    <meta name="description" content="The example demonstrates a workflow feature that controls the flow of cards while drag-and-drop the cards between the columns." />
-}
+                    <meta name="description" content="This example demonstrates the Workflow in ASP.NET MVC Kanban control. Explore here for more details."/>
+                }
 
 @section Title{
-    <title>ASP.NET MVC Kanban Workflow Example - Syncfusion Demos </title>
-}
+                    <title>ASP.NET MVC Kanban Workflow Example - Syncfusion Demos </title> 
+                }
 @section Header{
-    <h1 class='sb-sample-text'>Example of Workflow in ASP.NET MVC Kanban Control</h1>
-}
+                    <h1 class='sb-sample-text'>Example of Workflow in ASP.NET MVC Kanban Control</h1>
+                }

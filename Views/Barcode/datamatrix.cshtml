@@ -287,8 +287,6 @@
         function barcodeValueChange(args) {
             var barcode = document.getElementById("container").ej2_instances[0];
             barcode.value = args.value;
-            var displayText = document.getElementById("displayText").ej2_instances[0];
-            displayText.value = args.value;
         }
         let canShowError = false;
         var customFn = (args) => {
@@ -302,7 +300,6 @@
 
         function invalidInput() {
             var barcode = document.getElementById("container").ej2_instances[0];
-            var displayText = document.getElementById("displayText").ej2_instances[0];
             var options = {
 
                 rules: {
@@ -314,7 +311,7 @@
                     }
                 },
                 focusout(args) {
-                    displayText.value = barcode.value = (document.getElementById('barcodeValue')).value;
+                    barcode.value = (document.getElementById('barcodeValue')).value;
                     barcode.dataBind();
                 },
             };

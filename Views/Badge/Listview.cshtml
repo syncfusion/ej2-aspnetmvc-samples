@@ -26,16 +26,16 @@
                 }
 
 @section ActionDescription{
-    <p>This sample demonstrates the integration of badges in to listview component to display the new e-mails count.</p>
+    <p>This sample demonstrates the integration of badges into listview component to display the new e-mails count.</p>
 }
 
 @section Description{
     <p>
-        The badge can be integrated in to the listview with help of the templates. With badges there are so many real-time use
+        The badge can be integrated into the listview with the help of the templates. With badges there are so many real-time use
         cases that the listview can be used to achieve different applications.
     </p>
     <p>
-        Here default badges are used and there is no need to customize the badge size because component will automatically adjust
+        Here, default badges are used and there is no need to customize the badge size because component will automatically adjust
         the size based on the container element.
     </p>
     <p>In this samples, different types of colours are used to indicate their priorities of their notification.</p>
@@ -53,7 +53,16 @@
 
     #lists {
         margin: auto;
-        border: 1px solid rgba(0, 0, 0, 0.12)
+    }
+
+    body.material #lists,
+    body.material-dark #lists,
+    body.fabric #lists,
+    body.fabric-dark #lists,
+    body.bootstrap #lists,
+    body.bootstrap-dark #lists,
+    body.highcontrast #lists {
+        border: 1px solid #dddddd;
     }
 
     #lists .e-list-item {
@@ -86,6 +95,27 @@
 
     .e-rtl .listWrapper .e-badge {
         float: left;
+    }
+
+    .bootstrap5 .e-list-item .list_text,
+    .bootstrap4 .e-list-item .list_text,
+    .bootstrap5-dark .e-list-item .list_text,
+    .tailwind-dark .e-list-item .list_text {
+        line-height: 34px;
+    }
+
+    .bootstrap5 .listWrapper .e-badge,
+    .bootstrap5-dark .listWrapper .e-badge,
+    .tailwind-dark .listWrapper .e-badge,
+    .bootstrap4 .listWrapper .e-badge {
+        margin-top: 8px;
+    }
+
+    .bootstrap5 .list_svg,
+    .bootstrap5-dark .list_svg,
+    .tailwind-dark .list_svg,
+    .bootstrap4 .list_svg {
+        margin-top: 5px;
     }
 
     .list_text {

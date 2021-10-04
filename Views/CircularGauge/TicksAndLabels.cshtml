@@ -21,14 +21,14 @@
         </div>
     </div>
     <div class="col-md-4 property-section">
-        <table id="property" title="Properties" style="width: 100%; margin:10px">
+        <table id="property" title="Properties" style="width: 100%; margin-left: -2px">
             <tbody>
                 <tr>
                     <td>
-                        <div> Ticks </div>
+                        <div style="margin-left:-10px"> Ticks </div>
                     </td>
                     <td>
-                        <div>
+                        <div style="margin-left:10px">
                             <select id="Ticks" class="form-control" style="width:90%">
                                 <option value="major" selected="true">Major Ticks</option>
                                 <option value="minor">Minor Ticks</option>
@@ -38,10 +38,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <div> Tick Position </div>
+                        <div style="margin-left:-10px"> Tick Position </div>
                     </td>
                     <td>
-                        <div>
+                        <div style="margin-left:10px">
 							<select id="tickposition" class="form-control" style="width:90%">
 								<option value="Inside" selected="true">Inside</option>
 								<option value="Cross">Cross</option>
@@ -52,11 +52,11 @@
                 </tr>
                 <tr>
                     <td>
-                        <div> Label Position </div>
+                        <div style="margin-left:-10px"> Label Position </div>
                     </td>
                     <td>
-                        <div>
-							<select id="labelposition" class="form-control" style="width:90%">
+                        <div style="margin-left:10px">
+							<select id="labelposition" class="form-control" style="width: 90%; margin-left: -10px">
 								<option value="Outside">Outside</option>
 								<option value="Cross">Cross</option>
 								<option value="Inside">Inside</option>
@@ -66,41 +66,41 @@
                 </tr>
                 <tr>
                     <td>
-                        <div id="offset">Tick Offset <span>&nbsp;&nbsp;&nbsp;0</span> </div>
+                        <div id="offset" style="margin-left: -10px; margin-top: 10px">Tick Offset <span>&nbsp;&nbsp;&nbsp;0</span> </div>
                     </td>
                     <td>
                         <div>
-                            <input type="range" id="tickOffset" value="0" min="0" max="50" style="width:90%">
+                            <input type="range" id="tickOffset" value="0" min="0" max="50" style="width: 120px; margin-left: 10px; margin-top: 10px">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div id="height">Tick Height <span>&nbsp;&nbsp;&nbsp;10</span> </div>
+                        <div id="height" style="margin-left: -10px; margin-top: 20px">Tick Height <span>&nbsp;&nbsp;&nbsp;10</span> </div>
                     </td>
                     <td>
                         <div>
-                            <input type="range" id="tickHeight" value="10" min="1" max="50" style="width:90%">
+                            <input type="range" id="tickHeight" value="10" min="1" max="50" style="width: 120px; margin-left: 10px; margin-top: 20px">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div id="labelOffsetValue">Label Offset <span>&nbsp;&nbsp;&nbsp;0</span> </div>
+                        <div id="labelOffsetValue" style="margin-left: -10px; margin-top: 20px">Label Offset <span>&nbsp;&nbsp;&nbsp;0</span> </div>
                     </td>
                     <td>
                         <div>
-                            <input type="range" id="labelOffset" value="0" min="0" max="50" style="width:90%">
+                            <input type="range" id="labelOffset" value="0" min="0" max="50" style="width: 120px; margin-left: 10px; margin-top: 20px">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div id="enablePointer">Show Last Label </div>
+                        <div id="enablePointer" style="margin-left: -10px; margin-top: 20px">Show Last Label </div>
                     </td>
                     <td>
                         <div>
-                            <input type="checkbox" id="enable" style="width:90%">
+                            <input type="checkbox" id="enable" style="width: 120px; margin-left: 10px; margin-top: 25px">
                         </div>
                     </td>
                 </tr>
@@ -121,7 +121,7 @@
                     sender.gauge.refresh();
             }, 200);
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             circulargauge = sender.gauge;
             for (var i = 0; i < sender.gauge.axes[0].annotations.length; i++) {
                 sender.gauge.axes[0].annotations[i].zIndex = "1";
@@ -146,8 +146,8 @@
                 tickPosition.value = tick.position;
                 document.getElementById('tickOffset').value = tick.offset.toString();
                 document.getElementById('tickHeight').value = tick.height.toString();
-                document.getElementById('offset').innerHTML = 'Tick Offset <span>   ' + tick.offset;
-                document.getElementById('height').innerHTML = 'Tick Height <span>   ' + tick.height;
+                document.getElementById('offset').innerHTML = 'Tick Offset <span>&nbsp;&nbsp;&nbsp;' + tick.offset;
+                document.getElementById('height').innerHTML = 'Tick Height <span>&nbsp;&nbsp;&nbsp;' + tick.height;
             }
         });
         ticks.appendTo('#Ticks');
@@ -181,7 +181,7 @@
                 else {
                     circulargauge.axes[0].minorTicks.offset = value;
                 }
-                document.getElementById('offset').innerHTML = 'Tick Offset <span>   ' + value;
+            document.getElementById('offset').innerHTML = 'Tick Offset <span>&nbsp;&nbsp;&nbsp;' + value;
             };
         document.getElementById('tickHeight').onpointermove = document.getElementById('tickHeight').ontouchmove =
             document.getElementById('tickHeight').onchange = function () {
@@ -192,13 +192,13 @@
                 else {
                     circulargauge.axes[0].minorTicks.height = value;
                 }
-                document.getElementById('height').innerHTML = 'Tick Height <span>   ' + value;
+            document.getElementById('height').innerHTML = 'Tick Height <span>&nbsp;&nbsp;&nbsp;' + value;
             };
         document.getElementById('labelOffset').onpointermove = document.getElementById('labelOffset').ontouchmove =
             document.getElementById('labelOffset').onchange = function () {
                 var value = parseInt(document.getElementById('labelOffset').value, 10);
                 circulargauge.axes[0].labelStyle.offset = value;
-                document.getElementById('labelOffsetValue').innerHTML = 'Label Offset <span>   ' + value;
+            document.getElementById('labelOffsetValue').innerHTML = 'Label Offset <span>&nbsp;&nbsp;&nbsp;' + value;
             };
         document.getElementById('enable').onchange = function () {
             var showLastLabel = document.getElementById('enable').checked;

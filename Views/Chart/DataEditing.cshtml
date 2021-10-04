@@ -8,32 +8,30 @@
            {
 
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
-               .Fill("#00BDAE")
                .Marker(mr => mr.Visible(true).Width(10).Height(10))
                .XName("xValue").YName("y").DataSource(ViewBag.dataSource).Name("Product A").Width(2).Add();
 
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line)
-               .Fill("#357CD2")
                .Marker(mr => mr.Visible(true).Width(10).Height(10))
                .XName("xValue").YName("y1").DataSource(ViewBag.dataSource).Name("Product B").Width(2).Add();
 
            }).PrimaryYAxis(px => px.Minimum(0).Maximum(100).Interval(20).LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).LabelFormat("{value}%").Title("Sales")
             ).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0)).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.OnTicks).Minimum("-0.5").Maximum("6.5")
             ).Tooltip(tr => tr.Enable(true)
-            ).ChartArea(area => area.Border(br=>br.Color("transparent"))
+            ).ChartArea(area => area.Border(br => br.Color("transparent"))
             ).Tooltip(tt => tt.Enable(true)
             ).LegendSettings(lg => lg.Visible(false)
             ).Title("Sales prediction of products").Load("load").Render()
         </div>
     </div>
 
-   
+
     <style>
         #control-container {
             padding: 0px !important;
         }
     </style>
-   
+
     <script>
 
         var load = function (args) {
@@ -48,13 +46,16 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Data Editing in ASP.NET MVC Chart control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Data Editing in ASP.NET MVC Chart control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample describes data editing feature in chart. Drag and drop the points to change the <code>data values dynamically</code>
+        This sample describes data editing feature in chart. Drag and drop the points to change the <code>data values dynamically.</code>
     </p>
+}
+@section Description{
+    <p>The draggable-points allows data to be moved around the chart. In addition to this, the module fires events such as dragStart, drag and dragComplete.</p>
     <br>
     <p>
         The draggable points allow data to be moved around the chart. In addition to this, the module fires events such as <code> dragStart, drag, and dragComplete</code>
@@ -66,13 +67,9 @@
 
     </p>
 }
-@section Description{
-    <p>The draggable-points allows data to be moved around the chart. In addition to this, the module fires events such as dragStart, drag and dragComplete.</p>
-
-}
 @section Title{
-                    <title>ASP.NET MVC Chart Data Editing Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Chart Data Editing Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Data Editing in ASP.NET MVC Chart Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Data Editing in ASP.NET MVC Chart Control</h1>
+}

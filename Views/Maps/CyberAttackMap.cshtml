@@ -4,7 +4,7 @@
     <div class="control-section">
         @Html.EJS().Maps("container").TitleSettings(title => title.Text("Cyber Attack Map of United States").TextStyle(new MapsFont { Size = "16px" })).Load("Load").Loaded("Loaded").Layers(layer =>
    {
-       layer.ShapeSettings(new MapsShapeSettings { Fill = "#FFFFE0", Border = (new MapsBorder { Color = "#D2691E", Width = 0.5 }) })
+       layer.ShapeSettings(new MapsShapeSettings { Fill = "#FFFFE0", Border = (new MapsBorder { Color = "#D2691E", Width = 0.5, Opacity = 1 }) })
          .ShapeData(ViewBag.shapeData).Add();
    }).Render()
     </div>
@@ -131,7 +131,7 @@
         function Load(args) {
             @* custom code start *@
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             @* custom code end *@
             args.maps.layers[0].navigationLineSettings = [
                 {

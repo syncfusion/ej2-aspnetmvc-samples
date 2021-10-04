@@ -17,6 +17,57 @@
             content: '\e728';
         }
 
+        #export {
+            width: 90px;
+        }
+
+        #print {
+            width: 90px;
+        }
+
+        .e-view.fabric .e-play-icon::before, .e-view.fabric-dark .e-play-icon::before {
+            content: '\e7df';
+        }
+
+        .e-view.fabric .e-play-icon1::before, .e-view.fabric-dark .e-play-icon1::before {
+            content: '\e710';
+        }
+
+        .e-view.bootstrap .e-play-icon::before {
+            content: '\ebd2';
+        }
+
+        .e-view.bootstrap4 .e-play-icon1::before {
+            content: '\e780';
+        }
+
+        .e-view.bootstrap4 .e-play-icon::before {
+            content: '\e743';
+        }
+
+        .e-view.tailwind .e-play-icon::before, .e-view.tailwind-dark .e-play-icon::before {
+            content: '\e76c';
+        }
+
+        .e-view.tailwind .e-play-icon1::before, .e-view.tailwind-dark .e-play-icon1::before {
+            content: '\e7bf';
+        }
+
+        .e-view.highcontrast .e-play-icon::before {
+            content: '\ebf9';
+        }
+
+        .e-view.highcontrast .e-play-icon1::before {
+            content: '\e710';
+        }
+
+        .e-view.bootstrap5 .e-play-icon1::before, .e-view.bootstrap5-dark .e-play-icon1::before {
+            content: '\e72e';
+        }
+
+        .e-view.bootstrap5 .e-play-icon::before, .e-view.bootstrap5-dark .e-play-icon::before {
+            content: '\e75d';
+        }
 	</style>
 	   <div class="col-lg-9 control-section">
         <div id="outer" style="width:100%">
@@ -65,12 +116,12 @@
            MinorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick {  Interval = 4, Height=7, Width=0 },
            LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel {  Offset = 4 },
        }
-   }).Render();
+   }).Render()
 		</div>
 	</div>
 		   </div>
 	 <div class="col-lg-3 property-section">
-		 <table id="property" title="Properties" style="width: 100%">
+		 <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
 		 	<tr style="height: 50px">
 		 		<td style="width: 40%">
 		 			<div>
@@ -78,8 +129,8 @@
 		 			</div>
 		 		</td>
 		 		<td style="width: 60%;">
-		 			<div style="margin-left: -10px">
-		 				@Html.EJS().DropDownList("Export").Index(0).Width("80px").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
+		 			<div style="margin-left: 10px;">
+		 				@Html.EJS().DropDownList("Export").Index(0).Width("90px").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
 		 		</div>
 		 	</td>
 		 </tr>
@@ -89,20 +140,18 @@
 		 	</td>
 		 	<td style="width: 40%;">
 		 		<div class="e-float-input" style='margin-top: 0px;'>
-		 			<input type="text" value="Gauge" id="fileName" style="margin-left: -15px">
+		 			<input type="text" value="Gauge" id="fileName" style="margin-left: 10px; width: 90px;">
 		 		</div>
 		 	</td>
 		 </tr>
-         <tr id="button-control" style="height: 50px" align='center'>
+         <tr id="button-control" style="height: 50px">
              <td>
-                 <div style="margin-left:20px;">
+                 <div style="margin-top: 20px; margin-left: -10px; width: 100px"; >
                      @Html.EJS().Button("export").Content("Export").CssClass("e-flat").IconCss("e-icons e-play-icon1").IsPrimary(true).Render()
                  </div>
              </td>
-             </tr>
-             <tr>
              <td>
-                 <div style="margin-left:28px;">
+                 <div style="margin-top: 20px; margin-left: 10px; width: 100px">
                      @Html.EJS().Button("print").Content("Print").CssClass("e-flat").IconCss("e-icons e-play-icon").IsPrimary(true).Render()
                  </div>
              </td>
@@ -114,7 +163,7 @@
 		var gauge;
 		function onGaugeLoad(sender) {
 			var selectedTheme = themeName ? themeName : 'Material';
-			sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
 			sender.gauge.orientation = "Horizontal";
 			for (var i = 0; i < sender.gauge.annotations.length; i++) {
 				sender.gauge.annotations[i].zIndex = "1";
@@ -152,7 +201,7 @@
 @section Description{
 	<div id="description">
         <p>
-            In this example, you can see how to export and print the rendered linear gauge. The Linear Gauge can be exported to JPEG, PNG, SVG, and PDF formats. Print functionality is done by <code>print</code> method when <code>AllowPrint</code> is set as true. Export functionality is done by <code>export</code> method when <code>AllowImageExport</code> and <code>AllowPdfExport</code> is set as true.
+            In this example, you can see how to export and print the rendered linear gauge. The Linear Gauge can be exported to JPEG, PNG, SVG, and PDF formats. Print functionality is done by <code>print</code> method when <code>AllowPrint</code> is set as true. Export functionality is done by <code>export</code> method when <code>AllowImageExport</code> and <code>AllowPdfExport</code> are set as true.
         </p>
 		<p>
 			More information about print and export can be found in this

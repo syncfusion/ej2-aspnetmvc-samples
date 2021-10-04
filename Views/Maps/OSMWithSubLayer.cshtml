@@ -32,7 +32,7 @@
     <script>
         function mapsload(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         }
     </script>
     <style>
@@ -44,7 +44,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample visualizes the continents in the world by rendering these in a map layer. Also marks the office locations of YouTube in the world using markers.
+            This sample visualizes the continents in the world by rendering them in a map layer. Also marks the office locations of YouTube in the world using markers.
         </p>
     </div>
 }

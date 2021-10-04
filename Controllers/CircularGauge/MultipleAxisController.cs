@@ -14,28 +14,25 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
         {
             List<CircularGaugeAxis> axes = new List<CircularGaugeAxis>();
             CircularGaugeAxis axis1 = new CircularGaugeAxis();
-            axis1.LineStyle = new CircularGaugeLine{ Width = 1.5, Color = "#9E9E9E" };
+            axis1.LineStyle = new CircularGaugeLine{ Width = 1.5};
             axis1.Radius = "95%";
             axis1.LabelStyle = new CircularGaugeLabel
             {
                 Position = Position.Inside,
                 AutoAngle = true,
-                HiddenLabel =HiddenLabel.None,
-                Font = new CircularGaugeFont { Color = "#333333" }
+                HiddenLabel =HiddenLabel.None
             };
             axis1.MajorTicks = new CircularGaugeTick
             {
                 Position = Position.Inside,
                 Width = 2,
-                Height = 10,
-                Color = "#757575"
+                Height = 10
             };
             axis1.MinorTicks = new CircularGaugeTick
             {
                 Position = Position.Inside,
                 Width =2,
-                Height=5,
-                Color="#757575"
+                Height=5
             };
             axis1.Minimum = 0;
             axis1.Maximum = 160;
@@ -45,7 +42,6 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             CircularGaugePointer pointer1 = new CircularGaugePointer();
             pointer1.Value = 80;
             pointer1.Radius = "100%";
-            pointer1.Color = "#333333";
             pointer1.MarkerHeight = 15;
             pointer1.MarkerWidth = 15;
             pointer1.Type = PointerType.Marker;

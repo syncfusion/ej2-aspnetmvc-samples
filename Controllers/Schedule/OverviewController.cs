@@ -9,73 +9,40 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
         public ActionResult Overview()
         {
             List<object> exportItems = new List<object>();
-            exportItems.Add(new
-            {
-                text = "iCalendar",
-                iconCss = "e-icons e-schedule-ical-export"
-            });
-            exportItems.Add(new
-            {
-                text = "Excel",
-                iconCss = "e-icons e-schedule-excel-export"
-            });
+            exportItems.Add(new { text = "iCalendar", iconCss = "e-icons e-export" });
+            exportItems.Add(new { text = "Excel", iconCss = "e-icons e-export-excel" });
             ViewBag.ExportItems = exportItems;
 
             List<CalendarRes> calendarCollections = new List<CalendarRes>();
             calendarCollections.Add(new CalendarRes { CalendarName = "My Calendar", CalendarId = 1, CalendarColor = "#c43081" });
             calendarCollections.Add(new CalendarRes { CalendarName = "Company", CalendarId = 2, CalendarColor = "#ff7f50" });
             calendarCollections.Add(new CalendarRes { CalendarName = "Birthday", CalendarId = 3, CalendarColor = "#AF27CD" });
-            calendarCollections.Add(new CalendarRes { CalendarName = "Holiday", CalendarId = 4, CalendarColor = "#808000" });            
+            calendarCollections.Add(new CalendarRes { CalendarName = "Holiday", CalendarId = 4, CalendarColor = "#808000" });
             ViewBag.Calendars = calendarCollections;
 
             ViewBag.Resources = new string[] { "Calendars" };
 
             List<object> menuItems = new List<object>();
-            menuItems.Add(new
-            {
-                text = "New Event",
-                iconCss = "e-icons new",
-                id = "Add"
-            });
-            menuItems.Add(new
-            {
-                text = "New Recurring Event",
-                iconCss = "e-icons recurrence",
-                id = "AddRecurrence"
-            });
-            menuItems.Add(new
-            {
-                text = "Today",
-                iconCss = "e-icons today",
-                id = "Today"
-            });
-            menuItems.Add(new
-            {
-                text = "Edit Event",
-                iconCss = "e-icons edit",
-                id = "Save"
-            });
+            menuItems.Add(new { text = "New Event", iconCss = "e-icons e-plus", id = "Add" });
+            menuItems.Add(new { text = "New Recurring Event", iconCss = "e-icons e-repeat", id = "AddRecurrence" });
+            menuItems.Add(new { text = "Today", iconCss = "e-icons e-timeline-today", id = "Today" });
+            menuItems.Add(new { text = "Edit Event", iconCss = "e-icons e-edit", id = "Save" });
             menuItems.Add(new
             {
                 text = "Edit Event",
                 id = "EditRecurrenceEvent",
-                iconCss = "e-icons edit",
+                iconCss = "e-icons e-edit",
                 items = new List<object>() {
                     new { text = "Edit Occurrence", id = "EditOccurrence"},
                     new { text = "Edit Series", id = "EditSeries" }
                 }
             });
-            menuItems.Add(new
-            {
-                text = "Delete Event",
-                iconCss = "e-icons delete",
-                id = "Delete"
-            });
+            menuItems.Add(new { text = "Delete Event", iconCss = "e-icons e-trash", id = "Delete" });
             menuItems.Add(new
             {
                 text = "Delete Event",
                 id = "DeleteRecurrenceEvent",
-                iconCss = "e-icons delete",
+                iconCss = "e-icons e-trash",
                 items = new List<object>() {
                     new { text = "Delete Occurrence", id = "DeleteOccurrence" },
                     new { text = "Delete Series", id = "DeleteSeries"}
@@ -95,7 +62,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
 
             List<object> timezoneData = new List<object>();
             timezoneData.Add(new { text = "UTC -12:00", value = "Etc/GMT+12" });
-            timezoneData.Add(new { text = "UTC -11:00", value = "Etc/GMT+11"});
+            timezoneData.Add(new { text = "UTC -11:00", value = "Etc/GMT+11" });
             timezoneData.Add(new { text = "UTC -10:00", value = "Etc/GMT+10" });
             timezoneData.Add(new { text = "UTC -09:00", value = "Etc/GMT+9" });
             timezoneData.Add(new { text = "UTC -08:00", value = "Etc/GMT+8" });

@@ -1,6 +1,6 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section">
-        @Html.EJS().QueryBuilder("querybuilder").Width("72%").Columns(col =>
+        @Html.EJS().QueryBuilder("querybuilder").Columns(col =>
    {
        col.Field("EmployeeID").Label("Employee ID").Type("number").Add();
        col.Field("FirstName").Label("First Name").Type("string").Add();

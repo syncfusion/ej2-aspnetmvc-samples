@@ -78,12 +78,12 @@
            Content = "<div id=highText><p style=font-size:15px;color:#b42f2f;>High</p></div>",
            AxisValue = 75, Y = 20
        }
-   }).Render();
+   }).Render()
     </div>
     <script type="text/javascript">
         function onGaugeLoad(sender) {
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             sender.gauge.orientation = "Horizontal";
             for (var i = 0; i < sender.gauge.annotations.length; i++) {
                 sender.gauge.annotations[i].zIndex = "1";
@@ -105,12 +105,12 @@
 @section Description{
     <div id="description">
 
-        In this sample we have used annotations to indicate low, moderate and high ranges. Annotations are used to place the texts,
-        shapes or images anywhere in the gauge. You can use
+        In this sample we have used annotations to indicate low, moderate, and high ranges. Annotations are used to place the texts,
+        shapes, or images anywhere in the gauge. You can use
         <code>content</code>,
         <code>x</code>,
         <code>y</code>,
-        <code>zIndex</code> properties to customize the annotations. And you can specify the id of the element that needs to be displayed, in the
+        <code>zIndex</code> properties to customize the annotations. And you can specify the id of the element that needs to be displayed in the
         content property.
         <br>
         <p style="font-weight: 500 ">Injecting Module</p>

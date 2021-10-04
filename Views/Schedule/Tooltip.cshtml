@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource, EnableTooltip = true, TooltipTemplate = "#toolTip" }).SelectedDate(new DateTime(2018, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource, EnableTooltip = true, TooltipTemplate = "#toolTip" }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
 
@@ -31,6 +31,7 @@
     <style>
         .e-schedule-event-tooltip .tooltip-wrap {
             display: flex;
+            align-items: center;
         }
 
             .e-schedule-event-tooltip .tooltip-wrap .image {
@@ -41,6 +42,20 @@
                 width: 50px;
                 height: 50px;
             }
+
+        .tailwind-dark .e-schedule-event-tooltip .tooltip-wrap .image,
+        .bootstrap5-dark .e-schedule-event-tooltip .tooltip-wrap .image {
+            background-color: #1F294A;
+        }
+
+        .bootstrap-dark .e-schedule-event-tooltip .tooltip-wrap .image {
+            background-color: #1a1a1a;
+        }
+
+        .fabric-dark .e-schedule-event-tooltip .tooltip-wrap .image,
+        .material-dark .e-schedule-event-tooltip .tooltip-wrap .image {
+            background-color: #000;
+        }
 
             .e-schedule-event-tooltip .tooltip-wrap .content-area {
                 padding-left: 6px;
@@ -140,7 +155,7 @@
     <div id="action-description">
         <p>
             This demo illustrates how to enable tooltip on scheduler events as well as the way to customize it. The tooltip can be
-            customized to display any of the information in a formatted style by making use of the tooltip template option.
+            customized to display any of the information in a formatted style by using the tooltip template option.
         </p>
     </div>
 }
@@ -150,7 +165,7 @@
             In this demo, the tooltip is enabled to display on events by setting true to
             <code>EnableTooltip</code> option within the
             <code>EventSettings</code> property. After enabling the default tooltip, it is customized to display the needed event information along with
-            the appropriate images by making use of the
+            the appropriate images by using the
             <code>TooltipTemplate</code> option within the
             <code>EventSettings</code>.
         </p>

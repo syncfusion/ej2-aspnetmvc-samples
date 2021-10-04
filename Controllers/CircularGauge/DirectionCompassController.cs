@@ -33,14 +33,6 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             pointer2.Animation = new CircularGaugeAnimation { Enable = false };
             pointers.Add(pointer2);
             ViewBag.Pointers = pointers;
-
-            // Ranges //
-            List<CircularGaugeRange> ranges = new List<CircularGaugeRange>();
-            CircularGaugeRange range1 = new CircularGaugeRange();
-            range1.Start = 7;
-            range1.End = 7  ;
-            ranges.Add(range1);
-            ViewBag.Ranges = ranges;
             return View();
         }
     }

@@ -52,7 +52,7 @@
                     }).AllowPaging().PageSettings(page => page.PageCount(5).PageSizes(true).PageSize(5)).Render()
             </div>
             <div>
-                @Html.EJS().Schedule("schedule").Height("300px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.ScheduleData }).Created("scheduleCreated").SelectedDate(new DateTime(2019, 1, 10)).Render()
+                @Html.EJS().Schedule("schedule").Height("300px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.ScheduleData }).Created("scheduleCreated").SelectedDate(new DateTime(DateTime.Now.Year, 1, 10)).Render()
             </div>
             <div>
                 @Html.EJS().Chart("chart").ChartArea(area => area.Border(br => br.Color("transparent"))).Series(series =>
@@ -244,6 +244,29 @@
         overflow-y: scroll;
     }
 
+    .material-dark #formId,
+    .bootstrap5-dark #formId {
+        background: #212529;
+    }
+
+    .bootstrap-dark #formId {
+        background: #1a1a1a;
+    }
+    .fabric-dark #formId {
+        background: #201f1f;
+    }
+    .tailwind-dark #formId {
+        background: #1f2937;
+    }
+
+    .material-dark .form-title,
+    .bootstrap-dark .form-title,
+    .fabric-dark .form-title,
+    .tailwind-dark .form-title,
+    .bootstrap5-dark .form-title {
+        color: rgb(249 249 249);
+    }
+
     .highcontrast form,
     .highcontrast .header {
         color: #fff;
@@ -282,7 +305,7 @@
 @section Description{
     <div id="description">
         <p>
-            Since the dialog is container component, you can integrate other ASP.NET MVC UI components within the dialog. The dialog can be renders with simple plain-text, HTML string, or ASP.NET MVC UI components. In the above sample, used major components such as Grid, Schedule, Chart, and Rich Text Editor inside dialog.
+            Since the dialog is container component, you can integrate other ASP.NET MVC UI components within the dialog. The dialog can be rendered with simple plain-text, HTML string, or ASP.NET MVC UI components. In the above sample, we have used major components such as Grid, Schedule, Chart, and Rich Text Editor inside dialog.
         </p>
     </div>
 }

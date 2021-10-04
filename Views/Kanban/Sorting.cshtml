@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Kanban
 @using Syncfusion.EJ2.DropDowns
 
@@ -12,7 +12,7 @@
            col.HeaderText("Done").KeyField("Close").Add();
        }).CardSettings(card =>
        {
-           card.HeaderField("Id").Template("#cardTemplate");
+           card.HeaderField("Id").ContentField("Summary").Template("#cardTemplate");
        }).Created("onCreate").Render()
         </div>
     </div>
@@ -128,6 +128,14 @@
         .e-kanban .e-rank {
             font-size: 12px;
         }
+        
+        .property-panel-content td {
+            padding-top: 10px;
+        }
+
+        .material-dark .e-kanban .e-rank {
+            color: #f9fbfd;
+        }
 
         .e-kanban .e-Low {
             background-image: url(https://syncfusion.atlassian.net/images/icons/priorities/trivial.svg);
@@ -160,7 +168,7 @@
 @section Description{
     <div id="description">
         <p>
-            The sample is designed to showcase the sorting behavior of the Kanban board. It contains the <code>sortBy</code>, <code>field</code> and <code>direction</code> properties. The <code>sortBy</code> property provides the following options:
+            The sample is designed to showcase the sorting behavior of the Kanban board. It contains the <code>sortBy</code>, <code>field</code>, and <code>direction</code> properties. The <code>sortBy</code> property provides the following options:
         </p>
         <ul>
             <li><code>DataSourceOrder</code>: Cards are aligned in the ascending or descending order based on the data source order and act accordingly when the user drag-and-drop the cards. Since the feature considers the default data source order, <code>field</code> mapping is not required to sort the cards.</li>
@@ -172,12 +180,12 @@
 }
 
 @section Meta{
-    <meta name="description" content="The example demonstrates how to sort the cards in the ascending or descending based on the data source order or indexing or custom field on the Kanban board." />
-}
+                    <meta name="description" content="This example demonstrates the Sorting Cards in ASP.NET MVC Kanban control. Explore here for more details."/>
+                }
 
 @section Title{
-    <title>ASP.NET MVC Kanban Sorting Functionalities Example - Syncfusion Demos </title>
-}
+                    <title>ASP.NET MVC Kanban Sorting Cards Example - Syncfusion Demos </title> 
+                }
 @section Header{
-    <h1 class='sb-sample-text'>Example of Sorting Functionalities in ASP.NET MVC Kanban Control</h1>
-}
+                    <h1 class='sb-sample-text'>Example of Sorting Cards in ASP.NET MVC Kanban Control</h1>
+                }

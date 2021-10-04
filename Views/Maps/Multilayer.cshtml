@@ -31,7 +31,7 @@
     <script>
         function mapsLoad(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.maps.layers[0].shapeSettings.border = { color: "black", width: 0.25 };
             args.maps.layers[1].shapeSettings.border = {
                 color: '#1a9cff',

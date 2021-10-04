@@ -99,7 +99,8 @@
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             args.progressBar.theme = (selectedTheme.charAt(0).toUpperCase() +
                 selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
-            if (args.progressBar.theme === 'HighContrast') {
+            if (args.progressBar.theme === 'HighContrast' || args.progressBar.theme === 'Bootstrap5Dark' || args.progressBar.theme === 'BootstrapDark' || args.progressBar.theme === 'FabricDark'
+                || args.progressBar.theme === 'TailwindDark' || args.progressBar.theme === 'MaterialDark') {
                 for (let i = 0; i < div.length; i++) {
                     div[i].setAttribute('style', 'color:white');
                 }
@@ -123,8 +124,8 @@
 }
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="This example demonstrates the Linear in ASP.NET MVC Progress Bar control. Explore here for more details." />
-}
+                    <meta name="description" content="This example demonstrates the Linear in ASP.NET MVC Progress Bar control. Explore here for more details."/>
+                }
 @*custom code end*@
 @section ActionDescription{
     <p>
@@ -137,8 +138,8 @@
     </p>
 }
 @section Title{
-    <title>ASP.NET MVC Progress Bar Linear Example - Syncfusion Demos </title>
-}
+                    <title>ASP.NET MVC Progress Bar Linear Example - Syncfusion Demos </title> 
+                }
 @section Header{
-    <h1 class='sb-sample-text'>Example of Linear in ASP.NET MVC Progress Bar Control</h1>
-}
+                    <h1 class='sb-sample-text'>Example of Linear in ASP.NET MVC Progress Bar Control</h1>
+                }

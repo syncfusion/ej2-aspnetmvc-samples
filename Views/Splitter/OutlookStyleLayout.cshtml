@@ -7,7 +7,6 @@
     + "<div class='status'>${Content1}</div><div id='list-message'>${Content2}</div>"
     + "</span>"
     + "</div>";
-    var groupTemplate = "<div class='e-list-wrapper'><span class='e-list-item-content'></span></div>";
     var treeTemplate = "<div><div class='treeviewdiv'><div style='float:left'>" +
                 "<span class='treeName'>${name}</span></div>${if(count)}<div style='margin-right: 5px; float:right'>" +
                 "<span class='treeCount e-badge e-badge-primary'>${count}</span></div>  ${/if} </div></div>";
@@ -26,7 +25,7 @@
                             </div>).Add();
        paneItem.Size("33%").Min("23%").ContentTemplate(@<div>
                                     <div class="content">
-                                        @Html.EJS().ListView("groupedList").DataSource((IEnumerable<object>)ViewBag.ListData).Fields(new ListViewFieldSettings { GroupBy = "order", Text = "Name" }).CssClass("e-list-template").GroupTemplate(groupTemplate).Template(template).Render()
+                                        @Html.EJS().ListView("groupedList").DataSource((IEnumerable<object>)ViewBag.ListData).Fields(new ListViewFieldSettings { Text = "Name" }).CssClass("e-list-template").Template(template).Render()
                                     </div>
                                 </div>).Add();
   paneItem.Size("37%").Min("30%").ContentTemplate(@<div>

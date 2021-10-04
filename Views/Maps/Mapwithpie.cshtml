@@ -24,7 +24,7 @@
         var chart, chart1, chart2, chart3, chart4, chart5;
         function mapsload(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1));
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.maps.layers[0].markerSettings = [
                 {
                     visible: true,
@@ -295,7 +295,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample visualizes the placing of pie charts on the maps. Pie chart is rendered with the age group detais of top 6 largest countries.
+            This sample visualizes the placing of pie charts on the maps. Pie chart is rendered with the age group details of top 6 largest countries.
         </p>
     </div>
 }
@@ -313,7 +313,7 @@
         <br />
         <p style="font-weight: 500">Injecting Module</p>
         <p>
-            Maps component features are segregated into individual feature-wise modules. To use marker template, you need to inject <code>Marker</code> module using <code>Maps.Inject(Marker)</code> method.
+            Maps component features are segregated into individual feature-wise modules. To use marker template, you need to inject <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
         </p>
     </div>
 }

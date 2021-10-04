@@ -6,7 +6,7 @@
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Group(group => group.Resources(ViewBag.Resources)).Resources(res =>
            {
                res.DataSource(ViewBag.Calendars).Field("CalendarId").Title("Calendars").Name("Calendars").TextField("CalendarName").IdField("CalendarId").ColorField("CalendarColor").AllowMultiple(true).Add();
-           }).EventSettings(e => e.DataSource(ViewBag.datasource)).Views(ViewBag.view).SelectedDate(new DateTime(2018, 4, 1)).Render()
+           }).EventSettings(e => e.DataSource(ViewBag.datasource)).Views(ViewBag.view).SelectedDate(new DateTime(DateTime.Today.Year, 4, 1)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">

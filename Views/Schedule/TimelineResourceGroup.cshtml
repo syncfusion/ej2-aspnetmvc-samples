@@ -8,7 +8,7 @@
             {
                 res.DataSource(ViewBag.Projects).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
                 res.DataSource(ViewBag.Categories).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").GroupIDField("groupId").ColorField("color").AllowMultiple(true).Add();
-            }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewBag.datasource)).SelectedDate(new DateTime(2018, 4, 4)).Render()
+            }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewBag.datasource)).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).WorkDays(ViewBag.workDays).Render()
         </div>
     </div>
     <style type="text/css">
@@ -43,7 +43,7 @@
             <code>PROJECT 2</code> are the parent level and the
             <code>development</code> and
             <code>testing</code> are child level resources which are defined using the
-            <code>Resources</code> property. They are grouped in layout by making use of the
+            <code>Resources</code> property. They are grouped in layout by using the
             <code>Group</code> property and its order of grouping depends on the order of names passed onto the
             <code>Resources</code> option within
             <code>Group</code>.

@@ -26,24 +26,28 @@
                 <col style="width:45%" />
             </colgroup>
             <tr>
-                <td style="width:55%">
-                    <div>Work Start Time</div>
+                <td style="width:100%">
+                    <div style="font-size: 15px;">Work Start Time</div>
                 </td>
-                <td style="width:45%">
-                    <div style="padding-top: 0px">
-                        @(Html.EJS().NumericTextBox("WorkStartTime").Min(0).Max(24).Value(8).Change("UpdateTime").ShowSpinButton(true).Step(0.5)
+            </tr>
+            <tr>
+                <td style="width:100%">
+                    <div style="padding-top: 0px; width: 150px">
+                        @(Html.EJS().NumericTextBox("WorkStartTime").Min(0).Max(24).Value(8).Change("UpdateTime").ShowSpinButton(true).Step(0.5).Width("150px")
                             .Render()
                         )
                     </div>
                 </td>
             </tr>
             <tr>
-                <td style="width:55%">
-                    <div>Work End Time</div>
+                <td style="width:100%">
+                    <div style="font-size: 15px;">Work End Time</div>
                 </td>
+            </tr>
+            <tr>
                 <td style="width:45%">
-                    <div style="padding-top: 0px">
-                        @(Html.EJS().NumericTextBox("WorkEndTime").Min(0).Max(24).Value(17).Change("UpdateTime").ShowSpinButton(true).Step(0.5)
+                    <div style="padding-top: 0px; width: 150px"">
+                        @(Html.EJS().NumericTextBox("WorkEndTime").Min(0).Max(24).Value(17).Change("UpdateTime").ShowSpinButton(true).Step(0.5).Width("150px")
                             .Render()
                         )
                     </div>

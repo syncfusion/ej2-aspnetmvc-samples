@@ -4,10 +4,8 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            <div class='schedule-demo-heading'>
-                Flight timings Between Barcelona and Los Angeles
-            </div>
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").ResourceHeaderTemplate("#restemplate").Group(group => group.Resources(ViewBag.Resources)).Resources(res => { res.DataSource(ViewBag.Airlines).Field("AirlineId").Title("Airline Name").Name("Airlines").TextField("AirlineName").IdField("AirlineId").ColorField("AirlineColor").AllowMultiple(true).Add(); }).Views(view => { view.Option(View.Week).Add(); view.Option(View.Month).Add(); view.Option(View.Agenda).Add(); }).EventSettings(e => e.DataSource("generateEvents()").Fields(f => f.Subject(sub => sub.Name("Subject").Title("Travel Summary")).Location(loc => loc.Name("Location").Title("Source")).Description(des => des.Name("Description").Title("Comments")).StartTime(st => st.Name("StartTime").Title("Departure Time")).EndTime(et => et.Name("EndTime").Title("Arrival Time")))).SelectedDate(new DateTime(2018, 4, 1)).Render()
+            <div class='schedule-demo-heading'>Flight timings Between Barcelona and Los Angeles</div>
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").ResourceHeaderTemplate("#restemplate").Group(group => group.Resources(ViewBag.Resources)).Resources(res => { res.DataSource(ViewBag.Airlines).Field("AirlineId").Title("Airline Name").Name("Airlines").TextField("AirlineName").IdField("AirlineId").ColorField("AirlineColor").AllowMultiple(true).Add(); }).Views(view => { view.Option(View.Week).Add(); view.Option(View.Month).Add(); view.Option(View.Agenda).Add(); }).EventSettings(e => e.DataSource("generateEvents()").Fields(f => f.Subject(sub => sub.Name("Subject").Title("Travel Summary")).Location(loc => loc.Name("Location").Title("Source")).Description(des => des.Name("Description").Title("Comments")).StartTime(st => st.Name("StartTime").Title("Departure Time")).EndTime(et => et.Name("EndTime").Title("Arrival Time")))).SelectedDate(new DateTime(DateTime.Today.Year, 4, 6)).Render()
         </div>
     </div>
     <style>
@@ -49,6 +47,11 @@
 
         .e-bigger .e-schedule .e-vertical-view .e-resource-cells {
             height: 80px;
+        }
+
+        .tailwind .e-schedule .e-vertical-view .e-resource-cells,
+        .tailwind-dark .e-schedule .e-vertical-view .e-resource-cells {
+            height: 83px;
         }
 
         .e-schedule .template-wrap .airline-details {
@@ -120,13 +123,14 @@
             return (airlineName === 'Airways 1') ? 50 : (airlineName === 'Airways 2') ? 75 : 100;
         };
         function generateEvents() {
+            var year = new Date().getFullYear();
             var subjectCollection = ['Barcelona to Los Angeles', 'Los Angeles to Barcelona'];
             var collections = [];
             var dataCollections = [1, 2, 3];
             var id = 1;
             for (var i = 0, dataCollections = dataCollections; i < dataCollections.length; i++) {
                 var data = dataCollections[i];
-                var startDate = new Date(2018, 3, 1);
+                var startDate = new Date(year, 3, 1);
                 startDate.setMilliseconds(1000 * 60 * 60 * .5 * (data - 1));
                 var lastDate = new Date((+startDate) + (1000 * 60 * 60 * 24 * 30));
                 for (var date = startDate; date.getTime() < lastDate.getTime(); date = new Date(date.getTime() + (1000 * 60 * 60 * 5))) {
@@ -162,10 +166,10 @@
 @section Description{
     <div id="description">
         <p>
-            In this demo, the scheduler has been grouped with multiple resources by making use of the property
+            In this demo, the scheduler has been grouped with multiple resources by using the property
             <code>Group</code>. The resources to be grouped depends on the values of
             <code>Resources</code> option within the
-            <code>Group</code> property, which accepts the array of resource names. The resource header has been customized by making use of the
+            <code>Group</code> property, which accepts the array of resource names. The resource header has been customized by using the
             <code>ResourceHeaderTemplate</code> property.
         </p>
         <p>

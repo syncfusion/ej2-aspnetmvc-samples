@@ -3,7 +3,7 @@
     <div class="control-section">
         <div class="control-wrapper">
             <div class="control-section">
-                @Html.EJS().RichTextEditor("tribute").Placeholder("Type @ to get the employee list with their email IDs.").Created("onCreate").Render()
+                @Html.EJS().RichTextEditor("tribute").Placeholder("Type @ to get the employee list with their email IDs.").Created("onCreate").ActionBegin("actionBeginEvent").Render()
             </div>
         </div>
     </div>
@@ -61,6 +61,11 @@
             ]
         })
         tribute.attach(this.inputElement);
+    }
+    function actionBeginEvent(args) {
+        if (args.requestType === 'EnterAction') {
+            args.cancel = true;
+        }
     }
     </script>
 }
