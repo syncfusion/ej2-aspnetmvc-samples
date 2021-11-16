@@ -70,10 +70,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             #region page2
             PdfPage page2 = document.Pages.Add();
 
-            PdfFont fontnormal = new PdfStandardFont(PdfFontFamily.TimesRoman, 10);
-            PdfFont fontTitle = new PdfStandardFont(PdfFontFamily.TimesRoman, 22, PdfFontStyle.Bold);
-            PdfFont fontHead = new PdfStandardFont(PdfFontFamily.TimesRoman, 10, PdfFontStyle.Bold);
-            PdfFont fontHead2 = new PdfStandardFont(PdfFontFamily.TimesRoman, 16, PdfFontStyle.Bold);
+            PdfFont fontnormal = new PdfTrueTypeFont(new Font("Arial", 9, FontStyle.Regular), true);
+            PdfFont fontTitle = new PdfTrueTypeFont(new Font("Arial", 22, FontStyle.Bold), true);
+            PdfFont fontHead = new PdfTrueTypeFont(new Font("Arial", 10, FontStyle.Bold), true);
+            PdfFont fontHead2 = new PdfTrueTypeFont(new Font("Arial", 18, FontStyle.Bold), true);
+
 
             page2.Graphics.DrawString("Table of Contents", fontTitle, PdfBrushes.Black, new PointF(300, 0));
             page2.Graphics.DrawLine(new PdfPen(PdfBrushes.Black, 0.5f), new PointF(0, 40), new PointF(page2.GetClientSize().Width, 40));
@@ -87,7 +88,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
             PdfPage page3 = document.Pages.Add();
 
-            page3.Graphics.DrawString("C# Succinctly", new PdfStandardFont(PdfFontFamily.TimesRoman, 32, PdfFontStyle.Bold), PdfBrushes.Black, new PointF(160, 0));
+            page3.Graphics.DrawString("C# Succinctly", new PdfTrueTypeFont(new Font("Arial", 32, FontStyle.Bold), true), PdfBrushes.Black, new PointF(160, 0));
 
             page3.Graphics.DrawLine(PdfPens.Black, new PointF(0, 40), new PointF(page3.GetClientSize().Width, 40));
 
@@ -126,6 +127,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
             PdfUriAnnotation uriAnnotation = new PdfUriAnnotation(rectangle, "https://bitbucket.org/syncfusiontech/c-succinctly");
             uriAnnotation.Color = new PdfColor(255, 255, 255);
+            //Adds alternative description for annotation
+            uriAnnotation.Text = "annotation";
             //Adds this annotation to a new page
             page3.Annotations.Add(uriAnnotation);
 

@@ -345,7 +345,7 @@
                     } else if (name === 'italic') {
                         annotationStyle.italic = true;
                     } else if (name === 'fontcolor') {
-                        annotationStyle.color = true;
+                        annotationStyle.color = value;
                     } else if (name === 'template') {
                         if (value === 'none') {
                             node.annotations[j].template = '';
@@ -354,7 +354,7 @@
                         } else {
                             node.annotations[j].width = 25;
                             node.annotations[j].height = 25;
-                            node.annotations[j].template = '<img src="/Content/images/Diagram/annotation/' + value + '.svg" style="width:100%;height:100%" />';
+                            node.annotations[j].template = '<img src="/Content/images/diagram/annotation/' + value + '.svg" style="width:100%;height:100%" />';
                         }
                     } else if (name === 'interaction') {
                         node.annotations[j].constraints = node.annotations[j].constraints ^ ej.diagrams.AnnotationConstraints.Interaction;

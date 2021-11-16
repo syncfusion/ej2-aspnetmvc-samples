@@ -3384,9 +3384,9 @@ if (!window) {
       {
         "url": "CRUD",
         "name": "CRUD",
-        "category": "DataBinding",
+        "category": "Data Binding",
         "uid": "007733",
-        "order": 6,
+        "order": 5,
         "component": "Diagram",
         "dir": "Diagram",
         "parentId": "07"
