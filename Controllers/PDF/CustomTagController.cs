@@ -34,12 +34,13 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
         public ActionResult CustomTag(string Browser)
         {
             string image1 = ResolveApplicationImagePath("CustomTag.jpg");
-            
 
-            PdfFont fontnormal = new PdfStandardFont(PdfFontFamily.TimesRoman, 10);
-            PdfFont fontTitle = new PdfStandardFont(PdfFontFamily.TimesRoman, 22, PdfFontStyle.Bold);
-            PdfFont fontHead = new PdfStandardFont(PdfFontFamily.TimesRoman, 10, PdfFontStyle.Bold);
-            PdfFont fontHead2 = new PdfStandardFont(PdfFontFamily.TimesRoman, 16, PdfFontStyle.Bold);
+
+            PdfFont fontnormal = new PdfTrueTypeFont(new Font("Arial", 9, FontStyle.Regular), true);
+            PdfFont fontTitle = new PdfTrueTypeFont(new Font("Arial", 22, FontStyle.Bold), true);
+            PdfFont fontHead = new PdfTrueTypeFont(new Font("Arial", 12, FontStyle.Bold), true);
+            PdfFont fontHead2 = new PdfTrueTypeFont(new Font("Arial", 18, FontStyle.Bold), true);
+
 
             #region content string
             string pdfChapter = "We’ll begin with a conceptual overview of a simple PDF document. This chapter is designed to be a brief orientation before diving in and creating a real document from scratch \r\n \r\n A PDF file can be divided into four parts: a header, body, cross-reference table, and trailer. The header marks the file as a PDF, the body defines the visible document, the cross-reference table lists the location of everything in the file, and the trailer provides instructions for how to start reading the file.";
@@ -80,9 +81,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
             PdfPage page2 = document.Pages.Add();
 
-            PdfStructureElement hTextElement1 = new PdfStructureElement(PdfTagType.Heading);
-            PdfStructureElement headingFirstLevel = new PdfStructureElement(PdfTagType.HeadingLevel1);
+            PdfStructureElement hTextElement1 = new PdfStructureElement(PdfTagType.HeadingLevel1);
+            PdfStructureElement headingFirstLevel = new PdfStructureElement(PdfTagType.HeadingLevel2);
+            PdfStructureElement hTextElementLevel3 = new PdfStructureElement(PdfTagType.HeadingLevel3);
             headingFirstLevel.Parent = hTextElement1;
+            hTextElementLevel3.Parent = hTextElement1;
 
             PdfTextElement headerElement1 = new PdfTextElement("Chapter 1 Conceptual Overview", fontTitle, PdfBrushes.Black);
 
@@ -105,11 +108,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             hTextElement2.ActualText = "Header";
 
             PdfTextElement headerElement2 = new PdfTextElement("Header", fontHead2, PdfBrushes.Black);
-            headerElement2.PdfTag = hTextElement1;
+            headerElement2.PdfTag = hTextElement2;
             headerElement2.Draw(page2, new PointF(0, 140));
 
             PdfStructureElement textElement2 = new PdfStructureElement(PdfTagType.Paragraph);
-            textElement2.Parent = hTextElement2;
+            textElement2.Parent = hTextElementLevel3;
             textElement2.ActualText = header;
 
             PdfTextElement element2 = new PdfTextElement(header, fontnormal);
@@ -123,11 +126,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             hTextElement3.ActualText = "Body";
 
             PdfTextElement headerElement3 = new PdfTextElement("Body", fontHead2, PdfBrushes.Black);
-            headerElement3.PdfTag = hTextElement1;
+            headerElement3.PdfTag = hTextElement3;
             headerElement3.Draw(page2, new PointF(0, 210));
 
             PdfStructureElement textElement3 = new PdfStructureElement(PdfTagType.Paragraph);
-            textElement3.Parent = hTextElement3;
+            textElement3.Parent = hTextElementLevel3;
             textElement3.ActualText = body;
 
             PdfTextElement element3 = new PdfTextElement(body, fontnormal);
@@ -144,7 +147,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             headerElement5.Draw(page2, new PointF(0, 380));
 
             PdfStructureElement textElement6 = new PdfStructureElement(PdfTagType.Paragraph);
-            textElement6.Parent = hTextElement6;
+            textElement6.Parent = hTextElementLevel3;
             textElement6.ActualText = crossRef;
 
             PdfTextElement element6 = new PdfTextElement(crossRef, fontnormal);
@@ -161,7 +164,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             headerElement6.Draw(page2, new PointF(0, 470));
 
             PdfStructureElement textElement7 = new PdfStructureElement(PdfTagType.Paragraph);
-            textElement7.Parent = hTextElement7;
+            textElement7.Parent = hTextElementLevel3;
             textElement7.ActualText = trailer;
 
             PdfTextElement element7 = new PdfTextElement(trailer, fontnormal);
@@ -183,11 +186,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
 
             PdfTextElement headerElement4 = new PdfTextElement("Resource", fontHead2, PdfBrushes.Black);
-            headerElement4.PdfTag = hTextElement1;
+            headerElement4.PdfTag = hTextElement4;
             headerElement4.Draw(page3, new PointF(0, 0));
 
             PdfStructureElement textElement4 = new PdfStructureElement(PdfTagType.Paragraph);
-            textElement4.Parent = hTextElement4;
+            textElement4.Parent = hTextElementLevel3;
             textElement4.ActualText = resource;
 
             PdfTextElement element4 = new PdfTextElement(resource, fontnormal);
@@ -281,7 +284,12 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             pdfGrid.BeginCellLayout += PdfGrid_BeginCellLayout;
             pdfGrid.Draw(page3, new PointF(20, 130));
 
-            page3.Graphics.DrawRectangle(PdfPens.Black, new RectangleF(20, 120, 490, 90));
+            PdfStructureElement element8 = new PdfStructureElement(PdfTagType.Figure);
+            element8.AlternateText = "Rectangle Sample";
+            PdfRectangle rect = new PdfRectangle(20, 120, 490, 90);
+            rect.PdfTag = element8;
+            rect.Draw(page3.Graphics);
+
 
 
 
@@ -308,6 +316,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             pdfGridCellStyle.Borders.All = transparentPen;
 
             args.Style = pdfGridCellStyle;
+            args.Style.Font = new PdfTrueTypeFont(new Font("Arial", 8, FontStyle.Regular), true);
             args.Style.StringFormat = new PdfStringFormat(PdfTextAlignment.Center);
 
         }
