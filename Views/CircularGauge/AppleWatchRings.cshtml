@@ -70,20 +70,98 @@
             margin-top: 3% !important;
         }
     </style>
+
+    <style>
+        .firstAnnotation {
+            height: 22px;
+            width: 22px;
+        }
+
+        #gauge2_Axis_0_Annotation_0 .firstAnnotation {
+            height: 17px;
+            width: 17px;
+            margin-top: 2px;
+            margin-left: 2px;
+        }
+
+        .tailwind #gauge2_Axis_0_Annotation_0 .firstAnnotation, .tailwind-dark #gauge2_Axis_0_Annotation_0 .firstAnnotation {
+            height: 17px;
+            width: 17px;
+            margin-left: 2px;
+            margin-bottom: 4px;
+        }
+
+        .fabric #gauge2_Axis_0_Annotation_0 .firstAnnotation, .fabric-dark #gauge2_Axis_0_Annotation_0 .firstAnnotation {
+            height: 17px;
+            width: 17px;
+            margin-left: 2px;
+            margin-bottom: 4px;
+        }
+
+        .secondAnnotation {
+            height: 20px;
+            width: 20px;
+        }
+
+        #gauge3_Axis_0_Annotation_0 .secondAnnotation {
+            height: 17px;
+            width: 17px;
+            margin-top: 2px;
+            margin-left: 2px;
+        }
+
+        .tailwind #gauge3_Axis_0_Annotation_0 .secondAnnotation, .tailwind-dark #gauge3_Axis_0_Annotation_0 .secondAnnotation {
+            height: 17px;
+            width: 17px;
+            margin-left: 2px;
+            margin-bottom: 4px;
+        }
+
+        .fabric #gauge3_Axis_0_Annotation_0 .secondAnnotation, .fabric-dark #gauge3_Axis_0_Annotation_0 .secondAnnotation {
+            height: 17px;
+            width: 17px;
+            margin-left: 2px;
+            margin-bottom: 4px;
+        }
+
+        .thirdAnnotation {
+            height: 22px;
+            width: 22px;
+        }
+
+        #gauge4_Axis_0_Annotation_0 .thirdAnnotation {
+            height: 17px;
+            width: 17px;
+            margin-top: 0px;
+        }
+
+        .tailwind #gauge4_Axis_0_Annotation_0 .thirdAnnotation, .tailwind-dark #gauge4_Axis_0_Annotation_0 .thirdAnnotation {
+            height: 17px;
+            width: 17px;
+            margin-bottom: 4px;
+        }
+
+        .fabric #gauge4_Axis_0_Annotation_0 .thirdAnnotation, .fabric-dark #gauge4_Axis_0_Annotation_0 .thirdAnnotation {
+            height: 17px;
+            width: 17px;
+            margin-left: 1px;
+            margin-bottom: 5px;
+        }
+    </style>
     <div>
         <script id='exetracking1' type="text/x-template">
             <div id='annotation' style="width:300px">
-                <img style="height:22px;width:22px" src="@Url.Content("~/Content/CircularGauge/Images/image1.svg")" />
+                <img class="firstAnnotation" src="@Url.Content("~/Content/CircularGauge/Images/image1.svg")" />
             </div>
         </script>
         <script id="exetracking2" type="text/x-template">
             <div id="annotation" style="width:100px" ;>
-                <img style="height:20px;width:20px" src="@Url.Content("~/Content/CircularGauge/Images/image2.svg")">
+                <img class="secondAnnotation" src="@Url.Content("~/Content/CircularGauge/Images/image2.svg")">
             </div>
         </script>
         <script id="exetracking3" type="text/x-template">
             <div id="annotation" style="width:100px" ;>
-                <img style="height:22px;width:22px" src="@Url.Content("~/Content/CircularGauge/Images/image3.svg")">
+                <img class="thirdAnnotation" src="@Url.Content("~/Content/CircularGauge/Images/image3.svg")">
             </div>
         </script>
         <script id="exetracking4" type="text/x-template">
@@ -144,7 +222,7 @@
                             Start = 0, End = 100,
                             Radius = "100%",
                             StartWidth = "8", EndWidth = "8",
-                            Color = "#E30219", Opacity = 0.2
+                            Color = "#fa114f", Opacity = 0.2
                         }
                     })
                     .Pointers(new List<Syncfusion.EJ2.CircularGauge.CircularGaugePointer> {
@@ -154,7 +232,7 @@
                             Value = 65,
                             Type = PointerType.RangeBar,
                             Radius = "100%",
-                            Color = "#E2011A",
+                            Color = "#fa114f",
                             Animation = new CircularGaugeAnimation { Enable = true },
                             PointerWidth = 8
                         }
@@ -186,7 +264,7 @@
                             Start = 0, End = 100,
                             Radius = "100%",
                             StartWidth = "8", EndWidth = "8",
-                            Color = "#3EDE00", Opacity = 0.2
+                            Color = "#99ff01", Opacity = 0.2
                         }
                     })
                     .Pointers(new List<Syncfusion.EJ2.CircularGauge.CircularGaugePointer> {
@@ -196,7 +274,7 @@
                             Value = 43,
                             Type = PointerType.RangeBar,
                             Radius = "100%",
-                            Color = "#3FE000",
+                            Color = "#99ff01",
                             Animation = new CircularGaugeAnimation { Enable = true },
                             PointerWidth = 8
                         }
@@ -228,7 +306,7 @@
                             Start = 0, End = 100,
                             Radius = "100%",
                             StartWidth = "8", EndWidth = "8",
-                            Color = "#18F8F6", Opacity = 0.2
+                            Color = "#00d8fe", Opacity = 0.2
                         }
                     })
                     .Pointers(new List<Syncfusion.EJ2.CircularGauge.CircularGaugePointer> {
@@ -238,7 +316,7 @@
                             Value = 58,
                             Type = PointerType.RangeBar,
                             Radius = "100%",
-                            Color = "#00C9E6",
+                            Color = "#00d8fe",
                             Animation = new CircularGaugeAnimation { Enable = true },
                             PointerWidth = 8
                         }

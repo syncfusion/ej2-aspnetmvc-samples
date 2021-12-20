@@ -9,22 +9,16 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 50%">
-                        <div>Start Hour</div>
-                    </td>
-                    <td style="width: 50%;">
+                    <td style="width: 100%;">
                         <div>
-                            @Html.EJS().TimePicker("startTime").Format("HH:mm").Width("90px").Value(new DateTime(2000, 1, 1, 8, 0, 0)).Render()
+                            @Html.EJS().TimePicker("startTime").Format("HH:mm").Value(new DateTime(2000, 1, 1, 8, 0, 0)).Placeholder("Start Hour").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Render()
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
-                    <td style="width: 50%">
-                        <div>End Hour</div>
-                    </td>
-                    <td style="width: 50%;">
+                    <td style="width: 100%;">
                         <div>
-                            @Html.EJS().TimePicker("endTime").Format("HH:mm").Width("90px").Value(new DateTime(2000, 1, 1, 20, 0, 0)).Render()
+                            @Html.EJS().TimePicker("endTime").Format("HH:mm").Value(new DateTime(2000, 1, 1, 20, 0, 0)).Placeholder("End Hour").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Render()
                         </div>
                     </td>
                 </tr>

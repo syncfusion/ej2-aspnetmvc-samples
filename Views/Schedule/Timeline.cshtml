@@ -11,12 +11,9 @@
         <table id='property' title='Properties' class='property-panel-table' style="width: 100%;">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 30%">
-                        <div class='col-md-4' style="padding-top: 8px">Current Date:</div>
-                    </td>
-                    <td style="width: 70%">
+                    <td style="width: 100%">
                         <div class='datepicker-control-section'>
-                            @Html.EJS().DatePicker("scheduledate").Value(new DateTime(DateTime.Today.Year, 1, 10)).ShowClearButton(false).Change("onChange").Render()
+                            @Html.EJS().DatePicker("scheduledate").Value(new DateTime(DateTime.Today.Year, 1, 10)).ShowClearButton(false).Change("onChange").Placeholder("Current Date").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Render()
                         </div>
                     </td>
                 </tr>

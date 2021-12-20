@@ -8,7 +8,7 @@
         @Html.EJS().Grid("EnableRtl").DataSource((IEnumerable<object>)ViewBag.dataSource).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu); }).AllowFiltering().ShowColumnChooser(true).Columns(col =>
    {
 
-       col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("CustomerID").HeaderText("Customer Name").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).ShowInColumnChooser(false).Add();
        col.Field("OrderDate").HeaderText("Order Date").EditType("datepickeredit").Width("130").Type("Date").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("Freight").HeaderText("Freight").EditType("numericedit").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

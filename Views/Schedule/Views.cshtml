@@ -12,12 +12,9 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 30%">
-                        <div>Current View</div>
-                    </td>
-                    <td style="width: 50%;">
+                    <td style="width: 100%;">
                         <div>
-                            @Html.EJS().DropDownList("scheduleview").Index(1).DataSource(ViewBag.ddl).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Render()
+                            @Html.EJS().DropDownList("scheduleview").Index(1).DataSource(ViewBag.ddl).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Placeholder("Current View").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Render()
                         </div>
                     </td>
                 </tr>

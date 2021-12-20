@@ -81,6 +81,35 @@
             top: calc(50% - 4px);
             border-radius: 5px;
         }
+
+        .fabric input[type="checkbox"].zoomCheckbox, .fabric-dark input[type="checkbox"].zoomCheckbox, .tailwind input[type="checkbox"].zoomCheckbox, .tailwind-dark input[type="checkbox"].zoomCheckbox {
+            margin-top: 18px;
+        }
+
+        input[type="checkbox"].zoomCheckbox {
+            margin-top: 15px;
+        }
+
+        #slideText {
+            margin-top: 5px;
+            width: 67px;
+        }
+
+        .tailwind #slideText, .tailwind-dark #slideText {
+            margin-top: 0px;
+        }
+
+        .bootstrap5 #slideText {
+            width: 55px;
+        }
+
+        #sliderText {
+            margin-top: -5px;
+        }
+
+        .tailwind #sliderText, .tailwind-dark #sliderText {
+            margin-top: -10px;
+        }
     </style>
     <div class="col-md-9 control-section">
         <div>
@@ -106,64 +135,69 @@
         </div>
     </div>
     <div class="col-md-3 property-section">
-        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
+        <table id="property" title="Properties" style="width: 100%;">
 			<tbody>
 				<tr style="height: 50px">
 					<td style="width: 50%">
-						<div style="width: 120%">Zooming</div>
+						<div style="margin-left: -10px;">Zooming</div>
 					</td>
 					<td>
-						<input type="checkbox" checked="" id="zoom" style="margin-top: 15px; margin-left: 55px;">
+						<input class="zoomCheckbox" type="checkbox" checked="" id="zoom" style=" margin-left: 10px;">
 					</td>
 				</tr>
 				<tr style="height: 50px">
 					<td style="width: 50%">
-						<div style="width: 120%">Panning</div>
+						<div style="margin-left: -10px;">Panning</div>
 					</td>
 					<td>
-						<input type="checkbox" checked="" id="panning" style="margin-top: 15px; margin-left: 55px;">
+						<input class="zoomCheckbox" type="checkbox" checked="" id="panning" style=" margin-left: 10px;">
 					</td>
 				</tr>
 				<tr style="height: 50px">
 					<td style="width: 50%">
-						<div style="width: 120%">Mouse wheel zoom</div>
+						<div style="margin-left: -10px;">Mouse wheel zoom</div>
 					</td>
 					<td>
-						<input type="checkbox" checked="" id="mousewheel" style="margin-top: 15px; margin-left: 55px;">
+						<input class="zoomCheckbox" type="checkbox" checked="" id="mousewheel" style=" margin-left: 10px;">
 					</td>
 				</tr>
 				<tr style="height: 50px">
 					<td style="width: 50%">
-						<div style="width: 120%">Pinch zoom</div>
+						<div style="margin-left: -10px;">Pinch zoom</div>
 					</td>
 					<td>
-						<input type="checkbox" checked="" id="pinch" style="margin-top: 15px; margin-left: 55px;">
+						<input class="zoomCheckbox" type="checkbox" checked="" id="pinch" style=" margin-left: 10px;">
 					</td>
 				</tr>
 				<tr style="height: 50px">
 					<td style="width: 50%">
-						<div style="width: 120%">Single click zoom</div>
+						<div style="margin-left: -10px;">Single click zoom</div>
 					</td>
 					<td>
-						<input type="checkbox" id="singletap" style="margin-top: 15px; margin-left: 55px;">
+						<input class="zoomCheckbox" type="checkbox" id="singletap" style=" margin-left: 10px;">
 					</td>
 				</tr>
 				<tr style="height: 50px">
 					<td style="width: 50%">
-						<div style="width: 120%">Double click zoom</div>
+						<div style="margin-left: -10px;">Double click zoom</div>
 					</td>
 					<td>
-						<input type="checkbox" id="doubletap" style="margin-top: 15px; margin-left: 55px;">
+						<input class="zoomCheckbox" type="checkbox" id="doubletap" style=" margin-left: 10px;">
 					</td>
 				</tr>
-				<tr style="height: 50px">
-					<td style="width: 50%">
-						<div style="width: 120%">Animation duration <br><span id="dur">500 ms</span></div>
-					</td>
-					<td>
-						<div id="range" style="width: 100px"></div>
-					</td>
-				</tr>
+                <tr style="height: 50px">
+                    <td style="width: 50%">
+                        <div id="sliderText" style="margin-left: -10px;">Animation duration </div>
+                    </td>
+                    <td>
+                        <div id="range" style="width: 100%"></div>
+                    </td>
+                    <td>
+                        <div id="slideText" style="text-align:center; padding: 0px; padding-left: 10px;">
+                            <span id='dur'>500 ms</span>
+                        </div>
+                    </td>
+                </tr>
 			</tbody>
         </table>
     </div>

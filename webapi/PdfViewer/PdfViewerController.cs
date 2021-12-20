@@ -143,6 +143,20 @@ namespace EJ2MVCSampleBrowser.Controllers
             }
             return (GetPlainText(jsonResult));
         }
+        [HttpPost]
+        public HttpResponseMessage ExportFormFields(Dictionary<string, string> jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            string jsonResult = pdfviewer.ExportFormFields(jsonObject);
+            return (GetPlainText(jsonResult));
+        }
+        [HttpPost]
+        public object ImportFormFields(Dictionary<string, string> jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            object jsonResult = pdfviewer.ImportFormFields(jsonObject);
+            return (JsonConvert.SerializeObject(jsonResult));
+        }
         private HttpResponseMessage GetPlainText(string pageImage)
         {
             var responseText = new HttpResponseMessage(HttpStatusCode.OK);

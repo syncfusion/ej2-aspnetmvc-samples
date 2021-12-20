@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             range1.Radius = "90%";
             range1.StartWidth = "40";
             range1.EndWidth = "40";
-            range1.Color = "#E30219";
+            range1.Color = "#fa114f";
             range1.Opacity = 0.2;
             ranges.Add(range1);
 
@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             range2.Radius = "68%";
             range2.StartWidth = "40";
             range2.EndWidth = "40";
-            range2.Color = "#3EDE00";
+            range2.Color = "#99ff01";
             range2.Opacity = 0.2;
             ranges.Add(range2);
 
@@ -49,7 +49,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             range3.Radius = "46%";
             range3.StartWidth = "40";
             range3.EndWidth = "40";
-            range3.Color = "#18F8F6";
+            range3.Color = "#00d8fe";
             range3.Opacity = 0.2;
             ranges.Add(range3);
             ViewBag.Ranges = ranges;
@@ -60,7 +60,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             pointer1.Value = 65;
             pointer1.Type = PointerType.RangeBar;
             pointer1.Radius = "90%";
-            pointer1.Color = "#E2011A";
+            pointer1.Color = "#fa114f";
             pointer1.Animation = new CircularGaugeAnimation { Enable = true };
             pointer1.PointerWidth = 40;
             pointers.Add(pointer1);
@@ -70,7 +70,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             pointer2.Value = 43;
             pointer2.Type = PointerType.RangeBar;
             pointer2.Radius = "68%";
-            pointer2.Color = "#3FE000";
+            pointer2.Color = "#99ff01";
             pointer2.Animation = new CircularGaugeAnimation { Enable = true };
             pointer2.PointerWidth = 40;
             pointers.Add(pointer2);
@@ -80,7 +80,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
             pointer3.Value = 58;
             pointer3.Type = PointerType.RangeBar;
             pointer3.Radius = "46%";
-            pointer3.Color = "#00C9E6";
+            pointer3.Color = "#00d8fe";
             pointer3.Animation = new CircularGaugeAnimation { Enable = true };
             pointer3.PointerWidth = 40;
             pointers.Add(pointer3);

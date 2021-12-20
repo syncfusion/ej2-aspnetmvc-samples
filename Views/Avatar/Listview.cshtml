@@ -91,14 +91,16 @@
     }
 
     body.bootstrap5 #letterAvatarList .listWrapper .e-avatar,
-    body.bootstrap5-dark #letterAvatarList .listWrapper .e-avatar,
-    body.tailwind-dark #letterAvatarList .listWrapper .e-avatar {
+    body.bootstrap5-dark #letterAvatarList .listWrapper .e-avatar {
         top: calc(100% - 48px);
     }
 
+    body.tailwind-dark #letterAvatarList .listWrapper .e-avatar{
+        top: calc(100% - 40px);
+    }
+
     body.bootstrap5 #letterAvatarList .e-list-item,
-    body.bootstrap5-dark #letterAvatarList .e-list-item,
-    body.tailwind-dark #letterAvatarList .e-list-item {
+    body.bootstrap5-dark #letterAvatarList .e-list-item {
         line-height: 30px;
     }
 
@@ -174,7 +176,8 @@
         top: calc(100% - 45px);
     }
 
-    .tailwind #letterAvatarList .e-list-item {
+    .tailwind #letterAvatarList .e-list-item,
+    .tailwind-dark #letterAvatarList .e-list-item {
         line-height: 50px;
         padding-top: 0;
         padding-bottom: 0;

@@ -127,9 +127,9 @@
                     <button id="makePayment" class="e-btn">Pay</button>
                 </div>
             </div>
-            @Html.EJS().Tab("ej2Tab").HeightAdjustMode(HeightStyles.None).Height("390").Created("tabCreated").Selecting("tabSelecting").Items(ViewBag.headeritems).Render()
+            @Html.EJS().Tab("ej2Tab").HeightAdjustMode(HeightStyles.None).Height("auto").Created("tabCreated").Selecting("tabSelecting").Items(ViewBag.headeritems).Render()
             <div>
-                @Html.EJS().Dialog("alertDialog").Header("Success").Target("#ej2Tab").ShowCloseIcon(true).Width("250").IsModal(true).Created("dlgCreated").Visible(false).Render()
+                @Html.EJS().Dialog("alertDialog").Header("Success").Target("#ej2Tab").ShowCloseIcon(true).Width("350").IsModal(true).Created("dlgCreated").Visible(false).Render()
             </div>
         </div>
     </div>
@@ -209,7 +209,7 @@
 
     function dlgCreated() {
         alertDlg = document.getElementById("alertDialog").ej2_instances[0];
-        alertDlg.content = "Your payment successfully processed";
+        alertDlg.content = "Your payment was successfully processed";
         alertDlg.buttons = [{
             buttonModel: { content: "Ok", isPrimary: true },
             click: function () {

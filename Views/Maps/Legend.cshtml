@@ -6,6 +6,14 @@
             display: table;
             margin: 0 auto;
         }
+
+        #legendText {
+            margin-top: 22px;
+        }
+
+        .fabric #legendText, .fabric-dark #legendText, .tailwind #legendText, .tailwind-dark #legendText, .bootstrap #legendText, .bootstrap-dark #legendText {
+            margin-top: 27px;
+        }
     </style>
     <div class="col-lg-9 control-section">
         <div id="outer" style="width:100%">
@@ -25,11 +33,11 @@
             <table id="property" title="Properties" style="width: 100%">
                 <tbody>
                     <tr style="height: 50px">
-                        <td style="width: 10%">
-                            <div class="property-text" style="padding: 0px; width: 60px">Legend mode</div>
+                        <td>
+                            <div class="property-text" style="padding-left: 0px;">Legend mode</div>
                         </td>
-                        <td style="width: 30%;">
-                            <div style="margin-left: -10px">
+                        <td>
+                            <div>
                             <select name="selectIndex" autocomplete="off" id="legendMode" style="width:60%;">
                                 <option value="Default" selected>Default</option>
                                 <option value="Interactive">Interactive</option>
@@ -38,11 +46,11 @@
                         </td>
                     </tr>
                     <tr style="height: 50px">
-                        <td style="width: 10%">
-                            <div class="property-text" style="padding: 0px; width: 60px; margin-top: 10px">Legend position</div>
+                        <td>
+                            <div class="property-text" style="padding-left: 0px; margin-top: 10px">Legend position</div>
                         </td>
-                        <td style="width: 30%">
-                            <div style="margin-left: -10px; margin-top: 10px">
+                        <td>
+                            <div style="margin-top: 10px">
                             <select name="legendPos" autocomplete="off" id="legendPosition" style="width:60%;">
                                 <option value="Top" selected>Top</option>
                                 <option value="Bottom">Bottom</option>
@@ -53,21 +61,21 @@
                         </td>
                     </tr>
                     <tr style="height: 50px">
-                        <td style="width: 10%">
-                            <div class="property-text" style="padding: 0px;width:100px; margin-top: 20px">Show legend for remaining data source item</div><br/>
+                        <td>
+                            <div class="property-text" id="legendText" style="padding: 0px;">Show legend for remaining data source item</div><br/>
                         </td>
-                        <td style="width: 30%">
-                            <div style="height: 70px; margin-left: 15px">
+                        <td>
+                            <div style="height: 70px; margin-left: -10px; padding-top: 20px">
                                 <input type="checkbox" id="opacity" style="margin-top: 20px;" />
                             </div>
                         </td>
                     </tr>
                     <tr style="height: 50px">
-                        <td style="width: 10%">
-                            <div class="property-text" style="padding: 0px;width:100px; margin-top: 10px">Show population density when the legend item is toggled</div>
+                        <td>
+                            <div class="property-text" style="padding: 0px;">Show population density when the legend item is toggled</div>
                         </td>
-                        <td style="width: 30%">
-                            <div style="height: 70px; margin-left: 15px">
+                        <td>
+                            <div style="height: 50px; margin-left: -10px; margin-top: -5px">
                                 <input type="checkbox" id="toggleLegend" style="margin-top: 10px;" />
                             </div>
                         </td>
@@ -83,7 +91,7 @@
                 }
                 var maps;
                 function mapsLoad(args) {
-                    
+
                     var theme = themeName ? themeName : 'Material';
                     args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
                     if (!maps) {
@@ -108,14 +116,14 @@
                             }
                         ];
                         maps = args.maps;
-                    }                    
+                    }
                 }
 
                 window.onload = function () {
                     var legendPosition = new ej.dropdowns.DropDownList({
                         index: 0,
                         placeholder: 'Legend Position',
-                        width: 91,
+                        width: '100%',
                         change: () => {
                             maps.legendSettings.position = legendPosition.value;
                             if (legendPosition.value === 'Left' || legendPosition.value === 'Right') {
@@ -141,7 +149,7 @@
                     var mode = new ej.dropdowns.DropDownList({
                         index: 0,
                         placeholder: 'Select layoutMode type',
-                        width: 91,
+                        width: '100%',
                         change: () => {
                             maps.legendSettings.mode = mode.value;
                             if (mode.value === 'Interactive') {

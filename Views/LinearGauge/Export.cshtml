@@ -123,35 +123,35 @@
 	 <div class="col-lg-3 property-section">
 		 <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
 		 	<tr style="height: 50px">
-		 		<td style="width: 40%">
+		 		<td>
 		 			<div>
 		 				Export Type
 		 			</div>
 		 		</td>
-		 		<td style="width: 60%;">
-		 			<div style="margin-left: 10px;">
-		 				@Html.EJS().DropDownList("Export").Index(0).Width("90px").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
+		 		<td>
+		 			<div>
+		 				@Html.EJS().DropDownList("Export").Index(0).Width("100%").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
 		 		</div>
 		 	</td>
 		 </tr>
 		 <tr style="height: 50px">
-		 	<td style="width: 40%">
+		 	<td>
 		 		<div>File Name</div>
 		 	</td>
-		 	<td style="width: 40%;">
+		 	<td>
 		 		<div class="e-float-input" style='margin-top: 0px;'>
-		 			<input type="text" value="Gauge" id="fileName" style="margin-left: 10px; width: 90px;">
+		 			<input type="text" value="Gauge" id="fileName" style=" width: 100%; padding: 0px 0px 0px 5px">
 		 		</div>
 		 	</td>
 		 </tr>
          <tr id="button-control" style="height: 50px">
-             <td>
-                 <div style="margin-top: 20px; margin-left: -10px; width: 100px"; >
+             <td align="center">
+                 <div style="margin-top: 20px; width: 100px" >
                      @Html.EJS().Button("export").Content("Export").CssClass("e-flat").IconCss("e-icons e-play-icon1").IsPrimary(true).Render()
                  </div>
              </td>
-             <td>
-                 <div style="margin-top: 20px; margin-left: 10px; width: 100px">
+             <td align="center">
+                 <div style="margin-top: 20px; width: 100px">
                      @Html.EJS().Button("print").Content("Print").CssClass("e-flat").IconCss("e-icons e-play-icon").IsPrimary(true).Render()
                  </div>
              </td>

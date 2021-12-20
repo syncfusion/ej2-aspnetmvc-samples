@@ -15,16 +15,18 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div>Label Intersect Action</div>
+                    <td>
+                        <div style="margin-left: -10px">Label Intersect Action</div>
                     </td>
-                    <td style="width: 40%;">
+                    <td>
+                        <div>
                         <select name="selectIndex" autocomplete="off" id="labels" style="width:100%;">
                             <option value="Trim" selected="">Trim</option>
                             <option value="Hide">Hide</option>
                             <option value="Wrap">Wrap</option>
                             <option value="WrapByWord">WrapByWord</option>
                         </select>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -453,7 +455,7 @@
         var labelMode = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select Label Action',
-            width: 100,
+            width: '100%',
             change: () => {
                 treemap.leafItemSettings.interSectAction = labelMode.value;
                 treemap.refresh();

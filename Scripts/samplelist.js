@@ -7,7 +7,6 @@ if (!window) {
     "name": "Data Grid",
     "directory": "Grid",
     "category": "Grids",
-	"type": "update",
     "samples": [
       {
         "url": "GridOverview",
@@ -127,8 +126,7 @@ if (!window) {
         "order": 2,
         "component": "Grid",
         "dir": "Grid",
-        "parentId": "00",
-        "type": "new"
+        "parentId": "00"
       },
       {
         "url": "VirtualScrolling",
@@ -148,8 +146,7 @@ if (!window) {
         "order": 2,
         "component": "Grid",
         "dir": "Grid",
-        "parentId": "00",
-        "type": "update"
+        "parentId": "00"
       },
       {
         "url": "LocalData",
@@ -343,7 +340,7 @@ if (!window) {
       },
       {
         "url": "RowDragDrop",
-        "name": "Row Drag And Drop",
+        "name": "Row Drag and Drop",
         "category": "Rows",
         "uid": "000032",
         "order": 5,
@@ -353,7 +350,7 @@ if (!window) {
       },
       {
         "url": "DragAndDropWithInGrid",
-        "name": "Row Drag And Drop Within Grid",
+        "name": "Row Drag and Drop within Grid",
         "category": "Rows",
         "uid": "000033",
         "order": 5,
@@ -717,7 +714,6 @@ if (!window) {
         "order": 3,
         "component": "PivotTable",
         "dir": "PivotTable",
-        "type": "update",
         "parentId": "01"
       },
       {
@@ -748,6 +744,7 @@ if (!window) {
         "order": 3,
         "component": "PivotTable",
         "dir": "PivotTable",
+        "type": "update",
         "parentId": "01"
       },
       {
@@ -779,7 +776,6 @@ if (!window) {
         "component": "PivotTable",
         "dir": "PivotTable",
         "parentId": "01",
-        "type": "new",
       },
       {
         "url": "CalculatedField",
@@ -951,6 +947,17 @@ if (!window) {
         "dir": "TreeGrid",
         "parentId": "02"
       },
+      {
+	 "url": "Adaptive",
+         "name": "Adaptive",
+	 "category": "Tree Grid",
+	 "uid": "002254",
+	 "order": 0,
+	 "component": "TreeGrid",
+	 "dir": "TreeGrid",
+	 "parentId": "02",
+	 "type": "new",
+      },	    
       {
         "url": "Clipboard",
         "name": "Clipboard",
@@ -1127,7 +1134,6 @@ if (!window) {
          "category": "Frozen",
          "uid": "005514",
          "order": 10,
-         "type": "new",
          "component": "TreeGrid",
          "dir": "TreeGrid",
          "parentId": "02"
@@ -1500,7 +1506,6 @@ if (!window) {
     "name": "Spreadsheet",
     "directory": "Spreadsheet",
     "category": "Grids",
-    "type": "update",
     "samples": [
       {
         "url": "DefaultFunctionalities",
@@ -1577,7 +1582,6 @@ if (!window) {
         "name": "Number Formatting",
         "category": "Formatting",
         "component": "Spreadsheet",
-        "type": "update",
         "dir": "Spreadsheet",
         "order": 2,
         "parentId": "03",
@@ -1611,6 +1615,7 @@ if (!window) {
         "dir": "Spreadsheet",
         "order": 4,
         "parentId": "03",
+        "type": "update",
         "uid": "003310"
       },
       {
@@ -1639,7 +1644,6 @@ if (!window) {
         "category": "Spreadsheet",
         "component": "Spreadsheet",
         "dir": "Spreadsheet",
-        "type": "update",
         "order": 0,
         "parentId": "03",
         "uid": "003313"
@@ -1661,6 +1665,7 @@ if (!window) {
   {
     "name": "Chart",
     "directory": "Chart",
+    "type": "update",
     "category": "Data Visualization",
     "samples": [
       {
@@ -1862,6 +1867,17 @@ if (!window) {
         "component": "Chart",
         "dir": "Chart",
         "parentId": "04"
+      },
+      {
+          "url": "GroupedColumn",
+          "name": "Grouped Column",
+          "type": "new",
+          "category": "Bar Charts",
+          "uid": "00441024",
+          "order": 2,
+          "component": "Chart",
+          "dir": "Chart",
+          "parentId": "04"
       },
       {
         "url": "RoundedColumn",
@@ -2205,7 +2221,8 @@ if (!window) {
       },
       {
         "url": "PieRadius",
-        "name": "Pie With Various Radius",
+        "name": "Pie with Various Radius",
+        "type": "update",
         "category": "Accumulation Charts",
         "uid": "004454",
         "order": 8,
@@ -2564,6 +2581,17 @@ if (!window) {
         "parentId": "04"
       },
       {
+        "url": "RTL",
+        "name": "RTL",
+        "type": "new",
+        "category": "Chart Customization",
+        "uid": "00441023",
+        "order": 12,
+        "component": "Chart",
+        "dir": "Chart",
+        "parentId": "04"
+      },
+      {
         "url": "DataLabelTemplate",
         "name": "DataLabel Template",
         "category": "Chart Customization",
@@ -2636,6 +2664,7 @@ if (!window) {
       {
         "url": "Selection",
         "name": "Selection",
+        "type": "update",
         "category": "User Interaction",
         "uid": "004497",
         "order": 14,
@@ -4880,7 +4909,6 @@ if (!window) {
     "name": "Rich Text Editor",
     "directory": "RichTextEditor",
     "category": "Editors",
-    "type": "update",
     "samples": [
       {
         "url": "Overview",
@@ -4985,7 +5013,6 @@ if (!window) {
         "url": "EnterKey",
         "name": "Enter Key Configuration",
         "category": "Rich Text Editor",
-        "type": "new",
         "uid": "0018190",
         "order": 0,
         "component": "RichTextEditor",
@@ -5144,8 +5171,8 @@ if (!window) {
         "component": "DocumentEditor",
         "dir": "DocumentEditor",
         "parentId": "019",
+        "type": "update",
         "hideOnDevice": true,
-        "type": "update"
       },
       {
         "url": "Styles",
@@ -5190,7 +5217,6 @@ if (!window) {
         "dir": "DocumentEditor",
         "parentId": "019",
         "hideOnDevice": true,
-        "type": "update"
       },
       {
         "url": "SectionFormatting",
@@ -5793,6 +5819,17 @@ if (!window) {
         "parentId": "023"
       },
       {
+        "url": "CustomMonthView",
+        "name": "Custom Month View",
+        "category": "Views",
+        "uid": "00232360",
+        "order": 4,
+        "component": "Schedule",
+        "type": "new",
+        "dir": "Schedule",
+        "parentId": "023"
+      },
+      {
         "url": "ViewBasedSettings",
         "name": "Individual View Settings",
         "category": "Views",
@@ -6129,10 +6166,9 @@ if (!window) {
         "uid": "00232359",
         "order": 9,
         "component": "Schedule",
-        "type": "new",
         "dir": "Schedule",
         "parentId": "023"
-      },
+       },
       {
         "url": "ExcelExport",
         "name": "Excel Exporting",
@@ -6140,6 +6176,7 @@ if (!window) {
         "uid": "00232352",
         "order": 10,
         "component": "Schedule",
+        "type": "update",
         "dir": "Schedule",
         "parentId": "023"
       },
@@ -7302,7 +7339,6 @@ if (!window) {
     "name": "Dropdown Tree",
     "directory": "DropDownTree",
     "category": "Dropdowns",
-    "type": "update",
     "ftName": "dropdown-tree",
     "samples": [
       {
@@ -7359,7 +7395,6 @@ if (!window) {
         "url": "CustomTemplate",
         "name": "Custom Template",
         "category": "Dropdown Tree",
-         "type": "new",
         "uid": "0033338",
         "order": 0,
         "component": "DropDownTree",
@@ -7643,7 +7678,7 @@ if (!window) {
     "directory": "Breadcrumb",
     "category": "Navigation",
     "ftName": "breadcrumb",
-    "type": "preview",
+    "type": "update",
     "samples": [
         {
             "url": "DefaultFunctionalities",
@@ -7659,6 +7694,7 @@ if (!window) {
             "url": "BindToLocation",
             "name": "Bind to Location",
             "category": "Breadcrumb",
+            "type": "update",
             "order": 0,
             "component": "Breadcrumb",
             "dir": "Breadcrumb",
@@ -7674,6 +7710,17 @@ if (!window) {
             "dir": "Breadcrumb",
             "parentId": "062",
             "uid": "0062423",
+        },
+        {
+            "url": "OverFlowModes",
+            "name": "Overflow Modes",
+            "category": "Breadcrumb",
+            "type": "new",
+            "order": 0,
+            "component": "Breadcrumb",
+            "dir": "Breadcrumb",
+            "parentId": "062",
+            "uid": "0062427",
         },
         {
             "url": "Events",
@@ -8610,6 +8657,37 @@ if (!window) {
     "uid": "050"
   },
   {
+    "name": "Signature",
+    "directory": "Signature",
+    "category": "Inputs",
+    "ftName": "signature",
+    "type": "preview",
+    "samples": [
+      {
+        "url": "DefaultFunctionalities",
+        "name": "Default Functionalities",
+        "category": "Signature",
+        "uid": "0050500",
+        "order": 0,
+        "component": "Signature",
+        "dir": "Signature",
+        "parentId": "050"
+      },
+      {
+        "url": "Toolbar",
+        "name": "Toolbar",
+        "category": "Signature",
+        "uid": "0050501",
+        "order": 0,
+        "component": "Signature",
+        "dir": "Signature",
+        "parentId": "050"
+      }
+    ],
+    "order": 7,
+    "uid": "050"
+  },
+  {
     "name": "File Upload",
     "directory": "Uploader",
     "category": "Inputs",
@@ -9403,7 +9481,6 @@ if (!window) {
     "directory": "QueryBuilder",
     "category": "Forms",
     "ftName": "query-builder",
-    "type":"update",
     "samples": [
       {
         "url": "DefaultFunctionalities",
@@ -9420,7 +9497,6 @@ if (!window) {
         "name": "Complex Databinding",
         "category": "Query Builder",
         "order": 0,
-        "type": 'new',
         "component": "QueryBuilder",
         "dir": "QueryBuilder",
         "parentId": "060",
@@ -9441,7 +9517,6 @@ if (!window) {
         "name": "Rule Template",
         "category": "Template",
         "order": 1,
-        "type": "new",
         "component": "QueryBuilder",
         "dir": "QueryBuilder",
         "parentId": "060",
@@ -9452,7 +9527,6 @@ if (!window) {
         "name": "Header Template",
         "category": "Template",
         "order": 1,
-        "type": "new",
         "component": "QueryBuilder",
         "dir": "QueryBuilder",
         "parentId": "060",
@@ -9476,7 +9550,6 @@ if (!window) {
     "name": "DocIO",
     "directory": "DocIO",
     "category": "File Formats",
-    "type": "update",
     "samples": [
       {
         "url": "UpdateFields",
@@ -9733,7 +9806,6 @@ if (!window) {
         "name": "Word to PDF",
         "category": "Import and Export",
         "order": 8,
-        "type": "update",
         "component": "DocIO",
         "dir": "DocIO",
         "parentId": "061",
@@ -9947,7 +10019,6 @@ if (!window) {
     "name": "PDF",
     "directory": "PDF",
     "category": "File Formats",
-    "type": "update",
     "samples": [
       {
         "url": "Default",
@@ -10057,9 +10128,8 @@ if (!window) {
             "component": "PDF",
             "dir": "PDF",
             "parentId": "062",
-            "uid": "0062630",
-            "type": "update"
-        },
+            "uid": "0062630"
+		},
        {
         "url": "AdventureCycle",
         "name": "Adventure Cycle Works",

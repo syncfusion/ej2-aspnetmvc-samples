@@ -6,6 +6,14 @@
         display: table;
         margin: 0 auto;
     }
+
+    .markerCheckbox {
+        margin-top: -20px;
+    }
+
+    .tailwind .markerCheckbox, .tailwind-dark .markerCheckbox {
+        margin-top: -17px;
+    }
 </style>
 
 <div class="col-lg-9 control-section">
@@ -31,42 +39,42 @@
 <div class="col-lg-3 property-section">
     <table id="property" title="Properties" style="width: 100%">
         <tbody>
-            <tr style="height: 35px;">
-                <td style="width: 70%;">
+            <tr style="height: 50px;">
+                <td>
                     <div class="property-text" style="padding: 0px;display:inline-block">Marker</div>
                 </td>
-                <td style="width: 50%;">
-                    <div style="margin-top:-10px; margin-left: 22px;">
+                <td>
+                    <div class="markerCheckbox" style=" margin-left: -10px;">
                         <input type="checkbox" id="marker" />
                     </div>
                 </td>
             </tr>
-            <tr style="height: 30px">
-                <td style="width: 70%">
-                    <div class="property-text" style="padding: 0px; margin-top: 10px">Line</div>
+            <tr style="height: 50px">
+                <td>
+                    <div class="property-text" style="padding: 0px;">Line</div>
                 </td>
-                <td style="width: 50%">
-                    <div style="margin-top: 10px; margin-left: 22px;">
+                <td>
+                    <div class="markerCheckbox" style=" margin-left: -10px;">
                         <input type="checkbox" name="high" id="line" />
                     </div>
                 </td>
             </tr>
-            <tr style="height: 35px">
-                <td style="width: 70%">
-                    <div class="property-text" style="padding: 0px; margin-top: 20px ">Connecting line</div>
+            <tr style="height: 50px">
+                <td>
+                    <div class="property-text" style="padding: 0px;">Connecting line</div>
                 </td>
-                <td style="width: 50%">
-                    <div style="margin-top:5px; margin-left: 22px;">
+                <td>
+                    <div class="markerCheckbox" style=" margin-left: -10px;">
                         <input type="checkbox" id="connect" />
                     </div>
                 </td>
             </tr>
-            <tr style="height: 35px">
-                <td style="width: 70%">
-                    <div class="property-text" style="padding: 0px; margin-top: 10px">Marker type</div>
+            <tr style="height: 50px">
+                <td>
+                    <div class="property-text" style="padding: 0px; margin-top: -10px;">Marker type</div>
                 </td>
-                <td style="width: 10%; margin-left:20px">
-                    <div style="margin-top: 10px">
+                <td style="margin-left:20px">
+                    <div style="margin-top: -20px">
                     <select id="type" style="width: 50px; height: 20px">
                         <option value="Image">Image</option>
                         <option value="Circle">Circle</option>
@@ -77,12 +85,14 @@
                         </div>
                 </td>
             </tr>
-            <tr style="height: 35px">
-                <td style="width: 70%">
-                    <div class="property-text" style="padding: 0px; margin-top: 10px">Width</div>
+            <tr style="height: 50px">
+                <td>
+                    <div class="property-text" style="padding: 0px;margin-top: 5px">Width</div>
                 </td>
-                <td style="width: 10%">
-                    <input type="text" class="e-input" value="1" style="width:87px; margin-top: 10px; margin-left:10px" id="width" disabled />
+                <td>
+                    <div>
+                        <input type="text" class="e-input" value="1" style="width:100%; margin-top: -20px;" id="width" disabled />
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -174,7 +184,7 @@
     var markerShape = new ej.dropdowns.DropDownList({
         index: 0,
         placeholder: 'Select marker shape',
-        width: 87
+        width: '100%'
     });
     markerShape.appendTo('#type');
 

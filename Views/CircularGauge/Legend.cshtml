@@ -15,34 +15,34 @@
         </div>
     </div>
     <div class="col-md-4 property-section">
-        <table id="property" title="Properties" style="width: 90%; margin-left: -20px">
+        <table id="property" title="Properties" style="width: 100%;">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 20%; padding-left: 10px;">
-                        <div id="showLegend">Show Legend</div>
+                    <td>
+                        <div style="padding-left: 0px;" id="showLegend">Show Legend</div>
                     </td>
-                    <td style="width: 40%;">
-                        <div style="padding-top:0px; margin-left: 57px; margin-top: 10px">
+                    <td>
+                        <div style="padding-top:0px; padding-left: 0px;">
                             <input type="checkbox" checked id="enable">
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
-                    <td style="width: 20%; padding-left: 10px;">
-                        <div id="toggleLegend" style="margin-top: 10px">Show range when the legend item is toggled</div>
+                    <td>
+                        <div id="toggleLegend" style=" padding-left: 0px">Show range when the legend item is toggled</div>
                     </td>
-                    <td style="width: 40%;">
-                        <div style="margin-left: 57px">
+                    <td>
+                        <div style="padding-left:0px;margin-top: -10px">
                             <input type="checkbox" checked id="toggle">
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
-                    <td style="width: 20%; padding-left: 10px;">
-                        <div class="property-text" style="padding: 10px; margin-top: 10px">Legend position</div>
+                    <td>
+                        <div class="property-text" style="margin-top: 10px; padding-left: 0px">Legend position</div>
                     </td>
-                    <td style="width: 30%">
-                        <div style=" margin-left: 30px; margin-top: 10px">
+                    <td>
+                        <div style=" margin-top: 10px">
                         <select name="legendPos" autocomplete="off" id="legendPosition" style="width:60%;">
 							<option value="Bottom" selected>Bottom</option>
 							<option value="Top">Top</option>                            
@@ -54,11 +54,11 @@
                     </td>
                 </tr>
                 <tr style="height: 50px">
-                    <td style="width: 20%; padding-left: 10px;">
-                        <div class="property-text" style="padding: 10px;">Alignment</div>
+                    <td>
+                        <div class="property-text" style="padding-left: 0px">Alignment</div>
                     </td>
-                    <td style="width: 30%">
-                        <div style=" margin-left: 30px">
+                    <td>
+                        <div>
                         <select name="Align" autocomplete="off" id="Alignment" style="width:60%;">
 							<option value="Center" selected>Center</option>
 							<option value="Far" >Far</option>
@@ -68,11 +68,11 @@
                     </td>
                 </tr>
                 <tr style="height: 50px">
-                    <td style="width: 20%; padding-left: 10px;">
-                        <div class="property-text" style="padding: 10px;">Shape</div>
+                    <td>
+                        <div class="property-text" style="padding-left: 0px">Shape</div>
                     </td>
-                    <td style="width: 30%">
-                        <div style=" margin-left: 30px">
+                    <td>
+                        <div>
                         <select name="shape" autocomplete="off" id="Shape" style="width:60%;">
                             <option value="Circle" selected>Circle</option>
                             <option value="Rectangle">Rectangle</option>
@@ -124,7 +124,7 @@
           var legendPosition = new ej.dropdowns.DropDownList({
                 index: 0,
                 placeholder: 'Legend Position',
-                width: 100,
+                width: '100%',
               change: () => {
                   circulargauge.legendSettings.position = legendPosition.value;
               }
@@ -133,7 +133,7 @@
         var legendAlignment = new ej.dropdowns.DropDownList({
              index: 0,
              placeholder: 'Legend Alignment',
-             width: 100,
+             width: '100%',
               change: () => {
                   circulargauge.legendSettings.alignment = legendAlignment.value;
               }
@@ -142,7 +142,7 @@
         var legendShape = new ej.dropdowns.DropDownList({
              index: 0,
              placeholder: 'Legend Shape',
-             width: 100,
+             width: '100%',
               change: () => {
                   circulargauge.legendSettings.shape = legendShape.value;
               }
