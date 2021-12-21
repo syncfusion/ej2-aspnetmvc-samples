@@ -27,10 +27,10 @@
             <tbody>
                 <tr style="height: 50px">
                     <td>
-                        <div style="margin-top:25px;width: 120px; margin-left:-10px;" id="">Gradient Type</div>
+                        <div style="width: 120px; margin-left:-10px;" id="">Gradient Type</div>
                     </td>
                     <td>
-                        <div  style="margin-top:25px;width: 120px; margin-left:-18px;">
+                        <div  style="margin-left:-18px;">
                             <select id="gradient" class="form-control">
                                 <option value="linear" selected="true">Linear Gradient</option>
                                 <option value="radial">Radial Gradient</option>
@@ -40,10 +40,10 @@
                 </tr>
                 <tr style="height: 50px">
                     <td>
-                        <div style="margin-top:25px; margin-left:-10px" id="">Elements</div>
+                        <div style="margin-left:-10px" id="">Elements</div>
                     </td>
                     <td>
-                        <div style="margin-top:25px; margin-left:-18px">
+                        <div style="margin-left:-18px">
                             <select id="element" class="form-control">
                                 <option value="range" selected="true">Range</option>
                                 <option value="pointer">Pointer</option>
@@ -115,7 +115,7 @@
 
         var gradientType = new ej.dropdowns.DropDownList({
             index: 0,
-            width: 145,
+            width: '100%',
             change: function () {
                 if (gradientType.value === 'radial' && element.value === 'range') {
                     circulargauge.axes[0].ranges[0].linearGradient = null;
@@ -150,7 +150,7 @@
         gradientType.appendTo('#gradient');
         var element = new ej.dropdowns.DropDownList({
             index: 0,
-            width: 145,
+            width: '100%',
             change: function () {
                 if (gradientType.value === 'radial' && element.value === 'range') {
                     circulargauge.axes[0].ranges[0].linearGradient = null;

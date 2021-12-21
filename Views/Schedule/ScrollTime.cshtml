@@ -11,14 +11,9 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 50%">
+                    <td style="width: 100%;">
                         <div>
-                            Scroll To
-                        </div>
-                    </td>
-                    <td style="width: 50%;">
-                        <div>
-                            @Html.EJS().TimePicker("ScrollToHour").Width("120").Change("onChange").Value(new DateTime(2000, 1, 1, 9, 0, 0)).Format("HH:mm").Render()
+                            @Html.EJS().TimePicker("ScrollToHour").Change("onChange").Value(new DateTime(2000, 1, 1, 9, 0, 0)).Format("HH:mm").Placeholder("Scroll To").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Render()
                         </div>
                     </td>
                 </tr>

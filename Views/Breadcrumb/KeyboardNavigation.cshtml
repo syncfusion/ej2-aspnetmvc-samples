@@ -5,16 +5,27 @@
         <div class="content-wrapper">
             <div class="row material2">
                 <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-                    <h5>Simple Breadcrumb</h5>
+                    <h5 style="display: inline-block">Simple Breadcrumb</h5>
+                    @Html.EJS().Button("reset").Content("Reset State").CssClass("e-small").Render()
                 </div>
             </div>
             <div class="row material2">
                 <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
-                    @Html.EJS().Breadcrumb("keyboardnavigation").EnableNavigation(false).Render()
+                    @Html.EJS().Breadcrumb("keyboard-navigation").EnableNavigation(false).Render()
                 </div>
             </div>
         </div>
     </div>
+}
+
+@section Scripts {
+<script>
+    document.getElementById("reset").addEventListener('click', function () {
+        var breadcrumb = document.getElementById('keyboard-navigation');
+        var breadcrumbInst = ej.base.getComponent(breadcrumb, 'breadcrumb');
+        breadcrumbInst.activeItem = breadcrumbInst.items[breadcrumbInst.items.length - 1].text;
+    });
+</script>
 }
 
 @*custom code start*@
@@ -61,12 +72,17 @@
     .highcontrast .e-breadcrumb {
         margin-left: -4px;
     }
+
+    #reset {
+        float: right;
+        margin: 5px 2px 5px 0;
+    }
 </style>
 
 @*custom code end*@
 
 @section ActionDescription{
-    <p> This sample demonstrates the Keyboard Navigation functionalities of the <b>Breadcrumb</b> component.</p>
+    <p> This sample demonstrates the keyboard navigation functionalities of the <b>Breadcrumb</b> component.</p>
 }
 
 @section Description{
@@ -76,7 +92,7 @@
         <li><b>Shift + Tab</b> to navigate to the previous item.</li>
         <li><b>Enter</b> to click the item.</li>
     </ul>
-    <p>More information about <code>Breadcrumb</code> component Keyboard navigations can be found in this <a target='_blank' href="https://ej2.syncfusion.com/aspnetmvc/documentation/breadcrumb/getting-started/">documentation section</a>.</p>
+    <p>More information about Breadcrumb component keyboard navigations can be found in this <a target='_blank' href="https://ej2.syncfusion.com/aspnetmvc/documentation/breadcrumb/getting-started/">documentation section</a>.</p>
 }
 
 @section Meta{

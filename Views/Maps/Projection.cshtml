@@ -29,11 +29,11 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 60%">
+                    <td>
                         <div style="margin-left: -10px">Projection Type</div>
                     </td>
-                    <td style="width: 40%;">
-                        <div style="width: -10px; margin-left: 10px">
+                    <td>
+                        <div>
                         <select name="projectionType" id="projectiontype" style="margin-left: -25px">
                             <option value="Mercator">Mercator</option>
                             <option value="Equirectangular">Equirectangular</option>
@@ -60,7 +60,7 @@
         var projection = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select projection type',
-            width: 105,
+            width: '100%',
             change: function () {
                 maps.projectionType = projection.value;
                 maps.refresh();

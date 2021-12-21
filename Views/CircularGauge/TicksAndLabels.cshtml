@@ -1,6 +1,11 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
+    <style>
+        td {
+            width: 40%;
+        }
+    </style>
     <div class="col-md-8 control-section">
         <div class="content-wrapper">
             @Html.EJS().CircularGauge("container").Load("onGaugeLoad").Axes(axes => axes
@@ -21,92 +26,115 @@
         </div>
     </div>
     <div class="col-md-4 property-section">
-        <table id="property" title="Properties" style="width: 100%; margin-left: -2px">
-            <tbody>
-                <tr>
-                    <td>
-                        <div style="margin-left:-10px"> Ticks </div>
-                    </td>
-                    <td>
-                        <div style="margin-left:10px">
-                            <select id="Ticks" class="form-control" style="width:90%">
-                                <option value="major" selected="true">Major Ticks</option>
-                                <option value="minor">Minor Ticks</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div style="margin-left:-10px"> Tick Position </div>
-                    </td>
-                    <td>
-                        <div style="margin-left:10px">
-							<select id="tickposition" class="form-control" style="width:90%">
-								<option value="Inside" selected="true">Inside</option>
-								<option value="Cross">Cross</option>
-								<option value="Outside">Outside</option>
-							</select>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div style="margin-left:-10px"> Label Position </div>
-                    </td>
-                    <td>
-                        <div style="margin-left:10px">
-							<select id="labelposition" class="form-control" style="width: 90%; margin-left: -10px">
-								<option value="Outside">Outside</option>
-								<option value="Cross">Cross</option>
-								<option value="Inside">Inside</option>
-							</select>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="offset" style="margin-left: -10px; margin-top: 10px">Tick Offset <span>&nbsp;&nbsp;&nbsp;0</span> </div>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="range" id="tickOffset" value="0" min="0" max="50" style="width: 120px; margin-left: 10px; margin-top: 10px">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="height" style="margin-left: -10px; margin-top: 20px">Tick Height <span>&nbsp;&nbsp;&nbsp;10</span> </div>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="range" id="tickHeight" value="10" min="1" max="50" style="width: 120px; margin-left: 10px; margin-top: 20px">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="labelOffsetValue" style="margin-left: -10px; margin-top: 20px">Label Offset <span>&nbsp;&nbsp;&nbsp;0</span> </div>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="range" id="labelOffset" value="0" min="0" max="50" style="width: 120px; margin-left: 10px; margin-top: 20px">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="enablePointer" style="margin-left: -10px; margin-top: 20px">Show Last Label </div>
-                    </td>
-                    <td>
-                        <div>
-                            <input type="checkbox" id="enable" style="width: 120px; margin-left: 10px; margin-top: 25px">
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
+        <div class="property-panel-section">
+            <div class="property-panel-header">Properties</div>
+            <div class="property-panel-content">
+                <table title="Properties" style="width: 100%;">
+                    <colgroup>
+                        <col span="1" style="width: 47%;">
+                        <col span="1" style="width: 40%;">
+                        <col span="1" style="width: 10%;">
+                    </colgroup>
+                    <tr style="height: 50px">
+                        <td>
+                            <div> Ticks </div>
+                        </td>
+                        <td>
+                            <div>
+                                <select id="Ticks" class="form-control">
+                                    <option value="major" selected="true">Major Ticks</option>
+                                    <option value="minor">Minor Ticks</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div> Tick Position </div>
+                        </td>
+                        <td>
+                            <div>
+                                <select id="tickposition" class="form-control">
+                                    <option value="Inside" selected="true">Inside</option>
+                                    <option value="Cross">Cross</option>
+                                    <option value="Outside">Outside</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div> Label Position </div>
+                        </td>
+                        <td>
+                            <div>
+                                <select id="labelposition" class="form-control">
+                                    <option value="Outside">Outside</option>
+                                    <option value="Cross">Cross</option>
+                                    <option value="Inside">Inside</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div>Tick Offset </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="tickOffset" value="0" min="0" max="50">
+                            </div>
+                        </td>
+                        <td style="text-align:center;">
+                            <div>
+                                <span id='offset'>0</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div>Tick Height </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="tickHeight" value="10" min="1" max="50">
+                            </div>
+                        </td>
+                        <td style="text-align:center;">
+                            <div>
+                                <span id='height'>10</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div>Label Offset </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="labelOffset" value="0" min="0" max="50">
+                            </div>
+                        </td>
+                        <td style="text-align:center;">
+                            <div>
+                                <span id='labelOffsetValue'>0</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div id="enablePointer">Show Last Label </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="checkbox" id="enable" style="margin-top: 6px">
+                            </div>
+                        </td>
+                    </tr>
 
-        </table>
+                </table>
+            </div>
+        </div>
     </div>
     <script type="text/javascript">
         var circulargauge;
@@ -132,7 +160,7 @@
         var labelPosition;
         var isMajorTicks = true;
         ticks = new ej.dropdowns.DropDownList({
-            index: 0, width: 120,
+            index: 0, width: '130%',
             change: function () {
                 var value = ticks.value.toString();
                 var tick;
@@ -146,13 +174,13 @@
                 tickPosition.value = tick.position;
                 document.getElementById('tickOffset').value = tick.offset.toString();
                 document.getElementById('tickHeight').value = tick.height.toString();
-                document.getElementById('offset').innerHTML = 'Tick Offset <span>&nbsp;&nbsp;&nbsp;' + tick.offset;
-                document.getElementById('height').innerHTML = 'Tick Height <span>&nbsp;&nbsp;&nbsp;' + tick.height;
+                document.getElementById('offset').innerHTML = tick.offset;
+                document.getElementById('height').innerHTML = tick.height;
             }
         });
         ticks.appendTo('#Ticks');
         tickPosition = new ej.dropdowns.DropDownList({
-            index: 0, width: 120,
+            index: 0, width: '130%',
             change: function () {
                 var value = tickPosition.value.toString();
                 if (isMajorTicks) {
@@ -165,7 +193,7 @@
         });
         tickPosition.appendTo('#tickposition');
         labelPosition = new ej.dropdowns.DropDownList({
-            index: 0, width: 120,
+            index: 0, width: '130%',
             change: function () {
                 circulargauge.axes[0].labelStyle.position = labelPosition.value.toString();
                 circulargauge.refresh();
@@ -181,7 +209,7 @@
                 else {
                     circulargauge.axes[0].minorTicks.offset = value;
                 }
-            document.getElementById('offset').innerHTML = 'Tick Offset <span>&nbsp;&nbsp;&nbsp;' + value;
+                document.getElementById('offset').innerHTML = value;
             };
         document.getElementById('tickHeight').onpointermove = document.getElementById('tickHeight').ontouchmove =
             document.getElementById('tickHeight').onchange = function () {
@@ -192,13 +220,13 @@
                 else {
                     circulargauge.axes[0].minorTicks.height = value;
                 }
-            document.getElementById('height').innerHTML = 'Tick Height <span>&nbsp;&nbsp;&nbsp;' + value;
+                document.getElementById('height').innerHTML = value;
             };
         document.getElementById('labelOffset').onpointermove = document.getElementById('labelOffset').ontouchmove =
             document.getElementById('labelOffset').onchange = function () {
                 var value = parseInt(document.getElementById('labelOffset').value, 10);
                 circulargauge.axes[0].labelStyle.offset = value;
-            document.getElementById('labelOffsetValue').innerHTML = 'Label Offset <span>&nbsp;&nbsp;&nbsp;' + value;
+                document.getElementById('labelOffsetValue').innerHTML = value;
             };
         document.getElementById('enable').onchange = function () {
             var showLastLabel = document.getElementById('enable').checked;
@@ -215,8 +243,8 @@
     </div>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the TicksAndLabels in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the TicksAndLabels in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
 @section Description{
     <div id="description">
         <p>
@@ -234,8 +262,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC Circular Gauge TicksAndLabels Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Circular Gauge TicksAndLabels Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of TicksAndLabels in ASP.NET MVC Circular Gauge Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of TicksAndLabels in ASP.NET MVC Circular Gauge Control</h1>
+}

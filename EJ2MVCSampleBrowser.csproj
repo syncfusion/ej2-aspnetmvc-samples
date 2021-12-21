@@ -67,64 +67,64 @@
       <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2">
-      <HintPath>packages\Syncfusion.EJ2.MVC5.19.3.0.53\lib\net45\Syncfusion.EJ2.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.MVC5.19.4.0.38\lib\net45\Syncfusion.EJ2.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.GridExport">
-      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.19.3.0.53\lib\net45\Syncfusion.EJ2.GridExport.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.19.4.0.38\lib\net45\Syncfusion.EJ2.GridExport.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base">
-      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.HtmlConverter.Base">
-      <HintPath>packages\Syncfusion.HtmlToPdfConverter.IE.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.HtmlToPdfConverter.IE.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocIO.Base">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.DocumentEditor">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.PdfViewer">
-      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChartToImageConverter.Wpf">
-      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.OfficeChartToImageConverter.Wpf.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.OfficeChartToImageConverter.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.DocToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.DocToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Base">
-      <HintPath>packages\Syncfusion.Compression.Base.19.3.0.53\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Compression.Base.19.4.0.38\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChart.Base">
-      <HintPath>packages\Syncfusion.OfficeChart.Base.19.3.0.53\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChart.Base.19.4.0.38\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Presentation.Base">
-      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PresentationToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelChartToImageConverter.Wpf">
-      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.ExcelChartToImageConverter.Wpf.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.ExcelChartToImageConverter.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.ExcelToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.ExcelToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.WPF">
-      <HintPath>packages\Syncfusion.SfChart.WPF.19.3.0.53\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.SfChart.WPF.19.4.0.38\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.Base">
-      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.19.3.0.53\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.19.4.0.38\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.Spreadsheet">
-      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.19.3.0.53\lib\net45\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.19.4.0.38\lib\net45\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.Licensing.19.3.0.53\lib\net45\Syncfusion.Licensing.dll</HintPath>
+      <HintPath>packages\Syncfusion.Licensing.19.4.0.38\lib\net45\Syncfusion.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -220,7 +220,12 @@
     <Compile Include="Controllers\Barcode\qrcodeController.cs" />
     <Compile Include="Controllers\Barcode\upcaController.cs" />
     <Compile Include="Controllers\Barcode\upceController.cs" />
+	<Compile Include="Controllers\Signature\DefaultFunctionalitiesController.cs" />
+	<Compile Include="Controllers\Signature\ToolbarController.cs" />
+    <Compile Include="Controllers\Breadcrumb\OverFlowModesController.cs" />
     <Compile Include="Controllers\Chart\DataEditingController.cs" />
+    <Compile Include="Controllers\Chart\GroupedColumnController.cs" />
+    <Compile Include="Controllers\Chart\RTLController.cs" />
     <Compile Include="Controllers\Chart\StackedLine100Controller.cs" />
     <Compile Include="Controllers\Chart\StackedLineController.cs" />
     <Compile Include="Controllers\Chart\StackedStepAreaController.cs" />
@@ -970,6 +975,8 @@
     <Compile Include="Controllers\RichTextEditor\ImageController.cs" />
     <Compile Include="Controllers\RichTextEditor\InlineController.cs" />
     <Compile Include="Controllers\RichTextEditor\OverviewController.cs" />
+    <Compile Include="Controllers\RichTextEditor\OnlineEditorController.cs" />
+    <Compile Include="Controllers\RichTextEditor\OnlineHtmlEditorController.cs" />
     <Compile Include="Controllers\RichTextEditor\PasteCleanupController.cs" />
     <Compile Include="Controllers\RichTextEditor\EnterKeyController.cs" />
     <Compile Include="Controllers\RichTextEditor\ResizableEditorController.cs" />
@@ -990,6 +997,7 @@
     <Compile Include="Controllers\Schedule\InlineEditingController.cs" />
     <Compile Include="Controllers\Schedule\OverviewController.cs" />
     <Compile Include="Controllers\Schedule\ContextMenuController.cs" />
+    <Compile Include="Controllers\Schedule\CustomMonthViewController.cs" />
     <Compile Include="Controllers\Schedule\DateHeaderController.cs" />
     <Compile Include="Controllers\Schedule\DayHourLimitController.cs" />
     <Compile Include="Controllers\Schedule\DefaultController.cs" />
@@ -1373,6 +1381,11 @@
     <Compile Include="Controllers\DocumentEditor\FormFieldsController.cs" />
     <Compile Include="Controllers\Spreadsheet\ImageController.cs" />
     <Compile Include="Controllers\Spreadsheet\ChartController.cs" />
+    <Content Include="Content\gantt\images\DurationDark.png" />
+    <Content Include="Content\gantt\images\ProgressDark.png" />
+    <Content Include="Content\gantt\images\ResourcesDark.png" />
+    <Content Include="Content\gantt\images\StartDateDark.png" />
+    <Content Include="Content\gantt\images\TaskNameDark.png" />
     <Content Include="Content\ProgressBar\bootstrap-Download.svg" />
     <Content Include="Content\ProgressBar\bootstrap-pause.svg" />
     <Content Include="Content\ProgressBar\bootstrap-Play.svg" />
@@ -1640,8 +1653,8 @@
     <Content Include="Content\gantt\images\Progress.png" />
     <Content Include="Content\gantt\images\Resources.png" />
     <Content Include="Content\gantt\images\Rose Fuller.png" />
-    <Content Include="Content\gantt\images\Start date.png" />
-    <Content Include="Content\gantt\images\Task name.png" />
+    <Content Include="Content\gantt\images\StartDate.png" />
+    <Content Include="Content\gantt\images\TaskName.png" />
     <Content Include="Content\gantt\images\Van Jack.png" />
     <Content Include="Content\images\FileManager\Employees\1.png" />
     <Content Include="Content\images\FileManager\Employees\2.png" />
@@ -1792,6 +1805,11 @@
     <Content Include="Content\colorpicker\images\pen_mobile_highcontrast.png" />
     <Content Include="Content\colorpicker\images\shirt.png" />
     <Content Include="Content\colorpicker\images\shirt_highcontrast.png" />
+    <Content Include="Content\listbox\pic\angular.svg" />
+    <Content Include="Content\listbox\pic\javascript.svg" />
+    <Content Include="Content\listbox\pic\react.svg" />
+    <Content Include="Content\listbox\pic\typescript.svg" />
+    <Content Include="Content\listbox\pic\vue.svg" />
     <Content Include="Content\dropdownlist\grouping.css" />
     <Content Include="Content\dropdownlist\images\Employees\1.png" />
     <Content Include="Content\dropdownlist\images\Employees\10.png" />
@@ -2368,6 +2386,8 @@
     <Content Include="Views\Badge\Notification.cshtml" />
     <Content Include="Views\Badge\Toolbar.cshtml" />
     <Content Include="Views\Badge\Types.cshtml" />
+	<Content Include="Views\Signature\Toolbar.cshtml" />
+    <Content Include="Views\Signature\DefaultFunctionalities.cshtml" />
     <Content Include="Views\Breadcrumb\AddressBar.cshtml" />
     <Content Include="Views\Breadcrumb\DefaultFunctionalities.cshtml" />
     <Content Include="Views\Breadcrumb\Events.cshtml" />
@@ -2375,6 +2395,8 @@
     <Content Include="Views\Breadcrumb\BindToLocation.cshtml" />
     <Content Include="Views\Breadcrumb\TemplateAndCustomization.cshtml" />
     <Content Include="Views\Breadcrumb\_AddressBarItemTemplatePartial.cshtml" />
+    <Content Include="Views\Breadcrumb\_AddressBarSeparatorTemplatePartial.cshtml" />
+    <Content Include="Views\Breadcrumb\OverFlowModes.cshtml" />
     <Content Include="Views\Button\ButtonGroup.cshtml" />
     <Content Include="Views\Button\CheckBox.cshtml" />
     <Content Include="Views\Button\CheckBoxFor.cshtml" />
@@ -2974,6 +2996,7 @@
     <Content Include="Views\Schedule\Agenda.cshtml" />
     <Content Include="Views\Schedule\CellDimension.cshtml" />
     <Content Include="Views\Schedule\CellTemplate.cshtml" />
+    <Content Include="Views\Schedule\CustomMonthView.cshtml" />
     <Content Include="Views\Schedule\DateHeader.cshtml" />
     <Content Include="Views\Schedule\DayHourLimit.cshtml" />
     <Content Include="Views\Schedule\Default.cshtml" />
@@ -3468,6 +3491,10 @@
     <Content Include="Views\DropDownTree\CustomTemplate.cshtml" />
     <Content Include="Views\TreeGrid\FrozenAPI.cshtml" />
     <Content Include="Views\RichTextEditor\EnterKey.cshtml" />
+    <Content Include="Views\Chart\RTL.cshtml" />
+    <Content Include="Views\Chart\GroupedColumn.cshtml" />
+    <Content Include="Views\RichTextEditor\OnlineEditor.cshtml" />
+    <Content Include="Views\RichTextEditor\OnlineHtmlEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\MapData\Africa_continent.json" />

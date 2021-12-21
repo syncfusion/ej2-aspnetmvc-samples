@@ -14,29 +14,33 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div class="property-text" style="padding-top: 0px !important">Layout Type</div>
+                    <td>
+                        <div class="property-text" style="padding-top: 0px !important; margin-left: -10px">Layout Type</div>
                     </td>
-                    <td style="width: 40%;">
+                    <td>
+                        <div style="margin-top: -10px">
                         <select name="selectIndex" autocomplete="off" id="layoutMode" style="width:60%;">
                             <option value="Squarified" selected>Squarified</option>
                             <option value="SliceAndDiceHorizontal">Horizontal</option>
                             <option value="SliceAndDiceVertical">Vertical</option>
                             <option value="SliceAndDiceAuto">Auto</option>
                         </select>
+                        </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div class="property-text" style="padding-top: 0px !important">Render Direction</div>
+                    <td >
+                        <div class="property-text" style="padding-top: 0px !important; margin-left: -10px">Render Direction</div>
                     </td>
-                    <td style="width: 40%;">
+                    <td>
+                        <div style="margin-top: -10px">
                         <select name="selectIndex" autocomplete="off" id="renderDirection" style="width:60%;">
                             <option value="TopLeftBottomRight" selected>TopLeftBottomRight</option>
                             <option value="TopRightBottomLeft">TopRightBottomLeft</option>
                             <option value="BottomLeftTopRight">BottomLeftTopRight</option>
                             <option value="BottomRightTopLeft">BottomRightTopLeft</option>
                         </select>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -72,7 +76,7 @@
         var layoutMode = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select layoutMode type',
-            width: 90,
+            width: '100%',
             change: () => {
                 treemap.layoutType = layoutMode.value;
                 treemap.refresh();
@@ -82,7 +86,7 @@
         var direction = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select layoutMode type',
-            width: 115,
+            width: '100%',
             change: () => {
                 treemap.renderDirection = direction.value;
                 treemap.refresh();

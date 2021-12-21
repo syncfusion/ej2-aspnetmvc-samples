@@ -12,6 +12,18 @@
         label {
             height: 32px !important;
         }
+
+        .enableCheck {
+            margin-top: 7px;
+        }
+
+        .bootstrap .enableCheck, .bootstrap-dark .enableCheck{
+            margin-top: 0px;
+        }
+
+        .fabric .enableCheck, .fabric-dark .enableCheck, .material .enableCheck {
+            margin-top: 5px;
+        }
     </style>
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
@@ -34,26 +46,26 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div class="property-text"><b>Highlight</b></div>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px"><b>Highlight</b></div>
                     </td>
 
                 </tr>
                 <tr>
-                    <td style="width: 60%">
-                        <div class="property-text"> Enable</div>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px"> Enable</div>
                     </td>
-                    <td style="width: 40%;">
-                        <div>
+                    <td>
+                        <div class="enableCheck" style="margin-left: -10px;">
                             <input type="checkbox" id="highlightEnable" checked />
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 60%">
-                        <div class="property-text">Mode</div>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px">Mode</div>
                     </td>
-                    <td style="width: 40%;">
+                    <td>
                         <div>
                             <select name="selectIndex" autocomplete="off" id="highlightMode" style="width:60%;">
                                 <option value="Item" selected>Item</option>
@@ -65,26 +77,26 @@
                     </td>
                 </tr>
                 <tr style="height: 50px">
-                    <td style="width: 80%">
-                        <div class="property-text"><b>Selection</b></div>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px"><b>Selection</b></div>
                     </td>
 
                 </tr>
                 <tr>
-                    <td style="width: 60%">
-                        <div class="property-text">Enable</div>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px">Enable</div>
                     </td>
-                    <td style="width: 40%;">
-                        <div>
+                    <td>
+                        <div style="margin-left: -10px;" class="enableCheck">
                             <input type="checkbox" id="SelectionEnable" checked />
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <td style="width: 60%">
-                        <div class="property-text"> Mode</div>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px"> Mode</div>
                     </td>
-                    <td style="width: 40%;">
+                    <td>
                         <div>
                             <select name="selectIndex" autocomplete="off" id="selectionMode" style="width:60%;">
                                 <option value="Item" selected>Item</option>
@@ -145,7 +157,7 @@
         var highlightMode = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select highlight type',
-            width: 80,
+            width: '100%',
             change: function () {
                 treemap.highlightSettings.mode = highlightMode.value;
                 treemap.refresh();
@@ -155,7 +167,7 @@
         var selectionMode = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Selection selection type',
-            width: 80,
+            width: '100%',
             change: function () {
                 treemap.selectionSettings.mode = selectionMode.value;
                 treemap.refresh();

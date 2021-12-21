@@ -11,44 +11,46 @@
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 10%">
-                        <div class="property-text">Color Mapping Type</div>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px">Color Mapping Type</div>
                     </td>
-                    <td style="width: 30%;">
+                    <td>
+                        <div>
                         <select autocomplete="off" id="colorMapping">
                             <option value="RangeColorMapping" selected>Range</option>
                             <option value="EqualColorMapping">Equal</option>
                             <option value="DesaturationColorMapping">Desaturation</option>
                         </select>
+                        </div>
                     </td>
                 </tr>
-                <tr>
-                    <td style="width: 40%">
-                        <div class="property-text" id="text1" style="display: none;"> Change Opacity</div>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" id="text1" style="display: none; margin-left: -10px"> Change Opacity</div>
                     </td>
-                    <td style="width: 40%;">
-                        <div id="input1" style="display: none">
+                    <td>
+                        <div id="input1" style="display: none; margin-top: -10px; margin-left: -10px">
                             <input type="checkbox" id="opacity" />
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td style="width: 50%">
-                        <div class="property-text" id="text2" style="margin-top:12%; display: none">Min Opacity</div>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" id="text2" style="display: none; margin-left: -10px">Min Opacity</div>
                     </td>
-                    <td style="width: 50%;">
+                    <td>
                         <div id="input2" style="display: none">
-                            <input type="range" id="minopacity" step="0.1" value="0.5" min="0" max="1" style="width:100%;margin-top: 20%" />
+                            <input type="range" id="minopacity" step="0.1" value="0.5" min="0" max="1" style="width:100%;" />
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td style="width: 50%">
-                        <div class="property-text" id="text3" style="margin-top:12%; display: none">Max Opacity</div>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" id="text3" style="display: none; margin-left: -10px">Max Opacity</div>
                     </td>
-                    <td style="width: 50%;">
+                    <td>
                         <div id="input3" style="display: none">
-                            <input type="range" id="maxopacity" step="0.1" value="1" min="0" max="1" style="width:100%;margin-top: 20%" />
+                            <input type="range" id="maxopacity" step="0.1" value="1" min="0" max="1" style="width:100%;" />
                         </div>
                     </td>
                 </tr>
@@ -141,7 +143,7 @@
         var sampleValue = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Range ColorMaping',
-            width: 110,
+            width: '100%',
             change: function () {
                 var element = sampleValue.value.toString();
                 if (element === 'RangeColorMapping') {

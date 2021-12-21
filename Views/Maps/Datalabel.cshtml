@@ -10,38 +10,42 @@
         </div>
     </div>
     <div class="col-lg-3 property-section">
-        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
+        <table id="property" title="Properties" style="width: 100%;">
             <tbody>
                 <tr style="height: 50px">
-                    <td style="width: 80%">
-                        <div style="width:60px">Show Labels</div>
+                    <td>
+                        <div style="margin-left: -10px">Show Labels</div>
                     </td>
                     <td>
-                        <input type="checkbox" checked id="select" style="margin-top: 15px; margin-left: 35px">
+                        <input type="checkbox" checked id="select" style="margin-top: 15px; margin-left: 10px">
                     </td>
                 </tr>
                 <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div style="width:60px">Smart label mode</div>
+                    <td>
+                        <div style="margin-left: -10px">Smart label mode</div>
                     </td>
-                    <td style="width: 40%">
+                    <td>
+                        <div>
                         <select id="smartlabelmode" style="margin-left: -25px">
                             <option value="Trim">Trim</option>
                             <option value="None">None</option>
                             <option value="Hide">Hide</option>
                         </select>
+                        </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div style="margin-right: 10px; width: 60px;">Intersect action</div>
+                    <td>
+                        <div style="margin-right: 10px; margin-left: -10px">Intersect action</div>
                     </td>
-                    <td style="width: 40%;">
+                    <td >
+                        <div>
                         <select id="intersectaction" style="margin-left: -25px">
                             <option value="None">None</option>
                             <option value="Trim">Trim</option>
                             <option value="Hide">Hide</option>
                         </select>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -65,7 +69,7 @@
         var intersectaction = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select intersect action',
-            width: 90,
+            width: '100%',
             change: function () {
                 maps.layers[0].dataLabelSettings.intersectionAction = intersectaction.value;
                 maps.refresh();
@@ -73,7 +77,7 @@
         }); intersectaction.appendTo('#intersectaction'); var smartlabelmode = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Select smartlabel mode',
-            width: 90,
+            width: '100%',
             change: function () {
                 maps.layers[0].dataLabelSettings.smartLabelMode = smartlabelmode.value;
                 maps.refresh();

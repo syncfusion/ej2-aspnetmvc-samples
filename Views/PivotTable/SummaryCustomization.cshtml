@@ -6,9 +6,9 @@
                 }
 @section ControlsSection{
 
-    <div class="col-lg-8 control-section">
+    <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().PivotView("pivotview").Width("100%").Height("400").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true).ShowGrandTotals(false)
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("500").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true).ShowGrandTotals(true).GrandTotalsPosition(GrandTotalsPosition.Bottom)
            .DrilledMembers(drilledmembers =>
            {
                drilledmembers.Name("Country").Items(ViewBag.drilledMembers).Add();
@@ -31,46 +31,78 @@
            })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).Render()
         </div>
     </div>
-    <div class="col-lg-4 property-section pivot-table-property-section">
-        <table id="property" title="Properties" style="width: 100%;height:100%;">
+    <div class="col-lg-3 property-section pivot-table-property-section">
+        <table id="property" title="Properties" style="width: 100%;height:100%;" class="property-panel-table">
             <tbody>
-                <tr style="height: 50px">
+                <tr>
                     <td>
-                        <div style="font-weight: 600; font-size: 13px">
-                            Hide grand totals
+                        <div style="font-weight: 600; font-size: 13px; white-space: nowrap">
+                            Grand totals position
                         </div>
                     </td>
                 </tr>
-                <tr style="height: 50px">
+                <tr>
+                    <td>
+                        <div>
+                            @Html.EJS().RadioButton("radio5").Label("Top").Name("position").Value("Top").Change("onChange1").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            @Html.EJS().RadioButton("radio6").Label("Bottom").Name("position").Value("Bottom").Checked(true).Change("onChange1").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <div style="font-weight: 600; font-size: 13px; white-space: nowrap">
+                                Hide grand totals
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <div>
                             @Html.EJS().RadioButton("radio1").Label("Row").Name("Total").Value("Row").Change("onChange").Render()
                         </div>
                     </td>
                 </tr>
-                <tr style="height: 50px">
+                <tr>
                     <td>
                         <div>
                             @Html.EJS().RadioButton("radio2").Label("Column").Name("Total").Value("Column").Change("onChange").Render()
                         </div>
                     </td>
                 </tr>
-                <tr style="height: 50px">
+                <tr>
                     <td>
                         <div>
-                            @Html.EJS().RadioButton("radio3").Label("Both").Name("Total").Value("Both").Checked(true).Change("onChange").Render()
+                            @Html.EJS().RadioButton("radio3").Label("Both").Name("Total").Value("Both").Change("onChange").Render()
                         </div>
                     </td>
                 </tr>
-                <tr style="height: 50px">
+                <tr>
                     <td>
-                        <div style="font-weight: 600; font-size: 13px">
-                            Hide sub-totals
+                        <div>
+                            @Html.EJS().RadioButton("radio4").Label("None").Name("Total").Value("None").Checked(true).Change("onChange").Render()
                         </div>
                     </td>
                 </tr>
-                <tr style="height: 50px">
+                <tr>
                     <td>
+                        <div>
+                            <div style="font-weight: 600; font-size: 13px; white-space: nowrap">
+                                Hide sub-totals
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
                         <div>
                             <input type="text" tabindex="1" id='values' />
                         </div>
@@ -90,8 +122,20 @@
             overflow: auto;
         }
 
+        .pivot-table-property-section .property-panel-header {
+            padding-bottom: 10px;
+        }
+
         .pivot-table-property-section .e-multiselect {
             padding: 0;
+        }
+        
+        .pivot-table-property-section  .property-panel-table td {
+            width: auto;
+        }
+
+        .pivot-table-property-section  .property-panel-table div {
+            padding-left: unset;
         }
         .sb-sample-content-area {
             min-height: 255px !important;
@@ -153,17 +197,34 @@
 
         function onChange(args) {
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];
-            pivotObj.setProperties({ dataSourceSettings: { showGrandTotals: true } }, true);
-            pivotObj.setProperties({ dataSourceSettings: { showRowGrandTotals: true } }, true);
-            pivotObj.setProperties({ dataSourceSettings: { showColumnGrandTotals: true } }, true);
-            if (args.value === 'Column') {
-                pivotObj.dataSourceSettings.showColumnGrandTotals = false;
+            if (args.value === 'None') {
+                pivotObj.setProperties({ dataSourceSettings: { showGrandTotals: false } }, true);
+                pivotObj.setProperties({ dataSourceSettings: { showRowGrandTotals: true } }, true);
+                pivotObj.setProperties({ dataSourceSettings: { showColumnGrandTotals: true } }, true);
+                pivotObj.dataSourceSettings.showGrandTotals = true;
             }
-            else if (args.value === 'Row') {
-                pivotObj.dataSourceSettings.showRowGrandTotals = false;
+            else {
+                pivotObj.setProperties({ dataSourceSettings: { showGrandTotals: true } }, true);
+                pivotObj.setProperties({ dataSourceSettings: { showRowGrandTotals: true } }, true);
+                pivotObj.setProperties({ dataSourceSettings: { showColumnGrandTotals: true } }, true);
+                if (args.value === 'Column') {
+                    pivotObj.dataSourceSettings.showColumnGrandTotals = false;
+                } else if (args.value === 'Row') {
+                    pivotObj.dataSourceSettings.showRowGrandTotals = false;
+                } else if (args.value === 'Both') {
+                    pivotObj.dataSourceSettings.showGrandTotals = false;
+                }
             }
-            else if (args.value === 'Both') {
-                pivotObj.dataSourceSettings.showGrandTotals = false;
+        }
+        function onChange1(args) {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (args.value === 'Top') {
+                pivotObj.setProperties({ dataSourceSettings: { grandTotalsPosition: 'Bottom' } }, true);
+                pivotObj.dataSourceSettings.grandTotalsPosition = 'Top';
+            }
+            else if(args.value === 'Bottom') {
+                pivotObj.setProperties({ dataSourceSettings: { grandTotalsPosition: 'Top' } }, true);
+                pivotObj.dataSourceSettings.grandTotalsPosition = 'Bottom';
             }
         }
     </script>
@@ -184,10 +245,13 @@
 @section Description{
 <div id="description">
     <p>
-        In this sample, you can hide grand totals in row, column, or both using radio buttons available under the <b>Hide grand totals</b> category. To hide grand totals in both row and column, set the property <code>DataSourceSettings->ShowGrandTotals</code> as false. To hide the row and column grand totals separately, set the property <code>DataSourceSettings->ShowRowGrandTotals</code> and <code>DataSourceSettings->ShowColumnGrandTotals</code>as false.
+        In this sample, you can hide grand totals in row, column, or both using radio buttons available under the <b>Hide grand totals</b> category. To hide grand totals in both row and column, set the property <code>DataSourceSettings->ShowGrandTotals</code> as <b>false</b>. To hide the row and column grand totals separately, set the property <code>DataSourceSettings->ShowRowGrandTotals</code> and <code>DataSourceSettings->ShowColumnGrandTotals</code>as <b>false</b>.
     </p>
     <p>
-        Also, in this sample, you can hide subtotals for specific fields too. It can be achieved by selecting appropriate fields from the drop-down available under the <b>Hide sub-totals</b> category. To hide subtotals for a specific field, set the <code>ShowSubTotals</code> property as false inside the field definition.
+        You can also, display the grand totals either at the top or bottom of the row and column axes using radio buttons available under the <b>Grand totals position</b> category. To display the grand totals at top, set the property <code>DataSourceSettings->GrandTotalsPosition</code> as <b>Top</b>. And, to display the grand totals at botton, set the property <code>DataSourceSettings->GrandTotalsPosition</code> as <b>Bottom</b>.
+    </p>
+    <p>
+        Also, in this sample, you can hide subtotals for specific fields too. It can be achieved by selecting appropriate fields from the drop-down available under the <b>Hide sub-totals</b> category. To hide subtotals for a specific field, set the <code>ShowSubTotals</code> property as <b>false</b> inside the field definition.
     </p>
 </div>
 }

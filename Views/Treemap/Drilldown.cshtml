@@ -17,42 +17,42 @@
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
-                <tr>
-                    <td style="width: 70%">
-                        <div class="property-text">Drilldown View</div>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="margin-left: -10px">Drilldown View</div>
                     </td>
-                    <td style="width: 70%;">
-                        <div>
+                    <td>
+                        <div style="margin-left: -10px; margin-top: -10px">
                             <input type="checkbox" id="drillView" />
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td style="width: 70%">
-                        <div class="property-text">Enable Breadcrumb</div>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="margin-left: -10px">Enable Breadcrumb</div>
                     </td>
-                    <td style="width: 70%;">
-                        <div>
+                    <td>
+                        <div style="margin-left: -10px; margin-top: -10px">
                             <input type="checkbox" id="breadCrumb" />
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td style="width: 70%">
-                        <div class="property-text">Breadcrumb Connector</div>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="margin-left: -10px">Breadcrumb Connector</div>
                     </td>
-                    <td style="width: 70%;">
+                    <td>
                         <div>
-                            <input type="text" id="connectorText" value=' - ' disabled=true style="width:70px;margin-left:10px" />
+                            <input type="text" id="connectorText" value=' - ' disabled=true style="width:100%;" />
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td style="width:40%;">
-                        <div class="property-text">Header Alignment</div>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="margin-left: -10px">Header Alignment</div>
                     </td>
-                    <td style="width: 60%;">
-                        <div style="margin-left:10px">
+                    <td>
+                        <div>
                             <select name="selectIndex" id="header">
                                 <option value="Near" selected>Near</option>
                                 <option value="Far">Far</option>
@@ -61,12 +61,12 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td style="width:40%;">
-                        <div class="property-text">Label Alignment</div>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="margin-left: -10px">Label Alignment</div>
                     </td>
-                    <td style="width: 60%;">
-                        <div style="margin-left:10px">
+                    <td>
+                        <div>
                             <select name="selectIndex" id="label">
                                 <option value="Near" selected>Near</option>
                                 <option value="Far">Far</option>
@@ -391,7 +391,7 @@
         var header = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Selection selection type',
-            width: 80,
+            width: '100%',
             change: () => {
                 for (var i = 0; i < treemap.levels.length - 1;i++){
                     treemap.levels[i].headerAlignment = header.value;
@@ -404,7 +404,7 @@
         var label = new ej.dropdowns.DropDownList({
             index: 0,
             placeholder: 'Selection selection type',
-            width: 80,
+            width: '100%',
             change: () => {                
                     treemap.levels[2].headerAlignment = label.value;                
                 treemap.refresh();

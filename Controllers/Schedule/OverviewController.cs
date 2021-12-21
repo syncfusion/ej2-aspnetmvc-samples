@@ -154,7 +154,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             DateTime YearEnd = new DateTime(DateTime.Now.Year, 12, 31);
             string[] EventSubjects = new string[] {
                 "Bering Sea Gold", "Technology", "Maintenance", "Meeting", "Travelling", "Annual Conference", "Birthday Celebration", "Farewell Celebration",
-                "Wedding Aniversary", "Alaska: The Last Frontier", "Deadest Catch", "Sports Day", "MoonShiners", "Close Encounters", "HighWay Thru Hell",
+                "Wedding Anniversary", "Alaska: The Last Frontier", "Deadliest Catch", "Sports Day", "MoonShiners", "Close Encounters", "HighWay Thru Hell",
                 "Daily Planet", "Cash Cab", "Basketball Practice", "Rugby Match", "Guitar Class", "Music Lessons", "Doctor checkup", "Brazil - Mexico",
                 "Opening ceremony", "Final presentation"
             };

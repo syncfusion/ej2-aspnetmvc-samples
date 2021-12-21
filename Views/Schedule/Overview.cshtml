@@ -32,9 +32,8 @@
                             <div class="control-panel calendar-export">
                                 @Html.EJS().Button("printBtn").CssClass("title-bar-btn").Content("Print").IconCss("e-icons e-print").Render()
                             </div>
-                            <div class="control-panel" style="display: inline-flex;padding-left:15px;">
-                                <div class="e-icons e-upload-1 e-btn-icon e-icon-left" style="line-height: 40px;"></div>
-                                @Html.EJS().Uploader("icalendar").AllowedExtensions(".ics").CssClass("calendar-import").ShowFileList(false).Buttons(new Syncfusion.EJ2.Inputs.UploaderButtonsProps { Browse = "Import" }).Selected("onSelected").Multiple(false).Render()
+                            <div class="control-panel">
+                                @Html.EJS().Uploader("icalendar").AllowedExtensions(".ics").CssClass("calendar-import").ShowFileList(false).Buttons(new Syncfusion.EJ2.Inputs.UploaderButtonsProps { Browse = "Import" }).Created("uploaderCreated").Selected("onSelected").Multiple(false).Render()
                             </div>
                             <div class="control-panel calendar-export">
                                 @Html.EJS().DropDownButton("exporting").Content("Export").Items(ViewBag.ExportItems).Select("onExportItemSelect").Render()
@@ -83,7 +82,7 @@
                                     <label style="line-height: 34px; margin: 0;">First Day of Week</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("weekFirstDay").Width("170px").Value("0").PopupHeight("150px").DataSource(ViewBag.WeekDays).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onWeekFirstDayChange").Render()
+                                    @Html.EJS().DropDownList("weekFirstDay").Value("0").PopupHeight("150px").DataSource(ViewBag.WeekDays).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onWeekFirstDayChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -91,7 +90,7 @@
                                     <label style="line-height: 34px; margin: 0;">Work week</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().MultiSelect("workWeekDays").Width("170px").CssClass("schedule-workweek").Mode(VisualMode.CheckBox).PopupHeight("150px").EnableSelectionOrder(false).ShowDropDownIcon(true).ShowClearButton(false).Value(ViewBag.Values).DataSource(
+                                    @Html.EJS().MultiSelect("workWeekDays").CssClass("schedule-workweek").Mode(VisualMode.CheckBox).PopupHeight("150px").EnableSelectionOrder(false).ShowDropDownIcon(true).ShowClearButton(false).Value(ViewBag.Values).DataSource(
                             ViewBag.WeekDays).Fields(new MultiSelectFieldSettings { Text = "text", Value = "value" }).Change("onWeekDaysChange").Render()
                                 </div>
 
@@ -101,7 +100,7 @@
                                     <label style="line-height: 34px; margin: 0;">Resources</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().MultiSelect("resources").CssClass("schedule-workweek").Width("170px").Mode(VisualMode.CheckBox).PopupHeight("150px").EnableSelectionOrder(false).ShowDropDownIcon(true).ShowClearButton(false).Value(ViewBag.ResourceValues).DataSource(
+                                    @Html.EJS().MultiSelect("resources").CssClass("schedule-workweek").Mode(VisualMode.CheckBox).PopupHeight("150px").EnableSelectionOrder(false).ShowDropDownIcon(true).ShowClearButton(false).Value(ViewBag.ResourceValues).DataSource(
                             ViewBag.Calendars).Fields(new MultiSelectFieldSettings { Text = "CalendarName", Value = "CalendarId" }).Change("onCalendarChange").Render()
                                 </div>
                             </div>
@@ -110,7 +109,7 @@
                                     <label style="line-height: 34px; margin: 0;">Timezone</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("timezone").Width("170px").Value(timezone).PopupHeight("150px").DataSource(ViewBag.TimezoneData).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onTimezoneChange").Render()
+                                    @Html.EJS().DropDownList("timezone").Value(timezone).PopupHeight("150px").DataSource(ViewBag.TimezoneData).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onTimezoneChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -118,7 +117,7 @@
                                     <label style="line-height: 34px; margin: 0;">Day Start Hour</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().TimePicker("dayStartHour").Width("170px").ShowClearButton(false).Value(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0)).Change("onDayStartHourChange").Render()
+                                    @Html.EJS().TimePicker("dayStartHour").ShowClearButton(false).Value(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0)).Change("onDayStartHourChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -126,7 +125,7 @@
                                     <label style="line-height: 34px; margin: 0;">Day End Hour</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().TimePicker("dayEndHour").Width("170px").ShowClearButton(false).Value(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59)).Change("onDayEndHourChange").Render()
+                                    @Html.EJS().TimePicker("dayEndHour").ShowClearButton(false).Value(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59)).Change("onDayEndHourChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -134,7 +133,7 @@
                                     <label style="line-height: 34px; margin: 0;">Work Start Hour</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().TimePicker("workHourStart").Width("170px").ShowClearButton(false).Value(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0)).Change("onWorkStartHourChange").Render()
+                                    @Html.EJS().TimePicker("workHourStart").ShowClearButton(false).Value(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 0, 0)).Change("onWorkStartHourChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -142,7 +141,7 @@
                                     <label style="line-height: 34px; margin: 0;">Work End Hour</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().TimePicker("workHourEnd").Width("170px").ShowClearButton(false).Value(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 18, 0, 0)).Change("onWorkEndHourChange").Render()
+                                    @Html.EJS().TimePicker("workHourEnd").ShowClearButton(false).Value(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 18, 0, 0)).Change("onWorkEndHourChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -150,7 +149,7 @@
                                     <label style="line-height: 34px; margin: 0;">Slot Duration</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("slotDuration").Width("170px").Value("60").PopupHeight("150px").DataSource(ViewBag.SlotIntervalDataSource).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onSlotIntervalChange").Render()
+                                    @Html.EJS().DropDownList("slotDuration").Value("60").PopupHeight("150px").DataSource(ViewBag.SlotIntervalDataSource).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onSlotIntervalChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -158,7 +157,7 @@
                                     <label style="line-height: 34px; margin: 0;">Slot Interval</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("slotInterval").Width("170px").Value("2").PopupHeight("150px").DataSource(ViewBag.slotCounts).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onSlotCountChange").Render()
+                                    @Html.EJS().DropDownList("slotInterval").Value("2").PopupHeight("150px").DataSource(ViewBag.slotCounts).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onSlotCountChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -166,7 +165,7 @@
                                     <label style="line-height: 34px; margin: 0;">Time Format</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("timeFormat").Width("170px").Value("hh:mm a").PopupHeight("150px").DataSource(ViewBag.TimeFormat).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onTimeFormatChange").Render()
+                                    @Html.EJS().DropDownList("timeFormat").Value("hh:mm a").PopupHeight("150px").DataSource(ViewBag.TimeFormat).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onTimeFormatChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -174,7 +173,7 @@
                                     <label style="line-height: 34px; margin: 0;">Week Numbers</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("week_number").Width("170px").Value("Off").PopupHeight("150px").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).DataSource(ViewBag.WeekNumber).Change("onWeekNumberChange").Render()
+                                    @Html.EJS().DropDownList("week_number").Value("Off").PopupHeight("150px").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).DataSource(ViewBag.WeekNumber).Change("onWeekNumberChange").Render()
                                 </div>
                             </div>
                         </div>
@@ -1070,7 +1069,7 @@
 
         var buttonClickActions = function (e) {
             var scheduleObj = document.getElementById('scheduler').ej2_instances[0];
-            var popupElement = scheduleObj.element.querySelector('.e-quick-popup-wrapper');
+            var popupElement = ej.base.closest(e.target, '.e-quick-popup-wrapper');
             var getSlotData = function () {
                 var cellDetails = scheduleObj.getCellDetails(scheduleObj.getSelectedElements());
                 if (ej.base.isNullOrUndefined(cellDetails)) {
@@ -1185,6 +1184,15 @@
                 case 'DeleteSeries':
                     scheduleObj.deleteEvent(eventObj, selectedMenuItem);
                     break;
+            }
+        }
+
+        function uploaderCreated() {
+            var uploader = document.getElementById('icalendar');
+            if (uploader) {
+                var uploaderObj = uploader.ej2_instances[0];
+                var template = '<div class="e-template-btn"><span class="e-btn-icon e-icons e-upload-1 e-icon-left"></span>${text}</div>';
+                uploaderObj.buttons = { browse: ej.base.compile(template.trim())({ text: 'Import' })[0] };
             }
         }
 
@@ -1380,7 +1388,7 @@
         }
 
         function onPopupOpen(args) {
-            if (args.type === 'QuickInfo') {
+            if (args.type === 'QuickInfo' || args.type === 'ViewEventInfo') {
                 var titleObj = new ej.inputs.TextBox({ placeholder: 'Title' });
                 titleObj.appendTo(args.element.querySelector('#title'));
                 var eventTypeObj = new ej.dropdowns.DropDownList({

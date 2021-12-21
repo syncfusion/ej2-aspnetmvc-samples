@@ -35,12 +35,12 @@
     <div class="col-md-4 property-section">
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
-                <tr>
+                <tr style="height: 50px">
                     <td>
-                        <div style="margin-top:30px;width: 120px; margin-left:-10px">Gradient Type</div>
+                        <div style="width: 120px; margin-left:-10px">Gradient Type</div>
                     </td>
                     <td>
-                        <div style="margin-top: 20px; margin-left: -15px; width: 150px;">
+                        <div style="margin-left: -15px;">
                             <select id="gradient" class="form-control">
                                 <option value="linear" selected="true">Linear Gradient</option>
                                 <option value="radial">Radial Gradient</option>
@@ -48,12 +48,12 @@
                         </div>
                     </td>
                 </tr>
-                <tr>
+                <tr style="height: 50px">
                     <td>
-                        <div style="margin-top:30px;margin-left:-8px;">Element</div>
+                        <div style="margin-left:-10px;">Element</div>
                     </td>
                     <td>
-                        <div style="margin-top: 30px; margin-left: -15px; width: 150px;">
+                        <div style="margin-left: -15px;">
                             <select id="element" class="form-control">
                                 <option value="range" selected="true">Range</option>
                                 <option value="pointer">Pointer</option>
@@ -107,7 +107,7 @@
         }
         var gradientType = new ej.dropdowns.DropDownList({
             index: 0,
-            width: 150,
+            width: '100%',
             change: function () {
                 if (gradientType.value === 'radial' && element.value === 'range') {
                     gauge.axes[0].ranges[0].linearGradient = null;
@@ -142,7 +142,7 @@
         gradientType.appendTo('#gradient');
         var element = new ej.dropdowns.DropDownList({
             index: 0,
-            width: 150,
+            width: '100%',
             change: function () {
                 if (gradientType.value === 'radial' && element.value === 'range') {
                     gauge.axes[0].ranges[0].linearGradient = null;
