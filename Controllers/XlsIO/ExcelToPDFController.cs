@@ -30,6 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
                 return View();
             ExcelEngine excelEngine = new ExcelEngine();
             IApplication application = excelEngine.Excel;
+			application.EnablePartialTrustCode = true;
             IWorkbook workbook;
             if (button == "Input Template")
             {
