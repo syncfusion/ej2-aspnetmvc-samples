@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").QuickInfoTemplates(new ScheduleQuickInfoTemplates { Header = "#header-template", Content = "#content-template", Footer = "#footer-template" }).PopupOpen("OnPopupOpen").EventRendered("onEventRendered").EventSettings(e => e.DataSource(ViewBag.datasource)).SelectedDate(new DateTime(DateTime.Today.Year, 1, 9)).Resources(res =>
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").QuickInfoTemplates(new ScheduleQuickInfoTemplates { Header = "#header-template", Content = "#content-template", Footer = "#footer-template" }).PopupOpen("OnPopupOpen").EventRendered("onEventRendered").EventSettings(e => e.DataSource(ViewBag.datasource)).SelectedDate(new DateTime(DateTime.Today.Year, 1, 6)).Resources(res =>
                 {
                     res.DataSource(ViewBag.Categories).Field("RoomId").Title("Room Type").Name("MeetingRoom").TextField("Name").IdField("Id").ColorField("Color").Add();
                 }).Render()
@@ -84,7 +84,7 @@
         }
 
         .e-quick-popup-wrapper .e-cell-popup .e-popup-content {
-            padding: 0 14px;
+            padding: 0 14px !important;
         }
 
         .e-quick-popup-wrapper .e-event-popup .e-popup-footer {

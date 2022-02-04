@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 @{
-    string agendaEventTemplate = "<div class='subject'>${Subject}</div>${if(Description !== null && Description !== undefined)}<div class='group'>${Description}</div>${/if}<div class='location'>${getTimeString(data.StartTime)}, ${if(City !== null && City !== undefined)}${City}${/if}</div>";
+    string agendaEventTemplate = "<div><div class='subject'>${Subject}</div>${if(Description !== null && Description !== undefined)}<div class='group'>${Description}</div>${/if}<div class='location'>${getTimeString(data.StartTime)}, ${if(City !== null && City !== undefined)}${City}${/if}</div></div>";
     string monthEventTemplate = "<div class='e-subject'>${Subject}</div>";
     List<ScheduleView> viewOptions = new List<ScheduleView>();
     viewOptions.Add(new ScheduleView { Option = Syncfusion.EJ2.Schedule.View.Day, StartHour = "07:00", EndHour = "18:00" });

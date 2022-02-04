@@ -7668,7 +7668,17 @@ if (!window) {
         "dir": "Accordion",
         "parentId": "036",
         "uid": "0036362"
-      }
+      },
+      {
+        "url": "KeyboardInteraction",
+        "name": "Keyboard Interaction",
+        "category": "Accordion",
+        "order": 0,
+        "component": "Accordion",
+        "dir": "Accordion",
+        "parentId": "036",
+        "uid": "0036363"
+      },
     ],
     "order": 5,
     "uid": "036"
@@ -8112,6 +8122,16 @@ if (!window) {
         "dir": "Tab",
         "parentId": "041",
         "uid": "0041414"
+      },
+      {
+        "url": "KeyboardInteraction",
+        "name": "Keyboard Interaction",
+        "category": "Tabs",
+        "order": 0,
+        "component": "Tab",
+        "dir": "Tab",
+        "parentId": "041",
+        "uid": "0041415"
       }
     ],
     "order": 5,
@@ -8152,6 +8172,16 @@ if (!window) {
         "dir": "Toolbar",
         "parentId": "042",
         "uid": "0042422"
+      },
+      {
+        "url": "KeyboardInteraction",
+        "name": "Keyboard Interaction",
+        "category": "Toolbar",
+        "order": 0,
+        "component": "Toolbar",
+        "dir": "Toolbar",
+        "parentId": "042",
+        "uid": "0042423"
       }
     ],
     "order": 5,
