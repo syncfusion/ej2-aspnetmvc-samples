@@ -1,0 +1,75 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+<script src="~/Scripts/financial-data.js"></script>
+<div class="control-section">
+    <div style="text-align:center">
+        @Html.EJS().Chart("container").Series(series =>
+   {
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
+       .Marker(mr=>mr.Visible(false).Width(12).Height(12).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle))
+       .Opacity(0.5).XName("x").YName("y").DataSource("dataSource1").Name("Male").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
+       .Marker(mr => mr.Visible(false).Width(12).Height(12).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond))
+       .Opacity(0.5).XName("x").YName("y").DataSource("dataSource2").Name("Female").Add();
+   }).PrimaryXAxis(px => px.Title("Height (cm)").MajorGridLines(mg=>mg.Width(0))
+   .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+       ).PrimaryYAxis(py => py.Title("Weight (kg)").MajorTickLines(mt=>mt.Width(0)).Minimum(50).Maximum(80)
+       .LineStyle(ls=>ls.Width(0))
+       ).Title("Height vs Weight").ChartArea(area => area.Border(br=>br.Color("transparent"))
+       ).Tooltip(tt => tt.Enable(true).Format("Weight: <b>${point.x} kg</b> <br/> Height: <b>${point.y} cm</b>")
+       ).Load("load").SelectionMode(Syncfusion.EJ2.Charts.SelectionMode.Point).Render()
+    </div>
+</div>
+
+         @*custom code start*@
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+</style>
+         @*custom code end*@
+    <script>
+        var dataSource1 = womenData;
+        var dataSource2 = menData;
+                 @*custom code start*@
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+        };
+                 @*custom code end*@
+    </script>
+    }
+             @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Scatter Plot in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+         @*custom code end*@
+@section ActionDescription{
+   <p>
+    This sample compares the height and weight of the genders by using default scatter series in the chart. Tooltip shows the
+    information about the data.
+</p>
+}
+@section Description{
+    <p>
+    In this example, you can see how to render and configure the scatter type charts. Scatter charts are used to plot financial
+    or scientific data. You can use
+    <code>shape</code> property in the marker to change the scatter shape.
+    <code>dataLabel</code> is used to represent individual data value.
+</p>
+<p>
+    Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+</p>
+<br>
+<p>
+    More information on the scatter series can be found in this
+    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+</p> 
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Scatter Plot Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Scatter Plot in ASP.NET MVC Chart Control</h1>
+                }

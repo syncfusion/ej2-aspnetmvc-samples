@@ -1,0 +1,60 @@
+Essential PDF supports many features for creating a PDF document including drawing Text, Images, Tables and other shapes. The generated PDF documents can also be protected using 40 Bit and 128 Bit encryption. 
+
+General Features
+The various features of PDF are listed below.
+
+Drawing Text support
+*	Text Formating.
+*	Center, Left, Right and Justify text alignments.
+*	Inserting Unicode support.
+*	MultiCoumn text
+
+Font Types
+*	Supports Predefined Fonts
+*	True type Fonts 
+*	CJK Fonts  
+
+Drawing Shapes
+*	Drawing shapes like rectangles, circles, arcs, ellipses, etc.
+*	Filling shapes using Brushes like gradient brush, tiling brush etc.
+*	Transparent drawing of shapes can be achieved easily.
+*	Support for Lines with different patterns.
+
+Image support
+*	Images to PDF document can be loaded from streams and files on disk.
+*	Both scalar and vector images can be drawn in documents.
+*	Images can  be resized and inserted into the pdf document at the required size.
+*	Soft Mask Images and Watermarks are supported.
+
+Interactive Features
+*	Various types of Annotations are supported.
+*	Various files can be attached to the PDF document easily.
+*	Bookmarks for the  pages in document can be configured. 
+*	Hyperlink supports for Web URLs.
+*	Hyperlink for other external files.
+*	Links to a page in the same document is also supported.
+
+Form Field support
+*	Support for drawing Form fields like Buttons, TextBoxes, list boxes, checked boxes etc., into the PDF document.
+*	Support for form field actions.
+*	Fill form fields and flattern them.
+
+Page Elements
+*	 Header and Footer can be drawn in a PDF document.
+*	LeftBar and RightBar are supported.
+
+Document and Page settings
+*	Orientation of PDF page like Landscape and Portrait modes can be achieved easily.
+*	pages with different sizes can also be set using Essential PDF.
+*	Setting Document Properties like Author Name, Creation Date, Keywords, etc.
+*	Support for hiding Toolbar, Menubar, etc.
+*	Page margins can be set in the document.
+*	Support for setting Page Mode and Page Layout.
+
+Compression
+*	Essential PDF supports Compression for reducing the size of the created  PDF files.
+
+Security Support
+*	Allow for setting owner/User Passwords.
+*	Allow/Disallow permissions over PDF document.
+*	Digital Signature
