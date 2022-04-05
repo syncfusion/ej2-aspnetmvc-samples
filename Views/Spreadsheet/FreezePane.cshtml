@@ -1,0 +1,115 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Spreadsheet
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Spreadsheet("spreadsheet").OpenUrl("FreezePaneOpen").SaveUrl("FreezePaneSave").Created("createdHandler").Sheets(sheet =>
+   {
+       sheet.Name("Gross Salary").FrozenRows(2).FrozenColumns(2).SelectedRange("C1").Ranges(ranges =>
+       {
+           ranges.DataSource((IEnumerable<object>)ViewBag.freezePaneData).StartCell("A2").Add();
+       }).Rows(row =>{
+           row.Cells(cell => {
+               cell.Index(1).Value("Period").Style(new SpreadsheetCellStyle { FontSize = "12pt", FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Index(3).Value("Total Gross Salary").Style(new SpreadsheetCellStyle { FontSize = "12pt", FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, VerticalAlign = VerticalAlign.Middle }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(2).Value("Basic Salary").Add();
+               cell.Value("Revised Basic Salary").Add();
+               cell.Value("DA").Add();
+               cell.Value("Revised DA").Add();
+               cell.Value("HRA").Add();
+               cell.Value("Revised HRA").Add();
+               cell.Value("Conveyance Allowance").Add();
+               cell.Value("Revised Conveyance Allowance").Add();
+               cell.Value("Medical Expenses").Add();
+               cell.Value("Revised Medical Expenses").Add();
+               cell.Value("Special Allowance").Add();
+               cell.Value("Revised Spcial Allowance").Add();
+               cell.Value("Total Gross Salary").Add();
+               cell.Value("Revised Total Gross Salary").Add();
+           }).Add();
+           row.Index(26).Cells(cell => {
+               cell.Index(13).Value("Total Amount").Style(new SpreadsheetCellStyle { FontSize = "12pt", FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Formula("=SUM(O4:O26)").Style(new SpreadsheetCellStyle { FontSize = "12pt", FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Formula("=SUM(P4:P26)").Style(new SpreadsheetCellStyle { FontSize = "12pt", FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, VerticalAlign = VerticalAlign.Middle }).Add();
+           }).Add();
+       }).Columns(column => {
+           column.Width(80).Add();
+           column.Width(80).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+           column.Width(80).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+           column.Width(100).Add();
+       }).Add();
+   }).Render()
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Freeze Pane in ASP.NET MVC Spreadsheet control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the <code>Spreadsheet</code> freeze pane feature by applying frozen rows and columns with the Gross Salary scenario as an example. In this sample, you can see the frozen rows/columns that are visible while scrolling the sheet content vertically/horizontally.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            Freeze Panes helps you to keep particular rows or columns visible when scrolling the sheet content in the spreadsheet. You can specify the number of frozen rows and columns using <code>frozenRows</code> and <code>frozenColumns</code> properties inside the <code>Sheet</code> property.
+        </p>
+        <p>
+            In this sample, the first 2 rows and columns are frozen using the <code>frozenRows</code> and <code>frozenColumns</code> properties.
+        </p>
+        <p>
+            More information about the freeze panes feature can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started-mvc/">
+                documentation
+            </a> section.
+        </p>
+    </div>
+}
+
+<script>
+    function createdHandler() {
+        this.wrap("C2:P2");
+        this.merge('A1:B1');
+        this.merge('C1:P1');
+        this.cellFormat({ backgroundColor: '#4e4ee6', color: '#FFFFF4', fontSize: '12pt', fontWeight: 'bold', textAlign: 'center', verticalAlign: 'middle' }, 'A1:P2');
+        this.cellFormat({ backgroundColor: '#4e4ee6', color: '#FFFFF4' }, 'A3:B26');
+        this.numberFormat('$#,##0.00', 'C2:P26');
+        this.numberFormat('$#,##0.00', 'O27:P27');
+    }
+</script>
+
+@*custom code start*@
+<style>
+    .control-section {
+        height: 550px;
+    }
+    #sb-content .e-spreadsheet .e-tab .e-tab-text {
+        display: inherit;
+    }
+</style>
+@*custom code end*@
+
+@section Title{
+                    <title>ASP.NET MVC Spreadsheet Freeze pane Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Freeze pane in ASP.NET MVC Spreadsheet Control</h1>
+                }

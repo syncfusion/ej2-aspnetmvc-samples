@@ -1,0 +1,62 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div id="container" style="text-align:center">
+        @Html.EJS().AccumulationChart("container").Series(series =>
+   {
+       series.Type(Syncfusion.EJ2.Charts.AccumulationType.Pyramid).Width("45%").XName("x").YName("y").
+       Name("Food").Height("80%").NeckWidth("15%").GapRatio(0.03).Explode(true).DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600"))).DataSource(ViewBag.dataSource).Add();
+   }).EnableSmartLabels(true).Title("Food Comparison Chart").Tooltip(tl => tl.Enable(true)).LegendSettings(ls =>ls.Visible(false)).TextRender("textRender").Load("load").Resized("resize").Render()
+    </div>
+        </div>
+    <script>
+
+        var textRender = function (args) {
+            args.text = args.text;
+        };
+
+        var load = function(args) {
+                 @*custom code start*@
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            @*custom code end*@
+            if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
+                args.accumulation.series[0].width = '80%';
+                args.accumulation.series[0].height = '60%';
+            }
+        }
+        var resize = function(args) {
+            var bounds = document.getElementById('container').getBoundingClientRect();
+            if (bounds.width < bounds.height) {
+                args.accumulation.series[0].width = '80%';
+                args.accumulation.series[0].height = '60%';
+            }
+            else {
+                args.accumulation.series[0].width = '45%';
+                args.accumulation.series[0].height = '80%';
+            }
+        }
+    </script>
+}
+         @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Pyramid in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+         @*custom code end*@
+@section ActionDescription{
+    <p>
+    This sample visualizes food comparison data by using pyramid series.
+    Datalabel shows the Information about the points.
+</p>
+}
+@section Description{
+    <p> In this example, you can see how to render pyramid chart. <code>dataLabel</code> is used to represent individual data and its value.</p>
+<p> <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+<p> <code>Legends</code> are disabled in this example, the information about it can be read using <code>Tooltip</code>.</p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Pyramid Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Pyramid in ASP.NET MVC Chart Control</h1>
+                }

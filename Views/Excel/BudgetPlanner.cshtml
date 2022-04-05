@@ -1,0 +1,55 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+<div class="control-section">
+    @{Html.BeginForm("BudgetPlanner", "Excel", FormMethod.Post);
+        <p style="font-weight:normal">
+            Click the "Input Template" button to view the input Excel document and click the "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+        </p>
+        <br />
+        <div>
+			Save As :
+			<input type="radio" id="XLS" name="budget" value="Xls" />
+			<label for="XLS" style="font-weight:normal">XLS</label>
+			&nbsp;
+			<input type="radio" id="XLSX" name="budget" value="xlsx" checked="checked" />
+			<label for="XLSX" style="font-weight:normal">XLSX</label>
+		</div>
+        <br />
+        <div class="celldiv">
+            <input id="inputbtn" class="e-btn" type="submit" name="button" value="Input Template" style="width:150px;" />
+            <input id="createbtn" class="e-btn" type="submit" name="button" value="Create Document" style="width:150px;" />      
+        </div>
+        }
+    </div> 
+}
+@section Description{
+    It may be difficult to decide how much you can afford to save or how much you can spend every month. This budget planner application created using Essential XlsIO will help you to determine your monthly disposable income. Enter your annual income and expenses in the Quick Budget Sheet to assess your financial position.<br />
+    <br />
+    <b>Features:</b>
+    <br />
+    <br />
+    <ul>
+        <li>Text box insertion and formatting</li>
+        <li>Image insertion</li>
+        <li>Number formats</li>
+        <li>Formulas</li>
+        <li>Charts</li>
+        <li>Views-heading, sheet hiding, row-column hiding, and tab colors</li>
+        <li>Data validation list</li>
+        <li>Text styles (bold, italic, underline, font name, and font color)</li>
+    </ul>
+}
+@section ActionDescription{
+    <p>
+        This sample demonstrates how to create a simple Budget planner using Excel (XlsIO) Library.
+    </p>
+}
+@section Meta{
+                    <meta name="description" content="This sample demonstrates how to create a simple Budget planner using .NET Excel (XlsIO) library."/>
+                }
+@section Title{
+                    <title>ASP.NET MVC Excel (XlsIO) library - Budget Planner Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Budget Planner in ASP.NET MVC Excel (XlsIO) Library</h1>
+                }

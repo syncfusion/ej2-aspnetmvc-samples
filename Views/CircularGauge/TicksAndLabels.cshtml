@@ -1,0 +1,269 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <style>
+        td {
+            width: 40%;
+        }
+    </style>
+    <div class="col-md-8 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().CircularGauge("container").Load("onGaugeLoad").Axes(axes => axes
+   .Radius("75%").StartAngle(210).EndAngle(150).LabelStyle(new CircularGaugeLabel
+   {
+       Position = Position.Outside,
+       AutoAngle = true,
+       Font = new CircularGaugeFont { Size = "10px", Color = "#333333", Opacity = 1 },
+   })
+   .Pointers(ViewBag.Pointers)
+   .Annotations(ViewBag.Annotations)
+   .Ranges(ViewBag.ranges)
+   .Maximum(170).Minimum(0)
+   .LineStyle(new CircularGaugeLine { Width = 2, Color = "#9E9E9E" })
+   .MinorTicks(new CircularGaugeTick { Position = Position.Inside, Color = "#757575", Height = 5, Width = 2, Interval = 10 })
+   .MajorTicks(new CircularGaugeTick { Position = Position.Inside, Color = "#757575", Width = 2, Height = 10, Interval = 20 }).Add()
+   ).Render();
+        </div>
+    </div>
+    <div class="col-md-4 property-section">
+        <div class="property-panel-section">
+            <div class="property-panel-header">Properties</div>
+            <div class="property-panel-content">
+                <table title="Properties" style="width: 100%;">
+                    <colgroup>
+                        <col span="1" style="width: 47%;">
+                        <col span="1" style="width: 40%;">
+                        <col span="1" style="width: 10%;">
+                    </colgroup>
+                    <tr style="height: 50px">
+                        <td>
+                            <div> Ticks </div>
+                        </td>
+                        <td>
+                            <div>
+                                <select id="Ticks" class="form-control">
+                                    <option value="major" selected="true">Major Ticks</option>
+                                    <option value="minor">Minor Ticks</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div> Tick Position </div>
+                        </td>
+                        <td>
+                            <div>
+                                <select id="tickposition" class="form-control">
+                                    <option value="Inside" selected="true">Inside</option>
+                                    <option value="Cross">Cross</option>
+                                    <option value="Outside">Outside</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div> Label Position </div>
+                        </td>
+                        <td>
+                            <div>
+                                <select id="labelposition" class="form-control">
+                                    <option value="Outside">Outside</option>
+                                    <option value="Cross">Cross</option>
+                                    <option value="Inside">Inside</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div>Tick Offset </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="tickOffset" value="0" min="0" max="50">
+                            </div>
+                        </td>
+                        <td style="text-align:center;">
+                            <div>
+                                <span id='offset'>0</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div>Tick Height </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="tickHeight" value="10" min="1" max="50">
+                            </div>
+                        </td>
+                        <td style="text-align:center;">
+                            <div>
+                                <span id='height'>10</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div>Label Offset </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="labelOffset" value="0" min="0" max="50">
+                            </div>
+                        </td>
+                        <td style="text-align:center;">
+                            <div>
+                                <span id='labelOffsetValue'>0</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>
+                            <div id="enablePointer">Show Last Label </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="checkbox" id="enable" style="margin-top: 6px">
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var circulargauge;
+        function onGaugeLoad(sender) {
+            if (window.gaugeLoaded)
+                return;
+            window.gaugeLoaded = true;
+            window.setTimeout(function () {
+                var gaugeWidth = document.getElementById('container').offsetWidth;
+                var svgWidth = document.getElementById('container_svg').offsetWidth;
+                if (gaugeWidth != svgWidth)
+                    sender.gauge.refresh();
+            }, 200);
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            circulargauge = sender.gauge;
+            for (var i = 0; i < sender.gauge.axes[0].annotations.length; i++) {
+                sender.gauge.axes[0].annotations[i].zIndex = "1";
+            }
+        }
+        var ticks;
+        var tickPosition;
+        var labelPosition;
+        var isMajorTicks = true;
+        ticks = new ej.dropdowns.DropDownList({
+            index: 0, width: '130%',
+            change: function () {
+                var value = ticks.value.toString();
+                var tick;
+                isMajorTicks = value === 'major';
+                if (isMajorTicks) {
+                    tick = circulargauge.axes[0].majorTicks;
+                }
+                else {
+                    tick = circulargauge.axes[0].minorTicks;
+                }
+                tickPosition.value = tick.position;
+                document.getElementById('tickOffset').value = tick.offset.toString();
+                document.getElementById('tickHeight').value = tick.height.toString();
+                document.getElementById('offset').innerHTML = tick.offset;
+                document.getElementById('height').innerHTML = tick.height;
+            }
+        });
+        ticks.appendTo('#Ticks');
+        tickPosition = new ej.dropdowns.DropDownList({
+            index: 0, width: '130%',
+            change: function () {
+                var value = tickPosition.value.toString();
+                if (isMajorTicks) {
+                    circulargauge.axes[0].majorTicks.position = value;
+                }
+                else {
+                    circulargauge.axes[0].minorTicks.position = value;
+                }
+            }
+        });
+        tickPosition.appendTo('#tickposition');
+        labelPosition = new ej.dropdowns.DropDownList({
+            index: 0, width: '130%',
+            change: function () {
+                circulargauge.axes[0].labelStyle.position = labelPosition.value.toString();
+                circulargauge.refresh();
+            }
+        });
+        labelPosition.appendTo('#labelposition');
+        document.getElementById('tickOffset').onpointermove = document.getElementById('tickOffset').ontouchmove =
+            document.getElementById('tickOffset').onchange = function () {
+                var value = parseInt(document.getElementById('tickOffset').value, 10);
+                if (isMajorTicks) {
+                    circulargauge.axes[0].majorTicks.offset = value;
+                }
+                else {
+                    circulargauge.axes[0].minorTicks.offset = value;
+                }
+                document.getElementById('offset').innerHTML = value;
+            };
+        document.getElementById('tickHeight').onpointermove = document.getElementById('tickHeight').ontouchmove =
+            document.getElementById('tickHeight').onchange = function () {
+                var value = parseInt(document.getElementById('tickHeight').value, 10);
+                if (isMajorTicks) {
+                    circulargauge.axes[0].majorTicks.height = value;
+                }
+                else {
+                    circulargauge.axes[0].minorTicks.height = value;
+                }
+                document.getElementById('height').innerHTML = value;
+            };
+        document.getElementById('labelOffset').onpointermove = document.getElementById('labelOffset').ontouchmove =
+            document.getElementById('labelOffset').onchange = function () {
+                var value = parseInt(document.getElementById('labelOffset').value, 10);
+                circulargauge.axes[0].labelStyle.offset = value;
+                document.getElementById('labelOffsetValue').innerHTML = value;
+            };
+        document.getElementById('enable').onchange = function () {
+            var showLastLabel = document.getElementById('enable').checked;
+            circulargauge.axes[0].showLastLabel = showLastLabel;
+        };
+    </script>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample illustrates how to customize the ticks and labels of an axis.
+            Position, offset, and height of the tick and label can be changed by using the options provided in the property panel.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the TicksAndLabels in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render and configure the ticks and labels of an axis in the circular gauge. Labels are
+            units that are used to display the values in the axis. You can customize <code>labels</code> with the properties
+            like <code>angle</code>, <code>font</code>,
+            <code>position</code>, etc. Ticks are used to mark some values on the axis. You can also customize the ticks using
+            <code>majorTicks</code>,
+            <code>minorTicks</code> properties.
+        </p>
+        <p>
+            More information on the labels can be found in this
+            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC Circular Gauge TicksAndLabels Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of TicksAndLabels in ASP.NET MVC Circular Gauge Control</h1>
+}

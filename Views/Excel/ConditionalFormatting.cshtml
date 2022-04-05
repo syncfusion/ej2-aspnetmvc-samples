@@ -1,0 +1,56 @@
+@using Syncfusion.EJ2
+
+@section ActionDescription{
+    This sample demonstrates how to apply conditional formats using Excel (XlsIO) Library.
+    }
+
+@section Meta{
+                    <meta name="description" content="This sample demonstrates how to apply conditional formats using .NET Excel (XlsIO) library."/>
+                }
+
+@section Description{
+<p>
+    Microsoft Office Excel provide enhanced conditional formatting support from Excel 2007 onwards. Conditional formatting allows you to apply formatting to one or more cells based on the value of the cell or the value of a formula.
+    XlsIO also supports applying more than three conditional formats to a single cell in XLSX format, whereas XLS format allows only three conditional formats in a cell.<br />
+</p>
+<br />
+<b>Note:</b> It is not possible to apply more than three conditional formats in earlier versions of Excel. <br />
+<br />
+<b>Features:</b>
+<br />
+<br />
+<ul>
+    <li>Apply conditional formats to a range of cells </li>
+    <li>Advanced options of Excel, such as color scales, icon sets and data bars</li>
+    <li>Format unique and duplicate values in single line</li>
+</ul>
+}
+@section ControlsSection{
+<div class="control-section">
+    @{Html.BeginForm("ConditionalFormatting", "Excel", FormMethod.Post);
+        <p style="font-weight:normal">
+            Click the "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+        </p>
+        <br />
+        <div>
+			Save As :
+			<input type="radio" id="XLS" name="SaveOption" value="Xls" />
+			<label for="XLS" style="font-weight:normal">XLS</label>
+			&nbsp;
+			<input type="radio" id="XLSX" name="SaveOption" value="Xlsx" checked="checked" />
+			<label for="XLSX" style="font-weight:normal">XLSX</label>
+		</div>
+        <br />
+        <div class="celldiv">
+            @Html.EJS().Button("createbtn").Content("Create Document").Render()
+        </div>
+        }
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Excel (XlsIO) library - Conditional Formatting Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Conditional Formatting in ASP.NET MVC Excel (XlsIO) Library</h1>
+                }

@@ -1,0 +1,111 @@
+@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "TooltipTemplate";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("TooltipTemplate").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true).RenderBaseline(true).TreeColumnIndex(1)
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+                .Dependency("Predecessor").ResourceInfo("ResourceId").BaselineStartDate("BaselineStartDate").BaselineEndDate("BaselineEndDate").Child("SubTasks"))
+                .Columns(col =>
+                {
+                    col.Field("TaskId").Width(80).Add();
+                    col.Field("TaskName").Width(250).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("EndDate").Add();
+                    col.Field("Duration").Add();
+                    col.Field("Predecessor").Add();
+                    col.Field("Progress").Add();
+                    col.Field("BaselineStartDate").Add();
+                    col.Field("BaselineEndDate").Add();
+                    col.Field("ResourceId").Add();
+                })
+                .ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName")).Resources((IEnumerable<object>)ViewBag.Resources)
+                .TooltipSettings(ts => ts.ShowTooltip(true).Taskbar("#TaskbarTooltip").Baseline("#BaselineTooltip"))
+                .LabelSettings(ls => ls.LeftLabel("TaskName").RightLabel("ResourceId"))
+                .SplitterSettings(sp => sp.ColumnIndex(2))
+                .ProjectStartDate("03/24/2019")
+                .ProjectEndDate("05/04/2019")
+                .Render()
+            )
+
+        </div>
+    </div>
+    <script type="text/x-template" id="TaskbarTooltip">
+        <table>
+            ${if(ganttProperties.resourceNames)}
+            <tr>
+                <td rowspan="3" style="padding:3px"><img src="../Content/gantt/images/${ganttProperties.resourceNames}.png" height="40" /></td>
+                <td style="padding:3px">Task done By:</td>
+                <td style="padding:3px">${ganttProperties.resourceNames}</td>
+            </tr>
+            ${/if}
+            <tr>
+                <td style="padding:3px">Starts On:</td>
+                <td style="padding:3px">${this.getFormatedDate(StartDate)}</td>
+            </tr>
+            <tr>
+                <td style="padding:3px">Ends On:</td>
+                <td style="padding:3px">${this.getFormatedDate(EndDate)}</td>
+            </tr>
+        </table>
+    </script>
+    <script type="text/x-template" id="BaselineTooltip">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Planned Start Date: </td>
+                    <td>${this.getFormatedDate(BaselineStartDate)}</td>
+                </tr>
+                <tr>
+                    <td>Planned End Date: </td>
+                    <td>${this.getFormatedDate(BaselineEndDate)}</td>
+                </tr>
+                <tr>
+                    <td>Current Start Date: </td>
+                    <td>${this.getFormatedDate(StartDate)}</td>
+                </tr>
+                <tr>
+                    <td>Current End Date: </td>
+                    <td>${this.getFormatedDate(EndDate)}</td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+});
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample explains the way of rendering tooltip template for taskbar and baseline by mapping template
+            elements to the property of taskbar and baseline in <code>TooltipSettings</code>.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Tooltip Template in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            Tooltip can be enabled or disabled using <code>TooltipSettings.ShowTooltip</code> property.In this demo, the
+            tooltip template is rendered for <code>Taskbar</code> and <code>Baseline</code> using the
+            <code>TooltipSettings.Taskbar</code> and <code>TooltipSettings.Baseline</code> properties.
+        </p>
+        <p>
+            The baseline feature enables the user to view the deviation between the planned dates and the actual dates of
+            the tasks in a project. Baselines can be enabled in Gantt chart by enabling the <code>RenderBaseline</code>
+            property along with mapping the data source values for <code>BaselineStartDate</code> and <code>BaselineEndDate</code> properties.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Gantt Tooltip Template Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Tooltip Template in ASP.NET MVC Gantt Control</h1>
+                }
