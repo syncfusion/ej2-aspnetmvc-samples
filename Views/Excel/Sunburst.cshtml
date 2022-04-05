@@ -1,0 +1,42 @@
+@using Syncfusion.EJ2
+
+@section ActionDescription{
+    This sample demonstrates how to create Sunburst chart using Excel (XlsIO) Library.
+    }
+
+@section Meta{
+                    <meta name="description" content="This sample demonstrates how to create Sunburst chart using .NET Excel (XlsIO) library."/>
+                }
+@section Description{
+    The sunburst chart is ideal for displaying hierarchical data. Each level of the hierarchy is represented by one ring or circle with the innermost circle as the top of the hierarchy. A sunburst chart without any hierarchical data (one level of categories), looks similar to a doughnut chart. However, a sunburst chart with multiple levels of categories shows how the outer rings relate to the inner rings.
+    <br /><br />Essential XlsIO has APIs for creating and modifying sunburst charts.
+}
+@section ControlsSection{
+    <div class="control-section">
+    @{Html.BeginForm("Sunburst", "Excel", FormMethod.Post);
+        <p style="font-weight:normal">
+			Click the "Input Template" button to view the input Excel document and click the "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+		</p>
+        <br />
+        <div>
+			Save As :
+			<input type="radio" id="Embedded Chart" name="SaveOption" value="embed" />
+			<label for="Embedded Chart" style="font-weight:normal">Embedded Chart</label>
+			&nbsp;
+			<input type="radio" id="Chart Sheet" name="SaveOption" value="sheet" checked="checked" />
+			<label for="Chart Sheet" style="font-weight:normal">Chart Sheet</label>
+		</div>
+        <br />
+        <div class="celldiv">
+			<input id="inputbtn" class="e-btn" type="submit" name="button" value="Input Template" style="width:160px;" />
+               <input id="createbtn" class="e-btn" type="submit" name="button" value="Create Document" style="width:160px;" />                
+        </div>
+        }
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Excel (XlsIO) library - Sunburst Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Sunburst in ASP.NET MVC Excel (XlsIO) Library</h1>
+                }

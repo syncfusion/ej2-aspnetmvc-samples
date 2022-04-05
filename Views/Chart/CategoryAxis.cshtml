@@ -1,0 +1,96 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+<script src="~/Scripts/theme-color.js"></script>
+<div class="control-section">
+    <div style="text-align:center">
+
+
+ @Html.EJS().Chart("container").Series(series =>
+{
+
+    series.TooltipMappingName("country").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar)
+    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
+    .XName("x").YName("y").DataSource(ViewBag.dataSource).Name("Users").Width(2).Add();
+
+}).PrimaryYAxis(px => px.Minimum(0).Maximum(800).LabelStyle(ls => ls.Color("transparent")).LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+       ).PrimaryXAxis(px => px.EnableTrim(false).Title("Country").ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0))
+       ).Tooltip(tr => tr.Enable(true)).ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tt => tt.Enable(true)).LegendSettings(lg => lg.Visible(false)).PointRender("labelRender").Load("load").Render()
+
+
+
+    </div>
+    <div style="float: right; margin-right: 10px;">
+        Source:
+        <a href="http://www.internetworldstats.com/top20.htm" target="_blank">www.internetworldstats.com</a>
+    </div>
+</div>
+
+@*custom code start*@
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+</style>
+@*custom code end*@
+    <script>        
+        var labelRender = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
+                args.fill = fabricColors[args.point.index % 10];
+            }
+            else if (selectedTheme === 'material') {
+                args.fill = materialColors[args.point.index % 10];
+            }
+            else if (selectedTheme === 'fluent') {
+                args.fill = fluentColors[args.point.index % 10];
+            }
+            else if (selectedTheme === 'fluent-dark') {
+                args.fill = fluentDarkColors[args.point.index % 10];
+            }
+            else {
+                args.fill = bootstrapColors[args.point.index % 10];
+            }
+        };
+
+        var load = function (args) {
+            @*custom code start*@
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            @*custom code end*@
+            args.chart.tooltip.format = "${point.tooltip}";
+            args.chart.primaryYAxis.labelFormat = ej.base.Browser.isDevice ? '{value}' : '{value}M';
+            args.chart.title = ej.base.Browser.isDevice ? 'Internet Users in Million – 2016' : 'Internet Users – 2016';
+        }
+    </script>
+    }
+    @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Category Axis in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample demonstrates the rendering of category axis in the chart with internet users of different countries.
+    </p>
+}
+@section Description{
+    <p>
+        Category axis is used to represent the categories in data. To render category axis, set <code>valueType</code> in
+        axis to <code>Category</code>. Category label can be placed between the ticks or on the ticks, based on <code>labelPlacement</code> property.
+    </p>
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <br>
+    <p>
+        More information on the Category axis can be found in this
+        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Category Axis Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Category Axis in ASP.NET MVC Chart Control</h1>
+                }
