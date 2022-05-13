@@ -1,0 +1,42 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div id="container" style="text-align:center">
+
+
+        @Html.EJS().AccumulationChart("container").EnableBorderOnMouseMove(false).Series(series =>
+   {
+       series.StartAngle(60).InnerRadius("0%").DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs => cs.Length("10%").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve))).Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).XName("xValue").YName("yValue").DataSource(ViewBag.dataSource).Name("RIO").Add();
+   }
+    ).Tooltip(tp => tp.Enable(true).Format("${point.x} : <b>${point.y}%</b>")).LegendSettings(ls => ls.Visible(false)).Title("Rio Olympics Gold").Load("load").Render()
+
+       </div>
+    </div>
+             @*custom code start*@
+    <script>
+        var load = function(args){
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        }
+    </script>
+             @*custom code end*@
+}
+         @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Smart Labels in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+         @*custom code end*@
+@section ActionDescription{
+    <p>
+    This sample illustrates the Rio Olympic’s gold medal count by using smart labels in the chart. The smart label placement for a series can be shown, when it contains more of points.
+</p>
+}
+@section Description{
+   <p> In this example, you can see how to arrange the labels smartly without overlapping with each other. You can use <code>enableSmartLabels</code> property to enable or disable the action. Legend with paging is enabled in this sample.</p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Smart Labels Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Smart Labels in ASP.NET MVC Chart Control</h1>
+                }
