@@ -1,0 +1,23 @@
+Following are the some important features available in Essential DocIO.
+
+*	Create and edit a new document.
+*	Modify existing MS word documents.
+*	Ability Read and write BuiltIn and Custom document properties.
+*	API to manipulate Page Setup settings.
+*	Inserting document page Header and Footer.
+*	Read and write paragraphs in a document.
+*	Formatting text in the document.
+*	Ability to format content using custom styles.
+*	Ability to insert vector images.
+*	Inserting page breaks, column breaks, section breaks and paragraph breaks.
+*	Advanced ability to find and replace text with its original formatting.
+*	Ability to insert bookmarks. 
+*	Ability to create multiple column layout in the document page. 
+*	Ability to create formatted tables in document.
+*	Ability to protect the document.
+*	Ability to Clone multiple documents and merge it into a single document.
+*	Advanced Mailmerge with different data sources like DataTable, Dataview, DataReader, etc.,
+*	Open or Save a document as Streams.
+*	Add watermarks
+*	Create and fill form fields.
+*	Save a document as Text file.
