@@ -1,0 +1,69 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div style="text-align:center">
+
+
+            @Html.EJS().Chart("container-vertical").Series(series =>
+       {
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("xValue").YName("yValue").DataSource(ViewBag.dataSource).Name("US").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("xValue").YName("yValue1").DataSource(ViewBag.dataSource).Name("France").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("xValue").YName("yValue2").DataSource(ViewBag.dataSource).Name("Germany").Add();
+
+       }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
+       .MajorGridLines(mg=>mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+       .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years).LabelFormat("y")
+       ).PrimaryYAxis(py => py.LabelFormat("{value}%").MajorTickLines(mt=>mt.Width(0)).MinorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
+       ).Title("Inflation Rate in Percentage").ChartArea(area => area.Border(br=>br.Color("transparent"))).Load("load").Render()
+
+        </div>
+    </div>
+   @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+        }
+    </script>
+       @*custom code end*@
+}
+   @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Spline Area in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+   @*custom code end*@
+@section ActionDescription{
+    <p>
+    This sample visualizes the data about inflation rate comparison for three countries by using spline area series in the chart.
+    Legend in the sample shows the information about the series.
+</p>
+}
+@section Description{
+   <p>
+    In this example, you can see how to render and configure the spline area type charts. This is similar to line type series, but the area will be closed and filled with series color.
+    You can use <code>border</code> and <code>fill</code> properties to customize the area. <code>marker</code> and <code>dataLabel</code> properties are used to represent individual data and its value.
+    Legend is enabled in this example with series type shape.
+</p>
+<br>
+<p style="font-weight: 500">Injecting Module</p>
+<p>
+    Chart component features are segregated into individual feature-wise modules. To use spline area series, we need to inject
+    <code>SplineAreaSeries</code> module using <code>Chart.Inject(SplineAreaSeries)</code> method.
+</p>
+<p>
+    More information on the area series can be found in this
+    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+</p> 
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Spline Area Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Spline Area in ASP.NET MVC Chart Control</h1>
+                }
