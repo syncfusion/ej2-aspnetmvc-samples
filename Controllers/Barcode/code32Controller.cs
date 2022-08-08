@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Syncfusion.EJ2.BarcodeGenerator;
+
+namespace EJ2CoreSampleBrowser.Controllers.Barcode
+{
+    public partial class BarcodeController : Controller
+    {
+        
+        public ActionResult Code32()
+        {
+            List<ExpandOptionsCode32> position = new List<ExpandOptionsCode32>();
+            position.Add(new ExpandOptionsCode32() { text = "Bottom", value = "bottom" });
+            position.Add(new ExpandOptionsCode32() { text = "Top", value = "top" });
+
+            ViewBag.position = position;
+
+            List<ExpandOptionsCode32> alignment = new List<ExpandOptionsCode32>();
+            alignment.Add(new ExpandOptionsCode32() { text = "Center", value = "Center" });
+            alignment.Add(new ExpandOptionsCode32() { text = "Left", value = "Left" });
+            alignment.Add(new ExpandOptionsCode32() { text = "Right", value = "Right" });
+
+            ViewBag.alignment = alignment;
+            ViewBag.expandValue = "Bottom";
+           
+            
+            return View();
+        }
+    }
+
+    public class ExpandOptionsCode32
+    {
+        public string text;
+        public string value;
+    }
+    
+}

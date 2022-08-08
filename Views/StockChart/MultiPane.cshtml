@@ -1,0 +1,81 @@
+@using Syncfusion.EJ2;
+<script src="~/Scripts/StockChartData/indicator-data.js"></script>
+@section ControlsSection{
+    <div class="control-section">
+        <div>
+            @(Html.EJS().StockChart("container").Load("load").Title("AAPL Historical").TooltipRender("tooltipRender").AxisLabelRender("axisLabelRender")
+                    .Rows(row => { row.Height("30%").Add(); row.Height("70%").Add(); })
+                    .Series(sr =>
+                    {
+                        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).DataSource("data").YAxisName("yAxis1").Add();
+                        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).DataSource("data").EnableTooltip(false).YName("volume").Add();
+                    })
+                    .Render())
+        </div>
+    </div>
+    <style>
+
+        #container {
+            display: block;
+        }
+
+        #container_stock_border {
+            pointer-events: none;
+        }
+    </style>
+    <script>var data = window.chartData;
+        var load = function (args) {
+            args.stockChart.chartArea = { border: { width: 0 } };
+            args.stockChart.border = { width: 1 };
+            args.stockChart.tooltip.enable = true;
+            args.stockChart.crosshair.enable = true;
+            args.stockChart.axes[0] = {
+                name: 'yAxis1', rowIndex: 1, opposedPosition: true, labelPosition: 'Inside',
+                tickPosition: 'Inside',
+                lineStyle: { color: 'transparent' },
+                majorTickLines: { color: 'transparent' }
+            };
+            args.stockChart.primaryXAxis = { valueType: 'DateTime', majorGridLines: { width: 0 }, crosshairTooltip: { enable: true } };
+            args.stockChart.primaryYAxis = {
+                lineStyle: { color: 'transparent' },
+                majorTickLines: { color: 'transparent', width: 0 }
+            };
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        }
+
+        function tooltipRender(args) {
+            if (args.text.split('<br/>')[4]) {
+                var target = parseFloat(args.text.split('<br/>')[4].split('<b>')[1].split('</b>')[0]);
+                var value = (target / 100000000).toFixed(1) + 'B';
+                args.text = args.text.replace(args.text.split('<br/>')[4].split('<b>')[1].split('</b>')[0], value);
+            }
+        }
+        function axisLabelRender(args) {
+            var text = parseFloat(args.text);
+            if (args.axis.name === 'primaryYAxis') {
+                args.text = text / 100000000 + 'B';
+            }
+        }</script>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Candlestick and volume in ASP.NET MVC Stock Chart control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <p>
+        This sample visualizes stock chart with multiple pan.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the Stock chart with volume.
+        <code>CandleSeries</code> is used to represent selected data value and <code>ColumnSeries</code> is used to represent the volume.
+    </p>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Stock Chart Candlestick and volume Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Candlestick and volume in ASP.NET MVC Stock Chart Control</h1>
+                }
