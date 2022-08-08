@@ -1,0 +1,59 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+   <div class="control-section">
+       <div id="container" style="text-align:center">
+        @(Html.EJS().AccumulationChart("container").Series(
+series =>
+{
+    series.DataLabel(dl=>dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600").Color("#ffffff"))).
+         XName("xValue").
+         YName("yValue").
+         Name("Project").
+         //Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).
+         Radius("70%").
+         DataSource(ViewBag.dataSource).
+         StartAngle(0).
+         EndAngle(360).
+         InnerRadius("40%").
+         Explode(true).
+         ExplodeOffset("10%").
+         ExplodeIndex(3).Add();
+}).EnableSmartLabels(true).Title("Project Cost Breakdown").LegendSettings(
+legend =>
+{
+    legend.Position(Syncfusion.EJ2.Charts.LegendPosition.Top).Visible(true);
+}).Tooltip(tl => tl.Enable(true)).Load("load").Render()
+        )
+    </div>
+       </div>
+ @*custom code start*@
+    <script>
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+
+        };
+    </script>
+ @*custom code end*@
+}
+ @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Donut in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+   <p>
+    This sample visualizes the project cost breakdown statistics by using doughnut series. Datalabel shows the Information about the points.
+    While hovering on the slice, border will be highlighted.
+</p>
+}
+@section Description{
+  <p> In this example, you can see how to render and configure the pie chart. You can use the <code>border</code> and <code>fill</code> properties to customize the pie point. <code>dataLabel</code> is used to represent individual data and its value.</p>
+<p> <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Donut Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Donut in ASP.NET MVC Chart Control</h1>
+                }
