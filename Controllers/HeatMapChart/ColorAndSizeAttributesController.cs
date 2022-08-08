@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using EJ2MVCSampleBrowser.Models;
+
+namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
+{
+    public partial class HeatMapChartController : Controller
+    {
+        // GET: MultiDataMapping
+        public ActionResult ColorAndSizeAttributes()
+        {
+            ViewBag.textStyle = new
+            {
+                size = "15px",
+                fontWeight = "500",
+                fontStyle = "Normal",
+                fontFamily = "Segoe UI"
+            };
+            string[] xlabels = new string[6] { "2017", "2016", "2015", "2014", "2013", "2012" };
+            ViewBag.xLabels = xlabels;
+            ViewBag.border = new
+            {
+                width = "0"
+            };
+            string[] yLabels = new string[6] { "Jan-Feb", "Mar-Apr", "May-Jun", "Jul-Aug", "Sep-Oct", "Nov-Dec" };
+            ViewBag.yLabels = yLabels;
+            ViewBag.dataSource = new HeatMapData().tableBubbleData();
+            return View();
+        }
+    }
+}
