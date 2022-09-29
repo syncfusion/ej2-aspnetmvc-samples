@@ -1,0 +1,48 @@
+@using Syncfusion.EJ2;
+
+@section ActionDescription{
+    This sample demonstrates how to use Pivot Charts in spreadsheets using Excel (XlsIO) Library.
+    }
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Pivot Chart in ASP.NET MVC Excel (XlsIO) library. Explore here for more details."/>
+                }
+@section Description{
+            The pivot chart provides a graphical representation of pivot table data, allowing for rapid analysis of information. Essential XlsIO has an API for creating a pivot chart from pivot table data while allowing you to use different chart types.
+<br />
+<br />
+<b>Features:</b>
+<br />
+<br />
+<ul>
+    <li> Creating a pivot chart from template data.</li>
+    <li>Customizing a pivot chart with various properties</li>
+    <li> pivot charts with built-in Excel chart types.</li>
+</ul>
+<br />
+<b>Note:</b> This feature is currently not supported for the .xls format.
+<br />
+    }
+@section ControlsSection{
+<div class="control-section">
+    @{Html.BeginForm("PivotChart", "Excel", FormMethod.Post);
+        <div class="rowdiv">
+            <p style="font-weight:normal">
+                Click the "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+            </p>
+        </div>
+        <br />
+        <div class="rowdiv">
+            <div class="celldiv">
+                <input id="generate" class="e-btn" type="submit" name="button" value="Create Document" style="width:160px;" />
+            </div>
+        </div>
+    }
+</div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Excel (XlsIO) library - Pivot Chart Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Pivot Chart in ASP.NET MVC Excel (XlsIO) Library</h1>
+                }
