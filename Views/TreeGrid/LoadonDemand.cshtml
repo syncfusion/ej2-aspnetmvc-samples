@@ -13,7 +13,7 @@
     <div class="control-section">
         @(Html.EJS().TreeGrid("TreeGrid")
             .DataSource(ds => 
-                ds.Url("http://localhost:62828/api/SelfReferenceData")
+                ds.Url("https://ej2services.syncfusion.com/production/web-services/api/SelfReferenceData")
                 .Adaptor("WebApiAdaptor")
                 .CrossDomain(true))
             .Columns(col =>
