@@ -1,0 +1,127 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+<div>
+    <div class="col-lg-9 control-section">
+
+@(Html.EJS().Chart("container")
+    .Series(sr =>
+    {
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.Scatter)
+            .Name("2015")
+            .XName("x")
+            .YName("y")
+            .Width(2)
+            .Marker(mr=>mr.Height(10).Width(10).DataLabel(dl=>dl.Name("text")))
+            .DataSource(ViewBag.dataSource).Add();
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.Scatter)
+            .Name("2016")
+            .XName("x")
+            .YName("y1")
+            .Width(2)
+            .Marker(mr => mr.Height(10).Width(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).DataLabel(dl => dl.Name("text")))
+            .DataSource(ViewBag.dataSource).Add();
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.Scatter)
+            .Name("2017")
+            .XName("x")
+            .YName("y2")
+            .Width(2)
+           .Marker(mr => mr.Height(10).Width(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).DataLabel(dl => dl.Name("text")))
+            .DataSource(ViewBag.dataSource).Add();
+    })
+      .PrimaryXAxis(xaxis =>
+         xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+             .LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.OnTicks)
+             .Interval(1)
+             .Coefficient(100)
+      )
+      .PrimaryYAxis(yaxis =>
+          yaxis.Interval(2)
+                 .Minimum(0)
+                 .Maximum(8)
+      )
+      .Title("Real GDP Growth")
+      .Tooltip(tp => tp.Enable(true))
+      .Load("load").Render()
+)
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 50%">
+                        <div>
+                            Series Type:
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div>
+                            @Html.EJS().DropDownList("dropdown").Index(0).DataSource(ViewBag.data).Value("Polar").Change("valueChange").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+ @*custom code start*@
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+</style>
+ @*custom code end*@
+    <script>
+     @*custom code start*@
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        };
+     @*custom code end*@
+        var valueChange = function () {
+            var chart = document.getElementById('container').ej2_instances[0];
+            var polarType = document.getElementById("dropdown").ej2_instances[0];
+            chart.series[0].type = polarType.value;
+            chart.series[1].type = polarType.value;
+            chart.series[2].type = polarType.value;
+            chart.series[0].animation.enable = true;
+            chart.series[1].animation.enable = true;
+            chart.series[2].animation.enable = true;
+            chart.refresh();
+        }
+    </script>
+    }
+     @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Scatter in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+   <p>
+    This sample demonstrates polar series with scatter type for GDP for different countries in recent years. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
+</p>
+}
+@section Description{
+    <p>
+    In this example, you can see how to render and configure the scatter type charts. Scatter charts are used to plot financial
+    or scientific data. You can use <code>shape</code> property in the marker to change the scatter shape. <code>dataLabel</code> is used to represent individual data value.
+</p>
+<p>
+    Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+</p>
+<br>
+<p>
+    More information on the polar series can be found in this
+    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+</p>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Chart Scatter Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Scatter in ASP.NET MVC Chart Control</h1>
+                }
