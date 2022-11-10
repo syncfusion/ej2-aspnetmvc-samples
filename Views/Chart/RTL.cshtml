@@ -1,0 +1,68 @@
+@using Syncfusion.EJ2;
+<script src="~/Scripts/theme-color.js"></script>
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            <div style="text-align:center">
+                @Html.EJS().Chart("container").PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Double).MajorGridLines(mg => mg.Width(0))
+                       .Interval(1).Minimum(2015).Maximum(2020)
+               ).PrimaryYAxis(py => py.ValueType(Syncfusion.EJ2.Charts.ValueType.Double).Minimum(0).LabelFormat("{value}B").Maximum(1200).Interval(200).LineStyle(li => li.Width(0))
+                ).ChartArea(area => area.Border(br => br.Width(0))).Series(series =>
+                {
+                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("y")
+                    .Width(2).DataSource(ViewBag.data).Name("Sales").Add();
+                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("y1")
+                    .Width(2).DataSource(ViewBag.data).Name("Expense").Add();
+                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("y2")
+                    .Width(2).DataSource(ViewBag.data).Name("Profit").Add();
+                }).Title("Company Performance").Load("load").AxisLabelRender("labelRender").EnableRtl(true).Tooltip(tooltip => tooltip.Enable(true)).Render()
+            </div>
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script>
+                 @*custom code start*@
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+        };
+                 @*custom code end*@
+        var labelRender = function (args) {
+            if (args.axis.orientation === 'Horizontal') {
+                args.cancel = args.value === 2015 || args.value === 2020;
+            }
+        };
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the RTL in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+       This sample visualizes the company performance with default column chart in right-to-left(RTL) direction. The values of the data points are displayed in a tooltip, and the legend in the sample displays information about the series.
+    </p>
+}
+@section Description{
+   <p>
+        <code>Right-to-left</code>(RTL) is used to render the component from right to left direction and it can be enabled by setting <code>EnableRtl</code> property as <b>true</b>. 
+        In this demo, you can see <code>axis</code>, <code>data points</code>, <code>tooltip</code> and <code>legend</code> are aligned from right to left direction.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart RTL Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of RTL in ASP.NET MVC Chart Control</h1>
+                }
