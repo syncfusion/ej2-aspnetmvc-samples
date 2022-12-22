@@ -1,0 +1,57 @@
+@using Syncfusion.EJ2;
+
+@section ActionDescription{
+    This sample demonstrates how to manipulate cells in a spreadsheet using Excel (XlsIO) Library.
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Range Manipulation in ASP.NET MVC Excel (XlsIO) library. Explore here for more details."/>
+                }
+@section Description{
+    <p>
+        A range is a group or block of cells in a worksheet. Ranges are identified by cell references or addresses of the cells in the upper-left and lower-right corners of the range. These two references are separated by a colon (:), which tells Excel to include all the cells between these start and end points. An adjacent cell's range can be depicted as "A5:F10".
+    </p>
+    <br />This sample demonstrates Essential XlsIO's support for manipulating a range of cells.  <br />
+    <br />
+    <b>Features:</b>
+    <br />
+    <br />
+    <ul>
+        <li>Named range usage</li>
+    </ul>
+    <br />
+    <div class="rowdiv">
+        Named ranges are a powerful tool in Excel that allows to assign a meaningful name to a single cell or a range of cells. For example, you can assign the name "Cell1" to cell "C1" and then use the name "Cell1" anytime you would normally use the cell C1. This allows the user to name a collection of cells or a single cell, making it more readable.
+    </div>
+}
+@section ControlsSection{
+    <div class="control-section">
+        @{Html.BeginForm("RangeManipulation", "Excel", FormMethod.Post);
+        { 
+            <p style="font-weight:normal">
+				Click the "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+			</p>
+            <br />
+            <div>
+				Save As :
+				<input type="radio" id="XLS" name="SaveOption" value="Xls" />
+				<label for="XLS" style="font-weight:normal">XLS</label>
+				&nbsp;
+				<input type="radio" id="XLSX" name="SaveOption" value="xlsx" checked="checked" />
+				<label for="XLSX" style="font-weight:normal">XLSX</label>
+			</div>
+            <br />
+            <div class="celldiv">
+                @Html.EJS().Button("normalbtn").Content("Create Document").Render()
+            </div>
+        Html.EndForm();
+        }
+        }
+    </div>
+ }
+
+@section Title{
+                    <title>ASP.NET MVC Excel (XlsIO) library - Range Manipulation Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Range Manipulation in ASP.NET MVC Excel (XlsIO) Library</h1>
+                }

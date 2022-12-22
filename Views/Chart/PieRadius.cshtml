@@ -1,0 +1,55 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" style="margin-left:120px">
+        @(Html.EJS().AccumulationChart("container").Load("load")
+                .Series(sr =>
+                {
+                    sr.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
+    .XName("xValue")
+    .YName("yValue")
+    .DataLabel(dl => dl.Visible(true).Name("xValue").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside))
+    .InnerRadius("20%")
+    .Radius("r")
+    .DataSource(ViewBag.dataSource).Add();
+                })
+                .EnableSmartLabels(true)
+                .EnableAnimation(true)
+                .Tooltip(tp => tp.Enable(true).Format("${point.x} <br />Composition: <b>${point.y}</b>"))
+                .LegendSettings(leg => leg.Visible(true).Reverse(true)).TooltipRender("TooltipRender").Render()
+        )
+    </div>
+    <script>
+    var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        }
+    var TooltipRender = function (args) {
+            args.text = args.text.replace(args.data.pointY.toString(), args.data.pointY.toLocaleString());
+        }
+    </script>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Pie with Various Radius in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <p>
+        This sample compares countries by population density and total area by using various radius in pie series.
+    </p>
+}
+@section Description{
+    <p>In this example, you can see how to render doughnut chart with different radius. You can use <code>Radius</code> mapping property to achieve this feature. <code>DataLabel</code> is used to represent individual data and its value. In addition, the sample shows how to shift the order of the legend for the doughnut chart by using the <code>Reverse</code> property.</p>
+
+        <p><code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+        <br>
+
+    <p>
+        More information on the pie series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/pie-dough-nut/">documentation section</a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Pie with Various Radius Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Pie with Various Radius in ASP.NET MVC Chart Control</h1>
+                }
