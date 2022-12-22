@@ -3,54 +3,59 @@
 }
 @using Syncfusion.EJ2
 @section ControlsSection{
-    <div class="col-lg-9 control-section">
-        @{Html.BeginForm("ImportData", "PowerPoint", FormMethod.Post); }
-        @Html.EJS().Grid("ImportData").DataSource(dataManager=>{ dataManager.Url("/PowerPoint/UrlDatasource").InsertUrl("/PowerPoint/Insert").UpdateUrl("/PowerPoint/Update").RemoveUrl("/PowerPoint/Delete").Adaptor("UrlAdaptor"); }).Columns(col =>
-   {
+    @{Html.BeginForm("ImportData", "PowerPoint", FormMethod.Post);
+            {
+                <div class="col-lg-9 control-section">
+                @Html.EJS().Grid("ImportData").DataSource(dataManager => { dataManager.Url("/PowerPoint/UrlDatasource").InsertUrl("/PowerPoint/Insert").UpdateUrl("/PowerPoint/Update").RemoveUrl("/PowerPoint/Delete").Adaptor("UrlAdaptor"); }).Columns(col =>
+           {
 
-       col.Field("Year").HeaderText("Year").IsPrimaryKey(true).Width("50").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("Jan").HeaderText("Jan").Width("75").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("Feb").HeaderText("Feb").Width("75").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("Mar").HeaderText("Mar").Width("75").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("Apr").HeaderText("Apr").Width("75").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("May").HeaderText("May").Width("75").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-   }).ActionBegin("actionBegin").AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
-    </div>
-    <div class="col-lg-3 property-section">
-        <table id="property" title="Properties" style="width: 100%">
-            <tr>
-                <td style="width: 100%">
-                    <div style="padding-top: 7px">Add New Row Position</div>
-                </td>
-                <td style="width: 50%;padding-right: 10px">
-                    <div id='typeddl'>
-                        @Html.EJS().DropDownList("AddNewRowPosition").DataSource((IEnumerable<object>)ViewBag.ddData).Value("Top").Change("rowPositionChange").Render()
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <br />
-    <div class="col-lg-3 property-section">
-        <table id="property" title="Properties" style="width: 100%">
-        <tr>
-            <td>
-                <div>
-                    <input type="radio" id="rdButtonChart" name="Group" value="Chart" style="margin-left: 20px; padding-right: 7px"; checked="checked" />
-                    <label for="rdButtonChart" style="font-size:13px;font-weight:normal;text-align:center" data-toggle="tooltip" title="Export the data to Chart">Export to Chart</label>                   
+               col.Field("Year").HeaderText("Year").IsPrimaryKey(true).Width("50").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("Jan").HeaderText("Jan").Width("75").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("Feb").HeaderText("Feb").Width("75").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("Mar").HeaderText("Mar").Width("75").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("Apr").HeaderText("Apr").Width("75").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("May").HeaderText("May").Width("75").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+           }).ActionBegin("actionBegin").AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+     </div>
+                <div class="col-lg-3 property-section">
+                    <table id="property" title="Properties" style="width: 100%">
+                        <tr>
+                            <td style="width: 100%">
+                                <div style="padding-top: 7px">Add New Row Position</div>
+                            </td>
+                            <td style="width: 50%;padding-right: 10px">
+                                <div id='typeddl'>
+                                    @Html.EJS().DropDownList("AddNewRowPosition").DataSource((IEnumerable<object>)ViewBag.ddData).Value("Top").Change("rowPositionChange").Render()
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-                <div>
-                    <input type="radio" id="rdButtonTable" name="Group" value="Table" style="margin-left: 20px; padding-right: 7px;"; checked="checked" />
-                    <label for="rdButtonTable" style="font-size:13px;font-weight:normal;text-align:center" data-toggle="tooltip" title="Export the data to Table">Export to Table</label>
-                </div>
-                <div style="margin-top: 8px">
-                    <input id="ImportData" class="buttonStyle" type="submit" name="button" value="Export" style="margin-left: 20px; padding-right: 10px;width:150px;text-transform:capitalize;" />
+                <br />
+                <div class="col-lg-3 property-section">
+                    <table id="property" title="Properties" style="width: 100%">
+                        <tr>
+                            <td>
+                                <div>
+                                    <input type="radio" id="rdButtonChart" name="Group" value="Chart" style="margin-left: 20px; padding-right: 7px" ; checked="checked" />
+                                    <label for="rdButtonChart" style="font-size:13px;font-weight:normal;text-align:center" data-toggle="tooltip" title="Export the data to Chart">Export to Chart</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="rdButtonTable" name="Group" value="Table" style="margin-left: 20px; padding-right: 7px;" ; checked="checked" />
+                                    <label for="rdButtonTable" style="font-size:13px;font-weight:normal;text-align:center" data-toggle="tooltip" title="Export the data to Table">Export to Table</label>
+                                </div>
+                                <div style="margin-top: 8px">
+                                    <input id="ImportData" class="buttonStyle" type="submit" name="button" value="Export" style="margin-left: 20px; padding-right: 10px;width:150px;text-transform:capitalize;" />
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
-            </td>
-        </tr>
-            </table>
-    </div>
+                Html.EndForm();
+            }
+        }
     <style>
         #typeddl {
             min-width: 100px;
@@ -104,13 +109,13 @@
     <br />
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Import Data in ASP.NET MVC PowerPoint (Presentation) library. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Import Data in ASP.NET MVC PowerPoint (Presentation) library. Explore here for more details." />
+}
 
 
 @section Title{
-                    <title>ASP.NET MVC PowerPoint (Presentation) library - Import Data Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC PowerPoint (Presentation) library - Import Data Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Import Data in ASP.NET MVC PowerPoint (Presentation) Library</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Import Data in ASP.NET MVC PowerPoint (Presentation) Library</h1>
+}

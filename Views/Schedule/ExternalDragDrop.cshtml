@@ -12,13 +12,13 @@
                     {
                         res.DataSource(ViewBag.Departments).Field("DepartmentID").Title("Department").Name("Departments").TextField("text").IdField("id").ColorField("color").Add();
                         res.DataSource(ViewBag.Consultants).Field("ConsultantID").Title("Consultant").Name("Consultants").TextField("text").IdField("id").ColorField("color").GroupIDField("groupId").AllowMultiple(false).Add();
-                    }).ResourceHeaderTemplate("#resource-template").ActionBegin("OnActionBegin").Drag("OnItemDrag").EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Name").Title("Patient Name")).StartTime(start => start.Name("StartTime").Title("From")).EndTime(end => end.Name("EndTime").Title("To")).Description(des => des.Name("Description").Title("Reason"))).DataSource(ViewBag.datasource)).Render()
+                    }).ResourceHeaderTemplate("#resource-template").ActionBegin("OnActionBegin").EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Name").Title("Patient Name")).StartTime(start => start.Name("StartTime").Title("From")).EndTime(end => end.Name("EndTime").Title("To")).Description(des => des.Name("Description").Title("Reason"))).DataSource(ViewBag.datasource)).Render()
             </div>
             <div class="treeview-container">
                 <div class="title-container">
                     <h2 class="title-text">Waiting List</h2>
                 </div>
-                @Html.EJS().TreeView("tree").Fields(fields => fields.DataSource(ViewBag.treeDataSource).Id("Id").Text("Name")).AllowDragAndDrop(true).NodeDragStop("OnTreeDragStop").NodeDragging("OnItemDrag").NodeTemplate("#treeTemplate").DragArea(".content-wrapper").CssClass("treeview-external-drag").Render()
+                @Html.EJS().TreeView("tree").Fields(fields => fields.DataSource(ViewBag.treeDataSource).Id("Id").Text("Name")).AllowDragAndDrop(true).NodeDragStop("OnTreeDragStop").NodeDragging("onTreeDrag").NodeDragStart("onTreeDragStart").NodeTemplate("#treeTemplate").DragArea(".content-wrapper").CssClass("treeview-external-drag").Render()
             </div>
         </div>
     </div>
@@ -123,6 +123,7 @@
         .treeview-external-drag .e-text-content,
         .e-bigger .treeview-external-drag .e-text-content {
             padding: 0;
+            background-color: inherit;
         }
 
         .e-drag-item.e-treeview.treeview-external-drag,
@@ -210,12 +211,18 @@
 
             .treeview-external-drag.e-treeview,
             .e-bigger .treeview-external-drag.e-treeview {
-                width: 225px;
+                width: 250px;
             }
 
                 .e-bigger .treeview-external-drag.e-treeview.e-drag-item {
                     position: relative !important;
                 }
+        }
+        .e-disble-not-allowed {
+            cursor: unset !important;
+        }
+        .e-drag-item.treeview-external-drag .e-icon-expandable {
+            display: none;
         }
     </style>
 
@@ -269,25 +276,15 @@
         var isTreeItemDropped = false;
         var draggedItemId = '';
 
-        function OnItemDrag(event) {
+        function onTreeDrag(event) {
             var scheduleObj = document.querySelector(".e-schedule").ej2_instances[0];
             if (scheduleObj.isAdaptive) {
                 var classElement = scheduleObj.element.querySelector('.e-device-hover');
                 if (classElement) {
                     classElement.classList.remove('e-device-hover');
                 }
-                if (event.event.target.classList.contains('e-work-cells')) {
-                    ej.base.addClass([event.event.target], 'e-device-hover');
-                }
-            }
-            document.body.style.position = 'fixed';
-            if (document.body.style.cursor === 'not-allowed') {
-                document.body.style.cursor = '';
-            }
-            if (event.name == 'nodeDragging') {
-                var dragElementIcon = document.querySelectorAll('.e-drag-item .e-icon-expandable');
-                for (var i = 0; i < dragElementIcon.length; i++) {
-                    dragElementIcon[i].style.display = 'none';
+                if (event.target.classList.contains('e-work-cells')) {
+                    ej.base.addClass([event.target], 'e-device-hover');
                 }
             }
         }
@@ -337,6 +334,10 @@
                     }
                 }
             }
+            document.body.classList.remove('e-disble-not-allowed');
+        }
+        function onTreeDragStart() {
+           document.body.classList.add('e-disble-not-allowed');
         }
     </script>
 }

@@ -12,13 +12,14 @@
                   DownloadUrl = "Download",
                   UploadUrl = "Upload",
                   GetImageUrl = "GetImage"
-              }).Created("onCreated").Render()
+              }).Success("onSuccess").Render()
         </div>
     </div>
 }
 
 <script>
-    function onCreated(args) {
+    function onSuccess(args) {
+        if (!document.getElementById("filemanager_tb_upload").classList.contains("e-dropdown-btn")) {
         var fileObject = document.getElementById("filemanager").ej2_instances[0];
         document.getElementById('filemanager_tb_upload').onclick = function (args) {
             args.stopPropagation();
@@ -41,6 +42,7 @@
             },
             '#filemanager_tb_upload'
         );
+        }
     }
 
 </script>

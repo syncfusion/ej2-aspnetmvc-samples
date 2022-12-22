@@ -5,7 +5,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).CurrentView(View.TimelineWeek).Views(view => { view.Option(View.Day).Add(); view.Option(View.Week).Add(); view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); }).TimeScale(ts => ts.Interval(60).SlotCount(6)).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).WorkDays(ViewBag.workDays).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CssClass("time-scale").SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).CurrentView(View.TimelineWeek).Views(view => { view.Option(View.Day).Add(); view.Option(View.Week).Add(); view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); }).TimeScale(ts => ts.Interval(60).SlotCount(6)).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).WorkDays(ViewBag.workDays).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -42,12 +42,22 @@
             </tbody>
         </table>
     </div>
-    ﻿
-    <script id="majorSlotTemplate" type="text/x-template">
+    <style>
+        .time-scale.e-schedule.e-device .e-vertical-view .e-left-indent,
+        .time-scale.e-schedule.e-device .e-vertical-view .e-time-cells-wrap {
+            width: 50px;
+        }
+
+        .time-scale.e-schedule .e-timeline-view .e-date-header-wrap table col, 
+        .time-scale.e-schedule .e-timeline-view .e-content-wrap table col {
+            width: 75px;
+        }
+    </style>
+    ﻿<script id="majorSlotTemplate" type="text/x-template">
         <div>${majorSlotTemplate(data.date)}</div>
     </script>
     <script id="minorSlotTemplate" type="text/x-template">
-        <div style="text-align: right; margin-right: 15px">${minorSlotTemplate(data.date)}</div>
+        <div style="text-align: center">${minorSlotTemplate(data.date)}</div>
     </script>
     <script type="text/javascript">
         window.majorSlotTemplate = function (date) {

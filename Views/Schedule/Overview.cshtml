@@ -1167,6 +1167,8 @@
                 ej.base.remove(newEventElement);
                 ej.base.removeClass([document.querySelector('.e-selected-cell')], 'e-selected-cell');
             }
+            var scheduleObj = document.querySelector(".e-schedule").ej2_instances[0];
+            scheduleObj.closeQuickInfoPopup();
             var targetElement = args.event.target;
             if (ej.base.closest(targetElement, '.e-contextmenu')) {
                 return;
@@ -1177,8 +1179,7 @@
                 args.cancel = true;
                 return;
             }
-            if (selectedTarget.classList.contains('e-appointment')) {
-                var scheduleObj = document.querySelector(".e-schedule").ej2_instances[0];
+            if (selectedTarget.classList.contains('e-appointment')) {                
                 var eventObj = scheduleObj.getEventDetails(selectedTarget);
                 if (eventObj.RecurrenceRule) {
                     this.showItems(['EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);
@@ -1436,21 +1437,24 @@
         function onPopupOpen(args) {
             if (args.type === 'QuickInfo' || args.type === 'ViewEventInfo') {
                 var titleObj = new ej.inputs.TextBox({ placeholder: 'Title' });
-                titleObj.appendTo(args.element.querySelector('#title'));
-                var eventTypeObj = new ej.dropdowns.DropDownList({
-                    dataSource: [
-                        { CalendarName: 'My Calendar', CalendarId: 1, CalendarColor: '#c43081' },
-                        { CalendarName: 'Company', CalendarId: 2, CalendarColor: '#ff7f50' },
-                        { CalendarName: 'Birthday', CalendarId: 3, CalendarColor: '#AF27CD' },
-                        { CalendarName: 'Holiday', CalendarId: 4, CalendarColor: '#808000' }
-                    ],
-                    placeholder: 'Choose Type',
-                    fields: { text: 'CalendarName', value: 'CalendarId' },
-                    index: args.data.CalendarId - 1
-                });
-                eventTypeObj.appendTo(args.element.querySelector('#eventType'));
-                var eventNotesObj = new ej.inputs.TextBox({ placeholder: 'Notes' });
-                eventNotesObj.appendTo(args.element.querySelector('#notes'));
+                if (!args.target.classList.contains('e-appointment')) {
+                    titleObj.appendTo(args.element.querySelector('#title'));
+                    titleObj.focusIn();
+                    var eventTypeObj = new ej.dropdowns.DropDownList({
+                        dataSource: [
+                            { CalendarName: 'My Calendar', CalendarId: 1, CalendarColor: '#c43081' },
+                            { CalendarName: 'Company', CalendarId: 2, CalendarColor: '#ff7f50' },
+                            { CalendarName: 'Birthday', CalendarId: 3, CalendarColor: '#AF27CD' },
+                            { CalendarName: 'Holiday', CalendarId: 4, CalendarColor: '#808000' }
+                        ],
+                        placeholder: 'Choose Type',
+                        fields: { text: 'CalendarName', value: 'CalendarId' },
+                        index: args.data.CalendarId - 1
+                    });
+                    eventTypeObj.appendTo(args.element.querySelector('#eventType'));
+                    var eventNotesObj = new ej.inputs.TextBox({ placeholder: 'Notes' });
+                    eventNotesObj.appendTo(args.element.querySelector('#notes'));
+                }
                 var detailsBtn = args.element.querySelector('#more-details');
                 if (detailsBtn) {
                     var moreObj = new ej.buttons.Button({

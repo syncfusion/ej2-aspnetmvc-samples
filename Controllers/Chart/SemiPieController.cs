@@ -21,13 +21,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         {
             List<SemiPieChartData> chartData = new List<SemiPieChartData>
             {
-                new SemiPieChartData { xValue = "Australia",         yValue = 53, text = "AUS: 14%"},
-                new SemiPieChartData { xValue = "China",             yValue = 56, text = "CHN: 15%"},
-                new SemiPieChartData { xValue = "India",             yValue = 61, text = "IND: 16%"},
-                new SemiPieChartData { xValue = "Japan",            yValue = 13, text = "JPN: 3%"},
-                new SemiPieChartData { xValue = "South Africa",      yValue = 79, text = "ZAF: 21%"},
-                new SemiPieChartData { xValue = "United Kingdom",    yValue = 71, text = "UK: 19% "},
-                new SemiPieChartData { xValue = "United States",     yValue = 45, text = "USA: 12 % "}
+                new SemiPieChartData { xValue =  "Chrome", yValue = 100, text = "Chrome (100M)<br>40%", tooltipMappingName="40%" },
+                new SemiPieChartData { xValue =  "UC Browser", yValue = 40, text = "UC Browser (40M)<br>16%", tooltipMappingName="16%" },
+                new SemiPieChartData { xValue =  "Opera", yValue = 30, text = "Opera (30M)<br>12%", tooltipMappingName="12%" },
+                new SemiPieChartData { xValue =  "Safari", yValue = 30, text = "Safari (30M)<br>12%", tooltipMappingName="12%" },
+                new SemiPieChartData { xValue =  "Firefox", yValue = 25, text = "Firefox (25M)<br>10%", tooltipMappingName="10%" },
+                new SemiPieChartData { xValue =  "Others", yValue = 25, text = "Others (25M)<br>10%", tooltipMappingName="10%" }
             };
             ViewBag.dataSource = chartData;
             return View();
@@ -37,6 +36,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
             public string xValue;
             public double yValue;
             public string text;
+            public string tooltipMappingName;
         }
     }
 }

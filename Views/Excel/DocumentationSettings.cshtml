@@ -15,6 +15,7 @@
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("DocumentationSettings", "Excel", FormMethod.Post);
+        {
             <p style="font-weight:normal">
 				Click the "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
 			</p>
@@ -31,6 +32,8 @@
             <div class="celldiv">
                 @Html.EJS().Button("createbtn").Content("Create Document").Render()
             </div>
+        Html.EndForm();
+        }
             }
         </div>
 }

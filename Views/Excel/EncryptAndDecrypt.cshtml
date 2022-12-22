@@ -32,6 +32,7 @@
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("EncryptAndDecrypt", "Excel", FormMethod.Post);
+        { 
             <p style="font-weight:normal">
 				Click the "Encrypt Document" button to view the encrypted Excel document and "Decrypt Document" to view the decrypted Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
 			</p>
@@ -49,6 +50,8 @@
                 <input id="encryptbtn" class="e-btn" type="submit" name="button" value="Encrypt Document" style="width:160px;" />
                 <input id="decryptbtn" class="e-btn" type="submit" name="button" value="Decrypt Document" style="width:160px;" />
             </div>
+        Html.EndForm();
+        }
             }
         </div>
 }

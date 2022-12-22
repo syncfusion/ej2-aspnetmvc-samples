@@ -1,5 +1,5 @@
-#region Copyright Syncfusion Inc. 2001-2022
-// Copyright Syncfusion Inc. 2001-2022. All rights reserved.
+#region Copyright Syncfusion Inc. 2001 - 2022
+// Copyright Syncfusion Inc. 2001 - 2022. All rights reserved.
 // Use of this code is subject to the terms of our license.
 // A copy of the current license can be obtained at any time by e-mailing
 // licensing@syncfusion.com. Any infringement will be prosecuted under
@@ -19,8 +19,10 @@ namespace EJ2MVCSampleBrowser.Controllers
 {
     public partial class PowerPointController : Controller
     {
-        public ActionResult CloningSlides(string Group1, string Group2)
+        public ActionResult CloningSlides(string button, string Group1, string Group2)
         {
+            if (button == null)
+                return View();
             if (Group1 == null)
                 return View();
             Stream readFile = new FileStream(ResolveApplicationDataPath(@"..\PowerPoint\Template.pptx"), FileMode.Open, FileAccess.Read, FileShare.Read);

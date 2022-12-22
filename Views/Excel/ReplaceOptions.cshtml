@@ -23,6 +23,7 @@
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("ReplaceOptions", "Excel", FormMethod.Post);
+        { 
     <div class="rowdiv">
         <p style="font-weight:normal">
             Click the "Input Template" button to view the input Excel document and "Replace" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
@@ -84,6 +85,8 @@
             </tr>
         </table>
     </div>
+        Html.EndForm();
+        }
     }
 </div>
 }

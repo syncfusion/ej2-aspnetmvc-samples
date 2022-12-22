@@ -12,13 +12,12 @@
     <div class="control-section">
         @Html.EJS().TreeGrid("TreeGrid").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
        {
-           col.Field("Id").HeaderText("Task ID").Width(90).TextAlign(TextAlign.Right).Add();
-           col.Field("Name").HeaderTemplate("#projectName").Width(130).Add();
+           col.Field("Name").HeaderTemplate("#projectName").Width(200).Add();
            col.Field("StartDate").HeaderTemplate("#dateTemplate").Format("yMd").TextAlign(TextAlign.Right).Width(140).Add();
            col.Field("Resources").HeaderTemplate("#resource").Width(130).TextAlign(TextAlign.Right).Add();
            col.Field("Duration").HeaderTemplate("#durationTemplate").Width(110).TextAlign(TextAlign.Right).Add();
            col.Field("PercentDone").HeaderTemplate("#progressTemplate").Width(100).TextAlign(TextAlign.Right).Add();
-       }).Height(410).ChildMapping("Children").TreeColumnIndex(1).Render()
+       }).Height(410).ChildMapping("Children").TreeColumnIndex(0).Render()
     </div>
     <script type="text/x-template" id="resource">
         <div>

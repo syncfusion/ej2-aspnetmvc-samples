@@ -60,7 +60,7 @@
             @Html.EJS().Grid("VirtualGrid").DataBound("hide").EnableColumnVirtualization().EnableVirtualization().Height("400").Columns(col =>
    {
 
-       col.Field("SNo").HeaderText("S.No").IsPrimaryKey(true).Width("140").ValidationRules(new { required = true }).Add();
+       col.Field("SNo").HeaderText("S.No").IsPrimaryKey(true).Width("140").ValidationRules(new { required = true, digits = true }).Add();
        col.Field("Field1").HeaderText("PlayerName").Width("140").Add();
        col.Field("Field2").HeaderText("Year").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("Field3").HeaderText("Sports").Width("160").ValidationRules(new { required = true }).EditType("dropdownedit").Add();

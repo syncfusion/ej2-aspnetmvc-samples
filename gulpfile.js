@@ -8,7 +8,18 @@ var elasticlunr = require('elasticlunr');
 var config = require('./Scripts/samplelist');
 var beautify = require('json-beautify');
 var configJson = JSON.parse(fs.readFileSync('./config.json'));
-require("@syncfusion/ej2-staging");
+var publish = require("@syncfusion/ej2-staging/src/publish");
+const updateNugetConfig = publish.updateNugetConfig;
+var azurePublish = require('@syncfusion/ej2-staging/src/azure-publish');
+const aspmvcBuild = azurePublish.aspmvcBuild;
+const azureMvcPublish = azurePublish.azureMvcPublish;
+var mail = require("@syncfusion/ej2-staging/src/mail");
+const publishReportforSamples = mail.publishReportforSamples;
+
+gulp.task("publish-report", publishReportforSamples);
+gulp.task("update-nuget-config", updateNugetConfig);
+gulp.task("azure-mvc-publish", azureMvcPublish);
+gulp.task("aspmvc-build", aspmvcBuild);
 
 gulp.task('deploy', function(done) {
     // remove clone folder
@@ -62,10 +73,11 @@ gulp.task('deploy', function(done) {
     }
 });
 
-gulp.task('generate-searchlist',["create-locale"], function () {
+gulp.task('generate-searchlist',gulp.series(createLocale, (done)=> {
     console.log(config);
     generateSearchIndex(config.window.samplesList);
-});
+    done();
+}));
 
 function generateSearchIndex(data) {
 
@@ -141,9 +153,6 @@ function getSamples(data, component) {
         }
     }
 }
-gulp.task('create-locale', function (done) {
-    createLocale(done);
-});
 
 function createLocale(done) {
     var fileExt = '.js';
@@ -244,7 +253,7 @@ gulp.task('desValidation', function (done) {
     }
 });
 
-gulp.task('title-section', function () {
+gulp.task('title-section', function (done) {
     var samplelists = config.window.samplesList;
     for (let component of samplelists) {
         var samples = component.samples;
@@ -298,6 +307,7 @@ gulp.task('title-section', function () {
     }
         }
     }
+    done();
 });
 
 const SITEMAP_TEMPLATE =
@@ -317,7 +327,7 @@ const LOCAL_SITE_URL = `
         <lastmod>{{:Date}}</lastmod>
     </url>`;
 
-gulp.task('sitemap-generate', function () {
+gulp.task('sitemap-generate', function (done) {
     let siteMapFile = SITEMAP_TEMPLATE;
     let date = new Date().toISOString().substring(0, 10);
     let link = 'https://ej2.syncfusion.com/aspnetmvc';
@@ -345,6 +355,7 @@ gulp.task('sitemap-generate', function () {
     } else {
         fs.writeFileSync('./sitemap-demos.xml', siteMapFile, 'utf-8');
     }
+    done();
 });
 
 gulp.task('mvc-version-update', function (done) {
@@ -387,6 +398,7 @@ gulp.task('mvc-version-update', function (done) {
                     // Version changing for MVC4 and MVC5 project file.
                     csprojMvc = csprojMvc.replace(new RegExp(`packages\\\\${nugetName}.*\\\\lib`), `packages\\${nugetName}.${version}\\lib`);
                 } else if (shellCode.code !== 0) {
+                    done();
                     process.exit(1);
                 }
             }

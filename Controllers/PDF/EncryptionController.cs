@@ -97,7 +97,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             security.UserPassword = "password";
 
             string text = "Security options:\n\n" + String.Format("KeySize: {0}\n\nEncryption Algorithm: {4}\n\nOwner Password: {1}\n\nPermissions: {2}\n\n" +
-                "UserPassword: {3}", security.KeySize, security.OwnerPassword, security.Permissions, security.UserPassword, security.Algorithm);
+                "User Password: {3}", security.KeySize, security.OwnerPassword, security.Permissions, security.UserPassword, security.Algorithm);
             if (encryptionType == "256_AES_Revision_6")
             {
                 text += String.Format("\n\nRevision: {0}", "Revision 6");

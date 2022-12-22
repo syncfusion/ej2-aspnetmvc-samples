@@ -15,6 +15,7 @@
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("WorksheetProtection", "Excel", FormMethod.Post);
+        { 
             <p style="font-weight:normal">
 				Click the "Lock Worksheet" button to view the locked Excel document and "Unlock Worksheet" to view the unlocked Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
 			</p>
@@ -32,6 +33,8 @@
                 <input id="lockbtn" class="e-btn" type="submit" name="button" value="Lock Worksheet" style="width:160px;" />
                 <input id="unlockbtn" class="e-btn" type="submit" name="button" value="Unlock Worksheet" style="width:160px;" />
             </div>
+        Html.EndForm();
+        }
             }
         </div>
 }

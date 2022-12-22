@@ -19,6 +19,7 @@
 @section ControlsSection{
 <div class="control-section">
     @{Html.BeginForm("FunnelChart", "Excel", FormMethod.Post);
+    { 
         <p style="font-weight:normal">
 			Click the "Input Template" button to view the input Excel document and click the "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
 		</p>
@@ -36,6 +37,8 @@
             <input id="inputbtn" class="e-btn" type="submit" name="button" value="Input Template" style="width:160px;" />
             <input id="createbtn" class="e-btn" type="submit" name="button" value="Create Document" style="width:160px;" /> 
         </div>
+    Html.EndForm();
+    }
     }
 </div>
 }

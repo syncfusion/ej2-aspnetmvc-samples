@@ -4,7 +4,7 @@
 
 @section ControlsSection {
     <div class="col-lg-8 control-section">
-        <div class="content-wrapper">
+        <div class="content-wrapper overflow">
             @Html.EJS().Kanban("kanban").KeyField("Status").Height("500px").DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
             {
            col.HeaderText("To Do").KeyField("Open").Add();
@@ -92,6 +92,12 @@
             kanbanObj.swimlaneSettings.sortDirection = args.value;
         }
     </script>
+
+    <style>
+        .overflow {
+                overflow: hidden;
+            }
+    </style>
 }
 @section ActionDescription{
     <div id="action-description">

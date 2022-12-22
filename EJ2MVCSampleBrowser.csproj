@@ -71,64 +71,64 @@
       <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2">
-      <HintPath>packages\Syncfusion.EJ2.MVC5.20.3.0.56\lib\net45\Syncfusion.EJ2.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.MVC5.20.4.0.38\lib\net45\Syncfusion.EJ2.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.GridExport">
-      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.20.3.0.56\lib\net45\Syncfusion.EJ2.GridExport.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.20.4.0.38\lib\net45\Syncfusion.EJ2.GridExport.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base">
-      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.HtmlConverter.Base">
-      <HintPath>packages\Syncfusion.HtmlToPdfConverter.IE.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.HtmlToPdfConverter.IE.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocIO.Base">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.DocumentEditor">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.PdfViewer">
-      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChartToImageConverter.WPF">
-      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Base">
-      <HintPath>packages\Syncfusion.Compression.Base.20.3.0.56\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Compression.Base.20.4.0.38\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChart.Base">
-      <HintPath>packages\Syncfusion.OfficeChart.Base.20.3.0.56\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChart.Base.20.4.0.38\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Presentation.Base">
-      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PresentationToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelChartToImageConverter.WPF">
-      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.WPF">
-      <HintPath>packages\Syncfusion.SfChart.WPF.20.3.0.56\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.SfChart.WPF.20.4.0.38\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.Base">
-      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.20.3.0.56\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.20.4.0.38\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.Spreadsheet">
-      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.20.3.0.56\lib\net45\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.20.4.0.38\lib\net45\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.Licensing.20.3.0.56\lib\net45\Syncfusion.Licensing.dll</HintPath>
+      <HintPath>packages\Syncfusion.Licensing.20.4.0.38\lib\net45\Syncfusion.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -229,9 +229,11 @@
     <Compile Include="Controllers\Chart\KeyboardController.cs" />
     <Compile Include="Controllers\FileManager\DirectoryUploadController.cs" />
     <Compile Include="Controllers\Gantt\CriticalPathController.cs" />
+    <Compile Include="Controllers\Gantt\LoadingAnimationController.cs" />
     <Compile Include="Controllers\Grid\AdaptiveLayoutController.cs" />
     <Compile Include="Controllers\Grid\FrozenRowsColumnsController.cs" />
     <Compile Include="Controllers\Grid\LazyLoadGroupWithInfiniteScrollingController.cs" />
+    <Compile Include="Controllers\Grid\LazyLoadGroupWithVirtualScrollingController.cs" />
     <Compile Include="Controllers\Grid\LazyLoadGroupWithPagingController.cs" />
     <Compile Include="Controllers\Grid\LoadingAnimationController.cs" />
     <Compile Include="Controllers\Grid\PagerDropdownController.cs" />
@@ -477,6 +479,10 @@
     <Compile Include="Controllers\Chart\WindRoseController.cs" />
     <Compile Include="Controllers\Chart\ZoomingController.cs" />
     <Compile Include="Controllers\Chart\SplineRangeAreaController.cs" />
+	<Compile Include="Controllers\ArcGauge\CustomerSatisfactionScoreController.cs" />
+    <Compile Include="Controllers\ArcGauge\DefaultController.cs" />
+    <Compile Include="Controllers\ArcGauge\KeyPerformanceIndicatorController.cs" />
+    <Compile Include="Controllers\ArcGauge\PatternsController.cs" />
     <Compile Include="Controllers\CircularGauge\AnnotationController.cs" />
     <Compile Include="Controllers\CircularGauge\ArcGaugeController.cs" />
     <Compile Include="Controllers\CircularGauge\ExportController.cs" />
@@ -628,6 +634,8 @@
     <Compile Include="Controllers\Word\DOCToEPubController.cs" />
     <Compile Include="Controllers\Word\DOCtoODTController.cs" />
     <Compile Include="Controllers\Word\DOCtoPDFController.cs" />
+    <Compile Include="Controllers\Word\DOCtoPDFAController.cs" />
+    <Compile Include="Controllers\Word\DOCtoPDFUAController.cs" />
     <Compile Include="Controllers\Word\DocumentProtectionController.cs" />
     <Compile Include="Controllers\Word\DocumentSettingsController.cs" />
     <Compile Include="Controllers\Word\EncryptandDecryptController.cs" />
@@ -657,6 +665,7 @@
     <Compile Include="Controllers\Word\WatermarkController.cs" />
     <Compile Include="Controllers\Word\WordMLToWordController.cs" />
     <Compile Include="Controllers\Word\WordtoImageController.cs" />
+    <Compile Include="Controllers\Word\WordToMarkdownController.cs" />
     <Compile Include="Controllers\Word\WordToWordMLController.cs" />
     <Compile Include="Controllers\Word\XMLMappingController.cs" />
     <Compile Include="Controllers\Word\CreateEquationController.cs" />
@@ -785,6 +794,12 @@
     <Compile Include="Controllers\FAB\StylesController.cs" />
     <Compile Include="Controllers\FAB\OverviewController.cs" />
     <Compile Include="Controllers\FAB\PositionController.cs" />
+	<Compile Include="Controllers\Rating\DefaultFunctionalitiesController.cs" />	
+	<Compile Include="Controllers\Rating\KeyboardNavigationController.cs" />
+    <Compile Include="Controllers\Rating\LabelController.cs" />    
+    <Compile Include="Controllers\Rating\PrecisionController.cs" />
+    <Compile Include="Controllers\Rating\TemplateController.cs" />
+    <Compile Include="Controllers\Rating\TooltipController.cs" />
     <Compile Include="Controllers\Skeleton\AnimationController.cs" />
     <Compile Include="Controllers\Skeleton\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\QueryBuilder\DefaultFunctionalitiesController.cs" />
@@ -985,7 +1000,10 @@
     <Compile Include="Controllers\PivotTable\ValueSortingController.cs" />
     <Compile Include="Controllers\PivotTable\VirtualScrollingController.cs" />
     <Compile Include="Controllers\PivotTable\PagingController.cs" />
+    <Compile Include="Controllers\PivotTable\OverviewController.cs" />
     <Compile Include="Controllers\PowerPoint\AnimationController.cs" />
+	<Compile Include="Controllers\PowerPoint\FindAndReplaceController.cs" />
+	<Compile Include="Controllers\PowerPoint\FindAndHighlightController.cs" />
     <Compile Include="Controllers\PowerPoint\ModifyingAnimationController.cs" />
     <Compile Include="Controllers\PowerPoint\SlideTransitionController.cs" />
     <Compile Include="Controllers\PowerPoint\WriteProtectionController.cs" />
@@ -1172,6 +1190,7 @@
     <Compile Include="Controllers\Toolbar\AlignmentController.cs" />
     <Compile Include="Controllers\Toolbar\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Toolbar\PopupController.cs" />
+    <Compile Include="Controllers\Toolbar\TemplateController.cs" />
     <Compile Include="Controllers\Toolbar\RtlController.cs" />
     <Compile Include="Controllers\Toolbar\KeyboardInteractionController.cs" />
     <Compile Include="Controllers\Tooltip\AjaxContentController.cs" />
@@ -1225,6 +1244,7 @@
     <Compile Include="Controllers\TreeGrid\FilterMenuController.cs" />
     <Compile Include="Controllers\TreeGrid\HeaderTemplateController.cs" />
     <Compile Include="Controllers\TreeGrid\InlineEditingController.cs" />
+    <Compile Include="Controllers\TreeGrid\LoadingAnimationController.cs" />
     <Compile Include="Controllers\TreeGrid\LoadonDemandController.cs" />
     <Compile Include="Controllers\TreeGrid\LocalDataController.cs" />
     <Compile Include="Controllers\TreeGrid\PrintController.cs" />
@@ -1294,6 +1314,8 @@
     <Compile Include="Controllers\PowerPoint\NotesController.cs" />
     <Compile Include="Controllers\PowerPoint\PPTXToImageController.cs" />
     <Compile Include="Controllers\PowerPoint\PPTXToPdfController.cs" />
+    <Compile Include="Controllers\PowerPoint\PPTXToPdfAController.cs" />
+    <Compile Include="Controllers\PowerPoint\PPTXToPdfUAController.cs" />
     <Compile Include="Controllers\PowerPoint\PresentationResult.cs" />
     <Compile Include="Controllers\PowerPoint\SlidesController.cs" />
     <Compile Include="Controllers\PowerPoint\SmartArtCreationController.cs" />
@@ -1460,6 +1482,11 @@
     <Content Include="Content\gantt\images\StartDateDark.png" />
     <Content Include="Content\gantt\images\TaskNameDark.png" />
     <Content Include="Content\grid\adaptive-layout.css" />
+    <Content Include="Content\images\treegrid\darkduration.png" />
+    <Content Include="Content\images\treegrid\darkprogress.png" />
+    <Content Include="Content\images\treegrid\darkResources.png" />
+    <Content Include="Content\images\treegrid\darkStartname.png" />
+    <Content Include="Content\images\treegrid\darkTaskname.png" />
     <Content Include="Content\Mention\images\Employees\1.png" />
     <Content Include="Content\Mention\images\Employees\2.png" />
     <Content Include="Content\Mention\images\Employees\3.png" />
@@ -2155,6 +2182,8 @@
     <Content Include="Content\PDF\syncfusion_logo.gif" />
     <Content Include="Content\PDF\write.jpg" />
     <Content Include="Content\PDF\Xlsio.jpg" />
+    <Content Include="Content\PDF\HtmltoPDFController.txt" />
+    <Content Include="Content\PDF\HtmltoPDFConversion.txt" />
     <Content Include="Content\PDF\pdf_succinctly_page1.jpg" />
     <Content Include="Content\PDF\pdf_succinctly_page2.jpg" />
     <Content Include="Content\PDF\pdf_succinctly_page3.jpg" />
@@ -2365,6 +2394,7 @@
     <Content Include="App_Data\MapData\USA.json" />
     <Content Include="App_Data\MapData\WorldCup.json" />
     <Content Include="App_Data\MapData\WorldMap.json" />
+    <Content Include="App_Data\universitydata.json" />
     <Content Include="Scripts\bluebird.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2627,6 +2657,10 @@
     <Content Include="Views\Chart\Waterfall.cshtml" />
     <Content Include="Views\Chart\WindRose.cshtml" />
     <Content Include="Views\Chart\Zooming.cshtml" />
+	<Content Include="Views\ArcGauge\Default.cshtml" />
+	<Content Include="Views\ArcGauge\CustomerSatisfactionScore.cshtml" />
+	<Content Include="Views\ArcGauge\KeyPerformanceIndicator.cshtml" />
+	<Content Include="Views\ArcGauge\Patterns.cshtml" />
     <Content Include="Views\CircularGauge\Annotation.cshtml" />
     <Content Include="Views\CircularGauge\ArcGauge.cshtml" />
     <Content Include="Views\CircularGauge\Export.cshtml" />
@@ -2744,6 +2778,8 @@
     <Content Include="Views\Word\DOCToEPub.cshtml" />
     <Content Include="Views\Word\DOCtoODT.cshtml" />
     <Content Include="Views\Word\DOCtoPDF.cshtml" />
+    <Content Include="Views\Word\DOCtoPDFA.cshtml" />
+    <Content Include="Views\Word\DOCtoPDFUA.cshtml" />
     <Content Include="Views\Word\DocumentProtection.cshtml" />
     <Content Include="Views\Word\DocumentSettings.cshtml" />
     <Content Include="Views\Word\EmployeeReport.cshtml" />
@@ -2776,6 +2812,7 @@
     <Content Include="Views\Word\Watermark.cshtml" />
     <Content Include="Views\Word\WordMLToWord.cshtml" />
     <Content Include="Views\Word\WordtoImage.cshtml" />
+    <Content Include="Views\Word\WordToMarkdown.cshtml" />
     <Content Include="Views\Word\WordToWordML.cshtml" />
     <Content Include="Views\Word\XMLMapping.cshtml" />
     <Content Include="Views\Word\CreateEquation.cshtml" />
@@ -3037,6 +3074,7 @@
     <Content Include="Views\PivotTable\ValueSorting.cshtml" />
     <Content Include="Views\PivotTable\VirtualScrolling.cshtml" />
     <Content Include="Views\PivotTable\Paging.cshtml" />
+    <Content Include="Views\PivotTable\Overview.cshtml" />
     <Content Include="Views\PowerPoint\Animation.cshtml" />
     <Content Include="Views\PowerPoint\CloningSlides.cshtml" />
     <Content Include="Views\PowerPoint\Comments.cshtml" />
@@ -3058,6 +3096,10 @@
     <Content Include="Views\PowerPoint\Notes.cshtml" />
     <Content Include="Views\PowerPoint\PPTXToImage.cshtml" />
     <Content Include="Views\PowerPoint\PPTXToPdf.cshtml" />
+    <Content Include="Views\PowerPoint\PPTXToPdfA.cshtml" />
+    <Content Include="Views\PowerPoint\PPTXToPdfUA.cshtml" />
+	<Content Include="Views\PowerPoint\FindAndReplace.cshtml" />
+	<Content Include="Views\PowerPoint\FindAndHighlight.cshtml" />
     <Content Include="Views\PowerPoint\Slides.cshtml" />
     <Content Include="Views\PowerPoint\SlideTransition.cshtml" />
     <Content Include="Views\PowerPoint\SmartArtCreation.cshtml" />
@@ -3217,6 +3259,7 @@
     <Content Include="Views\Toolbar\Popup.cshtml" />
     <Content Include="Views\Toolbar\Rtl.cshtml" />
     <Content Include="Views\Toolbar\KeyboardInteraction.cshtml" />
+    <Content Include="Views\Toolbar\Template.cshtml" />
     <Content Include="Views\Tooltip\AjaxContent.cshtml" />
     <Content Include="Views\Tooltip\Api.cshtml" />
     <Content Include="Views\Tooltip\DefaultFunctionalities.cshtml" />
@@ -3399,6 +3442,7 @@
     <Content Include="Views\TreeGrid\FilterMenu.cshtml" />
     <Content Include="Views\TreeGrid\HeaderTemplate.cshtml" />
     <Content Include="Views\TreeGrid\InlineEditing.cshtml" />
+    <Content Include="Views\TreeGrid\LoadingAnimation.cshtml" />
     <Content Include="Views\TreeGrid\LoadonDemand.cshtml" />
     <Content Include="Views\TreeGrid\LocalData.cshtml" />
     <Content Include="Views\TreeGrid\locale.json" />
@@ -3633,6 +3677,7 @@
     <Content Include="Views\Message\Icons.cshtml" />
     <Content Include="Views\Message\Variants.cshtml" />
     <Content Include="Views\Grid\LazyLoadGroupWithInfiniteScrolling.cshtml" />
+    <Content Include="Views\Grid\LazyLoadGroupWithVirtualScrolling.cshtml" />
     <Content Include="Views\Grid\LoadingAnimation.cshtml" />
     <Content Include="Views\Grid\LazyLoadGroupWithPaging.cshtml" />
     <Content Include="Views\Chart\AreaNegative.cshtml" />
@@ -3643,8 +3688,15 @@
     <Content Include="Views\FAB\DefaultFunctionalities.cshtml" />
     <Content Include="Views\FAB\Overview.cshtml" />
     <Content Include="Views\FAB\Position.cshtml" />
+	<Content Include="Views\Rating\DefaultFunctionalities.cshtml" />
+	<Content Include="Views\Rating\Label.cshtml" />
+    <Content Include="Views\Rating\Precision.cshtml" />
+    <Content Include="Views\Rating\Tooltip.cshtml" />
+    <Content Include="Views\Rating\Template.cshtml" />    
+    <Content Include="Views\Rating\KeyboardNavigation.cshtml" />    
     <Content Include="Views\Skeleton\Animation.cshtml" />
     <Content Include="Views\Skeleton\DefaultFunctionalities.cshtml" />
+    <Content Include="Views\Gantt\LoadingAnimation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\MapData\Africa_continent.json" />
@@ -3699,6 +3751,7 @@
     <Content Include="App_Data\PowerPoint\Syncfusion Presentation.pptx" />
     <Content Include="App_Data\PowerPoint\Template.pptx" />
     <Content Include="App_Data\PowerPoint\DataTemplate.pptx" />
+	<Content Include="App_Data\PowerPoint\Input Template.pptx" />
     <Content Include="App_Data\XlsIO\AdvancedFilterData.xlsx" />
     <Content Include="App_Data\XlsIO\BoxAndWhiskerTemplate.xlsx" />
     <Content Include="App_Data\XlsIO\CreateMacroTemplate.xlsx" />

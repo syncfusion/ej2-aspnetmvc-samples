@@ -3,6 +3,7 @@
 @section ControlsSection{
 <div class="control-section">
     @{Html.BeginForm("GroupShapes", "Excel", FormMethod.Post);
+    { 
         <div class="tablediv">
             <p style="font-weight:normal">
                 Click the "Input Template" button to view the input Excel document and "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
@@ -28,6 +29,8 @@
                 </div>
             </div>
         </div>
+    Html.EndForm();
+    }
     }
 </div>
 }

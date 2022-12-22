@@ -1133,7 +1133,7 @@
 .sb-right-pane {
     left: 280px;
     padding-left: 26px;
-    padding-right: 36px;
+    padding-right: 26px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -1147,6 +1147,10 @@
 
 .sb-content-section .sb-content-tab-header {
     border-bottom: 1px solid #D7D7D7;
+}
+
+.sb-content-section.e-tab .e-tab-header:not(.e-vertical)::before {
+    border-width: 0;
 }
 
 .sb-source-section .e-tab .e-tab-header .e-indicator {
@@ -1309,7 +1313,7 @@
     color: #5a5a5a;
     cursor: pointer;
 }
-.bootstrap5-dark .sample-navigation {
+.bootstrap5-dark .sample-navigation, .bootstrap4 .sample-navigation, .bootstrap5 .sample-navigation {
     line-height: 32px;
 }
 .sample-navigation>button {
@@ -1752,7 +1756,7 @@ propertye pane
         background-color: #e6e4e4;
         font-size: 15px;
         display: inline-block;
-        z-index: 20;
+        z-index: 1001;
     }
     .sb-mobilefooter>button:focus {
         outline: none;
@@ -3124,6 +3128,8 @@ body.tailwind-dark,
 .sb-content-tab > .e-tab > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item > .e-tab-wrap {
     padding-left: 12px;
     padding-right: 12px;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
     .sb-content-tab > .e-tab > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item > .e-tab-wrap > .e-text-wrap > .e-tab-text > .sb-tab-title {

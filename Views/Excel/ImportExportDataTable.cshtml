@@ -22,6 +22,7 @@
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("ImportExportDataTable", "Excel", FormMethod.Post);
+        { 
             <div class="rowdiv" style="float:left; width: 100%;">
 			    <p style="font-weight:normal">
                     Click the "Input Template" button to view the input Excel document.
@@ -88,6 +89,8 @@
                     document.getElementById('export').setAttribute("disabled", "\disabled\"");
                 }
             </script>
+        Html.EndForm();
+        }
         }
     </div>
 }

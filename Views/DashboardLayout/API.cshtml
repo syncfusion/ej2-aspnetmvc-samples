@@ -78,10 +78,10 @@
 
     function onChange(args) {
         var dashboardObject = document.getElementById('dynamicLayout').ej2_instances[0];
-        if (args.event.currentTarget.id === "floating") {
+        if (args.event.currentTarget.firstChild.childNodes[0].id === "floating") {
             dashboardObject.allowFloating = args.checked;
         }
-        if (args.event.currentTarget.id === "resizing") {
+        if (args.event.currentTarget.firstChild.childNodes[0].id === "resizing") {
             dashboardObject.allowResizing = args.checked;
         }
     }

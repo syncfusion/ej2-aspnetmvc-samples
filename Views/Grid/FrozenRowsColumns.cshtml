@@ -28,13 +28,13 @@
         <tr>
             <td class="left-side">Frozen Rows</td>
             <td style="padding-bottom:10px">
-                @Html.EJS().NumericTextBox("rows").Min(1).Max(5).Value(2).Format("n").Render()
+                @Html.EJS().NumericTextBox("rows").Min(1).Max(5).Value(2).Format("n").Decimals(0).ValidateDecimalOnType(true).Render()
             </td>
         </tr>
         <tr>
             <td class="left-side">Frozen Columns</td>
             <td style="padding-bottom:10px">
-                @Html.EJS().NumericTextBox("columns").Min(1).Max(2).Value(1).Format("n").Render()
+                @Html.EJS().NumericTextBox("columns").Min(1).Max(2).Value(1).Format("n").Decimals(0).ValidateDecimalOnType(true).Render()
             </td>
         </tr>
         <tr>

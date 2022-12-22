@@ -26,10 +26,20 @@
     <script type="text/x-template" id="columnTemplate">
         ${if(ganttProperties.resourceNames)}
         <div class="image">
-            <img src="../Content/gantt/images/${ganttProperties.resourceNames}.png" style="height:40px;width:40px" /><div style="display:inline-block;width:100%;position:relative;left:10px">${ganttProperties.resourceNames}</div>
+            <img src="../Content/gantt/images/${ganttProperties.resourceNames}.png" style="height:40px;width:40px" /><div style="display:inline-block;width:100%;position:relative;${isRtl()}">${ganttProperties.resourceNames}</div>
         </div>
         ${/if}
     </script>
+    <script>
+        function isRtl() {
+            let gantt = document.getElementsByClassName('e-gantt')[0].ej2_instances[0];
+            if (gantt.enableRtl) {
+               return 'right:10px;';
+           } else {
+               return 'left:10px;';
+           }
+        }
+   </script>
 }
 
 @section ActionDescription{

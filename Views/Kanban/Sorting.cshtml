@@ -40,7 +40,7 @@
                     <div>Direction</div>
                 </td>
                 <td>
-                    @Html.EJS().DropDownList("direction").Width("100%").DataSource((IEnumerable<object>)ViewBag.DirectionData).Index(0).Created("directionCreate").Render()
+                    @Html.EJS().DropDownList("direction").Width("100%").DataSource((IEnumerable<object>)ViewBag.DirectionData).Change("onChange").Index(0).Created("directionCreate").Render()
                 </td>
             </tr>
             <tr>
@@ -84,14 +84,25 @@
             directionObj = this;
         }
         function onChange(args) {
+            var data;
             if (args.value === 'DataSourceOrder' || args.value === 'Index') {
-                var data = args.value === 'Index' ? 'RankId' : 'None';
+                data = args.value === 'Index' ? 'RankId' : 'None';
                 setFieldValue(data);
             }
             if (args.value === 'Custom') {
                 fieldObj.dataSource = ['Priority', 'RankId', 'Summary'];
                 fieldObj.value = 'Priority';
                 fieldObj.enabled = true;
+            }
+            if (args.value === 'Ascending') {
+                data = sortObj.value === 'Index' ? 'RankId' : 'None';
+                setFieldValue(data);
+                directionObj.value = 'Ascending';
+            }
+            if (args.value === 'Descending') {
+                data = sortObj.value === 'Index' ? 'RankId' : 'None';
+                setFieldValue(data);
+                directionObj.value = 'Descending';
             }
         }
         function setFieldValue(data) {

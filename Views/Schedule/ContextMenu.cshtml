@@ -27,6 +27,8 @@
                 ej.base.remove(newEventElement);
                 ej.base.removeClass([document.querySelector('.e-selected-cell')], 'e-selected-cell');
             }
+            var scheduleObj = document.querySelector(".e-schedule").ej2_instances[0];
+            scheduleObj.closeQuickInfoPopup();
             var targetElement = args.event.target;
             if (ej.base.closest(targetElement, '.e-contextmenu')) {
                 return;
@@ -37,8 +39,7 @@
                 args.cancel = true;
                 return;
             }
-            if (selectedTarget.classList.contains('e-appointment')) {
-                var scheduleObj = document.querySelector(".e-schedule").ej2_instances[0];
+            if (selectedTarget.classList.contains('e-appointment')) {                
                 var eventObj = scheduleObj.getEventDetails(selectedTarget);
                 if (eventObj.RecurrenceRule) {
                     this.showItems(['EditRecurrenceEvent', 'DeleteRecurrenceEvent'], true);

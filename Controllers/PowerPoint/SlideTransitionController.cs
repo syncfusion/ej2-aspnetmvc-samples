@@ -1,5 +1,5 @@
-#region Copyright Syncfusion Inc. 2001-2022
-// Copyright Syncfusion Inc. 2001-2022. All rights reserved.
+#region Copyright Syncfusion Inc. 2001 - 2022
+// Copyright Syncfusion Inc. 2001 - 2022. All rights reserved.
 // Use of this code is subject to the terms of our license.
 // A copy of the current license can be obtained at any time by e-mailing
 // licensing@syncfusion.com. Any infringement will be prosecuted under
@@ -14,6 +14,7 @@ using System.Web.Mvc;
 using Syncfusion.Presentation;
 using System.Drawing;
 using System.IO;
+using Syncfusion.Presentation.SlideTransition;
 
 
 namespace EJ2MVCSampleBrowser.Controllers
@@ -28,9 +29,11 @@ namespace EJ2MVCSampleBrowser.Controllers
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult SlideTransition(string Browser)
+        public ActionResult SlideTransition(string button)
         {
-           string filename = "Transition.pptx";
+            if (button == null)
+                return View();
+            string filename = "Transition.pptx";
             IPresentation presentation = Presentation.Open(ResolveApplicationDataPath(filename));
             //New Instance of PowerPoint is Created.[Equivalent to launching MS PowerPoint with no slides].
 
@@ -50,16 +53,16 @@ namespace EJ2MVCSampleBrowser.Controllers
             ISlide slide1 = presentation.Slides[0];
 
             // Add the 'Wheel' transition effect to the first slide
-            slide1.SlideTransition.TransitionEffect = Syncfusion.Presentation.SlideTransition.TransitionEffect.Wheel;
+            slide1.SlideTransition.TransitionEffect = TransitionEffect.Wheel;
 
             // Get the second slide from the presentation
             ISlide slide2 = presentation.Slides[1];
 
             // Add the 'Checkerboard' transition effect to the second slide
-            slide2.SlideTransition.TransitionEffect = Syncfusion.Presentation.SlideTransition.TransitionEffect.Checkerboard;
+            slide2.SlideTransition.TransitionEffect = TransitionEffect.Checkerboard;
 
             // Add the subtype to the transition effect
-            slide2.SlideTransition.TransitionEffectOption = Syncfusion.Presentation.SlideTransition.TransitionEffectOption.Across;
+            slide2.SlideTransition.TransitionEffectOption = TransitionEffectOption.Across;
 
             // Apply the value to transition mouse on click parameter
             slide2.SlideTransition.TriggerOnClick = true;
@@ -68,16 +71,16 @@ namespace EJ2MVCSampleBrowser.Controllers
             ISlide slide3 = presentation.Slides[2];
 
             // Add the 'Orbit' transition effect for slide
-            slide3.SlideTransition.TransitionEffect = Syncfusion.Presentation.SlideTransition.TransitionEffect.Orbit;
+            slide3.SlideTransition.TransitionEffect = TransitionEffect.Orbit;
 
             // Add the speed for transition
-            slide3.SlideTransition.Speed = Syncfusion.Presentation.SlideTransition.TransitionSpeed.Fast;
+            slide3.SlideTransition.Speed = TransitionSpeed.Fast;
 
             // Get the fourth slide from the presentation
             ISlide slide4 = presentation.Slides[3];
 
             // Add the 'Uncover' transition effect to the slide
-            slide4.SlideTransition.TransitionEffect = Syncfusion.Presentation.SlideTransition.TransitionEffect.Uncover;
+            slide4.SlideTransition.TransitionEffect = TransitionEffect.Uncover;
 
             // Apply the value to advance on time for slide
             slide4.SlideTransition.TriggerOnTimeDelay = true;
@@ -89,7 +92,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             ISlide slide5 = presentation.Slides[4];
 
             // Add the 'PageCurlDouble' transition effect to the slide
-            slide5.SlideTransition.TransitionEffect = Syncfusion.Presentation.SlideTransition.TransitionEffect.PageCurlDouble;
+            slide5.SlideTransition.TransitionEffect = TransitionEffect.PageCurlDouble;
 
             // Add the duration value for the transition effect
             slide5.SlideTransition.Duration = 5;

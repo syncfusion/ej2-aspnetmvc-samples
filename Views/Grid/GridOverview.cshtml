@@ -1,4 +1,4 @@
-@using Syncfusion.EJ2
+﻿@using Syncfusion.EJ2
 @using Syncfusion.EJ2.DropDowns
 @section ControlsSection{
 
@@ -25,37 +25,20 @@
       col.Field("CurrentSalary").HeaderText("Current Salary").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("160").Add();
       col.Field("Address").HeaderText("Address").Width("240").ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
 
-  }).EnableVirtualization(true).Height("600").RowHeight(38).EnableHover(false).EnableHeaderFocus(true).AllowSorting(true).Load("load").QueryCellInfo("queryCellInfo").DataBound("startTimer").LoadingIndicator(l => { l.IndicatorType(Syncfusion.EJ2.Grids.IndicatorType.Shimmer); }).ActionComplete("complete").AllowSelection(true).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple).PersistSelection(true).CheckboxOnly(true)).Render()
+  }).EnableVirtualization(true).Height("600").RowHeight(38).EnableHover(false).EnableHeaderFocus(true).AllowSorting(true).Load("load").DataBound("startTimer").LoadingIndicator(l => { l.IndicatorType(Syncfusion.EJ2.Grids.IndicatorType.Shimmer); }).ActionComplete("complete").AllowSelection(true).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple).PersistSelection(true).CheckboxOnly(true)).Render()
     </div>
 
 
     <script type="text/x-jsrender" id="progessTemplate">
-        <div id="myProgress" class="pbar">
-            <div id="myBar" class="bar">
-                <div id="pbarlabel" class="barlabel"></div>
-            </div>
-        </div>
-
+        ${progessDetail(data)}
     </script>
 
     <script type="text/x-jsrender" id="ratingTemplate">
-        <div class="rating">
-            <span class="star">&#9733</span>
-            <span class="star">&#9733</span>
-            <span class="star">&#9733</span>
-            <span class="star">&#9733</span>
-            <span class="star">&#9733</span>
-        </div>
+        ${ratingDetail(data)}
     </script>
 
     <script type="text/x-jsrender" id="empTemplate">
-        <div>
-            <div class="empimg">
-                <span class="e-userimg">
-                </span>
-            </div>
-            <span id="Emptext">${Employees}</span>
-        </div>
+        ${empDetails(data)}
     </script>
 
     <script type="text/javascript">
@@ -77,17 +60,26 @@
         var dropSlectedIndex = null;
         var stTime;
         stTime = performance.now();
-        function trustTemp(e) {
-            if (e.Trustworthiness == "Select All") {
-                return '';
+        function empDetails(e) {
+            var div = document.createElement('div');
+            var empImg = document.createElement('div');
+            empImg.className = 'empimg';
+            var span = document.createElement('span');
+            span.className = 'e-userimg';
+            if (e.EmployeeImg === 'usermale') {
+                span.classList.add('sf-icon-Male');
+            } else {
+                span.classList.add('sf-icon-FeMale');
             }
-            var name = e.Trustworthiness;
-            var newsrcFolder = '@Url.Content("~/Content/grid/")';
-            var newsrc = newsrcFolder + name + '.png';
-            return '<img style="width: 31px; height: 24px" src="' + newsrc + '"/> <span id="Trusttext">' + e.Trustworthiness + '</span>'
+            empImg.appendChild(span);
+            var Emptext = document.createElement('span');
+            Emptext.id = 'Emptext';
+            Emptext.textContent = e.Employees;
+            div.appendChild(empImg);
+            div.appendChild(Emptext);
+            return div.outerHTML;
         }
         function ratingDetail(e) {
-            var grid = document.querySelector(".e-grid").ej2_instances[0]
             var div = document.createElement('div');
             div.className = 'rating';
             var span;
@@ -108,19 +100,16 @@
         }
 
         function statusDetail(e) {
-            var grid = document.querySelector(".e-grid").ej2_instances[0]
             var div = document.createElement('div');
-            var span;
-            span = document.createElement('span');
-            if (e.Status === "Active") {
+            var span = document.createElement('span');
+            if (e.Status === 'Active') {
                 span.className = 'statustxt e-activecolor';
-                span.textContent = "Active"
+                span.textContent = 'Active'
                 div.className = 'statustemp e-activecolor'
             }
-            if (e.Status === "Inactive") {
-                span = document.createElement('span');
+            if (e.Status === 'Inactive') {
                 span.className = 'statustxt e-inactivecolor';
-                span.textContent = "Inactive"
+                span.textContent = 'Inactive'
                 div.className = 'statustemp e-inactivecolor'
             }
             div.appendChild(span);
@@ -145,41 +134,27 @@
                 }
             }
         }
-        function queryCellInfo(args) {
-            if (args.column.field === 'Employees') {
-                if (args.data.EmployeeImg === 'usermale') {
-                    args.cell.querySelector('.e-userimg').classList.add("sf-icon-Male");
-                } else {
-                    args.cell.querySelector('.e-userimg').classList.add("sf-icon-FeMale");
-                }
+        function progessDetail(e) {
+            var myProgress = document.createElement('div');
+            myProgress.id = 'myProgress';
+            myProgress.className = 'pbar';
+            var myBar = document.createElement('div');
+            myBar.id = 'myBar';
+            myBar.className = 'bar';
+            if (e.Status === 'Inactive') {
+                myBar.classList.add('progressdisable');
             }
-            if (args.column.field === 'Status') {
-                if (args.cell.textContent === "Active") {
-                    args.cell.querySelector(".statustxt").classList.add("e-activecolor");
-                    args.cell.querySelector(".statustemp").classList.add("e-activecolor");
-                }
-                if (args.cell.textContent === "Inactive") {
-                    args.cell.querySelector(".statustxt").classList.add("e-inactivecolor");
-                    args.cell.querySelector(".statustemp").classList.add("e-inactivecolor");
-                }
+            if (e.Software <= 20) {
+                e.Software = e.Software + 30;
             }
-            if (args.column.field === 'Rating') {
-                if (args.column.field === 'Rating') {
-                    for (var i = 0; i < args.data.Rating; i++) {
-                        args.cell.querySelectorAll("span")[i].classList.add("checked");
-                    }
-                }
-            }
-            if (args.column.field === "Software") {
-                if (args.data.Software <= 20) {
-                    args.data.Software = args.data.Software + 30;
-                }
-                args.cell.querySelector(".bar").style.width = args.data.Software + "%";
-                args.cell.querySelector(".barlabel").textContent = args.data.Software + "%";
-                if (args.data.Status === "Inactive") {
-                    args.cell.querySelector(".bar").classList.add("progressdisable");
-                }
-            }
+            myBar.style.width = e[e.column.field] + '%';
+            var pbarlabel = document.createElement('div');
+            pbarlabel.id = 'pbarlabel';
+            pbarlabel.className = 'barlabel';
+            pbarlabel.textContent = e.Software + '%';
+            myBar.appendChild(pbarlabel);
+            myProgress.appendChild(myBar);
+            return myProgress.outerHTML;
         }
         function startTimer(args) {
             clearTimeout(clrIntervalFun);
@@ -236,12 +211,6 @@
     </script>
 
     <script type="text/x-jsrender" id="statusTemplate">
-        <div id="status" class="statustemp">
-            <span class="statustxt">${Status}</span>
-        </div>
-    </script>
-
-    <script type="text/x-jsrender" id="StatusItemTemp">
         ${statusDetail(data)}
     </script>
 
@@ -512,6 +481,9 @@
          <p>
 	     In this demo, Grid features such as <code>Virtual Scrolling, Filtering, Sorting, Column Template, filter template </code> etc... are used along with large data source.
         </p>
+         <p>
+             You can follow the guidelines in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/virtual-scroll#browser-height-limitation-in-virtual-scrolling-and-solution"> documentation </a> to get around the browser height restriction when loading and viewing millions of records.
+         </p>
     </div>
 }
 

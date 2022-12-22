@@ -1,5 +1,5 @@
-#region Copyright Syncfusion Inc. 2001-2022
-// Copyright Syncfusion Inc. 2001-2022. All rights reserved.
+#region Copyright Syncfusion Inc. 2001 - 2022
+// Copyright Syncfusion Inc. 2001 - 2022. All rights reserved.
 // Use of this code is subject to the terms of our license.
 // A copy of the current license can be obtained at any time by e-mailing
 // licensing@syncfusion.com. Any infringement will be prosecuted under
@@ -35,8 +35,10 @@ namespace EJ2MVCSampleBrowser.Controllers
 
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult PPTXToPdf(string Browser, string renderingMode1, HttpPostedFileBase file)
+        public ActionResult PPTXToPdf(string button, HttpPostedFileBase file)
         {
+            if (button == null)
+                return View();
             IPresentation presentation = GetInputDocument(file);
             if(presentation != null)
             {
@@ -47,8 +49,6 @@ namespace EJ2MVCSampleBrowser.Controllers
                 PresentationToPdfConverterSettings settings = new PresentationToPdfConverterSettings();
                 settings.ShowHiddenSlides = true;
                 settings.EnablePortableRendering = true;
-                if(renderingMode1 == "PreserveStructureTags")
-                    settings.AutoTag = true;
                 
 				// Add a custom fallback font collection for Presentation.
                 AddFallbackFonts(presentation);

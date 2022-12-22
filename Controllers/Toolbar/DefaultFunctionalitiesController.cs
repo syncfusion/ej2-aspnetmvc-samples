@@ -19,37 +19,50 @@ namespace EJ2MVCSampleBrowser.Controllers.Toolbar
         public ActionResult DefaultFunctionalities()
         {
             List<ToolbarItem> items = new List<ToolbarItem>();
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-cut", TooltipText = "Cut" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-copy", TooltipText = "Copy" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-paste", TooltipText = "Paste" });
-            
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-bold", TooltipText = "Bold" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-underline", TooltipText = "Underline" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-italic", TooltipText = "Italic" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-paint-bucket", TooltipText = "Color-Picker" });
+            {
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-cut", TooltipText = "Cut" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-copy", TooltipText = "Copy" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-paste", TooltipText = "Paste" });
 
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-align-left", TooltipText = "Align-Left" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-align-right", TooltipText = "Align-Right" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-align-center", TooltipText = "Align-Center" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-justify", TooltipText = "Align-Justify" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-bold", TooltipText = "Bold" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-underline", TooltipText = "Underline" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-italic", TooltipText = "Italic" });
 
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-list-unordered", TooltipText = "Bullets" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-list-ordered", TooltipText = "Numbering" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-align-left", TooltipText = "Align-Left" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-align-right", TooltipText = "Align-Right" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-align-center", TooltipText = "Align-Center" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-justify", TooltipText = "Align-Justify" });
 
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-undo", TooltipText = "Undo" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-redo", TooltipText = "Redo" });
-
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-upload-1", TooltipText = "Upload" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-download", TooltipText = "Download" });
-
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-increase-indent", TooltipText = "Text Indent" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-decrease-indent", TooltipText = "Text Outdent" });
-
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-erase", TooltipText = "Clear" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-refresh", TooltipText = "Reload" });
-            items.Add(new ToolbarItem { PrefixIcon = "e-icons e-export", TooltipText = "Export" });
-
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-list-unordered", TooltipText = "Bullets" });
+            }
             ViewBag.tbItems = items;
+
+            List<ToolbarItem> item = new List<ToolbarItem>();
+            {
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-cut", TooltipText = "Cut", Text = "Cut" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-copy", TooltipText = "Copy", Text = "Copy" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-paste", TooltipText = "Paste", Text = "Paste" });
+
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-bold", TooltipText = "Bold", Text = "Bold" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-underline", TooltipText = "Underline", Text = "Underline" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-italic", TooltipText = "Italic", Text = "Italic" });
+
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-align-left", TooltipText = "Align-Left", Text = "Align-Left" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-align-right", TooltipText = "Align-Right", Text = "Align-Right" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-align-center", TooltipText = "Align-Center", Text = "Align-Center" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-justify", TooltipText = "Align-Justify", Text = "Align-Justify" });
+
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-list-unordered", TooltipText = "Bullets", Text = "Bullets" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-list-ordered", TooltipText = "Numbering", Text = "Numbering" });
+
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-undo", TooltipText = "Undo", Text = "Undo" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-redo", TooltipText = "Redo", Text = "Redo" });
+
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-increase-indent", TooltipText = "Text Indent", Text = "Text Indent" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-decrease-indent", TooltipText = "Text Outdent", Text = "Text Outdent" });
+                item.Add(new ToolbarItem { PrefixIcon = "e-icons e-erase", TooltipText = "Clear", Text = "Clear" });
+            }
+            ViewBag.overflowItems = item;
 
             return View();
         }

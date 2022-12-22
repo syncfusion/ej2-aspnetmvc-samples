@@ -19,9 +19,9 @@
     "gulp-dotnet-cli": "^1.0.2",
     "require-dir": "^0.3.2",
     "elasticlunr": "0.9.5",
-    "simple-git": "^3.5.0",
+    "simple-git": "^3.15.0",
     "glob": "^7.1.2",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "shelljs": "^0.8.1"
   },
   "scripts": {

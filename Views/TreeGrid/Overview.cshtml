@@ -14,10 +14,10 @@
         @Html.EJS().TreeGrid("Overview").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
    {
        col.Field("name").HeaderText("Province").Width(190).Template("#flagtemplate").Filter(new { type = "Excel", itemTemplate = "#flagtemplate" }).Add();
-       col.Field("population").HeaderText("Population (Million)").ValueAccessor("populationValue").Width(188).Add();
-       col.Field("gdp").HeaderText("GDP Rate %").Width(120).Template("#gdptemplate").AllowFiltering(false).Add();
-       col.Field("rating").HeaderText("Credit Rating").Template("#ratingtemplate").CustomAttributes(new { @class = "ratingCircle" }).Width(150).Add();
-       col.Field("unemployment").HeaderText("Unemployment Rate").Template("#unemploymentTemplate").AllowFiltering(false).Width(170).Add();
+       col.Field("population").HeaderText("Population (Million)").ValueAccessor("populationValue").Width(210).Add();
+       col.Field("gdp").HeaderText("GDP Rate %").Width(129).Template("#gdptemplate").AllowFiltering(false).Add();
+       col.Field("rating").HeaderText("Credit Rating").Template("#ratingtemplate").CustomAttributes(new { @class = "ratingCircle" }).Width(160).Add();
+       col.Field("unemployment").HeaderText("Unemployment Rate").Template("#unemploymentTemplate").AllowFiltering(false).Width(190).Add();
        col.Field("coordinates").HeaderText("Coordinates").Template("#locationtemplate").AllowSorting(false).Width(220).Add();
        col.Field("area").HeaderText("Area").Template("#areatemplate").Width(140).Add();
        col.Field("timezone").HeaderText("Time Zone").Template("#timezonetemplate").Width(150).Add();
@@ -26,7 +26,7 @@
     </div>
 
     <div style="padding-top: 5px; padding-bottom: 20px; text-align: right">
-        Referecene links:
+        Reference links:
         <a href="https://countryeconomy.com/ratings" style="padding-right: 12px">https://countryeconomy.com</a>
         <a href="https://en.wikipedia.org/wiki/" style="padding-right: 12px">https://en.wikipedia.org/wiki/</a>
         <a href="http://worldpopulationreview.com">http://worldpopulationreview.com</a>
@@ -219,6 +219,9 @@
 
     #myBar.progressdisable {
         background-color: #df2222;
+    }
+    .e-bigger .e-grid .e-rowcell {
+        line-height: 24px;
     }
 </style>
 

@@ -21,27 +21,28 @@ namespace EJ2MVCSampleBrowser.Models
         public List<SportsData> SportsList()
         {
             List<SportsData> mention = new List<SportsData>();
-            mention.Add(new SportsData { Name = "Selma Rose", Eimg = "7", EmailId = "selma@gmail.com" });
+            mention.Add(new SportsData { Name = "Selma Rose", Eimg = "3", EmailId = "selma@gmail.com" });
             mention.Add(new SportsData { Name = "Russo Kay", Eimg = "8", EmailId = "russo@gmail.com" });
             mention.Add(new SportsData { Name = "Camden Kate", Eimg = "9", EmailId = "camden@gmail.com" });
-            mention.Add(new SportsData { Name = "Garth", Eimg = "3", EmailId = "garth@gmail.com" });
-            mention.Add(new SportsData { Name = "Ursula Ann", Eimg = "10", EmailId = "ursula@gmail.com" });
+            mention.Add(new SportsData { Name = "Mary Kate", Eimg = "4", EmailId = "mary@gmail.com" });
+            mention.Add(new SportsData { Name = "Ursula Ann", Eimg = "2", EmailId = "ursula@gmail.com" });
             mention.Add(new SportsData { Name = "Margaret", Eimg = "5", EmailId = "margaret@gmail.com" });
-            mention.Add(new SportsData { Name = "Laura Grace", Eimg = "7", EmailId = "laura@gmail.com" });
+            mention.Add(new SportsData { Name = "Laura Grace", Eimg = "6", EmailId = "laura@gmail.com" });
             mention.Add(new SportsData { Name = "Robert", Eimg = "8", EmailId = "robert@gmail.com" });
-            mention.Add(new SportsData { Name = "Michale", Eimg = "9", EmailId = "michale@gmail.com" });
-            mention.Add(new SportsData { Name = "Andrew James", Eimg = "3", EmailId = "james@gmail.com" });
-            mention.Add(new SportsData { Name = "William", Eimg = "7", EmailId = "william@gmail.com" });
-            mention.Add(new SportsData { Name = "David", Eimg = "8", EmailId = "david@gmail.com" });
-            mention.Add(new SportsData { Name = "Richard Rose", Eimg = "9", EmailId = "richard@gmail.com" });
-            mention.Add(new SportsData { Name = "Joseph", Eimg = "10", EmailId = "joseph@gmail.com" });
-            mention.Add(new SportsData { Name = "Thomas", Eimg = "4", EmailId = "thomas@gmail.com" });
-            mention.Add(new SportsData { Name = "Charles Danny", Eimg = "5", EmailId = "charles@gmail.com" });
-            mention.Add(new SportsData { Name = "Daniel", Eimg = "6", EmailId = "daniel@gmail.com" });
+            mention.Add(new SportsData { Name = "Albert", Eimg = "9", EmailId = "albert@gmail.com" });
+            mention.Add(new SportsData { Name = "Michale", Eimg = "10", EmailId = "michale@gmail.com" });
+            mention.Add(new SportsData { Name = "Andrew James", Eimg = "7", EmailId = "james@gmail.com" });
+            mention.Add(new SportsData { Name = "Rosalie", Eimg = "4", EmailId = "rosalie@gmail.com" });
+            mention.Add(new SportsData { Name = "Stella Ruth", Eimg = "2", EmailId = "stella@gmail.com" });
+            mention.Add(new SportsData { Name = "Richard Rose", Eimg = "10", EmailId = "richard@gmail.com" });
+            mention.Add(new SportsData { Name = "Gabrielle", Eimg = "3", EmailId = "gabrielle@gmail.com" });
+            mention.Add(new SportsData { Name = "Thomas", Eimg = "7", EmailId = "thomas@gmail.com" });
+            mention.Add(new SportsData { Name = "Charles Danny", Eimg = "8", EmailId = "charles@gmail.com" });
+            mention.Add(new SportsData { Name = "Daniel", Eimg = "10", EmailId = "daniel@gmail.com" });
             mention.Add(new SportsData { Name = "Matthew", Eimg = "7", EmailId = "matthew@gmail.com" });
-            mention.Add(new SportsData { Name = "Donald Krish", Eimg = "8", EmailId = "donald@gmail.com" });
-            mention.Add(new SportsData { Name = "Paul", Eimg = "2", EmailId = "paul@gmail.com" });
-            mention.Add(new SportsData { Name = "Kevin Paul", Eimg = "3", EmailId = "kevin@gmail.com" });
+            mention.Add(new SportsData { Name = "Donald Krish", Eimg = "9", EmailId = "donald@gmail.com" });
+            mention.Add(new SportsData { Name = "Yohana", Eimg = "1", EmailId = "yohana@gmail.com" });
+            mention.Add(new SportsData { Name = "Kevin Paul", Eimg = "10", EmailId = "kevin@gmail.com" });
             return mention;
         }
 

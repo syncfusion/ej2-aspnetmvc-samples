@@ -21,13 +21,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         {
             List<PieWithLegendChartData> chartData = new List<PieWithLegendChartData>
             {
-                new PieWithLegendChartData { x = "Net-tution",           y = 21, text = "21%"},
-                new PieWithLegendChartData { x = "Private Gifts",                 y = 8 , text = "8%"},
-                new PieWithLegendChartData { x = "All Other",                     y = 9 , text = "9%"},
-                new PieWithLegendChartData { x = "Local Revenue",                 y = 4 , text = "4%"},
-                new PieWithLegendChartData { x = "State Revenue",                 y = 21, text = "21%"},
-                new PieWithLegendChartData { x = "Federal Revenue",               y = 16, text = "16%"},
-                new PieWithLegendChartData { x = "Self-supporting Operations",    y = 21, text = "21%"},
+                new PieWithLegendChartData { x =  "Internet Explorer", y = 6.12, text="Internet <br> Explorer" },
+                new PieWithLegendChartData { x =  "Chrome", y = 57.28, text="Chrome" },
+                new PieWithLegendChartData { x =  "Safari", y = 4.73, text="Safari" },
+                new PieWithLegendChartData { x =  "QQ", y = 5.96, text="QQ" },
+                new PieWithLegendChartData { x =  "UC Browser", y = 4.37, text="UC Browser" },
+                new PieWithLegendChartData { x =  "Edge", y = 7.48, text="Edge" },
+                new PieWithLegendChartData { x =  "Others", y = 14.06, text="Others" }
             };
             ViewBag.dataSource = chartData;
             return View();

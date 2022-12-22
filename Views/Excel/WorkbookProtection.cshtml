@@ -25,6 +25,7 @@
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("WorkbookProtection", "Excel", FormMethod.Post);
+        { 
             <p style="font-weight:normal">
 				Click the "Protect Workbook" button to view the protected Excel document and "Unprotect Workbook" to view the unprotected Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
 			</p>
@@ -42,6 +43,8 @@
                 <input id="createbtn" class="e-btn" type="submit" name="button" value="Protect Workbook" style="width:160px;" />
                 <input id="inputbtn" class="e-btn" type="submit" name="button" value="Unprotect Workbook" style="width:180px;" />
             </div>
+        Html.EndForm();
+        }
         }
     </div>
 }

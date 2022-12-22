@@ -1,4 +1,4 @@
-﻿@using EJ2MVCSampleBrowser.Helpers;
+@using EJ2MVCSampleBrowser.Helpers;
 @using Syncfusion.EJ2;
 <!DOCTYPE html>
 <html lang="en">
@@ -454,12 +454,12 @@
             </div>
         </div>
     </div>
-    <script src="~/Scripts/index.js"></script>
     @if (IsSectionDefined("PreScripts"))
     {
         @RenderSection("PreScripts", required: false)
     }
     @Html.EJS().ScriptManager()
+    <script src="~/Scripts/index.js"></script>
     @RenderSection("Scripts", required: false)
     <script>
         var win = window;

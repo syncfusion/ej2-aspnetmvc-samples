@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("AdvancedExporting").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowPdfExport().AllowExcelExport().AllowGrouping().Columns(col =>
+        @Html.EJS().Grid("AdvancedExporting").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSorting().AllowPdfExport().AllowExcelExport().AllowGrouping().Columns(col =>
    {
 
        col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

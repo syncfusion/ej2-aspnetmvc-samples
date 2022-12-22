@@ -3,7 +3,7 @@
     <div class="col-lg-9 control-section">
         <div class="control-wrapper">
             <div class="control-section">
-                @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowGrouping().AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
+                @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSorting().AllowGrouping().AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
            {
                col.HeaderText("Employee Image").Template("#template1").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
                col.Field("FirstName").HeaderText("Name").Width("130").Add();

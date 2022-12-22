@@ -1,19 +1,19 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
+    <script src="~/Scripts/financial-data.js"></script>
     <div class="control-section">
-        <div style="text-align:center">
+        <div align="center" style="display:block; width: 92%">
 
         @Html.EJS().Chart("container").Series(series =>
         {
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.RangeArea).Opacity(0.4).Border(br=>br.Width(2)).XName("x").High("high").Low("low").DataSource("series1").Name("India").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.RangeArea).Opacity(0.5).Border(br=>br.Width(2)).XName("x").High("high").Low("low").DataSource("chartDataValues").Add();
 
-       }).PrimaryXAxis(px => px.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
-       .MajorGridLines(mg=>mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
-       ).PrimaryYAxis(py => py.LabelFormat("{value}˚C")
+       }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).LabelFormat("dd MMM")
+       .MajorGridLines(mg=>mg.Width(0))
+       ).PrimaryYAxis(py => py.LabelFormat("{value}˚C").Maximum(25).Minimum(-10).Interval(5)
        .MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
-       ).Title("Temperature Variation").ZoomSettings(z => z.EnableSelectionZooming(true)
-       .Mode(Syncfusion.EJ2.Charts.ZoomMode.X)).ChartArea(area => area.Border(br=>br.Color("transparent"))
-       ).Load("load").SeriesRender("seriesRender").LegendSettings(ls => ls.Visible(false)).Render()
+       ).Title("Temperature Variation by Month").ChartArea(area => area.Border(br => br.Width(0))
+       ).Tooltip(tt => tt.Enable(true).Shared(false).Format("Temperature : <b>${point.low} - ${point.high}</b>").Header("<b>${point.x}</b>")).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
 
         </div>
     </div>
@@ -25,34 +25,15 @@
     </style>
              @*custom code end*@
     <script>
-        var series1 = [];
-        var value = 35;
-        var point1;
-        for (var i = 1; i < 360; i++) {
-            if (Math.random() > .5) {
-                value += Math.random();
-            }
-            else {
-                value -= Math.random();
-            }
-            point1 = {
-                x: new Date(2015, 0, i),
-                high: value, low: value - 10
-            };
-            series1.push(point1);
-        }
                  @*custom code start*@
+        var chartDataValues = chartDataValues;
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.primaryXAxis.edgeLabelPlacement = ej.base.Browser.isDevice ? 'Shift' : 'Hide';
         };
                  @*custom code end*@
-        var seriesRender = function (args) {
-            var areathemes = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast'];
-            var borderColor = ['#262E0B', '#5ECB9B', '#5A61F6', '#8B5CF6', '#00bdae', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4'];
-            args.series.border.color = borderColor[areathemes.indexOf(args.series.chart.theme.toLowerCase())];
-        };
     </script>
 }
          @*custom code start*@

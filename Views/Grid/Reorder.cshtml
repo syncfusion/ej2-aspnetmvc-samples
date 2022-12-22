@@ -53,7 +53,7 @@
         if (args.requestType === 'reorder') {
             var dropdown = document.getElementById("column").ej2_instances[0], grid = document.getElementById("FlatGrid").ej2_instances[0];
             var field = (dropdown.value), index = grid.getColumnIndexByField(field);
-            document.getElementById("columnIndex").ej2_instances[0].value = index;
+            document.getElementById("columnIndex").ej2_instances[0].value = index.toString();
         }
     }
 
@@ -61,7 +61,7 @@
         var grid = document.getElementById("FlatGrid").ej2_instances[0];
         var field = this.value;
         var index = grid.getColumnIndexByField(field);
-        document.getElementById("columnIndex").ej2_instances[0].value = index;
+        document.getElementById("columnIndex").ej2_instances[0].value = index.toString();
 
     }
 

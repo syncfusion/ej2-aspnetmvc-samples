@@ -1,5 +1,5 @@
 #region Copyright
-// Copyright Syncfusion Inc. 2001-2022. All rights reserved.
+// Copyright Syncfusion Inc. 2001 - 2022. All rights reserved.
 // Use of this code is subject to the terms of our license.
 // A copy of the current license can be obtained at any time by e-mailing
 // licensing@syncfusion.com. Any infringement will be prosecuted under
@@ -26,7 +26,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
     public partial class WordController : Controller
     {
         #region doc to PDF
-        public ActionResult DOCtoPDF(string button, string renderingMode, string renderingMode1, string renderingMode2, string renderingMode3, string renderingMode4, string renderingMode5, string renderingMode6, string renderingMode7, string autoTag, string preserveFormFields, string exportBookmarks, string embeddingFont, HttpPostedFileBase file)
+        public ActionResult DOCtoPDF(string button, string renderingMode, string renderingMode1, string renderingMode2, string renderingMode3, string renderingMode4, string renderingMode5, string renderingMode6, string preserveFormFields, string exportBookmarks, string embeddingFont, HttpPostedFileBase file)
         {
             if (button == null)
                 return View();
@@ -43,18 +43,16 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
                 //Enable Direct PDF rendering mode for faster conversion.
                 if (renderingMode == "DirectPDF")
                     converter.Settings.EnableFastRendering = true;
-                if (renderingMode1 == "PreserveStructureTags")
-                    converter.Settings.AutoTag = true;
-                if (renderingMode2 == "PreserveFormFields")
+                if (renderingMode1 == "PreserveFormFields")
                     converter.Settings.PreserveFormFields = true;
-                converter.Settings.ExportBookmarks = renderingMode3 == "PreserveWordHeadingsToPDFBookmarks"
+                converter.Settings.ExportBookmarks = renderingMode2 == "PreserveWordHeadingsToPDFBookmarks"
                                                        ? Syncfusion.DocIO.ExportBookmarkType.Headings
                                                      : Syncfusion.DocIO.ExportBookmarkType.Bookmarks;
-                if (renderingMode4 == "EnablesCompleteFont")
+                if (renderingMode3 == "EnablesCompleteFont")
                     converter.Settings.EmbedCompleteFonts = true;
-                if (renderingMode5 == "EnablesSubsetFont")
+                if (renderingMode4 == "EnablesSubsetFont")
                     converter.Settings.EmbedFonts = true;
-                if (renderingMode6 == "ShowRevisions")
+                if (renderingMode5 == "ShowRevisions")
                 {
                     document.RevisionOptions.ShowMarkup = RevisionType.Deletions | RevisionType.Formatting | RevisionType.Insertions;
                     // Set revision bars color as Black.
@@ -66,7 +64,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
                     // Set inserted text (Insertions) color as Pink.
                     document.RevisionOptions.InsertedTextColor = RevisionColor.Pink;
                 }
-                if (renderingMode7 == "ShowComments")
+                if (renderingMode6 == "ShowComments")
                 {
                       //Sets ShowInBalloons to render a document comments in converted PDF document.
                       document.RevisionOptions.CommentDisplayMode = CommentDisplayMode.ShowInBalloons;

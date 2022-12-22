@@ -1,5 +1,5 @@
-#region Copyright Syncfusion Inc. 2001-2022
-// Copyright Syncfusion Inc. 2001-2022. All rights reserved.
+#region Copyright Syncfusion Inc. 2001 - 2022
+// Copyright Syncfusion Inc. 2001 - 2022. All rights reserved.
 // Use of this code is subject to the terms of our license.
 // A copy of the current license can be obtained at any time by e-mailing
 // licensing@syncfusion.com. Any infringement will be prosecuted under
@@ -26,8 +26,10 @@ namespace EJ2MVCSampleBrowser.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ExcelDataToChart(string Browser)
+        public ActionResult ExcelDataToChart(string button)
         {
+            if (button == null)
+                return View();
             IPresentation presentation = Presentation.Create();
             // New Instance of PowerPoint is Created.[Equivalent to launching MS PowerPoint with no slides].
 

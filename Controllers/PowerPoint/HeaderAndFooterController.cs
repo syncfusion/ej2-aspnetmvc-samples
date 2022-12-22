@@ -1,5 +1,5 @@
-#region Copyright Syncfusion Inc. 2001-2022
-// Copyright Syncfusion Inc. 2001-2022. All rights reserved.
+#region Copyright Syncfusion Inc. 2001 - 2022
+// Copyright Syncfusion Inc. 2001 - 2022. All rights reserved.
 // Use of this code is subject to the terms of our license.
 // A copy of the current license can be obtained at any time by e-mailing
 // licensing@syncfusion.com. Any infringement will be prosecuted under
@@ -28,8 +28,10 @@ namespace EJ2MVCSampleBrowser.Controllers
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult HeaderAndFooter(string Browser)
+        public ActionResult HeaderAndFooter(string button)
         {
+            if (button == null)
+                return View();
             //Opens an existing PowerPoint presentation.
             string filename = "HeaderFooter.pptx";
             IPresentation presentation = Presentation.Open(ResolveApplicationDataPath(filename));

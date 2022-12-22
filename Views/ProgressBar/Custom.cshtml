@@ -19,7 +19,7 @@
                                                     .Animation(an => an.Enable(true).Delay(0).Duration(2000)).ProgressCompleted("progressCompleted")
                                                     .Annotations(an =>
                                                     {
-                                                        an.Content("#material-pause").Add();
+                                                        an.Content("<img src='./../scripts/Progressbar/material-pause.svg'></img>").Add();
                                                     }).Render())
                 </div>
             </div>
@@ -30,7 +30,7 @@
                                            .Animation(an => an.Enable(true).Delay(0).Duration(2000)).ProgressCompleted("progressCompleted1")
                                            .Annotations(an =>
                                            {
-                                               an.Content("#material-Download").Add();
+                                               an.Content("<img src='./../scripts/Progressbar/material-Download.svg'></img>").Add();
                                            }).Render())
                 </div>
             </div>
@@ -41,13 +41,6 @@
             </div>
         </div>
     </div>
-    <div id='material-pause' style="display:none">
-        <img src="@Url.Content("~/Content/ProgressBar/material-pause.svg")"/>
-    </div>
-    <div id='material-Download' style="display:none">
-        <img src="@Url.Content("~/Content/ProgressBar/material-Download.svg")"/>
-    </div>
-    @*custom code start*@
     <style>
 
         #control-container {

@@ -21,6 +21,7 @@ var isExternalNavigation = true;
 var defaultTree = false;
 var intialLoadCompleted = false;
 var resizeManualTrigger = false;
+var isMobileLeftPaneToggleBtnClicked = false;
 var leftToggle = ej.base.select('#sb-toggle-left');
 var sbRightPane = ej.base.select('.sb-right-pane');
 var sbContentOverlay = ej.base.select('.sb-content-overlay');
@@ -657,7 +658,10 @@ function processResize(e) {
     isTablet = window.matchMedia('(min-width:550px) and (max-width: 850px)').matches;
     isPc = window.matchMedia('(min-width:850px)').matches;
     if (toggle && isMobile) {
-        toggleLeftPane();
+        if (!isMobileLeftPaneToggleBtnClicked) { 
+            toggleLeftPane();
+        }
+        isMobileLeftPaneToggleBtnClicked = false;
     }
     if (isMobile) {
         sidebar.contextTo = null;
@@ -945,6 +949,9 @@ function setLeftPaneHeight() {
 }
 
 function toggleLeftPane() {
+    if (isMobile) {
+        isMobileLeftPaneToggleBtnClicked = true;
+    }
     var reverse = sidebar.isOpen;
     ej.base.select('#left-sidebar').classList.remove('sb-hide');
     if (!reverse) {

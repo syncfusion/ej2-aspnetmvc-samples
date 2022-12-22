@@ -68,9 +68,15 @@
         backDropObj = document.getElementById("backDropElement").ej2_instances[0];
         document.getElementById("apiclose").addEventListener('click', function () {
             sidebarObj.hide();
+            if (sidebarObj.showBackdrop == true) {
+                sidebarObj.showBackdrop = false;
+            }
         });
         document.getElementById("apitogglesidebar").addEventListener('click', function () {
             sidebarObj.toggle();
+            if (backDropObj.content == "True") {
+                sidebarObj.showBackdrop = true;
+            }
         });
         document.getElementById("apihamburger").addEventListener('click', function () {
             sidebarObj.toggle();

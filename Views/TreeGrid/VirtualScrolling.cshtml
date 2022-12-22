@@ -23,7 +23,7 @@
             col.Field("FIELD2").HeaderText("Year").Width(100).TextAlign(TextAlign.Right).Add();
             col.Field("FIELD3").HeaderText("Stint").Width(120).TextAlign(TextAlign.Right).Add();
             col.Field("FIELD4").HeaderText("TMID").Width(120).TextAlign(TextAlign.Right).Add();
-            }).Height(400).ChildMapping("Children").TreeColumnIndex(1).EnableVirtualization(true).Render()
+            }).Height(400).ChildMapping("Children").TreeColumnIndex(1).EnableVirtualization(true).EnableVirtualMaskRow(true).Render()
     </div>
 }
 
@@ -42,6 +42,9 @@
             To enable the virtualization, set <code>
                     EnableVirtualization
             </code> property as true.
+        </p>
+        <p>
+        By default, <code>enableVirtualMaskRow</code> is set to true. we can change by setting <code>enableVirtualMaskRow</code> property to false.
         </p>
         <p>
             Note: The <code>

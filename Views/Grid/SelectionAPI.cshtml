@@ -27,7 +27,7 @@
             <td class="left-side">Start</td>
             <td style="padding-bottom:10px">
                 
-                @Html.EJS().NumericTextBox("start").Width("150").Min(1).Render()
+                @Html.EJS().NumericTextBox("start").Width("150").Min(1).Max(11).Render()
 
             </td>
         </tr>
@@ -35,7 +35,7 @@
         <tr>
             <td class="left-side">To</td>
             <td style="padding-bottom:10px">                
-                @Html.EJS().NumericTextBox("to").Width("150").Min(1).Render()
+                @Html.EJS().NumericTextBox("to").Width("150").Min(1).Max(11).Render()
             </td>
         </tr>
 

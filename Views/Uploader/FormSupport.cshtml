@@ -71,6 +71,7 @@
     function onFileSelect(args) {
         var inputElement = document.getElementById('upload');
         inputElement.value = args.filesData[0].name;
+        formObj.validate('upload');
     }
 
     var options = {

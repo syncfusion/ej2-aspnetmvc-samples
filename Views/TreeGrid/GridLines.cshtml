@@ -37,7 +37,7 @@
                     <div style="padding-left:1px">Grid Lines</div>
                 </td>
                 <td style="width: 50%">
-                    @Html.EJS().DropDownList("Lines").DataSource((IEnumerable<object>)ViewBag.dropdata).Width("110").Value("Horizontal").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "type", Value = "id" }).Change("onChange").Render()
+                    @Html.EJS().DropDownList("Lines").DataSource((IEnumerable<object>)ViewBag.dropdata).Width("130").Value("Horizontal").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "type", Value = "id" }).Change("onChange").Render()
                 </td>
             </tr>
         </table>

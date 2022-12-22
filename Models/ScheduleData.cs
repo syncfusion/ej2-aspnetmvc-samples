@@ -2191,29 +2191,33 @@ namespace EJ2MVCSampleBrowser.Models
         public List<ReadonlyEventsData> GetReadonlyEventsData()
         {
             DateTime dateNow = DateTime.Now;
+            DateTime dateNow1 = DateTime.Now.AddDays(-2);
+            DateTime dateNow2 = DateTime.Now.AddDays(-1);
+            DateTime dateNow3 = DateTime.Now.AddDays(1);
+            DateTime dateNow4 = DateTime.Now.AddDays(2);
             List<ReadonlyEventsData> readonlyEventsData = new List<ReadonlyEventsData>();
             readonlyEventsData.Add(new ReadonlyEventsData
             {
                 Id = 1,
                 Subject = "Project Workflow Analysis",
-                StartTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(-2).Day, dateNow.AddHours(2).Hour, 0, 0),
-                EndTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(-2).Day, dateNow.AddHours(4).Hour, 0, 0),
+                StartTime = new DateTime(dateNow1.Year, dateNow1.Month, dateNow1.Day, dateNow1.AddHours(2).Hour, 0, 0),
+                EndTime = new DateTime(dateNow1.Year, dateNow1.Month, dateNow1.Day, dateNow1.AddHours(4).Hour, 0, 0),
                 IsReadonly = true
             });
             readonlyEventsData.Add(new ReadonlyEventsData
             {
                 Id = 2,
                 Subject = "Project Requirement Planning",
-                StartTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(-1).Day, dateNow.AddHours(2).Hour, 0, 0),
-                EndTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(-1).Day, dateNow.AddHours(4).Hour, 0, 0),
+                StartTime = new DateTime(dateNow2.Year, dateNow2.Month, dateNow2.Day, dateNow2.AddHours(2).Hour, 0, 0),
+                EndTime = new DateTime(dateNow2.Year, dateNow2.Month, dateNow2.Day, dateNow2.AddHours(4).Hour, 0, 0),
                 IsReadonly = true
             });
             readonlyEventsData.Add(new ReadonlyEventsData
             {
                 Id = 3,
                 Subject = "Meeting with Developers",
-                StartTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(-1).Day, dateNow.AddHours(-3).Hour, 0, 0),
-                EndTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(-1).Day, dateNow.AddHours(-1).Hour, 0, 0),
+                StartTime = new DateTime(dateNow2.Year, dateNow2.Month, dateNow2.Day, dateNow2.AddHours(-3).Hour, 0, 0),
+                EndTime = new DateTime(dateNow2.Year, dateNow2.Month, dateNow2.Day, dateNow2.AddHours(-1).Hour, 0, 0),
                 IsReadonly = true
             });
             readonlyEventsData.Add(new ReadonlyEventsData
@@ -2252,24 +2256,24 @@ namespace EJ2MVCSampleBrowser.Models
             {
                 Id = 8,
                 Subject = "Project Review",
-                StartTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(1).Day, dateNow.AddHours(3).Hour, 0, 0),
-                EndTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(1).Day, dateNow.AddHours(5).Hour, 0, 0),
+                StartTime = new DateTime(dateNow3.Year, dateNow3.Month, dateNow3.Day, dateNow3.AddHours(3).Hour, 0, 0),
+                EndTime = new DateTime(dateNow3.Year, dateNow3.Month, dateNow3.Day, dateNow3.AddHours(5).Hour, 0, 0),
                 IsReadonly = false
             });
             readonlyEventsData.Add(new ReadonlyEventsData
             {
                 Id = 9,
                 Subject = "Project demo meeting with Andrew",
-                StartTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(1).Day, dateNow.AddHours(-4).Hour, 0, 0),
-                EndTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(1).Day, dateNow.AddHours(-3).Hour, 0, 0),
+                StartTime = new DateTime(dateNow3.Year, dateNow3.Month, dateNow3.Day, dateNow3.AddHours(-4).Hour, 0, 0),
+                EndTime = new DateTime(dateNow3.Year, dateNow3.Month, dateNow3.Day, dateNow3.AddHours(-3).Hour, 0, 0),
                 IsReadonly = false
             });
             readonlyEventsData.Add(new ReadonlyEventsData
             {
                 Id = 10,
                 Subject = "Online Hosting of Project",
-                StartTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(2).Day, dateNow.AddHours(4).Hour, 0, 0),
-                EndTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.AddDays(2).Day, dateNow.AddHours(6).Hour, 0, 0),
+                StartTime = new DateTime(dateNow4.Year, dateNow4.Month, dateNow4.Day, dateNow4.AddHours(4).Hour, 0, 0),
+                EndTime = new DateTime(dateNow4.Year, dateNow4.Month, dateNow4.Day, dateNow4.AddHours(6).Hour, 0, 0),
                 IsReadonly = false
             });
             return readonlyEventsData;
@@ -6836,6 +6840,7 @@ namespace EJ2MVCSampleBrowser.Models
         public int id { set; get; }
         public string color { set; get; }
         public int groupId { set; get; }
+        public List<int> workDays { get; internal set; }
     }
 
     public class ConsultantDataSourceModel

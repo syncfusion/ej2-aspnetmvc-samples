@@ -23,6 +23,7 @@
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("PivotLayout", "Excel", FormMethod.Post);
+        { 
             <div class="tablediv">
                 <div class="rowdiv">
                     <p style="font-weight:normal">
@@ -54,6 +55,8 @@
                     </div>
                 </div>
             </div>
+        Html.EndForm();
+        }
         }
     </div>
 }

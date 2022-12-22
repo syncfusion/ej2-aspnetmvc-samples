@@ -121,7 +121,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 }
                 else
                 {
-                    return (jsonObject["document"] + " is not found");
+                    return GetPlainText(jsonObject["document"] + " is not found");
                 }
             }
             else
@@ -130,7 +130,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 if (extension != ".xfdf")
                 {
                     JsonResult = pdfviewer.ImportAnnotation(jsonObject);
-                    return (JsonConvert.SerializeObject(JsonResult));
+                    return GetPlainText(JsonConvert.SerializeObject(JsonResult));
                 }
                 else
                 {
@@ -140,11 +140,11 @@ namespace EJ2MVCSampleBrowser.Controllers
                         byte[] bytes = System.IO.File.ReadAllBytes(documentPath);
                         jsonObject["importedData"] = Convert.ToBase64String(bytes);
                         JsonResult = pdfviewer.ImportAnnotation(jsonObject);
-                        return (JsonConvert.SerializeObject(JsonResult));
+                        return GetPlainText(JsonConvert.SerializeObject(JsonResult));
                     }
                     else
                     {
-                        return (jsonObject["document"] + " is not found");
+                        return GetPlainText(jsonObject["document"] + " is not found");
                     }
                 }
             }

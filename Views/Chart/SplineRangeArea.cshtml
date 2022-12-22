@@ -1,17 +1,17 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
+    <script src="~/Scripts/financial-data.js"></script>
     <div class="control-section">
-        <div style="text-align:center">
+        <div align="center" style="display:block; width: 92%">
 
             @Html.EJS().Chart("container-vertical").Series(series =>
        {
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineRangeArea).Border(br => br.Width(2)).Opacity(0.4).XName("XValue").High("High1").Low("Low1").DataSource(ViewBag.dataSource).Name("England").Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineRangeArea).Border(br => br.Width(2)).Opacity(0.4).XName("XValue").High("High2").Low("Low2").DataSource(ViewBag.dataSource).Name("India").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineRangeArea).Border(br => br.Width(2)).Opacity(0.7).XName("x").High("high").Low("low").Marker(mr => mr.Visible(false)).DataSource("chartDataValues").Add();
 
-       }).PrimaryXAxis(px => px.MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
-       .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-          ).PrimaryYAxis(py => py.LabelFormat("{value}˚C").Minimum(0).Maximum(40).MajorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
-          ).Title("Monthly Temperature Range").ChartArea(area => area.Border(br => br.Width(0))).Load("load").Tooltip(tp => tp.Enable(true)).Render()
+       }).PrimaryXAxis(px => px.MajorGridLines(mg => mg.Width(0))
+           .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).LabelFormat("dd MMM")
+          ).PrimaryYAxis(py => py.LabelFormat("{value}˚C").Minimum(-10).Maximum(25).Interval(5).MajorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
+          ).Title("Temperature Variation by Month").ChartArea(area => area.Border(br => br.Width(0))).Load("load").Tooltip(tt => tt.Enable(true).Shared(false).Format("Temperature : <b>${point.low} - ${point.high}</b>").Header("<b>${point.x}</b>")).LegendSettings(lg => lg.Visible(false)).Render()
 
         </div>
     </div>
@@ -22,11 +22,13 @@
         }
     </style>
     <script>
+        var chartDataValues = chartDataValues;
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
-        }
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.primaryXAxis.edgeLabelPlacement = ej.base.Browser.isDevice ? 'Shift' : 'Hide';
+        };
     </script>
     @*custom code end*@
 }

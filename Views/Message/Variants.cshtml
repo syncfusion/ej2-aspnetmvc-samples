@@ -2,29 +2,31 @@
 
 @section ControlsSection{
     <div class="col-lg-12 control-section msg-variant-section">
-        <div class="col-lg-4 col-md-6 msg-content-section">
-            <h4>Filled</h4>
-            @Html.EJS().Message("msg-default_filled").Severity(Severity.Normal).Variant(Variant.Filled).Content("Editing is restricted").Render()
-            @Html.EJS().Message("msg-info_filled").Severity(Severity.Info).Variant(Variant.Filled).Content("Please read the comments carefully").Render()
-            @Html.EJS().Message("msg-success_filled").Severity(Severity.Success).Variant(Variant.Filled).Content("Your message has been sent successfully").Render()
-            @Html.EJS().Message("msg-warning_filled").Severity(Severity.Warning).Variant(Variant.Filled).Content("There was a problem with your network connection").Render()
-            @Html.EJS().Message("msg-error_filled").Severity(Severity.Error).Variant(Variant.Filled).Content("A problem has been occurred while submitting your data").Render()
-        </div>
-        <div class="col-lg-4 col-md-6 msg-content-section">
-            <h4>Outlined</h4>
-            @Html.EJS().Message("msg-default_outlined").Severity(Severity.Normal).Variant(Variant.Outlined).Content("Editing is restricted").Render()
-            @Html.EJS().Message("msg-info_outlined").Severity(Severity.Info).Variant(Variant.Outlined).Content("Please read the comments carefully").Render()
-            @Html.EJS().Message("msg-success_outlined").Severity(Severity.Success).Variant(Variant.Outlined).Content("Your message has been sent successfully").Render()
-            @Html.EJS().Message("msg-warning_outlined").Severity(Severity.Warning).Variant(Variant.Outlined).Content("There was a problem with your network connection").Render()
-            @Html.EJS().Message("msg-error_outlined").Severity(Severity.Error).Variant(Variant.Outlined).Content("A problem has been occurred while submitting your data").Render()
-        </div>
-        <div class="col-lg-4 msg-content-section">
-            <h4>Text</h4>
-            @Html.EJS().Message("msg-default").Severity(Severity.Normal).Content("Editing is restricted").Render()
-            @Html.EJS().Message("msg-info").Severity(Severity.Info).Content("Please read the comments carefully").Render()
-            @Html.EJS().Message("msg-success").Severity(Severity.Success).Content("Your message has been sent successfully").Render()
-            @Html.EJS().Message("msg-warning").Severity(Severity.Warning).Content("There was a problem with your network connection").Render()
-            @Html.EJS().Message("msg-error").Severity(Severity.Error).Content("A problem has been occurred while submitting your data").Render()
+        <div className="content-wrapper">
+            <div class="col-lg-4 col-md-6 msg-content-section">
+                <h4>Filled</h4>
+                @Html.EJS().Message("msg-default_filled").Severity(Severity.Normal).Variant(Variant.Filled).Content("Editing is restricted").Render()
+                @Html.EJS().Message("msg-info_filled").Severity(Severity.Info).Variant(Variant.Filled).Content("Please read the comments carefully").Render()
+                @Html.EJS().Message("msg-success_filled").Severity(Severity.Success).Variant(Variant.Filled).Content("Your message has been sent successfully").Render()
+                @Html.EJS().Message("msg-warning_filled").Severity(Severity.Warning).Variant(Variant.Filled).Content("There was a problem with your network connection").Render()
+                @Html.EJS().Message("msg-error_filled").Severity(Severity.Error).Variant(Variant.Filled).Content("A problem occurred while submitting your data").Render()
+            </div>
+            <div class="col-lg-4 col-md-6 msg-content-section">
+                <h4>Outlined</h4>
+                @Html.EJS().Message("msg-default_outlined").Severity(Severity.Normal).Variant(Variant.Outlined).Content("Editing is restricted").Render()
+                @Html.EJS().Message("msg-info_outlined").Severity(Severity.Info).Variant(Variant.Outlined).Content("Please read the comments carefully").Render()
+                @Html.EJS().Message("msg-success_outlined").Severity(Severity.Success).Variant(Variant.Outlined).Content("Your message has been sent successfully").Render()
+                @Html.EJS().Message("msg-warning_outlined").Severity(Severity.Warning).Variant(Variant.Outlined).Content("There was a problem with your network connection").Render()
+                @Html.EJS().Message("msg-error_outlined").Severity(Severity.Error).Variant(Variant.Outlined).Content("A problem occurred while submitting your data").Render()
+            </div>
+            <div class="col-lg-4 msg-content-section">
+                <h4>Text</h4>
+                @Html.EJS().Message("msg-default").Severity(Severity.Normal).Content("Editing is restricted").Render()
+                @Html.EJS().Message("msg-info").Severity(Severity.Info).Content("Please read the comments carefully").Render()
+                @Html.EJS().Message("msg-success").Severity(Severity.Success).Content("Your message has been sent successfully").Render()
+                @Html.EJS().Message("msg-warning").Severity(Severity.Warning).Content("There was a problem with your network connection").Render()
+                @Html.EJS().Message("msg-error").Severity(Severity.Error).Content("A problem occurred while submitting your data").Render()
+            </div>
         </div>
     </div>
 }
@@ -38,6 +40,11 @@
 
     .msg-variant-section .e-message {
         margin: 10px 0;
+    }
+
+    .msg-variant-section .content-wrapper {
+        max-width: 1560px; 
+        margin: 0 auto;
     }
 </style>
 
