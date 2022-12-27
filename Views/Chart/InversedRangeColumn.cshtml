@@ -1,0 +1,89 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div style="text-align:center">
+@(Html.EJS().Chart("container")
+    .Series(sr =>
+    {
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.RangeColumn)
+            .Name("California")
+            .XName("x")
+            .High("high")
+            .Low("low")
+            .Width(2)
+            .DataSource(ViewBag.dataSource).Add();
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.RangeColumn)
+           .Name("Colorado")
+           .XName("x")
+           .High("high")
+           .Low("low")
+           .Width(2)
+           .DataSource(ViewBag.dataSource1).Add();
+    })
+      .PrimaryXAxis(xaxis =>
+         xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+               .MajorGridLines(mg=>mg.Width(0)
+               )).PrimaryYAxis(yaxis =>yaxis.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+                 .LineStyle(ls=>ls.Width(0))
+                 .MajorTickLines(mt=>mt.Width(0))
+                 .LabelFormat("{value}˚F")
+                 .Minimum(0)
+                 .Maximum(100)
+                 .Interval(20)
+      )
+      .Title("Temperature Variation")
+      .Tooltip(tp => tp.Enable(true))
+      .IsTransposed(true).ChartArea(area => area.Border(br=>br.Color("transparent")))
+      .Load("load").Render()
+)
+        </div>
+        <div style="float: right; margin-right: 10px;">
+            Source:
+            <a href="https://www.usclimatedata.com/climate/united-states/us" target="_blank">www.worldweatheronline.com</a>
+        </div>
+    </div>
+ @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+        }
+    </script>
+ @*custom code end*@
+}
+ @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Inversed RangeColumn in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates a range column series by inversing its X and Y  Axes. Tooltip shows the information about the data points.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the range column type chart with inverted manner. You can use the <code>border</code> and 
+        <code>fill</code> properties to customize the area. <code>dataLabel</code> is used to represent individual data
+        and its value.
+    </p>
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information on the range column series can be found in this
+        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Inversed RangeColumn Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Inversed RangeColumn in ASP.NET MVC Chart Control</h1>
+                }
