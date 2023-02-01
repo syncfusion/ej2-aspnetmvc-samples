@@ -1,0 +1,85 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+
+    <div class="col-lg-8 control-section">
+        <div class="control-wrapper">
+            <div class="control-section">
+
+                @Html.EJS().Grid("FilterMenu").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowFiltering().AllowSorting().Columns(col =>
+           {
+
+               col.Field("OrderID").HeaderText("Order ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("CustomerID").HeaderText("Customer Name").Width("200").Add();
+               col.Field("OrderDate").HeaderText("Order Date").Width("180").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format(new { type = "datetime", format = "M/d/y hh:mm a" }).Add();
+               col.Field("Freight").HeaderText("Freight").Width("150").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+
+
+           }).AllowPaging().PageSettings(page => page.PageCount(1)).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu); }).Render()
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-4 property-section">
+
+
+
+        <table id="property" title="Properties" style="width: 100%;">
+
+
+            <tr>
+                <td class="left-side">Filter Type</td>
+                <td>
+                    @Html.EJS().DropDownList("FilterType").DataSource((IEnumerable<object>)ViewBag.filterType).Value("Menu").Change("onChange").Render()
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+
+
+        function onChange() {
+            var gridObj = document.getElementById("FilterMenu").ej2_instances[0], dropdpwnObj = document.getElementById("FilterType").ej2_instances[0];
+            gridObj.filterSettings.type = dropdpwnObj.value;
+        }
+    </script>
+
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the way of filtering Grid columns using menu, checkbox and excel filter UI. In this sample, click the filtering
+            icon from column header to show filter UI for a particular column. You can change the filter type from the properties panel and while Excel filter type is selected,
+            you can sort the column using the sorting option available in the excel filter dialog.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Filter Menu in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            The filtering feature enables the user to view the reduced amount of records based on filter criteria. It can be enabled
+            by setting <code>AllowFiltering</code> property as true.
+        </p>
+        <p>Grid supports the following filter types. They are </p>
+        <ul>
+            <li><code>FilterBar</code></li>
+            <li><code>Menu</code></li>
+            <li><code>CheckBox</code></li>
+            <li><code>Excel</code></li>
+        </ul>
+        you can change the filter type by setting <code>FilterSettings->Type</code>
+        <p> In this demo, filter menu enabled by default , you can switch to other filter type by using dropdown. </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Data Grid Filter Menu Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Filter Menu in ASP.NET MVC Data Grid Control</h1>
+                }

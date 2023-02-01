@@ -1,0 +1,129 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div style="text-align:center">
+
+            @Html.EJS().Chart("container").Series(series =>
+       {
+
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.MultiColoredArea).SegmentAxis(Syncfusion.EJ2.Charts.Segment.X)
+               .Opacity(0.8)
+               .Segments(segment=>
+               {
+                   segment.Value(new DateTime(2016, 5, 1)).Color("url(#winter)").Add();
+                   segment.Value(new DateTime(2016, 8, 1)).Color("url(#summer)").Add();
+                   segment.Color("url(#spring)").Add();
+
+               }).XName("XValue").YName("YValue").DataSource("dataValues")
+               .Name("US").Width(2).Add();
+       }).PrimaryXAxis(px => px.LabelFormat("MMM").IntervalType(Syncfusion.EJ2.Charts.IntervalType.Months)
+       .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).MajorGridLines(mg=>mg.Width(0))
+       ).PrimaryYAxis(px => px.Minimum(0).Maximum(200).Interval(50).LabelFormat("${value}K")
+       .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).MajorTickLines(mg => mg.Width(0)).LineStyle(ls=>ls.Width(0))
+       ).Title("Organic Revenue in US - 2016").ChartArea(area => area.Border(br=>br.Color("transparent"))
+       ).Load("load").Annotations(an => { an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("90%").Y("12%")
+           .Content(ViewBag.content).Add(); }).LegendSettings(ls => ls.Visible(false)).Render()
+
+        </div>
+    </div>
+@*custom code start*@
+    <style>
+        #control-container {
+        padding: 0px !important;
+    }
+
+    #control-container {
+        padding: 0px !important;
+    }
+
+    #winter stop {
+        stop-color: #4ca1af;
+    }
+
+    #winter stop[offset="0"] {
+        stop-color: #c4e0e5;
+    }
+
+    #winter stop[offset="1"] {
+        stop-color: #4ca1af;
+    }
+
+    #summer stop {
+        stop-color: #ffa751;
+    }
+
+    #summer stop[offset="0"] {
+        stop-color: #ffe259;
+    }
+
+    #summer stop[offset="1"] {
+        stop-color: #ffa751;
+    }
+
+    #spring stop {
+        stop-color: #1d976c;
+    }
+
+    #spring stop[offset="0"] {
+        stop-color: #93f9b9;
+    }
+
+    #spring stop[offset="1"] {
+        stop-color: #1d976c;
+    }
+    </style>
+@*custom code end*@
+<svg style="height: 0">
+    <defs>
+        <linearGradient id="winter" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="summer" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+        <linearGradient id="spring" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0"></stop>
+            <stop offset="1"></stop>
+        </linearGradient>
+    </defs>
+</svg>
+    <script>
+        var dataValues = [];
+        [150, 71.5, 106.4, 100.25, 70.0, 106.0, 85.6, 78.5, 76.4, 86.1, 155.6, 160.4].map(function (value, index) {
+            dataValues.push({ XValue: new Date(2016, index, 1), YValue: value });
+        });
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Area Zone in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample visualizes the organic revenue data with multi colored area series in the chart. 
+        Data points are enhanced with segments and tooltip.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the points in a particular range by using <code>MultiColoredArea</code> series type. 
+        Points under the range can be configured with <code>color</code>, <code>width</code>, and <code>dashArray</code>.
+    </p>
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap a point in touch enabled devices.
+    </p>    
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Area Zone Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Area Zone in ASP.NET MVC Chart Control</h1>
+                }

@@ -1,0 +1,72 @@
+@using Syncfusion.EJ2;
+<script src="~/Scripts/StockChartData/goog.js"></script>
+<script src="~/Scripts/StockChartData/googl.js"></script>
+@section ControlsSection{
+    <div class="control-section" style="width: auto">
+        <div style="display:block">
+            @(Html.EJS().StockChart("container").Load("load").Title("Multiple Series")
+            .PrimaryXAxis(xaxis =>xaxis.MajorGridLines(mg=>mg.Width(0)
+            ).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).CrosshairTooltip(ct=>ct.Enable(true)))
+            .PrimaryYAxis(yaxis =>yaxis.MajorTickLines(mt=>mt.Color("transparent").Width(0)
+            ).LineStyle(ls=>ls.Color("transparent")).CrosshairTooltip(ct=>ct.Enable(false)).Interval(40))
+             .Series(sr =>
+             {
+                 sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).DataSource("data1").XName("x").YName("close").Name("GOOG").Add();
+                 sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).DataSource("data2").XName("x").YName("close").Name("GOOGL").Add();
+             })
+            .Crosshair(cr=>cr.Enable(true))
+            .LegendSettings(legend => legend.Visible(true))
+            .ChartArea(area => area.Border(br=>br.Width(0)))
+            .Border(br => br.Width(0))
+            .Render())
+        </div>
+    </div>
+     @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+        #container {
+            display: block;
+        }
+
+        #container_stock_border {
+            pointer-events: none;
+        }
+    </style>
+     @*custom code end*@
+    <script>
+        var data1 = window.goog;
+        var data2 = window.googl;
+        var load = function (args) {
+           args.stockChart.indicatorType = [];
+            args.stockChart.trendlineType = [];
+             @*custom code start*@
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+             @*custom code end*@
+        }
+    </script>
+}
+  @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Multiple Series in ASP.NET MVC Stock Chart control. Explore here for more details."/>
+                }
+  @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample visualizes stock chart with multiple series and legend.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the Stock chart.
+        The <code>SplineSeries</code> is used to display data based on the selection made in the Range Selector. Since there are multiple series, the interactive legend has been enabled, which provides a quick overview of each series
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Stock Chart Multiple Series Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Multiple Series in ASP.NET MVC Stock Chart Control</h1>
+                }

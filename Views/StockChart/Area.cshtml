@@ -1,0 +1,71 @@
+@using Syncfusion.EJ2;
+<script src="~/Scripts/StockChartData/aapl.js"></script>
+@section ControlsSection{
+     @*custom code start*@
+    <style>
+        #container {
+            display: block;
+        }
+        #container_stock_border {
+            pointer-events: none;
+        }
+    </style>
+     @*custom code end*@
+    <div class="control-section">
+        <div>
+            @(Html.EJS().StockChart("container").Load("load").Title("AAPL Stock Price")
+              .Series(sr =>
+               {
+               sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("high").Opacity(0.5).Name("google").Add();
+               }
+            ).PrimaryXAxis(xaxis =>xaxis.MajorGridLines(mg=>mg.Color("transparent")
+             ).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).CrosshairTooltip(ct=>ct.Enable(true)))
+            .PrimaryYAxis(yaxis =>yaxis.MajorTickLines(mt=>mt.Color("transparent")
+            ).LineStyle(ls=>ls.Color("transparent")).CrosshairTooltip(ct=>ct.Enable(false)))
+            .Crosshair(cr=>cr.Enable(true))
+            .Tooltip(tp => tp.Enable(true))
+            .ChartArea(area => area.Border(br=>br.Width(0)))
+           .Render())
+        </div>
+    </div>
+     @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+     @*custom code end*@
+    <script>
+        var data = window.aapl;
+        var load = function (args) {
+            args.stockChart.seriesType = [];
+            args.stockChart.indicatorType = [];
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        @*custom code end*@
+        }
+    </script>
+}
+ @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Area in ASP.NET MVC Stock Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample visualizes stock data with area. Period and range selector help us to navigate different of data.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the Stock chart.
+        <code>AreaSeries</code> is used to represent selected data value.
+    </p>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Stock Chart Area Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Area in ASP.NET MVC Stock Chart Control</h1>
+                }
