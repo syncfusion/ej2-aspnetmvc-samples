@@ -1,37 +1,33 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
    <div>
-    <div class="col-lg-9 control-section">
-        <div class="content-wrapper">
-            <div id="container">
+    <div class="col-lg-8 control-section sb-property-border">
+        
             @(Html.EJS().AccumulationChart("container")
                     .Series(sr =>
                     {
-                        sr.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
-                               .XName("xValue")
-                               .YName("yValue")
+                        sr.XName("Country")
+                               .YName("Medal")
                                .Name("RIO")
                                .Explode(true)
-                               .DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs=>cs.Type(Syncfusion.EJ2.Charts.ConnectorType.Line).Length("5%")).Font(ft => ft.Size("14px")))
-                               .Animation(animate => animate.Enable(false))
-                               .Radius("70%")
+                               .DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs=>cs.Type(Syncfusion.EJ2.Charts.ConnectorType.Curve).Length("20px")).Font(ft => ft.FontWeight("600")))
                                .StartAngle(0)
                                .EndAngle(360)
-                               .InnerRadius("0%")
                                .GroupTo("9")
                                .GroupMode(Syncfusion.EJ2.Charts.GroupModes.Point)
-                               .DataSource(ViewBag.dataSource).Add();
+                               .InnerRadius("0%")
+                               .DataSource(ViewBag.ChartPoints)
+                               .Add();
                     })
                     .EnableSmartLabels(true)
-                     .Tooltip(tp => tp.Enable(false))
+                     .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>").Header(""))
                      .LegendSettings(leg => leg.Visible(false))
-                     .Load("load").PointRender("pointRender").TextRender("textRender")
-                     .Title("RIO Olympics Gold").Render()
+                     .Load("load").PointRender("pointRender").TextRender("textRender").EnableBorderOnMouseMove(false)
+                     .Title("Rio Olympic Gold Medals").Render()
             )
    </div>
-        </div>
-    </div>
-    <div class="col-lg-3 property-section">
+        
+    <div class="col-lg-4 property-section">
         <table id="property" title="Properties" style="width: 100%">
             <tbody>
                 <tr>
@@ -81,6 +77,12 @@
         var load = function(args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "70%";
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "11px" : "13px";
+            args.accumulation.series[0].dataSource[1].DataLabelMappingName = ej.base.Browser.isDevice ? "Russia: <br> 19" : "Russia: 19";
+            args.accumulation.series[0].dataSource[2].DataLabelMappingName = ej.base.Browser.isDevice ? "Germany: <br> 17" : "Germany: 17";
+            args.accumulation.series[0].dataSource[7].DataLabelMappingName = ej.base.Browser.isDevice ? "Italy: <br> 8" : "Italy: 8";
+            args.accumulation.series[0].dataSource[8].DataLabelMappingName = ej.base.Browser.isDevice ? "Australia: <br> 8" : "Australia: 8";                    
         }
          @*custom code end*@
         function clubchange(value) {
@@ -114,17 +116,25 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates the grouping functionality in pie series.  The grouping value can be changed by using the <code>Group To</code> property.
+        This sample shows the gold medal count scored by each country at the Rio Olympic Games, along with the pie series grouping functionality.
     </p>
 }
 @section Description{
-    <p> In this example, you can see how to <code>group</code> points in pie chart.</p>
-    <p> Points having value below the <code>'groupTo'</code> value are grouped and shown as separate point. You can view this points on mouse click and can customize this point using <code>'pointRender'</code> event. </p>
-    <p> DataLabel is used to represent individual data and its value.</p>
+    <p>
+        In this example, you can see how to group points based on count and values. The slice can be grouped based on the number of points by specifying the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_GroupMode">GroupMode</a> to <b>Point</b>. For example, if the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_GroupTo">GroupTo</a>
+        property is set to 10, the chart will display the first 10 points and the remaining entries from the collection will be grouped as a single point. The slice can also be grouped based on values by specifying the <code>GroupMode</code> to <b>Value</b>. For example, if the <code>GroupTo</code> is set to 10, the first 10 points with a lower value will be grouped together and shown as a single point while the others as a slice.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p>
+        More information on the grouping can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/grouping">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Grouping Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Grouping in ASP.NET MVC Chart Control</h1>
+                    <h1 class='sb-sample-text'>Charts</h1>
                 }

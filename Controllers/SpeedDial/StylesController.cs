@@ -41,6 +41,11 @@ namespace EJ2MVCSampleBrowser.Controllers
                 Text = "Delete",
                 IconCss = "speeddial-icons speeddial-icon-delete"
             });
+            items.Add(new SpeedDialItem
+                {
+                Text = "Save",
+                IconCss = "speeddial-icons speeddial-icon-save"
+            });
             titles.Add(new SpeedDialItem
                 {
                 Title = "Cut",
@@ -61,6 +66,11 @@ namespace EJ2MVCSampleBrowser.Controllers
                 Title = "Delete",
                 IconCss = "speeddial-icons speeddial-icon-delete"
             });
+            titles.Add(new SpeedDialItem
+                {
+                Title = "Save",
+                IconCss = "speeddial-icons speeddial-icon-save"
+            });
             label.Add(new SpeedDialItem
                 {
                 Text = "Cut",
@@ -76,6 +86,10 @@ namespace EJ2MVCSampleBrowser.Controllers
             label.Add(new SpeedDialItem
                 {
                 Text = "Delete",
+            });
+            label.Add(new SpeedDialItem
+                {
+                Text = "Save",
             });
             ViewBag.datasource = items;
             ViewBag.datasourceLabel = label;

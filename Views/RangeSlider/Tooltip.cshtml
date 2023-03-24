@@ -35,7 +35,7 @@
                     <td style="width: 50%">
                         <div class="userselect">ShowOn</div>
                     </td>
-                    <td style="width: 50%;padding: 5px">
+                    <td style="width: 50%;padding : 5px">
                         @Html.EJS().DropDownList("showOn").Index(1).Change("showOnChange").Placeholder("ShowOn Position").DataSource((IEnumerable<Object>)ViewBag.showon).Fields(new DropDownListFieldSettings { Text = "text", Value = "id" }).Render()
                     </td>
                 </tr>

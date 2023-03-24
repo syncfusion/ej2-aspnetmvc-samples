@@ -1,17 +1,30 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.FileManager
 @using EJ2MVCSampleBrowser.Models
+
+@{
+    string[] items = new string[] { "NewFolder", "Cut", "Copy", "Paste", "Delete", "Download", "Rename", "SortBy", "Refresh", "Selection", "View", "Details" };
+    string[] layout = new string[] { "SortBy", "View", "Refresh", "|", "Paste", "|", "NewFolder", "|", "Details", "|", "SelectAll" };
+}
+
 @section ControlsSection{
     <div class="control-section">
         <div class="sample-container">
             <!-- File Manager sample with azure service -->
             @Html.EJS().FileManager("filemanager").AjaxSettings(
-              new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings  {
-                 Url = "https://ej2-azure-aspcore-service.azurewebsites.net/api/AzureFileManager/AzureFileOperations",
-                 DownloadUrl = "https://ej2-azure-aspcore-service.azurewebsites.net/api/AzureFileManager/AzureDownload",
-                 UploadUrl = "https://ej2-azure-aspcore-service.azurewebsites.net/api/AzureFileManager/AzureUpload",
-                 GetImageUrl = "https://ej2-azure-aspcore-service.azurewebsites.net/api/AzureFileManager/AzureGetImage"
-            }).Render()
+              new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
+                   {
+                  Url = "https://ej2-azure-aspcore-service.azurewebsites.net/api/AzureFileManager/AzureFileOperations",
+                  DownloadUrl = "https://ej2-azure-aspcore-service.azurewebsites.net/api/AzureFileManager/AzureDownload",
+                  UploadUrl = "https://ej2-azure-aspcore-service.azurewebsites.net/api/AzureFileManager/AzureUpload",
+                  GetImageUrl = "https://ej2-azure-aspcore-service.azurewebsites.net/api/AzureFileManager/AzureGetImage"
+              }).ToolbarSettings(new Syncfusion.EJ2.FileManager.FileManagerToolbarSettings()
+              {
+                  Items = items
+              }).ContextMenuSettings(new Syncfusion.EJ2.FileManager.FileManagerContextMenuSettings()
+              {
+                  Layout = layout
+              }).Render()
         </div>
     </div>
 }
@@ -37,11 +50,11 @@
 }
 
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Azure Blob Provider in ASP.NET MVC File Manager control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Azure Blob Provider in ASP.NET MVC File Manager control. Explore here for more details." />
+}
 @section Title{
-                    <title>ASP.NET MVC File Manager Azure Blob Provider Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC File Manager Azure Blob Provider Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Azure Blob Provider in ASP.NET MVC File Manager Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Azure Blob Provider in ASP.NET MVC File Manager Control</h1>
+}

@@ -1,41 +1,39 @@
 @using Syncfusion.EJ2;
-<script src="~/Scripts/financial-data.js"></script>
+<script src="~/Scripts/stock-chart-data.js"></script>
 @section ControlsSection{
     <div class="control-section">
         <div style="text-align:center">
      @(Html.EJS().Chart("container-vertical").Series(series =>
  {
      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle)
-     .XName("x")
-     .YName("y")
-     .High("high")
+     .XName("x").High("high")
      .Low("low")
      .Open("open")
      .Close("close")
      .Volume("volume")
      .BearFillColor("#2ecd71")
      .BullFillColor("#e74c3d")
-     .DataSource("dataSource")
+     .DataSource("ChartPoints")
      .Name("Apple Inc")
-     .Width(2).Add();
+     .Width(2).Animation(an => an.Enable(false)).Add();
 
  }).Indicators(id =>
  {
-     id.Fill("#6063ff")
+     id.Fill("blue")
      .Period(14)
      .Type(Syncfusion.EJ2.Charts.TechnicalIndicators.Ema)
      .Field(Syncfusion.EJ2.Charts.FinancialDataFields.Close)
-     .SeriesName("Apple Inc").Add();
+     .SeriesName("Apple Inc").Animation(animation=>animation.Enable(true)).Add();
  })
         .ZoomSettings(zn => zn.EnableSelectionZooming(true)
             .Mode(Syncfusion.EJ2.Charts.ZoomMode.X))
         .Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true))
         .PrimaryXAxis(px => px.ZoomFactor(0.2).ZoomPosition(0.6).MajorGridLines(mg=>mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).CrosshairTooltip(ct => ct.Enable(true)))
-        .PrimaryYAxis(py => py.Title("Price").Minimum(50).LineStyle(ls=>ls.Width(0)).Maximum(170).Interval(30).LabelFormat("{value}M"))
-        .Title("AAPL 2012-2017")
+        .PrimaryYAxis(py => py.Title("Price (in Million)").Minimum(50).LineStyle(ls=>ls.Width(0)).Maximum(170).Interval(30).LabelFormat("${value}M").MajorTickLines(mt=>mt.Width(0)))
+        .Title("AAPL Stock Price 2012-2017")
         .Tooltip(tl => tl.Enable(true).Shared(true))
         .LegendSettings(lg => lg.Visible(false))
-        .ChartArea(area => area.Border(br=>br.Color("transparent"))).Load("load").Render()
+         .ChartArea(area => area.Border(br => br.Width(0))).Load("load").Render()
    )
         </div>
     </div>
@@ -47,12 +45,11 @@
         }
     </style>
     <script>
-        var dataSource = window.chartData;
+        var ChartPoints = hiloData;
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
-
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>
  @*custom code end*@
@@ -64,20 +61,19 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates a stock chart with candle series and an Exponential Moving Average indicator. 
-        Trackball shows the information about the stock and signal value of a day.
-   </p>
+        This sample illustrates a chart with candle series and an exponential moving average indicator. The trackball shows information about each day’s stock rates and signal values.
+    </p>
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure the EMA Indicator. 
+        In this example, you can see how to render and configure an exponential moving average indicator. This indicator tracks the price of an investment over time and is used to define the direction of the trend.
     </p>
     <p>
-        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
     </p>
     <p>
-        More information on the EMA Indicator can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+        More information about the exponential moving average indicator can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/technical-indicators#exponential-moving-average-ema">documentation section</a>.
     </p>
 }
 @section Title{

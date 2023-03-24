@@ -19,23 +19,24 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: StackedColumn100
         public ActionResult StackedColumn100()
         {
-            List<StackedColumnChartData100> chartData = new List<StackedColumnChartData100>
+            List<StackedColumnChartData100> ChartPoints = new List<StackedColumnChartData100>
             {
-                 new StackedColumnChartData100 { x= "2006", y= 900, y1= 190, y2= 250, y3= 150 },
-                 new StackedColumnChartData100 { x= "2007", y= 544, y1= 226, y2= 145, y3= 120 },
-                 new StackedColumnChartData100 { x= "2008", y= 880, y1= 194, y2= 190, y3= 115 },
-                 new StackedColumnChartData100 { x= "2009", y= 675, y1= 250, y2= 220, y3= 125 }
+                new StackedColumnChartData100 { Year = "2013", General = 9628912, Honda = 4298390, Suzuki = 2842133, BMW = 2006366 },
+                new StackedColumnChartData100 { Year = "2014", General = 9609326, Honda = 4513769, Suzuki = 3016710, BMW = 2165566 },
+                new StackedColumnChartData100 { Year = "2015", General = 7485587, Honda = 4543838, Suzuki = 3034081, BMW = 2279503 },
+                new StackedColumnChartData100 { Year = "2016", General = 7793066, Honda = 4999266, Suzuki = 2945295, BMW = 2359756 },
+                new StackedColumnChartData100 { Year = "2017", General = 6856880, Honda = 5235842, Suzuki = 3302336, BMW = 2505741 },
             };
-            ViewBag.dataSource = chartData;
+            ViewBag.ChartPoints = ChartPoints;
             return View();
         }
         public class StackedColumnChartData100
         {
-            public string x;
-            public double y;
-            public double y1;
-            public double y2;
-            public double y3;
+            public string Year;
+            public double General;
+            public double Honda;
+            public double Suzuki;
+            public double BMW;
         }
     }
 }

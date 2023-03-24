@@ -5,18 +5,17 @@
         @(Html.EJS().Chart("container")
     .Series(sr =>
     {
-        sr.XName("xValue")
-             .YName("yValue")
+        sr.XName("DefectCategory")
+             .YName("Y")
              .Name("Defect")
              .Width(2)
-             .Marker(mr=>mr.Visible(true).Width(10).Height(10))
-             .DataSource(ViewBag.dataSource)
+             .Marker(mr=>mr.Visible(true))
+             .DataSource(ViewBag.ChartPoints)
              .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Pareto).Add();
        })
       .PrimaryXAxis(xaxis =>
-          xaxis.Title("Defects")
-            .Interval(1)
-            .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+          xaxis.Interval(1)
+            .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45)
              .MajorGridLines(mg => mg.Width(0))
                 .MinorGridLines(mg => mg.Width(0))
                 .MajorTickLines(mt => mt.Width(0))
@@ -24,20 +23,20 @@
                 .LineStyle(ls => ls.Width(0))
       )
       .PrimaryYAxis(yaxis =>
-          yaxis.Title("Frequency")
+          yaxis.Title("Frequency of Occurence")
                 .Minimum(0)
-                .Maximum(150)
-                .Interval(30)
-               
-                .MinorGridLines(mg => mg.Width(0))
+                .Maximum(25)
+                .Interval(5)
+                .MajorGridLines(mg => mg.Width(1))
+                .MinorGridLines(mg => mg.Width(1))
                 .MajorTickLines(mt => mt.Width(0))
                 .MinorTickLines(mt => mt.Width(0))
                 .LineStyle(ls => ls.Width(0))
       )
-      .Title("Defect vs Frequency")
+      .Title("Pareto chart - Defects in Shirts")
       .LegendSettings(leg => leg.Visible(false))
-      .Tooltip(tp => tp.Enable(true).Shared(true))
-      .Load("load").ChartArea(area => area.Border(br=>br.Color("transparent"))).Render()
+      .Tooltip(tp => tp.Enable(true).Shared(false))
+      .Load("load").ChartArea(area => area.Border(br => br.Width(0))).Render()
         )
     </div>
 </div>
@@ -52,7 +51,7 @@
         function load(args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
  @*custom code end*@
@@ -64,31 +63,19 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates a Pareto chart with line and column series. Trackball shows the information about the data point
-        closest to the mouse.
-</p>
+        This sample illustrates a pareto chart with line and column series.
+    </p>
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure the pareto charts. Pareto charts are used to find the cumulative
-        values of of data in different categories. You can use <code>border</code> and 
-        <code>fill</code> properties to customize the vertical rectangle. <code>dataLabel</code> is used to represent individual
-        data and its value.
+        In this example, you can see how to render and configure a pareto chart. The pareto chart is used to find the cumulative values of the data in different categories. It is a combination of the column and line series. The initial values are shown in the column chart and the cumulative values are shown in the line chart.
     </p>
     <p>
-        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
-    <br>
-    <p style="font-weight: 500">Injecting Module</p>
-    <p>
-        Chart component features are segregated into individual feature-wise modules.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
     </p>
     <p>
-        More information on the column series can be found in this
-        <a target="_blank" href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.Charts.ChartSeries~Type.html">
-            documentation
-            section
-        </a>.
+        More information about the pareto series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/other-types#pareto-chart">documentation section</a>.
     </p>
 }
 @section Title{

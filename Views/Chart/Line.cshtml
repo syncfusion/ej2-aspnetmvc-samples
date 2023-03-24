@@ -1,34 +1,33 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
-    <div class="control-section">
-        <div style="text-align:center">
+    <div class="control-section" align="center">
 
-            @Html.EJS().Chart("container").ChartArea(area => area.Border(br=>br.Color("transparent"))).Series(series =>
+        @Html.EJS().Chart("container").Series(series =>
        {
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("xValue")
-           .Marker(mr=>mr.Visible(true).Width(10).Height(10)).YName("yValue")
-           .DataSource(ViewBag.dataSource).Name("Germany").Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line)
-           .Width(2).XName("xValue").YName("yValue1")
-           .Marker(mr => mr.Visible(true).Width(10).Height(10))
-           .DataSource(ViewBag.dataSource).Name("England").Add();
-
-
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").Opacity(1)
+               .Marker(mr=>mr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).IsFilled(true)).YName("Viet_Growth").Name("Vietnam")
+               .DataSource(ViewBag.ChartData).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").Opacity(1)
+               .Marker(mr=>mr.Visible(true).Width(6).Height(6).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).IsFilled(true)).YName("Can_Growth").Name("Canada")
+               .DataSource(ViewBag.ChartData).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").Opacity(1)
+               .Marker(mr=>mr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true)).YName("Mal_Growth").Name("Malaysia")
+               .DataSource(ViewBag.ChartData).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").Opacity(1)
+               .Marker(mr=>mr.Visible(true).Width(5).Height(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).IsFilled(true)).YName("Egy_Growth").Name("Egypt")
+               .DataSource(ViewBag.ChartData).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").Opacity(1)
+               .Marker(mr=>mr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Pentagon).IsFilled(true)).YName("Ind_Growth").Name("Indonesia")
+               .DataSource(ViewBag.ChartData).Add();
        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
-       .MajorGridLines(mg=>mg.Width(0))
-       .IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years)
-       .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("y")
-       ).PrimaryYAxis(py => py.LabelFormat("{value}%")
-       .RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
-       .MajorTickLines(mt=>mt.Width(0))
-       .MinorTickLines(mt => mt.Width(0))
-       .LineStyle(ls => ls.Width(0)).Interval(20).Minimum(0).Maximum(100)
-       ).Title("Inflation - Consumer Price").Tooltip(tt => tt.Enable(true)).Load("load").Render()
-
-
- 
+           .MajorGridLines(mg=>mg.Width(0))
+           .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+       ).PrimaryYAxis(py => py.Title("Million Metric Tons")
+           .MajorTickLines(mt=>mt.Width(0))
+           .LineStyle(ls => ls.Width(0)).Interval(4).Minimum(0).Maximum(20)
+       ).Title("Crude Steel Production Annual Growth").Tooltip(tt => tt.Enable(true)).Load("load").ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(leg => leg.EnableHighlight(true)).Render()
         </div>
-    </div>
+    
  @*custom code start*@
     <style>
         #control-container {
@@ -36,18 +35,19 @@
         }
     </style>
     <script>
+        
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            
         }
     </script>
  @*custom code end*@
 }
 @section ActionDescription{
     <p>
-        This sample visualizes the consumer price data with default line series in the chart. 
-        Data points are enhanced with marker and tooltip.
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/line-chart">ASP.NET MVC Line Chart</a> example represents the crude steel production annual growth data with default line series in the chart. Data points are enhanced with markers and tooltips.
     </p>
 }
  @*custom code start*@
@@ -57,21 +57,19 @@
  @*custom code end*@
 @section Description{
     <p>
-        In this example, you can see how to render and configure the line type charts. Line type charts are used to represent time-dependent data, showing trends in data at equal intervals. You can use <code>dashArray</code>, <code>width</code>, and 
-        <code>fill</code> properties to customize the line. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
+        ASP.NET MVC Line Chart represents and visualizes time-dependent data to show the trends at equal intervals. In this example, you can see how to render and configure a line chart. <code>Markers</code> are used to represent individual data and its values.
     </p>
     <p>
-        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices. 
     </p>
-    <br>
     <p>
-        More information on the line series can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/documentation/api/chart/series/#type">documentation section</a>.
+        More information about the line series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types#line-charts">documentation section</a>.
     </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Line Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Line in ASP.NET MVC Chart Control</h1>
+                    <h1 class='sb-sample-text'>Charts</h1>
                 }

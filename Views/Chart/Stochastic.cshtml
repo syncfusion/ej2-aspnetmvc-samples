@@ -1,5 +1,5 @@
 @using Syncfusion.EJ2;
-<script src="~/Scripts/financial-data.js"></script>
+<script src="~/Scripts/stock-chart-data.js"></script>
 @section ControlsSection{
     <div class="control-section">
         <div style="text-align:center">
@@ -9,21 +9,21 @@
                        rows.Height("60%").Add();
                    }).Axes(ax =>
                    {
-                       ax.Name("secondary").OpposedPosition(true)
+                       ax.Name("secondary").OpposedPosition(true).Title("Stochastic")
                        .StripLines(sl => { sl.Start("0").End("120").Color("black").Text("").Visible(true).Opacity(0.03).ZIndex(Syncfusion.EJ2.Charts.ZIndex.Behind).Add(); })
                        .Minimum(0).Maximum(120).LineStyle(ls=>ls.Width(0)).MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0))
             .Interval(60).RowIndex(0).Add();
                    }
            ).Series(series =>
            {
-               series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).XName("x").YName("y").High("high").Low("low").Open("open").Close("close").Volume("volume").BearFillColor("#2ecd71").BullFillColor("#e74c3d").DataSource("dataSource").Name("Apple Inc").Width(2).Add();
+               series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).XName("x").High("high").Low("low").Open("open").Close("close").Volume("volume").BearFillColor("#2ecd71").BullFillColor("#e74c3d").DataSource("ChartPoints").Name("Apple Inc").Width(2).Add();
            }).Indicators(id =>
            {
-               id.Fill("#6063ff").KPeriod(2).DPeriod(3).YAxisName("secondary").Period(3).LowerLine(lowerLine=>lowerLine.Color("#2ecd71")).UpperLine(upperLine=>upperLine.Color("#e74c3d")).PeriodLine(periodLine=>periodLine.Color("#f2ec2f")).Animation(animation=>animation.Enable(false)).Type(Syncfusion.EJ2.Charts.TechnicalIndicators.Stochastic).Field(Syncfusion.EJ2.Charts.FinancialDataFields.Close).SeriesName("Apple Inc").Add();
-           }).ZoomSettings(zn => zn.EnableSelectionZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true)
+               id.Fill("#6063ff").OverBought(70).OverSold(30).ShowZones(true).YAxisName("secondary").Period(3).LowerLine(lowerLine=>lowerLine.Color("#f2ec2f")).UpperLine(upperLine=>upperLine.Color("#ffb735")).PeriodLine(periodLine=>periodLine.Color("#f2ec2f")).Type(Syncfusion.EJ2.Charts.TechnicalIndicators.Stochastic).Field(Syncfusion.EJ2.Charts.FinancialDataFields.Close).SeriesName("Apple Inc").Add();
+           }).ZoomSettings(zn => zn.EnableSelectionZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true)
            ).PrimaryXAxis(px => px.ZoomFactor(0.2).ZoomPosition(0.6).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).MajorGridLines(mg=>mg.Width(0)).CrosshairTooltip(ct => ct.Enable(true))
-             ).ChartArea(area => area.Border(br=>br.Color("transparent"))).PrimaryYAxis(py => py.RowIndex(1).OpposedPosition(true).Title("Price").LineStyle(ls=>ls.Width(0)).Minimum(80).Maximum(170).Interval(30).LabelFormat("{value}M").PlotOffset(25)
-             ).Title("AAPL 2012-2017").Tooltip(tl => tl.Enable(true).Shared(true)).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
+             ).ChartArea(area => area.Border(br => br.Width(0))).PrimaryYAxis(py => py.RowIndex(1).OpposedPosition(true).Title("Price (in Million)").LineStyle(ls=>ls.Width(0)).Minimum(50).Maximum(170).Interval(30).LabelFormat("${value}M").PlotOffset(25).MajorTickLines(mt => mt.Width(0))
+             ).Title("AAPL Stock Price 2012-2017").Tooltip(tl => tl.Enable(true).Shared(true)).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
         </div>
     </div>
 
@@ -34,12 +34,11 @@
         }
     </style>
     <script>
-        var dataSource = window.chartData;
+        var ChartPoints = hiloData;
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
-
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>
        @*custom code end*@
@@ -51,20 +50,20 @@
    @*custom code end*@
 @section ActionDescription{
     <p>
-    This sample illustrates a stock chart with candle series and an Stochastic indicator. Trackball shows the information about the stock and indicator value of a day.
-</p>
+        This sample illustrates a chart with candle series and a stochastic oscillator . The trackball shows information about each day’s stock and indicator values.
+    </p>
 }
 @section Description{
     <p>
-    In this example, you can see how to render and configure the Stochastic Indicator.
-</p>
-<p>
-    Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-</p>
-<p>
-    More information on the Stochastic Indicator can be found in this
-    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-</p>
+        In this example, you can see how to render and configure a stochastic oscillator that is a momentum indicator. It shows the location of the close relative to the high-low range over a set number of periods.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the stochastic indicator can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/technical-indicators#stochastic">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Stochastic Example - Syncfusion Demos </title> 

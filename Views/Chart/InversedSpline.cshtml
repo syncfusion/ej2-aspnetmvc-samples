@@ -1,44 +1,43 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
-    <div class="control-section">
-        <div style="text-align:center">
-@(Html.EJS().Chart("container")
-    .Series(sr =>
-    {
-        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
-            .Name("London")
-            .XName("xValue")
-            .YName("yValue")
-            .Width(2)
-            .Marker(mr => mr.Visible(true).Width(10).Height(10))
-            .DataSource(ViewBag.dataSource).Add();
-        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
-           .Name("France")
-           .XName("xValue")
-           .YName("yValue1")
-           .Width(2)
-           .Marker(mr => mr.Visible(true).Width(10).Height(10))
-           .DataSource(ViewBag.dataSource).Add();
-    })
-      .PrimaryXAxis(xaxis =>
-         xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-             .Interval(1)
-             .LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
-             .LineStyle(ls=>ls.Width(0))
-             .MinorTickLines(mt=>mt.Width(0))
-
-      )
-      .PrimaryYAxis(yaxis =>
-          yaxis.MajorGridLines(mg=>mg.Width(0))
-                .LabelFormat("{value}˚C")
-      )
-      .Title("Climate Graph - 2012")
-      .Tooltip(tp => tp.Enable(true))
-      .IsTransposed(true).ChartArea(area => area.Border(br=>br.Color("transparent")))
-      .Load("load").Render()
-)
+    <div class="control-section" align="center">
+        
+            @(Html.EJS().Chart("container")
+                .Series(sr =>
+                {
+                    sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+                        .XName("Month")
+                       .YName("FR_Temperature")
+                       .Width(2)
+                       .Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true))
+                       .DataSource(ViewBag.ChartPoints).Add();
+                })
+                  .PrimaryXAxis(xaxis =>
+                     xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Double)
+                         .Interval(4)
+                         .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+                         .MinorTickLines(mt=>mt.Width(0))
+                         .Title("Years")
+                         .Minimum(2000)
+                         .Maximum(2016)
+            
+                  )
+                  .PrimaryYAxis(yaxis =>
+                      yaxis.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+                            .LabelFormat("{value}M")
+                            .Title("Sales (In Millions)")
+                            .Minimum(0)
+                            .Maximum(25)
+                            .Interval(5)
+                  )
+                
+                  .Title("Music Album Sales")
+                  .Tooltip(tp => tp.Enable(true).Shared(true).Format("${point.x}: <b>${point.y}</b>").Header("<b>Album Sale</b>"))
+                  .IsTransposed(true).ChartArea(area => area.Border(br => br.Width(1)))
+                  .Load("load").Render()
+            )
         </div>
-    </div>
+    
  @*custom code start*@
     <style>
         #control-container {
@@ -49,7 +48,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
  @*custom code end*@
@@ -59,27 +58,24 @@
                 }
 @section ActionDescription{
     <p>
-        This sample illustrates a spline series by inversing X and Y Axis. 
-        Data points are enhanced with marker and tooltip.
+        This sample shows the music album sales with the spline series by inverting X and Y axes. Data points are enhanced by a marker and tooltip.
     </p>
 }
 @section Description{
-     <p>
-        In this example, you can see how to render and configure the spline type charts with inverted manner. Spline chart connects each point in series through a curved line.
-        You can use <code>dashArray</code>, <code>width</code>, and <code>fill</code> properties to customize the spline. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
+    <p>
+        In this example, you can see how to render and configure the spline type charts. A Spline chart uses a curved line to connect points in a data series. <code>Markers</code> are used to represent individual data and its values.
     </p>
     <p>
-        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
     </p>
-      <br>
-        <p>
-            More information on the spline series can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-        </p>
+    <p>
+        More information on the spline series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types#line-charts">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Inversed Spline Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Inversed Spline in ASP.NET MVC Chart Control</h1>
+                    <h1 class='sb-sample-text'>Charts</h1>
                 }

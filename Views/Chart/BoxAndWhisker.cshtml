@@ -1,74 +1,42 @@
 @using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Charts
 @section ControlsSection{
-   <div>
-    <div class="col-lg-9 control-section">
-        <div>
-    @(Html.EJS().Chart("container").Series(
+    <div class="col-lg-12 control-section" align="center">
+        @(Html.EJS().Chart("container").Series(
            series =>
            {
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.BoxAndWhisker).
                Name("Department").
-               Marker(mr=>mr.Visible(true).Width(10).Height(10)).
-               DataSource(ViewBag.dataSource).
-               XName("xValue").
-               YName("yValue").
+               Marker(mr=>mr.Visible(true).Width(7).Height(7)).
+                   XName("Department").
+               YName("Age").DataSource(ViewBag.ChartPoints).
                Add();
            }).PrimaryXAxis(
            xAxis =>
                xAxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-                    .LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Trim)
-                    .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+                    .LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45)
                     .MajorGridLines(mg=>mg.Width(0))
+                    .MajorTickLines(mg => mg.Width(0))
            ).PrimaryYAxis(
            yAxis =>
                yAxis.Minimum(10).
                Maximum(60).
                Interval(10).
                Title("Age").
-               MajorGridLines(mg => mg.Width(0)).
-               MajorTickLines(mg => mg.Width(0))
-           ).Title("Employee Age Group in Various Department").LegendSettings(
+               MajorGridLines(mg => mg.Width(1)).
+               MajorTickLines(mg => mg.Width(0)).LineStyle(ls=>ls.Width(0))
+           ).Title("Employees Age Group in Various Departments").LegendSettings(
             legend => {
                 legend.Visible(false);
             }).Tooltip(
            tooltip =>
            {
-               tooltip.Enable(true);
-           }).ChartArea(area => area.Border(br=>br.Color("transparent"))).Load("load").PointRender("labelRender").Render()
-       )       
-        </div>
+               tooltip.Enable(true).Header("");
+           }).ChartArea(area => area.Border(br => br.Width(0))).Load("load").PointRender("labelRender").Render()
+       )
     </div>
-    <div class="col-lg-3 property-section">
-        <table id="property" title="Properties" style="width: 100%">
-            <tbody>
-                <tr style="height: 50px">
-                    <td style="width: 50%">
-                        <div>
-                            Mode:
-                        </div>
-                    </td>
-                    <td style="width: 50%;">
-                        <div>
-                            @Html.EJS().DropDownList("dropdown").Index(0).DataSource(ViewBag.data).Value("Normal").Change("valueChange").Render()                           
-                        </div>
-                    </td>
-                </tr>
-                <tr style="height: 50px">
-                    <td style="width: 50%">
-                        <div>Mean: </div>
-                    </td>
-                    <td style="width: 50%;">
-                        <div>
-                            <input type="checkbox" id="mean" checked="">
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
 
-@*custom code start*@
+    @*custom code start*@
 <style>
     #control-container {
         padding: 0px !important;
@@ -111,6 +79,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
         @*custom code end*@
         function valueChange() {
@@ -120,13 +89,6 @@
                 chart.series[0].animation.enable = false;
                 chart.refresh();
             }
-        document.getElementById('mean').onchange = function () {
-            var element = document.getElementById("mean");
-            var chart = document.getElementById("container").ej2_instances[0];
-            chart.series[0].showMean = element.checked;
-            chart.series[0].animation.enable = false;
-            chart.refresh();
-        };
 
     </script>
 }
@@ -137,20 +99,19 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample visualizes the employee’s age group in various departments of a country with box and whisker type series in the chart. Mode of box and whisker series can be changed by <code>Mode</code> in property panel. To display the <code>mean</code> value in a series, enable the Mean in the property panel.
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/box-and-whisker-chart">ASP.NET MVC Box and Whisker Chart</a> example visualizes the employee’s age group in various departments of a company with box and whisker chart.
     </p>
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure the box and whisker type charts. This is similar to line type series, but
-        the area get closed and filled with series color. You can use the <code>border</code> and <code>fill</code> properties
-        to customize the area. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its
-        value. Legend is enabled in this example with series type shape.
+        In this example, you can see how to render and configure a box and whisker chart or box plot. This chart is used to visualize a group of numerical data through their data quartiles. Box plots may also have lines extending vertically from the boxes (whiskers) indicating variability outside the upper and lower quartiles. <code>Marker</code> and <code>DataLabel</code> are used to represent individual data and its values.
     </p>
-    <br>
     <p>
-        More information on the area series can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the box and whisker series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/other-types">documentation section</a>.
     </p>
 }
 @section Title{

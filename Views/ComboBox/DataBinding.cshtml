@@ -16,7 +16,7 @@
             <div class='content'>
                 <h4>Remote Data</h4>
 
-                @Html.EJS().ComboBox("customers").Autofill(true).Placeholder("Select a name").PopupHeight("200px").DataSource(obj => obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").Adaptor(
+                @Html.EJS().ComboBox("customers").Autofill(true).Placeholder("Select a name").PopupHeight("200px").DataSource(obj => obj.Url("https://ej2services.syncfusion.com/aspnet/development/api/Employees").Adaptor(
               "WebApiAdaptor").CrossDomain(true)).Fields(new ComboBoxFieldSettings { Text = "FirstName", Value = "EmployeeID" }).SortOrder((string)ViewBag.sort).Query((string)ViewBag.query).Render()
             </div>
         </div>

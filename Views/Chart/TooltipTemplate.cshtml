@@ -6,23 +6,21 @@
              series =>
              {
                  series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).
-                 Animation(an => an.Enable(true)).
-                 Border(br => br.Width(3)).
                      Fill("#333333").
-                     XName("xValue").
-                     YName("yValue").
-                     Marker(mr=>mr.Visible(true).Border(br => br.Color("#333333").Width(2)).Fill("#C1272D").Width(10).Height(10)).
-                     DataSource(ViewBag.dataSource).
+                     XName("Year").
+                     YName("Productivity").
+                     Marker(mr=>mr.Visible(true).Border(br => br.Color("#333333").Width(2)).Fill("#C1272D").Width(7).Height(7)).
+                     DataSource(ViewBag.ConsumerDetails).
                      Width(2).Add();
              }).PrimaryXAxis(
              xAxis =>
              {
                  xAxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).
                  LabelStyle(ls => ls.Color("white")).
-                 LineStyle(ls =>ls.Color("#EFEFEF")).
+                 LineStyle(ls =>ls.Color("#EFEFEF").Width(3)).
                  EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).
                  MajorTickLines(mt => mt.Width(0)).
-                 MajorGridLines(mg => mg.Width(0));
+                 MajorGridLines(mg => mg.Width(0)).LabelFormat("y").IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years);
 
              }).PrimaryYAxis(
              yAxis =>
@@ -32,8 +30,8 @@
                      LabelStyle(ls => ls.Color("white")).
                      LineStyle(ls => ls.Width(0)).
                      MajorTickLines(mt=>mt.Width(0)).
-                     MajorGridLines(mt=>mt.Color("#EFEFEF"));
-             }).Tooltip(tp => tp.Enable(true).Template("#Tooltip")).ChartArea(area => area.Border(br=>br.Width(0))).Title("USA Wheat production").TitleStyle(ts => ts.Color("#333333")).Load("load").Render()
+                     MajorGridLines(mt=>mt.Color("#EFEFEF").Width(2));
+             }).Tooltip(tp => tp.Enable(true).Template("#Tooltip")).ChartArea(area => area.Border(br=>br.Width(0))).Title("USA Wheat Production").Load("load").Render()
 
         </div>
     </div>
@@ -55,7 +53,7 @@
                     <td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 14px; color: #E7C554; font-weight: bold; padding-left: 5px">${x}</td>
                 </tr>
                 <tr>
-                    <td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 18px; color: #FFFFFF; font-weight: bold; padding-left: 5px">${y}</td>
+                    <td style="height: 25px; width: 50px; background-color: #C1272D; font-size: 18px; color: #FFFFFF; font-weight: bold; padding-left: 5px">${y}B</td>
                 </tr>
             </table>
         </div>
@@ -67,8 +65,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
-
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
  @*custom code end*@
     </script>
@@ -80,17 +77,16 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates tooltip template and background image support in the chart. In this sample, images are placed as templates and background.
+        This sample visualizes USA wheat production data with the default line series in the chart. Data points are enhanced with a background image and a tooltip template.
     </p>
 }
 @section Description{
     <p>
-        Tooltip template values are displayed in the sample with customization. Background image is rendered to show the background of chart related to wheat.
+        In this example, you can see how to render and configure a background image and the tooltip template for the chart. You can use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.Chart.html#Syncfusion_EJ2_Charts_Chart_BackgroundImage">BackgroundImage</a> property to configure the background for the chart and the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartTooltipSettings.html#Syncfusion_EJ2_Charts_ChartTooltipSettings_Template">Template</a> property in <code>ChartTooltipSettings</code> to customize the tooltip UI.
     </p>
-    <br>
     <p>
-        More information on the Tooltip template and background image can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+        More information about the tooltip template can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/tool-tip#tooltip-template">documentation section</a>.
     </p>
 }
 @section Title{

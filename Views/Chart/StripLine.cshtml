@@ -1,58 +1,31 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
-    <div>
-        <div class="col-md-8 control-section">
-            <div>
-                @Html.EJS().Chart("container").Series(series =>
+    <div class="control-section" align="center">
+        @Html.EJS().Chart("container").Series(series =>
 {
-    series.Name("Weather").XName("x").YName("y")
-    .Marker(mr => mr.Visible(true).Width(10).Height(10).Fill("#666666").Border(br => br.Color("#ffffff").Width(2))).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line)
-    .DataSource(ViewBag.dataSource).Fill("#ffffff").Width(2).Add();
+    series.Name("Product A").XName("Day").YName("Temperature").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+    .Marker(mr => mr.Visible(true).Width(7).Height(7))
+    .DataSource(ViewBag.WeatherReportsA).Width(2).Add();
+    series.Name("Product B").XName("Day").YName("Temperature").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+        .Marker(mr => mr.Visible(true).Width(7).Height(7))
+        .DataSource(ViewBag.WeatherReportsB).Width(2).Add();
+    series.Name("Product C").XName("Day").YName("Temperature").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+        .Marker(mr => mr.Visible(true).Width(7).Height(7))
+        .DataSource(ViewBag.WeatherReportsC).Width(2).Add();
 }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-.StripLines(sl =>
-{
-    sl.Start("-1").End("1.5").Text("Winter").Color("url(#winter)").Visible(true).Rotation(-90).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("18px").Color("#ffffff").FontWeight("600")).Add();
-    sl.Start("1.5").End("3.5").Text("Summer").Color("url(#summer)").Visible(true).Rotation(-90).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("18px").Color("#ffffff").FontWeight("600")).Add();
-    sl.Start("3.5").End("4.5").Text("Spring").Color("url(#spring)").Visible(true).Rotation(-90).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("18px").Color("#ffffff").FontWeight("600")).Add();
-    sl.Start("4.5").End("5.5").Text("Autumn").Color("url(#autumn)").Visible(true).Rotation(-90).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("18px").Color("#ffffff").FontWeight("600")).Add();
-    sl.Start("5.5").End("7").Text("Winter").Color("url(#winter)").Visible(true).Rotation(-90).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("18px").Color("#ffffff").FontWeight("600")).Add();
-    sl.StartFromAxis(true).Size(2).IsSegmented(true).SegmentStart("22.5").SegmentEnd("27.5").Color("#fc902a").Visible(false).Text("Average Temperature").Rotation(360).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("16px").Color("#ffffff").FontWeight("600")).Add();
-    sl.Start("3.5").Size(3).IsSegmented(true).SegmentStart("22.5").SegmentEnd("27.5").Color("#fc902a").Visible(false).Text("Average Temperature").Rotation(360).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("16px").Color("#ffffff").FontWeight("600")).Add();
-    sl.Start("1.5").Size(2).IsSegmented(true).SegmentStart("32.5").SegmentEnd("37.5").Color("#ff512f").Visible(false).Text("High Temperature").Rotation(360).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("16px").Color("#ffffff").FontWeight("600")).Add();
-})
-.MajorGridLines(mg => mg.Width(0))
-    ).PrimaryYAxis(py => py.Minimum(10).Maximum(40).Interval(5)
-    .LabelFormat("{value}°C")
+    .MajorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0))
+    ).PrimaryYAxis(py => py.Minimum(80).Maximum(100).Interval(5)
+    .LabelFormat("{value}%").MajorTickLines(mt => mt.Width(0))
     .StripLines(sl =>
     {
-        sl.Start("30").End("40").Text("High Temperature").Color("#ff512f").Visible(false).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("18px").Color("#ffffff").FontWeight("600")).Add();
-        sl.Start("20").End("30").Text("Average Temperature").Color("#fc902a").Visible(false).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("18px").Color("#ffffff").FontWeight("600")).Add();
-        sl.Start("10").End("20").Text("Low Temperature").Color("#f9d423").Visible(false).Border(br => br.Width(0.2)).TextStyle(tx => tx.Size("18px").Color("#ffffff").FontWeight("600")).Add();
+        sl.Start("95").End("100").Text("Good").Color("#ff512f").Visible(true).Border(br => br.Width(0)).TextStyle(tx => tx.Size("17px").Color("#ffffff").FontWeight("500")).HorizontalAlignment(Syncfusion.EJ2.Charts.Anchor.Middle).Add();
+        sl.Start("85").End("95").Text("Ok").Color("#fc902a").Visible(true).Border(br => br.Width(0)).TextStyle(tx => tx.Size("17px").Color("#ffffff").FontWeight("500")).HorizontalAlignment(Syncfusion.EJ2.Charts.Anchor.Middle).Add();
+        sl.Start("80").End("85").Text("Average").Color("#f9d423").Visible(true).Border(br => br.Width(0)).TextStyle(tx => tx.Size("17px").Color("#ffffff").FontWeight("500")).HorizontalAlignment(Syncfusion.EJ2.Charts.Anchor.Middle).Add();
     })
     .LineStyle(ls => ls.Color("#808080")).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
-    ).LegendSettings(lg => lg.Visible(false)).Tooltip(tt => tt.Enable(true)
-    ).Title("Weather Report").Load("load").Render()
-
-            </div>
-        </div>
-        <div class="col-md-4 property-section">
-            <table id="property" title="Properties" style="width: 100%">
-                <tbody>
-                    <tr style="height: 50px">
-                        <td style="width: 60%">
-                            <div>StripLine Types:</div>
-                        </td>
-                        <td style="width: 40%;">
-                            <div>
-                                @Html.EJS().DropDownList("selmode").Index(0).DataSource(ViewBag.data).Value("Vertical").Change("valueChange").Render()
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    ).LegendSettings(lg => lg.Visible(true).EnableHighlight(true)).Tooltip(tt => tt.Enable(true).Header("").Format("<b>${point.x}</b> <br> Ratings : <b>${point.y}</b>")
+    ).Title("Customer Satisfaction Rating").ChartArea(area => area.Border(br => br.Width(0))).Load("load").Render()
     </div>
-
     <style>
         #control-container {
             padding: 0px !important;
@@ -61,118 +34,16 @@
         #control-container {
             padding: 0px !important;
         }
-
-        #winter stop {
-            stop-color: #4ca1af;
-        }
-
-            #winter stop[offset="0"] {
-                stop-color: #c4e0e5;
-            }
-
-            #winter stop[offset="1"] {
-                stop-color: #4ca1af;
-            }
-
-        #summer stop {
-            stop-color: #ffa751;
-        }
-
-            #summer stop[offset="0"] {
-                stop-color: #ffe259;
-            }
-
-            #summer stop[offset="1"] {
-                stop-color: #ffa751;
-            }
-
-        #spring stop {
-            stop-color: #1d976c;
-        }
-
-            #spring stop[offset="0"] {
-                stop-color: #93f9b9;
-            }
-
-            #spring stop[offset="1"] {
-                stop-color: #1d976c;
-            }
-
-        #autumn stop {
-            stop-color: #603813;
-        }
-
-            #autumn stop[offset="0"] {
-                stop-color: #b29f94;
-            }
-
-            #autumn stop[offset="1"] {
-                stop-color: #603813;
-            }
     </style>
-    <svg style="height: 0">
-        <defs>
-            <linearGradient id="winter" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0"></stop>
-                <stop offset="1"></stop>
-            </linearGradient>
-            <linearGradient id="summer" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0"></stop>
-                <stop offset="1"></stop>
-            </linearGradient>
-            <linearGradient id="spring" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0"></stop>
-                <stop offset="1"></stop>
-            </linearGradient>
-            <linearGradient id="autumn" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0"></stop>
-                <stop offset="1"></stop>
-            </linearGradient>
-        </defs>
-    </svg>
+    
     <script>
        @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
            @*custom code end*@
-        var valueChange = function () {
-            var chart = document.getElementById('container').ej2_instances[0];
-            var mode = document.getElementById("selmode").ej2_instances[0];
-            chart.series[0].fill = 'white';
-            chart.series[0].marker.fill = 'black';
-            chart.series[0].marker.border.color = 'white';
-            for (var i = 0; i < 3; i++) {
-                chart.primaryYAxis.stripLines[i].visible = false;
-            }
-            if (mode.value === 'Vertical') {
-                for (var i = 0; i <= 7; i++) {
-                    chart.primaryXAxis.stripLines[i].visible = !chart.primaryXAxis.stripLines[i].isSegmented;
-                }
-            }
-            else if (mode.value === 'Horizontal') {
-                for (var i = 0; i < 3; i++) {
-                    chart.primaryYAxis.stripLines[i].visible = true;
-                }
-                for (var i = 0; i <= 7; i++) {
-                    chart.primaryXAxis.stripLines[i].visible = false;
-                }
-            } else {
-                for (var i = 0; i <= 7; i++) {
-                    chart.primaryXAxis.stripLines[i].visible = chart.primaryXAxis.stripLines[i].isSegmented;
-                    if (chart.primaryXAxis.stripLines[i].isSegmented) {
-                        chart.primaryXAxis.stripLines[i].start = +chart.primaryXAxis.stripLines[i].start;
-                    }
-                }
-                chart.series[0].fill = 'black';
-                chart.series[0].marker.fill = 'white';
-                chart.series[0].marker.border.color = 'black';
-            }
-            chart.refresh();
-        };
-
-
     </script>
 }
    @*custom code start*@
@@ -182,29 +53,19 @@
    @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample highlights certain range in an axis by using stripline feature.
+        This sample highlights a certain temperature range recorded over a year using the strip line feature.
     </p>
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure the stripline charts. You can use stripline by enabling the
-        <code>visible</code> property. Striplines are rendered in the specified
-        <code>start</code> and
-        <code>end</code> range and you can add more than one stripline for an axis.
+        In this example, you can see how to render and configure a strip line for the chart. Use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartStripLine.html#Syncfusion_EJ2_Charts_ChartStripLine_Start">Start</a> and <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartStripLine.html#Syncfusion_EJ2_Charts_ChartStripLine_End">End</a> properties in the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartStripLine.html">ChartStripline</a> option to add a strip line to an axis. You can add more than one strip line to the axis.
     </p>
     <p>
-        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
-    <br>
-    <p style="font-weight: 500">Injecting Module</p>
-    <p>
-        Chart component features are segregated into individual feature-wise modules. To use strip line, we need to inject
-        <code>StripLine</code> module using
-        <code>Chart.Inject(StripLine)</code> method.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap one on touch-enabled devices.
     </p>
     <p>
-        More information on the strip line can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+        More information about the stripline can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/strip-line">documentation section</a>.
     </p>
 }
 @section Title{

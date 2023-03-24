@@ -13,8 +13,7 @@
                     .Maximum(100)
                     .Width("70%")
                     .Height("30")
-                    .SegmentCount(50)
-                    .GapWidth(5)
+                        .GapWidth(5)
                     .TrackThickness(15)
                     .ProgressThickness(15)
                     .CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Square)
@@ -97,6 +96,9 @@
                 selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
             if (selectedTheme === 'highcontrast') {
                 args.progressBar.trackColor = '#969696';
+            }
+            if (args.progressBar.type === "Linear"){
+                args.progressBar.segmentCount = ej.base.Browser.isDevice ? 25 : 50;
             }
         };
         var progressLoad2 = function (args) {

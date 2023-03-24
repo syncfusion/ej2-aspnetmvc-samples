@@ -19,25 +19,23 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: Selection
         public ActionResult Selection()
         {
-            List<SelectionChartData> chartData = new List<SelectionChartData>
+            List<SelectionChartData> ChartPoints = new List<SelectionChartData>
             {
-                new SelectionChartData { xValue = "CHN", yValue = 17, yValue1 = 54, yValue2 = 9  },
-                new SelectionChartData { xValue = "USA", yValue = 19, yValue1 = 67, yValue2 = 14 },
-                new SelectionChartData { xValue = "IDN", yValue = 29, yValue1 = 65, yValue2 = 6  },
-                new SelectionChartData { xValue = "JAP", yValue = 13, yValue1 = 61, yValue2 = 26 },
-                new SelectionChartData { xValue = "BRZ", yValue = 24, yValue1 = 68, yValue2 = 8  }
+                new SelectionChartData { Country = "China", Children = 17, Adult = 54, SeniorAdult = 9  },
+                new SelectionChartData { Country = "USA", Children = 19, Adult = 67, SeniorAdult = 14 },
+                new SelectionChartData { Country = "India", Children = 29, Adult = 65, SeniorAdult = 6  },
+                new SelectionChartData { Country = "Japan", Children = 13, Adult = 61, SeniorAdult = 26 },
+                new SelectionChartData { Country = "Brazil", Children = 24, Adult = 68, SeniorAdult = 8  }
             };
-            ViewBag.dataSource = chartData;
-            ViewBag.data = new string[] { "Point", "Series", "Cluster"};
-            ViewBag.datapattern = new string[] { "None", "Turquoise", "Chessboard", "Triangle", "Box", "Bubble" };
+            ViewBag.ChartPoints = ChartPoints;
             return View();
         }
         public class SelectionChartData
         {
-            public string xValue;
-            public double yValue;
-            public double yValue1;
-            public double yValue2;
+            public string Country;
+            public double Children;
+            public double Adult;
+            public double SeniorAdult;
         }
     }
 }

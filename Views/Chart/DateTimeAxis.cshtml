@@ -7,24 +7,23 @@
     {
         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).
         Name("Warmest").
-            XName("xValue").
-            YName("yValue1").
-            Marker(mr=>mr.Visible(true).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Pentagon).DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top))).
-            DataSource(ViewBag.dataSource).
+            XName("Period").
+            YName("MaxTemp").Opacity(1).
+            Marker(mr=>mr.Visible(true).Width(8).Height(8).IsFilled(true).Shape(Syncfusion.EJ2.Charts.ChartShape.Pentagon).DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top))).
+            DataSource(ViewBag.ChartPoints).
             Width(2).Add();
 
         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).
         Name("Coldest").
-            XName("xValue").
-            YName("yValue2").
-            Marker(mr => mr.Visible(true).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Bottom))).
-            DataSource(ViewBag.dataSource).
+            XName("Period").
+            YName("MinTemp").Opacity(1).
+            Marker(mr => mr.Visible(true).Width(8).Height(8).IsFilled(true).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top))).
+            DataSource(ViewBag.ChartPoints).
             Width(2).Add();
     }).PrimaryXAxis(
     xAxis =>
     {
-        xAxis.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).
-         LabelFormat("MMM").
+        xAxis.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).LabelFormat("MMM d").
         EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).
         MajorGridLines(mg=>mg.Width(0));
 
@@ -36,12 +35,8 @@
             LineStyle(ls=>ls.Width(0)).
             MajorTickLines(mt=>mt.Width(0)).
             MinorTickLines(mt=>mt.Width(0));
-    }).ChartArea(area => area.Border(br=>br.Color("transparent"))).Title("Alaska Weather Statistics - 2016").Load("load").Render()           
+    }).ChartArea(area => area.Border(br => br.Width(0))).Title("Alaska Weather Statistics - 2016").LegendSettings(lg => lg.Visible(true)).Load("load").Render()           
     
-    </div>
-    <div style="float: right; margin-right: 10px;">
-        Source:
-        <a href="http://www.yr.no/place/USA/Alaska/Hatcher_Pass/statistics.html" target="_blank">www.yr.no</a>
     </div>
 </div>
 
@@ -53,21 +48,11 @@
 </style>
  @*custom code end*@
     <script>
-        var dataSource = [
-            { x: new Date(2016, 3, 1), y1: 6.3, y2: -5.3 },
-            { x: new Date(2016, 4, 1), y1: 13.3, y2 : 1.0  }, 
-            { x: new Date(2016, 5, 1), y1: 18.0, y2 : 6.9  },
-            { x: new Date(2016, 6, 1), y1: 19.8, y2 : 9.4  }, 
-            { x: new Date(2016, 7, 1), y1: 18.1, y2 : 7.6  },
-            { x: new Date(2016, 8, 1), y1: 13.1, y2 : 2.6  }, 
-            { x: new Date(2016, 9, 1), y1: 4.1, y2: -4.9 }
-       ]
  @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
-
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
  @*custom code end*@
     </script>
@@ -79,19 +64,17 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample demonstrates the rendering of date time axis in the chart with weather statistics analysis of Alaska for a year.
+        This sample shows the date-time axis in a chart with a weather report for the year 2016.
     </p>
 }
 @section Description{
     <p>
-        DateTime data is used in this sample and data values are represented using dataLabel. Date time axis uses date time scale and displays the date time values as axis labels. To render dateTime axis, set <code>valueType</code> in axis to <code>DateTime</code>.
-        Format for the axis label will be calculated based on intervalType of axis or we can set the format through labelFormat property in axis.
+        The date-time axis uses a date-time scale and displays date-time values as the axis labels. To use a date-time axis, set the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartAxis.html#Syncfusion_EJ2_Charts_ChartAxis_ValueType">ValueType</a> in axis to <b>DateTime</b>.
     </p>
-      <br>
-        <p>
-            More information on the DateTime axis can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
-        </p> 
+    <p>
+        More information about the DateTime axis can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/date-time-axis">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart DateTime Axis Example - Syncfusion Demos </title> 

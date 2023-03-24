@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Syncfusion.DocIO.DLS;
 using Syncfusion.EJ2.Charts;
 
 namespace EJ2MVCSampleBrowser.Controllers.Chart
@@ -19,26 +20,27 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: Waterfall
         public ActionResult Waterfall()
         {
-            List<WaterfallChartData> chartData = new List<WaterfallChartData>
+            List<WaterfallChartData> ChartPoints = new List<WaterfallChartData>
             {
-                new WaterfallChartData { xValue = "Income", yValue = 4711 },
-                new WaterfallChartData { xValue = "Sales", yValue = -1015 },
-                new WaterfallChartData { xValue = "Development", yValue = -688 },
-                new WaterfallChartData { xValue = "Revenue", yValue = 1030 },
-                new WaterfallChartData { xValue = "Balance" },
-                new WaterfallChartData { xValue = "Expense", yValue = -361 },
-                new WaterfallChartData { xValue = "Tax", yValue = -695 },
-                new WaterfallChartData { xValue = "Net Profit" },
+                new WaterfallChartData { X = "Income", Y = 971  },
+                new WaterfallChartData { X = "Sales", Y = -101 },
+                new WaterfallChartData { X = "Development", Y = -268 },
+                new WaterfallChartData { X = "Revenue", Y = 403 },
+                new WaterfallChartData { X = "Balance" },
+                new WaterfallChartData { X = "Expense", Y = -136 },
+                new WaterfallChartData { X = "Tax", Y = -365 },
+                new WaterfallChartData { X = "Net Profit" },
             };
-            ViewBag.dataSource = chartData;
+            ViewBag.ChartPoints = ChartPoints;
             ViewBag.intermediateSumIndexes = new int[] {4};
             ViewBag.sumIndexes = new int[] {7};
+            ViewBag.connector = new {width = 2, length = 1, color = "#5F6A6A"};
             return View();
         }
         public class WaterfallChartData
         {
-            public string xValue;
-            public double yValue;
+            public string X;
+            public double Y;
         }
 
     }

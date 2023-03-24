@@ -94,7 +94,7 @@ var newYear = new Date().getFullYear();
 var copyRight = document.querySelector('.sb-footer-copyright');
 copyRight.innerHTML = "Copyright © 2001 - " + newYear + " Syncfusion Inc.";
 if(ej.base.registerLicense != undefined){
-	ej.base.registerLicense('{SyncfusionJSLicensekey}');
+	ej.base.registerLicense('');
 }
 isMobile = window.matchMedia('(max-width:550px)').matches;
 if (ej.base.Browser.isDevice || isMobile) {

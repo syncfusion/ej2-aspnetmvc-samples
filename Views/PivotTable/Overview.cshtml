@@ -63,7 +63,7 @@
         => { style.BackgroundColor("#0C860C").Color("white").FontFamily("Tahoma").FontSize("12px"); }).ApplyGrandTotals(false).Add();
         })).GridSettings(gridSettings =>
         gridSettings.ColumnWidth(120).RowHeight(36).AllowSelection(true).SelectionSettings(selectionSettings =>
-        selectionSettings.CellSelectionMode(PivotCellSelectionMode.Box).Type("Single").Mode(SelectionMode.Both))).DisplayOption(new
+        selectionSettings.CellSelectionMode(PivotCellSelectionMode.Box).Type("Single").Mode(SelectionMode.Both)).ExcelQueryCellInfo("exportQueryCellInfo")).DisplayOption(new 
         PivotViewDisplayOption
         {
         View = View.Both
@@ -268,6 +268,11 @@
         args.customToolbar.splice(9, 0, {
             type: 'Separator'
         });
+    }
+    function exportQueryCellInfo(args) {
+        if (args.cell.axis === 'value' && args.cell.value === undefined) {
+            args.style.numberFormat = undefined;
+        }
     }
 </script>
 }

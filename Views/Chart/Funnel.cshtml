@@ -1,119 +1,42 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
-   <div>
-    <div class="col-lg-9 control-section">
-        <div class="content-wrapper">
-            <div id="container">
-                @(Html.EJS().AccumulationChart("container")
-                    .Series(sr =>
-                    {
-                        sr.Type(Syncfusion.EJ2.Charts.AccumulationType.Funnel)
-                               .XName("xValue")
-                               .YName("yValue")
-                               .DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600")))
-                               .Width("60%")
-                               .Height("80%")
-                               .NeckWidth("15%")
-                               .GapRatio(0.03)
-                               .NeckHeight("18%")
-                               .Explode(true)
-                               .DataSource(ViewBag.dataSource).Add();
-                    })
-                    .EnableSmartLabels(true)
-                     .Tooltip(tp => tp.Enable(true).Format("${point.x} <br/>Composition: <b>${point.y}%</b>"))
-                     .LegendSettings(leg => leg.Visible(false))
-                     .Load("load").Resized("resize")
-                                                 .Title("Top populated countries in 2017").Render()
-                )
-            </div>
+    <div class="control-section" align="center">
+    <div class="control-section">
+        @(Html.EJS().AccumulationChart("container")
+            .Series(sr =>
+            {
+                sr.Type(Syncfusion.EJ2.Charts.AccumulationType.Funnel)
+                    .XName("InterviewProcess")
+                    .YName("Candidates")
+                    .DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600")).TextWrap(Syncfusion.EJ2.Charts.TextWrap.Normal).ConnectorStyle(cs => cs.Length("20px")))
+                    .Height("80%")
+                    .GapRatio(0.03)
+                    .NeckHeight("18%")
+                    .Explode(false)
+                    .DataSource(ViewBag.ChartPoints)
+                    .Add();
+            })
+            .EnableAnimation(false)
+            .Tooltip(tp => tp.Enable(true))
+            .LegendSettings(leg => leg.Visible(false))
+            .Load("load")
+            .Title("Recruitment Process").Render()
+            )
+    </div>
         </div>
-    </div>
-    <div class="col-lg-3 property-section">
-        <table id="property" title="Properties" style="width: 100%">
-            <tbody>
-                <tr style="height: 50px">
-                    <td style="width: 30%">
-                        <div>
-                            Neck Width
-                        </div>
-                    </td>
-                    <td style="width: 40%;">
-                        <div data-role="rangeslider">
-                            <input type="range" name="range-min" id="chartneckwidth" value="15" min="0" max="50" style="width:90%">
-                        </div>
-                    </td>
-                    <td style="width: 30%;">
-                        <p id="neckWidth" style="font-weight: normal; padding-top:15px">15%</p>
-                    </td>
-                </tr>
-                <tr style="height: 50px">
-                    <td style="width: 30%">
-                        <div>
-                            Neck Height
-                        </div>
-                    </td>
-                    <td style="width: 74%;">
-                        <div data-role="rangeslider">
-                            <input type="range" name="range-min" id="chartneckheight" value="18" min="0" max="50" style="width:90%">
-                        </div>
-                    </td>
-                    <td style="width: 30%;">
-                        <p id="neckHeight" style="font-weight: normal; padding-top:15px">18%</p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+
     <script>
        @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.accumulation.series[0].width = ej.base.Browser.isDevice ? "90%" : "45%";
+            args.accumulation.series[0].neckWidth = ej.base.Browser.isDevice ? "25%" : "15%";
        @*custom code end*@
-            if (args.accumulation.availableSize.width < args.accumulation.availableSize.height) {
-                args.accumulation.series[0].width = '80%';
-                args.accumulation.series[0].height = '70%';
-            }
+            args.accumulation.series[0].dataSource[1].DataLabelMappingName = ej.base.Browser.isDevice ? "Personal <br> Interview: 58" : "Personal Interview: 58";
+            args.accumulation.series[0].dataSource[2].DataLabelMappingName = ej.base.Browser.isDevice ? "Telephonic <br> Interview: 85" : "Telephonic Interview: 85";
         };
-        var resize = function (args) {
-            var bounds = document.getElementById('container').getBoundingClientRect();
-            if (bounds.width < bounds.height) {
-                args.accumulation.series[0].width = '80%';
-                args.accumulation.series[0].height = '70%';
-            }
-            else {
-                args.accumulation.series[0].width = '60%';
-                args.accumulation.series[0].height = '80%';
-            }
-        };
-        
-        function neckWidth(value) {
-            var chart = document.getElementById("container").ej2_instances[0];
-            chart.series[0].neckWidth = value + '%';
-            document.getElementById('neckWidth').innerHTML = value + '%';
-            chart.removeSvg();
-            chart.refreshSeries();
-            chart.refreshChart();
-        }
-        
-        document.getElementById('chartneckwidth').onpointermove = document.getElementById('chartneckwidth').ontouchmove =
-            document.getElementById('chartneckwidth').onchange = function (e) {
-                neckWidth(+document.getElementById('chartneckwidth').value);
-            };
-        function neckHeight(value) {
-            var chart = document.getElementById("container").ej2_instances[0];
-            chart.series[0].neckHeight = value + '%';
-            document.getElementById('neckHeight').innerHTML = value + '%';
-            chart.removeSvg();
-            chart.refreshSeries();
-            chart.refreshChart();
-        }
-        
-        document.getElementById('chartneckheight').onpointermove = document.getElementById('chartneckheight').ontouchmove =
-            document.getElementById('chartneckheight').onchange = function (e) {
-                neckHeight(+document.getElementById('chartneckheight').value);
-            };
+
     </script>
 }
  @*custom code start*@
@@ -123,17 +46,25 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample visualizes the population data of different countries using the default funnel series.
-        Data label shows the information about the <code>points</code>, and they are arranged smartly
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/funnel-chart">ASP.NET MVC Funnel Chart</a> example shows a funnel chart for recruitment process. Datalabels show information about the points.
     </p>
 }
 @section Description{
- <p> In this example, you can see how to render funnel chart.<code>dataLabel</code> is used to represent individual data and its value.</p>
-    <p> <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.</p>
+    <p>
+        In this example, you can see how to render and configure a funnel chart. The labels are smartly arranged to avoid overlapping. The width and height of the funnel chart can be customized using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_NeckWidth">NeckWidth</a> and
+        <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_NeckHeight">NeckHeight</a> properties.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the funnel series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/funnel">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Funnel Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Funnel in ASP.NET MVC Chart Control</h1>
+                    <h1 class='sb-sample-text'>Charts</h1>
                 }

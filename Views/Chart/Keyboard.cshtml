@@ -1,40 +1,39 @@
 ﻿@using Syncfusion.EJ2;
-
 @section ControlsSection{
     <div class="control-section">
         <div style="text-align:center">
             <div>
-                @(Html.EJS().Chart("keyboard_container").EnableSideBySidePlacement(false).SelectionMode(Syncfusion.EJ2.Charts.SelectionMode.Point).SelectionPattern(Syncfusion.EJ2.Charts.SelectionPattern.DiagonalForward).LegendClick("labelRender").Load("load").EnableSideBySidePlacement(false)
+                @(Html.EJS().Chart("keyboard_container").EnableSideBySidePlacement(false).SelectionMode(Syncfusion.EJ2.Charts.SelectionMode.Point).SelectionPattern(Syncfusion.EJ2.Charts.SelectionPattern.DiagonalForward).LegendClick("labelRender").Load("load")
                     .EnableAnimation(false).ChartArea(area => area.Border(br => br.Width(0))).ZoomSettings(zoom => zoom.EnableSelectionZooming(true))
                     .Series(series => {
                         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).
-                        XName("xValue").
-                        YName("yValue").
-                        DataSource(ViewBag.dataSource).
+                        XName("Month").
+                        YName("Sales").Opacity(1).Animation(an => an.Enable(false)).
+                        DataSource(ViewBag.Quarter1).
                         Name("Quarter 1").
                         Width(2).Add();
                         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).
-                        XName("xValue").
-                        YName("yValue").
-                        DataSource(ViewBag.dataSource1).
+                        XName("Month").
+                        YName("Sales").Opacity(1).Animation(an => an.Enable(false)).
+                        DataSource(ViewBag.Quarter2).
                         Name("Quarter 2").
                         Width(2).Add();
                         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).
-                        XName("xValue").
-                        YName("yValue").
-                        DataSource(ViewBag.dataSource2).
+                        XName("Month").
+                        YName("Sales").Opacity(1).Animation(an => an.Enable(false)).
+                        DataSource(ViewBag.Quarter3).
                         Name("Quarter 3").
                         Width(2).Add();
                         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).
-                        XName("xValue").
-                        YName("yValue").
-                        DataSource(ViewBag.dataSource3).
+                        XName("Month").
+                        YName("Sales").Opacity(1).Animation(an => an.Enable(false)).
+                        DataSource(ViewBag.Quarter4).
                         Name("Quarter 4").
                         Width(2).Add();
                     })
                     .PrimaryYAxis(py => py.Maximum(120).Title("Sales in Percentage").LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).LabelFormat("{value}%").StripLines(ViewBag.yAxisStrips))
-                    .PrimaryXAxis(px => px.Title("Manager").ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0)).LabelStyle(ls => ls.Size("0px")).MajorTickLines(mt => mt.Width(0)))
-                    .Title("Quarterly Sales Chart").Tooltip(tp => tp.Enable(true))
+                    .PrimaryXAxis(px => px.Interval(1).ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0)).LabelStyle(ls => ls.Size("0px")).MajorTickLines(mt => mt.Width(0)))
+                    .Title("Quarterly Sales Chart").Tooltip(tp => tp.Enable(true)).LegendSettings(legend => legend.Visible(true))
                     .Render()
                 )
             </div>
@@ -46,34 +45,37 @@
                 padding: 0px !important;
             }
         </style>
-        <script src="~/Scripts/theme-color.js"></script>
+        @* <script src="~/Scripts/theme-color.js"></script> *@
         <script>
-        var FontColor = "#353535";
-        var materialColors = ["#00bdae", "#404041", "#357cd2", "#e56590", "#f8b883", "#70ad47", "#dd8abd", "#7f84e8", "#7bb4eb",
-            "#ea7a57", "#404041", "#00bdae"];
-        var materialDarkColors = ["#9ECB08", "#56AEFF", "#C57AFF", "#61EAA9", "#EBBB3E", "#F45C5C", "#8A77FF", "#63C7FF", "#FF84B0",
-            "#F7C928"];
-        var fabricColors = ["#4472c4", "#ed7d31", "#ffc000", "#70ad47", "#5b9bd5", "#c1c1c1", "#6f6fe2", "#e269ae", "#9e480e",
-            "#997300", "#4472c4", "#70ad47", "#ffc000", "#ed7d31"];
-        var bootstrapColors = ["#a16ee5", "#f7ce69", "#55a5c2", "#7ddf1e", "#ff6ea6", "#7953ac", "#b99b4f", "#407c92", "#5ea716",
-            "#b91c52"];
-        var highContrastColors = ["#79ECE4", "#E98272", "#DFE6B6", "#C6E773", "#BA98FF", "#FA83C3", "#00C27A", "#43ACEF", "#D681EF",
-            "#D8BC6E"];
-        var bootstrap5Colors = ["#262E0B", "#668E1F", "#AF6E10", "#862C0B", "#1F2D50", "#64680B", "#311508", "#4C4C81", "#0C7DA0",
-            "#862C0B"];
-        var bootstrap5DarkColors = ["#5ECB9B", "#A860F1", "#EBA844", "#557EF7", "#E9599B", "#BFC529", "#3BC6CF", "#7A68EC", "#74B706",
-            "#EA6266"];
-        var fluentColors = ["#614570", "#4C6FB1", "#CC6952", "#3F579A", "#4EA09B", "#6E7A89", "#D4515C", "#E6AF5D", "#639751",
-            "#9D4D69"];
-        var fluentDarkColors = ["#8AB113", "#2A72D5", "#43B786", "#584EC6", "#E85F9C", "#6E7A89", "#EA6266", "#EBA844", "#26BC7A",
-            "#BC4870"];
-        var tailwindColors = ["#5A61F6", "#65A30D", "#334155", "#14B8A6", "#8B5CF6", "#0369A1", "#F97316", "#9333EA", "#F59E0B",
-            "#15803D"];
-        var tailwindDarkColors = ["#8B5CF6", "#22D3EE", "#F87171", "#4ADE80", "#E879F9", "#FCD34D", "#F97316", "#2DD4BF", "#F472B6",
-            "#10B981"];
-
-        var seriesIndex = 0;
-        var Segments = [[0, 5], [7, 12], [14, 19], [21, 26]];
+                    var materialColors = ["#00bdae", "#404041", "#357cd2", "#e56590", "#f8b883", "#70ad47", "#dd8abd", "#7f84e8", "#7bb4eb",
+                        "#ea7a57", "#404041", "#00bdae"];
+                    var materialDarkColors = ["#9ECB08", "#56AEFF", "#C57AFF", "#61EAA9", "#EBBB3E", "#F45C5C", "#8A77FF", "#63C7FF", "#FF84B0",
+                        "#F7C928"];
+                    var fabricColors = ["#4472c4", "#ed7d31", "#ffc000", "#70ad47", "#5b9bd5", "#c1c1c1", "#6f6fe2", "#e269ae", "#9e480e",
+                        "#997300", "#4472c4", "#70ad47", "#ffc000", "#ed7d31"];
+                    var bootstrapColors = ["#a16ee5", "#f7ce69", "#55a5c2", "#7ddf1e", "#ff6ea6", "#7953ac", "#b99b4f", "#407c92", "#5ea716",
+                        "#b91c52"];
+                    var highContrastColors = ["#79ECE4", "#E98272", "#DFE6B6", "#C6E773", "#BA98FF", "#FA83C3", "#00C27A", "#43ACEF", "#D681EF",
+                        "#D8BC6E"];
+                    var bootstrap5Colors = ["#262E0B", "#668E1F", "#AF6E10", "#862C0B", "#1F2D50", "#64680B", "#311508", "#4C4C81", "#0C7DA0",
+                        "#862C0B"];
+                    var bootstrap5DarkColors = ["#5ECB9B", "#A860F1", "#EBA844", "#557EF7", "#E9599B", "#BFC529", "#3BC6CF", "#7A68EC", "#74B706",
+                        "#EA6266"];
+                    var fluentColors = ["#614570", "#4C6FB1", "#CC6952", "#3F579A", "#4EA09B", "#6E7A89", "#D4515C", "#E6AF5D", "#639751",
+                        "#9D4D69"];
+                    var fluentDarkColors = ["#8AB113", "#2A72D5", "#43B786", "#584EC6", "#E85F9C", "#6E7A89", "#EA6266", "#EBA844", "#26BC7A",
+                        "#BC4870"];
+                    var tailwindColors = ["#5A61F6", "#65A30D", "#334155", "#14B8A6", "#8B5CF6", "#0369A1", "#F97316", "#9333EA", "#F59E0B",
+                        "#15803D"];
+                    var tailwindDarkColors = ["#8B5CF6", "#22D3EE", "#F87171", "#4ADE80", "#E879F9", "#FCD34D", "#F97316", "#2DD4BF", "#F472B6",
+                        "#10B981"];
+                    var fabricDark =  ["#4472C4", "#ED7D31", "#FFC000", "#70AD47"];   
+                    var bootstrap4Colors =  ['#a16ee5', '#f7ce69', '#55a5c2', '#7ddf1e', '#ff6ea6','#7953ac', '#b99b4f', '#407c92', '#5ea716', '#b91c52'];
+                    var bootstrapdarkColors =  ["#a16ee5", "#f7ce69", "#55a5c2", "#7ddf1e", "#ff6ea6", "#7953ac", "#b99b4f", "#407c92", "#5ea716", "#b91c52"];
+                
+                    var FontColor = "#353535";
+                    var seriesIndex = 0;
+                    var Segments = [[0, 5 ], [ 7, 12 ], [14, 19 ], [21, 26 ] ];
         @*custom code start*@
 
         var getStriplineValues = function (legendClickedName) {
@@ -122,51 +124,79 @@
 
             var load = function (args) {
                 var selectedTheme = themeName ? themeName : 'Material';
-                args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
+                args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
                 args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-                FontColor = args.chart.theme.indexOf("Dark") > -1 || args.chart.theme.indexOf("HighContrast") > -1 ? "#F3F2F1" : "#353535";
-                var FillColors;
+                FontColor = args.chart.theme.indexOf("dark") > -1 || args.chart.theme.indexOf("highcontrast") > -1 ? "#F3F2F1" : "#353535";
+                let FillColors;
+                let TextColor;
                 if (args.chart.theme === 'MaterialDark') {
-                    FillColors = materialDarkColors;
+                      FillColors = materialDarkColors;
+                      TextColor = "#FFFFFF";
                 }
                 else if (args.chart.theme === 'Material') {
-                    FillColors = materialColors;
+                      FillColors = materialColors;
+                      TextColor = "#000000";
                 }
-                else if (args.chart.theme.indexOf("fabric") > -1) {
-                    FillColors = fabricColors;
+                else if (args.chart.theme === "Fabric" ) {
+                      FillColors = fabricColors;
+                      TextColor = "#000000";
+                }
+                else if (args.chart.theme=== 'FabricDark') {
+                      FillColors = fabricDark;
+                      TextColor = "#FFFFFF";
                 }
                 else if (args.chart.theme === 'Bootstrap5Dark') {
-                    FillColors = bootstrap5DarkColors;
+                      FillColors = bootstrap5DarkColors;
+                      TextColor = "#FFFFFF";
+                }
+                else if (args.chart.theme === 'Bootstrap4') {
+                      FillColors = bootstrap4Colors;
+                      TextColor = "#000000";
                 }
                 else if (args.chart.theme === 'Bootstrap5') {
-                    FillColors = bootstrap5Colors;
+                      FillColors = bootstrap5Colors;
+                      TextColor = "#000000";
                 }
-                else if (args.chart.theme.indexOf("bootstrap") > -1) {
-                    FillColors = bootstrapColors;
+                else if (args.chart.theme === "Bootstrap") {
+                      FillColors = bootstrapColors;
+                      TextColor = "#000000";
+                }
+                else if (args.chart.theme === 'BootstrapDark'){
+                      FillColors = bootstrapdarkColors;
+                      TextColor = "#FFFFFF";
                 }
                 else if (args.chart.theme === 'TailwindDark') {
-                    FillColors = tailwindDarkColors;
+                      FillColors = tailwindDarkColors;
+                      TextColor = "#FFFFFF";
                 }
                 else if (args.chart.theme === 'Tailwind') {
-                    FillColors = tailwindColors;
+                      FillColors = tailwindColors;
+                      TextColor = "#000000";
                 }
-                else if (args.chart.theme.indexOf("highcontrast") > -1) {
-                    FillColors = highContrastColors;
+                else if (args.chart.theme==="HighContrast") {
+                      FillColors = highContrastColors;
+                      TextColor = "#FFFFFF";
+                }
+                else if (args.chart.theme === 'Fluent') {
+                      FillColors = fluentColors;
+                      TextColor = '#000000'
                 }
                 else if (args.chart.theme === 'FluentDark') {
-                    FillColors = fluentDarkColors;
-                }
+                      FillColors = fluentDarkColors;
+                      TextColor = "#FFFFFF";
+                }               
                 else {
-                    FillColors = fluentColors;
+                      FillColors = fluentColors;
+                      TextColor = "#FFFFFF";
                 }
                 args.chart.primaryYAxis.stripLines[0].color = FillColors[0 % 10];
+                args.chart.primaryYAxis.stripLines[1].textStyle.color = TextColor;
                 args.chart.primaryYAxis.stripLines[2].color = FillColors[1 % 10];
+                args.chart.primaryYAxis.stripLines[3].textStyle.color = TextColor;
                 args.chart.primaryYAxis.stripLines[4].color = FillColors[2 % 10];
+                args.chart.primaryYAxis.stripLines[5].textStyle.color = TextColor;
                 args.chart.primaryYAxis.stripLines[6].color = FillColors[3 % 10];
-                args.chart.primaryYAxis.stripLines[1].textStyle.color = FontColor;
-                args.chart.primaryYAxis.stripLines[3].textStyle.color = FontColor;
-                args.chart.primaryYAxis.stripLines[5].textStyle.color = FontColor;
-                args.chart.primaryYAxis.stripLines[7].textStyle.color = FontColor;
+                args.chart.primaryYAxis.stripLines[7].textStyle.color = TextColor;              
             };
              @*custom code end*@
 
@@ -183,11 +213,11 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        Keyboard shortcuts can be used to interact with chart functionality. In the example below, various key combinations can be used to interact with the chart.
+        Keyboard shortcuts can be used to interact with chart functionality. In the example, various key combinations can be used to interact with a chart.
     </p>
 }
 @section Description{
-    <i>The key combinations listed below can be used in the chart to initiate various actions.</i>
+    <i>The key combinations listed can be used in a chart to initiate various actions:</i>
     <ul>
         <li>
             <b>FOCUS ELEMENTS</b>
@@ -211,23 +241,23 @@
             <ul>
                 <li>
                     <span class="key-class"><kbd>Down arrow</kbd></span>
-                    <span> - Moves the focus to the data point left side from the selected point.</span>
+                    <span> - Moves the focus to the data point on the left side of the selected point.</span>
                 </li>
                 <li>
                     <span class="key-class"><kbd>Up arrow</kbd></span>
-                    <span> - Moves the focus to the data point right side from the selected point.</span>
+                    <span> - Moves the focus to the data point on the right side of the selected point.</span>
                 </li>
                 <li>
                     <span class="key-class"><kbd>Left arrow</kbd></span>
-                    <span> - Moves the focus to the next series in our chart.</span>
+                    <span> - Moves the focus to the next series in our Charts component.</span>
                 </li>
                 <li>
                     <span class="key-class"><kbd>Right arrow</kbd></span>
-                    <span> - Moves the focus to the previous series in our chart.</span>
+                    <span> - Moves the focus to the previous series in our Charts component.</span>
                 </li>
                 <li>
                     <span class="key-class"><kbd>ESC</kbd></span>
-                    <span> - Cancel the tooltip for the data point.</span>
+                    <span> - Cancels the tooltip for the data point.</span>
                 </li>
                 <li>
                     <span class="key-class"><kbd>Enter</kbd>/<kbd>Space</kbd></span>
@@ -236,15 +266,15 @@
             </ul>
         </li>
         <li>
-            <b>Legend </b>
+            <b>Legend</b>
             <ul>
                 <li>
                     <span class="key-class"><kbd>Down</kbd>/<kbd>Left arrow</kbd></span>
-                    <span> - Moves the focus to the legend left side from the selected legend.</span>
+                    <span> - Moves the focus to the legend left of the selected legend item.</span>
                 </li>
                 <li>
                     <span class="key-class"><kbd>Up</kbd>/<kbd>Right arrow</kbd></span>
-                    <span> - Moves the focus to the legend right side from the selected legend.</span>
+                    <span> - Moves the focus to the legend right of the selected legend item.</span>
                 </li>
                 <li>
                     <span class="key-class"><kbd>Enter</kbd>/<kbd>Space</kbd></span>
@@ -257,11 +287,11 @@
             <ul>
                 <li>
                     <span class="key-class"><kbd>Ctrl</kbd> + <kbd>+</kbd></span>
-                    <span> - Zoom in the chart.</span>
+                    <span> - Zoom in to chart.</span>
                 </li>
                 <li>
                     <span class="key-class"><kbd>Ctrl</kbd> + <kbd>-</kbd></span>
-                    <span> - Zoom out the chart.</span>
+                    <span> - Zoom out of the chart.</span>
                 </li>
                 <li>
                     <span class="key-class"><kbd>Down</kbd>/<kbd>Up arrow</kbd></span>
@@ -282,7 +312,7 @@
             <ul>
                 <li>
                     <span class="key-class"><kbd>Ctrl</kbd> + <kbd>P</kbd></span>
-                    <span> - Prints the chart.</span>
+                    <span> - Prints the Charts component.</span>
                 </li>
             </ul>
         </li>

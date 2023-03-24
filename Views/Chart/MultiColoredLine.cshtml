@@ -1,14 +1,14 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
 <script src="~/Scripts/financial-data.js"></script>
-    <div class="control-section">
-        <div style="text-align:center">
+    <div class="control-section" align="center">
+        <div align="center">
 
         @Html.EJS().Chart("container").Series(series =>
        {
         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.MultiColoredLine)
-           .Width(1.5).PointColorMapping("color").XName("XValue")
-           .YName("YValue").DataSource("dataValues").Name("Rainfall").Add();
+           .Width(1.5).PointColorMapping("PointColor").XName("Period")
+           .YName("RainfallInfo").DataSource("ChartPoints").Name("Rainfall").Add();
        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
        .IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years).MajorGridLines(mg=>mg.Width(0))
        .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("y")
@@ -16,8 +16,8 @@
        .MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
        .MinorTickLines(mt=>mt.Width(0)).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
        ).Title("Particulate Levels in Rainfall"
-       ).ChartArea(area => area.Border(br=>br.Color("transparent"))
-       ).Tooltip(tt => tt.Enable(true).Shared(true)).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
+       ).ChartArea(area => area.Border(br => br.Width(0))
+       ).Tooltip(tt => tt.Enable(true).Shared(true).EnableAnimation(false).Header("<b>Rainfall</b>").Format("${point.x} : <b>${point.y}").EnableMarker(false)).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
       
         </div>
     </div>
@@ -29,20 +29,20 @@
     </style>
      @*custom code end*@
     <script>
-        var dataValues = [];
-        var colors = ['red', 'green', '#ff0097', 'crimson', 'blue', 'darkorange', 'deepskyblue',
+        var ChartPoints = [];
+        var colors = ['red', 'green', 'deeppink', 'crimson', 'blue', 'darkorange', 'deepskyblue',
             'mediumvioletred', 'violet', 'peru', 'gray', 'deeppink', 'navy'];
         rainFallData.map(function (value, index) {
-            dataValues.push({
-                XValue: new Date(2017, -index, 1), YValue: value.toFixed(2),
-                color: colors[Math.floor(index / 16)]
+            ChartPoints.push({
+                Period: new Date(2017, -index, 1), RainfallInfo: value.toFixed(1),
+                PointColor: colors[Math.floor(index / 16)]
             });
         });
      @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
      @*custom code end*@
     </script>
@@ -54,23 +54,25 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample visualizes the particulate levels in rainfall with multi colored line series in the chart. 
-        Data points are enhanced with individual color and tooltip.
+        This sample shows the particulate levels in rainfall with multi-colored line series in the chart. Data points are enhanced with individual colors and tooltips.
     </p>
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure each point in line type series. 
-        Multi colored line charts are used to represent time-dependent data to show the trends at equal intervals with their individual colors by using <code>pointColorMapping</code>.
+        In this example, you can see how to render and configure each point in line type series. Multicolored line charts are used to represent time-dependent data to show the trends at equal intervals with their individual colors by using
+        <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartSeries.html#Syncfusion_EJ2_Charts_ChartSeries_PointColorMapping">PointColorMapping</a>.
     </p>
     <p>
-        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
     </p>
-    <br>   
+    <p>
+        More information about the multi-colored line series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types#line-charts">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Multi Colored Line Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Multi Colored Line in ASP.NET MVC Chart Control</h1>
+                    <h1 class='sb-sample-text'>Charts</h1>
                 }

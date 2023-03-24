@@ -1,5 +1,5 @@
 @using Syncfusion.EJ2;
-<script src="~/Scripts/financial-data.js"></script>
+<script src="~/Scripts/stock-chart-data.js"></script>
 @section ControlsSection{
     <div class="control-section">
         <div style="text-align:center">
@@ -17,15 +17,15 @@
        }
            ).Series(series =>
            {
-               series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).XName("x").YName("y").High("high").Low("low").Open("open").Close("close").Volume("volume").BearFillColor("#2ecd71").BullFillColor("#e74c3d").DataSource("dataSource").Name("Apple Inc").Width(2).Add();
+               series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).XName("x").High("high").Low("low").Open("open").Close("close").Volume("volume").BearFillColor("#2ecd71").BullFillColor("#e74c3d").DataSource("ChartPoints").Name("Apple Inc").Width(2).Add();
            }).Indicators(id =>
            {
-               id.Fill("#6063ff").ShowZones(true).OverBought(70).LowerLine(lowerLine=>lowerLine.Color("#2ecd71")).UpperLine(upperLine=>upperLine.Color("#e74c3d")).OverSold(30).YAxisName("secondary").Period(3).Type(Syncfusion.EJ2.Charts.TechnicalIndicators.Rsi).Field(Syncfusion.EJ2.Charts.FinancialDataFields.Close).SeriesName("Apple Inc").Add();
-           }).ZoomSettings(zn => zn.EnableSelectionZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true)
+               id.Fill("#6063ff").ShowZones(true).OverBought(70).LowerLine(lowerLine=>lowerLine.Color("#f2ec2f")).UpperLine(upperLine=>upperLine.Color("#ffb735")).OverSold(30).YAxisName("secondary").Period(3).Type(Syncfusion.EJ2.Charts.TechnicalIndicators.Rsi).Field(Syncfusion.EJ2.Charts.FinancialDataFields.Close).SeriesName("Apple Inc").Add();
+           }).ZoomSettings(zn => zn.EnableSelectionZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true)
            ).PrimaryXAxis(px => px.ZoomFactor(0.2).ZoomPosition(0.6).MajorGridLines(mg=>mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).CrosshairTooltip(ct => ct.Enable(true))
-             ).PrimaryYAxis(py => py.RowIndex(1).OpposedPosition(true).Title("Price").MajorTickLines(mt=>mt.Width(0))
-.LineStyle(ls=>ls.Width(0)).Minimum(50).Maximum(170).Interval(30).LabelFormat("${value}").PlotOffset(25)
-             ).Title("AAPL 2012-2017").ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tl => tl.Enable(true).Shared(true)).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
+             ).PrimaryYAxis(py => py.RowIndex(1).OpposedPosition(true).Title("Price (in Million)").MajorTickLines(mt=>mt.Width(0))
+.LineStyle(ls=>ls.Width(0)).Minimum(50).Maximum(170).Interval(30).LabelFormat("${value}M").PlotOffset(25)
+             ).Title("AAPL Stock Price 2012-2017").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tl => tl.Enable(true).Shared(true)).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
         </div>
     </div>
 
@@ -37,12 +37,12 @@
     </style>
              @*custom code end*@
     <script>
-        var dataSource = window.chartData;
+        var ChartPoints = hiloData;
                  @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
                  @*custom code end*@
     </script>
@@ -53,21 +53,21 @@
                 }
          @*custom code end*@
 @section ActionDescription{
-   <p>
-    This sample illustrates a stock chart with candle series and a Relative Strength Index indicator. Trackball shows the information about the stock, signalline, lowerline, and upperline value of a day.
-</p>
+    <p>
+        This sample illustrates a chart with candle series and a relative strength index indicator. The trackball shows information about the day’s stock, signal line, lower line, and upper line values.
+    </p>
 }
 @section Description{
     <p>
-    In this example, you can see how to render and configure the RSI Indicator.
-</p>
-<p>
-    Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-</p>
-<p>
-    More information on the RSI Indicator can be found in this
-    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-</p>
+        In this example, you can see how to render and configure a relative strength index indicator. RSA measures the speed and magnitude of price movements studying the average gains and average losses, and shows how strongly the stock is moving in its current direction.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the relative strength index indicator can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/technical-indicators#relative-strength-index-rsi">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart RSI Example - Syncfusion Demos </title> 

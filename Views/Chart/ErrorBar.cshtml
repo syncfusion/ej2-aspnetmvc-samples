@@ -1,172 +1,71 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
-<script src="~/Scripts/theme-color.js"></script>
+    <script src="~/Scripts/theme-color.js"></script>
     <div>
-    <div class="col-lg-9 control-section">
-        <div class="content-wrapper">
-            <div style="width:92%">
- @(Html.EJS().Chart("container")
-    .Series(sr =>
-    {
-        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
-            .Name("Sales")
-            .XName("xValue")
-            .YName("yValue")
-            .ErrorBar(eb=>eb.VerticalError(3).HorizontalError(3).Visible(true))            
-            .DataSource(ViewBag.dataSource).Add();
-    })
-      .PrimaryXAxis(xaxis =>
-         xaxis.MinorGridLines(mg=>mg.Width(0))
-              .Interval(1)
-              .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-      )
-      .PrimaryYAxis(yaxis =>
-          yaxis.LabelFormat("{value}%")
-            .LineStyle(ls=>ls.Width(0))
-            .Minimum(15)
-            .Maximum(45)
-      )
-      .Title("Sales Distribution of Car by Region")
-      .Tooltip(tp => tp.Enable(true))
-      .LegendSettings(lg => lg.Visible(false))
-      .Load("load").ChartArea(area => area.Border(br=>br.Color("transparent"))).PointRender("pointRender").Render()
-  )
+        <div class="col-lg-12 control-section" align="center">
+            <div class="content-wrapper">
+                <div align="center">
+                    @(Html.EJS().Chart("container").HighlightColor("")
+                        .Series(sr =>
+                        {
+                            sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+                                .XName("Items")
+                                .YName("Quality")
+                                .ErrorBar(eb => eb.VerticalError("error").Visible(true))
+                                .Marker(mr => mr.Width(7).Height(7))
+                                .DataSource(ViewBag.ChartPoints).Add();
+                        })
+                        .PrimaryXAxis(xaxis =>
+                            xaxis.MajorGridLines(mg => mg.Width(0))
+                                .Interval(1)
+                                .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+                                .MajorTickLines(mg => mg.Width(0))
+                        )
+                        .PrimaryYAxis(yaxis =>
+                            yaxis.MajorTickLines(mg => mg.Width(0))
+                                .LineStyle(ls => ls.Width(0))
+                                .Minimum(0)
+                                .Maximum(1250)
+                                .Interval(250)
+                                .Title("Quantity")
+                        )
+                        .Title("Quantity vs Items")
+                        .Tooltip(tp => tp.Enable(true).EnableMarker(false))
+                        .LegendSettings(lg => lg.Visible(false)).TooltipRender("tooltipRender")
+                        .Load("load").ChartArea(area => area.Border(br => br.Width(0))).Render()
+                        )
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 property-section">
-        <table id="property" title="Properties" style="width: 100%">
-            <tbody>
-                <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div>Error Bar Type:</div>
-                    </td>
-                    <td style="width: 40%;">
-                        <div>
-                            @Html.EJS().DropDownList("selmode").Index(0).DataSource(ViewBag.type).Value("Fixed").Change("changeType").Render()                            
-                          
-                        </div>
-                    </td>
-                </tr>
-                <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div>Drawing Mode:</div>
-                    </td>
-                    <td style="width: 40%;">
-                        <div>
-                            @Html.EJS().DropDownList("drawmode").Index(0).DataSource(ViewBag.mode).Value("Vertical").Change("changeMode").Render()                          
-                        </div>
-                    </td>
-                </tr>
-                <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div>Drawing Direction:</div>
-                    </td>
-                    <td style="width: 40%;">
-                        <div>
-                            @Html.EJS().DropDownList("direction").Index(0).DataSource(ViewBag.direction).Value("Both").Change("changeDirection").Render()
-                          
-                        </div>
-                    </td>
-                </tr>
-                <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div>Vertical Error:</div>
-                    </td>
-                    <td style="width: 40%;">
-                        <div style="margin-top: 0px;">
-                           @Html.EJS().NumericTextBox("verticalerror").Change("verticalChange").Value(3).Max(20).Min(1).Width("120").Step(1).Render()
-                         
-                        </div>
-                    </td>
-                </tr>
-                <tr style="height: 50px">
-                    <td style="width: 60%">
-                        <div>Horizontal Error:</div>
-                    </td>
-                    <td style="width: 40%;">
-                        <div style="margin-top: 0px;">
-                            @Html.EJS().NumericTextBox("horizontalerror").Change("horizontalChange").Value(3).Max(20).Min(1).Width("120").Step(1).Render()
-                          
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
 
- @*custom code start*@
-<style>
+    @*custom code start*@
+    <style>
     #control-container {
         padding: 0px !important;
     }
 </style>
- @*custom code end*@
+    @*custom code end*@
     <script>
-        var pointRender = function (args) {
-            var selectedTheme = themeName ? themeName : 'Material';
-            if (selectedTheme && selectedTheme.indexOf('fabric') > -1) {
-                args.fill = fabricColors[args.point.index % 10];
-            }
-            else if (selectedTheme === 'material') {
-                args.fill = materialColors[args.point.index % 10];
-            }
-            else if (selectedTheme === 'fluent') {
-                args.fill = fluentColors[args.point.index % 10];
-            }
-            else if (selectedTheme === 'fluent-dark') {
-                args.fill = fluentDarkColors[args.point.index % 10];
-            }
-            else {
-                args.fill = bootstrapColors[args.point.index % 10];
-            }
-        };
+        
          @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.series[0].marker.height = 10;
-            args.chart.series[0].marker.width = 10;
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Rotate45';
+            args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';
+            if (selectedTheme === 'bootstrap5' || selectedTheme === 'fluent') {
+                args.chart.series[0].fill = '#81CCBB';
+                args.chart.highlightColor = '#C7E9B6';
+            }
         };
+        var tooltipRender = function (args) {
+            args.text =  '<b>'+args.data.pointX + ' Count'  + ': ' + args.data.pointY  + '</b> (error range: ' + (args.data.pointY - args.series.visiblePoints[args.data.pointIndex].verticalError / 2 ) + '-' + (args.data.pointY + args.series.visiblePoints[args.data.pointIndex].verticalError / 2 ) + ')';
+        }
          @*custom code end*@
-        function changeType() {
-            var chart = document.getElementById("container").ej2_instances[0];
-            var selmode = document.getElementById("selmode").ej2_instances[0];
-                chart.series[0].errorBar.type = selmode.value;
-                chart.series[0].animation.enable = false;
-                chart.refresh();
-            }
-        function changeMode() {
-            var chart = document.getElementById("container").ej2_instances[0];
-            var drawmode = document.getElementById("drawmode").ej2_instances[0];
-                chart.series[0].errorBar.mode = drawmode.value;
-                chart.series[0].animation.enable = false;
-                chart.refresh();
-            }
-        function changeDirection() {
-            var chart = document.getElementById("container").ej2_instances[0];
-            var direction = document.getElementById("direction").ej2_instances[0];
-                chart.series[0].animation.enable = false;
-                chart.series[0].errorBar.direction = direction.value;
-                chart.refresh();
-            }
-        function verticalChange() {
-            var chart = document.getElementById("container").ej2_instances[0];
-            var verticalerror = document.getElementById("verticalerror").ej2_instances[0];
-                chart.series[0].animation.enable = false;
-                chart.series[0].errorBar.verticalError = verticalerror.value;
-                chart.refresh();
-            }
-        function horizontalChange() {
-            var chart = document.getElementById("container").ej2_instances[0];
-            var horizontalerror = document.getElementById("horizontalerror").ej2_instances[0];
-                chart.series[0].animation.enable = false;
-                chart.series[0].errorBar.horizontalError = horizontalerror.value;
-                chart.refresh();
-            }
     </script>
-    
+
 }
  @*custom code start*@
 @section Meta{
@@ -175,28 +74,29 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample visualizes the errors in sales distribution of a car for a certain period with error bar in the chart. In property panel, the options are available to change error bar type, drawing mode, and drawing direction of error bar by means of dropdown
+        This sample shows the errors in the quantity of different items with an error bar chart.
     </p>
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure the error bar charts. Line type charts are used for cartesian type
-        series. You can use error bar by setting <code>visible</code> property to true. You can change the error bar
-        rendering type by using the <code>type</code> property like fixedValue, percentage, standardDeviation, standardError and
-        custom option of errorBar. To change the error bar line length you can use <code>verticalError</code> property.
+        In this example, you can see how to render and configure the error bar chart. An error bar chart is used to indicate the error or uncertainty in the reported measurement.
     </p>
-    <p>Chart supports the following error bar types.
+    <p>
+        Charts supports the following error bar types.
     </p>
     <ul>
-        <li><code>Fixed</code> - Renders a fixed type error bar.</li>
-        <li><code>Percentage</code> - Renders a percentage type error bar.</li>
-        <li><code>StandardDeviation</code> - Renders a standard deviation type error bar.</li>
-        <li><code>StandardError</code> - Renders a standard error type error bar.</li>
-        <li><code>Custom</code> - Renders a custom type error bar.</li>
+            <li><code>Fixed</code>: Renders a fixed type error bar.</li>
+            <li><code>Percentage</code>: Renders a percentage type error bar.</li>
+            <li><code>StandardDeviation</code>: Renders a standard deviation type error bar.</li>
+            <li><code>StandardError</code>: Renders a standard error type error bar.</li>
+        <li><code>Custom</code>: Renders a custom type error bar.</li>
     </ul>
     <p>
+        <code>A tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on it in touch-enabled devices.
+    </p>
+    <p>
         More information on the error bar can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/other-types#error-bar-chart">documentation section</a>.
     </p>
 }
 @section Title{

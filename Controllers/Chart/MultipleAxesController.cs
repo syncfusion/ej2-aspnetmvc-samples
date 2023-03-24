@@ -22,24 +22,24 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
             ViewBag.content1 = "#chart_cloud";
             ViewBag.content = "#chart_sunny";
 
-            List<MultipleAxesChartData> chartData = new List<MultipleAxesChartData>
+            List<MultipleAxesChartData> ChartPoints = new List<MultipleAxesChartData>
             {
-                new MultipleAxesChartData { x = "Sun", y = 35, y1 = 30 },
-                new MultipleAxesChartData { x = "Mon", y = 40, y1 = 28 },
-                new MultipleAxesChartData { x = "Tue", y = 80, y1 = 29 },
-                new MultipleAxesChartData { x = "Wed", y = 70, y1 = 30 },
-                new MultipleAxesChartData { x = "Thu", y = 65, y1 = 33 },
-                new MultipleAxesChartData { x = "Fri", y = 55, y1 = 32 },
-                new MultipleAxesChartData { x = "Sat", y = 50, y1 = 34 }
+                new MultipleAxesChartData { Day = "SUN", DEU_Temp = 35, JPN_Temp = 31 },
+                new MultipleAxesChartData { Day = "MON", DEU_Temp = 40, JPN_Temp = 28 },
+                new MultipleAxesChartData { Day = "TUE", DEU_Temp = 50, JPN_Temp = 29 },
+                new MultipleAxesChartData { Day = "WED", DEU_Temp = 70, JPN_Temp = 30 },
+                new MultipleAxesChartData { Day = "THU", DEU_Temp = 65, JPN_Temp = 33 },
+                new MultipleAxesChartData { Day = "FRI", DEU_Temp = 55, JPN_Temp = 32},
+                new MultipleAxesChartData { Day = "SAT", DEU_Temp = 50, JPN_Temp = 34 },
             };
-            ViewBag.dataSource = chartData;
+            ViewBag.ChartPoints = ChartPoints;
             return View();
         }
         public class MultipleAxesChartData
         {
-            public string x;
-            public double y;
-            public double y1;
+            public string Day;
+            public double DEU_Temp;
+            public double JPN_Temp;
         }
     }
 }

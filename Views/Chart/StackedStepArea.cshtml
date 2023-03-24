@@ -12,7 +12,7 @@
             .MajorGridLines(mg=>mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
             ).PrimaryYAxis(py => py.LabelFormat("{value}B").MajorTickLines(mt=>mt.Width(0))
             .LineStyle(ls=>ls.Width(0)).Title("Production (Billion as kWh)")
-            ).Title("Electricity- Production").ChartArea(area => area.Border(br=>br.Color("transparent"))).Load("load").Render()
+            ).Title("Electricity- Production").ChartArea(area => area.Border(br=>br.Color("transparent"))).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
         </div>
     </div>
    @*custom code start*@
@@ -25,7 +25,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
    @*custom code end*@
@@ -36,9 +36,9 @@
                 }
    @*custom code end*@
 @section ActionDescription{
-                    <p>
-                        This sample visualizes the data about electricity production using stacked stepped area chart.
-                    </p>
+    <p>
+        This sample visualizes the data about electricity production using stacked stepped area chart.
+    </p>
 }
 @section Description{
     <p>
@@ -47,7 +47,7 @@
 </p>
 <br>
 <p>
-    More information on the Stacked StepArea series can be found in this
+    More information on the area series can be found in this
     <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
 </p> 
 }

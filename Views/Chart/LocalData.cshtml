@@ -2,13 +2,13 @@
 @section ControlsSection{
 <div class="col-lg-12 control-section" style="text-align:center">
 
-    @Html.EJS().Chart("container").ChartArea(area => area.Border(br => br.Color("transparent"))).Series(series =>
+    @Html.EJS().Chart("container").ChartArea(area => area.Border(br => br.Width(0))).Series(series =>
 {
-    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("x").YName("y").DataSource("series1").Name("Product X").Add();
-    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("x").YName("y").DataSource("series2").Name("Product Y").Add();
-}).PrimaryXAxis(px => px.Skeleton("y").Title("Years").MajorGridLines(mg => mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("y")
-    ).PrimaryYAxis(py => py.Title("Price").LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt=>mt.Width(0)).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None).LabelFormat("${value}").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).Title("Profit")
-       ).Title("Stock Price Analysis").Tooltip(tt => tt.Enable(true).Shared(true)).Crosshair(cr => cr.Enable(true).Line(line=>line.Width(20).Color("rgba(204,214,235,0.25)")).LineType(Syncfusion.EJ2.Charts.LineType.Vertical)).LegendSettings(lg => lg.Visible(true)).Load("load").Render()
+    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("StockPrice").DataSource("series1").Name("Product X").Add();
+    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("StockPrice").DataSource("series2").Name("Product Y").Add();
+}).PrimaryXAxis(px => px.MajorGridLines(mg => mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+    ).PrimaryYAxis(py => py.Title("Price").LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt=>mt.Width(0)).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None).LabelFormat("${value}")
+       ).Title("Stock Price Analysis").Tooltip(tt => tt.Enable(true).Shared(true)).Crosshair(cr => cr.Enable(true).Line(line=>line.Width(20).Color("rgba(204,214,235,0.25)")).LineType(Syncfusion.EJ2.Charts.LineType.Vertical)).LegendSettings(lg => lg.EnableHighlight(true)).Load("load").Render()
 
 </div>
  @*custom code start*@
@@ -35,8 +35,8 @@
             value -= Math.random();
             value1 -= Math.random();
         }
-        point1 = { x: new Date(1960, (i + 1), i), y: Math.round(value) };
-        point2 = { x: new Date(1960, (i + 1), i), y: Math.round(value1) };
+        point1 = { Period: new Date(1960, (i + 1), i), StockPrice: Math.round(value) };
+        point2 = { Period: new Date(1960, (i + 1), i), StockPrice: Math.round(value1) };
         series1.push(point1);
         series2.push(point2);
     }
@@ -44,7 +44,7 @@
     var load = function (args) {
         var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     @*custom code end*@
 </script>
@@ -56,14 +56,20 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates  plotting of local data about stock price analysis of two products for a certain period.
+        This sample shows the plotting of local data in a stock price analysis of two products over a period of time.
     </p>
 }
 @section Description{
-        <p>The Chart supports local data binding. 
-        The <code> <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#datasource-object---datamanager">dataSource</a></code> property can be assigned either with the array of JavaScript objects or instance of <code><a target="_blank" class="code"
-        href="http://ej2.syncfusion.com/documentation/data/api-dataManager.html">DataManager</a></code>.</p>
-        <p>In this demo, the array of JavaScript objects is assigned as the data source to the Chart.</p>
+    <p>
+        The Charts control supports data binding. The <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartSeries.html#Syncfusion_EJ2_Charts_ChartSeries_DataSource">DataSource</a> property can be assigned either as list of objects or with instance of <code>DataManager</code>.
+    </p>
+    <p>
+        In this demo, the list of objects is assigned as the data source to the Charts control. The chart can be bound to IEnumerable, IQueryable, and ObservableCollection data sources.
+    </p>
+    <p>
+        More information about the local data binding can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/working-with-data#local-data">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Local Data Example - Syncfusion Demos </title> 

@@ -19,23 +19,23 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: NumericAxis
         public ActionResult NumericAxis()
         {
-            List<DoubleAxisData> chartData = new List<DoubleAxisData>
+            List<DoubleAxisData> ChartPoints = new List<DoubleAxisData>
             {
-                new DoubleAxisData { xValue = 16, yValue1 = 2, yValue2= 7},
-                new DoubleAxisData { xValue = 17, yValue1 = 14, yValue2 = 7 },
-                new DoubleAxisData { xValue = 18, yValue1 = 7, yValue2 = 11 },
-                new DoubleAxisData { xValue = 19, yValue1 = 7, yValue2 = 8 },
-                new DoubleAxisData { xValue = 20, yValue1 = 10, yValue2 = 24 },
-                            };
-            ViewBag.dataSource = chartData;
+                new DoubleAxisData { Over = 16, ENG_Score = 2, WI_Score = 7},
+                new DoubleAxisData { Over = 17, ENG_Score = 14, WI_Score = 7 },
+                new DoubleAxisData { Over = 18, ENG_Score = 7, WI_Score = 11 },
+                new DoubleAxisData { Over = 19, ENG_Score = 7, WI_Score = 8 },
+                new DoubleAxisData { Over = 20, ENG_Score = 10, WI_Score = 24 }
+            };
+            ViewBag.ChartPoints = ChartPoints;
             ViewBag.font = new { fontWeight = "600", color = "#ffffff" };
             return View();
         }
         public class DoubleAxisData
         {
-            public double xValue;
-            public double yValue1;
-            public double yValue2;
+            public double Over;
+            public double ENG_Score;
+            public double WI_Score;
         }
     }
 }

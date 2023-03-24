@@ -8,28 +8,24 @@
 
          series
          .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line)
-         .Marker(mr=>mr.Visible(true))
+         .Marker(mr=>mr.Visible(true).Height(7).Width(7))
          .XName("xDate")
          .YName("High")
-         .DataSource("axesData")
-        // .Border(ViewBag.border)
-         .Name("Gold")
-         .Width(2).Add();
+         .DataSource("ChartPoints")
+             .Border(br => br.Color("transparent")).Add();
 
          series
          .Type(Syncfusion.EJ2.Charts.ChartSeriesType.HiloOpenClose)
          .BearFillColor("#2ecd71")
          .BullFillColor("#e74c3d")
-         .YAxisName("Yaxis")
+         .YAxisName("yaxis")
          .High("High")
          .Low("Low")
          .Open("Open")
          .Close("Close")
          .XName("xDate")
-         .DataSource("axesData")
-        // .Border(ViewBag.border)
-         .Name("Silver")
-         .Width(2).Add();
+         .DataSource("ChartPoints")
+             .Add();
 
 
      }).Axes(ax => {
@@ -37,10 +33,11 @@
          .OpposedPosition(true)
          .Minimum(82)
          .Maximum(88)
-         .Name("Yaxis")
+         .Name("yaxis")
          .CrosshairTooltip(ct=>ct.Enable(true))
          .Interval(2)
-         .Title("Million in USD (Stock)").Add();
+         .Title("Million in USD (Stock)")
+             .MajorGridLines(mg=>mg.Width(0)).Add();
      }).PrimaryYAxis(px => px
          .Minimum(83)
          .Title("Million in USD")
@@ -48,24 +45,24 @@
          .LabelFormat("{value}M")
          .Maximum(87)
          .Interval(1)
-         .MajorTickLines(mt=>mt.Width(0))
-           ).PrimaryXAxis(px => px
-           .LabelFormat("MMM")
-           .CrosshairTooltip(ct=>ct.Enable(true))
-           .MajorGridLines(mg=>mg.Width(0))
-           .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
-           ).Crosshair(cr=>cr.Enable(true)).LegendSettings(lg => lg.Visible(false)).Title("Conns,Inc Stock Details").Load("load").Render()
+         .RowIndex(0)
+          ).PrimaryXAxis(px => px
+              .LabelFormat("MMM")
+              .CrosshairTooltip(ct=>ct.Enable(true))
+              .MajorGridLines(mg=>mg.Width(0))
+              .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
+           ).LegendSettings(lg => lg.Visible(false)).Title("Conns, Inc Stock Details").ChartArea(area => area.Border(br => br.Width(0))
+               ).ZoomSettings(zn => zn.EnableSelectionZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Both).Enable(true)).Load("load").Render()
 
         </div>
     </div>
  @*custom code start*@
     <script>
-        var axesData = window.axesData;
+        var ChartPoints = window.axesData;
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
-
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>
  @*custom code end*@
@@ -77,21 +74,18 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates crosshair feature in chart. To see crosshair, hover or long press the chart.
+        This sample depicts the crosshair behavior in the charts. To view the crosshair and its tooltip, hover over the chart or tap on it in touch-enabled devices.
     </p>
 }
 @section Description{
-    <p>This sample demonstrates the crosshair behavior in chart. Crosshair is used to inspect or focus on an individual data point.
-        You can customize the axis tooltip using <code>crosshairTooltip</code> properties in axis.
+    <p>
+        The crosshair is used to inspect or focus on an individual data point using a vertical and a horizontal line. You can enable the crosshair using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartCrosshairSettings.html#Syncfusion_EJ2_Charts_ChartCrosshairSettings_Enable">Enable</a> property in the
+        <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartCrosshairSettings.html">ChartCrosshairSettings</a> class and customize its tooltip by using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartAxis.html#Syncfusion_EJ2_Charts_ChartAxis_CrosshairTooltip">ChartAxisCrosshairTooltip</a> in the axis.
     </p>
-    <p> 
-         Hover the chart area to view crosshair and its tooltip. Touch and hold to enable crosshair in touch enabled devices. 
+    <p>
+        More information about the crosshair can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/cross-hair-and-track-ball">documentation section</a>.
     </p>
-      <br>
-        <p>
-            More information on the Crosshair can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-crosshairOptions.html">documentation section</a>.
-        </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Crosshair Example - Syncfusion Demos </title> 

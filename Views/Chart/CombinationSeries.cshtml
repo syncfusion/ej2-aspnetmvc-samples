@@ -8,22 +8,17 @@
         @Html.EJS().Chart("container").Series(series =>
    {
 
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("xValue").YName("yValue").DataSource(ViewBag.dataSource).Name("Private Consumption").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("xValue").YName("yValue1").DataSource(ViewBag.dataSource).Name("Government Consumption").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("xValue").YName("yValue2").DataSource(ViewBag.dataSource).Name("Investment").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("xValue").YName("yValue3").DataSource(ViewBag.dataSource).Name("Net Foreign Trade").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).XName("xValue").YName("yValue4").Marker(mr => mr.Visible(true).Height(10).Width(10)).DataSource(ViewBag.dataSource).Name("GDP").Width(2).Add();
-
-   }).PrimaryYAxis(px => px.Minimum(-3).Maximum(3).Interval(1).Title("Growth").LabelFormat("{value}B").LineStyle(ls=>ls.Width(0)).MajorTickLines(mt=>mt.Width(0))
-       ).PrimaryXAxis(px => px.Interval(1).Title("Years").Interval(1).LineStyle(ls=>ls.Width(0)).MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("PVT_Consumption").DataSource(ViewBag.ChartPoints).Name("Private Consumption").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("GOVT_Consumption").DataSource(ViewBag.ChartPoints).Name("Government Consumption").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("Investment").DataSource(ViewBag.ChartPoints).Name("Investment").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("Trade").DataSource(ViewBag.ChartPoints).Name("Net Foreign Trade").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).XName("Period").YName("GDP").Opacity(0.6).Marker(mr => mr.Visible(true).Height(7).Width(7)).DataSource(ViewBag.ChartPoints).Name("GDP").Width(2).Add();
+   }).PrimaryYAxis(px => px.Minimum(-3).Maximum(3).Interval(1).Title("Growth (in Billion)").LabelFormat("{value}B").LineStyle(ls=>ls.Width(0)).MajorTickLines(mt=>mt.Width(0))
+       ).PrimaryXAxis(px => px.Title("Years").MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)
        ).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-       ).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br=>br.Color("transparent"))).LegendSettings(lg => lg.Visible(true)).Title("Annual Growth GDP in France").Load("load").Render()
+       ).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(lg => lg.EnableHighlight(true)).Title("Annual Growth of GDP in France").Load("load").Render()
 
        
-    </div>
-    <div style="float: right; margin-right: 10px;">
-        Source:
-        <a href="http://perspectives.pictet.com/2016/01/29/growth-accelerated-markedly-in-france-and-spain-in-2015/" target="_blank">perspectives.pictet.com</a>
     </div>
 </div>
 
@@ -37,7 +32,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>
      @*custom code end*@
@@ -49,19 +44,20 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates a combination of line and stacked column series. Tooltip shows the information about the data point.
+        This sample shows the annual growth of Gross Domestic Product (GDP) in France in a combination of line and stacked column series. A tooltip shows information about the data points.
     </p>
 }
 @section Description{
-   <p>
-    In this example, you can see how to render and configure the different type of charts. You can render any combination of series in chart except bar.
-    Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-   </p>
-    <br>
-        <p>
-            More information on the series can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-        </p> 
+    <p>
+        In this example, you can see how to render and configure different type of charts. You can chart multiple variables on the y-axis.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the multiple series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-series#multiple-series">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Multi-Series Chart Example - Syncfusion Demos </title> 

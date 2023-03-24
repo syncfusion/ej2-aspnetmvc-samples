@@ -1,16 +1,29 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.FileManager
 @using EJ2MVCSampleBrowser.Models
+
+@{
+    string[] items = new string[] { "NewFolder", "Cut", "Copy", "Paste", "Delete", "Download", "Rename", "SortBy", "Refresh", "Selection", "View", "Details" };
+    string[] layout = new string[] { "SortBy", "View", "Refresh", "|", "Paste", "|", "NewFolder", "|", "Details", "|", "SelectAll" };
+}
+
 @section ControlsSection{
     <div class="control-section">
         <div class="sample-container">
             <!-- File Manager Drag and Drop feature sample -->
             @Html.EJS().FileManager("filemanager").AjaxSettings(
-              new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings {
+              new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
+                   {
                   Url = "FileOperations",
                   DownloadUrl = "Download",
                   UploadUrl = "Upload",
                   GetImageUrl = "GetImage"
+              }).ToolbarSettings(new Syncfusion.EJ2.FileManager.FileManagerToolbarSettings()
+              {
+                  Items = items
+              }).ContextMenuSettings(new Syncfusion.EJ2.FileManager.FileManagerContextMenuSettings()
+              {
+                  Layout = layout
               }).AllowDragAndDrop(true).Render()
         </div>
     </div>
@@ -34,11 +47,11 @@
 }
 
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Drag and Drop in ASP.NET MVC File Manager control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Drag and Drop in ASP.NET MVC File Manager control. Explore here for more details." />
+}
 @section Title{
-                    <title>ASP.NET MVC File Manager Drag and Drop Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC File Manager Drag and Drop Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Drag and Drop in ASP.NET MVC File Manager Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Drag and Drop in ASP.NET MVC File Manager Control</h1>
+}

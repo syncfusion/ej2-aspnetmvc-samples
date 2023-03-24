@@ -19,24 +19,25 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: PieWithLegend
         public ActionResult PieWithLegend()
         {
-            List<PieWithLegendChartData> chartData = new List<PieWithLegendChartData>
+            List<PieWithLegendChartData> PieChartPoints = new List<PieWithLegendChartData>
             {
-                new PieWithLegendChartData { x =  "Internet Explorer", y = 6.12, text="Internet <br> Explorer" },
-                new PieWithLegendChartData { x =  "Chrome", y = 57.28, text="Chrome" },
-                new PieWithLegendChartData { x =  "Safari", y = 4.73, text="Safari" },
-                new PieWithLegendChartData { x =  "QQ", y = 5.96, text="QQ" },
-                new PieWithLegendChartData { x =  "UC Browser", y = 4.37, text="UC Browser" },
-                new PieWithLegendChartData { x =  "Edge", y = 7.48, text="Edge" },
-                new PieWithLegendChartData { x =  "Others", y = 14.06, text="Others" }
+                new PieWithLegendChartData { ExpenseCategory =  "Internet Explorer", ExpensePercentage = 6.12, legendName="Internet <br> Explorer", DataLabelMappingName = "6.12%" },
+                new PieWithLegendChartData { ExpenseCategory =  "Chrome", ExpensePercentage = 57.28, legendName="Chrome", DataLabelMappingName = "57.28%" },
+                new PieWithLegendChartData { ExpenseCategory =  "Safari", ExpensePercentage = 4.73, legendName="Safari", DataLabelMappingName = "4.73%" },
+                new PieWithLegendChartData { ExpenseCategory =  "QQ", ExpensePercentage = 5.96, legendName="QQ", DataLabelMappingName = "5.96%" },
+                new PieWithLegendChartData { ExpenseCategory =  "UC Browser", ExpensePercentage = 4.37, legendName="UC Browser", DataLabelMappingName = "4.37%" },
+                new PieWithLegendChartData { ExpenseCategory =  "Edge", ExpensePercentage = 7.48, legendName="Edge", DataLabelMappingName = "7.48%" },
+                new PieWithLegendChartData { ExpenseCategory =  "Others", ExpensePercentage = 14.06, legendName="Others", DataLabelMappingName = "14.06%" }
             };
-            ViewBag.dataSource = chartData;
+            ViewBag.PieChartPoints = PieChartPoints;
             return View();
         }
         public class PieWithLegendChartData
         {
-            public string x;
-            public double y;
-            public string text;
+            public string ExpenseCategory;
+            public double ExpensePercentage;
+            public string legendName; 
+            public string DataLabelMappingName;
         }
     }
 }

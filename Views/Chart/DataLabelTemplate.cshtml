@@ -2,50 +2,44 @@
 @section ControlsSection{
     <div class="control-section" style="text-align:center">
         @Html.EJS().Chart("container").Series(series =>
-   {
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).
-       Name("Male").
-       XName("x").
-       YName("y").
-       Marker(mr => mr.Visible(true).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Margin(mar => mar.Right(30)).Template("#Male-Material"))).
-       DataSource(ViewBag.dataSource1).
-       Width(2).
-       Add();
+        {
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).
+                Name("Boys").
+                XName("Sports").
+                YName("Boys").ColumnWidth(0.75).ColumnSpacing(0.5).
+                Marker(mr => mr.Visible(false).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer).Margin(mar => mar.Top(70)).Template("#Boys-Material"))).
+                DataSource(ViewBag.PopulationDetails).
+                Add();
 
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).
-       Name("Female").
-       XName("x").
-       YName("y").
-       Marker(mr => mr.Visible(true).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Bottom).Margin(mar => mar.Right(30)).Template("#Female-Material"))).
-       DataSource(ViewBag.dataSource2).
-      Width(2).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).
+                Name("Girls").
+                XName("Sports").
+                YName("Girls").ColumnWidth(0.75).ColumnSpacing(0.5).
+                Marker(mr => mr.Visible(false).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer).Margin(mar => mar.Top(70)).Template("#Girls-Material"))).
+                DataSource(ViewBag.PopulationDetails)
+                .Add();
 
-   }).PrimaryXAxis(
-       xAxis =>
-       {
-           xAxis.Minimum(2010).
-        Maximum(2016).
-       Interval(1).
-        EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).
-        LabelStyle(ls => ls.FontFamily("Roboto").FontStyle("medium").Size("14px")).
-        LineStyle(ls => ls.Color("#eaeaea").Width(1)).
-        MajorGridLines(mg => mg.Width(0));
-       }).PrimaryYAxis(
-       yAxis =>
-       {
-           yAxis.LabelFormat("{value}M").
-            Minimum(900).
-            Maximum(1300).
-            LabelStyle(ls => ls.FontFamily("Roboto").FontStyle("medium").Size("14px")).
-              LineStyle(ls => ls.Color("#eaeaea").Width(1)).
-        MajorGridLines(mg => mg.Color("#eaeaea").Width(1));
-       }).ChartArea(area => area.Border(br => br.Color("transparent"))
-       ).Title("Population of India Statistics").SubTitle("(2010 - 2016)").SubTitleStyle(st => st.TextAlignment(Syncfusion.EJ2.Charts.Alignment.Far)).Load("load").TextRender("textRender").Render()
+        }).PrimaryXAxis(
+            xAxis =>
+            {
+                xAxis.MajorTickLines(mt => mt.Width(0))
+                    .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).
+                    EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).
+                    MajorGridLines(mg => mg.Width(0));
+            }).PrimaryYAxis(
+                yAxis =>
+                {
+                    yAxis.
+                        Minimum(0).
+                        Maximum(70).LineStyle(ls => ls.Width(0)).
+                        MajorGridLines(mg => mg.Color("#eaeaea").Width(1)).MajorTickLines(mt => mt.Width(0));
+                }).ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(lg => lg.EnableHighlight(true)
+            ).Title("Athletes in Popular School").SubTitleStyle(st => st.TextAlignment(Syncfusion.EJ2.Charts.Alignment.Far)).Load("load").TextRender("textRender").Render()
 
     </div>
 
 
-    <style>
+<style>
         #control-container {
             padding: 0px !important;
         }
@@ -64,233 +58,232 @@
             text-align: center;
         }
     </style>
-    <script id="Male-Fabric" type="text/x-template">
-        <div id='templateWrap' style="background-color:#4472c4;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/male.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px; padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id="Female-Fabric" type="text/x-template">
-        <div id='templateWrap' style="background-color:#ed7d31;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/female.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id="Male-Material" type="text/x-template">
-        <div id='templateWrap' style="background-color:#00bdae;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/male.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id="Female-Material" type="text/x-template">
-        <div id='templateWrap' style="background-color:#404041;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/female.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id="Male-Bootstrap" type="text/x-template">
-        <div id='templateWrap' style="background-color:#a16ee5;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/male.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id="Female-Bootstrap" type="text/x-template">
-        <div id='templateWrap' style="background-color:#f7ce69;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/female.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id="Male-Bootstrap4" type="text/x-template">
-        <div id='templateWrap' style="background-color:#a16ee5;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/male.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id="Female-Bootstrap4" type="text/x-template">
-        <div id='templateWrap' style="background-color:#f7ce69;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/female.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-
-    <script id="Male-Highcontrast" type="text/x-template">
-        <div id='templateWrap' style="background-color:#79ECE4;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/male.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id="Female-Highcontrast" type="text/x-template">
-        <div id='templateWrap' style="background-color:#E98272;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/female.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-
-    <script id="Male-Tailwind" type="text/x-template">
-        <div id='templateWrap' style="background-color:#5A61F6;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/male.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id="Female-Tailwind" type="text/x-template">
-        <div id='templateWrap' style="background-color:#65A30D;border-radius: 3px;">
-            <img src="@Url.Content("~/Content/chart/female.png")" />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Male-Bootstrap5' type="text/x-template">
-        <div id='templateWrap' style="background-color:#262E0B;border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/male.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Female-Bootstrap5' type="text/x-template">
-        <div id='templateWrap' style="background-color:#668E1F;border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/female.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Male-MaterialDark' type="text/x-template">
-        <div id='templateWrap' style="background-color: #9ECB08; border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/male.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Female-MaterialDark' type="text/x-template">
-        <div id='templateWrap' style="background-color: #56AEFF; border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/female.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Male-FabricDark' type="text/x-template">
-        <div id='templateWrap' style="background-color:#4472c4;border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/male.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Female-FabricDark' type="text/x-template">
-        <div id='templateWrap' style="background-color:#ed7d31;border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/female.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Male-BootstrapDark' type="text/x-template">
-        <div id='templateWrap' style="background-color:#a16ee5;border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/male.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Female-BootstrapDark' type="text/x-template">
-        <div id='templateWrap' style="background-color:#f7ce69;border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/female.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Male-TailwindDark' type="text/x-template">
-        <div id='templateWrap' style="background-color:#8B5CF6;border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/male.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Female-TailwindDark' type="text/x-template">
-        <div id='templateWrap' style="background-color:#22D3EE;border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/female.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Male-Bootstrap5Dark' type="text/x-template">
-        <div id='templateWrap' style="background-color: #5ECB9B; border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/male.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Female-Bootstrap5Dark' type="text/x-template">
-        <div id='templateWrap' style="background-color: #A860F1; border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/female.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Male-Fluent' type="text/x-template">
-        <div id='templateWrap' style="background-color: #614570; border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/male.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Female-Fluent' type="text/x-template">
-        <div id='templateWrap' style="background-color: #4C6FB1; border-radius: 3px; ">
-            <img src='@Url.Content("~/Content/chart/female.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Male-FluentDark' type="text/x-template">
-        <div id='templateWrap' style="background-color: #8AB113; border-radius: 3px;">
-            <img src='@Url.Content("~/Content/chart/male.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script id='Female-FluentDark' type="text/x-template">
-        <div id='templateWrap' style="background-color: #2A72D5; border-radius: 3px; ">
-            <img src='@Url.Content("~/Content/chart/female.png")' />
-            <div class='des' style="color:white; font-family:Roboto; font-style: medium; fontp-size:14px;padding-right:6px">
-                <span>${point.y}M </span>
-            </div>
-        </div>
-    </script>
-    <script>
+       <script id='Boys-Fabric' type="text/x-template">
+           <div id='templateWrap' style="background-color:#4472c4;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px; padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-Fabric' type="text/x-template">
+           <div id='templateWrap' style="background-color:#ed7d31;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-Material' type="text/x-template">
+           <div id='templateWrap' style="background-color:#00bdae;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-Material' type="text/x-template">
+           <div id='templateWrap' style="background-color:#404041;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-Bootstrap' type="text/x-template">
+           <div id='templateWrap' style="background-color:#a16ee5;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-Bootstrap' type="text/x-template">
+           <div id='templateWrap' style="background-color:#f7ce69;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-Bootstrap4' type="text/x-template">
+           <div id='templateWrap' style="background-color:#a16ee5;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-Bootstrap4' type="text/x-template">
+           <div id='templateWrap' style="background-color:#f7ce69;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-HighContrast' type="text/x-template">
+           <div id='templateWrap' style="background-color:#79ECE4;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-HighContrast' type="text/x-template">
+           <div id='templateWrap' style="background-color:#E98272;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-Tailwind' type="text/x-template">
+           <div id='templateWrap' style="background-color:#5A61F6;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-Tailwind' type="text/x-template">
+           <div id='templateWrap' style="background-color:#65A30D;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-Bootstrap5' type="text/x-template">
+           <div id='templateWrap' style="background-color:#262E0B;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-Bootstrap5' type="text/x-template">
+           <div id='templateWrap' style="background-color:#668E1F;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-MaterialDark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#00bdae;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-MaterialDark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#404041;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-FabricDark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#4472c4;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-FabricDark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#ed7d31;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-BootstrapDark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#a16ee5;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-BootstrapDark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#f7ce69;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-TailwindDark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#8B5CF6;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-TailwindDark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#22D3EE;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-Bootstrap5Dark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#262E0B;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-Bootstrap5Dark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#668E1F;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-Fluent' type="text/x-template">
+           <div id='templateWrap' style="background-color:#614570;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-Fluent' type="text/x-template">
+           <div id='templateWrap' style="background-color:#4C6FB1;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Boys-FluentDark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#8AB113;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/male.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+       <script id='Girls-FluentDark' type="text/x-template">
+           <div id='templateWrap' style="background-color:#2A72D5;border-radius: 3px;">
+               <img src="@Url.Content("~/Content/chart/female.png")" />
+               <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                   <span>${point.y} </span>
+               </div>
+           </div>
+       </script>
+      
+<script>
         var theme;
         var textRender = function (args) {
             args.template = '#' + args.series.name + '-' + theme;
@@ -299,7 +292,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark");
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             theme = args.chart.theme
         };
         @* custom code end *@
@@ -312,18 +305,16 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates datalabel template support in the chart. In this sample, images are placed as datalabel by means of templates.
+        This sample illustrates data label template support in charts. Each data label for each point is rendered using the template.
     </p>
 }
 @section Description{
     <p>
-        Label content can be formatted by using the template option in dataLabel. Inside the template, you can add the placeholder
-        text ${point.y}M to display corresponding data points value.
+        The ASP.NET MVC Charts data label template feature allows you to change the appearance and behavior of the data label for each data point using the <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/data-labels#data-label-template">Template</a> property in <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/data-labels">ChartDataLabel</a>.
     </p>
-    <br>
     <p>
-        More information on the Crosshair can be found in this &nbsp;
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-dataLabelSettingsModel.html">documentation section</a>.
+        More information on the data label template can be found in this &nbsp;
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/data-labels#data-label-template">documentation section</a>.
     </p>
 }
 @section Title{

@@ -65,6 +65,13 @@ namespace EJ2MVCSampleBrowser.Controllers
             return (JsonConvert.SerializeObject(jsonResult));
         }
         [HttpPost]
+        public object RenderPdfTexts(Dictionary<string, string> jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            object jsonResult = pdfviewer.GetDocumentText(jsonObject);
+            return (JsonConvert.SerializeObject(jsonResult));
+        }
+        [HttpPost]
         public object RenderAnnotationComments(Dictionary<string, string> jsonObject)
         {
             PdfRenderer pdfviewer = new PdfRenderer();

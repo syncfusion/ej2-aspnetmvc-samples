@@ -5,7 +5,7 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("KeyboardNavigation").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowFiltering().AllowSorting().AllowGrouping().Columns(col =>
+        @Html.EJS().Grid("KeyboardNavigation").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSelection().AllowFiltering().AllowSorting().AllowGrouping().Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
@@ -14,7 +14,7 @@
        col.Field("OrderDate").HeaderText("Order Date").EditType("datepickeredit").Format("yMd").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("ShipCountry").HeaderText("Ship Country").EditType("dropdownedit").Width("150").Add();
 
-   }).AllowPaging().PageSettings(page => page.PageCount(5)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu); }).Render()
+   }).AllowPaging().SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(5)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu); }).Render()
     </div>
 }
 @section ActionDescription{

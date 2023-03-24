@@ -1,37 +1,18 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
-<div>
-    <div class="col-lg-9 control-section">
+    <div class="control-section" align="center">
         @Html.EJS().Chart("container").Series(series =>
    {
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).Border(br=>br.Color("white").Width(1)).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.dataSource).Name("6-9").XName("x").YName("y").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).Border(br => br.Color("white").Width(1)).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.dataSource).Name("9-11").XName("x").YName("y1").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).Border(br => br.Color("white").Width(1)).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.dataSource).Name("11-14").XName("x").YName("y2").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).Border(br => br.Color("white").Width(1)).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.dataSource).Name("14-17").XName("x").YName("y3").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).Border(br => br.Color("white").Width(1)).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.dataSource).Name("17-20").XName("x").YName("y4").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).Border(br => br.Color("white").Width(1)).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.dataSource).Name("23 Above").XName("x").YName("y5").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("6-9").XName("XValue").YName("YValue").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("9-11").XName("XValue").YName("YValue1").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("11-14").XName("XValue").YName("YValue2").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("14-17").XName("XValue").YName("YValue3").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("17-20").XName("XValue").YName("YValue4").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("23 Above").XName("XValue").YName("YValue5").Width(2).Add();
    }
-       ).PrimaryXAxis(py => py.Interval(1).Coefficient(100).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.OnTicks).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)).Title("Wind Rose Chart").Tooltip(tl => tl.Enable(true)).Load("load").Render()
+       ).PrimaryXAxis(py => py.Interval(1).Coefficient(100).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.OnTicks).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+           ).Title("Wind Rose Chart").Tooltip(tl => tl.Enable(true)).LegendSettings(lg => lg.EnableHighlight(true)).Load("load").Render()
     </div>
-    <div class="col-lg-3 property-section">
-        <table id="property" title="Properties" style="width: 100%">
-            <tbody>
-                <tr style="height: 50px">
-                    <td style="width: 50%">
-                        <div>
-                            Series Type:
-                        </div>
-                    </td>
-                    <td style="width: 50%;">
-                        <div>
-                            @Html.EJS().DropDownList("dropdown").Index(0).DataSource(ViewBag.data).Value("Polar").Change("valueChange").Render()
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
 
  @*custom code start*@
 <style>
@@ -45,23 +26,6 @@
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         };
  @*custom code end*@
-        var valueChange = function () {
-            var chart = document.getElementById('container').ej2_instances[0];
-            var polarType = document.getElementById("dropdown").ej2_instances[0];
-            chart.series[0].type = polarType.value;
-            chart.series[1].type = polarType.value;
-            chart.series[2].type = polarType.value;
-            chart.series[3].type = polarType.value;
-            chart.series[4].type = polarType.value;
-            chart.series[5].type = polarType.value;
-            chart.series[0].animation.enable = true;
-            chart.series[1].animation.enable = true;
-            chart.series[2].animation.enable = true;
-            chart.series[3].animation.enable = true;
-            chart.series[4].animation.enable = true;
-            chart.series[5].animation.enable = true;
-            chart.refresh();
-        }
 </script>
 }
  @*custom code start*@
@@ -71,23 +35,20 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-    This sample demonstrates polar series with stacking column type. The switching between polar and radar series can be done by using <code>Series Type</code> in property panel.
-</p>
+        This sample shows a wind rose chart designed using polar and radar charts with a stacking column series. A wind rose chart helps visualize wind patterns, i.e., wind speed and wind direction.
+    </p>
 }
 @section Description{
-   <p>
-    In this example, you can see how to render and configure the stacking column type charts. Stacks the points in the series
-    vertically and also you can use <code>stackingGroup</code> property to group the stacking collection based
-    on categories. You can use <code>border</code> and <code>fill</code> properties to customize the vertical bar. <code>dataLabel</code>        is used to represent individual data and its value.
-</p>
-<p>
-    Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-</p>
-<br>
-<p>
-    More information on the polar series can be found in this
-    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-</p>
+    <p>
+        In this example, you can see how to render and configure the polar and radar charts with a stacking column series. Switching between polar and radar series can be done using <b>Series Type</b> in the property panel.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p>
+        More information about the polar and radar series with a stacking column type chart can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/polar-radar#draw-types">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart WindRose Example - Syncfusion Demos </title> 

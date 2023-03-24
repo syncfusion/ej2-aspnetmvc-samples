@@ -7,17 +7,17 @@
        {
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).
            Name("Product").
-           XName("xValue").
-           YName("yValue1").
-           DataSource(ViewBag.dataSource).Add();
+           XName("Period").
+           YName("Sales").Opacity(1).Width(2).
+               Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Name("DataLabelMappingName"))).
+           DataSource(ViewBag.ChartPoints).Add();
        }).PrimaryXAxis(
        xAxis =>
        {
            xAxis.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTimeCategory).
            IntervalType(Syncfusion.EJ2.Charts.IntervalType.Days).
-           Skeleton("Ed").
-           EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).
-           Title("Business Days").
+               Skeleton("Ed").
+               Title("Business Days").
            MajorGridLines(mg=>mg.Width(0));
        }).PrimaryYAxis(
        yAxis =>
@@ -26,17 +26,12 @@
             Minimum(0).
             Maximum(100).
             Interval(20).
-            EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).
-            LabelFormat("{value}M").
+               LabelFormat("{value}M").
             LineStyle(ls=>ls.Width(0)).
             MajorTickLines(mt=>mt.Width(0)).
             MinorTickLines(mt=>mt.Width(0));
-       }).ChartArea(area => area.Border(br=>br.Color("transparent"))).Title("Sales Comparison of a Product").LegendSettings(
-       legend => { legend.Visible(false); }).Tooltip(
-       tooltip =>
-       {
-           tooltip.Enable(true);
-       }).Load("load").Render()       
+       }).ChartArea(area => area.Border(br => br.Width(0))).Title("Sales comparison of a Product").LegendSettings(
+       legend => { legend.Visible(false); }).Load("load").Render()       
     </div>
 </div>
 
@@ -72,7 +67,12 @@
 
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Rotate45';
+            args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';
+            args.chart.series[0].marker.dataLabel.enableRotation = ej.base.Browser.isDevice?'true':'false';
+            args.chart.series[0].marker.dataLabel.angle = ej.base.Browser.isDevice?'-90':'0';
+            
              @*custom code end*@
             args.chart.primaryXAxis.stripLines = [
                 { visible: true, start: new Date(2017, 11, 20), end: new Date(2017, 11, 27), color: 'skyblue', opacity: 0.5, },
@@ -81,11 +81,11 @@
             args.chart.annotations = [
             {
                 x: new Date(2017, 11, 22), y: 90, coordinateUnits: 'Point',
-                content: '<div style="color:#FF0000;font-family: bold; font-weight: 600">Christmas Offer<br> Dec 2017</div>',
+                content: '<div style="color:#0000ff;font-family: bold; font-weight: 600">Christmas Offer<br> Dec 2017</div>',
             },
             {
                 x: new Date(2018, 0, 4), y: 90, coordinateUnits: 'Point',
-                content: '<div style="color:#FF0000;font-family: bold; font-weight: 800">New Year Offer<br> Jan 2018</div>',
+                content: '<div style="color:#0000ff;font-family: bold; font-weight: 800">New Year Offer<br> Jan 2018</div>',
             }
             ];
 
@@ -99,28 +99,16 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates sales of a product in business days. 
-        Data points in this sample are enhanced with tooltip.
+        This sample shows the date-time category axis with sample data about the sales of a product on different business days.
     </p>
 }
 @section Description{
     <p>
-        In this sample, you can see how to render and configure the date time category axis. 
-        Date time category axis is used to represent only business days in datetime axis.
+        The date-time category axis is used to display date-time values with nonlinear intervals. For example, business days alone can be depicted here in a week. To use a date-time category axis, set the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartAxis.html#Syncfusion_EJ2_Charts_ChartAxis_ValueType">ValueType</a> in axis to <b>DateTimeCategory</b>.
     </p>
     <p>
-        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap a point in touch enabled devices.
-    </p>
-    <br>
-    <p style="font-weight: 500">Injecting Module</p>
-    <p>
-        Chart component features are segregated into individual feature-wise modules. For datetime category axis, you should inject
-        <code>DateTimeCategory</code> module by using the 
-        <code>Chart.Inject(DateTimeCategory)</code>method.
-    </p>
-    <p>
-        More information on the datetime category axis can be found in this documentation section.
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+        More information about the DateTime Category Axis can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/date-time-axis#datetimecategory-axis">documentation section</a>.
     </p>
 }
 @section Title{

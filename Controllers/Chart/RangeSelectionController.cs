@@ -19,63 +19,63 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: RangeSelection
         public ActionResult RangeSelection()
         {
-            List<RangeSelectionChartData> chartData = new List<RangeSelectionChartData>
+            List<RangeSelectionData> ChartPoints = new List<RangeSelectionData>
             {
-                new RangeSelectionChartData { xValue = 1971, yValue = 50, yValue1 = 23 },
-                new RangeSelectionChartData { xValue = 1972, yValue = 20, yValue1 = 67 },
-                new RangeSelectionChartData { xValue = 1973, yValue = 63, yValue1 = 83 },
-                new RangeSelectionChartData { xValue = 1974, yValue = 81, yValue1 = 43 },
-                new RangeSelectionChartData { xValue = 1975, yValue = 64, yValue1 = 8  },
-                new RangeSelectionChartData { xValue = 1976, yValue = 36, yValue1 = 41 },
-                new RangeSelectionChartData { xValue = 1977, yValue = 22, yValue1 = 56 },
-                new RangeSelectionChartData { xValue = 1978, yValue = 78, yValue1 = 31 },
-                new RangeSelectionChartData { xValue = 1979, yValue = 60, yValue1 = 29 },
-                new RangeSelectionChartData { xValue = 1980, yValue = 41, yValue1 = 87 },
-                new RangeSelectionChartData { xValue = 1981, yValue = 62, yValue1 = 43 },
-                new RangeSelectionChartData { xValue = 1982, yValue = 56, yValue1 = 12 },
-                new RangeSelectionChartData { xValue = 1983, yValue = 96, yValue1 = 38 },
-                new RangeSelectionChartData { xValue = 1984, yValue = 48, yValue1 = 67 },
-                new RangeSelectionChartData { xValue = 1985, yValue = 23, yValue1 = 49 },
-                new RangeSelectionChartData { xValue = 1986, yValue = 54, yValue1 = 67 },
-                new RangeSelectionChartData { xValue = 1987, yValue = 73, yValue1 = 83 },
-                new RangeSelectionChartData { xValue = 1988, yValue = 56, yValue1 = 16 },
-                new RangeSelectionChartData { xValue = 1989, yValue = 67, yValue1 = 89 },
-                new RangeSelectionChartData { xValue = 1990, yValue = 79, yValue1 = 18 },
-                new RangeSelectionChartData { xValue = 1991, yValue = 18, yValue1 = 46 },
-                new RangeSelectionChartData { xValue = 1992, yValue = 78, yValue1 = 39 },
-                new RangeSelectionChartData { xValue = 1993, yValue = 92, yValue1 = 68 },
-                new RangeSelectionChartData { xValue = 1994, yValue = 43, yValue1 = 87 },
-                new RangeSelectionChartData { xValue = 1995, yValue = 29, yValue1 = 45 },
-                new RangeSelectionChartData { xValue = 1996, yValue = 14, yValue1 = 42 },
-                new RangeSelectionChartData { xValue = 1997, yValue = 85, yValue1 = 28 },
-                new RangeSelectionChartData { xValue = 1998, yValue = 24, yValue1 = 82 },
-                new RangeSelectionChartData { xValue = 1999, yValue = 61, yValue1 = 13 },
-                new RangeSelectionChartData { xValue = 2000, yValue = 80, yValue1 = 83 },
-                new RangeSelectionChartData { xValue = 2001, yValue = 14, yValue1 = 26 },
-                new RangeSelectionChartData { xValue = 2002, yValue = 34, yValue1 = 57 },
-                new RangeSelectionChartData { xValue = 2003, yValue = 81, yValue1 = 48 },
-                new RangeSelectionChartData { xValue = 2004, yValue = 70, yValue1 = 84 },
-                new RangeSelectionChartData { xValue = 2005, yValue = 21, yValue1 = 64 },
-                new RangeSelectionChartData { xValue = 2006, yValue = 70, yValue1 = 24 },
-                new RangeSelectionChartData { xValue = 2007, yValue = 32, yValue1 = 82 },
-                new RangeSelectionChartData { xValue = 2008, yValue = 43, yValue1 = 37 },
-                new RangeSelectionChartData { xValue = 2009, yValue = 21, yValue1 = 68 },
-                new RangeSelectionChartData { xValue = 2010, yValue = 63, yValue1 = 37 },
-                new RangeSelectionChartData { xValue = 2011, yValue = 9 , yValue1 = 35},
-                new RangeSelectionChartData { xValue = 2012, yValue = 51, yValue1 = 81 },
-                new RangeSelectionChartData { xValue = 2013, yValue = 25, yValue1 = 38 },
-                new RangeSelectionChartData { xValue = 2014, yValue = 96, yValue1 = 51 },
-                new RangeSelectionChartData { xValue = 2015, yValue = 32, yValue1 = 58 }
+                new RangeSelectionData { Period = 1971, ProductA_Sales = 50, ProductB_Sales = 23},
+                new RangeSelectionData { Period = 1972, ProductA_Sales = 20, ProductB_Sales = 63},
+                new RangeSelectionData { Period = 1973, ProductA_Sales = 63, ProductB_Sales = 83},
+                new RangeSelectionData { Period = 1974, ProductA_Sales = 81, ProductB_Sales = 43},
+                new RangeSelectionData { Period = 1975, ProductA_Sales = 64, ProductB_Sales = 8},
+                new RangeSelectionData { Period = 1976, ProductA_Sales = 36, ProductB_Sales = 41},
+                new RangeSelectionData { Period = 1977, ProductA_Sales = 22, ProductB_Sales = 56},
+                new RangeSelectionData { Period = 1978, ProductA_Sales = 78, ProductB_Sales = 31},
+                new RangeSelectionData { Period = 1979, ProductA_Sales = 60, ProductB_Sales = 29},
+                new RangeSelectionData { Period = 1980, ProductA_Sales = 41, ProductB_Sales = 87},
+                new RangeSelectionData { Period = 1981, ProductA_Sales = 12, ProductB_Sales = 43},
+                new RangeSelectionData { Period = 1982, ProductA_Sales = 56, ProductB_Sales = 12},
+                new RangeSelectionData { Period = 1983, ProductA_Sales = 96, ProductB_Sales = 38},
+                new RangeSelectionData { Period = 1984, ProductA_Sales = 48, ProductB_Sales = 67},
+                new RangeSelectionData { Period = 1985, ProductA_Sales = 23, ProductB_Sales = 49},
+                new RangeSelectionData { Period = 1986, ProductA_Sales = 54, ProductB_Sales = 67},
+                new RangeSelectionData { Period = 1987, ProductA_Sales = 73, ProductB_Sales = 83},
+                new RangeSelectionData { Period = 1988, ProductA_Sales = 56, ProductB_Sales = 16},
+                new RangeSelectionData { Period = 1989, ProductA_Sales = 69, ProductB_Sales = 89},
+                new RangeSelectionData { Period = 1990, ProductA_Sales = 79, ProductB_Sales = 18 },
+                new RangeSelectionData { Period = 1991, ProductA_Sales = 18, ProductB_Sales = 46 },
+                new RangeSelectionData { Period = 1992, ProductA_Sales = 78, ProductB_Sales = 39 },
+                new RangeSelectionData { Period = 1993, ProductA_Sales = 92, ProductB_Sales = 18 },
+                new RangeSelectionData { Period = 1994, ProductA_Sales = 93, ProductB_Sales = 87 },
+                new RangeSelectionData { Period = 1995, ProductA_Sales = 29, ProductB_Sales = 45 },
+                new RangeSelectionData { Period = 1996, ProductA_Sales = 14, ProductB_Sales = 42 },
+                new RangeSelectionData { Period = 1997, ProductA_Sales = 85, ProductB_Sales = 28 },
+                new RangeSelectionData { Period = 1998, ProductA_Sales = 24, ProductB_Sales = 82 },
+                new RangeSelectionData { Period = 1999, ProductA_Sales = 11, ProductB_Sales = 13 },
+                new RangeSelectionData { Period = 2000, ProductA_Sales = 80, ProductB_Sales = 83 },
+                new RangeSelectionData { Period = 2001, ProductA_Sales = 14, ProductB_Sales = 26 },
+                new RangeSelectionData { Period = 2002, ProductA_Sales = 34, ProductB_Sales = 57 },
+                new RangeSelectionData { Period = 2003, ProductA_Sales = 81, ProductB_Sales = 48 },
+                new RangeSelectionData { Period = 2004, ProductA_Sales = 70, ProductB_Sales = 84 },
+                new RangeSelectionData { Period = 2005, ProductA_Sales = 80, ProductB_Sales = 64 },
+                new RangeSelectionData { Period = 2006, ProductA_Sales = 70, ProductB_Sales = 24 },
+                new RangeSelectionData { Period = 2007, ProductA_Sales = 32, ProductB_Sales = 82 },
+                new RangeSelectionData { Period = 2008, ProductA_Sales = 43, ProductB_Sales = 37 },
+                new RangeSelectionData { Period = 2009, ProductA_Sales = 21, ProductB_Sales = 68 },
+                new RangeSelectionData { Period = 2010, ProductA_Sales = 63, ProductB_Sales = 37 },
+                new RangeSelectionData { Period = 2011, ProductA_Sales = 9,  ProductB_Sales = 35 },
+                new RangeSelectionData { Period = 2012, ProductA_Sales = 51, ProductB_Sales = 81 },
+                new RangeSelectionData { Period = 2013, ProductA_Sales = 25, ProductB_Sales = 38 },
+                new RangeSelectionData { Period = 2014, ProductA_Sales = 96, ProductB_Sales = 51 },
+                new RangeSelectionData { Period = 2015, ProductA_Sales = 32, ProductB_Sales = 58 }
             };
-            ViewBag.dataSource = chartData;
-            ViewBag.data = new string[] { "DragXY", "DragX", "DragY", "Lasso"};
+            ViewBag.ChartPoints = ChartPoints;
+            ViewBag.data = new string[] { "DragXY", "DragX", "DragY" };
             return View();
         }
-        public class RangeSelectionChartData
+        public class RangeSelectionData
         {
-            public double xValue;
-            public double yValue;
-            public double yValue1;
+            public double Period;
+            public double ProductA_Sales;
+            public double ProductB_Sales;
         }
     }
 }

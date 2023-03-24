@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             youTubeRangeLine.Start = 74;
             youTubeRangeLine.End = 100;
             youTubeRangeLine.Color = "#7a7f82";
-            youTubeRangeLine.Radius = "90%";
+            youTubeRangeLine.Radius = "89%";
             youTubeRangeLine.StartWidth = "1";
             youTubeRangeLine.EndWidth = "1";
             rangeCollections.Add(youTubeRangeLine);
@@ -51,7 +51,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             instagramRangeLine.Start = 49;
             instagramRangeLine.End = 100;
             instagramRangeLine.Color = "#7a7f82";
-            instagramRangeLine.Radius = "76%";
+            instagramRangeLine.Radius = "75%";
             instagramRangeLine.StartWidth = "1";
             instagramRangeLine.EndWidth = "1";
             rangeCollections.Add(instagramRangeLine);
@@ -70,7 +70,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             twitterRangeLine.Start = 28;
             twitterRangeLine.End = 100;
             twitterRangeLine.Color = "#7a7f82";
-            twitterRangeLine.Radius = "63%";
+            twitterRangeLine.Radius = "61%";
             twitterRangeLine.StartWidth = "1";
             twitterRangeLine.EndWidth = "1";
             rangeCollections.Add(twitterRangeLine);
@@ -88,7 +88,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             facebookRangeLine.Start = 85;
             facebookRangeLine.End = 100;
             facebookRangeLine.Color = "#7a7f82";
-            facebookRangeLine.Radius = "49%";
+            facebookRangeLine.Radius = "47%";
             facebookRangeLine.StartWidth = "1";
             facebookRangeLine.EndWidth = "1";
             rangeCollections.Add(facebookRangeLine);
@@ -106,7 +106,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             tiktokRangeLine.Start = 55;
             tiktokRangeLine.End = 100;
             tiktokRangeLine.Color = "#7a7f82";
-            tiktokRangeLine.Radius = "35%";
+            tiktokRangeLine.Radius = "34%";
             tiktokRangeLine.StartWidth = "1";
             tiktokRangeLine.EndWidth = "1";
             rangeCollections.Add(tiktokRangeLine);

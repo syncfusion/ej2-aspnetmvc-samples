@@ -5,24 +5,17 @@
 
   @Html.EJS().Chart("container").Series(series =>
 {
-    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Fill("#b22222").XName("xValue").YName("yValue1")
-    .Marker(mr =>mr.DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-    .DataSource(ViewBag.dataSource).Name("England")
-    .Add();
-    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Fill("#1e90ff").XName("xValue").YName("yValue2")
-    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-    .DataSource(ViewBag.dataSource).Name("West Indies").Add();
-
-}).PrimaryXAxis(px => px.Title("Death Overs").Minimum(15).Maximum(21).Interval(1).MajorGridLines(mg=>mg.Width(0))
+    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Fill("#1e90ff").XName("Over").YName("ENG_Score").Opacity(1).Width(2).ColumnSpacing(0.1)
+    .Marker(mr =>mr.DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600"))))
+    .DataSource(ViewBag.ChartPoints).Name("England").Add();
+    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Fill("#b22222").XName("Over").YName("WI_Score").Opacity(1).Width(2).ColumnSpacing(0.1)
+    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600"))))
+    .DataSource(ViewBag.ChartPoints).Name("West Indies").Add();
+}).PrimaryXAxis(px => px.Minimum(15).Maximum(21).Interval(1).MajorGridLines(mg=>mg.Width(0))
        ).PrimaryYAxis(py => py.MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).LabelStyle(ls=>ls.Color("transparent"))
-       ).Title("England Vs West Indies").ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tl => tl.Enable(true).Format("${point.x}th Over : ${point.y} Runs")).Load("load").Render()
-
-
-    <div style="float: right; margin-right: 10px;">
-        Source:
-        <a href="http://www.espncricinfo.com/icc-world-twenty20-2016/engine/current/match/951373.html" target="_blank">www.espncricinfo.com</a>
+       ).Title("England vs West Indies").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tl => tl.Enable(true).Format("${point.x}th Over : <b>${point.y} Runs</b>")
+           ).LegendSettings(lg => lg.Visible(true).EnableHighlight(true)).Load("load").Render()
     </div>
-</div>
 
  @*custom code start*@
 <style>
@@ -32,16 +25,12 @@
 </style>
  @*custom code end*@
     <script>
-        var labelRender = function (args) {
-            if (args.axis.orientation === 'Horizontal') {
-                args.cancel = args.value === 15 || args.value === 21;
-            }
-        };
+        
          @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
          @*custom code end*@
 </script>
@@ -53,19 +42,19 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample demonstrates the rendering of numeric axis in the chart with England and West indies cricket match data.
+        This sample shows the numeric axis in a chart with England and West Indies cricket match data.
     </p>
 }
 @section Description{
-   <p>
-        Numeric axis is used to plot numeric data in chart. To render numeric axis, set <code>valueType</code> in axis to <code>Double</code>.
+    <p>
+        You can use a numeric axis to represent numeric value data in a chart. To render a numeric axis, set the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartAxis.html#Syncfusion_EJ2_Charts_ChartAxis_ValueType">ValueType</a> in axis to <b>Double</b>.
     </p>
     <p>
-        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-   </p>
-   <p>
-    More information on the Numeric axis can be found in this
-    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p>
+        More information about the numeric axis can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/numeric-axis">documentation section</a>.
     </p>
 }
 @section Title{

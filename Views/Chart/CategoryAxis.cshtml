@@ -8,22 +8,15 @@
  @Html.EJS().Chart("container").Series(series =>
 {
 
-    series.TooltipMappingName("country").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar)
+    series.TooltipMappingName("TooltipMappingName").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar)
     .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-    .XName("x").YName("y").DataSource(ViewBag.dataSource).Name("Users").Width(2).Add();
+    .XName("Country").YName("Users").DataSource(ViewBag.ChartPoints).Name("Users").Width(2).Add();
 
-}).PrimaryYAxis(px => px.Minimum(0).Maximum(800).LabelStyle(ls => ls.Color("transparent")).LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
-       ).PrimaryXAxis(px => px.EnableTrim(false).Title("Country").ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0))
-       ).Tooltip(tr => tr.Enable(true)).ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tt => tt.Enable(true)).LegendSettings(lg => lg.Visible(false)).PointRender("labelRender").Load("load").Render()
-
-
-
+}).PrimaryYAxis(px => px.Minimum(0).Maximum(800).LabelStyle(ls => ls.Color("transparent")).LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("{value}M")
+       ).PrimaryXAxis(px => px.EnableTrim(false).ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0))
+       ).ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(lg => lg.Visible(false)).Title("Internet Users – 2016").PointRender("labelRender").Load("load").Render()
     </div>
-    <div style="float: right; margin-right: 10px;">
-        Source:
-        <a href="http://www.internetworldstats.com/top20.htm" target="_blank">www.internetworldstats.com</a>
-    </div>
-</div>
+</div>  
 
 @*custom code start*@
 <style>
@@ -56,11 +49,9 @@
             @*custom code start*@
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             @*custom code end*@
-            args.chart.tooltip.format = "${point.tooltip}";
-            args.chart.primaryYAxis.labelFormat = ej.base.Browser.isDevice ? '{value}' : '{value}M';
-            args.chart.title = ej.base.Browser.isDevice ? 'Internet Users in Million – 2016' : 'Internet Users – 2016';
+            args.chart.series[0].marker.dataLabel.font.size = ej.base.Browser.isDevice ? '9px' : '11px';
         }
     </script>
     }
@@ -71,21 +62,16 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample demonstrates the rendering of category axis in the chart with internet users of different countries.
+        This sample shows a category axis in a chart with details about internet users across different countries.
     </p>
 }
 @section Description{
     <p>
-        Category axis is used to represent the categories in data. To render category axis, set <code>valueType</code> in
-        axis to <code>Category</code>. Category label can be placed between the ticks or on the ticks, based on <code>labelPlacement</code> property.
+        You can use the category axis to represent string values instead of numbers in the chart. To use the category axis, set <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartAxis.html#Syncfusion_EJ2_Charts_ChartAxis_ValueType">ValueType</a> in axis to <b>Category</b>.
     </p>
     <p>
-        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
-    <br>
-    <p>
-        More information on the Category axis can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
+        More information about the category axis can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/category-axis">documentation section</a>.
     </p>
 }
 @section Title{

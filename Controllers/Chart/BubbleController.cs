@@ -19,37 +19,37 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: Bubble
         public ActionResult Bubble()
         {
-            List<BubbleChartData> chartData = new List<BubbleChartData>
+            List<BubbleChartData> ChartPoints = new List<BubbleChartData>
             {
-                new BubbleChartData { xValue = 92.2, yValue = 7.8, size = 1.347, text = "China" },
-                new BubbleChartData { xValue = 74, yValue = 6.5, size = 1.241, text = "India" },
-                new BubbleChartData { xValue = 90.4, yValue = 6.0, size = 0.238, text = "Indonesia"},
-                new BubbleChartData { xValue = 99.4, yValue = 2.2, size = 0.312, text = "US" },
-                new BubbleChartData { xValue = 88.6, yValue = 1.3, size = 0.197, text = "Brazil" },
-                new BubbleChartData { xValue = 99, yValue = 0.7, size = 0.0818, text = "Germany" },
-                new BubbleChartData { xValue = 72, yValue = 2.0, size = 0.0826, text = "Egypt"},
-                new BubbleChartData { xValue = 99.6, yValue = 3.4, size = 0.143, text = "Russia" },
-                new BubbleChartData { xValue = 99, yValue = 0.2, size = 0.128, text = "Japan" },
-                new BubbleChartData { xValue = 86.1, yValue = 4.0, size = 0.115, text = "Mexico" },
-                new BubbleChartData { xValue = 92.6, yValue = 6.6, size = 0.096, text = "Philippines" },
-                new BubbleChartData { xValue = 61.3, yValue = 1.45, size = 0.162, text = "Nigeria" },
-                new BubbleChartData { xValue = 82.2, yValue = 3.97, size = 0.7, text = "Hong Kong" },
-                new BubbleChartData { xValue = 79.2, yValue = 3.9, size = 0.162, text = "Netherland" },
-                new BubbleChartData { xValue = 72.5, yValue = 4.5, size = 0.7, text = "Jordan" },
-                new BubbleChartData { xValue = 81, yValue = 3.5, size = 0.21, text = "Australia" },
-                new BubbleChartData { xValue = 66.8, yValue = 3.9, size = 0.028, text = "Mongolia" },
-                new BubbleChartData { xValue = 78.4, yValue = 2.9, size = 0.231, text = "Taiwan" },
+                new BubbleChartData { Literacy= 92.2,  GDPGrowth= 7.8,  BubbleSize= 1.347,  Text= "China",          TooltipMappingName= "China" },
+                new BubbleChartData { Literacy= 74,    GDPGrowth= 6.5,  BubbleSize= 1.241,  Text= "India",          TooltipMappingName= "India" },
+                new BubbleChartData { Literacy= 90.4,  GDPGrowth= 6.0,  BubbleSize= 0.238,  Text= "Indonesia",      TooltipMappingName= "Indonesia" },              
+                new BubbleChartData { Literacy= 99.4,  GDPGrowth= 2.2,  BubbleSize= 0.312,  Text= "United States",  TooltipMappingName= "US" },
+                new BubbleChartData { Literacy= 88.6,  GDPGrowth= 1.3,  BubbleSize= 0.197,  Text= "Brazil",         TooltipMappingName= "Brazil" },
+                new BubbleChartData { Literacy= 99,    GDPGrowth= 0.7,  BubbleSize= 0.0818, Text= "Germany",        TooltipMappingName= "Germany" },
+                new BubbleChartData { Literacy= 72,    GDPGrowth= 2.0,  BubbleSize= 0.0826, Text= "Egypt",          TooltipMappingName= "Egypt" },     
+                new BubbleChartData { Literacy= 99.6,  GDPGrowth= 3.4,  BubbleSize= 0.143,  Text= "Russia",         TooltipMappingName= "Russia" },
+                new BubbleChartData { Literacy= 96.5,  GDPGrowth= 0.2,  BubbleSize= 0.128,  Text= "Japan",          TooltipMappingName= "Japan" },
+                new BubbleChartData { Literacy= 86.1,  GDPGrowth= 4.0,  BubbleSize= 0.115,  Text= "MeLiteracy Ion", TooltipMappingName= "MLI" },
+                new BubbleChartData { Literacy= 92.6,  GDPGrowth= 5.2,  BubbleSize= 0.096,  Text= "Philippines",    TooltipMappingName= "PH" },
+                new BubbleChartData { Literacy= 61.3,  GDPGrowth= 1.45, BubbleSize= 0.162,  Text= "Nigeria",        TooltipMappingName= "Nigeria" },
+                new BubbleChartData { Literacy= 82.2,  GDPGrowth= 3.97, BubbleSize= 0.7,    Text= "Hong Kong",      TooltipMappingName= "Hong Kong" },
+                new BubbleChartData { Literacy= 79.2,  GDPGrowth= 4.9,  BubbleSize= 0.162,  Text= "Netherland",     TooltipMappingName= "NL" },
+                new BubbleChartData { Literacy= 72.5,  GDPGrowth= 4.5,  BubbleSize= 0.7,    Text= "Jordan",         TooltipMappingName= "Jordan" },
+                new BubbleChartData { Literacy= 81,    GDPGrowth= 2.5,  BubbleSize= 0.21,   Text= "Australia",      TooltipMappingName= "Australia" },
+                new BubbleChartData { Literacy= 66.8,  GDPGrowth= 3.9,  BubbleSize= 0.028,  Text= "Mongolia",       TooltipMappingName= "MN" },
+                new BubbleChartData { Literacy= 78.4,  GDPGrowth= 2.9,  BubbleSize= 0.231,  Text= "Taiwan",         TooltipMappingName= "Taiwan" }
             };
-            ViewBag.dataSource = chartData;
+            ViewBag.ChartPoints = ChartPoints;
             return View();
         }
         public class BubbleChartData
         {
-            public double xValue;
-            public double yValue;
-            public double size;
-            public string text;
+            public double Literacy;
+            public double GDPGrowth;
+            public double BubbleSize;
+            public string Text;
+            public string TooltipMappingName;
         }
-
     }
 }

@@ -4,18 +4,18 @@
     <div class="control-section">
         <div class="content-wrapper">
             <div style="text-align:center">
-                @Html.EJS().Chart("container").PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Double).MajorGridLines(mg => mg.Width(0))
+                @Html.EJS().Chart("container").PrimaryXAxis(px => px.MajorGridLines(mg => mg.Width(0))
                        .Interval(1).Minimum(2015).Maximum(2020)
-               ).PrimaryYAxis(py => py.ValueType(Syncfusion.EJ2.Charts.ValueType.Double).Minimum(0).LabelFormat("{value}B").Maximum(1200).Interval(200).LineStyle(li => li.Width(0))
+               ).PrimaryYAxis(py => py.MajorTickLines(mg => mg.Width(0)).Minimum(0).LabelFormat("{value}B").Maximum(1200).Interval(200).LineStyle(li => li.Width(0))
                 ).ChartArea(area => area.Border(br => br.Width(0))).Series(series =>
                 {
-                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("y")
-                    .Width(2).DataSource(ViewBag.data).Name("Sales").Add();
-                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("y1")
-                    .Width(2).DataSource(ViewBag.data).Name("Expense").Add();
-                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("y2")
-                    .Width(2).DataSource(ViewBag.data).Name("Profit").Add();
-                }).Title("Company Performance").Load("load").AxisLabelRender("labelRender").EnableRtl(true).Tooltip(tooltip => tooltip.Enable(true)).Render()
+                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("Sales").ColumnSpacing(0.1)
+                    .Width(2).DataSource(ViewBag.ChartPoints).Name("Sales").Add();
+                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("Expense").ColumnSpacing(0.1)
+                    .Width(2).DataSource(ViewBag.ChartPoints).Name("Expense").Add();
+                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("Profit").ColumnSpacing(0.1)
+                    .Width(2).DataSource(ViewBag.ChartPoints).Name("Profit").Add();
+                }).Title("Company Performance").Load("load").AxisLabelRender("labelRender").EnableRtl(true).Tooltip(tooltip => tooltip.Enable(true)).LegendSettings(lg => lg.EnableHighlight(true)).Render()
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
                  @*custom code end*@
         var labelRender = function (args) {
@@ -48,16 +48,15 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-       This sample visualizes the company performance with default column chart in right-to-left(RTL) direction. The values of the data points are displayed in a tooltip, and the legend in the sample displays information about the series.
+        This sample visualizes a company’s performance with a default column chart rendered right-to-left (RTL). The values of the data points are displayed in a tooltip, and the legend in the sample displays information about the series.
     </p>
 }
 @section Description{
-   <p>
-        <code>Right-to-left</code>(RTL) is used to render the component from right to left direction and it can be enabled by setting <code>EnableRtl</code> property as <b>true</b>. 
-        In this demo, you can see <code>axis</code>, <code>data points</code>, <code>tooltip</code> and <code>legend</code> are aligned from right to left direction.
+    <p>
+        <code>Right-to-left</code>(RTL) is used to render a component from right to left (RTL) and it can be enabled by setting the <code>EnableRtl</code> property as <b>true</b>. In this demo, you can see the <code>Axis</code>, <code>Data Points</code>, <code>Tooltip</code> and <code>Legend</code> are aligned from right to left.
     </p>
     <p>
-        <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
     </p>
 }
 @section Title{

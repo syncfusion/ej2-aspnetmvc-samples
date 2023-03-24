@@ -145,6 +145,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             weekNumbersData.Add(new { Text = "First Full Week", Value = "FirstFullWeek" });
             weekNumbersData.Add(new { Text = "First Four-Day Week", Value = "FirstFourDayWeek" });
             ViewBag.WeekNumber = weekNumbersData;
+            List<object> tooltipData = new List<object>();
+            tooltipData.Add(new { Text = "Off", Value = "Off" });
+            tooltipData.Add(new { Text = "On", Value = "On" });
+            ViewBag.Tooltip = tooltipData;
 
             ViewBag.Values = new string[] { "1", "2", "3", "4", "5" };
             ViewBag.ResourceValues = new string[] { "1" };

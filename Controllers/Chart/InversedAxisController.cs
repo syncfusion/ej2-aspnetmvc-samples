@@ -20,25 +20,24 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         public ActionResult InversedAxis()
         {
             
-            List<InversedAxisChartData> chartData = new List<InversedAxisChartData>
+            List<InversedAxisChartData> ChartPoints = new List<InversedAxisChartData>
             {
-                 new InversedAxisChartData { x = "2008", y = 15.1 },
-                 new InversedAxisChartData { x = "2009", y = 16 },
-                 new InversedAxisChartData { x = "2010", y = 21.4 },
-                 new InversedAxisChartData { x = "2011", y = 18 },
-                 new InversedAxisChartData { x = "2012", y = 16.2 },
-                 new InversedAxisChartData { x = "2013", y = 11 },
-                 new InversedAxisChartData { x = "2014", y = 7.6 },
-                 new InversedAxisChartData { x = "2015", y = 1.5 }
+                new InversedAxisChartData { Year = "2008", ExchangeRate = 1.5 },
+                new InversedAxisChartData { Year = "2009", ExchangeRate = 7.6 },
+                new InversedAxisChartData { Year = "2010", ExchangeRate = 11 },
+                new InversedAxisChartData { Year = "2011", ExchangeRate = 16.2 },
+                new InversedAxisChartData { Year = "2012", ExchangeRate = 18 },
+                new InversedAxisChartData { Year = "2013", ExchangeRate = 21.4 },
+                new InversedAxisChartData { Year = "2014", ExchangeRate = 16 },
+                new InversedAxisChartData { Year = "2015", ExchangeRate = 17.1 }
             };
-            ViewBag.dataSource = chartData;
-            ViewBag.font = new { fontWeight = "600", color = "#ffffff" };
+            ViewBag.ChartPoints = ChartPoints;
             return View();
         }
         public class InversedAxisChartData
         {
-            public string x;
-            public double y;
+            public string Year;
+            public double ExchangeRate;
         }
     }
 }

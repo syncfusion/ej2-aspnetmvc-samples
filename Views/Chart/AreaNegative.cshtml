@@ -1,14 +1,12 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
-    <div class="control-section">
-        <div style="text-align:center">
+    <div class="control-section" align="center">
+        
             @(Html.EJS().Chart("container").Title("Profit and Loss").Load("load").ChartArea(ca => ca.Border(br => br.Width(0)))
-                        .LegendSettings(legend => legend.Visible(true))
+                        .LegendSettings(legend => legend.Visible(true).EnableHighlight(true))
                         .Tooltip(tooltip => tooltip.Enable(true))
-                        .PrimaryXAxis(xaxis => xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).Interval(1).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
-                                      .MajorGridLines(grid => grid.Width(0))
-                                      .MajorTickLines(tick => tick.Width(0))
-                                      .LabelStyle(label => label.FontStyle("bold")))
+                        .PrimaryXAxis(xaxis => xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("yyyy")
+                                      .MajorGridLines(grid => grid.Width(0)).Minimum(new DateTime(2017, 01, 01)).Maximum(new DateTime(2021, 01, 01)).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years).LabelStyle(ls=>ls.FontStyle("bold")))
                         .PrimaryYAxis(yaxis => yaxis.Minimum(-4000).Maximum(8000).Interval(2000).LabelFormat("${value}")
                                        .LineStyle(line => line.Width(0)).MajorTickLines(tick => tick.Width(0)))
                         .Series(
@@ -18,33 +16,36 @@
                                     XName("Vegetable")
                                     .YName("Price")
                                     .Opacity(0.75)
+                                    .Width(2)
                                     .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                                     .Border(br => br.Width(2))
                                     .Marker(marker => marker.Visible(true).IsFilled(true).Height(7).Width(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle))
-                                    .DataSource(ViewBag.dataSource1).Add();
+                                    .DataSource(ViewBag.MaryValues).Add();
                                 series.Name("Company B").
                                     XName("Vegetable")
                                     .YName("Price")
                                     .Opacity(0.75)
+                                    .Width(2)
                                     .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                                     .Border(br => br.Width(2))
                                     .Marker(marker => marker.Visible(true).IsFilled(true).Height(7).Width(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond))
-                                    .DataSource(ViewBag.dataSource2).Add();
+                                    .DataSource(ViewBag.PatriciaValues).Add();
                                 series.Name("Company C").
                                     XName("Vegetable")
                                     .YName("Price")
                                     .Opacity(0.75)
+                                    .Width(2)
                                     .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                                     .Border(br => br.Width(2))
-                                    .Marker(marker => marker.Visible(true).IsFilled(true).Height(7).Width(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle))
-                                    .DataSource(ViewBag.dataSource3).Add();
+                                    .Marker(marker => marker.Visible(true).IsFilled(true).Height(5).Width(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle))
+                                    .DataSource(ViewBag.LindaValues).Add();
 
                             })
         .Render()
 )
 
         </div>
-    </div>
+    
     @*custom code start*@
     <style>
         #control-container {
@@ -55,11 +56,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";			
-            args.chart.margin.left = ej.base.Browser.isDevice ? 2 : 10;
-            args.chart.margin.right = ej.base.Browser.isDevice ? 2 : 10;
-            args.chart.margin.top = ej.base.Browser.isDevice ? 2 : 10;
-            args.chart.margin.bottom = ej.base.Browser.isDevice ? 2 : 10;
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
     @*custom code end*@
@@ -71,22 +68,21 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates an area series with negative values. Data points with negative values are shown here.
+        This sample illustrates an area series with negative points. Data points with negative points are shown here.
     </p>
 }
 @section Description{
     <p>
-        In this example, you can see how to render an area series with negative values. Similar to line type series, but the area gets closed and filled with series color. You can use <code><a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartSeries.html#Syncfusion_EJ2_Charts_ChartSeries_Border">Border</a></code> and <code><a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartSeries.html#Syncfusion_EJ2_Charts_ChartSeries_Fill">Fill</a></code> properties to customize the area. Also, the legend is enabled with the shape of the series type.
+        In this example, you can see how to render an area series with negative points. Also, a legend is enabled in the shape of the series type.
     </p>
-    <br>
     <p>
         More information on the area series can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types#area-charts">documentation section</a>.
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/working-with-data#empty-points">documentation section</a>.
     </p>
 }
 @section Title{
     <title>ASP.NET Core Chart Area with Negative Points Example - Syncfusion Demos </title>
 }
 @section Header{
-    <h1 class='sb-sample-text'>Example of Area with Negative Points in ASP.NET Core Chart Control</h1>
+    <h1 class='sb-sample-text'>Charts</h1>
 }

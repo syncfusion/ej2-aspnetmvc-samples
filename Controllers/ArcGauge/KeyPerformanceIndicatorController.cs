@@ -114,7 +114,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             annotationText.Angle = 0;
             annotationText.ZIndex = "1";
             annotationText.Radius = "25%";
-            annotationText.Content = "<div class='titleText' style='font-size:30px;color:#84cbb5'>Current</div>";
+            annotationText.Content = "<div class='titleText' style='color:#84cbb5'>Current</div>";
             annotationCollections.Add(annotationText);
 
             CircularGaugeAnnotation annotationPointerValue = new CircularGaugeAnnotation();

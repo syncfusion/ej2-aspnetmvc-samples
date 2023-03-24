@@ -5,27 +5,29 @@
     .Series(sr =>
     {
         sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
-            .XName("xValue")
-            .YName("yValue")
-            .Width(2)
-            .DataSource(ViewBag.dataSource).Add();
+            .XName("Country")
+            .YName("GigaWatts")
+            .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff").Size("9px"))))
+            .DataSource(ViewBag.ChartPoints).Add();
     })
       .PrimaryXAxis(xaxis =>
          xaxis.MajorGridLines(mg=>mg.Width(0))
-              .Title("Countries")
+              .MajorTickLines(mt => mt.Width(0))
               .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+              .Interval(1)
+              .LabelRotation(-45)
       )
       .PrimaryYAxis(yaxis =>
-          yaxis.Title("Measurements")
+          yaxis.Title("Measurements (in Gigawatt)")
             .Minimum(0)
             .Maximum(40)
-            .MajorGridLines(mg=>mg.Width(0))
-            .LabelFormat("{value}GW")
-            .Interval(10)
+            .MajorGridLines(mg=>mg.Width(2))
+            .MajorTickLines(mt => mt.Width(0))
+            .LineStyle(ls => ls.Width(0))
+              .Interval(10)
       )
       .Title("Top 10 Countries Using Solar Power")
-      .Tooltip(tp => tp.Enable(true))
-      .Load("load").ChartArea(area => area.Border(br=>br.Color("transparent"))).PointRender("labelRender").Render()
+      .Load("load").ChartArea(area => area.Border(br => br.Width(0))).PointRender("labelRender").Render()
    )          
         </div>
         <div class="col-lg-3 property-section">
@@ -33,7 +35,7 @@
                 <tr style="height: 50px">
                     <td style="width: 20%">
                         <div>
-                            Export Type:
+                            Export Type
                         </div>
                     </td>
                     <td style="width: 80%;">
@@ -44,18 +46,18 @@
                 </tr>
                 <tr style="height: 50px">
                     <td style="width: 40%">
-                        <div>File Name:</div>
+                        <div>File Name</div>
                     </td>
                     <td style="width: 40%;">
-                        <div class="e-float-input" style='margin-top: 0px;'>
-                            <input type="text" value="Chart" id="fileName" style="margin-left: -20px">
+                        <div class="e-float-input" style='margin-top:5%;width:115%;margin-left:0%'>
+                            <input type="text" value="Charts" id="fileName" style="margin-left: -20px">
                         </div>
                     </td>
                 </tr>
                 <tr id="button-control" style="height: 50px" align='center'>
                     <td>
-                        <div>
-                            @Html.EJS().Button("togglebtn").IsPrimary(true).IconCss("e-icons e-export-icon").Content("Export").CssClass("e-flat").Render()
+                        <div style="margin-left:78%;">
+                            @Html.EJS().Button("togglebtn").IsPrimary(true).Content("Export").CssClass("e-control e-btn e-lib e-primary").Render()
                         </div>
                     </td>
                 </tr>
@@ -101,6 +103,10 @@
             var load = function (args) {
                 var selectedTheme = themeName ? themeName : 'Material';
                 args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+                args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Trim';
+                args.chart.primaryYAxis.labelFormat = ej.base.Browser.isDevice?'{value}':'{value}GW';
+                args.chart.series[0].marker.dataLabel.enableRotation = ej.base.Browser.isDevice?'true':'false';
+                args.chart.series[0].marker.dataLabel.angle = ej.base.Browser.isDevice?'-90':'0';
             };
          @*custom code end*@
             var labelRender = function (args) {
@@ -141,17 +147,16 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates the export feature in chart. By clicking <code>Export</code>, you can export the chart in PNG or JPEG format.
+        This example demonstrates how to save the chart as a PDF file and in image formats including JPEG, PNG, and SVG.
     </p>
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure the export. The rendered chart can be exported as either JPEG or
-        PNG format. It can be achieved using Blob and it's supported only in modern browsers.
+        By clicking on <b>Export</b> button, you can export the chart to the specific type using export method. To be more precise, define parameters such as the export type and the file name while exporting.
     </p>
     <p>
-        More information on the export can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+        More information about the Export can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-print?cs-save-lang=1&cs-lang=razor#export">documentation section</a>.
     </p>
 }
 

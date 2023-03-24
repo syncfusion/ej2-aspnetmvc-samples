@@ -25,6 +25,7 @@
     "shelljs": "^0.8.1"
   },
   "scripts": {
+    "gitleaks-test": "gulp code-leaks-analysis",
     "build": "gulp generate-searchlist && gulp desValidation && gulp title-section && gulp sitemap-generate",
     "publish": "gulp azure-mvc-publish"
   }

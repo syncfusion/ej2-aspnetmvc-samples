@@ -23,8 +23,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="content-wrapper">  
-            @Html.EJS().PivotView("PivotView").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource(dataManger =>
+        <div class="content-wrapper">
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource(dataManger =>
             {
                 dataManger.Url("https://bi.syncfusion.com/northwindservice/api/orders").CrossDomain(true).Adaptor("WebApiAdaptor");
             }).ExpandAll(true).FormatSettings(formatsettings =>
@@ -86,7 +86,7 @@
         };
 
         function contentType() {
-            var pivotObj = document.getElementById('PivotView').ej2_instances[0];
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
             var contentDropDown = document.getElementById("contenttype").ej2_instances[0];
             if (contentDropDown.value === 'JSON') {
                 pivotObj.dataSourceSettings = jsonReport;

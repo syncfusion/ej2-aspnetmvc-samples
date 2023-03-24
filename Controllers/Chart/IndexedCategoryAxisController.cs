@@ -19,30 +19,30 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: IndexedCategoryAxis
         public ActionResult IndexedCategoryAxis()
         {
-            List<IndexedCategoryData> chartData1 = new List<IndexedCategoryData>
+            List<IndexedCategoryData> GDP_2015 = new List<IndexedCategoryData>
             {
-                new IndexedCategoryData { x = "Myanmar", y = 7.3 },
-                new IndexedCategoryData { x = "India", y = 7.9 },
-                new IndexedCategoryData { x = "Bangladesh", y = 6.0 },
-                new IndexedCategoryData { x = "Cambodia", y = 7.0 },
-                new IndexedCategoryData { x = "China", y = 6.9 },
+                new IndexedCategoryData { Country = "India", GDPGrowthRate = 7.9 },
+                new IndexedCategoryData { Country = "Myanmar", GDPGrowthRate = 7.3 },
+                new IndexedCategoryData { Country = "Bangladesh", GDPGrowthRate = 6.0 },
+                new IndexedCategoryData { Country = "Cambodia", GDPGrowthRate = 7.0 },
+                new IndexedCategoryData { Country = "China", GDPGrowthRate = 6.9 },
              };
-            ViewBag.dataSource1 = chartData1;
-            List<IndexedCategoryData> chartData2 = new List<IndexedCategoryData>
+            ViewBag.GDP_2015 = GDP_2015;
+            List<IndexedCategoryData> GDP_2016 = new List<IndexedCategoryData>
             {
-                new IndexedCategoryData { x = "Poland", y = 2.7 },
-                new IndexedCategoryData { x = "Australia", y = 2.5 },
-                new IndexedCategoryData { x = "Singapore", y = 2.0 },
-                new IndexedCategoryData { x = "Canada", y = 1.4 },
-                new IndexedCategoryData { x = "Germany", y = 1.8 },
+                new IndexedCategoryData { Country = "Australia", GDPGrowthRate = 2.5 },
+                new IndexedCategoryData { Country = "Poland", GDPGrowthRate = 2.7 },
+                new IndexedCategoryData { Country = "Singapore", GDPGrowthRate = 2.0 },
+                new IndexedCategoryData { Country = "Canada", GDPGrowthRate = 1.4 },
+                new IndexedCategoryData { Country = "Germany", GDPGrowthRate = 1.8 },
              };
-            ViewBag.dataSource2 = chartData2;
+            ViewBag.GDP_2016 = GDP_2016;
             return View();
         }
         public class IndexedCategoryData
         {
-            public string x;
-            public double y;
+            public string Country;
+            public double GDPGrowthRate;
         }
     }
 }

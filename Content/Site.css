@@ -1697,6 +1697,36 @@ propertye pane
         padding-right: 20px !important;
         padding-top: 12px !important;
     }
+        #sb-setting-theme_popup {
+        height: 330px;
+        top: 158px !important;
+    }
+    #sb-setting-culture_popup{
+        top: 259px !important;
+    }
+    #sb-setting-currency_popup {
+        top: 374px !important;
+    }
+    .tailwind #sb-setting-theme_popup, .tailwind-dark #sb-setting-theme_popup {
+        top: 150px !important;
+    }
+    .tailwind #sb-setting-culture_popup, .tailwind-dark #sb-setting-culture_popup{
+        top: 248px !important;
+    }
+    .tailwind #sb-setting-currency_popup, .tailwind-dark #sb-setting-currency_popup {
+        top: 362px !important;
+    }
+    .bootstrap5 #sb-setting-culture_popup, .bootstrap5-dark #sb-setting-culture_popup, .bootstrap4 #sb-setting-culture_popup {
+        top: 252px !important;
+    }
+    .bootstrap5 #sb-setting-currency_popup, .bootstrap5-dark #sb-setting-currency_popup, .bootstrap4 #sb-setting-culture_popup {
+        top: 369px !important;
+    }
+    .fluent-dark #sb-setting-theme_popup, .bootstrap5-dark #sb-setting-theme_popup, .tailwind-dark #sb-setting-theme_popup, .bootstrap-dark #sb-setting-theme_popup, .highcontrast #sb-setting-theme_popup,
+    .fluent-dark #sb-setting-culture_popup, .bootstrap5-dark #sb-setting-culture_popup, .tailwind-dark #sb-setting-culture_popup, .bootstrap-dark #sb-setting-culture_popup, .highcontrast #sb-setting-culture_popup,
+    .fluent-dark #sb-setting-currency_popup, .bootstrap5-dark #sb-setting-currency_popup, .tailwind-dark #sb-setting-currency_popup, .bootstrap-dark #sb-setting-currency_popup, .highcontrast #sb-setting-currency_popup {
+        border: 1px solid #ffffff;
+    }
     /*sb-left-pane*/
     .sb-left-pane-header {
         display: block;
@@ -3046,6 +3076,7 @@ body.tailwind-dark,
 .sb-content-tab > .e-tab > .e-tab-header > .e-items.e-toolbar-items > .e-indicator {
     background: #0278d7;
     display: block;
+    z-index: 1;
 }
 
 .highcontrast .sb-content-tab > .e-tab > .e-tab-header > .e-items.e-toolbar-items > .e-indicator {

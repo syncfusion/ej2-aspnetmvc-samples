@@ -19,24 +19,26 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: PieRadius
         public ActionResult PieRadius()
         {
-            List<PieRadiusChartData> chartData = new List<PieRadiusChartData>
+            List<PieRadiusChartData> ChartPoints = new List<PieRadiusChartData>
             {
-                new PieRadiusChartData { xValue = "Argentina", yValue = 505370, r = "50%"},
-                new PieRadiusChartData { xValue = "Belgium",    yValue = 551500, r = "70%"},
-                new PieRadiusChartData { xValue = "Cuba",  yValue = 312685 , r = "84%"},
-                new PieRadiusChartData { xValue = "Dominican Republic", yValue = 350000 , r = "97%"},
-                new PieRadiusChartData { xValue = "Egypt", yValue = 301000 , r = "84%"},
-                new PieRadiusChartData { xValue = "Kazakhstan", yValue = 300000, r = "70%"},
-                new PieRadiusChartData { xValue = "Somalia",  yValue = 357022, r = "90%"}
+                new PieRadiusChartData { Country = "Argentina",          Population = 505370,  Radius = "100",   text = "Argentina" },
+                new PieRadiusChartData { Country = "Cuba",               Population = 312685 , Radius = "124.6", text = "Cuba" },
+                new PieRadiusChartData { Country = "Belgium",            Population = 551500,  Radius = "118.7", text = "Belgium" },                
+                new PieRadiusChartData { Country = "Dominican Republic", Population = 350000 , Radius = "137.5", text = "Dominican Republic" },
+                new PieRadiusChartData { Country = "Egypt",              Population = 301000 , Radius = "150.8", text = "Egypt" },
+                new PieRadiusChartData { Country = "Kazakhstan",         Population = 300000,  Radius = "155.5", text = "Kazakhstan" },
+                new PieRadiusChartData { Country = "Somalia",            Population = 357022,  Radius = "160.6", text = "Somalia" }
             };
-            ViewBag.dataSource = chartData;
+            ViewBag.ChartPoints = ChartPoints;
             return View();
         }
         public class PieRadiusChartData
         {
-            public string xValue;
-            public double yValue;
-            public string r;
+            public string Country;
+            public double Population;
+            public string Radius;
+            public string text;
+            
         }
     }
 }

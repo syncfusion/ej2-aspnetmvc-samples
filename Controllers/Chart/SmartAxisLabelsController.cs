@@ -19,23 +19,23 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: SmartAxisLabels
         public ActionResult SmartAxisLabels()
         {
-            List<SmartAxisLabelsChartData> chartData = new List<SmartAxisLabelsChartData>
+            List<SmartAxisLabelsChartData> ChartPoints = new List<SmartAxisLabelsChartData>
             {
-                new SmartAxisLabelsChartData { xValue = "South Korea",  yValue = 39 },
-                new SmartAxisLabelsChartData { xValue = "India",        yValue = 61 },
-                new SmartAxisLabelsChartData { xValue = "Pakistan",     yValue = 20 },
-                new SmartAxisLabelsChartData { xValue = "Germany",      yValue = 65 },
-                new SmartAxisLabelsChartData { xValue = "Australia",    yValue = 16 },
-                new SmartAxisLabelsChartData { xValue = "Italy",        yValue = 29 },
-                new SmartAxisLabelsChartData { xValue = "France",       yValue = 45 },
-                new SmartAxisLabelsChartData { xValue = "Saudi Arabia", yValue = 10 },
-                new SmartAxisLabelsChartData { xValue = "Russia",       yValue = 41 },
-                new SmartAxisLabelsChartData { xValue = "Mexico",       yValue = 31 },
-                new SmartAxisLabelsChartData { xValue = "Brazil",       yValue = 76 },
-                new SmartAxisLabelsChartData { xValue = "China",        yValue = 51 }
+                new SmartAxisLabelsChartData { Country = "South Korea",  User = 39, DataLabelMappingName = "39M" },
+                new SmartAxisLabelsChartData { Country = "India",        User = 61, DataLabelMappingName = "61M" },
+                new SmartAxisLabelsChartData { Country = "Pakistan",     User = 20, DataLabelMappingName = "20M" },
+                new SmartAxisLabelsChartData { Country = "Germany",      User = 65, DataLabelMappingName = "65M" },
+                new SmartAxisLabelsChartData { Country = "Australia",    User = 16, DataLabelMappingName = "16M" },
+                new SmartAxisLabelsChartData { Country = "Italy",        User = 29, DataLabelMappingName = "29M" },
+                new SmartAxisLabelsChartData { Country = "France",       User = 45, DataLabelMappingName = "45M" },
+                new SmartAxisLabelsChartData { Country = "United Arab Emirates", User = 10, DataLabelMappingName = "10M" },
+                new SmartAxisLabelsChartData { Country = "Russia",       User = 41, DataLabelMappingName = "41M" },
+                new SmartAxisLabelsChartData { Country = "Mexico",       User = 31, DataLabelMappingName = "31M" },
+                new SmartAxisLabelsChartData { Country = "Brazil",       User = 76, DataLabelMappingName = "76M" },
+                new SmartAxisLabelsChartData { Country = "China",        User = 51, DataLabelMappingName = "51M" }
 
             };
-            ViewBag.dataSource = chartData;
+            ViewBag.ChartPoints = ChartPoints;
             ViewBag.font = new { fontWeight = "600", color = "#ffffff" };
             ViewBag.data = new string[] { "Hide", "Trim", "Wrap", "MultipleRows", "Rotate45", "Rotate90", "None" };
             ViewBag.data1 = new string[] { "None", "Hide", "Shift" };
@@ -44,8 +44,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         }
         public class SmartAxisLabelsChartData
         {
-            public string xValue;
-            public double yValue;
+            public string Country;
+            public double User;
+            public string DataLabelMappingName;
         }
     }
 }

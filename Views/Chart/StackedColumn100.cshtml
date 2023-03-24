@@ -1,22 +1,22 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
-    <div class="control-section">
-        <div style="text-align:center">
-       @Html.EJS().Chart("container-vertical").Series(series =>
-  {
-      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("x").YName("y").DataSource(ViewBag.dataSource).Name("UK").Add();
-      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("x").YName("y1").DataSource(ViewBag.dataSource).Name("Germany").Add();
-      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("x").YName("y2").DataSource(ViewBag.dataSource).Name("France").Add();
-      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("x").YName("y3").DataSource(ViewBag.dataSource).Name("Italy").Add();
-  }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0)).
-  MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
-       ).PrimaryYAxis(py => py.Interval(20).MajorTickLines(mt => mt.Width(0)).
-       MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None).Title("GDP (%) per Annum")
-       ).Title("Gross Domestic Product Growth").ChartArea(area => area.Border(br=>br.Color("transparent"))).Tooltip(tt => tt.Enable(true)).Load("load").Render()
+    <div class="control-section" align="center">
+        
+            @Html.EJS().Chart("container-vertical").Series(series =>
+            {
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("General").Border(br => br.Width(1).Color("#ffffff")).Name("General Motors").Width(2).ColumnWidth(0.5).DataSource(ViewBag.ChartPoints).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("Honda").Border(br => br.Width(1).Color("#ffffff")).Name("Honda").Width(2).ColumnWidth(0.5).DataSource(ViewBag.ChartPoints).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("Suzuki").Border(br => br.Width(1).Color("#ffffff")).Name("Suzuki").Width(2).ColumnWidth(0.5).DataSource(ViewBag.ChartPoints).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("BMW").Border(br => br.Width(1).Color("#ffffff")).Name("BMW").Width(2).ColumnWidth(0.5).DataSource(ViewBag.ChartPoints).Add();
+            }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0)).
+                MinorTickLines(mt => mt.Width(0)).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45)
+                ).PrimaryYAxis(py => py.Interval(20).MajorGridLines(mg=>mg.Width(1)).MajorTickLines(mt => mt.Width(0)).
+                    MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
+                ).Title("Motor Vehicle Production by Manufacturer").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).Format("${point.x} : <b>${point.y} (${point.percentage}%)</b>")).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)).Load("load").Render()
  
         </div>
-    </div>
-   @*custom code start*@
+
+    @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
@@ -26,7 +26,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
        @*custom code end*@
@@ -37,28 +37,25 @@
                 }
    @*custom code end*@
 @section ActionDescription{
-   <p>
-    This sample visualizes percentage of domestic product growth of four different countries with default 100% stacked column series in chart.
-    Legend in the sample shows the information about the series.
-</p>
+    <p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/100-stacked-column-chart">ASP.NET MVC 100% Stacked Column Chart</a> example visualizes motor vehicle production by manufacturer with a default stacked column series. The legend in the sample shows the information about those series.
+    </p>
 }
 @section Description{
     <p>
-    In this example, you can see how to render and configure the 100% stacking column type charts. You can use <code>border</code> and 
-    <code>fill</code> properties to customize the vertical bar.
-</p>
-<p>
-    Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-</p>
-<br>
-<p>
-    More information on the stacking column series can be found in this
-    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-</p>
+        In this example, you can see how to render and configure the 100% stacked column chart. The 100% stacked column chart displays multiple series of data as stacked columns, ensuring that the cumulative proportion of each stacked element always totals 100%.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p>
+        More information about the 100% stacked column series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types#column-charts">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart 100% Stacked Column Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of 100% Stacked Column in ASP.NET MVC Chart Control</h1>
+                    <h1 class='sb-sample-text'>Charts</h1>
                 }

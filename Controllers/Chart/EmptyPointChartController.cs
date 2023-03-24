@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: EmptyPointChart
         public ActionResult EmptyPointChart()
         {
-            ViewBag.data = new string[] { "Column", "Area", "Spline" };
+            ViewBag.data = new string[] { "Column", "SplineArea", "Spline" };
             ViewBag.data1 = new string[] { "Gap", "Drop", "Average", "Zero" };
             return View();
         }

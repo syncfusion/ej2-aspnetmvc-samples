@@ -1,20 +1,21 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
     <script src="~/Scripts/theme-color.js"></script>
-    <div class="col-lg-9 control-section">
+    <div class="col-lg-8 control-section">
             @(Html.EJS().Chart("container").Series(series =>
         {
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("xValue").YName("yValue").DataSource(ViewBag.dataSource).Name("Age 0-14").Add();
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("xValue").YName("yValue1").DataSource(ViewBag.dataSource).Name("Age 15-64").Add();
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("xValue").YName("yValue2").DataSource(ViewBag.dataSource).Name("Age 65 & Above").Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("Children").Width(2).ColumnSpacing(0.1).Animation(animation => animation.Enable(false)).DataSource(ViewBag.ChartPoints).Name("Age 0-14").Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("Adult").Width(2).ColumnSpacing(0.1).Animation(animation => animation.Enable(false)).DataSource(ViewBag.ChartPoints).Name("Age 15-64").Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("SeniorAdult").Width(2).ColumnSpacing(0.1).Animation(animation => animation.Enable(false)).DataSource(ViewBag.ChartPoints).Name("Age 65 & Above").Add();
 
-        }).PrimaryXAxis(px => px.Title("Countries").Interval(1).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
-        .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)).PrimaryYAxis(py => py.LabelFormat("{value}%").Title("Distribution").Interval(20))
-        .LegendSettings(legend => legend.Visible(true).ToggleVisibility(false))
-        .Title("Age Distribution by Country").Load("load").SelectionMode(Syncfusion.EJ2.Charts.SelectionMode.Point).Render()
+        }).PrimaryXAxis(px => px.Interval(1).MajorGridLines(mg => mg.Width(0)).MajorTickLines(mg => mg.Width(0))
+        .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)).PrimaryYAxis(py => py.LabelFormat("{value}%").Title("Distribution").Interval(20).MajorTickLines(mg => mg.Width(0)).LineStyle(ls => ls.Width(0)))
+        .LegendSettings(legend => legend.Visible(true).ToggleVisibility(false)).Tooltip(tt => tt.Enable(false))
+        .Title("Age Distribution by Country").Load("load").SelectionMode(Syncfusion.EJ2.Charts.SelectionMode.Point).IsMultiSelect(false).SelectionPattern(Syncfusion.EJ2.Charts.SelectionPattern.None)
+        .HighlightMode(Syncfusion.EJ2.Charts.HighlightMode.None).HighlightPattern(Syncfusion.EJ2.Charts.SelectionPattern.None).ChartArea(area => area.Border(br => br.Width(0))).Render()
     )
     </div>
-    <div class="col-lg-3 property-section">
+    <div class="col-lg-4 property-section">
         <table id="property" title="Properties" style="width: 100%">
             <tr id='' style="height: 50px">
                 <td style="width: 80%">
@@ -63,7 +64,7 @@
                 <td style="width: 60%">
                     <div>Highlight Color:</div>
                 </td>
-                <td style="width: 40%;">
+                <td>
                     <input id="color-picker" type="color">
                 </td>
             </tr>
@@ -183,50 +184,44 @@
                 }
          @*custom code end*@
 @section ActionDescription{
-   <p>
-           This sample demonstrates the selection behavior and its mode along with the highlight and highlight patterns in the chart.
-        </p>
+    <p>
+        This sample demonstrates the different modes of selection and highlight behavior in the charts.
+    </p>
 }
 @section Description{
-  <p>
-            In this sample, any point or series can be selected in the chart by clicking on or touching the point. You can also change the selection mode by changing the <code>Selection Mode</code> option in the properties panel. You can enable multiple selections with the <code>Enable Multi Selection</code> option. You can also select a point while loading a chart using the <code>SelectedDataIndexes</code> option.
-
-While hovering the point, the point is highlighted using the <code>Enable Highlight</code> option, as well as you can set different highlight patterns and colors using the <code>Highlight Patterns</code> and <code>Highlight Color</code> option.
-        </p>
-<p>
-    Tap to select a point or series, double tap and drag to enable rectangular selection in touch enabled devices.
-</p>
-<p>
-    Chart supports seven mode of selection which can be set using the 
-    <code>SelectionMode</code> property.
-</p>
-<ul>
-    <li>
-        <code>Series</code> - Select the series in chart.
-    </li>
-    <li>
-        <code>Point</code> - Select a point in the series .
-    </li>
-    <li>
-        <code>Cluster</code> - Select a group of points in the chart.
-    </li>
-    <li>
-        <code>DragXY</code> - Rectangular selection with respect to both axes.
-    </li>
-    <li>
-        <code>DragX</code> - Rectangular selection with respect to horizontal axis.
-    </li>
-    <li>
-        <code>DragY</code> - Rectangular selection with respect to vertical axis.
-    </li>
-    <li>
-        <code>Lasso</code> - Select free form of selection area points.
-    </li>
-</ul>
- <br/>
-         <p>
-        More information about selection can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/selection/">documentation section</a>.
+    <p>
+        In this sample, any point or series can be selected in a chart by clicking on or touching the point. You can change the <b>Selection Mode</b> option in the properties panel. You can also enable multiple selection. You can select a point while loading a chart using the
+        <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartSelectedDataIndexes.html">SelectedDataIndexes</a> option.
+    </p>
+    <p>
+        Highlight the points in the sample using the <b>Enable Highlight</b> option. You can set different <b>highlight patterns</b> and <b>colors</b>.
+    </p>
+    <p>
+        Selection can be set using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.SelectionMode.html">SelectionMode</a> property, and it supports the following modes.
+    </p>
+    <ul>
+        <li>
+            <code>Series</code> - Select the series in the chart.
+        </li>
+        <li>
+            <code>Point</code> - Select a point in the series.
+        </li>
+        <li>
+            <code>Cluster</code> - Select a group of points in the chart.
+        </li>
+        <li>
+            <code>DragXY</code> - Rectangular selection with respect to both axes.
+        </li>
+        <li>
+            <code>DragX</code> - Rectangular selection with respect to horizontal axis.
+        </li>
+        <li>
+            <code>DragY</code> - Rectangular selection with respect to vertical axis.
+        </li>
+    </ul>
+    <p>
+        More information about the selection can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/selection">documentation section</a>.
     </p>
 }
 @section Title{

@@ -5,25 +5,28 @@
 @(Html.EJS().Chart("print-container")
     .Series(sr =>
     {
-        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)           
-            .Name("2015")
-            .XName("xValue")
-            .YName("yValue")
-            .Width(2)
-            .DataSource(ViewBag.dataSource).Add();      
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+            .XName("Manager")
+            .YName("SalesInfo")
+            .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
+            .DataSource(ViewBag.ChartPoints).Add();
     })
       .PrimaryXAxis(xaxis =>
          xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-              .Title("Manager")
+              .Interval(1)
               .MajorGridLines(mg=>mg.Width(0))
+              .MajorTickLines(mt => mt.Width(0))
       )
       .PrimaryYAxis(yaxis =>
-          yaxis.Title("Sales")
+          yaxis.LabelFormat("${value}k")
                 .Minimum(0)
-                .Maximum(20000)
-                .MajorGridLines(mg=>mg.Width(0))
+                .Maximum(20)
+                .Interval(4)
+                .MajorGridLines(mg=>mg.Width(2))
+                .MajorTickLines(mt => mt.Width(0))
+                .LineStyle(ls => ls.Width(0))
       ).LegendSettings(legend => legend.Visible(false))
-      .Title("Sales Comparision").ChartArea(area => area.Border(br=>br.Color("transparent"))).Load("load").ChartMouseClick("chartMouseClick").PointRender("labelRender").Render()
+      .Title("Sales Comparision").ChartArea(area => area.Border(br => br.Width(0))).Load("load").ChartMouseClick("chartMouseClick").PointRender("labelRender").Render()
 )
                </div>
         <div class="col-lg-3 property-section">
@@ -31,7 +34,8 @@
                 <tr id="button-control" style="height: 50px">
                     <td align='center'>
                         <div>
-                           @Html.EJS().Button("togglebtn").IsPrimary(true).Content("Print").IconCss("e-icons e-print-icon").CssClass("e-flat").Render()
+                            <p><b>Print the chart</b></p><br>
+                           @Html.EJS().Button("togglebtn").IsPrimary(true).Content("Print").CssClass("e-control e-btn e-lib e-primary").Render()
                         </div>
                     </td>
                 </tr>
@@ -127,18 +131,17 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-    This sample illustrates the print feature in chart. By clicking <code>Print</code>, you can print the chart directly from the browser.
-</p>
+        This sample demonstrates the print option in the charts.
+    </p>
 }
 @section Description{
-   <p>
-    In this example, you can see how to render and configure the print.
-    The rendered chart can be printed directly from the browser by calling the public method print.
-</p>
-<p>
-    More information on the print can be found in this
-    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-</p> 
+    <p>
+        By clicking the <b>Print</b> button, you can print a chart directly from the browser using the print method.
+    </p>
+    <p>
+        More information about the print can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-print?cs-save-lang=1&cs-lang=razor#print">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Print Example - Syncfusion Demos </title> 

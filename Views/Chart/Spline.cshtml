@@ -1,30 +1,26 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
-    <div class="control-section">
-        <div style="text-align:center">
+    <div class="control-section" align="center">
+        
             @Html.EJS().Chart("container").Series(series =>
        {
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("xValue").YName("yValue")
-           .Marker(mr => mr.Visible(true).Width(10).Height(10))
-           .DataSource(ViewBag.dataSource).Name("Max Temp").Width(2).Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("xValue").YName("yValue1").Marker(mr => mr.Visible(true).Width(10).Height(10)).DataSource(ViewBag.dataSource).Name("Avg Temp").Width(2).Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("xValue").YName("yValue2").Marker(mr => mr.Visible(true).Width(10).Height(10)).DataSource(ViewBag.dataSource).Name("Min Temp").Width(2).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MaxTemp")
+           .Marker(mr => mr.Visible(true).Width(7).Height(7))
+           .DataSource(ViewBag.SplineData).Name("Max Temp").Width(2).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("AvgTemp").Marker(mr => mr.Visible(true).Width(7).Height(7)).DataSource(ViewBag.SplineData).Name("Avg Temp").Width(2).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MinTemp").Marker(mr => mr.Visible(true).Width(7).Height(7)).DataSource(ViewBag.SplineData).Name("Min Temp").Width(2).Add();
        }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
-       .MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+       .MajorGridLines(mg => mg.Width(0)).Interval(1)
        .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-       ).PrimaryYAxis(py => py.LabelFormat("{value}C")
+       ).PrimaryYAxis(py => py.LabelFormat("{value}°C")
        .MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
        ).Title("NC Weather Report - 2016").Annotations(an => {
            an.X("Sun").Y("2").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).VerticalAlignment(Syncfusion.EJ2.Charts.Position.Top).Content("#chart_cloud").Add();
            an.X("Tue").Y("33").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).VerticalAlignment(Syncfusion.EJ2.Charts.Position.Top).Content("#chart_sunny").Add();
-       }).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br=>br.Color("transparent"))).Load("load").Render()
+       }).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br => br.Width(0))).Load("load").LegendSettings(leg => leg.EnableHighlight(true)).Render()
 
         </div>
-        <div style="float: right; margin-right: 10px;">
-            Source:
-            <a href="https://www.worldweatheronline.com/mooresville-weather/north-carolina/us.aspx" target="_blank">www.worldweatheronline.com</a>
-        </div>
-    </div>
+    
          @*custom code start*@
     <style>
          #control-container {
@@ -63,7 +59,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
              @*custom code end*@
@@ -75,27 +71,24 @@
    @*custom code end*@
 @section ActionDescription{
     <p>
-    This sample visualizes the NC weather report for the year 2016 with default spline series in the chart.
-    Low and high temperature of the year are indicated by using annotation.
-</p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/spline-chart">ASP.NET MVC Spline Chart</a> example represents the North Carolina weather report for the year 2016 with default spline series in the chart.
+    </p>
 }
 @section Description{
-   <p>
-    In this example, you can see how to render and configure the spline type charts. Spline chart connects each point in series through a curved line.
-    You can use <code>dashArray</code>, <code>width</code>, and <code>fill</code> properties to customize the spline. <code>marker</code> and <code>dataLabel</code> are used to represent individual data and its value.
-</p>
-<p>
-    Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-</p>
-<br>
-<p>
-    More information on the spline series can be found in this
-    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
-</p> 
+    <p>
+        In this example, you can see how to render and configure a spline chart. The Spline chart uses a curved line to connect points in a data series. <code>Markers</code> are used to represent individual data and its values.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the spline series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types#line-charts">documentation section</a>.
+    </p> 
 }
 @section Title{
                     <title>ASP.NET MVC Chart Spline Example - Syncfusion Demos </title> 
                 }
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Spline in ASP.NET MVC Chart Control</h1>
+                    <h1 class='sb-sample-text'>Charts</h1>
                 }

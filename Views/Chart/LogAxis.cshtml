@@ -6,12 +6,12 @@
 
   @Html.EJS().Chart("container").Series(series =>
    {
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("xValue")
-       .Marker(mr=>mr.Visible(true)).YName("yValue1").DataSource(ViewBag.dataSource).Name("Product A").Add();
-   }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("y")
-    ).PrimaryYAxis(py => py.Maximum(100000).Minimum(0).MajorTickLines(mt=>mt.Width(0.1)).MinorTickLines(mt=>mt.Width(0.1)).LabelFormat("${value}")
-    .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).ValueType(Syncfusion.EJ2.Charts.ValueType.Logarithmic).Interval(1).MinorTicksPerInterval(4).Title("Profit")
-       ).Title("Product X Growth [1995-2005]").Tooltip(tt => tt.Enable(true).Header("Profit")).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).Width(2).XName("Period").Opacity(1)
+       .Marker(mr=>mr.Visible(true).Height(7).Width(7).IsFilled(true)).YName("ProfitInfo").DataSource(ViewBag.ChartPoints).Name("Product X").Add();
+   }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("yyyy").MajorGridLines(mg => mg.Width(0))
+    ).PrimaryYAxis(py => py.Maximum(100000).Minimum(0).MajorTickLines(mt=>mt.Width(0)).MinorTickLines(mt=>mt.Width(0)).LabelFormat("${value}")
+    .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).ValueType(Syncfusion.EJ2.Charts.ValueType.Logarithmic).Interval(1).MinorTicksPerInterval(5).MajorGridLines(mg => mg.Width(1.5)).LineStyle(ls => ls.Width(0))
+       ).Title("Product X Growth [1995-2005]").Tooltip(tt => tt.Enable(true).Shared(true).Header("").Format("${point.x} : <b>${point.y}</b>")).LegendSettings(lg => lg.Visible(false)).ChartArea(area => area.Border(br => br.Width(0))).Load("load").Render()
     </div>
 </div>
 
@@ -25,8 +25,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
-
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>
  @*custom code end*@
@@ -38,22 +37,20 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample demonstrates the rendering of logarithmic axis in the chart.
+        This sample shows a logarithmic axis in a chart with data about the sales of a product between 1995 and 2005.
     </p>
 }
 @section Description{
     <p>
-    Logarithmic axis uses logarithmic scale and it is very useful in visualizing when the data has values with both lower order of magnitude (eg: 10^-6) and higher order of magnitude (eg: 10^6).
-    To render Logarithmic axis, set <code>valueType</code> in axis to <b>Logarithmic</b>.
+        The logarithmic axis uses a logarithmic scale and is very useful when viewing data with values of both lower orders of magnitude (e.g., 10^-6) and higher orders of magnitude (e.g. 10^6). To use the logarithmic axis, set <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartAxis.html#Syncfusion_EJ2_Charts_ChartAxis_ValueType">ValueType</a> in axis to <b>Logarithmic</b>.
     </p>
     <p>
-    Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a data point or tap one on touch-enabled devices.
     </p>
-      <br>
-        <p>
-            More information on the Logarithmic axis can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-axis.html#valuetype-valuetype">documentation section</a>.
-        </p> 
+    <p>
+        More information about the logarithmic axis can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/logarithmic-axis">documentation section</a>.
+    </p>
 }
 @section Title{
                     <title>ASP.NET MVC Chart Log Axis Example - Syncfusion Demos </title> 

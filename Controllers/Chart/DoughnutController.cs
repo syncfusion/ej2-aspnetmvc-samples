@@ -19,24 +19,23 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: Doughnut
         public ActionResult Doughnut()
         {
-            List<DoughnutChartData> chartData = new List<DoughnutChartData>
+            List<DoughnutChartData> ChartPoints = new List<DoughnutChartData>
             {
-                new DoughnutChartData { xValue = "Labour", yValue = 18, text = "18%"},
-                new DoughnutChartData { xValue = "Legal", yValue = 8 , text = "8% "},
-                new DoughnutChartData { xValue = "Production", yValue = 15, text = "15%"},
-                new DoughnutChartData { xValue = "License", yValue = 11, text = "11%"},
-                new DoughnutChartData { xValue = "Facilities", yValue = 18, text = "18%"},
-                new DoughnutChartData { xValue = "Taxes", yValue = 14, text = "14%"},
-                new DoughnutChartData { xValue = "Insurance", yValue = 16, text = "16%"},
+                new DoughnutChartData { Browser= "Chrome", Users= 61.3, DataLabelMappingName= "Chrome: 61.3%" },
+                new DoughnutChartData { Browser= "Safari", Users= 24.6, DataLabelMappingName= "Safari: 24.6%" },
+                new DoughnutChartData { Browser= "Edge", Users= 5.0, DataLabelMappingName= "Edge: 5.0%" },
+                new DoughnutChartData { Browser= "Samsung Internet", Users= 2.7, DataLabelMappingName= "Samsung Internet: 2.7%" },
+                new DoughnutChartData { Browser= "Firefox", Users= 2.6, DataLabelMappingName= "Firefox: 2.6%" },
+                new DoughnutChartData { Browser= "Others", Users= 3.6, DataLabelMappingName= "Others: 3.6%" }
             };
-            ViewBag.dataSource = chartData;
+            ViewBag.ChartPoints = ChartPoints;
             return View();
         }
         public class DoughnutChartData
         {
-            public string xValue;
-            public double yValue;
-            public string text;
+            public string Browser;
+            public double Users;
+            public string DataLabelMappingName;
         }
     }
 }

@@ -19,25 +19,60 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: StripLine
         public ActionResult StripLine()
         {
-
-            List<StripLineChartData> chartData = new List<StripLineChartData>
+            List<StripLineChartData> WeatherReportsA = new List<StripLineChartData>
             {
-               new StripLineChartData { x = "Sun", y = 25 },
-               new StripLineChartData { x = "Mon", y = 27 },
-               new StripLineChartData { x = "Tue", y = 33 },
-               new StripLineChartData { x = "Wed", y = 36 },
-               new StripLineChartData { x = "Thu", y = 26 },
-               new StripLineChartData { x = "Fri", y = 27.5 },
-               new StripLineChartData { x = "Sat", y = 23 }
+               new StripLineChartData { Day = "Jan", Temperature = 90 },
+               new StripLineChartData { Day = "Feb", Temperature = 92 },
+               new StripLineChartData { Day = "Mar", Temperature = 94 },
+               new StripLineChartData { Day = "Apr", Temperature = 95 },
+               new StripLineChartData { Day = "May", Temperature = 94 },
+               new StripLineChartData { Day = "Jun", Temperature = 96 },
+               new StripLineChartData { Day = "Jul", Temperature = 97 },
+               new StripLineChartData { Day = "Aug", Temperature = 98 },
+               new StripLineChartData { Day = "Sep", Temperature = 97 },
+               new StripLineChartData { Day = "Oct", Temperature = 95 },
+               new StripLineChartData { Day = "Nov", Temperature = 90 },
+               new StripLineChartData { Day = "Dec", Temperature = 95 }
             };
-            ViewBag.dataSource = chartData;
-            ViewBag.data = new string[] { "Vertical", "Horizontal", "Segment" };
-           return View();
+            ViewBag.WeatherReportsA = WeatherReportsA;
+            List<StripLineChartData> WeatherReportsB = new List<StripLineChartData>
+            {
+                new StripLineChartData { Day = "Jan", Temperature = 85 },
+                new StripLineChartData { Day = "Feb", Temperature = 86 },
+                new StripLineChartData { Day = "Mar", Temperature = 87 },
+                new StripLineChartData { Day = "Apr", Temperature = 88 },
+                new StripLineChartData { Day = "May", Temperature = 87 },
+                new StripLineChartData { Day = "Jun", Temperature = 90 },
+                new StripLineChartData { Day = "Jul", Temperature = 91 },
+                new StripLineChartData { Day = "Aug", Temperature = 90 },
+                new StripLineChartData { Day = "Sep", Temperature = 93 },
+                new StripLineChartData { Day = "Oct", Temperature = 90 },
+                new StripLineChartData { Day = "Nov", Temperature = 85 },
+                new StripLineChartData { Day = "Dec", Temperature = 90 }
+            };
+            ViewBag.WeatherReportsB = WeatherReportsB;
+            List<StripLineChartData> WeatherReportsC = new List<StripLineChartData>
+            {
+                new StripLineChartData { Day = "Jan", Temperature = 80 },
+                new StripLineChartData { Day = "Feb", Temperature = 81 },
+                new StripLineChartData { Day = "Mar", Temperature = 82 },
+                new StripLineChartData { Day = "Apr", Temperature = 83 },
+                new StripLineChartData { Day = "May", Temperature = 84 },
+                new StripLineChartData { Day = "Jun", Temperature = 83 },
+                new StripLineChartData { Day = "Jul", Temperature = 82 },
+                new StripLineChartData { Day = "Aug", Temperature = 81 },
+                new StripLineChartData { Day = "Sep", Temperature = 85 },
+                new StripLineChartData { Day = "Oct", Temperature = 84 },
+                new StripLineChartData { Day = "Nov", Temperature = 83 },
+                new StripLineChartData { Day = "Dec", Temperature = 82 }
+            };
+            ViewBag.WeatherReportsC = WeatherReportsC;
+            return View();
         }
         public class StripLineChartData
         {
-            public string x;
-            public double y;
+            public string Day;
+            public double Temperature;
         }
     }
 }

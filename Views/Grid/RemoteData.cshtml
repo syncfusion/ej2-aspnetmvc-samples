@@ -4,7 +4,7 @@
     <div class="control-section">
         @Html.EJS().Grid("WebApi").DataSource(dataManger =>
    {
-       dataManger.Url("https://ej2services.syncfusion.com/production/web-services/api/Orders").CrossDomain(true).Adaptor("WebApiAdaptor");
+       dataManger.Url("https://services.syncfusion.com/aspnet/production/api/Orders").CrossDomain(true).Adaptor("WebApiAdaptor");
    }).Columns(col =>
         {
 
@@ -15,7 +15,7 @@
         col.Field("ShipCountry").HeaderText("Ship Country").Width("150").Add();
         
 
-        }).AllowPaging().PageSettings(page=>page.PageCount(3)).Render()
+        }).AllowPaging().Render()
     </div>
 }
 @section ActionDescription{

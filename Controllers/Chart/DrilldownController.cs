@@ -20,14 +20,14 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         public ActionResult Drilldown()
         {
 
-            List<CategoryData> chartData = new List<CategoryData>
+            List<DrilldownData> chartData = new List<DrilldownData>
             {
-                new CategoryData { x = "SUV", y = 25 },
-                new CategoryData { x = "Car", y = 37 },
-                new CategoryData { x = "Pickup", y = 15 },
-                new CategoryData { x = "Minivan", y = 23 },
+                new DrilldownData { x = "SUV", y = 25 },
+                new DrilldownData { x = "Car", y = 37 },
+                new DrilldownData { x = "Pickup", y = 15 },
+                new DrilldownData { x = "Minivan", y = 23 },
                 
-             };
+            };
             ViewBag.dataSource = chartData;
 
             return View();
@@ -36,7 +36,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         
     }
 
-    public class CategoryData
+    public class DrilldownData
     {
         public string x;
         public double y;

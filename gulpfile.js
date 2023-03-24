@@ -408,3 +408,16 @@ gulp.task('mvc-version-update', function (done) {
     }
     done();
 });
+
+
+gulp.task('code-leaks-analysis', function (done) {
+    var codeLeaksReport = JSON.parse(fs.readFileSync('GitLeaksReport.json', 'utf-8'));
+    if (Object(codeLeaksReport).length <= 0) {
+        console.log("<- No Leaks Found ->");
+        shelljs.exec('rm GitLeaksReport.json')
+    }
+    else {
+        throw "Please clear the Git Leaks reported issues";
+    }
+    done();
+});

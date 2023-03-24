@@ -19,22 +19,22 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: Trendlines
         public ActionResult RTL()
         {
-            List<RTLData> chartData = new List<RTLData>
+            List<RTLData> ChartPoints = new List<RTLData>
             {
-                new RTLData { x = 2016, y = 1000, y1 = 400, y2 = 600 },
-                new RTLData { x = 2017, y = 970, y1 = 360, y2 = 610 },
-                new RTLData { x = 2018, y = 1060, y1 = 920, y2 = 140 },
-                new RTLData { x = 2019, y = 1030, y1 = 540, y2 = 490 }
+                new RTLData { Year = 2016, Sales = 1000, Expense = 400, Profit = 600 },
+                new RTLData { Year = 2017, Sales = 970, Expense = 360, Profit = 610 },
+                new RTLData { Year = 2018, Sales = 1060, Expense = 920, Profit = 140 },
+                new RTLData { Year = 2019, Sales = 1030, Expense = 540, Profit = 490 }
             };
-            ViewBag.data = chartData;
+            ViewBag.ChartPoints = ChartPoints;
             return View();
         }
         public class RTLData
         {
-            public double x;
-            public double y;
-            public double y1;
-            public double y2;
+            public double Year;
+            public double Sales;
+            public double Expense;
+            public double Profit;
         }
     }
 }

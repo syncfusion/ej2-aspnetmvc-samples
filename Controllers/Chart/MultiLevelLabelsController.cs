@@ -19,26 +19,26 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: MultiLevelLabels
         public ActionResult MultiLevelLabels()
         {
-            List<MultiLevelLabelsData> chartData = new List<MultiLevelLabelsData>
+            List<MultiLevelLabelsData> ChartPoints = new List<MultiLevelLabelsData>
             {
-                new MultiLevelLabelsData { x = "Grapes",  y = 28 },
-                new MultiLevelLabelsData { x = "Apples",  y = 87 },
-                new MultiLevelLabelsData { x = "Pears",   y = 42 },
-                new MultiLevelLabelsData { x = "Grapes",  y = 13 },
-                new MultiLevelLabelsData { x = "Apples",  y = 13 },
-                new MultiLevelLabelsData { x = "Pears",   y = 10 },
-                new MultiLevelLabelsData { x = "Tomato",  y = 31 },
-                new MultiLevelLabelsData { x = "Potato",  y = 96 },
-                new MultiLevelLabelsData { x = "Cucumber",y = 41 },
-                new MultiLevelLabelsData { x = "Onion",   y = 59 }
+                new MultiLevelLabelsData { Fruits = "Grapes",  Sales = 28 },
+                new MultiLevelLabelsData { Fruits = "Apples",  Sales = 87 },
+                new MultiLevelLabelsData { Fruits = "Pears",   Sales = 42 },
+                new MultiLevelLabelsData { Fruits = "Grapes",  Sales = 13 },
+                new MultiLevelLabelsData { Fruits = "Apples",  Sales = 13 },
+                new MultiLevelLabelsData { Fruits = "Pears",   Sales = 10 },
+                new MultiLevelLabelsData { Fruits = "Tomato",  Sales = 31 },
+                new MultiLevelLabelsData { Fruits = "Potato",  Sales = 96 },
+                new MultiLevelLabelsData { Fruits = "Cucumber",Sales = 41 },
+                new MultiLevelLabelsData { Fruits = "Onion",   Sales = 59 }
              };
-            ViewBag.dataSource = chartData;
+            ViewBag.ChartPoints = ChartPoints;
             return View();
         }
         public class MultiLevelLabelsData
         {
-            public string x;
-            public double y;
+            public string Fruits;
+            public double Sales;
         }
     }
 }

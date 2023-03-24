@@ -19,18 +19,18 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: CategoryAxis
         public ActionResult CategoryAxis()
         {
-            List<CategoryData> chartData = new List<CategoryData>
+            List<CategoryData> ChartPoints = new List<CategoryData>
             {
-                new CategoryData { x = "Germany", y = 72, country = "GER: 72"},
-                new CategoryData { x = "Russia", y = 103.1, country = "RUS: 103.1" },
-                new CategoryData { x = "Brazil", y = 139.1, country = "BRZ: 139.1" },
-                new CategoryData { x = "India", y = 462.1, country = "IND: 462.1" },
-                new CategoryData { x = "China", y = 721.4, country = "CHN: 721.4" },
-                new CategoryData { x = "United States<br>Of America", y = 286.9, country = "USA: 286.9" },
-                new CategoryData { x = "Great Britain", y = 115.1, country = "GBR: 115.1" },
-                new CategoryData { x = "Nigeria", y = 97.2, country = "NGR: 97.2" },
+                new CategoryData { Country = "Germany", Users = 72, TooltipMappingName = "GER: 72" },
+                new CategoryData { Country = "Russia", Users = 103.1, TooltipMappingName = "RUS: 103.1" },
+                new CategoryData { Country = "Brazil", Users = 139.1, TooltipMappingName = "BRZ: 139.1" },
+                new CategoryData { Country = "India", Users = 462.1, TooltipMappingName = "IND: 462.1" },
+                new CategoryData { Country = "China", Users = 721.4, TooltipMappingName = "CHN: 721.4" },
+                new CategoryData { Country = "United States<br>Of America", Users = 286.9, TooltipMappingName = "USA: 286.9" },
+                new CategoryData { Country = "Great Britain", Users = 115.1, TooltipMappingName = "GBR: 115.1" },
+                new CategoryData { Country = "Nigeria", Users = 97.2, TooltipMappingName = "NGR: 97.2" }
              };
-            ViewBag.dataSource = chartData;
+            ViewBag.ChartPoints = ChartPoints;
             ViewBag.font = new
             {
                 fontWeight = "600",
@@ -42,9 +42,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         }
         public class CategoryData
         {
-            public string x;
-            public double y;
-            public string country;
+            public string Country;
+            public double Users;
+            public string TooltipMappingName;
         }
     }
 }
