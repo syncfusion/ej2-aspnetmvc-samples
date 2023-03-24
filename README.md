@@ -7,7 +7,7 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
 * [Requirements to run the demo](#requirements-to-run-the-demo)
 * [How to run the demo](#how-to-run-the-demo)
 * [ASP.NET MVC documentation](https://ej2.syncfusion.com/aspnetmvc/documentation/introduction)
-* [ASP.NET MVC components catalog](#aspnet-mvc-components-catalog)
+* [ASP.NET MVC components catalog](#asp.net-mvc-components-catalog)
 * [License](#license)
 * [Support and feedback](#support-and-feedback)
 
