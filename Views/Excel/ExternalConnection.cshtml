@@ -1,0 +1,56 @@
+﻿@using Syncfusion.EJ2;
+
+@section ControlsSection{
+    <div class="control-section">
+        @{Html.BeginForm("ExternalConnection", "Excel", FormMethod.Post);
+        { 
+        <div class="rowdiv">
+            <p style="font-weight:normal">
+				Click the "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+			</p>
+        </div>
+        <br />
+        <div class="rowdiv">
+            <div class="celldiv">
+                <label style="font-weight:normal">
+                    Select the Customer Country :
+                </label>
+               @Html.EJS().DropDownList("country").Placeholder("Select a Country").DataSource(ViewData["country"]).Width("250").Render()
+            </div>
+        </div>
+        <br />
+        <div class="rowdiv">
+            <div class="celldiv">
+                <input  class="e-btn" type="submit" value="Create Document" name="button" style=" width:200px;" />
+                <input id="refresh" type="checkbox" name="refresh" />
+                <label for="refresh" style="font-weight:normal">
+                    Refresh
+                </label>
+            </div>
+        </div>
+        Html.EndForm();
+        }
+    }
+    </div>
+}
+
+@section ActionDescription{
+    This sample demonstrates how to import data to spreadsheets from external connections using Excel (XlsIO) Library.
+}
+
+@section Meta{
+    <meta name="description" content="This sample demonstrates how to import data to spreadsheets from external connections using Excel (XlsIO) Library." />
+}
+@section Description{
+    Data can be imported from database to an Excel document using External Connection. Additionally, the <b>Refresh()</b> option will refresh data while opening Excel documents.
+    <br />
+    <br /><b>Features:</b>
+    <br />
+    <br />
+    <ul>
+        <li>To add the connection to workbook</li>
+        <li>To add the query table to worksheet using the connection</li>
+        <li>Using the refresh() to import the data to worksheet from the DB</li>
+    </ul>
+    <br />
+}
