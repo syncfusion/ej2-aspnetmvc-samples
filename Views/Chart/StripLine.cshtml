@@ -1,0 +1,76 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @Html.EJS().Chart("container").Series(series =>
+{
+    series.Name("Product A").XName("Day").YName("Temperature").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+    .Marker(mr => mr.Visible(true).Width(7).Height(7))
+    .DataSource(ViewBag.WeatherReportsA).Width(2).Add();
+    series.Name("Product B").XName("Day").YName("Temperature").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+        .Marker(mr => mr.Visible(true).Width(7).Height(7))
+        .DataSource(ViewBag.WeatherReportsB).Width(2).Add();
+    series.Name("Product C").XName("Day").YName("Temperature").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+        .Marker(mr => mr.Visible(true).Width(7).Height(7))
+        .DataSource(ViewBag.WeatherReportsC).Width(2).Add();
+}).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+    .MajorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0))
+    ).PrimaryYAxis(py => py.Minimum(80).Maximum(100).Interval(5)
+    .LabelFormat("{value}%").MajorTickLines(mt => mt.Width(0))
+    .StripLines(sl =>
+    {
+        sl.Start("95").End("100").Text("Good").Color("#ff512f").Visible(true).Border(br => br.Width(0)).TextStyle(tx => tx.Size("17px").Color("#ffffff").FontWeight("500")).HorizontalAlignment(Syncfusion.EJ2.Charts.Anchor.Middle).Add();
+        sl.Start("85").End("95").Text("Ok").Color("#fc902a").Visible(true).Border(br => br.Width(0)).TextStyle(tx => tx.Size("17px").Color("#ffffff").FontWeight("500")).HorizontalAlignment(Syncfusion.EJ2.Charts.Anchor.Middle).Add();
+        sl.Start("80").End("85").Text("Average").Color("#f9d423").Visible(true).Border(br => br.Width(0)).TextStyle(tx => tx.Size("17px").Color("#ffffff").FontWeight("500")).HorizontalAlignment(Syncfusion.EJ2.Charts.Anchor.Middle).Add();
+    })
+    .LineStyle(ls => ls.Color("#808080")).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
+    ).LegendSettings(lg => lg.Visible(true).EnableHighlight(true)).Tooltip(tt => tt.Enable(true).Header("").Format("<b>${point.x}</b> <br> Ratings : <b>${point.y}</b>")
+    ).Title("Customer Satisfaction Rating").ChartArea(area => area.Border(br => br.Width(0))).Load("load").Render()
+    </div>
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    
+    <script>
+       @*custom code start*@
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+        };
+           @*custom code end*@
+    </script>
+}
+   @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Strip Line in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+   @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample highlights a certain temperature range recorded over a year using the strip line feature.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a strip line for the chart. Use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartStripLine.html#Syncfusion_EJ2_Charts_ChartStripLine_Start">Start</a> and <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartStripLine.html#Syncfusion_EJ2_Charts_ChartStripLine_End">End</a> properties in the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartStripLine.html">ChartStripline</a> option to add a strip line to an axis. You can add more than one strip line to the axis.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap one on touch-enabled devices.
+    </p>
+    <p>
+        More information about the stripline can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/strip-line">documentation section</a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Strip Line Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Strip Line in ASP.NET MVC Chart Control</h1>
+                }

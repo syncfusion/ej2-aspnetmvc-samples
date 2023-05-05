@@ -1,0 +1,125 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+<div>
+    <div class="col-lg-8 control-section">
+@(Html.EJS().Chart("container")
+    .Series(sr =>
+    {
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingArea)
+            .Name("2013")
+            .XName("Country")
+            .YName("GDP_2013")
+            .Width(2)
+            .DataSource(ViewBag.ChartPoints).Add();
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingArea)
+            .Name("2014")
+            .XName("Country")
+            .YName("GDP_2014")
+            .Width(2)
+            .DataSource(ViewBag.ChartPoints).Add();
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingArea)
+            .Name("2015")
+            .XName("Country")
+            .YName("GDP_2015")
+            .Width(2)
+            .DataSource(ViewBag.ChartPoints).Add();
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingArea)
+            .Name("2016")
+            .XName("Country")
+            .YName("GDP_2016")
+            .Width(2)
+            .DataSource(ViewBag.ChartPoints).Add();
+    })
+      .PrimaryXAxis(xaxis =>
+         xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+             .LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.OnTicks)
+             .Interval(1)
+             .Coefficient(100)
+      )
+      .Title("GDP in current prices (USD Billion)")
+      .Tooltip(tp => tp.Enable(true).Header("").Format("<b>${point.x}</b><br>GDP: <b>${point.y}USD</b>"))
+      .LegendSettings(lg => lg.EnableHighlight(true))
+      .Load("load").Render()
+)
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 50%">
+                        <div>
+                            Series Type:
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div>
+                            @Html.EJS().DropDownList("dropdown").Index(0).DataSource(ViewBag.data).Value("Polar").Change("valueChange").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+ @*custom code start*@
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+</style>
+ @*custom code end*@
+    <script>
+     @*custom code start*@
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        };
+     @*custom code end*@
+        var valueChange = function () {
+            var chart = document.getElementById('container').ej2_instances[0];
+            var polarType = document.getElementById("dropdown").ej2_instances[0];
+            chart.series[0].type = polarType.value;
+            chart.series[1].type = polarType.value;
+            chart.series[2].type = polarType.value;
+            chart.series[3].type = polarType.value;
+            chart.series[0].animation.enable = true;
+            chart.series[1].animation.enable = true;
+            chart.series[2].animation.enable = true;
+            chart.series[3].animation.enable = true;
+            chart.refresh();
+        }
+    </script>
+}
+ @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Stacked Area in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample shows GDP growth of various countries for a few years in the polar and radar charts using the stacked area series.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure polar and radar charts with stacking area series. Switching between polar and radar series can be done using <b>Series Type</b> in the property panel.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the polar and radar series with a stacking area type chart can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/polar#stacked-area">documentation section</a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Stacked Area Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Stacked Area in ASP.NET MVC Chart Control</h1>
+                }

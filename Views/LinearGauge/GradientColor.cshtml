@@ -1,0 +1,202 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-md-8 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Container(
+            new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer { Width = 30,
+                Offset = 30 }
+           ).Margin(new Syncfusion.EJ2.LinearGauge.LinearGaugeMargin{ Bottom=50}).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis>
+                {
+                new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+                {
+                Minimum = 0, Maximum = 100,
+                Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0 },
+                Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
+                    {
+                    new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                    {
+                    Start = 0.1, End = 80, Color = "#f54ea2",StartWidth = 30, EndWidth = 30, Offset="30",
+                    }
+                    },
+                    Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+                        {
+                        new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+                        {
+                        Value = 80, Height=25,Width=35, Color="#f54ea2", Offset = "0",
+                        MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+                        }
+                        },
+                        MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Interval= 25, Height= 0 },
+                        MinorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Height=0 },
+                        LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel {  Offset = 55 },
+                        } }).Render()
+        </div>
+    </div>
+    <div class="col-md-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td>
+                        <div style="width: 120px; margin-left:-10px">Gradient Type</div>
+                    </td>
+                    <td>
+                        <div style="margin-left: -15px;">
+                            <select id="gradient" class="form-control">
+                                <option value="linear" selected="true">Linear Gradient</option>
+                                <option value="radial">Radial Gradient</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div style="margin-left:-10px;">Element</div>
+                    </td>
+                    <td>
+                        <div style="margin-left: -15px;">
+                            <select id="element" class="form-control">
+                                <option value="range" selected="true">Range</option>
+                                <option value="pointer">Pointer</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var gauge;
+        var rangeLinearGradient = {
+            startValue: "1%",
+            endValue: "99%",
+            colorStop: [{ color: "#fef3f9", offset: "1%", opacity: 1 },
+                    { color: " #f54ea2", offset: "99%", opacity: 1 }
+            ]};
+        var rangeRadialGradient = {
+            radius: "65%",
+            outerPosition: { x: "50%", y: "70%" },
+            innerPosition: { x: "60%", y: "60%" },
+            colorStop: [{ color: "#fff5f5", offset: "5%", opacity: 0.9 },
+                { color: " #f54ea2", offset: "99%", opacity: 0.9 }
+            ]};
+        var pointerLinearGradient = {
+            startValue: "1%",
+            endValue: "99%",
+            colorStop: [{ color: "#fef3f9", offset: "1%", opacity: 1 },
+                { color: " #f54ea2", offset: "99%", opacity: 1 }
+             ]
+        }
+        var pointerRadialGradient = {
+            radius: "60%",
+            outerPosition: { x: "50%", y: "50%" },
+            innerPosition: { x: "50%", y: "50%" },
+            colorStop: [{ color: "#fff5f5", offset: "1%", opacity: 0.9 },
+            { color: "#f54ea2", offset: "99%", opacity: 0.8 }
+            ]    
+        }
+        var linearCheck = false;
+        function onGaugeLoad(sender) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            gauge = sender.gauge;
+            sender.gauge.orientation = "Horizontal";
+            if (!linearCheck) {
+                sender.gauge.axes[0].ranges[0].linearGradient = rangeLinearGradient;
+                linearCheck = true;
+            }
+        }
+        var gradientType = new ej.dropdowns.DropDownList({
+            index: 0,
+            width: '100%',
+            change: function () {
+                if (gradientType.value === 'radial' && element.value === 'range') {
+                    gauge.axes[0].ranges[0].linearGradient = null;
+                    gauge.axes[0].ranges[0].radialGradient = rangeRadialGradient;
+                    gauge.axes[0].pointers[0].linearGradient = null;
+                    gauge.axes[0].pointers[0].radialGradient = null;
+                    gauge.refresh();
+                }
+                if (element.value === 'range' && gradientType.value === 'linear') {
+                    gauge.axes[0].ranges[0].linearGradient = rangeLinearGradient;
+                    gauge.axes[0].ranges[0].radialGradient = null;
+                    gauge.axes[0].pointers[0].linearGradient = null;
+                    gauge.axes[0].pointers[0].radialGradient = null;
+                    gauge.refresh();
+                }
+                if (gradientType.value === 'radial' && element.value === 'pointer') {
+                    gauge.axes[0].pointers[0].radialGradient = pointerRadialGradient;
+                    gauge.axes[0].pointers[0].linearGradient = null;
+                    gauge.axes[0].ranges[0].linearGradient = null;
+                    gauge.axes[0].ranges[0].radialGradient = null;
+                    gauge.refresh();
+                }
+                if (gradientType.value === 'linear' && element.value === 'pointer') {
+                    gauge.axes[0].pointers[0].linearGradient = pointerLinearGradient;
+                    gauge.axes[0].pointers[0].radialGradient = null;
+                    gauge.axes[0].ranges[0].linearGradient = null;
+                    gauge.axes[0].ranges[0].radialGradient = null;
+                    gauge.refresh();
+                }
+            }
+        });
+        gradientType.appendTo('#gradient');
+        var element = new ej.dropdowns.DropDownList({
+            index: 0,
+            width: '100%',
+            change: function () {
+                if (gradientType.value === 'radial' && element.value === 'range') {
+                    gauge.axes[0].ranges[0].linearGradient = null;
+                    gauge.axes[0].ranges[0].radialGradient = rangeRadialGradient;
+                    gauge.axes[0].pointers[0].linearGradient = null;
+                    gauge.axes[0].pointers[0].radialGradient = null;
+                    gauge.refresh();
+                }
+                if (element.value === 'range' && gradientType.value === 'linear') {
+                    gauge.axes[0].ranges[0].linearGradient = rangeLinearGradient;
+                    gauge.axes[0].ranges[0].radialGradient = null;
+                    gauge.axes[0].pointers[0].linearGradient = null;
+                    gauge.axes[0].pointers[0].radialGradient = null;
+                    gauge.refresh();
+                }
+                if (gradientType.value === 'radial' && element.value === 'pointer') {
+                    gauge.axes[0].pointers[0].radialGradient = pointerRadialGradient;
+                    gauge.axes[0].pointers[0].linearGradient = null;
+                    gauge.axes[0].ranges[0].linearGradient = null;
+                    gauge.axes[0].ranges[0].radialGradient = null;
+                    gauge.refresh();
+                }
+                if (gradientType.value === 'linear' && element.value === 'pointer') {
+                    gauge.axes[0].pointers[0].linearGradient = pointerLinearGradient;
+                    gauge.axes[0].pointers[0].radialGradient = null;
+                    gauge.axes[0].ranges[0].linearGradient = null;
+                    gauge.axes[0].ranges[0].radialGradient = null;
+                    gauge.refresh();
+                }
+            }
+        });
+        element.appendTo('#element');
+    </script>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample shows how linear gradient color and radial gradient color are applied to the linear gauge elements.
+        </p>
+    </div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Gradient Color in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
+                }
+@section Description{
+    <div id="description">
+        <p>
+            The linear gauge supports gradient coloring in a linear or radial manner. The gradient type can be changed using the <b>Gradient Type</b> dropdown list in the properties panel. In the same way, the element for which the gradient color should be applied is decided by the <b>Elements</b> dropdown list.
+        </p>        
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Linear Gauge Gradient Color Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Gradient Color in ASP.NET MVC Linear Gauge Control</h1>
+                }

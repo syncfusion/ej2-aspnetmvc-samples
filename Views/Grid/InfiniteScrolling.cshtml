@@ -1,0 +1,153 @@
+@using Syncfusion.EJ2
+
+@section ControlsSection{
+
+    <style>
+            .image { position: absolute; background-repeat: no-repeat; 
+             background-image: url('/scripts/Images/Employees/spinner.gif'); 
+             background-position: center; width: 16px; height: 28px; }
+
+    .e-bigger .image {
+        height: 36px;
+    }
+
+    #popup {
+        position: absolute;
+        background-color: transparent;
+        display: none;
+        z-index: 100;
+    }
+        .div-button {
+            margin: 5px 5px 5px 0;
+        }
+    </style>
+    <div class="control-section">
+     
+        <div class="row">
+            <table>
+                <tr>
+                    <td style="padding:15px" colspan='2'>
+                        <span>
+             @Html.EJS().Button("generate").CssClass("e-info").Content("Load 100K Data").Render()
+      <span id="popup">
+                                <span id="gif" class="image"></span>
+                            </span>
+                        </span>
+                        
+                    </td>
+                </tr>
+            </table>
+           
+        </div>
+
+
+        <div>
+            @Html.EJS().Grid("VirtualGrid").EnableInfiniteScrolling().DataBound("hide").Height("400").Columns(col =>
+   {
+
+       col.Field("Field1").HeaderText("PlayerName").Width("140").Add();
+       col.Field("Field2").HeaderText("Year").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("Field3").HeaderText("Stint").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("Field4").HeaderText("TMID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("Field5").HeaderText("LGID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("Field6").HeaderText("GP").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+   }).PageSettings(page => page.PageSize(50)).Render()
+        </div>
+
+    </div>
+
+    <script>
+
+        var virtualData = [], date1=null, date2=null, flag= true;
+        var names = ['hardire', 'abramjo01', 'aubucch01', 'Hook', 'Rumpelstiltskin', 'Belle', 'Emma', 'Regina', 'Aurora', 'Elsa',
+            'Anna', 'Snow White', 'Prince Charming', 'Cora', 'Zelena', 'August', 'Mulan', 'Graham', 'Discord', 'Will', 'Robin Hood',
+            'Jiminy Cricket', 'Henry', 'Neal', 'Red', 'Aaran', 'Aaren', 'Aarez', 'Aarman', 'Aaron', 'Aaron-James', 'Aarron', 'Aaryan', 'Aaryn',
+            'Aayan', 'Aazaan', 'Abaan', 'Abbas', 'Abdallah', 'Abdalroof', 'Abdihakim', 'Abdirahman', 'Abdisalam', 'Abdul', 'Abdul-Aziz',
+            'Abdulbasir', 'Abdulkadir', 'Abdulkarem', 'Abdulkhader', 'Abdullah', 'Abdul-Majeed', 'Abdulmalik', 'Abdul-Rehman', 'Abdur',
+            'Abdurraheem', 'Abdur-Rahman', 'Abdur-Rehmaan', 'Abel', 'Abhinav', 'Abhisumant', 'Abid', 'Abir', 'Abraham', 'Abu', 'Abubakar',
+            'Ace', 'Adain', 'Adam', 'Adam-James', 'Addison', 'Addisson', 'Adegbola', 'Adegbolahan', 'Aden', 'Adenn', 'Adie', 'Adil', 'Aditya',
+            'Adnan', 'Adrian', 'Adrien', 'Aedan', 'Aedin', 'Aedyn', 'Aeron', 'Afonso', 'Ahmad', 'Ahmed', 'Ahmed-Aziz', 'Ahoua', 'Ahtasham',
+            'Aiadan', 'Aidan', 'Aiden', 'Aiden-Jack', 'Aiden-Vee'];
+
+
+        document.getElementById("generate").addEventListener('click', function() {
+
+            var grid = document.getElementById("VirtualGrid").ej2_instances[0]
+            if (!virtualData.length) {
+                show();
+                dataSource();
+                grid.dataSource = virtualData;
+            } else {
+                flag = true;
+                show();
+                grid.refresh();
+            }
+
+        })
+        function show() {
+            document.getElementById('popup').style.display = 'inline-block';
+        }
+        function hide(args) {
+            if (flag) {
+                flag = false;
+            }
+            document.getElementById('popup').style.display = 'none';
+        }
+        function dataSource() {
+            for (var i= 0; i < 100000; i++) {
+                virtualData.push({
+                    'Field1': names[Math.floor(Math.random() * names.length)],
+                    'Field2': 1967 + (i % 10),
+                    'Field3': Math.floor(Math.random() * 200),
+                    'Field4': Math.floor(Math.random() * 100),
+                    'Field5': Math.floor(Math.random() * 2000),
+                    'Field6': Math.floor(Math.random() * 1000)
+                });
+            }
+        }
+
+    </script>
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        show();
+        hide();
+    </script>
+}
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the Grid component with the Infinite scrolling feature. You can use the scrollbar or navigation keys or the mouse wheel to perform the infinite scroll action. Click the button at the top of the Grid
+            to load data source and scroll the Grid content vertically to load rows.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Infinite Scrolling in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+
+            The Grid Infinite scrolling, allows to load data in lazy loading concept, which means the buffer
+            data is loaded only when the scrollbar reaches the end of the scroller. To enable Infinite
+            scrolling, set <code>EnableInfiniteScrolling</code> property as <code>true</code>.
+        </p>
+
+
+        <p>
+            Note: The <code>height</code> property must be defined when enabling <code>enableInfiniteScrolling</code>.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Data Grid Infinite Scrolling Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Infinite Scrolling in ASP.NET MVC Data Grid Control</h1>
+                }

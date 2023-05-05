@@ -1,0 +1,98 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.FileManager
+@using EJ2MVCSampleBrowser.Models
+
+@{
+    string[] items = new string[] { "NewFolder", "Cut", "Copy", "Paste", "Delete", "Download", "Rename", "SortBy", "Refresh", "Selection", "View", "Details" };
+    string[] layout = new string[] { "SortBy", "View", "Refresh", "|", "Paste", "|", "NewFolder", "|", "Details", "|", "SelectAll" };
+}
+
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="control_wrapper">
+            <!-- File Manager API sample -->
+            @Html.EJS().FileManager("filemanager").AjaxSettings(
+              new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
+              {
+                  Url = "FileOperations",
+                  DownloadUrl = "Download",
+                  UploadUrl = "Upload",
+                  GetImageUrl = "GetImage"
+              }).NavigationPaneSettings(ls => ls.Visible(false)).ToolbarSettings(new Syncfusion.EJ2.FileManager.FileManagerToolbarSettings()
+            {
+            Items = items
+            }).ContextMenuSettings(new Syncfusion.EJ2.FileManager.FileManagerContextMenuSettings()
+              {
+                  Layout = layout
+              }).Render()
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <div id="property" title="Properties">
+            <table id="property" title="Properties">
+                <tbody>
+                    <tr>
+                        <td style="width: 50%">
+                            <div style="font-size:14px">Toolbar</div>
+                        </td>
+                        <td style="width: 50%;padding-right: 10px;text-align: center;">
+                            <div>
+                                @Html.EJS().CheckBox("tool_toggle").Checked(true).CssClass("e-flat e-primary").Change("onToolbarChange").Render()
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the properties of FileManager component from the property pane. Select any properties from the property pane to customize the FileManager.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>The File Manager component is used to explore a file system through a web application, similar to the windows explorer for windows. It supports the basic file operations such as create, rename, delete.</p>
+
+        <p>
+            <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install
+            <a target="_blank" href="https://www.syncfusion.com/downloads">Syncfusion Essential Studio </a>on your machine and run the demo.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the API in ASP.NET MVC File Manager control. Explore here for more details." />
+}
+
+<script>
+    function onToolbarChange(args) {
+        var fileObject = document.getElementById('filemanager').ej2_instances[0];
+        fileObject.toolbarSettings.visible = args.checked;
+    }
+
+</script>
+<style>
+
+    .property-panel-table div {
+        padding-left: 0;
+        padding-top: 0;
+    }
+
+    #all-option-table .property-panel-section .property-panel-content table#property tr {
+        height: 50px;
+    }
+
+    body.material-dark .property-panel-section {
+        color: #ffffff;
+    }
+</style>
+@section Title{
+    <title>ASP.NET MVC File Manager API Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of API in ASP.NET MVC File Manager Control</h1>
+}
