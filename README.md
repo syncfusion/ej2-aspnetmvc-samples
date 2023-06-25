@@ -33,24 +33,25 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
     </tbody>
     <tr>
         <td>
+            <p></p>
             <div><p class="controlcategory">GRIDS</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/getting-started-core">DataGrid</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/getting-started">Pivot Table</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/getting-started-core">TreeGrid</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started-core">Spreadsheet</a></div>
-            <p></p>
+            <br>
             <div><p class="controlcategory">EDITORS</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/getting-started">RichTextEditor</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/document-editor/getting-started-core">Word Processor</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/in-place-editor/getting-started">In-place Editor</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/image-editor/getting-started">Image Editor</a></div>
-            <p></p>
+            <br>
             <div><p class="controlcategory">DOCUMENT PROCESSING LIBRARIES</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://help.syncfusion.com/file-formats/xlsio/create-read-edit-excel-files-in-asp-net-mvc-c-sharp">Excel</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://help.syncfusion.com/file-formats/pdf/create-pdf-file-in-asp-net-mvc">PDF</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://help.syncfusion.com/file-formats/docio/create-word-document-in-asp-net-mvc">Word</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://help.syncfusion.com/file-formats/presentation/create-read-edit-powerpoint-files-in-asp-net-mvc-c-sharp">PowerPoint</a></div>
-            <p></p>
+            <br>
             <div><p class="controlcategory">LAYOUT</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/avatar/getting-started-asp-core">Avatar</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/card/getting-started">Card</a></div>
@@ -60,6 +61,9 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tooltip/getting-started-asp-core">Tooltip</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/splitter/getting-started">Splitter</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/dashboard-layout/getting-started/">Dashboard Layout</a></div>
+            <div><p>&nbsp;</p></div>
+            <div><p>&nbsp;</p></div>
+            <div><p>&nbsp;</p></div>
         </td>
         <td>
             <p></p>
@@ -78,7 +82,7 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/treemap/getting-started">TreeMap</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/bullet-chart/getting-started">Bullet Chart</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/kanban/getting-started">Kanban</a></div>
-            <p></p>
+            <br>
             <div><p class="controlcategory">BUTTONS</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/button/getting-started">Button</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/button-group/getting-started">ButtonGroup</a></div>
@@ -88,6 +92,11 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chips/getting-started">Chips</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/floating-action-button/getting-started">FAB</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/speeddial/getting-started">Speed Dial</a></div>
+            <div><p>&nbsp;</p></div>
+            <div><p>&nbsp;</p></div>
+            <div><p>&nbsp;</p></div>
+            <div><p>&nbsp;</p></div>
+            <div><p>&nbsp;</p></div>
         </td>
         <td>
             <p></p>
@@ -99,7 +108,7 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/datetimepicker/getting-started">DateTime Picker</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/timepicker/getting-started">TimePicker</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/getting-started">Gantt Chart</a></div>
-            <p></p>
+            <br>
             <div><p class="controlcategory">INPUTS</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/textbox/getting-started">TextBox</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/maskedtextbox/getting-started/">Input Mask</a></div>
@@ -112,9 +121,13 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/switch/getting-started">Toggle Switch Button</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/signature/getting-started">Signature</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/rating/getting-started">Rating</a></div>
-            <p></p>
+            <br>
             <div><p class="controlcategory">FORMS</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/query-builder/getting-started">Query Builder</a></div>
+            <div><p>&nbsp;</p></div>
+            <div>&nbsp;</div>
+            <br><br><br><br>
+            <div><p>&nbsp;</p></div>
         </td>
         <td>
             <p></p>
@@ -126,7 +139,7 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/multi-select/getting-started">Multiselect DropDown</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/mention/getting-started">Mention</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/list-box/getting-started-core">ListBox</a></div>
-            <p></p>
+            <br>
             <div><p class="controlcategory">NAVIGATION</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accordion/getting-started">Accordion</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/appbar/getting-started">AppBar</a></div>
@@ -140,14 +153,14 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/ribbon/getting-started">Ribbon</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/treeview/getting-started">TreeView</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/file-manager/getting-started">File Manager</a></div>
-            <p></p>
+            <br>
             <div><p class="controlcategory">NOTIFICATION</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/message/getting-started">Message</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/badge/getting-started-asp-core">Badge</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/toast/getting-started">Toast</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/progress-bar/getting-started">Progress Bar</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/skeleton/getting-started-asp-core">Skeleton</a></div>
-            <p></p>
+            <br>
             <div><p class="controlcategory">VIEWER</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/pdfviewer/getting-started">PDF Viewer</a></div>
         </td>
