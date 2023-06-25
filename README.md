@@ -20,7 +20,7 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
 * Clone the repository and open the `EJ2MVCSampleBrowser.sln` file using Visual Studio.
 * Press `Ctrl + F5` to run the sample.
 
-## ASP.NET MVC components catalog
+## ASP.NET MVC Components Catalog
 
 <table id="table">
     <tbody>
