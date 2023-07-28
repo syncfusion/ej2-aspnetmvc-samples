@@ -1,0 +1,14 @@
+{
+"Grid": [ "Grid", "PivotTable", "TreeGrid", "Spreadsheet" ],
+"Data Visualization": [ "Chart", "StockChart", "ArcGauge", "CircularGauge", "Diagram", "HeatMapChart", "LinearGauge", "Maps", "RangeNavigator", "Smithchart","Barcode", "Sparkline", "TreeMap", "BulletChart", "Kanban" ],
+ "Editors": [ "RichTextEditor", "DocumentEditor", "ImageEditor", "Chips", "Button", "InPlaceEditor", "FAB", "SpeedDial" ],
+"Calendars": [ "Schedule", "GanttChart", "Calendar", "DatePicker", "DateRangePicker", "DateTimePicker", "TimePicker" ],
+"Dropdowns": [ "AutoComplete", "ComboBox", "DropDownList", "DropDownTree", "MultiSelect", "ListBox","Mention" ],
+"Navigation": [ "Accordion", "AppBar", "Breadcrumb", "Carousel", "ContextMenu", "FileManager", "Menu", "Sidebar", "Tab", "Toolbar", "TreeView", "Ribbon" ],
+"Notifications": [ "Message", "Badge", "Toast", "ProgressBar", "Skeleton" ],
+"Inputs": [ "TextBoxes", "MaskedTextBox", "NumericTextBox", "ColorPicker", "Uploader", "RangeSlider", "Signature", "Rating" ],
+"Layout": [ "Avatar", "Card", "DashboardLayout", "Dialog","PredefinedDialogs", "ListView", "Tooltip", "Splitter" ],
+"Forms": [ "QueryBuilder" ],
+  "Document Processing Libraries": [ "Word", "PDF", "PowerPoint", "Excel" ],
+"Viewer": [ "PdfViewer" ]
+}

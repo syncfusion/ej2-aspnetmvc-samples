@@ -1,0 +1,243 @@
+@using Syncfusion.EJ2.QueryBuilder; 
+
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+    @Html.EJS().QueryBuilder("querybuilder").Columns(col =>
+{
+    col.Field("Category").Label("Category").Type("string").Add();
+    col.Field("PaymentMode").Label("Payment Mode").Type("string").Template(new { create = "paymentCreate", destroy = "paymentDestroy", write = "paymentWrite" }).Operators(ViewBag.paymentOperator).Add();
+    col.Field("TransactionType").Label("Transaction Type").Type("boolean").Template(new { create = "transactionCreate", destroy = "transactionDestroy", write = "transactionWrite" }).Operators(ViewBag.transactionOperator).Add();
+    col.Field("Description").Label("Description").Type("string").Add();
+    col.Field("Date").Label("Date").Type("date").Add();
+    col.Field("Amount").Label("Amount").Type("number").Template(new { create = "amountCreate", destroy = "amountDestroy", write = "amountWrite" }).Operators(ViewBag.amountOperator).Add();
+}).DataSource(ViewBag.dataSource).Rule(ViewBag.rule).MaxGroupCount(5).Width("100%").RuleChange("updateRule").Render()
+    </div>
+
+<div class="col-lg-4 property-section">
+    <table id="property" title="Properties">
+        <tr>
+            <td>
+                <div class="row">
+                @Html.EJS().RadioButton("radio1").Label("JSON Rule").Name("rule").Value("json").Checked(true).Change("changeValue").Render()
+                 </div>
+            </td>
+            <td>
+                <div class="row">
+                @Html.EJS().RadioButton("radio2").Label("SQL Rule").Name("rule").Value("sql").Change("changeValue").Render()
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <textarea id='ruleContent' readonly=true> </textarea>
+            </td>
+        </tr>
+    </table>
+</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Value Template in ASP.NET MVC Query Builder control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the integration of the Dropdown List and Slider components as templates in the Query Builder control.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            This sample illustrates how to integrate the Dropdown List, Slider, and Checkbox components with the Query Builder. The available types of templates are:
+            <ul>
+                <li>
+                    <code>DropDownList</code>
+                </li>
+                <li>
+                    <code>AutoComplete</code>
+                </li>
+                <li>
+                    <code>CheckBox</code>
+                </li>
+                <li>
+                    <code>Slider</code>
+                </li>
+            </ul>
+        </p>
+        <p>This sample also illustrates the created filters in JSON and SQL modes.</p>
+        <p>
+            More information about Query Builder can be found in this
+            <a target="_blank" href="http://ej2.syncfusion.com/aspnetmvc/documentation/query-builder/getting-started">
+                documentation section
+            </a>.
+        </p>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        var element = document.getElementById('ruleContent');
+        var qryBldrObj = ej.base.getComponent(document.getElementById("querybuilder"), 'query-builder');
+        element.textContent = JSON.stringify(qryBldrObj.getValidRules(qryBldrObj.rule), null, 4);
+    </script>
+    }
+<script>
+    function paymentCreate() {
+        var elem = document.createElement('input');
+        elem.setAttribute('type', 'text');
+        return elem;
+    }
+    function paymentDestroy(args) {
+        var dropdown = ej.base.getComponent(document.getElementById(args.elementId), 'dropdownlist');
+        if (dropdown) {
+            dropdown.destroy();
+        }
+    }
+    function paymentWrite(args) {
+        var ds = ['Cash', 'Debit Card', 'Credit Card', 'Net Banking', 'Wallet'];
+        var qryBldrObj = ej.base.getComponent(document.getElementById("querybuilder"), 'query-builder');
+        var dropDownObj = new ej.dropdowns.DropDownList({
+                dataSource: ds,
+                value: args.values ? args.values : ds[0],
+                change: function (e) {
+                    qryBldrObj.notifyChange(e.itemData.value, e.element);
+                }
+            });
+            dropDownObj.appendTo('#' + args.elements.id);
+
+    }
+    function transactionCreate() {
+        var elem = document.createElement('input');
+        elem.setAttribute('type', 'checkbox');
+        return elem;
+
+    }
+    function transactionDestroy(args) {
+        ej.base.getComponent(document.getElementById(args.elementId), 'checkbox').destroy();
+    }
+    function transactionWrite(args) {
+        var qryBldrObj = ej.base.getComponent(document.getElementById("querybuilder"), 'query-builder');
+        var checked = args.values === 'IsExpensive' ? true : false;
+        var boxObj = new ej.buttons.CheckBox({
+            label: 'Is Expensive',
+            checked: checked,
+            change: function (e) {
+                qryBldrObj.notifyChange(e.checked ? 'expensive' : 'income', e.event.target);
+            }
+        });
+        boxObj.appendTo('#' + args.elements.id);
+
+    }
+    function amountCreate() {
+        var elem = document.createElement('div');
+        elem.setAttribute('class', 'ticks_slider');
+        return elem;
+
+    }
+    function amountDestroy(args) {
+        ej.base.getComponent(document.getElementById(args.elementId), 'slider').destroy();
+    }
+    function amountWrite(args) {
+        var qryBldrObj = ej.base.getComponent(document.getElementById("querybuilder"), 'query-builder');
+        var slider = new ej.inputs.Slider({
+            value: args.values,
+            min: 0,
+            max: 100,
+            type: 'MinRange',
+            tooltip: { isVisible: true, placement: 'Before', showOn: 'Hover' },
+            created: function (e) {
+                if (document.getElementById('right-pane')) {
+                    document.getElementById('right-pane').addEventListener('scroll', onScroll);
+                }
+            },
+            change: function (e) {
+                qryBldrObj.notifyChange(e.value, args.elements);
+            }
+        });
+        slider.appendTo('#' + args.elements.id);
+    }
+
+    function changeValue() {
+        var qryBldrObj = ej.base.getComponent(document.getElementById("querybuilder"), 'query-builder');
+         var validRule = qryBldrObj.getValidRules(qryBldrObj.rule);
+        var element = document.getElementById('ruleContent');
+        if (ej.base.getComponent(document.getElementById("radio2"), 'radio').checked) {
+            element.textContent = qryBldrObj.getSqlFromRules(validRule);
+        } else {
+            element.textContent = JSON.stringify(validRule, null, 4);
+        }
+    }
+
+    function updateRule(args) {
+        var element = document.getElementById('ruleContent');
+        var qryBldrObj = ej.base.getComponent(document.getElementById("querybuilder"), 'query-builder');
+        if (ej.base.getComponent(document.getElementById("radio2"), 'radio').checked) {
+            element.textContent = qryBldrObj.getSqlFromRules(args.rule);
+        } else {
+            element.textContent = JSON.stringify(args.rule, null, 4);
+        }
+    }
+    function onScroll() {
+      var slider = document.getElementsByClassName('ticks_slider'), sliderObj;
+      for (var i = 0, len = slider.length; i < len; i++) {
+            sliderObj = slider[i].ej2_instances[0];
+             // Refreshing each slider tooltip object position
+            sliderObj.refreshTooltip();
+        }
+    }
+
+</script>
+@*custom code start*@
+<style>
+   .e-control-wrapper.e-slider-container.e-horizontal {
+        height: 0;
+    }
+
+    .e-querybuilder {
+        margin: 3% auto;
+    }
+
+    #ruleContent {
+        border: 1px solid #d3d3d3;
+        width: 100%;
+        height: 500px;
+        overflow: auto;
+    }
+
+    .property-panel-table td:first-child {
+        width: auto;
+    }
+
+    .property-panel-table div.row,
+    .property-panel-table div.e-radio-wrapper {
+        padding-bottom: 10px;
+    }
+	
+    .highcontrast textarea#ruleContent {
+	  background-color: #000;
+	}
+
+    .material-dark textarea#ruleContent {
+	  background-color: inherit;
+	}
+
+    .fabric-dark textarea#ruleContent {
+	  background-color: inherit;
+	}
+
+    .bootstrap-dark textarea#ruleContent {
+	  background-color: inherit;
+	}
+
+    .tailwind-dark textarea#ruleContent {
+	  background-color: inherit;
+	}
+</style>
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Query Builder Value Template Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Value Template in ASP.NET MVC Query Builder Control</h1>
+                }
