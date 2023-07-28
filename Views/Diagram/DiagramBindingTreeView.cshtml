@@ -6,8 +6,8 @@
         <div>
             <div style="width: 100%;height: 50px;margin-bottom: 5px;">
                 <div style="width:70%;float:left">
-                    <button id="addBtn">Add Node</button>
-                    <button id="deleteBtn">Delete Node</button>
+                    @Html.EJS().Button("addBtn").Content("Add Node").Click("addBtn").IsPrimary(true).Disabled(true).Render()
+                    @Html.EJS().Button("deleteBtn").Content("Delete Node").Click("deleteBtn").IsPrimary(true).Disabled(true).Render()
                 </div>
                 <div style="width:30%;float:right;font-size: 16px;">
                     <div class="col-xs-9 db-col-right db-prop-text-style" style="padding-top: 10px; float: left">
@@ -22,7 +22,9 @@
             </div>
             <div style="width: 100%;">
                 <div id="palette-space" style="width:27%;float:left;height: 700px;overflow: hidden;">
-                    <div id="tree" style="width:90%;"></div>
+                    @Html.EJS().TreeView("treedata").AllowEditing(true).KeyPress("keyPress").Created("created").NodeEdited("nodeEdited").NodeClicked("nodeClicked").NodeSelected("nodeSelected").AllowDragAndDrop(true).Fields(field =>
+                field.Id("id").ParentID("pid").
+                Expanded("expanded").Text("name").HasChildren("hasChild").DataSource(ViewBag.data)).Render()
                 </div>
                 <div id="diagram-space" style="width:72%;float:right">
                     @Html.EJS().Diagram("diagram").Width("100%").Height("550px").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("ConnectorDefaults").Created("diagramCreated").SelectionChange("selectionChange").DragEnter("dragEnter").Click("click").TextEdit("textEdit").Drop("drop").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render()
@@ -185,7 +187,16 @@
             { Name: "Craft Personnel4", Id: "17", ParentId: "15" }
         ];
         var index = 1;
-
+         function created() {
+            var treeObj = document.getElementById("treedata").ej2_instances[0];
+            treeObj.fields = {
+                dataSource: workingData,
+                id: 'Id',
+                text: 'Name',
+                parentID: 'ParentId',
+                hasChildren: 'hasChild',
+            }
+        }
         function dragEnter(args) {
             var lable = '';
             if (args.dragData) {
@@ -202,24 +213,7 @@
         function checkElementData(a) {
             return a.Id === elementNodeId;
         }
-        var treeObj = new ej.navigations.TreeView({
-            fields: {
-                dataSource: workingData,
-                id: 'Id',
-                text: 'Name',
-                parentID: 'ParentId',
-                hasChildren: 'hasChild',
-            },
-            allowEditing: true,
-            keyPress: keyPress,
-            nodeEdited: nodeEdited,
-            nodeSelected: nodeSelected,
-            allowDragAndDrop: true,
-            nodeClicked: nodeClicked
-        });
-
-        treeObj.appendTo('#tree');
-
+        
         function diagramCreated() {
             var diagram = document.getElementById("diagram").ej2_instances[0];
             diagram.dataSourceSettings = {
@@ -236,6 +230,8 @@
                 diagram.dataBind();
         }
         function selectionChange(args) {
+            var addButton = document.getElementById("addBtn").ej2_instances[0];
+            var deleteButton = document.getElementById("deleteBtn").ej2_instances[0];
             if (args.state === 'Changed') {
                 if (args.type === "Addition") {
                     deleteButton.disabled = false;
@@ -247,11 +243,13 @@
             }
         }
         function click(args) {
+            var treeObj = document.getElementById("treedata").ej2_instances[0];
             if (args.element instanceof ej.diagrams.Node) {
                 treeObj.selectedNodes = [args.element.data.Id];
             }
         }
         function textEdit(args) {
+            var treeObj = document.getElementById("treedata").ej2_instances[0];
             setTimeout(function () {
                 if (args.annotation) {
                     elementNodeId = args.element.id;
@@ -278,6 +276,7 @@
             var connector;
             var tempData;
             var diagram = document.getElementById("diagram").ej2_instances[0];
+            var treeObj = document.getElementById("treedata").ej2_instances[0];
             setTimeout(function () {
                 targetNodeId = args.target.id;
                 tempData = workingData.filter(checkData);
@@ -330,168 +329,163 @@
             obj.targetDecorator = { shape: 'Arrow', height: 10, width: 10, style: { fill: 'CornflowerBlue', strokeColor: 'white' } };
         }
 
-        var addButton = new ej.buttons.Button({ isPrimary: true, disabled: true });
-        addButton.appendTo('#addBtn');
+        function addBtn() {
+        var nodeId;
+        var diagram = document.getElementById("diagram").ej2_instances[0];
+        var treeObj = document.getElementById("treedata").ej2_instances[0];
+        if (diagram.selectedItems.nodes.length > 0) {
+            nodeId = diagram.selectedItems.nodes[0].id;
+            addNode(nodeId);
+        } else if (treeObj.selectedNodes.length > 0) {
+            nodeId = treeObj.selectedNodes[0];
+            addNode(nodeId);
+        }
+    }
+    function deleteBtn() {
+        var diagram = document.getElementById("diagram").ej2_instances[0];
+        if (diagram.selectedItems.nodes[0].data.Id !== "1") {
+            remove();
+        }
+    }
+    function filterNodeData(a) {
+        return a.data.Id === targetNodeId;
+    }
 
-        var deleteButton = new ej.buttons.Button({ isPrimary: true, disabled: true });
-        deleteButton.appendTo('#deleteBtn');
+    function addNode(nodeId) {
+        var diagram = document.getElementById("diagram").ej2_instances[0];
+        var treeObj = document.getElementById("treedata").ej2_instances[0];
+        targetNodeId = nodeId ? nodeId : treeObj.selectedNodes[0];
+        var tempData = workingData.filter(checkData);
+        tempData[0].hasChild = true;
+        tempData[0].expanded = true;
+        var id = 'tree_' + index;
+        var item = {
+            Name: "Node", Id: id, ParentId: targetNodeId, hasChild: false, expanded: false
+        };
+        treeObj.addNodes([item], targetNodeId, null);
+        treeObj.beginEdit(id);
+        var node = { id: id, data: item };
+        var targetId;
+        if (diagram.selectedItems.nodes.length > 0) {
+            targetId = diagram.selectedItems.nodes[0].id;
+        } else {
+            var temp = diagram.nodes.filter(filterNodeData);
+            targetId = temp[0].id;
+        }
+        var connector = { sourceID: targetId, targetID: id };
+        diagram.add(node);
+        diagram.add(connector);
+        diagram.doLayout();
+        index++;
+        workingData.push(item);
+    }
+    function checkData(a) {
+        return a.Id === targetNodeId;
+    }
+    function remove() {
+        var nodeId;
+        var diagram = document.getElementById("diagram").ej2_instances[0];
+        var treeObj = document.getElementById("treedata").ej2_instances[0];
+        if (diagram.selectedItems.nodes.length > 0) {
+            nodeId = diagram.selectedItems.nodes[0].id;
+            removeSubChild(diagram.selectedItems.nodes[0], true);
+            diagram.doLayout();
+        } else if (treeObj.selectedNodes.length > 0) {
+            nodeId = treeObj.selectedNodes[0];
+            treeObj.removeNodes([nodeId]);
+            var node = diagram.getObject(nodeId);
+            removeSubChild(node, false);
+        }
+        for (var i = workingData.length - 1; i >= 0; i--) {
+            if (workingData[i].id === nodeId) {
+                workingData.splice(i, 1);
+            }
+        }
+        diagram.doLayout();
+    }
 
-        document.getElementById('addBtn').onclick = function () {
+    function removeSubChild(node, canDelete) {
+        var childNode;
+        var connector;
+        var diagram = document.getElementById("diagram").ej2_instances[0];
+        var treeObj = document.getElementById("treedata").ej2_instances[0];
+        for (var i = node.outEdges.length - 1; i >= 0; i--) {
+            connector = diagram.getObject(node.outEdges[i]);
+            childNode = diagram.getObject(connector.targetID);
+            if (childNode != null && childNode.outEdges.length > 0) {
+                removeSubChild(childNode, canDelete);
+            }
+            else {
+                diagram.remove(childNode);
+                if (canDelete) {
+                    treeObj.removeNodes([childNode.id]);
+                }
+                for (var j = workingData.length - 1; j >= 0; j--) {
+                    if (workingData[j].id === childNode.id) {
+                        workingData.splice(j, 1);
+                    }
+                }
+            }
+        }
+        for (var k = node.inEdges.length - 1; k >= 0; k--) {
+            connector = diagram.getObject(node.inEdges[k]);
+            childNode = diagram.getObject(connector.sourceID);
+            var index = childNode.outEdges.indexOf(connector.id);
+            if (childNode.outEdges.length > 1 && index === 0) {
+                index = childNode.outEdges.length;
+            }
+            if (index > 0) {
+                var node1 = childNode.outEdges[index - 1];
+                var connector1 = diagram.getObject(node1);
+                var node2 = diagram.getObject(connector1.targetID);
+                diagram.select([node2]);
+            }
+            else {
+                diagram.select([childNode]);
+            }
+        }
+        diagram.remove(node);
+        if (canDelete) {
+            treeObj.removeNodes([node.id]);
+        }
+        for (var t = workingData.length - 1; t >= 0; t--) {
+            if (workingData[t].id === node.id) {
+                workingData.splice(t, 1);
+            }
+        }
+    }
+    function nodeSelected(args) {
+        var addButton = document.getElementById("addBtn").ej2_instances[0];
+        var deleteButton = document.getElementById("deleteBtn").ej2_instances[0];
+        deleteButton.disabled = false;
+        addButton.disabled = false;
+    }
+
+    function nodeClicked(args) {
+        var diagram = document.getElementById("diagram").ej2_instances[0];
+        var treeObj = document.getElementById("treedata").ej2_instances[0];
+        var node = diagram.getObject(treeObj.selectedNodes[0]);
+        diagram.select([node]);
+    }
+
+    // Key Press Event
+    function keyPress(args) {
+        if (args.event.key === 'Enter') {
             add();
-        };
-
-        document.getElementById('deleteBtn').onclick = function () {
-            var diagram = document.getElementById("diagram").ej2_instances[0];
-            if (diagram.selectedItems.nodes[0].data.Id !== "1") {
-                remove();
-            }
-        };
-
-
-        function nodeSelected(args) {
-            deleteButton.disabled = false;
-            addButton.disabled = false;
         }
+    }
 
-        function nodeClicked(args) {
-            var diagram = document.getElementById("diagram").ej2_instances[0];
-            var node = diagram.getObject(treeObj.selectedNodes[0]);
-            diagram.select([node]);
-        }
-
-        // Key Press Event
-        function keyPress(args) {
-            if (args.event.key === 'Enter') {
-                add();
-            }
-        }
-
-        function nodeEdited(args) {
-            var diagram = document.getElementById("diagram").ej2_instances[0];
-            var node = diagram.getObject(args.nodeData.id);
-            node.annotations[0].content = args.newText;
-            treeObj.selectedNodes = [args.nodeData.id];
-        }
-
-        function remove() {
-            var nodeId;
-            var diagram = document.getElementById("diagram").ej2_instances[0];
-            if (diagram.selectedItems.nodes.length > 0) {
-                nodeId = diagram.selectedItems.nodes[0].id;
-                removeSubChild(diagram.selectedItems.nodes[0], true);
-                diagram.doLayout();
-            } else if (treeObj.selectedNodes.length > 0) {
-                nodeId = treeObj.selectedNodes[0];
-                treeObj.removeNodes([nodeId]);
-                var node = diagram.getObject(nodeId);
-                removeSubChild(node, false);
-            }
-            for (var i = workingData.length - 1; i >= 0; i--) {
-                if (workingData[i].id === nodeId) {
-                    workingData.splice(i, 1);
-                }
-            }
-            diagram.doLayout();
-        }
-
-        function removeSubChild(node, canDelete) {
-            var childNode;
-            var connector;
-            var diagram = document.getElementById("diagram").ej2_instances[0];
-            for (var i = node.outEdges.length - 1; i >= 0; i--) {
-                connector = diagram.getObject(node.outEdges[i]);
-                childNode = diagram.getObject(connector.targetID);
-                if (childNode != null && childNode.outEdges.length > 0) {
-                    removeSubChild(childNode, canDelete);
-                }
-                else {
-                    diagram.remove(childNode);
-                    if (canDelete) {
-                        treeObj.removeNodes([childNode.id]);
-                    }
-                    for (var j = workingData.length - 1; j >= 0; j--) {
-                        if (workingData[j].id === childNode.id) {
-                            workingData.splice(j, 1);
-                        }
-                    }
-                }
-            }
-            for (var k = node.inEdges.length - 1; k >= 0; k--) {
-                connector = diagram.getObject(node.inEdges[k]);
-                childNode = diagram.getObject(connector.sourceID);
-                var index = childNode.outEdges.indexOf(connector.id);
-                if (childNode.outEdges.length > 1 && index === 0) {
-                    index = childNode.outEdges.length;
-                }
-                if (index > 0) {
-                    var node1 = childNode.outEdges[index - 1];
-                    var connector1 = diagram.getObject(node1);
-                    var node2 = diagram.getObject(connector1.targetID);
-                    diagram.select([node2]);
-                }
-                else {
-                    diagram.select([childNode]);
-                }
-            }
-            diagram.remove(node);
-            if (canDelete) {
-                treeObj.removeNodes([node.id]);
-            }
-            for (var t = workingData.length - 1; t >= 0; t--) {
-                if (workingData[t].id === node.id) {
-                    workingData.splice(t, 1);
-                }
-            }
-        }
-
-        function add() {
-            var nodeId;
-            var diagram = document.getElementById("diagram").ej2_instances[0];
-            if (diagram.selectedItems.nodes.length > 0) {
-                nodeId = diagram.selectedItems.nodes[0].id;
-                addNode(nodeId);
-            } else if (treeObj.selectedNodes.length > 0) {
-                nodeId = treeObj.selectedNodes[0];
-                addNode(nodeId);
-            }
-        }
-
-        function filterNodeData(a) {
-            return a.data.Id === targetNodeId;
-        }
-
-        function addNode(nodeId) {
-            var diagram = document.getElementById("diagram").ej2_instances[0];
-            targetNodeId = nodeId ? nodeId : treeObj.selectedNodes[0];
-            var tempData = workingData.filter(checkData);
-            tempData[0].hasChild = true;
-            tempData[0].expanded = true;
-            var id = 'tree_' + index;
-            var item = {
-                Name: "Node", Id: id, ParentId: targetNodeId, hasChild: false, expanded: false
-            };
-            treeObj.addNodes([item], targetNodeId, null);
-            treeObj.beginEdit(id);
-            var node = { id: id, data: item };
-            var targetId;
-            if (diagram.selectedItems.nodes.length > 0) {
-                targetId = diagram.selectedItems.nodes[0].id;
-            } else {
-                var temp = diagram.nodes.filter(filterNodeData);
-                targetId = temp[0].id;
-            }
-            var connector = { sourceID: targetId, targetID: id };
-            diagram.add(node);
-            diagram.add(connector);
-            diagram.doLayout();
-            index++;
-            workingData.push(item);
-        }
-        function checkData(a) {
-            return a.Id === targetNodeId;
-        }
-
-
+    function nodeEdited(args) {
+        var diagram = document.getElementById("diagram").ej2_instances[0];
+        var treeObj = document.getElementById("treedata").ej2_instances[0];
+        var node = diagram.getObject(args.nodeData.id);
+        node.annotations[0].content = args.newText;
+        node.wrapper.children[0].content = "";
+        treeObj.selectedNodes = [args.nodeData.id];
+    }
+    function checkElementData(a) {
+        return a.Id === elementNodeId;
+    }
     </script>
 }
 @section ActionDescription{

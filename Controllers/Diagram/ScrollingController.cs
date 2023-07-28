@@ -5,6 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
+using EJ2MVCSampleBrowser.Models;
 using Syncfusion.EJ2.Diagrams;
 using System;
 using System.Collections.Generic;
@@ -113,7 +114,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             palettes.Add(new SymbolPalettePalette() { Id = "flow", Expanded = false, Symbols = flowShapes, IconCss = "shapes", Title = "Flow Shapes" });
             palettes.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = false, Symbols = SymbolPaletteConnectors, IconCss = "shapes", Title = "Connectors" });
             ViewBag.palettes = palettes;
-
+            Models.DropDownModel dropDownModel = new Models.DropDownModel();
+            ViewBag.data = dropDownModel.scrollFormats();
             return View();
         }
     }

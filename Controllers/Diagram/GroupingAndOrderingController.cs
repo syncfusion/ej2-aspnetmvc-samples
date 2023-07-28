@@ -6,6 +6,7 @@
 // applicable laws. 
 #endregion
 using Syncfusion.EJ2.Diagrams;
+using Syncfusion.EJ2.Navigations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -144,7 +145,39 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             userHandle.UserHandles = handle;
             ViewBag.selectedItems = userHandle;
 
+            List<ToolbarItem> items = new List<ToolbarItem>();
+            {
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-group-1", TooltipText = "Group", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-ungroup-1", TooltipText = "UnGroup", Disabled = true});
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-bring-forward", TooltipText = "Bring Forward", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-bring-to-front", TooltipText = "Bring To Front", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-send-backward", TooltipText = "Send Backward", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-send-to-back", TooltipText = "Send To Back", Disabled = true });
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { Template = "#fontfamily", Type = ItemType.Input, TooltipText = "Font Family" });
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { Template = "#fontSize", Type = ItemType.Input, TooltipText = "Font Size" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-bold", TooltipText = "Bold", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-italic", TooltipText = "Italic", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-underline", TooltipText = "Underline", Disabled = true });
+                items.Add(new ToolbarItem { Template = "#fontColors", Type = ItemType.Input, TooltipText = "Font Color" });
 
+            }
+            ViewBag.tbItems = items;
+
+            List<ContextMenuItem> fontFamilyItems = new List<ContextMenuItem>();
+            {
+                fontFamilyItems.Add(new ContextMenuItem { Text = "Arial"});
+                fontFamilyItems.Add(new ContextMenuItem { Text = "Aharoni" });
+                fontFamilyItems.Add(new ContextMenuItem { Text = "Bell MT" });
+                fontFamilyItems.Add(new ContextMenuItem { Text = "Fantasy" });
+                fontFamilyItems.Add(new ContextMenuItem { Text = "Segoe UI"});
+                fontFamilyItems.Add(new ContextMenuItem { Text = "Times New Roman"});
+                fontFamilyItems.Add(new ContextMenuItem { Text = "Verdana"});
+
+            }
+            ViewBag.fontFamilyItems = fontFamilyItems;
             return View();
         }
         public class Node2 : DiagramNode

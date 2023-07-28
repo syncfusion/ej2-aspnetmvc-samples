@@ -5,7 +5,9 @@
 
     <div class="col-lg-12 control-section">
         <div class="content-wrapper">
-            <div id="toolbar_default" style="width: 100%"></div>
+            <div style="width: 100%">
+                @Html.EJS().Toolbar("toolbar_default").Clicked("onItemClick").Items(ViewBag.tbItems).Render()
+            </div>
             <div>
                 @(Html.EJS().Diagram("diagram").Width("100%").Height("590px").GetNodeDefaults("getNodeDefaults")
             .GetConnectorDefaults("getConnectorDefaults")
@@ -19,7 +21,7 @@
     .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.OrganizationalChart).GetLayoutInfo("getLayoutInfo"))
     .SnapSettings(se => se.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).SetNodeTemplate("setNodeTemplate")
     .Created("diagramCreated").SelectionChange("selectionChange").Render())
-</div>
+            </div>
         </div>
     </div>
 
@@ -39,59 +41,6 @@
 
     <script>
 
-        var toolbarObj = new ej.navigations.Toolbar({
-            clicked: onItemClick,
-            items: [
-                {
-                    type: 'Button',
-                    tooltipText: 'Zoom In',
-                    prefixIcon: 'e-icons e-zoom-in',
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'Zoom Out',
-                    prefixIcon: 'e-icons e-zoom-out',
-                },
-                { type: 'Separator' },
-                {
-                    type: 'Button',
-                    tooltipText: 'Select',
-                    prefixIcon: 'e-icons e-mouse-pointer',
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'Pan Tool',
-                    prefixIcon: 'e-icons e-pan',
-                },
-                { type: 'Separator' },
-                {
-                    type: 'Button',
-                    tooltipText: 'Reset',
-                    prefixIcon: 'e-icons e-reset',
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'Fit To Page',
-                    prefixIcon: 'e-icons e-zoom-to-fit',
-                },
-                { type: 'Separator' },
-                {
-                    type: 'Button',
-                    tooltipText: 'Bring Into View',
-                    prefixIcon: 'e-icons e-bring-to-view',
-                    disabled: true
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'Bring Into Center',
-                    prefixIcon: 'e-icons e-bring-to-center',
-                    disabled: true
-                },
-            ]
-        });
-
-        toolbarObj.appendTo('#toolbar_default');
-
         function onItemClick(args) {
             var diagram = document.getElementById("diagram").ej2_instances[0];
             switch (args.item.tooltipText) {
@@ -109,7 +58,7 @@
                 case 'Pan Tool':
                     diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
                     break;
-                case 'Select':
+                case 'Pointer':
                     diagram.clearSelection();
                     diagram.drawingObject = {};
                     diagram.tool = ej.diagrams.DiagramTools.SingleSelect | ej.diagrams.DiagramTools.MultipleSelect;
@@ -134,7 +83,6 @@
 
         function diagramCreated() {
             var diagram = document.getElementById("diagram").ej2_instances[0];
-            diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
             diagram.dataBind();
         }
         function getLayoutInfo(node, tree) {
@@ -155,6 +103,8 @@
             return connector;
         }
         function selectionChange(args) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            var toolbarObj = document.getElementById("toolbar_default").ej2_instances[0];
             if (args.state === 'Changed') {
                 var selectedItems = diagram.selectedItems.nodes;
                 if (selectedItems.length === 0) {

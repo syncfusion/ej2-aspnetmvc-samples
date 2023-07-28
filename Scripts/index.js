@@ -112,7 +112,7 @@ if (ej.base.Browser.isDevice || isMobile) {
     sidebar.hide();
 } else {
     sidebar = new ej.navigations.Sidebar({
-        width: '282px',
+        width: '280px',
         target: document.querySelector('.sb-content '),
         showBackdrop: false,
         closeOnDocumentClick: false,

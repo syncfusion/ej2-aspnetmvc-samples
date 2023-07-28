@@ -111,7 +111,7 @@
         }
 
         .name {
-            padding: 3px 28px;
+            padding: 4px 28px;
             line-height: 1.2em;
         }
 
@@ -142,11 +142,15 @@
         .value {
             border-radius: 50%;
             float: left;
-            margin-top: 14px;
+            margin-top: 0px;
             position: relative;
             left: 0px;
             height: 24px;
             width: 24px;
+        }
+
+        .material .value {
+            margin-top: 14px;
         }
 
         .highcontrast .value {
@@ -208,6 +212,12 @@
             width: 121px;
         }
 
+        .material3.e-bigger .name,
+        .material.e-bigger .name {
+            padding: 7px 21px 7px 34px;
+        }
+
+
         .e-bigger.highcontrast .name {
             padding: 5px 0 0 36px;
             bottom: 24px;
@@ -253,16 +263,20 @@
         .e-bigger .value {
             position: relative;
         }
-        .tailwind .name {
+        .tailwind .name,
+        .tailwind-dark .name {
             padding: 5px 28px;
         }
-        .tailwind.e-bigger .name {
+        .tailwind.e-bigger .name,
+        .tailwind-dark.e-bigger .name {
             padding: 7px 0 0 32px;
         }
-        .tailwind .value {
+        .tailwind .value,
+        .tailwind-dark .value {
             margin-top: 1px;
         }
-        .tailwind.e-bigger .value {
+        .tailwind.e-bigger .value,
+        .tailwind-dark.e-bigger .value {
             margin-top: 0px;
         }
 
@@ -324,7 +338,7 @@
         }
 
         .bootstrap4 .name {
-            padding: 3px 22px;
+            padding: 2px 22px;
             line-height: 1.5em;
             margin-top: 1px;
         }
@@ -388,8 +402,14 @@
         }
         
         .e-bigger.fluent .name,
-        .e-bigger.fluent-dark .value .name {
+        .e-bigger.fluent-dark .name,
+        .e-bigger.bootstrap5 .name,
+        .e-bigger.bootstrap5-dark .name {
             line-height: 2em;
+        }
+        
+        .bootstrap4.e-bigger .e-multi-select-wrapper .e-chips .e-chips-close::before {
+            top: 10px;
         }
     </style>
 }

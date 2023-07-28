@@ -6,6 +6,7 @@
 // applicable laws. 
 #endregion
 using EJ2MVCSampleBrowser.Models;
+using Syncfusion.EJ2.Navigations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -116,7 +117,21 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             data.Add(new OverviewData1("91", "Lúcia Carvalho", "Project Trainee", "89", "../Content/images/diagram/employees/Image10.png"));
             data.Add(new OverviewData1("92", "Horst Kloss", "Project Trainee", "89", "../Content/images/diagram/employees/Image11.png"));
             data.Add(new OverviewData1("93", "Simon Roel", "Project Lead", "98", "../Content/images/diagram/employees/Image12.png"));
-
+            List<ToolbarItem> items = new List<ToolbarItem>();
+            {
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-zoom-in", TooltipText = "Zoom In" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-zoom-out", TooltipText = "Zoom Out" });
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-mouse-pointer", TooltipText = "Pointer" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-pan", TooltipText = "Pan Tool" });
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-reset", TooltipText = "Reset" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-zoom-to-fit", TooltipText = "Fit To Page" });
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-bring-to-view", TooltipText = "Bring Into View" ,Disabled=true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-bring-to-center", TooltipText = "Bring Into Center", Disabled = true });
+            }
+            ViewBag.tbItems = items;
             ViewBag.Nodes = data;
             ViewBag.getNodeDefaults = "getNodeDefaults";
             ViewBag.getConnectorDefaults = "getConnectorDefaults";

@@ -3439,16 +3439,27 @@ body.material3-dark,
     line-height: 8px;
 }
 
-/*width changes for overlap*/
-.sb-left-pane {
-    width: 292px;
-    height: 100%;
-}
-
-.e-bigger .e-list-parent .e-list-parent .e-list-item.e-level-2 .tree-text {
-    width: calc(100% - 60px);
+.e-list-parent .e-list-parent .e-list-item.e-level-2 .tree-text {
+    width: calc(100% - 40px);
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.e-bigger #controlSamples .e-listview .e-icon-wrapper .e-list-text {
+    width: calc(100% - 70px);
+} 
+.e-bigger .e-list-parent .e-list-parent .e-list-item.e-level-2 .tree-text {
+    width: calc(100% - 50px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 1024px) {
+    .e-bigger .e-list-parent .e-list-item.e-level-1 .tree-text {
+        width: calc(100% - 10px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 @media (max-width: 550px) {
@@ -3517,3 +3528,11 @@ body.material3-dark,
     font-weight: 800;
 }
 
+.material3.e-bigger #controlList .e-samplestatus.preview, .material3.e-bigger #controlList .e-samplestatus.Preview,
+.material3.e-bigger #controlList .e-samplestatus.update, .material3.e-bigger #controlList .e-samplestatus.Update,
+.material3.e-bigger #controlList .e-samplestatus.new, .material3.e-bigger #controlList .e-samplestatus.New,
+.material3-dark.e-bigger #controlList .e-samplestatus.preview, .material3-dark.e-bigger #controlList .e-samplestatus.Preview,
+.material3-dark.e-bigger #controlList .e-samplestatus.update, .material3-dark.e-bigger #controlList .e-samplestatus.Update,
+.material3-dark.e-bigger #controlList .e-samplestatus.new, .material3-dark.e-bigger #controlList .e-samplestatus.New {
+    top: 0px;
+}

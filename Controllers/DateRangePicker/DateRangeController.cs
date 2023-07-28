@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: DefaultFunctionalities
         public ActionResult DateRange()
         {
-            ViewBag.minDate = new DateTime(2017, 01, 05);
+            ViewBag.minDate = new DateTime(2017, 01, 15);
             ViewBag.maxDate = new DateTime(2017, 12, 20);
             return View();
         }

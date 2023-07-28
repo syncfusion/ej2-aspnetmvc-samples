@@ -3,7 +3,7 @@
     <div class="control-section">
         <div id="targetContainer" class="col-lg-12 control-section">
             <!-- Tooltip element -->
-            @Html.EJS().Tooltip("Tooltip").ShowTipPointer(false).BeforeRender("onBeforeRender").Width("170").Target("#Toolbar [title]").ContentTemplate(@<div class="toolbarContainer">
+            @Html.EJS().Tooltip("Tooltip").ShowTipPointer(false).BeforeRender("onBeforeRender").Width("170").Position(Syncfusion.EJ2.Popups.Position.BottomCenter).WindowCollision(true).Target("#Toolbar [title]").ContentTemplate(@<div class="toolbarContainer">
                 <!-- Toolbar element -->
                 @Html.EJS().Toolbar("Toolbar").Items(ViewBag.tbItems).Render()
             </div>).Render()

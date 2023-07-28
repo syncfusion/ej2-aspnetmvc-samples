@@ -6,6 +6,7 @@
 // applicable laws. 
 #endregion
 using Syncfusion.EJ2.Diagrams;
+using Syncfusion.EJ2.Navigations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -398,6 +399,38 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 OffsetX = 950,
                 OffsetY = 550,
             });
+
+            List<ToolbarItem> items = new List<ToolbarItem>();
+            {
+                items.Add(new ToolbarItem { PrefixIcon = "e-cut e-icons", TooltipText = "Cut", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-copy e-icons", TooltipText = "Copy", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-paste", TooltipText = "Paste", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-undo", TooltipText = "Undo", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-redo", TooltipText = "Redo", Disabled = true });
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-align-left-1", TooltipText = "Align Left", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-align-center-1", TooltipText = "Align Center", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-align-right-1", TooltipText = "Align Right", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-align-top-1", TooltipText = "Align Top", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-align-middle-1", TooltipText = "Align Middle", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-align-bottom-1", TooltipText = "Align Bottom",Disabled = true });
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-transform-right", TooltipText = "Rotate Right", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-transform-left", TooltipText = "Rotate Left", Disabled = true });
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-flip-vertical", TooltipText = "Flip Vertical", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-flip-horizontal", TooltipText = "Flip Horizontal", Disabled = true });
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-distribute-horizontal", TooltipText = "Distribute Objetcs Horizontally", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-distribute-vertical", TooltipText = "Distribute Objects Vertically", Disabled = true });
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-same-width", TooltipText = "Same Width", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-same-height", TooltipText = "Same Height", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-same-size", TooltipText = "Same Size", Disabled = true });
+
+
+            }
+            ViewBag.tbItems = items;
             ViewBag.nodes = nodes;
             return View();
         }

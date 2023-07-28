@@ -5,20 +5,28 @@
 
     <div class="control-section" style="width: 100%">
         <div class="db-toolbar-container">
-            <div id="toolbarEditor">
-            </div>
+            @Html.EJS().Toolbar("toolbarEditor").Clicked("toolbarClick").Items(ViewBag.tbItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
         </div>
         <div>
             <div id="palette-space" class="sb-mobile-palette">
                 @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.palettes).ExpandMode(ExpandMode.Multiple).Width("100%").Height("500px")
-                    .SymbolMargin(new SymbolPaletteMargin() { Left = 5, Right = 5, Top = 5, Bottom = 10 }).SymbolHeight(50).SymbolWidth(50)
-                    .GetNodeDefaults("getSymbolNodes").Render()
+        .SymbolMargin(new SymbolPaletteMargin() { Left = 5, Right = 5, Top = 5, Bottom = 10 }).SymbolHeight(50).SymbolWidth(50)
+        .GetNodeDefaults("getSymbolNodes").Render()
                 )
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
                 @(Html.EJS().Diagram("diagram").Width("100%").Height("500px").RulerSettings(r => r.ShowRulers(true)).Created("diagramCreated").DrawingObject("Orthogonal").SelectedItems(ViewBag.selectedItems).OnUserHandleMouseDown("userHandelClick").SelectionChange("selectionChange")
-        .Nodes(ViewBag.nodes).Render()
+.Nodes(ViewBag.nodes).Render()
                 )
+            </div>
+            <div>
+                @(Html.EJS().DropDownList("fontfamily").Value("Arial").DataSource(ViewBag.fontFamilyItems).Change("updateAnnotationValue").Render())
+            </div>
+            <div>
+                @(Html.EJS().NumericTextBox("fontSize").Value(12).Change("updateAnnotationValue").Render())
+            </div>
+            <div>
+                @(Html.EJS().ColorPicker("fontColors").Change("colorChange").Render())
             </div>
         </div>
     </div>
@@ -175,154 +183,37 @@
 
     <script>
         var drawingNode;
+        var toolbarObj = {};
         function diagramCreated() {
             var diagram = document.getElementById("diagram").ej2_instances[0];
             diagram.drawingObject = { type: "Orthogonal" };
+            toolbarObj = document.getElementById("toolbarEditor").ej2_instances[0];
+
         }
 
-        //create the Toolbar and adding items in ToolBar.
-        var toolbarObj = new ej.navigations.Toolbar({
-            clicked: toolbarClick,
-            items: [
-                {
-                    type: 'Button',
-                    tooltipText: 'Group',
-                    prefixIcon: 'e-icons e-group-1',
-                    disabled: true
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'UnGroup',
-                    prefixIcon: 'e-icons e-ungroup-1',
-                    disabled: true
-                },
-                { type: 'Separator' },
-                {
-                    type: 'Button',
-                    tooltipText: 'Bring Forward',
-                    prefixIcon: 'e-icons e-bring-forward',
-                    disabled: true
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'Bring To Front',
-                    prefixIcon: 'e-icons e-bring-to-front',
-                    disabled: true
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'Send Backward',
-                    prefixIcon: 'e-icons e-send-backward',
-                    disabled: true
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'Send To Back',
-                    prefixIcon: 'e-icons e-send-to-back',
-                    disabled: true
-                },
-                { type: 'Separator', template: '<div style="margin-left:1px;"></div>' },
-                {
-                    type: 'Input', tooltipText: 'Font Style', align: 'Left', template: '<div id="fontfamily"></div>'
-                },
-                { type: 'Separator', template: '<div style="margin-left:5px;"></div>' },
-                {
-                    type: 'Input', tooltipText: 'Font Size', align: 'Left', style: "margin-left:3px", template: '<input id="fontSize" type="text" />',
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'Bold',
-                    prefixIcon: 'e-icons e-bold',
-                    disabled: true,
-                    cssClass: 'tb-item-start'
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'Italic',
-                    prefixIcon: 'e-icons e-italic',
-                    disabled: true,
-                    cssClass: 'tb-item-middle'
-                },
-                {
-                    type: 'Button',
-                    tooltipText: 'Underline',
-                    prefixIcon: 'e-icons e-underline',
-                    disabled: true,
-                    cssClass: 'tb-item-end'
-                },
-                {
-                    type: 'Input', tooltipText: 'Font Color', align: 'Left', template: '<div id="fontColors"></div>'
-                },
-            ],
-        });
-        toolbarObj.appendTo('#toolbarEditor');
-
-
-        var fontTypeList = [
-            { type: 'Arial', text: 'Arial' },
-            { type: 'Aharoni', text: 'Aharoni' },
-            { type: 'Bell MT', text: 'Bell MT' },
-            { type: 'Fantasy', text: 'Fantasy' },
-            { type: 'Segoe UI', text: 'Segoe UI' },
-            { type: 'Times New Roman', text: 'Times New Roman' },
-            { type: 'Verdana', text: 'Verdana' }
-        ];
-        var fontFamily = new ej.dropdowns.DropDownList({
-            dataSource: fontTypeList,
-            fields: { value: 'type', text: 'text' }, popupWidth: 150,
-            width: '100%', placeholder: 'select a font type', index: 0,
-            change: function (args) {
-                updateAnnotationValue('fontfamily', null, args.value.toString());
-            }
-        });
-        fontFamily.appendTo('#fontfamily');
-
-        var fontSize = new ej.inputs.NumericTextBox({
-            value: 12, min: 1, max: 30, width: '90px',
-            format: '##.##', step: 2,
-            change: function (args) {
-                updateAnnotationValue('fontsize', args.value);
-            }
-        });
-        fontSize.appendTo('#fontSize');
-
-        var fontColors = new ej.inputs.ColorPicker({
-            mode: 'Palette',
-            value: '#000',
-            change: function (arg) {
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                for (var i = 0; i < diagram.selectedItems.nodes.length; i++) {
-                    var nodes = diagram.selectedItems.nodes[i];
-                    for (var j = 0; j < nodes.annotations.length; j++) {
-                        nodes.annotations[j].style.color = arg.currentValue.rgba;
-                        diagram.dataBind();
-                    }
-                }
-            }
-        });
-        fontColors.appendTo('#fontColors');
 
         //Apply the appearence of the Annotation
         function updateAnnotationValue(value, fontSize, fontFamily, index, isSelected) {
             var diagram = document.getElementById("diagram").ej2_instances[0];
             for (var i = 0; i < diagram.selectedItems.nodes.length; i++) {
                 var node = diagram.selectedItems.nodes[i];
+                var option = value.itemData !== undefined ? 'fontfamily' : typeof value.value === 'number' ? 'fontsize' : value; 
                 for (var j = 0; j < node.annotations.length; j++) {
                     var annotationstyle = node.annotations[j].style;
-                    if (value === 'fontsize') {
-                        annotationstyle.fontSize = fontSize;
-                    } else if (value === 'fontfamily') {
-                        annotationstyle.fontFamily = fontFamily.toString();
+                    if (option === 'fontsize') {
+                        annotationstyle.fontSize = value.value;
+                    } else if (option === 'fontfamily') {
+                        annotationstyle.fontFamily = value.value;
                     }
-                    else if (value === 'bold') {
+                    else if (option === 'bold') {
                         annotationstyle.bold = !annotationstyle.bold;
                         isSelected = annotationstyle.bold;
                     }
-                    else if (value === 'italic') {
+                    else if (option === 'italic') {
                         annotationstyle.italic = !annotationstyle.italic;
                         isSelected = annotationstyle.italic;
                     }
-                    else if (value === 'underline') {
+                    else if (option === 'underline') {
                         if (annotationstyle.textDecoration === "None") {
                             annotationstyle.textDecoration = 'Underline';
                             isSelected = true;
@@ -341,6 +232,17 @@
                         toolbarTextStyle.items[index].cssClass = isSelected ? cssClass + ' tb-item-selected' : cssClass.replace(' tb-item-selected', '');
                         toolbarTextStyle.dataBind();
                     }
+                    diagram.dataBind();
+                }
+            }
+        }
+
+        function colorChange(arg) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            for (var i = 0; i < diagram.selectedItems.nodes.length; i++) {
+                var nodes = diagram.selectedItems.nodes[i];
+                for (var j = 0; j < nodes.annotations.length; j++) {
+                    nodes.annotations[j].style.color = arg.currentValue.rgba;
                     diagram.dataBind();
                 }
             }

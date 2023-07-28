@@ -1782,7 +1782,7 @@ window.samplesList = [
                 "name": "Overview",
                 "category": "Charts",
                 "uid": "0044104",
-                "order": 15,
+                "order": 0,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"

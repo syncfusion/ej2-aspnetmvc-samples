@@ -6,7 +6,7 @@
     @{Html.BeginForm("ImportData", "PowerPoint", FormMethod.Post);
             {
                 <div class="col-lg-9 control-section">
-                @Html.EJS().Grid("ImportData").DataSource(dataManager => { dataManager.Url("/PowerPoint/UrlDatasource").InsertUrl("/PowerPoint/Insert").UpdateUrl("/PowerPoint/Update").RemoveUrl("/PowerPoint/Delete").Adaptor("UrlAdaptor"); }).Columns(col =>
+                @Html.EJS().Grid("ImportData").DataSource(dataManager => { dataManager.Url(@Url.Action("UrlDatasource", "PowerPoint")).InsertUrl(@Url.Action("Insert", "PowerPoint")).UpdateUrl(@Url.Action("Update", "PowerPoint")).RemoveUrl(@Url.Action("Delete", "PowerPoint")).Adaptor("UrlAdaptor"); }).Columns(col =>
            {
 
                col.Field("Year").HeaderText("Year").IsPrimaryKey(true).Width("50").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

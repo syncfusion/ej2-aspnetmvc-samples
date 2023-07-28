@@ -83,7 +83,7 @@
         var imageEditorObj = ej.base.getComponent(document.getElementById('image-editor'), 'image-editor');
         imageEditorObj.update();
         var img = document.querySelector('#custom-img');
-        imageEditor.open(img.src);
+        imageEditorObj.open(img.src);
     }
 
     document.getElementById('custom-edit').onclick = function () {

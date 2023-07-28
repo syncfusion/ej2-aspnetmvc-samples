@@ -13,7 +13,7 @@
     }
     <div id="htmlTemplate" class="col-lg-12 control-section">
         <div id="customization">
-            @Html.EJS().Tooltip("tooltip").CssClass("e-tooltip-css").Content(template).OpensOn("Click").Created("onCreated").ContentTemplate(@<div>
+            @Html.EJS().Tooltip("tooltip").CssClass("e-tooltip-css").Content(template).Position(Syncfusion.EJ2.Popups.Position.BottomCenter).WindowCollision(true).OpensOn("Click").Created("onCreated").ContentTemplate(@<div>
                 @Html.EJS().Button("content").CssClass("text e-outline").IsPrimary(true).Content("HTML Template").Render()
             </div>).Render()
         </div>
@@ -74,6 +74,7 @@
     var tooltipObj;
     function onCreated() {
         tooltipObj = document.getElementById("tooltip").ej2_instances[0];
+        tooltipObj.height = ej.base.Browser.isDevice ? "60%" : "auto";
         //Attached scroll and click event listners in right pane
         if (document.getElementById('right-pane')) {
             document.getElementById('right-pane').addEventListener('click', onClick);

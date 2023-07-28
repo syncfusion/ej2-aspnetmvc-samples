@@ -1,5 +1,6 @@
 ﻿@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Diagrams;
+@using Syncfusion.EJ2.DropDowns;
 @using Syncfusion.EJ2.Navigations;
 @section ControlsSection{
     <div class="control-section">
@@ -24,12 +25,14 @@
                     Properties
                 </div>
                 <div class="row db-prop-row">
+
                     <div class="col-xs-5 db-col-right db-prop-text-style" style="padding-top: 14px">
                         <span class="db-prop-text-style db-spacing-text">Scroll Limit</span>
                     </div>
-                    <div class="col-xs-7 db-col-left" style="padding-top: 10px;">
+                    <div class="col-xs-7 db-col-left" style="padding-top: 10px;padding-right: 0px;">
                         <div class="db-text-input">
-                            <input type="text" id='scrollLimit' />
+                            @Html.EJS().DropDownList("scrollLimit").Index(0).Change("valueChange").DataSource(
+                            (IEnumerable<object>)ViewBag.data).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
                         </div>
                     </div>
                 </div>
@@ -37,99 +40,100 @@
                     <div class="property-panel-header">
                         Scrollable Area
                     </div>
-                    <div class="row db-prop-row">
-                        <div class="col-xs-6 db-col-left" style="padding-right: 5px;">
-                            <div class="db-text-container">
-                                <div style="width:40%;float:left;margin-top: 5px;">
-                                    <span>X</span>
-                                </div>
-                                <div style="width:60%;float:right">
-                                    <input type="text" id='x' />
-                                </div>
+                    <div class="row db-prop-row" style="padding-top: 15px;">
+                        <div class="col-xs-6" style="padding-right: 15px;width: 150px;">
+                            <div style="width:40%;float:left;margin-top: 5px;">
+                                <span class="texstyle" style="display: block;">X</span>
+                            </div>
+                            <div style="width:60%;float:right;padding-left: 20px;">
+                                @Html.EJS().TextBox("scrollAreaX").Placeholder("10").Value("10").Change("scrollAreaXChange").Render()
                             </div>
                         </div>
-                        <div class="col-xs-6 db-col-right">
+                    </div>
+
+                    <div class="row db-prop-row" style="padding-top: 15px;">
+                        <div class="col-xs-6" style="padding-right: 15px;width: 150px;">
                             <div style="width:40%;float:left;margin-top: 5px;">
-                                <span>Y</span>
+                                <span class="texstyle" style="width: fit-content;">Y</span>
                             </div>
-                            <div style="width:60%;float:right">
-                                <input type="text" id='y' />
+                            <div style="width:60%;float:right;padding-left: 20px;">
+                                @Html.EJS().TextBox("scrollAreaY").Placeholder("10").Value("10").Change("scrollAreaYChange").Render()
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row db-prop-row" style="padding-top: 15px;">
+                        <div class="col-xs-6 db-col-left" style="width: 150px;">
+                            <div style="width:40%;float:left;margin-top: 5px;">
+                                <span class="texstyle">Width</span>
+                            </div>
+                            <div style="width:60%;float:right;padding-left: 20px;">
+                                @Html.EJS().TextBox("widthTextBox").Placeholder("1500").Value("1500").Change("widthTextBoxChange").Render()
                             </div>
                         </div>
                     </div>
                     <div class="row db-prop-row" style="padding-top: 15px;">
-                        <div class="col-xs-6 db-col-left" style="padding-right: 5px;">
-                            <div class="db-text-container">
-                                <div style="width:40%;float:left;margin-top: 5px;">
-                                    <span>Width</span>
-                                </div>
-                                <div style="width:60%;float:right">
-                                    <input type="text" id='width' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 db-col-right">
+                        <div class="col-xs-6 db-col-right" style="width: 150px;">
                             <div style="width:40%;float:left;margin-top: 5px;">
-                                <span>Height</span>
+                                <span class="texstyle">Height</span>
                             </div>
-                            <div style="width:60%;float:right">
-                                <input type="text" id='height' />
+                            <div style="width:60%;float:right;padding-left: 20px">
+                                @Html.EJS().TextBox("heightTextBox").Placeholder("1500").Value("1500").Change("heightTextBoxChange").Render()
                             </div>
                         </div>
                     </div>
                 </div>
                 <div style="padding-top:5px;margin-top: 20px;">
                     <div style="float:left">Enable AutoScroll</div>
-                    <div style="float: right;margin-right: 80px;">
-                        <input type="checkbox" id="checked">
+                    <div style="float: left;margin-left: 10px;">
+                        @Html.EJS().CheckBox("checked").Checked(true).Change("onChange").Render()
                     </div>
                 </div>
-                <div id="autoScrollDiv" style="margin-top: 30px;">
+                <div id="autoScrollDiv" style="margin-top: 30px">
                     <div class="property-panel-header">
                         AutoScroll border
                     </div>
-                    <div class="row db-prop-row">
-                        <div class="col-xs-6 db-col-left" style="padding-right: 5px;">
-                            <div class="db-text-container">
-                                <div style="width:40%;float:left;margin-top: 5px;">
-                                    <span>Left</span>
-                                </div>
-                                <div style="width:60%;float:right">
-                                    <input type="text" id='left' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-6 db-col-right">
+                    <div class="row db-prop-row" style="padding-top: 15px;">
+                        <div class="col-xs-6 db-col-left" style="width: 150px;">
                             <div style="width:40%;float:left;margin-top: 5px;">
-                                <span>Top</span>
+                                <span>Left</span>
                             </div>
-                            <div style="width:60%;float:right">
-                                <input type="text" id='top' />
+                            <div style="width:60%;float:right;padding-left: 20px;">
+                                @Html.EJS().TextBox("leftTextBox").Placeholder("30").Value("30").Change("leftTextBoxChange").Render()
                             </div>
                         </div>
                     </div>
                     <div class="row db-prop-row" style="padding-top: 15px;">
-                        <div class="col-xs-6 db-col-left" style="padding-right: 5px;">
-                            <div class="db-text-container">
-                                <div style="width:40%;float:left;margin-top: 5px;">
-                                    <span>Right</span>
-                                </div>
-                                <div style="width:60%;float:right">
-                                    <input type="text" id='right' />
-                                </div>
+                        <div class="col-xs-6 db-col-right" style="width: 150px;">
+                            <div style="width:40%;float:left;margin-top: 5px;">
+                                <span>Top</span>
+                            </div>
+                            <div style="width:60%;float:right;padding-left: 20px;">
+                                @Html.EJS().TextBox("topTextBox").Placeholder("30").Value("30").Change("topTextBoxChange").Render()
                             </div>
                         </div>
-                        <div class="col-xs-6 db-col-right">
+                    </div>
+                    <div class="row db-prop-row" style="padding-top: 15px;">
+                        <div class="col-xs-6 db-col-left" style="width: 150px;">
+                            <div style="width:40%;float:left;margin-top: 5px;">
+                                <span>Right</span>
+                            </div>
+                            <div style="width:60%;float:right;padding-left: 20px;">
+                                @Html.EJS().TextBox("rightTextBox").Placeholder("30").Value("30").Change("rightTextBoxChange").Render()
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row db-prop-row" style="padding-top: 15px;">
+                        <div class="col-xs-6 db-col-right" style="width: 150px;">
                             <div style="width:40%;float:left;margin-top: 5px;">
                                 <span>Bottom</span>
                             </div>
-                            <div style="width:60%;float:right">
-                                <input type="text" id='bottom' />
+                            <div style="width:60%;float:right;padding-left: 20px;">
+                                @Html.EJS().TextBox("bottomTextBox").Placeholder("30").Value("30").Change("bottomTextBoxChange").Render()
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -143,6 +147,21 @@
             font-style: normal;
         }
 
+        .texstyle {
+            display: table;
+            /* height: 35px; */
+            padding-right: 10px;
+            padding-left: 0px;
+            width: 50%;
+            padding-top: 5px;
+            float: left;
+            position: relative;
+            min-height: 1px;
+        }
+
+        .text {
+            text-align: center;
+        }
 
         .e-ddb-icons {
             font-family: 'e-ddb-icons';
@@ -337,7 +356,12 @@
                 obj.targetDecorator = { shape: 'Arrow', width: 10, height: 10 };
             }
         }
-
+        function valueChange(args) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            var element = document.getElementById('scrollableDiv');
+            element.className = args.value === "Limited" ? "" : "disabledbutton";
+            diagram.scrollSettings.scrollLimit = args.value;
+        }
         function diagramCreated() {
             var element2 = document.getElementById('scrollableDiv');
             element2.className = "disabledbutton";
@@ -358,153 +382,51 @@
             }
         }
 
-        var items = [
-            { text: 'Auto', value: 'Auto' }, { text: 'Scroll', value: 'Scroll' },
-            { text: 'Drag', value: 'Drag' }
-        ];
-
-        var scrollLimitDatasource = [
-            { text: 'Infinity', value: 'Infinity' }, { text: 'Diagram', value: 'Diagram' },
-            { text: 'Limited', value: 'Limited' }
-        ];
-
-        var scrollLevel = new ej.dropdowns.DropDownList({
-            dataSource: items,
-            fields: { text: 'text', value: 'value' },
-            value: 'Scroll',
-            change: function (args) {
-                var element = document.getElementById('autoScrollDiv');
-                element.className = args.value === "Auto" ? "" : "disabledbutton";
+        function scrollAreaXChange() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.scrollSettings.scrollableArea.x = Number(args.value);
+        }
+        function scrollAreaYChange() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.scrollSettings.scrollableArea.y = Number(args.value);
+        }
+        
+        function widthTextBoxChange() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.scrollSettings.scrollableArea.width = Number(args.value);
+        }
+        function heightTextBoxChange() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.scrollSettings.scrollableArea.height = Number(args.value);
+        }
+        function onChange(args) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            var element4 = document.getElementById('autoScrollDiv');
+            if (args.checked) {
+                element4.className = '';
+                diagram.scrollSettings.canAutoScroll = true;
+            } else {
+                element4.className = 'disabledbutton';
+                diagram.scrollSettings.canAutoScroll = false;
             }
-        });
-        scrollLevel.appendTo('#scrollLevel');
+        }
 
-        var scrollLimit = new ej.dropdowns.DropDownList({
-            dataSource: scrollLimitDatasource,
-            fields: { text: 'text', value: 'value' },
-            value: 'Infinity',
-            change: function (args) {
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                var element = document.getElementById('scrollableDiv');
-                element.className = args.value === "Limited" ? "" : "disabledbutton";
-                diagram.scrollSettings.scrollLimit = args.value;
-            }
-        });
-        scrollLimit.appendTo('#scrollLimit');
-
-        var numeric = new ej.inputs.TextBox({
-            // sets value to the NumericTextBox
-            value: 10,
-            change: function (args) {
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                diagram.scrollSettings.scrollableArea.x = Number(args.value);
-            }
-        });
-
-        // renders initialized NumericTextBox
-        numeric.appendTo('#x');
-
-        var checkBoxObj = new ej.buttons.CheckBox({
-            checked: false,
-            change: function (args) {
-                var element4 = document.getElementById('autoScrollDiv');
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                if (args.checked) {
-                    element4.className = '';
-                    diagram.scrollSettings.canAutoScroll = true;
-
-                } else {
-                    element4.className = 'disabledbutton';
-                    diagram.scrollSettings.canAutoScroll = false;
-                }
-            }
-        });
-        checkBoxObj.appendTo('#checked');
-
-        var numeric2 = new ej.inputs.TextBox({
-            // sets value to the NumericTextBox
-            value: 10,
-            change: function (args) {
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                diagram.scrollSettings.scrollableArea.y = Number(args.value);
-            }
-        });
-
-        // renders initialized NumericTextBox
-        numeric2.appendTo('#y');
-
-        var widthTextBox = new ej.inputs.TextBox({
-            // sets value to the NumericTextBox
-            value: 1500,
-            change: function (args) {
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                diagram.scrollSettings.scrollableArea.width = Number(args.value);
-            }
-        });
-
-        // renders initialized NumericTextBox
-        widthTextBox.appendTo('#width');
-
-        var heightTextBox = new ej.inputs.TextBox({
-            // sets value to the NumericTextBox
-            value: 1500,
-            change: function (args) {
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                diagram.scrollSettings.scrollableArea.height = Number(args.value);
-            }
-        });
-
-        // renders initialized NumericTextBox
-        heightTextBox.appendTo('#height');
-
-        var leftTextBox = new ej.inputs.TextBox({
-            // sets value to the NumericTextBox
-            value: 30,
-            change: function (args) {
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                diagram.scrollSettings.autoScrollBorder.left = Number(args.value);
-            }
-        });
-
-        // renders initialized NumericTextBox
-        leftTextBox.appendTo('#left');
-
-        var rightTextBox = new ej.inputs.TextBox({
-            // sets value to the NumericTextBox
-            value: 30,
-            change: function (args) {
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                diagram.scrollSettings.autoScrollBorder.right = Number(args.value);
-            }
-        });
-
-        // renders initialized NumericTextBox
-        rightTextBox.appendTo('#right');
-
-        var topTextBox = new ej.inputs.TextBox({
-            // sets value to the NumericTextBox
-            value: 30,
-            change: function (args) {
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                diagram.scrollSettings.autoScrollBorder.top = Number(args.value);
-            }
-        });
-
-        // renders initialized NumericTextBox
-        topTextBox.appendTo('#top');
-
-        var bottomTextBox = new ej.inputs.TextBox({
-            // sets value to the NumericTextBox
-            value: 30,
-            change: function (args) {
-                var diagram = document.getElementById("diagram").ej2_instances[0];
-                diagram.scrollSettings.autoScrollBorder.bottom = Number(args.value);
-            }
-        });
-
-        // renders initialized NumericTextBox
-        bottomTextBox.appendTo('#bottom');
-
+        function leftTextBoxChange() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.scrollSettings.autoScrollBorder.left = Number(args.value);
+        }
+        function topTextBoxChange() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.scrollSettings.autoScrollBorder.top = Number(args.value);
+        }
+        function rightTextBoxChange() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.scrollSettings.autoScrollBorder.right = Number(args.value);
+        }
+        function bottomTextBoxChange() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.scrollSettings.autoScrollBorder.bottom = Number(args.value);
+        }
     </script>
 
 }

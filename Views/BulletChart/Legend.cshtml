@@ -3,7 +3,7 @@
     <div class="control-section">
         <div style="text-align:center">
             @(Html.EJS().BulletChart("container")
-                 .Tooltip(tp => tp.Enable(false))
+                 .Tooltip(tp => tp.Enable(true))
                  .ValueField("value")
                  .Height("160")
                  .TargetField("target").LabelFormat("{value}K")

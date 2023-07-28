@@ -6,7 +6,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <!-- Tooltip element -->
-        @Html.EJS().Tooltip("tooltip").Target("#default").Content("Tooltip content").OpensOn("Click").Created("onCreated").ContentTemplate(@<div>
+        @Html.EJS().Tooltip("tooltip").Target("#default").Content("Tooltip content").Position(Syncfusion.EJ2.Popups.Position.TopCenter).WindowCollision(true).OpensOn("Click").Created("onCreated").ContentTemplate(@<div>
             @Html.EJS().Button("default").Content("Show Tooltip").Render()
         </div>).Render()
     </div>
