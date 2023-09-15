@@ -8,10 +8,10 @@
         </div>
         <div class="col-lg-8 content-wrapper control-section">
             @(Html.EJS().Tab("ej2Tab")
-             .Items(new List<TabTabItem> {
-                new TabTabItem { Header = ViewBag.headerTextOne, Content = "#DataGrid" },
-                new TabTabItem { Header = ViewBag.headerTextTwo, Content = "#Chart" },
-                new TabTabItem { Header = ViewBag.headerTextThree, Content = "#Schedule" }
+             .Items(new List<TabItem> {
+                new TabItem { Header = ViewBag.headerTextOne, Content = "#DataGrid" },
+                new TabItem { Header = ViewBag.headerTextTwo, Content = "#Chart" },
+                new TabItem { Header = ViewBag.headerTextThree, Content = "#Schedule" }
              })
              .Height("auto")
              .Created("onTabCreate")
@@ -258,6 +258,10 @@
         border: 0.5px solid #E1E7EC;
         line-height: 15px;
         padding: 0 5px;
+    }
+    .bootstrap5 .treeview-external-drag-tab .e-list-item.e-active > .e-text-content .e-list-text,
+    .bootstrap4 .treeview-external-drag-tab .e-list-item.e-active > .e-text-content .e-list-text {
+        color: #212529;
     }
 
         .treeview-external-drag-tab .e-list-item.e-hover > .e-fullrow,

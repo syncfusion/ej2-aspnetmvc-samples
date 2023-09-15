@@ -44,8 +44,6 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             ISlide slide1 = presentation.Slides[0];
             ISmartArt smartArt = slide1.Shapes[0] as ISmartArt;
-            smartArt.Background.FillType = FillType.Solid;
-            smartArt.Background.SolidFill.Color = ColorObject.Lavender;
             //New node adds to the node collection.
             ISmartArtNode newNode = smartArt.Nodes.Add();
             //Text content to the newly added node.

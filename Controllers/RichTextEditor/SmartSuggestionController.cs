@@ -22,19 +22,10 @@ namespace EJ2MVCSampleBrowser.Controllers
             ViewBag.formatList = new FormatData().FormatList();
             ViewBag.items = new object[] { "Bold", "Italic", "Underline","StrikeThrough","FontName","FontSize", "BackgroundColor",
                 "LowerCase", "UpperCase", "SuperScript",  "SubScript",  "|", "Formats",  "Alignments", "NumberFormatList", "BulletFormatList",
-                "Outdent",  "Indent",  "|",  "CreateTable",  "CreateLink",  "Image","|" , "SourceCode", "FullScreen", "|", "Undo" ,"Redo"
+                "Outdent",  "Indent", "EmojiPicker", "|",  "CreateTable",  "CreateLink",  "Image","|" , "SourceCode", "FullScreen", "|", "Undo" ,"Redo"
 
             };
-            ViewBag.insertButton = new
-            {
-                content = "Insert",
-                isPrimary = true
-            };
-            ViewBag.cancelButton = new
-            {
-                content = "Cancel"
-            };
-
+            ViewBag.smartSuggestionChar = '/';
             return View();
         } 
     }

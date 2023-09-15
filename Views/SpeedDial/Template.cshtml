@@ -154,7 +154,8 @@
         padding: 10px;
     }
 
-    .e-speeddial-li .itemlist:hover {
+    .e-speeddial-li .itemlist:hover,
+    .e-speeddial-li.e-speeddial-li-active:not(.e-disabled) .itemlist {
         background: rgb(224, 224, 224);
     }
 
@@ -164,7 +165,9 @@
     }
 
     body[class*="dark"] .e-speeddial-li .itemlist:hover,
-    body[class*="high"] .e-speeddial-li .itemlist:hover {
+    body[class*="dark"] .e-speeddial-li.e-speeddial-li-active:not(.e-disabled) .itemlist,
+    body[class*="high"] .e-speeddial-li .itemlist:hover,
+    body[class*="high"] .e-speeddial-li.e-speeddial-li-active:not(.e-disabled) .itemlist{
         background: #bfbfbf;
     }
 

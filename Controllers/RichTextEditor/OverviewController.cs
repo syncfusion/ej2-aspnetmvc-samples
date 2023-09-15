@@ -18,12 +18,12 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Overview()
         {
-            ViewBag.Tools = new[] { "Bold", "Italic", "Underline", "StrikeThrough",
+            ViewBag.Tools = new[] {"FormatPainter", "Bold", "Italic", "Underline", "StrikeThrough",
                 "FontName", "FontSize", "FontColor", "BackgroundColor",
                 "LowerCase", "UpperCase", "SuperScript", "SubScript", "|",
                 "Formats", "Alignments", "NumberFormatList", "BulletFormatList",
                 "Outdent", "Indent", "|",
-                "CreateTable", "CreateLink", "Image", "EmojiPicker", "FileManager", "|", "ClearFormat", "Print",
+                "CreateTable", "CreateLink", "Image", "Audio", "Video", "EmojiPicker", "FileManager", "|", "ClearFormat", "Print",
                 "SourceCode", "FullScreen", "|", "Undo", "Redo" };
             string hostUrl = "https://ej2-aspcore-service.azurewebsites.net/";
             ViewBag.AjaxSettings = new

@@ -11,6 +11,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Syncfusion.EJ2.Diagrams;
+using Syncfusion.EJ2.Navigations;
 
 namespace EJ2MVCSampleBrowser.Controllers.Diagram
 {
@@ -209,6 +210,15 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             DiagramMargin margin = new DiagramMargin() { Left = 15, Right = 15, Bottom = 15, Top = 15 };
             ViewBag.margin = margin;
 
+            List<ToolbarItem> items = new List<ToolbarItem>();
+            {
+                items.Add(new ToolbarItem { PrefixIcon = "e-ddb-icons e-new",Text = "New", TooltipText = "New"});
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "e-diagram-icons e-diagram-save", Text = "Save", TooltipText = "Save"});
+                items.Add(new ToolbarItem { Type = ItemType.Separator });
+                items.Add(new ToolbarItem { PrefixIcon = "e-ddb-icons e-open", Text = "Load", TooltipText = "Load"});
+            }
+            ViewBag.tbItems = items;
             return View();
         }
     }

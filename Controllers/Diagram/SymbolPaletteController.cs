@@ -51,9 +51,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             ViewBag.Connectors = connectors;
 
             List<SymbolPalettePalette> palettes = new List<SymbolPalettePalette>();
-            palettes.Add(new SymbolPalettePalette() { Id = "flow", Expanded = true, Symbols = flowShapes, IconCss = "shapes", Title = "Flow Shapes" });
-            palettes.Add(new SymbolPalettePalette() { Id = "basic", Expanded = true, Symbols = basicShapes, IconCss = "shapes", Title = "Basic Shapes" });
-            palettes.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = connectors, IconCss = "shapes", Title = "Connectors" });
+            palettes.Add(new SymbolPalettePalette() { Id = "flow", Expanded = true, Symbols = flowShapes, IconCss = "e-ddb-icons e-basic", Title = "Flow Shapes" });
+            palettes.Add(new SymbolPalettePalette() { Id = "basic", Expanded = true, Symbols = basicShapes, IconCss = "e-ddb-icons e-flow", Title = "Basic Shapes" });
+            palettes.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = connectors, IconCss = "e-ddb-icons e-connector", Title = "Connectors" });
             ViewBag.palettes = palettes;
 
             List<ExpandOptions> expand = new List<ExpandOptions>();

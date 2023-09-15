@@ -17,7 +17,7 @@
 
            }).PrimaryYAxis(px => px.Minimum(0).Maximum(100).Interval(20).LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).LabelFormat("{value}B").Title("Production(Billion in kWh)").RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
             ).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0)).LabelFormat("yyyy").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years)
-            ).Tooltip(tr => tr.Enable(true)
+            ).Tooltip(tr => tr.Enable(false)
             ).ChartArea(area => area.Border(br => br.Width(0))
                 ).LegendSettings(lg => lg.Visible(true)
             ).Title("Electricity - Production").Load("load").Render()

@@ -34,7 +34,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
         List<DataFields> genderData = new List<DataFields>();
         List<DataFields> berthData = new List<DataFields>();
         List<CitiesFields> citiesData = new List<CitiesFields>();
-        List<TabTabItem> headerItems = new List<TabTabItem>();
+        List<TabItem> headerItems = new List<TabItem>();
         public ActionResult Wizard()
         {
             quotaData.Add(new DataFields { ID = "1", Text = "Business Class" });
@@ -75,10 +75,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
             ViewBag.max = DateTime.Now.AddMonths(3);
 			ViewBag.value = DateTime.Now;
 
-            headerItems.Add(new TabTabItem { Header = ViewBag.headerTextOne , Content = ViewBag.content1 });
-            headerItems.Add(new TabTabItem { Header = ViewBag.headerTextTwo , Content = ViewBag.content2, Disabled = true });
-            headerItems.Add(new TabTabItem { Header = ViewBag.headerTextThree , Content = ViewBag.content3, Disabled = true });
-            headerItems.Add(new TabTabItem { Header = ViewBag.headerTextFour , Content = ViewBag.content4, Disabled = true  });
+            headerItems.Add(new TabItem { Header = ViewBag.headerTextOne , Content = ViewBag.content1 });
+            headerItems.Add(new TabItem { Header = ViewBag.headerTextTwo , Content = ViewBag.content2, Disabled = true });
+            headerItems.Add(new TabItem { Header = ViewBag.headerTextThree , Content = ViewBag.content3, Disabled = true });
+            headerItems.Add(new TabItem { Header = ViewBag.headerTextFour , Content = ViewBag.content4, Disabled = true  });
             ViewBag.headeritems = headerItems;
 
             ticketGrid.Add(new GridColumn { Field = "TrainNo", HeaderText = "Train No", Width = "120", Type = "number"});

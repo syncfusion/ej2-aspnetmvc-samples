@@ -15,6 +15,7 @@ using System.Web.Http;
 using Newtonsoft.Json;
 using System.IO;
 using System.Reflection;
+using System.Net;
 
 namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
 {
@@ -50,7 +51,15 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
                     }
                     else
                     {
-                        return this.Content(jsonData["document"] + " is not found");
+                        string fileName = jsonData["document"].Split(new string[] { "://" }, StringSplitOptions.None)[0];
+                        if (fileName == "http" || fileName == "https")
+                        {
+                            WebClient WebClient = new WebClient();
+                            byte[] pdfDoc = WebClient.DownloadData(jsonData["document"]);
+                            stream = new MemoryStream(pdfDoc);
+                        }
+                        else
+                            return this.Content(jsonData["document"] + " is not found");
                     }
                 }
                 else

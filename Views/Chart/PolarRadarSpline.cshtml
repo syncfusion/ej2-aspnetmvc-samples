@@ -34,15 +34,8 @@
             .Interval(30)
             .LabelFormat("{value}°")
             .Minimum(-180)
-            .Coefficient(100)
       )
-      .PrimaryYAxis(yaxis =>
-          yaxis.LabelFormat("{value}M")
-                 .Interval(5)
-                 .Minimum(-20)
-                 .Maximum(0)
-      )
-      .Title("Microphone Types Polar Patterns").Tooltip(tp => tp.Enable(true)).Load("load").Render()
+      .Title("Microphone Types Polar Patterns").Tooltip(tp => tp.Enable(true)).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
 )
        
     </div>
@@ -103,6 +96,7 @@
         var selectedTheme = themeName ? themeName : 'Material';
         args.chart.theme = (selectedTheme && selectedTheme.indexOf('fabric') > -1) ? 'Fabric' : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        args.chart.primaryXAxis.coefficient = ej.base.Browser.isDevice ? 80 : 100;
     };
      @*custom code end*@
     var valueChange = function () {

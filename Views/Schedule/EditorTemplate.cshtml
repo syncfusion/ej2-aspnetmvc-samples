@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).ActionBegin("onActionBegin").EventRendered("onEventRendered").PopupOpen("onPopupOpen").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).EditorTemplate("#EventEditorTemplate").ShowQuickInfo(false).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).ActionBegin("onActionBegin").EventRendered("onEventRendered").PopupOpen("onPopupOpen").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).EditorTemplate("#EventEditorTemplate").EditorHeaderTemplate("#EventEditorHeaderTemplate").ShowQuickInfo(false).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
     <style>
@@ -18,6 +18,9 @@
             padding-right: 16px;
         }
     </style>
+    <script id="EventEditorHeaderTemplate" type="text/x-template">
+        ${if (!Subject)}<div>Create New Event</div>${else}<div>${Subject}</div>${/if}
+    </script>
     <script id="EventEditorTemplate" type="text/template">
         <table class="custom-event-editor" width="100%" cellpadding="5">
             <tbody>
@@ -139,6 +142,10 @@
             by using the
             <code>EditorTemplate</code> API. Here, the custom design is built with the required fields through the script template and its type should be
             <code>text/x-template</code>.
+        </p>
+        <p>
+            In this demo, the editor window header is customized based on the appointment subject field which can be
+            achieved by the <code>editorHeaderTemplate</code>.
         </p>
         <p>
             Each field defined through it should contain the

@@ -15,11 +15,8 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
 {
     public partial class CircularGaugeController : Controller
     {
-        // GET: Data
         public ActionResult DataSample()
         {
-
-
 
             return View();
         }

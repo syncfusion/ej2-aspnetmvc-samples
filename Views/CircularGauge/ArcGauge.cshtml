@@ -1,45 +1,71 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
-<style>
-    .sliderwrap {
-        margin-top: 0px;
-        width: 300px;
-        align-self: center;
-    }
 
-    #slider.e-control.e-slider .e-handle {
-        background-color: #4B4B4B;
-    }
-
-    .e-control-wrapper.e-slider-container.e-horizontal .e-slider-track {
-        background: -webkit-linear-gradient(left, #ea501a 0, #ea501a 20%, #f79c02 40%, #e5ce20 60%, #a1cb43 80%, #82b944 100%);
-        background: linear-gradient(left, #ea501a 0, #ea501a 20%, #f79c02 40%, #e5ce20 60%, #a1cb43 80%, #82b944 100%);
-        background: -moz-linear-gradient(left, #ea501a 0, #ea501a 20%, #f79c02 40%, #e5ce20 60%, #a1cb43 80%, #82b944 100%);
-    }
-
-    .e-limit-bar.e-limits {
-        background-color: transparent !important;
-    }
-
-    .e-control-wrapper.e-slider-container.e-horizontal .e-range {
-        height: 0px !important;
-    }
-
-    #slider.e-control.e-slider .e-slider-track {
-        height: 8px;
-        top: calc(50% - 4px);
-        border-radius: 5px;
-    }
-</style>
 @section ControlsSection{
+    <style>
+        .sliderwrap {
+            margin-top: 4px;
+            width: 300px;
+            align-self: center;
+        }
+
+        #slider.e-control.e-slider .e-handle {
+            margin-top: 0px;
+            background-color: #fff;
+            border: 2px solid #666;
+            width: 15px;
+            height: 15px;
+        }
+
+        .e-control-wrapper.e-slider-container.e-horizontal .e-slider-track {
+            background: -webkit-linear-gradient(left, #ea501a 0, #ea501a 20%, #f79c02 40%, #e5ce20 60%, #a1cb43 80%, #82b944 100%);
+            background: linear-gradient(left, #ea501a 0, #ea501a 20%, #f79c02 40%, #e5ce20 60%, #a1cb43 80%, #82b944 100%);
+            background: -moz-linear-gradient(left, #ea501a 0, #ea501a 20%, #f79c02 40%, #e5ce20 60%, #a1cb43 80%, #82b944 100%);
+        }
+
+        .e-limit-bar.e-limits {
+            background-color: transparent !important;
+        }
+
+        .e-control-wrapper.e-slider-container.e-horizontal .e-range {
+            height: 0px !important;
+        }
+
+        #slider.e-control.e-slider .e-slider-track {
+            height: 8px;
+            top: calc(50% - 4px);
+            border-radius: 5px;
+        }
+
+        .material3 #slider.e-control.e-slider .e-handle, .material3-dark #slider.e-control.e-slider .e-handle {
+            margin-top: 6px;
+        }
+        .tailwind #slider.e-control.e-slider .e-handle, .tailwind-dark #slider.e-control.e-slider .e-handle {
+            margin-top: 1px;
+        }
+        .material #slider.e-control.e-slider .e-handle {
+            margin-top: -1px;
+        }
+        .highcontrast #slider.e-control.e-slider .e-handle {
+            margin-top: 2px;
+        }
+        .bootstrap #slider.e-control.e-slider .e-handle, .bootstrap-dark #slider.e-control.e-slider .e-handle {
+            margin-top: 1px;
+        }
+    </style>
+
     <div class="control-section" align="center">
-        @Html.EJS().CircularGauge("container").Loaded("loaded").Load("gaugeLoad").Title("Progress Tracker").TitleStyle(ts=>ts.Size("18px")).Axes(axes => axes
-           .Radius("80%").StartAngle(200).EndAngle(160).Minimum(0).Maximum(100).LabelStyle(ls => ls.Position(Position.Inside))
-           .MajorTicks(major=>major.Height(0)).MinorTicks(minor=>minor.Height(0))
-           .Pointers(pt => pt.Value(60).RoundedCornerRadius(20).Type(PointerType.RangeBar).Radius("90%").Color("#e5ce20").PointerWidth(30).Animation(animation=>animation.Enable(false)).Border(border=>border.Width(0)).Add())
-           .LineStyle(lin => lin.Width(0))
-           .Ranges(ranges=>ranges.Start(0).End(100).Radius("90%").StartWidth("30").EndWidth("30").Color("#E0E0E0").RoundedCornerRadius(20).Add())
-           .Add()).Render()
+        @Html.EJS().CircularGauge("container").Loaded("loaded").Load("gaugeLoad").Background("transparent").Title("Progress Tracker").TitleStyle(titleStyle => titleStyle.FontFamily("inherit")).Axes(axes => axes
+           .Radius("80%").StartAngle(200).EndAngle(160).Minimum(0).Maximum(100).LabelStyle(labelStyle => labelStyle.Position(Position.Inside).Font(font => font.FontFamily("inherit").Size("0px")))
+           .MajorTicks(majorTick => majorTick.Height(0).Color("transparent")).MinorTicks(minorTick => minorTick.Height(0).Color("transparent"))
+           .Pointers(pointer => pointer.Value(60).RoundedCornerRadius(20).Type(PointerType.RangeBar).Radius("90%").Color("#e5ce20").PointerWidth(30).Animation(animation => animation.Enable(false)).Border(border => border.Width(0)).Add())
+           .LineStyle(lineStyle => lineStyle.Width(0))
+           .Ranges(range => range.Start(0).End(100).Radius("90%").StartWidth("30").EndWidth("30").Color("#E0E0E0").RoundedCornerRadius(20).Add())
+           .Annotations(annotation =>
+           {
+               annotation.Angle(0).ZIndex("1").Radius("0%").Content("<div id='pointervalue' style='font-size:35px;width:120px;text-align:center'>60/100</div>").Add();
+               annotation.Angle(0).ZIndex("1").Radius("-100%").Content("<div id='slider' style='height:70px;width:250px;'></div>").Add();
+           }).Add()).Render()
     </div>
     <div id='template'>
         <div class='sliderwrap'>
@@ -48,35 +74,22 @@
     </div>
     <script type="text/javascript">
         var circulargauge;
-        var sliderValue = 60;
         function gaugeLoad(args) {
+            @* custom code start *@
             var arctheme = themeName ? themeName : 'Material';
             args.gauge.theme = (arctheme.charAt(0).toUpperCase() + arctheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            @* custom code end *@
             if (!circulargauge) {
                 circulargauge = args.gauge;
-                args.gauge.axes[0].minorTicks.height = 0;
-                args.gauge.axes[0].majorTicks.height = 0;
-                args.gauge.axes[0].labelStyle.font.size = "0px";
-                args.gauge.axes[0].annotations = [{
-                    content: '<div id="pointervalue" style="font-size:35px;width:120px;text-align:center">' +
-                        sliderValue.toString() + '/100</div>',
-                    angle: 0,
-                    zIndex: '1',
-                    radius: '0%'
-                },
-                {
-                    content: '<div id="slider" style="height:70px;width:250px;"></div>',
-                    angle: 0,
-                    zIndex: '1',
-                    radius: '-100%'
-                },
-                ];
             }
         }
         function loaded(args) {
             var annotation = document.getElementById(args.gauge.element.id + '_Annotations_0');
             if (annotation) {
                 annotationRender('slider', circulargauge.axes[0].pointers[0].value);
+                if (document.getElementById('pointervalue')) {
+                    document.getElementById('pointervalue').innerHTML = circulargauge.axes[0].pointers[0].value.toString() + '/100';
+                }
             }
         }
         function annotationRender(id, sliderValue) {
@@ -126,18 +139,18 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample visualizes the progress of a work in the circular gauge using the range bar pointer with rounded corners.
+            This sample shows the work progress using a circular gauge and a range bar pointer with rounded corners.
         </p>
     </div>
 }
 @section Description{
     <div id="description">
         <p>
-            In this example, you can see how to render the ranges and range bar pointer with rounded corners. The EJ2 Slider control is placed at the bottom of the gauge using annotation to change the range bar pointer value. Based on the value, color of the pointer can also be changed.
+            In this example, you can see how to render the range and range bar pointer with rounded corners. A slider is placed at the bottom of the circular gauge using annotation to change the range bar pointer value. Based on the value, the color of the pointer can also be changed.
         </p>
         <p>
-            For more information on ranges, refer to this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation</a> section.
+            More information on the ranges can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/gauge-ranges">documentation section</a>.
         </p>
     </div>
 }
@@ -145,11 +158,11 @@
 
 
 @section Title{
-                    <title>ASP.NET MVC Circular Gauge ArcGauge Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Circular Gauge Arc Gauge Example - Syncfusion Demos </title>
+}
 @section Meta{
-                    <meta name="description" content="This example demonstrates the ArcGauge in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Arc Gauge in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of ArcGauge in ASP.NET MVC Circular Gauge Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Arc Gauge in ASP.NET MVC Circular Gauge Control</h1>
+}

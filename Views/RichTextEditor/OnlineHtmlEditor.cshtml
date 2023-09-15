@@ -6,12 +6,12 @@
         <div class="control-wrapper">
             <div id="wrapper">
                 <div class="col-lg-12 col-sm-12 col-md-12">
-                    @Html.EJS().Splitter("splitter").Height("450px").Width("100%").Resizing("OnResizing").PaneSettings(paneItem =>
+                    @Html.EJS().Splitter("splitter").Height("450px").Width("100%").Created("onCreateSplitter").Resizing("OnResizing").PaneSettings(paneItem =>
                     {
-                        paneItem.Size("50%").Resizable(true).CssClass("pane1").Min("400px").ContentTemplate(@<div>
+                        paneItem.Size("50%").Resizable(true).CssClass("pane1").Min("40%").ContentTemplate(@<div>
     @Html.EJS().RichTextEditor("defaultRTE").Height("448px").SaveInterval(1).MaxLength(5000).ShowCharCount(true).ToolbarSettings(e => e.Items((object)ViewBag.Tools).Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false)).Value(ViewBag.Value).Created("onCreate").Change("onChange").ActionComplete("updateValue").Render()
 </div>).Add();
-                            paneItem.Size("50%").Min("60px").CssClass("pane2").ContentTemplate(@<div class="heading right">
+                            paneItem.Size("50%").Min("40%").CssClass("pane2").ContentTemplate(@<div class="heading right">
                             <h6 class="title"><b>HTML SOURCE</b></h6>
                                 <div class="splitter-default-content source-code pane2" contenteditable="true"></div>
                                 </div>).Add();
@@ -22,7 +22,7 @@
     </div>
 }
 <script>
-    var rteObj, myCodeMirror, textArea, srcArea;
+    var rteObj, myCodeMirror, textArea, srcArea, splitObj;
     function onCreate() {
         rteObj = this;
         setTimeout(function () {
@@ -72,6 +72,14 @@
                 mode: "text/html",
                 lineWrapping: true,
             });
+        }
+    }
+    function onCreateSplitter() {
+        splitObj = this;
+        rteObj.refreshUI();
+        if (ej.base.Browser.isDevice) {
+            splitObj.orientation = 'Vertical';
+            document.body.querySelector('.heading').style.width = 'auto';
         }
     }
 </script>
@@ -184,14 +192,6 @@
         padding: 0;
     }
 
-    .e-splitter.e-splitter-horizontal .e-pane.e-scrollable, .e-splitter.e-splitter-vertical .e-pane.e-scrollable {
-        display: inline-table;
-        padding-left: 0px;
-        padding-right: 0px;
-        border-right: none;
-        min-width: 400px;
-    }
-
     .e-richtexteditor.e-rte-tb-expand.e-rte-fixed-tb-expand {
         border: none;
     }
@@ -213,6 +213,7 @@
     .bootstrap-dark .cm-s-default .cm-tag,
     .fluent-dark .cm-s-default .cm-tag,
     .material-dark .cm-s-default .cm-tag,
+    .material3-dark .cm-s-default .cm-tag,
     .tailwind-dark .cm-s-default .cm-tag,
     .highcontrast .cm-s-default .cm-tag {
         color: #00ff00;
@@ -228,6 +229,10 @@
         color: #fff;
     }
 
+    .material3-dark .CodeMirror-gutters, .material3-dark .CodeMirror {
+        background-color: #1C1B1F;
+        color: #fff;
+    }
     .bootstrap-dark .CodeMirror-gutters, .bootstrap-dark .CodeMirror {
         background-color: #1A1A1A;
         color: #fff;
@@ -254,7 +259,7 @@
     }
 
     .fabric-dark .title, .bootstrap5-dark .title, .bootstrap-dark .title, .fluent-dark .title, 
-    .material-dark .title, .tailwind-dark .title, .highcontrast .title {
+    .material-dark .title, .tailwind-dark .title, .highcontrast .title,.material3-dark .title {
         color: #fff;
     }
     

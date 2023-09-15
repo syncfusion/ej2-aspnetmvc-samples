@@ -34,7 +34,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 
             };
             ViewBag.ChartPoints = ChartPoints;
-            ViewBag.data = new string[] { "JPEG", "PNG", "SVG", "PDF" };
+            ViewBag.data = new string[] { "JPEG", "PNG", "SVG", "PDF", "XLSX", "CSV" };
             return View();
         }
         public class ExportChartData

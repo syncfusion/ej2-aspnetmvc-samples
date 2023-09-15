@@ -371,7 +371,7 @@ gulp.task('mvc-version-update', function (done) {
                 var shellCode = shelljs.exec(`nuget list ${nugetName} -AllVersions -Source ${nexusFeed}`, { silent: true, async: false });
                 if (shellCode.code === 0 && !shellCode.stdout.startsWith('No packages found.')) {
                     console.log("Package name -> " + nugetName + " ;");
-                    var versionLists = shellCode.stdout.match(new RegExp(`${nugetName} 100.1.(.*)`, 'g')).map(output => { return output.replace(`${nugetName} `, '') });
+                    var versionLists = shellCode.stdout.match(new RegExp(`${nugetName} 100.2.(.*)`, 'g')).map(output => { return output.replace(`${nugetName} `, '') });
                     versionLists = versionLists.sort((a, b) => b.localeCompare(a));
                     var startVersion = 0; var endVersion = [];
                     for (var versionList of versionLists) {
@@ -391,7 +391,7 @@ gulp.task('mvc-version-update', function (done) {
                     }
                     var version = endVersion.sort(function (a, b) { return b - a; })[0];
                     //version = `${startVersion}.${middleVersion}.${version}`;
-                    version = `100.1.${version}`;
+                    version = `100.2.${version}`;
                     console.log("Package name -> " + nugetName + " ; Version -> " + version);
 
                     // Version changing for packages.config file.

@@ -15,9 +15,10 @@ namespace EJ2MVCSampleBrowser.Controllers.LinearGauge
 {
     public partial class LinearGaugeController : Controller
     {
-        // GET: Container
         public ActionResult Container()
         {
+            ViewBag.orientation = new string[] { "Vertical", "Horizontal" };
+            ViewBag.container = new string[] { "Thermometer", "Normal", "Rounded Rectangle" };
             return View();
         }
     }

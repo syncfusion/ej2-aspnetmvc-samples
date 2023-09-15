@@ -15,7 +15,6 @@ namespace EJ2MVCSampleBrowser.Controllers.LinearGauge
 {
     public partial class LinearGaugeController : Controller
     {
-        // GET: Default
         public ActionResult DefaultFunctionalities()
         {
             return View();

@@ -453,11 +453,13 @@ function sbHeaderClick(action, preventSearch) {
             break;
         case 'changeTheme':
             headerThemeSwitch.classList.toggle('active');
+            settingElement.classList.remove('active');
             setPressedAttribute(headerThemeSwitch);
             curPopup = themeSwitherPopup;
             break;
         case 'toggleSettings':
             settingElement.classList.toggle('active');
+            headerThemeSwitch.classList.remove('active');
             setPressedAttribute(settingElement);
             themeDropDown.index = themes.indexOf(selectedTheme);
             curPopup = settingsPopup;

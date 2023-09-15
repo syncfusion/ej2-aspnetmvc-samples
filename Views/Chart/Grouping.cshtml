@@ -78,7 +78,7 @@
             var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "70%";
-            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "11px" : "13px";
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "9px" : "13px";
             args.accumulation.series[0].dataSource[1].DataLabelMappingName = ej.base.Browser.isDevice ? "Russia: <br> 19" : "Russia: 19";
             args.accumulation.series[0].dataSource[2].DataLabelMappingName = ej.base.Browser.isDevice ? "Germany: <br> 17" : "Germany: 17";
             args.accumulation.series[0].dataSource[7].DataLabelMappingName = ej.base.Browser.isDevice ? "Italy: <br> 8" : "Italy: 8";

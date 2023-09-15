@@ -4,7 +4,7 @@
 @section ControlsSection{
 <div class="control-section">
        @*dashboard layout*@
-       @Html.EJS().DashboardLayout("editableLayout").Columns(8).ResizeStop("onPanelResize").CellAspectRatio(0.8).AllowDragging(false).CellSpacing(Model.cellSpacing).Panels(Panel =>
+       @Html.EJS().DashboardLayout("editableLayout").Columns(8).ResizeStop("onPanelResize").CellAspectRatio(0.8).AllowDragging(false).AllowResizing(false).Created("onCreated").CellSpacing(Model.cellSpacing).Panels(Panel =>
        {
          Panel.SizeX(5).SizeY(2).Row(0).Col(0).ContentTemplate(
            @<div>
@@ -49,6 +49,7 @@
                                 .ConnectorStyle(cs=>cs.Length("10px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)))
                                 .InnerRadius("40%").XName("Product").YName("Percentage")
                                 .Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
+                                .Border(br => br.Width(3))
                                 .StartAngle(0).Palettes(ViewBag.palettes).EndAngle(360).Explode(false)
                                 .DataSource(ViewBag.pieSource).Add();
                              })
@@ -160,8 +161,19 @@
         }
     </style>
     <script>
-        function onPanelResize(args) {
+        function onCreated(args) {
             var dashboardObject = document.getElementById("editableLayout").ej2_instances[0];
+            var panels = [{ "sizeX": 1, "sizeY": 1, "row": 0, "col": 0 },
+                          { "sizeX": 1, "sizeY": 1, "row": 0, "col": 1 },
+                          { "sizeX": 2, "sizeY": 1, "row": 1, "col": 0 }];
+            if (ej.base.Browser.isDevice) {
+                dashboardObject.panels = panels;
+                dashboardObject.columns = 2;
+                dashboardObject.cellAspectRatio = 1;
+                dashboardObject.refresh();
+            }
+        }
+        function onPanelResize(args) {
             var chartElement = args.element ? (args.element.querySelector('.e-panel-container .e-panel-content .e-control')) : null;
             if (chartElement) {
                 let chartObj = (chartElement).ej2_instances[0];
@@ -174,7 +186,6 @@
             var lineObj = document.getElementById('linechart').ej2_instances[0];
             var pieObj = document.getElementById('pie').ej2_instances[0];
             var splineObj = document.getElementById('spline').ej2_instances[0];
-            var dashboardObject = document.getElementById("editableLayout").ej2_instances[0];
             lineObj.refresh(); pieObj.refresh(); splineObj.refresh();
         });
         var loadLinechart = function (args) {
@@ -287,7 +298,7 @@
     </p>
     <p>
         More information on the ASP.NET MVC chart types can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/aspnetcore/documentation/chart/chart-types/line">documentation section</a>.
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/line">documentation section</a>.
     </p>
 }
 @section Title{

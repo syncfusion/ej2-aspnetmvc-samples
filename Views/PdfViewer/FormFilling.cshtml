@@ -1,11 +1,25 @@
 @using Syncfusion.EJ2
+
 @{
     ViewBag.Title = "Form Filling";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string serviceUrl = VirtualPathUtility.ToAbsolute("~/api/PdfViewer/");
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().PdfViewer("pdfviewer").ServiceUrl(VirtualPathUtility.ToAbsolute("~/api/PdfViewer/")).DocumentPath("FormFillingDocument.pdf").ValidateFormFields("validateFormFields").EnableFormFieldsValidation(true).ShowNotificationDialog(false).Render()
+        <div class="flex-container">
+            <label class="switchLabel" for="checked">Standalone PDF Viewer</label>
+            <div class="e-message render-mode-info">
+                <span class="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
+            </div>
+            <div>
+                @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
+            </div>
+        </div>
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/form-filling-document.pdf").ValidateFormFields("validateFormFields").EnableFormFieldsValidation(true).ShowNotificationDialog(false).Render()
     </div>
 }
 
@@ -46,10 +60,46 @@
 }
 @*custom code start*@
 <style>
-    #pdfviewer {
-        display: block;
-        height: 641px;
-    }
+   
+#pdfviewer {
+    display: block;
+    height: 641px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.render-mode-info {
+    background: none;
+    border: none;
+    padding-left: 0px;
+}
+
+.render-mode-info .render-mode-info-icon {
+    height: 16px;
+    width: 16px;
+}
+
+.switchLabel {
+    font-family: "Segoe UI", "GeezaPro", "DejaVu Serif", sans-serif;        
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.24px;
+    text-align: right;
+    font-size: 14px;
+}
+
+.render-mode-info .render-mode-info-icon::before {
+    line-height: 0.5rem;
+}
+
+.buttonSwitch {
+    Width: 40px;
+    Height: 24px;
+}
+
 </style>
 @*custom code end*@
 <script>
@@ -93,7 +143,16 @@
             viewer.showNotificationPopup(errorMessage);
         }
     }
-   
+    function change(args) {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (args.checked) {
+            viewer.serviceUrl = '';
+        } else {
+            viewer.serviceUrl = '@serviceUrl';
+        }
+        viewer.dataBind();
+        viewer.load(viewer.documentPath, null);
+    }
 </script>
 @*custom code end*@
 
@@ -103,3 +162,4 @@
 @section Header{
                     <h1 class='sb-sample-text'>Example of Form Filling in ASP.NET MVC PDF Viewer Control</h1>
                 }
+                

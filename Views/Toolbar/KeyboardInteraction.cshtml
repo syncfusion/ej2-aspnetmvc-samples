@@ -301,6 +301,17 @@
         padding:4px 0;
     }
 </style>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('keydown', function (e) {
+            var tabElement = document.querySelector('#toolbarKeyboardInteraction .e-toolbar-items .e-toolbar-item .e-tbar-btn');
+            if (e.altKey && e.keyCode === 74 && tabElement) {
+                tabElement.focus();
+            }
+        });
+    });
+</script>
  
 @section Title{
                     <title>ASP.NET MVC Toolbar Keyboard Interaction Example - Syncfusion Demos </title> 

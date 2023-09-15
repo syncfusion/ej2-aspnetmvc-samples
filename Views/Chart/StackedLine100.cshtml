@@ -14,7 +14,7 @@
  MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).Interval(1)
  ).PrimaryYAxis(py => py.Interval(20).LineStyle(ly => ly.Width(0)).MajorGridLines(mg => mg.Width(1)).MinorGridLines(mg => mg.Width(1))
      .MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0))
-       ).Title("Family Expense for Year").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).Format("${point.x} : <b>${point.y} (${point.percentage}%)</b>")).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
+       ).Title("Family Expenses for Year").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).Format("${point.x} : <b>${point.y} (${point.percentage}%)</b>")).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
         </div>
 
     <style>

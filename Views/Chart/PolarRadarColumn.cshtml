@@ -37,7 +37,6 @@
          xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
              .LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.OnTicks)
              .Interval(1)
-             .Coefficient(100)
       )
       .PrimaryYAxis(yaxis =>
           yaxis.LabelFormat("{value}M")
@@ -81,6 +80,8 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.primaryXAxis.coefficient = ej.base.Browser.isDevice ? 80 : 100;
+            args.chart.primaryXAxis.labelStyle.size = ej.base.Browser.isDevice ? "9px" : "12px";
         };
          @*custom code end*@
         var valueChange = function() {

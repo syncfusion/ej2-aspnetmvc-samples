@@ -38,11 +38,6 @@ namespace EJ2MVCSampleBrowser.Controllers
                 Title = "Delete",
                 IconCss = "speeddial-icons speeddial-icon-delete"
             });
-            items.Add(new SpeedDialItem
-                {
-                Title = "Save",
-                IconCss = "speeddial-icons speeddial-icon-save"
-            });
             ViewBag.datasource = items;
             return View();
         }

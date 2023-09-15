@@ -86,6 +86,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             connectors.Add(new DiagramConnector() { Id = "connector6", SourceID = "node6", TargetID = "node5", SourcePortID = "port6", TargetPortID = "portOut" });
             ViewBag.nodes = nodes;
             ViewBag.connectors = connectors;
+            Models.ConnectorDecoratorShape dropDownModel = new Models.ConnectorDecoratorShape();
+            ViewBag.shapes = dropDownModel.decoratorShape();
             return View();
         }
     }

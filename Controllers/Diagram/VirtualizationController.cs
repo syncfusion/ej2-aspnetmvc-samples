@@ -7,6 +7,7 @@
 #endregion
 using EJ2MVCSampleBrowser.Models;
 using Syncfusion.EJ2;
+using Syncfusion.EJ2.Navigations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         public ActionResult Virtualization()
         {
             ViewBag.Data = GetAllRecords();
+            List<ToolbarItem> items = new List<ToolbarItem>();
+            {
+                items.Add(new ToolbarItem { PrefixIcon = "e-ddb-icons e-zoomin", Text = "Zoom In", TooltipText = "ZoomIn", Type = ItemType.Button });
+                items.Add(new ToolbarItem { PrefixIcon = "e-ddb-icons e-zoomout", Text = "Zoom Out", TooltipText = "ZoomOut", Type = ItemType.Button });
+                items.Add(new ToolbarItem { PrefixIcon = "e-diagram-icons e-diagram-reset", Text = "Reset", TooltipText = "Reset", Type = ItemType.Button });
+            }
+            ViewBag.tbItems = items;
             return View();
         }
         public List<VirtualizationDetails> GetAllRecords()

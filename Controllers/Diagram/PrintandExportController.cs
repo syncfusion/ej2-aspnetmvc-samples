@@ -11,6 +11,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Syncfusion.EJ2.Diagrams;
+using Syncfusion.EJ2.Navigations;
 
 namespace EJ2MVCSampleBrowser.Controllers.Diagram
 {
@@ -206,6 +207,21 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             connectors.Add(new DiagramConnector() { Id = "RadialConnector5", SourceID = "Radial1", TargetID = "Radial6", Annotations = radialConnector5 });
             ViewBag.nodes = nodes;
             ViewBag.connectors = connectors;
+            List<ToolbarItem> items = new List<ToolbarItem>();
+            {
+                items.Add(new ToolbarItem { Template = "#exportBtn", Type = ItemType.Input, TooltipText = "Export Diagram",Text="Export" });
+                items.Add(new ToolbarItem { PrefixIcon = "e-icons e-print", Text = "Print", TooltipText = "Print Diagram" });
+                items.Add(new ToolbarItem { Template = "#multiplePageCb", Type = ItemType.Input, TooltipText = "Multiple Page",});
+
+            }
+            ViewBag.tbItems = items;
+            List<MenuItems> exportItems = new List<MenuItems>();
+            {
+                exportItems.Add(new MenuItems { Text = "JPG" });
+                exportItems.Add(new MenuItems { Text = "PNG" });
+                exportItems.Add(new MenuItems { Text = "SVG" });
+            }
+            ViewBag.exportItems = exportItems;
             return View();
         }
     }

@@ -13,7 +13,7 @@
 
       }).PrimaryXAxis(px => px.Title("Height in Inches").Interval(1)
       .MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt => mt.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-       ).PrimaryYAxis(py => py.LabelFormat("{value}").Minimum(-80).Maximum(80).Title("Weight (kg)").LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0))
+       ).PrimaryYAxis(py => py.LabelFormat("{value}").RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.Round).Title("Weight (kg)").LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0))
        ).Title("Height vs Weight").ChartArea(area => area.Border(br => br.Width(0))
        ).LegendSettings(lg => lg.EnableHighlight(true)
        ).Tooltip(tt => tt.Enable(true)).TooltipRender("tooltipRender").TextRender("dataLabelRender").Load("load").AxisLabelRender("axisLabelRender").Render()
@@ -43,7 +43,9 @@
             args.text = args.text.indexOf('-') > -1 ? args.text.replace('-', '') : args.text;
         };
         var axisLabelRender = function (args) {
-            args.text = args.text.replace("-", "");
+            if (args.value < 0) {
+                args.text = (-args.value).toString();
+            }
         }
     </script>
 }

@@ -8,12 +8,14 @@
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.BoxAndWhisker).
                Name("Department").
                Marker(mr=>mr.Visible(true).Width(7).Height(7)).
-                   XName("Department").
+               XName("Department").
+               BoxPlotMode(Syncfusion.EJ2.Charts.BoxPlotMode.Normal).
                YName("Age").DataSource(ViewBag.ChartPoints).
                Add();
            }).PrimaryXAxis(
            xAxis =>
                xAxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+                    .Interval(1)
                     .MajorGridLines(mg=>mg.Width(0))
                     .MajorTickLines(mg => mg.Width(0))
            ).PrimaryYAxis(

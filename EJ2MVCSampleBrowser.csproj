@@ -71,33 +71,36 @@
       <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2">
-      <HintPath>packages\Syncfusion.EJ2.MVC5.22.2.5\lib\net45\Syncfusion.EJ2.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.MVC5.23.1.36\lib\net45\Syncfusion.EJ2.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.GridExport">
-      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.22.2.5\lib\net45\Syncfusion.EJ2.GridExport.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.23.1.36\lib\net45\Syncfusion.EJ2.GridExport.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base">
-      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.HtmlConverter.Base">
-      <HintPath>packages\Syncfusion.HtmlToPdfConverter.IE.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.HtmlToPdfConverter.IE.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocIO.Base">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.DocumentEditor">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.PdfViewer">
-      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChartToImageConverter.WPF">
-      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
+    </Reference>
+	<Reference Include="Syncfusion.PdfToImageConverter.Base">
+      <HintPath>packages\Syncfusion.PdfToImageConverter.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.PdfToImageConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Base">
       <HintPath>packages\\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
@@ -106,25 +109,25 @@
       <HintPath>packages\\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Presentation.Base">
-      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PresentationToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelChartToImageConverter.WPF">
-      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.WPF">
       <HintPath>packages\\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.Base">
-      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.22.2.5\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.23.1.36\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.Spreadsheet">
-      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.22.2.5\lib\net45\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.23.1.36\lib\net45\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing">
       <SpecificVersion>False</SpecificVersion>
@@ -225,7 +228,7 @@
     <Compile Include="Controllers\Barcode\upcaController.cs" />
     <Compile Include="Controllers\Barcode\upceController.cs" />
     <Compile Include="Controllers\Carousel\PartialVisibleController.cs" />
-     <Compile Include="Controllers\Carousel\IndicatorTypeController.cs" />
+    <Compile Include="Controllers\Carousel\IndicatorTypeController.cs" />
     <Compile Include="Controllers\Chart\AreaNegativeController.cs" />
     <Compile Include="Controllers\Chart\KeyboardController.cs" />
     <Compile Include="Controllers\FileManager\DirectoryUploadController.cs" />
@@ -239,10 +242,14 @@
     <Compile Include="Controllers\Grid\LazyLoadGroupWithPagingController.cs" />
     <Compile Include="Controllers\Grid\LoadingAnimationController.cs" />
     <Compile Include="Controllers\Grid\PagerDropdownController.cs" />
+    <Compile Include="Controllers\Grid\ExpandoObjectBindingController.cs" />
+    <Compile Include="Controllers\Grid\DynamicObjectBindingController.cs" />
+    <Compile Include="Controllers\Grid\MultipleExportController.cs" />
     <Compile Include="Controllers\PredefinedDialogs\AnimationController.cs" />
     <Compile Include="Controllers\PredefinedDialogs\CustomizationController.cs" />
     <Compile Include="Controllers\PredefinedDialogs\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Ribbon\DefaultFunctionalitiesController.cs" />
+    <Compile Include="Controllers\Ribbon\RibbonBackstageController.cs" />
     <Compile Include="Controllers\Ribbon\RibbonResizingController.cs" />
     <Compile Include="Controllers\Ribbon\SimplifiedModeController.cs" />
     <Compile Include="Controllers\Signature\DefaultFunctionalitiesController.cs" />
@@ -312,6 +319,7 @@
     <Compile Include="Controllers\GanttChart\UnscheduledTaskController.cs" />
     <Compile Include="Controllers\GanttChart\VirtualScrollController.cs" />
     <Compile Include="Controllers\GanttChart\WorkingTimeRangeController.cs" />
+    <Compile Include="Controllers\GanttChart\LoadOnDemandController.cs" />
     <Compile Include="Controllers\GanttChart\WorkWeekController.cs" />
     <Compile Include="Controllers\GanttChart\ZoomingController.cs" />
     <Compile Include="Controllers\Carousel\APIController.cs" />
@@ -323,6 +331,7 @@
     <Compile Include="Controllers\Grid\InfiniteScrollingController.cs" />
     <Compile Include="Controllers\Grid\FrozenAPIController.cs" />
     <Compile Include="Controllers\Grid\MasterDetailsExportController.cs" />
+    <Compile Include="Controllers\Grid\DetailTemplateExportController.cs" />
     <Compile Include="Controllers\Accordion\AjaxContentController.cs" />
     <Compile Include="Controllers\Accordion\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Accordion\IconsController.cs" />
@@ -337,6 +346,7 @@
     <Compile Include="Controllers\AutoComplete\GroupingAndIconController.cs" />
     <Compile Include="Controllers\AutoComplete\HighlightController.cs" />
     <Compile Include="Controllers\AutoComplete\TemplateController.cs" />
+    <Compile Include="Controllers\AutoComplete\VirtualScrollController.cs" />
     <Compile Include="Controllers\AutoComplete\AutocompleteForController.cs" />
     <Compile Include="Controllers\Avatar\BadgeController.cs" />
     <Compile Include="Controllers\Avatar\CardController.cs" />
@@ -436,7 +446,7 @@
     <Compile Include="Controllers\Chart\MultipleAxesController.cs" />
     <Compile Include="Controllers\Chart\NegativeStackController.cs" />
     <Compile Include="Controllers\Chart\NumericAxisController.cs" />
-	<Compile Include="Controllers\Chart\OverviewController.cs" />
+    <Compile Include="Controllers\Chart\OverviewController.cs" />
     <Compile Include="Controllers\Chart\ParetoChartController.cs" />
     <Compile Include="Controllers\Chart\PieController.cs" />
     <Compile Include="Controllers\Chart\PieRadiusController.cs" />
@@ -487,27 +497,34 @@
     <Compile Include="Controllers\Chart\WindRoseController.cs" />
     <Compile Include="Controllers\Chart\ZoomingController.cs" />
     <Compile Include="Controllers\Chart\SplineRangeAreaController.cs" />
-	<Compile Include="Controllers\Chart\RangeStepAreaController.cs" />
+    <Compile Include="Controllers\Chart\RangeStepAreaController.cs" />
+    <Compile Include="Controllers\Chart\CylindricalColumnController.cs" />
+    <Compile Include="Controllers\Chart\SynchronizedController.cs" />
     <Compile Include="Controllers\ArcGauge\CustomerSatisfactionScoreController.cs" />
     <Compile Include="Controllers\ArcGauge\DefaultController.cs" />
     <Compile Include="Controllers\ArcGauge\KeyPerformanceIndicatorController.cs" />
     <Compile Include="Controllers\ArcGauge\PatternsController.cs" />
-    <Compile Include="Controllers\CircularGauge\AnnotationController.cs" />
     <Compile Include="Controllers\CircularGauge\ArcGaugeController.cs" />
-    <Compile Include="Controllers\CircularGauge\ExportController.cs" />
+    <Compile Include="Controllers\CircularGauge\AxisBackgroundController.cs" />
+    <Compile Include="Controllers\CircularGauge\ClockController.cs" />
+    <Compile Include="Controllers\CircularGauge\CustomLabelsController.cs" />
     <Compile Include="Controllers\CircularGauge\DataSampleController.cs" />
     <Compile Include="Controllers\CircularGauge\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\CircularGauge\DirectionCompassController.cs" />
-    <Compile Include="Controllers\CircularGauge\GaugeCustomizationController.cs" />
+    <Compile Include="Controllers\CircularGauge\ImagePointerController.cs" />
     <Compile Include="Controllers\CircularGauge\LegendController.cs" />
-    <Compile Include="Controllers\CircularGauge\GradientColorController.cs" />
-    <Compile Include="Controllers\CircularGauge\MultipleAxisController.cs" />
-    <Compile Include="Controllers\CircularGauge\PointerCustomizationController.cs" />
-    <Compile Include="Controllers\CircularGauge\PointerDragController.cs" />
-    <Compile Include="Controllers\CircularGauge\PointerImageController.cs" />
-    <Compile Include="Controllers\CircularGauge\RangeController.cs" />
+    <Compile Include="Controllers\CircularGauge\MultipleAxesController.cs" />
+    <Compile Include="Controllers\CircularGauge\MultipleRangesController.cs" />
+    <Compile Include="Controllers\CircularGauge\PointerRangesDragController.cs" />
+    <Compile Include="Controllers\CircularGauge\PointerTypesController.cs" />
+    <Compile Include="Controllers\CircularGauge\PrintExportController.cs" />
+    <Compile Include="Controllers\CircularGauge\RadialSliderController.cs" />
+    <Compile Include="Controllers\CircularGauge\RangeColorforAxisController.cs" />
+    <Compile Include="Controllers\CircularGauge\RangeCustomizationController.cs" />
     <Compile Include="Controllers\CircularGauge\SemiCircularGaugeController.cs" />
+    <Compile Include="Controllers\CircularGauge\SleepTrackerController.cs" />
     <Compile Include="Controllers\CircularGauge\SpeedometerController.cs" />
+    <Compile Include="Controllers\CircularGauge\TextPointerController.cs" />
     <Compile Include="Controllers\CircularGauge\TicksAndLabelsController.cs" />
     <Compile Include="Controllers\CircularGauge\TooltipController.cs" />
     <Compile Include="Controllers\CircularGauge\AppleWatchRingsController.cs" />
@@ -526,6 +543,7 @@
     <Compile Include="Controllers\ComboBox\FilteringController.cs" />
     <Compile Include="Controllers\ComboBox\GroupingAndIconController.cs" />
     <Compile Include="Controllers\ComboBox\TemplateController.cs" />
+    <Compile Include="Controllers\ComboBox\VirtualScrollController.cs" />
     <Compile Include="Controllers\ComboBox\ComboboxForController.cs" />
     <Compile Include="Controllers\ContextMenu\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Grid\RowSpanningController.cs" />
@@ -599,8 +617,8 @@
     <Compile Include="Controllers\Diagram\GroupingAndOrderingController.cs" />
     <Compile Include="Controllers\Diagram\HierarchicalLayoutWithMultipleRootsController.cs" />
     <Compile Include="Controllers\Diagram\ScrollingController.cs" />
+    <Compile Include="Controllers\Diagram\SequenceDiagramController.cs" />
     <Compile Include="Controllers\Diagram\SnappingController.cs" />
-    <Compile Include="Controllers\Diagram\SequenceController.cs" />
     <Compile Include="Controllers\Diagram\ZoomAndPanController.cs" />
     <Compile Include="Controllers\Diagram\AnnotationsController.cs" />
     <Compile Include="Controllers\Diagram\BpmnEditorController.cs" />
@@ -691,6 +709,7 @@
     <Compile Include="Controllers\Word\EditEquationController.cs" />
     <Compile Include="Controllers\Word\TrackChangesController.cs" />
     <Compile Include="Controllers\Word\MarkdownToWordController.cs" />
+    <Compile Include="Controllers\Word\CompareDocumentsController.cs" />
     <Compile Include="Controllers\DocumentEditor\BulletsAndNumberingController.cs" />
     <Compile Include="Controllers\DocumentEditor\CharacterFormattingController.cs" />
     <Compile Include="Controllers\DocumentEditor\DefaultFunctionalitiesController.cs" />
@@ -721,6 +740,7 @@
     <Compile Include="Controllers\DropDownList\GroupingAndIconController.cs" />
     <Compile Include="Controllers\DropDownList\InlineController.cs" />
     <Compile Include="Controllers\DropDownList\TemplateController.cs" />
+    <Compile Include="Controllers\DropDownList\VirtualScrollController.cs" />
     <Compile Include="Controllers\DropDownList\DropdownlistForController.cs" />
     <Compile Include="Controllers\DropDownTree\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\DropDownTree\TemplateController.cs" />
@@ -772,12 +792,12 @@
     <Compile Include="Controllers\Grid\HeaderTemplateController.cs" />
     <Compile Include="Controllers\Grid\InlineEditingController.cs" />
     <Compile Include="Controllers\Grid\LocalDataController.cs" />
-	<Compile Include="Controllers\Grid\LiveDataController.cs" />
+    <Compile Include="Controllers\Grid\LiveDataController.cs" />
     <Compile Include="Controllers\Grid\MultiSortingController.cs" />
     <Compile Include="Controllers\Grid\PagingAPIController.cs" />
     <Compile Include="Controllers\Grid\PrintController.cs" />
     <Compile Include="Controllers\Grid\RemoteDataController.cs" />
-	<Compile Include="Controllers\Grid\FlexibleDataController.cs" />
+    <Compile Include="Controllers\Grid\FlexibleDataController.cs" />
     <Compile Include="Controllers\Grid\ReorderController.cs" />
     <Compile Include="Controllers\Grid\RowDragDropController.cs" />
     <Compile Include="Controllers\Grid\RowHeightController.cs" />
@@ -812,7 +832,7 @@
     <Compile Include="Controllers\ProgressBar\LabelsController.cs" />
     <Compile Include="Controllers\ProgressBar\ProgressSegmentController.cs" />
     <Compile Include="Controllers\ProgressBar\StripesController.cs" />
-	<Compile Include="Controllers\ProgressBar\TooltipController.cs" />
+    <Compile Include="Controllers\ProgressBar\TooltipController.cs" />
     <Compile Include="Controllers\FAB\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\FAB\StylesController.cs" />
     <Compile Include="Controllers\FAB\OverviewController.cs" />
@@ -849,16 +869,24 @@
     <Compile Include="Controllers\HeatMapChart\RowjsonController.cs" />
     <Compile Include="Controllers\HeatMapChart\TooltiptemplateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LinearGauge\AnnotationController.cs" />
-    <Compile Include="Controllers\LinearGauge\ExportController.cs" />
-    <Compile Include="Controllers\LinearGauge\AxesAndPointersController.cs" />
+    <Compile Include="Controllers\LinearGauge\BarPointerController.cs" />
+    <Compile Include="Controllers\LinearGauge\BatteryIndicatorController.cs" />
     <Compile Include="Controllers\LinearGauge\ContainerController.cs" />
-    <Compile Include="Controllers\LinearGauge\DataSampleController.cs" />
+    <Compile Include="Controllers\LinearGauge\CustomPointerController.cs" />
     <Compile Include="Controllers\LinearGauge\DefaultFunctionalitiesController.cs" />
+    <Compile Include="Controllers\LinearGauge\LabelsController.cs" />
+    <Compile Include="Controllers\LinearGauge\MarkerPointerController.cs" />
+    <Compile Include="Controllers\LinearGauge\PrintExportController.cs" />
+    <Compile Include="Controllers\LinearGauge\ProgressBarController.cs" />
     <Compile Include="Controllers\LinearGauge\RangeController.cs" />
-    <Compile Include="Controllers\LinearGauge\StylesController.cs" />
+    <Compile Include="Controllers\LinearGauge\SliderController.cs" />
+    <Compile Include="Controllers\LinearGauge\StepProgressBarController.cs" />
+    <Compile Include="Controllers\LinearGauge\StepsCounterController.cs" />
+    <Compile Include="Controllers\LinearGauge\ThermometerController.cs" />
+    <Compile Include="Controllers\LinearGauge\TicksController.cs" />
     <Compile Include="Controllers\LinearGauge\TooltipController.cs" />
-    <Compile Include="Controllers\LinearGauge\GradientColorController.cs" />
+    <Compile Include="Controllers\LinearGauge\TrackController.cs" />
+    <Compile Include="Controllers\LinearGauge\VolumeSettingsController.cs" />
     <Compile Include="Controllers\ListView\CallHistoryController.cs" />
     <Compile Include="Controllers\ListView\ChecklistController.cs" />
     <Compile Include="Controllers\ListView\DefaultFunctionalitiesController.cs" />
@@ -931,6 +959,7 @@
     <Compile Include="Controllers\PdfViewer\HandwrittenSignatureController.cs" />
     <Compile Include="Controllers\PdfViewer\FormDesignerController.cs" />
     <Compile Include="Controllers\PdfViewer\AnnotationsController.cs" />
+    <Compile Include="Controllers\PdfViewer\InvisibleSignatureController.cs" />
     <Compile Include="Controllers\PDF\AdventureCycleController.cs" />
     <Compile Include="Controllers\PDF\AnnotationFlattenController.cs" />
     <Compile Include="Controllers\PDF\AttachmentsController.cs" />
@@ -979,6 +1008,7 @@
     <Compile Include="Controllers\PDF\PdfConformanceController.cs" />
     <Compile Include="Controllers\PDF\PdfExtension.cs" />
     <Compile Include="Controllers\PDF\PdfResult.cs" />
+    <Compile Include="Controllers\PDF\PDFToImageController.cs" />
     <Compile Include="Controllers\PDF\PortfolioController.cs" />
     <Compile Include="Controllers\PDF\RearrangePagesController.cs" />
     <Compile Include="Controllers\PDF\RemoveImagesController.cs" />
@@ -1069,6 +1099,7 @@
     <Compile Include="Controllers\RichTextEditor\PreviewModeController.cs" />
     <Compile Include="Controllers\RichTextEditor\PrintController.cs" />
     <Compile Include="Controllers\RichTextEditor\TypesController.cs" />
+    <Compile Include="Controllers\RichTextEditor\QuickFormatToolbarController.cs" />
     <Compile Include="Controllers\RichTextEditor\FormatPainterController.cs" />
     <Compile Include="Controllers\ScheduleHub.cs" />
     <Compile Include="Controllers\Schedule\AdaptiveGroupingController.cs" />
@@ -1084,6 +1115,7 @@
     <Compile Include="Controllers\Schedule\OverviewController.cs" />
     <Compile Include="Controllers\Schedule\ContextMenuController.cs" />
     <Compile Include="Controllers\Schedule\CustomMonthViewController.cs" />
+    <Compile Include="Controllers\Schedule\DataVirtualizationController.cs" />
     <Compile Include="Controllers\Schedule\DateHeaderController.cs" />
     <Compile Include="Controllers\Schedule\DayHourLimitController.cs" />
     <Compile Include="Controllers\Schedule\DefaultController.cs" />
@@ -1187,6 +1219,7 @@
     <Compile Include="Controllers\StockChart\SplineController.cs" />
     <Compile Include="Controllers\StockChart\StockEventsController.cs" />
     <Compile Include="Controllers\StockChart\StripLineController.cs" />
+    <Compile Include="Controllers\StockChart\DateTimeCategoryController.cs" />
     <Compile Include="Controllers\Tab\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Tab\OrientationController.cs" />
     <Compile Include="Controllers\Tab\ResponsiveModesController.cs" />
@@ -1244,6 +1277,8 @@
     <Compile Include="Controllers\TreeGrid\FrozenAPIController.cs" />
     <Compile Include="Controllers\TreeGrid\FrozenColumnController.cs" />
     <Compile Include="Controllers\TreeGrid\GridLinesController.cs" />
+    <Compile Include="Controllers\TreeGrid\LiveDataController.cs" />
+    <Compile Include="Controllers\TreeGrid\ServerSideExportingController.cs" />
     <Compile Include="Controllers\TreeGrid\KeyboardInteractionController.cs" />
     <Compile Include="Controllers\TreeGrid\LockRowController.cs" />
     <Compile Include="Controllers\TreeGrid\OverviewController.cs" />
@@ -1405,6 +1440,8 @@
     <Compile Include="Controllers\Excel\WorksheetManipulationController.cs" />
     <Compile Include="Controllers\Excel\WorksheetProtectionController.cs" />
     <Compile Include="Controllers\Excel\WorksheetToImageController.cs" />
+    <Compile Include="Controllers\Excel\WhatIfAnalysisController.cs" />
+	<Compile Include="Controllers\Excel\CommentsController.cs" />
     <Compile Include="Controllers\InPlaceEditor\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\InPlaceEditor\DropDownsController.cs" />
     <Compile Include="Controllers\InPlaceEditor\PickersController.cs" />
@@ -1421,6 +1458,7 @@
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\colorMapping.cs" />
     <Compile Include="Models\ColorsData.cs" />
+    <Compile Include="Models\ConnectorDecoratorShape.cs" />
     <Compile Include="Models\Countries.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -1448,9 +1486,10 @@
     <Compile Include="Models\InlineEmployees.cs" />
     <Compile Include="Models\InventorDetails.cs" />
     <Compile Include="Models\KanbanDataModels.cs" />
-	<Compile Include="Models\LiveData.cs" />
+    <Compile Include="Models\LiveData.cs" />
     <Compile Include="Models\Mention.cs" />
     <Compile Include="Models\MentionIntegration.cs" />
+    <Compile Include="Models\RibbonData.cs" />
     <Compile Include="Models\SmartSuggestion.cs" />
     <Compile Include="Models\Merge.cs" />
     <Compile Include="Models\OrderRepository.cs" />
@@ -1532,14 +1571,38 @@
     <Content Include="Content\ProgressBar\bootstrap-pause.svg" />
     <Content Include="Content\ProgressBar\bootstrap-Play.svg" />
     <Content Include="Content\ProgressBar\bootstrap-Tick.svg" />
+	<Content Include="Content\ProgressBar\bootstrapdark-Download.svg" />
+    <Content Include="Content\ProgressBar\bootstrapdark-pause.svg" />
+    <Content Include="Content\ProgressBar\bootstrapdark-Play.svg" />
+    <Content Include="Content\ProgressBar\bootstrapdark-Tick.svg" />
     <Content Include="Content\ProgressBar\bootstrap4-Download.svg" />
     <Content Include="Content\ProgressBar\bootstrap4-pause.svg" />
     <Content Include="Content\ProgressBar\bootstrap4-Play.svg" />
     <Content Include="Content\ProgressBar\bootstrap4-Tick.svg" />
+	<Content Include="Content\ProgressBar\bootstrap5-Download.svg" />
+    <Content Include="Content\ProgressBar\bootstrap5-pause.svg" />
+    <Content Include="Content\ProgressBar\bootstrap5-Play.svg" />
+    <Content Include="Content\ProgressBar\bootstrap5-Tick.svg" />
+	<Content Include="Content\ProgressBar\bootstrap5dark-Download.svg" />
+    <Content Include="Content\ProgressBar\bootstrap5dark-pause.svg" />
+    <Content Include="Content\ProgressBar\bootstrap5dark-Play.svg" />
+    <Content Include="Content\ProgressBar\bootstrap5dark-Tick.svg" />
     <Content Include="Content\ProgressBar\fabric-Download.svg" />
     <Content Include="Content\ProgressBar\fabric-pause.svg" />
     <Content Include="Content\ProgressBar\fabric-Play.svg" />
     <Content Include="Content\ProgressBar\fabric-Tick.svg" />
+	<Content Include="Content\ProgressBar\fabricdark-Download.svg" />
+    <Content Include="Content\ProgressBar\fabricdark-pause.svg" />
+    <Content Include="Content\ProgressBar\fabricdark-Play.svg" />
+    <Content Include="Content\ProgressBar\fabricdark-Tick.svg" />
+	<Content Include="Content\ProgressBar\fluent-Download.svg" />
+    <Content Include="Content\ProgressBar\fluent-pause.svg" />
+    <Content Include="Content\ProgressBar\fluent-Play.svg" />
+    <Content Include="Content\ProgressBar\fluent-Tick.svg" />
+	<Content Include="Content\ProgressBar\fluentdark-Download.svg" />
+    <Content Include="Content\ProgressBar\fluentdark-pause.svg" />
+    <Content Include="Content\ProgressBar\fluentdark-Play.svg" />
+    <Content Include="Content\ProgressBar\fluentdark-Tick.svg" />
     <Content Include="Content\ProgressBar\highcontrast-Download.svg" />
     <Content Include="Content\ProgressBar\highcontrast-pause.svg" />
     <Content Include="Content\ProgressBar\highcontrast-Play.svg" />
@@ -1548,10 +1611,26 @@
     <Content Include="Content\ProgressBar\material-pause.svg" />
     <Content Include="Content\ProgressBar\material-Play.svg" />
     <Content Include="Content\ProgressBar\material-Tick.svg" />
+	<Content Include="Content\ProgressBar\materialdark-Download.svg" />
+    <Content Include="Content\ProgressBar\materialdark-pause.svg" />
+    <Content Include="Content\ProgressBar\materialdark-Play.svg" />
+    <Content Include="Content\ProgressBar\materialdark-Tick.svg" />
+	<Content Include="Content\ProgressBar\material3-Download.svg" />
+    <Content Include="Content\ProgressBar\material3-pause.svg" />
+    <Content Include="Content\ProgressBar\material3-Play.svg" />
+    <Content Include="Content\ProgressBar\material3-Tick.svg" />
+	<Content Include="Content\ProgressBar\material3dark-Download.svg" />
+    <Content Include="Content\ProgressBar\material3dark-pause.svg" />
+    <Content Include="Content\ProgressBar\material3dark-Play.svg" />
+    <Content Include="Content\ProgressBar\material3dark-Tick.svg" />
     <Content Include="Content\ProgressBar\tailwind-Download.svg" />
     <Content Include="Content\ProgressBar\tailwind-pause.svg" />
     <Content Include="Content\ProgressBar\tailwind-Play.svg" />
     <Content Include="Content\ProgressBar\tailwind-Tick.svg" />
+	<Content Include="Content\ProgressBar\tailwinddark-Download.svg" />
+    <Content Include="Content\ProgressBar\tailwinddark-pause.svg" />
+    <Content Include="Content\ProgressBar\tailwinddark-Play.svg" />
+    <Content Include="Content\ProgressBar\tailwinddark-Tick.svg" />
     <Content Include="Content\skeleton\1.png" />
     <Content Include="Content\skeleton\2.png" />
     <Content Include="Content\skeleton\3.png" />
@@ -1574,7 +1653,7 @@
     <Content Include="App_Data\Data\Word\Doc to HTML.doc" />
     <Content Include="App_Data\Data\Word\DocToImage.docx" />
     <Content Include="App_Data\Data\Word\DoctoPDF.docx" />
-	<Content Include="App_Data\Data\Word\MarkdownToWord.md" />
+    <Content Include="App_Data\Data\Word\MarkdownToWord.md" />
     <Content Include="App_Data\Data\Word\WordtoMD.docx" />
     <Content Include="App_Data\Data\Word\DocToRTF.doc" />
     <Content Include="App_Data\Data\Word\DocToWordML.doc" />
@@ -1613,6 +1692,8 @@
     <Content Include="App_Data\Data\Word\TemplateTableStyle.doc" />
     <Content Include="App_Data\Data\Word\TemplateUpdateFields.docx" />
     <Content Include="App_Data\Data\Word\TrackChangesTemplate.docx" />
+    <Content Include="App_Data\Data\Word\OriginalDocument.docx" />
+    <Content Include="App_Data\Data\Word\RevisedDocument.docx" />
     <Content Include="App_Data\Data\Word\Watermark.doc" />
     <Content Include="App_Data\Data\Word\Word to ODT.docx" />
     <Content Include="App_Data\Data\Word\Animation.gif" />
@@ -1642,6 +1723,8 @@
     <Content Include="App_Data\Data\NorthwindIO_3.5.sdf" />
     <Content Include="App_Data\Data\PDF Succinctly.pdf" />
     <Content Include="App_Data\Data\Hive_Succinctly.pdf" />
+    <Content Include="App_Data\Data\InvisibleDigitalSignature.pdf" />
+    <Content Include="App_Data\Data\localhost.pfx" />
     <Content Include="App_Data\Data\RTLText.pdf" />
     <Content Include="App_Data\Data\FormFillingDocument.pdf" />
     <Content Include="App_Data\Images\Word\AdventureCycle.jpg" />
@@ -1724,9 +1807,9 @@
     <Content Include="App_Data\PDF\Text2.txt" />
     <Content Include="App_Data\Population.js" />
     <Content Include="App_Data\PDF\DigitalSignature.pdf" />
-	<Content Include="App_Data\PDF\Root.cer" />
-	<Content Include="App_Data\PDF\Intermediate0.cer" />
-	<Content Include="App_Data\PDF\Intermediate1.cer" />
+    <Content Include="App_Data\PDF\Root.cer" />
+    <Content Include="App_Data\PDF\Intermediate0.cer" />
+    <Content Include="App_Data\PDF\Intermediate1.cer" />
     <Content Include="App_Data\PDF\CorruptedDocument.pdf" />
     <Content Include="App_Data\PopulationDensity.js" />
     <Content Include="App_Data\PowerPoint\Products.xml" />
@@ -1934,6 +2017,7 @@
     <Content Include="Content\chart\Medium-36px-spin.gif" />
     <Content Include="Content\chart\print.png" />
     <Content Include="Content\chart\sunny.png" />
+	<Content Include="Content\chart\back.png" />
     <Content Include="Content\CircularGauge\Images\Athletics.png" />
     <Content Include="Content\CircularGauge\Images\basketball.png" />
     <Content Include="Content\CircularGauge\Images\battery.png" />
@@ -1952,6 +2036,9 @@
     <Content Include="Content\CircularGauge\Images\range2.png" />
     <Content Include="Content\CircularGauge\Images\range3.png" />
     <Content Include="Content\CircularGauge\Images\range4.png" />
+    <Content Include="Content\CircularGauge\Images\axis-background.png" />
+    <Content Include="Content\CircularGauge\Images\moon-icon.png" />
+    <Content Include="Content\CircularGauge\Images\sun-icon.png" />
     <Content Include="Content\colorpicker\images\pen.png" />
     <Content Include="Content\colorpicker\images\pen_highcontrast.png" />
     <Content Include="Content\colorpicker\images\pen_mobile.png" />
@@ -2149,6 +2236,9 @@
     <Content Include="Content\LinearGauge\Walking.png" />
     <Content Include="Content\LinearGauge\Walking.svg" />
     <Content Include="Content\LinearGauge\Walking1.svg" />
+    <Content Include="Content\LinearGauge\step-count.png" />
+    <Content Include="Content\LinearGauge\thumb-icon.png" />
+    <Content Include="Content\LinearGauge\tick-icon.png" />
     <Content Include="Content\Maps\atm.png" />
     <Content Include="Content\Maps\ballon.png" />
     <Content Include="Content\Maps\bus-icon.png" />
@@ -2468,6 +2558,8 @@
     <Content Include="Scripts\data-service.js" />
     <Content Include="Scripts\datasource.js" />
     <Content Include="Scripts\documenteditor\default-properties.js" />
+    <Content Include="Scripts\ej2-pdfviewer-lib\pdfium.js" />
+    <Content Include="Scripts\ej2-pdfviewer-lib\pdfium.wasm" />
     <Content Include="Scripts\ej2.min.js" />
     <Content Include="Scripts\elasticlunr.min.js" />
     <Content Include="Scripts\financial-data.js" />
@@ -2495,6 +2587,7 @@
     <Content Include="Scripts\StockChartData\googl.js" />
     <Content Include="Scripts\StockChartData\indicator-data.js" />
     <Content Include="Scripts\StockChartData\tsla.js" />
+    <Content Include="Scripts\StockChartData\datetime-category.js" />
     <Content Include="Scripts\Texas.js" />
     <Content Include="Scripts\theme-color.js" />
     <Content Include="Scripts\tooltip\tooltipdata.json" />
@@ -2552,6 +2645,7 @@
     <Content Include="Views\AutoComplete\GroupingAndIcon.cshtml" />
     <Content Include="Views\AutoComplete\Highlight.cshtml" />
     <Content Include="Views\AutoComplete\Template.cshtml" />
+    <Content Include="Views\AutoComplete\VirtualScroll.cshtml" />
     <Content Include="Views\AutoComplete\AutocompleteFor.cshtml" />
     <Content Include="Views\Avatar\Badge.cshtml" />
     <Content Include="Views\Avatar\Card.cshtml" />
@@ -2650,7 +2744,7 @@
     <Content Include="Views\Chart\MultipleAxes.cshtml" />
     <Content Include="Views\Chart\NegativeStack.cshtml" />
     <Content Include="Views\Chart\NumericAxis.cshtml" />
-	<Content Include="Views\Chart\Overview.cshtml" />
+    <Content Include="Views\Chart\Overview.cshtml" />
     <Content Include="Views\Chart\ParetoChart.cshtml" />
     <Content Include="Views\Chart\Pie.cshtml" />
     <Content Include="Views\Chart\PieWithLegend.cshtml" />
@@ -2698,30 +2792,37 @@
     <Content Include="Views\Chart\Waterfall.cshtml" />
     <Content Include="Views\Chart\WindRose.cshtml" />
     <Content Include="Views\Chart\Zooming.cshtml" />
-	<Content Include="Views\Chart\RangeStepArea.cshtml" />
+    <Content Include="Views\Chart\RangeStepArea.cshtml" />
+    <Content Include="Views\Chart\CylindricalColumn.cshtml" />
+    <Content Include="Views\Chart\Synchronized.cshtml" />
     <Content Include="Views\ArcGauge\Default.cshtml" />
     <Content Include="Views\ArcGauge\CustomerSatisfactionScore.cshtml" />
     <Content Include="Views\ArcGauge\KeyPerformanceIndicator.cshtml" />
     <Content Include="Views\ArcGauge\Patterns.cshtml" />
-    <Content Include="Views\CircularGauge\Annotation.cshtml" />
     <Content Include="Views\CircularGauge\ArcGauge.cshtml" />
-    <Content Include="Views\CircularGauge\Export.cshtml" />
+    <Content Include="Views\CircularGauge\AxisBackground.cshtml" />
+    <Content Include="Views\CircularGauge\Clock.cshtml" />
+    <Content Include="Views\CircularGauge\CustomLabels.cshtml" />
     <Content Include="Views\CircularGauge\DataSample.cshtml" />
     <Content Include="Views\CircularGauge\DefaultFunctionalities.cshtml" />
     <Content Include="Views\CircularGauge\DirectionCompass.cshtml" />
-    <Content Include="Views\CircularGauge\GaugeCustomization.cshtml" />
+    <Content Include="Views\CircularGauge\ImagePointer.cshtml" />
     <Content Include="Views\CircularGauge\Legend.cshtml" />
-    <Content Include="Views\CircularGauge\MultipleAxis.cshtml" />
-    <Content Include="Views\CircularGauge\PointerCustomization.cshtml" />
-    <Content Include="Views\CircularGauge\PointerDrag.cshtml" />
-    <Content Include="Views\CircularGauge\PointerImage.cshtml" />
-    <Content Include="Views\CircularGauge\Range.cshtml" />
+    <Content Include="Views\CircularGauge\MultipleAxes.cshtml" />
+    <Content Include="Views\CircularGauge\MultipleRanges.cshtml" />
+    <Content Include="Views\CircularGauge\PointerRangesDrag.cshtml" />
+    <Content Include="Views\CircularGauge\PointerTypes.cshtml" />
+    <Content Include="Views\CircularGauge\PrintExport.cshtml" />
+    <Content Include="Views\CircularGauge\RadialSlider.cshtml" />
+    <Content Include="Views\CircularGauge\RangeColorforAxis.cshtml" />
+    <Content Include="Views\CircularGauge\RangeCustomization.cshtml" />
     <Content Include="Views\CircularGauge\SemiCircularGauge.cshtml" />
+    <Content Include="Views\CircularGauge\SleepTracker.cshtml" />
     <Content Include="Views\CircularGauge\Speedometer.cshtml" />
+    <Content Include="Views\CircularGauge\TextPointer.cshtml" />
     <Content Include="Views\CircularGauge\TicksAndLabels.cshtml" />
     <Content Include="Views\CircularGauge\Tooltip.cshtml" />
     <Content Include="Views\CircularGauge\AppleWatchRings.cshtml" />
-    <Content Include="Views\CircularGauge\GradientColor.cshtml" />
     <Content Include="Views\ColorPicker\Api.cshtml" />
     <Content Include="Views\ColorPicker\Custom.cshtml" />
     <Content Include="Views\ColorPicker\DefaultFunctionalities.cshtml" />
@@ -2735,6 +2836,7 @@
     <Content Include="Views\ComboBox\Filtering.cshtml" />
     <Content Include="Views\ComboBox\GroupingAndIcon.cshtml" />
     <Content Include="Views\ComboBox\Template.cshtml" />
+    <Content Include="Views\ComboBox\VirtualScroll.cshtml" />
     <Content Include="Views\ComboBox\ComboboxFor.cshtml" />
     <Content Include="Views\ContextMenu\DefaultFunctionalities.cshtml" />
     <Content Include="Views\DatePicker\DateFormats.cshtml" />
@@ -2795,15 +2897,15 @@
     <Content Include="Views\Diagram\HistoryManager.cshtml" />
     <Content Include="Views\Diagram\Tooltip.cshtml" />
     <Content Include="Views\Diagram\Swimlane.cshtml" />
-	<Content Include="Views\Diagram\Constraints.cshtml" />
-	<Content Include="Views\Diagram\Commands.cshtml" />
-	<Content Include="Views\Diagram\Snapping.cshtml" />
-	<Content Include="Views\Diagram\DiagramBindingTreeView.cshtml" />
-	<Content Include="Views\Diagram\ZoomAndPan.cshtml" />
-	<Content Include="Views\Diagram\HierarchicalLayoutWithMultipleRoots.cshtml" />
-	<Content Include="Views\Diagram\Scrolling.cshtml" />
-	<Content Include="Views\Diagram\GroupingAndOrdering.cshtml" />
-	<Content Include="Views\Diagram\SequenceDiagram.cshtml" />
+    <Content Include="Views\Diagram\Constraints.cshtml" />
+    <Content Include="Views\Diagram\Commands.cshtml" />
+    <Content Include="Views\Diagram\Snapping.cshtml" />
+    <Content Include="Views\Diagram\DiagramBindingTreeView.cshtml" />
+    <Content Include="Views\Diagram\ZoomAndPan.cshtml" />
+    <Content Include="Views\Diagram\HierarchicalLayoutWithMultipleRoots.cshtml" />
+    <Content Include="Views\Diagram\Scrolling.cshtml" />
+    <Content Include="Views\Diagram\GroupingAndOrdering.cshtml" />
+    <Content Include="Views\Diagram\SequenceDiagram.cshtml" />
     <Content Include="Views\Dialog\AjaxContent.cshtml" />
     <Content Include="Views\Dialog\Animation.cshtml" />
     <Content Include="Views\Dialog\CustomDialogs.cshtml" />
@@ -2830,7 +2932,7 @@
     <Content Include="Views\Word\DOCtoODT.cshtml" />
     <Content Include="Views\Word\DOCtoPDF.cshtml" />
     <Content Include="Views\Word\DOCtoPDFA.cshtml" />
-	<Content Include="Views\Word\MarkdownToWord.cshtml" />
+    <Content Include="Views\Word\MarkdownToWord.cshtml" />
     <Content Include="Views\Word\DOCtoPDFUA.cshtml" />
     <Content Include="Views\Word\DocumentProtection.cshtml" />
     <Content Include="Views\Word\DocumentSettings.cshtml" />
@@ -2870,6 +2972,7 @@
     <Content Include="Views\Word\CreateEquation.cshtml" />
     <Content Include="Views\Word\EditEquation.cshtml" />
     <Content Include="Views\Word\TrackChanges.cshtml" />
+    <Content Include="Views\Word\CompareDocuments.cshtml" />
     <Content Include="Views\DocumentEditor\BulletsAndNumbering.cshtml" />
     <Content Include="Views\DocumentEditor\CharacterFormatting.cshtml" />
     <Content Include="Views\DocumentEditor\ToolbarCustomization.cshtml" />
@@ -2894,6 +2997,7 @@
     <Content Include="Views\DropDownList\GroupingAndIcon.cshtml" />
     <Content Include="Views\DropDownList\Inline.cshtml" />
     <Content Include="Views\DropDownList\Template.cshtml" />
+    <Content Include="Views\DropDownList\VirtualScroll.cshtml" />
     <Content Include="Views\DropDownList\DropdownlistFor.cshtml" />
     <Content Include="Views\DropDownTree\DefaultFunctionalities.cshtml" />
     <Content Include="Views\DropDownTree\IconsAndImages.cshtml" />
@@ -2936,12 +3040,12 @@
     <Content Include="Views\Grid\HeaderTemplate.cshtml" />
     <Content Include="Views\Grid\InlineEditing.cshtml" />
     <Content Include="Views\Grid\LocalData.cshtml" />
-	<Content Include="Views\Grid\LiveData.cshtml" />
+    <Content Include="Views\Grid\LiveData.cshtml" />
     <Content Include="Views\Grid\MultiSorting.cshtml" />
     <Content Include="Views\Grid\PagingAPI.cshtml" />
     <Content Include="Views\Grid\Print.cshtml" />
     <Content Include="Views\Grid\RemoteData.cshtml" />
-	<Content Include="Views\Grid\FlexibleData.cshtml" />
+    <Content Include="Views\Grid\FlexibleData.cshtml" />
     <Content Include="Views\Grid\Reorder.cshtml" />
     <Content Include="Views\Grid\RowDragDrop.cshtml" />
     <Content Include="Views\Grid\RowHeight.cshtml" />
@@ -2971,16 +3075,24 @@
     <Content Include="Views\HeatMapChart\Rendermode.cshtml" />
     <Content Include="Views\HeatMapChart\Rowjson.cshtml" />
     <Content Include="Views\HeatMapChart\Tooltiptemplate.cshtml" />
-    <Content Include="Views\LinearGauge\Annotation.cshtml" />
-    <Content Include="Views\LinearGauge\AxesAndPointers.cshtml" />
-    <Content Include="Views\LinearGauge\Export.cshtml" />
+    <Content Include="Views\LinearGauge\BarPointer.cshtml" />
+    <Content Include="Views\LinearGauge\BatteryIndicator.cshtml" />
     <Content Include="Views\LinearGauge\Container.cshtml" />
-    <Content Include="Views\LinearGauge\DataSample.cshtml" />
+    <Content Include="Views\LinearGauge\CustomPointer.cshtml" />
     <Content Include="Views\LinearGauge\DefaultFunctionalities.cshtml" />
+    <Content Include="Views\LinearGauge\Labels.cshtml" />
+    <Content Include="Views\LinearGauge\MarkerPointer.cshtml" />
+    <Content Include="Views\LinearGauge\PrintExport.cshtml" />
+    <Content Include="Views\LinearGauge\ProgressBar.cshtml" />
     <Content Include="Views\LinearGauge\Range.cshtml" />
-    <Content Include="Views\LinearGauge\Styles.cshtml" />
+    <Content Include="Views\LinearGauge\Slider.cshtml" />
+    <Content Include="Views\LinearGauge\StepProgressBar.cshtml" />
+    <Content Include="Views\LinearGauge\StepsCounter.cshtml" />
+    <Content Include="Views\LinearGauge\Thermometer.cshtml" />
+    <Content Include="Views\LinearGauge\Ticks.cshtml" />
     <Content Include="Views\LinearGauge\Tooltip.cshtml" />
-    <Content Include="Views\LinearGauge\GradientColor.cshtml" />
+    <Content Include="Views\LinearGauge\Track.cshtml" />
+    <Content Include="Views\LinearGauge\VolumeSettings.cshtml" />
     <Content Include="Views\ListView\CallHistory.cshtml" />
     <Content Include="Views\ListView\Checklist.cshtml" />
     <Content Include="Views\ListView\DefaultFunctionalities.cshtml" />
@@ -3171,7 +3283,7 @@
     <Content Include="Views\ProgressBar\Radius.cshtml" />
     <Content Include="Views\ProgressBar\ProgressSegment.cshtml" />
     <Content Include="Views\ProgressBar\Stripes.cshtml" />
-	<Content Include="Views\ProgressBar\Tooltip.cshtml" />
+    <Content Include="Views\ProgressBar\Tooltip.cshtml" />
     <Content Include="Views\RangeNavigator\DateTime.cshtml" />
     <Content Include="Views\RangeNavigator\Default.cshtml" />
     <Content Include="Views\RangeNavigator\Double.cshtml" />
@@ -3206,6 +3318,7 @@
     <Content Include="Views\RichTextEditor\PreviewMode.cshtml" />
     <Content Include="Views\RichTextEditor\Print.cshtml" />
     <Content Include="Views\RichTextEditor\Types.cshtml" />
+    <Content Include="Views\RichTextEditor\QuickFormatToolbar.cshtml" />
     <Content Include="Views\RichTextEditor\RichTextEditorFor.cshtml" />
     <Content Include="Views\RichTextEditor\FileBrowser.cshtml" />
     <Content Include="Views\RichTextEditor\AutoSave.cshtml" />
@@ -3215,6 +3328,7 @@
     <Content Include="Views\Schedule\CellDimension.cshtml" />
     <Content Include="Views\Schedule\CellTemplate.cshtml" />
     <Content Include="Views\Schedule\CustomMonthView.cshtml" />
+    <Content Include="Views\Schedule\DataVirtualization.cshtml" />
     <Content Include="Views\Schedule\DateHeader.cshtml" />
     <Content Include="Views\Schedule\DayHourLimit.cshtml" />
     <Content Include="Views\Schedule\Default.cshtml" />
@@ -3293,6 +3407,7 @@
     <Content Include="Views\StockChart\Spline.cshtml" />
     <Content Include="Views\StockChart\SplineArea.cshtml" />
     <Content Include="Views\StockChart\StripLine.cshtml" />
+    <Content Include="Views\StockChart\DateTimeCategory.cshtml" />
     <Content Include="Views\Tab\DefaultFunctionalities.cshtml" />
     <Content Include="Views\Tab\Orientation.cshtml" />
     <Content Include="Views\Tab\ResponsiveModes.cshtml" />
@@ -3413,6 +3528,8 @@
     <Content Include="Views\Excel\WorksheetProtection.cshtml" />
     <Content Include="Views\Excel\WorksheetToImage.cshtml" />
     <Content Include="Views\Excel\ExternalFormula.cshtml" />
+    <Content Include="Views\Excel\WhatIfAnalysis.cshtml" />
+	<Content Include="Views\Excel\Comments.cshtml" />
     <Content Include="Views\InPlaceEditor\DefaultFunctionalities.cshtml" />
     <Content Include="Views\InPlaceEditor\DropDowns.cshtml" />
     <Content Include="Views\InPlaceEditor\Pickers.cshtml" />
@@ -3463,6 +3580,7 @@
     <Content Include="Views\QueryBuilder\RuleTemplate.cshtml" />
     <Content Include="Views\QueryBuilder\_RuleTemplatePartial.cshtml" />
     <Content Include="Views\Grid\MasterDetailsExport.cshtml" />
+    <Content Include="Views\Grid\DetailTemplateExport.cshtml" />
     <Content Include="Views\Chips\Api.cshtml" />
     <Content Include="Views\Chips\Default.cshtml" />
     <Content Include="Views\Schedule\CalendarIntegration.cshtml" />
@@ -3480,6 +3598,8 @@
     <Content Include="Views\TreeGrid\ConditionalFormatting.cshtml" />
     <Content Include="Views\TreeGrid\GridLines.cshtml" />
     <Content Include="Views\TreeGrid\LockRow.cshtml" />
+    <Content Include="Views\TreeGrid\LiveData.cshtml" />
+    <Content Include="Views\TreeGrid\ServerSideExporting.cshtml" />
     <Content Include="Views\TreeGrid\PagingAPI.cshtml" />
     <Content Include="Views\TreeGrid\RowHeight.cshtml" />
     <Content Include="Views\TreeGrid\RowHover.cshtml" />
@@ -3586,6 +3706,7 @@
     <Content Include="Views\GanttChart\TaskbarTemplate.cshtml" />
     <Content Include="Views\GanttChart\Timeline.cshtml" />
     <Content Include="Views\GanttChart\UnscheduledTask.cshtml" />
+    <Content Include="Views\GanttChart\LoadOnDemand.cshtml" />
     <Content Include="Views\Spreadsheet\DefaultFunctionalities.cshtml" />
     <Content Include="Views\Spreadsheet\CellDataBinding.cshtml" />
     <Content Include="Views\Spreadsheet\RemoteDataBinding.cshtml" />
@@ -3747,6 +3868,9 @@
     <Content Include="Views\Grid\AdaptiveLayout.cshtml" />
     <Content Include="Views\Grid\FrozenRowsColumns.cshtml" />
     <Content Include="Views\Grid\PagerDropdown.cshtml" />
+    <Content Include="Views\Grid\ExpandoObjectBinding.cshtml" />
+    <Content Include="Views\Grid\DynamicObjectBinding.cshtml" />
+    <Content Include="Views\Grid\MultipleExport.cshtml" />
     <Content Include="Views\FAB\Styles.cshtml" />
     <Content Include="Views\FAB\DefaultFunctionalities.cshtml" />
     <Content Include="Views\FAB\Overview.cshtml" />
@@ -3764,6 +3888,9 @@
     <Content Include="Views\Ribbon\DefaultFunctionalities.cshtml" />
     <Content Include="Views\Ribbon\RibbonResizing.cshtml" />
     <Content Include="Views\Ribbon\SimplifiedMode.cshtml" />
+    <Content Include="Views\PDF\PDFToImage.cshtml" />    
+	<Content Include="Views\PdfViewer\InvisibleSignature.cshtml" />
+    <Content Include="Views\Ribbon\RibbonBackstage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\MapData\Africa_continent.json" />
@@ -3819,7 +3946,7 @@
     <Content Include="App_Data\PowerPoint\Template.pptx" />
     <Content Include="App_Data\PowerPoint\DataTemplate.pptx" />
     <Content Include="App_Data\PowerPoint\Input Template.pptx" />
-	<Content Include="App_Data\PowerPoint\FindAndHighlightInput.pptx" />
+    <Content Include="App_Data\PowerPoint\FindAndHighlightInput.pptx" />
     <Content Include="App_Data\XlsIO\AdvancedFilterData.xlsx" />
     <Content Include="App_Data\XlsIO\BoxAndWhiskerTemplate.xlsx" />
     <Content Include="App_Data\XlsIO\CreateMacroTemplate.xlsx" />
@@ -3897,6 +4024,8 @@
     <Content Include="App_Data\XlsIO\WorkSheetToImage.xlsx" />
     <Content Include="App_Data\XlsIO\ExcelToJSON.xlsx" />
     <Content Include="App_Data\XlsIO\InvoiceTemplate.xlsx" />
+    <Content Include="App_Data\XlsIO\WhatIfAnalysisTemplate.xlsx" />
+	<Content Include="App_Data\XlsIO\CommentsTemplate.xlsx" />
     <Content Include="App_Data\XlsIO\bahnschrift.ttf" />
     <Content Include="Content\Sidebar\icons\fonts\e-icons-metro.eot" />
     <Content Include="Content\Sidebar\icons\fonts\e-icons-metro.ttf" />

@@ -1,63 +1,31 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
-    <div class="col-md-8 control-section">
+    <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().CircularGauge("container").Load("onGaugeLoad").AxisLabelRender("onAxesLabelRendering").Axes(axes => axes.Radius("70%")
-         .LineStyle(new CircularGaugeLine{ Width = 10 }).LabelStyle(new CircularGaugeLabel
-         {
-             AutoAngle = true,
-             HiddenLabel = HiddenLabel.Last,
-             Font = new CircularGaugeFont
-             {
-                 Size = "12px",
-                 FontFamily = "Roboto"
-             }
-         }).MajorTicks(new CircularGaugeTick
-         {
-             Height = 15,
-             Interval = 1
-         }).MinorTicks(new CircularGaugeTick
-         {
-             Height = 10,
-             Interval = 0.5
-         }).Pointers(ViewBag.Pointers).Minimum(0).Maximum(8).Add()).Render()
+            @Html.EJS().CircularGauge("container").Load("onGaugeLoad").Background("transparent").AxisLabelRender("onAxesLabelRendering").Axes(axes => axes.Radius("80%")
+            .LineStyle(lineStyle => lineStyle.Width(20).Color("#E0E0E0")).StartAngle(0).EndAngle(360).LabelStyle(labelStyle => labelStyle.AutoAngle(true).Offset(10).HiddenLabel(HiddenLabel.Last).Font(font => font.FontFamily("inherit")))
+            .MajorTicks(majorTick => majorTick.Height(15).Interval(1)).MinorTicks(minorTick => minorTick.Height(10).Interval(0.5))
+            .Pointers(pointer =>
+            {
+                pointer.Value(7).Radius("50%").PointerWidth(30).LinearGradient(linearGradient =>
+            linearGradient.StartValue("0%").EndValue("100%").ColorStop(colorStop =>
+            {
+                colorStop.Color("#ff6b78").Offset("0%").Opacity(0.9).Add();
+                colorStop.Color("#e20a22").Offset("70%").Opacity(0.9).Add();
+            })
+            ).Cap(cap => cap.Radius(15).Color("#ffffff").Border(border => border.Width(0))).Animation(animation => animation.Enable(false)).Add();
+                pointer.Value(3).Radius("50%").Color("#f7f7f7").PointerWidth(30).Cap(cap => cap.Radius(15).Color("#ffffff").Border(border => border.Width(0))).Animation(animation => animation.Enable(false)).Add();
+            }).Minimum(0).Maximum(8).Add()).Render()
         </div>
     </div>
-    <div class="col-md-4 property-section">
-        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
-            <tbody>
-                <tr style="height: 50px">
-                    <td>
-                        <div id="">Pointer Color</div>
-                    </td>
-                    <td>
-                        <div>
-                            <select id="poiterColor" class="form-control">
-                                <option value="#f03e3e" selected="true">#f03e3e</option>
-                                <option value="#4472c4">#4472c4</option>
-                                <option value="#ed7d31">#ed7d31</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-                <tr style="height: 50px">
-                    <td>
-                        <div id="">Label Color</div>
-                    </td>
-                    <td>
-                        <div>
-                            <select id="labelColor" class="form-control">
-                                <option value="#f03e3e" selected="true">#f03e3e</option>
-                                <option value="#4472c4">#4472c4</option>
-                                <option value="#ed7d31">#ed7d31</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+    </style>
+    <!-- custom code end -->
     <script type="text/javascript">
         var value = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', ''];
         function onAxesLabelRendering(sender) {
@@ -65,69 +33,32 @@
         }
         var circulargauge;
         function onGaugeLoad(sender) {
-            if (window.gaugeLoaded)
-                return;
-            window.gaugeLoaded = true;
-            sender.gauge.axes[0].pointers[0].animation.enable = false;
-            sender.gauge.axes[0].pointers[1].animation.enable = false;
-            sender.gauge.axes[0].startAngle = 0;
-            sender.gauge.axes[0].endAngle = 360;
-            window.setTimeout(function () {
-                var gaugeWidth = document.getElementById('container').offsetWidth;
-                var svgWidth = document.getElementById('container_svg').offsetWidth;
-                if (gaugeWidth != svgWidth)
-                    sender.gauge.refresh();
-            }, 200);
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            circulargauge = sender.gauge;
+            @* custom code end *@
         }
-
-        pointerColor = new ej.dropdowns.DropDownList({
-            index: 0,
-            placeholder: 'Select Range Bar Color',
-            width: '105%',
-            change: function () {
-                var rangeColor = pointerColor.value.toString();
-                circulargauge.axes[0].pointers[0].color = rangeColor;
-                circulargauge.setPointerValue(0, 0, circulargauge.axes[0].pointers[0].value);
-            }
-        });
-        pointerColor.appendTo('#poiterColor');
-        labelColor = new ej.dropdowns.DropDownList({
-            index: 0,
-            placeholder: 'Select Range Bar Color',
-            width: '105%',
-            change: function () {
-                var rangeColor = labelColor.value.toString();
-                circulargauge.axes[0].labelStyle.font.color = rangeColor;
-            }
-        });
-        labelColor.appendTo('#labelColor');
-
 
     </script>
 }
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample illustrates how to make a direction compass by using the features in gauge.
-            Color of the needle and direction labels can be customized by using options.
+            This sample demonstrates how to create a direction compass by modifying the circular gauge's functionalities to meet the needs of the user.
         </p>
     </div>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the DirectionCompass in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Direction Compass in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
 @section Description{
     <div id="description">
         <p>
-            Circular gauge can be customized as per a user requirement.
-            In this example, a direction compass has been depicted by adding <code>needles</code> and by customizing the <code>labels</code> to show the direction.
+            In this example, a direction compass has been depicted by adding a couple of needle pointers in the circular gauge and customizing labels to show the direction.
         </p>
         <p>
-            More information on the needle and labels can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation"> documentation section</a>.
+            More information on the circular gauge can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/getting-started"> documentation section</a>.
         </p>
     </div>
 }
@@ -135,8 +66,8 @@
 
 
 @section Title{
-                    <title>ASP.NET MVC Circular Gauge DirectionCompass Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Circular Gauge Direction Compass Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of DirectionCompass in ASP.NET MVC Circular Gauge Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Direction Compass in ASP.NET MVC Circular Gauge Control</h1>
+}

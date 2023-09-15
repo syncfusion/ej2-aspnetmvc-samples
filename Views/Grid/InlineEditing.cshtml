@@ -15,7 +15,7 @@
        col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
        col.Field("Verified").HeaderText("Verified").EditType("booleanedit").DisplayAsCheckBox(true).Type("boolean").Width("150").Add();
 
-   }).ActionBegin("actionBegin").AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+   }).CssClass("e-css").ActionBegin("actionBegin").AllowPaging().PageSettings(page => page.PageCount(2)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Normal); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
     </div>
 
 

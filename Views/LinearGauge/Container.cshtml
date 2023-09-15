@@ -1,64 +1,40 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-md-8 control-section">
-        <div class="content-wrapper">
-            @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Title("Temperature Measure").Container(
-            new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer { Width = 13, RoundedCornerRadius = 5, Type = Syncfusion.EJ2.LinearGauge.ContainerType.Thermometer }
-           ).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
-           {
-               Minimum = 0, Maximum = 180,
-               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0, Color="#9E9E9E" },
-               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
-               {
-                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
-                   {
-                       Value = 90, Height=13,Width=13,Color="#f02828",
-                       Type = Syncfusion.EJ2.LinearGauge.Point.Bar,RoundedCornerRadius = 5
-                   }
-               },
-               MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Color = "#9E9E9E" , Interval=20, Height=20 },
-               MinorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Color = "#9E9E9E", Height=10 },
-           },new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis {
-              Minimum = 0 ,Maximum = 180, Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0 },
-              MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Interval = 20, Height=20 } , OpposedPosition = true,
-              Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
-              {
-                new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
-                {
-                    Width = 0
-                }
-              }
-           } }).Render()
-        </div>
+        @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Background("Transparent").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Temperature Measure").TitleStyle(textStyle =>
+         textStyle.FontFamily("inherit")).Container(container => container.Width(13).RoundedCornerRadius(5).Type(Syncfusion.EJ2.LinearGauge.ContainerType.Thermometer)).Axes(axes => 
+         { 
+            axes.Minimum(0).Maximum(180).Line(line => line.Width(0).Color("#9E9E9E")).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            .Pointers(pointer => pointer.Value(90).Height(13).Width(13).Color("#f02828").Type(Syncfusion.EJ2.LinearGauge.Point.Bar).RoundedCornerRadius(5).Add())
+            .MajorTicks(majorTick => majorTick.Color("#9E9E9E").Interval(20).Height(20))
+            .MinorTicks(minorTick => minorTick.Color("#9E9E9E").Interval(10).Height(10)).Add();
+            axes.Minimum(0).Maximum(180).OpposedPosition(true)
+            .Line(line => line.Width(0)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            .Pointers(pointer => pointer.Width(0))
+            .MajorTicks(majorTick => majorTick.Color("#9E9E9E").Interval(20).Height(20))
+            .MinorTicks(minorTick => minorTick.Color("#9E9E9E").Interval(10).Height(10)).Add();
+         }).Render()
     </div>
     <div class="col-md-4 property-section">
         <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
             <tbody>
                 <tr style="height: 50px">
                     <td>
-                        <div>Orientation</div>
+                        <div style="font-size:14px">Orientation</div>
                     </td>
                     <td>
-                        <div>
-                            <select name="selectIndex" autocomplete="off" id="orientationMode" style="width:90%">
-                                <option value="Vertical" selected="">Vertical</option>
-                                <option value="Horizontal">Horizontal</option>
-                            </select>
+                        <div style="height:45px">
+                            @Html.EJS().DropDownList("orientationMode").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewBag.orientation).Value("Vertical").Change("valueChange").Render()
                         </div>
                     </td>
                 </tr>
-                <tr style="height: 50px">
+                <tr style="height: 75px">
                     <td>
-                        <div>Container Type</div>
+                        <div style="font-size:14px">Container Type</div>
                     </td>
                     <td>
-                        <div>
-                            <select name="selectIndex" autocomplete="off" id="containerMode" style="width:90%">
-                                <option value="Thermometer">Thermometer</option>
-                                <option value="Normal">Normal</option>
-                                <option value="RoundedRectangle" selected="">RoundedRectangle</option>
-                            </select>
+                        <div style="height:45px">
+                            @Html.EJS().DropDownList("containerMode").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewBag.container).Value("Thermometer").Change("valueContainerChange").Render()
                         </div>
                     </td>
                 </tr>
@@ -66,76 +42,68 @@
             </tbody>
         </table>
     </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+        input.e-input.e-bigger, textarea.e-input.e-bigger, .e-bigger input.e-input, .e-bigger textarea.e-input, .e-input-group.e-bigger, .e-bigger .e-input-group, .e-input-group.e-control-wrapper.e-bigger, .e-bigger .e-input-group.e-control-wrapper {
+            height: 100%;
+            font-size: 14px;
+            align-items: center;
+        }
+    </style>
+    <!-- custom code end -->
     <script type="text/javascript">
         var gauge;
         function onGaugeLoad(sender) {
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            @* custom code end *@
             gauge = sender.gauge;
         }
 
-        var containerMode = new ej.dropdowns.DropDownList({
-            index: 0,
-            placeholder: 'Select Range Bar Color',
-            width: '100%',
-            change: function () {
-                gauge.container.type = containerMode.value;
-                gauge.refresh();
-            }
-        });
-        containerMode.appendTo('#containerMode');
-        var orientationMode = new ej.dropdowns.DropDownList({
-            index: 0,
-            placeholder: 'Select Range Bar Color',
-            width: '100%',
-            change: function () {
-                gauge.orientation = orientationMode.value;
-                gauge.refresh();
-            }
-        });
-        orientationMode.appendTo('#orientationMode');
+        function valueChange() {
+            var orientationMode = document.getElementById('orientationMode').ej2_instances[0];
+            gauge.orientation = orientationMode.value;
+            gauge.refresh();
+        }
+
+        function valueContainerChange() {
+            var containerMode = document.getElementById('containerMode').ej2_instances[0];
+            gauge.container.type = containerMode.value == "Rounded Rectangle" ? "RoundedRectangle" : containerMode.value;
+            gauge.refresh();   
+        }
     </script>
 }
 
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample demonstrates the type of containers used in linear gauge. Orientation and container type of linear gauge can be changed by using <code>Orientation</code> and <code>Container Type</code> options.
+            This sample shows the different types of containers, such as normal, thermometer, and rounded rectangle. The linear gauge's orientation can also be changed from vertical to horizontal.
         </p>
     </div>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Container in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Container in ASP.NET MVC Linear Gauge control. Explore here for more details." />
+}
 @section Description{
     <div id="description">
         <p>
-            This sample demonstrates the orientation and container customization in linear gauge. The gauge can be rendered either in
-            vertical or horizontal orientation. And you can use <code>type</code> property in container to change the
-            type of the container.
+            The linear gauge can be rendered vertically or horizontally depending on the option selected in the <b>Orientation</b> drop-down list. You can also select the container type from the <b>Container Type</b> drop-down list.
         </p>
-        <br>
         <p>
-            More information about container can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+            More information on the containers can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/linear-gauge-appearance#customizing-the-linear-gauge-container">documentation section</a>.
+            Likewise, information about orientation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/axis#orientation">documentation section</a>.
         </p>
     </div>
 
 }
-
-
-
-
-
-
-
-
-
-
-
 @section Title{
-                    <title>ASP.NET MVC Linear Gauge Container Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Linear Gauge Container Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Container in ASP.NET MVC Linear Gauge Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Container in ASP.NET MVC Linear Gauge Control</h1>
+}

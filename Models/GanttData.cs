@@ -209,7 +209,7 @@ namespace EJ2MVCSampleBrowser.Models
                 Duration = 0,
                 Predecessor = "10",
                 Indicators = new List<IndicatorsModel>() {
-                    new IndicatorsModel() { date = "04/20/2019", name= "Research completed", tooltip="Research completed", iconClass="description e-icons" }
+                    new IndicatorsModel() { date = "04/28/2019", name= "Research completed", tooltip="Research completed", iconClass="description e-icons" }
                 }
             };
             Record3.SubTasks.Add(Record6Child1);

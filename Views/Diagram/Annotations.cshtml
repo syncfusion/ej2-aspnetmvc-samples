@@ -341,9 +341,9 @@
                     } else if (name === 'fontfamily') {
                         annotationStyle.fontFamily = value;
                     } else if (name === 'bold') {
-                        annotationStyle.bold = true;
+                        annotationStyle.bold = !annotationStyle.bold;
                     } else if (name === 'italic') {
-                        annotationStyle.italic = true;
+                        annotationStyle.italic = !annotationStyle.italic;
                     } else if (name === 'fontcolor') {
                         annotationStyle.color = value;
                     } else if (name === 'template') {

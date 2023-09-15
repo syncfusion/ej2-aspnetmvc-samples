@@ -11,11 +11,11 @@
     <div class="control-section">
         <div id="outer" style="width:100%">
             @Html.EJS().Maps("container").TitleSettings(title => title.Text("Samsung Semiconductor office locations in USA").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).Load("mapsLoad").ZoomSettings(zoom => zoom.Enable(true).PinchZooming(true)).Layers(layer =>
-   {
-       layer.DataLabelSettings(new MapsDataLabelSettings{ Visible = true, LabelPath = "iso_3166_2", SmartLabelMode = SmartLabelMode.Hide }).ShapeSettings(new MapsShapeSettings{ Fill = "#E5E5E5" }).ShapeData(ViewBag.shapeData).Add();
-       layer.ShapeSettings(new MapsShapeSettings{ Fill = "rgba(141, 206, 255, 0.6)" }).Type(Syncfusion.EJ2.Maps.Type.SubLayer).ShapeData(ViewBag.africa).Add();
-       layer.ShapeSettings(new MapsShapeSettings{ Fill = "rgba(141, 206, 255, 0.6)" }).Type(Syncfusion.EJ2.Maps.Type.SubLayer).Add();
-   }
+       {
+           layer.DataLabelSettings(new MapsDataLabelSettings{ Visible = true, LabelPath = "iso_3166_2", SmartLabelMode = SmartLabelMode.Hide, TextStyle = new MapsFont { Color = "black" } }).ShapeSettings(new MapsShapeSettings{ Fill = "#E5E5E5" }).ShapeData(ViewBag.shapeData).Add();
+           layer.ShapeSettings(new MapsShapeSettings{ Fill = "rgba(141, 206, 255, 0.6)" }).Type(Syncfusion.EJ2.Maps.Type.SubLayer).ShapeData(ViewBag.africa).Add();
+           layer.ShapeSettings(new MapsShapeSettings{ Fill = "rgba(141, 206, 255, 0.6)" }).Type(Syncfusion.EJ2.Maps.Type.SubLayer).Add();
+       }
    ).Render()
             <div style="margin-left: 75%">
                 Source:

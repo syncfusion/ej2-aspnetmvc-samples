@@ -3224,6 +3224,7 @@ aside#left-sidebar {
     content: '\e90b';
 }
 
+
 /*Material3-dark theme */
 .material3-dark #search-input-wrapper .sb-reset-icon:before {
     content: '\e7e7';
@@ -3431,7 +3432,7 @@ body.material3-dark,
 
 .material3 .e-samplestatus.preview.tree, .material3 .e-samplestatus.Preview.tree,
 .material3 .e-samplestatus.update.tree, .material3 .e-samplestatus.Update.tree,
-.material3 .e-samplestatus.new.tree, .fluent .e-samplestatus.New.tree,
+.material3 .e-samplestatus.new.tree, .material3 .e-samplestatus.New.tree,
 .material3-dark .e-samplestatus.preview.tree, .material3-dark .e-samplestatus.Preview.tree,
 .material3-dark .e-samplestatus.update.tree, .material3-dark .e-samplestatus.Update.tree,
 .material3-dark .e-samplestatus.new.tree, .material3-dark .e-samplestatus.New.tree {
@@ -3445,13 +3446,14 @@ body.material3-dark,
     text-overflow: ellipsis;
 }
 
-.e-bigger #controlSamples .e-listview .e-icon-wrapper .e-list-text {
-    width: calc(100% - 70px);
-} 
 .e-bigger .e-list-parent .e-list-parent .e-list-item.e-level-2 .tree-text {
-    width: calc(100% - 50px);
+    width: calc(100% - 55px);
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.e-bigger #controlSamples .e-listview .e-icon-wrapper .e-list-text {
+    width: calc(100% - 70px);
 }
 
 @media (min-width: 1024px) {
@@ -3480,7 +3482,35 @@ body.material3-dark,
     line-height: 11px;
 }
 
+/* Material3 theme changes  */
+.material3 .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item.e-active>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.material3 .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-toolbar-item:hover>.e-tab-wrap>.e-text-wrap>.e-tab-text,
+.material3 .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text,
+.material3 .sb-source-section .e-tab .e-tab-header .e-toolbar-item:hover .e-tab-text,
+.material3 .control-name,
+.material3 .sb-icon-Hamburger,
+.material3 .sb-footer-links a,
+.material3 .sb-plnr-section,
+.material3 .sb-open-new-wrapper a:hover,
+.material3 .sample-navigation>button:hover {
+    color: #6750a4;
+}
 
+.material3 #left-sidebar {
+    background: #fff;
+}
+
+.material3 .sb-left-pane .e-listview .e-list-item.e-hover,
+.material3 .sb-left-pane .e-listview .e-list-item.e-active,
+.material3 .sb-left-pane .e-treeview .e-list-item.e-hover>.e-fullrow {
+    background-color: #eaddff;
+}
+
+.material3 .sb-content-tab>.e-tab.e-nested>.e-tab-header>.e-items.e-toolbar-items>.e-indicator {
+    background: #6750a4;
+}
+
+/*material3 touch mode changes */
 .material3.e-bigger .e-badge.sb-badge.e-samplestatus.New, .material3.e-bigger .e-badge.sb-badge.e-samplestatus.new,
 .material3.e-bigger .e-badge.sb-badge.e-samplestatus.Update, .material3.e-bigger .e-badge.sb-badge.e-samplestatus.update,
 .material3.e-bigger .e-badge.sb-badge.e-samplestatus.Preview, .material3.e-bigger .e-badge.sb-badge.e-samplestatus.preview,
@@ -3494,40 +3524,6 @@ body.material3-dark,
     margin: 2px 0px !important;
 }
 
-
-/*Material3 theme changes */
-.material3 .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item.e-active > .e-tab-wrap > .e-text-wrap > .e-tab-text,
-.material3 .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item:hover > .e-tab-wrap > .e-text-wrap > .e-tab-text,
-.material3 .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text,
-.material3 .sb-source-section .e-tab .e-tab-header .e-toolbar-item:hover .e-tab-text,
-.material3 .control-name,
-.material3 .sb-icon-Hamburger,
-.material3 .sb-footer-links a,
-.material3 .sb-plnr-section,
-.material3 .sb-open-new-wrapper a:hover,
-.material3 .sample-navigation > button:hover {
-    color: #6750a4;
-}
-
-.material3 #left-sidebar {
-    background: #fff;
-}
-
-.material3 .sb-left-pane .e-listview .e-list-item.e-hover,
-.material3 .sb-left-pane .e-listview .e-list-item.e-active,
-.material3 .sb-left-pane .e-treeview .e-list-item.e-hover > .e-fullrow {
-    background-color: #eaddff;
-}
-
-.material3 .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-indicator {
-    background: #6750a4;
-}
-
-#controlList .e-list-group-item .e-list-text {
-    font-size: 16px;
-    font-weight: 800;
-}
-
 .material3.e-bigger #controlList .e-samplestatus.preview, .material3.e-bigger #controlList .e-samplestatus.Preview,
 .material3.e-bigger #controlList .e-samplestatus.update, .material3.e-bigger #controlList .e-samplestatus.Update,
 .material3.e-bigger #controlList .e-samplestatus.new, .material3.e-bigger #controlList .e-samplestatus.New,
@@ -3535,4 +3531,9 @@ body.material3-dark,
 .material3-dark.e-bigger #controlList .e-samplestatus.update, .material3-dark.e-bigger #controlList .e-samplestatus.Update,
 .material3-dark.e-bigger #controlList .e-samplestatus.new, .material3-dark.e-bigger #controlList .e-samplestatus.New {
     top: 0px;
+}
+
+#controlList .e-list-group-item .e-list-text {
+    font-size: 16px;
+    font-weight: 800;
 }

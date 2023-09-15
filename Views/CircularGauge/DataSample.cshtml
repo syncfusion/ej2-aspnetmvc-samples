@@ -15,9 +15,9 @@
     </style>
     <script id='germany' type="text/x-template">
         <div id='templateWrap'>
-            <img src="@Url.Content("~/Content/CircularGauge/Images/positive.png")" alt="Positive Value for Germany"/>
+            <img src="@Url.Content("~/Content/CircularGauge/Images/positive.png")" alt="Positive Value for Germany" />
             <div class='des'>
-                <div style="color:#424242;font-size:20px;font-family:Roboto">${pointers[0].value}%</div>
+                <div style="color:#424242;font-size:20px;font-family:inherit">${pointers[0].value}%</div>
             </div>
         </div>
     </script>
@@ -25,173 +25,90 @@
         <div id='templateWrap'>
             <img src="@Url.Content("~/Content/CircularGauge/Images/positive.png")" alt="Positive Value for USA" />
             <div class='des'>
-                <div style="color:#424242;font-size:20px;font-family:Roboto">${pointers[0].value}%</div>
+                <div style="color:#424242;font-size:20px;font-family:inherit">${pointers[0].value}%</div>
             </div>
         </div>
     </script>
     <script id='uk' type="text/x-template">
         <div id='templateWrap'>
-            <img src="@Url.Content("~/Content/CircularGauge/Images/negative.png")" alt="Negative Value for UK"/>
+            <img src="@Url.Content("~/Content/CircularGauge/Images/negative.png")" alt="Negative Value for UK" />
             <div class='des'>
-                <div style="color:#424242;font-size:20px;font-family:Roboto">${pointers[0].value}%</div>
+                <div style="color:#424242;font-size:20px;font-family:inherit">-${pointers[0].value}%</div>
             </div>
         </div>
     </script>
     <div class="control-section">
         <div class="row">
             <div class="col-md-4">
-                <div id="container1" style="height:250px;">
-                    @Html.EJS().CircularGauge("container1").Load("onGaugeLoad").Axes(axes => axes
-     .StartAngle(230).EndAngle(130).MajorTicks(new CircularGaugeTick { Width = 0, Color = "transparent" }).LineStyle(new CircularGaugeLine{ Width = 0, Color = "transparent" }).MinorTicks(new CircularGaugeTick{ Width = 0, Color = "transparent" })
-     .LabelStyle(new CircularGaugeLabel{ Font = new CircularGaugeFont{ Size = "0px" } }).Radius("90%")
-     .Ranges(new List<Syncfusion.EJ2.CircularGauge.CircularGaugeRange>{
-                               new Syncfusion.EJ2.CircularGauge.CircularGaugeRange
-                               {
-                                   Start = 0 , End = 50, StartWidth = "15", EndWidth = "15",Color = "#EC121C"
-                               },
-                               new Syncfusion.EJ2.CircularGauge.CircularGaugeRange
-                               {
-                                   Start = 50, End = 100, StartWidth ="15", EndWidth = "15", Color = "#45EA0C"
-                               }
-                            })
-     .Pointers(new List<Syncfusion.EJ2.CircularGauge.CircularGaugePointer>
-                            {
-                               new Syncfusion.EJ2.CircularGauge.CircularGaugePointer
-                               {
-                                   Value = 75, Radius = "60%", Animation = new CircularGaugeAnimation{ Enable=false },
-                                   PointerWidth = 5, Cap = new CircularGaugeCap{ Radius = 3,  Border = new CircularGaugeBorder{ Width = 0 }},
-                                   NeedleTail = new CircularGaugeNeedleTail { Length = "25%" }
-                               }
-                            })
-     .Annotations(
-         new List<Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation>
-                                {
-                                   new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
-                                   {
-                                       Content = "#germany", Angle = 180,ZIndex = "1",Radius = "30%"
-                                   },
-                                   new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
-                                   {
-                                       Content = "<div style=color:#9E9E9E;font-size:16px;font-family:Roboto>Germany</div>",
-                                       Angle =180,ZIndex = "1", Radius = "65%"
-                                   }
-                                })
-     .Add()).Render()
+                <div id="container1" style="height:250px;display:block">
+                    @Html.EJS().CircularGauge("container1").Load("onGaugeLoad").Background("transparent").Axes(axes => axes
+                    .StartAngle(230).EndAngle(130).MajorTicks(majorTick => majorTick.Width(0).Color("transparent")).LineStyle(lineStyle => lineStyle.Width(0).Color("transparent")).MinorTicks(minorTick => minorTick.Width(0).Color("transparent"))
+                    .LabelStyle(labelStyle => labelStyle.Font(font => font.Size("0px"))).Radius("90%")
+                    .Ranges(range => {
+                        range.Start(0).End(50).StartWidth("15").EndWidth("15").Color("#EC121C").Add();
+                        range.Start(50).End(100).StartWidth("15").EndWidth("15").Color("#45EA0C").Add();
+                    })
+                    .Pointers(pointer => pointer.Value(75).Radius("60%").Animation(animation => animation.Enable(false)).PointerWidth(5).Cap(cap => cap.Radius(6).Border(border => border.Width(0))).NeedleTail(needleTail => needleTail.Length("25%")).Add())
+                    .Annotations(annotations => { annotations.Content("#germany").Angle(180).ZIndex("1").Radius("30%").Add();
+                        annotations.Content("<div style=color:#9E9E9E;font-size:16px;font-family:inherit>Germany</div>").Angle(180).ZIndex("1").Radius("65%").Add();
+                    })
+                    .Add()).Render()
                 </div>
             </div>
             <div class="col-md-4">
-                <div id="container2" style="height:250px;">
-                    @Html.EJS().CircularGauge("container2").Load("onGaugeLoad").Axes(axes => axes
-      .StartAngle(230).EndAngle(130).MajorTicks(new CircularGaugeTick{ Width = 0, Color = "transparent" }).LineStyle(new CircularGaugeLine{ Width = 0, Color = "transparent" }).MinorTicks(new CircularGaugeTick{ Width = 0, Color = "transparent" })
-      .LabelStyle(new CircularGaugeLabel{ Font = new CircularGaugeFont{ Size = "0px" } }).Radius("90%")
-      .Ranges(new List<Syncfusion.EJ2.CircularGauge.CircularGaugeRange>{
-                               new Syncfusion.EJ2.CircularGauge.CircularGaugeRange
-                               {
-                                   Start = 0 , End = 50, StartWidth = "15", EndWidth = "15",Color = "#EC121C"
-                               },
-                               new Syncfusion.EJ2.CircularGauge.CircularGaugeRange
-                               {
-                                   Start = 50, End = 100, StartWidth ="15", EndWidth = "15", Color = "#45EA0C"
-                               }
-                            })
-      .Pointers(new List<Syncfusion.EJ2.CircularGauge.CircularGaugePointer>
-                            {
-                               new Syncfusion.EJ2.CircularGauge.CircularGaugePointer
-                               {
-                                   Value = 75, Radius = "60%", Animation = new CircularGaugeAnimation{ Enable=false },
-                                   PointerWidth = 5, Cap = new CircularGaugeCap { Radius = 3,Border = new CircularGaugeBorder{ Width = 0 } },
-                                   NeedleTail = new CircularGaugeNeedleTail{ Length = "25%" }
-                               }
-                            })
-      .Annotations(
-          new List<Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation>
-                                {
-                                   new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
-                                   {
-                                       Content = "#usa", Angle = 180,ZIndex = "1",Radius = "30%"
-                                   },
-                                   new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
-                                   {
-                                       Content = "<div style=color:#9E9E9E;font-size:16px;font-family:Roboto>USA</div>",
-                                       Angle =180,ZIndex = "1", Radius = "65%"
-                                   }
-                                })
-      .Add()).Render()
+                <div id="container2" style="height: 250px; display: block">
+                    @Html.EJS().CircularGauge("container2").Load("onGaugeLoad").Background("transparent").Axes(axes => axes
+                    .StartAngle(230).EndAngle(130).MajorTicks(majorTick => majorTick.Width(0).Color("transparent")).LineStyle(lineStyle => lineStyle.Width(0).Color("transparent")).MinorTicks(minorTick => minorTick.Width(0).Color("transparent"))
+                    .LabelStyle(labelStyle => labelStyle.Font(font => font.Size("0px"))).Radius("90%")
+                    .Ranges(range =>
+                    {
+                        range.Start(0).End(50).StartWidth("15").EndWidth("15").Color("#EC121C").Add();
+                        range.Start(50).End(100).StartWidth("15").EndWidth("15").Color("#45EA0C").Add();
+                    })
+                    .Pointers(pointer => pointer.Value(75).Radius("60%").Animation(animation => animation.Enable(false)).PointerWidth(5).Cap(cap => cap.Radius(6).Border(border => border.Width(0))).NeedleTail(needleTail => needleTail.Length("25%")).Add())
+                    .Annotations( annotations =>
+                    {
+                        annotations.Content("#usa").Angle(180).ZIndex("1").Radius("30%").Add();
+                        annotations.Content("<div style=color:#9E9E9E;font-size:16px;font-family:inherit>USA</div>").Angle(180).ZIndex("1").Radius("65%").Add();
+                    }) .Add()).Render()
                 </div>
             </div>
             <div class="col-md-4">
-                <div id="container3" style="height:250px;margin-left:-30px;">
-                    @Html.EJS().CircularGauge("container3").Load("onGaugeLoad").Axes(axes => axes
-     .StartAngle(230).EndAngle(130).MajorTicks(new CircularGaugeTick{ Width = 0, Color = "transparent" }).LineStyle(new CircularGaugeLine{ Width = 0, Color = "transparent" }).MinorTicks(new CircularGaugeTick{ Width = 0, Color = "transparent" })
-     .LabelStyle(new CircularGaugeLabel{ Font = new CircularGaugeFont { Size = "0px" } }).Radius("90%")
-     .Ranges(new List<Syncfusion.EJ2.CircularGauge.CircularGaugeRange>{
-                               new Syncfusion.EJ2.CircularGauge.CircularGaugeRange
-                               {
-                                   Start = 0 , End = 50, StartWidth = "15", EndWidth = "15",Color = "#EC121C"
-                               },
-                               new Syncfusion.EJ2.CircularGauge.CircularGaugeRange
-                               {
-                                   Start = 50, End = 100, StartWidth ="15", EndWidth = "15", Color = "#45EA0C"
-                               }
-                            })
-     .Pointers(new List<Syncfusion.EJ2.CircularGauge.CircularGaugePointer>
-                            {
-                               new Syncfusion.EJ2.CircularGauge.CircularGaugePointer
-                               {
-                                   Value = 75, Radius = "60%", Animation = new CircularGaugeAnimation{ Enable=false },
-                                   PointerWidth = 5, Cap = new CircularGaugeCap{ Radius = 3, Border = new CircularGaugeBorder{ Width = 0 }},
-                                   NeedleTail = new CircularGaugeNeedleTail{ Length = "25%" }
-                               }
-                            })
-     .Annotations(
-         new List<Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation>
-                                {
-                                   new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
-                                   {
-                                       Content = "#uk", Angle = 180,ZIndex = "1",Radius = "30%"
-                                   },
-                                   new Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation
-                                   {
-                                       Content = "<div style=color:#9E9E9E;font-size:16px;font-family:Roboto>UK</div>",
-                                       Angle =180,ZIndex = "1", Radius = "65%"
-                                   }
-                                })
-     .Add()).Render()
+                <div id="container3" style="height: 250px; display: block">
+                    @Html.EJS().CircularGauge("container3").Load("onGaugeLoad").Background("transparent").Axes(axes => axes
+                    .StartAngle(230).EndAngle(130).MajorTicks(majorTick => majorTick.Width(0).Color("transparent")).LineStyle(lineStyle => lineStyle.Width(0).Color("transparent")).MinorTicks(minorTick => minorTick.Width(0).Color("transparent"))
+                    .LabelStyle(labelStyle => labelStyle.Font(font => font.Size("0px"))).Radius("90%")
+                    .Ranges(range =>
+                    {
+                        range.Start(0).End(50).StartWidth("15").EndWidth("15").Color("#EC121C").Add();
+                        range.Start(50).End(100).StartWidth("15").EndWidth("15").Color("#45EA0C").Add();
+                    })
+                    .Pointers(pointer => pointer.Value(75).Radius("60%").Animation(animation => animation.Enable(false)).PointerWidth(5).Cap(cap => cap.Radius(6).Border(border => border.Width(0))).NeedleTail(needleTail => needleTail.Length("25%")).Add())
+                    .Annotations(annotations =>
+                    {
+                        annotations.Content("#uk").Angle(180).ZIndex("1").Radius("30%").Add();
+                        annotations.Content("<div style=color:#9E9E9E;font-size:16px;font-family:inherit>UK</div>").Angle(180).ZIndex("1").Radius("65%").Add();
+                    }).Add()).Render()
                 </div>
             </div>
         </div>
         <div class="row">
             <div id="container5">
                 @{ var OrderData = new[] { new { Country = "Germany", Sales = 500, Target = 400, vsTarget = 300 }, new { Country = "USA", Sales = 1000, Target = 600, vsTarget = 360 }, new { Country = "UK", Sales = 600, Target = 700, vsTarget = -100 } };}
-                @Html.EJS().Grid("container5").DataSource(OrderData).Columns(new List<Syncfusion.EJ2.Grids.GridColumn>
-                       {
-                           new Syncfusion.EJ2.Grids.GridColumn
-                           {
-                               Field = "Country", HeaderText = "Country", Width = "80"
-                           },
-                            new Syncfusion.EJ2.Grids.GridColumn
-                           {
-                               Field = "Sales", HeaderText = "Sales $", Width = "80"
-                           },
-                             new Syncfusion.EJ2.Grids.GridColumn
-                           {
-                               Field = "Target", HeaderText = "Target $", Width = "80"
-                           },
-                              new Syncfusion.EJ2.Grids.GridColumn
-                           {
-                               Field = "vsTarget", HeaderText = "vs Target", Width = "80"
-                           }
-                       }).Render()
+                @Html.EJS().Grid("container5").DataSource(OrderData).Columns(new List<Syncfusion.EJ2.Grids.GridColumn> {
+                    new Syncfusion.EJ2.Grids.GridColumn { Field = "Country", HeaderText = "Country", Width = "80" },
+                    new Syncfusion.EJ2.Grids.GridColumn { Field = "Sales", HeaderText = "Sales $", Width = "80" },
+                    new Syncfusion.EJ2.Grids.GridColumn { Field = "Target", HeaderText = "Target $", Width = "80" },
+                    new Syncfusion.EJ2.Grids.GridColumn { Field = "vsTarget", HeaderText = "vs Target", Width = "80" } }).Render()
             </div>
         </div>
     </div>
     <script type="text/javascript">
         function onGaugeLoad(sender) {
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            for (var i = 0; i < sender.gauge.axes[0].annotations.length; i++) {
-                sender.gauge.axes[0].annotations[i].zIndex = "1";
-            }
+            @* custom code end *@
         }
 
         var interval = setInterval(function () {
@@ -239,8 +156,7 @@
             } else {
                 clearInterval(interval);
             }
-        },
-            2000);
+        },2000);
     </script>
 }
 
@@ -248,30 +164,29 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample demonstrates the live data sample in circular gauge.
+            This sample shows live stock price data displayed in multiple circular gauges.
         </p>
     </div>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the DataSample in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the DataSample in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
 @section Description{
     <div id="description">
         <p>
-            Pointer values in the gauge can be updated dynamically by using <code>setPointerValue</code> method.
-            In this example, a stock price changes over the countries, are showed by using a gauge.
+            The pointer value in the circular gauge can be dynamically updated using the <b>setPointerValue</b> method. In this example, the stock price changes across countries are displayed in multiple circular gauges.
         </p>
         <p>
-            More information on the gauge and its methods can be found in can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation"> documentation section</a>.
+            More information on the circular gauge can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/getting-started">documentation section</a>.
         </p>
     </div>
 }
 
 
 @section Title{
-                    <title>ASP.NET MVC Circular Gauge DataSample Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Circular Gauge DataSample Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of DataSample in ASP.NET MVC Circular Gauge Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of DataSample in ASP.NET MVC Circular Gauge Control</h1>
+}

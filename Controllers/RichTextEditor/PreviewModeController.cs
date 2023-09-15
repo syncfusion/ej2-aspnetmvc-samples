@@ -27,14 +27,7 @@ Rich Text Editor supports markdown editing when the editorMode set as **markdown
 We can add our own custom formation syntax for the Markdown formation, [sample link](https://ej2.syncfusion.com/home/).
 
 The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content";
-            ViewBag.Items = new object[] {"Bold", "Italic", "StrikeThrough", "|", "Formats", "OrderedList", "UnorderedList", "|", "CreateTable", "CreateLink", "Image", "|",
-                            new {
-                            tooltipText =  "Preview", template = @"<button id='preview-code' class='e-tbar-btn e-control e-btn e-icon-btn'>
-                                    <span class='e-btn-icon e-md-preview e-icons'></span></button>" },
-                            new {
-                            tooltipText = "Split Editor", template = @"<button id='MD_Preview' class='e-tbar-btn e-control e-btn e-icon-btn'>
-                                    <span class='e-btn-icon e-view-side e-icons'></span></button>" }, "FullScreen", "|", "Undo", "Redo" };
-
+            ViewBag.Items = new object[] {"Bold", "Italic", "StrikeThrough", "|", "Formats", "OrderedList", "UnorderedList", "|", "CreateTable", "CreateLink", "Image", "|", "Undo", "Redo" };
             return View();
         }
     }

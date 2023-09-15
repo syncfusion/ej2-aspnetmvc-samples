@@ -19,7 +19,7 @@
                                                     .Animation(an => an.Enable(true).Delay(0).Duration(2000)).ProgressCompleted("progressCompleted")
                                                     .Annotations(an =>
                                                     {
-                                                        an.Content("<img src='./../scripts/Progressbar/material-pause.svg'></img>").Add();
+                                                        an.Content("<img src=\"@Url.Content(\"~/Content/ProgressBar/material-pause.svg\")\" />").Add();
                                                     }).Render())
                 </div>
             </div>
@@ -30,7 +30,7 @@
                                            .Animation(an => an.Enable(true).Delay(0).Duration(2000)).ProgressCompleted("progressCompleted1")
                                            .Annotations(an =>
                                            {
-                                               an.Content("<img src='./../scripts/Progressbar/material-Download.svg'></img>").Add();
+                                               an.Content("<img src=\"@Url.Content(\"~/Content/ProgressBar/material-Download.svg\")\" />").Add();
                                            }).Render())
                 </div>
             </div>

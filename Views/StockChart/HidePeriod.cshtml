@@ -14,11 +14,11 @@
     <div class="control-section">
         <div>
             @(Html.EJS().StockChart("container").Load("load").EnablePeriodSelector(false)
-                                                                              .Series(sr =>
-                                                                              {
-                                                                                  sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("open").Fill("url(#gradient-chart)").Opacity(0.5).Add();
-                                                                              })
-                                                                              .Render())
+              .Series(sr =>
+              {
+                 sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("open").Fill("url(#gradient-chart)").Add();
+              })
+              .Render())
         </div>
     </div>
     <style>
@@ -91,11 +91,11 @@
         }
 
         .chart-gradient stop[offset="0"] {
-            stop-opacity: 0.9;
+            stop-opacity: 1;
         }
 
         .chart-gradient stop[offset="1"] {
-            stop-opacity: 0.3;
+            stop-opacity: 0.4;
         }
     </style>
     <svg style="height: 0">

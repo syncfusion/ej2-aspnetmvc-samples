@@ -227,7 +227,89 @@
                 toolbarObj.items[4].disabled = true;
             }
         }
-        
+        //var toolbarObj = new ej.navigations.Toolbar({
+        //    clicked: onItemClick,
+        //    items: [
+        //        {
+        //            prefixIcon: 'e-icons e-cut', tooltipText: 'Cut', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'e-icons e-copy', tooltipText: 'Copy', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'e-icons e-paste', tooltipText: 'Paste', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'e-icons e-undo', tooltipText: 'Undo', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'e-icons e-redo', tooltipText: 'Redo', disabled: true
+        //        },
+        //        {
+        //            type: 'Separator'
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-align-left-1', tooltipText: 'Align Left', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-align-center-1', tooltipText: 'Align Center', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-align-right-1', tooltipText: 'Align Right', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-align-top-1', tooltipText: 'Align Top', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-align-middle-1', tooltipText: 'Align Middle', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-align-bottom-1', tooltipText: 'Align Bottom', disabled: true
+        //        },
+        //        {
+        //            type: 'Separator'
+        //        },
+        //        {
+        //            prefixIcon: 'e-icons e-transform-right', tooltipText: 'Rotate Right', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'e-icons e-transform-left', tooltipText: 'Rotate Left', disabled: true
+        //        },
+        //        {
+        //            type: 'Separator'
+        //        },
+        //        {
+        //            prefixIcon: 'e-icons e-flip-vertical', tooltipText: 'Flip Vertical', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'e-icons e-flip-horizontal', tooltipText: 'Flip Horizontal', disabled: true
+        //        },
+        //        {
+        //            type: 'Separator'
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-distribute-horizontal', tooltipText: 'Distribute Objects Horizontally', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-distribute-vertical', tooltipText: 'Distribute Objects Vertically', disabled: true
+        //        },
+        //        {
+        //            type: 'Separator'
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-same-width', tooltipText: 'Same Width', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-same-height', tooltipText: 'Same Height', disabled: true
+        //        },
+        //        {
+        //            prefixIcon: 'sf-icon-same-size', tooltipText: 'Same Size', disabled: true
+        //        }
+        //    ]
+        //});
+
+        //toolbarObj.appendTo('#toolbar');
+
         function onItemClick(args) {
             var item = args.item.tooltipText;
             let diagram = document.getElementById("diagram").ej2_instances[0];

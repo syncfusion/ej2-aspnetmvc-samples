@@ -5,290 +5,175 @@
             width: 40%;
         }
     </style>
-    <div class="col-md-8 control-section">
-        <div class="content-wrapper">
-            @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
-           {
-               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0 },
-               Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
-               {
-                   new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
-                   {
-                       Start = 0.1, End = 32, Color = "#30B32D",StartWidth = 15, EndWidth = 15
-                   },
-                    new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
-                   {
-                       Start = 32, End = 68, Color = "#FFDF00",StartWidth = 15, EndWidth = 15
-                   },
-                  new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
-                   {
-                       Start = 68, End = 100, Color = "#F03E3E",StartWidth = 15, EndWidth = 15
-                   }
-               },
-               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
-               {
-                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
-                   {
-                       Value = 35, Height=10,Width=10,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,
-                       Offset ="-40",MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
-                   }
-               },
-               MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Height = 0, Width = 0 },
-               MinorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Height = 0 , Width = 0 },
-               LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Format = "{value}%", Offset = 30 },
-           }
-       }).Annotations(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation> {
-           new Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation
-           {
-               Content = "<div id=pointer style=width:20px;><h1 style=font-size:18px;color:#424242>35</h1></div>",
-               AxisIndex = 0, AxisValue =35, ZIndex = "1", Y = -50
-           }
-       }).Render()
+    <div class="control-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12"
+                 style="display: flex;justify-content: center; align-items: center;">
+                <div style="margin: auto;padding: 10px;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id='horizontal' style="padding:6px;cursor:pointer;width:86px;color:black;font-size:15px;border:1px solid #0074E3;background-color:white;text-align:center">Horizontal</div>
+                                </td>
+                                <td>
+                                    <div id='vertical' style="padding:6px;cursor:pointer;width:86px;color:white;font-size:15px;border:1px solid #0074E3;background-color: #0074E3;text-align:center">Vertical</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <pre style="background-color: inherit; border:hidden"></pre>
+        <div id="containerBox" style="float: left;padding: 4%;"></div>
+        <div id='containerone' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
+            @Html.EJS().LinearGauge("linearDefault").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Default").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside))
+            .Pointers(pointer => pointer.Width(0).Add()).Ranges(range => range.Start(0).End(100).StartWidth(10).EndWidth(10).Color("#F45656").Offset("5").Add())
+            .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
+        </div>
+        <div id='containertwo' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
+            @Html.EJS().LinearGauge("linearExponential").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Exponential").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Pointers(pointer => pointer.Width(0).Add())
+            .Ranges(range => { 
+                range.Start(0).End(50).StartWidth(2).EndWidth(15).Color("#F45656").Offset("5").Add(); 
+                range.Start(50).End(100).StartWidth(15).EndWidth(50).Color("#F45656").Offset("5").Add(); 
+            }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
+        </div>
+        <div id='containerthree' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
+            @Html.EJS().LinearGauge("linearConcave").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Concave").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Pointers(pointer => pointer.Width(0).Add())
+            .Ranges(range =>
+            {
+                range.Start(0).End(50).StartWidth(50).EndWidth(20).Color("#F45656").Offset("5").Add();
+                range.Start(50).End(100).StartWidth(20).EndWidth(50).Color("#F45656").Offset("5").Add();
+            }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
+        </div>
+        <div id='containerfour' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
+            @Html.EJS().LinearGauge("linearGradient").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Gradient shader").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside))
+            .Pointers(pointer => pointer.Width(0).Add()).Ranges(range => range.Start(0).End(100).StartWidth(50).EndWidth(50).Offset("5")
+            .Add()).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
+        </div>
+        <div id='containerfive' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
+            @Html.EJS().LinearGauge("linearMultiple").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Multiple ranges").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Pointers(pointer => pointer.Width(0).Add())
+            .Ranges(range =>
+            {
+                range.Start(0).End(30).StartWidth(50).EndWidth(50).Color("#FB7D55").Offset("5").Add();
+                range.Start(30).End(65).StartWidth(50).EndWidth(50).Color("#ECC85B").Offset("5").Add();
+                range.Start(65).End(100).StartWidth(50).EndWidth(50).Color("#6FC78A").Offset("5").Add();
+            }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
         </div>
     </div>
-    <div class="col-md-4 property-section">
-        <div class="property-panel-section">
-            <div class="property-panel-header">Properties</div>
-            <div class="property-panel-content">
-                <table title="Properties" style="width: 100%;">
-                    <colgroup>
-                        <col span="1" style="width: 47%;">
-                        <col span="1" style="width: 40%;">
-                        <col span="1" style="width: 10%;">
-                    </colgroup>
-                    <tbody>
-                        <tr style="height: 50px">
-                            <td>
-                                <div> Select Range</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <select name="selectIndex" autocomplete="off" id="rangeIndex">
-                                        <option value="0">Low</option>
-                                        <option value="1">Moderate</option>
-                                        <option value="2">High</option>
-                                    </select>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr style="height: 50px">
-                            <td>
-                                <div>Range Color</div>
-                            </td>
-                            <td>
-                                <div class="e-float-input" style="margin-top: 0px;">
-                                    <input type="text" value="#F03E3E" id="color" style="width: 130%; padding: 0px 0px 0px 5px">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr style="height: 50px">
-                            <td>
-                                <div>Range Font Color</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <select name="selectIndex" autocomplete="off" id="useRangeColor">
-                                        <option value="font" selected="">Default Color</option>
-                                        <option value="range">Range Color</option>
-                                    </select>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr style="height: 50px">
-                            <td>
-                                <div>
-                                    Range Start
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <input type="range" id="start" value="0" min="0" max="100">
-                                </div>
-                            </td>
-                            <td style="text-align:center;">
-                                <div>
-                                    <span id='startRangeValue'>0</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr style="height: 50px">
-                            <td>
-                                <div>
-                                    Range End
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <input type="range" id="end" value="32" min="0" max="100">
-                                </div>
-                            </td>
-                            <td style="text-align:center;">
-                                <div>
-                                    <span id='endRangeValue'>32</span>
-                                </div>
-                            </td>
-                        </tr>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        var linearDefaultGauge, linearExponentialGauge, linearConcaveGauge, linearGradientGauge, linearMultipleGauge;
+        var rangeLinearGradient = {
+            startValue: '0%',
+            endValue: '100%',
+            colorStop: [
+                { color: '#FB7D55', offset: '0%', opacity: 1 },
+                { color: '#ECC85B', offset: '50%', opacity: 1 },
+                { color: '#6FC78A', offset: '100%', opacity: 1 }]
+        };
+        function gaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            @* custom code end *@
+            if (sender.gauge.element.id === 'linearDefault') {
+                linearDefaultGauge = sender.gauge;
+            }
+            if (sender.gauge.element.id === 'linearExponential') {
+                linearExponentialGauge = sender.gauge;
+            }
+            if (sender.gauge.element.id === 'linearConcave') {
+                linearConcaveGauge = sender.gauge;
+            }
+            if (sender.gauge.element.id === 'linearGradient') {
+                linearGradientGauge = sender.gauge;
+                linearGradientGauge.axes[0].ranges[0].linearGradient = rangeLinearGradient;
+            }
+            if (sender.gauge.element.id === 'linearMultiple') {
+                linearMultipleGauge = sender.gauge;
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('horizontal').addEventListener('click', function () {
+                linearDefaultGauge.width = linearExponentialGauge.width = linearConcaveGauge.width = linearGradientGauge.width = linearMultipleGauge.width = '450px';
+                linearDefaultGauge.height = linearExponentialGauge.height = linearConcaveGauge.height = linearGradientGauge.height = linearMultipleGauge.height = '150px';
+                linearDefaultGauge.orientation = linearExponentialGauge.orientation = linearConcaveGauge.orientation = linearGradientGauge.orientation = linearMultipleGauge.orientation = "Horizontal";
+                document.getElementById('horizontal').style.color = "white";
+                document.getElementById('horizontal').style.backgroundColor = "#0074E3";
+                    document.getElementById('vertical').style.color = "black";
+                    document.getElementById('vertical').style.backgroundColor = "white";
+                    document.getElementById('containerone').className = document.getElementById('containertwo').className =
+                        document.getElementById('containerthree').className = document.getElementById('containerfour').className =
+                        document.getElementById('containerfive').className = "col-xs-12 col-sm-12 col-lg-12 col-md-12";
+                    document.getElementById('containerBox').style.padding = "0%";
 
-                        <tr style="height: 50px">
-                            <td>
-                                <div>
-                                    Range Start Width
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <input type="range" id="startWidth" value="15" min="0" max="30" />
-                                </div>
-                            </td>
-                            <td style="text-align:center;">
-                                <div>
-                                    <span id='startWidthValue'>15</span>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr style="height: 50px">
-                            <td>
-                                <div>
-                                    Range End Width
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <input type="range" id="endWidth" value="15" min="0" max="30" />
-                                </div>
-                            </td>
-                            <td style="text-align:center;">
-                                <div>
-                                    <span id='endWidthValue'>15</span>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            </div></div>
-            <script type="text/javascript">
-                var gauge;
-                function onGaugeLoad(sender) {
-                    var selectedTheme = themeName ? themeName : 'Material';
-                    sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-                    sender.gauge.orientation = "Horizontal";
-                    for (var i = 0; i < sender.gauge.annotations.length; i++) {
-                        sender.gauge.annotations[i].zIndex = "1";
-                    }
-                    gauge = sender.gauge;
-                }
+            });
+            document.getElementById('vertical').addEventListener('click', function () {
+                linearDefaultGauge.width = linearExponentialGauge.width = linearConcaveGauge.width = linearGradientGauge.width = linearMultipleGauge.width = '150px';
+                linearDefaultGauge.height = linearExponentialGauge.height = linearConcaveGauge.height = linearGradientGauge.height = linearMultipleGauge.height = '350px';
+                linearDefaultGauge.orientation = linearExponentialGauge.orientation = linearConcaveGauge.orientation = linearGradientGauge.orientation = linearMultipleGauge.orientation = "Vertical";
+                document.getElementById('vertical').style.color = "white";
+                document.getElementById('vertical').style.backgroundColor = "#0074E3";
+                    document.getElementById('horizontal')['style']['color'] = "black";
+                    document.getElementById('horizontal')['style']['backgroundColor'] = "white";
+                    document.getElementById('containerone').className = document.getElementById('containertwo').className =
+                        document.getElementById('containerthree').className = document.getElementById('containerfour').className =
+                        document.getElementById('containerfive').className = "col-xs-4 col-sm-4 col-lg-2 col-md-2";
+                    document.getElementById('containerBox').style.padding = "4%";
 
-                var rangeIndex = new ej.dropdowns.DropDownList({
-                    index: 0,
-                    placeholder: 'Select Range Bar Color',
-                    width: '130%',
-                    change: function () {
-                        var value = +rangeIndex.value;
-                        var start = document.getElementById('start');
-                        var end = document.getElementById('end');
-                        var rangeColor = document.getElementById('color');
-                        var startWidth = document.getElementById('startWidth');
-                        var endWidth = document.getElementById('endWidth');
-                        start.value = gauge.axes[0].ranges[value].start.toString();
-                        end.value = gauge.axes[0].ranges[value].end.toString();
-                        startWidth.value = gauge.axes[0].ranges[value].startWidth.toString();
-                        endWidth.value = gauge.axes[0].ranges[value].endWidth.toString();
-                        rangeColor.value = gauge.axes[0].ranges[value].color.toString();
-                        document.getElementById('startWidthValue').innerHTML = startWidth.value;
-                        document.getElementById('endWidthValue').innerHTML = endWidth.value;
-                        document.getElementById('startRangeValue').innerHTML = start.value;
-                        document.getElementById('endRangeValue').innerHTML = end.value;
-                        gauge.refresh();
-                    }
-                });
-                rangeIndex.appendTo('#rangeIndex');
-                document.getElementById('color').onchange = function () {
-                    var ele = document.getElementById('color');
-                    gauge.axes[0].ranges[+rangeIndex.value].color = ele.value;
-                    gauge.refresh();
-                };
-                document.getElementById('startWidth').ontouchmove = document.getElementById('startWidth').onpointermove =
-                    document.getElementById('startWidth').onchange = function () {
-                        var ele = document.getElementById('startWidth');
-                        gauge.axes[0].ranges[+rangeIndex.value].startWidth = parseInt(ele.value, 10);
-                        document.getElementById('startWidthValue').innerHTML = ele.value;
-                        gauge.refresh();
-                    };
-                document.getElementById('endWidth').ontouchmove = document.getElementById('endWidth').onpointermove =
-                    document.getElementById('endWidth').onchange = function () {
-                        var ele = document.getElementById('endWidth');
-                        gauge.axes[0].ranges[+rangeIndex.value].endWidth = parseInt(ele.value, 10);
-                        document.getElementById('endWidthValue').innerHTML = ele.value;
-                        gauge.refresh();
-                    };
-                document.getElementById('start').ontouchmove = document.getElementById('start').onpointermove =
-                    document.getElementById('start').onchange = function () {
-                        var start = document.getElementById('start');
-                        var end = document.getElementById('end');
-                        gauge.axes[0].ranges[+rangeIndex.value].start = parseInt(start.value, 10);
-                        gauge.axes[0].ranges[+rangeIndex.value].end = parseInt(end.value, 10);
-                        document.getElementById('startRangeValue').innerHTML = start.value;
-                        gauge.refresh();
-                    };
-                document.getElementById('end').ontouchmove = document.getElementById('end').onpointermove =
-                    document.getElementById('end').onchange = function () {
-                        var start = document.getElementById('start');
-                        var end = document.getElementById('end');
-                        gauge.axes[0].ranges[+rangeIndex.value].start = parseInt(start.value, 10);
-                        gauge.axes[0].ranges[+rangeIndex.value].end = parseInt(end.value, 10);
-                        document.getElementById('endRangeValue').innerHTML = end.value;
-                        gauge.refresh();
-                    };
-                var useRangeColor = new ej.dropdowns.DropDownList({
-                    index: 0,
-                    placeholder: 'Select Range Bar Color',
-                    width: '130%',
-                    change: function () {
-                        gauge.axes[0].labelStyle.useRangeColor = (useRangeColor.value === 'range') ? true : false;
-                        gauge.refresh();
-                    }
-                });
-                useRangeColor.appendTo('#useRangeColor');
-            </script>
+            });
+        });
+
+    </script>
 }
 
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample illustrates how to highlight a region in an axis by using ranges in gauge. Start, end, color, and width of the range can be changed by using the options provided in the property panel.
+            This sample demonstrates the various customization options for the linear gauge's range. For example, an exponential appearance, a gradient color, and a multiple range.
         </p>
     </div>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Range in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Range in ASP.NET MVC Linear Gauge control. Explore here for more details." />
+}
 @section Description{
     <div id="description">
         <p>
-            In this example, you can see how to render and configure the ranges in linear gauge. You can use
-            <code>start</code>,
-            <code>end</code>,
-            <code>startWidth</code>,
-            <code>endWidth</code>, and
-            <code>position</code> properties to customize the ranges. You can also specify various colors for the ranges in the axis. If you enable
-            the
-            <code>useRangeColor</code> property, then the axis labels will be displayed based on its range color.
-            <br>
+            In this example, you can see how to render and configure ranges in the linear gauge. The
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.LinearGauge.LinearGaugeRange.html">
+                Ranges
+            </a> and
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.LinearGauge.LinearGaugeRange.html#Syncfusion_EJ2_LinearGauge_LinearGaugeRange_LinearGradient">linearGradient</a> are used to display multiple ranges, perform range customization, and apply gradient colors, respectively.
         <p>
-            More information about ranges can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+            More information on the ranges can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/ranges">documentation section</a>.
         </p>
     </div>
-
 }
 
-
-
 @section Title{
-                    <title>ASP.NET MVC Linear Gauge Range Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Linear Gauge Range Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Range in ASP.NET MVC Linear Gauge Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Range in ASP.NET MVC Linear Gauge Control</h1>
+}

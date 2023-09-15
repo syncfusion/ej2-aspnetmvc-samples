@@ -3,15 +3,23 @@
 @section ControlsSection{
     <div class="col-md-8 control-section">
         <div class="content-wrapper">
-            @Html.EJS().CircularGauge("legend-container").Load("onGaugeLoad").Title("Measure of wind speed in Km/h").LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.CircularGauge.LegendPosition.Bottom)).Axes(axes => axes
-   .Radius("80%").StartAngle(230).EndAngle(130).LabelStyle(new CircularGaugeLabel
-   {
-       Position = Position.Inside
-   }).Pointers(ViewBag.Pointers).Ranges(ViewBag.Ranges)
-   .StartAngle(210).EndAngle(150).Minimum(0).Maximum(120).Radius("80%")
-   .LineStyle(new CircularGaugeLine { Width = 2 })
-   .MinorTicks(new CircularGaugeTick { Height = 8, Interval = 10 }).MajorTicks(new CircularGaugeTick { Height = 16, Color = "#9E9E9E", Interval = 20 }).Add()
-   ).Render()
+            @Html.EJS().CircularGauge("legend-container").Load("onGaugeLoad").Background("transparent").Title("Measure of wind speed in km/h").TitleStyle(titleStyle =>
+            titleStyle.FontFamily("inherit")).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.CircularGauge.LegendPosition.Bottom).TextStyle(textStyle =>
+            textStyle.FontFamily("inherit").Size("12px"))).Axes(axes => axes.Radius("80%").StartAngle(230).EndAngle(130).LabelStyle(labelStyle =>
+            labelStyle.Position(Position.Inside).UseRangeColor(false).Font(font => font.FontFamily("inherit")))
+            .Pointers(pointer => pointer.Value(70).Radius("60%").PointerWidth(8).Cap(cap => cap.Radius(7)).NeedleTail(needleTail => needleTail.Length("18%")).Add())
+            .Ranges(range =>
+                 {
+                range.Start(0).End(5).Color("#ccffff").Radius("110%").LegendText("Light Air").Add();
+                range.Start(5).End(11).Color("#99ffff").Radius("110%").LegendText("Light Breeze").Add();
+                range.Start(11).End(19).Color("#99ff99").Radius("110%").LegendText("Gentle Breeze").Add();
+                range.Start(19).End(28).Color("#79ff4d").Radius("110%").LegendText("Moderate Breeze").Add();
+                range.Start(28).End(49).Color("#c6ff1a").Radius("110%").LegendText("Strong Breeze").Add();
+                range.Start(49).End(74).Color("#e6ac00").Radius("110%").LegendText("Gale").Add();
+                range.Start(74).End(102).Color("#ff6600").Radius("110%").LegendText("Storm").Add();
+                range.Start(102).End(120).Color("#ff0000").Radius("110%").LegendText("Hurricane Force").Add();
+            }).StartAngle(210).EndAngle(150).Minimum(0).Maximum(120).Radius("80%").LineStyle(lineStyle => lineStyle.Width(2))
+            .MinorTicks(minorTick => minorTick.Height(8).Interval(10)).MajorTicks(majorTick => majorTick.Height(16).Color("#9E9E9E").Interval(20)).Add()).Render()
         </div>
     </div>
     <div class="col-md-4 property-section">
@@ -19,158 +27,116 @@
             <tbody>
                 <tr style="height: 50px">
                     <td>
-                        <div style="padding-left: 0px;" id="showLegend">Show Legend</div>
+                        <div style="padding-left: 0px; font-size: 14px;" id="showLegend">Show Legend</div>
                     </td>
                     <td>
                         <div style="padding-top:0px; padding-left: 0px;">
-                            <input type="checkbox" checked id="enable">
+                            @Html.EJS().CheckBox("enable").Change("onChange").Checked(true).Render()
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
                     <td>
-                        <div id="toggleLegend" style=" padding-left: 0px">Show range when the legend item is toggled</div>
+                        <div id="toggleLegend" style=" padding-left: 0px; font-size: 14px;">Show range when the legend item is toggled</div>
                     </td>
                     <td>
                         <div style="padding-left:0px;margin-top: -10px">
-                            <input type="checkbox" checked id="toggle">
+                            @Html.EJS().CheckBox("toggle").Change("onToggleChange").Checked(true).Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 60px">
+                    <td>
+                        <div class="property-text" style="margin-top: 10px; font-size: 14px; padding-left: 0px">Position</div>
+                    </td>
+                    <td>
+                        <div style="margin-top: -5px; height: 40px;">
+                            @Html.EJS().DropDownList("legendPosition").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewBag.legendPosition).Value("Bottom").Change("valueChange").Render()
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
                     <td>
-                        <div class="property-text" style="margin-top: 10px; padding-left: 0px">Legend position</div>
+                        <div class="property-text" style="padding-left: 0px; font-size: 14px;">Alignment</div>
                     </td>
                     <td>
-                        <div style=" margin-top: 10px">
-                        <select name="legendPos" autocomplete="off" id="legendPosition" style="width:60%;">
-							<option value="Bottom" selected>Bottom</option>
-							<option value="Top">Top</option>                            
-                            <option value="Left">Left</option>
-                            <option value="Right">Right</option>
-                            <option value="Auto">Auto</option>
-                        </select>
-                         </div>
+                        <div style="margin-top: -5px; height: 40px;">
+                            @Html.EJS().DropDownList("Alignment").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewBag.legendAlignment).Value("Center").Change("legendPositionValueChange").Render()
+                        </div>
                     </td>
                 </tr>
-                <tr style="height: 50px">
+                <tr style="height: 60px">
                     <td>
-                        <div class="property-text" style="padding-left: 0px">Alignment</div>
+                        <div class="property-text" style="padding-left: 0px; font-size: 14px;">Shape</div>
                     </td>
                     <td>
-                        <div>
-                        <select name="Align" autocomplete="off" id="Alignment" style="width:60%;">
-							<option value="Center" selected>Center</option>
-							<option value="Far" >Far</option>
-                            <option value="Near">Near</option>
-                        </select>
-                         </div>
-                    </td>
-                </tr>
-                <tr style="height: 50px">
-                    <td>
-                        <div class="property-text" style="padding-left: 0px">Shape</div>
-                    </td>
-                    <td>
-                        <div>
-                        <select name="shape" autocomplete="off" id="Shape" style="width:60%;">
-                            <option value="Circle" selected>Circle</option>
-                            <option value="Rectangle">Rectangle</option>
-                            <option value="Triangle">Triangle</option>
-                            <option value="Diamond">Diamond</option>
-                            <option value="InvertedTriangle">InvertedTriangle</option>
-                        </select>
+                        <div style="margin-top: -5px; height: 40px;">
+                            @Html.EJS().DropDownList("Shape").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewBag.legendShape).Value("Circle").Change("legendShapeValueChange").Render()
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <style>
+        input.e-input.e-bigger, textarea.e-input.e-bigger, .e-bigger input.e-input, .e-bigger textarea.e-input, .e-input-group.e-bigger, .e-bigger .e-input-group, .e-input-group.e-control-wrapper.e-bigger, .e-bigger .e-input-group.e-control-wrapper {
+            height: 100%;
+            font-size: 14px;
+            align-items: center;
+        }
+    </style>
     <script type="text/javascript">
-        var colortObj;
         var circulargauge;
         function onGaugeLoad(sender) {
-            if (window.gaugeLoaded)
-                return;
-            window.gaugeLoaded = true;
-            window.setTimeout(function () {
-                var gaugeWidth = document.getElementById('legend-container').offsetWidth;
-                var svgWidth = document.getElementById('legend-container_svg').offsetWidth;
-                if (gaugeWidth != svgWidth)
-                    sender.gauge.refresh();
-            }, 200);
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            @* custom code end *@
             circulargauge = sender.gauge;
-            for (var i = 0; i < sender.gauge.axes[0].annotations.length; i++) {
-                sender.gauge.axes[0].annotations[i].zIndex = "1";
-            }
         }
-        var showLegendCheckBox = new ej.buttons.CheckBox(
-         {
-                change: (args) => {
-                    circulargauge.legendSettings.visible = args.checked;
-                    circulargauge.refresh();
-            },
-            checked: true
-            }, '#enable');
-        var toggleLegendCheckBox = new ej.buttons.CheckBox(
-         {
-            change: (args) => {
-                circulargauge.legendSettings.toggleVisibility = args.checked;
-            },
-            checked: true
-         },'#toggle');
-          var legendPosition = new ej.dropdowns.DropDownList({
-                index: 0,
-                placeholder: 'Legend Position',
-                width: '100%',
-              change: () => {
-                  circulargauge.legendSettings.position = legendPosition.value;
-              }
-          });
-        legendPosition.appendTo('#legendPosition');  
-        var legendAlignment = new ej.dropdowns.DropDownList({
-             index: 0,
-             placeholder: 'Legend Alignment',
-             width: '100%',
-              change: () => {
-                  circulargauge.legendSettings.alignment = legendAlignment.value;
-              }
-          });
-          legendAlignment.appendTo('#Alignment');
-        var legendShape = new ej.dropdowns.DropDownList({
-             index: 0,
-             placeholder: 'Legend Shape',
-             width: '100%',
-              change: () => {
-                  circulargauge.legendSettings.shape = legendShape.value;
-              }
-          });
-          legendShape.appendTo('#Shape');
-        
+
+        function valueChange() {
+            var legendPosition = document.getElementById('legendPosition').ej2_instances[0];
+            circulargauge.legendSettings.position = legendPosition.value;
+        };
+        function legendPositionValueChange() {
+            var legendAlignment = document.getElementById('Alignment').ej2_instances[0];
+            circulargauge.legendSettings.alignment = legendAlignment.value;
+        };
+        function legendShapeValueChange() {
+            var legendShape = document.getElementById('Shape').ej2_instances[0];
+            circulargauge.legendSettings.shape = legendShape.value == "Inverted Triangle" ? "InvertedTriangle" : legendShape.value;
+        };
+
+        function onChange(args) {
+            circulargauge.legendSettings.visible = args.checked;
+        }
+        function onToggleChange(args) {
+            circulargauge.legendSettings.toggleVisibility = args.checked;
+        }
+
     </script>
 }
 
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample visualizes moving air types in the legend based on their speed. The visibility, shape, alignment and position of the legend can be changed using the properties panel options.
+            This sample directs the visualization of moving wind types based on their speed via the legend of the circular gauge component. The visibility, shape, alignment, and position of the legend can all be customized.
         </p>
     </div>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Legend in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Legend in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
 @section Description{
     <div id="description">
         <p>
-            In this example, you can see how to render a legend in circular gauge. A legend item denotes the axis ranges. Any number of legend items can be added to a legend. You can bind the desired colors  and
-            Legend text to the corresponding ranges.
+            The legend provides useful information for interpreting what the circular gauge's axis range displays, and it can be represented in a variety of colors, shapes, and other identifiers depending on the data. To do so, use the
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeLegendSettings.html">LegendSettings</a> and its properties.
         </p>
         <p>
-            More information on the ranges can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+            More information on the legend can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/gauge-legend">documentation section</a>.
         </p>
     </div>
 }
@@ -179,8 +145,8 @@
 
 
 @section Title{
-                    <title>ASP.NET MVC Circular Gauge Legend Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Circular Gauge Legend Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Legend in ASP.NET MVC Circular Gauge Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Legend in ASP.NET MVC Circular Gauge Control</h1>
+}

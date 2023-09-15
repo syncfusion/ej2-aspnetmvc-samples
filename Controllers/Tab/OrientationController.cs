@@ -17,7 +17,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
 {
     public partial class TabController : Controller
     {
-        List<TabTabItem> orientationItems = new List<TabTabItem>();
+        List<TabItem> orientationItems = new List<TabItem>();
         public ActionResult Orientation()
         {
             List<object> rome = new List<object>();
@@ -38,9 +38,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
             london.Add(new { Id = "9", Name = "Nancy Davolio", Role = "Product Manager", imgSrc = Url.Content("~/Content/tab/9.png") });
             ViewBag.londonData = london;
 
-            orientationItems.Add(new TabTabItem { Header = new TabHeader { Text = "Rome" }, Content = "#rome" });
-            orientationItems.Add(new TabTabItem { Header = new TabHeader { Text = "Paris" }, Content = "#paris" });
-            orientationItems.Add(new TabTabItem { Header = new TabHeader { Text = "London" }, Content = "#london" });
+            orientationItems.Add(new TabItem { Header = new TabHeader { Text = "Rome" }, Content = "#rome" });
+            orientationItems.Add(new TabItem { Header = new TabHeader { Text = "Paris" }, Content = "#paris" });
+            orientationItems.Add(new TabItem { Header = new TabHeader { Text = "London" }, Content = "#london" });
             ViewBag.orientationItems = orientationItems;
 
             ViewBag.styleData = new string[] { "Default", "Fill", "Accent" };

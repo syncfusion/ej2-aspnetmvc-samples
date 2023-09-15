@@ -17,7 +17,7 @@
     })
       .PrimaryXAxis(xaxis =>
           xaxis.Interval(1)
-            .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45)
+            .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
              .MajorGridLines(mg => mg.Width(0))
                 .MinorGridLines(mg => mg.Width(0))
                 .MajorTickLines(mt => mt.Width(0))
@@ -56,6 +56,8 @@
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.series[0].cornerRadius.topLeft = ej.base.Browser.isDevice ? 4 : 6;
             args.chart.series[0].cornerRadius.topRight = ej.base.Browser.isDevice ? 4 : 6;
+            args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
+            args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
             if (selectedTheme === 'material3') {
                 args.chart.series[0].paretoOptions.fill = '#F7523F';
                 args.chart.series[0].paretoOptions.marker.fill = '#F7523F';

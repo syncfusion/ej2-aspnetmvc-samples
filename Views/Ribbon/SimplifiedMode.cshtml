@@ -1,9 +1,9 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Ribbon
 @using Syncfusion.EJ2.Navigations
 
 @{
-    List<MenuItem> pasteOptions = new List<MenuItem>() { new MenuItem { Text = "Keep Source Format" }, new MenuItem { Text = "Merge format" }, new MenuItem { Text = "Keep text only" } };
+    List<MenuItem> pasteOptions = new List<MenuItem>() { new MenuItem { Text = "Keep Source Format" }, new MenuItem { Text = "Merge Format" }, new MenuItem { Text = "Keep Text Only" } };
     List<MenuItem> findOptions = new List<MenuItem>() { new MenuItem { Text = "Find", IconCss = "e-icons e-search" }, new MenuItem { Text = "Advanced find", IconCss = "e-icons e-search" }, new MenuItem { Text = "Go to", IconCss = "e-icons e-arrow-right" } };
     List<MenuItem> selectOptions = new List<MenuItem>() { new MenuItem { Text = "Select All" }, new MenuItem { Text = "Select Objects" } };
     List<MenuItem> dictateOptions = new List<MenuItem>() { new MenuItem { Text = "Chinese" }, new MenuItem { Text = "English" }, new MenuItem { Text = "German" }, new MenuItem { Text = "French" } };
@@ -33,6 +33,23 @@
         }
     };
     FileMenuSettings FileMenuSettings = new FileMenuSettings() { Text = "File", Visible = true, MenuItems = fileOptions, Select = "function(args){selectMenuItem(args)}" };
+
+    List<RibbonGroupButtonItem> groupButtonMultiple = new List<RibbonGroupButtonItem>() {
+
+      new RibbonGroupButtonItem { IconCss = "e-icons e-bold", Content = "Bold", Selected = true, Click="function(){updateContent('Bold')}" },
+      new RibbonGroupButtonItem {IconCss = "e-icons e-italic", Content = "Italic", Click="function(){updateContent('Italic')}" },
+      new RibbonGroupButtonItem {IconCss = "e-icons e-underline", Content = "Underline", Click="function(){updateContent('Underline')}" },
+      new RibbonGroupButtonItem { IconCss = "e-icons e-strikethrough", Content = "Strikethrough", Click="function(){updateContent('Strikethrough')}" },
+      new RibbonGroupButtonItem { IconCss = "e-icons e-change-case", Content = "Change Case", Click="function(){updateContent('Change Case')}" }
+    };
+
+    List<RibbonGroupButtonItem> groupButtonSingle = new List<RibbonGroupButtonItem>() {
+
+      new RibbonGroupButtonItem { IconCss = "e-icons e-align-left", Selected = true, Click="function(){updateContent('Align Left')}" },
+      new RibbonGroupButtonItem {IconCss = "e-icons e-align-center", Click="function(){updateContent('Align Center')}" },
+      new RibbonGroupButtonItem {IconCss = "e-icons e-align-right", Click="function(){updateContent('Align Right')}" },
+      new RibbonGroupButtonItem { IconCss = "e-icons e-justify", Click="function(){updateContent('Justify')}" }
+    };
 }
 
 
@@ -75,38 +92,47 @@
                        {
                            items.Type(RibbonItemType.ComboBox).ComboBoxSettings(comboBox =>
                            {
-                               comboBox.DataSource(fontStyle).Index(2).AllowFiltering(true).Width("150px").Change("function(args){updateContent('Font Style -> ' + args.itemData.text)}");
+                               comboBox.DataSource(fontStyle).Index(2).AllowFiltering(true).Width("150px").Change("function(args){ if (args.itemData) { updateContent('Font Style -> ' + args.itemData.text)}}");
                            }).Add();
                            items.Type(RibbonItemType.ComboBox).ComboBoxSettings(comboBox =>
                            {
-                               comboBox.DataSource(fontSize).Index(4).AllowFiltering(true).Width("65px").PopupWidth("85px").Change("function(args){updateContent('Font Size -> ' + args.itemData.text)}");
+                               comboBox.DataSource(fontSize).Index(4).AllowFiltering(true).Width("65px").PopupWidth("85px").Change("function(args){ if (args.itemData) { updateContent('Font Size -> ' + args.itemData.text)}}");
                            }).Add();
                        }).Add();
                        collections.Items(items =>
                        {
+                           items.Type(RibbonItemType.GroupButton).AllowedSizes(RibbonItemSize.Small).GroupButtonSettings(groupButton =>
+                           {
+                               groupButton.Selection(RibbonGroupButtonSelection.Multiple).Items(groupButtonMultiple);
+                           }).Add();
                            items.Type(RibbonItemType.ColorPicker).AllowedSizes(RibbonItemSize.Small).DisplayOptions(Syncfusion.EJ2.Ribbon.DisplayMode.Simplified | Syncfusion.EJ2.Ribbon.DisplayMode.Classic).ColorPickerSettings(colorPicker =>
                            {
                                colorPicker.Value("#123456").Change("function(args){updateContent(args.currentValue.hex + ' color')}");
                            }).Add();
+                       }).Add();
+                   }).Add();
+                   group.Header("Paragraph").Orientation(ItemOrientation.Row).GroupIconCss("e-icons e-align-center").Collections(collections =>
+                   {
+                       collections.Items(items =>
+                       {
                            items.Type(RibbonItemType.Button).AllowedSizes(RibbonItemSize.Small).ButtonSettings(button =>
                            {
-                               button.IconCss("e-icons e-bold").Content("Bold").IsToggle(true).Clicked("function(){updateContent('Bold')}");
+                               button.IconCss("e-icons e-decrease-indent").Clicked("function(){updateContent('Decrease Indent')}");
                            }).Add();
                            items.Type(RibbonItemType.Button).AllowedSizes(RibbonItemSize.Small).ButtonSettings(button =>
                            {
-                               button.IconCss("e-icons e-italic").Content("Italic").IsToggle(true).Clicked("function(){updateContent('Italic')}");
+                               button.IconCss("e-icons e-increase-indent").Clicked("function(){updateContent('Increase Indent')}");
                            }).Add();
                            items.Type(RibbonItemType.Button).AllowedSizes(RibbonItemSize.Small).ButtonSettings(button =>
                            {
-                               button.IconCss("e-icons e-underline").Content("Underline").IsToggle(true).Clicked("function(){updateContent('Underline')}");
+                               button.IconCss("e-icons e-paragraph").Clicked("function(){updateContent('Paragraph Mark')}");
                            }).Add();
-                           items.Type(RibbonItemType.Button).AllowedSizes(RibbonItemSize.Small).ButtonSettings(button =>
+                       }).Add();
+                       collections.Items(items =>
+                       {
+                           items.Type(RibbonItemType.GroupButton).AllowedSizes(RibbonItemSize.Small).GroupButtonSettings(groupButton =>
                            {
-                               button.IconCss("e-icons e-strikethrough").Content("Strikethrough").IsToggle(true).Clicked("function(){updateContent('Strikethrough')}");
-                           }).Add();
-                           items.Type(RibbonItemType.Button).AllowedSizes(RibbonItemSize.Small).ButtonSettings(button =>
-                           {
-                               button.IconCss("e-icons e-change-case").Content("Change Case").IsToggle(true).Clicked("function(){updateContent('Change Case')}");
+                               groupButton.Selection(RibbonGroupButtonSelection.Single).Items(groupButtonSingle);
                            }).Add();
                        }).Add();
                    }).Add();
@@ -177,7 +203,7 @@
                        {
                            items.Id("pictureddl").Type(RibbonItemType.DropDown).DropDownSettings(dropDown =>
                            {
-                               dropDown.IconCss("e-icons e-image").Content("Pictures").Target("#pictureList"); ;
+                               dropDown.IconCss("e-icons e-image").Content("Pictures").Target("#listView"); ;
                            }).Add();
                            items.Type(RibbonItemType.DropDown).DropDownSettings(dropDown =>
                            {

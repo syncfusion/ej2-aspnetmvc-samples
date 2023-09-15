@@ -23,7 +23,7 @@
                 })
                 .ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName")).Resources((IEnumerable<object>)ViewBag.Resources)
                 .LabelSettings(ls => ls.LeftLabel("#leftLabel").RightLabel("#rightLabel").TaskLabel("${Progress}%"))
-                .SplitterSettings(sp => sp.ColumnIndex(2))
+                .SplitterSettings(sp => sp.Position("35%"))
                 .ProjectStartDate("03/24/2019")
                 .ProjectEndDate("05/04/2019")
                 .Render()

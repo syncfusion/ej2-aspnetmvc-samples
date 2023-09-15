@@ -5,6 +5,8 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
+using Syncfusion.EJ2.FileManager;
+using Syncfusion.EJ2.Navigations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,16 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: DirectoryUpload
         public ActionResult DirectoryUpload()
         {
+            List<object> items = new List<object>();
+            items.Add(new
+            {
+                text = "Folder"
+            });
+            items.Add(new
+            {
+                text = "Files"
+            });
+            ViewBag.datasource = items;
             return View();
         }
     }

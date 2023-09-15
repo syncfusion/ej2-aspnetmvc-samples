@@ -1,5 +1,7 @@
 @using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Diagrams;
+@using Syncfusion.EJ2.DropDowns;
+
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper" style="background: white">
@@ -16,7 +18,7 @@
         </div>
         <div class="row property-panel-content" id="appearance">
             <div class="row row-header">
-                Appearance
+                <b>Connector Types</b>
             </div>
             <div class="row" style="padding-top: 8px">
                 <div class="image-pattern-style" id="straightConnector" style="background-image: url('@Url.Content("~/Content/images/diagram/connector/Connectors_1.png")'); margin-right: 3px">
@@ -52,12 +54,42 @@
             </div>
         </div>
         <div class="row property-panel-content" style="padding-top: 10px">
-            <div class="row" style="padding-top: 10px">
-                @Html.EJS().CheckBox("checked").Checked(false).Label("Lock").Change("checkBoxChanged").Render()
+            <div class="row row-header" style="padding-top: 8px">
+                <b>Decorators</b>
+            </div>
+            <div class="row" style="padding-top: 8px; display: flex;">
+                <label>Source Decorators</label>
+                <div>
+                    @Html.EJS().DropDownList("sourceDecorator2").Index(0).Change("srcDecShapeChange").DataSource(
+(IEnumerable<object>)ViewBag.shapes).Change("srcDecShapeChange").Fields(new DropDownListFieldSettings() { Text = "text", Value = "value" }).Render()
+                </div>
+            </div>
+            <div class="row" style="padding-top: 8px; display: flex;">
+                <label>Target Decorators</label>
+                <div>
+                    @Html.EJS().DropDownList("targetDecorator").Index(4).Change("tarDecShapeChange").DataSource(
+(IEnumerable<object>)ViewBag.shapes).Change("tarDecShapeChange").Fields(new DropDownListFieldSettings() { Text = "text", Value = "value" }).Render()
+                </div>
+            </div>
+            <div class="row" style="padding-top: 8px; display: flex;">
+                <label>Segment Decorators</label>
+                <div>
+                    @Html.EJS().DropDownList("segmentDecorator").Index(2).Change("segDecShapeChange").DataSource(
+(IEnumerable<object>)ViewBag.shapes).Change("segDecShapeChange").Fields(new DropDownListFieldSettings() { Text = "text", Value = "value" }).Render()
+                </div>
+            </div>
+        </div>
+        <div class="row property-panel-content" style="padding-top: 10px">
+            <div class="row row-header">
+                <b>Appearance</b>
+            </div>
+            <div class="row" style="padding-top: 8px; display: flex;">
+                <label>Line color</label>
+                @Html.EJS().ColorPicker("fill").Value("#6f409f").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).ShowButtons(false).Disabled(false).Change("colorChange").Render()
             </div>
         </div>
     </div>
-    <style>
+    <style scoped>
         .image-pattern-style {
             background-color: white;
             background-size: contain;
@@ -68,6 +100,22 @@
             border: 1px solid #D5D5D5;
             background-position: center;
             float: left;
+        }
+
+        label {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 400;
+            width: 100%;
+        }
+
+        .e-colorpicker-wrapper .e-split-btn-wrapper .e-split-colorpicker.e-split-btn .e-selected-color .e-split-preview {
+            width: 100px !important;
+            margin-left: -40px !important;
+        }
+
+        .e-colorpicker-wrapper .e-split-btn-wrapper .e-split-colorpicker.e-split-btn {
+            width: 110px !important;
         }
 
         .row {
@@ -129,6 +177,12 @@
                     fill: '#6f409f',
                 }
             }
+            obj.segments = [
+                {
+                    type: 'Bezier',
+                }
+            ];
+            obj.constraints = ej.diagrams.ConnectorConstraints.Default | ej.diagrams.ConnectorConstraints.DragSegmentThumb;
         }
 
 
@@ -186,33 +240,6 @@
                     { id: 'portOut', offset: { x: 1, y: 0.5 }, visibility: ej.diagrams.PortVisibility.Hidden },
                 ];
                 return ports;
-            }
-        }
-
-        function checkBoxChanged(args) {
-            var label = "Aspect Ratio";
-            var diagram = document.getElementById("container").ej2_instances[0];
-            for (var i = 0; i < diagram.nodes.length; i++) {
-                node = diagram.nodes[i];
-                if (args.checked) {
-                    node.constraints &= ~(ej.diagrams.NodeConstraints.Resize | ej.diagrams.NodeConstraints.Rotate | ej.diagrams.NodeConstraints.Drag);
-                    node.constraints |= ej.diagrams.NodeConstraints.ReadOnly;
-                }
-                else {
-                    node.constraints |= ej.diagrams.NodeConstraints.Default & ~(ej.diagrams.NodeConstraints.ReadOnly);
-                }
-                diagram.dataBind();
-            }
-            for (var i = 0; i < diagram.connectors.length; i++) {
-                connector = diagram.connectors[i];
-                if (args.checked) {
-                    connector.constraints &= ~(ej.diagrams.ConnectorConstraints.DragSourceEnd
-                        | ej.diagrams.ConnectorConstraints.DragTargetEnd | ej.diagrams.ConnectorConstraints.DragSegmentThumb);
-                    connector.constraints |= ej.diagrams.ConnectorConstraints.ReadOnly;
-                } else {
-                    connector.constraints |= ej.diagrams.ConnectorConstraints.Default & ~(ej.diagrams.ConnectorConstraints.ReadOnly);
-                }
-                diagram.dataBind();
             }
         }
 
@@ -280,23 +307,70 @@
                 if (sourceDec) {
                     connector.sourceDecorator = {
                         style: {
-                            strokeColor: '#6f409f',
-                            fill: '#6f409f', strokeWidth: 2
+                            strokeColor: connector.style.strokeColor,
+                            fill: connector.style.strokeColor, strokeWidth: 2
                         }, shape: 'Circle'
                     };
+                    document.getElementById("sourceDecorator2").value = 'Circle';
                 } else {
                     connector.sourceDecorator = { shape: 'None' };
+                    document.getElementById("sourceDecorator2").value = 'None';
                 }
                 connector.targetDecorator = {
                     style: {
-                        strokeColor: '#6f409f',
-                        fill: '#6f409f', strokeWidth: 2
+                        strokeColor: connector.style.strokeColor,
+                        fill: connector.style.strokeColor, strokeWidth: 2
                     }, shape: 'Arrow'
                 };
+                document.getElementById("targetDecorator").value = 'Arrow';
                 diagram.dataBind();
             }
         }
-        
+        function colorChange(args) {
+            var diagram = document.getElementById("container").ej2_instances[0];
+            for (var i = 0; i < diagram.connectors.length; i++) {
+                diagram.connectors[i].style.strokeColor = args.currentValue.hex;
+                diagram.connectors[i].targetDecorator.style.strokeColor = args.currentValue.hex;
+                diagram.connectors[i].targetDecorator.style.fill = args.currentValue.hex;
+                diagram.connectors[i].sourceDecorator.style.strokeColor = args.currentValue.hex;
+                diagram.connectors[i].sourceDecorator.style.fill = args.currentValue.hex;
+            }
+            diagram.dataBind();
+        };
+        function srcDecShapeChange(args) {
+            var diagram = document.getElementById("container").ej2_instances[0];
+            for (var i = 0; i < diagram.connectors.length; i++) {
+                diagram.connectors[i].sourceDecorator = {
+                    shape: args.itemData.value,
+                    style: {
+                        strokeColor: diagram.connectors[i].style.strokeColor,
+                        fill: diagram.connectors[i].style.strokeColor,
+                    }
+                };
+            }
+            diagram.dataBind();
+
+        };
+        function tarDecShapeChange(args) {
+            var diagram = document.getElementById("container").ej2_instances[0];
+            for (var i = 0; i < diagram.connectors.length; i++) {
+                diagram.connectors[i].targetDecorator = {
+                    shape: args.itemData.value,
+                    style: {
+                        strokeColor: diagram.connectors[i].style.strokeColor,
+                        fill: diagram.connectors[i].style.strokeColor,
+                    }
+                };
+                diagram.dataBind();
+            }
+        };
+        function segDecShapeChange(args) {
+            var diagram = document.getElementById("container").ej2_instances[0];
+            for (var i = 0; i < diagram.connectors.length; i++) {
+                diagram.segmentThumbShape = args.itemData.value;
+            }
+            diagram.dataBind();
+        };
 
     </script>
 }
@@ -306,8 +380,8 @@
     </p>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Connectors in ASP.NET MVC Diagram control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Connectors in ASP.NET MVC Diagram control. Explore here for more details." />
+}
 @section Description{
     <p>
         In this example, you can see how to add connectors to connect the shapes and how to customize the appearance of the connectors.
@@ -320,8 +394,6 @@
     </p>
 
     <p>
-        Additionally, you can see how to lock the connectors to disable editing. The
-        <code>constraints</code> property of connector enables/disables editing.
         In this example, the shapes are automatically arranged using hierarchical tree layout.
     </p>
 }
@@ -329,8 +401,8 @@
 
 
 @section Title{
-                    <title>ASP.NET MVC Diagram Connectors Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Diagram Connectors Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Connectors in ASP.NET MVC Diagram Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Connectors in ASP.NET MVC Diagram Control</h1>
+}

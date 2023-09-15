@@ -18,7 +18,7 @@
                {
                sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).DataSource("data").XName("x").YName("high").Opacity(0.5).Name("google").Add();
                }
-            ).PrimaryXAxis(xaxis =>xaxis.MajorGridLines(mg=>mg.Color("transparent")
+            ).PrimaryXAxis(xaxis =>xaxis.MajorGridLines(mg=>mg.Color("transparent").Width(0)
              ).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).CrosshairTooltip(ct=>ct.Enable(true)))
             .PrimaryYAxis(yaxis =>yaxis.MajorTickLines(mt=>mt.Color("transparent").Height(0)
             ).LineStyle(ls=>ls.Color("transparent")).CrosshairTooltip(ct=>ct.Enable(true)))

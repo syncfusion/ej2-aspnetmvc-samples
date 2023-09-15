@@ -2,15 +2,10 @@
 @using Syncfusion.EJ2.Lists
 @using Syncfusion.EJ2.DropDowns
 @section ControlsSection{
-    @{ var template = "<div class='e-list-wrapper e-list-avatar'>" +
-                 "<span id=\"${$imgUrl ? \'hideUI\' : \'showUI\' }\" class='e-avatar e-avatar-circle' icon='${icon}'> " +
-            "${icon}</span> <img id=\"${$imgUrl ? \'showUI\' : \'hideUI\' }\" class='e-avatar e-avatar-circle' src=\"${$imgUrl ?  $imgUrl : \' \' }\" />" +
-            "<span class='e-list-content'>${name}</span></div>";
-
-    }
+    
     <div class="col-lg-8  control-section">
         <!-- ListView element -->
-        @Html.EJS().ListView("ui-list").EnableVirtualization(true).CssClass("e-list-template").DataSource((IEnumerable<object>)ViewBag.listData).HeaderTitle("Contacts").ShowHeader(true).Height("500").Fields(new ListViewFieldSettings { Text = "name" }).Template(@template).ActionBegin("onActionBegin").ActionComplete("onActionComplete").Render()
+        @Html.EJS().ListView("ui-list").EnableVirtualization(true).CssClass("e-list-template").DataSource((IEnumerable<object>)ViewBag.listData).HeaderTitle("Contacts").ShowHeader(true).Height("500").Fields(new ListViewFieldSettings { Text = "name" }).Template("#listTemplate").ActionBegin("onActionBegin").ActionComplete("onActionComplete").Render()
     </div>
     <div class="col-lg-4 property-section">
         <table id="property" title="Properties">
@@ -123,6 +118,18 @@
         document.getElementById('time').innerText = (endTime.getTime() - startTime.getTime()) + ' ms';
         ej.popups.hideSpinner(liElement);
     }
+</script>
+<script id="listTemplate" type="text/x-template">
+    <div class="e-list-wrapper e-list-avatar">
+        ${if(imgUrl)}
+        <span id="hideUI" class="e-avatar e-avatar-circle" icon="${icon}">${icon}</span>
+        <img id="showUI" class="e-avatar e-avatar-circle" src="${imgUrl }" />
+        ${else}
+        <span id="showUI" class="e-avatar e-avatar-circle" icon="${icon}">${icon}</span>
+        <img id="hideUI" class="e-avatar e-avatar-circle" src=" " />
+        ${/if}
+        <span class="e-list-content">${name}</span>
+    </div>
 </script>
 <style>
     /* ListView position alignment */

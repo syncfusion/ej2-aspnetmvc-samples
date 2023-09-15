@@ -15,7 +15,6 @@ namespace EJ2MVCSampleBrowser.Controllers.LinearGauge
 {
     public partial class LinearGaugeController : Controller
     {
-        // GET: Tooltip
         public ActionResult Tooltip()
         {
             return View();

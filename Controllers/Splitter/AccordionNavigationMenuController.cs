@@ -15,13 +15,13 @@ namespace EJ2MVCSampleBrowser.Controllers
 {
     public partial class SplitterController : Controller
     {
-        List<AccordionAccordionItem> accItems = new List<AccordionAccordionItem>();
+        List<AccordionItem> accItems = new List<AccordionItem>();
         // GET: AccordionNavigation
         public ActionResult AccordionNavigationMenu()
         {
-            accItems.Add(new AccordionAccordionItem { Header = "ASP.NET", Expanded = true, Content = "<div id='nested_Acc1'></div>" });
-            accItems.Add(new AccordionAccordionItem { Header = "ASP.NET MVC", Content = "<div id='nested_Acc2'></div>" });
-            accItems.Add(new AccordionAccordionItem { Header = "JavaScript", Content = "<div id='nested_Acc3'></div>" });
+            accItems.Add(new AccordionItem { Header = "ASP.NET", Expanded = true, Content = "<div id='nested_Acc1'></div>" });
+            accItems.Add(new AccordionItem { Header = "ASP.NET MVC", Content = "<div id='nested_Acc2'></div>" });
+            accItems.Add(new AccordionItem { Header = "JavaScript", Content = "<div id='nested_Acc3'></div>" });
             ViewBag.AccordionItems = accItems;
             return View();
         }
