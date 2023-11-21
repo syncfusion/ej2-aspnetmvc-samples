@@ -1068,7 +1068,6 @@ window.samplesList = [
     {
         "name": "Tree Grid",
         "directory": "TreeGrid",
-        "type": "update",
         "category": "Grids",
         "samples": [
             {
@@ -1090,7 +1089,6 @@ window.samplesList = [
                 "component": "TreeGrid",
                 "dir": "TreeGrid",
                 "parentId": "02",
-                "type": "new"
             },
             {
                 "url": "DefaultFunctionalities",
@@ -5767,6 +5765,7 @@ window.samplesList = [
                 "order": 0,
                 "component": "DocumentEditor",
                 "dir": "DocumentEditor",
+                "type": "update",
                 "parentId": "019",
                 "hideOnDevice": true
             },
@@ -5829,7 +5828,6 @@ window.samplesList = [
                 "url": "TableFormatting",
                 "name": "Table Formatting",
                 "category": "Editing Features",
-                "type": "update",
                 "uid": "0019196",
                 "order": 1,
                 "component": "DocumentEditor",
@@ -7887,7 +7885,6 @@ window.samplesList = [
         "name": "AutoComplete",
         "directory": "AutoComplete",
         "category": "Dropdowns",
-        "type": "update",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -7978,7 +7975,6 @@ window.samplesList = [
                 "component": "AutoComplete",
                 "dir": "AutoComplete",
                 "parentId": "030",
-                "type": "new"
             }
         ],
         "order": 4,
@@ -7988,7 +7984,6 @@ window.samplesList = [
         "name": "ComboBox",
         "directory": "ComboBox",
         "category": "Dropdowns",
-        "type": "update",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -8089,7 +8084,6 @@ window.samplesList = [
                 "component": "ComboBox",
                 "dir": "ComboBox",
                 "parentId": "031",
-                "type": "new"
             }
         ],
         "order": 4,
@@ -8099,7 +8093,6 @@ window.samplesList = [
         "name": "Dropdown List",
         "directory": "DropDownList",
         "category": "Dropdowns",
-        "type": "update",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -8200,7 +8193,6 @@ window.samplesList = [
                 "component": "DropDownList",
                 "dir": "DropDownList",
                 "parentId": "032",
-                "type": "new"
             }
         ],
         "order": 4,

@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="control_wrapper">
-            @Html.EJS().Uploader("UploadFiles").DropArea(".control-fluid").MinFileSize(10000).Removing("onFileRemove").MaxFileSize(4000000).AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("https://services.syncfusion.com/aspnet/production/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://services.syncfusion.com/aspnet/production/api/FileUploader/Remove") }).Files(@ViewBag.datasource).Render()
+            @Html.EJS().Uploader("UploadFiles").DropArea(".control-fluid").MinFileSize(10000).Removing("onFileRemove").MaxFileSize(4000000).AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Remove") }).Files(@ViewBag.datasource).Render()
         </div>
     </div>
 

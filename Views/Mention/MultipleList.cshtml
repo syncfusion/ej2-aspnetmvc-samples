@@ -17,7 +17,7 @@
                         <div id="multipleList" placeHolder="Type here..!"></div>
 
                         @Html.EJS().Mention("employee").MentionChar(employeeMentionChar).PopupWidth("250px").PopupHeight("215px").SuggestionCount(15).Target("#multipleList").DataSource(obj =>
-                       obj.Url("https://services.syncfusion.com/aspnet/production/api/Employees").CrossDomain(true).Adaptor("WebApiAdaptor")).Fields(new MentionFieldSettings
+                       obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").CrossDomain(true).Adaptor("WebApiAdaptor")).Fields(new MentionFieldSettings
                        {
                            Text = "FirstName",
                            Value = "EmployeeID"

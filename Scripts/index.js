@@ -951,15 +951,15 @@ function setLeftPaneHeight() {
 }
 
 function toggleLeftPane() {
-    if (isMobile) {
-        isMobileLeftPaneToggleBtnClicked = true;
-    }
     var reverse = sidebar.isOpen;
+    var rightPane = ej.base.select('.sb-right-pane');
     ej.base.select('#left-sidebar').classList.remove('sb-hide');
     if (!reverse) {
         leftToggle.classList.add('toggle-active');
+        rightPane.classList.add('control-fullview');
     } else {
         leftToggle.classList.remove('toggle-active');
+        rightPane.classList.remove('control-fullview');
     }
 
     if (sidebar) {
@@ -969,6 +969,12 @@ function toggleLeftPane() {
         } else {
             sidebar.show();
         }
+    }
+    if (isMobile) {
+        isMobileLeftPaneToggleBtnClicked = true;
+    }
+    else {
+        rightPane.classList.toggle('control-fullview');
     }
 }
 
@@ -1140,8 +1146,15 @@ function controlSelect(arg) {
 
             if (arg.data) {
                 var pathName = location.pathname.replace(getSamplePath(), '');
-                location.href = location.origin + pathName + arg.data.component + '/' + arg.data.url + '#/' + theme;
-            }
+                if (curHashCollection.split('/')[curHashCollection.split('/').length-3] != arg.data.dir) {
+                   var SampleObject = window.samplesList.filter(obj => obj.directory === arg.data.dir);
+                   var defaultSample = SampleObject.map(obj => obj.samples[0]);
+                   location.href = location.origin + pathName + arg.data.dir + '/' + defaultSample[0].url + '#/' + theme;
+               }
+               else {
+                   location.href = location.origin + pathName + arg.data.dir + '/' + arg.data.url + '#/' + theme;
+               }
+           }
         } else {
             var hashName = location.hash.length ? '' : '#/' + theme
             location.href = location.href + hashName;
@@ -1372,6 +1385,7 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
             var content;
             if (/html/g.test(name[subfile])) {
                 value = value.replace(/@section (ActionDescription|Title|Description|Meta|Header){[^}]*}/g, '').trim();
+                value = value.replace(/([\r\n]+){3,}/g, '\n');
                 content = value.replace(/&/g, '&amp;')
                     .replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
             } else {
