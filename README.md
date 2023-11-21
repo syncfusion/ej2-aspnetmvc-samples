@@ -9,7 +9,7 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
 * [ASP.NET MVC documentation](https://ej2.syncfusion.com/aspnetmvc/documentation/introduction)
 * [ASP.NET MVC Components Catalog](#aspnet-mvc-components-catalog)
 * [License](#license)
-* [Support and feedback](#support-and-feedback) 
+* [Support and feedback](#support-and-feedback)
 
 ## Requirements to run the demo
 
@@ -17,7 +17,11 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
 
 ## How to run the demo
 
-* Clone the repository and open the `EJ2MVCSampleBrowser.sln` file using Visual Studio.
+* Clone the repository.
+* Open the command prompt and run the command `npm install` to install the required node modules.
+* [Download](https://www.nuget.org/downloads) 'nuget.exe' and place it root directory.
+* Next, run the `gulp mvc-version-update` command to update the package versions to their latest versions.
+* Open the `EJ2MVCSampleBrowser.sln` file using Visual Studio.
 * Press `Ctrl + F5` to run the sample.
 
 ## ASP.NET MVC Components Catalog
