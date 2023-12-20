@@ -7,7 +7,7 @@
 @section ControlsSection{
     <div class="control-section">
 
-        @(Html.EJS().Gantt("DragAndDrop").DataSource((IEnumerable<object>)ViewBag.DataSource).AllowRowDragAndDrop(true).Height("450px").HighlightWeekends(true).TreeColumnIndex(1)
+        @(Html.EJS().Gantt("DragAndDrop").DataSource((IEnumerable<object>)ViewBag.DataSource).AllowRowDragAndDrop(true).Height("450px").HighlightWeekends(true).TreeColumnIndex(1).AllowTaskbarDragAndDrop(true)
                     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                     .Dependency("Predecessor").Child("SubTasks"))
                     .SelectionSettings(sel =>
@@ -27,6 +27,7 @@
                         col.Field("Predecessor").HeaderText("Dependency").Add();
 
                     })
+                    .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
                     .LabelSettings(ls => ls.LeftLabel("TaskName"))
                     .ProjectStartDate("03/24/2019")
                     .ProjectEndDate("07/06/2019")
@@ -47,7 +48,11 @@
 
 @section Description{
     <div id="description">
-        <p>Row drag and drop feature can be enabled by settting <code>allowRowDragAndDrop</code> property as true.</p>
+        <p>Row drag and drop feature can be enabled by settting <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_AllowRowDragAndDrop">
+                AllowRowDragAndDrop
+            </a> property as true. In this demo, taskbar drag and drop between rows can be enabled by setting <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_AllowTaskbarDragAndDrop">
+                AllowTaskbarDragAndDrop
+            </a> as true.</p>
     </div>
 }
 @section Title{

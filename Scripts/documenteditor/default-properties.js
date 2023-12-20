@@ -48,6 +48,7 @@ var documentTitle;
 var documentTitleContentEditor;
 var titleBarDiv;
 var print;
+var close;
 var openBtn;
 var download;
 var isPropertiesPaneEnabled;
@@ -57,6 +58,7 @@ function initializeTitleBar(isShareNeeded, isRtl) {
         downloadToolTip = 'Download this document.';
         printText = 'Print';
         printToolTip = 'Print this document (Ctrl+P).';
+        closeToolTip = 'Close this document'
         openText = 'Open';
         documentTileText = 'Document Name. Click or tap to rename this document.';
     }
@@ -75,6 +77,7 @@ function initializeTitleBar(isShareNeeded, isRtl) {
     documentTitleContentEditor.setAttribute('title', documentTileText);
     var btnStyles = 'float:right;background: transparent;box-shadow:none; font-family: inherit;border-color: transparent;' +
         'border-radius: 2px;color:inherit;font-size:12px;text-transform:capitalize;margin-top:4px;height:28px;font-weight:400';
+    close = addButton('e-icons e-close e-de-padding-right', "", btnStyles, 'de-close', closeToolTip, false);
     print = addButton('e-de-icon-Print e-de-padding-right', printText, btnStyles, 'de-print', printToolTip, false);
     openBtn = addButton('e-de-icon-Open e-de-padding-right', openText, btnStyles, 'de-open', openText, false);
     var items = [
@@ -88,9 +91,19 @@ function initializeTitleBar(isShareNeeded, isRtl) {
     else {
         openBtn.element.style.display = 'none';
     }
+
+    close.element.style.display = 'none';   
+}
+function bindClose() {
+    if (dialogObj == null || dialogObj == undefined) {
+        close.element.style.display = 'none';
+    } else {
+        close.element.style.display = 'block';
+    }
 }
 function wireEventsInTitleBar() {
     print.element.addEventListener('click', onPrint);
+    close.element.addEventListener('click', onClose);
     openBtn.element.addEventListener('click', function (e) {
         if (e.target.id === 'de-open') {
             var fileUpload = document.getElementById('uploadfileButton');
@@ -132,6 +145,12 @@ function updateDocumentTitle() {
 function onPrint() {
     documenteditor.print();
 }
+
+function onClose() {
+    dialogObj.hide();
+    document.getElementById('Grid').style.display = 'block';
+}
+
 function onExportClick(args) {
     var value = args.item.id;
     switch (value) {

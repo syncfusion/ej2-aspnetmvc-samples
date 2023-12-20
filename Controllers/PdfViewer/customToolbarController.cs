@@ -21,6 +21,56 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
 
         public ActionResult CustomToolbar()
         {
+            List<object> menuItems = new List<object>();
+            menuItems.Add(new
+            {
+                iconCss = "e-icons e-stamp",
+                items = new List<object>()
+                {
+                    new {
+                        text= "Dynamic",
+                        items = new List<object>()
+                        {
+                           new { text = "Revised", id = "Dynamic" },
+                           new { text = "Reviewed", id = "Dynamic" },
+                           new { text = "Received", id = "Dynamic" },
+                           new { text = "Confidential", id = "Dynamic" },
+                           new { text = "Approved", id = "Dynamic" },
+                           new { text = "Not Approved", id = "Dynamic" },
+                        }
+                    },
+                    new {
+                        text= "Sign Here",
+                        items = new List<object>()
+                        {
+                            new { text = "Witness" , id = "Sign Here" },
+                            new { text = "Initial Here", id = "Sign Here" },
+                            new { text = "Sign Here", id = "Sign Here" },
+                            new { text = "Accepted", id = "Sign Here"},
+                            new { text = "Rejected", id = "Sign Here" }                    }
+                    },
+                    new {
+                        text= "Standard Business",
+                        items = new List<object>()
+                        {
+                          new { text= "Approved" , id= "Standard Business" },
+                          new { text= "Not Approved", id= "Standard Business" },
+                          new { text= "Draft", id= "Standard Business" },
+                          new { text= "Final", id= "Standard Business"},
+                          new { text= "Completed", id= "Standard Business" },
+                          new { text= "Confidential" , id= "Standard Business" },
+                          new { text= "For Public Release", id= "Standard Business" },
+                          new { text= "Not For Public Release", id= "Standard Business" },
+                          new { text= "For Comment", id= "Standard Business"},
+                          new { text= "Void", id= "Standard Business" },
+                          new { text= "Preliminary Results" , id= "Standard Business" },
+                          new { text= "Information Only", id= "Standard Business" }
+                        }
+                    },
+                }
+            });
+            ViewBag.menuItem = menuItems;
+
             return View();
         }
     }

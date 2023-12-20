@@ -18,10 +18,13 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: FormatPainter
         public ActionResult FormatPainter()
         {
-            ViewBag.Items = new object[] {"FormatPainter","Bold", "Italic", "Underline", "StrikeThrough",
-                "FontName", "FontSize", "FontColor", "BackgroundColor", "SuperScript", "SubScript", "|",
-                "Formats", "Alignments", "NumberFormatList", "BulletFormatList",
-                "Outdent", "Indent", "|", "CreateTable", "CreateLink", "Image", "|", "Undo", "Redo","SourceCode", "FullScreen"};
+            ViewBag.Items = new object[] {"FormatPainter", "Bold", "Italic", "Underline", "StrikeThrough", "SuperScript", "SubScript", "|",
+                "FontName", "FontSize", "FontColor", "BackgroundColor",
+                "LowerCase", "UpperCase", "|",
+                "Formats", "Alignments", "|", "OrderedList", "UnorderedList", "|",
+                "Outdent", "Indent", "|",
+                "CreateLink", "Image", "Video", "Audio", "CreateTable", "|",
+                "SourceCode", "Undo", "Redo"};
             return View();
         }
     }

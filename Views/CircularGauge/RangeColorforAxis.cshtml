@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <div class="control-section" align="center">
-        @Html.EJS().CircularGauge("container").Load("gaugeLoad").Background("transparent").Axes(axes => axes
+        @Html.EJS().CircularGauge("container").Load("gaugeLoad").AnimationDuration(2000).Background("transparent").Axes(axes => axes
         .Radius("100%").StartAngle(0).EndAngle(0).Direction(GaugeDirection.AntiClockWise).LabelStyle(labelStyle => labelStyle.Position(Position.Outside)
         .Font(font => font.FontFamily("inherit")).Offset(2).UseRangeColor(true).HiddenLabel(HiddenLabel.First)).LineStyle(lineStyle => lineStyle.Width(0).Color("transparent"))
         .MinorTicks(minorTicks => minorTicks.Height(8).Width(1).UseRangeColor(true).Interval(2).Position(Position.Outside))

@@ -6,28 +6,28 @@
             <div class="control-section e-bigger e-adaptive-demo">
                 <div class="e-mobile-layout">
                     <div class="e-mobile-content">
-                        @Html.EJS().Grid("adaptivebrowser").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("100%").EnableAdaptiveUI(true).RowRenderingMode(Syncfusion.EJ2.Grids.RowRenderingDirection.Vertical).AllowPaging(true).AllowFiltering(true).AllowSorting(true).Columns(col =>
+                        @Html.EJS().Grid("adaptivebrowser").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("100%").EnableAdaptiveUI(true).AllowGrouping(false).ShowColumnMenu(true).ShowColumnChooser(true).RowRenderingMode(Syncfusion.EJ2.Grids.RowRenderingDirection.Vertical).AllowPaging(true).AllowFiltering(true).AllowSorting(true).AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
                    {
                        col.Field("OrderID").HeaderText("Order ID").Width("180").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
                        col.Field("Freight").HeaderText("Freight").Width("180").Format("C2").EditType("numericedit").ValidationRules(new { required = true }).Add();
                        col.Field("CustomerID").HeaderText("Customer ID").Width("180").ValidationRules(new { required = true, minLength = 3 }).Add();
                        col.Field("ShipCity").HeaderText("Ship City").Width("180").Add();
-                   }).PageSettings(page => page.PageCount(3)).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search" }).Aggregates(agg =>
+                   }).PageSettings(page => page.PageCount(3).PageSizes(true)).GroupSettings(group=>group.ShowGroupedColumn(true)).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search", "ColumnChooser", "ExcelExport", "PdfExport" }).Aggregates(agg =>
                    {
-                       agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Freight", Format = "C2", Type = "Sum", FooterTemplate = "Sum: ${Sum}" } }).Add();
+                       agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Freight", Format = "C2", Type = "Sum", FooterTemplate = "Sum:${Sum}" } }).Add();
                    }).Load("load").Render()
                     </div>
                 </div>
                 <div class="e-desktop-layout">
-                     @Html.EJS().Grid("adaptivedevice").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("100%").EnableAdaptiveUI(true).RowRenderingMode(Syncfusion.EJ2.Grids.RowRenderingDirection.Vertical).AllowPaging(true).AllowFiltering(true).AllowSorting(true).Columns(col =>
+                     @Html.EJS().Grid("adaptivedevice").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("100%").EnableAdaptiveUI(true).AllowGrouping(false).ShowColumnMenu(true).ShowColumnChooser(true).RowRenderingMode(Syncfusion.EJ2.Grids.RowRenderingDirection.Vertical).AllowPaging(true).AllowFiltering(true).AllowSorting(true).AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
                    {
                        col.Field("OrderID").HeaderText("Order ID").Width("180").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
                        col.Field("Freight").HeaderText("Freight").Width("180").Format("C2").EditType("numericedit").ValidationRules(new { required = true }).Add();
                        col.Field("CustomerID").HeaderText("Customer ID").Width("180").ValidationRules(new { required = true, minLength = 3 }).Add();
                        col.Field("ShipCity").HeaderText("Ship City").Width("180").Add();
-                   }).PageSettings(page => page.PageCount(3)).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search" }).Aggregates(agg =>
+                   }).PageSettings(page => page.PageCount(3).PageSizes(true)).GroupSettings(group=>group.ShowGroupedColumn(true)).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search", "ColumnChooser", "ExcelExport", "PdfExport" }).Aggregates(agg =>
                    {
-                       agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Freight", Format = "C2", Type = "Sum", FooterTemplate = "Sum: ${Sum}" } }).Add();
+                       agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Freight", Format = "C2", Type = "Sum", FooterTemplate = "Sum:${Sum}" } }).Add();
                    }).Load("load").Render()
                 </div>
             </div>
@@ -63,11 +63,8 @@
             } else {
                 grid = document.getElementById("adaptivebrowser").ej2_instances[0];
             }
-            if (e.checked) {
-                grid.rowRenderingMode = 'Horizontal';
-            } else {
-                grid.rowRenderingMode = 'Vertical';
-            }
+            grid.rowRenderingMode = e.checked ? 'Horizontal' : 'Vertical';
+            grid.allowGrouping = e.checked;
         }
 
         function load() {
@@ -77,7 +74,26 @@
             } else {
                 grid = document.getElementById("adaptivebrowser").ej2_instances[0];
             }
+            if (grid.pageSettings.pageSizes) {
+                document.querySelector('.e-adaptive-demo').classList.add('e-pager-pagesizes');
+            } else {
+                document.querySelector('.e-adaptive-demo').classList.remove('e-pager-pagesizes');
+            }
             grid.adaptiveDlgTarget = document.getElementsByClassName('e-mobile-content')[0];
+        }
+
+        function toolbarClick(args) {
+            var gridObj;
+            if (ej.base.Browser.isDevice && document.getElementById("adaptivedevice") && document.getElementById("adaptivedevice").classList.contains('e-grid')) {
+                gridObj = document.getElementById("adaptivedevice").ej2_instances[0];
+            } else {
+                gridObj = document.getElementById("adaptivebrowser").ej2_instances[0];
+            }
+            if (args.item.id === gridObj.element.id + '_pdfexport') {
+                gridObj.pdfExport();
+            } else if (args.item.id === gridObj.element.id + '_excelexport') {
+                gridObj.excelExport();
+            }
         }
     </script>
 
@@ -167,10 +183,77 @@
                 border-radius: 1px;
             }
 
+            .material3 .e-adaptive-demo.e-pager-pagesizes .e-pager,
+            .material3-dark .e-adaptive-demo.e-pager-pagesizes .e-pager {
+                padding-top: 0;
+            }
+
+            .material .e-adaptive-demo.e-pager-pagesizes .e-pager,
+            .material-dark .e-adaptive-demo.e-pager-pagesizes .e-pager {
+                padding-top: 2px;
+            }
+
+            .fluent .e-adaptive-demo.e-pager-pagesizes .e-pager,
+            .fluent-dark .e-adaptive-demo.e-pager-pagesizes .e-pager,
+            .bootstrap5 .e-adaptive-demo.e-pager-pagesizes .e-pager,
+            .bootstrap5-dark .e-adaptive-demo.e-pager-pagesizes .e-pager,
+            .tailwind .e-adaptive-demo.e-pager-pagesizes .e-pager,
+            .tailwind-dark .e-adaptive-demo.e-pager-pagesizes .e-pager {
+                padding-top: 10px;
+            }
+
+            .bootstrap .e-adaptive-demo.e-pager-pagesizes .e-pager,
+            .bootstrap-dark .e-adaptive-demo.e-pager-pagesizes .e-pager,
+            .bootstrap4 .e-adaptive-demo.e-pager-pagesizes .e-pager {
+                padding-top: 8px;
+            }
+
             /* Render the mobile pager by default */
             @@media (max-width: 3840px) {
                 .e-adaptive-demo .e-pager {
                     padding: 13px 0;
+                }
+
+                .e-adaptive-demo .e-rtl.e-pager div.e-parentmsgbar {
+                    margin-top: 0;
+                }
+
+                .material3 .e-adaptive-demo .e-pager div.e-parentmsgbar,
+                .material3-dark .e-adaptive-demo .e-pager div.e-parentmsgbar {
+                    padding-top: 3px;
+                }
+
+                .material3 .e-adaptive-demo.e-pager-pagesizes .e-pager div.e-parentmsgbar,
+                .material3-dark .e-adaptive-demo.e-pager-pagesizes .e-pager div.e-parentmsgbar {
+                    padding-top: 0;
+                }
+
+                .material3 .e-adaptive-demo.e-pager-pagesizes .e-pager .e-mprev,
+                .material3 .e-adaptive-demo.e-pager-pagesizes .e-pager .e-mnext,
+                .material3-dark .e-adaptive-demo.e-pager-pagesizes .e-pager .e-mprev,
+                .material3-dark .e-adaptive-demo.e-pager-pagesizes .e-pager .e-mnext {
+                    width: 7%;
+                }
+
+                .e-adaptive-demo.e-pager-pagesizes .e-pager {
+                    padding: 6px 0;
+
+                    .e-mfirst,
+                    .e-mprev,
+                    .e-mnext,
+                    .e-mlast {
+                        padding: 1% 2%;
+                    }
+
+                    .e-mfirst,
+                    .e-mlast {
+                        width: calc(5% + 11px);
+                    }
+
+                    .e-mprev,
+                    .e-mnext {
+                        width: 5%;
+                    }
                 }
                 .e-adaptive-demo .e-pager div.e-parentmsgbar {
                     box-sizing: border-box;
@@ -182,15 +265,6 @@
                     text-align: center;
                     vertical-align: top;
                     width: calc(60% - 48px);
-                }
-                .material3 .e-adaptive-demo .e-pager div.e-parentmsgbar {
-                    padding-top: 3px;
-                }
-                .e-adaptive-demo .e-rtl.e-pager div.e-parentmsgbar {
-                    margin-top: 0;
-                }
-                .e-adaptive-demo .e-pager .e-pagesizes {
-                    display: none;
                 }
                 .e-adaptive-demo .e-pager .e-pagecountmsg {
                     display: none;
@@ -235,7 +309,7 @@
                 }
                 .e-adaptive-demo .e-bigger .e-pager,
                 .e-adaptive-demo .e-pager.e-bigger {
-                    padding: 19px 0;
+                    padding: 6px 0;
                 }
                 .e-adaptive-demo .e-bigger .e-pager.e-rtl div.e-parentmsgbar,
                 .e-adaptive-demo .e-pager.e-bigger.e-rtl div.e-parentmsgbar {
@@ -252,7 +326,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample demonstrates the rendering order of the grid row elements and adaptive dialogs.
+            This sample demonstrates optimal viewing experience and improve usability on small screens.
         </p>
     </div>
 }
@@ -264,7 +338,7 @@
 @section Description{
     <div id="description">
         <p>
-            The <code>enableAdaptiveUI</code> property is used to render the grid filter, sort and edit dialogs adaptively and
+            The <code>enableAdaptiveUI</code> property is used to render the grid filter, sort, edit, pager and toolbars like column chooser, pdf export, excel export, etc... dialogs adaptively and
             <code>
                 rowRenderingMode
             </code>
@@ -276,6 +350,9 @@
         </ul>
         <p>
             In this sample, you can change the row elements rendering direction by using the properties panel checkbox
+        </p>
+        <p> In this demo, the column menu feature is only supported for the Grid <code>rowRenderingMode</code> mode as <code>Vertical</code>.
+            This feature includes grouping, sorting, autofit, filter, and column chooser feature.
         </p>
     </div>
 }

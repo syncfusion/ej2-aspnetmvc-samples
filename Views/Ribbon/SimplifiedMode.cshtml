@@ -7,13 +7,13 @@
     List<MenuItem> findOptions = new List<MenuItem>() { new MenuItem { Text = "Find", IconCss = "e-icons e-search" }, new MenuItem { Text = "Advanced find", IconCss = "e-icons e-search" }, new MenuItem { Text = "Go to", IconCss = "e-icons e-arrow-right" } };
     List<MenuItem> selectOptions = new List<MenuItem>() { new MenuItem { Text = "Select All" }, new MenuItem { Text = "Select Objects" } };
     List<MenuItem> dictateOptions = new List<MenuItem>() { new MenuItem { Text = "Chinese" }, new MenuItem { Text = "English" }, new MenuItem { Text = "German" }, new MenuItem { Text = "French" } };
-    List<MenuItem> tableOptions = new List<MenuItem>() { new MenuItem { Text = "Insert Table" }, new MenuItem { Text = "This device" }, new MenuItem { Text = "Convert Table" }, new MenuItem { Text = "Excel SpreadSheet" } };
+    List<MenuItem> tableOptions = new List<MenuItem>() { new MenuItem { Text = "Insert Table" }, new MenuItem { Text = "Draw Table" }, new MenuItem { Text = "Convert Table" }, new MenuItem { Text = "Excel SpreadSheet" } };
     List<MenuItem> shapeOptions = new List<MenuItem>() { new MenuItem { Text = "Lines" }, new MenuItem { Text = "Rectangles" }, new MenuItem { Text = "Basic Arrows" }, new MenuItem { Text = "Basic Shapes" }, new MenuItem { Text = "FlowChart" } };
     List<MenuItem> headerOptions = new List<MenuItem>() { new MenuItem { Text = "Insert Header" }, new MenuItem { Text = "Edit Header" }, new MenuItem { Text = "Remove Header" } };
     List<MenuItem> footerOptions = new List<MenuItem>() { new MenuItem { Text = "Insert Footer" }, new MenuItem { Text = "Edit Footer" }, new MenuItem { Text = "Remove Footer" } };
     List<MenuItem> pageOptions = new List<MenuItem>() { new MenuItem { Text = "Insert Top of page" }, new MenuItem { Text = "Format Page Number" }, new MenuItem { Text = "Format Page Number" } };
     List<MenuItem> linkOptions = new List<MenuItem>() { new MenuItem { Text = "Insert Link", IconCss = "e-icons e-link" }, new MenuItem { Text = "Recent Links", IconCss = "e-icons e-clock" }, new MenuItem { Text = "Bookmarks", IconCss = "e-icons e-bookmark" } };
-    string[] pictureOptions = new string[] { "This device", "Stock Images", "Online Images" };
+    string[] pictureOptions = new string[] { "This Device", "Stock Images", "Online Images" };
 
     List<string> fontSize = new List<string>() { "8", "9", "10", "11", "12", "14", "16", "18", "20", "22", "24", "26", "28", "36", "48", "72", "96" };
     List<string> fontStyle = new List<string>() { "Algerian", "Arial", "Calibri", "Cambria", "Cambria Math", "Courier New", "Candara", "Georgia", "Impact", "Segoe Print", "Segoe Script", "Segoe UI", "Symbol", "Times New Roman", "Verdana", "Windings" };
@@ -86,24 +86,24 @@
                            }).Add();
                        }).Add();
                    }).Add();
-                   group.Header("Font").IsCollapsible(false).EnableGroupOverflow(true).Orientation(ItemOrientation.Row).GroupIconCss("e-icons e-bold").CssClass("font-group").Collections(collections =>
+                   group.Header("Font").OverflowHeader("More Font Options").IsCollapsible(false).EnableGroupOverflow(true).Orientation(ItemOrientation.Row).GroupIconCss("e-icons e-bold").CssClass("font-group").Collections(collections =>
                    {
                        collections.Items(items =>
                        {
                            items.Type(RibbonItemType.ComboBox).ComboBoxSettings(comboBox =>
                            {
-                               comboBox.DataSource(fontStyle).Index(2).AllowFiltering(true).Width("150px").Change("function(args){ if (args.itemData) { updateContent('Font Style -> ' + args.itemData.text)}}");
+                               comboBox.DataSource(fontStyle).Label("Font Style").Index(2).AllowFiltering(true).Width("115px").PopupWidth("150px").Change("function(args){ if (args.itemData) { updateContent('Font Style -> ' + args.itemData.text)}}");
                            }).Add();
                            items.Type(RibbonItemType.ComboBox).ComboBoxSettings(comboBox =>
                            {
-                               comboBox.DataSource(fontSize).Index(4).AllowFiltering(true).Width("65px").PopupWidth("85px").Change("function(args){ if (args.itemData) { updateContent('Font Size -> ' + args.itemData.text)}}");
+                               comboBox.DataSource(fontSize).Label("Font Size").Index(4).AllowFiltering(true).Width("65px").PopupWidth("85px").Change("function(args){ if (args.itemData) { updateContent('Font Size -> ' + args.itemData.text)}}");
                            }).Add();
                        }).Add();
                        collections.Items(items =>
                        {
                            items.Type(RibbonItemType.GroupButton).AllowedSizes(RibbonItemSize.Small).GroupButtonSettings(groupButton =>
                            {
-                               groupButton.Selection(RibbonGroupButtonSelection.Multiple).Items(groupButtonMultiple);
+                               groupButton.Selection(RibbonGroupButtonSelection.Multiple).Header("Format Styles").Items(groupButtonMultiple);
                            }).Add();
                            items.Type(RibbonItemType.ColorPicker).AllowedSizes(RibbonItemSize.Small).DisplayOptions(Syncfusion.EJ2.Ribbon.DisplayMode.Simplified | Syncfusion.EJ2.Ribbon.DisplayMode.Classic).ColorPickerSettings(colorPicker =>
                            {
@@ -117,22 +117,22 @@
                        {
                            items.Type(RibbonItemType.Button).AllowedSizes(RibbonItemSize.Small).ButtonSettings(button =>
                            {
-                               button.IconCss("e-icons e-decrease-indent").Clicked("function(){updateContent('Decrease Indent')}");
+                               button.IconCss("e-icons e-decrease-indent").Content("Decrease Indent").Clicked("function(){updateContent('Decrease Indent')}");
                            }).Add();
                            items.Type(RibbonItemType.Button).AllowedSizes(RibbonItemSize.Small).ButtonSettings(button =>
                            {
-                               button.IconCss("e-icons e-increase-indent").Clicked("function(){updateContent('Increase Indent')}");
+                               button.IconCss("e-icons e-increase-indent").Content("Increase Indent").Clicked("function(){updateContent('Increase Indent')}");
                            }).Add();
                            items.Type(RibbonItemType.Button).AllowedSizes(RibbonItemSize.Small).ButtonSettings(button =>
                            {
-                               button.IconCss("e-icons e-paragraph").Clicked("function(){updateContent('Paragraph Mark')}");
+                               button.IconCss("e-icons e-paragraph").Content("Paragraph").Clicked("function(){updateContent('Paragraph Mark')}");
                            }).Add();
                        }).Add();
                        collections.Items(items =>
                        {
                            items.Type(RibbonItemType.GroupButton).AllowedSizes(RibbonItemSize.Small).GroupButtonSettings(groupButton =>
                            {
-                               groupButton.Selection(RibbonGroupButtonSelection.Single).Items(groupButtonSingle);
+                               groupButton.Selection(RibbonGroupButtonSelection.Single).Header("Alignment").Items(groupButtonSingle);
                            }).Add();
                        }).Add();
                    }).Add();
@@ -197,7 +197,7 @@
                            }).Add();
                        }).Add();
                    }).Add();
-                   groups.Id("illustration").Header("Illustrations").ShowLauncherIcon(true).EnableGroupOverflow(true).Orientation(ItemOrientation.Row).GroupIconCss("e-icons e-image").Collections(collections =>
+                   groups.Id("illustration").Header("Illustrations").OverflowHeader("Illustrations").ShowLauncherIcon(true).EnableGroupOverflow(true).Orientation(ItemOrientation.Row).GroupIconCss("e-icons e-image").Collections(collections =>
                    {
                        collections.Items(items =>
                        {
@@ -255,7 +255,7 @@
                            }).Add();
                        }).Add();
                    }).Add();
-                   groups.Header("Link").GroupIconCss("e-icons e-link").IsCollapsible(false).Collections(collections =>
+                   groups.Header("Links").GroupIconCss("e-icons e-link").IsCollapsible(false).Collections(collections =>
                    {
                        collections.Items(items =>
                        {
@@ -564,8 +564,8 @@
 </style>
 
 @section Meta{
-    <meta name="description" content="This example demonstrates the Ribbon Simplified mode in ASP.NET MVC Ribbon Control. Explore here for more details." />
-}
+                    <meta name="description" content="This example demonstrates the Simplified Mode in ASP.NET MVC Ribbon control. Explore here for more details."/>
+                }
 @section ActionDescription{
     <div id="action-description">
         <p>This sample showcases the ribbon control with a more streamlined and compact UI in Simplified mode.</p>
@@ -577,8 +577,8 @@
     </div>
 }
 @section Title{
-    <title>ASP.NET MVC Ribbon Simplified mode Example - Syncfusion Demos </title>
-}
+                    <title>ASP.NET MVC Ribbon Simplified Mode Example - Syncfusion Demos </title> 
+                }
 @section Header{
-    <h1 class='sb-sample-text'>Example of Simplified mode in ASP.NET MVC Ribbon Control</h1>
-}
+                    <h1 class='sb-sample-text'>Example of Simplified Mode in ASP.NET MVC Ribbon Control</h1>
+                }

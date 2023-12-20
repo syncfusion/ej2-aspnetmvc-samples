@@ -7,17 +7,17 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Population Growth Rate of the most Populous Countries").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Population Growth Rate of the most Populous Countries").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
                     {
                         xAxis.LabelRotation(45)
                         .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
                         .Labels(ViewBag.xLabels)
-                        .IsInversed(true);
+                        .IsInversed(true).TextStyle(ViewBag.labelTextStyle);
                     }).YAxis(yaxis =>
                     {
                         yaxis.IsInversed(true)
-                       .Labels(ViewBag.yLabels);
-                    }).PaletteSettings(ps => ps.Palette(palette =>
+                    .Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle);
+                    }).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
                     {
                         palette.Value(0).Color("#4b7287").Add();
                         palette.Value(0.5).Color("#b5b29f").Add();
@@ -26,8 +26,8 @@
                         palette.Value(2).Color("#466f86").Add();
                         palette.Value(2.5).Color("#d7c7a7").Add();
                         palette.Value(3).Color("#6e888f").Add();
-                    })).CellSettings(cs =>
-                    cs.Border(ViewBag.border).ShowLabel(false).Format("{value} %")).LegendSettings(ls => ls.Visible(false)).Load("load").DataSource(ViewBag.dataSource).Render()
+                    })).CellSettings(cellSettings =>
+                    cellSettings.Border(ViewBag.border).ShowLabel(false).Format("{value} %").TextStyle(ViewBag.labelTextStyle)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings => legendSettings.Visible(false)).Load("load").DataSource(ViewBag.dataSource).Render()
                 </div>
                 <div style="float: right; margin-right: 10px;">
                     Source:
@@ -68,8 +68,10 @@
     </style>
     <script>
         var load = function (args) {
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
+            @* custom code end *@
         };
         var xlistObj = new ej.buttons.CheckBox({ label: 'Reverse X-Axis Origin', checked: true, change: valueXChange });
         xlistObj.appendTo('#XOpposedPosition');
@@ -95,11 +97,11 @@
 }
 @section Description{
     <p>
-        In this example, you can see how to reverse the axis origin for both axes, once the axis origin has been reversed the axis data will be displayed inverted. You can reverse the axis origin by enabling the <code>isInversed </code> property for each axis.
+        In this example, you can see how to reverse the axis origin for both axes, once the axis origin has been reversed the axis
+        data will be displayed inverted. You can reverse the axis origin by enabling the
+        <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapAxis.html#Syncfusion_EJ2_HeatMap_HeatMapAxis_IsInversed" target="_blank">isInversed</a> property for each axis.
     </p>
-    <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
+    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
     <br>
 }
 

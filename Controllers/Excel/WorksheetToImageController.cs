@@ -60,23 +60,23 @@ namespace EJ2MVCSampleBrowser.Controllers.Excel
 
                 try
                 {
-                    // Convert Word Document into image
+                    // Convert worksheet Document into image
                     Image image = sheet.ConvertToImage(1, 1, lastRow, lastColumn, ImageType.Bitmap, null);
 
                     //Save as Bitmap image
                     if (Group1 == "BMP")
                     {
-                        ExportAsImage(image, "WordToImage_1.bmp", ImageFormat.Bmp, HttpContext.ApplicationInstance.Response);
+                        ExportAsImage(image, "WorksheetToImage_1.bmp", ImageFormat.Bmp, HttpContext.ApplicationInstance.Response);
                     }
                     //Save as PNG image
                     else if (Group1 == "PNG")
                     {
-                        ExportAsImage(image, "WordToImage_1.png", ImageFormat.Png, HttpContext.ApplicationInstance.Response);
+                        ExportAsImage(image, "WorksheetToImage_1.png", ImageFormat.Png, HttpContext.ApplicationInstance.Response);
                     }
                     //Save as JPEG image
                     else if (Group1 == "JPEG")
                     {
-                        ExportAsImage(image, "WordToImage_1.jpeg", ImageFormat.Jpeg, HttpContext.ApplicationInstance.Response);
+                        ExportAsImage(image, "WorksheetToImage_1.jpeg", ImageFormat.Jpeg, HttpContext.ApplicationInstance.Response);
                     }                    
 
                     workbook.Close();

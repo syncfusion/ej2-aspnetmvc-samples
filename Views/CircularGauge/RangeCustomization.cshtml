@@ -34,11 +34,11 @@
 
                     <tr style="height: 40px">
                         <td>
-                            <div style="font-size:14px"> Select Range </div>
+                            <div style="font-size: 14px; margin-top: -6px"> Select Range </div>
                         </td>
                         <td>
                             <div style="margin-top: -5px;height : 30px">
-                                @Html.EJS().DropDownList("rangeSelect").Index(0).Width("120%").DataSource((IEnumerable<object>)ViewBag.rangeSelect).Value("Low").Change("valueChange").Render()
+                                @Html.EJS().DropDownList("rangeSelect").Index(0).Width("125%").DataSource((IEnumerable<object>)ViewBag.rangeSelect).Value("Low").Change("valueChange").Render()
                             </div>
                         </td>
                     </tr>

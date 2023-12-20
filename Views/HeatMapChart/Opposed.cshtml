@@ -7,19 +7,19 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Monthly Flight Traffic at JFK Airport").TextStyle(ViewBag.textStyle)).XAxis(
-                         xAxis =>
-                         {
-                             xAxis.LabelRotation(45)
-                             .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                             .Labels(ViewBag.xLabels)
-                             .OpposedPosition(true);
-                         }).YAxis(yaxis =>
-                         {
-                             yaxis.OpposedPosition(true)
-                             .Labels(ViewBag.yLabels);
-                         }).CellSettings(cs =>
-                         cs.Border(ViewBag.border).ShowLabel(false).Format("{value} flights")).LegendSettings(ls => ls.Visible(false)).Load("load").DataSource(ViewBag.dataSource).Render()
+                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Monthly Flight Traffic at JFK Airport").TextStyle(ViewBag.textStyle)).XAxis(
+                    xAxis =>
+                    {
+                        xAxis.LabelRotation(45)
+                        .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
+                        .Labels(ViewBag.xLabels)
+                        .OpposedPosition(true).TextStyle(ViewBag.labelTextStyle);
+                    }).YAxis(yaxis =>
+                    {
+                        yaxis.OpposedPosition(true)
+                        .Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle);
+                    }).CellSettings(cellSettings =>
+                    cellSettings.Border(ViewBag.border).ShowLabel(false).Format("{value} flights")).LegendSettings(legendSettings => legendSettings.Visible(false)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).Load("load").DataSource(ViewBag.dataSource).Render()
                 </div>
             </div>
         </div>
@@ -82,11 +82,10 @@
 }
 @section Description{
     <p>
-        In this example, you can see how to change the display position of the axis. You can change the display position of axes by enabling the <code>opposedPosition </code> property for each axis.
+        In this example, you can see how to change the display position of the axis. You can change the display position of axes by enabling the 
+        <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapAxis.html#Syncfusion_EJ2_HeatMap_HeatMapAxis_OpposedPosition" target="_blank">opposedPosition</a> property for each axis.
     </p>
-    <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
+    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
     <br>
 }
 

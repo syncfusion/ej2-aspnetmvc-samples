@@ -2,9 +2,9 @@
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <div class="control-section col-md-12">
-        @Html.EJS().CircularGauge("container").Width("100%").Load("gaugeLoad").Background("transparent").Axes(axes => axes
+        @Html.EJS().CircularGauge("container").Width("100%").AnimationDuration(2000).Load("gaugeLoad").Background("transparent").Axes(axes => axes
            .Radius("80%").StartAngle(230).EndAngle(130).LabelStyle(labelStyle => labelStyle.Position(Position.Inside).Font(font => font.FontFamily("inherit")).Offset(-1))
-           .Pointers(pointer => pointer.Value(60).Radius("60%").PointerWidth(7).Color("#c06c84").Animation(animation => animation.Enable(true).Duration(500)).Cap(cap => cap.Radius(8).Color("#c06c84").Border(border => border.Width(0))).NeedleTail(needleTail => needleTail.Length("0%")).Add())
+           .Pointers(pointer => pointer.Value(60).Radius("60%").PointerWidth(7).Color("#c06c84").Animation(animation => animation.Enable(true).Duration(2000)).Cap(cap => cap.Radius(8).Color("#c06c84").Border(border => border.Width(0))).NeedleTail(needleTail => needleTail.Length("0%")).Add())
            .LineStyle(lineStyle => lineStyle.Width(8).Color("#E0E0E0"))
            .MinorTicks(minorTick => minorTick.Offset(5)).MajorTicks(majorTick => majorTick.Offset(5)).Add()).Render()
     </div>

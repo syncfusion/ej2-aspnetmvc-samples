@@ -11,7 +11,7 @@
                 pointer.Value(7).Radius("50%").PointerWidth(30).LinearGradient(linearGradient =>
             linearGradient.StartValue("0%").EndValue("100%").ColorStop(colorStop =>
             {
-                colorStop.Color("#ff6b78").Offset("0%").Opacity(0.9).Add();
+                colorStop.Color("#ff6b78").Offset("0.1%").Opacity(0.9).Add();
                 colorStop.Color("#e20a22").Offset("70%").Opacity(0.9).Add();
             })
             ).Cap(cap => cap.Radius(15).Color("#ffffff").Border(border => border.Width(0))).Animation(animation => animation.Enable(false)).Add();

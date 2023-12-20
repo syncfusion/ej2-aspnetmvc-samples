@@ -5,21 +5,26 @@
         <div class="control-wrapper">
             <div class="control-section">
 
-                @Html.EJS().Grid("FilterMenu").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowFiltering().AllowSorting().Columns(col =>
+                @Html.EJS().Grid("FilterMenu").AllowFiltering().AllowSorting().Columns(col =>
            {
 
-               col.Field("OrderID").HeaderText("Order ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-               col.Field("CustomerID").HeaderText("Customer Name").Width("200").Add();
-               col.Field("OrderDate").HeaderText("Order Date").Width("180").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format(new { type = "datetime", format = "M/d/y hh:mm a" }).Add();
-               col.Field("Freight").HeaderText("Freight").Width("150").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("EmployeeID").HeaderText("Employee ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("Employees").HeaderText("Employee Name").Width("200").Add();
+               col.Field("Designation").HeaderText("Designation").Width("180").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("CurrentSalary").HeaderText("CurrentSalary").Width("150").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
 
 
-           }).AllowPaging().PageSettings(page => page.PageCount(1)).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu); }).Render()
+           }).AllowPaging().Load("load").PageSettings(page => page.PageCount(1)).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu); }).Render()
             </div>
         </div>
     </div>
 
-
+    <template>
+        <tr class="infinite-row">
+            <td class="left-side"><div style='padding-left: 0px;'>Enable OnDemand: </div></td>
+            <td><input type="checkbox" tabindex="1" id='dataloadtype' /></td>
+        </tr>
+    </template>
     <div class="col-lg-4 property-section">
 
 
@@ -42,6 +47,37 @@
         function onChange() {
             var gridObj = document.getElementById("FilterMenu").ej2_instances[0], dropdpwnObj = document.getElementById("FilterType").ej2_instances[0];
             gridObj.filterSettings.type = dropdpwnObj.value;
+            var propertyTbody = document.querySelector('#property tbody');
+            var enableInfiniteLoad;
+            if (dropdpwnObj.value === 'Excel' || dropdpwnObj.value === 'CheckBox') {
+                if (propertyTbody.children.length < 2) {
+                    var temp = document.getElementsByTagName("template")[0];
+                    var cloneTemplate = temp.content.cloneNode(true);
+                    propertyTbody.appendChild(cloneTemplate.querySelector("tr.infinite-row"));
+                    enableInfiniteLoad = new ej.buttons.CheckBox({
+                        change: function(e) {
+                            gridObj.filterSettings.enableInfiniteScrolling = e.checked;
+                        }
+                    });
+                    enableInfiniteLoad.appendTo('#dataloadtype');
+                } else {
+                    enableInfiniteLoad = document.getElementById('dataloadtype').ej2_instances[0];
+                    enableInfiniteLoad.checked = false;
+                    gridObj.filterSettings.enableInfiniteScrolling = false;
+                }
+            } else {
+                gridObj.filterSettings.enableInfiniteScrolling = false;
+                ej.base.remove(document.querySelector('#property tbody tr.infinite-row'));
+            }
+        }
+        function load(args) {
+            var hostUrl = 'https://ej2services.syncfusion.com/aspnet/release/';
+            var urlapi = new ej.data.DataManager({
+                url: hostUrl + "api/UrlDataSource",
+                adaptor: new ej.data.UrlAdaptor()
+            });
+            this.dataSource = urlapi;
+            this.query = new ej.data.Query().addParams('dataCount', '10000');
         }
     </script>
 
@@ -49,9 +85,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This sample demonstrates filtering Grid columns using menu, checkbox, and Excel filter UI.
-            In this sample, click the filter icon on the column header to filter a particular column.
-            You can change the filter type on the properties panel. When Excel filter type is selected, you can sort the column using the sort option in the Excel filter dialog.
+            This sample demonstrates the grid's multiple-type filter functionality and user interface.
         </p>
     </div>
 }
@@ -65,37 +99,22 @@
         <p>
             The filtering feature enables the user to view a reduced number of records based on the filter criteria. It can be enabled by setting the <code>AllowFiltering</code> property to true.
         </p>
-        <p>Grid supports the following filter types.</p>
+        <p>The grid supports the following filter types:</p>
         <ul>
             <li><code>FilterBar</code></li>
             <li><code>Menu</code></li>
             <li><code>CheckBox</code></li>
             <li><code>Excel</code></li>
         </ul>
-        you can change the filter type by setting <code>FilterSettings->Type</code>
-        <p>Now, the following additional filter operators are incorporated with the already existing operators.</p>
-        <p>String type columns:</p>
-        <ul>
-            <li>Not Equal</li>
-            <li>Does Not Start With</li>
-            <li>Does Not End With</li>
-            <li>Does Not Contain</li>
-            <li>Empty</li>
-            <li>Not Empty</li>
-            <li>Like</li>
-        </ul>
-        <p>Number and Date type columns:</p>
-        <ul>
-            <li>Null</li>
-            <li>Not Null</li>
-        </ul>
-        <p>For example, when the <b>Like</b> search operator is used:</p>
-        <ul>
-            <li>%a% - Filters words containing the character 'a'</li>
-            <li>a%  - Filters words ending with 'a'</li>
-            <li>%a  - Filters words starting with 'a'</li>
-        </ul>
+        You can change the filter type by setting <code>FilterSettings->Type</code>.
         <p>In this demo, filter menu is enabled by default. You can switch to other filter types using the dropdown.</p>
+        <p>Additionally, we have an on-demand data fetch functionality and UI for the checkbox/Excel filter type. It can be enabled by setting the <code><a target="_blank" class="code"
+            href="">filterSettings->enableInfiniteScrolling</a></code> property to true. In this demo, on-demand data fetch is not enabled by default. To enable the on-demand data fetch for the checkbox/Excel filter type, the Enable OnDemand option must be checked after selecting the checkBox/Excel filter type using the dropdown menu.</p>
+        <p>
+            More information on the filter configuration can be found in this
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Grids.GridFilterSettings.html">
+                documentation section</a>.
+        </p>
     </div>
 }
 @section Title{

@@ -9,7 +9,7 @@
     </style>
     <div class="control-section">
         <div id="outer" style="width:100%">
-            @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Background("Transparent").Container(container => 
+            @Html.EJS().LinearGauge("container").Load("onGaugeLoad").AnimationDuration(3500).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Background("Transparent").Container(container => 
             container.Width(30).BackgroundColor("#D6D6D6").RoundedCornerRadius(20).Type(Syncfusion.EJ2.LinearGauge.ContainerType.RoundedRectangle)).Annotations(annotation => 
             annotation.AxisIndex(0).AxisValue(10).X(0).Y(0).ZIndex("1").Content("<div style='font-size: 15px;color: white;margin-top: 30px;margin-left:50%'>41%</div>").Add()).Axes(axes => 
             axes.Minimum(0).Maximum(100).Line(line => line.Width(0)).LabelStyle(labelStyle => labelStyle.Font(font => font.Size("0px")))

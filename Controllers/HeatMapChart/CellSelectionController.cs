@@ -20,7 +20,17 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
         {
             string[] xlabels = new string[7] { "Cereals", "Meat", "Spices", "Tea", "Edible Oil", "Dairy Products", "Wheat" };
             ViewBag.xLabels = xlabels;
-
+            ViewBag.textStyle = new
+            {
+                size= "15px",
+                fontWeight= "500",
+                fontStyle= "Normal",
+                fontFamily = "inherit"
+            };
+            ViewBag.labelTextStyle = new
+            {
+                fontFamily = "inherit"
+            };
             string[] yLabels = new string[5] { "2014", "2015", "2016", "2017", "2018" };
             ViewBag.yLabels = yLabels;
             double[,] dataSource = new double[,]

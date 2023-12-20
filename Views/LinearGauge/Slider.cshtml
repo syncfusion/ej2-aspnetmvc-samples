@@ -4,7 +4,7 @@
         <div style="justify-content: center; display: flex; align-items: center;">
             @Html.EJS().LinearGauge("enableSliderGauge").Load("gaugeLoad").DragMove("dragMoveSlider").Background("Transparent").Width("450px").Height("150px").Format("N0").Tooltip(tooltip => 
             tooltip.Enable(true).ShowAtMousePosition(true).TextStyle(textStyle => textStyle.FontFamily("inherit"))).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Title("Enabled").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5).Color("#C2DEF8")).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Offset(10))
             .Pointers(pointer =>
             {
@@ -14,7 +14,7 @@
         </div>
         <div style="justify-content: center; display: flex; align-items: center;">
             @Html.EJS().LinearGauge("disableSliderGauge").Load("gaugeLoad").Background("Transparent").Width("450px").Height("150px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Title("Disabled").TitleStyle(textStyle => 
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5).Color("#E0E0E0")).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Offset(10))
             .Pointers(pointer =>
             {

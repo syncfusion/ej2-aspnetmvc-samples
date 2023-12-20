@@ -24,7 +24,11 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
-                fontFamily = "Segoe UI"
+                fontFamily = "inherit"
+            };
+            ViewBag.labelTextStyle = new
+            {
+                fontFamily = "inherit"
             };
             ViewBag.border = new { width = "0" };
             string[] xlabels = new string[11] { "2005", "2006", "2007", "2008", "2009", "2010",

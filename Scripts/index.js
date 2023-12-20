@@ -1136,28 +1136,46 @@ function controlSelect(arg) {
     if (!arg.item || path.split('/')[1] === curHashCollection.split('/').slice(-2)[1]) {
         controlListRefresh(arg.node || arg.item);
     }
-    if (path) {
-        if (curHashCollection.indexOf(path) === -1) {
-            sampleOverlay();
-            if (arg.item && ((isMobile && !ej.base.select('.sb-mobile-left-pane').classList.contains('sb-hide')) ||
+    if (location.pathname.slice(- 1) !== '/' && location.hash !== '#/' + theme) {
+        var count;
+        if ((location.origin.indexOf('ej2npmci.azurewebsites') !== -1) && location.pathname.split('/').length >= 5) {
+            count = 5;
+        }
+        else if ((location.origin.indexOf('ej2.syncfusion') !== -1) && location.pathname.split('/').length >= 4) {
+            count = 4;
+        }
+        else if ((location.origin.indexOf('localhost') !== -1) && location.pathname.split('/').length >= 3) {
+            count = 3;
+        }
+        location.href = location.origin + location.pathname.split('/').slice(0, count).join('/') + '#/' + theme;
+    }
+    else {
+        if (location.pathname.slice(- 1) === '/') {
+            location.href = location.origin + curHashCollection.slice(0, -1);
+        }
+        else if (path) {
+            if (curHashCollection.indexOf(path) === -1) {
+                sampleOverlay();
+                if (arg.item && ((isMobile && !ej.base.select('.sb-mobile-left-pane').classList.contains('sb-hide')) ||
                     ((isTablet || (ej.base.Browser.isDevice && isPc)) && isLeftPaneOpen()))) {
-                toggleLeftPane();
+                    toggleLeftPane();
+                }
+    
+                if (arg.data) {
+                    var pathName = location.pathname.replace(getSamplePath(), '');
+                    if (curHashCollection.split('/')[curHashCollection.split('/').length - 3] != arg.data.dir) {
+                        var SampleObject = window.samplesList.filter(obj => obj.directory === arg.data.dir);
+                        var defaultSample = SampleObject.map(obj => obj.samples[0]);
+                        location.href = location.origin + pathName + arg.data.dir + '/' + defaultSample[0].url + '#/' + theme;
+                    }
+                    else {
+                        location.href = location.origin + pathName + arg.data.dir + '/' + arg.data.url + '#/' + theme;
+                    }
+                }
+            } else {
+                var hashName = location.hash.length ? '' : '#/' + theme
+                location.href = location.href + hashName;
             }
-
-            if (arg.data) {
-                var pathName = location.pathname.replace(getSamplePath(), '');
-                if (curHashCollection.split('/')[curHashCollection.split('/').length-3] != arg.data.dir) {
-                   var SampleObject = window.samplesList.filter(obj => obj.directory === arg.data.dir);
-                   var defaultSample = SampleObject.map(obj => obj.samples[0]);
-                   location.href = location.origin + pathName + arg.data.dir + '/' + defaultSample[0].url + '#/' + theme;
-               }
-               else {
-                   location.href = location.origin + pathName + arg.data.dir + '/' + arg.data.url + '#/' + theme;
-               }
-           }
-        } else {
-            var hashName = location.hash.length ? '' : '#/' + theme
-            location.href = location.href + hashName;
         }
     }
 }
@@ -1216,19 +1234,15 @@ function setSelectList() {
     var hString = location.pathname;
     var hash = hString.split('/');
     var list = ej.base.select('#controlList').ej2_instances[0];
-    var controlName = hash.slice(-2)[0];
     var sampleName = hash.slice(-2)[1];
-    var control = ej.base.select('[control-name="' + controlName + '"]');
-
-    if (control) {
-        var selectSample = ej.base.select('[sample-name="' + sampleName.replace('#', '') + '"]') || ej.base.select('[sample-name="' + list.localData[0].url + '"]');
-        if (selectSample) {
-            if (ej.base.select('#controlTree').style.display !== 'none') {
-                showHideControlTree();
-            }
-            list.selectItem(selectSample);
+    var selectSample = ej.base.select('[sample-name="' + sampleName.replace('#', '') + '"]') || ej.base.select('[sample-name="' + list.localData[0].url + '"]');
+    if (selectSample) {
+        if (ej.base.select('#controlTree').style.display !== 'none') {
+            showHideControlTree();
         }
-    } else {
+        list.selectItem(selectSample);
+    }
+    else {
         showHideControlTree();
         list.selectItem(ej.base.select('[sample-name="line"]'));
     }

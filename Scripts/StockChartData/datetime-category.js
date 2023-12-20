@@ -1,4 +1,4 @@
-﻿window.datetime = [
+window.datetime = [
     {
         "date": "2012-04-02",
         "open": 85.9757,

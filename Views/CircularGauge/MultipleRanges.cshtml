@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().CircularGauge("container").Load("gaugeLoad").Background("transparent").Axes(axes => axes
+        @Html.EJS().CircularGauge("container").Load("gaugeLoad").AnimationDuration(2000).Background("transparent").Axes(axes => axes
         .Radius("90%").StartAngle(230).EndAngle(130).Minimum(-30).Maximum(120).HideIntersectingLabel(true).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("Inherit")).Offset(50).Position(Position.Inside).AutoAngle(true))
         .Pointers(pointer => pointer.Value(22.5).Radius("45%").PointerWidth(7).Color("#F7B194").Cap(cap => cap.Radius(10).Color("White").Border(border => border.Color("#F7B194").Width(4))).NeedleTail(needleTail => needleTail.Length("25%").Color("#F7B194")).Animation(animation => animation.Enable(false)).Add())
         .Ranges(ranges =>

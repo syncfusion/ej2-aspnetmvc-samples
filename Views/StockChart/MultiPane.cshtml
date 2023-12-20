@@ -7,7 +7,7 @@
                     .Rows(row => { row.Height("30%").Add(); row.Height("70%").Add(); })
                     .Series(sr =>
                     {
-                        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).DataSource("data").YAxisName("yAxis1").Name("Apple Inc").Add();
+                         sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).DataSource("data").YAxisName("yAxis1").Name("Apple Inc").Add();
                         sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).DataSource("data").EnableTooltip(false).YName("volume").Name("Volume").Add();
                     }).Tooltip(tl=>tl.Enable(true).Shared(true).Format("High : <b>${point.high}</b><br/>Low :<b>${point.low}</b><br/>Open : <b>${point.open}</b><br/>Close : <b>${point.close}</b><br/>Volume : <b>${point.volume}</b>"))
                     .LegendSettings(leg => leg.Visible(true)).Render())

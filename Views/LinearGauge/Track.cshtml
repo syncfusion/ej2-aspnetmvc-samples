@@ -24,20 +24,20 @@
         <div id="containerBox" style="float: left;padding: 4%;"></div>
         <div id='containerDefault' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
             @Html.EJS().LinearGauge("linearDefault").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Default axis").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer => pointer.Width(0).Add())
             .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
         <div id='containerEdge' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
             @Html.EJS().LinearGauge("linearEdge").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Edge style").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Container(container => container.Width(20).RoundedCornerRadius(10).Type(Syncfusion.EJ2.LinearGauge.ContainerType.RoundedRectangle).Border(border => border.Width(1))).Axes(axes => 
+            textStyle.FontFamily("inherit").FontWeight("499")).Container(container => container.Width(20).RoundedCornerRadius(10).Type(Syncfusion.EJ2.LinearGauge.ContainerType.RoundedRectangle).Border(border => border.Width(1))).Axes(axes => 
             axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(0)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).UseRangeColor(true))
             .Pointers(pointer => pointer.Width(0).Add())
             .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
         <div id='containerRange' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
             @Html.EJS().LinearGauge("linearRange").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Range color for axis").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes =>
             axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(0)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).UseRangeColor(true))
             .Pointers(pointer => pointer.Width(0).Add())
             .Ranges(range =>
@@ -50,13 +50,13 @@
         </div>
         <div id='containerInversed' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
             @Html.EJS().LinearGauge("linearInversed").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Inversed axis").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).IsInversed(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).IsInversed(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer => pointer.Width(0).Add())
             .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
         <div id='containerOpposed' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
             @Html.EJS().LinearGauge("linearOpposed").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Opposed axis").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside))
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside))
             .Pointers(pointer => pointer.Width(0).Add())
             .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
         </div>

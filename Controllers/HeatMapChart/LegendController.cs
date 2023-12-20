@@ -24,7 +24,11 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
-                fontFamily = "Segoe UI"
+                fontFamily = "inherit"
+            };
+            ViewBag.labelTextStyle = new
+            {
+                fontFamily = "inherit"
             };
             string[] xlabels = new string[7] { "London", "Berlin", "Madrid", "Paris", "Rome", "Lisbon", "Dublin" };
             ViewBag.xLabels = xlabels;

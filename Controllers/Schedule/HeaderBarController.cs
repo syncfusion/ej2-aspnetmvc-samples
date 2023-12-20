@@ -7,6 +7,7 @@
 #endregion
 using EJ2MVCSampleBrowser.Models;
 using Syncfusion.EJ2.Schedule;
+using Syncfusion.EJ2.Navigations;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -22,6 +23,15 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Month}
             };
             ViewBag.view = viewOption;
+            List<ScheduleToolbarItem> toolbarItems = new List<ScheduleToolbarItem>()
+            {
+                new ScheduleToolbarItem { Name = ToolbarName.Previous, Align = ItemAlign.Left },
+                new ScheduleToolbarItem { Name = ToolbarName.Next, Align = ItemAlign.Left },
+                new ScheduleToolbarItem { Name = ToolbarName.DateRangeText, Align = ItemAlign.Left },
+                new ScheduleToolbarItem { Name = ToolbarName.Today, Align = ItemAlign.Right },
+                new ScheduleToolbarItem { Align = ItemAlign.Right, PrefixIcon = "user-icon", Text = "Nancy", CssClass = "e-schedule-user-icon", Click = "onIconClick" },
+            };
+            ViewBag.toolbarItems = toolbarItems;
             return View();
         }
     }

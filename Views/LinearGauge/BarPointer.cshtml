@@ -23,32 +23,32 @@
         <pre style="background-color: inherit; border:hidden"></pre>
         <div id="containerBox" style="float: left;padding: 4%;"></div>
         <div id='containerOutside' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("outsideBar").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Outside").TitleStyle(textStyle => 
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            @Html.EJS().LinearGauge("outsideBar").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Outside").TitleStyle(textStyle => 
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer => pointer.Width(5).Height(5).Value(70).Color("#0074E3").Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Position(Syncfusion.EJ2.LinearGauge.Position.Outside).AnimationDuration(1500).Add())
             .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
         <div id='containerCross' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("crossBar").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Cross").TitleStyle(textStyle => 
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            @Html.EJS().LinearGauge("crossBar").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Cross").TitleStyle(textStyle => 
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer => pointer.Width(5).Height(5).Value(70).Color("#0074E3").Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Position(Syncfusion.EJ2.LinearGauge.Position.Cross).AnimationDuration(1500).Add())
             .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
         <div id='containerInside' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("insideBar").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Inside").TitleStyle(textStyle => 
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            @Html.EJS().LinearGauge("insideBar").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Inside").TitleStyle(textStyle => 
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
            .Pointers(pointer => pointer.Width(5).Height(5).Value(70).Color("#0074E3").Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Position(Syncfusion.EJ2.LinearGauge.Position.Inside).AnimationDuration(1500).Add())
           .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
         <div id='containerGradient' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("gradientBar").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Gradient shader").TitleStyle(textStyle => 
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            @Html.EJS().LinearGauge("gradientBar").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Gradient shader").TitleStyle(textStyle => 
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer => pointer.Width(5).Height(5).Value(70).Offset(2).Color("#0074E3").Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Position(Syncfusion.EJ2.LinearGauge.Position.Outside).AnimationDuration(1500)
             .Add()).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
         <div id='containerMultiple' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("multipleBar").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Multiple bar pointers").TitleStyle(textStyle => 
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            @Html.EJS().LinearGauge("multipleBar").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Multiple bar pointers").TitleStyle(textStyle => 
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer => { pointer.Width(5).Height(5).Value(10).Color("#0074E3").Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Position(Syncfusion.EJ2.LinearGauge.Position.Inside).AnimationDuration(1500).Add();
                 pointer.Width(5).Height(5).Value(70).Color("red").Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Position(Syncfusion.EJ2.LinearGauge.Position.Outside).AnimationDuration(1500).Add();})
             .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()

@@ -4,17 +4,17 @@
                 }
 @section ControlsSection{
     <div class="control-section">
-        <div id="container" align="center">
-            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Annual Flight Traffic Report").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
-                 xAxis.Minimum(new System.DateTime(2017, 1, 1)).Maximum(new System.DateTime(2017, 12, 31)).LabelFormat("MMM").ValueType(Syncfusion.EJ2.HeatMap.ValueType.DateTime).IntervalType(Syncfusion.EJ2.HeatMap.IntervalType.Days).ShowLabelOn(Syncfusion.EJ2.HeatMap.LabelType.Months)).YAxis(yaxis =>
-                   yaxis.Labels(ViewBag.yLabels)).PaletteSettings(ps => ps.Palette(palette =>
-                   {
-                       palette.Value(150).Color("#A6DC7E").Add();
-                       palette.Value(250).Color("#DCD57E").Add();
-                       palette.Value(300).Color("#DC8D7E").Add();
+        <div id="container">
+            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Annual Flight Traffic Report").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+            xAxis.Minimum(new System.DateTime(2017, 1, 1)).Maximum(new System.DateTime(2017, 12, 31)).LabelFormat("MMM").ValueType(Syncfusion.EJ2.HeatMap.ValueType.DateTime).IntervalType(Syncfusion.EJ2.HeatMap.IntervalType.Days).ShowLabelOn(Syncfusion.EJ2.HeatMap.LabelType.Months).TextStyle(ViewBag.labelTextStyle)).YAxis(yaxis =>
+            yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle)).PaletteSettings(ps => ps.Palette(palette =>
+            {
+                palette.Value(150).Color("#A6DC7E").Add();
+                palette.Value(250).Color("#DCD57E").Add();
+                palette.Value(300).Color("#DC8D7E").Add();
 
-                   })).RenderingMode(Syncfusion.EJ2.HeatMap.DrawType.Canvas).LegendSettings(ls =>
-                   ls.Visible(false)).TooltipRender("tooltipRender").Load("load").CellSettings(cs => cs.Border(ViewBag.border)).DataSource(ViewBag.dataSource).Render()
+            })).RenderingMode(Syncfusion.EJ2.HeatMap.DrawType.Canvas).LegendSettings(legendSettings =>
+            legendSettings.Visible(false)).TooltipRender("tooltipRender").Load("load").TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).CellSettings(cellSettings => cellSettings.Border(ViewBag.border).TextStyle(ViewBag.labelTextStyle)).DataSource(ViewBag.dataSource).Render()
         </div>
     </div>
     <style>
@@ -31,8 +31,10 @@
             args.content = [value + " " + args.yLabel + " : " + args.value + " flight arrivals"];
         };
         var load = function (args) {
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
+            @* custom code end *@
         };
     </script>
 }
@@ -42,13 +44,11 @@
     </p>
 }
 @section Description{
-    <p>
-        In this example, you can see how to switch the Heatmap to canvas rendering mode.The rendering performance will be better in <code>Canvas</code> rendering mode, while loading large datasets. You can switch the rendering mode for Heatmap between <code>SVG</code> and <code>Canvas</code> using the <code>renderingMode </code> property. When the <code>renderingMode</code> property is set to <code>Auto</code> the rendering mode will be switched automatically based of the size of data source to improve the rendering performance.
-    </p>
-    <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
-    <br>
+      <p>
+           In this example, you can see how to switch the Heatmap to canvas rendering mode.The rendering performance will be better in <code>Canvas</code> rendering mode, while loading large datasets. You can switch the rendering mode for Heatmap between <code>SVG</code> and <code>Canvas</code> using the <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/heatmap-chart/rendering-mode" target="_blank">renderingMode</a> property. When the <code>renderingMode</code> property is set to <code>Auto</code>, the rendering mode will be switched automatically based of the size of data source to improve the rendering performance.
+      </p>
+      <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
+      <br> 
 }
 
 @section Title{

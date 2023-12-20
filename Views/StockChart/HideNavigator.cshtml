@@ -16,7 +16,7 @@
             @(Html.EJS().StockChart("container").Load("load").EnableSelector(false)
                                               .Series(sr =>
                                               {
-                                                  sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).DataSource("data").XName("date").Add();
+                                                   sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).DataSource("data").XName("date").Add();
                                               })
                                               .Render())
         </div>

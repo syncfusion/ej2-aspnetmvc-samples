@@ -17,7 +17,7 @@
                 @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
             </div>
         </div>
-        @Html.EJS().PdfViewer("pdfviewer").EnableRtl(true).Locale("ar-AE").DocumentPath("https://cdn.syncfusion.com/content/pdf/rtl-text.pdf").DocumentLoad("documentLoad").Render()
+        @Html.EJS().PdfViewer("pdfviewer").EnableRtl(true).Locale("ar-AE").DocumentPath("https://cdn.syncfusion.com/content/pdf/rtl-text.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").DocumentLoad("documentLoad").Render()
     </div>
     <script>
         ej.base.L10n.load({

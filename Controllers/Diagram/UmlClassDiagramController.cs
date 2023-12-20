@@ -22,11 +22,202 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: ClassDiagram
         public ActionResult UmlClassDiagram()
         {
+            List<Syncfusion.EJ2.Diagrams.DiagramNode> umlShapes = new List<Syncfusion.EJ2.Diagrams.DiagramNode>();
+            umlShapes.Add(new DiagramNode()
+            {
+                Id = "Class",
+                OffsetX = 200,
+                OffsetY = 250,
+                Shape = new UmlClassifierShapeModel()
+                {
+                    Type = "UmlClassifier",
+                    ClassShapes = new ClassShapes()
+                    {
+                        Name = "Patient",
+                    },
+                    Classifier = "Class"
+                },
+            });
+            umlShapes.Add(new DiagramNode()
+            {
+                Id = "Interface",
+                OffsetX = 400,
+                OffsetY = 350,
+                Shape = new UmlClassifierShapeModel()
+                {
+                    Type = "UmlClassifier",
+                    InterfaceShapes = new InterfaceShapes()
+                    {
+                        Name = "Bank Account",
+                    },
+                    Classifier = "Interface"
+                },
+            });
+            umlShapes.Add(new DiagramNode()
+            {
+                Id = "Enumeration",
+                OffsetX = 600,
+                OffsetY = 450,
+                Shape = new UmlClassifierShapeModel()
+                {
+                    Type = "UmlClassifier",
+                    Enumerations = new Enumerations()
+                    {
+                        Name = "AccountType",
+                    },
+                    Classifier = "Enumeration"
+                },
+            });
+
+
+            DiagramPoint sourcePoint = new DiagramPoint() { X = 0, Y = 0 };
+            DiagramPoint targetPoint = new DiagramPoint() { X = 40, Y = 40 };
+            List<DiagramConnector> SymbolPaletteConnectors = new List<DiagramConnector>();
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "Composition",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new { type = "UmlClassifier", relationship = "Composition" }
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "BiDirectional",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new { type = "UmlClassifier", relationship = "Aggregation", association = "BiDirectional" }
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "Directional",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new { type = "UmlClassifier", relationship = "Aggregation", association = "Directional" }
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "Association",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new { type = "UmlClassifier", relationship = "Association" }
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "Inheritance",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new { type = "UmlClassifier", relationship = "Inheritance" }
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "Interfaces",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new { type = "UmlClassifier", relationship = "Interface" }
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "Dependency",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new { type = "UmlClassifier", relationship = "Dependency" }
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "Realization",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new { type = "UmlClassifier", relationship = "Realization" }
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "OneToMany",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new
+                {
+                    type = "UmlClassifier",
+                    relationship = "Dependency",
+                    multiplicity = new
+                    {
+                        type = "OneToMany",
+                    }
+                }
+
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "ManyToMany",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new
+                {
+                    type = "UmlClassifier",
+                    relationship = "Dependency",
+                    multiplicity = new
+                    {
+                        type = "ManyToMany",
+                    }
+                }
+
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "OneToOne",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new
+                {
+                    type = "UmlClassifier",
+                    relationship = "Dependency",
+                    multiplicity = new
+                    {
+                        type = "OneToOne",
+                    }
+                }
+
+            });
+            SymbolPaletteConnectors.Add(new DiagramConnector()
+            {
+                Id = "ManyToOne",
+                Type = Segments.Straight,
+                SourcePoint = sourcePoint,
+                TargetPoint = targetPoint,
+                Shape = new
+                {
+                    type = "UmlClassifier",
+                    relationship = "Dependency",
+                    multiplicity = new
+                    {
+                        type = "ManyToOne",
+                    }
+                }
+
+            });
+
+            List<SymbolPalettePalette> Palette = new List<SymbolPalettePalette>();
+            Palette.Add(new SymbolPalettePalette() { Id = "UMLActivity", Expanded = true, Symbols = umlShapes, Title = "UMLClass Nodes" });
+            Palette.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = SymbolPaletteConnectors, Title = "UMLClass Connectors" });
+
+            ViewBag.Palette = Palette;
             ViewBag.Nodes = GetClassNodeDiagram();
             ViewBag.Connectors = GetClassConnectorDiagram();
             ViewBag.getNodeDefaults = "getNodeDefaults";
             ViewBag.getConnectorDefaults = "getConnectorDefaults";
             ViewBag.setNodeTemplate = "setNodeTemplate";
+            ViewBag.getSymbolInfo = "getSymbolInfo";
+            ViewBag.getSymbolDefaults = "getSymbolDefaults";
             return View();
         }
 
@@ -275,6 +466,33 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             get;
             set;
         }
+
+        [DefaultValue(null)]
+        [HtmlAttributeName("Enumerations")]
+        [JsonProperty("enumeration")]
+        public Enumerations Enumerations
+        {
+            get;
+            set;
+        }
+
+        [DefaultValue(null)]
+        [HtmlAttributeName("InterfaceShapes")]
+        [JsonProperty("interfaceShape")]
+        public InterfaceShapes InterfaceShapes
+        {
+            get;
+            set;
+        }
+
+        [DefaultValue(null)]
+        [HtmlAttributeName("classifier")]
+        [JsonProperty("classifier")]
+        public string Classifier
+        {
+            get;
+            set;
+        }
     }
 
     public class ClassShapes
@@ -306,6 +524,49 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             set;
         }
     }
+
+    public class Enumerations
+    {
+        [DefaultValue(null)]
+        [HtmlAttributeName("name")]
+        [JsonProperty("name")]
+        public string Name
+        {
+            get;
+            set;
+        }
+    }
+
+    public class InterfaceShapes
+    {
+        [DefaultValue(null)]
+        [HtmlAttributeName("name")]
+        [JsonProperty("name")]
+        public string Name
+        {
+            get;
+            set;
+        }
+
+        [DefaultValue(null)]
+        [HtmlAttributeName("attributes")]
+        [JsonProperty("attributes")]
+        public List<UMLProperty> Attributes
+        {
+            get;
+            set;
+        }
+
+        [DefaultValue(null)]
+        [HtmlAttributeName("methods")]
+        [JsonProperty("methods")]
+        public List<UMLMethods> Methods
+        {
+            get;
+            set;
+        }
+    }
+
 
     public class UMLProperty
     {

@@ -112,7 +112,7 @@
             background: black;
         }
 
-        .e-richtexteditor .e-rte-content .e-content pre {
+        .e-richtexteditor .e-rte-content .e-content[contenteditable="true"] pre {
             padding: 10px;
             background: #F4F5F7;
         }
@@ -124,6 +124,14 @@
         .highcontrast .e-richtexteditor .e-rte-content .e-content pre {
             padding: 10px;
             background: #303030;
+        }
+
+        #defaultmirror-view {
+            padding: 0px;
+        }
+
+        #defaultmirror-view pre {    
+            background: transparent;
         }
     </style>
     <script type="text/javascript">

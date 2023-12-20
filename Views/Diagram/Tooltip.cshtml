@@ -1,5 +1,6 @@
 @using Syncfusion.EJ2.Diagrams;
 @using Syncfusion.EJ2.DropDowns;
+@using Syncfusion.EJ2;
 @using EJ2MVCSampleBrowser.Controllers.Diagram;
 
 @section ControlsSection{
@@ -18,7 +19,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("mode").Index(0).PopupWidth("150").Width("100%").Placeholder("select a relative mode").Change("relativeModeChange").DataSource((IEnumerable<TooltipProperty>)ViewBag.modeValue).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
+                        @Html.EJS().DropDownList("mode").Index(0).PopupWidth("150").Width("85%").Placeholder("select a relative mode").Change("relativeModeChange").DataSource((IEnumerable<TooltipProperty>)ViewBag.modeValue).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
                     </div>
                 </td>
             </tr>
@@ -30,7 +31,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("position").Index(0).PopupWidth("150").Width("100%").Placeholder("select a position").Change("positionChange").DataSource((IEnumerable<TooltipProperty>)ViewBag.positionValue).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
+                        @Html.EJS().DropDownList("position").Index(0).PopupWidth("150").Width("85%").Placeholder("select a position").Change("positionChange").DataSource((IEnumerable<TooltipProperty>)ViewBag.positionValue).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
                     </div>
                 </td>
             </tr>
@@ -42,7 +43,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().NumericTextBox("duration").Value(1000).Min(1000).Max(6000).Step(100).Change("animationChange").Render()                     
+                        @Html.EJS().NumericTextBox("duration").Value(1000).Min(1000).Max(6000).Step(100).Width("85%").Change("animationChange").Render()
                     </div>
                 </td>
             </tr>
@@ -54,7 +55,19 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("effect").Index(0).PopupWidth("150").Width("100%").Placeholder("select a effect type").Change("effectChange").DataSource((IEnumerable<TooltipProperty>)ViewBag.effectValue).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
+                        @Html.EJS().DropDownList("effect").Index(0).PopupWidth("150").Width("85%").Placeholder("select a effect type").Change("effectChange").DataSource((IEnumerable<TooltipProperty>)ViewBag.effectValue).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div>
+                        Sticky Mode
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        @Html.EJS().CheckBox("checked").Change("onChange").Checked(false).Render()
                     </div>
                 </td>
             </tr>
@@ -109,7 +122,7 @@
             connector.style = { strokeWidth: 2 };
             return connector;
         }
-         function getNodeDefaults(obj) {
+        function getNodeDefaults(obj) {
             obj.offsetX += 0.5;
             obj.offsetY += 0.5;
             obj.constraints = ej.diagrams.NodeConstraints.Default | ej.diagrams.NodeConstraints.Tooltip;
@@ -127,7 +140,7 @@
         }
 
         function positionChange(args) {
-             var diagram = document.getElementById("diagram").ej2_instances[0];
+            var diagram = document.getElementById("diagram").ej2_instances[0];
             var nodes = diagram.nodes;
             for (var i = 0; i < nodes.length; i++) {
                 if (nodes[i].tooltip) {
@@ -177,9 +190,23 @@
             diagram.tooltip.animation.open.duration = args.value;
             diagram.dataBind();
         }
-         function created() {
+        function created() {
             var diagram = document.getElementById("diagram").ej2_instances[0];
             diagram.fitToPage({ mode: 'Width' });
+        }
+        function onChange(args) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            for (var j = 0; j < diagram.nodes.length; j++) {
+                if (args.checked) {
+                    diagram.tooltipObject.isSticky = true;
+                    diagram.nodes[j].tooltip.isSticky = true;
+                }
+                else {
+                    diagram.tooltipObject.isSticky = false;
+                    diagram.nodes[j].tooltip.isSticky = false;
+                }
+                diagram.dataBind();
+            }
         }
 
     </script>

@@ -19,8 +19,8 @@
                          {
                              xAxis.LabelRotation(45)
                             .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                            .Labels(ViewBag.xlabels);
-                         }).YAxis(yaxis => yaxis.Labels(ViewBag.yLabels)).DataSource(ViewBag.dataSource).Render()
+                            .Labels(ViewBag.xlabels).TextStyle(ViewBag.labelTextStyle);
+                         }).YAxis(yaxis => yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings => legendSettings.Visible(true).TextStyle(ViewBag.labelTextStyle)).DataSource(ViewBag.dataSource).Render()
                 </div>
             </div>
         </div>
@@ -54,8 +54,10 @@
     </style>
     <script>
         var load = function (args) {
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
+            @* custom code end *@
         };
         var fixedRadioButton = new ej.buttons.RadioButton({
             label: 'Fixed', name: 'paletteType',
@@ -82,11 +84,9 @@
 }
 @section Description{
     <p>
-        This example explains how to provide a specific color for specific range in heatmap. The <code> startValue </code> and <code> endValue </code> properties are used to define the range start and end values. The <code> minColor </code> and <code> maxColor </code> properties represent the colors of given range.
+        This example explains how to provide a specific color for specific range in heatmap. The <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPalette.html#Syncfusion_EJ2_HeatMap_HeatMapPalette_StartValue" target="_blank"> startValue </a> and <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPalette.html#Syncfusion_EJ2_HeatMap_HeatMapPalette_EndValue" target="_blank"> endValue </a> properties are used to define the range start and end values. The <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPalette.html#Syncfusion_EJ2_HeatMap_HeatMapPalette_MinColor" target="_blank"> minColor </a> and <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPalette.html#Syncfusion_EJ2_HeatMap_HeatMapPalette_MaxColor" target="_blank"> maxColor </a> properties represent the colors of given range.
     </p>
-    <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
+    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
     <br>
 }
 

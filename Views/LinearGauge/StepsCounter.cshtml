@@ -1,7 +1,7 @@
 ﻿@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().LinearGauge("defaultContainerGauge").Load("defaultContainerGaugeLoad").Background("Transparent").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(axes =>
+        @Html.EJS().LinearGauge("defaultContainerGauge").Load("defaultContainerGaugeLoad").AnimationDuration(3500).Background("Transparent").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(axes =>
         axes.Minimum(0).Maximum(12000).OpposedPosition(true).Line(line => line.Width(30)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
         .Pointers(pointer => pointer.Width(40).Height(40).Value(8446).Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).Offset("-40").MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Image).ImageUrl(@Url.Content("~/Content/LinearGauge/step-count.png")).Add())
         .Ranges(range => range.Start(0).End(8456).StartWidth(30).EndWidth(30).Color("#0DC9AB").Offset("0").Add())

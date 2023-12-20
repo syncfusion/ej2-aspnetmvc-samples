@@ -13,7 +13,7 @@
         .PrimaryYAxis(yaxis =>yaxis.MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
         ).Series(sr =>
          {
-             sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).DataSource("data").Add();
+            sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).DataSource("data").Add();
          })
         .Crosshair(cr=>cr.Enable(true))
         .Tooltip(tp => tp.Enable(true).Header("AAPL Stock Price").Format("${point.x}: <b>${point.y}</b>"))

@@ -28,15 +28,15 @@
         <pre style="background-color: inherit; border:hidden"></pre>
         <div id="containerBox" style="float: left;padding: 4%;"></div>
         <div id='containerone' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("linearDefault").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Default").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            @Html.EJS().LinearGauge("linearDefault").Load("gaugeLoad").AnimationDuration(5000).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Default").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside))
             .Pointers(pointer => pointer.Width(0).Add()).Ranges(range => range.Start(0).End(100).StartWidth(10).EndWidth(10).Color("#F45656").Offset("5").Add())
             .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
         </div>
         <div id='containertwo' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("linearExponential").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Exponential").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            @Html.EJS().LinearGauge("linearExponential").Load("gaugeLoad").AnimationDuration(5000).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Exponential").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Pointers(pointer => pointer.Width(0).Add())
             .Ranges(range => { 
                 range.Start(0).End(50).StartWidth(2).EndWidth(15).Color("#F45656").Offset("5").Add(); 
@@ -44,8 +44,8 @@
             }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
         </div>
         <div id='containerthree' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("linearConcave").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Concave").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            @Html.EJS().LinearGauge("linearConcave").Load("gaugeLoad").AnimationDuration(5000).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Concave").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Pointers(pointer => pointer.Width(0).Add())
             .Ranges(range =>
             {
@@ -54,15 +54,15 @@
             }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
         </div>
         <div id='containerfour' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("linearGradient").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Gradient shader").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            @Html.EJS().LinearGauge("linearGradient").Load("gaugeLoad").AnimationDuration(5000).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Gradient shader").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside))
             .Pointers(pointer => pointer.Width(0).Add()).Ranges(range => range.Start(0).End(100).StartWidth(50).EndWidth(50).Offset("5")
             .Add()).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
         </div>
         <div id='containerfive' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("linearMultiple").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Multiple ranges").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            @Html.EJS().LinearGauge("linearMultiple").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Multiple ranges").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Pointers(pointer => pointer.Width(0).Add())
             .Ranges(range =>
             {

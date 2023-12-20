@@ -1,31 +1,163 @@
 @using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Diagrams;
+@using Syncfusion.EJ2.Navigations;
 @section ControlsSection{
     <div class="control-section">
-        @(Html.EJS().Diagram("diagram").Width("100%").Height("700px").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").SetNodeTemplate("setNodeTemplate").Nodes(ViewBag.nodes)
+        <div id="umlActivityDiagram" style="width: 100%; height: 521px">
+            <div class="sb-mobile-palette-bar">
+                <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
+            </div>
+            <div id="palette-space" class="sb-mobile-palette">
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("700px")
+                     .SymbolMargin(new SymbolPaletteMargin() { Left = 10, Right = 10, Top = 10, Bottom = 10 }).SymbolHeight(90).SymbolWidth(90)
+                     .GetNodeDefaults("getSymbolDefaults").Render()
+                  )
+            </div>
+            <div id="diagram-space" class="sb-mobile-diagram">
+                @(Html.EJS().Diagram("diagram").Width("100%").Height("700px").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Created("created").DragEnter("dragEnter").SetNodeTemplate("setNodeTemplate").Nodes(ViewBag.nodes)
                         .Connectors(ViewBag.connectors).Render()
-        )
+                  )
+            </div>
+        </div>
     </div>
 
-    <script>
-    //Set node default properties.
-    function getNodeDefaults(obj, diagram) {
-        obj.style = { fill: '#26A0DA', strokeColor: 'white' };
-        return obj;
-    }
 
-    //Set connector default properties.
-    function getConnectorDefaults(connector, diagram) {
-        return connector;
-    }
+    <style>
 
-    //Set an annotation style at runtime.
-    function setNodeTemplate(node) {
-        if (node.annotations.length > 0) {
-            for (var i = 0; i < node.annotations.length; i++) {
-                node.annotations[i].style.color = 'white';
+        #diagram {
+            display: block;
+        }
+
+        #symbolPalette {
+            display: block;
+        }
+
+        .container-fluid {
+            padding-bottom: 15px;
+        }
+
+        .sb-mobile-palette {
+            width: 240px;
+            height: 100%;
+            float: left;
+        }
+
+        .sb-mobile-palette-bar {
+            display: none;
+        }
+
+        .sb-mobile-diagram {
+            width: calc(100% - 242px);
+            height: 100%;
+            float: left;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-left: none;
+        }
+
+        .container-fluid {
+            padding-bottom: 15px;
+        }
+
+        @@media (max-width: 550px) {
+
+            .sb-mobile-palette {
+                z-index: 19;
+                position: absolute;
+                display: none;
+                transition: transform 300ms linear, visibility 0s linear 300ms;
+                width: 39%;
+                height: 100%;
+            }
+
+            .sb-mobile-palette-bar {
+                display: block;
+                width: 100%;
+                background: #fafafa;
+                padding: 10px 10px;
+                border: 0.5px solid #e0e0e0;
+                min-height: 40px;
+            }
+
+            .sb-mobile-diagram {
+                width: 100%;
+                height: 100%;
+                float: left;
+                left: 0px;
+            }
+
+            #palette-icon {
+                font-size: 20px;
             }
         }
-    }
+
+        .sb-mobile-palette-open {
+            position: absolute;
+            display: block;
+            right: 15px;
+        }
+
+        .e-toggle-palette::before {
+            content: "\e700"
+        }
+
+        .material #umlActivityDiagram #palette-space .e-accordion {
+            border: none;
+        }
+
+        .material #umlActivityDiagram #palette-space {
+            border: 1px solid rgba(0, 0, 0, 0.12);
+        }
+
+        .bootstrap #umlActivityDiagram .sb-mobile-diagram {
+            height: calc(100% - 17px);
+            margin-top: 5px;
+            border-radius: 4px;
+            border-left: 1px solid rgba(0, 0, 0, 0.12);
+        }
+
+        .fabric #umlActivityDiagram .sb-mobile-diagram {
+            border-left: 1px solid rgba(0, 0, 0, 0.12);
+        }
+    </style>
+    <script>
+        //Set node default properties.
+        function getNodeDefaults(obj, diagram) {
+            obj.style = { fill: '#26A0DA', strokeColor: 'white' };
+            return obj;
+        }
+
+        //Set connector default properties.
+        function getConnectorDefaults(connector, diagram) {
+            return connector;
+        }
+
+        //Set an annotation style at runtime.
+        function setNodeTemplate(node) {
+            if (node.annotations.length > 0) {
+                for (var i = 0; i < node.annotations.length; i++) {
+                    node.annotations[i].style.color = 'white';
+                }
+            }
+        }
+
+        function dragEnter(args) {
+            if (args.element instanceof ej.diagrams.Connector) {
+                args.element.targetPoint.x += 100;
+                args.element.targetPoint.y += 20;
+            }
+        }
+        function created() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.fitToPage();
+        }
+
+        function getSymbolDefaults(symbol, diagram) {
+            symbol.width = 100; symbol.height = 100;
+        }
+
+        function getSymbolInfo(symbol) {
+            return { fit: true, description: { text: symbol.id, }, tooltip: symbol.addInfo ? symbol.addInfo.tooltip : symbol.id };
+        }
     </script>
 }
 @section ActionDescription{
@@ -36,8 +168,8 @@
     </div>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the UML Class Diagram in ASP.NET MVC Diagram control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the UML Class Diagram in ASP.NET MVC Diagram control. Explore here for more details." />
+}
 @section Description{
     <div id="description">
         <p>
@@ -51,8 +183,8 @@
 
 
 @section Title{
-                    <title>ASP.NET MVC Diagram UML Class Diagram Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Diagram UML Class Diagram Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of UML Class Diagram in ASP.NET MVC Diagram Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of UML Class Diagram in ASP.NET MVC Diagram Control</h1>
+}

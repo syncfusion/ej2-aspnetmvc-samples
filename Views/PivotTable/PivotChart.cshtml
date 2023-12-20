@@ -29,7 +29,9 @@
             .Filters(filters =>
             {
                 filters.Name("Product_Categories").Caption("Product Categories").Add();
-            })).ChartSettings(new PivotViewChartSettings { Title="Sales Analysis" , Load="onChartLoad" }).Render()
+            })).ChartSettings(chartSettings => chartSettings.Title("Sales Analysis").Load("onChartLoad").ChartSeries(
+                chartSeries => chartSeries.Type(ChartSeriesType.Column))
+            ).Render()
         </div>
     </div>
 
@@ -40,7 +42,7 @@
                     <td>
                         <div>
                             @Html.EJS().DropDownList("charttypesddl").DataSource((IEnumerable<object>)ViewBag.chartTypes).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
-                            ).Placeholder("Chart Types").Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Index(0).Change("chartTypesChange").Render()
+                            ).Placeholder("Chart Types").Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Index(1).Change("chartTypesChange").Render()
                         </div>
                     </td>
                 </tr>

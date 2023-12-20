@@ -23,26 +23,26 @@
         <pre style="background-color: inherit; border:hidden"></pre>
         <div id="containerBox">
             <div id='containerOutside' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
-                @Html.EJS().LinearGauge("outsideTicks").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Outside ticks").TitleStyle(textStyle =>
-                textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5))
+                @Html.EJS().LinearGauge("outsideTicks").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Outside ticks").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5))
                 .LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Pointers(pointer => pointer.Width(0).Add())
                 .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
             </div>
             <div id='containerCross' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
-                @Html.EJS().LinearGauge("crossTicks").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Cross ticks").TitleStyle(textStyle =>
-                textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).Line(line => line.Width(5))
+                @Html.EJS().LinearGauge("crossTicks").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Cross ticks").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).Line(line => line.Width(5))
                 .LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit"))).Pointers(pointer => pointer.Width(0).Add())
                 .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Cross)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Cross)).Add()).Render()
             </div>
             <div id='containerInside' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
-                @Html.EJS().LinearGauge("insideTicks").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Inside ticks").TitleStyle(textStyle =>
-                textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).IsInversed(true).Line(line => line.Width(5))
+                @Html.EJS().LinearGauge("insideTicks").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Inside ticks").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).IsInversed(true).Line(line => line.Width(5))
                 .LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit"))).Pointers(pointer => pointer.Width(0).Add())
                 .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Inside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Inside)).Add()).Render()
             </div>
             <div id='containerOffset' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
-                @Html.EJS().LinearGauge("offsetTicks").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Ticks with offset").TitleStyle(textStyle =>
-                textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).IsInversed(true).Line(line => line.Width(5))
+                @Html.EJS().LinearGauge("offsetTicks").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Ticks with offset").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).IsInversed(true).Line(line => line.Width(5))
                 .LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit"))).Pointers(pointer => pointer.Width(0).Add())
                 .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Inside).Offset(10)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Inside).Offset(10)).Add()).Render()
             </div>

@@ -22,14 +22,14 @@
         <pre style="background-color: inherit; border:hidden"></pre>
         <div id="containerBox">
             <div id='containerone' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
-                @Html.EJS().LinearGauge("customLabels").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Custom labels").TitleStyle(textStyle =>
-                textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(5).Maximum(20).OpposedPosition(true)
+                @Html.EJS().LinearGauge("customLabels").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Custom labels").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(5).Maximum(20).OpposedPosition(true)
                 .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Format("${value}")).Pointers(pointer => pointer.Width(0).Add())
                 .MajorTicks(majorTick => majorTick.Interval(5).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(2.5)).Add()).Render()
             </div>
             <div id='containertwo' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
                 @Html.EJS().LinearGauge("textLabels").AxisLabelRender("axisLabelRender").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Text labels").TitleStyle(textStyle =>
-                textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(5).Maximum(20).OpposedPosition(true)
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(5).Maximum(20).OpposedPosition(true)
                 .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Offset(10))
                 .Pointers(pointer =>
                 {
@@ -45,14 +45,14 @@
                 .MajorTicks(majorTick => majorTick.Interval(5).Height(0).Width(1)).MinorTicks(minorTick => minorTick.Height(0).Interval(2.5)).Add()).Render()
             </div>
             <div id='containerthree' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
-                @Html.EJS().LinearGauge("labelOffset").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Label offset").TitleStyle(textStyle =>
-                textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+                @Html.EJS().LinearGauge("labelOffset").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Label offset").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
                 .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Offset(5)).Pointers(pointer => pointer.Width(0).Add())
                 .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
             </div>
             <div id='containerfour' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
-                @Html.EJS().LinearGauge("labelCustomization").Load("gaugeLoad").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Label customization").TitleStyle(textStyle =>
-                textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+                @Html.EJS().LinearGauge("labelCustomization").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Label customization").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
                 .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit").Color("#F93106")).Offset(5)).Pointers(pointer => pointer.Width(0).Add())
                 .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
             </div>

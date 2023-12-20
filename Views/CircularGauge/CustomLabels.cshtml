@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <div class="control-section" align="center">
-        @Html.EJS().CircularGauge("container").Load("gaugeLoad").Background("transparent").AxisLabelRender("onAxesLabelRendering").Axes(axes => axes
+        @Html.EJS().CircularGauge("container").Load("gaugeLoad").AnimationDuration(2000).Background("transparent").AxisLabelRender("onAxesLabelRendering").Axes(axes => axes
         .Radius("80%").StartAngle(210).EndAngle(150).Minimum(0).Maximum(8).LineStyle(lineStyle => lineStyle.Width(0).Color("transparent"))
         .LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Offset(10))
         .MinorTicks(minorTick => minorTick.Height(0).Width(0).Color("transparent")).MajorTicks(majorTick => majorTick.Interval(1).Width(0).Color("transparent"))
@@ -52,7 +52,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This example demonstrates how to introduce and position customer labels in a circular gauge. In addition, gradient colors are used on the circular gauge elements such as the pointer and range.
+            This example demonstrates how to introduce and position custom labels in a circular gauge. In addition, gradient colors are used on the circular gauge elements such as the pointer and range.
         </p>
     </div>
 }

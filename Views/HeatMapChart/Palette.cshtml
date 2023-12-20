@@ -7,26 +7,26 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").PaletteSettings(ps =>
-                         ps.Palette(palette =>
-                         {
-                             palette.Value(4.3).Color("#FFFFDA").Add();
-                             palette.Value(7).Color("#EDF8B6").Add();
-                             palette.Value(9).Color("#CAE8B4").Add();
-                             palette.Value(15).Color("#78D1BD").Add();
-                             palette.Value(18).Color("#36BCC6").Add();
-                             palette.Value(25).Color("#208FC6").Add();
-                             palette.Value(30).Color("#253494").Add();
-                             palette.Value(32).Color("#081D58").Add();
-                         }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed)).Load("load").LegendSettings(ls =>
-                      ls.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).EnableSmartLegend(true).Width("400px")).CellSettings(cs =>
-                      cs.Border(ViewBag.border).ShowLabel(false)).TitleSettings(ts => ts.Text("U.S. Government Energy Consumption by Agency (Trillion Btu)").TextStyle(ViewBag.textStyle)).XAxis(
-                         xAxis =>
-                         {
-                             xAxis.LabelRotation(45)
-                            .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                            .Labels(ViewBag.xlabels);
-                         }).YAxis(yaxis => yaxis.Labels(ViewBag.yLabels)).DataSource(ViewBag.dataSource).Render()
+                    @Html.EJS().HeatMap("container").PaletteSettings(paletteSettings =>
+                    paletteSettings.Palette(palette =>
+                    {
+                        palette.Value(4.3).Color("#FFFFDA").Add();
+                        palette.Value(7).Color("#EDF8B6").Add();
+                        palette.Value(9).Color("#CAE8B4").Add();
+                        palette.Value(15).Color("#78D1BD").Add();
+                        palette.Value(18).Color("#36BCC6").Add();
+                        palette.Value(25).Color("#208FC6").Add();
+                        palette.Value(30).Color("#253494").Add();
+                        palette.Value(32).Color("#081D58").Add();
+                    }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed)).Load("load").TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings =>
+                    legendSettings.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).EnableSmartLegend(true).Width("400px").TextStyle(ViewBag.labelTextStyle)).CellSettings(cellSettings =>
+                    cellSettings.Border(ViewBag.border).ShowLabel(false)).TitleSettings(titleSettings => titleSettings.Text("U.S. Government Energy Consumption by Agency (Trillion Btu)").TextStyle(ViewBag.textStyle)).XAxis(
+                    xAxis =>
+                    {
+                        xAxis.LabelRotation(45)
+                        .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
+                        .Labels(ViewBag.xlabels).TextStyle(ViewBag.labelTextStyle);
+                    }).YAxis(yaxis => yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle)).DataSource(ViewBag.dataSource).Render()
                 </div>
             </div>
         </div>
@@ -72,8 +72,10 @@
     </style>
     <script>
         var load = function (args) {
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
+            @* custom code end *@
         };
         var fixedRadioButton = new ej.buttons.RadioButton({
             label: 'Fixed', name: 'paletteType',
@@ -111,13 +113,16 @@
     </p>
 }
 @section Description{
-    <p>
-        In this example, you can see how to change the palette type between <code>Fixed </code> and <code>Gradient </code> types in Heatmap. The palette type can be defined using the <code>type </code> property in <code>paletteSettings </code>. Legend is enabled in this example, changing the palette mode the legend type will be automatically switched between gradient legend and list type legend.
-    </p>
-    <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
-    <br>
+        <p>
+            In this example, you can see how to change the palette type between
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/heatmap-chart/palette#fixed" target="_blank">Fixed</a> and
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/heatmap-chart/palette#gradient" target="_blank">Gradient</a> types in Heatmap. The palette type can be defined using the
+            <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPaletteSettings.html#Syncfusion_EJ2_HeatMap_HeatMapPaletteSettings_Type" target="_blank">type</a> property in
+            <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPaletteSettings.html" target="_blank">paletteSettings</a>. Legend is enabled in this example, changing the palette mode the legend type will be automatically switched between
+            gradient legend and fixed type legend.
+        </p>
+        <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
+        <br>
 }
 
 @section Title{

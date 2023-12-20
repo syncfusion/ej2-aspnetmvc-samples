@@ -22,8 +22,8 @@
         <pre style="background-color: inherit; border:hidden"></pre>
         <div id="containerBox" style="float: left;padding: 4%;"></div>
         <div id='containerTriangle' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("linearTriangle").Load("gaugeLoad").DragEnd("dragEndTriangle").DragStart("dragStartTriangle").DragMove("dragMoveTriangle").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Inverted triangle").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            @Html.EJS().LinearGauge("linearTriangle").Load("gaugeLoad").AnimationDuration(3500).DragEnd("dragEndTriangle").DragStart("dragStartTriangle").DragMove("dragMoveTriangle").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Inverted triangle").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer =>
             {
@@ -32,8 +32,8 @@
             }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
         <div id='containerCircle' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("linearCircle").Load("gaugeLoad").DragEnd("dragEndCircle").DragStart("dragStartCircle").DragMove("dragMoveCircle").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Circle").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            @Html.EJS().LinearGauge("linearCircle").Load("gaugeLoad").AnimationDuration(3500).DragEnd("dragEndCircle").DragStart("dragStartCircle").DragMove("dragMoveCircle").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Circle").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer =>
             {
@@ -41,19 +41,9 @@
                 pointer.Width(15).Height(15).Value(20).Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Circle).EnableDrag(true).AnimationDuration(1500).Add();
             }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
-        <div id='containerDiamond' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("linearDiamond").Load("gaugeLoad").DragEnd("dragEndDiamond").DragStart("dragStartDiamond").DragMove("dragMoveDiamond").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Diamond").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
-            .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
-            .Pointers(pointer =>
-            {
-                pointer.Width(5).Height(5).Value(50).Color("#0074E3").Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Offset("12").EnableDrag(false).AnimationDuration(1500).Add();
-                pointer.Width(15).Height(15).Value(50).Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Diamond).EnableDrag(true).AnimationDuration(1500).Add();
-            }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
-        </div>
         <div id='containerRectangle' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("linearRectangle").Load("gaugeLoad").DragEnd("dragEndRectangle").DragStart("dragStartRectangle").DragMove("dragMoveRectangle").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Rectangle").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            @Html.EJS().LinearGauge("linearRectangle").Load("gaugeLoad").AnimationDuration(3500).DragEnd("dragEndRectangle").DragStart("dragStartRectangle").DragMove("dragMoveRectangle").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Rectangle").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer =>
             {
@@ -61,9 +51,19 @@
                 pointer.Width(15).Height(5).Value(30).Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Rectangle).EnableDrag(true).AnimationDuration(1500).Add();
             }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
+        <div id='containerText' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
+            @Html.EJS().LinearGauge("linearText").Load("gaugeLoad").AnimationDuration(3500).DragEnd("dragEndText").DragStart("dragStartText").DragMove("dragMoveText").Background("Transparent").Width("168px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Text").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            .Pointers(pointer =>
+            {
+                pointer.Width(5).Height(5).Value(50).Color("#0074E3").Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Offset("12").EnableDrag(false).AnimationDuration(1500).Add();
+                pointer.Width(15).Height(15).Value(50).Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).Offset("-10").EnableDrag(true).AnimationDuration(1500).Add();
+            }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
+        </div>
         <div id='containerMultiple' class="col-xs-4 col-sm-4 col-lg-2 col-md-2" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("linearMultiple").Load("gaugeLoad").DragEnd("dragEndMultiple").DragStart("dragStartMultiple").DragMove("dragMoveMultiple").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Multiple pointers").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            @Html.EJS().LinearGauge("linearMultiple").Load("gaugeLoad").AnimationDuration(3500).DragEnd("dragEndMultiple").DragStart("dragStartMultiple").DragMove("dragMoveMultiple").Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Multiple pointers").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(5)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer =>
             {
@@ -81,7 +81,7 @@
     </style>
     <!-- custom code end -->
     <script type="text/javascript">
-        var linearTriangle, linearCircle, linearDiamond, linearRectangle, linearMultiple;
+        var linearTriangle, linearCircle, linearText, linearRectangle, linearMultiple;
         function gaugeLoad(sender) {
             @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
@@ -93,8 +93,10 @@
             if (sender.gauge.element.id === 'linearCircle') {
                 linearCircle = sender.gauge;
             }
-            if (sender.gauge.element.id === 'linearDiamond') {
-                linearDiamond = sender.gauge;
+            if (sender.gauge.element.id === 'linearText') {
+                linearText = sender.gauge;
+                linearText.axes[0].pointers[1].markerType = "Text";
+                linearText.axes[0].pointers[1].text = "50 Points";
             }
             if (sender.gauge.element.id === 'linearRectangle') {
                 linearRectangle = sender.gauge;
@@ -136,19 +138,20 @@
             }
         }
 
-        function dragEndDiamond(sender) {
-            linearDiamond.axes[0].pointers[0].animationDuration = 1500;
-            linearDiamond.axes[0].pointers[1].animationDuration = 1500;
+        function dragEndText(sender) {
+            linearText.axes[0].pointers[0].animationDuration = 1500;
+            linearText.axes[0].pointers[1].animationDuration = 1500;
         }
 
-        function dragStartDiamond(sender) {
-            linearDiamond.axes[0].pointers[0].animationDuration = 0;
-            linearDiamond.axes[0].pointers[1].animationDuration = 0;
+        function dragStartText(sender) {
+            linearText.axes[0].pointers[0].animationDuration = 0;
+            linearText.axes[0].pointers[1].animationDuration = 0;
         }
 
-        function dragMoveDiamond(sender) {
+        function dragMoveText(sender) {
             if (sender.pointerIndex == 1) {
-                linearDiamond.setPointerValue(0, 0, sender.currentValue);
+                linearText.setPointerValue(0, 0, sender.currentValue);
+                linearText.axes[0].pointers[1].text = Math.round(sender.currentValue) + " Points";
             }
         }
 
@@ -190,29 +193,30 @@
 
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById('horizontal').addEventListener('click', function () {
-                linearTriangle.width = linearCircle.width = linearDiamond.width = linearRectangle.width = linearMultiple.width = '450px';
-                linearTriangle.height = linearCircle.height = linearDiamond.height = linearRectangle.height = linearMultiple.height = '150px';
-                linearTriangle.orientation = linearCircle.orientation = linearDiamond.orientation = linearRectangle.orientation = linearMultiple.orientation = "Horizontal";
+                linearTriangle.width = linearCircle.width = linearText.width = linearRectangle.width = linearMultiple.width = '450px';
+                linearTriangle.height = linearCircle.height = linearText.height = linearRectangle.height = linearMultiple.height = '150px';
+                linearTriangle.orientation = linearCircle.orientation = linearText.orientation = linearRectangle.orientation = linearMultiple.orientation = "Horizontal";
                 document.getElementById('horizontal').style.color = "white";
                 document.getElementById('horizontal').style.backgroundColor = "#0074E3";
                 document.getElementById('vertical').style.color = "black";
                 document.getElementById('vertical').style.backgroundColor = "white";
                 document.getElementById('containerTriangle').className = document.getElementById('containerCircle').className =
-                    document.getElementById('containerDiamond').className = document.getElementById('containerRectangle').className =
+                    document.getElementById('containerText').className = document.getElementById('containerRectangle').className =
                     document.getElementById('containerMultiple').className = "col-xs-12 col-sm-12 col-lg-12 col-md-12";
                 document.getElementById('containerBox').style.padding = "0%";
 
             });
             document.getElementById('vertical').addEventListener('click', function () {
-                linearTriangle.width = linearCircle.width = linearDiamond.width = linearRectangle.width = linearMultiple.width = '150px';
-                linearTriangle.height = linearCircle.height = linearDiamond.height = linearRectangle.height = linearMultiple.height = '350px';
-                linearTriangle.orientation = linearCircle.orientation = linearDiamond.orientation = linearRectangle.orientation = linearMultiple.orientation = "Vertical";
+                linearTriangle.width = linearCircle.width = linearRectangle.width = linearMultiple.width = '150px';
+                linearText.width = '168px';
+                linearTriangle.height = linearCircle.height = linearText.height = linearRectangle.height = linearMultiple.height = '350px';
+                linearTriangle.orientation = linearCircle.orientation = linearText.orientation = linearRectangle.orientation = linearMultiple.orientation = "Vertical";
                 document.getElementById('vertical').style.color = "white";
                 document.getElementById('vertical').style.backgroundColor = "#0074E3";
                 document.getElementById('horizontal')['style']['color'] = "black";
                 document.getElementById('horizontal')['style']['backgroundColor'] = "white";
                 document.getElementById('containerTriangle').className = document.getElementById('containerCircle').className =
-                    document.getElementById('containerDiamond').className = document.getElementById('containerRectangle').className =
+                    document.getElementById('containerText').className = document.getElementById('containerRectangle').className =
                     document.getElementById('containerMultiple').className = "col-xs-4 col-sm-4 col-lg-2 col-md-2";
                 document.getElementById('containerBox').style.padding = "4%";
 

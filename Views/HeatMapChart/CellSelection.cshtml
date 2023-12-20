@@ -4,16 +4,17 @@
                 }
 @section ControlsSection{
     <div class="col-md-9 control-section">
-        <div id="container" style="height:300px" align="center">
-            @Html.EJS().HeatMap("container").TitleSettings(ts =>
-            ts.Text("Top export products 2014-2018, Value in USD million")).XAxis(xAxis =>
-            xAxis.Labels(ViewBag.xLabels)).YAxis(yaxis =>
-            yaxis.Labels(ViewBag.yLabels)).AllowSelection(true).PaletteSettings(ps => ps.Palette(palette =>
+        <div id="container" style="height:300px">
+            @Html.EJS().HeatMap("container").TitleSettings(titleSettings =>
+            titleSettings.Text("Top export products 2014-2018, Value in USD million").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+            xAxis.Labels(ViewBag.xLabels).TextStyle(ViewBag.labelTextStyle)).YAxis(yaxis =>
+            yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle)).AllowSelection(true).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
             {
                 palette.Color("#3C5E62").Add();
                 palette.Color("#86C843").Add();
 
-            })).CellSelected("cellSelected").LegendSettings(ls=>ls.Visible(false)).ShowTooltip(true).Load("load").DataSource(ViewBag.dataSource).Render()
+            })).CellSelected("cellSelected").CellSettings(cellSettings => cellSettings.TextStyle(ViewBag.labelTextStyle)).TooltipSettings(tooltipSettings => 
+            tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings => legendSettings.Visible(false)).ShowTooltip(true).Load("load").DataSource(ViewBag.dataSource).Render()
         </div>
         <div id="container1" style="height:300px" align="center">
             @Html.EJS().Chart("container1").PrimaryXAxis(
@@ -121,14 +122,18 @@
         };
 
         var load = function (args) {
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
             selectedTheme = selectedTheme.toLowerCase();
+            @* custom code end *@
         };
         var chartLoad = function (args) {
+            @* custom code start *@
             var selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
+            @* custom code end *@
 
         };
         var button = new ej.buttons.Button();
@@ -186,11 +191,8 @@
 @section Description{
     <p>
         In this example, you can see how to selected the cell in heat map and render the column chart based on selected data.
-    <p>
-
-    <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
     </p>
+    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
     <br>
 }
 

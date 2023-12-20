@@ -22,22 +22,22 @@
         <pre style="background-color: inherit; border:hidden"></pre>
         <div id="containerBox" style="float: left;"></div>
         <div id='textWidget1' class="col-xs-5 col-sm-5 col-lg-4 col-md-4" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("textWidget").Load("guageLoad").Background("Transparent").Width("170px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Text widget").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Annotations(annotation => annotation.AxisIndex(0).AxisValue(55).X(0).Y(0).ZIndex("1").Content("<div style='font-size: 12px;color: white;margin-left: -2px;margin-top: -1px;'> 55 </div>").Add()).Axes(axes => 
+            @Html.EJS().LinearGauge("textWidget").Load("guageLoad").AnimationDuration(3500).Background("Transparent").Width("170px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Text widget").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Annotations(annotation => annotation.AxisIndex(0).AxisValue(55).X(0).Y(0).ZIndex("1").Content("<div style='font-size: 12px;color: white;margin-left: -2px;margin-top: -1px;'> 55 </div>").Add()).Axes(axes => 
             axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(20)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer => pointer.Width(30).Value(55).Offset("-2").Color("#173BBB").Placement(Syncfusion.EJ2.LinearGauge.Placement.Center).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Circle).Position(Syncfusion.EJ2.LinearGauge.Position.Cross).Add())
             .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
         <div id='iconWidget1' class="col-xs-5 col-sm-5 col-lg-4 col-md-4" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("iconWidget").Load("guageLoad").Background("Transparent").Width("170px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Icon widget").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            @Html.EJS().LinearGauge("iconWidget").Load("guageLoad").AnimationDuration(3500).Background("Transparent").Width("170px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Icon widget").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
             .Line(line => line.Width(20)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer => pointer.Width(45).Value(90).Height(30).Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Image).ImageUrl(@Url.Content("~/Content/LinearGauge/thumb-icon.png")).Add())
             .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
         </div>
         <div id='multipleWidget1' class="col-xs-5 col-sm-5 col-lg-4 col-md-4" style="display: flex;justify-content: center; align-items: center;">
-            @Html.EJS().LinearGauge("multipleWidget").Load("guageLoad").Background("Transparent").Width("170px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Multiple widget pointers").TitleStyle(textStyle =>
-            textStyle.FontFamily("inherit").FontWeight("normal")).Annotations(annotation => annotation.AxisIndex(0).AxisValue(60).X(0).Y(0).ZIndex("1").Content("<div style='font-size: 12px;color: white;margin-left: -2px;margin-top: -1px;'> 60 </div>").Add()).Axes(axes => 
+            @Html.EJS().LinearGauge("multipleWidget").Load("guageLoad").AnimationDuration(3500).Background("Transparent").Width("170px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Multiple widget pointers").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Annotations(annotation => annotation.AxisIndex(0).AxisValue(60).X(0).Y(0).ZIndex("1").Content("<div style='font-size: 12px;color: white;margin-left: -2px;margin-top: -1px;'> 60 </div>").Add()).Axes(axes => 
             axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(20)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
             .Pointers(pointer => {
                 pointer.Width(30).Value(60).Color("#173BBB").Offset("-2").Placement(Syncfusion.EJ2.LinearGauge.Placement.Center).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Circle).Position(Syncfusion.EJ2.LinearGauge.Position.Cross).Add();

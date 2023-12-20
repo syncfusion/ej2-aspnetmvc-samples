@@ -43,14 +43,14 @@
                   </div>
                   <div class="e-panel-content">
                       @(Html.EJS().AccumulationChart("pie").EnableAnimation(true)
-                             .EnableBorderOnMouseMove(false).EnableSmartLabels(true).Series(series => {
+                             .EnableBorderOnMouseMove(false).EnableSmartLabels(false).Series(series => {
                              series.TooltipMappingName("Product").DataLabel(dl => dl.Visible(true).Name("text")
                                 .Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside)
                                 .ConnectorStyle(cs=>cs.Length("10px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)))
-                                .InnerRadius("40%").XName("Product").YName("Percentage")
+                                .InnerRadius("40%").Radius("75%").XName("Product").YName("Percentage")
                                 .Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
                                 .Border(br => br.Width(3))
-                                .StartAngle(0).Palettes(ViewBag.palettes).EndAngle(360).Explode(false)
+                                .StartAngle(270).Palettes(ViewBag.palettes).EndAngle(270).Explode(false)
                                 .DataSource(ViewBag.pieSource).Add();
                              })
                              .LegendSettings(ls => ls.Visible(false).ToggleVisibility(false))

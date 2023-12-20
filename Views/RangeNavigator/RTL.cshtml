@@ -25,7 +25,7 @@
                    .Width(2).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).Add();
             })
               .PrimaryXAxis(xaxis =>
-                 xaxis.IsInversed(true).CrosshairTooltip(ct=>ct.Enable(true)).MajorGridLines(mg=>mg.Width(0))
+                 xaxis.CrosshairTooltip(ct=>ct.Enable(true)).MajorGridLines(mg=>mg.Width(0))
                       .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
                       .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
 
@@ -249,7 +249,7 @@
 }
 @section Description{
     <p>
-        In this example, you can see how to inverse the axis in range navigator. Here both the X and Y axis are inversed using <code>isInversed</code>
+        In this example, you can see how to inverse the axis in range navigator. Here both the X and Y axis are inversed using <code>IsInversed</code>
         property. Tooltip is enabled in this example, to see the tooltip in action, while the selected range is changed.
     </p>
 }

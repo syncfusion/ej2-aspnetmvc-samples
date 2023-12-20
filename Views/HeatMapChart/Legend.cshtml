@@ -7,22 +7,22 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Hourly Weather Forecast").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
-                         {
-                             xAxis.Labels(ViewBag.xLabels);
-                         }).YAxis(yaxis =>
-                         {
-                             yaxis.Labels(ViewBag.yLabels);
-                         }).PaletteSettings(ps => ps.Palette(palette =>
-                         {
-                             palette.Value(0).Color("#6EB5D0").Add();
-                             palette.Value(10).Color("#7EDCA2").Add();
-                             palette.Value(19).Color("#DCD57E").Add();
-                             palette.Value(22).Color("#DCD57E").Add();
-                         })).CellSettings(cs =>
-                         cs.ShowLabel(false).Format("{value} C")).LegendSettings(ls =>
-                         ls.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).
-                         LabelFormat("{value}\xB0 C").Title(title=>title.Text("Celsius"))).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
+                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Hourly Weather Forecast").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+                    {
+                        xAxis.Labels(ViewBag.xLabels).TextStyle(ViewBag.labelTextStyle);
+                    }).YAxis(yaxis =>
+                    {
+                        yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle);
+                    }).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
+                    {
+                        palette.Value(0).Color("#6EB5D0").Add();
+                        palette.Value(10).Color("#7EDCA2").Add();
+                        palette.Value(19).Color("#DCD57E").Add();
+                        palette.Value(22).Color("#DCD57E").Add();
+                    })).CellSettings(cellSettings =>
+                    cellSettings.ShowLabel(false).Format("{value} C")).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings =>
+                    legendSettings.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).Title(title => title.Text("Celsius").TextStyle(ViewBag.labelTextStyle)).
+                    LabelFormat("{value}\xB0 C").TextStyle(ViewBag.labelTextStyle)).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
                 </div>
             </div>
         </div>
@@ -64,9 +64,11 @@
             args.content = [args.xLabel + ' | ' + args.yLabel + ' : ' + args.value + '\xB0 C'];
         };
         var load = function (args) {
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
             args.heatmap.legendSettings.labelFormat = "{value}\xB0 C";
+            @* custom code end *@
         };
         var legentListObj = new ej.dropdowns.DropDownList({
             index: 3,
@@ -91,11 +93,12 @@
 }
 @section Description{
     <p>
-        In this example, you can see how to change the display position of the Heatmap legend. You can change the display position of legend to left, right, bottom and top by using the <code>position </code> property in <code>legendSettings</code>.
+        In this example, you can see how to change the display position of the Heatmap legend. You can change the display position
+        of legend to left, right, bottom and top by using the
+        <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapLegendSettings.html#Syncfusion_EJ2_HeatMap_HeatMapLegendSettings_Position" target="_blank">position </a> property in
+        <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapLegendSettings.html" target="_blank">legendSettings</a>.
     </p>
-    <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
-    </p>
+    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
     <br>
 }
 

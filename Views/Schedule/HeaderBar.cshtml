@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).ActionComplete("onActionComplete").ActionBegin("onActionBegin").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).ToolbarItems(ViewBag.toolbarItems).ActionComplete("onActionComplete").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -155,50 +155,57 @@
     <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
     <script type="text/javascript">
         var profilePopup;
-        function onActionBegin(args) {
-            if (args.requestType === 'toolbarItemRendering') {
-                var userIconItem = {
-                    align: 'Right', prefixIcon: 'user-icon', text: 'Nancy', cssClass: 'e-schedule-user-icon'
-                };
-                args.items.push(userIconItem);
+        function onIconClick() {
+            if (profilePopup.element.classList.contains('e-popup-close')) {
+                profilePopup.show();
+            } else {
+                profilePopup.hide();
             }
         }
         function onActionComplete(args) {
-            var scheduleElement = document.getElementById('schedule');
             if (args.requestType === 'toolBarItemRendered') {
-                var userIconEle = scheduleElement.querySelector('.e-schedule-user-icon');
-                userIconEle.onclick = function () {
-                    profilePopup.relateTo = userIconEle;
-                    profilePopup.dataBind();
-                    if (profilePopup.element.classList.contains('e-popup-close')) {
-                        profilePopup.show();
-                    } else {
+                var scheduleElement = document.getElementById('schedule');
+                var userContentEle = ej.base.createElement('div', {
+                    className: 'e-profile-wrapper'
+                });
+                scheduleElement.parentElement.appendChild(userContentEle);
+                var getDOMString = ej.base.compile('<div class="profile-container"><div class="profile-image">' +
+                    '</div><div class="content-wrap"><div class="name">Nancy</div>' +
+                    '<div class="destination">Product Manager</div><div class="status">' +
+                    '<div class="status-icon"></div>Online</div></div></div> ');
+                var output = getDOMString({});
+                profilePopup = new ej.popups.Popup(userContentEle, {
+                    content: output[0],
+                    relateTo: '.e-schedule-user-icon',
+                    position: { X: 'left', Y: 'bottom' },
+                    collision: { X: 'flip', Y: 'flip' },
+                    targetType: 'relative',
+                    viewPortElement: scheduleElement,
+                    width: 210,
+                    height: 80
+                });
+                profilePopup.hide();
+
+                // custom code start
+                const hidePopup = (event) => {
+                    if (profilePopup.element.classList.contains('e-popup-open') && (event.type === 'keydown' && (event.key === 'Escape') ||
+                        (event.type === 'click' && event.target && !(event.target.closest('.e-schedule-user-icon') ||
+                            event.target.closest('.e-profile-wrapper'))))) {
                         profilePopup.hide();
                     }
-                };
-            }
-            var userContentEle = ej.base.createElement('div', {
-                className: 'e-profile-wrapper'
-            });
-            scheduleElement.parentElement.appendChild(userContentEle);
+                }
 
-            var userIconEle = scheduleElement.querySelector('.e-schedule-user-icon');
-            var getDOMString = ej.base.compile('<div class="profile-container"><div class="profile-image">' +
-                '</div><div class="content-wrap"><div class="name">Nancy</div>' +
-                '<div class="destination">Product Manager</div><div class="status">' +
-                '<div class="status-icon"></div>Online</div></div></div>');
-            var output = getDOMString({});
-            profilePopup = new ej.popups.Popup(userContentEle, {
-                content: output[0],
-                relateTo: userIconEle,
-                position: { X: 'left', Y: 'bottom' },
-                collision: { X: 'flip', Y: 'flip' },
-                targetType: 'relative',
-                viewPortElement: scheduleElement,
-                width: 210,
-                height: 80
-            });
-            profilePopup.hide();
+                document.addEventListener('keydown', hidePopup);
+                document.addEventListener('click', hidePopup);
+
+                const beforeUnloadHandler = () => {
+                    document.removeEventListener('keydown', hidePopup);
+                    document.removeEventListener('click', hidePopup);
+                    window.removeEventListener("beforeunload", beforeUnloadHandler);
+                }
+                window.addEventListener("beforeunload", beforeUnloadHandler);
+                // custom code end
+            }
         }
         function onChange(args) {
             var scheduleObj = document.getElementById('schedule').ej2_instances[0];
@@ -230,15 +237,9 @@
     <div id="description">
         <p>
             In this demo, a popup has been designed separately with a person's profile info and kept in a hidden state initially. A custom
-            item has been added to the Scheduler header bar within the
-            <code>ActionBegin</code> event by checking for the request type as
-            <code>ToolbarItemRendering</code> which triggers at the time of header bar items rendering on the Schedule.
-        </p>
-        <p>
-            Once the items are added, the click action is bound to them in the
-            <code>ActionComplete</code> event by checking for the request type as
-            <code>ToolbarItemRendered</code> which triggers after the items are rendered on the Schedule. The appropriate action of showing or hiding the popup
-            on clicking the custom item has been done within it.
+            item has been added to the Scheduler header bar by using the
+            <code><a href="https://ej2.syncfusion.com/documentation/api/schedule/#toolbaritems">ToolbarItems</a></code> property.
+            Here, the default items such as previous, next, date range text, and today have been used along with external icon as custom items.
         </p>
         <p>
             In case, if the header bar of Scheduler needs to be hidden, it can be done by setting false to the

@@ -4,18 +4,18 @@
                 }
 @section ControlsSection{
     <div class="control-section">
-        <div id="container" align="center">
-            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Product wise Monthly sales revenue for a e-commerce website").
+        <div id="container">
+            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Product wise Monthly sales revenue for a e-commerce website").
             TextStyle(ViewBag.textStyle)).XAxis(
             xAxis => xAxis.Border(br=>br.Width(1).Type(Syncfusion.EJ2.HeatMap.BorderType.Rectangle).
             Color("#a19d9d")).Labels(ViewBag.xLabels).TextStyle(ViewBag.xTextStyle)).YAxis(yaxis =>
-            yaxis.Border(br => br.Width(0)).Labels(ViewBag.yLabels).TextStyle(ViewBag.xTextStyle).IsInversed(true)).PaletteSettings(ps => ps.Palette(palette =>
+            yaxis.Border(border => border.Width(0)).Labels(ViewBag.yLabels).TextStyle(ViewBag.xTextStyle).IsInversed(true)).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
             {
                 palette.Color("#F0ADCE").Add();
                 palette.Color("#19307B").Add();
 
-            })).LegendSettings(ls => ls.Visible(false)).CellSettings(cs =>
-            cs.Border(ViewBag.border)).TooltipRender("tooltipRender").CellRender("cellRender").Load("load").DataSource(ViewBag.dataSource).Render()
+            })).LegendSettings(legendSettings => legendSettings.Visible(false)).CellSettings(cellSettings =>
+            cellSettings.Border(ViewBag.border).TextStyle(ViewBag.labelTextStyle)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).TooltipRender("tooltipRender").CellRender("cellRender").Load("load").DataSource(ViewBag.dataSource).Render()
         </div>
     </div>
 
@@ -32,15 +32,18 @@
             args.displayText = '$ ' + (args.value / 10) + 'K';
         };
         var load = function (args) {
+            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
             selectedTheme = selectedTheme.toLowerCase();
+            @* custom code end *@
             args.heatmap.xAxis.multiLevelLabels = ([
                 {
                     border: { type: 'Rectangle', color: '#a19d9d' },
                     textStyle: {
                         color: 'black',
-                        fontWeight: 'Bold'
+                        fontWeight: 'Bold',
+                        fontFamily: "inherit"
                     },
                     categories: [
                         { start: 0, end: 2, text: 'Electronics', },
@@ -55,7 +58,8 @@
                     border: { type: 'Brace', color: '#a19d9d' },
                     textStyle: {
                         color: 'black',
-                        fontWeight: 'Bold'
+                        fontWeight: 'Bold',
+                        fontFamily: "inherit"
                     },
                     categories: [
                         { start: 0, end: 2, text: 'Q1' },
@@ -88,22 +92,18 @@
 @section Description{
     <p>
         In this example, you can see how to group axis labels.
-        You can customize text in each level by using <code>alignment</code>, <code>textSytle</code> and <code>border</code> properties.
+        You can customize text in each level by using <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapMultiLevelLabel.html#Syncfusion_EJ2_HeatMap_HeatMapMultiLevelLabel_Alignment" target="_blank">alignment</a>, <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapMultiLevelLabel.html#Syncfusion_EJ2_HeatMap_HeatMapMultiLevelLabel_TextStyle" target="_blank">textStyle</a> and <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapMultiLevelLabel.html#Syncfusion_EJ2_HeatMap_HeatMapMultiLevelLabel_Border" target="_blank">border</a> properties.
     </p>
-    <p>Border of the axis labels can be customized by using <code>type</code> property.
-    <p>
-        <ul>
-            <li><code>Rectangle</code></li>
-            <li><code>Brace</code></li>
-            <li><code>WithoutTopBorder</code></li>
-            <li><code>WithoutBottomBorder</code></li>
-            <li><code>WithoutTopandBottomBorder</code></li>
-            <li><code>withoutBorder</code>.</li>
-        </ul>
-        <br>
-    <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    <p>Border of the axis labels can be customized by using <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapAxisLabelBorder.html#Syncfusion_EJ2_HeatMap_HeatMapAxisLabelBorder_Type" target="_blank">type</a> property.
     </p>
+    <ul>
+        <li><code>Rectangle</code></li>
+        <li><code>Brace</code></li>
+        <li><code>WithoutTopBorder</code></li>
+        <li><code>WithoutBottomBorder</code></li>
+        <li><code>WithoutTopandBottomBorder</code></li>
+        <li><code>WithoutBorder</code>.</li>
+    </ul>
     <br>
 }
 

@@ -1,5 +1,6 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
+@using Syncfusion.EJ2.Inputs
 
 @section ControlsSection{
     <div class="col-lg-8 control-section">
@@ -25,7 +26,7 @@
                     </div>
                 </td>
                 <td style="width: 50%;">
-                    <div style='margin-top: -5px;height : 40px'>
+                    <div style='margin-top: -5px;height : 45px'>
                         @Html.EJS().DropDownList("Export").Index(0).Width("100%").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
                     </div>
                 </td>
@@ -35,8 +36,8 @@
                     <div style="width: 60%; font-size: 14px">File Name</div>
                 </td>
                 <td style="width: 40%;">
-                    <div class="e-float-input" style='margin-top: 0px;height : 30px'>
-                        <input type="text" value="Circular Gauge" id="fileName" style="width: 100%; height: 100%">
+                    <div style='margin-top: 0px;height : 45px'>
+                        @Html.EJS().TextBox("fileName").Value("Circular Gauge").Width("100%").Render()
                     </div>
                 </td>
             </tr>

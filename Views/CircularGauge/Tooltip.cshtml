@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.CircularGauge
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().CircularGauge("container").Load("gaugeLoad").EnablePointerDrag(true).DragEnd("dragEnd").Background("transparent").Tooltip(tooltip => tooltip.Enable(true).EnableAnimation(false).Format("Current Value:  {value}").Type(new string[] { "Range", "Pointer" }).ShowAtMousePosition(true).
+        @Html.EJS().CircularGauge("container").Load("gaugeLoad").AnimationDuration(2000).EnablePointerDrag(true).DragEnd("dragEnd").Background("transparent").Tooltip(tooltip => tooltip.Enable(true).EnableAnimation(false).Format("Current Value:  {value}").Type(new string[] { "Range", "Pointer" }).ShowAtMousePosition(true).
         TextStyle(textStyle => textStyle.FontFamily("inherit").Size("13px")).RangeSettings(rangeSetting => rangeSetting.ShowAtMousePosition(true).Format("Start Value: {start} <br/> End Value: {end}").TextStyle(textStyle => textStyle.FontFamily("inherit").Size("13px")))).Axes(axes =>
         axes.EndAngle(120).StartAngle(240).LineStyle(lineStyle => lineStyle.Width(0).Color("transparent")).Radius("90%")
         .Minimum(0).Maximum(120).MajorTicks(majorTick => majorTick.Color("white").Offset(-5).Height(12)).MinorTicks(minorTick => minorTick.Width(0).Color("transparent"))

@@ -19437,4 +19437,3 @@ var periodData = [
         { Open: 9027.82, High: 9059.25, Low: 9027.82, Close: 9061.02 },
         { Open: 9061.02, High: 9087.05, Low: 9055.76, Close: 9065.43 }
     ];
-

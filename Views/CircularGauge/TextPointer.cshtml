@@ -6,7 +6,7 @@
         .Radius("120%").StartAngle(270).EndAngle(90).Minimum(0).Maximum(120).RangeGap(3).LabelStyle(labelStyle => labelStyle.Font(font => font.Size("0px")).Offset(-5))
         .Pointers(pointers =>
         {
-            pointers.Value(82).Radius("60%").PointerWidth(10).NeedleStartWidth(1).NeedleEndWidth(1).Cap(cap => cap.Radius(0)).Animation(animation => animation.Enable(false)).Add();
+            pointers.Value(82).Radius("60%").PointerWidth(10).NeedleStartWidth(1).NeedleEndWidth(1).Cap(cap => cap.Radius(0)).Animation(animation => animation.Enable(true)).Add();
             pointers.Value(20).Radius("85%").PointerWidth(10).Type(PointerType.Marker).MarkerShape(GaugeShape.Text).Text("Poor").Animation(animation => animation.Enable(false)).TextStyle(new CircularGaugeFont { Size = "18px", FontFamily = "inherit" }).Color("transparent").Add();
             pointers.Value(60).Radius("85%").PointerWidth(10).Type(PointerType.Marker).MarkerShape(GaugeShape.Text).Text("Average").Animation(animation => animation.Enable(false)).TextStyle(new CircularGaugeFont { Size = "18px", FontFamily = "inherit" }).Color("transparent").Add();
             pointers.Value(100).Radius("85%").PointerWidth(10).Type(PointerType.Marker).MarkerShape(GaugeShape.Text).Text("Good").Animation(animation => animation.Enable(false)).TextStyle(new CircularGaugeFont { Size = "18px", FontFamily = "inherit" }).Color("transparent").Add();

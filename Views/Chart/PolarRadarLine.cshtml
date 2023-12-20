@@ -138,8 +138,8 @@
            var polarType = document.getElementById("dropdown").ej2_instances[0];
            chart.series[0].type = polarType.value;
            chart.series[1].type = polarType.value;
-           chart.series[0].animation.enable = true;
-           chart.series[1].animation.enable = true;
+           chart.series[0].animation.enable = false;
+           chart.series[1].animation.enable = false;
            chart.refresh();
        }
        var angleChange= function () {

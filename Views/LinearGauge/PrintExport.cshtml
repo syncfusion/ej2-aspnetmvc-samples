@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-lg-8 control-section">
-        @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Background("Transparent").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Title("Speedometer").TitleStyle(textStyle =>
+        @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Title("Speedometer").TitleStyle(textStyle =>
         textStyle.FontFamily("inherit")).AllowPrint(true).AllowPdfExport(true).AllowImageExport(true).Axes(axes => axes.Minimum(0).Maximum(120)
         .Line(line => line.Width(0)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside).Offset(4))
         .Ranges(range =>
