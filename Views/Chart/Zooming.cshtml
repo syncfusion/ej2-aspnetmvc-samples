@@ -98,7 +98,7 @@
         #control-container {
             padding: 0px !important;
         }
-</style>
+    </style>
 <svg style="height: 0">
     <defs>
         <linearGradient id="material-gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
@@ -182,7 +182,7 @@
             point1 = { Period: new Date(1960, i + 1, i), Profit: Math.round(value) };
             series1.push(point1);
         }
-         @*custom code start*@
+        
         var load = function (args) {
             var themes = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentdark', 'material3', 'material3dark'];
             var borderColor = ['#6355C7', '#8F80F4', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF'];
@@ -192,7 +192,6 @@
             args.chart.series[0].fill = 'url(#' + selectedTheme + '-gradient-chart)';
             args.chart.series[0].border = { width: 2, color: borderColor[themes.indexOf(args.chart.theme.toLowerCase())] }
         };
-        @*custom code end*@
     </script>
 }
  @*custom code start*@

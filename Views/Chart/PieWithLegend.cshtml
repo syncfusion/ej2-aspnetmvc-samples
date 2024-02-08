@@ -30,7 +30,6 @@
     </div>
    
     <script>
-         @*custom code start*@
         var load = function(args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
@@ -40,9 +39,7 @@
             args.accumulation.legendSettings.width = ej.base.Browser.isDevice ? '80%' :'20%';
             args.accumulation.annotations[0].content = ej.base.Browser.isDevice ? " " : "<div style='font-Weight:600;font-size:14px'>Browser <br> Market <br> Shares</div>";
         }
-        @*custom code end*@
-        var count = 0;
-       
+        var count = 0;       
         function getFontSize(width) {
             if (width > 300) {
                 return '13px';
@@ -53,8 +50,7 @@
             else {
                 return '6px';
             }
-        }
-        
+        }        
     </script>
 }
 @*custom code start*@

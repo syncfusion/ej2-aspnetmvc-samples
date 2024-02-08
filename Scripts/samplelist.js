@@ -4016,7 +4016,7 @@ window.samplesList = [
                 "url": "WorkFlowDiagram",
                 "name": "WorkFlow Diagram",
                 "category": "Real-time Diagrams",
-                "uid": "007735",
+                "uid": "007758",
                 "order": 8,
                 "component": "Diagram",
                 "dir": "Diagram",
@@ -13010,7 +13010,7 @@ window.samplesList = [
             {
                 "url": "ExcelToPDF",
                 "name": "Excel To PDF",
-                "category": "Export",
+                "category": "Conversions",
                 "order": 9,
                 "component": "Excel",
                 "dir": "Excel",
@@ -13020,7 +13020,7 @@ window.samplesList = [
             {
                 "url": "WorksheetToImage",
                 "name": "Worksheet To Image",
-                "category": "Export",
+                "category": "Conversions",
                 "order": 9,
                 "component": "Excel",
                 "dir": "Excel",
@@ -13030,7 +13030,7 @@ window.samplesList = [
             {
                 "url": "ExcelToODS",
                 "name": "Excel To ODS",
-                "category": "Export",
+                "category": "Conversions",
                 "order": 9,
                 "component": "Excel",
                 "dir": "Excel",
@@ -13040,7 +13040,7 @@ window.samplesList = [
             {
                 "url": "ExcelToJSON",
                 "name": "Excel To JSON",
-                "category": "Export",
+                "category": "Conversions",
                 "order": 9,
                 "component": "Excel",
                 "dir": "Excel",

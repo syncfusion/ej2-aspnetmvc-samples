@@ -65,19 +65,20 @@
     </div>
 </div>
 
- @*custom code start*@
+@*custom code start*@
 <style>
     #control-container {
         padding: 0px !important;
     }
 </style>
+@*custom code end*@
 <script>
     var load = function(args) {
         var selectedTheme = themeName ? themeName : 'Material';
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         args.chart.primaryXAxis.coefficient = ej.base.Browser.isDevice ? 80 : 100;
     };
- @*custom code end*@
+ 
     var valueChange = function() {
         var chart = document.getElementById('container').ej2_instances[0];
         var polarType = document.getElementById("dropdown").ej2_instances[0];
@@ -89,7 +90,6 @@
         chart.series[2].animation.enable = false;
         chart.refresh();
     }
-
 </script>
 }
  @*custom code start*@

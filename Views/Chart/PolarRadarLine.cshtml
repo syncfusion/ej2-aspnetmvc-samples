@@ -95,8 +95,8 @@
         </div>
     </div>
 
-    @*custom code start*@
-    <style>
+@*custom code start*@
+<style>
     #control-container {
         padding: 0px !important;
     }
@@ -107,15 +107,14 @@
         cursor: pointer !important;
     }
 </style>
-    @*custom code end*@
+@*custom code end*@
     <script>
-     @*custom code start*@
        var load = function(args) {
             var selectedTheme = themeName ? themeName : 'Material';
            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
            args.chart.primaryXAxis.coefficient = ej.base.Browser.isDevice ? 80 : 100;
         }
-      @*custom code end*@  
+
        document.getElementById('isClosed').onchange = function () {
            var chart = document.getElementById('container').ej2_instances[0];
             var element = (document.getElementById('isClosed'));

@@ -117,14 +117,14 @@
                 args.fill = bootstrapColors[args.point.index % 10];
             }
         };
-                 @*custom code start*@
+                
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.chart.series[0].marker.dataLabel.enableRotation = ej.base.Browser.isDevice?'true':'false';
             args.chart.series[0].marker.dataLabel.angle = ej.base.Browser.isDevice?'-90':'0';
         };
-                 @*custom code end*@
+                 
         var valueChange = function () {
             var chart = document.getElementById('container').ej2_instances[0];
             var selmode = document.getElementById('selmode').ej2_instances[0];

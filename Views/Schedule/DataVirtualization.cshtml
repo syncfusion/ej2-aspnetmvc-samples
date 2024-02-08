@@ -4,7 +4,7 @@
 @section ControlsSection{
 <div class="control-section">
     <div class="content-wrapper">
-        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").SelectedDate(new DateTime(DateTime.Today.Year, 4, 1)).CurrentView(View.TimelineMonth).Views(view =>
+        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").SelectedDate(new DateTime(2023, 4, 1)).CurrentView(View.TimelineMonth).Views(view =>
            {
                view.Option(View.TimelineMonth).EnableLazyLoading(true).Add();
                view.Option(View.Month).EnableLazyLoading(true).Add();

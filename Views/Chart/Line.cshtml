@@ -28,22 +28,20 @@
        ).Title("Crude Steel Production Annual Growth").Tooltip(tt => tt.Enable(true)).Load("load").ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(leg => leg.EnableHighlight(true)).Render()
         </div>
     
- @*custom code start*@
+@*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
     </style>
-    <script>
-        
+@*custom code end*@
+    <script>    
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
-            
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";         
         }
     </script>
- @*custom code end*@
 }
 @section ActionDescription{
     <p>

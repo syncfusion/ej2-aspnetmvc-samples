@@ -18,7 +18,6 @@
         #container {
             display: block;
         }
-
         #container_stock_border {
             pointer-events: none;
         }
@@ -64,10 +63,8 @@
                 majorTickLines: { color: 'transparent', height: 0 },
                 crosshairTooltip: { enable: true }
             };
-              @*custom code start*@
             var selectedTheme = themeName ? themeName : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-              @*custom code end*@
         }
     </script>
 }

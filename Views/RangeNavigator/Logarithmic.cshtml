@@ -199,12 +199,10 @@
             'rgba(158, 203, 8, 0.3)', 'rgba(161, 110, 229, 0.3)', 'rgba(161, 110, 229, 0.3)', 'rgba(161, 110, 229, 0.3)', 'rgba(68, 114, 196, 0.3)',
             'rgba(68, 114, 196, 0.3)', 'rgba(121, 236, 228, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(99, 85, 199, 0.3)', 'rgba(78, 170, 255, 0.3)'];
         var load = function (args) {
-                         @*custom code start*@
             var selectedTheme = themeName ? themeName : 'Material';
             args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             var theme = args.rangeNavigator.theme;
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
-                        @*custom code end*@
             args.rangeNavigator.series[0].dataSource = data;
             args.rangeNavigator.value = [4, 6];
             args.rangeNavigator.series[0].border = { width: 2, color: borderColor[logthemes.indexOf(theme.toLowerCase())] };

@@ -29,16 +29,12 @@
  @*custom code end*@
     <script>
         var ChartPoints = hiloData;
-         @*custom code start*@
         var selectedTheme = themeName ? themeName : 'Material';
         var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-         @*custom code end*@
-         @*custom code start*@
         var chartload = function (args) {
             args.chart.theme = theme;
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
-         @*custom code end*@
     </script>
 }
  @*custom code start*@

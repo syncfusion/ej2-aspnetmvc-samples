@@ -22,34 +22,30 @@
     })
     .LineStyle(ls => ls.Width(0)).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
     ).LegendSettings(lg => lg.Visible(true).EnableHighlight(true).ShapeHeight(12).ShapeWidth(15)).Tooltip(tt => tt.Enable(true).Header("").Format("<b>${point.x}</b> <br> ${series.name} : <b>${point.y}</b>").EnableMarker(false)
-    ).Title("Wind Speed and Gust (km/h)").SubTitle("WorldWeatherOnline.com").TitleStyle(tl=>tl.Position(Syncfusion.EJ2.Charts.TitlePosition.Bottom).TextAlignment(Syncfusion.EJ2.Charts.Alignment.Far)).ChartArea(area => area.Border(br => br.Width(0))).Load("load").Render()
+    ).Title("Wind Speed and Gust (km/h)").SubTitle("WorldWeatherOnline.com").TitleStyle(tl => tl.Position(Syncfusion.EJ2.Charts.TitlePosition.Bottom).TextAlignment(Syncfusion.EJ2.Charts.Alignment.Far)).ChartArea(area => area.Border(br => br.Width(0))).Load("load").Render()
     </div>
+
+    @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
-
-        #control-container {
-            padding: 0px !important;
-        }
     </style>
-    
+    @*custom code end*@
     <script>
-       @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'Rotate90' : 'None';
         };
-           @*custom code end*@
     </script>
 }
-   @*custom code start*@
+@*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Strip Line in ASP.NET MVC Chart control. Explore here for more details."/>
-                }
-   @*custom code end*@
+    <meta name="description" content="This example demonstrates the Strip Line in ASP.NET MVC Chart control. Explore here for more details." />
+}
+@*custom code end*@
 @section ActionDescription{
     <p>
         This sample displays the changes in wind speed and gust with stripline feature.
@@ -68,8 +64,8 @@
     </p>
 }
 @section Title{
-                    <title>ASP.NET MVC Chart Strip Line Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Chart Strip Line Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Strip Line in ASP.NET MVC Chart Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Strip Line in ASP.NET MVC Chart Control</h1>
+}

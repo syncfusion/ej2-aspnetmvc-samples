@@ -51,20 +51,18 @@
         #control-container {
             padding: 0px !important;
         }
-
         .progress-text-align {
             font-family: Roboto-Regular;
             font-size: 14px;
             color: #3D3E3C;
         }
-
-
         #reLoad {
             border-radius: 4px;
             text-transform: capitalize;
             margin-top: 3%;
         }
     </style>
+    @*custom code end*@
     <script>
         function annotationElementContent(color, controlID) {
             var content;
@@ -87,7 +85,7 @@
             if (args.progressBar.theme === 'HighContrast' || args.progressBar.theme === 'Bootstrap5Dark' || args.progressBar.theme === 'BootstrapDark' || args.progressBar.theme === 'FabricDark'
                 || args.progressBar.theme === 'TailwindDark' || args.progressBar.theme === 'MaterialDark' || args.progressBar.theme === 'FluentDark' || args.progressBar.theme === 'Material3Dark') {
                 for (let i = 0; i < div.length; i++) {
-                    div[i].setAttribute('style', 'color:white'); 
+                    div[i].setAttribute('style', 'color:white');
                 }
             }
         };
@@ -103,12 +101,11 @@
             quarterProgress.refresh();
         };
     </script>
-    @*custom code end*@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Circular in ASP.NET MVC Progress Bar control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Circular in ASP.NET MVC Progress Bar control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <p>
@@ -120,8 +117,8 @@
 </p>
 }
 @section Title{
-                    <title>ASP.NET MVC Progress Bar Circular Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Progress Bar Circular Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Circular in ASP.NET MVC Progress Bar Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Circular in ASP.NET MVC Progress Bar Control</h1>
+}

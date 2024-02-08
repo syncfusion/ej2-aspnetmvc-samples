@@ -1,16 +1,16 @@
 @using Syncfusion.EJ2;
 <script src="~/Scripts/StockChartData/indicator-data.js"></script>
 @section ControlsSection{
+    @*custom code start*@
     <style>
-
         #container {
             display: block;
         }
-
         #container_stock_border {
             pointer-events: none;
         }
     </style>
+    @*custom code end*@
     <div class="control-section">
         <div>
             @(Html.EJS().StockChart("container").Load("load").EnableSelector(false)
@@ -38,8 +38,8 @@
     </script>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Hide Range Selector in ASP.NET MVC Stock Chart control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Hide Range Selector in ASP.NET MVC Stock Chart control. Explore here for more details." />
+}
 @section ActionDescription{
     <p>By hiding the range selector in the stock chart, this sample visualizes the AAPL stock price. The tooltip and crosshair display data and period information.</p>
 }
@@ -57,8 +57,8 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC Stock Chart Hide Range Selector Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Stock Chart Hide Range Selector Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Hide Range Selector in ASP.NET MVC Stock Chart Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Hide Range Selector in ASP.NET MVC Stock Chart Control</h1>
+}

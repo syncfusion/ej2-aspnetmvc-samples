@@ -61,7 +61,6 @@
 </style>
  @*custom code end*@
     <script>
-     @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
@@ -70,7 +69,6 @@
         function textRender(args) {
             args.text = args.text.replace('˚C', '');
         }
- @*custom code end*@
         var valueChange = function () {
             var chart = document.getElementById('container').ej2_instances[0];
             var polarType = document.getElementById("dropdown").ej2_instances[0];
@@ -79,7 +77,6 @@
             chart.refresh();
         }
     </script>
-
 }
  @*custom code start*@
 @section Meta{

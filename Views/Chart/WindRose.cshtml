@@ -14,20 +14,20 @@
            ).Title("Wind Rose Chart").Tooltip(tl => tl.Enable(true)).LegendSettings(lg => lg.EnableHighlight(true)).Load("load").Render()
     </div>
 
- @*custom code start*@
-<style>
-    #control-container {
-        padding: 0px !important;
-    }
-</style>
-<script>
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script>
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.chart.primaryXAxis.coefficient = ej.base.Browser.isDevice ? 80 : 100;
         };
- @*custom code end*@
-</script>
+    </script>
 }
  @*custom code start*@
 @section Meta{

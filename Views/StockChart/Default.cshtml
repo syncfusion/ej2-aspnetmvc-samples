@@ -5,18 +5,17 @@
         <div id="control-container">
             @(Html.EJS().StockChart("container").Load("load").Title("AAPL Stock Price")
             .PrimaryXAxis(xaxis =>xaxis.MajorGridLines(mg=>mg.Color("transparent")
-            ).CrosshairTooltip(ct=>ct.Enable(true)))
+            ).CrosshairTooltip(ct=>ct.Enable(true)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTimeCategory))
             .PrimaryYAxis(yaxis =>yaxis.MajorTickLines(mt=>mt.Color("transparent").Height(0)
             ).LineStyle(ls=>ls.Color("transparent")))
             .Series(sr =>
-             {
-              sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).DataSource("data").Add();
-             })
+            {
+                sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).XName("x").YName("high").High("high").Low("low").DataSource("data").Add();
+            })
             .TooltipRender("tooltipRender")
-            .Crosshair(cr=>cr.Enable(true))
+            .Crosshair(cr=>cr.Enable(true).LineType(Syncfusion.EJ2.Charts.LineType.Both))
             .Tooltip(tp => tp.Enable(true))
             .ChartArea(area => area.Border(br=>br.Width(0)))
-            .Border(br => br.Width(1))
             .Render())
         </div>
     </div>
@@ -35,11 +34,10 @@
     </style>
      @*custom code end*@
     <script>
-        var data = window.chartData;
+        var data = window.defaultData;
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-         @*custom code end*@
         }
 
         function tooltipRender(args) {

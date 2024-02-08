@@ -15,6 +15,7 @@
         .ChartArea(area => area.Border(br=>br.Width(0)))
        .Render())
     </div>
+    @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
@@ -22,17 +23,17 @@
         #container {
             display: block;
         }
-
         #container_stock_border {
             pointer-events: none;
         }
     </style>
+    @*custom code end*@
     <script>
         var data = window.aapl;
         var load = function (args) {
-             args.stockChart.seriesType = [];
-             args.stockChart.indicatorType = [];
-             args.stockChart.trendlineType = [];
+            args.stockChart.seriesType = [];
+            args.stockChart.indicatorType = [];
+            args.stockChart.trendlineType = [];
             var selectedTheme = themeName ? themeName : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.stockChart.crosshair.lineType = 'Both';

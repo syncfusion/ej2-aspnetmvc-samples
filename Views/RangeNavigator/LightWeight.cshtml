@@ -46,20 +46,18 @@
         #control-container {
             padding: 0px !important;
         }
-         #container {
-        transform: translateY(25%);
-    }
+        #container {
+            transform: translateY(25%);
+        }
     </style>
             @*custom code end*@
     <script src="~/Scripts/data-service.js"></script>
     <script>
         var data = GetDateTimeData(new Date('2018-01-01'), new Date('2019-01-01'));
         var load = function (args) {
-                         @*custom code start*@
             var selectedTheme = themeName ? themeName : 'Material';
             args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
-                         @*custom code end*@
             args.rangeNavigator.dataSource = data;
             args.rangeNavigator.value = [new Date(2018, 5, 1), new Date(2018, 6, 1)];
             args.rangeNavigator.navigatorStyleSettings.thumb.type = 'Rectangle';

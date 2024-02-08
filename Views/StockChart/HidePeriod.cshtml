@@ -1,16 +1,16 @@
 @using Syncfusion.EJ2;
 <script src="~/Scripts/StockChartData/aapl.js"></script>
 @section ControlsSection{
+    @*custom code start*@
     <style>
-
         #container {
             display: block;
         }
-
         #container_stock_border {
             pointer-events: none;
         }
     </style>
+    @*custom code end*@
     <div class="control-section">
         <div>
             @(Html.EJS().StockChart("container").Load("load").EnablePeriodSelector(false)
@@ -166,7 +166,8 @@
             </linearGradient>
         </defs>
     </svg>
-    <script>var data = window.aapl;
+    <script>
+        var data = window.aapl;
         var load = function (args) {
             args.stockChart.chartArea = { border: { width: 0 } };
             args.stockChart.border = { width: 1 };
@@ -185,7 +186,8 @@
             var selectedTheme = themeName ? themeName : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.stockChart.series[0].fill = 'url(#' + selectedTheme.toLowerCase() + '-gradient-chart)';
-        }</script>
+        }
+    </script>
 }
 @section Meta{
                     <meta name="description" content="This example demonstrates the Hide Period Selector in ASP.NET MVC Stock Chart control. Explore here for more details."/>

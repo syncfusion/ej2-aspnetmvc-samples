@@ -21,18 +21,16 @@
             padding: 0px !important;
         }
     </style>
+    @*custom code end*@
     <script>
         var load = function (args) {
-            @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Trim';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? '-45' : '0';
-            @* custom code end *@
         }
     </script>
-    @*custom code end*@
 }
 @*custom code start*@
 @section Meta{

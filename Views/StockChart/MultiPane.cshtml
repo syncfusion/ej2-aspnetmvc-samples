@@ -13,17 +13,18 @@
                     .LegendSettings(leg => leg.Visible(true)).Render())
         </div>
     </div>
+    @*custom code start*@
     <style>
-
         #container {
             display: block;
         }
-
         #container_stock_border {
             pointer-events: none;
         }
     </style>
-    <script>var data = window.chartData;
+    @*custom code end*@
+    <script>
+        var data = window.chartData;
         var load = function (args) {
             args.stockChart.chartArea = { border: { width: 0 } };
             args.stockChart.border = { width: 1 };
@@ -55,11 +56,12 @@
             if (args.axis.name === 'primaryYAxis') {
                 args.text = text / 100000000 + 'B';
             }
-        }</script>
+        }
+    </script>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Candlestick and volume in ASP.NET MVC Stock Chart control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Candlestick and volume in ASP.NET MVC Stock Chart control. Explore here for more details." />
+}
 @section ActionDescription{
     <p>This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/stock-chart">ASP.NET MVC Stock Chart</a> example visualizes the AAPL stock price with Candle chart. Tooltip and crosshair show the information about the data and period.</p>
 }
@@ -73,8 +75,8 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC Stock Chart Candlestick and volume Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Stock Chart Candlestick and volume Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Candlestick and volume in ASP.NET MVC Stock Chart Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Candlestick and volume in ASP.NET MVC Stock Chart Control</h1>
+}

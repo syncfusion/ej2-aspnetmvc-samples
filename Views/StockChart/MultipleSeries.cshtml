@@ -32,7 +32,6 @@
         #container {
             display: block;
         }
-
         #container_stock_border {
             pointer-events: none;
         }
@@ -42,13 +41,11 @@
         var data1 = window.goog;
         var data2 = window.googl;
         var load = function (args) {
-           args.stockChart.indicatorType = [];
+            args.stockChart.indicatorType = [];
             args.stockChart.trendlineType = [];
-             @*custom code start*@
             var selectedTheme = themeName ? themeName : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.stockChart.crosshair.lineType = 'Both';
-             @*custom code end*@
         }
     </script>
 }

@@ -29,22 +29,20 @@
         </div>
     </div>
 
-         @*custom code start*@
+    @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
     </style>
-             @*custom code end*@
+    @*custom code end*@
     <script>
         var ChartPoints = hiloData;
-                 @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
-                 @*custom code end*@
     </script>
 }
          @*custom code start*@

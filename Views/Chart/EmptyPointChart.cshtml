@@ -70,7 +70,6 @@
     </style>
     @*custom code end*@
     <script>
- @*custom code start*@
         var load = function (args) {
             args.chart.dataSource = [{ Product: "Rice", Profit: 80 },{ Product: "Wheat", Profit: null },{ Product: "Oil", Profit: 70 },{ Product: "Corn", Profit: 60 },{ Product: "Gram", Profit: null },{ Product: "Milk", Profit: 70 },{ Product: "Peas", Profit: 80 },{ Product: "Fruit", Profit: 60 },{ Product: "Butter", Profit: null }];
             var selectedTheme = themeName ? themeName : 'Material';
@@ -78,7 +77,6 @@
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
         };
- @*custom code end*@
         var seriesChange = function () {
              var seriestype = document.getElementById('seriestype').ej2_instances[0];
              var chart = document.getElementById('container').ej2_instances[0];

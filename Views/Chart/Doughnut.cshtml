@@ -20,11 +20,8 @@ legend =>
         )
     </div>
        </div>
- @*custom code start*@
-    <script>
-    
-        var seriesColor = ['#FFE066', "#FAB666", "#F68F6A", "#F3646A", "#CC555A", "#9C4649"];
-        
+    <script> 
+        var seriesColor = ['#FFE066', "#FAB666", "#F68F6A", "#F3646A", "#CC555A", "#9C4649"];     
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
@@ -81,7 +78,6 @@ legend =>
             }
         }
     </script>
- @*custom code end*@
 }
  @*custom code start*@
 @section Meta{

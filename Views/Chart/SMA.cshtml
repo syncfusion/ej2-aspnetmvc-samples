@@ -18,23 +18,20 @@
              ).Title("AAPL Stock Price 2012-2017").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tl => tl.Enable(true).Shared(true)).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
         </div>
     </div>
-         @*custom code start*@
-
+    @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
     </style>
-             @*custom code end*@
+    @*custom code end*@
     <script>
         var ChartPoints = hiloData;
-                 @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
-                 @*custom code end*@
     </script>
 }
          @*custom code start*@

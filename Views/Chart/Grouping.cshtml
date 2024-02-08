@@ -73,7 +73,6 @@
         var textRender = function(args) {
             args.text = args.point.x + ' ' + args.point.y;
         }
-         @*custom code start*@
         var load = function(args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
@@ -84,7 +83,6 @@
             args.accumulation.series[0].dataSource[7].DataLabelMappingName = ej.base.Browser.isDevice ? "Italy: <br> 8" : "Italy: 8";
             args.accumulation.series[0].dataSource[8].DataLabelMappingName = ej.base.Browser.isDevice ? "Australia: <br> 8" : "Australia: 8";                    
         }
-         @*custom code end*@
         function clubchange(value) {
             var pie = document.getElementById("container").ej2_instances[0];
             pie.series[0].groupTo = value.toString();
@@ -100,13 +98,10 @@
             var pie = document.getElementById('container').ej2_instances[0];
             pie.series[0].groupMode = args.value;
             clubchange(currentValue);
-
-        }
-        
+        }     
         document.getElementById('clubpoint').onchange = function (e) {
         clubchange(+document.getElementById('clubpoint').value);
     };
-
     </script>
 }
  @*custom code start*@

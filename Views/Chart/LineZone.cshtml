@@ -54,7 +54,7 @@
         ].map(function (value, index) {
             annualMean.push({ XValue: new Date(1900 + index, 1, 1), YValue: value });
         });
-         @*custom code start*@
+
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
@@ -63,7 +63,6 @@
             args.chart.annotations[0].y = ej.base.Browser.isDevice ? "42%" : "47%";
             args.chart.annotations[1].x = ej.base.Browser.isDevice ? "68%" : "69%";
         }
-         @*custom code end*@
     </script>
 }
  @*custom code start*@

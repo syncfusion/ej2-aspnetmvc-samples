@@ -3,7 +3,6 @@
 <div>
     <div class="col-lg-9 control-section">
 
-
         @Html.EJS().Chart("container").Series(series =>
    {
        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("car").DataSource(ViewBag.dataSource).Name("Car").Add();
@@ -17,11 +16,8 @@
    MinorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
        ).PrimaryYAxis(py => py.LabelFormat("{value}K").Title("Sales").MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
        ).Tooltip(tooltip => tooltip.Enable(true)).Title("Vehicle Sales by Region").Load("load").ChartArea(area => area.Border(br=>br.Color("transparent"))).Render()
-
-
-
-
-        </div>
+       
+    </div>
         <div class="col-lg-3 property-section">
             <table id="property" title="Properties" style="width: 100%">
                 <tbody>
@@ -50,28 +46,28 @@
         </div>
     </div>
 
-         @*custom code start*@
+    @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
     </style>
-             @*custom code end*@
+    @*custom code end*@
         <script>
             var dataValues = [
-         { x: 'Asia', car: 120, trucks: 90, bike: 180, cycle: 90 },
-         { x: 'Canada', car: 100, trucks: 80, bike: 90, cycle: 80 },
-         { x: 'Europe', car: 80, trucks: 90, bike: 60, cycle: 50 },
-         { x: 'Africa', car: 40, trucks: 20, bike: 30, cycle: 30 },
-         { x: 'Mexico', car: 40, trucks: 50, bike: 80, cycle: 50 },
-         { x: 'US', car: 140, trucks: 90, bike: 75, cycle: 70 }
+                { x: 'Asia', car: 120, trucks: 90, bike: 180, cycle: 90 },
+                { x: 'Canada', car: 100, trucks: 80, bike: 90, cycle: 80 },
+                { x: 'Europe', car: 80, trucks: 90, bike: 60, cycle: 50 },
+                { x: 'Africa', car: 40, trucks: 20, bike: 30, cycle: 30 },
+                { x: 'Mexico', car: 40, trucks: 50, bike: 80, cycle: 50 },
+                { x: 'US', car: 140, trucks: 90, bike: 75, cycle: 70 }
             ];
-                     @*custom code start*@
+            
             var load = function (args) {
                 var selectedTheme = themeName ? themeName : 'Material';
                 args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             }
-                     @*custom code end*@
+            
             document.getElementById('decending').onchange = function () {
                 var sortMode = document.getElementById('sortmode').ej2_instances[0];
                 sortDataSource(sortMode.value + '');
@@ -107,7 +103,7 @@
                 chart.refresh();
             }
         </script>
-    }
+}
              @*custom code start*@
 @section Meta{
                     <meta name="description" content="This example demonstrates the Sorting in ASP.NET MVC Chart control. Explore here for more details."/>

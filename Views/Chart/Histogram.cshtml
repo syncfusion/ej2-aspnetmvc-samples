@@ -8,25 +8,23 @@
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Histogram).YName("Score")
            .BinInterval(20).ShowNormalDistribution(true).ColumnWidth(0.99)
            .Marker(mr => mr.Visible(true).Width(7).Height(7).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff")))).DataSource(ViewBag.ChartPoints).Add();
-       }).PrimaryXAxis(px => px.Maximum(100).Minimum(0).Title("Score of Final Examination").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).MajorGridLines(mg=>mg.Width(0))
-       ).PrimaryYAxis(px => px.Minimum(0).Maximum(50).Interval(10).Title("Number of Students").LineStyle(ls=>ls.Width(0))
-       ).Title("Examination Result").ChartArea(ca => ca.Border(br=>br.Width(0))).Tooltip(tt => tt.Enable(true)).Load("load").Render()
+       }).PrimaryXAxis(px => px.Maximum(100).Minimum(0).Title("Score of Final Examination").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).MajorGridLines(mg => mg.Width(0))
+       ).PrimaryYAxis(px => px.Minimum(0).Maximum(50).Interval(10).Title("Number of Students").LineStyle(ls => ls.Width(0))
+       ).Title("Examination Result").ChartArea(ca => ca.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true)).Load("load").Render()
 
         </div>
     </div>
-
+    @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
-
     </style>
+    @*custom code end*@
     <script>
-     @*custom code start*@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-     @*custom code end*@
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             if (selectedTheme === 'highcontrast') {
                 args.chart.series[0].marker.dataLabel.font.color = '#000000';
@@ -34,11 +32,11 @@
         }
     </script>
 }
- @*custom code start*@
+@*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Histogram in ASP.NET MVC Chart control. Explore here for more details."/>
-                }
- @*custom code end*@
+    <meta name="description" content="This example demonstrates the Histogram in ASP.NET MVC Chart control. Explore here for more details." />
+}
+@*custom code end*@
 @section ActionDescription{
     <p>
         This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/histogram-chart">ASP.NET MVC Histogram Chart</a> example visualizes final examination results. The number of students between each interval is shown in data labels.
@@ -53,8 +51,8 @@
     </p>
 }
 @section Title{
-                    <title>ASP.NET MVC Chart Histogram Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Chart Histogram Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Histogram in ASP.NET MVC Chart Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Histogram in ASP.NET MVC Chart Control</h1>
+}

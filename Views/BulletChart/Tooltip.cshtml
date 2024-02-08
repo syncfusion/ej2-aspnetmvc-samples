@@ -25,11 +25,11 @@
     </div>
     @*custom code start*@
     <style>
-
         #control-container {
             padding: 0px !important;
         }
     </style>
+    @*custom code end*@
     <script id='Tooltip' type="text/x-template">
         <div id="wrap">
             <table style="width:100%; background-color: #ffffff; border-spacing: 0px; border-collapse:separate; border: 1px solid grey; border-radius:10px; padding-top: 5px; padding-bottom:5px">
@@ -42,19 +42,16 @@
                 <tr>
                     <td style="padding-left: 5px; color:black; padding-right: 5px">Current : ${value} </td>
                 </tr>
-
             </table>
         </div>
-
     </script>
 
     <script>
          var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
-             args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
          }
     </script>
-    @*custom code end*@
 }
 @*custom code start*@
 @section Meta{

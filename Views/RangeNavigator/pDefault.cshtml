@@ -117,17 +117,12 @@
             }
         }
         var zoomFactor, zoomPosition, startDate, endDate;
-                     @*custom code start*@
         var selectedTheme = themeName ? themeName : 'Material';
         var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-                     @*custom code end*@
         var load = function (args) {
-                         @*custom code start*@
             args.rangeNavigator.theme = theme;
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
-                         @*custom code end*@
             args.rangeNavigator.dataSource = data;
-
         }
         var load1 = function (args) {
             args.rangeNavigator.theme = theme;
@@ -212,7 +207,6 @@
                     ' box-shadow:0 0 8px 0 rgba(70,78,86,.25); padding: 7px 10px; border-radius: 3px">' + html + '</div>');
             }
             args.text = '';
-
         }
         var chartmousemove = function (args) {
             var chart = document.getElementById('chart').ej2_instances[0];

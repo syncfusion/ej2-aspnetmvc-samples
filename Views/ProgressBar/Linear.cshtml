@@ -92,6 +92,7 @@ a@using Syncfusion.EJ2;
             text-transform: capitalize;
         }
     </style>
+    @*custom code end*@
     <script>
         var div = document.getElementsByClassName('progressbar-label-linear');
         var Load = function (args) {
@@ -117,11 +118,9 @@ a@using Syncfusion.EJ2;
                 args.progressBar.secondaryProgressColor = '#98c5f5'
             } else if (selectedTheme === 'bootstrap') {
                 args.progressBar.secondaryProgressColor = '#acc6dc'
-            }
-            else if (selectedTheme === 'bootstrap4') {
+            } else if (selectedTheme === 'bootstrap4') {
                 args.progressBar.secondaryProgressColor = '#98c5f5'
-            }
-            else if (selectedTheme === 'bootstrap-dark') {
+            } else if (selectedTheme === 'bootstrap-dark') {
                 args.progressBar.secondaryProgressColor = '#b8b8b8'
             } else if (selectedTheme === 'highcontrast') {
                 args.progressBar.secondaryProgressColor = '#aca379'
@@ -149,7 +148,6 @@ a@using Syncfusion.EJ2;
             linearactive.refresh();
         };
     </script>
-    @*custom code end*@
 }
 @*custom code start*@
 @section Meta{

@@ -1,11 +1,13 @@
 ﻿@using Syncfusion.EJ2;
 <script src="~/Scripts/StockChartData/datetime-category.js"></script>
 @section ControlsSection{
+    @*custom code start*@
     <style>
         #container {
             display: block;
         }
     </style>
+    @*custom code end*@
     <div class="control-section">
         @(Html.EJS().StockChart("container").Load("load").Title("AAPL Stock Price")
         .PrimaryXAxis(xaxis =>xaxis.MajorGridLines(mg=>mg.Width(0)
@@ -23,11 +25,9 @@
     <script>
         var data = window.datetime;
         var load = function (args) {
-             @*custom code start*@
             let selectedTheme = location.hash.split('/')[1];
             selectedTheme = selectedTheme ? selectedTheme : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
-            @* custom code end *@
         }
     </script>
 }

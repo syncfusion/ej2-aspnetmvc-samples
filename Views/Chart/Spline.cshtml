@@ -21,12 +21,12 @@
 
         </div>
     
-         @*custom code start*@
     <style>
+    @*custom code start*@
          #control-container {
-        padding: 0px !important;
-    }
-             @*custom code end*@
+            padding: 0px !important;
+         }
+    @*custom code end*@
     #container_Series_0_Point_2_Symbol {
         -webkit-animation: opac 1s ease-out infinite;
         animation: opac 1s ease-out infinite;
@@ -54,7 +54,7 @@
 <div id='chart_sunny' style="display:none">
     <img src="@Url.Content("~/Content/chart/sunny.png")" style='width: 41px; height: 41px' />
 </div>
-         @*custom code start*@
+      
     <script>
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
@@ -62,7 +62,6 @@
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
-             @*custom code end*@
 }
    @*custom code start*@
 @section Meta{

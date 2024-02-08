@@ -40,12 +40,13 @@
         </table>
     </div>
 
-    @*custom code start*@
+@*custom code start*@
 <style>
     #control-container {
         padding: 0px !important;
     }
 </style>
+@*custom code end*@
     <script>
         var load = function (args) {
             args.accumulation.dataSource = [{ Product: "Rice", ProfitPercentage: 80 },{ Product: "Wheat", ProfitPercentage: null },{ Product: "Oil", ProfitPercentage: 70 },{ Product: "Corn", ProfitPercentage: 60 },{ Product: "Gram", ProfitPercentage: null },{ Product: "Milk", ProfitPercentage: 70 },{ Product: "Peas", ProfitPercentage: 80 },{ Product: "Fruit", ProfitPercentage: 60 },{ Product: "Butter", ProfitPercentage: null }]; 
@@ -55,15 +56,14 @@
         function changeEmptyPointMode() {
             var chart = document.getElementById("container").ej2_instances[0];
             var mode = document.getElementById("emptyPoint").ej2_instances[0];
-                chart.series[0].emptyPointSettings.mode = mode.value;
-                chart.refresh();
+            chart.series[0].emptyPointSettings.mode = mode.value;
+            chart.refresh();
         }
         function textRender(args)
         {
             args.text = args.point.x + ": $" + args.point.y + "K";
         }
     </script>
- @*custom code end*@
 }
  @*custom code start*@
 @section Meta{

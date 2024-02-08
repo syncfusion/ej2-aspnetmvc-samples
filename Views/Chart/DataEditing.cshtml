@@ -24,17 +24,15 @@
         </div>
     </div>
 
-
+    @*custom code start*@
     <style>
         #control-container {
             padding: 0px !important;
         }
     </style>
-
+    @*custom code end*@
     <script>
-
         var load = function (args) {
-            @*custom code start*@
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
@@ -45,8 +43,8 @@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Data Editing in ASP.NET MVC Chart control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Data Editing in ASP.NET MVC Chart control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <p>
@@ -65,8 +63,8 @@
     </p>
 }
 @section Title{
-                    <title>ASP.NET MVC Chart Data Editing Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Chart Data Editing Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Data Editing in ASP.NET MVC Chart Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Data Editing in ASP.NET MVC Chart Control</h1>
+}

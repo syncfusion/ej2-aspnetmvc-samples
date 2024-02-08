@@ -31,16 +31,15 @@
 
     @*custom code start*@
     <style>
-    #control-container {
-        padding: 0px !important;
-    }
-    .e-info {
-        text-transform:none !important
-    }
-    @*custom code end*@
+        #control-container {
+            padding: 0px !important;
+        }
+        .e-info {
+            text-transform:none !important
+        }
     </style>
+    @*custom code end*@
     <script>
-        @*custom code start*@
         var valueUrl = "url";
         var FillColor;
         var themes = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentdark', 'material3', 'material3dark'];
@@ -54,7 +53,6 @@
             args.chart.series[0].fill = 'url(#' + selectedTheme + '-gradient-chart)';
             args.chart.series[0].border.color = BorderColor;
         };
-        @*custom code end*@
     </script>
     <style>
         #material-gradient-chart stop {

@@ -88,6 +88,7 @@
             text-transform: capitalize;
         }
     </style>
+    @*custom code end*@
     <script>
         var progressLoad = function (args) {
             var selectedTheme = location.hash.split('/')[1];
@@ -97,7 +98,7 @@
             if (selectedTheme === 'highcontrast') {
                 args.progressBar.trackColor = '#969696';
             }
-            if (args.progressBar.type === "Linear"){
+            if (args.progressBar.type === "Linear") {
                 args.progressBar.segmentCount = ej.base.Browser.isDevice ? 25 : 50;
             }
         };
@@ -162,12 +163,11 @@
             }
         };
     </script>
-    @*custom code end*@
 }
 @*custom code start*@
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Progress Segment in ASP.NET MVC Progress Bar control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Progress Segment in ASP.NET MVC Progress Bar control. Explore here for more details." />
+}
 @*custom code end*@
 @section ActionDescription{
     <p>
@@ -180,8 +180,8 @@
     </p>
 }
 @section Title{
-                    <title>ASP.NET MVC Progress Bar Progress Segment Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Progress Bar Progress Segment Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Progress Segment in ASP.NET MVC Progress Bar Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Progress Segment in ASP.NET MVC Progress Bar Control</h1>
+}

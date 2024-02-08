@@ -37,17 +37,16 @@
        )
     </div>
 
-    @*custom code start*@
+@*custom code start*@
 <style>
     #control-container {
         padding: 0px !important;
     }
 </style>
 @*custom code end*@
-    <script>
-      
+    <script>    
         var materialColors = ['#00bdae', '#404041', '#357cd2', '#e56590', '#f8b883', '#70ad47', '#dd8abd', '#7f84e8', '#7bb4eb',
-    '#ea7a57', '#404041', '#00bdae'];
+            '#ea7a57', '#404041', '#00bdae'];
         var fabricColors = ['#4472c4', '#ed7d31', '#ffc000', '#70ad47', '#5b9bd5',
             '#c1c1c1', '#6f6fe2', '#e269ae', '#9e480e', '#997300', '#4472c4', '#70ad47', '#ffc000', '#ed7d31'];
         var bootstrapColors = ['#a16ee5', '#f7ce69', '#55a5c2', '#7ddf1e', '#ff6ea6',
@@ -76,7 +75,7 @@
             }
            // args.border.color = getSaturationColor(args.fill, -0.6);
         };
-        @*custom code start*@
+
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
@@ -84,7 +83,7 @@
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
         };
-        @*custom code end*@
+
         function valueChange() {
             var chart = document.getElementById("container").ej2_instances[0];
             var mode = document.getElementById("dropdown").ej2_instances[0];
@@ -92,7 +91,6 @@
                 chart.series[0].animation.enable = false;
                 chart.refresh();
             }
-
     </script>
 }
 @*custom code start*@

@@ -122,44 +122,38 @@
     </div>
     @*custom code start*@
     <style>
-
         #control-container {
             padding: 0px !important;
         }
     </style>
+    @*custom code end*@
     <script>
         var load1 = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 63;
-
         }
         var load2 = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 81;
-
         }
         var load3 = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 22;
-
         }
         var load4 = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 19;
-
         }
         var load5 = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 9;
-
         }
     </script>
-    @*custom code end*@
 }
 @*custom code start*@
 @section Meta{

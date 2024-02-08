@@ -9,18 +9,13 @@
     </div>
     
     <script>
-
         var load = function(args) {
-                 @*custom code start*@
             var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.accumulation.series[0].dataLabel.textWrap = ej.base.Browser.isDevice ? "Wrap" : "Normal";
             args.accumulation.series[0].dataLabel.maxWidth = ej.base.Browser.isDevice ? 80 : NaN;
-            args.accumulation.series[0].dataSource[4].DataLabelMappingName = ej.base.Browser.isDevice ? "Bread, Rice,<br> Pasta: 930 cal" : "Bread, Rice, Pasta: 930 cal";
-                
-            @*custom code end*@           
-        }
-       
+            args.accumulation.series[0].dataSource[4].DataLabelMappingName = ej.base.Browser.isDevice ? "Bread, Rice,<br> Pasta: 930 cal" : "Bread, Rice, Pasta: 930 cal";          
+        }      
     </script>
 }
          @*custom code start*@

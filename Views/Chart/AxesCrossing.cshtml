@@ -102,12 +102,13 @@
         cursor: pointer !important;
     }
 </style>
+@*custom code end*@
     <script>
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
         };       
- @*custom code end*@       
+        
         document.getElementById('axisElements').onchange = function (e) {
             var chart = document.getElementById('container-vertical').ej2_instances[0];
             var axes = document.getElementById("selectAxis").ej2_instances[0];

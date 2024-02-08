@@ -23,7 +23,6 @@
         #container {
             display: block;
         }
-
         #container_stock_border {
             pointer-events: none;
         }
@@ -34,11 +33,9 @@
         var load = function (args) {
             args.stockChart.seriesType = [];
             args.stockChart.indicatorType = [];
-              @*custom code start*@
             var selectedTheme = themeName ? themeName : 'Material';
             args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.stockChart.crosshair.lineType = 'Both';
-             @*custom code end*@
         }
     </script>
 }

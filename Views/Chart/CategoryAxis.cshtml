@@ -58,15 +58,13 @@
         };
 
         var load = function (args) {
-            @*custom code start*@
             var selectedTheme = themeName ? themeName : 'Material';
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
-            @*custom code end*@
             args.chart.series[0].marker.dataLabel.font.size = ej.base.Browser.isDevice ? '9px' : '11px';
         }
     </script>
-    }
+}
     @*custom code start*@
 @section Meta{
                     <meta name="description" content="This example demonstrates the Category Axis in ASP.NET MVC Chart control. Explore here for more details."/>

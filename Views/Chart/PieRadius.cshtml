@@ -21,19 +21,18 @@
         )
     </div>
     <script>
-    var load = function (args) {
+        var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.accumulation.series[0].dataLabel.position = ej.base.Browser.isDevice ? "Inside" : "Outside";
             args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "10px" : "12px";
             args.accumulation.series[0].dataSource[2].Radius = ej.base.Browser.isDevice ? "120" : "118.7";
             args.accumulation.series[0].dataSource[3].text = ej.base.Browser.isDevice ? "Dominican <br> Republic" : "Dominican Republic";                     
-            }
-            var TooltipRender = function (args)
-            {
-                 args.text = args.text.replace(args.data.pointY.toString(), args.data.pointY.toLocaleString());
-            }
-        
+        }
+        var TooltipRender = function (args)
+        {
+            args.text = args.text.replace(args.data.pointY.toString(), args.data.pointY.toLocaleString());
+        }     
     </script>
 }
 @section Meta{
