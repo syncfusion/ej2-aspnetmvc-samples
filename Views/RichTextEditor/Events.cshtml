@@ -26,7 +26,7 @@
         <li><p> Contains undo / redo manager.</p></li>
         <li><p> Creates bulleted and numbered lists.</p></li>
     </ul>
-</div>).Created("created").ActionBegin("actionBegin").ActionComplete("actionComplete").Focus("focus").Blur("blur").Change("change").ToolbarClick("toolbarClick").BeforeDialogOpen("beforeDialogOpen").DialogOpen("dialogOpen").DialogClose("dialogClose").BeforeQuickToolbarOpen("beforeQuickToolbarOpen").QuickToolbarOpen("quickToolbarOpen").QuickToolbarClose("quickToolbarClose").ImageSelected("imageSelected").ImageUploading("imageUploading").ImageUploadSuccess("imageUploadSuccess").ImageUploadFailed("imageUploadFailed").ImageRemoving("imageRemoving").Resizing("resizing").ResizeStart("resizeStart").ResizeStop("resizeStop").ToolbarSettings(e => e.Items((object)ViewBag.Items)).Render()
+</div>).Created("created").ActionBegin("actionBegin").ActionComplete("actionComplete").Focus("focus").Blur("blur").Change("change").ToolbarClick("toolbarClick").BeforeDialogOpen("beforeDialogOpen").DialogOpen("dialogOpen").DialogClose("dialogClose").BeforeQuickToolbarOpen("beforeQuickToolbarOpen").QuickToolbarOpen("quickToolbarOpen").QuickToolbarClose("quickToolbarClose").ImageSelected("imageSelected").ImageUploading("imageUploading").ImageUploadSuccess("imageUploadSuccess").ImageUploadFailed("imageUploadFailed").ImageRemoving("imageRemoving").Resizing("resizing").ResizeStart("resizeStart").ResizeStop("resizeStop").ToolbarSettings(e => e.Items((object)ViewBag.Items)).FileManagerSettings(e => { e.Enable(true); e.Path("/Pictures/Food"); e.AjaxSettings((object)ViewBag.AjaxSettings); }).Render()
             </div>
         </div>
     <div class="col-lg-4 property-section">

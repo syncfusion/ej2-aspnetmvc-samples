@@ -8,7 +8,7 @@
        col.Field("NumberofPatentFamilies").HeaderText("No of Patent Families").Width("195").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("Country").HeaderText("Country").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("Active").HeaderText("Active").Width("130").Add();
-   }).AllowPaging().PageSettings(page=>page.PageCount(2)).EditSettings(edit => { edit.AllowDeleting(true); }).Toolbar(new List<string>() { "Delete" }).Render()
+   }).AllowPaging().PageSettings(page=>page.PageCount(2)).AllowSorting().EditSettings(edit => { edit.AllowDeleting(true);}).Toolbar(new List<string>() { "Delete" }).Render()
     </div>
 }
 

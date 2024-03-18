@@ -11,13 +11,13 @@
             @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).ActionComplete("actionComplete").AllowReordering().Columns(col =>
   {
 
-      col.Field("EmployeeID").HeaderText("Employee ID").Width("125").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+      col.Field("EmployeeID").HeaderText("Employee ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
       col.Field("FirstName").HeaderText("Name").Width("125").Add();
       col.Field("Title").HeaderText("Title").Width("190").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
       col.Field("HireDate").HeaderText("Hire Date").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").Add();
 
 
-  }).Render()
+  }).AllowSorting().Render()
         </div>
     </div>
 </div>

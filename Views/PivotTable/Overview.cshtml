@@ -9,7 +9,7 @@
 <meta name="referrer" content="never">
 <div class="col-lg control-section" id="pivot-table-section">
     <div class="content-wrapper">
-        @Html.EJS().PivotView("pivotview").Width("100%").Height("600").ShowGroupingBar(true).EnableVirtualization(true).AllowDeferLayoutUpdate(true).AllowDrillThrough(true).AllowGrouping(true).EnableValueSorting(true).ShowToolbar(true).ShowFieldList(true).AllowExcelExport(true).AllowNumberFormatting(true).AllowConditionalFormatting(true).AllowPdfExport(true).ExportAllPages(false).MaxNodeLimitInMemberEditor(50).ShowToolbar(true).AllowCalculatedField(true).DataSourceSettings(dataSourceSettings
+        @Html.EJS().PivotView("pivotview").Width("100%").Height("600").ShowGroupingBar(true).EnableVirtualization(true).AllowDeferLayoutUpdate(true).AllowDrillThrough(true).AllowGrouping(true).EnableValueSorting(true).ShowToolbar(true).ShowFieldList(true).AllowExcelExport(true).AllowNumberFormatting(true).AllowConditionalFormatting(true).AllowPdfExport(true).ExportAllPages(false).MaxNodeLimitInMemberEditor(50).ShowToolbar(true).AllowCalculatedField(true).EnableFieldSearching(true).DataSourceSettings(dataSourceSettings
         =>
         dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.DataSource).ExpandAll(false).EnableSorting(true).EmptyCellsTextContent("-").ShowHeaderWhenEmpty(false)
         .FormatSettings(formatsettings =>

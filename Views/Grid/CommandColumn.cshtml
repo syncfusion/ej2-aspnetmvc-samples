@@ -26,7 +26,7 @@
        col.Field("Verified").HeaderText("Verified").EditType("booleanedit").DisplayAsCheckBox(true).Type("boolean").Width("100").Add();
        col.HeaderText("Manage Records").Width("150").Commands(commands).Add();
 
-   }).CssClass("e-css").AllowPaging().PageSettings(page=>page.PageCount(5)).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowEditOnDblClick(false); }).Render()
+   }).CssClass("e-css").AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowEditOnDblClick(false); }).Render()
     </div>
 }
 

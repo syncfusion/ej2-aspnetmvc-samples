@@ -4,18 +4,6 @@
         @Html.EJS().Diagram("diagram").Created("create").Width("100%").Height("700px").GetConnectorDefaults("connectorDefaults").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
     </div>
 
-    <style>
-        #diagram {
-            display: block;
-        }
-
-        .row {
-            display: block;
-            margin-left: 0px;
-            margin-right: 0px;
-        }
-    </style>
-
     <script>
 
         function create() {

@@ -10,7 +10,7 @@
     col.Field("CustomerID").HeaderText("Customer Name").Width("150").ShowInColumnChooser(false).Add();
     col.Field("OrderDate").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
 
-}).AllowPaging().SelectionSettings(select=>select.Type( Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(1).PageSize(10)).RowDropSettings(new Syncfusion.EJ2.Grids.GridRowDropSettings() { TargetID = "DestGrid" }).Render()
+}).AllowPaging().AllowSorting().SelectionSettings(select=>select.Type( Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(1).PageSize(10)).RowDropSettings(new Syncfusion.EJ2.Grids.GridRowDropSettings() { TargetID = "DestGrid" }).Render()
     </div>
     <div class="col-lg-6">
         @Html.EJS().Grid("DestGrid").AllowSelection().AllowRowDragAndDrop(true).Columns(col =>
@@ -19,7 +19,7 @@
     col.Field("CustomerID").HeaderText("Customer Name").Width("150").ShowInColumnChooser(false).Add();
     col.Field("OrderDate").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
 
-}).AllowPaging().SelectionSettings(select=>select.Type( Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(1).PageSize(5)).RowDropSettings(new Syncfusion.EJ2.Grids.GridRowDropSettings() { TargetID = "RowDragDrop" }).Render()
+}).AllowPaging().AllowSorting().SelectionSettings(select=>select.Type( Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(1).PageSize(5)).RowDropSettings(new Syncfusion.EJ2.Grids.GridRowDropSettings() { TargetID = "RowDragDrop" }).Render()
     </div>
 </div>
     }

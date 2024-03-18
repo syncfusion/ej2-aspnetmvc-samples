@@ -14,7 +14,7 @@
                col.Field("UnitsInStock").HeaderText("UnitsIn Stock").Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
                col.Field("Discontinued").HeaderText("Discontinued").Width("150").DisplayAsCheckBox(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Type("boolean").Add();
 
-           }).AllowPaging().PageSettings(page => page.PageCount(2)).Render()
+           }).AllowPaging().PageSettings(page => page.PageCount(2)).AllowSorting().Render()
         </div>
     </div>
 </div>

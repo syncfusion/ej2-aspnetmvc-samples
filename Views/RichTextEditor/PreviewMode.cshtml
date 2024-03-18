@@ -5,7 +5,7 @@
         <div class="control-wrapper">
             <div id="wrapper">
             <div class="col-lg-12 col-sm-12 col-md-12">
-                @Html.EJS().Splitter("splitter").Height("450px").Width("100%").Created("onCreateSplitter").Resizing("OnResizing").PaneSettings(paneItem =>
+                @Html.EJS().Splitter("splitter-rte-markdown-preview").Height("450px").Width("100%").Created("onCreateSplitter").Resizing("OnResizing").PaneSettings(paneItem =>
                 {
                     paneItem.Size("50%").Resizable(true).CssClass("pane1").Min("40%").ContentTemplate(@<div>
                             @Html.EJS().RichTextEditor("defaultRTE").Height("448px").SaveInterval(1).MaxLength(5000).ShowCharCount(true).EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewBag.Items).Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false)).Value(ViewBag.Value).Created("onCreate").Change("onChange").ActionComplete("updateValue").Render()</div>).Add();

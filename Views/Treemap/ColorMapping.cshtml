@@ -2,10 +2,12 @@
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-            <div style="width:100%">
-                @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("Top 10 largest islands in the World").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Area").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "Name: ${Name}<br>Area: ${Area} per square kms<br>Continent: ${Location}", Opacity = 0.8 }).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Bottom).Mode(LegendMode.Interactive).Height("10").Title(title=>title.Text("Area"))).Format("n").UseGroupingSeparator(true).RangeColorValuePath("Area").EqualColorValuePath("Location").LeafItemSettings(leaf =>
+        <div class="content-wrapper">
+            <div id="container">
+                @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("Top 10 largest islands in the World").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Area").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "Name: ${Name}<br>Area: ${Area} per square kms<br>Continent: ${Location}", Opacity = 0.8 }).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Bottom).Mode(LegendMode.Interactive).Height("10").Title(title => title.Text("Area"))).Format("n").UseGroupingSeparator(true).RangeColorValuePath("Area").EqualColorValuePath("Location").LeafItemSettings(leaf =>
   leaf.LabelPath("Name").Fill("#6699cc").Border(new TreeMapBorder { Color = "white", Width = 0.5 })).Render()
             </div>
+        </div>
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">
@@ -291,6 +293,12 @@
         });
         sampleValue.appendTo('#colorMapping');
     </script>
+    <style>
+        #container {
+            display: block;
+            width: 100%;
+        }
+    </style>
 }
 @section ActionDescription{
     <p>
@@ -307,11 +315,11 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC TreeMap ColorMapping Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC TreeMap ColorMapping Example - Syncfusion Demos </title>
+}
 @section Meta{
-                    <meta name="description" content="This example demonstrates the ColorMapping in ASP.NET MVC TreeMap control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the ColorMapping in ASP.NET MVC TreeMap control. Explore here for more details." />
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of ColorMapping in ASP.NET MVC TreeMap Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of ColorMapping in ASP.NET MVC TreeMap Control</h1>
+}

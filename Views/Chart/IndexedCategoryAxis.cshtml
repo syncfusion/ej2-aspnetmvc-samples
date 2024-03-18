@@ -12,7 +12,7 @@
             .YName("GDPGrowthRate")
             .Width(2)
             .Opacity(1)
-            .Marker(mr=>mr.Visible(false).Width(10).Height(10).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Name("TextMapping")))
+            .Marker(mr=>mr.Visible(false).Width(10).Height(10).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)))
             .DataSource(ViewBag.GDP_2015).Add();
         sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
             .Name("2016")
@@ -20,7 +20,7 @@
             .YName("GDPGrowthRate")
             .Width(2)
             .Opacity(1)
-            .Marker(mr => mr.Visible(false).Width(10).Height(10).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Name("TextMapping")))
+            .Marker(mr => mr.Visible(false).Width(10).Height(10).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)))
             .DataSource(ViewBag.GDP_2016).Add();
     })
       .PrimaryXAxis(xaxis =>
@@ -80,10 +80,8 @@
             args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
-            args.chart.series[0].marker.dataLabel.enableRotation = ej.base.Browser.isDevice?'true':'false';
-            args.chart.series[1].marker.dataLabel.enableRotation = ej.base.Browser.isDevice?'true':'false';
-            args.chart.series[0].marker.dataLabel.angle = ej.base.Browser.isDevice?-90:0;
-            args.chart.series[1].marker.dataLabel.angle = ej.base.Browser.isDevice?-90:0;
+            args.chart.series[0].marker.dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '11px';
+            args.chart.series[1].marker.dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '11px';
         }
         document.getElementById('isIndexed').onchange = function () {
             var chart = document.getElementById('container').ej2_instances[0];
@@ -94,13 +92,17 @@
                 chart.series[1].type = 'Column';
                 chart.series[0].marker.visible = false;
                 chart.series[1].marker.visible = false;
-                chart.primaryXAxis.labelRotation = -45;
+                chart.primaryXAxis.labelRotation = 0;
             }
             else {
                 chart.series[0].type = 'Line';
                 chart.series[1].type = 'Line';
                 chart.series[0].marker.visible = true;
                 chart.series[1].marker.visible = true;
+                chart.series[0].marker.dataLabel.visible = true;
+                chart.series[0].marker.dataLabel.position = 'Top';
+                chart.series[1].marker.dataLabel.visible = true;
+                chart.series[1].marker.dataLabel.position = 'Top';
                 chart.primaryXAxis.labelRotation = 90;
             }
             chart.refresh();

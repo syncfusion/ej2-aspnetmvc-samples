@@ -67,6 +67,7 @@ function initializeTitleBar(isShareNeeded, isRtl) {
         downloadToolTip = 'تحميل هذا المستند';
         printText = 'طباعه';
         printToolTip = 'طباعه هذا المستند (Ctrl + P)';
+        closeToolTip = 'أغلق هذه الوثيقة';
         openText = 'فتح';
         documentTileText = 'اسم المستند. انقر أو اضغط لأعاده تسميه هذا المستند';
     }
@@ -81,8 +82,10 @@ function initializeTitleBar(isShareNeeded, isRtl) {
     print = addButton('e-de-icon-Print e-de-padding-right', printText, btnStyles, 'de-print', printToolTip, false);
     openBtn = addButton('e-de-icon-Open e-de-padding-right', openText, btnStyles, 'de-open', openText, false);
     var items = [
-        { text: 'Microsoft Word (.docx)', id: 'word' },
-        { text: 'Syncfusion Document Text (.sfdt)', id: 'sfdt' },
+        { text: 'Syncfusion Document Text (*.sfdt)', id: 'sfdt' },
+        { text: 'Word Document (*.docx)', id: 'word' },
+        { text: 'Word Template (*.dotx)', id: 'dotx'},
+        { text: 'Plain Text (*.txt)', id: 'txt'},
     ];
     download = addButton('e-de-icon-Download e-de-padding-right', downloadText, btnStyles, 'documenteditor-share', downloadToolTip, true, items);
     if (!isShareNeeded) {
@@ -160,14 +163,22 @@ function onExportClick(args) {
         case 'sfdt':
             save('Sfdt');
             break;
+        case 'dotx':
+            save('Dotx');
+            break;
+        case 'txt':
+            save('Txt');
+            break;
     }
 }
 function save(format) {
     documenteditor.save(documenteditor.documentName === '' ? 'sample' : documenteditor.documentName, format);
 }
 function setTooltipForPopup() {
-    document.getElementById('documenteditor-share-popup').querySelectorAll('li')[0].setAttribute('title', 'Download a copy of this document to your computer as a DOCX file.');
-    document.getElementById('documenteditor-share-popup').querySelectorAll('li')[1].setAttribute('title', 'Download a copy of this document to your computer as an SFDT file.');
+    document.getElementById('documenteditor-share-popup').querySelectorAll('li')[0].setAttribute('title', 'Download a copy of this document to your computer as a SFDT file.');
+    document.getElementById('documenteditor-share-popup').querySelectorAll('li')[1].setAttribute('title', 'Download a copy of this document to your computer as a DOCX file.');
+    document.getElementById('documenteditor-share-popup').querySelectorAll('li')[2].setAttribute('title', 'Download a copy of this document to your computer as a DOTX file.');
+    document.getElementById('documenteditor-share-popup').querySelectorAll('li')[3].setAttribute('title', 'Download a copy of this document to your computer as a TXT file.');
 }
 function addButton(iconClass, btnText, styles, id, tooltipText, isDropDown, items) {
     var button = ej.base.createElement('button', { id: id, styles: styles });

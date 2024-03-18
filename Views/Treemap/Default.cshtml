@@ -2,16 +2,18 @@
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
 	<div class="control-section">
-        <div style="width:100%">
-            @Html.EJS().TreeMap("container").Width("900px").ItemMove("itemMove").ItemClick("itemMove").TitleSettings(title => title.Text("Car Sales by Country - 2017").TextStyle(new TreeMapFont { Size = "15px" })).RangeColorValuePath("Sales").Format("n").UseGroupingSeparator(true).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top).Shape(Syncfusion.EJ2.TreeMap.LegendShape.Rectangle)).WeightValuePath("Sales").Palette(new string[] { "#C33764", "#AB3566", "#993367", "#853169", "#742F6A", "#632D6C", "#532C6D", "#412A6F", "#312870", "#1D2671" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true }).Load("load").Levels(level =>
-       {
-           level.GroupPath("Continent").Border(new TreeMapBorder{ Color = "white", Width = 0.5 }).Add();
-       }).LeafItemSettings(leaf => leaf.LabelPath("Company").Border(new TreeMapBorder { Color = "white", Width = 0.5 })).Render()
+        <div class="content-wrapper">
+            <div id="container">
+                @Html.EJS().TreeMap("container").ItemMove("itemMove").ItemClick("itemMove").TitleSettings(title => title.Text("Car Sales by Country - 2017").TextStyle(new TreeMapFont { Size = "15px" })).RangeColorValuePath("Sales").Format("n").UseGroupingSeparator(true).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top).Shape(Syncfusion.EJ2.TreeMap.LegendShape.Rectangle)).WeightValuePath("Sales").Palette(new string[] { "#C33764", "#AB3566", "#993367", "#853169", "#742F6A", "#632D6C", "#532C6D", "#412A6F", "#312870", "#1D2671" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true }).Load("load").Levels(level =>
+           {
+               level.GroupPath("Continent").Border(new TreeMapBorder { Color = "white", Width = 0.5 }).Add();
+           }).LeafItemSettings(leaf => leaf.LabelPath("Company").Border(new TreeMapBorder { Color = "white", Width = 0.5 })).Render()
+            </div>
+            </div>
+            <div style="margin-left: 75%">
+                Source:<a href="https//www.factorywarrantylist.com/car-sales-by-country.html/" target="_blank"> www.factorywarrantylist.com</a>
+            </div>
         </div>
-        <div style="margin-left: 75%">
-            Source:<a href="https//www.factorywarrantylist.com/car-sales-by-country.html/" target="_blank"> www.factorywarrantylist.com</a>
-        </div>
-    </div>
     <script>
         function load(args) {
             var data = [
@@ -57,6 +59,12 @@
                 'Country: ${Continent}<br>Company: ${Company}<br>Sales: ${Sales}';
         }
     </script>
+    <style>
+        #container {
+            display: block;
+            width: 100%;
+        }
+    </style>
 }
 @section ActionDescription{
     <p>

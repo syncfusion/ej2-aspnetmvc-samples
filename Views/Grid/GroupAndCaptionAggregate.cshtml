@@ -12,7 +12,7 @@
    {
        agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "UnitsInStock", Type = "Sum", GroupFooterTemplate = "Total units: ${Sum}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Discontinued", Type = "Truecount", GroupFooterTemplate = "Discontinued: ${Truecount}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "UnitsInStock", Type = "Max", GroupCaptionTemplate = "Maximum: ${Max}" } }).Add();
 
-   }).PageSettings(page => { page.PageCount(5); }).Render()
+   }).PageSettings(page => { page.PageCount(5); }).AllowSorting().Render()
     </div>
 }
 

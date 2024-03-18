@@ -21,16 +21,16 @@
         </div>
         @{
             List<object> commands = new List<object>();
-            commands.Add(new {buttonOption = new {cssClass = "e-icons e-eye e-flat" }, title = "View" });
-            commands.Add(new {buttonOption = new {cssClass = "e-icons e-edit e-flat" }, title = "Edit" });
+            commands.Add(new { buttonOption = new { cssClass = "e-icons e-eye e-flat" }, title = "View" });
+            commands.Add(new { buttonOption = new { cssClass = "e-icons e-edit e-flat" }, title = "Edit" });
 
         }
         @(Html.EJS().Grid("Grid")
     .DataSource((IEnumerable<object>)ViewBag.dataSource).RecordClick("recordClick")
     .Columns(col =>
     {
-        col.Template("#filetemplate").HeaderText("File Name").HeaderTextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
-        col.HeaderText("Author").Field("Author").HeaderTextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+        col.Template("#filetemplate").HeaderText("File Name").Add();
+        col.HeaderText("Author").Field("Author").Add();
         col.HeaderText("Actions").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Commands(commands).Add();
     }).Render()
     )
@@ -46,7 +46,7 @@
 @section PreScripts {
     <script>
     var dialogObj, gridObj;
-    
+
     function dialogClose() {
         document.getElementById('Grid').style.display = 'block';
     }
@@ -59,7 +59,7 @@
         dialogObj.hide();
         document.getElementById('Grid').style.display = 'block';
     }
-        
+
     function created() {
         dialogObj = this;
         dialogObj.hide();
@@ -80,14 +80,10 @@
 
     function recordClick(args) {
         document.getElementById('Grid').style.display = 'none';
-
         var fileName = args.rowData.FileName;
         var filePath = args.rowData.Url;
-       
-
         dialogObj.header = fileName;
         var viewer = document.getElementById('pdfviewer').ej2_instances[0];
-
         viewer.documentPath = filePath;
         dialogObj.show();
 
@@ -117,14 +113,14 @@
                 isReadOnly: true,
             };
             viewer.contextMenuOption = "None";
-
             viewer.annotationSettings = { isLock: true };
             viewer.enableStickyNotesAnnotation = false;
+            viewer.isFormDesignerToolbarVisible = false;
+            viewer.isAnnotationToolbarVisible = false;
             viewer.toolbarSettings = {
                 showTooltip: true, toolbarItems: ['OpenOption', 'PageNavigationTool',
                     'MagnificationTool', 'PanTool','PrintOption']
             };
-
         }
         else {
             viewer.textFieldSettings = {
@@ -152,7 +148,6 @@
                 isReadOnly: false,
             };
             viewer.contextMenuOption = "Block";
-
             viewer.annotationSettings = { isLock: false };
             viewer.enableStickyNotesAnnotation = true;
             viewer.toolbarSettings = {
@@ -172,9 +167,9 @@
                     'RadioButtonTool', 'DropdownTool', 'ListboxTool', 'DrawSignatureTool', 'DeleteTool']
             };
         }
+        viewer.dataBind();
     }
     </script>
-
 }
 
 <script type="text/x-template" id="filetemplate">
@@ -197,7 +192,7 @@
         padding-left: 10px;
     }
 
-    /* custom code start */    
+    /* custom code start */
 
     @@media screen and (min-width: 150px) and (max-width: 480px) {
         .control-section {

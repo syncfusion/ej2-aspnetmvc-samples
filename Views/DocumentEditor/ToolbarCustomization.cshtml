@@ -45,6 +45,7 @@
         checklist = dropdownElement.ej2_instances[0];
         document.getElementById('deCustomToolbar').addEventListener('click', onChange);
         container.showPropertiesPane = true;
+        container.documentEditorSettings.showRuler = true;
         documenteditor = container.documentEditor;
         documenteditorElement.ej2_instances[0].serviceUrl = window.baseurl + 'api/documenteditorservice/';
         documenteditor.serviceUrl = window.baseurl + 'api/documenteditorservice/';

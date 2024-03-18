@@ -31,5 +31,9 @@
     "publish": "gulp azure-mvc-publish",
 		"mvc-cloudtest-deploy": "gulp azure-mvc-publish --cloudtesting"
 
-  }
+  },
+  "overrides": {
+     "glob-parent": "6.0.2",
+     "semver": "7.6.0"
+   }
 }

@@ -32,7 +32,7 @@
             }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed)).TooltipSettings(tooltipSettings =>
             tooltipSettings.Fill("#265259").Border(br => br.Color("#98BABF").Width(1)).TextStyle(style =>
             style.Color("#FFFFFF").Size("12px"))).CellSettings(cellSettings =>
-            cellSettings.Border(ViewBag.border).TextStyle(ViewBag.labelTextStyle).Format("{value} M")).Load("load").TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).DataSource(ViewBag.dataSource).Render()
+            cellSettings.Border(ViewBag.border).TextStyle(ViewBag.labelTextStyle).Format("{value} M")).Load("load").TooltipRender("tooltipRendering").TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).DataSource(ViewBag.dataSource).Render()
         </div>
     </div>
     <style>
@@ -41,16 +41,21 @@
         }
     </style>
     <script>
+        var heatMap;
         var load = function (args) {
             @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
             @* custom code end *@
-            if (args.heatmap.theme.indexOf('Dark') > -1 || args.heatmap.theme.indexOf('Highcontrast') > -1) {
-                args.heatmap.tooltipSettings.template = '<div style=" border-radius: 5px;fontFamily: inherit; padding-left: 10px;padding-right: 10px;padding-bottom: 6px;padding-top: 6px;background:white; border: 1px #919191;" ><span style="color:black;font-size: 12px">In ${yLabel}, the ${xLabel} produced ${value} million barrels per day.<span></div>';
+            heatMap = args.heatmap;
+        };
+
+        var tooltipRendering = function (args) {
+            if (heatMap.theme.indexOf('Dark') > -1 || heatMap.theme.indexOf('Highcontrast') > -1) {
+                heatMap.tooltipSettings.template = '<div style=" border-radius: 5px;fontFamily: inherit; padding-left: 10px;padding-right: 10px;padding-bottom: 6px;padding-top: 6px;background:white; border: 1px #919191;" ><span style="color:black;font-size: 12px">In ${yLabel}, the ${xLabel} produced ${value} million barrels per day.<span></div>';
             }
             else {
-                args.heatmap.tooltipSettings.template = '<div style=" border-radius: 5px;fontFamily: inherit; padding-left: 10px;padding-right: 10px;padding-bottom: 6px;padding-top: 6px;background:#000000; border: 1px #919191;" ><span style="color:white;font-size: 12px">In ${yLabel}, the ${xLabel} produced ${value} million barrels per day.<span></div>';
+                heatMap.tooltipSettings.template = '<div style=" border-radius: 5px;fontFamily: inherit; padding-left: 10px;padding-right: 10px;padding-bottom: 6px;padding-top: 6px;background:#000000; border: 1px #919191;" ><span style="color:white;font-size: 12px">In ${yLabel}, the ${xLabel} produced ${value} million barrels per day.<span></div>';
             }
         };
         

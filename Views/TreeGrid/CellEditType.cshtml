@@ -37,7 +37,7 @@
                 col.Field("TaskName").HeaderText("Task Name").EditType("stringedit").Width(180)
                     .ValidationRules(new { required = true }).Add();
                 col.Field("StartDate").HeaderText("Start Date").Width(180)
-                    .EditType("datetimepickeredit")
+                    .EditType("datepickeredit")
                     .ValidationRules(new { date = true })
                     .TextAlign(TextAlign.Right).Add();
                 col.Field("Approved").HeaderText("Approved").DisplayAsCheckBox(true).TextAlign(TextAlign.Center).Type("boolean").EditType("booleanedit").Width(90).Add();

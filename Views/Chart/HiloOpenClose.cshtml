@@ -12,7 +12,7 @@
                 .Open("open").DataSource("ChartPoints").Name("Apple Inc.(AAPL)").BearFillColor("#2ecd71").BullFillColor("#e74c3d").Add();
             }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
             .MajorGridLines(mg=>mg.Width(0)).CrosshairTooltip(ct=>ct.Enable(true))
-            ).PrimaryYAxis(py => py.RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None).Interval(20)
+            ).PrimaryYAxis(py => py.Minimum(40).Maximum(140).Interval(20)
             .MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).Title("Price").LabelFormat("n0")
             ).ChartArea(area => area.Border(br => br.Width(0))).Crosshair(cr => cr.Enable(true)
             .LineType(Syncfusion.EJ2.Charts.LineType.Vertical)).Load("chartload").LegendSettings(lg => lg.Visible(false).Title("AAPL Historical")

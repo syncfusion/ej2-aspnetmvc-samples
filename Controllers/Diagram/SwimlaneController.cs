@@ -75,6 +75,15 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             lane2.Header = new Header() { Width = 50, Height = 50, Style = new DiagramTextStyle() { FontSize = 11, StrokeColor = "#757575" } };
             lanes1.Add(lane2);
 
+            List<Phase> phases1 = new List<Phase>();
+            Phase phase1 = new Phase();
+            phase1.Header = new Header() { Style = new DiagramTextStyle() { StrokeColor = "#757575" } };
+            phases1.Add(phase1);
+
+            List<Phase> phases2 = new List<Phase>();
+            Phase phase2 = new Phase();
+            phase2.Header = new Header() { Style = new DiagramTextStyle() { StrokeColor = "#757575" } };
+            phases2.Add(phase1);
 
             List<DiagramNode> swimlanePalette = new List<DiagramNode>();
             Dictionary<string, object> addInfo5 = new Dictionary<string, object>();
@@ -124,8 +133,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Shape = new SwimLaneModel()
                 {
                     Type = "SwimLane",
-                    Orientation = "Horizontal",
-                    IsPhase = true
+                    Orientation = "Vertical",
+                    IsPhase = true,
+                    Phases = phases1
                 }
             });
             Dictionary<string, object> addInfo8 = new Dictionary<string, object>();
@@ -139,8 +149,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Shape = new SwimLaneModel()
                 {
                     Type = "SwimLane",
-                    Orientation = "Vertical",
-                    IsPhase = true
+                    Orientation = "Horizontal",
+                    IsPhase = true,
+                    Phases = phases2
                 }
             });
 
@@ -413,6 +424,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         [HtmlAttributeName("isPhase")]
         [JsonProperty("isPhase")]
         public bool IsPhase { get; set; }
+
+        [DefaultValue(null)]
+        [HtmlAttributeName("phases")]
+        [JsonProperty("phases")]
+        public List<Phase> Phases { get; set; }
     }
 
     public class SwimLane

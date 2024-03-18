@@ -32,109 +32,100 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             if (button == null)
                 return View();
-            string filename = "Images.pptx";
-            IPresentation presentation = Presentation.Open(ResolveApplicationDataPath(filename));
-            //New Instance of PowerPoint is Created.[Equivalent to launching MS PowerPoint with no slides].
 
-            //Method call to create slides
-            CreateSlide21(presentation);
-            CreateSlide22(presentation);
+            //Create an instance of PowerPoint.
+            IPresentation pptxDoc = Presentation.Create();
+            //Add a blank slide to Presentation.
+            ISlide firstSlide = pptxDoc.Slides.Add(SlideLayoutType.Blank);
+
+            //Add a title text box to the slide.
+            IShape titleShape = firstSlide.Shapes.AddTextBox(55, 23, 853, 72);
+            //Set vertical alignment to the text body.
+            titleShape.TextBody.VerticalAlignment = VerticalAlignmentType.Bottom;
+            //Add a title paragraph.
+            IParagraph titleParagraph = titleShape.TextBody.AddParagraph();
+            //Set the alignment properties for the paragraph.
+            titleParagraph.HorizontalAlignment = HorizontalAlignmentType.Center;
+            //Add a text part.
+            ITextPart titleTextPart = titleParagraph.AddTextPart("Adventure Works Cycles");
+            //Set the font properties for the text part.
+            titleTextPart.Font.FontSize = 36;
+
+            //Add a content text box to the slide.
+            IShape textbox = firstSlide.Shapes.AddTextBox(66, 132, 543, 350);
+            //Add the first paragraph.
+            IParagraph paragraph1 = textbox.TextBody.AddParagraph();
+            //Set bulleted list type.
+            paragraph1.ListFormat.Type = ListType.Bulleted;
+            //Set paragraph properties.
+            paragraph1.LeftIndent = 22;
+            paragraph1.FirstLineIndent = -22;
+            paragraph1.LineSpacing = 38;
+            paragraph1.SpaceBefore = 10;
+            //Add a new text part.
+            paragraph1.AddTextPart("Adventure Works Cycles, the fictitious company on which the Adventure Works sample databases are based, is a large, multinational manufacturing company.");
+
+            //Add the second paragraph.
+            IParagraph paragraph2 = textbox.TextBody.AddParagraph();
+            //Set bulleted list type.
+            paragraph2.ListFormat.Type = ListType.Bulleted;
+            //Set paragraph properties.
+            paragraph2.LeftIndent = 22;
+            paragraph2.FirstLineIndent = -22;
+            paragraph2.LineSpacing = 38;
+            paragraph2.SpaceBefore = 10;
+            //Add a new text part.
+            paragraph2.AddTextPart("The company manufactures and sells metal and composite bicycles to North American, European, and Asian commercial markets. While its base operation is located in Bothell, Washington, with 290 employees, several regional sales teams are located throughout their market base.");
+
+            //Create an instance for the image as a stream.
+            FileStream imageStream = new FileStream(ResolveApplicationDataPath("CycleLogo.jpg"), FileMode.Open, FileAccess.Read);
+            //Add a picture to the shape collection.
+            IPicture picture = firstSlide.Shapes.AddPicture(imageStream, 610, 246, 328, 123);
+            //Add alternate text to the picture.
+            picture.Description = "Adventure Works Cycles Logo";
+            //Apply bounding box size and position.
+            picture.Crop.ContainerWidth = 328f;
+            picture.Crop.ContainerHeight = 123f;
+            picture.Crop.ContainerLeft = 609f;
+            picture.Crop.ContainerTop = 246f;
+            //Apply cropping size and offsets.
+            picture.Crop.Width = 370f;
+            picture.Crop.Height = 151f;
+            picture.Crop.OffsetX = -4.32f;
+            picture.Crop.OffsetY = 1.44f;
+
+            //Add a title-only slide to Presentation.
+            ISlide secondSlide = pptxDoc.Slides.Add(SlideLayoutType.TitleOnly);
+            //Retrieve the first shape of the slide.
+            IShape titleShape2 = secondSlide.Shapes[0] as IShape;
+            //Add a title paragraph.
+            IParagraph titleParagraph2 = titleShape2.TextBody.AddParagraph();
+            //Set the alignment properties for the paragraph.
+            titleParagraph2.HorizontalAlignment = HorizontalAlignmentType.Center;
+            //Add a text part.
+            ITextPart titleTextPart2 = titleParagraph2.AddTextPart("About Adventure Works Cycles");
+            //Set the font properties for the text part.
+            titleTextPart2.Font.FontName = "Calibri";
+            titleTextPart2.Font.FontSize = 40;
+
+            //Get an SVG image as a stream.
+            FileStream svgImageStream = new FileStream(ResolveApplicationDataPath("About.svg"), FileMode.Open, FileAccess.Read);
+            //Get a fallback image as a stream.
+            FileStream fallbackImageStream = new FileStream(ResolveApplicationDataPath("About.png"), FileMode.Open, FileAccess.Read);
+            //Add the SVG picture to a slide by specifying its size and position.
+            IPicture svgPicture = secondSlide.Pictures.AddPicture(svgImageStream, fallbackImageStream, 172, 155, 643, 256);
+            //Add alternate text to the picture.
+            svgPicture.Description = "About Adventure Works Cycles";
+            
+            //Close the image streams.
+            imageStream.Close();
+            svgImageStream.Close();
+            fallbackImageStream.Close();
+            
             //Saves the presentation
-            return new PresentationResult(presentation, "Images.pptx", HttpContext.ApplicationInstance.Response);
+            return new PresentationResult(pptxDoc, "Images.pptx", HttpContext.ApplicationInstance.Response);
 
 
         }
-
-        # region Slide1
-        private void CreateSlide21(IPresentation presentation)
-        {
-            ISlide slide1 = presentation.Slides[0];
-            IShape shape1 = (IShape)slide1.Shapes[0];
-            shape1.Left = 1.27 * 72;
-            shape1.Top = 0.56 * 72;
-            shape1.Width = 9.55 * 72;
-            shape1.Height = 5.4 * 72;
-
-            ITextBody textFrame = shape1.TextBody;
-            IParagraphs paragraphs = textFrame.Paragraphs;
-            paragraphs.Add();
-            IParagraph paragraph = paragraphs[0];
-            paragraph.HorizontalAlignment = HorizontalAlignmentType.Left;
-            ITextParts textParts = paragraph.TextParts;
-            textParts.Add();
-            ITextPart textPart = textParts[0];
-            textPart.Text = "Essential Presentation ";
-            textPart.Font.CapsType = TextCapsType.All;
-            textPart.Font.FontName = "Calibri Light (Headings)";
-            textPart.Font.FontSize = 80;
-            textPart.Font.Color = ColorObject.Black;
-
-        }
-        #endregion
-
-        # region Slide2
-        private void CreateSlide22(IPresentation presentation)
-        {
-            ISlide slide2 = presentation.Slides.Add(SlideLayoutType.ContentWithCaption);
-            slide2.Background.Fill.FillType = FillType.Solid;
-            slide2.Background.Fill.SolidFill.Color = ColorObject.White;
-
-            //Adds shape in slide
-            IShape shape1 = (IShape)slide2.Shapes[0];
-            shape1.Left = 0.47 * 72;
-            shape1.Top = 1.15 * 72;
-            shape1.Width = 3.5 * 72;
-            shape1.Height = 4.91 * 72;
-
-            ITextBody textFrame1 = shape1.TextBody;
-
-            //Instance to hold paragraphs in textframe
-            IParagraphs paragraphs1 = textFrame1.Paragraphs;
-            IParagraph paragraph1 = paragraphs1.Add();
-            paragraph1.HorizontalAlignment = HorizontalAlignmentType.Left;
-            ITextPart textpart1 = paragraph1.AddTextPart();
-            textpart1.Text = "Lorem ipsum dolor sit amet, lacus amet amet ultricies. Quisque mi venenatis morbi libero, orci dis, mi ut et class porta, massa ligula magna enim, aliquam orci vestibulum tempus.";
-            textpart1.Font.Color = ColorObject.White;
-            textpart1.Font.FontName = "Calibri (Body)";
-            textpart1.Font.FontSize = 15;
-            paragraphs1.Add();
-
-            IParagraph paragraph2 = paragraphs1.Add();
-            paragraph2.HorizontalAlignment = HorizontalAlignmentType.Left;
-            textpart1 = paragraph2.AddTextPart();
-            textpart1.Text = "Turpis facilisis vitae consequat, cum a a, turpis dui consequat massa in dolor per, felis non amet.";
-            textpart1.Font.Color = ColorObject.White;
-            textpart1.Font.FontName = "Calibri (Body)";
-            textpart1.Font.FontSize = 15;
-            paragraphs1.Add();
-
-            IParagraph paragraph3 = paragraphs1.Add();
-            paragraph3.HorizontalAlignment = HorizontalAlignmentType.Left;
-            textpart1 = paragraph3.AddTextPart();
-            textpart1.Text = "Auctor eleifend in omnis elit vestibulum, donec non elementum tellus est mauris, id aliquam, at lacus, arcu pretium proin lacus dolor et. Eu tortor, vel ultrices amet dignissim mauris vehicula.";
-            textpart1.Font.Color = ColorObject.White;
-            textpart1.Font.FontName = "Calibri (Body)";
-            textpart1.Font.FontSize = 15;
-            paragraphs1.Add();
-
-            IParagraph paragraph4 = paragraphs1.Add();
-            paragraph4.HorizontalAlignment = HorizontalAlignmentType.Left;
-            textpart1 = paragraph4.AddTextPart();
-            textpart1.Text = "Lorem tortor neque, purus taciti quis id. Elementum integer orci accumsan minim phasellus vel.";
-            textpart1.Font.Color = ColorObject.White;
-            textpart1.Font.FontName = "Calibri (Body)";
-            textpart1.Font.FontSize = 15;
-            paragraphs1.Add();
-
-            slide2.Shapes.RemoveAt(1);
-            slide2.Shapes.RemoveAt(1);
-
-            //Adds picture in the shape
-            string dataPath = ResolveApplicationImagePath("tablet.jpg");
-            Stream imageStream = System.IO.File.Open(dataPath, FileMode.Open);
-            IPicture picture1 = slide2.Shapes.AddPicture(imageStream, 5.18 * 72, 1.15 * 72, 7.3 * 72, 5.31 * 72);
-			imageStream.Close();
-        }
-        #endregion
     }
 }

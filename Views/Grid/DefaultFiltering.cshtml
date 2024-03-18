@@ -12,7 +12,7 @@
        col.Field("ProductName").HeaderText("Product Name").Width("150").Add();
        col.Field("UnitsInStock").HeaderText("Units In Stock").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("Discontinued").HeaderText("Discontinued").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Type("boolean").DisplayAsCheckBox(true).Add();
-   }).AllowPaging().PageSettings(page=> page.PageCount(2)).Render()
+   }).AllowPaging().AllowSorting().PageSettings(page=> page.PageCount(2)).Render()
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%;">

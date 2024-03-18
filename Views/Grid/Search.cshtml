@@ -8,7 +8,7 @@
        col.Field("UnitsInStock").HeaderText("Units In Stock").Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("QuantityPerUnit").HeaderText("Quantity Per Unit").Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("Discontinued").HeaderText("Discontinued").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Width("140").Type("boolean").DisplayAsCheckBox(true).Add();
-   }).AllowPaging().PageSettings(page=>page.PageCount(2)).Toolbar(new List<string>() { "Search" }).Render()
+   }).AllowPaging().PageSettings(page=>page.PageCount(2)).AllowSorting().Toolbar(new List<string>() { "Search" }).Render()
 </div>
 }
 @section ActionDescription{

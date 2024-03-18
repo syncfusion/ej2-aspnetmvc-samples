@@ -6,12 +6,12 @@
             <div class="control-section">
                 @Html.EJS().Grid("Selection").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSelection().RowSelecting("selectingEvent").CellSelecting("selectingEvent").Columns(col =>
        {
-           col.Field("EmployeeID").HeaderText("Employee ID").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+           col.Field("EmployeeID").HeaderText("Employee ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
            col.Field("FirstName").HeaderText("Name").Width("125").Add();
            col.Field("Title").HeaderText("Title").Width("180").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
            col.Field("HireDate").HeaderText("Hire Date").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").Add();
 
-       }).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).Render()
+       }).AllowSorting().SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).Render()
             </div>
         </div>
     </div>

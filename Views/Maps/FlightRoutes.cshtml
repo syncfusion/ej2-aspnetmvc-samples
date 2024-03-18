@@ -16,9 +16,6 @@
        {
            Enable = false,
            ZoomFactor = 3.5
-       }).MapsArea(new Syncfusion.EJ2.Maps.MapsMapsAreaSettings
-       {
-           Background = "#AEE2FA"
        }).TitleSettings(new Syncfusion.EJ2.Maps.MapsTitleSettings
        {
            Text = "Flights from India to China",
@@ -87,6 +84,7 @@
         function mapLoad(args) {
             var theme = themeName ? themeName : 'Material';
             args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.maps.mapsArea.background = "#AEE2FA";
             args.maps.layers[0].navigationLineSettings = navigationData;
             args.maps.layers[0].markerSettings = [
                 {

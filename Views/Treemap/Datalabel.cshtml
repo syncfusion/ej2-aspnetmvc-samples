@@ -2,10 +2,12 @@
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        <div style="width:100%">
-            @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("Countries ordered based on Population - 2017").TextStyle(new TreeMapFont{ Size = "15px" })).TooltipSettings(new TreeMapTooltipSettings{ Visible = true, Format = "${Country} : ${Population}" }).LegendSettings(legend=>legend.Visible(true).Mode(Syncfusion.EJ2.TreeMap.LegendMode.Interactive).Width("300px").Height("10").Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top)).Format("n").UseGroupingSeparator(true).WeightValuePath("Population").RangeColorValuePath("Population").LeafItemSettings(leaf=>
-            leaf.ShowLabels(true).LabelPath("Country").Fill("red")
-       ).Render()
+        <div class="content-wrapper">
+            <div id="container">
+                @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("Countries ordered based on Population - 2017").TextStyle(new TreeMapFont { Size = "15px" })).TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Country} : ${Population}" }).LegendSettings(legend => legend.Visible(true).Mode(Syncfusion.EJ2.TreeMap.LegendMode.Interactive).Width("300px").Height("10").Position(Syncfusion.EJ2.TreeMap.LegendPosition.Top)).Format("n").UseGroupingSeparator(true).WeightValuePath("Population").RangeColorValuePath("Population").LeafItemSettings(leaf =>
+                leaf.ShowLabels(true).LabelPath("Country").Fill("red")
+           ).Render()
+            </div>
         </div>
         <div style="margin-left: 60%">
             Source:<a href="https//www.populationpyramid.net/population-size-per-country/2017" target="_blank"> www.populationpyramid.net</a>
@@ -20,12 +22,12 @@
                     </td>
                     <td>
                         <div>
-                        <select name="selectIndex" autocomplete="off" id="labels" style="width:100%;">
-                            <option value="Trim" selected="">Trim</option>
-                            <option value="Hide">Hide</option>
-                            <option value="Wrap">Wrap</option>
-                            <option value="WrapByWord">WrapByWord</option>
-                        </select>
+                            <select name="selectIndex" autocomplete="off" id="labels" style="width:100%;">
+                                <option value="Trim" selected="">Trim</option>
+                                <option value="Hide">Hide</option>
+                                <option value="Wrap">Wrap</option>
+                                <option value="WrapByWord">WrapByWord</option>
+                            </select>
                         </div>
                     </td>
                 </tr>
@@ -463,6 +465,12 @@
         });
         labelMode.appendTo('#labels');
     </script>
+    <style>
+        #container {
+            display: block;
+            width: 100%;
+        }
+    </style>
 }
 
 @section ActionDescription{
@@ -471,8 +479,8 @@
     </p>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Data Label in ASP.NET MVC TreeMap control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Data Label in ASP.NET MVC TreeMap control. Explore here for more details." />
+}
 @section Description{
     <p>
         In this example, you can see the various label intersect actions available in treemap. We have specified range color mapping and enabled default legend in this example.
@@ -483,8 +491,8 @@
     <br />
 }
 @section Title{
-                    <title>ASP.NET MVC TreeMap Data Label Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC TreeMap Data Label Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Data Label in ASP.NET MVC TreeMap Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Data Label in ASP.NET MVC TreeMap Control</h1>
+}

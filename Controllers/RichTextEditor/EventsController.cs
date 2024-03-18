@@ -18,6 +18,14 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Events()
         {
+            string hostUrl = "https://ej2-aspcore-service.azurewebsites.net/";
+            ViewBag.AjaxSettings = new
+            {
+                url = hostUrl + "api/FileManager/FileOperations",
+                getImageUrl = hostUrl + "api/FileManager/GetImage",
+                uploadUrl = hostUrl + "api/FileManager/Upload",
+                downloadUrl = hostUrl + "api/FileManager/Download"
+            };
             ViewBag.Items = new[] {"Bold", "Italic", "Underline", "StrikeThrough", "SuperScript", "SubScript", "|",
                 "FontName", "FontSize", "FontColor", "BackgroundColor",  "|",
                 "LowerCase", "UpperCase",

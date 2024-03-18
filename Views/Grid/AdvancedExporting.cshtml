@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("AdvancedExporting").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSorting().AllowPdfExport().AllowExcelExport().AllowGrouping().Columns(col =>
+        @Html.EJS().Grid("AdvancedExporting").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowPdfExport().AllowExcelExport().AllowGrouping().Columns(col =>
    {
 
        col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
@@ -10,7 +10,7 @@
        col.Field("UnitsInStock").HeaderText("Units In Stock").Width("140").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("UnitPrice").HeaderText("Unit Price").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("140").Add();
 
-   }).AllowPaging().PageSettings(p=>p.PageCount(5)).Toolbar(new List<string>() { "ExcelExport", "PdfExport"}).ToolbarClick("toolbarClick").Render()
+   }).AllowPaging().PageSettings(p=>p.PageCount(5)).AllowSorting().Toolbar(new List<string>() { "ExcelExport", "PdfExport"}).ToolbarClick("toolbarClick").Render()
     </div>
 }
 <script>

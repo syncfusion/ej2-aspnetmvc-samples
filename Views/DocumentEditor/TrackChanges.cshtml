@@ -34,7 +34,8 @@
         documenteditorElement.style.height = "590px";		
         documenteditorElement.style.width = "100%";		
         var container = documenteditorElement.ej2_instances[0];
-        container.showPropertiesPane = false;        
+        container.showPropertiesPane = false;     
+        container.documentEditorSettings.showRuler = true;   
         documenteditor = container.documentEditor;
         documenteditorElement.ej2_instances[0].serviceUrl = window.baseurl + 'api/documenteditorservice/';
         documenteditor.serviceUrl = window.baseurl + 'api/documenteditorservice/';

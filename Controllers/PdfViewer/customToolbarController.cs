@@ -69,7 +69,19 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
                     },
                 }
             });
+            List<object> signItems = new List<object>();
+            signItems.Add(new
+            {
+                iconCss = "e-icons e-signature",
+                items = new List<object>()
+                {
+                    new { text = "Add Signature" },
+                    new { text = "Add Initial" },
+
+                }
+            });
             ViewBag.menuItem = menuItems;
+            ViewBag.signItem = signItems;
 
             return View();
         }

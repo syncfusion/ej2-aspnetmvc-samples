@@ -11,7 +11,7 @@
        col.Field("FirstName").HeaderText("Name").Width("110").Add();
        col.Field("Title").HeaderText("Title").Width("240").Add();
        col.Field("Country").HeaderText("Country").Width("180").Add();
-   }).Toolbar(new List<string>() {  "ExcelExport", "PdfExport" }).ToolbarClick("toolbarClick").ExportDetailTemplate("exportDetailTemplate").AllowPdfExport().AllowExcelExport().Render()
+   }).AllowSorting().Toolbar(new List<string>() {  "ExcelExport", "PdfExport" }).ToolbarClick("toolbarClick").ExportDetailTemplate("exportDetailTemplate").AllowPdfExport().AllowExcelExport().Render()
     </div>
 
     <style type="text/css" class="cssStyles">

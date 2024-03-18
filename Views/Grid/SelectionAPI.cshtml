@@ -11,7 +11,7 @@
            col.Field("Country").HeaderText("Country").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
            col.Field("Active").HeaderText("Active").Width("130").Add();           
 
-       }).AllowPaging().SelectionSettings(select=>select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(2)).Render()
+       }).AllowPaging().AllowSorting().SelectionSettings(select=>select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(2)).Render()
         </div>
     </div>
 </div>

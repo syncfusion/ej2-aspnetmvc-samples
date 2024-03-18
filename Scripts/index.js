@@ -10,7 +10,8 @@ var searchInstance;
 var headerThemeSwitch = document.getElementById('header-theme-switcher');
 var settingElement = ej.base.select('.sb-setting-btn');
 var themeList = document.getElementById('themelist');
-var themes = ['material3','material3-dark','fluent', 'fluent-dark', 'bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'material', 'bootstrap4', 'bootstrap', 'bootstrap-dark', 'highcontrast'];
+var themes = ['material3', 'fluent', 'bootstrap5', 'tailwind', 'highcontrast'];
+//var themes= ['material3', 'material3-dark', 'fluent', 'fluent-dark', 'bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'highcontrast'];
 var defaultTheme = 'material3';
 var themeDropDown;
 var contentTab;
@@ -227,9 +228,49 @@ function renderSbPopups() {
     themeDropDown = new ej.dropdowns.DropDownList({
         index: 0,
         change: function (e) {
+            function isDarkModeURL() {
+                return window.location.href.includes('-dark');
+            }
+            var localtheme = localStorage.getItem("currentTheme");
+            // If "-dark" is present in the URL, modify the value accordingly
+            if (isDarkModeURL() && localtheme === e.value) {
+                e.value += "-dark";
+            }
             switchTheme(e.value);
         }
     });
+  
+    modeDropDown = new ej.dropdowns.DropDownList({
+        change: function (e) {
+            var Current_url = window.location.href;
+            var hashValue = Current_url.split("#/");
+            var themeValue = hashValue[1];
+            if (themeValue.includes("-dark")) {
+                // Remove "-dark" from the hash 
+                themeValue = themeValue.replace("-dark", "");
+                console.log("hashValue URL (removed -dark):", themeValue);
+            }
+            function isDarkModeURL() {
+                return window.location.href.includes('-dark');
+            }
+            if (isDarkModeURL() && e.value === 'dark') {
+                return;
+            } else {
+                if (e.value == 'dark') {
+                    switchTheme(themeValue + "-dark");
+                    localStorage.setItem("currentTheme", themeValue);
+                } else {
+                    localStorage.setItem("currentTheme", themeValue);
+                    switchTheme(themeValue);
+                }
+               location.reload();
+            }
+        }
+    });
+
+
+    
+    modeDropDown.appendTo('#sb-setting-mode');
     themeDropDown.appendTo('#sb-setting-theme');
     cultureDropDown = new ej.dropdowns.DropDownList({
         value: sessionStorage.getItem("ej2-culture") || 'en',
@@ -905,7 +946,9 @@ function loadTheme(theme) {
     }
     body.classList.add(theme);
     themeList.querySelector('.active').classList.remove('active');
-    themeList.querySelector('#' + theme).classList.add('active');
+    /* themeList.querySelector('#' + theme).classList.add('active');*/
+    var currentUpdatedTheme = theme.replace("-dark", "");
+    themeList.querySelector('#' + currentUpdatedTheme).classList.add('active');
     var path = location.origin + baseurl;
     var ajax = new ej.base.Ajax(path + 'Content/styles/' + theme + '.css', 'GET', false);
     selectedTheme = theme;
@@ -980,7 +1023,8 @@ function toggleLeftPane() {
 
 function toggleRightPane() {
     ej.base.select('#right-sidebar').classList.remove('sb-hide');
-    themeDropDown.index = themes.indexOf(selectedTheme);
+    var currentUpdatedTheme = selectedTheme.replace("-dark", "");
+    themeDropDown.index = themes.indexOf(currentUpdatedTheme);
     if (isMobile) {
         settingsidebar.toggle();
     }
@@ -1500,12 +1544,12 @@ function mobNavOverlay(isOverlay) {
 
 function parseHash(newHash, oldHash) {
     var newTheme = newHash.split('/')[0];
-    var control = newHash.split('/')[1];
     if (newTheme !== selectedTheme && themes.indexOf(newTheme) !== -1) {
-        location.reload();
+           location.reload();
+           crossroads.parse(newHash);
+        }
         crossroads.parse(newHash);
-    }
-    crossroads.parse(newHash);
+    
 }
 
 function processDeviceDependables() {
@@ -1563,3 +1607,47 @@ function loadJSON() {
     loadCulture(switchlocalization);
 }
 loadJSON();
+
+// Get the button element
+var button = document.getElementById('buttoncolor');
+
+// Attach click event listener to the button
+button.addEventListener('click', function () {
+    // Call the navigateToPage function when the button is clicked
+    navigateToPage();
+});
+var updatedURL;
+var currentURL;
+currentURL = window.location.href;
+
+function updateThemeURL() {
+    var current_URL = window.location.href;
+    var updatedURL = current_URL;
+
+    if (current_URL.includes("#/")) {
+        var urlParts = current_URL.split("#/");
+        var baseUrl = urlParts[0];
+        var hashValue = urlParts[1];
+        if (hashValue.includes("-dark")) {
+            // Remove "-dark" from the hash 
+            hashValue = hashValue.replace("-dark", "");
+            console.log("hashValue URL (removed -dark):", hashValue);
+        } else {
+            // Append "-dark" to the hash
+            hashValue = hashValue + "-dark";
+            console.log("hashValue URL:", hashValue);
+        }
+        updatedURL = baseUrl + "#/" + hashValue;
+    } else {
+        console.log("No hash found in the URL");
+    }
+    // Return the updated URL
+    return updatedURL;
+}
+
+function navigateToPage() {
+    var updatedURL = updateThemeURL();
+    console.log("Updated URL is: " + updatedURL);
+    window.location.href = updatedURL;
+    location.reload();
+}

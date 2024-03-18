@@ -2,8 +2,10 @@
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        <div>
-            @Html.EJS().TreeMap("container").Load("load").RenderDirection(RenderingMode.TopLeftBottomRight).TitleSettings(title => title.Text("Top 10 countries by GDP Nominal - 2015").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("GDP").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${State}<br>Rank : ${Rank}" }).RangeColorValuePath("GDP").LeafItemSettings(leaf => leaf.LabelPath("State").LabelFormat("${State}<br>$${GDP} Trillion<br>(${percentage} %)").LabelStyle(new TreeMapFont { Color = "#000000" }).Border(new TreeMapBorder { Color = "#000000", Width = 0.5 })).Render()
+        <div class="content-wrapper">
+            <div id="container">
+                @Html.EJS().TreeMap("container").Load("load").RenderDirection(RenderingMode.TopLeftBottomRight).TitleSettings(title => title.Text("Top 10 countries by GDP Nominal - 2015").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("GDP").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${State}<br>Rank : ${Rank}" }).RangeColorValuePath("GDP").LeafItemSettings(leaf => leaf.LabelPath("State").LabelFormat("${State}<br>$${GDP} Trillion<br>(${percentage} %)").LabelStyle(new TreeMapFont { Color = "#000000" }).Border(new TreeMapBorder { Color = "#000000", Width = 0.5 })).Render()
+            </div>
         </div>
         <div style="margin-left: 65%;">
             Source:
@@ -94,6 +96,12 @@
         });
         direction.appendTo('#renderDirection');
     </script>
+    <style>
+        #container {
+            display: block;
+            width: 100%;
+        }
+    </style>
 }
 @section ActionDescription{
     <p>
@@ -101,8 +109,8 @@
     </p>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Layout in ASP.NET MVC TreeMap control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Layout in ASP.NET MVC TreeMap control. Explore here for more details." />
+}
 @section Description{
     <p>
         In this example, you can change the layout of the TreeMap as desaturation color mapping has been applied to denote the weightage of the items by varying the fill color. The labels text also have been formatted and placed in multiple lines.
@@ -115,8 +123,8 @@
 
 
 @section Title{
-                    <title>ASP.NET MVC TreeMap Layout Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC TreeMap Layout Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Layout in ASP.NET MVC TreeMap Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Layout in ASP.NET MVC TreeMap Control</h1>
+}

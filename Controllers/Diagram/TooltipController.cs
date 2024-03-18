@@ -93,7 +93,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     Height = 60,
                     Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
                     Annotations = new List<DiagramNodeAnnotation>() { new DiagramNodeAnnotation()
-                    { Id = "label1", Content = "Customer query",Offset=new PointsShape(){X=0.5,Y=1 },
+                    { Id = "label1", Content = "Customer query",Offset=new DiagramPoint(){X=0.5,Y=1 },
                         Margin= new DiagramMargin(){ Top=15} } },
                     Shape = new BpmnShapes()
                     {
@@ -112,7 +112,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     Height = 70,
                     Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
                     Annotations = new List<DiagramNodeAnnotation>() { new DiagramNodeAnnotation()
-                    { Id = "label1", Content = "Enough details?",Offset=new PointsShape(){X=0.5,Y=0.5 } } },
+                    { Id = "label1", Content = "Enough details?",Offset=new DiagramPoint(){X=0.5,Y=0.5 } } },
                     Shape = new BpmnShapes()
                     {
                         Type = "Bpmn",
@@ -129,7 +129,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     Height = 50,
                     Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
                     Annotations = new List<DiagramNodeAnnotation>() { new DiagramNodeAnnotation()
-                    { Id = "label1", Content = "Analyse",Offset=new PointsShape(){X=0.5,Y=0.5 } } },
+                    { Id = "label1", Content = "Analyse",Offset=new DiagramPoint(){X=0.5,Y=0.5 } } },
                     Shape = new BpmnShapes()
                     {
                         Type = "Bpmn",
@@ -163,7 +163,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     Height = 70,
                     Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
                     Annotations = new List<DiagramNodeAnnotation>() { new DiagramNodeAnnotation()
-                    { Id = "label1", Content = "Validate",Offset=new PointsShape(){X=0.5,Y=0.5 } } },
+                    { Id = "label1", Content = "Validate",Offset=new DiagramPoint(){X=0.5,Y=0.5 } } },
                     Shape = new BpmnShapes()
                     {
                         Type = "Bpmn",
@@ -197,7 +197,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     Height = 50,
                     Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
                     Annotations = new List<DiagramNodeAnnotation>() { new DiagramNodeAnnotation()
-                    { Id = "label1", Content = "Request",Offset=new PointsShape(){X=0.5,Y=0.5 } } },
+                    { Id = "label1", Content = "Request",Offset=new DiagramPoint(){X=0.5,Y=0.5 } } },
                     Shape = new BpmnShapes()
                     {
                         Type = "Bpmn",
@@ -231,7 +231,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     Height = 50,
                     Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
                     Annotations = new List<DiagramNodeAnnotation>() { new DiagramNodeAnnotation()
-                    { Id = "label1", Content = "Log bug/feature",Offset=new PointsShape(){X=0.5,Y=0.5 } } },
+                    { Id = "label1", Content = "Log bug/feature",Offset=new DiagramPoint(){X=0.5,Y=0.5 } } },
                     Shape = new BpmnShapes()
                     {
                         Type = "Bpmn",
@@ -249,7 +249,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     Height = 55,
                     Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
                     Annotations = new List<DiagramNodeAnnotation>() { new DiagramNodeAnnotation()
-                    { Id = "label1", Content = "Implement",Offset=new PointsShape(){X=0.5,Y=0.5 } } },
+                    { Id = "label1", Content = "Implement",Offset=new DiagramPoint(){X=0.5,Y=0.5 } } },
                     Shape = new BpmnShapes()
                     {
                         Type = "Bpmn",
@@ -262,7 +262,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                                 Collapsed = false,
                                 Events = new List<DiagramBpmnSubEvent>()
                         {
-                            new DiagramBpmnSubEvent(){Event=BpmnEvents.Intermediate,Trigger=BpmnTriggers.Timer,Offset=new PointsShape(){X=0.5,Y=1},Width=25,Height=25}
+                            new DiagramBpmnSubEvent(){Event=BpmnEvents.Intermediate,Trigger=BpmnTriggers.Timer,Offset=new DiagramPoint(){X=0.5,Y=1},Width=25,Height=25}
                         }
                             }
                         }

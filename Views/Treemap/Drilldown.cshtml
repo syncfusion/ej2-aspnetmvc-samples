@@ -2,13 +2,15 @@
 @using Syncfusion.EJ2.TreeMap;
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        <div style="width:100%">
-            @Html.EJS().TreeMap("container").Width("100%").EnableDrillDown(true).TitleSettings(title => title.Text("List of countries by population").TextStyle(new TreeMapFont { Size = "15px" })).Format("n").UseGroupingSeparator(true).WeightValuePath("Population").Palette(new string[] { "#9999ff", "#CCFF99", "#FFFF99", "#FF9999", "#FF99FF", "#FFCC66" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Name} : ${Population}" }).Load("load").DrillStart("drillstart").TooltipRendering("tooltiprendering").Levels(level =>
-       {
-           level.GroupPath("Continent").Border(new TreeMapBorder { Color = "black", Width = 0.5 }).Add();
-           level.GroupPath("States").Border(new TreeMapBorder { Color = "black", Width = 0.5 }).Add();
-           level.GroupPath("Region").ShowHeader(false).Border(new TreeMapBorder { Color = "black", Width = 0.5 }).Add();
-       }).LeafItemSettings(leaf => leaf.LabelPath("Name").ShowLabels(false).LabelStyle(new TreeMapFont { Size = "0px" }).Border(new TreeMapBorder { Color = "black", Width = 0.5 })).Render()
+        <div class="content-wrapper">
+            <div id="container">
+                @Html.EJS().TreeMap("container").Width("100%").EnableDrillDown(true).TitleSettings(title => title.Text("List of countries by population").TextStyle(new TreeMapFont { Size = "15px" })).Format("n").UseGroupingSeparator(true).WeightValuePath("Population").Palette(new string[] { "#9999ff", "#CCFF99", "#FFFF99", "#FF9999", "#FF99FF", "#FFCC66" }).TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Name} : ${Population}" }).Load("load").DrillStart("drillstart").TooltipRendering("tooltiprendering").Levels(level =>
+           {
+               level.GroupPath("Continent").Border(new TreeMapBorder { Color = "black", Width = 0.5 }).Add();
+               level.GroupPath("States").Border(new TreeMapBorder { Color = "black", Width = 0.5 }).Add();
+               level.GroupPath("Region").ShowHeader(false).Border(new TreeMapBorder { Color = "black", Width = 0.5 }).Add();
+           }).LeafItemSettings(leaf => leaf.LabelPath("Name").ShowLabels(false).LabelStyle(new TreeMapFont { Size = "0px" }).Border(new TreeMapBorder { Color = "black", Width = 0.5 })).Render()
+            </div>
         </div>
         <div style="margin-left: 60%">
             Source:<a href="https//www.factorywarrantylist.com/car-sales-by-country.html/" target="_blank"> www.factorywarrantylist.com</a>
@@ -393,9 +395,9 @@
             placeholder: 'Selection selection type',
             width: '100%',
             change: () => {
-                for (var i = 0; i < treemap.levels.length - 1;i++){
+                for (var i = 0; i < treemap.levels.length - 1; i++) {
                     treemap.levels[i].headerAlignment = header.value;
-                } 
+                }
                 treemap.refresh();
             }
         });
@@ -405,8 +407,8 @@
             index: 0,
             placeholder: 'Selection selection type',
             width: '100%',
-            change: () => {                
-                    treemap.levels[2].headerAlignment = label.value;                
+            change: () => {
+                treemap.levels[2].headerAlignment = label.value;
                 treemap.refresh();
             }
         });
@@ -416,12 +418,12 @@
             change: drillChange, checked: false
         }, '#drillView');
         drillViewCheckBox.change = drillChange = function (e) {
-            treemap.drillDownView  = e.checked;
+            treemap.drillDownView = e.checked;
             treemap.refresh();
         };
         var breadCrumbChange;
         var breadCrumbCheckBox = new ej.buttons.CheckBox({
-            change: breadCrumbChange , checked: false
+            change: breadCrumbChange, checked: false
         }, '#breadCrumb');
         breadCrumbCheckBox.change = breadCrumbChange = function (e) {
             treemap.enableBreadcrumb = e.checked;
@@ -439,10 +441,16 @@
             treemap.refresh();
         }
     </script>
+    <style>
+        #container {
+            display: block;
+            width: 100%;
+        }
+    </style>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Drilldown in ASP.NET MVC TreeMap control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Drilldown in ASP.NET MVC TreeMap control. Explore here for more details." />
+}
 @section ActionDescription{
     <div id="action-description">
         <p>
@@ -458,8 +466,8 @@
     </div>
 }
 @section Title{
-                    <title>ASP.NET MVC TreeMap Drilldown Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC TreeMap Drilldown Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Drilldown in ASP.NET MVC TreeMap Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Drilldown in ASP.NET MVC TreeMap Control</h1>
+}

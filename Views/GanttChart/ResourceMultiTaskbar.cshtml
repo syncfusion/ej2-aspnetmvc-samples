@@ -21,7 +21,7 @@
             </div>
             <div>
                 @(Html.EJS().Gantt("ResourceMultiTaskbar").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px")
-            .ViewType(Syncfusion.EJ2.Gantt.ViewType.ResourceView).HighlightWeekends(true).AllowSelection(true).AllowResizing(true).EnableMultiTaskbar(true).ShowOverAllocation(true)
+            .ViewType(Syncfusion.EJ2.Gantt.ViewType.ResourceView).HighlightWeekends(true).AllowSelection(true).TaskType(Syncfusion.EJ2.Gantt.TaskType.FixedWork).AllowResizing(true).EnableMultiTaskbar(true).ShowOverAllocation(true)
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").Work("Work").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
             .Dependency("Predecessor").ResourceInfo("Resources").ExpandState("IsExpand").Child("SubTasks"))
             .TreeColumnIndex(1).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName").Unit("ResourceUnit").Group("ResourceGroup"))

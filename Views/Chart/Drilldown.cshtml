@@ -87,6 +87,7 @@
             var load = function (args) {
                 var selectedTheme = themeName ? themeName : 'Material';
                 args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+                args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? '10px' : '12px';
                 if (selectedTheme === 'highcontrast' || selectedTheme.indexOf('dark') > -1) {
                            args.accumulation.series[0].dataLabel.font.color = "white";
                 }

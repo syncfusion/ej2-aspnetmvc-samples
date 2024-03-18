@@ -8,7 +8,7 @@
                 <p>Hello <span contenteditable="false" class="e-mention-chip"><a href="mailto:maria@gmail.com" title="maria@gmail.com">@@Maria</a></span>&#8203;</p>
                 <p>Welcome to the mention integration with rich text editor demo. Type <code>@@</code> character and tag user from the suggestion list. </p>
             </div>).Render()
-            @Html.EJS().Mention("mentionRTE").MentionChar(ViewBag.MentionChar).Target("#mentionIntegration_rte-edit-view").DataSource((IEnumerable<EmailData>)ViewBag.emails).AllowSpaces(true).Fields(new MentionFieldSettings { Text = "Name" }).SuggestionCount(8).Highlight(true).DisplayTemplate("<a href='mailto:${ EmailId}'>@${ Name}</a>").ItemTemplate("<table><tr><td><div id=\"mention-TemplateList\"><img class=\"mentionEmpImage\" src=\"../Content/Images/RichTextEditor/${Eimg}.png\" alt=\"employee\" /><span class=\"e-badge e-badge-success e-badge-overlap e-badge-dot e-badge-bottom ${Status}\"></span></div></td><td><span class=\"person\">${Name}</span><span class=\"email\">${EmailId}</span></td</tr></table>").PopupWidth("250px").PopupHeight("200px").Render()
+            @Html.EJS().Mention("mentionRTE").MentionChar(ViewBag.MentionChar).Created("onMentionCreate").Target("#mentionIntegration_rte-edit-view").DataSource((IEnumerable<EmailData>)ViewBag.emails).AllowSpaces(true).Fields(new MentionFieldSettings { Text = "Name" }).SuggestionCount(8).Highlight(true).DisplayTemplate("<a href='mailto:${ EmailId}'>@${ Name}</a>").ItemTemplate("<table><tr><td><div id=\"mention-TemplateList\"><img class=\"mentionEmpImage\" src=\"../Content/Images/RichTextEditor/${Eimg}.png\" alt=\"employee\" /><span class=\"e-badge e-badge-success e-badge-overlap e-badge-dot e-badge-bottom ${Status}\"></span></div></td><td><span class=\"person\">${Name}</span><span class=\"email\">${EmailId}</span></td</tr></table>").PopupWidth("250px").PopupHeight("200px").Render()
         </div>
     </div>
 }
@@ -104,9 +104,13 @@
 </style>
 
 <script>
+       var mentionObj;
         function actionBegin(args) {
-            if (args.requestType === 'EnterAction') {
+            if (args.requestType === 'EnterAction' && mentionObj.element.classList.contains('e-popup-open')) {
                 args.cancel = true;
             }
+        }
+        function onMentionCreate() {
+            mentionObj = this;
         }
 </script>

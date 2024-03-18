@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            @Html.EJS().RichTextEditor("default").QuickToolbarSettings(e => { e.Table((object)ViewBag.Table); }).ContentTemplate(@<div>
+            @Html.EJS().RichTextEditor("default").QuickToolbarSettings(e => { e.Table((object)ViewBag.Table);e.ShowOnRightClick(true);}).ContentTemplate(@<div>
                 <p>The Rich Text Editor is a WYSIWYG ('what you see is what you get') editor useful to create and edit content and return the valid <a href='https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/formation/?no-cache=1#markdown-editor'>HTML markup</a> or <a href='https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/formation/?no-cache=1#html-editor'>markdown</a> of the content</p>
                 <p><b> Toolbar </b></p>
                 <ol>
@@ -39,7 +39,7 @@
                     </li>
                 </ol>
                 <img alt='Logo' src=@Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png") style='width: 300px' />
-            </div>).ToolbarSettings(e => e.Items((object)ViewBag.Tools)).FileManagerSettings(e => { e.Enable(true); e.Path("/Pictures/Food"); e.AjaxSettings((object)ViewBag.AjaxSettings); }).ShowCharCount(true).MaxLength(2000).Created("created").ActionBegin("handleFullScreen").ActionComplete("actionCompleteHandler").Render()
+            </div>).ToolbarSettings(e => e.Items((object)ViewBag.Tools)).FileManagerSettings(e => { e.Enable(true); e.Path("/Pictures/Food"); e.AjaxSettings((object)ViewBag.AjaxSettings); }).ShowCharCount(true).MaxLength(2000).Created("created").ActionBegin("handleFullScreen").ActionComplete("actionCompleteHandler").EnableTabKey(true).Render()
         </div>
     </div>
 <link href="~/Content/RichTextEditor/codemirror.css" rel="stylesheet" />
@@ -241,6 +241,7 @@
 @section Description{
     <div id="description">
         <p>This sample used <code>Code mirror</code> plugins that helps to highlight the HTML content. When changes are made in code view, the same will be reflected in preview mode. </p>
+        <p>The quick toolbar provides a convenient way to customize Image, Video, Audio, Table, and Link elements. Simply right-click on the desired element, utilizing the <code>ShowOnRightClick</code> property, and the quick toolbar will appear, providing an easy way for customization.</p>
         <p>The editor’s toolbar contains commands to format the content. The toolbar consists of:</p>
         <ul>
             <li><code>Lists</code> - NumberFormat list and BulletFormat list types.</li>

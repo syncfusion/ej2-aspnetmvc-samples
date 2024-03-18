@@ -11,7 +11,7 @@
     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").Work("Work").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
     .Dependency("Predecessor").Manual("IsManual").ResourceInfo("ResourceId").Child("SubTasks"))
     .ResourceNameMapping("ResourceName").ResourceIDMapping("ResourceId")
-    .TreeColumnIndex(1).TaskMode(Syncfusion.EJ2.Gantt.ScheduleMode.Custom)
+    .TreeColumnIndex(1).TaskMode(Syncfusion.EJ2.Gantt.ScheduleMode.Custom).TaskType(Syncfusion.EJ2.Gantt.TaskType.FixedWork)
     .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
     .Toolbar(new List<string>
         () { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll" })

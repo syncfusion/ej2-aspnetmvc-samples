@@ -11,7 +11,7 @@
                col.Field("UnitPrice").HeaderText("Unit Price").Format("C2").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
                col.Field("UnitsInStock").HeaderText("Units In Stock").Width("160").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
 
-           }).AllowPaging().Locale("en-US").PageSettings(page => page.PageCount(2)).ActionComplete("actionComplete").Render()
+           }).AllowPaging().Locale("en-US").PageSettings(page => page.PageCount(2)).AllowSorting().ActionComplete("actionComplete").Render()
         </div>
     </div>
 </div>

@@ -126,7 +126,7 @@
         }
         function axisDirectionValueChange() {
             var axisDirection = document.getElementById('axisDirection').ej2_instances[0];
-            circulargauge.axes[axisIndex].direction = axisDirection.value.toString();
+            circulargauge.axes[axisIndex].direction = axisDirection.value.toString() == 'Anti-clockwise' ? "AntiClockWise" : "ClockWise";
             circulargauge.axes[0].pointers[0].animation.enable = false;
             circulargauge.axes[1].pointers[0].animation.enable = false;
         }

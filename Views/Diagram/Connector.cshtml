@@ -83,13 +83,14 @@
             <div class="row row-header">
                 <b>Appearance</b>
             </div>
-            <div class="row" style="padding-top: 8px; display: flex;">
+            <div class="row" style="padding-top: 8px; display: flex; margin-right: 50px;">
                 <label>Line color</label>
                 @Html.EJS().ColorPicker("fill").Value("#6f409f").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).ShowButtons(false).Disabled(false).Change("colorChange").Render()
             </div>
         </div>
     </div>
     <style scoped>
+        /* Css for images in property panel  */
         .image-pattern-style {
             background-color: white;
             background-size: contain;
@@ -101,21 +102,13 @@
             background-position: center;
             float: left;
         }
+        /* Align the names in property panel */
 
         label {
             display: inline-block;
             font-size: 13px;
             font-weight: 400;
             width: 100%;
-        }
-
-        .e-colorpicker-wrapper .e-split-btn-wrapper .e-split-colorpicker.e-split-btn .e-selected-color .e-split-preview {
-            width: 100px !important;
-            margin-left: -40px !important;
-        }
-
-        .e-colorpicker-wrapper .e-split-btn-wrapper .e-split-colorpicker.e-split-btn {
-            width: 110px !important;
         }
 
         .row {
@@ -127,28 +120,13 @@
             font-size: 12px;
             font-weight: 500;
         }
-
-        .e-checkbox-wrapper .e-label {
-            font-size: 12px;
-        }
-
-        .col-xs-6 {
-            padding-left: 0px;
-            padding-right: 0px;
-        }
-
+     
+        /* Selection indicator */
         .e-selected-style {
             border-color: #006CE6;
             border-width: 2px;
         }
 
-        .row {
-            display: block;
-        }
-
-        #container {
-            display: block;
-        }
     </style>
     <script>
 

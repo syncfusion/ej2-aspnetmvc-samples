@@ -12,13 +12,13 @@
         @Html.EJS().Grid("DragAndDropWithInGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
     {
         col.Field("OrderID").HeaderText("Order ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("120").Add();
-        col.Field("CustomerID").HeaderText("Customer Name").Width("150").Add();
+        col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 5 }).Add();
         col.Field("OrderDate").HeaderText("Order Date").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("130").Format("yMd").Add();
         col.Field("Freight").HeaderText("Freight").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("120").Format("C2").Add();
         col.Field("ShippedDate").HeaderText("Shipped Date").Width("140").Format("yMd").Add();
         col.Field("ShipCountry").HeaderText("Ship Country").AllowGrouping(false).Width("150").Add();
 
-    }).Created("created").SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).AllowRowDragAndDrop().AllowSorting().AllowGrouping().Height(400).Render()
+    }).Created("created").AllowSorting().SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).AllowRowDragAndDrop().AllowSorting().AllowGrouping().Height(400).Render()
     </div>
     @Html.EJS().Dialog("alert_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Grouping").Content("Grouping is disabled for this column").Visible(false).Width("300px").Target(".control-section").Buttons(ViewBag.alertbutton).Render()
     <script>

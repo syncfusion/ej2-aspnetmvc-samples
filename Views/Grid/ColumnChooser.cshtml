@@ -16,7 +16,7 @@
        col.Field("ShipCity").Visible(false).HeaderText("Ship City").Width("150").Add();
        col.Field("ShipCountry").Visible(false).HeaderText("Ship Country").Width("150").Add();
 
-   }).AllowPaging().PageSettings(page=>page.PageCount(5)).Toolbar( new List<string>() { "ColumnChooser" }).Render()
+   }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().Toolbar(new List<string>() { "ColumnChooser" }).Render()
     </div>
 }
 

@@ -49,7 +49,8 @@
     <script>
          var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
-            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+             args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+             args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "80%";
          }
     </script>
 }

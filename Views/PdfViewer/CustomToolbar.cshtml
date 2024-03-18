@@ -6,6 +6,8 @@
     string serviceUrl = VirtualPathUtility.ToAbsolute("~/api/PdfViewer/");
 
     string stampMenu = "#stampMenu";
+    string SignatureToolbar = "#SignatureToolbar";
+    string formFieldSignatureMenu = "#formFieldSignatureMenu";
 
 }
 @using Syncfusion.EJ2
@@ -63,25 +65,12 @@ new ToolbarItem { Type = ItemType.Button,  PrefixIcon = "e-icons e-print" ,Toolt
                 new ToolbarItem {Type = ItemType.Separator , TooltipText="separator" ,Align=ItemAlign.Center},
                 new ToolbarItem { Type = ItemType.Input, Template=@stampMenu, TooltipText = "Add Stamp",Align=ItemAlign.Center},
                 new ToolbarItem {Type = ItemType.Separator , TooltipText="separator" ,Align=ItemAlign.Center},
-                new ToolbarItem{Type=ItemType.Button,PrefixIcon="e-icons e-signature",TooltipText="Add Signature",Align=ItemAlign.Center,Click="addSign1"},
+                new ToolbarItem { Type = ItemType.Input, Template=@SignatureToolbar, TooltipText = "Add Signature",Align=ItemAlign.Center},
                 new ToolbarItem {Type = ItemType.Separator , TooltipText="separator" ,Align=ItemAlign.Center},
                 new ToolbarItem{Type=ItemType.Button,PrefixIcon="e-icons e-style", TooltipText="Ink",Align=ItemAlign.Center,Click="ink"},
 
 
             }).Render()
-        </div>
-        <div id="SignatureToolbar" style="display:none">
-            <div class="e-dropdown-popup" id="container_annotation_signature-popup" style="z-index:1111" data-ripple="true">
-                <ul role="menu" tabindex="0">
-                    <li id="e-dropdown-btn-item_63" role="menuitem" tabindex="-1" aria-label="ADD SIGNATURE" style="width: 206px; display: flex; flex-direction: column; height: auto; align-items: center; background: transparent; cursor: pointer;" onclick="onSignatureClick(this)">
-                        <button class="e-control e-btn e-lib e-outline e-primary" style="width: auto; height: 36px;">Add Signature</button>
-                    </li>
-                    <li class="e-separator" id="e-dropdown-btn-item_64" role="menuitem" tabindex="-1" aria-label="separator" style="margin: 8px 0;"></li>
-                    <li id="e-dropdown-btn-item_65" role="menuitem" tabindex="-1" aria-label="ADD INITIAL" style="width: 206px; display: flex; flex-direction: column; height: auto; align-items: center; background: transparent; cursor: pointer;" onclick="onSignatureClick(this)">
-                        <button class="e-control e-btn e-lib e-outline e-primary" style="width: auto; height: 36px;">Add Initial</button>
-                    </li>
-                </ul>
-            </div>
         </div>
 
         <div>
@@ -92,7 +81,7 @@ new ToolbarItem { Type = ItemType.Button,  PrefixIcon = "e-icons e-print" ,Toolt
                new ToolbarItem {Type=ItemType.Button,PrefixIcon="e-icons e-radio-button",TooltipText="RadioButton",Align=ItemAlign.Center,Click="radioButton"},
                new ToolbarItem {Type=ItemType.Button,PrefixIcon="e-icons e-drop-down",TooltipText="Dropdown",Align=ItemAlign.Center,Click="dropDown"},
                new ToolbarItem {Type=ItemType.Button,PrefixIcon="e-icons e-list-unordered",TooltipText="ListBox",Align=ItemAlign.Center,Click="listBox"},
-               new ToolbarItem {Type=ItemType.Button,PrefixIcon="e-icons e-signature",TooltipText="Add Signature",Align=ItemAlign.Center,Click="addSign"}
+               new ToolbarItem { Type = ItemType.Input, Template=formFieldSignatureMenu, TooltipText = "Add Signature",Align=ItemAlign.Center},
 
             }).Render()
         </div>
@@ -102,7 +91,7 @@ new ToolbarItem { Type = ItemType.Button,  PrefixIcon = "e-icons e-print" ,Toolt
                     <div class="e-input-group e-pv-search-input" id="container_search_input_container">
                         <input class="e-input" id="container_search_input" type="text" placeholder="Find in document" onkeypress="searchInputKeypressed(event)" />
                         <span class="e-input-group-icon e-input-search-group-icon e-icons e-search" id="container_search_box-icon" onclick="initiateTextSearch()"></span>
-                        <span class="e-input-group-icon e-input-search-group-icon e-icons e-close" id="container_close_search_box-icon" style="display: none;" onclick="clearTextSearch()"></span>
+                        <span class="e-input-group-icon e-input-search-group-icon e-icons e-close" id="container_close_search_box-icon" style="display: none; top:6px;" onclick="clearTextSearch()"></span>
                     </div>
                     <button class="e-btn e-icon-btn e-pv-search-btn e-icons e-chevron-left" id="container_prev_occurrence" type="button" aria-label="Previous Search text">
                         <span class="e-pv-icon-search e-pv-prev-search-icon" id="container_prev_occurrenceIcon" onclick="previousTextSearch()"></span>
@@ -133,6 +122,9 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-add",To
 new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove", TooltipText = "Zoom out",Click="zoomOutClicked"},
 }).Render()
             @Html.EJS().Menu("stampMenu").Items(ViewBag.menuItem).Select("onItemSelect").ShowItemOnClick(true).Render()
+            @Html.EJS().Menu("SignatureToolbar").Items(ViewBag.signItem).Select("onSignatureClick").ShowItemOnClick(true).Render()
+            @Html.EJS().Menu("formFieldSignatureMenu").Items(ViewBag.signItem).Select("onSignatureClick").ShowItemOnClick(true).Render()
+
         </div>
     </div>
 }
@@ -173,9 +165,9 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
                 <li>Zoom Out - <code>viewer.magnification.zoomOut()</code></li>
             </ul>
             More information on the PDF Viewer instantiation can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/pdfviewer/getting-started/">
-            documentation section
-        </a>.
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/pdfviewer/getting-started/">
+                documentation section
+            </a>.
         </p>
     </div>
 }
@@ -380,11 +372,6 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
             textSearchToolbarElement.style.display = 'none';
         }
 
-        const signatureToolbarElement = document.getElementById('SignatureToolbar');
-        if (signatureToolbarElement?.style.display === 'block') {
-            signatureToolbarElement.style.display = 'none';
-        }
-
         const formFieldToolbarElement = document.getElementById('formFieldToolbar');
         if (formFieldToolbarElement?.style.display === 'block') {
             formFieldToolbarElement.style.display = 'none';
@@ -411,11 +398,6 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
             textSearchToolbarElement.style.display = 'none';
         }
 
-        const signatureToolbarElement = document.getElementById('SignatureToolbar');
-        if (signatureToolbarElement?.style.display === 'block') {
-            signatureToolbarElement.style.display = 'none';
-        }
-
         const formFieldToolbarElement = document.getElementById('formFieldToolbar');
         if (formFieldToolbarElement?.style.display === 'block') {
             formFieldToolbarElement.style.display = 'none';
@@ -428,11 +410,6 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         const textSearchToolbarElement = document.getElementById('textSearchToolbar');
         if (textSearchToolbarElement !== null && textSearchToolbarElement.style.display === 'block') {
             textSearchToolbarElement.style.display = 'none';
-        }
-
-        const signatureToolbarElement = document.getElementById('SignatureToolbar');
-        if (signatureToolbarElement !== null && signatureToolbarElement.style.display === 'block') {
-            signatureToolbarElement.style.display = 'none';
         }
 
         const formFieldToolbarElement = document.getElementById('formFieldToolbar');
@@ -575,88 +552,13 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         }
         pdfViewer.annotation.setAnnotationMode('FreeText');
     }
-    function addSign() {
-        disableInkAnnotation();
-        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
-        if (pdfViewer.tool == 'Ink') {
-            pdfViewer.annotation.setAnnotationMode('Ink');
-        }
-        const element = document.querySelector('.e-dropdown-popup');
-        if (element !== null) {
-            if ('formField_signature') {
-                const editAnnotationToolbarElement = document.getElementById('editAnnotationToolbar');
-                if (editAnnotationToolbarElement !== null && editAnnotationToolbarElement.style.display === 'block') {
-                    editAnnotationToolbarElement.style.display = 'none';
-                }
-
-                element.style.left = '50%';
-                element.style.top = '25%';
-            } else {
-                element.style.left = '70%';
-                element.style.top = '23%';
-            }
-        }
-
-        const signatureToolbarElement = document.getElementById('SignatureToolbar');
-        if (signatureToolbarElement !== null) {
-            if (signatureToolbarElement.style.display === 'block') {
-                signatureToolbarElement.style.display = 'none';
-            } else {
-                signatureToolbarElement.style.display = 'block';
-            }
-        }
-
-        const textSearchToolbarElement = document.getElementById('textSearchToolbar');
-        if (textSearchToolbarElement !== null && textSearchToolbarElement.style.display === 'block') {
-            textSearchToolbarElement.style.display = 'none';
-        }
-
-    }
-    function addSign1() {
-        disableInkAnnotation();
-        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
-        if (pdfViewer.tool == 'Ink') {
-            pdfViewer.annotation.setAnnotationMode('Ink');
-        }
-        const element = document.querySelector('.e-dropdown-popup');
-        if (element !== null) {
-            if ('signature') {
-                const editAnnotationToolbarElement = document.getElementById('editAnnotationToolbar');
-                if (editAnnotationToolbarElement !== null && editAnnotationToolbarElement.style.display === 'block') {
-                    editAnnotationToolbarElement.style.display = 'block';
-                }
-
-                element.style.left = '790px';
-                element.style.top = '161px';
-            } else {
-                element.style.left = '790px';
-                element.style.top = '137px';
-            }
-        }
-        const signatureToolbarElement = document.getElementById('SignatureToolbar');
-        if (signatureToolbarElement !== null) {
-            if (signatureToolbarElement.style.display === 'block') {
-                signatureToolbarElement.style.display = 'none';
-            } else {
-                signatureToolbarElement.style.display = 'block';
-            }
-        }
-
-        const textSearchToolbarElement = document.getElementById('textSearchToolbar');
-        if (textSearchToolbarElement !== null && textSearchToolbarElement.style.display === 'block') {
-            textSearchToolbarElement.style.display = 'none';
-        }
-    }
+    
+    
     function onItemSelect(args) {
         disableInkAnnotation();
         const textSearchToolbarElement = document.getElementById('textSearchToolbar');
         if (textSearchToolbarElement !== null && textSearchToolbarElement.style.display === 'block') {
             textSearchToolbarElement.style.display = 'none';
-        }
-
-        const signatureToolbarElement = document.getElementById('SignatureToolbar');
-        if (signatureToolbarElement !== null && signatureToolbarElement.style.display === 'block') {
-            signatureToolbarElement.style.display = 'none';
         }
 
         const formFieldToolbarElement = document.getElementById('formFieldToolbar');
@@ -793,11 +695,6 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         if (textSearchToolbarElement !== null && textSearchToolbarElement.style.display === 'block') {
             textSearchToolbarElement.style.display = 'none';
         }
-
-        const signatureToolbarElement = document.getElementById('SignatureToolbar');
-        if (signatureToolbarElement !== null && signatureToolbarElement.style.display === 'block') {
-            signatureToolbarElement.style.display = 'none';
-        }
     }
     function textBox() {
         var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
@@ -835,9 +732,9 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         const editAnnotationToolbarElement = document.getElementById('editAnnotationToolbar');
         if (editAnnotationToolbarElement?.style.display === 'block') {
             if (event) {
-                if (event.innerText === 'Add Signature') {
+                if (event.element.innerText === 'Add Signature') {
                     pdfViewer.annotationModule.setAnnotationMode('HandWrittenSignature');
-                } else if (event.innerText === 'Add Initial') {
+                } else if (event.element.innerText === 'Add Initial') {
                     pdfViewer.annotationModule.setAnnotationMode('Initial');
                 }
             }
@@ -846,17 +743,12 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         const formFieldToolbarElement = document.getElementById('formFieldToolbar');
         if (formFieldToolbarElement?.style.display === 'block') {
             if (event) {
-                if (event.innerText === 'Add Signature') {
+                if (event.element.innerText === 'Add Signature') {
                     pdfViewer.formDesignerModule.setFormFieldMode('SignatureField');
-                } else if (event.innerText === 'Add Initial') {
+                } else if (event.element.innerText === 'Add Initial') {
                     pdfViewer.formDesignerModule.setFormFieldMode('InitialField');
                 }
             }
-        }
-
-        const signatureToolbarElement = document.getElementById('SignatureToolbar');
-        if (signatureToolbarElement?.style.display === 'block') {
-            signatureToolbarElement.style.display = 'none';
         }
     }
 
@@ -886,14 +778,6 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
             pdfViewer.designerMode = false;
         }
 
-        const signatureToolbarElement = document.getElementById('SignatureToolbar');
-        if (signatureToolbarElement !== null) {
-            if (signatureToolbarElement.style.display === 'block') {
-                signatureToolbarElement.style.display = 'none';
-            } else {
-                signatureToolbarElement.style.display = 'none';
-            }
-        }
     }
     function searchInputKeypressed(event) {
         var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
@@ -918,6 +802,8 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
             textsearchNextElement.disabled = false;
             textsearchcloseElement.style.display = 'block';
             textsearchElement.style.display = 'none';
+            textsearchPrevElement.addEventListener("click", previousTextSearch);
+            textsearchNextElement.addEventListener("click", nextTextSearch);
 
             var currentSearchText = document.getElementById('container_search_input').value;
 
@@ -983,7 +869,7 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         reader.onload = function () {
             var obj = document.getElementById('pdfviewer').ej2_instances[0];
             var uploadedFileUrl = this.result;
-            obj.load(uploadedFileUrl, null);
+            obj.documentPath = uploadedFileUrl;
 			obj.fileName = filename;
            var currentPageBox = document.getElementById('currentPage');
             currentPageBox.value = '1';
@@ -1007,7 +893,7 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         pdfViewer.print.print();
     }
     function saveClicked() {
-        disableInkAnnotation();    
+        disableInkAnnotation();
         var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
         pdfViewer.download();
     }

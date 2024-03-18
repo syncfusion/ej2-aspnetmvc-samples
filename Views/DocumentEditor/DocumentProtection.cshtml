@@ -55,6 +55,7 @@
         var container = documenteditorElement.ej2_instances[0];
         documenteditor = container.documentEditor;
         documenteditorElement.ej2_instances[0].showPropertiesPane = false;
+        container.documentEditorSettings.showRuler = true;
         documenteditor.currentUser = "engineer@mycompany.com";
         documenteditorElement.ej2_instances[0].serviceUrl = window.baseurl + 'api/documenteditorservice/';
         documenteditor.serviceUrl = window.baseurl + 'api/documenteditorservice/';

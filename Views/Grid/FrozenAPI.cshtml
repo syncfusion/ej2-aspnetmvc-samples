@@ -37,7 +37,7 @@
        col.Field("ShipCity").HeaderText("Ship City").Width("250").Add();
        col.Field("ShipCountry").HeaderText("Ship Country").Width("250").Add();
 
-   }).Render()
+   }).AllowSorting().Render()
         @Html.EJS().Dialog("AlertDialog").Header("Frozen").Content("Atleast one Column should be in movable").ShowCloseIcon(false).Target(".control-section").Width("300px").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Buttons(ViewBag.DefaultButtons).Render()
     </div>
 

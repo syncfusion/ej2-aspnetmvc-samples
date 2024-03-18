@@ -22,6 +22,7 @@
             .Subtitle("Estimated in story points")
             .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Top)
             .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
+            .MinorTickLines(mt => mt.Width(0))
             .DataSource("localData")
             .Load("load")
             .Render()
@@ -89,6 +90,7 @@
         var load = function (args) {
             var selectedTheme = themeName ? themeName : 'Material';
             args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "80%";
             var fabricColors = ["#e269ae", "#6f6fe2", "#c1c1c1", "#5b9bd5", "#70ad47", "#ffc000", "#ed7d31", "#4472c4"];
             var bootstrapColors = ["#407c92", "#b99b4f", "#7953ac", "#ff6ea6", "#7ddf1e", "#55a5c2", "#f7ce69", "#a16ee5"];
             var highContrastColors = ["#43ACEF", "#00C27A", "#FA83C3", "#BA98FF", "#C6E773", "#DFE6B6", "#E98272", "#79ECE4"];

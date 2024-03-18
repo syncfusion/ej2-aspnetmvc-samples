@@ -84,7 +84,7 @@
                     ajax = new ej.base.Ajax("@Url.Content("~/scripts/documenteditor/data-default.json")", 'GET', true);
                     break;
                 case "Character Formatting.docx":
-                    ajax = new ej.base.Ajax("@Url.Content("~/scripts/documenteditor/data-character-formatting")", 'GET', true);
+                    ajax = new ej.base.Ajax("@Url.Content("~/scripts/documenteditor/data-character-formatting.json")", 'GET', true);
                     break;
                 case "Paragraph Format.docx":
                     ajax = new ej.base.Ajax("@Url.Content("~/scripts/documenteditor/data-paragraph-formatting.json")", 'GET', true);
@@ -115,6 +115,7 @@
             }
             else if (args.target.title == "Edit") {
                 container.showPropertiesPane = true;
+                container.documentEditorSettings.showRuler = true;
                 container.documentEditor.isReadOnly = false;
                 document.getElementById('documenteditor-share').style.display = 'block';
                 container.toolbarItems = ['New', 'Open', 'Separator', 'Undo', 'Redo', 'Separator', 'Image', 'Table', 'Hyperlink', 'Bookmark', 'TableOfContents', 'Separator', 'Header', 'Footer', 'PageSetup', 'PageNumber', 'Break', 'InsertFootnote', 'InsertEndnote', 'Separator', 'Find', 'Separator', 'Comments', 'TrackChanges', 'Separator', 'LocalClipboard', 'RestrictEditing', 'Separator', 'FormFields', 'UpdateFields'];
@@ -388,7 +389,7 @@
 @section ActionDescription{
     <div id="action-description">
         <p>
-            This demonstration showcases the process of presenting a list of Word documents in a grid layout and accessing the document for viewing or editing through the Document Editor within a dialog box.
+            This demo showcases how to present a list of documents in a grid layout and utilize the Document Editor in Dialog to open and view/edit these documents.
         </p>
     </div>
 }
@@ -407,8 +408,8 @@
 
 
 @section Title{
-    <title>ASP.NET MVC Document Editor Component inside Dialog Example - Syncfusion Demo </title>
+    <title>ASP.NET MVC DocumentEditor Document List Example - Syncfusion Demo </title>
 }
 @section Header{
-    <h1 class='sb-sample-text'>Example of Document Editor inside Dialog in ASP.NET MVC</h1>
+    <h1 class='sb-sample-text'>Example of Document List in ASP.NET MVC DocumentEditor Control</h1>
 }

@@ -7,7 +7,7 @@
     <div class="control-section">
         <div class="content-wrapper">
             @(Html.EJS().Gantt("ResourceAllocation").DataSource((IEnumerable<object>
-    )ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true)
+    )ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true).TaskType(Syncfusion.EJ2.Gantt.TaskType.FixedWork)
     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").Work("Work").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
     .Dependency("Predecessor").ResourceInfo("Resources").Type("TaskType").Child("SubTasks"))    
     .TreeColumnIndex(1)

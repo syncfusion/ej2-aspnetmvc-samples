@@ -79,9 +79,6 @@
             {
                 Enable = false,
                 ZoomFactor = 7
-            }).MapsArea(new Syncfusion.EJ2.Maps.MapsMapsAreaSettings
-            {
-                Background = "#AEE2FA"
             }).TitleSettings(new Syncfusion.EJ2.Maps.MapsTitleSettings
             {
                 Text = "7.6 Magnitude earthquake strikes Sumatra - 2009",
@@ -115,6 +112,7 @@
         function mapLoad(args) {
             var theme = themeName ? themeName : 'Material';
             args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.maps.mapsArea.background = "#AEE2FA";
         }
     </script>
 }

@@ -15,7 +15,7 @@
        col.Field("ShippedDate").HeaderText("Shipped Date").Width("140").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("ShipCountry").HeaderText("Ship Country").Width("150").Add();
 
-   }).AllowPaging().PageSettings(page=>page.PageCount(5)).Render()
+   }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().Render()
     </div>
 }
 

@@ -4,16 +4,6 @@
                     .GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Created("diagramCreated").Render())
     </div>
 
-    <style>
-        #diagram {
-            display: block;
-        }
-
-        .row {
-            display: block;
-        }
-    </style>
-
     <script>
         function getNodeDefaults(node) {
             node.height = 50;

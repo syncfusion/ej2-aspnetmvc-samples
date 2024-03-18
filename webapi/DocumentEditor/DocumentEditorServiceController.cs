@@ -6,6 +6,7 @@
 // applicable laws. 
 #endregion
 //using DocumentEditorMailMerge.Models;
+using Syncfusion.DocIO;
 using Syncfusion.DocIO.DLS;
 using System;
 using System.Collections.Generic;
@@ -15,18 +16,25 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using Syncfusion.EJ2.DocumentEditor;
 using EJ2WordDocument = Syncfusion.EJ2.DocumentEditor.WordDocument;
+using WDocument = Syncfusion.DocIO.DLS.WordDocument;
+using WFormatType = Syncfusion.DocIO.FormatType;
+using WordDocument = Syncfusion.EJ2.DocumentEditor.WordDocument;
+using FormatType = Syncfusion.EJ2.DocumentEditor.FormatType;
+using Syncfusion.Pdf;
+using Syncfusion.DocToPDFConverter;
 
 namespace EJ2MVCSampleBrowser.Controllers
 {
-    [RoutePrefix("api/documenteditorservice")]
+    [System.Web.Http.RoutePrefix("api/documenteditorservice")]
     public class DocumentEditorServiceController : ApiController
     {
         private bool isApplyBold;
         private bool isInsertBreak;
 
-        [HttpPost]
-        [Route("Import")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("Import")]
         public HttpResponseMessage Import()
         {
             if (HttpContext.Current.Request.Files.Count == 0)
@@ -44,9 +52,9 @@ namespace EJ2MVCSampleBrowser.Controllers
             document.Dispose();
             return new HttpResponseMessage() { Content = new StringContent(json) };
         }
-        [AcceptVerbs("Post")]
-        [HttpPost]
-        [Route("MailMerge")]
+        [System.Web.Http.AcceptVerbs("Post")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("MailMerge")]
         public HttpResponseMessage MailMerge([FromBody]ExportData exportData)
         {
             Byte[] data = Convert.FromBase64String(exportData.documentData.Split(',')[1]);
@@ -138,8 +146,145 @@ namespace EJ2MVCSampleBrowser.Controllers
             public string documentData { get; set; }
         }
 
-        [HttpPost]
-        [Route("SystemClipboard")]
+        private string RetrieveFileType(string name)
+        {
+            int index = name.LastIndexOf('.');
+            string format = index > -1 && index < name.Length - 1 ?
+                name.Substring(index) : ".doc";
+            return format;
+        }
+
+        internal static WFormatType GetWFormatType(string format)
+        {
+            if (string.IsNullOrEmpty(format))
+                throw new NotSupportedException("EJ2 DocumentEditor does not support this file format.");
+            switch (format.ToLower())
+            {
+                case ".dotx":
+                    return WFormatType.Dotx;
+                case ".docx":
+                    return WFormatType.Docx;
+                case ".docm":
+                    return WFormatType.Docm;
+                case ".dotm":
+                    return WFormatType.Dotm;
+                case ".dot":
+                    return WFormatType.Dot;
+                case ".doc":
+                    return WFormatType.Doc;
+                case ".rtf":
+                    return WFormatType.Rtf;
+                case ".html":
+                    return WFormatType.Html;
+                case ".txt":
+                    return WFormatType.Txt;
+                case ".xml":
+                    return WFormatType.WordML;
+                case ".odt":
+                    return WFormatType.Odt;
+                case ".md":
+                    return WFormatType.Markdown;
+                default:
+                    throw new NotSupportedException("EJ2 DocumentEditor does not support this file format.");
+            }
+        }
+
+        public class SaveParameter
+        {
+            public string Content { get; set; }
+            public string FileName { get; set; }
+            public string Format { get; set; }
+        }
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("Export")]
+        public HttpResponseMessage Export([FromBody] SaveParameter data)
+        {
+            string fileName = data.FileName;
+            string format = RetrieveFileType(string.IsNullOrEmpty(data.Format) ? fileName : data.Format);
+            if (string.IsNullOrEmpty(fileName))
+            {
+                fileName = "Document1.docx";
+            }
+            WDocument document;
+            if (format.ToLower() == ".pdf")
+            {
+                Stream stream = WordDocument.Save(data.Content, FormatType.Docx);
+                document = new Syncfusion.DocIO.DLS.WordDocument(stream, Syncfusion.DocIO.FormatType.Docx);
+            
+            }
+            else
+            {
+                document = WordDocument.Save(data.Content);
+            }
+            return SaveDocument(document, format, fileName);
+        }
+
+        private HttpResponseMessage SaveDocument(WDocument document, string format, string fileName)
+        {
+            var stream = new MemoryStream();
+            string contentType = "";
+            if (format.ToLower() == ".pdf")
+            {
+                contentType = "application/pdf";
+                DocToPDFConverter converter = new DocToPDFConverter();
+                PdfDocument pdfDocument = converter.ConvertToPDF(document);
+                stream = new MemoryStream();
+                pdfDocument.Save(stream);
+                pdfDocument.Close();
+            }
+            else
+            {
+                WFormatType type = GetWFormatType(format);
+                switch (type)
+                {
+                    case WFormatType.Rtf:
+                        contentType = "application/rtf";
+                        break;
+                    case WFormatType.WordML:
+                        contentType = "application/xml";
+                        break;
+                    case WFormatType.Html:
+                        contentType = "application/html";
+                        break;
+                    case WFormatType.Dotx:
+                        contentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.template";
+                        break;
+                    case WFormatType.Docx:
+                        contentType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                        break;
+                    case WFormatType.Doc:
+                        contentType = "application/msword";
+                        break;
+                    case WFormatType.Dot:
+                        contentType = "application/msword";
+                        break;
+                    case WFormatType.Odt:
+                        contentType = "application/vnd.oasis.opendocument.text";
+                        break;
+                    case WFormatType.Markdown:
+                        contentType = "text/markdown";
+                        break;
+                }
+                document.Save(stream, type);
+            }
+            document.Close();
+            stream.Position = 0;
+            byte[] byteArray = stream.ToArray();
+            stream.Close();
+            string base64String = Convert.ToBase64String(byteArray);
+            return (GetPlainText("data:"+contentType+";base64," + base64String));
+        }
+
+        private HttpResponseMessage GetPlainText(string pageImage)
+        {
+            var responseText = new HttpResponseMessage(HttpStatusCode.OK);
+            responseText.Content = new StringContent(pageImage, System.Text.Encoding.UTF8, "text/plain");
+            return responseText;
+        }
+
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("SystemClipboard")]
         public HttpResponseMessage SystemClipboard([FromBody]CustomParameter param)
         {
             if (param.content != null && param.content != "")
@@ -152,8 +297,8 @@ namespace EJ2MVCSampleBrowser.Controllers
             return new HttpResponseMessage() { Content = new StringContent("") };
         }
 
-        [HttpPost]
-        [Route("RestrictEditing")]
+        [System.Web.Http.HttpPost]
+        [System.Web.Http.Route("RestrictEditing")]
         public string[] RestrictEditing([FromBody]CustomRestrictParameter param)
         {
             if (param.passwordBase64 == "" && param.passwordBase64 == null)

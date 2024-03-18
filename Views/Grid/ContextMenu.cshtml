@@ -5,7 +5,7 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSorting(true).AllowExcelExport(true).AllowPdfExport(true).EditSettings(edit=>edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true)).Columns(col =>
+        @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowExcelExport(true).AllowPdfExport(true).EditSettings(edit=>edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true)).Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").Width("120").IsPrimaryKey(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
@@ -14,7 +14,7 @@
        col.Field("ShipCity").HeaderText("Ship City").Width("150").Add();
        col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
 
-   }).AllowPaging().PageSettings(page=>page.PageCount(5)).ContextMenuItems( new List<object>() { "AutoFit", "AutoFitAll", "SortAscending", "SortDescending", "Copy", "Edit", "Delete", "Save", "Cancel", "PdfExport", "ExcelExport", "CsvExport", "FirstPage", "PrevPage", "LastPage", "NextPage" }).Render()
+   }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().ContextMenuItems( new List<object>() { "AutoFit", "AutoFitAll", "SortAscending", "SortDescending", "Copy", "Edit", "Delete", "Save", "Cancel", "PdfExport", "ExcelExport", "CsvExport", "FirstPage", "PrevPage", "LastPage", "NextPage" }).Render()
     </div>
 }
 @section ActionDescription{

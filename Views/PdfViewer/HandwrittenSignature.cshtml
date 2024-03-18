@@ -90,9 +90,13 @@
 </style>
 @*custom code end*@
 <script>
+    var isInitialLoading = true;
     function documentLoad() {
         var viewer = document.getElementById('pdfviewer').ej2_instances[0];
-        viewer.annotation.setAnnotationMode('HandWrittenSignature');
+        if(isInitialLoading){
+            viewer.annotation.setAnnotationMode('HandWrittenSignature');
+            isInitialLoading = false;
+        }
     }
     function change(args) {
         var viewer = document.getElementById('pdfviewer').ej2_instances[0];

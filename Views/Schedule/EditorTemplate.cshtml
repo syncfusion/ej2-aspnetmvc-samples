@@ -1,10 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 
+@{
+    Dictionary<string, object> validationRules = new Dictionary<string, object>() { { "required", true } };
+}
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).ActionBegin("onActionBegin").EventRendered("onEventRendered").PopupOpen("onPopupOpen").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).EditorTemplate("#EventEditorTemplate").EditorHeaderTemplate("#EventEditorHeaderTemplate").ShowQuickInfo(false).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").ActionBegin("onActionBegin").EventRendered("onEventRendered").PopupOpen("onPopupOpen").EventSettings(e => e.Fields(f => f.StartTime(st => st.Name("StartTime").Validation(validationRules)).EndTime(et => et.Name("EndTime").Validation(validationRules))).DataSource(ViewBag.datasource)).Views(ViewBag.view).EditorTemplate("#EventEditorTemplate").EditorHeaderTemplate("#EventEditorHeaderTemplate").ShowQuickInfo(false).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
     <style>

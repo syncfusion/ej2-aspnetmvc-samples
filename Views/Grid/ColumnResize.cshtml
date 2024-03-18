@@ -8,13 +8,13 @@
         @Html.EJS().Grid("ColumnResize").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowResizing(true).Columns(col =>
    {
 
-       col.Field("OrderID").HeaderText("Order ID").MinWidth("100").Width("150").MaxWidth("200").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("CustomerID").HeaderText("Customer Name").Width("150").MinWidth("8").Add();
-       col.Field("Freight").HeaderText("Freight").Width("120").MinWidth("8").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("OrderID").HeaderText("Order ID").MinWidth("100").Width("150").MaxWidth("200").Add();
+       col.Field("CustomerID").HeaderText("Customer Name").Width("150").MinWidth("100").Add();
+       col.Field("Freight").HeaderText("Freight").Width("120").MinWidth("100").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("ShippedDate").HeaderText("Shipped Date").Width("150").Format("yMd").AllowResizing(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("ShipCountry").HeaderText("Ship Country").MinWidth("8").Width("150").Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").MinWidth("100").Width("150").Add();
 
-   }).Height("400").Width("850").AutoFit(true).Render()
+   }).Height("400").Width("850").AllowSorting().AutoFit(true).Render()
     </div>
     </div>
 }
