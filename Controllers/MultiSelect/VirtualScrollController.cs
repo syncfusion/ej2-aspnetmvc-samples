@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             MultiSelectRecord model = new MultiSelectRecord();
             model.RecordList = new MultiSelectRecord().RecordModelList();
-            model.val = new string[] { "20003", "10025", "10044", "custom"};
+            model.val = new string[] { "id10", "id50", "id100", "custom"};
             model.modeList = new string[] { "Default", "Box", "Delimiter", "CheckBox" };
             return View(model);
         }

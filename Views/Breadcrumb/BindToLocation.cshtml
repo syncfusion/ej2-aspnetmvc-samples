@@ -28,14 +28,14 @@
     </div>
 }
 <script>
-    var url = 'https://ej2.syncfusion.com/aspnetmvc/Breadcrumb/BindToLocation#/bootstrap5',
+    var url = 'https://ej2.syncfusion.com/aspnetmvc/breadcrumb/bindtolocation#/bootstrap5',
         themeName = url.split('/')[6];
     function beforeItemRenderHandler(args) {
         if (args.item.text == 'aspnetmvc') {
-            args.item.url = args.item.url + '/Grid/GridOverview#/' + themeName;
+            args.item.url = args.item.url + '/grid/gridoverview#/' + themeName;
         }
         else if (args.item.text == 'Breadcrumb') {
-            args.item.url = args.item.url + '/DefaultFunctionalities#/' + themeName;
+            args.item.url = args.item.url.toLowerCase() + '/defaultFunctionalities#/' + themeName;
         }
         else if (args.item.text == themeName) {
             args.cancel = true;

@@ -8,7 +8,7 @@
       {
           ranges.ShowFieldAsHeader(false).StartCell("A2").Query("new ej.data.Query().select(['OrderID', 'CustomerID', 'ShipName', 'ShipCity', 'ShipCountry', 'Freight']).take(200)").DataSource(dataManger =>
    {
-       dataManger.Url("https://services.odata.org/V4/Northwind/Northwind.svc/Orders/").CrossDomain(true).Adaptor("ODataV4Adaptor");
+       dataManger.Url("https://services.odata.org/V3/Northwind/Northwind.svc/Orders/").CrossDomain(true).Adaptor("ODataV4Adaptor");
    }).Add();
       }).Rows(row =>
       {

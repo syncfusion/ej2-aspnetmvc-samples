@@ -6,7 +6,7 @@
                 }
 @section ControlsSection{
 
-    <div class="control-section" style="overflow:auto">
+    <div class="control-section">
         <div class="content-wrapper">
       @Html.EJS().PivotView("pivotview").Width("100%").Height("500").ShowToolbar(true).ShowFieldList(true).ShowGroupingBar(true).AllowExcelExport(true).EnableValueSorting(true).EnableFieldSearching(true).AllowConditionalFormatting(true).AllowPdfExport(true).ShowToolbar(true).AllowCalculatedField(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).EnableSorting(true)
         .Url("https://bi.syncfusion.com/olap/msmdpump.dll").Catalog("Adventure Works DW 2008 SE").Cube("Adventure Works").ProviderType(ProviderType.SSAS)

@@ -297,9 +297,9 @@
         width: 96%;
     }
 
-        .e-text-area-content:focus-visible {
-            outline: none;
-        }
+    .e-text-area-content:focus-visible {
+        outline: none;
+    }
 
     .top-right-element {
         padding-right: 20px;
@@ -323,6 +323,17 @@
     .e-pre-content {
         background: transparent;
         border: none;
+    }
+
+    @@media only screen and (max-width: 700px) {
+        .e-query-preview .e-sql-content,
+        .e-query-preview .e-mongo-content {
+            height: 160px;
+        }
+
+        .e-query-preview .copy-tooltip {
+           display: block !important;
+        }
     }
 </style>
 @*custom code end*@

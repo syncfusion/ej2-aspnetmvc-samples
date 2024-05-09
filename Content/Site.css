@@ -1178,6 +1178,10 @@
     color: #3C78EF;
 }
 
+.fluent .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text, .tailwind .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text, .bootstrap5 .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text {
+    color: #114BC5;
+}
+
 .sb-right-pane-overlay {
     pointer-events: none;
 }
@@ -2492,6 +2496,21 @@ body.fluent-dark, .fluent-dark .sb-content, .fluent-dark .sb-content-section {
 .tailwind-dark .e-listview .e-list-group-item {
     color: #5CC8E8;
 }
+.fluent #search-popup .e-list-group-item {
+    color: #006cbe;
+}
+.fluent-dark #search-popup .e-list-group-item {
+    color: #0084e9;
+}
+.bootstrap5 #search-popup .e-list-group-item {
+    color: #606970;
+}
+.bootstrap5-dark #search-popup .e-list-group-item {
+    color: #87909b;
+}
+.tailwind #search-popup .e-list-group-item {
+    color: #5f6672;
+}
 
 .highcontrast code,
 .highcontrast .sb-switch-popup,
@@ -3009,6 +3028,9 @@ body.tailwind-dark,
     background: #ffd939;
     color: #000000;
 }
+.highcontrast .sb-left-pane .e-listview .e-list-item.e-active:hover {
+    background: #ffd939;
+}
 .material-dark .sb-left-pane .e-listview .e-list-item.e-active {
     background: rgba(255, 255, 255, 0.12);
     color: #FFFFFF;
@@ -3035,9 +3057,16 @@ body.tailwind-dark,
     background: #292827;
     color: #ffffff;
 }
+.fluent-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
+    background: #292827;
+}
+
 .tailwind-dark .sb-left-pane .e-listview .e-list-item.e-active {
     background: #5CC8E8;
     color: #000000;
+}
+.tailwind-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
+    background: #5CC8E8;
 }
 
 .highcontrast .theme-wrapper > div, .material-dark .theme-wrapper > div, .fabric-dark .theme-wrapper > div,
@@ -3445,11 +3474,11 @@ body.tailwind-dark,
     background-color: #ffd939;
 }
 
-.highcontrast .sb-left-pane .e-listview .e-list-item.e-active:hover, .material-dark .sb-left-pane .e-listview .e-list-item.e-active:hover,
+/*.highcontrast .sb-left-pane .e-listview .e-list-item.e-active:hover, .material-dark .sb-left-pane .e-listview .e-list-item.e-active:hover,
 .bootstrap-dark .sb-left-pane .e-listview .e-list-item.e-active:hover, .bootstrap-dark .sb-left-pane .e-listview .e-list-item.e-active:hover,
 .tailwind-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
     color: #ffffff;
-}
+}*/
 .fabric-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
     background-color: #73A6F4;
 }
@@ -3625,6 +3654,10 @@ body.tailwind-dark,
     color: #909090;
 }
 
+.material3-dark .sb-bread-crumb .sb-bread-crumb-text > div {
+    color: #A8A8A8;
+}
+
 .bootstrap-dark #sb-content .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap {
     color: #FFFFFF;
 }
@@ -3775,13 +3808,14 @@ body.material3-dark,
 }
 
 
-.material3-dark .sb-left-pane .e-listview .e-list-item.e-active, .material3-dark .cont {
+.material3-dark .sb-left-pane .e-listview .e-list-item.e-active, .material3-dark .sb-left-pane .e-listview .e-list-item.e-active:hover, .material3-dark .cont {
     background-color: rgb(208, 188, 255);
 }
 
-.material3-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
+
+/*.material3-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
     color: #000;
-}
+}*/
 
 .material3-dark .sb-search-result .e-list-item:hover,
 .material3-dark .sb-control-navigation .e-treeview .e-list-item.e-active > .e-fullrow {
@@ -3805,10 +3839,10 @@ body.material3-dark,
     color: #000;
 }
 
-.material3-dark .sb-left-pane .e-listview .e-list-item.e-active {
+/*.material3-dark .sb-left-pane .e-listview .e-list-item.e-active {
     background-color: rgb(208, 188, 255);
     color: #000000;
-}
+}*/
 
 .material-dark #left-sidebar {
     color: #c2c0c0;
@@ -3970,4 +4004,23 @@ body.material3-dark,
 #controlList .e-list-group-item .e-list-text {
     font-size: 16px;
     font-weight: 800;
+}
+
+.material3 #description a, .material3-dark #description a, .fluent #description a, .bootstrap5 #description a, .tailwind #description a, .bootstrap5-dark #description a, .tailwind-dark #description a {
+    text-decoration: underline;
+}
+
+.material3 #description a {
+   color: #23517B;
+}
+
+.fluent #description a, .bootstrap5 #description a, .tailwind #description a {
+    color: #3073ad;
+}
+.fluent-dark #description a {
+    color: #398cd3;
+}
+
+.bootstrap5-dark #description a {
+    color: #3b93dd;
 }

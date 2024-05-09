@@ -1,6 +1,7 @@
 @using Syncfusion.EJ2
 @using EJ2MVCSampleBrowser.Models
 @using Syncfusion.EJ2.DropDowns
+@using Syncfusion.EJ2.Base
 @{
     Func<object, object> rteContent =@<div id="imageeditor"></div>;
 }
@@ -17,7 +18,7 @@
                 </p>
             </div>).QuickToolbarSettings(e => { e.Image((object)ViewBag.image); }).Render()
 
-            @Html.EJS().Dialog("default_dialog").Open("onOpen").Created("onDialogCreate").Header("Image Editor").ContentTemplate(@rteContent).ShowCloseIcon(true).Visible(false).Width("800px").Height("550px").Buttons(btn =>
+            @Html.EJS().Dialog("default_dialog").Open("onOpen").Created("onDialogCreate").Header("Image Editor").ContentTemplate(@rteContent).ShowCloseIcon(true).Visible(false).Width("800px").Height("550px").Close("onClose").Buttons(btn =>
             {
             btn.Click("onInsert").ButtonModel(ViewBag.insertButton).Add();
             btn.Click("onCancel").ButtonModel(ViewBag.cancelButton).Add();
@@ -118,25 +119,32 @@
         });
         rteObj.formatter.saveData();
         rteObj.formatter.enableUndo(rteObj);
+        dispose();
         dialogObj.hide();
-        isLoaded = false;
+        imageELement.crossOrigin = null;
     }
     function onCancel() {
+        dispose();
         dialogObj.hide();
-        imageEditorObj.reset();
+        isLoaded = true;
+        imageELement.crossOrigin = null;
+    }
+    function dispose() {
+        if (imageEditorObj !== null && imageEditorObj !== undefined) {
+            const imageEditorInstance = ej.base.getComponent(document.getElementById('imageeditor'), 'image-editor');
+            if (imageEditorInstance !== null && imageEditorInstance !== undefined) {
+                imageEditorInstance.destroy();
+            }
+        }
+    }
+    function onClose() {
+        dispose();
+        dialogObj.hide();
+        isLoaded = true;
+        imageELement.crossOrigin = null;
     }
     function onOpen() {
-        if (imageEditorObj == null) {
-            imageEditorObj = new ej.imageeditor.ImageEditor({
-                height: '400px',
-                toolbar: ['Undo', 'Redo', 'Crop', 'Annotate', 'ZoomIn', 'ZoomOut',
-                    'Reset', 'Pan', 'Finetune', 'Filter', 'Pen', 'Line', 'Rectangle', 'Ellipse', 'Arrow',
-                    'Path', 'Text', 'CustomSelection', 'CircleSelection', 'SquareSelection', 'RatioSelection',
-                    'Default', 'Chrome', 'Cold', 'Warm', 'Grayscale', 'Sepia', 'Invert', 'Brightness', 'Contrast',
-                    'Hue', 'Saturation', 'Exposure', 'Opacity', 'Blur']
-            });
-            imageEditorObj.appendTo('#imageeditor');
-        }
+        isLoaded = false;
         rteEle = document.getElementById("defaultRTE");
         rteObj = rteEle.ej2_instances[0];
         var selectNodes = rteObj.formatter.editorManager.nodeSelection.getNodeCollection(range);
@@ -151,7 +159,13 @@
                 ctx.drawImage(imageELement, 0, 0, canvas.width, canvas.height);
                 dataURL = canvas.toDataURL();
                 if (!isLoaded) {
-                    imageEditorObj.open(dataURL);
+                    imageEditorObj = new ej.imageeditor.ImageEditor({
+                        height: '450px',
+                        created: function () {
+                            imageEditorObj.open(dataURL);
+                        }
+                    });
+                    imageEditorObj.appendTo('#imageeditor');
                 }
             };
         }

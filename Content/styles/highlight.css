@@ -23,6 +23,14 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
     color: #00f;
 }
 
+.material3-dark .hljs-keyword, .material3-dark .hljs-selector-tag, .material3-dark .hljs-built_in, .material3-dark .hljs-name, .material3-dark .hljs-tag {
+    color: #9E9EFF;
+}
+
+.highcontrast .hljs-attr {
+    color: #FF7575;
+}
+
 .hljs-string,
 .hljs-title,
 .hljs-section,
@@ -47,7 +55,23 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
 }
 
 .hljs-attr {
-    color: #f00;
+    color: #B30000;
+}
+
+.material3-dark .hljs-attr {
+    color: #FF8A8A;
+}
+
+.bootstrap5-dark .hljs-attr {
+    color: #FF9999;
+}
+
+.fluent-dark .hljs-attr {
+    color: #FF8A8A;
+}
+
+.tailwind-dark .hljs-attr {
+    color: #FFA3A3;
 }
 
 .hljs-symbol,

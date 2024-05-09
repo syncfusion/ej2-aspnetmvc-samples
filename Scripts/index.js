@@ -75,8 +75,7 @@ var breadCrumSeperator = ej.base.select('.category-seperator');
 var breadCrumbSubCategory = document.querySelector('.sb-bread-crumb-text>.component');
 var breadCrumbSample = document.querySelector('.sb-bread-crumb-text>.crumb-sample');
 var sampleNavigation = "<div class=\"sb-custom-item sample-navigation\"><button id='prev-sample' type='button' class=\"sb-navigation-prev\" \n    aria-label=\"previous sample\">\n<span class='sb-icons sb-icon-Previous'></span>\n</button>\n<button  id='next-sample' type='button' class=\"sb-navigation-next\" aria-label=\"next sample\">\n<span class='sb-icons sb-icon-Next'></span>\n</button>\n</div>";
-var contentToolbarTemplate = '<div class="sb-desktop-setting"><button id="open-plnkr" class="sb-custom-item sb-plnr-section">' +
-    '</button>' + '</div>' + sampleNavigation + '<div class="sb-icons sb-mobile-setting"></div>';
+var contentToolbarTemplate = sampleNavigation + '<div class="sb-icons sb-mobile-setting"></div>';
 var tabContentToolbar = ej.base.createElement('div', {
     className: 'sb-content-toolbar',
     innerHTML: contentToolbarTemplate
@@ -248,7 +247,6 @@ function renderSbPopups() {
             if (themeValue.includes("-dark")) {
                 // Remove "-dark" from the hash 
                 themeValue = themeValue.replace("-dark", "");
-                console.log("hashValue URL (removed -dark):", themeValue);
             }
             function isDarkModeURL() {
                 return window.location.href.includes('-dark');
@@ -320,6 +318,9 @@ function renderSbPopups() {
             sourceEle.innerHTML = items[e.selectedIndex].data;
             sourceEle.innerHTML = sourceEle.innerHTML.replace(reg, '');
             sourceEle.classList.add('sb-src-code');
+            sourceEle.style.height = "500px";
+            sourceEle.style.overflowY = "auto";
+            sourceEle.setAttribute("tabindex", "0");
             hljs.highlightBlock(sourceEle);
         }
     }, '#sb-source-tab');
@@ -423,6 +424,9 @@ function dynamicTabCreation(obj) {
     blockEle.innerHTML = tabObj.items[tabObj.selectedItem].data;
     blockEle.innerHTML = blockEle.innerHTML.replace(reg, '');
     blockEle.classList.add('sb-src-code');
+    blockEle.style.height = "500px";
+    blockEle.style.overflowY = "auto";
+    blockEle.setAttribute("tabindex", "0");
     if (blockEle) {
         hljs.highlightBlock(blockEle);
     }
@@ -539,6 +543,12 @@ function changeTheme(e) {
     var target = e.target;
     target = ej.base.closest(target, 'li');
     var themeName = target.id;
+    var storedURL = localStorage.getItem('PreviousURL');
+    if (storedURL != null && storedURL.includes("-dark") && themeName!="highcontrast") {
+        themeName = themeName + "-dark";
+    } else {
+        themeName = themeName;
+    }
     switchTheme(themeName);
     var imageEditorElem = document.querySelector(".e-image-editor");
     if (imageEditorElem != null) {
@@ -553,6 +563,7 @@ function switchTheme(str) {
         hash[1] = str;
         localStorage.setItem('ej2-switch', ej.base.select('.sb-responsive-section .active').id);
         location.hash = hash.join('/');
+        location.reload();
     }
 }
 
@@ -620,8 +631,8 @@ function onsearchInputChange(e) {
                     groupBy: 'sortId'
                 },
                 select: controlSelect,
-                template: '<div class="e-text-content e-icon-wrapper" data="${dir}/${url}" uid="${uid}" pid="${parentId}">' +
-                    '<span class="e-list-text" role="list-item">' +
+                template: '<div role="list" class="e-text-content e-icon-wrapper" data="${dir}/${url}" uid="${uid}" pid="${parentId}">' +
+                    '<span class="e-list-text" role="listitem">' +
                     '${name}</span></div>',
                 groupTemplate: '${if(items[0]["component"])}<div class="e-text-content"><span class="e-search-group">${items[0].component}</span>' +
                     '</div>${/if}',
@@ -719,7 +730,6 @@ function processResize(e) {
     if (resizeManualTrigger) {
         return;
     }
-    processDeviceDependables();
     setLeftPaneHeight();
     var leftPane = ej.base.select('.sb-left-pane');
     var rightPane = ej.base.select('.sb-right-pane');
@@ -840,12 +850,6 @@ function bindEvents() {
     ej.base.select('.sb-header-settings').addEventListener('click', viewMobilePrefPane);
     ej.base.select('.sb-mobile-setting').addEventListener('click', viewMobilePropPane);
     resetSearch.addEventListener('click', resetInput);
-    document.getElementById('open-plnkr').addEventListener('click', function () {
-        var plnkrForm = ej.base.select('#plnkr-form');
-        if (plnkrForm) {
-            plnkrForm.submit();
-        }
-    });
     document.getElementById('switch-sb').addEventListener('click', function (e) {
         var target = ej.base.closest(e.target, 'li');
         if (target) {
@@ -958,7 +962,6 @@ function loadTheme(theme) {
     if (isTablet || isMobile) {
         contentTab.hideTab(1);
     }
-    processDeviceDependables();
     sampleArray();
     addRoutes(samplesList);
     if (isTablet && isLeftPaneOpen()) {
@@ -1062,7 +1065,7 @@ function getSampleList() {
                         });
                     }, 200);
                     setTimeout(function () {
-                        location.href = location.origin + getPathName() + `Grid/GridOverview#/${defaultTheme}`
+                        location.href = location.origin + getPathName() + `grid/gridoverview#/${defaultTheme}`
                     }, 2000)
                 }
                 continue;
@@ -1101,7 +1104,7 @@ function renderLeftPaneComponents() {
             htmlAttributes: 'data'
         },
         select: controlSelect,
-        template: '<div class="e-text-content e-icon-wrapper"> <span class="e-list-text" role="listitem">${name}' +
+        template: '<div role="list" class="e-text-content e-icon-wrapper"> <span class="e-list-text" role="listitem">${name}' +
             '</span>${if(type === "update")}<span class="e-badge sb-badge e-samplestatus ${type}">Updated</span>' +
             '${else}${if(type)}<span class="e-badge sb-badge e-samplestatus ${type}">${type}</span>${/if}${/if}' +
             '${if(directory)}<div class="e-icons e-icon-collapsible"></div>${/if}</div>',
@@ -1149,11 +1152,11 @@ function getTreeviewList(list) {
             name: list[i].name,
             type: list[i].type,
             url: {
-                'data-path': '/' + list[i].directory + '/' + list[i].samples[0].url,
-                'control-name': list[i].directory,
+                'data-path': '/' + list[i].directory.toLowerCase() + '/' + list[i].samples[0].url.toLowerCase(),
+                'control-name': list[i].directory.toLowerCase(),
             }
         });
-        controlSampleData[list[i].directory] = getSamples(list[i].samples);
+        controlSampleData[list[i].directory.toLowerCase()] = getSamples(list[i].samples);
     }
     return tempList;
 }
@@ -1163,8 +1166,8 @@ function getSamples(samples) {
     for (var i = 0; i < samples.length; i++) {
         tempSamples[i] = samples[i];
         tempSamples[i].data = {
-            'sample-name': samples[i].url,
-            'data-path': '/' + samples[i].dir + '/' + samples[i].url
+            'sample-name': samples[i].url.toLowerCase(),
+            'data-path': '/' + samples[i].dir.toLowerCase() + '/' + samples[i].url.toLowerCase()
         };
     }
     return tempSamples;
@@ -1173,7 +1176,7 @@ function getSamples(samples) {
 function controlSelect(arg) {
     var path = (arg.node || arg.item).getAttribute('data-path');
     if (path === null && arg.data) {
-        path = arg.data.component + '/' + arg.data.url;
+        path = arg.data.component.toLowerCase() + '/' + arg.data.url.toLowerCase();
     }
     var curHashCollection = '/' + location.href.split('/').slice(3).join('/');
     var theme = getThemeName();
@@ -1207,13 +1210,13 @@ function controlSelect(arg) {
     
                 if (arg.data) {
                     var pathName = location.pathname.replace(getSamplePath(), '');
-                    if (curHashCollection.split('/')[curHashCollection.split('/').length - 3] != arg.data.dir) {
-                        var SampleObject = window.samplesList.filter(obj => obj.directory === arg.data.dir);
+                    if (curHashCollection.split('/')[curHashCollection.split('/').length - 3] != arg.data.dir.toLowerCase()) {
+                        var SampleObject = window.samplesList.filter(obj => obj.directory.toLowerCase() === arg.data.dir.toLowerCase());
                         var defaultSample = SampleObject.map(obj => obj.samples[0]);
-                        location.href = location.origin + pathName + arg.data.dir + '/' + defaultSample[0].url + '#/' + theme;
+                        location.href = location.origin + pathName + arg.data.dir.toLowerCase() + '/' + defaultSample[0].url.toLowerCase() + '#/' + theme;
                     }
                     else {
-                        location.href = location.origin + pathName + arg.data.dir + '/' + arg.data.url + '#/' + theme;
+                        location.href = location.origin + pathName + arg.data.dir.toLowerCase() + '/' + arg.data.url.toLowerCase() + '#/' + theme;
                     }
                 }
             } else {
@@ -1279,7 +1282,8 @@ function setSelectList() {
     var hash = hString.split('/');
     var list = ej.base.select('#controlList').ej2_instances[0];
     var sampleName = hash.slice(-2)[1];
-    var selectSample = ej.base.select('[sample-name="' + sampleName.replace('#', '') + '"]') || ej.base.select('[sample-name="' + list.localData[0].url + '"]');
+    var selectSample = ej.base.select('[sample-name="' + sampleName.replace('#', '') + '"]') || ej.base.select('[sample-name="' + list.localData[0].url.toLowerCase()
+    + '"]');
     if (selectSample) {
         if (ej.base.select('#controlTree').style.display !== 'none') {
             showHideControlTree();
@@ -1318,38 +1322,14 @@ function setPropertySectionHeight() {
     }
 }
 
-function plunker(results) {
-    var plnkr = JSON.parse(results);
-    var prevForm = ej.base.select('#plnkr-form');
-    if (prevForm) {
-        ej.base.detach(prevForm);
-    }
-    var form = ej.base.createElement('form');
-    var res = ((location.href).includes('ej2.syncfusion.com') ? 'https:' : 'http:') + '//plnkr.co/edit/?p=preview';
-    form.setAttribute('action', res);
-    form.setAttribute('method', 'post');
-    form.setAttribute('target', '_blank');
-    form.id = 'plnkr-form';
-    form.style.display = 'none';
-    document.body.appendChild(form);
-    var plunks = Object.keys(plnkr);
-    for (var x = 0; x < plunks.length; x++) {
-        var ip = ej.base.createElement('input');
-        ip.setAttribute('type', 'hidden');
-        ip.setAttribute('value', plnkr[plunks[x]]);
-        ip.setAttribute('name', 'files[' + plunks[x] + ']');
-        form.appendChild(ip);
-    }
-}
-
 function sampleArray() {
     for (var node in samplesList) {
         var dataManager = new ej.data.DataManager(samplesList[node].samples);
         var samples = dataManager.executeLocal(new ej.data.Query().sortBy('order', 'ascending'));
         for (var sample in samples) {
             var selectedTheme = location.hash.split('/')[1] ? location.hash.split('/')[1] : defaultTheme;
-            var control = samplesList[node].directory;
-            var sampleUrl = samples[sample].url;
+            var control = samplesList[node].directory.toLowerCase();
+            var sampleUrl = samples[sample].url.toLowerCase();
             var loc = control + '/' + sampleUrl;
             samplesAr.push(loc);
         }
@@ -1362,11 +1342,11 @@ function addRoutes(samplesList) {
         var dataManager = new ej.data.DataManager(node.samples);
         var samples = dataManager.executeLocal(new ej.data.Query().sortBy('order', 'ascending'));
         var loop2 = function (subNode) {
-            var control = node.directory;
-            var sample = subNode.url;
+            var control = node.directory.toLowerCase();
+            var sample = subNode.url.toLowerCase();
             samplePath = samplePath.concat(control + '/' + sample);
             var sampleName = node.name + ' / ' + ((node.name !== subNode.category) ?
-                (subNode.category + ' / ') : '') + subNode.url;
+                (subNode.category + ' / ') : '') + subNode.url.toLowerCase();
             var selectedTheme = location.hash.split('/')[1] ? location.hash.split('/')[1] : defaultTheme;
             var urlString = control + '/' + sample;
             if (getSamplePath() === urlString) {
@@ -1401,11 +1381,11 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
     var controlID = node.uid;
     var sampleID = subNode.uid;
     setSbLink();
-    var ajaxCS = new ej.base.Ajax((window.hasher.getBaseURL().includes('ej2.syncfusion.com') ? 'https://aspnetmvc.syncfusion.com/aspnetmvc/' :baseurl) + 'Controllers/' + subNode.component + '/' + subNode.url + 'Controller.cs', 'GET', false);
-    var ajaxCSHTML = new ej.base.Ajax((window.hasher.getBaseURL().includes('ej2.syncfusion.com') ? 'https://aspnetmvc.syncfusion.com/aspnetmvc/' :baseurl) + 'Home/GetHtml?path=Views/' + subNode.component + '/' + subNode.url + '.cshtml', 'GET', false);
+    var ajaxCS = new ej.base.Ajax((window.hasher.getBaseURL().includes('ej2.syncfusion.com') ? 'https://aspnetmvc.syncfusion.com/aspnetmvc/' : baseurl) + 'Controllers/' + subNode.dir.toLowerCase() + '/' + subNode.url.toLowerCase() + 'Controller.cs', 'GET', false);
+    var ajaxCSHTML = new ej.base.Ajax((window.hasher.getBaseURL().includes('ej2.syncfusion.com') ? 'https://aspnetmvc.syncfusion.com/aspnetmvc/' : baseurl) + 'Home/GetHtml?path=Views/' + subNode.dir.toLowerCase() + '/' + subNode.url.toLowerCase() + '.cshtml', 'GET', false);
     var add = [ajaxCSHTML, ajaxCS];
-    var cs = subNode.url + 'controller.cs';
-    var cshtml = subNode.url + '.cshtml';
+    var cs = subNode.url.toLowerCase() + 'controller.cs';
+    var cshtml = subNode.url.toLowerCase() + '.cshtml';
     var name = [cshtml, cs];
     //var p2 = loadScriptfile('src/' + control + '/' + sample + '.js');
     //var ajaxJs = new ej.base.Ajax('src/' + control + '/' + sample + '.js', 'GET', true);
@@ -1421,7 +1401,7 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
         breadCrumbSubCategory.style.display = 'none';
         breadCrumSeperator.style.display = 'none';
     }
-    if (getSamplePath() == subNode.component + '/' + subNode.url) {
+    if (getSamplePath() == subNode.dir.toLowerCase() + '/' + subNode.url.toLowerCase()) {
         breadCrumbSample.innerHTML = subNode.name;
     }
     var ext, ajaxJS;
@@ -1463,7 +1443,7 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
     ArrayItem = items;
     currentControlID = controlID;
     currentSampleID = sampleID;
-    currentControl = node.directory;
+    currentControl = node.directory.toLowerCase();
     var curIndex = samplesAr.indexOf(getSamplePath());
     var samLength = samplesAr.length - 1;
     if (curIndex === samLength) {
@@ -1552,14 +1532,6 @@ function parseHash(newHash, oldHash) {
     
 }
 
-function processDeviceDependables() {
-    if (ej.base.Browser.isDevice) {
-        ej.base.select('.sb-desktop-setting').classList.add('sb-hide');
-    } else {
-        ej.base.select('.sb-desktop-setting').classList.remove('sb-hide');
-    }
-}
-
 function renderPropertyPane(ele) {
     var contentEle = ej.base.select('#control-content');
     var elem = contentEle.querySelector(ele);
@@ -1631,15 +1603,13 @@ function updateThemeURL() {
         if (hashValue.includes("-dark")) {
             // Remove "-dark" from the hash 
             hashValue = hashValue.replace("-dark", "");
-            console.log("hashValue URL (removed -dark):", hashValue);
         } else {
             // Append "-dark" to the hash
             hashValue = hashValue + "-dark";
-            console.log("hashValue URL:", hashValue);
         }
         updatedURL = baseUrl + "#/" + hashValue;
     } else {
-        console.log("No hash found in the URL");
+        //console.log("No hash found in the URL");
     }
     // Return the updated URL
     return updatedURL;
@@ -1647,7 +1617,7 @@ function updateThemeURL() {
 
 function navigateToPage() {
     var updatedURL = updateThemeURL();
-    console.log("Updated URL is: " + updatedURL);
+    localStorage.setItem('PreviousURL', updatedURL);
     window.location.href = updatedURL;
     location.reload();
 }

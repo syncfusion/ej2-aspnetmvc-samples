@@ -17,6 +17,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Syncfusion.Licensing;
 using System.IO;
+using System.Net;
 
 namespace EJ2MVCSampleBrowser
 {
@@ -47,5 +48,25 @@ namespace EJ2MVCSampleBrowser
                 }
             }
         }
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            if (Request.Url.AbsolutePath.Contains("/Content/") || Request.Url.AbsolutePath.Contains("/Scripts/") || Request.HttpMethod == "POST")
+            {
+                return;
+            }
+
+            // Check for uppercase characters
+            if (Regex.IsMatch(Request.Url.ToString(), @"[A-Z]"))
+            {
+                var url = Request.Url.ToString().ToLower();
+                Response.Clear();
+                Response.Status = "301 Moved Permanently";
+                Response.StatusCode = (int)HttpStatusCode.MovedPermanently;
+                Response.AddHeader("Location", url);
+                Response.End();
+            }
+        }
+
     }
+
 }

@@ -70,7 +70,7 @@
                        {
                            items.Type(RibbonItemType.Gallery).GallerySettings(gallery =>
                            {
-                               gallery.ItemCount(3).Select("function(){updateContent('Gallery')}").PopupWidth("580px").Groups(galleryGroups =>
+                               gallery.ItemCount(3).Select("function(args){updateContent('Gallery -> ' + args.currentItem.content)}").PopupWidth("580px").Groups(galleryGroups =>
                                {
                                    galleryGroups.Header("Title and Headings").ItemWidth("100").ItemHeight("30").Items(galleryItems =>
                                    {
