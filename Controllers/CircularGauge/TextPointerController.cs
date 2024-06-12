@@ -5,7 +5,6 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
-using EJ2MVCSampleBrowser.Controllers.Diagram;
 using Syncfusion.EJ2.CircularGauge;
 using System;
 using System.Collections.Generic;

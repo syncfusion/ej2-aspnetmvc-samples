@@ -28,8 +28,8 @@
             .LabelSettings(ls => ls.LeftLabel("TaskName"))
             .SplitterSettings(sp => sp.ColumnIndex(2))
             .ToolbarClick("ToolbarClick")
-            .ProjectStartDate("03/24/2019")
-            .ProjectEndDate("07/06/2019")
+            .ProjectStartDate("03/24/2024")
+            .ProjectEndDate("07/06/2024")
             .Render()
         )
 
@@ -59,6 +59,11 @@
         .tailwind #ToolbarTemplate .e-quickfilter::before, .tailwind-dark #ToolbarTemplate .e-quickfilter::before {
             content: '\e7f7';
         } 
+        .fluent2 #ToolbarTemplate .e-quickfilter::before,
+        .fluent2-dark #ToolbarTemplate .e-quickfilter::before,
+        .fluent2-highcontrast #ToolbarTemplate .e-quickfilter::before{
+            content: '\e7f7';
+        }
     </style>
 
     <script>

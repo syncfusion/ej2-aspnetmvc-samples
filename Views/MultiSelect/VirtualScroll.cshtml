@@ -20,7 +20,7 @@
             <h4>Default Values</h4>
             @Html.EJS().MultiSelect("default").Mode(VisualMode.Default).Placeholder("e.g. Item 1").DataSource(@Model.RecordList).EnableVirtualization(true).AllowFiltering(true).HideSelectedItem(true).ClosePopupOnSelect(true).AllowCustomValue(true).Fields(new MultiSelectFieldSettings
             {
-             Text = "Text", Value = "ID"
+            Text = "Text", Value = "ID"
             }).PopupHeight("200px").Value((string[])@Model.val).Render()
         </div>
         <div class="control-wrapper">

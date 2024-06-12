@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             if (button == null)
                 return View();
-            Stream readFile = new FileStream(ResolveApplicationDataPath(@"Syncfusion Presentation.pptx"), FileMode.Open, FileAccess.Read, FileShare.Read);
+            Stream readFile = new FileStream(ResolveApplicationDataPath(@"Input_Template.pptx"), FileMode.Open, FileAccess.Read, FileShare.Read);
             IPresentation presentation = Presentation.Open(readFile);
             
             presentation.ChartToImageConverter = new ChartToImageConverter();

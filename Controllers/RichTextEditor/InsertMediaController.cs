@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult InsertMedia()
         {
-            ViewBag.Items = new[] { "Bold", "Italic", "Underline", "|", "Formats", "Alignments", "OrderedList", "UnorderedList", "|", "CreateLink", "Image", "Audio", "Video", "|", "SourceCode", "Undo", "Redo" };
+            ViewBag.Items = new[] { "Bold", "Italic", "Underline", "|", "Formats", "Alignments", "Blockquote", "OrderedList", "UnorderedList", "|", "CreateLink", "Image", "Audio", "Video", "|", "SourceCode", "Undo", "Redo" };
             return View();
         }
     }

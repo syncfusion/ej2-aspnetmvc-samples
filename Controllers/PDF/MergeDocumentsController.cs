@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult MergeDocuments(string InsideBrowser, string OptimizeResources)
+        public ActionResult MergeDocuments(string InsideBrowser, string OptimizeResources, string MergeAccessibilityTags)
         {
 
             Stream stream1 = new FileStream(ResolveApplicationDataPath("HTTP Succinctly.pdf"), FileMode.Open, FileAccess.Read);
@@ -43,10 +43,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             object[] dobj = { doc1, doc2 };
             PdfDocument doc = new PdfDocument();
 
-            if(OptimizeResources == "OptimizeResources")
+            if(OptimizeResources == "OptimizeResources" || MergeAccessibilityTags == "MergeAccessibilityTags")
             {
                 PdfMergeOptions mergeOption = new PdfMergeOptions();
-                mergeOption.OptimizeResources = true;
+                mergeOption.MergeAccessibilityTags = !string.IsNullOrEmpty(MergeAccessibilityTags) ? true : false;
+                mergeOption.OptimizeResources = !string.IsNullOrEmpty(OptimizeResources) ? true : false;
                 PdfDocument.Merge(doc, mergeOption, dobj);
             }
             else
@@ -54,7 +55,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                 PdfDocument.Merge(doc, dobj);
             }
 
-            PdfDocument.Merge(doc, dobj);
+            
 
             if (InsideBrowser == "Browser")
                 return doc.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Open);

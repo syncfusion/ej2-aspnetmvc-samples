@@ -111,6 +111,14 @@
                 if (args.series.yName === "Rate")
                     args.fill = "grey";
             }
+            else if (selectedTheme === 'fluent2-dark') {
+                if (args.series.yName == "Rate")
+                    args.fill = "#f9fafb";
+            }
+            else if (selectedTheme === 'fluent2') {
+                if (args.series.yName == "Rate")
+                    args.fill = "grey";
+            }
             else {
                 if (args.series.yName === "Rate")
                     args.fill = "grey";
@@ -130,7 +138,7 @@
 }
 @section Description{
 	<p>
-		In this example, you can see how to render and configure the column chart. The column chart is used to compare the frequency, count, total, or average of data in different categories. You can use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartCornerRadius.html">ChartCornerRadius</a> option to customize the vertical rectangle, resulting in a rounded column.
+		In this example, you can see how to render and configure the column chart. The column chart is used to compare the frequency, count, total, or average of data in different categories. You can use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartCornerRadius.html" aria-label="ChartCornerRadius">ChartCornerRadius<span class="sr-only">opens in a new tab</span></a> option to customize the vertical rectangle, resulting in a rounded column.
 	</p>
 	<p>
 		<code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.

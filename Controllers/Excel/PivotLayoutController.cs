@@ -145,6 +145,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Excel
                 cellFormat2.BackColorRGB = Color.FromArgb(255, 244, 176, 132);
             }
 
+            //Apply the show values row option in pivot table.
+            pivotTable.Options.ShowValuesRow = true;
+
             //Apply built in style.
             pivotTable.BuiltInStyle = PivotBuiltInStyles.PivotStyleMedium9;
             pivotSheet.Range[1, 1, 1, 14].ColumnWidth = 11;

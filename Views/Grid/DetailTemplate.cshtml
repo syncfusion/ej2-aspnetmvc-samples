@@ -11,7 +11,7 @@
        col.Field("FirstName").HeaderText("Name").Width("110").Add();
        col.Field("Title").HeaderText("Title").Width("150").Add();
        col.Field("Country").HeaderText("Country").Width("110").Add();
-   }).AllowSorting().Render()
+   }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Render()
         </div>
 
 <style type="text/css" class="cssStyles">

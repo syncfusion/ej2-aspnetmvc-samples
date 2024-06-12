@@ -8,13 +8,13 @@
         @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("335").Width("auto").Columns(col =>
    {
 
-       col.Field("EmployeeID").HeaderText("Employee ID").HeaderTemplate("#employeetemplate").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("FirstName").HeaderText("First Name").Width("140").Add();
-       col.Field("BirthDate").HeaderText("Birth Date").HeaderTemplate("#datetemplate").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();       
+       col.Field("EmployeeID").HeaderText("Employee ID").HeaderTemplate("#employeetemplate").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+       col.Field("FirstName").HeaderText("First Name").Width("140").ValidationRules(new { required = true, minLength = 5 }).Add();
+       col.Field("BirthDate").HeaderText("Birth Date").HeaderTemplate("#datetemplate").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").Add();       
        col.Field("City").Width("120").Add();
        col.Field("Country").HeaderText("Country").Width("140").Add();
 
-   }).AllowSorting().Render()
+   }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
 
     </div>
 

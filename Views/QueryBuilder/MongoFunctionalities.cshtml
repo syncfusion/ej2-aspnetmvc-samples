@@ -116,9 +116,9 @@
         </ul>
         <p>
             More information about Query Builder can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/aspnetmvc/documentation/query-builder/getting-started">
+            <a target="_blank" href="http://ej2.syncfusion.com/aspnetmvc/documentation/query-builder/getting-started" aria-label="documentation section">
                 documentation section
-            </a>.
+            <span class="sr-only">opens in a new tab</span></a>.
         </p>
     </div>
 }
@@ -297,9 +297,9 @@
         width: 96%;
     }
 
-    .e-text-area-content:focus-visible {
-        outline: none;
-    }
+        .e-text-area-content:focus-visible {
+            outline: none;
+        }
 
     .top-right-element {
         padding-right: 20px;
@@ -334,6 +334,19 @@
         .e-query-preview .copy-tooltip {
            display: block !important;
         }
+    }
+
+    .fluent2-dark .content-area,
+    .fluent2-highcontrast .content-area {
+        background-color: #1f1f1f;
+    }
+
+    .highcontrast .e-query-json-preview .e-icons.e-copy,
+    .fluent2-dark .e-query-preview .e-icons.e-copy,
+    .fluent2-highcontrast .e-query-preview .e-icons.e-copy {
+        padding-bottom: 3px;
+        color: white;
+        background-color: black;
     }
 </style>
 @*custom code end*@

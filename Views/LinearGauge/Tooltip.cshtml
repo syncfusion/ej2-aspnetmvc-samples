@@ -9,11 +9,11 @@
             annotation.Content("<div id=second><h1 style=font-size:15px>Centimeters</h1></div>").ZIndex("1").AxisValue(16.5).X(50).Y(52).AxisIndex(1).Add();
         }).Axes(axes =>
         {
-            axes.Maximum(10).Line(line => line.Offset(140))
+            axes.Maximum(10).Line(line => line.Offset(140).Color("#a6a6a"))
             .Pointers(pointer => pointer.Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Value(5.4).Offset("15").Color("#ff66b3").Add())
             .MajorTicks(majorTick => majorTick.Interval(1).Height(20).Color("#9E9E9E"))
             .MinorTicks(minorTick => minorTick.Interval(0.2).Height(10).Color("#9E9E9E")).Add();
-            axes.Maximum(25).OpposedPosition(true).Line(line => line.Offset(-140))
+            axes.Maximum(25).OpposedPosition(true).Line(line => line.Offset(-140).Color("#a6a6a"))
             .Pointers(pointer => pointer.Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Value(16.5).Offset("-15").Color("#4d94ff").Add())
             .MajorTicks(majorTick => majorTick.Interval(1).Height(20).Color("#9E9E9E"))
             .MinorTicks(minorTick => minorTick.Interval(0.2).Height(10).Color("#9E9E9E")).Add();
@@ -121,7 +121,7 @@
         </p>
         <p>
             More information about tooltip can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/user-interaction#tooltip">documentation section</a>.
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/user-interaction#tooltip" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
         </p>
     </div>
 

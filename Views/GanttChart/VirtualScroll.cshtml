@@ -6,7 +6,7 @@
 @section ControlsSection{
     <div class="control-section">
 
-        @(Html.EJS().Gantt("VirtualScroll").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").EnableVirtualization(true).HighlightWeekends(true).ProjectEndDate("12/31/2025").ProjectStartDate("04/01/2019").EnableTimelineVirtualization(true).AllowSelection(true)
+        @(Html.EJS().Gantt("VirtualScroll").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").EnableVirtualization(true).HighlightWeekends(true).ProjectEndDate("12/31/2030").ProjectStartDate("04/01/2024").EnableTimelineVirtualization(true).AllowSelection(true)
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
             .Child("SubTasks").ParentID("ParentID"))
             .LabelSettings(ls=>ls.TaskLabel("Progress")).Columns(col =>

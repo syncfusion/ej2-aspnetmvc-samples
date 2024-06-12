@@ -6,9 +6,9 @@
   {
       sheet.Name("Shipment Details").Ranges(ranges =>
       {
-          ranges.ShowFieldAsHeader(false).StartCell("A2").Query("new ej.data.Query().select(['OrderID', 'CustomerID', 'ShipName', 'ShipCity', 'ShipCountry', 'Freight']).take(200)").DataSource(dataManger =>
+          ranges.ShowFieldAsHeader(false).StartCell("A2").Query("new ej.data.Query().from('Orders').select(['OrderID', 'CustomerID', 'Freight', 'ShipName', 'ShipCity', 'ShipCountry']).take(200)").DataSource(dataManger =>
    {
-       dataManger.Url("https://services.odata.org/V3/Northwind/Northwind.svc/Orders/").CrossDomain(true).Adaptor("ODataV4Adaptor");
+       dataManger.Url("https://services.odata.org/V4/Northwind/Northwind.svc").CrossDomain(true).Adaptor("ODataV4Adaptor");
    }).Add();
       }).Rows(row =>
       {
@@ -83,9 +83,9 @@
         </p>
         <p>
             More information about remote data binding can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started-mvc">
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started-mvc" aria-label="documentation section">
                 documentation
-            </a> section.
+            <span class="sr-only">opens in a new tab</span></a> section.
         </p>
     </div>
 }

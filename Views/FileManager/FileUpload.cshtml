@@ -6,7 +6,7 @@
 @using EJ2MVCSampleBrowser.Models
 @{
     string[] items = new string[] { "NewFolder", "Upload", "Cut", "Copy", "Delete", "Rename", "SortBy", "Refresh", "Selection", "View", "Details" };
-    string[] contextmenuItems = new string[] { "Open", "|", "Cut", "Copy", "Delete", "Rename", "|", "Details" };
+    string[] file = new string[] { "Cut", "Copy", "Paste", "Delete", "Rename", "|", "Details" };
 }
 @section ControlsSection{
     <div class="control-section">
@@ -25,7 +25,8 @@
                    UploadUrl = "Upload",
                    GetImageUrl = "GetImage"
                }).ToolbarSettings(new Syncfusion.EJ2.FileManager.FileManagerToolbarSettings() { Items = items }).ContextMenuSettings(new Syncfusion.EJ2.FileManager.FileManagerContextMenuSettings() {
-                   File = contextmenuItems, Folder = contextmenuItems }).FileOpen("onFileOpen").Render()</div>).Render()
+                   File = file
+               }).FileOpen("onFileOpen").Render()</div>).Render()
             </div>
         </div>
     </div>
@@ -44,7 +45,7 @@
 
         <p>
             <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install
-            <a target="_blank" href="https://www.syncfusion.com/downloads">Syncfusion Essential Studio </a>on your machine and run the demo.
+            <a target="_blank" href="https://www.syncfusion.com/downloads" aria-label="downloads">Syncfusion Essential Studio <span class="sr-only">opens in a new tab</span></a>on your machine and run the demo.
         </p>
     </div>
 }
@@ -124,6 +125,10 @@
     }
     .fileupload .e-file-drop, .fileupload .e-css.e-btn {
         display: none;
+    }
+
+    .fluent2 .fileupload .e-file-select-wrap {
+        padding: 20px 0 20px 20px;
     }
 </style>
 

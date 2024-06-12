@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             ViewBag.Tools = new[] { "Bold", "Italic", "Underline", "StrikeThrough",
                 "FontName", "FontSize", "FontColor", "BackgroundColor",
-                "Formats", "Alignments", "|", "OrderedList", "UnorderedList", "|",
+                "Formats", "Alignments", "Blockquote", "|", "OrderedList", "UnorderedList", "|",
                 "Outdent", "Indent", "|",
                 "CreateLink", "Image", "Video", "Audio", "CreateTable", "|", "FormatPainter", "ClearFormat", "|", "EmojiPicker",
                 "SourceCode", "|", "Undo", "Redo"};

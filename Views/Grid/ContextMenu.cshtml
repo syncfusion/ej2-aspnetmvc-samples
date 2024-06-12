@@ -14,7 +14,7 @@
        col.Field("ShipCity").HeaderText("Ship City").Width("150").Add();
        col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
 
-   }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().ContextMenuItems( new List<object>() { "AutoFit", "AutoFitAll", "SortAscending", "SortDescending", "Copy", "Edit", "Delete", "Save", "Cancel", "PdfExport", "ExcelExport", "CsvExport", "FirstPage", "PrevPage", "LastPage", "NextPage" }).Render()
+   }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).ContextMenuItems( new List<object>() { "AutoFit", "AutoFitAll", "SortAscending", "SortDescending", "Copy", "Edit", "Delete", "Save", "Cancel", "PdfExport", "ExcelExport", "CsvExport", "FirstPage", "PrevPage", "LastPage", "NextPage" }).Render()
     </div>
 }
 @section ActionDescription{

@@ -13,7 +13,7 @@
                     col.Field("Employees").HeaderText("Employee Name").Width("150").Add();
                     col.Field("Designation").HeaderText("Designation").Width("130").Add();
                     col.Field("CurrentSalary").HeaderText("Current Salary").Width("140").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-                }).AllowPaging().PageSettings(page=>page.PageCount(3)).LoadingIndicator(l => { l.IndicatorType(Syncfusion.EJ2.Grids.IndicatorType.Shimmer); }).Render()
+                }).AllowPaging().Load("load").PageSettings(page=>page.PageCount(3)).LoadingIndicator(l => { l.IndicatorType(Syncfusion.EJ2.Grids.IndicatorType.Shimmer); }).Render()
            </div>
         </div>
     </div>
@@ -30,6 +30,9 @@
 </div>
 
 <script>
+    function load(args) {
+        this.query = new ej.data.Query().addParams('dataCount', '1000');
+    }
     function onChange() {
         var grid = document.getElementById("Grid").ej2_instances[0];
         var dropdown = document.getElementById("Dropdown").ej2_instances[0];

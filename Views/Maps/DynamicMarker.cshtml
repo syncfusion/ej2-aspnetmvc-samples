@@ -14,6 +14,9 @@
     .tailwind .markerCheckbox, .tailwind-dark .markerCheckbox {
         margin-top: -17px;
     }
+    .e-view.fluent2 #property .e-checkbox-wrapper, .e-view.fluent2-dark #property .e-checkbox-wrapper {
+        padding-left: 0px;
+    }
 </style>
 
 <div class="col-lg-9 control-section">
@@ -26,7 +29,7 @@
                 {
                 new Syncfusion.EJ2.Maps.MapsLayer
                 {
-                LayerType = Syncfusion.EJ2.Maps.ShapeLayerType.OSM,
+                UrlTemplate = "https://tile.openstreetmap.org/level/tileX/tileY.png",
                 }}).Render()
                 <div align="center">
                     <div align="center">

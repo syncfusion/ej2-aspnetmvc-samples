@@ -2,7 +2,7 @@
 @using EJ2MVCSampleBrowser.Models
 @using Syncfusion.EJ2
 @section ControlsSection {
-    <div class="col-lg-8 control-section api">
+    <div id="textarea-api"  class="col-lg-8 control-section api">
         <div class="content-wrapper">
             <div class="api-row">
                 @Html.EJS().TextArea("api").Placeholder("Enter your comments").FloatLabelType(FloatLabelType.Auto).Render()
@@ -71,6 +71,10 @@
     .api-property.property-panel-table div.api {
         padding-left: 0px;
     }
+
+    #textarea-api .e-multi-line-input {
+        max-width: 100%;
+    }
 </style>
     @*custom code end*@
 <script type="text/javascript">
@@ -88,11 +92,11 @@
     }
     function rowHandler(args) {
         var textareaObj = document.getElementById('api').ej2_instances[0];
-        textareaObj.rowsCount = args.value;
+        textareaObj.rows = args.value;
     }
     function columnHandler(args) {
         var textareaObj = document.getElementById('api').ej2_instances[0];
-        textareaObj.columnsCount = args.value;
+        textareaObj.cols = args.value;
     }
     function valueHandler(args) {
         var textareaObj = document.getElementById('api').ej2_instances[0];

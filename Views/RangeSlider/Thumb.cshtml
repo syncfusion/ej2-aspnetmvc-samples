@@ -3,7 +3,7 @@
 @using EJ2MVCSampleBrowser.Models
 @section ControlsSection{
     <div class="control-section">
-        <div class="control-wrapper">
+        <div class="control-wrapper custom-thumb">
             <div class="slider_container">
                 <div class="labelText slider-userselect">Square</div>
                 <!-- Square slider element -->
@@ -139,6 +139,12 @@
         margin-left: -12px;
         top: calc(50% - 10px);
         box-shadow: none;
+    }
+
+    .fluent2 .custom-thumb .e-control.e-slider .e-handle,
+    .fluent2-dark .custom-thumb .e-control.e-slider .e-handle,
+    .fluent2-highcontrast .custom-thumb .e-control.e-slider .e-handle {
+        box-shadow:none;
     }
     </style>
 

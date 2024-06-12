@@ -4,7 +4,7 @@
 
     <div class="control-section">
         <div style="display: none;">
-            @Html.EJS().Uploader("fileupload").Success("onUploadSuccess").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("~/Uploader/Save"), RemoveUrl = @Url.Content("~/Uploader/Remove") }).Render()
+            @Html.EJS().Uploader("fileupload").Success("onUploadSuccess").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Remove") }).Render()
         </div>
         <div>
             @(Html.EJS().Toolbar("toolbar").Clicked("onItemClick").Items(ViewBag.tbItems).Render())
@@ -327,6 +327,11 @@
         save the diagram as text files and can edit the pre-saved diagrams. You can use the
         saveDiagram method to save the diagram as string. You can use the loadDiagram method to load the diagram from a string.
         In this example, context menu and undo redo features are enabled.
+    </p>
+    <p>
+        The uploader API control is used to load the JSON data into a diagram asynchronously. Define the properties
+        <code>saveUrl</code>, which will receive the uploaded files and save them on the server, and <code>removeUrl</code>,
+        which will receive the file information and handle the removal of files from the server.
     </p>
 }
 

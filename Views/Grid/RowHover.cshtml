@@ -4,14 +4,14 @@
         @Html.EJS().Grid("RowHover").DataSource((IEnumerable<object>)ViewBag.datasource).EnableHover().AllowPaging().Columns(col =>
    {
 
-       col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("ProductName").HeaderText("Product Name").Width("150").Add();
+       col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+       col.Field("ProductName").HeaderText("Product Name").Width("150").ValidationRules(new { required = true, minLength = 5 }).Add();
        col.Field("UnitPrice").HeaderText("Supplier ID").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("UnitsInStock").HeaderText("Units In Stock").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("Discontinued").HeaderText("Discontinued").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Width("140").Type("boolean").DisplayAsCheckBox(true).Add();
+       col.Field("Discontinued").HeaderText("Discontinued").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Width("140").Type("boolean").DisplayAsCheckBox(true).EditType("booleanedit").Add();
 
 
-   }).PageSettings(page=>page.PageCount(5)).AllowSorting().Render()
+   }).PageSettings(page=>page.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
     </div>
 }
 

@@ -8,17 +8,17 @@
             @Html.EJS().Grid("FrozenGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSelection(false).AllowResizing().Height("410").FrozenRows(2).FrozenColumns(1).Columns(col =>
        {
 
-           col.Field("OrderID").HeaderText("Order ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-           col.Field("Freight").HeaderText("Freight").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-           col.Field("OrderDate").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-           col.Field("CustomerID").HeaderText("Customer Name").Width("200").Add();
+           col.Field("OrderID").HeaderText("Order ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+           col.Field("Freight").HeaderText("Freight").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("numericedit").ValidationRules(new { required = true, min = 0 }).Add();
+           col.Field("OrderDate").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").Add();
+           col.Field("CustomerID").HeaderText("Customer Name").Width("200").ValidationRules(new { required = true, minLength = 5 }).Add();
            col.Field("ShipName").HeaderText("Ship Name").Width("150").Add();
-           col.Field("ShippedDate").HeaderText("Shipped Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+           col.Field("ShippedDate").HeaderText("Shipped Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").Add();
            col.Field("ShipCity").HeaderText("Ship City").Width("200").Add();
            col.Field("ShipAddress").HeaderText("Ship Address").Width("150").Add();
-           col.Field("ShipCountry").HeaderText("Ship Country").Width("150").Add();
+           col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
 
-       }).AllowSorting().Render()
+       }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
         </div>
     </div>
 </div>

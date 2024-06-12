@@ -24,7 +24,7 @@
                 palette.Value(32).Color("rgb(82, 123, 160)").Label("31-49 contributions").Add();
                 palette.Value(50).Color("rgb(37, 78, 119)").Label("50+ contributions").Add();
             }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed).EmptyPointColor("white")).Height("300px").CellSettings(cellSettings =>
-            cellSettings.Border(ViewBag.border).ShowLabel(false)).TooltipRender("tooltipRender").TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).Load("load").DataSource(ViewBag.dataSource).Render()
+            cellSettings.ShowLabel(false)).TooltipRender("tooltipRender").TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).Load("load").DataSource(ViewBag.dataSource).Render()
         </div>
     </div>
     <style>
@@ -49,6 +49,7 @@
             var selectedTheme = themeName ? themeName : 'Material';
             args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
             @* custom code end *@
+            args.heatmap.cellSettings.border.color = selectedTheme.indexOf('dark') > -1 || selectedTheme.indexOf('highcontrast') > -1 ? '#000' : '#fff';
         };
         var dataSource = window.emptyPointDataSource;
 

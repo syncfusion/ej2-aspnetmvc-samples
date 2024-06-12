@@ -116,7 +116,6 @@
             @Html.EJS().Maps("container").Load("onMapLoad").ZoomSettings(new Syncfusion.EJ2.Maps.MapsZoomSettings
            {
                Enable = true,
-               Toolbars = new string[] { "Zoom", "ZoomIn", "ZoomOut", "Pan", "Reset" },
                MouseWheelZoom = true,
                PinchZooming = true
            }).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer>
@@ -211,6 +210,7 @@
             maps = args.maps;
             var theme = themeName ? themeName : 'Material';
             args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.maps.zoomSettings.toolbarSettings.buttonSettings.toolbarItems = ['Zoom', 'ZoomIn', 'ZoomOut', 'Pan', 'Reset'];
         }
 
         var sliderChange;

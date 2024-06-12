@@ -8,7 +8,7 @@
                 @Html.EJS().Splitter("splitter-rte-markdown-preview").Height("450px").Width("100%").Created("onCreateSplitter").Resizing("OnResizing").PaneSettings(paneItem =>
                 {
                     paneItem.Size("50%").Resizable(true).CssClass("pane1").Min("40%").ContentTemplate(@<div>
-                            @Html.EJS().RichTextEditor("defaultRTE").Height("448px").SaveInterval(1).MaxLength(5000).ShowCharCount(true).EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewBag.Items).Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false)).Value(ViewBag.Value).Created("onCreate").Change("onChange").ActionComplete("updateValue").Render()</div>).Add();
+                            @Html.EJS().RichTextEditor("defaultRTE").Height("448px").Placeholder("Enter your text here...").SaveInterval(1).MaxLength(5000).ShowCharCount(true).EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewBag.Items).Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false)).Value(ViewBag.Value).Created("onCreate").Change("onChange").ActionComplete("updateValue").Render()</div>).Add();
                     paneItem.Size("50%").Min("40%").CssClass("pane2").ContentTemplate(@<div class="heading right"><h6 class="title"><b>Markdown Preview</b></h6><div class="splitter-default-content source-code pane2"></div></div>).Add();
 }).Render()
             </div>
@@ -64,6 +64,8 @@
     
     .fluent .e-icon-btn.e-active .e-md-preview::before,
     .fluent-dark .e-icon-btn.e-active .e-md-preview::before,
+    .fluent2 .e-icon-btn.e-active .e-md-preview::before,
+    .fluent2-dark .e-icon-btn.e-active .e-md-preview::before,
     .tailwind .e-icon-btn.e-active .e-md-preview::before,
     .tailwind-dark .e-icon-btn.e-active .e-md-preview::before,
     .bootstrap5 .e-icon-btn.e-active .e-md-preview::before,
@@ -79,6 +81,8 @@
     .bootstrap5-dark .e-icon-btn .e-md-preview::before,
     .fluent .e-icon-btn .e-md-preview::before,
     .fluent-dark .e-icon-btn .e-md-preview::before,
+    .fluent2 .e-icon-btn .e-md-preview::before,
+    .fluent2-dark .e-icon-btn .e-md-preview::before,
     .material3 .e-icon-btn .e-md-preview::before,
     .material3-dark .e-icon-btn .e-md-preview::before {
         content: '\e7de';

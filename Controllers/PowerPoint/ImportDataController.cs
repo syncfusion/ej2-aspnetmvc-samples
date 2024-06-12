@@ -97,7 +97,8 @@ namespace EJ2MVCSampleBrowser.Controllers
             var ord = Object.Value;
             var key = Object.key;
             PresentationData.presentationData.Remove(PresentationData.presentationData.Where(or => or.Year == int.Parse(key.ToString())).FirstOrDefault());
-            return Json(ord);
+            IEnumerable dataSource = PresentationData.presentationData;
+            return Json(dataSource);
         }
         /// <summary>
         /// Insert the data into the start position of the grid

@@ -2,6 +2,10 @@
 @using Syncfusion.EJ2.FileManager
 @using EJ2MVCSampleBrowser.Models
 
+@{
+    string[] file = new string[] { "Cut", "Copy", "Paste", "Delete", "Rename", "|", "Details" };
+}
+
 @section ControlsSection{
     <div class="control-section">
         <div class="sample-container">
@@ -13,6 +17,9 @@
                   DownloadUrl = "Download",
                   UploadUrl = "Upload",
                   GetImageUrl = "GetImage"
+              }).ContextMenuSettings(new Syncfusion.EJ2.FileManager.FileManagerContextMenuSettings()
+              {
+                  File = file
               }).ToolbarItems(new List<FileManagerToolbarItem> {
                 new FileManagerToolbarItem { Name= "NewFolder" },
                 new FileManagerToolbarItem { Template= "#uploadTemplate", Name= "Upload" },
@@ -41,7 +48,7 @@
 
 <script>
     function onSuccess(args) {
-        if (document.getElementById("uploadTemplate").classList.contains("e-dropdown-btn")) {            
+        if (document.getElementById("uploadTemplate").classList.contains("e-dropdown-btn")) {
             document.getElementById('uploadTemplate').onclick = function (args) {
                 args.stopPropagation();
             };
@@ -49,17 +56,17 @@
     }
     function onSelect(args) {
         var fileObject = document.getElementById("filemanager").ej2_instances[0];
-         if (args.item.text === 'Folder') {
-                fileObject.uploadSettings.directoryUpload = true;
-         } else {
-                fileObject.uploadSettings.directoryUpload = false;
-         }
-         setTimeout(function () {
-                let uploadBtn = document.querySelector('.e-file-select-wrap button');
-                uploadBtn.click();
-         }, 100);
+        if (args.item.text === 'Folder') {
+            fileObject.uploadSettings.directoryUpload = true;
+        } else {
+            fileObject.uploadSettings.directoryUpload = false;
+        }
+        setTimeout(function () {
+            let uploadBtn = document.querySelector('.e-file-select-wrap button');
+            uploadBtn.click();
+        }, 100);
     }
-    
+
 
 </script>
 
@@ -87,7 +94,7 @@
 
         <p>
             <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install
-            <a target="_blank" href="https://www.syncfusion.com/downloads">Syncfusion Essential Studio </a>on your machine and run the demo.
+            <a target="_blank" href="https://www.syncfusion.com/downloads" aria-label="downloads">Syncfusion Essential Studio <span class="sr-only">opens in a new tab</span></a>on your machine and run the demo.
         </p>
     </div>
 }

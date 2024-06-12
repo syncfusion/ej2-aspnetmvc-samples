@@ -17,7 +17,7 @@
         @Html.EJS().Dialog("dialog").Header("Merge Field").Visible(false).FooterTemplate("<button id='addButton' class='e-control e-btn e-primary'>Insert</button><button id='cancelButton' class='e-control e-btn e-primary'>Cancel</button>").ShowCloseIcon(true).Width("300px").Target("#target").IsModal(true).ContentTemplate(@<input id='inVal' class='e-input' type='text' placeholder='Type a field to insert Eg. FirstName' />).Render()
         <div class="overlay" id="popup-overlay" style="display: none;"></div>
         <div id='waiting-popup' style="display: none;">
-            <svg class="circular" height="40" width="40">
+            <svg class="circular" height="40" width="40" role="none">
                 <circle class="circle-path" cx="25" cy="25" r="20" fill="none" stroke-width="6" stroke-miterlimit="10" />
             </svg>
         </div>
@@ -39,10 +39,10 @@
             <li>Merged document is opened in the DocumentEditor.</li>
         </ul>
         <p style="display: block">
-            More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/documentation/document-editor">
+            More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/documentation/document-editor" aria-label="documentation section">
                 documentation
                 section.
-            </a>
+            <span class="sr-only">opens in a new tab</span></a>
         </p>
     </div>
 }

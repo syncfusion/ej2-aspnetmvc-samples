@@ -15,6 +15,10 @@ Visual Studio-like style based on original C# coloring by Jason Diamond <jason@d
     color: #008000;
 }
 
+.bootstrap5-dark .hljs-comment {
+    color: #00D100;
+}
+
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-built_in,

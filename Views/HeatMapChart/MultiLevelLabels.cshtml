@@ -69,7 +69,7 @@
                     ]
                 },
             ]);
-            if (selectedTheme === 'highcontrast' || selectedTheme === 'tailwind-dark' || selectedTheme === 'material-dark' || selectedTheme === 'fabric-dark' || selectedTheme === 'bootstrap-dark' || selectedTheme === 'bootstrap5-dark' || selectedTheme === 'material3-dark' || selectedTheme === 'fluent-dark') {
+            if (selectedTheme.indexOf('dark') > -1 || selectedTheme.indexOf('highcontrast') > -1) {
                 args.heatmap.xAxis.textStyle.color = 'White';
                 args.heatmap.yAxis.textStyle.color = 'White';
                 args.heatmap.xAxis.multiLevelLabels[0].textStyle.color = 'White';
@@ -92,9 +92,9 @@
 @section Description{
     <p>
         In this example, you can see how to group axis labels.
-        You can customize text in each level by using <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapMultiLevelLabel.html#Syncfusion_EJ2_HeatMap_HeatMapMultiLevelLabel_Alignment" target="_blank">alignment</a>, <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapMultiLevelLabel.html#Syncfusion_EJ2_HeatMap_HeatMapMultiLevelLabel_TextStyle" target="_blank">textStyle</a> and <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapMultiLevelLabel.html#Syncfusion_EJ2_HeatMap_HeatMapMultiLevelLabel_Border" target="_blank">border</a> properties.
+        You can customize text in each level by using <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapMultiLevelLabel.html#Syncfusion_EJ2_HeatMap_HeatMapMultiLevelLabel_Alignment" target="_blank" aria-label="alignment">alignment<span class="sr-only">opens in a new tab</span></a>, <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapMultiLevelLabel.html#Syncfusion_EJ2_HeatMap_HeatMapMultiLevelLabel_TextStyle" target="_blank" aria-label="textStyle">textStyle<span class="sr-only">opens in a new tab</span></a> and <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapMultiLevelLabel.html#Syncfusion_EJ2_HeatMap_HeatMapMultiLevelLabel_Border" target="_blank" aria-label="border">border<span class="sr-only">opens in a new tab</span></a> properties.
     </p>
-    <p>Border of the axis labels can be customized by using <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapAxisLabelBorder.html#Syncfusion_EJ2_HeatMap_HeatMapAxisLabelBorder_Type" target="_blank">type</a> property.
+    <p>Border of the axis labels can be customized by using <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapAxisLabelBorder.html#Syncfusion_EJ2_HeatMap_HeatMapAxisLabelBorder_Type" target="_blank" aria-label="type">type<span class="sr-only">opens in a new tab</span></a> property.
     </p>
     <ul>
         <li><code>Rectangle</code></li>

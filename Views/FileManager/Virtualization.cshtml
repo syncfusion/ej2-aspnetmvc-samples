@@ -5,6 +5,7 @@
 @{
     string[] items = new string[] { "NewFolder", "Cut", "Copy", "Paste", "Delete", "Download", "Rename", "SortBy", "Refresh", "View", "Details" };
     string[] layout = new string[] { "SortBy", "View", "Refresh", "|", "Paste", "|", "NewFolder", "|", "Details", "|", "SelectAll" };
+    string[] file = new string[] { "Cut", "Copy", "Paste", "Delete", "Rename", "|", "Details" };
 }
 
 @section ControlsSection{
@@ -23,6 +24,7 @@
                            Items = items
                        }).ContextMenuSettings(new Syncfusion.EJ2.FileManager.FileManagerContextMenuSettings()
                        {
+                           File = file,
                            Layout = layout
                        }).EnableVirtualization(true).Render()
         </div>
@@ -41,7 +43,7 @@
         <p>To use virtual scrolling feature, inject Virtualization module using the <code>FileManager.Inject(Virtualization)</code> section.</p>
         <p>
             <b>Note: </b>File Manager’s upload functionality is restricted in the online demo. If you need to test upload functionality, please install
-            <a target="_blank" href="https://www.syncfusion.com/downloads">Syncfusion Essential Studio </a>on your machine and run the demo.
+            <a target="_blank" href="https://www.syncfusion.com/downloads" aria-label="downloads">Syncfusion Essential Studio <span class="sr-only">opens in a new tab</span></a>on your machine and run the demo.
         </p>
     </div>
 }

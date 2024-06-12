@@ -14,7 +14,7 @@
                col.Field("UnitsInStock").HeaderText("UnitsIn Stock").Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
                col.Field("Discontinued").HeaderText("Discontinued").Width("150").DisplayAsCheckBox(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Type("boolean").Add();
 
-           }).AllowPaging().PageSettings(page => page.PageCount(2)).AllowSorting().Render()
+           }).AllowPaging().PageSettings(page => page.PageCount(2)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Render()
         </div>
     </div>
 </div>
@@ -46,7 +46,7 @@
                     Hidden Columns
             </td>
             <td style="width: 70%; padding:10px 10px 10px 0px">
-                    <textarea id="hiddencolumns" style="resize: none;height:65px;background-color: #fff; padding: 6px" class="form-control" readonly="readonly"></textarea>
+                    <textarea id="hiddencolumns" style="resize: none;height:65px;padding: 6px" class="e-input e-textarea" readonly="readonly"></textarea>
             </td>
         </tr>
     </table>

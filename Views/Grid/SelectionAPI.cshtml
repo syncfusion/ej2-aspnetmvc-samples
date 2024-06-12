@@ -11,7 +11,7 @@
            col.Field("Country").HeaderText("Country").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
            col.Field("Active").HeaderText("Active").Width("130").Add();           
 
-       }).AllowPaging().AllowSorting().SelectionSettings(select=>select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(2)).Render()
+       }).AllowPaging().AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).SelectionSettings(select=>select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(2)).Render()
         </div>
     </div>
 </div>
@@ -113,9 +113,9 @@
             </li>
         </ul>
 		<p>To perform the column selection, enable the <code><a target="_blank" class="code"
-			href="https://ej2.syncfusion.com/javascript/documentation/api/grid/selectionSettings/#allowcolumnselection">
+			href="https://ej2.syncfusion.com/javascript/documentation/api/grid/selectionSettings/#allowcolumnselection" aria-label="selectionSettings">
 			selectionSettings->allowColumnSelection
-        </a></code> property.</p>
+        <span class="sr-only">opens in a new tab</span></a></code> property.</p>
 		<p>To perform the multi-selection, hold <strong>CTRL</strong> key and click the desired rows/cells/columns. 
 		To select range of rows/cells/columns, hold <strong>SHIFT</strong> key and click the rows/cells/columns.</p>
 		<p>While using the Grid in a touch device environment, there is an option for multi-selection 

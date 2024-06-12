@@ -32,7 +32,6 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
             };
             string[] yLabels = new string[7] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
             ViewBag.yLabels = yLabels;
-            ViewBag.border = new { color = "white" };
             ViewBag.dataSource = new HeatMapData().GetCalendarData();
             return View();
         }

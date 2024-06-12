@@ -6,7 +6,7 @@
     <div class="col-lg-8 control-section floatinglabel">
         <div class="content-wrapper">
             <div class="floatinglabel-row">
-                @Html.EJS().TextArea("floatlabel").Placeholder("Enter your comments").FloatLabelType(FloatLabelType.Auto).Render()
+                @Html.EJS().TextArea("floatlabel").Placeholder("Enter your comments").FloatLabelType(FloatLabelType.Auto).Rows(5).Cols(300).Render()
             </div>
         </div>
     </div>  
@@ -33,6 +33,10 @@
     .floatinglabel-property .left-side {
         font-size: 14px;
         padding: 8px;
+    }
+
+    #textarea-float .e-multi-line-input {
+        max-width: 100%;
     }
 </style>
     @*custom code end*@

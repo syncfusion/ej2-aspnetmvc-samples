@@ -81,14 +81,14 @@
                 }
 @section ActionDescription{
     <div id="action-description">
-        <p>This <a href="https://www.syncfusion.com/aspnet-mvc-ui-controls/treeview" target="_blank">ASP.NET MVC TreeView example</a> demonstrates the drag and drop functionality of TreeView. A drag and drop image is present at the top of the sample which hides on clicking the sample. To drag and drop node, select and drag the desired node and drop it on the target node or external container.</p>
+        <p>This <a href="https://www.syncfusion.com/aspnet-mvc-ui-controls/treeview" target="_blank" aria-label="ASP.NET MVC TreeView example">ASP.NET MVC TreeView example<span class="sr-only">opens in a new tab</span></a> demonstrates the drag and drop functionality of TreeView. A drag and drop image is present at the top of the sample which hides on clicking the sample. To drag and drop node, select and drag the desired node and drop it on the target node or external container.</p>
     </div>
 }
 
 @section Description{
     <div id="description">
         <p>The <code>TreeView</code> component allows users to drag any node and drop it on any other node in the same or different tree using <code>allowDragAndDrop</code> property. Additionally, it supports dropping a tree node to an external container using <code>nodeDragStop</code> event of the TreeView</p>
-        <p>For more information, you can refer to the <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/treeview/drag-and-drop/" target="_blank">Drag and Drop</a> section from the documentation.</p>
+        <p>For more information, you can refer to the <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/treeview/drag-and-drop/" target="_blank">Drag and Drop<span class="sr-only">opens in a new tab</span></a> section from the documentation.</p>
     </div>
 }
 @*custom code start*@
@@ -161,7 +161,11 @@
         color: rgba(0, 0, 0, 0.54);
         font-size: 15px;
     }
-    
+    .fluent2 #list.e-listview .e-list-item,
+    .fluent2-dark #list.e-listview .e-list-item,
+    .fluent2-high-contrast #list.e-listview .e-list-item {
+        padding: 7px 12px;
+    }
     .fabric.e-bigger #list.e-listview .e-list-item,
     .fabric-dark.e-bigger #list.e-listview .e-list-item,
     .highcontrast.e-bigger #list.e-listview .e-list-item {

@@ -4,11 +4,12 @@
         @Html.EJS().Grid("CheckboxSelection").DataSource((IEnumerable<object>)ViewBag.dataSource).SelectionSettings(sel => { sel.PersistSelection(true); }).Columns(col =>
    {
        col.Type("checkbox").Width("50").Add();
-       col.Field("Inventor").HeaderText("Inventor Name").IsPrimaryKey(true).Width("180").Add();
-       col.Field("NumberofPatentFamilies").HeaderText("No of Patent Families").Width("195").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("Country").HeaderText("Country").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("Active").HeaderText("Active").Width("130").Add();
-   }).AllowPaging().PageSettings(page=>page.PageCount(2)).AllowSorting().EditSettings(edit => { edit.AllowDeleting(true);}).Toolbar(new List<string>() { "Delete" }).Render()
+       col.Field("OrderID").HeaderText("Order ID").Width("120").IsPrimaryKey(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("CustomerID").HeaderText("Customer Name").Width("150").Add();
+       col.Field("OrderDate").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("Freight").HeaderText("Freight").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").Width("150").Add();
+   }).AllowPaging().PageSettings(page=>page.PageCount(2)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowDeleting(true);}).Toolbar(new List<string>() { "Delete" }).Render()
     </div>
 }
 

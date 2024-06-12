@@ -104,6 +104,8 @@
             var material3Colors = ["#2196F5", "#4BE0BC", "#FD7400", "#963C70", "#F7523F", "#FFB400", "#00AEE0", "#6355C7"];
             var material3DarkColors = ["#B93CE4", "#B3F32F", "#FF9E45", "#38FFE7", "#17EA58", "#FFF500", "#FA4EAB", "#4EAAFF"];
             var defaultColors = ["#7f84e8", "#dd8abd", "#70ad47", "#f8b883", "#e56590", "#357cd2", "#404041", "#00bdae"];
+            var fluent2Colors = ["#6200EE", "#09AF74", "#0076E5", "#CB3587", "#E7910F", "#0364DE", "#66CD15", "#F3A93C", "#107C10", "#C19C00"];
+            var fluent2DarkColors = ["#9BB449", "#2A72D5", "#43B786", "#3F579A", "#584EC6", "#E85F9C", "#6E7A89", "#EA6266", "#0B6A0B", "#C19C00"];
             var color = [];
             switch (args.bulletChart.theme) {
                 case 'Fabric':
@@ -148,6 +150,12 @@
                 case 'Material3Dark':
                     color = material3DarkColors;
                     break;
+                case 'Fluent2':
+                    color = fluent2Colors;
+                    break;
+                case "Fluent2Dark":
+                    color = fluent2DarkColors;
+                    break;
                 default:
                     color = defaultColors;
                     break;
@@ -170,13 +178,13 @@
 }
 @section Description{
     <p>
-        In this example, you can observe how multiple datasets are compared in a bullet chart. Here, each value bar is assigned a different color from the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.charts.bulletchart.html#Syncfusion_EJ2_Charts_BulletChart_DataSource">DataSource</a>.
+        In this example, you can observe how multiple datasets are compared in a bullet chart. Here, each value bar is assigned a different color from the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.charts.bulletchart.html#Syncfusion_EJ2_Charts_BulletChart_DataSource" aria-label="DataSource">DataSource<span class="sr-only">opens in a new tab</span></a>.
     </p>
     <p>
         <code>Tooltips</code> are enabled in this example, to see them in action, hover over a feature bar or comparative bar on the bullet chart.
     </p>
     <p>
-        More information on the data binding for the bullet chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/bullet-chart/data-binding">documentation section</a>.
+        More information on the data binding for the bullet chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/bullet-chart/data-binding" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
     </p>
 }
 @section Title{

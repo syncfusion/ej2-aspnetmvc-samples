@@ -11,7 +11,7 @@
             @Html.EJS().RichTextEditor("defaultRTE").ToolbarClick("onToolbarClick").Destroyed("destroyed").ContentTemplate(@<div>
                 <p>
                     An image can be edited within a Rich Text Editor using an Image Editor.
-                    <img id="img1" style="height: 350px;" src=@Url.Content("~/Content/images/RichTextEditor/bridge.png")>
+                    <img id="img1" style="height: 350px;" src=@Url.Content("~/Content/images/RichTextEditor/bridge.png") aria-label='Bridge'>
                 </p>
                 <p>
                     It allows users to quickly and easily add an Image Editor to their Rich Text Editor. It provides a variety of features, including image cropping, resizing, rotation, and more. Additionally, it supports a wide range of image formats, including JPEG, PNG, and GIF.
@@ -44,8 +44,8 @@
     <div id="description">
         <p>The Image Editor control is integrated into the Rich Text Editor and opens the Image Editor within a Dialog when the Image Editor custom quick toolbar is clicked and allows to edit the image. To achieve this, the sample is customized for the Image Editor and Rich Text Editor</p>
         <ul>
-            <li>Include the Image Editor custom toolbar item in the <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.RichTextEditor.RichTextEditorQuickToolbarSettings.html#Syncfusion_EJ2_RichTextEditor_RichTextEditorQuickToolbarSettings_Image">QuickToolbarSettings.Image </a> property of the Rich Text Editor</li>
-            <li>Configure Image Editor within a Dialog using the <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Popups.Dialog.html#Syncfusion_EJ2_Popups_Dialog_BeforeOpen">BeforeOpen</a> event of the Dialog</li>
+            <li>Include the Image Editor custom toolbar item in the <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.RichTextEditor.RichTextEditorQuickToolbarSettings.html#Syncfusion_EJ2_RichTextEditor_RichTextEditorQuickToolbarSettings_Image">QuickToolbarSettings.Image <span class="sr-only">opens in a new tab</span></a> property of the Rich Text Editor</li>
+            <li>Configure Image Editor within a Dialog using the <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Popups.Dialog.html#Syncfusion_EJ2_Popups_Dialog_BeforeOpen">BeforeOpen<span class="sr-only">opens in a new tab</span></a> event of the Dialog</li>
             <li>Open the Dialog on clicking the Image Editor custom toolbar item</li>
             <li>Insert the edited image into the Rich Text Editor by clicking the Insert button</li>
         </ul>

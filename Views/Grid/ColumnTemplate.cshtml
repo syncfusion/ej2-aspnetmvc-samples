@@ -15,7 +15,7 @@
        col.Field("ReportsTo").HeaderText("ReportsTo").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
 
 
-   }).AllowSorting().Render()
+   }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Render()
     </div>
 <style>
     .image img {

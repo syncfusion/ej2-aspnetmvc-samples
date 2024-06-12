@@ -251,6 +251,12 @@
                 args.border.color = '#FFFFFF';
                 this.layoutColor = '#FFFFFF';
             }
+            if (selectedTheme === 'fluent2-dark') {
+                var elements = document.querySelectorAll('.e-panel-header');
+                elements.forEach(function (element) {
+                    element.style.setProperty('background', '#252423');
+                });
+            }
             if (selectedTheme.indexOf('highcontrast') > -1 || selectedTheme.indexOf('dark') > -1) {
                 var element = document.querySelector('#header1');
                 element.style.color = '#F3F2F1';
@@ -288,7 +294,7 @@
 @*custom code end*@
 @section ActionDescription{
     <div id="action-description">
-        This sample shows an overview of <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls">ASP.NET MVC Charts</a> that allows users to visualize data easily and take decisions based on it. There are different types of charts to create feature rich apps.
+        This sample shows an overview of <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls" aria-label="ASP.NET MVC Charts">ASP.NET MVC Charts<span class="sr-only">opens in a new tab</span></a> that allows users to visualize data easily and take decisions based on it. There are different types of charts to create feature rich apps.
     </div>
 }
 @section Description{
@@ -297,7 +303,7 @@
     </p>
     <p>
         More information on the ASP.NET MVC chart types can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/line">documentation section</a>.
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/line" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
     </p>
 }
 @section Title{

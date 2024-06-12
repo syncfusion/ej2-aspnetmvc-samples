@@ -11,13 +11,13 @@
             @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).ActionComplete("actionComplete").AllowReordering().Columns(col =>
   {
 
-      col.Field("EmployeeID").HeaderText("Employee ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-      col.Field("FirstName").HeaderText("Name").Width("125").Add();
+      col.Field("EmployeeID").HeaderText("Employee ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+      col.Field("FirstName").HeaderText("Name").Width("125").ValidationRules(new { required = true, minLength = 5 }).Add();
       col.Field("Title").HeaderText("Title").Width("190").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-      col.Field("HireDate").HeaderText("Hire Date").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").Add();
+      col.Field("HireDate").HeaderText("Hire Date").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").EditType("datepickeredit").Add();
 
 
-  }).AllowSorting().Render()
+  }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
         </div>
     </div>
 </div>

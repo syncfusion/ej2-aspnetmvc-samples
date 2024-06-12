@@ -1,7 +1,7 @@
 ﻿@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
-        @Html.EJS().CircularChart3D("container").EnableRotation(true).Title("Top Selling Electric Cars in China").Tilt(-30
+        @Html.EJS().CircularChart3D("container").EnableRotation(true).Title("Top Selling Electric Cars in China").Tilt(-30).HighlightMode(Syncfusion.EJ2.Charts.CircularChart3DHighlightMode.Point
         ).Series(series =>
         {
             series.XName("X").YName("Y").InnerRadius("65%").DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.CircularChart3DLabelPosition.Outside).Name("X").Font(ft => ft.FontWeight("600"))).

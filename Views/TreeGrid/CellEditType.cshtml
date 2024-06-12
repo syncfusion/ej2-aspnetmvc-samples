@@ -34,14 +34,14 @@
                 col.Field("TaskId").HeaderText("Task ID").IsPrimaryKey(true).Width(70)
                     .ValidationRules(new { required = true, number = true })
                     .TextAlign(TextAlign.Right).Add();
-                col.Field("TaskName").HeaderText("Task Name").EditType("stringedit").Width(180)
+                col.Field("TaskName").HeaderText("Task Name").EditType("stringedit").Width(220)
                     .ValidationRules(new { required = true }).Add();
                 col.Field("StartDate").HeaderText("Start Date").Width(180)
                     .EditType("datepickeredit")
                     .ValidationRules(new { date = true })
                     .TextAlign(TextAlign.Right).Add();
                 col.Field("Approved").HeaderText("Approved").DisplayAsCheckBox(true).TextAlign(TextAlign.Center).Type("boolean").EditType("booleanedit").Width(90).Add();
-                col.Field("Progress").HeaderText("Progress").Width(150).EditType("numericedit")
+                col.Field("Progress").HeaderText("Progress").Width(120).EditType("numericedit")
                     .ValidationRules(dict)
                     .Edit(new { @params = new { format = "n" } })
                     .TextAlign(TextAlign.Right).Add();

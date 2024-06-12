@@ -9,7 +9,7 @@
             </div>
         </div>
         <div style="margin-left: 70%">
-            Source:<a href="http//zeenews.india.com/photos/business/worlds-10-best-selling-smartphone-brands-2033958/samsung-2033959" target="_blank">zeenews.india.com</a>
+            Source:<a href="http//zeenews.india.com/photos/business/worlds-10-best-selling-smartphone-brands-2033958/samsung-2033959" target="_blank" aria-label="Source">zeenews.india.com</a>
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -37,8 +37,8 @@
                         <div class="property-text" style="margin-left: -10px">File Name</div>
                     </td>
                     <td>
-                        <div class="e-float-input" style='margin-top: 0px;'>
-                            <input type="text" value="TreeMap" id="fileName" style="width: 100%; padding: 0px 0px 0px 5px">
+                        <div style='margin-top: 0px;'>
+                            @Html.EJS().TextBox("fileName").Value("TreeMap").Width("100%").Render()
                         </div>
                     </td>
                 </tr>
@@ -137,7 +137,7 @@
 
     <p>
         More information about print and export can be found in this
-        <a target="_blank" href="https://ej2.syncfusion.com/documentation/treemap/print-and-export/">documentation section</a>.
+        <a target="_blank" href="https://ej2.syncfusion.com/documentation/treemap/print-and-export/" aria-label="documentation section" >documentation section</a>.
     </p>
 }
 

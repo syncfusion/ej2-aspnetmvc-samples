@@ -4,10 +4,10 @@
 
 @{
     List<MenuItem> pasteOptions = new List<MenuItem>() { new MenuItem { Text = "Keep Source Format" }, new MenuItem { Text = "Merge Format" }, new MenuItem { Text = "Keep Text Only" } };
-    List<MenuItem> findOptions = new List<MenuItem>() { new MenuItem { Text = "Find", IconCss = "e-icons e-search" }, new MenuItem { Text = "Advanced find", IconCss = "e-icons e-search" }, new MenuItem { Text = "Go to", IconCss = "e-icons e-arrow-right" } };
+    List<MenuItem> findOptions = new List<MenuItem>() { new MenuItem { Text = "Find", IconCss = "e-icons e-search" }, new MenuItem { Text = "Advanced Find", IconCss = "e-icons e-search" }, new MenuItem { Text = "Go to", IconCss = "e-icons e-arrow-right" } };
     List<MenuItem> selectOptions = new List<MenuItem>() { new MenuItem { Text = "Select All" }, new MenuItem { Text = "Select Objects" } };
     List<MenuItem> dictateOptions = new List<MenuItem>() { new MenuItem { Text = "Chinese" }, new MenuItem { Text = "English" }, new MenuItem { Text = "German" }, new MenuItem { Text = "French" } };
-    List<MenuItem> tableOptions = new List<MenuItem>() { new MenuItem { Text = "Insert Table" }, new MenuItem { Text = "Draw Table" }, new MenuItem { Text = "Convert Table" }, new MenuItem { Text = "Excel SpreadSheet" } };
+    List<MenuItem> tableOptions = new List<MenuItem>() { new MenuItem { Text = "Header Row" }, new MenuItem { Text = "Banded Rows" }, new MenuItem { Text = "Banded Columns" }};
     List<MenuItem> tableItems = new List<MenuItem>() { new MenuItem { Text = "Insert Table" }, new MenuItem { Text = "Draw Table" }, new MenuItem { Text = "Convert Table" }, new MenuItem { Text = "Excel SpreadSheet" } };
     List<MenuItem> borderItems = new List<MenuItem>() { new MenuItem { Text = "Border Right", IconCss = "e-icons e-border-right" }, new MenuItem { Text = "Border Left", IconCss = "e-icons e-border-left" }, new MenuItem { Text = "Border Bottom", IconCss = "e-icons e-border-bottom" }, new MenuItem { Text = "Border Top", IconCss = "e-icons e-border-top" } };
     List<MenuItem> mergeItems = new List<MenuItem>() { new MenuItem { Text = "Merge Cells", IconCss = "e-icons e-merge-cells" }, new MenuItem { Text = "Split Cells", IconCss = "e-icons e-split-horizontal" } };
@@ -84,7 +84,7 @@
                                              {
                                                  Content = "Table Style",
                                                  IconCss = "e-icons e-field-settings",
-                                                 Items = tableItems,
+                                                 Items = tableOptions,
                                                 Select = "function(args){updateContent('Table -> ' + args.item.text)}"
                                              }
                                          }

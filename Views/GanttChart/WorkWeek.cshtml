@@ -20,16 +20,17 @@
                         col.Field("Predecessor").Add();
                     })
                 .WorkWeek(new string[] { "Monday", "Tuesday", "Wednesday","Thursday","Friday" })
+                .SplitterSettings(sl => sl.ColumnIndex(1))
                 .LabelSettings(ls => ls.LeftLabel("TaskName"))
-                .ProjectStartDate("03/24/2019")
-                .ProjectEndDate("07/06/2019")
+                .ProjectStartDate("03/24/2024")
+                .ProjectEndDate("07/06/2024")
                 .Render()
             )
         </div>
     </div>
 
     <div class="col-lg-4 property-section">
-        <table id="property" title="Properties" style="width: 100%;">
+        <table id="property" title="Properties" style="width: 109%;">
             <colgroup>
                 <col style="width:30%" />
                 <col style="width:70%" />
@@ -51,7 +52,21 @@
             </tr>
         </table>
     </div>
-
+    <style>
+        .fluent2 .property-panel-table div,
+        .fluent2-dark .property-panel-table div{
+            padding-top: 0px !important;
+        }
+        .fluent2 .e-multi-select-wrapper,
+        .fluent2-dark .e-multi-select-wrapper {
+            padding-right: 0px;
+            padding-left: 0px !important;
+        }
+        .fluent2 .e-multiselect,
+        .fluent2-dark .e-multiselect {
+            padding-left: 0px !important;
+        }
+    </style>
     <script>
         function Select(args) {
             var ganttObj = document.getElementById("WorkWeek").ej2_instances[0];
@@ -78,8 +93,8 @@
 }
 
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Workweek in ASP.NET MVC Gantt control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Workweek in ASP.NET MVC Gantt control. Explore here for more details." />
+}
 
 @section Description{
     <div id="description">
@@ -93,8 +108,8 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC Gantt Workweek Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC Gantt Workweek Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Workweek in ASP.NET MVC Gantt Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Workweek in ASP.NET MVC Gantt Control</h1>
+}

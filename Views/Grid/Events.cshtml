@@ -16,7 +16,7 @@
     col.Field("ProductName").HeaderText("Product Name").Width("170").Add();
     col.Field("QuantityPerUnit").HeaderText("Quantity Per Unit").AllowGrouping(false).Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
 
-}).AllowPaging().PageSettings(page => page.PageCount(2)).AllowSorting().Load("load").Created("created").ActionBegin("actionBegin").ActionComplete("actionComplete").DataBound("dataBound").RowSelecting("rowSelecting").RowSelected("rowSelected").ColumnDragStart("columnDragStart").ColumnDrag("columnDrag").ColumnDrop("columnDrop").Render()
+}).AllowPaging().PageSettings(page => page.PageCount(2)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Load("load").Created("created").ActionBegin("actionBegin").ActionComplete("actionComplete").DataBound("dataBound").RowSelecting("rowSelecting").RowSelected("rowSelected").ColumnDragStart("columnDragStart").ColumnDrag("columnDrag").ColumnDrop("columnDrop").Render()
         </div>
     </div>
 </div>

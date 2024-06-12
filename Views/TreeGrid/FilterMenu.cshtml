@@ -39,13 +39,13 @@
             <tr>
                 <td class="left-side">Filter Type</td>
                 <td>
-                    @Html.EJS().DropDownList("FilterType").DataSource((IEnumerable<object>)ViewBag.typedropdata).Value("Menu").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "type" }).Change("Change").Render()
+                    @Html.EJS().DropDownList("FilterType").Width(100).DataSource((IEnumerable<object>)ViewBag.typedropdata).Value("Menu").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "type" }).Change("Change").Render()
                 </td>
             </tr>
             <tr>
                 <td class="left-side">Hierarchy Mode</td>
                 <td>
-                    @Html.EJS().DropDownList("FilterMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Render()
+                    @Html.EJS().DropDownList("FilterMode").Width(100).DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Render()
                 </td>
             </tr>
         </table>
@@ -108,7 +108,7 @@
         </ul>
         <p> In this demo, filter menu enabled by default, you can switch to other hierarchy mode of filtering by using dropdown.</p>
         <p>
-            More information filter configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/filtering/filter-menu">documentation section</a>.
+            More information filter configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/filtering/filter-menu" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
         </p>
 
     </div>

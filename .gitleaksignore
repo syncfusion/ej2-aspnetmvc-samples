@@ -19,3 +19,6 @@ Content/styles/material3-dark.css:aws-access-token:1
 Content/styles/material3.css:aws-access-token:1
 Content/styles/tailwind.css:aws-access-token:1
 Content/styles/tailwind-dark.css:aws-access-token:1
+Content/styles/fluent2.css:aws-access-token:1
+Content/styles/fluent2-dark.css:aws-access-token:1
+Content/styles/fluent2-highcontrast.css:aws-access-token:1

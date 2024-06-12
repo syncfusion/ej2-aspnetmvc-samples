@@ -38,7 +38,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             Random random = new Random();
             return Enumerable.Range(1, 150).Select(i => new MultiSelectRecord()
             {
-                ID = i.ToString(),
+                ID = "id" + i.ToString(),
                 Text = "Item " + i,
                 Group = GetRandomGroup(random),
             }).ToList();

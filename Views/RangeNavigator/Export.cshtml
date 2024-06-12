@@ -96,32 +96,8 @@
             padding: 0px !important;
         }
 
-        .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before {
-            content: '\e710';
-        }
-
-        .e-view.bootstrap4 .e-export-icon::before {
-            content: '\e780';
-        }
-
-        .e-view.bootstrap .e-export-icon::before {
-            content: '\e728';
-        }
-
-        .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before {
-            content: '\e7bf';
-        }
-
-        .e-view.highcontrast .e-export-icon::before {
-            content: '\e710';
-        }
-
-        .e-view.bootstrap-dark .e-export-icon::before {
-            content: '\e728';
-        }
-
-        .e-view.bootstrap5 .e-export-icon::before, .e-view.bootstrap5-dark .e-export-icon::before {
-            content: '\e72e';
+        .e-play-icon::before {
+            content: '\e813';
         }
 
         .e-print-icon::before {
@@ -152,21 +128,52 @@
             content: '\e75d';
         }
 
-        .e-view.fluent .e-export-icon::before, .e-view.fluent-dark .e-export-icon::before {
-            content: '\e728';
-        }
-
         .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
             content: '\e75d';
         }
+
         .e-view.material3 .e-print-icon::before, .e-view.material3-dark .e-print-icon::before {
             content: '\e75d';
         }
-        .e-view.material3 .e-export-icon::before, .e-view.material3-dark .e-export-icon::before {
+
+        .e-view.fluent2 .e-print-icon::before, .e-view.fluent2-dark .e-print-icon::before {
+            content: '\e75d';
+        }
+
+        .e-export-icon::before {
             content: '\e728';
         }
-        .e-view.material .e-export-icon::before, .e-view.material3-dark .e-export-icon::before {
-            content: '\e728';
+
+        .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before {
+            content: '\e710';
+        }
+
+        .e-view.bootstrap4 .e-export-icon::before {
+            content: '\e780';
+        }
+
+        .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before {
+            content: '\e7bf';
+        }
+
+        .e-view.highcontrast .e-export-icon::before {
+            content: '\e710';
+        }
+
+        .e-view.bootstrap5 .e-export-icon::before, .e-view.bootstrap5-dark .e-export-icon::before {
+            content: '\e72e';
+        }
+
+        .e-view.fluent .e-export-icon::before, .e-view.fluent-dark .e-export-icon::before {
+            content: '\e72e';
+        }
+
+        .e-view.fluent2 .e-export-icon::before, .e-view.fluent2-dark .e-export-icon::before {
+            content: '\e72e';
+        }
+
+        .e-view.material3 .e-export-icon::before, .e-view.material3-dark .e-export-icon::before {
+            content: '\e72e';
         }
     </style>
     <script src="~/Scripts/datasource.js"></script>
@@ -175,11 +182,11 @@
         var zoomFactor, zoomPosition;
         var selectedTheme = themeName ? themeName : 'Material';
         var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-        var exportthemes = ['Material', 'Fabric', 'Bootstrap', 'HighContrast', 'Bootstrap5', 'Tailwind', 'MaterialDark', 'FabricDark', 'BootstrapDark', 'TailwindDark', 'Bootstrap5Dark', 'Bootstrap4', 'Fluent', 'FluentDark', 'Material3', 'Material3Dark'];
-        var borderColor1 = ['#FF4081', '#007897', '#428BCA', '#FFD939', '#6355C7', '#4F46E5', '#FF4081', '#007897', '#428BCA', '#22D3EE', '#8F80F4', '#FFD939', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF'];
+        var exportthemes = ['Material', 'Fabric', 'Bootstrap', 'HighContrast', 'Bootstrap5', 'Tailwind', 'MaterialDark', 'FabricDark', 'BootstrapDark', 'TailwindDark', 'Bootstrap5Dark', 'Bootstrap4', 'Fluent', 'FluentDark', 'Material3', 'Material3Dark', 'Fluent2', 'Fluent2Dark'];
+        var borderColor1 = ['#FF4081', '#007897', '#428BCA', '#FFD939', '#6355C7', '#4F46E5', '#FF4081', '#007897', '#428BCA', '#22D3EE', '#8F80F4', '#FFD939', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF', '#6200EE', '#9BB449'];
         var regionColor1 = ['rgba(255, 64, 129, 0.3)', ' rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(255, 217, 57, 0.3)', 'rgba(99, 85, 199, 0.3)',
             'rgba(79, 70, 229, 0.3)', 'rgba(255, 64, 129, 0.3)', 'rgba(0, 120, 151, 0.3)', 'rgba(66, 139, 202, 0.3)', 'rgba(34, 211, 238, 0.3)',
-            'rgba(143, 128, 244, 0.3)', 'rgba(255, 217, 57, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(99, 85, 199, 0.3)', 'rgba(78, 170, 255, 0.3)'];
+            'rgba(143, 128, 244, 0.3)', 'rgba(255, 217, 57, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(26, 201, 230, 0.3)', 'rgba(99, 85, 199, 0.3)', 'rgba(78, 170, 255, 0.3)', 'rgba(98, 0, 238, 0.3)', 'rgba(155, 180, 73, 0.3)'];
         var load = function (args) {
             args.rangeNavigator.theme = theme;
             args.rangeNavigator.dataSource = dateTimeData;
@@ -239,7 +246,7 @@
     </p>
     <p>
         More information on the export can be found in this
-        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype">documentation section</a>.
+        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
     </p>
 }
 @section Title{

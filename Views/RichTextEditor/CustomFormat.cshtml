@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-                @Html.EJS().RichTextEditor("customFormat").Value((string)ViewBag.value).Created("created").Height("150px").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewBag.Items)).Render()
+                @Html.EJS().RichTextEditor("customFormat").Value((string)ViewBag.value).Created("created").Height("150px").Placeholder("Enter your text here...").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewBag.Items)).Render()
         </div>
     </div>
 <style>
@@ -34,6 +34,8 @@
     .tailwind-dark .e-icon-btn.e-active .e-md-preview::before,
     .fluent .e-icon-btn.e-active .e-md-preview::before,
     .fluent-dark .e-icon-btn.e-active .e-md-preview::before,
+    .fluent2 .e-icon-btn.e-active .e-md-preview::before,
+    .fluent2-dark .e-icon-btn.e-active .e-md-preview::before,
     .bootstrap5 .e-icon-btn.e-active .e-md-preview::before,
     .bootstrap5-dark .e-icon-btn.e-active .e-md-preview::before,
     .material3 .e-icon-btn.e-active .e-md-preview::before,
@@ -47,6 +49,8 @@
     .bootstrap5-dark .e-icon-btn .e-md-preview::before,
     .fluent .e-icon-btn .e-md-preview::before,
     .fluent-dark .e-icon-btn .e-md-preview::before,
+    .fluent2 .e-icon-btn .e-md-preview::before,
+    .fluent2-dark .e-icon-btn .e-md-preview::before,
     .material3 .e-icon-btn .e-md-preview::before,
     .material3-dark .e-icon-btn .e-md-preview::before {
         content: '\e7de';

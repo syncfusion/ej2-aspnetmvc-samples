@@ -42,7 +42,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             IPresentation presentation = GetInputDocument(file);
             if(presentation != null)
             {
-                string output = file == null ? "Syncfusion Presentation" : Path.GetFileNameWithoutExtension(file.FileName);
+                string output = file == null ? "Input_Template" : Path.GetFileNameWithoutExtension(file.FileName);
                 presentation.ChartToImageConverter = new ChartToImageConverter();
                 presentation.ChartToImageConverter.ScalingMode = Syncfusion.OfficeChart.ScalingMode.Best;
 
@@ -111,7 +111,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             }
             else
             {
-                string filePath = ResolveApplicationDataPath("Syncfusion Presentation.pptx");
+                string filePath = ResolveApplicationDataPath("Input_Template.pptx");
                 presentation = Presentation.Open(filePath);
                 return presentation;
             }

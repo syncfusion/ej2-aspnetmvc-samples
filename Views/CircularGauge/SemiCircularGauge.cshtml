@@ -11,6 +11,9 @@
         .tailwind .labelCheckbox, .tailwind-dark .labelCheckbox {
             margin-top: 1px;
         }
+        .e-view.fluent2 #property .e-checkbox-wrapper, .e-view.fluent2-dark #property .e-checkbox-wrapper {
+            padding-left: 0px;
+        }
     </style>
     <div class="col-md-8 control-section" align="center">
         @Html.EJS().CircularGauge("container").Load("gaugeLoad").Background("transparent").Axes(axes => axes.StartAngle(270).EndAngle(90).Radius("100%").HideIntersectingLabel(true).MajorTicks(majorTicks => majorTicks.Interval(10).Height(15).Width(2).Position(Position.Inside))
@@ -216,7 +219,7 @@
         </p>
         <p>
             More information on the semi-circular or quarter-circular gauges can be found in this
-            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/gauge-appearance#radius-calculation-based-on-angles">documentation section</a>.
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/gauge-appearance#radius-calculation-based-on-angles" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
         </p>
     </div>
 }

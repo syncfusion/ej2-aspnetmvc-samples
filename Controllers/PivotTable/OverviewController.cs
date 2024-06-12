@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
             var data = new UniversityData().ReadJSONData(HostingEnvironment.ApplicationPhysicalPath + "\\App_Data\\universitydata.json");
             ViewBag.DataSource = data;
             ViewBag.filterMembers = new string[] { "Africa", "Latin America" };
-            ViewBag.excludeFields = new string[] { "link", "logo" };
+            ViewBag.ExcludeFields = new string[] { "link", "logo" };
             return View();
         }
     }

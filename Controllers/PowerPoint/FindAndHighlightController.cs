@@ -10,7 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Syncfusion.PresentationToPdfConverter;
+using Syncfusion.Pdf;
 using Syncfusion.Presentation;
 using System.Drawing;
 using System.IO;
@@ -27,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers
 
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult FindAndHighlight(string button, string Group, string matchCase, string matchWholeWord, string highlightFirst)
+        public ActionResult FindAndHighlight(string button, string Group, string Group1, string matchCase, string matchWholeWord, string highlightFirst)
         {
             if (button == null)
                 return View();
@@ -79,8 +80,21 @@ namespace EJ2MVCSampleBrowser.Controllers
                         }
                     }
                 }
-                //Save the presentation
-                return new PresentationResult(presentation, "FindandHighlight.pptx", HttpContext.ApplicationInstance.Response);
+                if (Group1 == "PPTX")
+                    //Save the presentation
+                    return new PresentationResult(presentation, "FindandHighlight.pptx", HttpContext.ApplicationInstance.Response);
+                else
+                {
+                    PresentationToPdfConverterSettings settings = new PresentationToPdfConverterSettings();
+                    //Instance to create pdf document from presentation                
+                    PdfDocument pdfDocument = PresentationToPdfConverter.Convert(presentation, settings);
+                    //Saves the pdf document
+                    MemoryStream stream = new MemoryStream();
+                    pdfDocument.Save(stream);
+                    stream.Position = 0;
+                    pdfDocument.Close(true);
+                    return File(stream, "application/pdf", "FindandHighlight.pdf");
+                }
             }
         }
     }

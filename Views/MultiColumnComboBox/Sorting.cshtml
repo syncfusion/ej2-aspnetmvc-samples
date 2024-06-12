@@ -1,0 +1,52 @@
+@using Syncfusion.EJ2.MultiColumnComboBox
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        <div class="control-wrapper">
+            <div style='padding-top:30px;'>
+                @Html.EJS().MultiColumnComboBox("sorting").Placeholder("Select an order ID").DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new MultiColumnComboBoxFieldSettings
+                { Text = "OrderID", Value = "CustomerID" }).Columns(col =>
+                {
+                    col.Field("OrderID").Header("Order ID").Width("110").Add();
+                    col.Field("CustomerID").Header("Customer ID").Width("130").Add();
+                    col.Field("Freight").Header("Freight").Width("90").Add();
+                    col.Field("ShipCountry").Header("Ship Country").Width("140").Add();
+                }).PopupHeight("230px").SortType(SortType.MultipleColumns).SortOrder(SortOrder.Ascending).Render()
+            </div>
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+        .control-wrapper {
+            margin: 0 auto;
+            width: 500px;
+        }
+
+        @@media only screen and (max-width: 480px) {
+            .control-wrapper {
+                width: 300px;
+            }
+        }
+    </style>
+    @*custom code end*@
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the sorting in ASP.NET MVC MultiColumn ComboBox control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>This example demonstrates the sorting support in the MultiColumn ComboBox.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>In this sample, you can click the column header to sort/unsort the column. Any field can be selected from the Fields dropdown list and its order can be changed to display headers either in ascending or descending order. Sorting can be enabled using the <code>AllowSorting</code> property and the sort order can be customized using the <code>SortOrder</code> property in the MultiColumn ComboBox.</p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC MultiColumn ComboBox sorting Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of sorting in ASP.NET MVC MultiColumn ComboBox Control</h1>
+}

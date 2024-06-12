@@ -4,9 +4,9 @@
 @using Syncfusion.EJ2
 @section ControlsSection {
     <div class="col-lg-8 control-section resize">
-        <div class="content-wrapper">
+        <div id="textarea-resize" class="content-wrapper">
             <div class="resize-row">
-                @Html.EJS().TextArea("resize").Placeholder("Enter your comments").FloatLabelType(FloatLabelType.Auto).Render()
+                @Html.EJS().TextArea("resize").Placeholder("Enter your comments").FloatLabelType(FloatLabelType.Auto).Rows(5).Cols(300).Render()
             </div>
         </div>
     </div>  
@@ -33,6 +33,10 @@
     .resize-property .left-side {
         font-size: 14px;
         padding: 8px;
+    }
+
+    #textarea-resize .e-multi-line-input {
+        max-width: 100%;
     }
 </style>
     @*custom code end*@

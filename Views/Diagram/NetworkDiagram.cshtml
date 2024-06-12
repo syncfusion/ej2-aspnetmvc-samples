@@ -13,7 +13,7 @@
                 )
                 <div id='dropArea'>
                     @Html.EJS().Button("browse").Content("IMPORT SVG FILES").CssClass("e-outline").IsPrimary(true).Render()
-                    @Html.EJS().Uploader("UploadFiles").DropArea(".control-fluid").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("~/Uploader/Save"), RemoveUrl = @Url.Content("~/Uploader/Remove") }).Success("onUploadSuccess").Removing("onFileRemove").Render()
+                    @Html.EJS().Uploader("UploadFiles").DropArea(".control-fluid").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Remove") }).Success("onUploadSuccess").Removing("onFileRemove").Render()
                 </div>
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">

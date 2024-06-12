@@ -12,7 +12,7 @@
                col.Field("HireDate").HeaderText("Hire Date").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").Add();
                col.Field("Address").Width("120").AllowGrouping(false).Add();
 
-           }).DataBound("gridDataBound").Height("350").Toolbar(new List<string>() { "ExcelExport", "PdfExport", "CsvExport" }).ExcelQueryCellInfo("exportQueryCellInfo").PdfQueryCellInfo("exportQueryCellInfo").Render()
+           }).DataBound("gridDataBound").Height("350").AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Toolbar(new List<string>() { "ExcelExport", "PdfExport", "CsvExport" }).ExcelQueryCellInfo("exportQueryCellInfo").PdfQueryCellInfo("exportQueryCellInfo").Render()
             </div>
         </div>
     </div>
@@ -123,14 +123,14 @@
             In this demo, while exporting, we have included images and hyperlinks from the template columns i.e 
 			<strong><i>Image</i></strong> and <strong><i>URL</i></strong> using <code>
                 <a target="_blank" class="code"
-                   href="https://ej2.syncfusion.com/javascript/documentation/api/grid/#excelquerycellinfo">
+                   href="https://ej2.syncfusion.com/javascript/documentation/api/grid/#excelquerycellinfo" aria-label="excelQueryCellInfo">
                     excelQueryCellInfo
-                </a>
+                <span class="sr-only">opens in a new tab</span></a>
             </code> and <code>
                 <a target="_blank" class="code"
-                   href="https://ej2.syncfusion.com/javascript/documentation/api/grid/#pdfquerycellinfo">
+                   href="https://ej2.syncfusion.com/javascript/documentation/api/grid/#pdfquerycellinfo" aria-label="pdfQueryCellInfo">
                     pdfQueryCellInfo
-                </a>
+                <span class="sr-only">opens in a new tab</span></a>
             </code> events. The ExcelExport, PdfExport, and CsvExport items are defined in the toolbar, for which we have defined actions in toolbarClick event to export the Grid data using the
             <code>ExcelExport</code>,<code>PdfExport</code>	and <code>CsvExport</code>  methods.
         </p>

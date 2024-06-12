@@ -15,7 +15,7 @@
        col.Field("OrderDate").HeaderText("Order Date").EditType("datepickeredit").Format("yMd").Width("150").Add();
        col.Field("ShipCountry").HeaderText("Ship Country").EditType("dropdownedit").Width("150").Add();
    
-   }).AllowPaging().PageSettings(page => page.PageCount(2)).AllowSorting().EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Batch); }).Toolbar(new List<string>() { "Add", "Delete", "Update", "Cancel" }).Render()
+   }).AllowPaging().PageSettings(page => page.PageCount(2)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Batch); }).Toolbar(new List<string>() { "Add", "Delete", "Update", "Cancel" }).Render()
     </div>
     
 }
@@ -38,8 +38,8 @@
 @section Description{
     <div id="description">		   
 		<p> Grid supports CRUD operations and they can be configured using
-              <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/grid/editSettings/">
-              editSettings</a></code>. It has the following modes to manipulate the datasource.
+              <code><a target="_blank" className="code" href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/grid/editSettings/" aria-label="editsettings">
+              editSettings<span class="sr-only">opens in a new tab</span></a></code>. It has the following modes to manipulate the datasource.
             </p>
             <ul>
               <li><code>Normal</code></li>
@@ -48,20 +48,20 @@
             </ul>
             <p>
               In this demo, the Batch mode is enabled for editing by defining the <code><a target="_blank" className="code"
-                href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/grid/editSettings/#mode">
+                href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/grid/editSettings/#mode" aria-label="editSettings.mode">
                 editSettings.mode
-              </a></code> as <code>batch</code>. You can start editing by double clicking a cell and changing the cell value.
+              <span class="sr-only">opens in a new tab</span></a></code> as <code>batch</code>. You can start editing by double clicking a cell and changing the cell value.
               The edited cell will be highlighted while navigating to a new cell.
               You can bulk save the edited data to the datasource by clicking the toolbar's <code>update</code> button or by externally
               invoking the <code><a target="_blank" className="code"
-                href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/grid/edit/#batchsave">
+                href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/grid/edit/#batchsave" aria-label="batchSave">
                 batchSave
-              </a></code> method.
+              <span class="sr-only">opens in a new tab</span></a></code> method.
      <p>
         More information on the batch editing can be found in this 
         <a target="_blank"
-            href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/editing/batch-editing">
-            documentation section</a>.
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/editing/batch-editing" aria-label="documentation section" >
+            documentation section<span class="sr-only">opens in a new tab</span></a>.
         </p>
 	</div>
 }

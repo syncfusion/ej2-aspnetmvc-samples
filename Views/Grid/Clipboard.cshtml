@@ -22,7 +22,7 @@
        col.Field("Freight").HeaderText("Freight").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("ShipCountry").HeaderText("Ship Country").Width("150").Add();
 
-   }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().ToolbarClick("toolbarClick").Render()
+   }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).ToolbarClick("toolbarClick").Render()
     </div>
     @Html.EJS().Dialog("alert_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Copy with Header").Content("Atleast one row should be selected to copy with header").Visible(false).Width("300px").Target(".control-section").Buttons(ViewBag.alertbutton).Render()
 

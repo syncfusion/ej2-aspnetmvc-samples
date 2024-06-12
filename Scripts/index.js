@@ -10,9 +10,9 @@ var searchInstance;
 var headerThemeSwitch = document.getElementById('header-theme-switcher');
 var settingElement = ej.base.select('.sb-setting-btn');
 var themeList = document.getElementById('themelist');
-var themes = ['material3', 'fluent', 'bootstrap5', 'tailwind', 'highcontrast'];
+var themes = ['material3', 'fluent', 'fluent2', 'bootstrap5', 'tailwind', 'highcontrast'];
 //var themes= ['material3', 'material3-dark', 'fluent', 'fluent-dark', 'bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'highcontrast'];
-var defaultTheme = 'material3';
+var defaultTheme = 'fluent2';
 var themeDropDown;
 var contentTab;
 var ArrayItem;
@@ -789,9 +789,6 @@ function processResize(e) {
         if (mobilePropPane) {
             ej.base.select('#control-content').appendChild(mobilePropPane);
         }
-        if (!ej.base.select('.sb-mobile-right-pane').classList.contains('sb-hide')) {
-            toggleRightPane();
-        }
     }
     if (!switcherPopup.element.classList.contains('e-popup-close')) {
         switcherPopup.hide();
@@ -1213,8 +1210,12 @@ function controlSelect(arg) {
                     if (curHashCollection.split('/')[curHashCollection.split('/').length - 3] != arg.data.dir.toLowerCase()) {
                         var SampleObject = window.samplesList.filter(obj => obj.directory.toLowerCase() === arg.data.dir.toLowerCase());
                         var defaultSample = SampleObject.map(obj => obj.samples[0]);
-                        location.href = location.origin + pathName + arg.data.dir.toLowerCase() + '/' + defaultSample[0].url.toLowerCase() + '#/' + theme;
-                    }
+                        if (arg.item.id.includes("search-popup")) {
+                            location.href = location.origin + pathName + arg.data.dir.toLowerCase() + '/' + arg.data.url.toLowerCase() + '#/' + theme;
+                        }
+                        else {
+                            location.href = location.origin + pathName + arg.data.dir.toLowerCase() + '/' + defaultSample[0].url.toLowerCase() + '#/' + theme;
+                        }                    }
                     else {
                         location.href = location.origin + pathName + arg.data.dir.toLowerCase() + '/' + arg.data.url.toLowerCase() + '#/' + theme;
                     }

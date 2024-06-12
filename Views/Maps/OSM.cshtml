@@ -11,7 +11,7 @@
 }).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer> {
             new Syncfusion.EJ2.Maps.MapsLayer
             {
-                LayerType = Syncfusion.EJ2.Maps.ShapeLayerType.OSM,
+               UrlTemplate = "https://tile.openstreetmap.org/level/tileX/tileY.png",
                MarkerSettings = new List<Syncfusion.EJ2.Maps.MapsMarker>
                {
                   new Syncfusion.EJ2.Maps.MapsMarker
@@ -26,12 +26,12 @@
 }).Render()
     </div>
     <div style="float: right">
-        <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" aria-label="OpenStreetMap">© OpenStreetMap contributors</a>
     </div>
     <br />
     <div style="float: right; margin-right: 10px;">
         Source:
-        <a href="https://en.wikipedia.org/wiki/Headquarters_of_the_United_Nations" target="_blank">en.wikipedia.org</a>
+        <a href="https://en.wikipedia.org/wiki/Headquarters_of_the_United_Nations" target="_blank" aria-label="wikipedia">en.wikipedia.org</a>
     </div>
 
 </div>

@@ -5,6 +5,7 @@
 @{
     string[] items = new string[] { "NewFolder", "Cut", "Copy", "Paste", "Delete", "Download", "Rename", "SortBy", "Refresh", "Selection", "View", "Details" };
     string[] layout = new string[] { "SortBy", "View", "Refresh", "|", "Paste", "|", "NewFolder", "|", "Details", "|", "SelectAll" };
+    string[] file = new string[] { "Cut", "Copy", "Paste", "Delete", "Rename", "|", "Details" };
 }
 
 @section ControlsSection{
@@ -13,7 +14,7 @@
             <!-- File Manager custom thumbnail sample -->
             @Html.EJS().FileManager("file").AjaxSettings(
               new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
-                   {
+              {
                   Url = "FileOperations",
                   DownloadUrl = "Download",
                   UploadUrl = "Upload",
@@ -23,6 +24,7 @@
                   Items = items
               }).ContextMenuSettings(new Syncfusion.EJ2.FileManager.FileManagerContextMenuSettings()
               {
+                  File = file,
                   Layout = layout
               }).Render()
         </div>
@@ -31,7 +33,7 @@
 
 @section ActionDescription{
     <div id="action-description">
-        <p>This sample demonstrates the custom thumbnail of the File Manager. You can customize with your own icon using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.FileManager.FileManager.html#Syncfusion_EJ2_FileManager_FileManager_ShowThumbnail"> showThumbnail </a> property.</p>
+        <p>This sample demonstrates the custom thumbnail of the File Manager. You can customize with your own icon using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.FileManager.FileManager.html#Syncfusion_EJ2_FileManager_FileManager_ShowThumbnail" aria-label="showThumbnail"> showThumbnail <span class="sr-only">opens in a new tab</span></a> property.</p>
     </div>
 }
 
@@ -41,7 +43,7 @@
 
         <p>
             <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install
-            <a target="_blank" href="https://www.syncfusion.com/downloads">Syncfusion Essential Studio </a>on your machine and run the demo.
+            <a target="_blank" href="https://www.syncfusion.com/downloads" aria-label="Syncfusion Essential Studio">Syncfusion Essential Studio <span class="sr-only">opens in a new tab</span></a>on your machine and run the demo.
         </p>
     </div>
 }

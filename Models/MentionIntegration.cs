@@ -40,4 +40,33 @@ namespace EJ2MVCSampleBrowser.Models
         }
 
     }
+    public class EmailDatas
+    {
+        public string Name { get; set; }
+        public string Initial { get; set; }
+        public string Email { get; set; }
+        public string Color { get; set; }
+        public string BgColor { get; set; }
+
+        public List<EmailDatas> EmailList()
+        {
+            List<EmailDatas> mention = new List<EmailDatas>();
+            mention.Add(new EmailDatas { Name = "Selma Rose", Initial = "SR", Email = "selma@gmail.com", Color = "#FAFDFF", BgColor = "#01579B" });
+            mention.Add(new EmailDatas { Name = "Maria", Initial = "MA", Email = "maria@gmail.com", Color = "#004378", BgColor = "#ADDBFF" });
+            mention.Add(new EmailDatas { Name = "Russo Kay", Initial = "RK", Email = "russo@gmail.com", Color = "#F9DEDC", BgColor = "#8C1D18" });
+            mention.Add(new EmailDatas { Name = "Robert", Initial = "RO", Email = "robert@gmail.com", Color = "#FFD6F7", BgColor = "#37003A" });
+            mention.Add(new EmailDatas { Name = "Camden Kate", Initial = "CK", Email = "camden@gmail.com", Color = "#FFFFFF", BgColor = "#464ECF" });
+            mention.Add(new EmailDatas { Name = "Garth", Initial = "GA", Email = "garth@gmail.com", Color = "#FFFFFF", BgColor = "#008861" });
+            mention.Add(new EmailDatas { Name = "Andrew James", Initial = "AJ", Email = "james@gmail.com", Color = "#FFFFFF", BgColor = "#53CA17" });
+            mention.Add(new EmailDatas { Name = "Olivia", Initial = "OL", Email = "olivia@gmail.com", Color = "#FFFFFF", BgColor = "#8C1D18" });
+            mention.Add(new EmailDatas { Name = "Sophia", Initial = "SO", Email = "sophia@gmail.com", Color = "#000000", BgColor = "#D0BCFF" });
+            mention.Add(new EmailDatas { Name = "Margaret", Initial = "MA", Email = "margaret@gmail.comC", Color = "#000000B", BgColor = "#F2B8B5" });
+            mention.Add(new EmailDatas { Name = "Ursula Ann", Initial = "UA", Email = "ursula@gmail.com", Color = "#000000", BgColor = "#47ACFB" });
+            mention.Add(new EmailDatas { Name = "Laura Grace", Initial = "LG", Email = "laura@gmail.com", Color = "#000000", BgColor = "#FFE088" });
+            mention.Add(new EmailDatas { Name = "Albert", Initial = "AL", Email = "albert@gmail.com", Color = "#FFFFFF", BgColor = "#00335B" });
+            mention.Add(new EmailDatas { Name = "William", Initial = "WA", Email = "william@gmail.com", Color = "#FFFFFF", BgColor = "#163E02" });
+            return mention;
+        }
+
+    }
 }

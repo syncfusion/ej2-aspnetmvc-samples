@@ -13,7 +13,7 @@
             </div>
         </div>
         <div style="margin-left: 60%">
-            Source:<a href="https//www.factorywarrantylist.com/car-sales-by-country.html/" target="_blank"> www.factorywarrantylist.com</a>
+            Source:<a href="https//www.factorywarrantylist.com/car-sales-by-country.html/" target="_blank" aria-label="Source"> www.factorywarrantylist.com</a>
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -24,7 +24,7 @@
                         <div class="property-text" style="margin-left: -10px">Drilldown View</div>
                     </td>
                     <td>
-                        <div style="margin-left: -10px; margin-top: -10px">
+                        <div class="drilldown-checkbox" style="margin-top: -10px">
                             <input type="checkbox" id="drillView" />
                         </div>
                     </td>
@@ -34,7 +34,7 @@
                         <div class="property-text" style="margin-left: -10px">Enable Breadcrumb</div>
                     </td>
                     <td>
-                        <div style="margin-left: -10px; margin-top: -10px">
+                        <div class="drilldown-checkbox" style="margin-top: -10px">
                             <input type="checkbox" id="breadCrumb" />
                         </div>
                     </td>
@@ -45,7 +45,7 @@
                     </td>
                     <td>
                         <div>
-                            <input type="text" id="connectorText" value=' - ' disabled=true style="width:100%;" />
+                            @Html.EJS().TextBox("connectorText").Value(" - ").Width("100%").Enabled(false).Render()
                         </div>
                     </td>
                 </tr>
@@ -427,12 +427,8 @@
         }, '#breadCrumb');
         breadCrumbCheckBox.change = breadCrumbChange = function (e) {
             treemap.enableBreadcrumb = e.checked;
-            var breadCrumbText = document.getElementById('connectorText');
-            if (e.checked) {
-                breadCrumbText.disabled = false;
-            } else {
-                breadCrumbText.disabled = true;
-            }
+            var breadCrumbText = document.getElementById('connectorText').ej2_instances[0];
+            breadCrumbText.enabled = e.checked;
             treemap.refresh();
         }
         document.getElementById('connectorText').onchange = () => {
@@ -445,6 +441,12 @@
         #container {
             display: block;
             width: 100%;
+        }
+        .drilldown-checkbox {
+            margin-left: -10px;
+        }
+        .e-view.fluent2 #property .drilldown-checkbox, .e-view.fluent2-dark #property .drilldown-checkbox {
+            margin-left: -20px;
         }
     </style>
 }

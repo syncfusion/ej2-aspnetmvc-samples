@@ -604,7 +604,7 @@
             <p>By default, locale value is en-US. If you want to change the en-US culture to a different culture, you have to change the locale accordingly.</p>
         </div>
         <p style="display: block">
-            More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/document-editor/getting-started/">documentation section.</a>
+            More information about the document editor features can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/document-editor/getting-started/" aria-label="documentation section">documentation section.<span class="sr-only">opens in a new tab</span></a>
         </p>
     </div>
 }
@@ -634,6 +634,32 @@
         };
         titleBarDiv = document.getElementById('documenteditor_titlebar');
         initComponentAndWireEvent(true);
+        container.toolbarItems=['New', 'Open', 'Separator', 'Undo',
+                'Redo',
+                'Separator',
+                'Image',
+                'Table',
+                'Hyperlink',
+                'Bookmark',
+                'TableOfContents',
+                'Separator',
+                'Header',
+                'Footer',
+                'PageSetup',
+                'PageNumber',
+                'Break',
+                'Separator',
+                'Find',
+                'Separator',
+                'Comments',
+                'TrackChanges',
+                'Separator',
+                'LocalClipboard',
+                'RestrictEditing',
+                'Separator',
+                'FormFields',
+                'UpdateFields'
+            ];
     });
     </script>
 }

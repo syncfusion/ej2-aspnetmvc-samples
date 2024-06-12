@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult CheckboxSelection()
         {
             
-            var inventor = InventorDetails.GetAllRecords();
-            ViewBag.datasource = inventor;
+            var order = OrdersDetails.GetAllRecords();
+            ViewBag.datasource = order;
             return View();
         }
     }

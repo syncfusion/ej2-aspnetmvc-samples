@@ -16,7 +16,7 @@
        col.Field("OrderDate").HeaderText("Order Date").AllowGrouping(false).EditType("datetimepickeredit").Width("150").Format(new { type = "datetime", format = "M/d/y hh:mm a" }).Add();
        col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
 
-}).AllowPaging().PageSettings(page => page.PageCount(5)).AllowSorting().AllowGrouping().Created("created").EditSettings(edit => { edit.AllowEditing(true); }).Toolbar(new List<string>() { "Edit", "Update", "Cancel" }).GroupSettings(group=>group.Columns(new string[] { "ShipCountry" })).Render()
+}).AllowPaging().PageSettings(page => page.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).AllowGrouping().Created("created").EditSettings(edit => { edit.AllowEditing(true); }).Toolbar(new List<string>() { "Edit", "Update", "Cancel" }).GroupSettings(group=>group.Columns(new string[] { "ShipCountry" })).Render()
 
 </div>
     @Html.EJS().Dialog("alert_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Grouping").Content("Grouping is disabled for this column").Visible(false).Width("300px").Target(".control-section").Buttons(ViewBag.alertbutton).Render()

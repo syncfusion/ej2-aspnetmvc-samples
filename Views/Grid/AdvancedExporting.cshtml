@@ -4,13 +4,13 @@
         @Html.EJS().Grid("AdvancedExporting").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowPdfExport().AllowExcelExport().AllowGrouping().Columns(col =>
    {
 
-       col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("ProductName").HeaderText("Product Name").Width("200").Add();
+       col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+       col.Field("ProductName").HeaderText("Product Name").Width("200").ValidationRules(new { required = true, minLength = 5 }).Add();
        col.Field("QuantityPerUnit").HeaderText("Quantity Per Unit").Width("145").Add();
        col.Field("UnitsInStock").HeaderText("Units In Stock").Width("140").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("UnitPrice").HeaderText("Unit Price").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("140").Add();
+       col.Field("UnitPrice").HeaderText("Unit Price").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("140").EditType("numericedit").Add();
 
-   }).AllowPaging().PageSettings(p=>p.PageCount(5)).AllowSorting().Toolbar(new List<string>() { "ExcelExport", "PdfExport"}).ToolbarClick("toolbarClick").Render()
+   }).AllowPaging().PageSettings(p=>p.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "ExcelExport", "PdfExport"}).ToolbarClick("toolbarClick").Render()
     </div>
 }
 <script>
@@ -59,7 +59,7 @@
                         index: 5,
                         cells: [
                             { index: 1, colSpan: 2, value: 'Tel +1 888.936.8638 Fax +1 919.573.0306' },
-                            { index: 4, value: 'CUSOTMER ID', style: { fontColor: '#C67878', bold: true } },
+                            { index: 4, value: 'CUSTOMER ID', style: { fontColor: '#C67878', bold: true } },
                             { index: 5, value: 'TERMS', width: 150, style: { fontColor: '#C67878', bold: true } }
                         ]
                     },

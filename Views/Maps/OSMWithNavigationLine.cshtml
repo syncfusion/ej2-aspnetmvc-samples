@@ -11,7 +11,7 @@
     }).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer> {
         new Syncfusion.EJ2.Maps.MapsLayer
         {
-            LayerType = Syncfusion.EJ2.Maps.ShapeLayerType.OSM,
+            UrlTemplate = "https://tile.openstreetmap.org/level/tileX/tileY.png",
             NavigationLineSettings = new List<MapsNavigationLine>
         {
             new MapsNavigationLine { Width = 8, Visible=true,Angle=-0.05,Color="#00ace6", Latitude=new [] { 23.6445, 34.0522 }, Longitude = new [] { -102.832, -118.2437 } }
@@ -36,7 +36,7 @@
                       {
                           Visible = true,
                           DataSource = new [] { new { name = "Mexico City", latitude = 24.0005, longitude = -101.200 } },
-                          Template = "<div style=font-weight:500;font-size:13px;text-align:left>Mexico</div>",
+                          Template = "<div style=color:#000;font-weight:500;font-size:13px;text-align:left>Mexico</div>",
                           TooltipSettings = new MapsTooltipSettings{ Visible=true, ValuePath="name" },
                       },
                          new Syncfusion.EJ2.Maps.MapsMarker
@@ -50,7 +50,7 @@
                       {
                           Visible = true,
                           DataSource = new [] { new { name = "Los Angeles City", latitude = 34.7000, longitude = -121.5000 } },
-                          Template = "<div><div style=text-align:right;font-weight:500;font-size:13px;>Los Angeles</br>International Airport</div></div",
+                          Template = "<div><div style=color:#000;text-align:right;font-weight:500;font-size:13px;>Los Angeles</br>International Airport</div></div",
                           TooltipSettings = new MapsTooltipSettings{ Visible=true, ValuePath="name" },
                       },
                        new Syncfusion.EJ2.Maps.MapsMarker
@@ -65,12 +65,12 @@
     }).Render()
         </div>
         <div style="float: right">
-            <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>
+            <a href="https://www.openstreetmap.org/copyright" target="_blank" aria-label="OpenStreetMap">© OpenStreetMap contributors</a>
         </div>
         <br />
         <div style="float: right; margin-right: 10px;">
             Source:
-            <a href="https://www.google.co.in/maps" target="_blank">www.google.co.in/maps</a>
+            <a href="https://www.google.co.in/maps" target="_blank" aria-label="google">www.google.co.in/maps</a>
         </div>
     </div>
     <script>

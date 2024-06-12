@@ -32,8 +32,8 @@
                 col.Field("EndDate").HeaderText("End date").Width(120).Add();
                 col.Field("Duration").HeaderText("Duration").Width(90).Add();
             }).SplitterSettings(sl => sl.ColumnIndex(4))
-            .ProjectEndDate("01/20/2019")
-            .ProjectStartDate("01/01/2019")
+            .ProjectEndDate("01/20/2024")
+            .ProjectStartDate("01/01/2024")
             .HighlightWeekends(false)
             .LabelSettings(ls => ls.LeftLabel("TaskName").RightLabel("TaskType"))
             .Render()
@@ -69,7 +69,9 @@
         .bootstrap5-dark #UnscheduledTask .e-add-icon:before,
         .tailwind #UnscheduledTask .e-add-icon:before, .tailwind-dark #UnscheduledTask .e-add-icon:before,
         .fluent #UnscheduledTask .e-add-icon:before, .fluent-dark #UnscheduledTask .e-add-icon:before,
-        .material3 #UnscheduledTask .e-add-icon:before, .material3-dark #UnscheduledTask .e-add-icon:before  {
+        .material3 #UnscheduledTask .e-add-icon:before, .material3-dark #UnscheduledTask .e-add-icon:before,
+        .fluent2 #UnscheduledTask .e-add-icon:before,.fluent2-dark #UnscheduledTask .e-add-icon:before,
+        .fluent2-highcontrast #UnscheduledTask .e-add-icon:before {
             content: "\e836"
         }
     </style>

@@ -5,7 +5,7 @@
 }
 
 @section ControlsSection{
-    <div class="control-section">
+    <div class="control-section" role="region" aria-label="Tree Grid Control section" tabindex="0">
         @Html.EJS().TreeGrid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
        {
            col.Type("checkbox").Width(50).Add();
@@ -15,7 +15,7 @@
            col.Field("Duration").HeaderText("Duration").Width(90).TextAlign(TextAlign.Right).Add();
            col.Field("Progress").HeaderText("Progress").Width(90).TextAlign(TextAlign.Right).Add();
 
-       }).AllowPaging(true).ChildMapping("Children").SelectionSettings(select => select.PersistSelection(true)).Height(350).TreeColumnIndex(2).Render()
+       }).AllowPaging(true).ChildMapping("Children").SelectionSettings(select => select.PersistSelection(true)).Height(350).TreeColumnIndex(2).Render() 
     </div>
 }
 
@@ -41,7 +41,7 @@
             In this demo, Tree Grid mutliple selection has been enabled with selection persistance.
         </p>
         <p>
-            More information on the paging configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/selection/check-box-selection">documentation section</a>.
+            More information on the paging configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/selection/check-box-selection" style="color: #337ab7; text-decoration: underline"; aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
         </p>
     </div>
 }

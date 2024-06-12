@@ -30,7 +30,7 @@
                     <div id="json-preview" class="e-query-json-preview">
                         <div style="border: none; width: 100% ">
                             <label style="padding: 10px">JSON</label>
-                            <div class="copy-tooltip" style="display: none" id="copy-json">>
+                            <div class="copy-tooltip" style="display: none" id="copy-json">
                                 @Html.EJS().Tooltip("Tooltip").OpensOn("Click").Content("Copied to clipboard").ContentTemplate(@<div class="e-icons e-copy"></div>).Render()
                             </div>
                         </div>
@@ -64,9 +64,9 @@
         <p>In mobile mode, the control is shown vertically.</p>
         <p>
             More information about Query Builder can be found in this
-            <a target="_blank" href="http://ej2.syncfusion.com/aspnetmvc/documentation/query-builder/getting-started">
+            <a target="_blank" href="http://ej2.syncfusion.com/aspnetmvc/documentation/query-builder/getting-started" aria-label="documentation section">
                 documentation section
-            </a>.
+            <span class="sr-only">opens in a new tab</span></a>.
         </p>
     </div>
 }
@@ -178,6 +178,19 @@
         .e-query-json-preview .e-json-content {
             width: 95%;
         }
+    }
+
+    .fluent2-dark .json-content-area,
+    .fluent2-highcontrast .json-content-area {
+        background-color: #1f1f1f;
+    }
+
+    .highcontrast .e-query-json-preview .e-icons.e-copy,
+    .fluent2-dark .e-query-json-preview .e-icons.e-copy,
+    .fluent2-highcontrast .e-query-json-preview .e-icons.e-copy {
+        padding-bottom: 3px;
+        color: white;
+        background-color: black;
     }
 </style>@*custom code end*@
 <script>

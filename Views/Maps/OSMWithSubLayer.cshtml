@@ -10,7 +10,7 @@
 			{
 			new Syncfusion.EJ2.Maps.MapsLayer
 			{
-			LayerType = Syncfusion.EJ2.Maps.ShapeLayerType.OSM
+            UrlTemplate = "https://tile.openstreetmap.org/level/tileX/tileY.png",
 			},
 			new Syncfusion.EJ2.Maps.MapsLayer
 			{
@@ -21,12 +21,12 @@
 			}).Render()
 	</div>
     <div style="float: right">
-        <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a>
+        <a href="https://www.openstreetmap.org/copyright" target="_blank" aria-label="OpenStreetMap">© OpenStreetMap contributors</a>
     </div>
     <br />
     <div style="float: right; margin-right: 10px;">
         Source:
-        <a href="https://www.whatarethe7continents.com/biggest-largest-smallest-continents/" target="_blank">Seven Continents</a>
+        <a href="https://www.whatarethe7continents.com/biggest-largest-smallest-continents/" target="_blank" aria-label="Seven Continents">Seven Continents</a>
     </div>
 </div>
     <script>

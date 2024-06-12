@@ -18,7 +18,7 @@
     <div id="ToolbarTemplate">
         <div>
             @(Html.EJS().DropDownList("Drop").DataSource((IEnumerable<object>)ViewBag.Data)
-                .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Placeholder("View").Width("90px").Change("Change")
+                .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Placeholder("View").Width("99px").Change("Change")
                 .Render()
             )
         </div>
@@ -46,13 +46,13 @@
                 .SplitterSettings(sp => sp.Position("55.5%"))
                 .EventMarkers(em =>
                 {
-                    em.Day("04/04/2022").Label("Q-1 Release").Add();
-                    em.Day("06/30/2022").Label("Q-2 Release").Add();
-                    em.Day("09/29/2022").Label("Q-3 Release").Add();
+                    em.Day("04/04/2024").Label("Q-1 Release").Add();
+                    em.Day("06/30/2024").Label("Q-2 Release").Add();
+                    em.Day("09/29/2024").Label("Q-3 Release").Add();
                 })
                 .Holidays(hol => {
-                    hol.From("01/01/2022").To("01/01/2022").Label("New Year holiday").Add();
-                    hol.From("12/25/2021").To("12/26/2021").Label("Christmas holidays").Add();
+                    hol.From("01/01/2024").To("01/01/2024").Label("New Year holiday").Add();
+                    hol.From("12/25/2023").To("12/26/2023").Label("Christmas holidays").Add();
                 })
                 .SelectionSettings(ss => ss.Mode(Syncfusion.EJ2.Grids.SelectionMode.Row).Type(Syncfusion.EJ2.Grids.SelectionType.Single).EnableToggle(true))
                 .LabelSettings(ls => ls.RightLabel("Assignee").TaskLabel("${Progress}%"))
@@ -60,8 +60,8 @@
                 .BottomTier(bt => bt.Format("dd").Count(4).Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day)))
                 .FilterSettings(f => f.Type(Syncfusion.EJ2.Gantt.FilterType.Menu))
                 .GridLines(Syncfusion.EJ2.Gantt.GridLine.Vertical)
-                .ProjectStartDate("12/24/2021")
-                .ProjectEndDate("10/26/2022")
+                .ProjectStartDate("12/24/2023")
+                .ProjectEndDate("10/26/2024")
                 .Render()
             )
         </div>
@@ -90,6 +90,11 @@
         .e-gantt-child-taskbar,
         .e-gantt-parent-taskbar {
             border-radius: 10px !important
+        }
+        .fluent2 #overviewSample .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .fluent2-dark #overviewSample .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .fluent2-highcontrast #overviewSample .e-toolbar-items .e-toolbar-right .e-template .e-input-group {
+            width: 99px !important;
         }
     </style>
 

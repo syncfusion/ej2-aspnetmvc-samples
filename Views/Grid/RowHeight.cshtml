@@ -22,7 +22,7 @@
        col.Field("ShipCountry").Visible(false).HeaderText("Ship Country").Width("150").Add();
 
 
-   }).AllowSorting().Toolbar(toolbar).ToolbarClick("toolbarClick").Render()
+   }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Toolbar(toolbar).ToolbarClick("toolbarClick").Render()
         </div>
 <style>
 

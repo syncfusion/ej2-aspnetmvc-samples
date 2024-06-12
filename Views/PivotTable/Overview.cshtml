@@ -74,7 +74,7 @@
         }).Toolbar(new List<string>
         () { "New", "Save", "SaveAs", "Rename", "Remove", "Load",
         "Grid", "Chart", "Export", "SubTotal", "GrandTotal", "Formatting",
-        "FieldList"}).Load("onLoad").SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").ChartSeriesCreated("chartSeriesCreated").CellTemplate("${getCellContent(data)}").Render()
+        "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").ChartSeriesCreated("chartSeriesCreated").CellTemplate("${getCellContent(data)}").Render()
     </div>
     <div class="urllink">
         Source:
@@ -149,10 +149,6 @@
         return '';
     };
 
-    function onLoad(args) {
-        args.dataSourceSettings.excludeFields = ["link", "logo"];
-    }
-
     function hyperlinkCellClick(args) {
         var pivotObj = document.getElementById('pivotview').ej2_instances[0];
         var cell = args.target.parentElement;
@@ -167,8 +163,7 @@
     function onChartLoad(args) {
         var selectedTheme = location.hash.split("/")[1];
         selectedTheme = selectedTheme ? selectedTheme : "Material";
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() +
-            selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast');
     }
     function saveReport(args) {
         var reports = [];
@@ -287,7 +282,7 @@
 <div id="action-description">
     <p>This sample provides an overview of <a target="_blank"
             href="https://www.syncfusion.com/aspnet-mvc-ui-controls/pivot-table" aria-label="ASP.NET MVC Pivot Table">
-            ASP.NET MVC Pivot Table</a>, which allows you to organize and summarize pivot data in a detailed or abstract
+            ASP.NET MVC Pivot Table<span class="sr-only">opens in a new tab</span></a>, which allows you to organize and summarize pivot data in a detailed or abstract
         view and display it as a grid and chart.</p>
 </div>
 }
@@ -299,27 +294,27 @@
         the
         results in a table and chart format. It includes major features such as built-in <a target="_blank"
             href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/aggregation/#aggregation" aria-label="aggregations">
-            aggregations</a>, <a target="_blank"
+            aggregations<span class="sr-only">opens in a new tab</span></a>, <a target="_blank"
             href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/field-list/#field-list" aria-label="pivot table field list">
-            pivot table field list</a> for report manipulation, Excel-like <a target="_blank"
+            pivot table field list<span class="sr-only">opens in a new tab</span></a> for report manipulation, Excel-like <a target="_blank"
             href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/filtering/#filtering" aria-label="filtering">
-            filtering</a> and <a target="_blank"
+            filtering<span class="sr-only">opens in a new tab</span></a> and <a target="_blank"
             href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/sorting/#sorting" aria-label="sorting">
-            sorting</a>, <a target="_blank"
+            sorting<span class="sr-only">opens in a new tab</span></a>, <a target="_blank"
             href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/editing/#editing" aria-label="editing">
-            editing</a>, <a target="_blank"
+            editing<span class="sr-only">opens in a new tab</span></a>, <a target="_blank"
             href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/excel-export/#excel-export" aria-label="Excel">
-            Excel</a> and <a target="_blank"
+            Excel<span class="sr-only">opens in a new tab</span></a> and <a target="_blank"
             href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/pdf-export/#pdf-export" aria-label="PDF">
-            PDF</a> exporting, and so on, which are used in this demo, as well as a large data source loaded without any
+            PDF<span class="sr-only">opens in a new tab</span></a> exporting, and so on, which are used in this demo, as well as a large data source loaded without any
         performance degradation by using <a target="_blank"
             href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/virtual-scrolling/#virtual-scrolling" aria-label="virtualization">
-            virtualization</a> support.
+            virtualization<span class="sr-only">opens in a new tab</span></a> support.
     </p><br />
     <p>
         More information on the ASP.NET MVC Pivot Table can be found in this <a target="_blank"
             href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/getting-started" aria-label="documentation section" >
-            documentation section</a>.
+            documentation section<span class="sr-only">opens in a new tab</span></a>.
     </p>
 </div>
 }

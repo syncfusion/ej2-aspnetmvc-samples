@@ -7,16 +7,16 @@
         <div class="content-wrapper">
             <div style="display: flex;">
                 <div style="display: flex;">
-                    <label for="checked" style="margin:0px 5px 0px 0px;font-size: 15px;"> Allow Taskbar Drag And Drop </label>
+                    <label class="overlap" for="checked" style="margin:0px 5px 0px 0px;font-size: 15px;"> Allow Taskbar Drag And Drop </label>
                     <div>
-                    @Html.EJS().Switch("checked").Change("dragDropChange").Render()
+                        @Html.EJS().Switch("checked").Change("dragDropChange").Render()
                     </div>
                 </div>
                 <div style="display: flex;">
-                    <label for="unchecked" style="margin:0px 5px 0px 5px;font-size: 15px;"> Allow Taskbar Overlap </label>
+                    <label class="overlap" for="unchecked" style="margin:0px 5px 0px 5px;font-size: 15px;"> Allow Taskbar Overlap </label>
                     <div>
-                    @Html.EJS().Switch("unchecked").Checked(true).Change("overlapChange").Render()
-                   </div>
+                        @Html.EJS().Switch("unchecked").Checked(true).Change("overlapChange").Render()
+                    </div>
                 </div>
             </div>
             <div>
@@ -39,12 +39,24 @@
                 col.Field("Duration").Width(100).Add();
             })
             .LabelSettings(ls => ls.TaskLabel("TaskName")).SplitterSettings(sp => sp.ColumnIndex(2))
-            .ProjectStartDate("03/28/2019").ProjectEndDate("05/18/2019")
+            .ProjectStartDate("03/24/2024").ProjectEndDate("05/18/2024")
             .Render()
             )
             </div>
         </div>
     </div>
+    <style>
+
+        .fluent2 .overlap,
+        .fluent2-dark .overlap {
+            padding: 5px;
+        }
+
+        .fluent2 .overlap,
+        .fluent2-dark .overlap {
+            padding: 5px;
+        }
+    </style>
     <script>
         function dragDropChange(args) {
             var ganttObj = document.getElementsByClassName('e-gantt')[0].ej2_instances[0];
@@ -62,21 +74,21 @@
                 ganttObj.allowTaskbarOverlap = false;
             }
         }
-        </script>
+    </script>
 }
 
 @section ActionDescription{
     <div id="action-description">
         <p>
             This sample explains you about, how to visualize the list of tasks assigned for a resource in a parent row of collapsed state.  It is also possible to change the tasks scheduling in the collapsed state.
-        This feature can be enabled by setting the <code>enableMultiTaskbar</code> property as "true".
+            This feature can be enabled by setting the <code>enableMultiTaskbar</code> property as "true".
         </p>
     </div>
 }
 
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Resource Multi Taskbar in ASP.NET MVC Gantt control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Resource Multi Taskbar in ASP.NET MVC Gantt control. Explore here for more details." />
+}
 
 @section Description{
     <div id="description">
@@ -104,8 +116,8 @@
 }
 
 @section Title{
-                    <title>ASP.NET MVC Gantt Resource Multi Taskbar Example - Syncfusion Demos </title>
-                }
+    <title>ASP.NET MVC Gantt Resource Multi Taskbar Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Resource Multi Taskbar in ASP.NET MVC Gantt Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Resource Multi Taskbar in ASP.NET MVC Gantt Control</h1>
+}

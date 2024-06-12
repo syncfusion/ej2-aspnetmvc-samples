@@ -4,7 +4,7 @@
     <div class="control-section">
         <div style="width: 100%;">
             <div style="display: none;">
-                @Html.EJS().Uploader("fileupload").Success("onUploadSuccess").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("~/Uploader/Save"), RemoveUrl = @Url.Content("~/Uploader/Remove") }).Render()
+                @Html.EJS().Uploader("fileupload").Success("onUploadSuccess").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Remove") }).Render()
             </div>
             <div class='db-toolbar-editor' style="width: 100%;">
                 <div class='db-toolbar-container'>

@@ -14,6 +14,10 @@
         .fabric #legendText, .fabric-dark #legendText, .tailwind #legendText, .tailwind-dark #legendText, .bootstrap #legendText, .bootstrap-dark #legendText {
             margin-top: 27px;
         }
+
+        .e-view.fluent2 #property .e-checkbox-wrapper .e-icons, .e-view.fluent2-dark #property .e-checkbox-wrapper .e-icons {
+            margin-left: 0px;
+        }
     </style>
     <div class="col-lg-9 control-section">
         <div id="outer" style="width:100%">
@@ -24,7 +28,7 @@
        }).Render();
                 <div style="margin-left:75%">
                     Source:
-                    <a href="https://simple.wikipedia.org/wiki/List_of_countries_by_population_density" target="_blank">simple.wikipedia.org</a>
+                    <a href="https://simple.wikipedia.org/wiki/List_of_countries_by_population_density" target="_blank" aria-label="wikipedia">simple.wikipedia.org</a>
                 </div>
             </div>
         </div>
@@ -36,7 +40,7 @@
                         <td>
                             <div class="property-text" style="padding-left: 0px;">Legend mode</div>
                         </td>
-                        <td>
+                        <td style="padding-left: 10px">
                             <div>
                             <select name="selectIndex" autocomplete="off" id="legendMode" style="width:60%;">
                                 <option value="Default" selected>Default</option>
@@ -49,7 +53,7 @@
                         <td>
                             <div class="property-text" style="padding-left: 0px; margin-top: 10px">Legend position</div>
                         </td>
-                        <td>
+                        <td style="padding-left: 10px">
                             <div style="margin-top: 10px">
                             <select name="legendPos" autocomplete="off" id="legendPosition" style="width:60%;">
                                 <option value="Top" selected>Top</option>
@@ -64,18 +68,18 @@
                         <td>
                             <div class="property-text" id="legendText" style="padding: 0px;">Show legend for remaining data source item</div><br/>
                         </td>
-                        <td>
-                            <div style="height: 70px; margin-left: -10px; padding-top: 20px">
+                        <td style="padding-left: 10px">
+                            <div style="height: 70px; margin-left: -10px;">
                                 <input type="checkbox" id="opacity" style="margin-top: 20px;" />
                             </div>
                         </td>
                     </tr>
-                    <tr style="height: 50px">
+                    <tr style="height: 45px">
                         <td>
-                            <div class="property-text" style="padding: 0px;">Show population density when the legend item is toggled</div>
+                            <div class="property-text" style="padding: 0px; margin-top:-10px">Show population density when the legend item is toggled</div>
                         </td>
-                        <td>
-                            <div style="height: 50px; margin-left: -10px; margin-top: -5px">
+                        <td style="padding-left: 10px">
+                            <div style="height: 50px; margin-left: -10px; margin-top: -28px">
                                 <input type="checkbox" id="toggleLegend" style="margin-top: 10px;" />
                             </div>
                         </td>
@@ -213,7 +217,7 @@
             </p>          
             <p>
                 More information on the maps layers can be found in this
-                <a target="_blank" href="">documentation section</a>.
+                <a target="_blank" href="" aria-label="documentation section" >documentation section</a>.
             </p>
         </div>}
 

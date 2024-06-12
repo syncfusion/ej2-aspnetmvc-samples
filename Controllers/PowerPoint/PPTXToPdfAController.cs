@@ -42,7 +42,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             IPresentation presentation = GetInputDocument(file);
             if(presentation != null)
             {
-                string output = file == null ? "Syncfusion Presentation_Pdf_A3A" : Path.GetFileNameWithoutExtension(file.FileName);
+                string output = file == null ? "Input_Template_Pdf_A3A" : Path.GetFileNameWithoutExtension(file.FileName);
                 presentation.ChartToImageConverter = new ChartToImageConverter();
                 presentation.ChartToImageConverter.ScalingMode = Syncfusion.OfficeChart.ScalingMode.Best;
 
