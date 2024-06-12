@@ -1,0 +1,126 @@
+﻿﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.PdfViewer
+@{
+    ViewBag.Title = "ReadOnly";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string serviceUrl = VirtualPathUtility.ToAbsolute("~/api/PdfViewer/");
+}
+@{
+    PdfViewerAnnotationSettings annotationSettings = new PdfViewerAnnotationSettings()
+    {
+        IsLock = true
+    };
+
+
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="flex-container">
+            <label class="switchLabel" for="checked">Standalone PDF Viewer</label>
+            <div class="e-message render-mode-info">
+                <span class="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
+            </div>
+            <div>
+                @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
+            </div>
+        </div>
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/restricted-formfield.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").EnableStickyNotesAnnotation(false).DocumentLoad("documentLoad").AnnotationSettings(annotationSettings).ToolbarSettings(new Syncfusion.EJ2.PdfViewer.PdfViewerToolbarSettings { ShowTooltip = true, ToolbarItems = "OpenOption PanTool PageNavigationTool MagnificationTool PrintOption" }).Render()
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC PDF Viewer control in read only mode. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>The sample showcases the PDF viewer operating in a read-only mode, which restricts the ability to make changes to annotations, form fields, and also disables text selection.</p>
+    </div>
+}
+@section Description{    
+    <div id="description">
+        <p>
+            More information on the PDF Viewer instantiation can be found in this
+            <a target="_blank"
+               href="https://ej2.syncfusion.com/aspnetmvc/documentation/pdfviewer/getting-started/" aria-label="documentation section">
+                documentation section
+            <span class="sr-only">opens in a new tab</span></a>.
+        </p>
+
+    </div>
+}
+@*custom code start*@
+<style>
+
+    #pdfviewer {
+        display: block;
+        height: 641px;
+    }
+
+    .flex-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .render-mode-info {
+        background: none;
+        border: none;
+        padding-left: 0px;
+    }
+
+        .render-mode-info .render-mode-info-icon {
+            height: 16px;
+            width: 16px;
+        }
+
+    .switchLabel {
+        font-family: "Segoe UI", "GeezaPro", "DejaVu Serif", sans-serif;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.24px;
+        text-align: right;
+        font-size: 14px;
+    }
+
+    .render-mode-info .render-mode-info-icon::before {
+        line-height: 0.5rem;
+    }
+
+    .buttonSwitch {
+        Width: 40px;
+        Height: 24px;
+    }
+</style>
+<script>
+    function documentLoad() {
+
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+		viewer.contextMenuOption='None';
+        var formField = viewer.retrieveFormFields();
+        for (var x = 0; x < formField.length; x++) {
+            viewer.formDesignerModule.updateFormField(viewer.formFieldCollections[x], {
+                isReadOnly: true,
+            });
+        }
+    }
+
+    function change(args) {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (args.checked) {
+            viewer.serviceUrl = '';
+        } else {
+            viewer.serviceUrl = '@serviceUrl';
+        }
+        viewer.dataBind();
+        viewer.load(viewer.documentPath, null);
+    }
+</script>
+@*custom code end*@
+@section Title{
+    <title>ASP.NET MVC PDF Viewer Default Functionalities in read only mode Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC PDF Viewer Control in read only mode</h1>
+}

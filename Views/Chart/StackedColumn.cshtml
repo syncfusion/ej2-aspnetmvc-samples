@@ -1,0 +1,68 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        
+      @Html.EJS().Chart("container-vertical").Series(series =>
+ {
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Year").YName("General").Border(br => br.Width(1).Color("#ffffff")).DataSource(ViewBag.ChartPoints).Name("General Motors").ColumnWidth(0.5).Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Year").YName("Honda").Border(br => br.Width(1).Color("#ffffff")).DataSource(ViewBag.ChartPoints).Name("Honda").ColumnWidth(0.5).Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Year").YName("Suzuki").Border(br => br.Width(1).Color("#ffffff")).DataSource(ViewBag.ChartPoints).Name("Suzuki").ColumnWidth(0.5).Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Year").YName("BMW").Border(br => br.Width(1).Color("#ffffff")).DataSource(ViewBag.ChartPoints).Name("BMW").ColumnWidth(0.5).Width(2).Add();
+ }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+ .MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg => mg.Width(0))
+ .MajorTickLines(mt => mt.Width(0)).
+ MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).Interval(1)
+ .LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45)
+       ).PrimaryYAxis(py => py.MajorTickLines(mt => mt.Width(0)).
+       MinorTickLines(mt => mt.Width(0)).MinorGridLines(mg => mg.Width(1)).LineStyle(ls => ls.Width(0)).Title("Vehicles Production (In Millions)")
+       ).Title("Motor Vehicle Production by Manufacturer").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true)).Load("load").AxisLabelRender("axisLabelRender").LegendSettings(leg => leg.Visible(true).EnableHighlight(true)).Render()
+        </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script>
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+        }
+        var axisLabelRender = function (args) {
+            {
+                args.text = args.text.replace("0000000", "0M").replace("000000", "M");
+            }
+        }
+    </script>
+}
+   @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Stacked Column in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+   @*custom code end*@
+@section ActionDescription{
+    <p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/stacked-column-chart" aria-label="ASP.NET MVC Stacked ColumnChart">ASP.NET MVC Stacked ColumnChart <span class="sr-only">opens in a new tab</span></a> example visualizes motor vehicle production by manufacturer with a default stacked column series. The legend in the sample shows more information about those series.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the stacked column chart. The stacked column chart stacks points in the series vertically. You can also use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartSeries.html#Syncfusion_EJ2_Charts_ChartSeries_StackingGroup" aria-label="StackingGroup">StackingGroup<span class="sr-only">opens in a new tab</span></a> property to group stacked collections based on category.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p>
+        More information about the stacked column series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types#column-charts" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Stacked Column Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }
