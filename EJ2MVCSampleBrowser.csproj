@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EJ2MVCSampleBrowser</RootNamespace>
     <AssemblyName>EJ2MVCSampleBrowser</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -103,10 +103,10 @@
       <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.26.1.35\lib\net45\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Base">
-      <HintPath>packages\\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Compression.Base.26.1.35\lib\net462\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChart.Base">
-      <HintPath>packages\\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.26.1.35\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Presentation.Base">
       <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.26.1.35\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
@@ -121,7 +121,7 @@
       <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.26.1.35\lib\net45\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.WPF">
-      <HintPath>packages\\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.SfChart.WPF.26.1.35\lib\net462\Syncfusion.SfChart.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.Base">
       <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.26.1.35\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
@@ -131,7 +131,7 @@
     </Reference>
     <Reference Include="Syncfusion.Licensing">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\\lib\net45\Syncfusion.Licensing.dll</HintPath>
+      <HintPath>packages\Syncfusion.Licensing.26.1.35\lib\net45\Syncfusion.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -239,7 +239,7 @@
     <Compile Include="Controllers\FileManager\VirtualizationController.cs" />
     <Compile Include="Controllers\GanttChart\CriticalPathController.cs" />
     <Compile Include="Controllers\GanttChart\TimelineTemplateController.cs" />
-	<Compile Include="Controllers\GanttChart\UndoRedoController.cs" />
+    <Compile Include="Controllers\GanttChart\UndoRedoController.cs" />
     <Compile Include="Controllers\GanttChart\LoadingAnimationController.cs" />
     <Compile Include="Controllers\Grid\AdaptiveLayoutController.cs" />
     <Compile Include="Controllers\Grid\FrozenRowsColumnsController.cs" />
@@ -542,11 +542,11 @@
     <Compile Include="Controllers\Timeline\APIController.cs" />
     <Compile Include="Controllers\Timeline\DefaultController.cs" />
     <Compile Include="Controllers\Timeline\TemplateController.cs" />
-	<Compile Include="Controllers\CircularChart3D\PieController.cs" />
-	<Compile Include="Controllers\CircularChart3D\DonutController.cs" />
-	<Compile Include="Controllers\CircularChart3D\PieWithLegendController.cs" />
-	<Compile Include="Controllers\CircularChart3D\SelectionController.cs" />
-	<Compile Include="Controllers\CircularChart3D\PieRadiusController.cs" />
+    <Compile Include="Controllers\CircularChart3D\PieController.cs" />
+    <Compile Include="Controllers\CircularChart3D\DonutController.cs" />
+    <Compile Include="Controllers\CircularChart3D\PieWithLegendController.cs" />
+    <Compile Include="Controllers\CircularChart3D\SelectionController.cs" />
+    <Compile Include="Controllers\CircularChart3D\PieRadiusController.cs" />
     <Compile Include="Controllers\ArcGauge\CustomerSatisfactionScoreController.cs" />
     <Compile Include="Controllers\ArcGauge\DefaultController.cs" />
     <Compile Include="Controllers\ArcGauge\KeyPerformanceIndicatorController.cs" />
@@ -1032,7 +1032,7 @@
     <Compile Include="Controllers\PdfViewer\OrganizePagesController.cs" />
     <Compile Include="Controllers\PdfViewer\ReadOnlyController.cs" />
     <Compile Include="Controllers\PdfViewer\DocumentListController.cs" />
-	<Compile Include="Controllers\PDF\AdventureCycleController.cs" />
+    <Compile Include="Controllers\PDF\AdventureCycleController.cs" />
     <Compile Include="Controllers\PDF\AnnotationFlattenController.cs" />
     <Compile Include="Controllers\PDF\AttachmentsController.cs" />
     <Compile Include="Controllers\PDF\AutoTagController.cs" />
@@ -1531,7 +1531,7 @@
     <Compile Include="Controllers\Excel\WorksheetProtectionController.cs" />
     <Compile Include="Controllers\Excel\WorksheetToImageController.cs" />
     <Compile Include="Controllers\Excel\WhatIfAnalysisController.cs" />
-	<Compile Include="Controllers\Excel\CommentsController.cs" />
+    <Compile Include="Controllers\Excel\CommentsController.cs" />
     <Compile Include="Controllers\InPlaceEditor\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\InPlaceEditor\DropDownsController.cs" />
     <Compile Include="Controllers\InPlaceEditor\PickersController.cs" />
@@ -1993,7 +1993,7 @@
     <Content Include="Content\gantt\images\StartDate.png" />
     <Content Include="Content\gantt\images\TaskName.png" />
     <Content Include="Content\gantt\images\Van Jack.png" />
-   <Content Include="Content\gantt\images\S.svg" />
+    <Content Include="Content\gantt\images\S.svg" />
     <Content Include="Content\gantt\images\M.svg" />
     <Content Include="Content\gantt\images\T.svg" />
     <Content Include="Content\gantt\images\W.svg" />
@@ -2948,11 +2948,11 @@
     <Content Include="Views\ThreeDimensionalChart\StackedBar100.cshtml" />
     <Content Include="Views\ThreeDimensionalChart\StackedColumn.cshtml" />
     <Content Include="Views\ThreeDimensionalChart\StackedColumn100.cshtml" />
-	<Content Include="Views\CircularChart3D\Pie.cshtml" />
-	<Content Include="Views\CircularChart3D\Donut.cshtml" />
-	<Content Include="Views\CircularChart3D\PieWithLegend.cshtml" />
-	<Content Include="Views\CircularChart3D\Selection.cshtml" />
-	<Content Include="Views\CircularChart3D\PieRadius.cshtml" />
+    <Content Include="Views\CircularChart3D\Pie.cshtml" />
+    <Content Include="Views\CircularChart3D\Donut.cshtml" />
+    <Content Include="Views\CircularChart3D\PieWithLegend.cshtml" />
+    <Content Include="Views\CircularChart3D\Selection.cshtml" />
+    <Content Include="Views\CircularChart3D\PieRadius.cshtml" />
     <Content Include="Views\ArcGauge\Default.cshtml" />
     <Content Include="Views\ArcGauge\CustomerSatisfactionScore.cshtml" />
     <Content Include="Views\ArcGauge\KeyPerformanceIndicator.cshtml" />
@@ -3155,7 +3155,7 @@
     <Content Include="Views\DocumentEditor\MultipleColumns.cshtml" />
     <Content Include="Views\DocumentEditor\Ruler.cshtml" />
     <Content Include="Views\DocumentEditor\DocumentList.cshtml" />
-	<Content Include="Views\DocumentEditor\AdvancedExporting.cshtml" />
+    <Content Include="Views\DocumentEditor\AdvancedExporting.cshtml" />
     <Content Include="Views\DocumentEditor\ColorpickerCustomization.cshtml" />
     <Content Include="Views\DocumentEditor\HeadingNavigation.cshtml" />
     <Content Include="Views\DropDownList\Cascading.cshtml" />
@@ -3713,7 +3713,7 @@
     <Content Include="Views\Excel\WorksheetToImage.cshtml" />
     <Content Include="Views\Excel\ExternalFormula.cshtml" />
     <Content Include="Views\Excel\WhatIfAnalysis.cshtml" />
-	<Content Include="Views\Excel\Comments.cshtml" />
+    <Content Include="Views\Excel\Comments.cshtml" />
     <Content Include="Views\InPlaceEditor\DefaultFunctionalities.cshtml" />
     <Content Include="Views\InPlaceEditor\DropDowns.cshtml" />
     <Content Include="Views\InPlaceEditor\Pickers.cshtml" />
@@ -4046,7 +4046,7 @@
     <Content Include="Views\Carousel\API.cshtml" />
     <Content Include="Views\Carousel\KeyboardNavigation.cshtml" />
     <Content Include="Views\GanttChart\CriticalPath.cshtml" />
-	<Content Include="Views\GanttChart\UndoRedo.cshtml" />
+    <Content Include="Views\GanttChart\UndoRedo.cshtml" />
     <Content Include="Views\Chart\Keyboard.cshtml" />
     <Content Include="Views\SpeedDial\DefaultFunctionalities.cshtml" />
     <Content Include="Views\SpeedDial\Position.cshtml" />
@@ -4091,7 +4091,7 @@
     <Content Include="Views\Ribbon\DefaultFunctionalities.cshtml" />
     <Content Include="Views\Ribbon\RibbonResizing.cshtml" />
     <Content Include="Views\Ribbon\SimplifiedMode.cshtml" />
-    <Content Include="Views\PDF\PDFToImage.cshtml" />    
+    <Content Include="Views\PDF\PDFToImage.cshtml" />
     <Content Include="Views\PdfViewer\InvisibleSignature.cshtml" />
     <Content Include="Views\PdfViewer\OrganizePages.cshtml" />
     <Content Include="Views\PdfViewer\ContextMenu.cshtml" />
@@ -4173,9 +4173,9 @@
     <Content Include="App_Data\PowerPoint\PPTX_Viewer_UWP_Input.pptx" />
     <Content Include="App_Data\PowerPoint\ShapeWithAnimation.pptx" />
     <Content Include="App_Data\PowerPoint\Slides.pptx" />
-	<Content Include="App_Data\PowerPoint\CycleLogo.jpg" />
-	<Content Include="App_Data\PowerPoint\About.svg" />
-	<Content Include="App_Data\PowerPoint\About.png" />
+    <Content Include="App_Data\PowerPoint\CycleLogo.jpg" />
+    <Content Include="App_Data\PowerPoint\About.svg" />
+    <Content Include="App_Data\PowerPoint\About.png" />
     <Content Include="App_Data\PowerPoint\SmartArtNode.pptx" />
     <Content Include="App_Data\PowerPoint\SmartArts.pptx" />
     <Content Include="App_Data\PowerPoint\Syncfusion Presentation.pptx" />
@@ -4267,10 +4267,10 @@
     <Content Include="Content\Sidebar\icons\fonts\e-icons-metro.eot" />
     <Content Include="Content\Sidebar\icons\fonts\e-icons-metro.ttf" />
     <Content Include="Content\Sidebar\icons\fonts\e-icons-metro.woff" />
-	<Content Include="Content\Sidebar\sidebar\fonts\controls.svg" />
+    <Content Include="Content\Sidebar\sidebar\fonts\controls.svg" />
     <Content Include="Content\Sidebar\sidebar\fonts\e-icons-metro.svg" />
     <Content Include="Content\Sidebar\sidebar\fonts\icons.svg" />
-	<Content Include="Content\Sidebar\sidebar\fonts\controls.eot" />
+    <Content Include="Content\Sidebar\sidebar\fonts\controls.eot" />
     <Content Include="Content\Sidebar\sidebar\fonts\controls.ttf" />
     <Content Include="Content\Sidebar\sidebar\fonts\controls.woff" />
     <Content Include="Content\Sidebar\sidebar\fonts\e-icons-metro.eot" />
