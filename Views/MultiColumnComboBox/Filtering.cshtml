@@ -5,14 +5,14 @@
     <div class="control-section">
         <div class="control-wrapper">
             <div style='padding-top:30px;'>
-                @Html.EJS().MultiColumnComboBox("filtering").Placeholder("Select the country").DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new MultiColumnComboBoxFieldSettings
+                @Html.EJS().MultiColumnComboBox("filtering").Placeholder("Select the country").Fields(new MultiColumnComboBoxFieldSettings
                 { Text = "ShipCountry", Value = "OrderID" }).Columns(col =>
                 {
                     col.Field("OrderID").Header("Order ID").Width("110").Add();
                     col.Field("CustomerID").Header("Customer ID").Width("130").Add();
                     col.Field("Freight").Header("Freight").Width("90").Add();
                     col.Field("ShipCountry").Header("Ship Country").Width("140").Add();
-                }).PopupHeight("200px").Filtering("onfiltering").Render()
+                }).PopupHeight("200px").Filtering("onfiltering").DataSource(@Model.OrderDetails).Render()
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
     function onfiltering(e) {
         var query = new ej.data.Query();
         query = (e.text !== '') ? query.where('Name', 'startswith', e.text, true) : query;
-        e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.dataSource)), query);
+        e.updateData(@Html.Raw(JsonConvert.SerializeObject(@Model.OrderDetails)), query);
     }
     </script>
 }

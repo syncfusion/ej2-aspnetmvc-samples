@@ -14,9 +14,11 @@ namespace EJ2MVCSampleBrowser.Controllers.MultiColumnComboBox
     {
         public ActionResult KeyboardNavigation()
         {
-            var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
-            return View();
+            var model = new OrderDetailsViewModel
+            {
+                OrderDetails = GetOrderDetails()
+            };
+            return View(model);
         }
     }
 }

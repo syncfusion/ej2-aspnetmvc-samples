@@ -3,7 +3,7 @@
 }
 @using Syncfusion.EJ2
 @section ControlsSection{
-    @{Html.BeginForm("ImportData", "PowerPoint", FormMethod.Post);
+    @{Html.BeginForm("Export", "PowerPoint", FormMethod.Post);
             {
                 <div class="col-lg-9 control-section">
                 @Html.EJS().Grid("ImportData").DataSource(dataManager => { dataManager.Url(@Url.Action("UrlDatasource", "PowerPoint")).InsertUrl(@Url.Action("Insert", "PowerPoint")).UpdateUrl(@Url.Action("Update", "PowerPoint")).RemoveUrl(@Url.Action("Delete", "PowerPoint")).Adaptor("UrlAdaptor"); }).Columns(col =>

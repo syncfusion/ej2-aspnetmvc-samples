@@ -1249,6 +1249,19 @@ function showHideControlTree() {
     } else {
         viewSwitch(controlTree, controlList, reverse);
     }
+    const url = location.pathname;
+    const pathParts = url.split("/");
+    const sampleName = pathParts[pathParts.length - 2];
+    const listItem = document.querySelector(`li[control-name="${sampleName}"]`);
+    if (listItem) {
+     	listItem.classList.add('e-active');
+    }
+    const selectedDiv = document.querySelector('.e-active');
+    if (selectedDiv) {
+     	selectedDiv.scrollIntoView({
+        block: 'center'
+    	});
+     }
 }
 
 function viewSwitch(from, to, reverse) {
@@ -1622,3 +1635,15 @@ function navigateToPage() {
     window.location.href = updatedURL;
     location.reload();
 }
+
+function ScrollToSelected() {
+    const selectedDiv = document.querySelector('.sb-left-pane .e-listview .e-list-item.e-active');
+    if (selectedDiv) {
+        selectedDiv.scrollIntoView({
+            block: 'center'
+        });
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () { setTimeout(function () { ScrollToSelected(); }, 500); });
+window.addEventListener('resize', ScrollToSelected);

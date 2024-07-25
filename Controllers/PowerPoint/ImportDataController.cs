@@ -47,10 +47,8 @@ namespace EJ2MVCSampleBrowser.Controllers
         /// <param name="Group">Radio button group value</param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult ImportData(string button, string Group)
+        public ActionResult Export(string Group)
         {
-            if (button == null)
-                return View();
             //Instatiate the presentation
             IPresentation presentation = null;
             //Checks whether the export option is table

@@ -36,16 +36,16 @@
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%;">
-            <tr>
-                <td class="left-side">Filter Type</td>
-                <td>
-                    @Html.EJS().DropDownList("FilterType").Width(100).DataSource((IEnumerable<object>)ViewBag.typedropdata).Value("Menu").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "type" }).Change("Change").Render()
+            <tr style="height: 50px">
+                <td style="width: 50%">Filter Type</td>
+                <td style="width: 50%;padding-right: 10px">
+                    @Html.EJS().DropDownList("FilterType").Width("100px").DataSource((IEnumerable<object>)ViewBag.typedropdata).Value("Menu").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "type" }).Change("Change").Render()
                 </td>
             </tr>
-            <tr>
-                <td class="left-side">Hierarchy Mode</td>
-                <td>
-                    @Html.EJS().DropDownList("FilterMode").Width(100).DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Render()
+            <tr style="height: 50px">
+                <td style="width: 50%">Hierarchy Mode</td>
+                <td style="width: 50%;padding-right: 10px">
+                    @Html.EJS().DropDownList("FilterMode").Width("100px").DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Render()
                 </td>
             </tr>
         </table>

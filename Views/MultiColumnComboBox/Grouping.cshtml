@@ -4,15 +4,15 @@
     <div class="control-section">
         <div class="control-wrapper">
             <div style='padding-top:30px;'>
-                @Html.EJS().MultiColumnComboBox("grouping").Placeholder("Select a customer ID").DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new MultiColumnComboBoxFieldSettings
-                { Text = "CustomerID", Value = "OrderID", GroupBy = "ShipCountry" }).Columns(col =>
+                @Html.EJS().MultiColumnComboBox("grouping").Placeholder("Select a customer name").Fields(new MultiColumnComboBoxFieldSettings
+                { Text = "CustomerName", Value = "OrderID", GroupBy = "ShipCountry" }).Columns(col =>
                 {
                     col.Field("OrderID").Header("Order ID").Width("100").Add();
-                    col.Field("CustomerID").Header("Customer ID").Width("130").Add();
+                    col.Field("CustomerName").Header("Customer Name").Width("130").Add();
                     col.Field("Freight").Header("Freight").Width("90").Add();
                     col.Field("ShipPostalCode").Header("Ship PostalCode").Width("160").Add();
                     col.Field("ShipCountry").Header("Ship Country").Width("140").Add();
-                }).PopupHeight("230px").AllowSorting(false).Render()
+                }).PopupHeight("230px").AllowSorting(false).DataSource(@Model.OrderDetails).Render()
             </div>
         </div>
     </div>

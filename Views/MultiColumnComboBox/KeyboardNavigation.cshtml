@@ -4,14 +4,14 @@
     <div class="control-section">
         <div class="control-wrapper">
             <div style='padding-top:30px;'>
-                @Html.EJS().MultiColumnComboBox("keyboardnav").Placeholder("Select an order ID").DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new MultiColumnComboBoxFieldSettings
+                @Html.EJS().MultiColumnComboBox("keyboardnav").Placeholder("Select an order ID").Fields(new MultiColumnComboBoxFieldSettings
                 { Text = "ShipCountry", Value = "OrderID" }).Columns(col =>
                 {
                     col.Field("OrderID").Header("Order ID").Width("110").Add();
                     col.Field("CustomerID").Header("Customer ID").Width("130").Add();
                     col.Field("Freight").Header("Freight").Width("90").Add();
                     col.Field("ShipCountry").Header("Ship Country").Width("140").Add();
-                }).PopupHeight("230px").Render()
+                }).PopupHeight("230px").DataSource(@Model.OrderDetails).Render()
             </div>
         </div>
     </div>

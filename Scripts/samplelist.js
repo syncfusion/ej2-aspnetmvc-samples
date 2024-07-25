@@ -2508,7 +2508,7 @@ window.samplesList = [
                 "name": "Spline updating each second",
                 "category": "Real-time Charts",
                 "uid": "0045114",
-                "order": 8,
+                "order": 15,
                 "type": "new",
                 "component": "Chart",
                 "dir": "Chart",
@@ -2519,7 +2519,7 @@ window.samplesList = [
                 "name": "Live stock data",
                 "category": "Real-time Charts",
                 "uid": "0045115",
-                "order": 8,
+                "order": 15,
                 "type": "new",
                 "component": "Chart",
                 "dir": "Chart",
@@ -2530,7 +2530,7 @@ window.samplesList = [
                 "name": "Update data source",
                 "category": "Real-time Charts",
                 "uid": "0045116",
-                "order": 8,
+                "order": 15,
                 "type": "new",
                 "component": "Chart",
                 "dir": "Chart",
@@ -2541,7 +2541,7 @@ window.samplesList = [
                 "name": "Click to add a point",
                 "category": "Real-time Charts",
                 "uid": "0045117",
-                "order": 8,
+                "order": 15,
                 "type": "new",
                 "component": "Chart",
                 "dir": "Chart",
@@ -2552,7 +2552,7 @@ window.samplesList = [
                 "name": "Pie",
                 "category": "Accumulation Charts",
                 "uid": "004453",
-                "order": 9,
+                "order": 8,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2562,7 +2562,7 @@ window.samplesList = [
                 "name": "Pie with Various Radius",
                 "category": "Accumulation Charts",
                 "uid": "004454",
-                "order": 9,
+                "order": 8,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2572,7 +2572,7 @@ window.samplesList = [
                 "name": "Donut",
                 "category": "Accumulation Charts",
                 "uid": "004455",
-                "order": 9,               
+                "order": 8,               
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2582,7 +2582,7 @@ window.samplesList = [
                 "name": "Pyramid",
                 "category": "Accumulation Charts",
                 "uid": "004456",
-                "order": 9,
+                "order": 8,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2592,7 +2592,7 @@ window.samplesList = [
                 "name": "Funnel",
                 "category": "Accumulation Charts",
                 "uid": "004457",
-                "order": 9,
+                "order": 8,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2602,7 +2602,7 @@ window.samplesList = [
                 "name": "Pie with Legend",
                 "category": "Accumulation Charts",
                 "uid": "004458",
-                "order": 9,
+                "order": 8,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2612,7 +2612,7 @@ window.samplesList = [
                 "name": "Semi Pie",
                 "category": "Accumulation Charts",
                 "uid": "004459",
-                "order": 9,
+                "order": 8,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2622,7 +2622,7 @@ window.samplesList = [
                 "name": "Smart Labels",
                 "category": "Accumulation Charts",
                 "uid": "004460",
-                "order": 9,
+                "order": 8,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2632,7 +2632,7 @@ window.samplesList = [
                 "name": "Drilldown",
                 "category": "Accumulation Charts",
                 "uid": "004461",
-                "order": 9,
+                "order": 8,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2642,7 +2642,7 @@ window.samplesList = [
                 "name": "Grouping",
                 "category": "Accumulation Charts",
                 "uid": "004462",
-                "order": 9,
+                "order": 8,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2652,7 +2652,7 @@ window.samplesList = [
                 "name": "Empty Points",
                 "category": "Accumulation Charts",
                 "uid": "004463",
-                "order": 9,
+                "order": 8,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2662,7 +2662,7 @@ window.samplesList = [
                 "name": "Line",
                 "category": "Polar Radar",
                 "uid": "004464",
-                "order": 10,
+                "order": 9,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2672,7 +2672,7 @@ window.samplesList = [
                 "name": "Spline",
                 "category": "Polar Radar",
                 "uid": "004465",
-                "order": 10,
+                "order": 9,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2682,7 +2682,7 @@ window.samplesList = [
                 "name": "Area",
                 "category": "Polar Radar",
                 "uid": "004466",
-                "order": 10,
+                "order": 9,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2692,7 +2692,7 @@ window.samplesList = [
                 "name": "Stacked Area",
                 "category": "Polar Radar",
                 "uid": "004467",
-                "order": 10,
+                "order": 9,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2702,7 +2702,7 @@ window.samplesList = [
                 "name": "Scatter",
                 "category": "Polar Radar",
                 "uid": "004468",
-                "order": 10,
+                "order": 9,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2712,7 +2712,7 @@ window.samplesList = [
                 "name": "Column",
                 "category": "Polar Radar",
                 "uid": "004469",
-                "order": 10,
+                "order": 9,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2722,7 +2722,7 @@ window.samplesList = [
                 "name": "WindRose",
                 "category": "Polar Radar",
                 "uid": "004470",
-                "order": 10,
+                "order": 9,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2732,7 +2732,7 @@ window.samplesList = [
                 "name": "RangeColumn",
                 "category": "Polar Radar",
                 "uid": "004471",
-                "order": 10,
+                "order": 9,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2742,7 +2742,7 @@ window.samplesList = [
                 "name": "Local Data",
                 "category": "Data Binding",
                 "uid": "004472",
-                "order": 11,
+                "order": 10,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2752,7 +2752,7 @@ window.samplesList = [
                 "name": "Remote Data",
                 "category": "Data Binding",
                 "uid": "004473",
-                "order": 11,
+                "order": 10,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2762,7 +2762,7 @@ window.samplesList = [
                 "name": "Lazy Loading",
                 "category": "Data Binding",
                 "uid": "004474",
-                "order": 11,
+                "order": 10,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2772,7 +2772,7 @@ window.samplesList = [
                 "name": "Numeric Axis",
                 "category": "Chart Axes",
                 "uid": "004475",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2782,7 +2782,7 @@ window.samplesList = [
                 "name": "DateTime Axis",
                 "category": "Chart Axes",
                 "uid": "004476",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2792,7 +2792,7 @@ window.samplesList = [
                 "name": "DateTime Category Axis",
                 "category": "Chart Axes",
                 "uid": "004477",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2802,7 +2802,7 @@ window.samplesList = [
                 "name": "Category Axis",
                 "category": "Chart Axes",
                 "uid": "004478",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2812,7 +2812,7 @@ window.samplesList = [
                 "name": "Indexed Category Axis",
                 "category": "Chart Axes",
                 "uid": "004479",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2822,7 +2822,7 @@ window.samplesList = [
                 "name": "Log Axis",
                 "category": "Chart Axes",
                 "uid": "004480",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2832,7 +2832,7 @@ window.samplesList = [
                 "name": "Multiple Axis",
                 "category": "Chart Axes",
                 "uid": "004481",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2842,7 +2842,7 @@ window.samplesList = [
                 "name": "Inversed Axis",
                 "category": "Chart Axes",
                 "uid": "004482",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2852,7 +2852,7 @@ window.samplesList = [
                 "name": "Stripline",
                 "category": "Chart Axes",
                 "uid": "004483",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2862,7 +2862,7 @@ window.samplesList = [
                 "name": "Strip Line Recurrence",
                 "category": "Chart Axes",
                 "uid": "004484",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2872,7 +2872,7 @@ window.samplesList = [
                 "name": "Smart Axis Labels",
                 "category": "Chart Axes",
                 "uid": "004485",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2882,7 +2882,7 @@ window.samplesList = [
                 "name": "MultiLevel Labels",
                 "category": "Chart Axes",
                 "uid": "004486",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2892,7 +2892,7 @@ window.samplesList = [
                 "name": "Axes Crossing",
                 "category": "Chart Axes",
                 "uid": "004487",
-                "order": 12,
+                "order": 11,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2902,7 +2902,7 @@ window.samplesList = [
                 "name": "Sorting",
                 "category": "Chart Customization",
                 "uid": "004488",
-                "order": 13,
+                "order": 12,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2912,7 +2912,7 @@ window.samplesList = [
                 "name": "Marker Chart",
                 "category": "Chart Customization",
                 "uid": "004489",
-                "order": 13,
+                "order": 12,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2922,7 +2922,7 @@ window.samplesList = [
                 "name": "RTL",
                 "category": "Chart Customization",
                 "uid": "00441023",
-                "order": 13,
+                "order": 12,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2932,7 +2932,7 @@ window.samplesList = [
                 "name": "Synchronized Charts",
                 "category": "Chart Customization",
                 "uid": "0044107",
-                "order": 13,
+                "order": 12,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2942,7 +2942,7 @@ window.samplesList = [
                 "name": "DataLabel Template",
                 "category": "Chart Customization",
                 "uid": "004490",
-                "order": 13,
+                "order": 12,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2952,7 +2952,7 @@ window.samplesList = [
                 "name": "Vertical Charts",
                 "category": "Chart Customization",
                 "uid": "004491",
-                "order": 13,
+                "order": 12,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2962,7 +2962,7 @@ window.samplesList = [
                 "name": "Empty Point",
                 "category": "Chart Customization",
                 "uid": "004492",
-                "order": 13,
+                "order": 12,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2972,7 +2972,7 @@ window.samplesList = [
                 "name": "Tooltip Template",
                 "category": "Chart Customization",
                 "uid": "004493",
-                "order": 13,
+                "order": 12,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2982,7 +2982,7 @@ window.samplesList = [
                 "name": "Range Color Mapping",
                 "category": "Chart Customization",
                 "uid": "004494",
-                "order": 13,
+                "order": 12,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2992,7 +2992,7 @@ window.samplesList = [
                 "name": "Print",
                 "category": "Print and Export",
                 "uid": "004495",
-                "order": 14,
+                "order": 13,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -3002,7 +3002,7 @@ window.samplesList = [
                 "name": "Export",
                 "category": "Print and Export",
                 "uid": "004496",
-                "order": 14,
+                "order": 13,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -3012,7 +3012,7 @@ window.samplesList = [
                 "name": "Selection",
                 "category": "User Interaction",
                 "uid": "004497",
-                "order": 15,
+                "order": 14,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -3022,7 +3022,7 @@ window.samplesList = [
                 "name": "Range Selection",
                 "category": "User Interaction",
                 "uid": "004498",
-                "order": 15,
+                "order": 14,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -3032,7 +3032,7 @@ window.samplesList = [
                 "name": "Keyboard Navigation",
                 "category": "User Interaction",
                 "uid": "0044103",
-                "order": 15,
+                "order": 14,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -3042,7 +3042,7 @@ window.samplesList = [
                 "name": "Crosshair",
                 "category": "User Interaction",
                 "uid": "004499",
-                "order": 15,
+                "order": 14,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -3052,7 +3052,7 @@ window.samplesList = [
                 "name": "Trackball",
                 "category": "User Interaction",
                 "uid": "0044100",
-                "order": 15,
+                "order": 14,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -3062,7 +3062,7 @@ window.samplesList = [
                 "name": "Zooming and Panning",
                 "category": "User Interaction",
                 "uid": "0044101",
-                "order": 15,
+                "order": 14,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -3072,7 +3072,7 @@ window.samplesList = [
                 "name": "Data Editing",
                 "category": "User Interaction",
                 "uid": "0044102",
-                "order": 15,
+                "order": 14,
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -7768,7 +7768,7 @@ window.samplesList = [
                 "url": "TimelineTemplate",
                 "name": "Timeline Template",
                 "category": "Templates",
-                "uid": "00252543",
+                "uid": "00252532",
                 "order": 6,
                 "type": "new",
                 "component": "GanttChart",

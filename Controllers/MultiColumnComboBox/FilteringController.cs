@@ -14,9 +14,11 @@ namespace EJ2MVCSampleBrowser.Controllers.MultiColumnComboBox
     {
         public ActionResult Filtering()
         {
-            var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
-            return View();
+            var model = new OrderDetailsViewModel
+            {
+                OrderDetails = GetOrderDetails()
+            };
+            return View(model);
         }
     }
 }

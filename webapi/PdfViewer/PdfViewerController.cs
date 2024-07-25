@@ -32,6 +32,7 @@ using Syncfusion.OfficeChart;
 using Syncfusion.OfficeChartToImageConverter;
 using WFormatType = Syncfusion.DocIO.FormatType;
 using Syncfusion.DocToPDFConverter;
+using EJ2MVCSampleBrowser.Controllers.PdfViewer;
 
 namespace EJ2MVCSampleBrowser.Controllers
 {
@@ -325,7 +326,34 @@ namespace EJ2MVCSampleBrowser.Controllers
             string documentBase = pdfviewer.GetDocumentAsBase64(jsonObject);
             return (GetPlainText(documentBase));
         }
+
         [HttpPost]
+        public HttpResponseMessage FlattenDownload(Dictionary<string, string> jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            string documentBase = pdfviewer.GetDocumentAsBase64(jsonObject);
+
+            string base64String = documentBase.Split(new string[] { "data:application/pdf;base64," }, StringSplitOptions.None)[1];
+            byte[] byteArray = Convert.FromBase64String(base64String);
+            PdfLoadedDocument loadedDocument = new PdfLoadedDocument(byteArray);
+            if (loadedDocument.Form != null)
+            {
+                loadedDocument.FlattenAnnotations();
+                loadedDocument.Form.Flatten = true;
+            }
+            //Save the PDF document.
+            MemoryStream stream = new MemoryStream();
+            //Save the PDF document
+            loadedDocument.Save(stream);
+            stream.Position = 0;
+            //Close the document
+            loadedDocument.Close(true);
+            string updatedDocumentBase = Convert.ToBase64String(stream.ToArray());
+            documentBase = "data:application/pdf;base64," + updatedDocumentBase;
+            return (GetPlainText(documentBase));
+        }
+
+    [HttpPost]
         public object PrintImages(Dictionary<string, string> jsonObject)
         {
             PdfRenderer pdfviewer = new PdfRenderer();
