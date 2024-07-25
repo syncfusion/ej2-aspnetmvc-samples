@@ -1,0 +1,89 @@
+﻿@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+
+@{
+    IDictionary<string, object> firstNameAttribute = new Dictionary<string, object>()
+    {
+       { "name", "UploadFiles" }
+    };
+}
+@section ControlsSection{
+    <div class="control-section">
+        <div class="control-wrapper">
+            @Html.EJS().RichTextEditor("default").ToolbarSettings(e =>
+                     e.Items((object)ViewBag.Tools)).Created("created").Value((string)ViewBag.RTEValue).EnableXhtml(true).ActionComplete("actionCompleteHandler").BeforeQuickToolbarOpen("quickToolbarOpenHandler").QuickToolbarClose("quickToolbarClosehandler").InsertImageSettings(ViewBag.InsertImageSettings).Render()
+
+            @Html.EJS().Uploader("rteCustomWordUpload").HtmlAttributes(firstNameAttribute).Created("uploaderCreated").AllowedExtensions(".docx,.doc,.rtf").Success("onUploadSuccess").AsyncSettings(ViewBag.UploaderAjaxSettings).Render()
+        </div>
+    </div>
+    <style>
+        .e-upload:has(#rteCustomWordUpload) {
+            display: none;
+        }
+    </style>
+    <script type="text/javascript">
+        var rteObj, uploaderObj;
+        var hostUrl = "https://ej2services.syncfusion.com/production/web-services/";
+        function created() {
+            rteObj = this;
+            var importDoc = rteObj.element.querySelector('#custom_tbarbtn_1');
+            importDoc.onclick = function (e) {
+                uploaderObj.element.click();
+            }
+        }
+        function uploaderCreated() {
+            uploaderObj = this;
+        }
+        function onUploadSuccess(args) {
+            rteObj.executeCommand('insertHTML', args.e.currentTarget.response, { undo: true });
+        }
+        function actionCompleteHandler(e) {
+            if (e.requestType === 'SourceCode') {
+                rteObj.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.add('e-overlay');
+            } else if (e.requestType === 'Preview') {
+                rteObj.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.remove('e-overlay');
+            }
+        }
+        function quickToolbarOpenHandler(args) {
+            if (!ej.base.isNullOrUndefined(args.targetElement) && args.targetElement.nodeName === 'IMG') {
+                rteObj.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.add('e-overlay');
+            }
+        }
+        function quickToolbarClosehandler(args) {
+            if (!ej.base.isNullOrUndefined(args.element) && args.element.classList.contains('e-rte-image-popup')) {
+                rteObj.getToolbar().querySelector('#custom_tbarbtn_1').parentElement.classList.remove('e-overlay');
+            }
+        }
+    </script>
+}
+
+@*custom code start*@
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Import the Word document in the ASP.NET MVC Rich Text Editor control. Explore here for more details." />
+}
+
+@*custom code end*@
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This example illustrates how to efficiently import the Word document into the Rich Text Editor.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, the Word document can be imported as Rich Text Editor content by clicking the import to
+            Word icon, browsing for the document, and uploading it to the server, where it is converted to HTML and
+            then sent to the Rich Text Editor as its value.
+        </p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Rich Text Editor Import Word Document Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Import Word Document in ASP.NET MVC Rich Text Editor Control</h1>
+}
+

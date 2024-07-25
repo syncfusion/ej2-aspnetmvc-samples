@@ -1,0 +1,132 @@
+@using Syncfusion.EJ2
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div class="content-wrapper">
+            <div class="row material2">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                    <h5 style="display: inline-block">Bind to Location</h5>
+                    @Html.EJS().Button("reset").Content("Reset State").CssClass("e-small").Render()
+                </div>
+            </div>
+            <div class="row material2">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                    @Html.EJS().Breadcrumb("bind-to-location").EnableNavigation(false).Render()
+                </div>
+            </div>
+            <div class="row material2">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                    <h5>URL Binding and Navigation</h5>
+                </div>
+            </div>
+            <div class="row material2">
+                <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+                    @Html.EJS().Breadcrumb("url-binding").Url("https://ej2.syncfusion.com/aspnetmvc/Breadcrumb/BindToLocation").BeforeItemRender("beforeItemRenderHandler").Render()
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+    var url = 'https://ej2.syncfusion.com/aspnetmvc/breadcrumb/bindtolocation#/bootstrap5',
+        themeName = url.split('/')[6];
+    function beforeItemRenderHandler(args) {
+        if (args.item.text == 'aspnetmvc') {
+            args.item.url = args.item.url + '/grid/gridoverview#/' + themeName;
+        }
+        else if (args.item.text == 'Breadcrumb') {
+            args.item.url = args.item.url.toLowerCase() + '/defaultFunctionalities#/' + themeName;
+        }
+        else if (args.item.text == themeName) {
+            args.cancel = true;
+        }
+    }
+</script>
+@section Scripts {
+    <script>
+    document.getElementById("reset").addEventListener('click', function () {
+        var breadcrumb, breadcrumbInst, breadcrumbs = document.querySelector('.content-wrapper').getElementsByClassName("e-breadcrumb");
+        for (var i = 0; i < breadcrumbs.length; i++) {
+            breadcrumb = breadcrumbs[i];
+            breadcrumbInst = ej.base.getComponent(breadcrumb, 'breadcrumb');
+            breadcrumbInst.activeItem = breadcrumbInst.items[breadcrumbInst.items.length - 1].text;
+        }
+    });
+</script>
+}
+
+@*custom code start*@
+<style>
+    .content-wrapper {
+        width: 90%;
+        margin: 0 auto;
+        min-width: 85px;
+    }
+
+        .content-wrapper div.row {
+            padding: 15px 0px;
+        }
+
+    @@media only screen and (max-width: 480px) {
+        .content-wrapper {
+            width: 92%;
+        }
+
+        .col-xs-12,
+        .col-xs-4,
+        .col-xs-12 {
+            padding: 10px 5px;
+            width: 100%;
+        }
+
+        .content-wrapper div.row {
+            padding: 0px;
+        }
+    }
+
+    .tailwind .e-breadcrumb,
+    .tailwind-dark .e-breadcrumb {
+        margin-left: -12px;
+    }
+
+    .material .e-breadcrumb,
+    .material-dark .e-breadcrumb {
+        margin-left: -8px;
+    }
+
+    .fabric .e-breadcrumb,
+    .fabric-dark .e-breadcrumb,
+    .highcontrast .e-breadcrumb {
+        margin-left: -4px;
+    }
+
+    #reset {
+        float: right;
+        margin: 5px 2px 5px 0;
+    }
+</style>
+
+@*custom code end*@
+
+@section ActionDescription{
+    <p> This sample demonstrates the navigation functionality of the <b>Breadcrumb</b> component.</p>
+}
+
+@section Description{
+    <p>
+        The <code>Breadcrumb</code> component can be rendered by using the href(URL) of the current page or by using <code>url</code> property when the user is not specified the breadcrumb items using <code>items</code> property.
+        In this demonstration, URL navigation is enabled <b>URL Binding and Navigation</b> and <code>beforeItemRender</code> event is used to customize rendering Breadcrumb item.
+    </p>
+    <p>More information about Breadcrumb component navigations feature can be found in this <a target='_blank' href="https://ej2.syncfusion.com/documentation/breadcrumb/data-binding/#items-based-on-current-url" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.</p>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Bind to Location in ASP.NET MVC Breadcrumb control. Explore here for more details."/>
+                }
+
+@section Title{
+                    <title>ASP.NET MVC Breadcrumb Bind to Location Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Bind to Location in ASP.NET MVC Breadcrumb Control</h1>
+                }

@@ -1,0 +1,66 @@
+@using Syncfusion.EJ2
+@{
+    ViewBag.Title = "EventMarkers";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("EventMarkers").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true)
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+                .Dependency("Predecessor").Child("SubTasks")).TreeColumnIndex(1)
+                .Columns(col =>
+                {
+                    col.Field("TaskId").Width(80).Add();
+                    col.Field("TaskName").Width(250).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("EndDate").Add();
+                    col.Field("Duration").Add();
+                    col.Field("Predecessor").Add();
+                    col.Field("Progress").Add();
+                })
+                .EventMarkers(em =>
+                {
+                    em.Day("04/02/2024").Label("Project starts").Add();
+                    em.Day("04/09/2024").Label("Design phase").Add();
+                    em.Day("04/19/2024").Label("Research phase").Add();
+                    em.Day("05/23/2024").Label("Production phase").Add();
+                    em.Day("06/20/2024").Label("Sales and marketing phase").Add();
+                })
+                .LabelSettings(ls => ls.LeftLabel("TaskName"))
+                .ProjectStartDate("03/24/2024")
+                .ProjectEndDate("07/06/2024")
+                .Render()
+            )
+        </div>
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes how to notify the important dates in the project timeline.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Event Markers in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            In this example, the <code>EventMarkers</code> are used like a bookmark to show the different stages of the project life cycle. You can show the desired text on the date. The Event Markers model has the below properties to customize the marker:
+            <li><code>CssClass</code>: Used to assign external CSS styles to that particular marker.</li>
+            <li><code>Day</code>: Used to set date of the event marker.</li>
+            <li><code>Label</code>: The desired text can be shown on the vertical line using this property.</li>
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Gantt Event Markers Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Event Markers in ASP.NET MVC Gantt Control</h1>
+                }

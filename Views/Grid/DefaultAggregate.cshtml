@@ -1,0 +1,54 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("DefaultAggregate").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+   {
+        col.Field("OrderID").HeaderText("Order ID").MinWidth("100").Width("150").MaxWidth("200").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+       col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 5 }).Add();
+       col.Field("Freight").HeaderText("Freight").Width("160").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("numericedit").ValidationRules(new { required = true, min = 0 }).Add();
+       col.Field("OrderDate").HeaderText("Order Date").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").EditType("datepickeredit").Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").Width("140").EditType("dropdownedit").Add();
+
+   }).AllowPaging().AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Aggregates(agg=> { agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Freight", Format = "C2", Type = "Sum", FooterTemplate = "Sum: ${Sum}" } }).Add();
+       agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Freight", Format = "C2", Type = "Average", FooterTemplate = "Average: ${Average}" } }).Add(); }).PageSettings(page=> { page.PageCount(5); }).Render() 
+    </div>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates aggregate functionality of the Grid. In this sample, the aggregate value for the column “Freight” is displayed in column footer.</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default Aggregate in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		<p>The Grid supports aggregates which will be displayed at the footer, group footer and group caption of the Grid.
+		The aggregate configurations can be provided by the <code>Aggregates</code> property.</p>
+		<p>The built-in aggregates are,</p>
+		 <ul>
+			<li><code>Sum</code></li>     
+			<li><code>Average</code></li>     
+			<li><code>Min</code></li>     
+			<li><code>Max</code></li>     
+			<li><code>Count</code></li>     
+			<li><code>Truecount</code></li>     
+			<li><code>Falsecount</code></li>     
+           <li><code>Custom</code></li>			     
+		</ul> 
+                
+	</div>
+}
+
+
+
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Default Aggregate Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Aggregate in ASP.NET MVC Data Grid Control</h1>
+                }

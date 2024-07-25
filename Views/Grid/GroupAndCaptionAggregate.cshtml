@@ -1,0 +1,73 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("CaptionAggregate").DataSource((IEnumerable<object>)ViewBag.datasource).AllowGrouping().Columns(col =>
+   {
+       col.Field("CategoryName").HeaderText("Category Name").Width("160").Add();
+       col.Field("ProductName").HeaderText("Product Name").Width("170").Add();
+       col.Field("QuantityPerUnit").HeaderText("Quantity Per Unit").Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("UnitsInStock").HeaderText("Units In Stock").Width("170").Add();
+       col.Field("Discontinued").HeaderText("Discontinued").Width("150").DisplayAsCheckBox(true).Type("boolean").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+   }).AllowPaging().GroupSettings(group=>group.ShowDropArea(false).Columns(new string[] { "CategoryName" })).Aggregates(agg =>
+   {
+       agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "UnitsInStock", Type = "Sum", GroupFooterTemplate = "Total units: ${Sum}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Discontinued", Type = "Truecount", GroupFooterTemplate = "Discontinued: ${Truecount}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "UnitsInStock", Type = "Max", GroupCaptionTemplate = "Maximum: ${Max}" } }).Add();
+
+   }).PageSettings(page => { page.PageCount(5); }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Render()
+    </div>
+}
+
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates Aggregate functionality of the Grid. In this sample, both “Unit In Stock” and “Discontinued” columns are displayed their aggregate value in group footer.
+            “Unit In Stock” column displayed its aggregate value in group caption also. </p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Group and Caption Aggregate in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		 <p>The Grid supports aggregates which will be displayed at the footer, group footer and group caption of the Grid.
+    The aggregate configurations can be provided by the <code>
+        Aggregates</code> property.</p>
+    <p>The built-in aggregates are,</p>
+     <ul>
+        <li><code>Sum</code></li>     
+        <li><code>Average</code></li>     
+        <li><code>Min</code></li>     
+        <li><code>Max</code></li>     
+        <li><code>Count</code></li>     
+        <li><code>TrueCount</code></li>     
+        <li><code>FalseCount</code></li>     
+        <li><code>Custom</code> - Requires the <code>
+        CustomAggregate</code> property to perform the aggregation.
+        The custom aggregate value can be accessed inside template using the key <code>${Custom}</code></li>     
+    </ul>    
+    <p>
+        In this demo, the <code>GroupFooterTemplate</code> property is used to display the group footer aggregation for the <strong><i>Unit In Stocks</i></strong> and <strong><i>Discontinued</i></strong> columns and <code>
+        GroupCaptionTemplate</code> property is used to display the group caption aggregation for the <strong><i>Unit In Stocks</i></strong> column.
+    </p>    
+    <p>    To enable group footer aggregation for <strong><i>Unit In Stocks</i></strong> column, the <code>Sum</code> aggregate type is used by setting the <code>        
+        Type</code> and <code>Field</code> property is set as <strong><i>UnitsInStock</i></strong> which will be used to perform the aggregation.
+        The aggregate value is accessed inside the <code>
+        GroupFooterTemplate</code> using its <code>Type</code> name (<code>${Sum}</code>).
+    </p>
+    <p>    To enable group caption aggregation for <strong><i>Unit In Stocks</i></strong> column, the <code>Max</code> aggregate type is used by setting the <code>
+        Type</code> and <code>Field</code> property is set as <strong><i>UnitsInStock</i></strong> which will be used to perform the aggregation.
+        The aggregate value is accessed inside the<code>GroupCaptionTemplate</code> using its <code>
+        Type</code> name (<code>${Max}</code>).
+    </p>
+    <p>The template expression should be provided inside <code>${...}</code> the interpolation syntax.</p>
+
+	</div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Group and Caption Aggregate Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Group and Caption Aggregate in ASP.NET MVC Data Grid Control</h1>
+                }
