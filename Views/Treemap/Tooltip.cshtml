@@ -69,7 +69,7 @@
         function load(args) {
             var theme = themeName ? themeName : 'Material';
             args.treemap.theme = ((theme.charAt(0).toUpperCase() +
-                theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast'));
+                theme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5'));
             args.treemap.leafItemSettings.colorMapping = [
                 {
                     value: "25",

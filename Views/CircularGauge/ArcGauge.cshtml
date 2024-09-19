@@ -49,11 +49,17 @@
         .material #slider.e-control.e-slider .e-handle {
             margin-top: -1px;
         }
+        .bootstrap5-dark #slider.e-control.e-slider .e-handle, .bootstrap5 #slider.e-control.e-slider .e-handle {
+            margin-top: -1px;
+        }
         .highcontrast #slider.e-control.e-slider .e-handle {
             margin-top: 2px;
         }
         .bootstrap #slider.e-control.e-slider .e-handle, .bootstrap-dark #slider.e-control.e-slider .e-handle {
             margin-top: 1px;
+        }
+        .fluent2-highcontrast #slider.e-control.e-slider .e-handle {
+            margin-top: 3px;
         }
     </style>
 
@@ -80,7 +86,7 @@
         function gaugeLoad(args) {
             @* custom code start *@
             var arctheme = themeName ? themeName : 'Material';
-            args.gauge.theme = (arctheme.charAt(0).toUpperCase() + arctheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.gauge.theme = (arctheme.charAt(0).toUpperCase() + arctheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             @* custom code end *@
             if (!circulargauge) {
                 circulargauge = args.gauge;

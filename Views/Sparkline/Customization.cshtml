@@ -174,16 +174,16 @@
         function load1(args) {
             percentage = args.sparkline;
             var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
-            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast'));
+            theme = theme ? theme : 'Fluent2';
+            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5'));
             args.sparkline.axisSettings.lineSettings.width = 2;
             args.sparkline.axisSettings.lineSettings.color = "red";
         }
         function load2(args) {
             sales = args.sparkline;
             var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
-            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast'));
+            theme = theme ? theme : 'Fluent2';
+            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5'));
             args.sparkline.axisSettings.lineSettings.width = 2;
             args.sparkline.axisSettings.lineSettings.color = "red";
         }

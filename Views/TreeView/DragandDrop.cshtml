@@ -19,7 +19,7 @@
                 <h4>ListView</h4>
                 <div class="content">
                     <div class="e-droppable" id="list">
-                        @Html.EJS().ListView("list").Enable(true).CssClass("custom-list").Template("<div><span>${text}</span><span id=${iconId} class=${class}></span></div>").Render()
+                        @Html.EJS().ListView("list").Enable(true).CssClass("custom-list").Template("<div class='dropped-list-view-item'><span>${text}</span><span id=${iconId} class=${class}></span></div>").Render()
                     </div>
                 </div>
             </div>
@@ -161,11 +161,7 @@
         color: rgba(0, 0, 0, 0.54);
         font-size: 15px;
     }
-    .fluent2 #list.e-listview .e-list-item,
-    .fluent2-dark #list.e-listview .e-list-item,
-    .fluent2-high-contrast #list.e-listview .e-list-item {
-        padding: 7px 12px;
-    }
+
     .fabric.e-bigger #list.e-listview .e-list-item,
     .fabric-dark.e-bigger #list.e-listview .e-list-item,
     .highcontrast.e-bigger #list.e-listview .e-list-item {
@@ -211,6 +207,17 @@
         font-weight: normal;
         font-style: normal;
     }
+
+  .fluent2 #list .dropped-list-view-item,
+  .fluent2-dark #list .dropped-list-view-item,
+  .fluent2-highcontrast #list .dropped-list-view-item {
+      padding: 6px;
+  }
+
+  .fluent2 .custom-delete, .fluent2-dark .custom-delete,
+  .fluent2-highcontrast .custom-delete {
+      margin-top: 1px;
+  }
 
 </style>
 @*custom code end*@

@@ -5,7 +5,8 @@
 @{
     string[] items = new string[] { "NewFolder", "Cut", "Copy", "Paste", "Delete", "Download", "Rename", "SortBy", "Refresh", "Selection", "View", "Details" };
     string[] layout = new string[] { "SortBy", "View", "Refresh", "|", "Paste", "|", "NewFolder", "|", "Details", "|", "SelectAll" };
-    string[] file = new string[] { "Cut", "Copy", "Paste", "Delete", "Rename", "|", "Details" };
+    string[] file = new string[] { "Cut", "Copy", "|", "Delete", "Download", "Rename", "|", "Details" };
+
 }
 
 @section ControlsSection{
@@ -35,7 +36,7 @@
     <div id="action-description">
         <p>
             The File Manager that gives you complete control over who can access your folders and files. With this essential feature, you can define access permissions and create a secure and organized digital environment.
-            This File Manager sample demonstrates that the enabled access permission will permit only read action and will not allow the user to perform any write action on the Documents, Music folders and the bird image file inside the Pictures/Nature folder.
+            This File Manager sample demonstrates that the enabled access permission will permit only read action and will not allow the user to perform any write action on the <code>documents</code>, <code>music</code> folders, and the <code>bird image</code> file inside the <code>pictures/nature</code> folder.
         </p>
     </div>
 }
@@ -48,7 +49,7 @@
         </p>
 
         <p>
-            <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install
+            <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install
             <a target="_blank" href="https://www.syncfusion.com/downloads" aria-label="Syncfusion Essential Studio">Syncfusion Essential Studio <span class="sr-only">opens in a new tab</span></a>on your machine and run the demo.
         </p>
     </div>

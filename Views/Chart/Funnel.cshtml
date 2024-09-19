@@ -27,8 +27,8 @@
 
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.accumulation.series[0].width = ej.base.Browser.isDevice ? "90%" : "45%";
             args.accumulation.series[0].neckWidth = ej.base.Browser.isDevice ? "25%" : "15%";
             args.accumulation.series[0].dataSource[1].DataLabelMappingName = ej.base.Browser.isDevice ? "Personal <br> Interview: 58" : "Personal Interview: 58";

@@ -131,7 +131,7 @@
             font-size: 14px;
             align-items: center;
         }
-        .e-view.fluent2 #table .e-checkbox-wrapper .e-icons, .e-view.fluent2-dark #table .e-checkbox-wrapper .e-icons {
+        .e-view.fluent2 #table .e-checkbox-wrapper .e-icons, .e-view.fluent2-dark #table .e-checkbox-wrapper .e-icons, .e-view.fluent2-highcontrast #table .e-checkbox-wrapper .e-icons {
             margin-left: 0px;
         }
     </style>
@@ -141,7 +141,7 @@
         function onGaugeLoad(sender) {
             @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             @* custom code end *@
             circulargauge = sender.gauge;
         }

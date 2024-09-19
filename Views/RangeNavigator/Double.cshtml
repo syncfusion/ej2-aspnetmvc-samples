@@ -53,8 +53,8 @@
              @*custom code end*@
     <script src="~/Scripts/datasource.js"></script>
     <script>
-        var selectedTheme = themeName ? themeName : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        var selectedTheme = themeName ? themeName : 'Fluent2';
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
         var backgroundColor = theme === 'Highcontrast' ? 'black' : 'white';
         var slData = sl;
         var ausData = aus;      

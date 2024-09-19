@@ -1,4 +1,5 @@
 @using Syncfusion.EJ2
+@using Syncfusion.EJ2.Spreadsheet
 
 @section ControlsSection{
     <div class="control-section">
@@ -6,10 +7,10 @@
   {
       sheet.Name("Shipment Details").Ranges(ranges =>
       {
-          ranges.ShowFieldAsHeader(false).StartCell("A2").Query("new ej.data.Query().from('Orders').select(['OrderID', 'CustomerID', 'Freight', 'ShipName', 'ShipCity', 'ShipCountry']).take(200)").DataSource(dataManger =>
-   {
-       dataManger.Url("https://services.odata.org/V4/Northwind/Northwind.svc").CrossDomain(true).Adaptor("ODataV4Adaptor");
-   }).Add();
+        ranges.ShowFieldAsHeader(false).StartCell("A2").Query("new ej.data.Query().from('Orders').take(200)").DataSource(dataManger =>
+        {
+            dataManger.Url("https://services.odata.org/V4/Northwind/Northwind.svc").CrossDomain(true).Adaptor("ODataV4Adaptor");
+        }).FieldsOrder(ViewBag.FieldsOrder).Add();
       }).Rows(row =>
       {
           row.Cells(cell =>

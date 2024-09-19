@@ -1,7 +1,7 @@
 @section ControlsSection{
 
     <div class="control-section">
-        @{Html.BeginForm("DigitalSignature", "PDF", FormMethod.Post, new { enctype = "multipart/form-data" });
+        @{Html.BeginForm("digitalsignature", "pdf", FormMethod.Post, new { enctype = "multipart/form-data" });
             {
         <div style="font-size:14px">
             <table>
@@ -85,7 +85,7 @@
                                                    <tbody>
                                                        <tr>
                                                            <td valign="middle" style="padding-left: 0px; width: 100%;">
-                                                               <span id="label4">Standard Type: </span>
+                                                               <span id="label4">Signature Type: </span>
                                                                <span style="margin-left: 10px">
                                                                    @Html.EJS().RadioButton("RadioButtonList2_0").Label("Standard").Name("RadioButtonList2").Value("Standard").Checked(true).Render()
                                                                </span>
@@ -135,7 +135,7 @@
                                                            <td align="left">
                                                                <br />
                                                                <text>Certificate</text>
-                                                               <input type="file" id="certificate " name="certificate" accept="application/pfx" />
+                                                               <input type="file" id="certificate " name="certificate" accept=".pfx, application/pfx" />
 
                                                            </td>
                                                        </tr>

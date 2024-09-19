@@ -21,6 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         {
             var order = OrdersDetails.GetAllRecords();
             ViewBag.datasource = order;
+            ViewBag.ddData = new string[] { "Default", "Custom" };
             return View();
         }
     }

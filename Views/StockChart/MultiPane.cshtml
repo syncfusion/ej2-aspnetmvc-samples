@@ -40,8 +40,8 @@
                 lineStyle: { color: 'transparent' },
                 majorTickLines: { color: 'transparent', height: 0 }
             };
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
         }
 
         function tooltipRender(args) {

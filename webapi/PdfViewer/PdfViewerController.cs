@@ -33,6 +33,10 @@ using Syncfusion.OfficeChartToImageConverter;
 using WFormatType = Syncfusion.DocIO.FormatType;
 using Syncfusion.DocToPDFConverter;
 using EJ2MVCSampleBrowser.Controllers.PdfViewer;
+using Syncfusion.Pdf.Interactive;
+using Syncfusion.Pdf.Redaction;
+using System.Drawing;
+
 
 namespace EJ2MVCSampleBrowser.Controllers
 {
@@ -56,7 +60,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                     }
                     else
                     {
-						string fileName = jsonObject["document"].Split(new string[] { "://" }, StringSplitOptions.None)[0];
+                        string fileName = jsonObject["document"].Split(new string[] { "://" }, StringSplitOptions.None)[0];
                         if (fileName == "http" || fileName == "https")
                         {
                             WebClient WebClient = new WebClient();
@@ -65,7 +69,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                             stream = new MemoryStream(pdfDoc);
                         }
                         else
-                        return(jsonObject["document"] + " is not found");
+                            return (jsonObject["document"] + " is not found");
                     }
                 }
                 else
@@ -76,6 +80,51 @@ namespace EJ2MVCSampleBrowser.Controllers
             }
             jsonResult = pdfviewer.Load(stream, jsonObject);
             return (JsonConvert.SerializeObject(jsonResult));
+        }
+
+        [HttpPost]
+        public object ValidatePassword(Dictionary<string, string> jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            MemoryStream stream = new MemoryStream();
+            object jsonResult = new object();
+            if (jsonObject != null && jsonObject.ContainsKey("document"))
+            {
+                if (bool.Parse(jsonObject["isFileName"]))
+                {
+                    string documentPath = GetDocumentPath(jsonObject["document"]);
+                    if (!string.IsNullOrEmpty(documentPath))
+                    {
+                        byte[] bytes = System.IO.File.ReadAllBytes(documentPath);
+                        stream = new MemoryStream(bytes);
+                    }
+                    else
+                    {
+                        string fileName = jsonObject["document"].Split(new string[] { "://" }, StringSplitOptions.None)[0];
+                        if (fileName == "http" || fileName == "https")
+                        {
+                            WebClient WebClient = new WebClient();
+                            System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
+                            byte[] pdfDoc = WebClient.DownloadData(jsonObject["document"]);
+                            stream = new MemoryStream(pdfDoc);
+                        }
+                        else
+                            return (jsonObject["document"] + " is not found");
+                    }
+                }
+                else
+                {
+                    byte[] bytes = Convert.FromBase64String(jsonObject["document"]);
+                    stream = new MemoryStream(bytes);
+                }
+            }
+            string password = null;
+            if (jsonObject != null && jsonObject.ContainsKey("password"))
+            {
+                password = jsonObject["password"];
+            }
+            var result = pdfviewer.Load(stream, password);
+            return (JsonConvert.SerializeObject(result));
         }
 
         [HttpPost]
@@ -195,103 +244,103 @@ namespace EJ2MVCSampleBrowser.Controllers
             return (JsonConvert.SerializeObject(jsonResult));
         }
         [HttpPost]
-		
-		public object AddSignature(Dictionary<string, string> jsonObject)
+
+        public object AddSignature(Dictionary<string, string> jsonObject)
         {
-			PdfRenderer pdfviewer = new PdfRenderer();
-			string documentBase = pdfviewer.GetDocumentAsBase64(jsonObject);
-			byte[] documentBytes = Convert.FromBase64String(documentBase.Split(',')[1]);
-			PdfLoadedDocument loadedDocument = new PdfLoadedDocument(documentBytes);
-			//Get the first page of the document.
-			PdfPageBase loadedPage = loadedDocument.Pages[0];
-			//Create new X509Certificate2 with the root certificate.
-			X509Certificate2 certificate = new X509Certificate2(GetDocumentPath("localhost.pfx"), "Syncfusion@123");
-			PdfCertificate pdfCertificate = new PdfCertificate(certificate);
-			//Creates a digital signature.
-			PdfSignature signature = new PdfSignature(loadedDocument, loadedPage, pdfCertificate, "Signature");
-			signature.Certificated = true;
-			MemoryStream str = new MemoryStream();
-			//Saves the document.
-			loadedDocument.Save(str);
-			byte[] docBytes = str.ToArray();
-			string docBase64 = "data:application/pdf;base64," + Convert.ToBase64String(docBytes);
+            PdfRenderer pdfviewer = new PdfRenderer();
+            string documentBase = pdfviewer.GetDocumentAsBase64(jsonObject);
+            byte[] documentBytes = Convert.FromBase64String(documentBase.Split(',')[1]);
+            PdfLoadedDocument loadedDocument = new PdfLoadedDocument(documentBytes);
+            //Get the first page of the document.
+            PdfPageBase loadedPage = loadedDocument.Pages[0];
+            //Create new X509Certificate2 with the root certificate.
+            X509Certificate2 certificate = new X509Certificate2(GetDocumentPath("localhost.pfx"), "Syncfusion@123");
+            PdfCertificate pdfCertificate = new PdfCertificate(certificate);
+            //Creates a digital signature.
+            PdfSignature signature = new PdfSignature(loadedDocument, loadedPage, pdfCertificate, "Signature");
+            signature.Certificated = true;
+            MemoryStream str = new MemoryStream();
+            //Saves the document.
+            loadedDocument.Save(str);
+            byte[] docBytes = str.ToArray();
+            string docBase64 = "data:application/pdf;base64," + Convert.ToBase64String(docBytes);
             return (GetPlainText(docBase64));
         }
         [HttpPost]
-		
-		public object ValidateSignature(Dictionary<string, string> jsonObject)
-		{
-			var hasDigitalSignature = false;
-			var errorVisible = false;
-			var successVisible = false;
-			var warningVisible = false;
-			var downloadVisibility = true;
-			var message = string.Empty;
-			if (jsonObject.ContainsKey("documentData"))
-			{
-				byte[] documentBytes = Convert.FromBase64String(jsonObject["documentData"].Split(',')[1]);
-				PdfLoadedDocument loadedDocument = new PdfLoadedDocument(documentBytes);
 
-				PdfLoadedForm form = loadedDocument.Form;
-				if (form != null)
-				{
-					foreach (PdfLoadedField field in form.Fields)
-					{
-						if (field is PdfLoadedSignatureField)
-						{
-							//Gets the first signature field of the PDF document.
-							PdfLoadedSignatureField signatureField = field as PdfLoadedSignatureField;
-							if (signatureField.IsSigned)
-							{
-								hasDigitalSignature = true;
-								//X509Certificate2Collection to check the signers identity using root certificates.
-								X509Certificate2Collection collection = new X509Certificate2Collection();
-								//Create new X509Certificate2 with the root certificate.
-								X509Certificate2 certificate = new X509Certificate2(GetDocumentPath("localhost.pfx"), "Syncfusion@123");
-								//Add the certificate to the collection.
-								collection.Add(certificate);
-								//Validate all signatures in loaded PDF document and get the list of validation result.
-								PdfSignatureValidationResult result = signatureField.ValidateSignature(collection);
-								//Checks whether the document is modified or not.
-								if (result.IsDocumentModified)
-								{
-									errorVisible = true;
-									successVisible = false;
-									warningVisible = false;
-									downloadVisibility = false;
-									message = "The document has been digitally signed, but it has been modified since it was signed and at least one signature is invalid .";
-								}
-								else
-								{
-									//Checks whether the signature is valid or not.
-									if (result.IsSignatureValid)
-									{
-										if (result.SignatureStatus.ToString() == "Unknown")
-										{
-											errorVisible = false;
-											successVisible = false;
-											warningVisible = true;
-											message = "The document has been digitally signed and at least one signature has problem";
-										}
-										else
-										{
-											errorVisible = false;
-											successVisible = true;
-											warningVisible = false;
-											downloadVisibility = false;
-											message = "The document has been digitally signed and all the signatures are valid.";
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			return (JsonConvert.SerializeObject(new { hasDigitalSignature = hasDigitalSignature, errorVisible = errorVisible, successVisible = successVisible, warningVisible = warningVisible, downloadVisibility = downloadVisibility, message = message }));
+        public object ValidateSignature(Dictionary<string, string> jsonObject)
+        {
+            var hasDigitalSignature = false;
+            var errorVisible = false;
+            var successVisible = false;
+            var warningVisible = false;
+            var downloadVisibility = true;
+            var message = string.Empty;
+            if (jsonObject.ContainsKey("documentData"))
+            {
+                byte[] documentBytes = Convert.FromBase64String(jsonObject["documentData"].Split(',')[1]);
+                PdfLoadedDocument loadedDocument = new PdfLoadedDocument(documentBytes);
 
-		}
-		[HttpPost]
+                PdfLoadedForm form = loadedDocument.Form;
+                if (form != null)
+                {
+                    foreach (PdfLoadedField field in form.Fields)
+                    {
+                        if (field is PdfLoadedSignatureField)
+                        {
+                            //Gets the first signature field of the PDF document.
+                            PdfLoadedSignatureField signatureField = field as PdfLoadedSignatureField;
+                            if (signatureField.IsSigned)
+                            {
+                                hasDigitalSignature = true;
+                                //X509Certificate2Collection to check the signers identity using root certificates.
+                                X509Certificate2Collection collection = new X509Certificate2Collection();
+                                //Create new X509Certificate2 with the root certificate.
+                                X509Certificate2 certificate = new X509Certificate2(GetDocumentPath("localhost.pfx"), "Syncfusion@123");
+                                //Add the certificate to the collection.
+                                collection.Add(certificate);
+                                //Validate all signatures in loaded PDF document and get the list of validation result.
+                                PdfSignatureValidationResult result = signatureField.ValidateSignature(collection);
+                                //Checks whether the document is modified or not.
+                                if (result.IsDocumentModified)
+                                {
+                                    errorVisible = true;
+                                    successVisible = false;
+                                    warningVisible = false;
+                                    downloadVisibility = false;
+                                    message = "The document has been digitally signed, but it has been modified since it was signed and at least one signature is invalid .";
+                                }
+                                else
+                                {
+                                    //Checks whether the signature is valid or not.
+                                    if (result.IsSignatureValid)
+                                    {
+                                        if (result.SignatureStatus.ToString() == "Unknown")
+                                        {
+                                            errorVisible = false;
+                                            successVisible = false;
+                                            warningVisible = true;
+                                            message = "The document has been digitally signed and at least one signature has problem";
+                                        }
+                                        else
+                                        {
+                                            errorVisible = false;
+                                            successVisible = true;
+                                            warningVisible = false;
+                                            downloadVisibility = false;
+                                            message = "The document has been digitally signed and all the signatures are valid.";
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return (JsonConvert.SerializeObject(new { hasDigitalSignature = hasDigitalSignature, errorVisible = errorVisible, successVisible = successVisible, warningVisible = warningVisible, downloadVisibility = downloadVisibility, message = message }));
+
+        }
+        [HttpPost]
         public object RenderPdfTexts(Dictionary<string, string> jsonObject)
         {
             PdfRenderer pdfviewer = new PdfRenderer();
@@ -353,7 +402,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             return (GetPlainText(documentBase));
         }
 
-    [HttpPost]
+        [HttpPost]
         public object PrintImages(Dictionary<string, string> jsonObject)
         {
             PdfRenderer pdfviewer = new PdfRenderer();
@@ -454,6 +503,168 @@ namespace EJ2MVCSampleBrowser.Controllers
                 documentPath = document;
             }
             return documentPath;
+        }
+        [HttpPost]
+        public HttpResponseMessage Redaction([FromBody] Dictionary<string, string> jsonObject)
+        {
+            string RedactionText = "Redacted";
+            var finalbase64 = string.Empty;
+            PdfRenderer pdfviewer = new PdfRenderer();
+            string documentBase = pdfviewer.GetDocumentAsBase64(jsonObject);
+            string base64String = documentBase.Split(new string[] { "data:application/pdf;base64," }, StringSplitOptions.None)[1];
+            if (base64String != null || base64String != string.Empty)
+            {
+                byte[] byteArray = Convert.FromBase64String(base64String);
+                Console.WriteLine("redaction");
+                PdfLoadedDocument loadedDocument = new PdfLoadedDocument(byteArray);
+                foreach (PdfLoadedPage loadedPage in loadedDocument.Pages)
+                {
+                    List<PdfLoadedAnnotation> removeItems = new List<PdfLoadedAnnotation>();
+                    foreach (PdfLoadedAnnotation annotation in loadedPage.Annotations)
+                    {
+                        if (annotation is PdfLoadedRectangleAnnotation)
+                        {
+                            if (annotation.Author == "Redaction")
+                            {
+                                // Add the annotation to the removeItems list
+                                removeItems.Add(annotation);
+                                // Create a new redaction with the annotation bounds and color
+                                PdfRedaction redaction = new PdfRedaction(annotation.Bounds, annotation.Color);
+                                // Add the redaction to the page
+                                loadedPage.AddRedaction(redaction);
+                                annotation.Flatten = true;
+                            }
+                            if (annotation.Author == "Text")
+                            {
+                                // Add the annotation to the removeItems list
+                                removeItems.Add(annotation);
+                                // Create a new redaction with the annotation bounds and color
+                                PdfRedaction redaction = new PdfRedaction(annotation.Bounds);
+                                //Set the font family and font size
+                                PdfStandardFont font = new PdfStandardFont(PdfFontFamily.Courier, 8);
+                                //Create the appearance like repeated text in the redaction area 
+                                CreateRedactionAppearance(redaction.Appearance.Graphics, PdfTextAlignment.Left, true, new SizeF(annotation.Bounds.Width, annotation.Bounds.Height), RedactionText, font, PdfBrushes.Red);
+                                // Add the redaction to the page
+                                loadedPage.AddRedaction(redaction);
+                                annotation.Flatten = true;
+                            }
+                            //Apply the pattern for the Redaction
+                            if (annotation.Author == "Pattern")
+                            {
+                                // Add the annotation to the removeItems list
+                                removeItems.Add(annotation);
+                                // Create a new redaction with the annotation bounds and color
+                                PdfRedaction redaction = new PdfRedaction(annotation.Bounds);
+                                RectangleF rect = new RectangleF(0, 0, 8, 8);
+                                PdfTilingBrush tillingBrush = new PdfTilingBrush(rect);
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.Gray, new RectangleF(0, 0, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.White, new RectangleF(2, 0, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(4, 0, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.DarkGray, new RectangleF(6, 0, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.White, new RectangleF(0, 2, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(2, 2, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.Black, new RectangleF(4, 2, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(6, 2, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(0, 4, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.DarkGray, new RectangleF(2, 4, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(4, 4, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.White, new RectangleF(6, 4, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.Black, new RectangleF(0, 6, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(2, 6, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.Black, new RectangleF(4, 6, 2, 2));
+                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.DarkGray, new RectangleF(6, 6, 2, 2));
+                                rect = new RectangleF(0, 0, 16, 14);
+                                PdfTilingBrush tillingBrushNew = new PdfTilingBrush(rect);
+                                tillingBrushNew.Graphics.DrawRectangle(tillingBrush, rect);
+                                //Set the pattern for the redaction area
+                                redaction.Appearance.Graphics.DrawRectangle(tillingBrushNew, new RectangleF(0, 0, annotation.Bounds.Width, annotation.Bounds.Height));
+                                // Add the redaction to the page
+                                loadedPage.AddRedaction(redaction);
+                                annotation.Flatten = true;
+                            }
+                        }
+                        else if (annotation is PdfLoadedRubberStampAnnotation)
+                        {
+                            if (annotation.Author == "Image")
+                            {
+                                //Get the existing rubber stamp annotation.
+                                PdfLoadedRubberStampAnnotation rubberStampAnnotation = annotation as PdfLoadedRubberStampAnnotation;
+                                //Get the custom images used for the rubber stamp annotation.
+                                Image[] images = rubberStampAnnotation.GetImages();
+                                // Create a new redaction with the annotation bounds and color
+                                PdfRedaction redaction = new PdfRedaction(annotation.Bounds);
+                                // images[0].Position = 0;
+                                PdfImage image = new PdfBitmap(images[0]);
+                                //Apply the image to redaction area
+                                redaction.Appearance.Graphics.DrawImage(image, new RectangleF(0, 0, annotation.Bounds.Width, annotation.Bounds.Height));
+                                // Add the redaction to the page
+                                loadedPage.AddRedaction(redaction);
+                                annotation.Flatten = true;
+                            }
+                        }
+                    }
+                    foreach (PdfLoadedAnnotation annotation1 in removeItems)
+                    {
+                        loadedPage.Annotations.Remove(annotation1);
+                    }
+                }
+                loadedDocument.Redact();
+                MemoryStream stream = new MemoryStream();
+                loadedDocument.Save(stream);
+                stream.Position = 0;
+                loadedDocument.Close(true);
+                byteArray = stream.ToArray();
+                finalbase64 = "data:application/pdf;base64," + Convert.ToBase64String(byteArray);
+                stream.Dispose();
+            }
+            return (GetPlainText(finalbase64));
+        }
+
+        //The Method used for apply the text in the full area of redaction rectangle
+        private static void CreateRedactionAppearance(PdfGraphics graphics, PdfTextAlignment alignment, bool repeat, SizeF size, string overlayText, PdfFont font, PdfBrush textcolor)
+        {
+            float col = 0, row;
+            if (font == null) font = new PdfStandardFont(PdfFontFamily.Helvetica, 10);
+            int textAlignment = Convert.ToInt32(alignment);
+            float y = 0, x = 0, diff = 0;
+            RectangleF rect;
+            SizeF textsize = font.MeasureString(overlayText);
+
+            if (repeat)
+            {
+                col = size.Width / textsize.Width;
+                row = (float)Math.Floor(size.Height / font.Size);
+                diff = Math.Abs(size.Width - (float)(Math.Floor(col) * textsize.Width));
+                if (textAlignment == 1)
+                    x = diff / 2;
+                if (textAlignment == 2)
+                    x = diff;
+                for (int i = 1; i < col; i++)
+                {
+                    for (int j = 0; j < row; j++)
+                    {
+                        rect = new RectangleF(x, y, 0, 0);
+                        graphics.DrawString(overlayText, font, textcolor, rect);
+                        y = y + font.Size;
+                    }
+                    x = x + textsize.Width;
+                    y = 0;
+                }
+            }
+            else
+            {
+                diff = Math.Abs(size.Width - textsize.Width);
+                if (textAlignment == 1)
+                {
+                    x = diff / 2;
+                }
+                if (textAlignment == 2)
+                {
+                    x = diff;
+                }
+                rect = new RectangleF(x, 0, 0, 0);
+                graphics.DrawString(overlayText, font, textcolor, rect);
+            }
         }
     }
 }

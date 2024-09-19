@@ -28,6 +28,7 @@
     "gitleaks-test": "gulp code-leaks-analysis",
     "update-service-urls" : "gulp web-services-url --platform aspmvc",
     "build": "gulp generate-searchlist && gulp desValidation && gulp title-section && gulp sitemap-generate",
+    "deploy-build-samples": "gulp deploy-build-samples --option aspmvc",
     "publish": "gulp azure-mvc-publish",
 		"mvc-cloudtest-deploy": "gulp azure-mvc-publish --cloudtesting"
 

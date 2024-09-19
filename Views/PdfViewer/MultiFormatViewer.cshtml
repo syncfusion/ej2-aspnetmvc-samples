@@ -37,7 +37,7 @@
                 </div>
             </div>
             <div style="display:none">
-                @Html.EJS().Uploader("fileUpload").Selected("onSelect").Multiple(false).DropArea("#dropArea").AllowedExtensions(".doc, .docx, .rtf, .docm, .dotm, .dotx, .dot, .xls, .xlsx, .pptx, .pptm, .potx, .potm .jpeg, .png, .bmp, .pdf").Render()
+                @Html.EJS().Uploader("fileUpload").Selected("onSelect").Multiple(false).DropArea("#dropArea").AllowedExtensions(".doc, .docx, .rtf, .docm, .dotm, .dotx, .dot, .xls, .xlsx, .pptx, .pptm, .potx, .potm .jpeg, .png, .bmp, .pdf, .jpg").Render()
             </div>
         </div>
         <div id="pdfviewer-container" style="display:none">
@@ -50,7 +50,7 @@
                     @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
                 </div>
             </div>
-            @Html.EJS().PdfViewer("pdfviewer").DocumentLoad("documentLoaded").AjaxRequestSuccess("ajaxRequestSuccess").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").ToolbarSettings(new Syncfusion.EJ2.PdfViewer.PdfViewerToolbarSettings { ShowTooltip = true, ToolbarItems = "DownloadOption UndoRedoTool PageNavigationTool MagnificationTool PanTool SelectionTool CommentTool SubmitForm SearchOption AnnotationEditTool FormDesignerEditTool PrintOption" }).Render()
+            @Html.EJS().PdfViewer("pdfviewer").ZoomMode(Syncfusion.EJ2.PdfViewer.ZoomMode.FitToPage).DocumentLoad("documentLoaded").AjaxRequestSuccess("ajaxRequestSuccess").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").ToolbarSettings(new Syncfusion.EJ2.PdfViewer.PdfViewerToolbarSettings { ShowTooltip = true, ToolbarItems = "DownloadOption UndoRedoTool PageNavigationTool MagnificationTool PanTool SelectionTool CommentTool SubmitForm SearchOption AnnotationEditTool FormDesignerEditTool PrintOption" }).Render()
         </div>
     </div>
 }
@@ -101,7 +101,7 @@
             return false;
         }
         function onSelect(args) {
-            let extensions = ['doc', 'docx', 'rtf', 'docm', 'dotm', 'dotx', 'dot', 'xls', 'xlsx', 'pptx', 'pptm', 'potx', 'potm', 'jpeg', 'png', 'bmp', 'pdf'];
+            let extensions = ['doc', 'docx', 'rtf', 'docm', 'dotm', 'dotx', 'dot', 'xls', 'xlsx', 'pptx', 'pptm', 'potx', 'potm', 'jpeg', 'png', 'bmp', 'pdf','jpg'];
             let progressBarValue = document.getElementById("progressBar").ej2_instances[0];
             progressBarValue.value = 0;
             progressBarValue.refresh();
@@ -235,7 +235,6 @@
                 let progressBarValue = document.getElementById("progressBar").ej2_instances[0];
                 progressBarValue.value = 0;
             }, 1000);
-            viewer.magnification.fitToPage();
         }
         function ajaxRequestSuccess(args){
             if (args.action === "Load") {
@@ -339,6 +338,11 @@
     .buttonSwitch {
         Width: 40px;
         Height: 24px;
+    }
+
+    #pdfviewer_viewerContainer {
+        left: 0px !important;
+        width: 100% !important;
     }
 </style>
 @*custom code end*@

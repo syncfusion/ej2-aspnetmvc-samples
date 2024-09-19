@@ -91,8 +91,8 @@
 @*custom code end*@
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.annotations[0].content = ej.base.Browser.isDevice ? '<div style="font-weight: bold; color: white; font-size: 9px;">8-TRACK</div>' : '<div style="font-weight: bold; color: white; font-size: 11px;">8-TRACK</div>';
             args.chart.annotations[1].content = ej.base.Browser.isDevice ? '<div style="font-weight: bold; color: white; font-size: 9px;">VINYL</div>' : '<div style="font-weight: bold; color: white;font-size: 11px;">VINYL</div>';

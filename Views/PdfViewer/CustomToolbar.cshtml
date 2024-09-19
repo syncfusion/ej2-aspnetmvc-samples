@@ -31,7 +31,7 @@ new ToolbarItem { Type = ItemType.Button,  PrefixIcon = "e-icons e-save" ,Toolti
 new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-chevron-left",TooltipText = "Previous Page",Align=ItemAlign.Center,Click="previousClicked",Id="previousPage"},
 new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-chevron-right", TooltipText = "Next Page",Align=ItemAlign.Center,Click="nextClicked",Id="nextPage"},
 new ToolbarItem {Template="<div class=''><input type='text' class='e-input-group e-pv-current-page-number' id='currentPage'/></div>" ,PrefixIcon = "e-pv-next-page-navigation-icon", TooltipText = "Page Number",Align=ItemAlign.Center},
-new ToolbarItem { Type = ItemType.Input, Template="<div class=''><span class='e-pv-total-page-number' id='totalPage'>of 0</span></div>" , PrefixIcon = "e-pv-next-page-navigation-icon", TooltipText = "Page Number",Click="currentPageClicked",Align=ItemAlign.Center},
+new ToolbarItem { Type = ItemType.Input, Template="<div class='' style='margin:0px 6px'><span class='e-pv-total-page-number' id='totalPage'>of 0</span></div>" , PrefixIcon = "e-pv-next-page-navigation-icon", TooltipText = "Page Number",Click="currentPageClicked",Align=ItemAlign.Center},
 new ToolbarItem {Type = ItemType.Separator , TooltipText="separator" ,Align=ItemAlign.Center},
 new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-mouse-pointer", TooltipText = "Text Selection Tool",Align=ItemAlign.Center,Click="textSelection"},
 new ToolbarItem{Type=ItemType.Button, PrefixIcon="e-icons e-pan", TooltipText="Pan Tool", Align=ItemAlign.Center,Click="panMode"},
@@ -89,7 +89,7 @@ new ToolbarItem { Type = ItemType.Button,  PrefixIcon = "e-icons e-print" ,Toolt
             <div class="e-pv-search-bar" id="container_search_box" style="top:113px;right:0px;z-index:1111">
                 <div class="e-pv-search-bar-elements" id="container_search_box_elements" style="width:330px">
                     <div class="e-input-group e-pv-search-input" id="container_search_input_container">
-                        <input class="e-input" id="container_search_input" type="text" placeholder="Find in document" onkeypress="searchInputKeypressed(event)" />
+                        <input class="e-input" id="container_search_input" type="text" placeholder="Find in document" onkeypress="searchInputKeypressed(event)" oninput="inputChange()" />
                         <span class="e-input-group-icon e-input-search-group-icon e-icons e-search" id="container_search_box-icon" onclick="initiateTextSearch()"></span>
                         <span class="e-input-group-icon e-input-search-group-icon e-icons e-close" id="container_close_search_box-icon" style="display: none; top:6px;" onclick="clearTextSearch()"></span>
                     </div>
@@ -314,11 +314,13 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
     var matchCase = false;
     var filename;
     var isInkEnabled = false;
+    var searchActive = false;
 
     window.onload = function () {
         currentPageBox = document.getElementById('currentPage');
         currentPageBox.value = '1';
         document.getElementById('fileUpload').addEventListener('change', readFile, false);
+        document.addEventListener('click', checkSearchActive);
         currentPageBox.addEventListener('keypress', () => {
             var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
             var currentPage = document.getElementById('currentPage');
@@ -779,6 +781,21 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         }
 
     }
+    function checkSearchActive() {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (!searchActive) {
+            pdfViewer.textSearchModule.clearAllOccurrences();
+        }
+    }
+    function inputChange() {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        pdfViewer.textSearchModule.clearAllOccurrences();
+        searchActive = false;
+        var textsearchcloseElement = document.getElementById('container_close_search_box-icon');
+        var textsearchElement = document.getElementById('container_search_box-icon');
+        textsearchcloseElement.style.display = 'none';
+        textsearchElement.style.display = 'block';
+    }
     function searchInputKeypressed(event) {
         var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
         if (event.key === 'Enter') {
@@ -800,7 +817,7 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         if (textsearchPrevElement && textsearchNextElement && textsearchcloseElement && textsearchElement) {
             textsearchPrevElement.disabled = false;
             textsearchNextElement.disabled = false;
-            textsearchcloseElement.style.display = 'block';
+            textsearchcloseElement.style.display = 'flex';
             textsearchElement.style.display = 'none';
             textsearchPrevElement.addEventListener("click", previousTextSearch);
             textsearchNextElement.addEventListener("click", nextTextSearch);
@@ -811,6 +828,7 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
                 pdfViewer.textSearchModule.cancelTextSearch();
                 searchText = (document.getElementById('container_search_input')).value;
                 pdfViewer.textSearchModule.searchText(searchText, matchCase);
+                searchActive = true;
                 prevMatchCase = matchCase;
             } else {
                 nextTextSearch();
@@ -832,11 +850,13 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
     function previousTextSearch() {
         var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
         pdfViewer.textSearchModule.searchPrevious();
+        searchActive = true;
     }
 
     function nextTextSearch() {
         var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
         pdfViewer.textSearchModule.searchNext();
+        searchActive = true;
     }
     function checkBoxChanged(event) {
         const target = event.target;
@@ -870,8 +890,9 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
             var obj = document.getElementById('pdfviewer').ej2_instances[0];
             var uploadedFileUrl = this.result;
             obj.documentPath = uploadedFileUrl;
-			obj.fileName = filename;
-           var currentPageBox = document.getElementById('currentPage');
+            obj.fileName = filename;
+            obj.downloadFileName = filename;
+            var currentPageBox = document.getElementById('currentPage');
             currentPageBox.value = '1';
             var pageCount = document.getElementById('totalPage');
             pageCount.textContent = 'of ' + obj.pageCount;

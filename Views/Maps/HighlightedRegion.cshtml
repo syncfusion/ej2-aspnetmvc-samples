@@ -94,7 +94,7 @@
     <script type="text/javascript">
         function mapLoad(sender) {
             var theme = themeName ? themeName : 'Material';
-            sender.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            sender.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             sender.maps.layers[0].markerSettings[0].imageUrl = '@Url.Content("~/Content/Maps/ballon.png")';
             sender.maps.layers[0].markerSettings[3].dataSource = [
                             {

@@ -64,7 +64,7 @@
         var dataFirst = true;
         function load(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             args.maps.zoomSettings.toolbarSettings.orientation = "Vertical";
             args.maps.zoomSettings.toolbarSettings.horizontalAlignment = "Near";
             if (dataFirst) {

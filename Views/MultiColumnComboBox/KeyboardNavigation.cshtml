@@ -1,17 +1,19 @@
 @using Syncfusion.EJ2.MultiColumnComboBox
+@using EJ2MVCSampleBrowser.Models
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
             <div style='padding-top:30px;'>
-                @Html.EJS().MultiColumnComboBox("keyboardnav").Placeholder("Select an order ID").Fields(new MultiColumnComboBoxFieldSettings
-                { Text = "ShipCountry", Value = "OrderID" }).Columns(col =>
+                @Html.EJS().MultiColumnComboBox("keyboardnav").Placeholder("Select an author").Fields(new MultiColumnComboBoxFieldSettings
+                { Text = "Author", Value = "Title" }).Columns(col =>
                 {
-                    col.Field("OrderID").Header("Order ID").Width("110").Add();
-                    col.Field("CustomerID").Header("Customer ID").Width("130").Add();
-                    col.Field("Freight").Header("Freight").Width("90").Add();
-                    col.Field("ShipCountry").Header("Ship Country").Width("140").Add();
-                }).PopupHeight("230px").DataSource(@Model.OrderDetails).Render()
+                    col.Field("Title").Header("Title").Width("180").Add();
+                    col.Field("Author").Header("Author").Width("150").Add();
+                    col.Field("Genre").Header("Genre").Width("100").Add();
+                    col.Field("PublishedYear").Header("Published Year").Width("120").Add();
+                    col.Field("Price").Header("Price").Width("80").Add();
+                }).PopupHeight("230px").DataSource((IEnumerable<BookDetails>)ViewBag.data).Render()
             </div>
         </div>
     </div>
@@ -19,7 +21,7 @@
     <style>
         .control-wrapper {
             margin: 0 auto;
-            width: 500px;
+            width: 650px;
         }
 
         @@media only screen and (max-width: 480px) {

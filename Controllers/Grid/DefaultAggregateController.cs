@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         // GET: DefaultAggregate
         public ActionResult DefaultAggregate()
         {
-            var order = OrdersDetails.GetAllRecords();
+            var order = OverAllData.GetAllRecords();
             ViewBag.datasource = order;
             return View();
         }

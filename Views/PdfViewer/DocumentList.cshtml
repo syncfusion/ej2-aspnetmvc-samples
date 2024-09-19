@@ -37,7 +37,7 @@
 
         @Html.EJS().Dialog("defaultDialog").Open("dialogOpen").Close("dialogClose").IsModal(true).ContentTemplate(@<div>
             <div class="control-section">
-                @Html.EJS().PdfViewer("pdfviewer").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").Height("745px").Render()
+                @Html.EJS().PdfViewer("pdfviewer").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").DocumentLoad("documentLoaded").Height("745px").Render()
             </div>
         </div>).ShowCloseIcon(true).CloseOnEscape(true).Created("created").Width("90%").Height("90%").Render()
     </div>
@@ -45,7 +45,7 @@
 
 @section PreScripts {
     <script>
-    var dialogObj, gridObj;
+    var dialogObj, gridObj, mode;
 
     function dialogClose() {
         document.getElementById('Grid').style.display = 'block';
@@ -58,6 +58,16 @@
     function dlgButtonClick() {
         dialogObj.hide();
         document.getElementById('Grid').style.display = 'block';
+    }
+
+    function documentLoaded() {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (mode == "View") {
+            pdfViewer.enablePageOrganizer = false;
+        }
+        else {
+            pdfViewer.enablePageOrganizer = true;
+        }
     }
 
     function created() {
@@ -88,6 +98,7 @@
         dialogObj.show();
 
         if (args.target.title == "View") {
+            mode = "View";
             viewer.textFieldSettings = {
                 isReadOnly: true,
             };
@@ -113,7 +124,7 @@
                 isReadOnly: true,
             };
             viewer.contextMenuOption = "None";
-            viewer.annotationSettings = { isLock: true };
+            viewer.annotationSettings = { isLock: true , author: 'Guest' };
             viewer.enableStickyNotesAnnotation = false;
             viewer.isFormDesignerToolbarVisible = false;
             viewer.isAnnotationToolbarVisible = false;
@@ -123,6 +134,7 @@
             };
         }
         else {
+            mode = "Edit";
             viewer.textFieldSettings = {
                 isReadOnly: false,
             };
@@ -148,7 +160,7 @@
                 isReadOnly: false,
             };
             viewer.contextMenuOption = "Block";
-            viewer.annotationSettings = { isLock: false };
+            viewer.annotationSettings = { isLock: false , author: 'Guest' };
             viewer.enableStickyNotesAnnotation = true;
             viewer.toolbarSettings = {
                 showTooltip: true, toolbarItems: ['OpenOption', 'UndoRedoTool', 'PageNavigationTool',

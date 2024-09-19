@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         // GET: GroupAndCaptionAggregate
         public ActionResult GroupAndCaptionAggregate()
         {
-            var DataSource = Product.GetAllRecords();
+            var DataSource = EnergyData.GetAllRecords();
             ViewBag.dataSource = DataSource;
             return View();
         }

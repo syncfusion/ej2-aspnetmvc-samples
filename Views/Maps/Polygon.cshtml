@@ -6,8 +6,15 @@
         {
         new Syncfusion.EJ2.Maps.MapsLayer {
             UrlTemplate = "https://tile.openstreetmap.org/level/tileX/tileY.png",
-
-        }}).Render()
+            PolygonSettings = new MapsPolygonSettings
+            {
+                TooltipSettings = new MapsTooltipSettings { Visible = true },
+                Polygons = new List<MapsPolygon>
+                {
+                    new MapsPolygon { BorderWidth = 0 }
+                }
+            } }
+        }).Render()
         <div style="float: right">
             <a href="https://www.openstreetmap.org/copyright" target="_blank" aria-label="OpenStreetMap">© OpenStreetMap contributors</a>
         </div>
@@ -18,10 +25,9 @@
         function mapsLoad(args) {
             @* custom code start *@
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             @* custom code end *@
             if (!isPolygonRendered) {
-                args.maps.layers[0].polygonSettings.tooltipSettings = { visible: true },
                 args.maps.layers[0].polygonSettings.polygons = [
                     {
                         tooltipTemplate: '<div style="height: auto; width: 280px; background-color: #fff; color:#000; padding: 10px;"><table style="padding:10px; border:1px solid #000;"><tr><td style="padding:5px; width: 40%; text-align: center;"><img src="@Url.Content("~/Content/Maps/germany-flag.png")" style="height:auto;width: 100%" alt="Germany" /></td><td style="padding:5px"><span style="font-size: 12px; font-weight: 500;display:block">Country Name : Germany</span><span style="font-size: 12px; font-weight: 500;display:block">Capital Name : Berlin</span><span style="font-size: 12px; font-weight: 500;display:block">Population : 83,252,474</span><span style="font-size: 12px; font-weight: 500;display:block">GDP : $4.509 trillion</span></td></tr></table></div>',

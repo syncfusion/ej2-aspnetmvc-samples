@@ -33,6 +33,29 @@
                Border = new MapsBorder{ Width = 0.1 , Color = "black", Opacity = 1 },
                ColorValuePath="name",
                ColorMapping = ViewBag.ColorMapping
+           },
+           NavigationLineSettings = new List<MapsNavigationLine>
+           {
+               new MapsNavigationLine { Visible = true, Angle = -0.8, Color = "black", DashArray = "5,1", Latitude = new double[] { 28.6139391, 39.9041999 }, Longitude = new double[] { 77.2090212, 116.4073963 } },
+               new MapsNavigationLine { Visible = true, Angle = -0.8, Color = "black", DashArray = "5,1", Latitude = new double[] { 28.6139391, 31.2303904 }, Longitude = new double[] { 77.2090212, 121.4737021 } },
+               new MapsNavigationLine { Visible = true, Angle = -0.6, Color = "black", DashArray = "5,1", Latitude = new double[] { 28.6139391, 23.12911 }, Longitude = new double[] { 77.2090212, 113.264385 } },
+               new MapsNavigationLine { Visible = true, Angle = -0.8, Color = "black", DashArray = "5,1", Latitude = new double[] { 28.6139391, 22.396428 }, Longitude = new double[] { 77.2090212, 114.109497 } },
+               new MapsNavigationLine { Visible = true, Angle = -0.8, Color = "black", DashArray = "5,1", Latitude = new double[] { 19.0759837, 23.12911 }, Longitude = new double[] { 72.8776559, 113.264385 } },
+               new MapsNavigationLine { Visible = true, Angle = -0.8, Color = "black", DashArray = "5,1", Latitude = new double[] { 13.0826802, 22.396428 }, Longitude = new double[] { 80.2707184, 114.109497 } },
+               new MapsNavigationLine { Visible = true, Angle = -0.8, Color = "black", DashArray = "5,1", Latitude = new double[] { 22.572646, 24.880095 }, Longitude = new double[] { 88.363895, 102.832891 } },
+           },
+           MarkerSettings = new List<MapsMarker>
+           {
+               new MapsMarker { Visible = true, Shape = MarkerType.Circle, Fill = "white", Width = 4, AnimationDuration = 0 },
+               new MapsMarker { Visible = true, AnimationDuration = 0 },
+               new MapsMarker { Visible = true, AnimationDuration = 0 },
+               new MapsMarker { Visible = true, AnimationDuration = 0 },
+               new MapsMarker { Visible = true, AnimationDuration = 0 },
+               new MapsMarker { Visible = true, AnimationDuration = 0 },
+               new MapsMarker { Visible = true, AnimationDuration = 0 },
+               new MapsMarker { Visible = true, AnimationDuration = 0 },
+               new MapsMarker { Visible = true, AnimationDuration = 0 },
+               new MapsMarker { Visible = true, AnimationDuration = 0 }
            }
        }}).Render()
             <div style="margin-left:75%">
@@ -83,177 +106,105 @@
         ];
         function mapLoad(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             args.maps.mapsArea.background = "#AEE2FA";
-            args.maps.layers[0].navigationLineSettings = navigationData;
-            args.maps.layers[0].markerSettings = [
+            args.maps.layers[0].markerSettings[0].dataSource = markerLocation;
+            args.maps.layers[0].markerSettings[0].tooltipSettings.visible = true;
+            args.maps.layers[0].markerSettings[0].tooltipSettings.valuePath = 'title';
+            args.maps.layers[0].markerSettings[0].border = { width: 1, color: 'black' };
+            args.maps.layers[0].markerSettings[1].dataSource = [
                 {
-                    dataSource: markerLocation,
-                    visible: true,
-                    shape: 'Circle',
-                    fill: 'white',
-                    border: { width: 1, color: 'black' },
-                    width: 4,
-                    animationDuration: 0,
-                    tooltipSettings: {
-                        visible: true,
-                        valuePath: 'title'
-                    }
-                },
-                {
-                    dataSource: [
-                        {
-                            'name': 'New Delhi',
-                            'latitude': 28.6139391,
-                            'longitude': 77.2090212
-                        }
-                    ],
-                    visible: true,
-                    template: '<div id="marker1" style="font-size:12px;color:black;font-weight: 500">New Delhi' +
-                        '</div>',
-                    animationDuration: 0,
-                    offset: {
-                        x: -50,
-                        y: 10
-                    }
-                },
-                {
-                    dataSource: [
-                        {
-                            'name': 'Mumbai',
-                            'latitude': 19.0759837,
-                            'longitude': 72.8776559
-                        }
-                    ],
-                    visible: true,
-                    template: '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Mumbai' +
-                        '</div>',
-                    animationDuration: 0,
-                    offset: {
-                        x: 0,
-                        y: 12
-                    }
-                },
-                {
-                    dataSource: [
-                        {
-                            'name': 'Chennai',
-                            'latitude': 13.0826802,
-                            'longitude': 80.2707184
-                        }
-                    ],
-                    visible: true,
-                    template: '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Chennai' +
-                        '</div>',
-                    animationDuration: 0,
-                    offset: {
-                        x: 0,
-                        y: 12
-                    }
-                },
-                {
-                    dataSource: [
-                        {
-                            'name': 'Kolkata',
-                            'latitude': 22.572646,
-                            'longitude': 88.363895
-                        }
-                    ],
-                    visible: true,
-                    template: '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Kolkata' +
-                        '</div>',
-                    animationDuration: 0,
-                    offset: {
-                        x: 0,
-                        y: 12
-                    }
-                },
-                {
-                    dataSource: [
-                        {
-                            'name': 'Kunming',
-                            'latitude': 24.880095,
-                            'longitude': 102.832891
-                        }
-                    ],
-                    visible: true,
-                    template: '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Kunming' +
-                        '</div>',
-                    animationDuration: 0,
-                    offset: {
-                        x: 0,
-                        y: 12
-                    }
-                },
-                {
-                    dataSource: [
-                        {
-                            'name': 'Beijing',
-                            'latitude': 39.9041999,
-                            'longitude': 116.4073963
-                        }
-                    ],
-                    visible: true,
-                    template: '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Beijing' +
-                        '</div>',
-                    animationDuration: 0,
-                    offset: {
-                        x: 0,
-                        y: 12
-                    }
-                },
-                {
-                    dataSource: [
-                        {
-                            'name': 'Shanghai',
-                            'latitude': 31.2303904,
-                            'longitude': 121.4737021
-                        }
-                    ],
-                    visible: true,
-                    template: '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Shanghai' +
-                        '</div>',
-                    animationDuration: 0,
-                    offset: {
-                        x: 0,
-                        y: 12
-                    }
-                },
-                {
-                    dataSource: [
-                        {
-                            'name': 'Hong Kong',
-                            'latitude': 22.396428,
-                            'longitude': 114.109497
-                        }
-                    ],
-                    visible: true,
-                    template: '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Hong Kong' +
-                        '</div>',
-                    animationDuration: 0,
-                    offset: {
-                        x: 20,
-                        y: 20
-                    }
-                },
-                {
-                    dataSource: [
-                        {
-                            'name': 'Guangzhou',
-                            'latitude': 23.12911,
-                            'longitude': 113.264385
-                        }
-                    ],
-                    visible: true,
-                    template: '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Guangzhou' +
-                        '</div>',
-                    animationDuration: 0,
-                    offset: {
-                        x: 35,
-                        y: -10
-                    }
+                    'name': 'New Delhi',
+                    'latitude': 28.6139391,
+                    'longitude': 77.2090212
                 }
             ];
+            args.maps.layers[0].markerSettings[1].template = '<div id="marker1" style="font-size:12px;color:black;font-weight: 500">New Delhi' +
+                '</div>';
+            args.maps.layers[0].markerSettings[1].offset = {
+                x: -50,
+                y: 10
+            };
+            args.maps.layers[0].markerSettings[2].dataSource = [
+                {
+                    'name': 'Mumbai',
+                    'latitude': 19.0759837,
+                    'longitude': 72.8776559
+                }
+            ];
+            args.maps.layers[0].markerSettings[2].template = '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Mumbai' +
+                '</div>';
+            args.maps.layers[0].markerSettings[2].offset = { x : 0, y : 12};
+            args.maps.layers[0].markerSettings[3].dataSource = [
+                {
+                    'name': 'Chennai',
+                    'latitude': 13.0826802,
+                    'longitude': 80.2707184
+                }
+            ];
+            args.maps.layers[0].markerSettings[3].template = '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Chennai' +
+                '</div>';
+            args.maps.layers[0].markerSettings[3].offset = { x : 0, y : 12 };
+            args.maps.layers[0].markerSettings[4].dataSource = [
+                {
+                    'name': 'Kolkata',
+                    'latitude': 22.572646,
+                    'longitude': 88.363895
+                }
+            ];
+            args.maps.layers[0].markerSettings[4].template = '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Kolkata' +
+                '</div>';
+            args.maps.layers[0].markerSettings[4].offset = { x : 0, y : 12 };
+            args.maps.layers[0].markerSettings[5].dataSource = [
+                {
+                    'name': 'Kunming',
+                    'latitude': 24.880095,
+                    'longitude': 102.832891
+                }
+            ];
+            args.maps.layers[0].markerSettings[5].template = '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Kunming' +
+                '</div>';
+            args.maps.layers[0].markerSettings[5].offset = { x : 0, y : 12 };
+            args.maps.layers[0].markerSettings[6].dataSource = [
+                {
+                    'name': 'Beijing',
+                    'latitude': 39.9041999,
+                    'longitude': 116.4073963
+                }
+            ];
+            args.maps.layers[0].markerSettings[6].template = '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Beijing' +
+                '</div>';
+            args.maps.layers[0].markerSettings[6].offset = { x : 0, y : 12 };
+            args.maps.layers[0].markerSettings[7].dataSource = [
+                {
+                    'name': 'Shanghai',
+                    'latitude': 31.2303904,
+                    'longitude': 121.4737021
+                }
+            ];
+            args.maps.layers[0].markerSettings[7].template = '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Shanghai' +
+                '</div>';
+            args.maps.layers[0].markerSettings[7].offset = { x : 0, y : 12 };
+            args.maps.layers[0].markerSettings[8].dataSource = [
+                {
+                    'name': 'Hong Kong',
+                    'latitude': 22.396428,
+                    'longitude': 114.109497
+                }
+            ];
+            args.maps.layers[0].markerSettings[8].template = '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Hong Kong' +
+                '</div>';
+            args.maps.layers[0].markerSettings[8].offset = { x : 20, y : 20 };
+            args.maps.layers[0].markerSettings[9].dataSource = [
+                {
+                    'name': 'Guangzhou',
+                    'latitude': 23.12911,
+                    'longitude': 113.264385
+                }
+            ];
+            args.maps.layers[0].markerSettings[9].template = '<div id="marker1" style="font-size:12px;color:black;font-weight: 500";>Guangzhou' +
+                '</div>';
+            args.maps.layers[0].markerSettings[9].offset = { x : 35, y : -10 };
         }
     </script>
 }

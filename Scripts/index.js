@@ -10,7 +10,7 @@ var searchInstance;
 var headerThemeSwitch = document.getElementById('header-theme-switcher');
 var settingElement = ej.base.select('.sb-setting-btn');
 var themeList = document.getElementById('themelist');
-var themes = ['material3', 'fluent', 'fluent2', 'bootstrap5', 'tailwind', 'highcontrast'];
+var themes = ['material3', 'fluent', 'fluent2', 'bootstrap5.3', 'tailwind', 'highcontrast', 'fluent2-highcontrast'];
 //var themes= ['material3', 'material3-dark', 'fluent', 'fluent-dark', 'bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'highcontrast'];
 var defaultTheme = 'fluent2';
 var themeDropDown;
@@ -232,9 +232,11 @@ function renderSbPopups() {
             }
             var localtheme = localStorage.getItem("currentTheme");
             // If "-dark" is present in the URL, modify the value accordingly
-            if (isDarkModeURL() && localtheme === e.value) {
+            if (localtheme != null && localtheme.includes("-dark") && e.value != "highcontrast" && e.value != "fluent2-highcontrast") {
+                if (isDarkModeURL() || window.location.href.includes('highcontrast') || window.location.href.includes('fluent2-highcontrast')) {
                 e.value += "-dark";
-            }
+                }
+            } 
             switchTheme(e.value);
         }
     });
@@ -256,7 +258,7 @@ function renderSbPopups() {
             } else {
                 if (e.value == 'dark') {
                     switchTheme(themeValue + "-dark");
-                    localStorage.setItem("currentTheme", themeValue);
+                    localStorage.setItem("currentTheme", themeValue+"-dark");
                 } else {
                     localStorage.setItem("currentTheme", themeValue);
                     switchTheme(themeValue);
@@ -543,8 +545,9 @@ function changeTheme(e) {
     var target = e.target;
     target = ej.base.closest(target, 'li');
     var themeName = target.id;
+    themeName = themeName === 'bootstrap5.3' ? 'bootstrap5' : themeName;
     var storedURL = localStorage.getItem('PreviousURL');
-    if (storedURL != null && storedURL.includes("-dark") && themeName!="highcontrast") {
+    if (storedURL != null && storedURL.includes("-dark") && themeName != "highcontrast" && themeName != "fluent2-highcontrast") {
         themeName = themeName + "-dark";
     } else {
         themeName = themeName;
@@ -559,6 +562,7 @@ function changeTheme(e) {
 
 function switchTheme(str) {
     var hash = location.hash.split('/');
+    str = str === 'bootstrap5.3' ? 'bootstrap5' : str === 'bootstrap5.3-dark' ? 'bootstrap5-dark' : str;
     if (hash[1] !== str) {
         hash[1] = str;
         localStorage.setItem('ej2-switch', ej.base.select('.sb-responsive-section .active').id);
@@ -945,11 +949,12 @@ function loadTheme(theme) {
             body.classList.remove(themes[themeItem]);
         }
     }
+    theme = theme == 'bootstrap5' ? 'bootstrap5.3' : theme == 'bootstrap5-dark' ? 'bootstrap5.3-dark' : theme;
     body.classList.add(theme);
     themeList.querySelector('.active').classList.remove('active');
     /* themeList.querySelector('#' + theme).classList.add('active');*/
     var currentUpdatedTheme = theme.replace("-dark", "");
-    themeList.querySelector('#' + currentUpdatedTheme).classList.add('active');
+    currentUpdatedTheme == 'bootstrap5.3' ? themeList.querySelector('#bootstrap5\\.3').classList.add('active') : themeList.querySelector('#' + currentUpdatedTheme).classList.add('active');
     var path = location.origin + baseurl;
     var ajax = new ej.base.Ajax(path + 'Content/styles/' + theme + '.css', 'GET', false);
     selectedTheme = theme;
@@ -969,6 +974,10 @@ function loadTheme(theme) {
     hasher.initialized.add(parseHash);
     hasher.changed.add(parseHash);
     hasher.init();
+    if (theme == 'fluent2-highcontrast') {
+        var theamswitchDivDisable = document.getElementById("themeSwitchDiv");
+        theamswitchDivDisable.style.display = 'none';
+    }
 }
 
 function toggleMobileOverlay() {
@@ -1198,7 +1207,12 @@ function controlSelect(arg) {
             location.href = location.origin + curHashCollection.slice(0, -1);
         }
         else if (path) {
-            if (curHashCollection.indexOf(path) === -1) {
+            var splittedUrl = curHashCollection.split("#/")[0].substr(1);
+            if (samplesAr.length) {
+                var selected_index = samplesAr.indexOf(path.substr(1));
+                var current_sample_index = samplesAr.indexOf(splittedUrl);
+            }
+            if (curHashCollection.indexOf(path) === -1 || (selected_index != current_sample_index)) {
                 sampleOverlay();
                 if (arg.item && ((isMobile && !ej.base.select('.sb-mobile-left-pane').classList.contains('sb-hide')) ||
                     ((isTablet || (ej.base.Browser.isDevice && isPc)) && isLeftPaneOpen()))) {
@@ -1645,5 +1659,18 @@ function ScrollToSelected() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () { setTimeout(function () { ScrollToSelected(); }, 500); });
+document.addEventListener("DOMContentLoaded", function() { setTimeout(function() { ScrollToSelected(); }, 500); });
 window.addEventListener('resize', ScrollToSelected);
+
+document.addEventListener('keydown', function (e) {
+    if (e.keyCode === 27) {
+        var preference_popup = document.querySelector(".sb-setting-popup");
+        var theme_popup = document.querySelector(".sb-theme-popup");
+        if (!preference_popup.classList.contains("e-popup-close")) {
+            preference_popup.classList.add("e-popup-close");
+        }
+        if (!theme_popup.classList.contains("e-popup-close")) {
+            theme_popup.classList.add("e-popup-close");
+        }
+    }
+});

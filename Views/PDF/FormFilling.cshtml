@@ -1,8 +1,12 @@
 @using Syncfusion.EJ2
+@model EJ2MVCSampleBrowser.Models.UserRegisterationModel
+@{
+    ViewBag.Title = "    Essential PDF : Form Filling : Syncfusion";
+}
 
 @{ViewBag.Title = "    Essential PDF : Form Filling : Syncfusion";}
 
-@{Html.BeginForm("FormFilling", "PDF", FormMethod.Post); }
+@{Html.BeginForm("formfilling", "pdf", FormMethod.Post); }
 
 @section ControlsSection{
     <div class="control-section">
@@ -14,39 +18,51 @@
                 the resultant document
             </div>
             <br />
-            <div>
-                @Html.EJS().CheckBox("flatten").Name("flatten").Value("From Flatten").Label("Form Flatten").Render()
+            <div class="form-group">
+                <label for="Name">Name</label>
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @id = "Name" })
+
+                <label for="Gender">Gender</label>
+                @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { "Male", "Female", "Unspecified" }), "Select Gender", new { @class = "form-control", @id = "Gender" })
+
+                <label for="DateOfBirth">Date of Birth</label>
+                @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date", @id = "DateOfBirth" })
+
+                <label for="EmailID">Email ID</label>
+                @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control", @type = "email", @id = "EmailID" })
+
+                <label for="StateDropdown">Coming from</label>
+                @Html.DropDownListFor(m => m.StateDropdown, Model.States, "Select State", new { @class = "form-control", @id = "StateDropdown" })
+
+                <div class="form-check">
+                    @Html.CheckBoxFor(m => m.Newsletter, new { @class = "form-check-input", @id = "Newsletter" })
+                    <label class="form-check-label" for="Newsletter">Would you like to receive our Newsletter?</label>
+                </div>
             </div>
-            <br />
-            <div>
-                <input id="viewtemplate" class="e-btn" type="submit" name="submit1" value="View Template" style="width: 150px; text-transform:capitalize" />
-            </div>
-            <br />
-            <div>
-                <input id="createpdf" class="e-btn" type="submit" name="submit" style="width:150px; text-transform:capitalize" value="Generate PDF" />
-            </div>
+            <input id="viewTemplate" class="e-btn" type="submit" name="viewTemplate" value="View Template" style="width: 150px; text-transform:capitalize" />
+            <input id="fillForm" class="e-btn" type="submit" name="fillForm" style="width:150px; text-transform:capitalize" value="Fill Form" />
+            <input id="fillAndFlatten" class="e-btn" type="submit" name="fillAndFlatten" style="width:150px; text-transform:capitalize" value="Fill and Flatten" />
         </div>
-    </div>
 }
 @section ActionDescription{
-<p>
-    This sample demonstrates how to fill and flatten the form fields to personalize your PDF document. It is also possible to create, edit, and delete the form fields using the Essential PDF library.
-</p>
+    <p>
+        This sample demonstrates how to fill and flatten the form fields to personalize your PDF document. It is also possible to create, edit, and delete the form fields using the Essential PDF library.
+    </p>
 }
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Form Filling in ASP.NET MVC PDF library. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Form Filling in ASP.NET MVC PDF library. Explore here for more details." />
+}
 @section Description{
-<p>
-    This feature can be used in filling forms from the database or from user, and read form fields for transferring user data to database.
-    More information about the forms can be found in this documentation <a href="https://help.syncfusion.com/file-formats/pdf/working-with-forms">section.</a>
-</p>
+    <p>
+        This feature can be used in filling forms from the database or from user, and read form fields for transferring user data to database.
+        More information about the forms can be found in this documentation <a href="https://help.syncfusion.com/file-formats/pdf/working-with-forms">section.</a>
+    </p>
 }
 
 
 @section Title{
-                    <title>ASP.NET MVC PDF library - Form Filling Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC PDF library - Form Filling Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Form Filling in ASP.NET MVC PDF Library</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Form Filling in ASP.NET MVC PDF Library</h1>
+}

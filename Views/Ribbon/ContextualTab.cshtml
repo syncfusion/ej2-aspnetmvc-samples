@@ -377,7 +377,7 @@
                        {
                            items.Type(RibbonItemType.DropDown).AllowedSizes(RibbonItemSize.Large).DropDownSettings(dropDown =>
                            {
-                               dropDown.IconCss("e-icons e-table").Content("Table").Items(tableOptions).Select("function(args){updateContent('Table -> ' + args.item.text)}");
+                               dropDown.IconCss("e-icons e-table").Content("Table").Items(tableItems).Select("function(args){updateContent('Table -> ' + args.item.text)}");
                            }).Add();
                        }).Add();
                    }).Add();

@@ -74,7 +74,7 @@ gulp.task('deploy', function (done) {
 });
 
 gulp.task('generate-searchlist', gulp.series(createLocale, (done) => {
-    console.log(config);
+   // console.log(config);
     generateSearchIndex(config.window.samplesList);
     done();
 }));
@@ -232,8 +232,8 @@ gulp.task('desValidation', function (done) {
     for (var i = 573; i < files.length; i++) {
         var url = files[i].split('/')[2] + '/' + files[i].split('/')[3];
         var cshtml = fs.readFileSync(files[i], 'utf8');
-        console.log(url);
-        console.log(i);
+        //console.log(url);
+        //console.log(i);
         if (reg.test(cshtml)) {
             cshtml = cshtml.match(reg)[0].match(reg1)[1].replace(/"/g, "");
             if (!(cshtml.length >= 100) && (cshtml.length <= 160)) {

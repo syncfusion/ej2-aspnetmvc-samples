@@ -22,8 +22,8 @@
     <script>
         function load(args) {
             var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Material';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast'));
+            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5'));
             args.chart.legendSettings.position = ej.base.Browser.isDevice ? "Bottom" : "Right";
             args.chart.series[0].dataLabel.connectorStyle.length = ej.base.Browser.isDevice ? "20px" : "40px";
             args.chart.series[0].radius = ej.base.Browser.isDevice ? "50%" : "70%";

@@ -1,24 +1,22 @@
 @using Syncfusion.EJ2;
 @section ControlsSection{
-    <div class="control-section" align="center">
-        
+    <div class="control-section" align="center">     
             @Html.EJS().Chart("container").Series(series =>
-       {
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MaxTemp")
-           .Marker(mr => mr.Visible(true).Width(10).Height(10))
-           .DataSource(ViewBag.SplineData).Name("Max Temp").Width(2).Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("AvgTemp").Marker(mr => mr.Visible(true).Width(10).Height(10)).DataSource(ViewBag.SplineData).Name("Avg Temp").Width(2).Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MinTemp").Marker(mr => mr.Visible(true).Width(10).Height(10)).DataSource(ViewBag.SplineData).Name("Min Temp").Width(2).Add();
-       }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
-       .MajorGridLines(mg => mg.Width(0)).Interval(1)
-       .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-       ).PrimaryYAxis(py => py.LabelFormat("{value}°C")
-       .MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
-       ).Title("NC Weather Report - 2016").Annotations(an => {
-           an.X("Sun").Y("2").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).VerticalAlignment(Syncfusion.EJ2.Charts.Position.Top).Content("#chart_cloud").Add();
-           an.X("Tue").Y("33").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).VerticalAlignment(Syncfusion.EJ2.Charts.Position.Top).Content("#chart_sunny").Add();
-       }).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br => br.Width(0))).Load("load").LegendSettings(leg => leg.EnableHighlight(true)).Render()
-
+            {
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MaxTemp")
+                    .Marker(mr => mr.Visible(true).Width(10).Height(10).IsFilled(true))
+                    .DataSource(ViewBag.SplineData).Name("Max Temp").Width(2).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("AvgTemp").Marker(mr => mr.Visible(true).Width(10).Height(10).IsFilled(true)).DataSource(ViewBag.SplineData).Name("Avg Temp").Width(2).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MinTemp").Marker(mr => mr.Visible(true).Width(10).Height(10).IsFilled(true)).DataSource(ViewBag.SplineData).Name("Min Temp").Width(2).Add();
+            }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
+                .MajorGridLines(mg => mg.Width(0)).Interval(1)
+                .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+            ).PrimaryYAxis(py => py.LabelFormat("{value}°C")
+                .MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
+            ).Title("NC Weather Report - 2016").Annotations(an => {
+                an.X("Sun").Y("2").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).VerticalAlignment(Syncfusion.EJ2.Charts.Position.Top).Content("#chart_cloud").Add();
+                an.X("Tue").Y("33").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).VerticalAlignment(Syncfusion.EJ2.Charts.Position.Top).Content("#chart_sunny").Add();
+            }).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br => br.Width(0))).Load("load").LegendSettings(leg => leg.EnableHighlight(true)).Render()
         </div>
     
     <style>
@@ -57,8 +55,8 @@
       
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>

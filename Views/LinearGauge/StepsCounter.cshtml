@@ -19,7 +19,7 @@
         function defaultContainerGaugeLoad(sender) {
             @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             @* custom code end *@
             textColor = sender.gauge.theme.indexOf('Dark') > -1 || sender.gauge.theme.indexOf('HighContrast') > -1 ? '#FFFFFF' : '#000000';
             sender.gauge.annotations = [

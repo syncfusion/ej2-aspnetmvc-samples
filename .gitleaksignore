@@ -29,4 +29,9 @@ Content/styles/bootstrap-dark-default.css:aws-access-token:1
 Content/styles/bootstrap-default.css:aws-access-token:1
 Content/styles/tailwind-dark-default.css:aws-access-token:1
 Content/styles/tailwind-default.css:aws-access-token:1
-
+Content/styles/bootstrap5-dark.css:aws-access-token:1
+Content/styles/bootstrap5.3-dark.css:aws-access-token:1
+Content/styles/bootstrap5.3.css:aws-access-token:1
+Content/styles/bootstrap5.css:aws-access-token:1
+Content/styles/fluent-dark.css:aws-access-token:1
+Content/styles/fluent.css:aws-access-token:1

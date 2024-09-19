@@ -54,8 +54,8 @@
         var spark, spark1, spark2, spark3, temp1, temp2, temp3, temp4;
         function load1(args) {
             var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
-            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            theme = theme ? theme : 'Fluent2';
+            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             if (!spark) {
                 args.sparkline.axisSettings.minY = 0;
                 args.sparkline.axisSettings.maxY = 150;
@@ -76,8 +76,8 @@
         setInterval(update, 1000);
         function load2(args) {
             var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
-            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            theme = theme ? theme : 'Fluent2';
+            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             if (!spark1) {
                 spark1 = args.sparkline;
                 spark1.axisSettings.minY = 4;
@@ -105,8 +105,8 @@
         setInterval(update1, 1000);
         function load3(args) {
             var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
-            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            theme = theme ? theme : 'Fluent2';
+            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             if (!spark2) {
                 spark2 = args.sparkline;
                 spark2.axisSettings.minY = 0;
@@ -127,8 +127,8 @@
         setInterval(update2, 1000);
         function load4(args) {
             var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Material';
-            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            theme = theme ? theme : 'Fluent2';
+            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             if (!spark3) {
                 args.sparkline.axisSettings.minY = 0;
                 args.sparkline.axisSettings.maxY = 100;

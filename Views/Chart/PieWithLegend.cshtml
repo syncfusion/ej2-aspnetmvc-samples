@@ -31,8 +31,8 @@
    
     <script>
         var load = function(args) {
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.accumulation.title = ej.base.Browser.isDevice ?  "Browser Market Shares" : '';
             args.accumulation.legendSettings.position = ej.base.Browser.isDevice ? 'Bottom' : 'Right';
             args.accumulation.legendSettings.height = ej.base.Browser.isDevice ?  '20%' : '30%';

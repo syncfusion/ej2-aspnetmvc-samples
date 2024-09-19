@@ -62,7 +62,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                         }
                     }
 
-                    bmp = new PdfBitmap(ResolveApplicationImagePath("PDFDemo.jpg"));
+                    bmp = new PdfBitmap(ResolveApplicationImagePath("logo.png"));
 
                     PdfPageBase page = ldoc.Pages[0];
                     if (password != string.Empty)
@@ -70,7 +70,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
                     signature = new PdfSignature(ldoc, page, pdfCert, "Signature");
 
-                    signature.Bounds = new RectangleF(new PointF(5, 5), bmp.PhysicalDimension);
+                    signature.Bounds = new RectangleF(new PointF(20, 20), new SizeF(240, 70));
                     signature.ContactInfo = Contact;
                     signature.LocationInfo = Location;
                     signature.Reason = Reason;
@@ -79,7 +79,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
                     SetCryptographicStandard(Cryptographic, signature);
                     SetDigestAlgorithm(digestAlgorithm, signature);
-
+                    PdfGraphics grap = signature.Appearance.Normal.Graphics;
+                    grap.DrawImage(bmp, 0, 0);
                     // Save the pdf document to the Stream.
                     MemoryStream stream = new MemoryStream();
                     ldoc.Save(stream);
@@ -116,12 +117,12 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                     signature = new PdfSignature(page, pdfCert, "Signature");
                     bmp = new PdfBitmap(ResolveApplicationImagePath("syncfusion_logo.gif"));
 
-                    signature.Bounds = new RectangleF(new PointF(5, 5), page.Size);
+                    signature.Bounds = new RectangleF(new PointF(20, 20), new SizeF(500, 180));
                     signature.ContactInfo = "johndoe@owned.us";
                     signature.LocationInfo = "Honolulu, Hawaii";
                     signature.Reason = "I am author of this document.";
 
-                    if (RadioButtonList2 == "Standard")
+                    if (RadioButtonList2 == "Author")
                         signature.Certificated = true;
                     else
                         signature.Certificated = false;
@@ -142,16 +143,16 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                     graphics.DrawLine(pen, new PointF(0, 200), new PointF(page.GetClientSize().Width, 100));
                 }
 
-                string validto = "Valid To: " + signature.Certificate.ValidTo.ToString();
-                string validfrom = "Valid From: " + signature.Certificate.ValidFrom.ToString();
+                string validto = " Valid To: " + signature.Certificate.ValidTo.ToString();
+                string validfrom = " Valid From: " + signature.Certificate.ValidFrom.ToString();
 
                 graphics.DrawImage(bmp, 0, 0);
 
-                doc.Pages[0].Graphics.DrawString(validfrom, font, pen, brush, 0, 90);
-                doc.Pages[0].Graphics.DrawString(validto, font, pen, brush, 0, 110);
+                doc.Pages[0].Graphics.DrawString(validfrom, font, pen, brush, 20, 90);
+                doc.Pages[0].Graphics.DrawString(validto, font, pen, brush, 20, 110);
 
-                doc.Pages[0].Graphics.DrawString(" Protected Document. Digitally signed Document.", font, pen, brush, 0, 130);
-                doc.Pages[0].Graphics.DrawString("* To validate Signature click on the signature on this page \n * To check Document Status \n click document status icon on the bottom left of the acrobat reader.", font, pen, brush, 0, 150);
+                doc.Pages[0].Graphics.DrawString(" Protected Document. Digitally signed Document.", font, pen, brush, 20, 130);
+                doc.Pages[0].Graphics.DrawString(" * To validate Signature click on the signature on this page \n * To check Document Status \n click document status icon on the bottom left of the acrobat reader.", font, pen, brush, 20, 150);
 
                 // Save the pdf document to the Stream.
                 MemoryStream stream = new MemoryStream();

@@ -7,11 +7,11 @@
                 @Html.EJS().MultiColumnComboBox("virtual").Placeholder("Select an engineer").Fields(new MultiColumnComboBoxFieldSettings
                 { Text = "Engineer", Value = "TaskID" }).GridSettings(new MultiColumnComboBoxGridSettings { RowHeight = 40 }).Columns(col =>
                 {
-                    col.Field("TaskID").Header("Task ID").Width("100").Add();
-                    col.Field("Engineer").Header("Engineer").Width("140").Add();
-                    col.Field("Designation").Header("Designation").Width("130").Add();
-                    col.Field("Estimation").Header("Estimation").Width("120").Add();
-                    col.Field("Status").Header("Status").Width("120").Add();
+                    col.Field("TaskID").Header("Task ID").Width("70").Add();
+                    col.Field("Engineer").Header("Engineer").Width("100").Add();
+                    col.Field("Designation").Header("Designation").Width("100").Add();
+                    col.Field("Estimation").Header("Estimation").Width("90").Add();
+                    col.Field("Status").Header("Status").Width("90").Add();
                 }).DataSource(@Model.Records).PopupHeight("230px").EnableVirtualization(true).Render()
             </div>
         </div>
@@ -20,7 +20,7 @@
     <style>
         .control-wrapper {
             margin: 0 auto;
-            width: 550px;
+            width: 585px;
         }
 
         @@media only screen and (max-width: 480px) {

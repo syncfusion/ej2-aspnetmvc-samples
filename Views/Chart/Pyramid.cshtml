@@ -10,8 +10,8 @@
     
     <script>
         var load = function(args) {
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.accumulation.series[0].dataLabel.textWrap = ej.base.Browser.isDevice ? "Wrap" : "Normal";
             args.accumulation.series[0].dataLabel.maxWidth = ej.base.Browser.isDevice ? 80 : NaN;
             args.accumulation.series[0].dataSource[4].DataLabelMappingName = ej.base.Browser.isDevice ? "Bread, Rice,<br> Pasta: 930 cal" : "Bread, Rice, Pasta: 930 cal";          

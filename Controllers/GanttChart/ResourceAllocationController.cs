@@ -62,75 +62,33 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
             GanttResources Record1 = new GanttResources()
             {
                 ResourceId = 1,
-                ResourceName = "Martin Tamer"
+                ResourceName = "Rose Fuller"
             };
             GanttResources Record2 = new GanttResources()
             {
                 ResourceId = 2,
-                ResourceName = "Rose Fuller"
+                ResourceName = "Fuller King"
             };
             GanttResources Record3 = new GanttResources()
             {
                 ResourceId = 3,
-                ResourceName = "Margaret Buchanan"
+                ResourceName = "Tamer Vinet"
             };
             GanttResources Record4 = new GanttResources()
             {
                 ResourceId = 4,
-                ResourceName = "Fuller King"
+                ResourceName = "Van Jack"
             };
             GanttResources Record5 = new GanttResources()
             {
                 ResourceId = 5,
-                ResourceName = "Davolio Fuller"
-            };
-            GanttResources Record6 = new GanttResources()
-            {
-                ResourceId = 6,
-                ResourceName = "Van Jack"
-            };
-            GanttResources Record7 = new GanttResources()
-            {
-                ResourceId = 7,
-                ResourceName = "Fuller Buchanan"
-            };
-            GanttResources Record8 = new GanttResources()
-            {
-                ResourceId = 8,
-                ResourceName = "Jack Davolio"
-            };
-            GanttResources Record9 = new GanttResources()
-            {
-                ResourceId = 9,
-                ResourceName = "Tamer Vinet"
-            };
-            GanttResources Record10 = new GanttResources()
-            {
-                ResourceId = 10,
-                ResourceName = "Vinet Fuller"
-            };
-            GanttResources Record11 = new GanttResources()
-            {
-                ResourceId = 11,
                 ResourceName = "Bergs Anton"
-            };
-            GanttResources Record12 = new GanttResources()
-            {
-                ResourceId = 12,
-                ResourceName = "Construction Supervisor"
             };
             GanttResourcesCollection.Add(Record1);
             GanttResourcesCollection.Add(Record2);
             GanttResourcesCollection.Add(Record3);
             GanttResourcesCollection.Add(Record4);
             GanttResourcesCollection.Add(Record5);
-            GanttResourcesCollection.Add(Record6);
-            GanttResourcesCollection.Add(Record7);
-            GanttResourcesCollection.Add(Record8);
-            GanttResourcesCollection.Add(Record9);
-            GanttResourcesCollection.Add(Record10);
-            GanttResourcesCollection.Add(Record11);
-            GanttResourcesCollection.Add(Record12);
             return GanttResourcesCollection;
         }
         public  List<GanttResourceSample> ResourceData()
@@ -155,8 +113,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
                 Work = 16,
                 Resources = new List<ResourceModel>
                 {
-                   new ResourceModel { ResourceId = 1, ResourceUnit = 70 },
-                   new ResourceModel { ResourceId = 6 }
+                   new ResourceModel { ResourceId = 4 }
                 }
             };
             GanttResourceSample Record1Child2 = new GanttResourceSample()
@@ -165,12 +122,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
                 TaskName = "Perform soil test",
                 StartDate = new DateTime(2024, 03, 29),
                 Duration = 4,
-                Work = 96,
+                Work = 32,
                 Resources = new List<ResourceModel>
                 {
-                    new ResourceModel { ResourceId = 2 },
-                    new ResourceModel{ ResourceId = 3 },
-                    new ResourceModel{ ResourceId = 5 }
+                    new ResourceModel { ResourceId = 1 }
                 }
             };
             GanttResourceSample Record1Child3 = new GanttResourceSample()
@@ -178,13 +133,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
                 TaskId = 4,
                 TaskName = "Soil test approval",
                 StartDate = new DateTime(2024, 03, 29),
-                Duration = 1,
+                Duration = 2,
                 Progress = 30,
                 Work = 16,
                 Resources = new List<ResourceModel>
                 {
-                   new ResourceModel { ResourceId = 8 },
-                new ResourceModel { ResourceId = 9, ResourceUnit = 50 }
+                   new ResourceModel { ResourceId = 2 }
                 }
             };
             Record1.SubTasks.Add(Record1Child1);
@@ -209,7 +163,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
                 Work = 30,
                 Resources = new List<ResourceModel>
                 {
-                   new ResourceModel { ResourceId = 4, ResourceUnit = 50 }
+                   new ResourceModel { ResourceId = 3 }
                 }
             };
             GanttResourceSample Record2Child2 = new GanttResourceSample()
@@ -221,8 +175,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
                 Work = 48,
                 Resources = new List<ResourceModel>
                 {
-                   new ResourceModel { ResourceId = 8 },
-                 new ResourceModel{ ResourceId = 4 }
+                   new ResourceModel { ResourceId = 2 }
                 }
             };
             GanttResourceSample Record2Child3 = new GanttResourceSample()
@@ -234,8 +187,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
                 Work = 60,
                 Resources = new List<ResourceModel>
                 {
-                   new ResourceModel { ResourceId = 12 },
-                 new ResourceModel{ ResourceId = 5, ResourceUnit = 70 }
+                   new ResourceModel { ResourceId = 4 }
                 }
             };
             Record2.SubTasks.Add(Record2Child1);
@@ -247,12 +199,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
                 TaskId = 9,
                 TaskName = "Sign contract",
                 StartDate = new DateTime(2024, 04, 01),
-                Duration = 1,
+                Duration = 2,
                 Predecessor = "8",
                 Progress = 30,
                 Resources = new List<ResourceModel>
                 {
-                   new ResourceModel { ResourceId = 12 }
+                   new ResourceModel { ResourceId = 11 }
             }
             };
             GanttResourceSampleCollection.Add(Record1);

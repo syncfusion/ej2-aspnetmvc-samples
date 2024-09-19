@@ -117,8 +117,8 @@
             }
         }
         var zoomFactor, zoomPosition, startDate, endDate;
-        var selectedTheme = themeName ? themeName : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        var selectedTheme = themeName ? themeName : 'Fluent2';
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
         var load = function (args) {
             args.rangeNavigator.theme = theme;
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";

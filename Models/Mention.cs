@@ -96,4 +96,41 @@ namespace EJ2MVCSampleBrowser.Models
             return status;
         }
     }
+
+    public class DisabledEmailData
+    {
+        public string Name { get; set; }
+        public string Eimg { get; set; }
+        public string EmailId { get; set; }
+        public bool State { get; set; }
+
+        public List<DisabledEmailData> DisabledEmailList()
+        {
+            List<DisabledEmailData> email = new List<DisabledEmailData>();
+            email.Add(new DisabledEmailData { Name = "Selma Rose (inactive)", Eimg = "3", EmailId = "selma@gmail.com", State = true });
+            email.Add(new DisabledEmailData { Name = "Russo Kay", Eimg = "8", EmailId = "russo@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Camden Kate", Eimg = "9", EmailId = "camden@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Mary Kate (inactive)", Eimg = "4", EmailId = "mary@gmail.com", State = true });
+            email.Add(new DisabledEmailData { Name = "Ursula Ann", Eimg = "2", EmailId = "ursula@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Margaret", Eimg = "5", EmailId = "margaret@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Laura Grace", Eimg = "6", EmailId = "laura@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Robert (inactive)", Eimg = "8", EmailId = "robert@gmail.com", State = true });
+            email.Add(new DisabledEmailData { Name = "Albert", Eimg = "9", EmailId = "albert@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Michale", Eimg = "10", EmailId = "michale@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Andrew James", Eimg = "7", EmailId = "james@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Rosalie", Eimg = "4", EmailId = "rosalie@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Stella Ruth (inactive)", Eimg = "2", EmailId = "stella@gmail.com", State = true });
+            email.Add(new DisabledEmailData { Name = "Richard Rose", Eimg = "10", EmailId = "richard@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Gabrielle", Eimg = "3", EmailId = "gabrielle@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Thomas", Eimg = "7", EmailId = "thomas@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Charles Danny", Eimg = "8", EmailId = "charles@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Daniel (inactive)", Eimg = "10", EmailId = "daniel@gmail.com", State = true });
+            email.Add(new DisabledEmailData { Name = "Matthew", Eimg = "7", EmailId = "matthew@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Donald Krish", Eimg = "9", EmailId = "donald@gmail.com", State = false });
+            email.Add(new DisabledEmailData { Name = "Yohana (inactive)", Eimg = "1", EmailId = "yohana@gmail.com", State = true });
+            email.Add(new DisabledEmailData { Name = "Kevin Paul", Eimg = "10", EmailId = "kevin@gmail.com", State = false });
+            return email;
+        }
+    }
+
 }

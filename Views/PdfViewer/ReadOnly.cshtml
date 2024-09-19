@@ -97,7 +97,8 @@
     function documentLoad() {
 
         var viewer = document.getElementById('pdfviewer').ej2_instances[0];
-		viewer.contextMenuOption='None';
+        viewer.contextMenuOption = 'None';
+        viewer.enablePageOrganizer = false;
         var formField = viewer.retrieveFormFields();
         for (var x = 0; x < formField.length; x++) {
             viewer.formDesignerModule.updateFormField(viewer.formFieldCollections[x], {

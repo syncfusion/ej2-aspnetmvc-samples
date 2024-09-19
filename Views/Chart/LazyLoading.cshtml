@@ -66,8 +66,8 @@
                 minimum: new Date(2009, 0, 1),
                 maximum: new Date(2014, 0, 1)
             };
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.chart.load = function () { };
         }
         function GetDateTimeData(start, end) {

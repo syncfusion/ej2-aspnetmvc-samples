@@ -21,72 +21,57 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
 {
     public partial class WordController : Controller
     {
-        #region Private Members
-        string errorMessage = "";
-        #endregion
         #region HTMLtoDOC
         public ActionResult HTMLtoDOC(string Group1, HttpPostedFileBase file)
         {
             if (Group1 == null)
                 return View();
-            if (file != null)
+           //Get input HTML file.
+            WordDocument document = GetDocumentForWordConversion(file);
+            if (document != null)
             {
-                var extension = Path.GetExtension(file.FileName).ToLower();
-                if (extension == ".html" || extension == ".htm")
+                #region Document save option
+                //Save as .doc format
+                if (Group1 == "WordDoc")
                 {
-                    WordDocument document = new WordDocument();
-                    IWSection section = document.AddSection();
-                    IWParagraph para = section.AddParagraph();
-
-                    string text;
-                    StreamReader read = new StreamReader(file.InputStream);
-                    text = read.ReadToEnd();
-                    bool valid = section.Body.IsValidXHTML(text, XHTMLValidationType.Transitional, out errorMessage);
-                    if (!valid)
-                    {
-                        ViewBag.Message = string.Format("Content is not a well formatted XHTML content \nError message:\n" + errorMessage);
-
-                    }
-                    else
-                    {
-                        // By default, the input html will be validated for XHTML format. This will provide you understandable error messages, if the format is invalid.
-                        // However, if you are sure that the input html is valid, then you can skip the validation step to improve performance. However, any error messages 
-                        // you might get here will not be very useful as to where exactly in your html, the issue is.
-
-                        document.XHTMLValidateOption = XHTMLValidationType.Transitional;
-                        section.Body.InsertXHTML(text);
-
-                        #region Document save option
-                        //Save as .doc format
-                        if (Group1 == "WordDoc")
-                        {
-                            return document.ExportAsActionResult("Sample.doc", FormatType.Doc, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
-                        }
-                        //Save as .docx format
-                        else if (Group1 == "WordDocx")
-                        {
-                            return document.ExportAsActionResult("Sample.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
-                        }
-                        // Save as WordML(.xml) format
-                        else if (Group1 == "WordML")
-                        {
-                            return document.ExportAsActionResult("Sample.xml", FormatType.WordML, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
-                        }
-                    }
-                    #endregion Document save option
+                    return document.ExportAsActionResult("Sample.doc", FormatType.Doc, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
                 }
-                else
+                //Save as .docx format
+                else if (Group1 == "WordDocx")
                 {
-                    ViewBag.Message = string.Format("Please choose HTML document");
+                    return document.ExportAsActionResult("Sample.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
                 }
+                // Save as WordML(.xml) format
+                else if (Group1 == "WordML")
+                {
+                    return document.ExportAsActionResult("Sample.xml", FormatType.WordML, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
+                }
+                #endregion Document save option
             }
             else
             {
                 ViewBag.Message = string.Format("Browse a HTML document and then click the button to convert as a Word document");
             }
-
             return View();
         }
         #endregion HTMLtoDOC
+        /// <summary>
+        /// Gets the HTML document.
+        /// </summary>
+        /// <param name="file">HttpPostedFileBase contains the uploaded file data.</param>
+        /// <returns>Returns the Word document instance.</returns>
+        private WordDocument GetDocumentForWordConversion(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                return new WordDocument(file.InputStream, FormatType.Html);
+            }
+            else
+            {
+                string filePath = ResolveApplicationDataPath("HTMLToWord.html", "Data\\Word");
+                return new WordDocument(filePath);
+            }
+            return null;
+        }
     }
 }

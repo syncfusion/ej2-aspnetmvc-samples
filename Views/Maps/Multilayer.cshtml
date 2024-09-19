@@ -13,8 +13,8 @@
             @Html.EJS().Maps("container").TitleSettings(title => title.Text("Samsung Semiconductor office locations in USA").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).Load("mapsLoad").ZoomSettings(zoom => zoom.Enable(true).PinchZooming(true)).Layers(layer =>
        {
            layer.DataLabelSettings(new MapsDataLabelSettings{ Visible = true, LabelPath = "iso_3166_2", SmartLabelMode = SmartLabelMode.Hide, TextStyle = new MapsFont { Color = "black" } }).ShapeSettings(new MapsShapeSettings{ Fill = "#E5E5E5" }).ShapeData(ViewBag.shapeData).Add();
-           layer.ShapeSettings(new MapsShapeSettings{ Fill = "rgba(141, 206, 255, 0.6)" }).Type(Syncfusion.EJ2.Maps.Type.SubLayer).ShapeData(ViewBag.africa).Add();
-           layer.ShapeSettings(new MapsShapeSettings{ Fill = "rgba(141, 206, 255, 0.6)" }).Type(Syncfusion.EJ2.Maps.Type.SubLayer).Add();
+           layer.MarkerSettings(new List<MapsMarker> { new MapsMarker() { Visible = true, Height = 20, Width = 20 }, new MapsMarker() { Visible = true } }).ShapeSettings(new MapsShapeSettings{ Fill = "rgba(141, 206, 255, 0.6)" }).Type(Syncfusion.EJ2.Maps.Type.SubLayer).ShapeData(ViewBag.africa).Add();
+           layer.MarkerSettings(new List<MapsMarker> { new MapsMarker() { Visible = true, Height = 20, Width = 20 }, new MapsMarker() { Visible = true } }).ShapeSettings(new MapsShapeSettings{ Fill = "rgba(141, 206, 255, 0.6)" }).Type(Syncfusion.EJ2.Maps.Type.SubLayer).Add();
        }
    ).Render()
             <div style="margin-left: 75%">
@@ -31,7 +31,7 @@
     <script>
         function mapsLoad(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             args.maps.layers[0].shapeSettings.border = { color: "black", width: 0.25 };
             args.maps.layers[1].shapeSettings.border = {
                 color: '#1a9cff',
@@ -42,66 +42,42 @@
                 width: 0.25
             };
             args.maps.layers[2].shapeData = texas;
-            args.maps.layers[1].markerSettings = [
+            args.maps.layers[1].markerSettings[0].template = '#markercircle';
+            args.maps.layers[1].markerSettings[0].dataSource = [
                 {
-                    visible: true,
-                    width: 20,
-                    height: 20,
-                    template: '#markercircle',
-                    dataSource: [
-                        {
-                            latitude: 30.267153,
-                            longitude: -97.7430608,
-                            name: 'Austin'
-                        }
-                    ],
-                    tooltipSettings: {
-                        visible: true,
-                        valuePath: 'name',
-                        format: '<b>${name}</b><br>Manufacturing Center,<br>Research and Development Center'
-                    }
-                },
-                {
-                    visible: true,
-                    dataSource: [
-                        {
-                            latitude: 31.80289258670676,
-                            longitude: -98.96484375
-                        }
-                    ],
-                    template: '<div style="color:black;">TX</div>'
+                    latitude: 30.267153,
+                    longitude: -97.7430608,
+                    name: 'Austin'
                 }
             ];
-            args.maps.layers[2].markerSettings = [
+            args.maps.layers[1].markerSettings[0].tooltipSettings.visible = true;
+            args.maps.layers[1].markerSettings[0].tooltipSettings.valuePath = 'name';
+            args.maps.layers[1].markerSettings[0].tooltipSettings.format = '<b>${name}</b><br>Manufacturing Center,<br>Research and Development Center';
+            args.maps.layers[1].markerSettings[1].dataSource = [
                 {
-                    visible: true,
-                    width: 20,
-                    height: 20,
-                    dataSource: [
-                        {
-                            latitude: 37.3382082,
-                            longitude: -121.8863286,
-                            name: 'San Jose'
-                        }
-                    ],
-                    tooltipSettings: {
-                        visible: true,
-                        valuePath: 'name',
-                        format: '<b>${name}</b><br>Regional Office,<br>Research and Development Center'
-                    },
-                    template: '#markercircle'
-                },
-                {
-                    visible: true,
-                    dataSource: [
-                        {
-                            latitude: 37.09023980307208,
-                            longitude: -119.35546875000001
-                        }
-                    ],
-                    template: '<div style="color:black;">CA</div>'
+                    latitude: 31.80289258670676,
+                    longitude: -98.96484375
                 }
             ];
+            args.maps.layers[1].markerSettings[1].template = '<div style="color:black;">TX</div>';
+            args.maps.layers[2].markerSettings[0].template = '#markercircle';
+            args.maps.layers[2].markerSettings[0].dataSource = [
+                {
+                    latitude: 37.3382082,
+                    longitude: -121.8863286,
+                    name: 'San Jose'
+                }
+            ];
+            args.maps.layers[2].markerSettings[0].tooltipSettings.visible = true;
+            args.maps.layers[2].markerSettings[0].tooltipSettings.valuePath = 'name';
+            args.maps.layers[2].markerSettings[0].tooltipSettings.format = '<b>${name}</b><br>Regional Office,<br>Research and Development Center';
+            args.maps.layers[2].markerSettings[1].dataSource = [
+                {
+                    latitude: 37.09023980307208,
+                    longitude: -119.35546875000001
+                }
+            ];
+            args.maps.layers[2].markerSettings[1].template = '<div style="color:black;">CA</div>';
         }
     </script>
     <style>

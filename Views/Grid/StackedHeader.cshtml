@@ -4,15 +4,16 @@
 @section ControlsSection{
     <div class="control-section">
     @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewBag.dataSource).PageSettings(new Syncfusion.EJ2.Grids.GridPageSettings() { PageSize = 5 }).Columns(col =>
-   {
+{
 
-       col.Field("OrderID").HeaderText("Order ID").Width("120").MinWidth("10").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
-       col.HeaderText("Order Details").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "OrderDate", Width = "135", HeaderText = "Order Date",TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right,Format="yMd", MinWidth="10", EditType="datepickeredit" },
-                                                                                            new Syncfusion.EJ2.Grids.GridColumn { Field = "Freight", Width = "130", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, HeaderText = "Freight($)", Format="C2", MinWidth="10", EditType="numericedit" } }).Add();
-       col.HeaderText("Shipped Details").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "ShippedDate", Width = "140", HeaderText = "Shipped Date", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, Format = "yMd", MinWidth="10", EditType="datepickeredit" },
-                                                                                              new Syncfusion.EJ2.Grids.GridColumn { Field = "ShipCountry", Width = "145",  HeaderText = "Ship Country", MinWidth="10", EditType="dropdownedit" } }).Add();
+    col.Field("OrderID").HeaderText("Order ID").Width("120").MinWidth("10").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+    col.HeaderText("Order Details").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "CustomerID", Width = "160", HeaderText = "CustomerName", MinWidth="30", },
+                                                                                            new Syncfusion.EJ2.Grids.GridColumn { Field = "OrderDate", Width = "140", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right,Format="yMd", HeaderText = "Order Date", MinWidth="10", EditType="datepickeredit" } }).Add();
+    col.HeaderText("Shipped Details").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "ShippedDate", Width = "160", HeaderText = "Shipped Date", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, Format = "yMd", MinWidth="40", EditType="datepickeredit" },
+                                                                                              new Syncfusion.EJ2.Grids.GridColumn { Field = "ShipCountry", Width = "140",  HeaderText = "Ship Country", MinWidth="60", EditType="dropdownedit" },
+                                                                                              new Syncfusion.EJ2.Grids.GridColumn {Field ="Freight", HeaderText = "Freight Charges($)", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, Width = "200", Format = "C2", MinWidth = "40", EditType = "numericedit", ValidationRules = new { required=true,  number=true } } }).Add();
 
-   }).AllowPaging().PageSettings(new Syncfusion.EJ2.Grids.GridPageSettings() { PageCount = 5 }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).AllowResizing().Render()
+}).AllowPaging().PageSettings(new Syncfusion.EJ2.Grids.GridPageSettings() { PageCount = 5 }).AllowSorting().AllowMultiSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).AllowResizing().Render()
 </div>
 }
 
@@ -44,8 +45,8 @@
         </p>
 
 		<p>
-			In this demo, the columns <strong>OrderDate, Freight</strong> are grouped under <strong>Order Details</strong>,
-			the columns <strong>ShippedDate, ShipCountry</strong> are grouped under <strong>Ship Details</strong>. 
+			In this demo, the columns <strong>ColumnName, OrderDate</strong> are grouped under <strong>Order Details</strong>,
+			the columns <strong>ShippedDate, ShipCountry, Freight</strong> are grouped under <strong>Ship Details</strong>. 
 		</p>		
 	
     </div>

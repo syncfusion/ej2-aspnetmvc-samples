@@ -3,7 +3,7 @@
 @using EJ2MVCSampleBrowser.Models
 
 @{
-    string[] file = new string[] { "Cut", "Copy", "Paste", "Delete", "Rename", "|", "Details" };
+    string[] file = new string[] { "Cut", "Copy", "|", "Delete", "Download", "Rename", "|", "Details" };
 }
 
 @section ControlsSection{
@@ -73,16 +73,13 @@
 
 @section ActionDescription{
     <div id="action-description">
-        <p>This sample demonstrates the folder (directory) upload feature of File Manager component. Select <b>Folder</b> from toolbar item to select and upload a folder.</p>
+        <p>This sample demonstrates the folder (directory) upload feature. Select <code>Folder</code> from the <code>Upload</code> toolbar item to select and upload a folder in the File Manager component.</p>
     </div>
 }
 
 @section Description{
     <div id="description">
-        <p>
-            In this demo, a folder upload enabled by setting <code>directoryUpload</code> as true.
-            It allows to select or drop a folder to upload all its contents including hierarchy folders and files.
-        </p>
+        <p>In this demo, a folder upload is enabled by setting <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.FileManager.FileManagerUploadSettings.html#Syncfusion_EJ2_FileManager_FileManagerUploadSettings_DirectoryUpload" aria-label="directoryUpload"> DirectoryUpload <span class="sr-only">opens in a new tab</span></a> to <code>true</code>. It allows users to select or drag and drop a folder to upload its contents including hierarchy folders and files in the File Manager component.</p>
         <p>
             The folder (directory) upload is supported for the following file system providers,
             <li> Physical provider</li>
@@ -90,10 +87,9 @@
             <li> Azure provider</li>
             <li> Amazon S3 provider</li>
         </p>
-        <p>The <b>File Manager</b> component is used to explore a file system through a web application, similar to the windows explorer for windows. It supports all the basic file operations such as create, rename, delete, refresh and so on.</p>
 
         <p>
-            <b>Note: </b>File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install
+            <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install
             <a target="_blank" href="https://www.syncfusion.com/downloads" aria-label="downloads">Syncfusion Essential Studio <span class="sr-only">opens in a new tab</span></a>on your machine and run the demo.
         </p>
     </div>

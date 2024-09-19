@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using EJ2MVCSampleBrowser.Models;
@@ -17,7 +18,6 @@ namespace EJ2MVCSampleBrowser.Controllers
 {
     public class RichTextEditorModel
     {
-        [Required(ErrorMessage = "Value is required")]
         [AllowHtml]
         public string Value { get; set; }
     }
@@ -32,8 +32,37 @@ namespace EJ2MVCSampleBrowser.Controllers
         [HttpPost]
         public ActionResult RichTextEditorFor(RichTextEditorModel model)
         {
-            rteModel.Value = model.Value;
-            return View(rteModel);
+            if (model.Value != null)
+            {
+                var textWithoutHtml = RemoveHtmlTags(model.Value.Trim());
+                textWithoutHtml = textWithoutHtml.Replace(" ", "");
+                int imgCount = CountImageTags(model.Value);
+                int adjustedLength = textWithoutHtml.Trim().Length + imgCount;
+                if (string.IsNullOrWhiteSpace(textWithoutHtml) || adjustedLength < 20)
+                {
+                    ModelState.AddModelError("Value", "The Rich Text Editor content must contain at least 20 letters");
+                    return View(model);
+                }
+                else
+                {
+                    model.Value = string.Empty;
+                    return View(model);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("Value", "Value is required");
+                return View(model);
+            }
+        }
+        private string RemoveHtmlTags(string htmlContent)
+        {
+            return Regex.Replace(htmlContent, "<.*?>", string.Empty);
+        }
+        private int CountImageTags(string text)
+        {
+            var imgCount = Regex.Matches(text, "<img[^>]*>").Count;
+            return imgCount;
         }
     }
 }

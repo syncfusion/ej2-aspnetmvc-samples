@@ -54,6 +54,21 @@
             text-overflow: ellipsis;
             white-space: normal;
         }
+
+        
+        @@media (max-width: 550px) {
+            .e-schedule .e-day-view .employee-image {
+                display: none;
+            }
+
+            .e-schedule .e-day-view .employee-name {
+                font-size: 14px;
+            }
+
+            .e-schedule .e-day-view .employee-designation {
+                display: none;
+            }
+        }
     </style>
 
     <script id="resource-template" type="text/x-template">

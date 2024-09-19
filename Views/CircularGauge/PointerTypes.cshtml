@@ -92,7 +92,7 @@
         function onGaugeLoad(args) {
             @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
-            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             @* custom code end *@
         }
 

@@ -20,6 +20,7 @@
                     col.Field("TaskId").Width(80).Add();
                     col.Field("TaskName").HeaderText("Job Name").Width(250).Add();
                     col.Field("StartDate").Add();
+                    col.Field("EndDate").Add();
                     col.Field("Duration").Add();
                     col.Field("Progress").Add();
                     col.Field("Predecessor").Add();
@@ -40,7 +41,7 @@
                     em.Day("7/16/2024").Label("Property handover and sign-off").Add();
                 })
                 .ProjectStartDate("03/25/2024")
-                .ProjectEndDate("07/28/2024")
+                .ProjectEndDate("07/28/2024").Created("Created").ActionBegin("ActionBegin")
                 .Render()
             )
         </div>
@@ -49,6 +50,36 @@
             <a href="https://en.wikipedia.org/wiki/Construction" target='_blank'>https://en.wikipedia.org/</a>
         </div>
     </div>
+<script>
+        var startDate
+        function Created(args) {
+            var gantt = document.getElementsByClassName('e-gantt')[0].ej2_instances[0];
+            gantt.treeGrid.grid.columns[1].validationRules = { required: true, minLength: [5, 'Task name should have a minimum length of 5 characters'] };
+            gantt.treeGrid.grid.columns[3].validationRules = { date: true, required: [customFn, 'Please enter a value greater than the start date.'] };
+            gantt.treeGrid.grid.columns[4].validationRules = { required: true };
+            gantt.treeGrid.grid.columns[5].validationRules = { required: true, min: 0, max: 100 };
+        }
+        function ActionBegin(args) {
+            if (args.columnName === "EndDate") {
+                startDate = args.rowData.ganttProperties.startDate;
+            }
+ 
+        }
+        function customFn(args) {
+            var endDate;
+            var gantt = (document.getElementsByClassName('e-gantt')[0]).ej2_instances[0];
+            if (args.element && args.value) {
+                endDate = new Date(args.value);
+                if (!startDate && gantt.editModule.dialogModule['beforeOpenArgs']) {
+                    startDate = gantt.editModule.dialogModule['beforeOpenArgs'].rowData['ganttProperties'].startDate;
+                    endDate = (gantt.editModule.dialogModule['beforeOpenArgs'].rowData['ganttProperties'].endDate);
+                }
+                startDate.setHours(0, 0, 0, 0);
+                endDate.setHours(0, 0, 0, 0);
+            }
+            return startDate <= endDate;
+        }
+</script>
 });
 
 
@@ -82,8 +113,7 @@
 @section Description{
     <div id="description">
         <p>
-            This CRUD operations can be configured in Gantt chart using <code>EditSettings</code> and
-            <code>AllowTaskbarEditing</code>. Gantt chart
+            This CRUD operations can be configured in Gantt chart using <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_EditSettings">editSettings</a> and <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_AllowTaskbarDragAndDrop">allowTaskbarEditing</a>. Gantt chart
             has two modes to manipulate the datasource
             <li><code>Auto</code></li>
             <li><code>Dialog</code></li>
@@ -94,6 +124,9 @@
             state. On the chart side, you can edit the tasks using edit dialog by double clicking on the taskbars and you
             can edit the dependency connector lines using drag and drop action with connector line points available on the
             either side of taskbar. It is possible to connect parent-parent, child-child, child-parent and parent -child dependency relationships.
+    <br>
+        In this sample column.validationRules has been enabled for the columns. It uses the Form Validator control to define validation rules, displaying error messages for invalid field values.
+   
         </p>
     </div>
 }

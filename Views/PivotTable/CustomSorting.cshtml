@@ -9,7 +9,7 @@
 
     <div class="col-lg-8 control-section" style="overflow:auto">
     <div class="content-wrapper">
-        @Html.EJS().PivotView("pivotview").Width("100%").Height("300").ShowGroupingBar(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.data).ExpandAll(false).EnableSorting(true)
+        @Html.EJS().PivotView("pivotview").Width("100%").Height("450").ShowGroupingBar(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.data).ExpandAll(false).EnableSorting(true)
             .DrilledMembers(drilledmembers =>
            {
                drilledmembers.Name("Country").Items(ViewBag.drilledMembers).Add();

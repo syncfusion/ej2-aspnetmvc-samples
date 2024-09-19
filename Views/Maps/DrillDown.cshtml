@@ -53,6 +53,15 @@
                    ShapeSettings = new MapsShapeSettings
                    {
                        ColorValuePath="drillColor"
+                   },
+                   MarkerSettings = new List<MapsMarker>
+                   {
+                       new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                       new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                       new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                       new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                       new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                       new MapsMarker() { Visible = true, AnimationDuration = 0 },
                    }
                },
                new Syncfusion.EJ2.Maps.MapsLayer
@@ -105,66 +114,26 @@
 
 <script type="text/javascript">
     var maps, touchmove = false;
+    var dataFirst = true;
     function mapLoad(args) {
         var theme = themeName ? themeName : 'Material';
-        args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
         maps = args.maps;
-        args.maps.layers[0].markerSettings = [
-            {
-                visible: true,
-                template: '<div id="marker1" class="markerTemplate">Asia' +
-                    '</div>',
-                dataSource: [
-                    { latitude: 50.32087157990324, longitude: 90.015625 }
-                ],
-                animationDuration: 0
-            },
-            {
-                visible: true,
-                template: '<div id="marker2" class="markerTemplate">Australia' +
-                    '</div>',
-                dataSource: [
-                    { latitude: -28.88583769986199, longitude: 130.296875 }
-                ],
-                animationDuration: 0
-            },
-            {
-                visible: true,
-                template: '<div id="marker3" class="markerTemplate">Africa' +
-                    '</div>',
-                dataSource: [
-                    { latitude: 10.97274101999902, longitude: 16.390625 }
-                ],
-                animationDuration: 0
-            },
-            {
-                visible: true,
-                template: '<div id="marker4" class="markerTemplate">Europe' +
-                    '</div>',
-                dataSource: [
-                    { latitude: 47.95121990866204, longitude: 18.468749999999998 }
-                ],
-                animationDuration: 0,
-            },
-            {
-                visible: true,
-                template: '<div id="marker5" class="markerTemplate" style="width:50px">North America' +
-                    '</div>',
-                dataSource: [
-                    { latitude: 59.88893689676585, longitude: -109.3359375 }
-                ],
-                animationDuration: 0
-            },
-            {
-                visible: true,
-                template: '<div id="marker6" class="markerTemplate" style="width:50px">South America' +
-                    '</div>',
-                dataSource: [
-                    { latitude: -6.64607562172573, longitude: -55.54687499999999 }
-                ],
-                animationDuration: 0
-            },
-        ];
+        if (dataFirst) {
+            args.maps.layers[0].markerSettings[0].template = '<div id="marker1" class="markerTemplate">Asia</div>';
+            args.maps.layers[0].markerSettings[0].dataSource = [{ latitude: 50.32087157990324, longitude: 90.015625 }];
+            args.maps.layers[0].markerSettings[1].template = '<div id="marker2" class="markerTemplate">Australia</div>';
+            args.maps.layers[0].markerSettings[1].dataSource = [{ latitude: -28.88583769986199, longitude: 130.296875 }];
+            args.maps.layers[0].markerSettings[2].template = '<div id="marker3" class="markerTemplate">Africa</div>';
+            args.maps.layers[0].markerSettings[2].dataSource = [{ latitude: 10.97274101999902, longitude: 16.390625 }];
+            args.maps.layers[0].markerSettings[3].template = '<div id="marker4" class="markerTemplate">Europe</div>';
+            args.maps.layers[0].markerSettings[3].dataSource = [{ latitude: 47.95121990866204, longitude: 18.468749999999998 }];
+            args.maps.layers[0].markerSettings[4].template = '<div id="marker5" class="markerTemplate" style="width:50px">North America</div>';
+            args.maps.layers[0].markerSettings[4].dataSource = [{ latitude: 59.88893689676585, longitude: -109.3359375 }];
+            args.maps.layers[0].markerSettings[5].template = '<div id="marker6" class="markerTemplate" style="width:50px">South America</div>';
+            args.maps.layers[0].markerSettings[5].dataSource = [{ latitude: -6.64607562172573, longitude: -55.54687499999999 }];
+            dataFirst = false;
+        }
     }
     function shapeSelected(args) {
         var shape = args.shapeData.continent;

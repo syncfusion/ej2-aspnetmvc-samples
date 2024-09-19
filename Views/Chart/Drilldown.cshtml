@@ -85,8 +85,8 @@
             var textRender = function (args) { args.text = args.point.x + ' ' + args.point.y + '%'; };
 
             var load = function (args) {
-                var selectedTheme = themeName ? themeName : 'Material';
-                args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+                var selectedTheme = themeName ? themeName : 'Fluent2';
+                args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
                 args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? '10px' : '12px';
                 if (selectedTheme === 'highcontrast' || selectedTheme.indexOf('dark') > -1) {
                            args.accumulation.series[0].dataLabel.font.color = "white";
@@ -130,7 +130,7 @@
                              pie.annotations = [{
                                    content: '<div id="back" onclick="mouseClick()" style="visibility:visible; cursor:pointer; padding: 3px; width: 30px; height: 30px;">' +
                                             '<img src="@Url.Content("~/Content/chart/back.png")" ' +
-                                                (themeName === 'highcontrast' || themeName.indexOf('dark') > -1 ? 'style="filter: invert(100%);"' : '') +' /></div>',
+                                                (themeName === 'highcontrast' || themeName === 'fluent2-highcontrast' || themeName.indexOf('dark') > -1 ? 'style="filter: invert(100%);"' : '') +' /></div>',
                                                  region: 'Series', x: '50%', y: '50%'
                              }];
                              pie.series[0].innerRadius = '30%';

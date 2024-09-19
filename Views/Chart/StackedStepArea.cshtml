@@ -24,8 +24,8 @@
     @*custom code end*@
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
@@ -45,11 +45,10 @@
         In this example, you can see how to render and configure the Stacked StepArea type charts. This series forms the step line progress by connecting points through vertical and horizontal lines with area filled.
         You can use <code>DashArray</code>, <code>Width</code> and <code>Fill</code> properties to customize the area. <code>Marker</code> and <code>DataLabel</code> are used to represent individual data and its value.
     </p>
-<br>
-<p>
-    More information on the area series can be found in this
-    <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
-</p> 
+    <p>
+        More information on the area series can be found in this
+        <a target="_blank" href="http://ej2.syncfusion.com/documentation/chart/api-series.html#type-chartseriestype" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p> 
 }
 @section Title{
                     <title>ASP.NET MVC Chart Stacked Step Area Example - Syncfusion Demos </title> 

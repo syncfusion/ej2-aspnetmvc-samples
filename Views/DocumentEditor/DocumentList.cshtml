@@ -3,6 +3,18 @@
 @{
     ViewBag.Title = "Document List";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var items = new List<object>
+    {
+        new { text = "Syncfusion Document Text (*.sfdt)", id = "sfdt" },
+        new { text = "Word Document (*.docx)", id = "word" },
+        new { text = "Word Template (*.dotx)", id = "dotx" },
+        new { text = "Plain Text (*.txt)", id = "txt" }
+    };
+    string downloadText = "Download";
+    string printText = "Print";
+    string documentTileText = "Document Name. Click or tap to rename this document.";
+    string titleCss = "";
 }
 
 
@@ -23,8 +35,24 @@
       }).Render()
   )
         @Html.EJS().Dialog("defaultDialog").IsModal(true).Width("90%").Height("90%").ZIndex(1500).Open("dialogOpen").Close("dialogClose").ContentTemplate(@<div>
-            <div >
-                <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
+            <div>
+                <div id="documenteditor_titlebar" class="e-de-ctn-title">
+                    <div class="single-line" id="documenteditor_title_contentEditor" title="@documentTileText" contenteditable="false" tabindex="0" style="@titleCss">
+                        <label id="documenteditor_title_name" style="font-weight:400; text-overflow:ellipsis; white-space:pre; overflow:hidden; user-select:none; cursor:text;">
+                            Getting started
+                        </label>
+                    </div>
+
+                    @* Close button *@
+                    @Html.EJS().Button("de-close").IconCss("e-icons e-close e-de-padding-right").Click("onClose").Render()
+
+                    @* Print button *@
+                    @Html.EJS().Button("de-print").IconCss("e-de-icon-Print e-de-padding-right").Content(@printText).Click("onPrint").Render()
+
+                    @* Dropdown button for export *@
+                    @Html.EJS().DropDownButton("documenteditor-share").IconCss("e-de-icon-Download e-de-padding-right").CssClass("e-caret-hide").Items(items).Content(@downloadText).Select("onExportClick").Open("setTooltipForPopup").Render()
+                
+                </div>
                 @Html.EJS().DocumentEditorContainer("container").Height("780px").ZIndex(3000).Render()
             </div>
         </div>).CloseOnEscape(true).Created("created").Render()
@@ -41,6 +69,10 @@
                 id: 'find',
                 iconCss: 'e-icons e-de-ctnr-find'
             }];
+
+        var btnFloatStyle = "float:right;";
+        var btnStyles = btnFloatStyle + "background: transparent; box-shadow:none; font-family: inherit; border-color: transparent;" +
+            "border-radius: 2px; color:inherit; font-size:12px; text-transform:capitalize; margin-top:4px; height:28px; font-weight:400;";
 
         function dialogClose() {
             document.getElementById('Grid').style.display = 'block';
@@ -59,7 +91,49 @@
         function created() {
             dialogObj = this;
             dialogObj.hide();
+            close = document.getElementById("de-close");
+            close.title = "Close this document";
+            applyButtonStylesAndTooltip()
             bindClose();
+        }
+
+        function applyButtonStylesAndTooltip() {
+            document.getElementById("de-close").style = btnStyles;
+            document.getElementById("de-close").title = "Close this document";
+            document.getElementById("de-print").style = btnStyles;
+            document.getElementById("de-print").title = "Print this document (Ctrl+P)";
+            document.getElementById("documenteditor-share").style = btnStyles;
+            document.getElementById("documenteditor-share").title = "Download this document.";
+        }
+
+        function wireDocumentTitleEditorEvents(container) {
+            documentTitleContentEditor.addEventListener('keydown', function (e) {
+                if (e.keyCode === 13) {
+                    e.preventDefault();
+                    documentTitleContentEditor.contentEditable = 'false';
+                    if (documentTitleContentEditor.textContent === '') {
+                        documentTitleContentEditor.textContent = 'Document1';
+                    }
+                }
+            });
+            documentTitleContentEditor.addEventListener('blur', function () {
+                if (documentTitleContentEditor.textContent === '') {
+                    documentTitleContentEditor.textContent = 'Document1';
+                }
+                documentTitleContentEditor.contentEditable = 'false';
+                container.documentEditor.documentName = documentTitle.textContent;
+            });
+            documentTitleContentEditor.addEventListener('click', function () {
+                updateDocumentEditorTitle();
+            });
+        }
+
+        function bindClose() {
+            if (dialogObj == null || dialogObj == undefined) {
+                close.style.display = 'none';
+            } else {
+                close.style.display = 'block';
+            }
         }
 
         function recordClick(args) {
@@ -74,6 +148,9 @@
             documenteditorElement.style.width = "100%";
             documenteditorElement.ej2_instances[0].serviceUrl = window.baseurl + 'api/documenteditorservice/';
             documenteditor.serviceUrl = window.baseurl + 'api/documenteditorservice/';
+            documentTitle = document.getElementById('documenteditor_title_name');
+            documentTitleContentEditor = document.getElementById("documenteditor_title_contentEditor");
+            wireDocumentTitleEditorEvents(container);
 
             container.documentChange = function (args) {
                 updateDocumentTitle();
@@ -101,7 +178,6 @@
             ajax.onSuccess = function (data) {
                 documenteditor.open(data);
                 documenteditor.documentName = fileName.replace(".docx", "");
-                documentTitle.textContent = container.documentEditor.documentName;
                 updateDocumentTitle();
             };
 
@@ -123,10 +199,6 @@
                 container.resize();
             }
         }
-        titleBarDiv = document.getElementById('documenteditor_titlebar');
-        initComponentAndWireEvent();
-
-
     </script>
 }
 

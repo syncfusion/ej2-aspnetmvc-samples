@@ -13,8 +13,8 @@
                     <strong>Feed Delay(ms)</strong>:
                 </h4>
                     @Html.EJS().NumericTextBox("feeddelay").Width("150px").Format("N0").Min(5000).Step(1000).Value(5000).Render()
-                    @Html.EJS().Button("update1").Content("Start Updating...").Render()
-                    @Html.EJS().Button("clear").Content("Stop Updating...").Render()
+                    @Html.EJS().Button("update1").Content("Start Updating...").CssClass("update-btn").Render()
+                    @Html.EJS().Button("clear").Content("Stop Updating...").CssClass("update-btn").Render()
             </div>
             @Html.EJS().PivotView("PivotView-LiveData").Width("100%").Height("350").Load("onLoad").DataSourceSettings(dataSourceSettings => dataSourceSettings.ExpandAll(false).EnableSorting(true).ShowGrandTotals(false).ShowSubTotals(false).EmptyCellsTextContent("Revising")
             .FormatSettings(formatsettings =>
@@ -74,14 +74,6 @@
             margin-left: 7px;
         }
 
-        #update1 {
-            margin-left: 10px;
-        }
-
-        #clear {
-            margin-left: 10px;
-        }
-
         #PivotView-LiveData_chart {
             margin-top: 15px;
         }
@@ -98,6 +90,17 @@
 
         .bg-fade2 {
             color: rgba(0, 0, 0, 0.87);
+        }
+
+        .update-btn {
+           margin-left: 10px;
+        }
+
+        /* Mobile mode */
+        @@media only screen and (max-width: 688px) {
+        .update-btn {
+           margin: 10px 10px 0 0;
+         }
         }
     </style>
     <script>

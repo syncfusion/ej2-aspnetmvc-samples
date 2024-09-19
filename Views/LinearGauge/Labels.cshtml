@@ -82,14 +82,16 @@
         function gaugeLoad(sender) {
             @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             @* custom code end *@
             if (sender.gauge.element.id === 'customLabels') {
                 customLabelsGauge = sender.gauge;
             }
             if (sender.gauge.element.id === 'textLabels') {
-                if (sender.gauge.theme === 'Fluent2Dark') {
+                if (sender.gauge.theme === 'Fluent2Dark' || sender.gauge.theme == 'Fluent2HighContrast') {
                     sender.gauge.axes[0].pointers[3].color = '#292827';
+                } else if (sender.gauge.theme === 'Bootstrap5Dark') {
+                    sender.gauge.axes[0].pointers[3].color = '#343A40';
                 }
                 textLabelsGauge = sender.gauge;
             }

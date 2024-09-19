@@ -11,9 +11,16 @@
         <div id="template" style="display:none;">Name</div>
         <div id="outer" style="width:100%">
             @Html.EJS().Maps("container").Resize("mapResize").Load("mapsload").Loaded("loaded").LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.Maps.LegendPosition.Bottom)).TitleSettings(title => title.Text("Top 6 largest countries age group details").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).Layers(layer =>
-{
-   layer.ShapeSettings(new MapsShapeSettings{ Fill = "#E5E5E5", ColorMapping = ViewBag.colormapping }).ShapeData(ViewBag.shapeData).Add();
-}).Render()
+       {
+           layer.MarkerSettings(new List<MapsMarker> {
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+           }).ShapeSettings(new MapsShapeSettings{ Fill = "#E5E5E5", ColorMapping = ViewBag.colormapping }).ShapeData(ViewBag.shapeData).Add();
+       }).Render()
             <div style="margin-left:75%">
                 Source:
                 <a href="http://www.nationmaster.com/country-info/stats/People/Age-structure/55--64-years" target="_blank" aria-label="nationmaster">www.nationmaster.com</a>
@@ -22,59 +29,37 @@
     </div>
     <script>
         var chart, chart1, chart2, chart3, chart4, chart5;
+        var dataFirst = true;
         function mapsload(args) {
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
-            args.maps.layers[0].markerSettings = [
-                {
-                    visible: true,
-                    template: '<div id="pieChart1" style="height:70px;width:70px;"></div>',
-                    dataSource: [
-                        { 'latitude': 61.938950426660604, 'longitude': 97.03125 }
-                    ],
-                    animationDuration: 0
-                },
-                {
-                    visible: true,
-                    template: '  <div id="pieChart2" style="height:70px;width:70px;">',
-                    dataSource: [
-                        { 'latitude': 57.70414723434193, 'longitude': -114.08203125 }
-                    ],
-                    animationDuration: 0
-                },
-                {
-                    visible: true,
-                    template: '<div id="pieChart3" style="top:10px;left:10px;height:70px;width:70px;"></div>',
-                    dataSource: [
-                        { 'latitude': 39.90973623453719, 'longitude': -103.0078125 }
-                    ],
-                    animationDuration: 0
-                },
-                {
-                    visible: true,
-                    template: '<div id="pieChart4" style="height:70px;width:70px;"></div>',
-                    dataSource: [
-                        { 'latitude': 35.746512259918504, 'longitude': 102.216796875 }
-                    ],
-                    animationDuration: 0
-                },
-                {
-                    visible: true,
-                    template: '<div id="pieChart5" style="height:70px;width:70px;"></div>',
-                    dataSource: [
-                        { 'latitude': -8.667918002363107, 'longitude': -52.55859375 }
-                    ],
-                    animationDuration: 0
-                },
-                {
-                    visible: true,
-                    template: '<div id="pieChart6" style="height:70px;width:70px;"></div>',
-                    dataSource: [
-                        { 'latitude': -23.725011735951796, 'longitude': 132.978515625 }
-                    ],
-                    animationDuration: 0
-                }
-            ];
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            if (dataFirst) {
+                args.maps.layers[0].markerSettings[0].template = '<div id="pieChart1" style="height:70px;width:70px;"></div>';
+                args.maps.layers[0].markerSettings[0].dataSource = [
+                    { 'latitude': 61.938950426660604, 'longitude': 97.03125 }
+                ];
+                args.maps.layers[0].markerSettings[1].template = '  <div id="pieChart2" style="height:70px;width:70px;">';
+                args.maps.layers[0].markerSettings[1].dataSource = [
+                    { 'latitude': 57.70414723434193, 'longitude': -114.08203125 }
+                ];
+                args.maps.layers[0].markerSettings[2].template = '<div id="pieChart3" style="top:10px;left:10px;height:70px;width:70px;"></div>';
+                args.maps.layers[0].markerSettings[2].dataSource = [
+                    { 'latitude': 39.90973623453719, 'longitude': -103.0078125 }
+                ];
+                args.maps.layers[0].markerSettings[3].template = '<div id="pieChart4" style="height:70px;width:70px;"></div>';
+                args.maps.layers[0].markerSettings[3].dataSource = [
+                    { 'latitude': 35.746512259918504, 'longitude': 102.216796875 }
+                ];
+                args.maps.layers[0].markerSettings[4].template = '<div id="pieChart5" style="height:70px;width:70px;"></div>';
+                args.maps.layers[0].markerSettings[4].dataSource = [
+                    { 'latitude': -8.667918002363107, 'longitude': -52.55859375 }
+                ];
+                args.maps.layers[0].markerSettings[5].template = '<div id="pieChart6" style="height:70px;width:70px;"></div>';
+                args.maps.layers[0].markerSettings[5].dataSource = [
+                    { 'latitude': -23.725011735951796, 'longitude': 132.978515625 }
+                ];
+                dataFirst = false;
+            }
         }
 
         function mapResize(args) {
@@ -315,6 +300,7 @@
         <p>
             Maps component features are segregated into individual feature-wise modules. To use marker template, you need to inject <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
         </p>
+    </div>
     </div>
 }
 

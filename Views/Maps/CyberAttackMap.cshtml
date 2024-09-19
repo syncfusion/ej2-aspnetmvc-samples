@@ -4,7 +4,27 @@
     <div class="control-section">
         @Html.EJS().Maps("container").TitleSettings(title => title.Text("Cyber Attack Map of United States").TextStyle(new MapsFont { Size = "16px" })).Load("Load").Loaded("Loaded").Layers(layer =>
    {
-       layer.ShapeSettings(new MapsShapeSettings { Fill = "#FFFFE0", Border = (new MapsBorder { Color = "#D2691E", Width = 0.5, Opacity = 1 }) })
+       layer.MarkerSettings(new List<MapsMarker>
+       {
+           new MapsMarker { Visible = true, Height = 15, Width = 15, AnimationDuration = 0 },
+           new MapsMarker { Visible = true, Height = 15, Width = 15, AnimationDuration = 0 },
+       }).NavigationLineSettings(new List<MapsNavigationLine>
+       {
+           new MapsNavigationLine { Visible = true, Angle = -0.3, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 15.758401, 39.864171 }, Longitude = new double[] { 101.155642, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = 0.4, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 57.725612, 39.864171 }, Longitude = new double[] { -101.802160, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.2, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 39.634177, 39.864171 }, Longitude = new double[] { 42.410740, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.1, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 22.860388, 39.864171 }, Longitude = new double[] { 79.739066, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.1, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { -24.763753, 39.864171 }, Longitude = new double[] { 134.852191, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.4, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 34.611098, 39.864171 }, Longitude = new double[] { 104.189872, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.8, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { -12.354844, 39.864171 }, Longitude = new double[] { -49.017709, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.4, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 3.450682, 39.864171 }, Longitude = new double[] { -72.943141, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.7, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 62.448268, 39.864171 }, Longitude = new double[] { 97.251835, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.3, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 65.931163, 39.864171 }, Longitude = new double[] { -45.812820, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.2, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { -21.206222, 39.864171 }, Longitude = new double[] { 17.122018, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.2, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 35.839969, 39.864171 }, Longitude = new double[] { 137.904641, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.2, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 46.582184, 39.864171 }, Longitude = new double[] { 2.232903, -100.854833 } },
+           new MapsNavigationLine { Visible = true, Angle = -0.2, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 0.390617, 39.864171 }, Longitude = new double[] { 37.893734, -100.854833 } }
+       }).ShapeSettings(new MapsShapeSettings { Fill = "#FFFFE0", Border = (new MapsBorder { Color = "#D2691E", Width = 0.5, Opacity = 1 }) })
          .ShapeData(ViewBag.shapeData).Add();
    }).Render()
     </div>
@@ -128,127 +148,37 @@
         }
     </style>
     <script>
+        var dataFirst = true;
         function Load(args) {
             @* custom code start *@
             var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             @* custom code end *@
-            args.maps.layers[0].navigationLineSettings = [
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.3, color: '#ffffb3',
-                    latitude: [15.758401, 39.864171],
-                    longitude: [101.155642, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: 0.4, color: '#ffffb3',
-                    latitude: [57.725612, 39.864171],
-                    longitude: [-101.802160, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.2, color: '#ffffb3',
-                    latitude: [39.634177, 39.864171],
-                    longitude: [42.410740, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.1, color: '#ffffb3',
-                    latitude: [22.860388, 39.864171],
-                    longitude: [79.739066, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.1, color: '#ffffb3',
-                    latitude: [-24.763753, 39.864171],
-                    longitude: [134.852191, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.4, color: '#ffffb3',
-                    latitude: [34.611098, 39.864171],
-                    longitude: [104.189872, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.8, color: '#ffffb3',
-                    latitude: [-12.354844, 39.864171],
-                    longitude: [-49.017709, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.4, color: '#ffffb3',
-                    latitude: [3.450682, 39.864171],
-                    longitude: [-72.943141, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.7, color: '#ffffb3',
-                    latitude: [62.448268, 39.864171],
-                    longitude: [97.251835, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.3, color: '#ffffb3',
-                    latitude: [65.931163, 39.864171],
-                    longitude: [-45.812820, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.2, color: '#ffffb3',
-                    latitude: [-21.206222, 39.864171],
-                    longitude: [17.122018, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.2, color: '#ffffb3',
-                    latitude: [35.839969, 39.864171],
-                    longitude: [137.904641, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.2, color: '#ffffb3',
-                    latitude: [46.582184, 39.864171],
-                    longitude: [2.232903, -100.854833],
-                },
-                {
-                    dashArray: '5,1', visible: true,
-                    angle: -0.2, color: '#ffffb3',
-                    latitude: [0.390617, 39.864171],
-                    longitude: [37.893734, -100.854833],
-                }
-            ]
-            args.maps.layers[0].markerSettings = [
-                {
-                    visible: true, height: 15, width: 15,
-                    template: '#template', animationDuration: 0,
-                    dataSource: [
-                        { latitude: 15.758401, longitude: 101.155642, name: 'Thailand' },
-                        { latitude: 57.725612, longitude: -101.802160, name: 'Canada' },
-                        { latitude: 39.634177, longitude: 42.410740, name: 'Turkey' },
-                        { latitude: 22.860388, longitude: 79.739066, name: 'India' },
-                        { latitude: -24.763753, longitude: 134.852191, name: 'Australia' },
-                        { latitude: 34.611098, longitude: 104.189872, name: 'China' },
-                        { latitude: -12.354844, longitude: -49.017709, name: 'Brazil' },
-                        { latitude: 3.450682, longitude: -72.943141, name: 'Colombia' },
-                        { latitude: 62.448268, longitude: 97.251835, name: 'Russia' },
-                        { latitude: 65.931163, longitude: -45.812820, name: 'Greenland' },
-                        { latitude: -21.206222, longitude: 17.122018, name: 'Namibia' },
-                        { latitude: 35.839969, longitude: 137.904641, name: 'Japan' },
-                        { latitude: 46.582184, longitude: 2.232903, name: 'France' },
-                        { latitude: 0.390617, longitude: 37.893734, name: 'Kenya' }
-                    ]
-                },
-                {
-                    visible: true, height: 15, width: 15,
-                    template: '#parent_template', animationDuration: 0,
-                    dataSource: [{
-                        latitude: 39.864171,
-                        longitude: -100.854833
-                    }]
-                }
-            ];
+            if (dataFirst) {
+                args.maps.layers[0].markerSettings[0].dataSource = [
+                    { latitude: 15.758401, longitude: 101.155642, name: 'Thailand' },
+                    { latitude: 57.725612, longitude: -101.802160, name: 'Canada' },
+                    { latitude: 39.634177, longitude: 42.410740, name: 'Turkey' },
+                    { latitude: 22.860388, longitude: 79.739066, name: 'India' },
+                    { latitude: -24.763753, longitude: 134.852191, name: 'Australia' },
+                    { latitude: 34.611098, longitude: 104.189872, name: 'China' },
+                    { latitude: -12.354844, longitude: -49.017709, name: 'Brazil' },
+                    { latitude: 3.450682, longitude: -72.943141, name: 'Colombia' },
+                    { latitude: 62.448268, longitude: 97.251835, name: 'Russia' },
+                    { latitude: 65.931163, longitude: -45.812820, name: 'Greenland' },
+                    { latitude: -21.206222, longitude: 17.122018, name: 'Namibia' },
+                    { latitude: 35.839969, longitude: 137.904641, name: 'Japan' },
+                    { latitude: 46.582184, longitude: 2.232903, name: 'France' },
+                    { latitude: 0.390617, longitude: 37.893734, name: 'Kenya' }
+                ];
+                args.maps.layers[0].markerSettings[0].template = '#template';
+                args.maps.layers[0].markerSettings[1].dataSource = [{
+                    latitude: 39.864171,
+                    longitude: -100.854833
+                }];
+                args.maps.layers[0].markerSettings[1].template = '#parent_template';
+                dataFirst = false;
+            }
         }
         function Loaded(args) {
             @* custom code start *@

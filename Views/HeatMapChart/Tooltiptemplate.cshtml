@@ -45,13 +45,13 @@
         var load = function (args) {
             @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
-            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast');
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             @* custom code end *@
             heatMap = args.heatmap;
         };
 
         var tooltipRendering = function (args) {
-            if (heatMap.theme.indexOf('Dark') > -1 || heatMap.theme.indexOf('Highcontrast') > -1) {
+            if (heatMap.theme.indexOf('Dark') > -1 || heatMap.theme.indexOf('HighContrast') > -1) {
                 heatMap.tooltipSettings.template = '<div style=" border-radius: 5px;fontFamily: inherit; padding-left: 10px;padding-right: 10px;padding-bottom: 6px;padding-top: 6px;background:white; border: 1px #919191;" ><span style="color:black;font-size: 12px">In ${yLabel}, the ${xLabel} produced ${value} million barrels per day.<span></div>';
             }
             else {

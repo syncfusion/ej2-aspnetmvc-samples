@@ -155,7 +155,7 @@
         </div>
     </script>
     <script id='Boys-Bootstrap5' type="text/x-template">
-        <div id='templateWrap' style="background-color: #6355C7; border-radius: 3px;">
+        <div id='templateWrap' style="background-color: #FD7E14; border-radius: 3px;">
             <img src="@Url.Content("~/Content/chart/male.png")" />
             <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
                 <span>${point.y} </span>
@@ -163,7 +163,7 @@
         </div>
     </script>
     <script id='Girls-Bootstrap5' type="text/x-template">
-        <div id='templateWrap' style="background-color: #FFB400; border-radius: 3px;">
+        <div id='templateWrap' style="background-color: #6610F2; border-radius: 3px;">
             <img src="@Url.Content("~/Content/chart/female.png")" />
             <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
                 <span>${point.y} </span>
@@ -235,7 +235,7 @@
         </div>
     </script>
     <script id='Boys-Bootstrap5Dark' type="text/x-template">
-        <div id='templateWrap' style="background-color: #8F80F4; border-radius: 3px;">
+        <div id='templateWrap' style="background-color: #FD7E14; border-radius: 3px;">
             <img src="@Url.Content("~/Content/chart/male.png")" />
             <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
                 <span>${point.y} </span>
@@ -243,7 +243,7 @@
         </div>
     </script>
     <script id='Girls-Bootstrap5Dark' type="text/x-template">
-        <div id='templateWrap' style="background-color: #FFD46D; border-radius: 3px;">
+        <div id='templateWrap' style="background-color: #6610F2; border-radius: 3px;">
             <img src="@Url.Content("~/Content/chart/female.png")" />
             <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
                 <span>${point.y} </span>
@@ -330,6 +330,22 @@
             </div>
         </div>
     </script>
+    <script id='Boys-Fluent2HighContrast' type="text/x-template">
+        <div id='templateWrap' style="background-color:#9BB449; border-radius: 3px;">
+            <img src="@Url.Content("~/Content/chart/male.png")" />
+            <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                <span>${point.y} </span>
+            </div>
+        </div>
+    </script>
+    <script id='Girls-Fluent2HighContrast' type="text/x-template">
+        <div id='templateWrap' style="background-color:#2A72D5; border-radius: 3px;">
+            <img src="@Url.Content("~/Content/chart/female.png")" />
+            <div class='des' style="color:white; font-family:Roboto; font-style: medium; font-size:14px;padding-right:6px">
+                <span>${point.y} </span>
+            </div>
+        </div>
+    </script>
     <script id='Boys-Fluent2Dark' type="text/x-template">
         <div id='templateWrap' style="background-color:#9BB449; border-radius: 3px;">
             <img src="@Url.Content("~/Content/chart/male.png")" />
@@ -353,8 +369,8 @@
             args.template = '#' + args.series.name + '-' + theme;
         };
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             theme = args.chart.theme
         };

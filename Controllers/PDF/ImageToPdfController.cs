@@ -29,34 +29,92 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             return View();
         }
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult ImageToPdf(string InsideBrowser)
+        public ActionResult ImageToPdf(string InsideBrowser, string pageSize, string pageOrientation, string margin, HttpPostedFileBase imageFile)
         {
-            List<Stream> imageStreams = new List<Stream>();
-            for (int i = 1; i <= 6; i++)
+
+            if (imageFile != null && Request.Files.Count != 0)
             {
-                FileStream jpgImageStream = new FileStream(ResolveApplicationImagePath("pdf_succinctly_page" + i + ".jpg"), FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                imageStreams.Add(jpgImageStream);
-            }
+                //Create a new PDF document
+                PdfDocument document = new PdfDocument();
 
-            //Create ImageToPdfConverter object.
-            ImageToPdfConverter imageToPdfConverter = new ImageToPdfConverter();
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    if (Request.Files[i].ContentType.Contains("image/"))
+                    {
+                        //Load the image from the file
+                        MemoryStream imageStream = new MemoryStream();
+                        Request.Files[i].InputStream.CopyTo(imageStream);
 
-            //Set the image position.
-            imageToPdfConverter.ImagePosition = PdfImagePosition.FitToPageAndMaintainAspectRatio;
+                        PdfBitmap image = new PdfBitmap(imageStream);
 
-            //Convert the images to PDF.
-            PdfDocument doc = imageToPdfConverter.Convert(imageStreams);
+                        PdfSection section = document.Sections.Add();
 
-            //Stream the output to the browser.    
-            if (InsideBrowser == "Browser")
-            {
-                return doc.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Open);
+                        SizeF pageSizeF = GetPdfPageSize(pageSize);
+
+                        //Set the page size
+                        section.PageSettings.Size = pageSizeF == SizeF.Empty ? image.PhysicalDimension : pageSizeF;
+
+                        if (pageOrientation != "Default")
+                        {
+                            //Set the page orientation
+                            section.PageSettings.Orientation = pageOrientation == "Portrait"
+                                ? PdfPageOrientation.Portrait
+                                : PdfPageOrientation.Landscape;
+                        }
+
+                        //Set the page margins
+                        section.PageSettings.Margins.All = GetPdfMargin(margin);
+
+                        //Create a new PDF page
+                        PdfPage page = section.Pages.Add();
+
+                        //Draw the image on the PDF page
+                        page.Graphics.DrawImage(image, 0, 0, page.GetClientSize().Width, page.GetClientSize().Height);
+
+                        //Close the image stream
+                        imageStream.Dispose();
+                    }
+                }
+
+                //Stream the output to the browser.    
+                if (InsideBrowser == "Browser")
+                {
+                    return document.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Open);
+                }
+                else
+                {
+                    return document.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
+                }
             }
             else
             {
-                return doc.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
+                ViewBag.lab = "NOTE: Please select a image file to convert.";
+                return View();
             }
         }
-
+        private SizeF GetPdfPageSize(string pageSize)
+        {
+            switch (pageSize)
+            {
+                case "A4":
+                    return PdfPageSize.A4;
+                case "Letter":
+                    return PdfPageSize.Letter;
+                default:
+                    return SizeF.Empty;
+            }
+        }
+        private float GetPdfMargin(string margin)
+        {
+            switch (margin)
+            {
+                case "Small":
+                    return 20;
+                case "Large":
+                    return 40;
+                default:
+                    return 0;
+            }
+        }
     }
 }

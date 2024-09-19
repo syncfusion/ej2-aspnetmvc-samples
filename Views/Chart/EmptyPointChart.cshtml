@@ -72,8 +72,8 @@
     <script>
         var load = function (args) {
             args.chart.dataSource = [{ Product: "Rice", Profit: 80 },{ Product: "Wheat", Profit: null },{ Product: "Oil", Profit: 70 },{ Product: "Corn", Profit: 60 },{ Product: "Gram", Profit: null },{ Product: "Milk", Profit: 70 },{ Product: "Peas", Profit: 80 },{ Product: "Fruit", Profit: 60 },{ Product: "Butter", Profit: null }];
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
         };

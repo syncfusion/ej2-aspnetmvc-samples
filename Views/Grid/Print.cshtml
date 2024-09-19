@@ -40,7 +40,7 @@
        col.Field("Title").HeaderText("Title").Width("180").Add();
        col.Field("City").HeaderText("City").Width("135").Add();
 
-   }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Print" }).ChildGrid(ChildGrid).HierarchyPrintMode(Syncfusion.EJ2.Grids.HierarchyGridPrintMode.All).Render()
+   }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Print" }).ChildGrid(ChildGrid).HierarchyPrintMode(Syncfusion.EJ2.Grids.HierarchyGridPrintMode.All).DataBound("gridDataBound").Render()
     </div>
 <div class="col-lg-3 property-section">
     <table id="property" title="Properties" style="width: 100%;">
@@ -54,11 +54,29 @@
 </div>
 
 <script>
+        function gridDataBound() {
+            var grid = document.getElementById("HierarchyPrint").ej2_instances[0];
+            grid.cssClass = document.querySelector(".fluent2-highcontrast") ? "e-print-fluent2-highcontrast" : "";
+        }
+
         function onChange(e) {
             var grid = document.getElementById("HierarchyPrint").ej2_instances[0];
             grid.hierarchyPrintMode = grid.childGrid.hierarchyPrintMode = e.value;
         }
 </script>
+
+<style type="text/css" class="cssStyles">
+    .e-print-fluent2-highcontrast.e-grid.e-print-grid-layout,
+    .e-print-fluent2-highcontrast.e-grid.e-print-grid-layout .e-childgrid,
+    .e-print-fluent2-highcontrast.e-grid.e-print-grid-layout .e-rowcell,
+    .e-print-fluent2-highcontrast.e-grid.e-print-grid-layout .e-gridheader,
+    .e-print-fluent2-highcontrast.e-grid.e-print-grid-layout .e-detailindentcell,
+    .e-print-fluent2-highcontrast.e-grid.e-print-grid-layout .e-detailcell,
+    .e-print-fluent2-highcontrast.e-grid.e-print-grid-layout .e-detailrowcollapse,
+    .e-print-fluent2-highcontrast.e-grid.e-print-grid-layout .e-detailrowexpand {
+        border-color: gray;
+    }
+</style>
 
 }
 

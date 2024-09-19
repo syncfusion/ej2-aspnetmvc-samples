@@ -64,7 +64,7 @@
         function load(args) {
             var theme = themeName ? themeName : 'Material';
             args.treemap.theme = ((theme.charAt(0).toUpperCase() +
-                theme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast'));
+                theme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5'));
             if (!treemap) {
                 args.treemap.leafItemSettings.colorMapping = [
                     { from: 100000, to: 250000, label: '0.1M - 0.25M', color: '#547C84' },
@@ -298,7 +298,7 @@
             display: block;
             width: 100%;
         }
-        .e-view.fluent2 #property .e-checkbox-wrapper, .e-view.fluent2-dark #property .e-checkbox-wrapper {
+        .e-view.fluent2 #property .e-checkbox-wrapper, .e-view.fluent2-dark #property .e-checkbox-wrapper, .e-view.fluent2-highcontrast #property .e-checkbox-wrapper {
             padding-left: 0px;
         }
     </style>

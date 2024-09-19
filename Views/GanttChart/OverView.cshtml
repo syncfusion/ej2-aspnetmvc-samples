@@ -36,7 +36,7 @@
                 .Columns(col =>
                 {
                     col.Field("TaskId").Width(80).Visible(false).Add();
-                    col.Field("TaskName").HeaderText("Product Release").Width(250).Add();
+                    col.Field("TaskName").HeaderText("Product Release").Width(200).Add();
                     col.Field("Assignee").HeaderText("Assignee").Width(130).Template("#columnTemplate").Add();
                     col.Field("Status").HeaderText("Status").Width(120).MinWidth(100).Template("#columnTemplate1").Add();
                     col.Field("Priority").HeaderText("Priority").Width(100).MinWidth(80).Template("#columnTemplate2").Add();
@@ -96,6 +96,16 @@
         .fluent2-highcontrast #overviewSample .e-toolbar-items .e-toolbar-right .e-template .e-input-group {
             width: 99px !important;
         }
+         .e-bigger.fluent2 .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.fluent2-dark .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.fluent2-highcontrast .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.bootstrap5 .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.bootstrap5\.3 .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.bootstrap5\.3-dark-lite .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.bootstrap5\.3-dark .e-toolbar-items .e-toolbar-right .e-template .e-input-group, 
+        .e-bigger.bootstrap5\.3-lite .e-toolbar-items .e-toolbar-right .e-template .e-input-group {
+            width: 101px !important;
+        }
     </style>
 
     <script>
@@ -130,22 +140,22 @@
             switch (status) {
                 case "In Progress":
                     statusStyleColor = (CurrentTheme) ? "#DFECFF" : "#2D3E57";
-                    style = "display: flex; padding: 1.5px 12px; gap: 10px; width: 96px; height: 24px; border-radius: 24px; background:" + statusStyleColor;
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 96px; height: 24px; border-radius: 24px; background:" + statusStyleColor;
                     break;
                 case "Open":
                     style = "background-color: red; color: white; border-radius: 15px; padding:6px";
                     break;
                 case "On Hold":
                     statusStyleColor = (CurrentTheme) ? "#E4E4E7" : "#3C3B43";
-                    style = "display: flex; border-radius: 24px; padding: 1.5px 12px; gap: 10px; width: 78px; height: 24px; background:" + statusStyleColor;
+                    style = "display: flex; border-radius: 24px; padding: 0px 12px; gap: 10px; width: 78px; height: 24px; background:" + statusStyleColor;
                     break;
                 case "Completed":
                     statusStyleColor = (CurrentTheme) ? "#DFFFE2" : "#16501C";
-                    style = "display: flex; padding: 1.5px 12px; gap: 10px; width: 98px; height: 24px; border-radius: 24px;background:" + statusStyleColor;
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 98px; height: 24px; border-radius: 24px;background:" + statusStyleColor;
                     break;
                 case "High":
                     statusStyleColor = (CurrentTheme) ? "#FFEBE9" : "#48211D";
-                    style = "display: flex; padding: 1.5px 12px; gap: 10px; width: 55px; height: 24px; border-radius: 24px; background:" + statusStyleColor;
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 55px; height: 24px; border-radius: 24px; background:" + statusStyleColor;
                     break;
             }
             return style;
@@ -180,19 +190,19 @@
             switch (priority) {
                 case "Low":
                     priorityStyle = (CurrentTheme) ? "#FFF6D1" : "#473F1E";
-                    style = "display: flex; padding: 1.5px 12px; gap: 10px; width: 52px; height: 24px; border-radius: 24px; background: " + priorityStyle;
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 52px; height: 24px; border-radius: 24px; background: " + priorityStyle;
                     break;
                 case "Normal":
                     priorityStyle = (CurrentTheme) ? "#F5DFFF" : "#4D2F5A";
-                    style = "display: flex; padding: 1.5px 12px; gap: 10px; width: 73px; height: 24px; border-radius: 24px; background: " + priorityStyle;
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 73px; height: 24px; border-radius: 24px; background: " + priorityStyle;
                     break;
                 case "Critical":
                     priorityStyle = (CurrentTheme) ? "#FFEBE9" : "#48211D";
-                    style = "display: flex; padding: 1.5px 12px; gap: 10px; width: 72px; height: 24px; border-radius: 24px; background: " + priorityStyle;
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 72px; height: 24px; border-radius: 24px; background: " + priorityStyle;
                     break;
                 case "High":
                     priorityStyle = (CurrentTheme) ? "#FFEBE9" : "#48211D";
-                    style = "display: flex; padding: 1.5px 12px; gap: 10px; width: 55px; height: 24px; border-radius: 24px; background: " + priorityStyle;
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 55px; height: 24px; border-radius: 24px; background: " + priorityStyle;
                     break;
             }
             return style;

@@ -34,7 +34,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
             ViewBag.ChartPoints = ChartPoints;
             ViewBag.intermediateSumIndexes = new int[] {4};
             ViewBag.sumIndexes = new int[] {7};
-            ViewBag.connector = new {width = 2, length = 1, color = "#5F6A6A"};
+            ViewBag.connector = new {width = 0.8, dashArray = "1,2", color = "#5F6A6A"};
             return View();
         }
         public class WaterfallChartData
@@ -42,6 +42,5 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
             public string X;
             public double Y;
         }
-
     }
 }

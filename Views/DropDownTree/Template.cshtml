@@ -4,7 +4,8 @@
         <div style="margin: 0 auto; width:350px;">
             @Html.EJS().DropDownTree("ddt").CssClass("ddt-template").Placeholder("Select an employee").Width("350px").PopupHeight("250px").Fields(ViewBag.templateData).ItemTemplate(
                   "<div><img class=\"eimage\" src=\"../Content/images/dropdown-tree/${image}.png\" alt=\"employee\"/><div><div class=\"ename\">${name}</div><div class=\"ejob\">${job}</div><span class=\"e-badge icons\"><span class=\"${status}\"></span></span></div></div>").HeaderTemplate(
-                  "<div class=\"head\">Employee List</div>").FooterTemplate("<div class=\"footer\"><div class=\"footer-content\"><span class=\"e-badge\"><span class=\"display available\"><span class=\"status online\"></span>Available</span><span class=\"display meeting\"><span class=\"status busy\"></span>Busy</span><span class=\"display unavailable\"><span class=\"status away\"></span>Away</span></span></div></div>").Render()
+                  "<div class=\"head\">Employee List</div>").FooterTemplate("<div class=\"footer\"><div class=\"footer-content\"><span class=\"e-badge\"><span class=\"display available\"><span class=\"status online\"></span>Available</span><span class=\"display meeting\"><span class=\"status busy\"></span>Busy</span><span class=\"display unavailable\"><span class=\"status away\"></span>Away</span></span></div></div>").ValueTemplate(
+                  "<div><div>${name} - ${job}</div></div>").Render()
         </div>
     </div>
 }
@@ -28,6 +29,7 @@
         <li><code>ItemTemplate</code> - To customize the list item's content.</li>
         <li><code>HeaderTemplate</code> - To customize the header element.</li>
         <li><code>FooterTemplate</code> - To customize the footer element.</li>
+        <li><code>valueTemplate</code> - To customize the selected item's element.</li>
     </ul>
 }
 
@@ -191,6 +193,25 @@
 
     .e-ddt.e-popup.ddt-template .e-treeview {
         display: block;
+    }
+
+    .bootstrap5\.3-dark .ddt-template .head,
+    .bootstrap5\.3-dark .ddt-template .footer,
+    .bootstrap5\.3-dark .ddt-template .footer-content .e-badge,
+    .material3-dark .ddt-template .head,
+    .material3-dark .ddt-template .footer,
+    .material3-dark .ddt-template .footer-content .e-badge,
+    .fluent-dark .ddt-template .head,
+    .fluent-dark .ddt-template .footer,
+    .fluent-dark .ddt-template .footer-content .e-badge,
+    .fluent2-dark .ddt-template .head,
+    .fluent2-dark .ddt-template .footer,
+    .fluent2-dark .ddt-template .footer-content .e-badge,
+    .fluent2-highcontrast .ddt-template .head,
+    .fluent2-highcontrast .ddt-template .footer,
+    .fluent2-highcontrast .ddt-template .footer-content .e-badge  {
+        color: #fff;
+        background-color: #1f2937;
     }
 </style>
 

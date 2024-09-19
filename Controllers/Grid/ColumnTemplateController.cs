@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         // GET: ColumnTemplate
         public ActionResult ColumnTemplate()
         {
-            var employee = EmployeeView.GetAllRecords();
+            var employee = EmployeeDetails.GetAllRecords();
             ViewBag.dataSource = employee;
             return View();
         }

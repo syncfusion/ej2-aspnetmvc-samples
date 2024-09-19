@@ -79,7 +79,7 @@
             content: '\ebf9';
         }
 
-        .e-view.bootstrap5 .e-print-icon::before, .e-view.bootstrap5-dark .e-print-icon::before {
+        .e-view.bootstrap5\.3 .e-print-icon::before, .e-view.bootstrap5\.3-dark .e-print-icon::before {
             content: '\e75d';
         }
 
@@ -87,7 +87,7 @@
             content: '\e75d';
         }
 
-        .e-view.fluent2 .e-print-icon::before, .e-view.fluent2-dark .e-print-icon::before {
+        .e-view.fluent2 .e-print-icon::before, .e-view.fluent2-dark .e-print-icon::before, .e-view.fluent2-highcontrast .e-print-icon::before {
             content: '\e75d';
         }
 
@@ -115,7 +115,7 @@
             content: '\e710';
         }
 
-        .e-view.bootstrap5 .e-export-icon::before, .e-view.bootstrap5-dark .e-export-icon::before {
+        .e-view.bootstrap5\.3 .e-export-icon::before, .e-view.bootstrap5\.3-dark .e-export-icon::before {
             content: '\e72e';
         }
 
@@ -123,7 +123,7 @@
             content: '\e72e';
         }
 
-        .e-view.fluent2 .e-export-icon::before, .e-view.fluent2-dark .e-export-icon::before {
+        .e-view.fluent2 .e-export-icon::before, .e-view.fluent2-dark .e-export-icon::before, .e-view.fluent2-highcontrast .e-export-icon::before {
             content: '\e72e';
         }
 
@@ -140,8 +140,8 @@
     <script>
         var smithchart;
         function load(args) {
-            var theme = themeName ? themeName : 'Material';
-            args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var theme = themeName ? themeName : 'Fluent2';
+            args.smithchart.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.smithchart.series[0].points = [
                 { resistance: 0.15, reactance: 0 },
                 { resistance: 0.15, reactance: 0.15 },

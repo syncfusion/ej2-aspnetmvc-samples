@@ -37,7 +37,7 @@
     function onGaugeLoad(sender) {
         @* custom code start *@
         var selectedTheme = themeName ? themeName : 'Material';
-        sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
         @* custom code end *@
         var width = parseInt(((sender.gauge.width, sender.gauge.element.offsetWidth) || sender.gauge.element.offsetWidth || 600), 10);
         if (width < 500) {

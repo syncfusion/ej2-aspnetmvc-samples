@@ -50,8 +50,11 @@
     <script>
         var load = function (args) {
             args.accumulation.dataSource = [{ Product: "Rice", ProfitPercentage: 80 },{ Product: "Wheat", ProfitPercentage: null },{ Product: "Oil", ProfitPercentage: 70 },{ Product: "Corn", ProfitPercentage: 60 },{ Product: "Gram", ProfitPercentage: null },{ Product: "Milk", ProfitPercentage: 70 },{ Product: "Peas", ProfitPercentage: 80 },{ Product: "Fruit", ProfitPercentage: 60 },{ Product: "Butter", ProfitPercentage: null }]; 
-            var selectedTheme = themeName ? themeName : 'Material';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            var selectedTheme = themeName ? themeName : 'Fluent2';
+            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            if ((selectedTheme.replace(/5.3/i, '5')) === 'bootstrap5-dark') {
+                args.chart.series[0].emptyPointSettings.fill = '#FF7F7F';
+            }
         }
         function changeEmptyPointMode() {
             var chart = document.getElementById("container").ej2_instances[0];

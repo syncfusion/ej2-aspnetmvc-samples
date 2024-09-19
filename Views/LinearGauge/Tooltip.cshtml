@@ -31,7 +31,7 @@
         function onGaugeLoad(sender) {
             @* custom code start *@
             var selectedTheme = themeName ? themeName : 'Material';
-            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
             @* custom code end *@
             gauge = sender.gauge;
             for (var i = 0; i < sender.gauge.annotations.length; i++) {
@@ -90,7 +90,7 @@
 
         function onGaugeLoaded(args) {
             if (document.getElementById('tooltipContainer')) {
-                if (args.gauge.availableSize.width < 500) {
+                if (args.gauge.orientation == 'Vertical') {
                     document.getElementById('tooltipContainer_Annotation_0').style.transform = 'rotate(270deg)';
                     document.getElementById('tooltipContainer_Annotation_1').style.transform = 'rotate(270deg)';
                 }

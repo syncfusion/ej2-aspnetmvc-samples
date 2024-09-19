@@ -42,8 +42,8 @@
 @*custom code end*@
     <script>
         var ChartPoints = hiloData;
-        var selectedTheme = themeName ? themeName : 'Material';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        var selectedTheme = themeName ? themeName : 'Fluent2';
+        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
         var axisLabelRender = function (args) {
             {
                 args.text = args.text.replace("0000000M","M");

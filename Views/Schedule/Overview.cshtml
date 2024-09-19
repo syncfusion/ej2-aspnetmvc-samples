@@ -5,10 +5,10 @@
 
 @{
     ViewData["Title"] = "Overview";
-    string timelineTemplate = "<div class='template'><div class='icon-child'><input  id='timeline_views'></input ></div><div class='text-child'>Timeline Views</div></div>";
-    string groupTemplate = "<div class='template'><div class='icon-child'><input id='grouping'></input></div><div class='text-child'>Grouping</div></div>";
-    string gridlineTemplate = "<div class='template'><div class='icon-child'><input id='timeSlots'></input></div><div class='text-child'>Time Slots</div></div>";
-    string autoHeightTemplate = "<div class='template'><div class='icon-child''><input id='row_auto_height'></input></div><div class='text-child'>Auto Fit Rows</div></div>";
+    string timelineTemplate = "<div class='template'><label><div class='icon-child'><input  id='timeline_views'></input ></div><div class='text-child'>Timeline Views</div></label></div>";
+    string groupTemplate = "<div class='template'><label><div class='icon-child'><input id='grouping'></input></div><div class='text-child'>Grouping</div></label></div>";
+    string gridlineTemplate = "<div class='template'><label><div class='icon-child'><input id='timeSlots'></input></div><div class='text-child'>Time Slots</div></label></div>";
+    string autoHeightTemplate = "<div class='template'><label><div class='icon-child''><input id='row_auto_height'></input></div><div class='text-child'>Auto Fit Rows</div></label></div>";
     string dateHeaderTemplate = "<div class='date - text'>${getDateHeaderDay(data.date)}</div><div class='date - text'>${getDateHeaderDate(data.date)}</div>${getWeather(data.date)}";
     string timezone = "Etc/GMT";
 }
@@ -221,12 +221,14 @@
         color: #fff;
     }
 
-    .bootstrap5 .schedule-overview .overview-content .right-panel .control-panel {
+    .bootstrap5 .schedule-overview .overview-content .right-panel .control-panel,
+    .bootstrap5\.3 .schedule-overview .overview-content .right-panel .control-panel {
         background-color: #f8f9fa;
         color: #212529;
     }
 
-    .bootstrap5-dark .schedule-overview .overview-content .right-panel .control-panel {
+    .bootstrap5-dark .schedule-overview .overview-content .right-panel .control-panel,
+    .bootstrap5\.3-dark .schedule-overview .overview-content .right-panel .control-panel {
         background-color: #343a40;
         color: #fff;
     }
@@ -473,6 +475,7 @@
     .template .text-child {
         font-size: 14px;
         line-height: 23px !important;
+        font-weight: normal;
     }
 
     @@media (max-width: 481px) {
