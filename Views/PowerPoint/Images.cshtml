@@ -1,0 +1,63 @@
+@using Syncfusion.EJ2
+
+@section ActionDescription{
+    This sample demonstrates how to add and format images in PowerPoint Presentation using .NET PowerPoint Library (Presentation).
+}
+
+@section Description{
+    <div>
+    The .NET PowerPoint Library (Presentation) allows you to insert images into the presentation at the desired location.
+    <ul>
+            <li>Format images by resizing to the required size.</li>
+            <li>Crop the images with desired offsets.</li>
+            <li>Add alternate text to images.</li>
+    </ul>
+    </div>
+    <br />
+    <div>
+        More information about image support can be found in this <a href="https://help.syncfusion.com/file-formats/presentation/working-with-images">documentation</a> section.
+    </div>
+    <br /> 
+}
+@section ControlsSection{
+    <div class="control-section">
+        @{ViewBag.Title = "    Essential Presentation (Presentation) : Images : Syncfusion";}
+
+        @{Html.BeginForm("Images", "PowerPoint", FormMethod.Post);
+            {
+                <div class="tablediv">
+                    <text class="rowdiv">
+                        Click the button to view the generated PowerPoint presentation. Please note that a PowerPoint-compatible viewer is required to open and view the PowerPoint presentation file.
+                    </text>
+                </div>
+                <br />
+                <div class="tablediv">
+                    <div class="rowdiv">
+                        <div class="celldiv">
+                            <div style="border: solid 0px #EDEDED; padding: 5px 7px 5px 7px;">
+                                <table width="100%">
+                                    <tr>
+                                        <td align="left" width="100%">
+                                            <label><input id="submit" type="submit" name="button" class="e-btn" value="Create Presentation" /></label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                Html.EndForm();
+            }
+        }
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC PowerPoint (Presentation) library - Images Example - Syncfusion Demos </title>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates how to insert and crop images in PowerPoint using ASP.NET MVC PowerPoint Library (Presentation). Explore here for more details." />
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Images in ASP.NET MVC PowerPoint (Presentation) Library</h1>
+}
