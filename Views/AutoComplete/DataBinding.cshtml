@@ -17,7 +17,7 @@
                 <h4>Remote Data</h4>
                 @Html.EJS().AutoComplete("products").Placeholder("e.g. " +
                "Andrew Fuller").Autofill(true).SuggestionCount(5).FilterType(FilterType.StartsWith).DataSource(obj =>
-               obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").Adaptor("" +
+               obj.Url("https://services.syncfusion.com/aspnet/production/api/Employees").Adaptor("" +
                "WebApiAdaptor").CrossDomain(true)).Fields(new AutoCompleteFieldSettings { Value =
                "FirstName" }).SortOrder((object)ViewBag.sort).Query("new " +
                "ej.data.Query().select(['FirstName', 'EmployeeID']).requiresCount()").Render()

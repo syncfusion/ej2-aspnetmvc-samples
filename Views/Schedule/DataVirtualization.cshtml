@@ -13,7 +13,7 @@
                res.DataSource(ViewBag.resources).Field("ResourceId").Title("Resource").Name("Resources").TextField("Text").IdField("Id").ColorField("Color").Add();
            }).EventSettings(es => es.DataSource(dataManager =>
            {
-               dataManager.Url("https://ej2services.syncfusion.com/production/web-services/api/VirtualEventData").CrossDomain(true).Adaptor("WebApiAdaptor");
+               dataManager.Url("https://services.syncfusion.com/aspnet/production/api/VirtualEventData").CrossDomain(true).Adaptor("WebApiAdaptor");
            })).Readonly(true).Render()
     </div>
 </div>
