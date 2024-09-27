@@ -10,7 +10,7 @@
         <div class="control-wrapper">
             <h4>Remote Data</h4>
             @Html.EJS().MultiSelect("remote").Mode(VisualMode.Delimiter).Placeholder("e.g. OrderID").DataSource(obj =>
-            obj.Url("https://ej2services.syncfusion.com/production/web-services/api/VirtualDropdownData").CrossDomain(true).Adaptor("UrlAdaptor")).EnableVirtualization(true).AllowFiltering(true).HideSelectedItem(true).ClosePopupOnSelect(true).AllowCustomValue(true).Fields(new MultiSelectFieldSettings
+            obj.Url("https://services.syncfusion.com/aspnet/production/api/VirtualDropdownData").CrossDomain(true).Adaptor("UrlAdaptor")).EnableVirtualization(true).AllowFiltering(true).HideSelectedItem(true).ClosePopupOnSelect(true).AllowCustomValue(true).Fields(new MultiSelectFieldSettings
             {
             Text = "OrderID",
             Value = "OrderID"

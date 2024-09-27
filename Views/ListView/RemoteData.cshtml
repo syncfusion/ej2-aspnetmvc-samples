@@ -4,7 +4,7 @@
     <div class="control-section">
         @Html.EJS().ListView("remotelist").Enable(true).DataSource(dataManger =>
    {
-       dataManger.Url("https://ej2services.syncfusion.com/production/web-services/api/").CrossDomain(true);
+       dataManger.Url("https://services.syncfusion.com/aspnet/production/api/").CrossDomain(true);
 
    }).Query("new ej.data.Query().from('ListView').select('EmployeeID,FirstName').take(10)").Fields(new ListViewFieldSettings { Id = "EmployeeID", Text = "FirstName" }).ShowHeader(true).HeaderTitle("Employees").Render()
     </div>

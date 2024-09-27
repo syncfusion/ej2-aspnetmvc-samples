@@ -6,7 +6,7 @@
            <div class="control-section">
                 @Html.EJS().Grid("Grid").AllowFiltering().AllowSorting().DataSource(dataManger =>
                 {
-                dataManger.Url("https://ej2services.syncfusion.com/production/web-services/api/UrlDataSource").Adaptor("UrlAdaptor");
+                dataManger.Url("https://services.syncfusion.com/aspnet/production/api/UrlDataSource").Adaptor("UrlAdaptor");
                 }).Columns(col =>
                 {
                     col.Field("EmployeeID").HeaderText("Employee ID").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
