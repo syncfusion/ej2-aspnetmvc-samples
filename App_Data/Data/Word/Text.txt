@@ -1,0 +1,13 @@
+Thank you for choosing Essential Studio product of Syncfusion. 
+
+Essential Studio is a cohesive and comprehensive control studio featuring Essential Tools, Grid, Chart, Diagram, Grouping, XlsIO, Edit, Calculate, HTML UI, and PDF. All products provide Windows Forms support. In addition, Essential Tools, Chart, Diagram, Grouping, XlsIO, Calculate, and PDF are supported for Web Forms / Server Side development. 
+
+Essential Studio is the most technologically advanced Windows and Web Forms control studio for the .NET platform on the market today, and offers unique features such as "Just-In-Time" source level debugging. In addition, Essential Studio is very easy to use. Most features can be enabled (and customized) using our WYSIWYG designers. 
+
+We have made every effort to highlight features and technical merits of Essential Studio. From the "Getting started" section of this package, you can access all product samples using our sample browsing system. There is also a features showcase that provides several interactive samples. We encourage you to review the included documentation, white papers, and help files. 
+
+At Syncfusion, we stand behind our products 100%. You can report any problems encountered when using our products through our Direct-Trac developer support system, or by e-mail or phone. With Direct-Trac you will not have to keep guessing about the status of problems you report; you will receive up-to-date support history and accurate online incident tracking. 
+
+We appreciate your interest and look forward to working with you. 
+
+Thank you for choosing Essential Studio product of Syncfusion. 

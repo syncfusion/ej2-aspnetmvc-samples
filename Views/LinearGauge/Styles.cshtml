@@ -1,0 +1,148 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        <div class="row">
+            <div id="container1" style="height:100px;">
+                @Html.EJS().LinearGauge("container1").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+           {
+               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Color = "#9E9E9E" },
+               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+               {
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+                   {
+                       Value = 80, Height=13,Width=13,Offset = "10"
+                   }
+               },
+               MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Interval = 10, Height=20 },
+           }
+       }).Render()
+            </div>
+        </div>
+        <div class="row">
+            <div id="container2" style="height:160px;">
+                @Html.EJS().LinearGauge("container2").Load("onGaugeLoad").Container(new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
+           {
+               Width = 30,
+               BackgroundColor = "#e0e0e0",
+               Border = new Syncfusion.EJ2.LinearGauge.LinearGaugeBorder { Width = 0},
+               Offset = -20
+           }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+           {
+               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Offset = 30 },
+                LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Offset = 50 },
+                MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Interval =10, Height=20 },
+               Ranges = new List<Syncfusion.EJ2.LinearGauge.LinearGaugeRange>
+               {
+                    new Syncfusion.EJ2.LinearGauge.LinearGaugeRange
+                   {
+                       Start = 0.01, End = 10, Color = "#30b32d",StartWidth = 30, EndWidth = 30
+                   }
+               },
+               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+               {
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+                   {
+                       Value = 10, Height=15,Width=15,Placement = Syncfusion.EJ2.LinearGauge.Placement.Near,
+                       Offset ="-50",MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle
+                   }
+               },
+           }
+       }).Render()
+            </div>
+        </div>
+        <div class="row">
+            <div id="container3" style="height:150px;">
+                @Html.EJS().LinearGauge("container3").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+           {
+               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Offset = -20, Color=  "#9E9E9E" },
+               MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Interval = 10, Height=20},
+               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+               {
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+                   {
+                       Value = 70, Offset = "20", Height = 13, Width = 13
+                   },
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+                   {
+                       Value = 70, Type = Syncfusion.EJ2.LinearGauge.Point.Bar,Height = 10, Color = "red"
+                   }
+               }
+           }
+       }).Render()
+            </div>
+        </div>
+        <div class="row">
+            <div id="container4" style="height:100px;">
+                @Html.EJS().LinearGauge("container4").Load("onGaugeLoad").Container(new Syncfusion.EJ2.LinearGauge.LinearGaugeContainer
+       {
+           Width = 30,
+           Offset = 0,
+           BackgroundColor = "#e0e0e0"
+       }).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Axes(new List<Syncfusion.EJ2.LinearGauge.LinearGaugeAxis> {
+           new Syncfusion.EJ2.LinearGauge.LinearGaugeAxis
+           {
+               Line = new Syncfusion.EJ2.LinearGauge.LinearGaugeLine { Width = 0 },
+               LabelStyle = new Syncfusion.EJ2.LinearGauge.LinearGaugeLabel { Offset = 55 },
+               MajorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Interval = 10,Height = 0, Width = 0 },
+               MinorTicks = new Syncfusion.EJ2.LinearGauge.LinearGaugeTick { Height= 0, Width = 0 },
+               Pointers = new List<Syncfusion.EJ2.LinearGauge.LinearGaugePointer>
+               {
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+                   {
+                       Value = 60, Height =15,Width=15,
+                       Placement = Syncfusion.EJ2.LinearGauge.Placement.Near, MarkerType = Syncfusion.EJ2.LinearGauge.MarkerType.Triangle,
+                       Offset ="-50"
+                   },
+                   new Syncfusion.EJ2.LinearGauge.LinearGaugePointer
+                   {
+                       Type = Syncfusion.EJ2.LinearGauge.Point.Bar,
+                       Value = 60, Height =  30, Color = "#ff9200"
+                   }
+               }
+           }
+       }).Render()
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function onGaugeLoad(args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+            args.gauge.orientation = "Horizontal";
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the available customizing options in linear gauge.
+        </p>
+    </div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Styles in ASP.NET MVC Linear Gauge control. Explore here for more details."/>
+                }
+@section Description{
+    <div id="description">
+        <p>
+            In this sample, we have indicated a value in various styles using bar and marker pointers. You can display any number of
+            pointers in an axis.
+            <br>
+        <p>
+            More information about visual editing can be found in this
+            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+        </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Linear Gauge Styles Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Styles in ASP.NET MVC Linear Gauge Control</h1>
+                }

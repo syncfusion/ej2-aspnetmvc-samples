@@ -1,0 +1,156 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Popups
+
+@section ControlsSection{
+    <div id="target" class="col-lg-12 control-section">
+        @Html.EJS().Button("dialogBtn").CssClass("dlgbtn").Content("Open Dialog").Render()
+
+        @Html.EJS().Dialog("positionDialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("created").Header("Choose a Dialog Position").Close("dialogClose").Open("dialogOpen").ShowCloseIcon(true).CloseOnEscape(true).Width("427px").Target("#target").ContentTemplate(@<table id='poschange'><tr><td>@Html.EJS().RadioButton("radio1").Name("xy").Label("Left Top").Value("left top").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio2").Name("xy").Label("Center Top").Value("center top").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio3").Name("xy").Label("Right Top").Value("right top").Change("onChangeHandler").Render()</td></tr><tr><td>@Html.EJS().RadioButton("radio4").Name("xy").Label("Left Center").Value("left center").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio5").Name("xy").Label("Center Center").Value("center center").Checked(true).Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio6").Name("xy").Label("Right Center").Value("right center").Change("onChangeHandler").Render()</td></tr><tr><td>@Html.EJS().RadioButton("radio7").Name("xy").Label("Left Bottom").Value("left bottom").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio8").Name("xy").Label("Center Bottom").Value("center bottom").Change("onChangeHandler").Render()</td><td>@Html.EJS().RadioButton("radio9").Name("xy").Label("Right Bottom").Value("right bottom").Change("onChangeHandler").Render()</td></tr></table>).FooterTemplate("<span id='posvalue' style='float:left; margin - left:8px; padding: 10px; '>Position: { X: 'Center', Y: 'Center' }</span>").Position(obj => obj.X("center").Y("center")).Render()
+
+    </div>
+}
+
+<style>
+    /* custom code start */
+    #target {
+        height: 100%;
+        min-height: 350px;
+    }
+    /* custom code end */
+    
+    #target .e-dialog {
+      width: 452px;
+    }
+
+    .fluent.e-bigger #target .e-dialog,
+    .fluent-dark.e-bigger #target .e-dialog {
+      width: 502px;
+    }
+
+    #poschange {
+      width: 405px;
+    }
+
+    .fluent.e-bigger #poschange,
+    .fluent-dark.e-bigger #poschange {
+      width: 455px;
+    }
+
+    html,
+    body,
+    #container {
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    #positionDialog table,
+    #positionDialog th,
+    #positionDialog td {
+        border: 1px solid #D8D8D8;
+        border-collapse: collapse;
+    }
+
+    #container {
+        height: 365px;
+    }
+
+    #positionDialog .e-dialog .e-footer-content {
+        padding:  0px 10px 10px;
+    }
+
+    .e-dialog .e-dlgcontent {
+        padding: 10px 16px 10px;
+    }
+
+    .e-radio + label .e-label {
+        line-height: 18px;
+    }
+
+    td {
+        padding: 4px;
+    }
+    .bootstrap .e-dialog .e-footer-content {
+        padding: 5px;
+    }
+    .fabric .e-dialog .e-footer-content, .highcontrast .e-dialog .e-footer-content {
+        padding-left: 11px;
+    }
+    .fabric .control-section, .highcontrast .control-section {
+        min-height: 370px;
+        margin-bottom: 29px;
+        margin-top: 10px;
+    }
+    .control-section {
+        min-height: 370px;
+        margin-bottom: 9px;
+        margin-top: 10px;
+    }
+    .highcontrast .e-dialog .e-dlg-content, .fabric .e-dialog .e-dlg-content {
+        padding: 28px 19px 20px;
+    }
+    .e-dialog .e-dlg-content {
+        padding-left: 10px;
+    }
+</style>
+
+@section PreScripts {
+    <script>
+        var dialogObj;
+        var dialog = document.getElementById('positionDialog');
+        var btnElement = document.getElementById('dialogBtn');
+        var onChangeHandler = function (args) {
+            dialogObj.position.X = args.value.split(" ")[0];
+            dialogObj.position.Y = args.value.split(" ")[1];
+            var txt = args.event.target.parentElement.querySelector('.e-label').innerText.split(" ");
+            document.getElementById("posvalue").innerHTML = 'Position: { X: "' + txt[0] + '", Y: "' + txt[1] + '" }';
+        };
+        btnElement.onclick = function () {
+            dialogObj.show();
+        };
+        function dialogClose() {
+            btnElement.style.display = 'block';
+        }
+        function dialogOpen() {
+            btnElement.style.display = 'none';
+        }
+        function created() {
+            dialogObj = this;
+        }
+    </script>
+}
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This example demonstrates how to position the dialog control. Select the appropriate radio button to position where the dialog is displayed.
+            The current position of the dialog is at the bottom.  Enable the "open dialog" button to reopen the dialog if it is closed.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            By default, the dialog is displayed in the center of the target container. Use the <code>position</code>
+            property to set location where the dialog displays relative to the target.
+            The property point-out the horizontal and vertical coordinates.
+            You can set position with specific X and Y coordinates in pixel values.
+        </p>
+    </div>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Positioning in ASP.NET MVC Dialog control. Explore here for more details."/>
+                }
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Dialog Positioning Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Positioning in ASP.NET MVC Dialog Control</h1>
+                }

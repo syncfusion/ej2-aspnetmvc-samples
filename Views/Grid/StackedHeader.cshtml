@@ -1,0 +1,60 @@
+@using Syncfusion.EJ2
+
+
+@section ControlsSection{
+    <div class="control-section">
+    @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewBag.dataSource).PageSettings(new Syncfusion.EJ2.Grids.GridPageSettings() { PageSize = 5 }).Columns(col =>
+{
+
+    col.Field("OrderID").HeaderText("Order ID").Width("120").MinWidth("10").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+    col.HeaderText("Order Details").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "CustomerID", Width = "160", HeaderText = "CustomerName", MinWidth="30", },
+                                                                                            new Syncfusion.EJ2.Grids.GridColumn { Field = "OrderDate", Width = "140", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right,Format="yMd", HeaderText = "Order Date", MinWidth="10", EditType="datepickeredit" } }).Add();
+    col.HeaderText("Shipped Details").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "ShippedDate", Width = "160", HeaderText = "Shipped Date", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, Format = "yMd", MinWidth="40", EditType="datepickeredit" },
+                                                                                              new Syncfusion.EJ2.Grids.GridColumn { Field = "ShipCountry", Width = "140",  HeaderText = "Ship Country", MinWidth="60", EditType="dropdownedit" },
+                                                                                              new Syncfusion.EJ2.Grids.GridColumn {Field ="Freight", HeaderText = "Freight Charges($)", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, Width = "200", Format = "C2", MinWidth = "40", EditType = "numericedit", ValidationRules = new { required=true,  number=true } } }).Add();
+
+}).AllowPaging().PageSettings(new Syncfusion.EJ2.Grids.GridPageSettings() { PageCount = 5 }).AllowSorting().AllowMultiSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).AllowResizing().Render()
+</div>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates the Grid component with the stacked header and resize feature. In this sample, we have shown multiple level of column headers.
+		</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Stacked Header in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		<p>The Grid columns can be stacked/grouped in order to show multiple level of column headers. 
+        It can be done by setting the <code>Columns->Columns</code> property.
+		</p>
+
+        <p>
+            The Grid columns can be resized by clicking and dragging at the right edge of columns header. To enable column, resize behavior, set <code>
+                <a target="_blank" class="code"
+                   href="https://help.syncfusion.com/cr/cref_files/aspnetcore-js2/Syncfusion.EJ2~Syncfusion.EJ2.Grids.Grid~AllowResizing.html" aria-label="allowResizing">
+                    allowResizing
+                <span class="sr-only">opens in a new tab</span></a>
+            </code> property as true. You can also prevent the resize of the particular column by setting
+            <code> columns->allowResizing </code> as false in columns definition.
+        </p>
+
+		<p>
+			In this demo, the columns <strong>ColumnName, OrderDate</strong> are grouped under <strong>Order Details</strong>,
+			the columns <strong>ShippedDate, ShipCountry, Freight</strong> are grouped under <strong>Ship Details</strong>. 
+		</p>		
+	
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Stacked Header Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Stacked Header in ASP.NET MVC Data Grid Control</h1>
+                }

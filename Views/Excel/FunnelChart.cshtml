@@ -1,0 +1,50 @@
+@using Syncfusion.EJ2
+
+@section ActionDescription{
+    This sample demonstrates how to create Funnel chart using Excel (XlsIO) Library.
+    }
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Funnel Chart in ASP.NET MVC Excel (XlsIO) library. Explore here for more details."/>
+                }
+
+@section Description{
+<p>
+    Funnel charts are a type of chart, often used to represent stages in a sales process and show the amount of potential revenue for each stage. This type of chart can also be useful in identifying potential problem areas in an organization's sales processes.
+</p>
+<p>
+    Essential XlsIO has APIs for creating and modifying funnel charts.
+</p>
+}
+@section ControlsSection{
+<div class="control-section">
+    @{Html.BeginForm("FunnelChart", "Excel", FormMethod.Post);
+    { 
+        <p style="font-weight:normal">
+			Click the "Input Template" button to view the input Excel document and click the "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+		</p>
+        <br />
+        <div>
+			Save As :
+			<input type="radio" id="Embedded Chart" name="SaveOption" value="embed" />
+			<label for="Embedded Chart" style="font-weight:normal">Embedded Chart</label>
+			&nbsp;
+			<input type="radio" id="Chart Sheet" name="SaveOption" value="sheet" checked="checked" />
+			<label for="Chart Sheet" style="font-weight:normal">Chart Sheet</label>
+		</div>
+        <br />
+        <div class="celldiv">
+            <input id="inputbtn" class="e-btn" type="submit" name="button" value="Input Template" style="width:160px;" />
+            <input id="createbtn" class="e-btn" type="submit" name="button" value="Create Document" style="width:160px;" /> 
+        </div>
+    Html.EndForm();
+    }
+    }
+</div>
+}
+@section Title{
+                    <title>ASP.NET MVC Excel (XlsIO) library - Funnel Chart Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Funnel Chart in ASP.NET MVC Excel (XlsIO) Library</h1>
+                }

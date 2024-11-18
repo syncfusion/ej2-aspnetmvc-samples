@@ -1,0 +1,97 @@
+@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.PivotView
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the server-side pivot engine Functionalities in ASP.NET MVC Pivot Table control. Explore here for more details."/>
+                }
+@section ControlsSection{
+
+    <div class="control-section">
+        <div class="content-wrapper">
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("450").EnableVirtualization(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.Url("https://ej2services.syncfusion.com/production/web-services/api/pivot/post").Mode(Syncfusion.EJ2.PivotView.RenderMode.Server).ExpandAll(false).EnableSorting(true)
+            .FormatSettings(formatsettings => { formatsettings.Name("Price").Format("C0").Add(); formatsettings.Name("Sold").Format("N0").Add(); })
+            .Rows(rows => { rows.Name("ProductID").Caption("Product ID").Add(); }).Columns(columns => { columns.Name("Year").Caption("Production Year").Add(); })
+            .Values(values => { values.Name("Sold").Caption("Unit Sold").Add(); values.Name("Price").Caption("Sold Amount").Add();})).DataBound("onDataBound").ShowGroupingBar(true).ShowFieldList(true).AllowDataCompression(true).EnableVirtualization(true).Render()
+        </div>
+    </div>
+
+    <style>
+        #pivotview {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .sb-sample-content-area {
+            min-height: 255px !important;
+        }
+
+        .control-section {
+            min-height: 255px !important;
+        }
+    </style>
+    <script>
+        function onDataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (ej.base.Browser.isDevice && pivotObj && pivotObj.enableRtl) {
+                document.querySelector('.control-section').classList.add('e-rtl');
+            }
+        }
+    </script>
+}
+
+@section PreScripts {
+    <script>
+        ej.base.enableRipple(false);
+    </script>
+}
+
+@section ActionDescription{
+   <div id="action-description">
+       <p>
+        This sample demonstrates how to use a server-side pivot engine to obtain, process and return the summarized data
+        via a remote service and display it in the pivot table.
+       </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+    <p>
+        The Pivot Table's server-side pivot engine (external pivot engine) uses the Syncfusion package <a
+        target="_blank" href="https://www.nuget.org/packages/Syncfusion.Pivot.Engine/" aria-label="Syncfusion.Pivot.Engine"> Syncfusion.Pivot.Engine<span class="sr-only">opens in a new tab</span></a> to
+        gather data from the data source and perform all pivot operations such as <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/aggregation/#aggregation" aria-label="Aggregation">
+            Aggregation<span class="sr-only">opens in a new tab</span></a>, <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/filtering/#filtering" aria-label="Filtering">
+            Filtering<span class="sr-only">opens in a new tab</span></a>, <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/sorting/#sorting" aria-label="Sorting">
+            Sorting<span class="sr-only">opens in a new tab</span></a>, <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/grouping/#grouping" aria-label="Grouping">
+            Grouping<span class="sr-only">opens in a new tab</span></a>, and more on a separate hosted server and only paged
+        data is sent to the pivot table viewport via web service.
+        The <a target="_blank"
+            href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.PivotView.PivotViewDataSourceSettings.html#Syncfusion_EJ2_PivotView_PivotViewDataSourceSettings_Url" aria-label="DataSourceSettings">
+            DataSourceSettings-&gt;Url<span class="sr-only">opens in a new tab</span></a> property allows this web service URL to be
+        connected to the pivot table.
+    </p>
+    <p>
+        In this demo, the pivot table is shown with the virtualization option enabled through the <a target="_blank"
+            href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.PivotView.PivotView.html#Syncfusion_EJ2_PivotView_PivotView_EnableVirtualization" aria-label="EnableVirtualization">
+            EnableVirtualization<span class="sr-only">opens in a new tab</span></a> property
+        and an external server engine. This would improve pivot table rendering performance when working with large
+        amounts of data.
+    </p>
+    <br />
+    <p>
+        More information about server-side aggregation can be found in this <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/server-side-pivot-engine#connecting-pivot-table-to-server-side-pivot-engine" aria-label="documentation section" >
+            documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Pivot Table server-side pivot engine Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of server-side pivot engine in ASP.NET MVC Pivot Table Control</h1>
+                }

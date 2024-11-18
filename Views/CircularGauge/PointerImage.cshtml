@@ -1,0 +1,108 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <div class="control-section" style="margin-left:120px">
+        @Html.EJS().CircularGauge("container").Width("80%").Load("onGaugeLoad").CenterY("57%").Title("Shot Put Distance").TitleStyle(new CircularGaugeFont{ Size = "18px", Opacity = 1 }).Axes(axes => axes
+      .StartAngle(200).EndAngle(130).LineStyle(new CircularGaugeLine{ Width = 0, Color="tranparent" }).Radius("90%").LabelStyle(new CircularGaugeLabel
+      {
+          Font = new CircularGaugeFont { Size = "0px" }
+      }).MajorTicks(new CircularGaugeTick
+      {
+          Color = "transparent",
+          Width =0,
+      }).MinorTicks(new CircularGaugeTick
+      {
+          Color="transparent",
+          Width=0
+      }).Annotations(ViewBag.Annotations).Minimum(0).Maximum(14).Ranges(ViewBag.Ranges)
+      .Add()).Render()
+    </div>
+    <script type="text/javascript">
+    function onGaugeLoad(sender) {
+        var selectedTheme = themeName ? themeName : 'Material';
+        sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast');
+        sender.gauge.axes[0].pointers = [{
+           type: 'Marker', value: 12, markerShape: 'Image',
+           imageUrl: '@Url.Content("~/Content/CircularGauge/Images/football.png")',
+           radius: '108%', markerWidth: 28, markerHeight: 28,
+           animation: { duration: 1500 }
+       }, {
+           type: 'Marker', value: 11, markerShape: 'Image',
+           imageUrl: '@Url.Content("~/Content/CircularGauge/Images/basketball.png")',
+           radius: '78%', markerWidth: 28, markerHeight: 28,
+           animation: { duration: 1200 }
+       }, {
+           type: 'Marker', value: 10, markerShape: 'Image',
+           imageUrl: '@Url.Content("~/Content/CircularGauge/Images/golfball.png")',
+           radius: '48%', markerWidth: 28, markerHeight: 28,
+           animation: { duration: 900 }
+       }, {
+           type: 'Marker', value: 12, markerShape: 'Image',
+           imageUrl: '@Url.Content("~/Content/CircularGauge/Images/Athletics.png")',
+           radius: '0%', markerWidth: 90, markerHeight: 90,
+           animation: { duration: 0 }
+       }, {
+           type: 'Marker', value: 0.1, markerShape: 'Image',
+           imageUrl: '@Url.Content("~/Content/CircularGauge/Images/girl1.png")',
+           radius: '108%', markerWidth: 28, markerHeight: 28,
+           animation: { duration: 1500 }
+       }, {
+           type: 'Marker', value: 0.1, markerShape: 'Image',
+           imageUrl: '@Url.Content("~/Content/CircularGauge/Images/man1.png")',
+           radius: '78%', markerWidth: 28, markerHeight: 28,
+           animation: { duration: 1500 }
+       }, {
+           type: 'Marker', value: 0.1, markerShape: 'Image',
+           imageUrl: '@Url.Content("~/Content/CircularGauge/Images/man2.png")',
+           radius: '48%', markerWidth: 28, markerHeight: 28,
+           animation: { duration: 1500 }
+       }];
+        for (var i = 0; i < sender.gauge.axes[0].annotations.length; i++) {
+            sender.gauge.axes[0].annotations[i].zIndex = "1";
+        }
+    }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the shot-put distance covered by the athletes by using the image pointer in gauge.
+        </p>
+    </div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the PointerImage in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+                }
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to use the pointer image for an axis in the circular gauge. Pointer value points out the
+            actual value set in the <b>Circular Gauge</b>. You can customize the <code>pointers</code> to improve the
+            appearance of <b>Gauge</b>.
+        </p>
+        <br>
+        <p>
+            In this sample, a pointer with image is used to show the shot-put distance thrown by the player.
+        </p>
+        <p>
+            More information on the pointers can be found in this
+            <a target="_blank" href="http://ej2.syncfusion.com/documentation">documentation section</a>.
+        </p>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+@section Title{
+                    <title>ASP.NET MVC Circular Gauge PointerImage Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of PointerImage in ASP.NET MVC Circular Gauge Control</h1>
+                }
