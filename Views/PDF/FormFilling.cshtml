@@ -23,7 +23,7 @@
                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @id = "Name" })
 
                 <label for="Gender">Gender</label>
-                @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { "Male", "Female", "Unspecified" }), "Select Gender", new { @class = "form-control", @id = "Gender" })
+                @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { "Male", "Female", "Unspecified" }), new { @class = "form-control", @id = "Gender" })
 
                 <label for="DateOfBirth">Date of Birth</label>
                 @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date", @id = "DateOfBirth" })
@@ -43,6 +43,7 @@
             <input id="fillForm" class="e-btn" type="submit" name="fillForm" style="width:150px; text-transform:capitalize" value="Fill Form" />
             <input id="fillAndFlatten" class="e-btn" type="submit" name="fillAndFlatten" style="width:150px; text-transform:capitalize" value="Fill and Flatten" />
         </div>
+    </div>
 }
 @section ActionDescription{
     <p>

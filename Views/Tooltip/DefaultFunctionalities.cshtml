@@ -3,7 +3,7 @@
 
     <div class="col-lg-8 control-section">
         <!-- Tooltip element  -->
-        @Html.EJS().Tooltip("Tooltip").Content("Let's go green to save the planet!!").ContentTemplate(@<div>
+        @Html.EJS().Tooltip("Tooltip").Content("Let's go green to save the planet!!").Position(Syncfusion.EJ2.Popups.Position.TopCenter).ContentTemplate(@<div>
             <!-- Target element  -->
             @Html.EJS().Button("btn").Content("Show Tooltip").Render()
         </div>).Render()

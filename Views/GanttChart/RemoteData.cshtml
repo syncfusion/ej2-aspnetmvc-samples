@@ -7,7 +7,7 @@
         <div class="content-wrapper">
             @(Html.EJS().Gantt("DefaultFunctionalities").DataSource(dataManger =>
                 {
-                    dataManger.Url("https://services.syncfusion.com/aspnet/production/api/GanttData").CrossDomain(true).Adaptor("WebApiAdaptor");
+                    dataManger.Url("https://ej2services.syncfusion.com/production/web-services/api/GanttData").CrossDomain(true).Adaptor("WebApiAdaptor");
                 })
                 .Height("450px")
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").Progress("Progress")

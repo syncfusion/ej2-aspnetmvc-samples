@@ -9,7 +9,7 @@
 
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().PivotView("pivotview").Width("100%").Height("450").EnableVirtualization(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.Url("https://services.syncfusion.com/aspnet/production/api/pivot/post").Mode(Syncfusion.EJ2.PivotView.RenderMode.Server).ExpandAll(false).EnableSorting(true)
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("450").EnableVirtualization(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.Url("https://ej2services.syncfusion.com/production/web-services/api/pivot/post").Mode(Syncfusion.EJ2.PivotView.RenderMode.Server).ExpandAll(false).EnableSorting(true)
             .FormatSettings(formatsettings => { formatsettings.Name("Price").Format("C0").Add(); formatsettings.Name("Sold").Format("N0").Add(); })
             .Rows(rows => { rows.Name("ProductID").Caption("Product ID").Add(); }).Columns(columns => { columns.Name("Year").Caption("Production Year").Add(); })
             .Values(values => { values.Name("Sold").Caption("Unit Sold").Add(); values.Name("Price").Caption("Sold Amount").Add();})).DataBound("onDataBound").ShowGroupingBar(true).ShowFieldList(true).AllowDataCompression(true).EnableVirtualization(true).Render()

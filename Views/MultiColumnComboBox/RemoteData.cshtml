@@ -4,7 +4,7 @@
     <div class="control-section">
         <div class='control-wrapper'>
             <div style='padding-top:40px;'>
-                @Html.EJS().MultiColumnComboBox("remote").Placeholder("Select the name").DataSource(obj => obj.Url("https://services.syncfusion.com/aspnet/production/api/Employees").Adaptor(
+                @Html.EJS().MultiColumnComboBox("remote").Placeholder("Select the name").DataSource(obj => obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").Adaptor(
                 "WebApiAdaptor").CrossDomain(true)).Fields(new MultiColumnComboBoxFieldSettings { Text = "FirstName", Value = "EmployeeID" }).Columns(col =>
                 {
                     col.Field("EmployeeID").Header("Employee ID").Width("120").Add();

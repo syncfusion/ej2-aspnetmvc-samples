@@ -475,7 +475,6 @@
     font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
 }
 
-
 /*sample header*/
 
 .sb-header-settings {
@@ -593,7 +592,8 @@
 .bootstrap5\.3 #search-input-wrapper .sb-reset-icon:before, .bootstrap5\.3-dark #search-input-wrapper .sb-reset-icon:before,
 .fluent #search-input-wrapper .sb-reset-icon:before, .fluent-dark #search-input-wrapper .sb-reset-icon:before,
 .tailwind #search-input-wrapper .sb-reset-icon:before, .tailwind-dark #search-input-wrapper .sb-reset-icon:before,
-.material3 #search-input-wrapper .sb-reset-icon:before {
+.material3 #search-input-wrapper .sb-reset-icon:before,
+.fluent2 #search-input-wrapper .sb-reset-icon:before, .fluent2-dark #search-input-wrapper .sb-reset-icon:before {
     content: '\e7e7';
 }
 .bootstrap4 #search-input-wrapper .sb-reset-icon:before {
@@ -606,7 +606,10 @@
     color: rgba(0, 0, 0, 0.56);
 }
 .material-dark .sb-reset-icon, .fabric-dark .sb-reset-icon, .bootstrap-dark .sb-reset-icon,
-.tailwind-dark .sb-reset-icon, .fluent-dark .sb-reset-icon, .highcontrast .sb-reset-icon {
+.tailwind-dark .sb-reset-icon, .fluent-dark .sb-reset-icon, .highcontrast .sb-reset-icon,
+.material3-dark .sb-reset-icon, .fluent-dark .sb-reset-icon, .highcontrast .sb-reset-icon,
+.fluent2-dark .sb-reset-icon, .fluent-dark .sb-reset-icon, .highcontrast .sb-reset-icon,
+.bootstrap5\.3-dark .sb-reset-icon, .fluent-dark .sb-reset-icon, .highcontrast .sb-reset-icon {
     color: #fff;
 }
 .toggle-active {
@@ -755,8 +758,8 @@
     color: #366cd7;
 }
 
-.sb-switch-popup li:first-child:hover {
-    color: #61ccff; 
+.fluent2-dark .sb-switch-popup li:first-child {
+    color: #479df3 !important;
 }
 
 .sb-switch-popup li:hover {
@@ -886,6 +889,10 @@
     font-family: "Roboto", "Segoe UI", "GeezaPro", "DejaVu Serif", "sans-serif";
     font-weight: 700;
     cursor: default;
+}
+
+.bootstrap5\.3 #search-popup .e-list-group-item .e-search-group {
+    color: #5a5a5a;
 }
 
 
@@ -1103,6 +1110,10 @@
     color: #000000;
 }
 
+.bootstrap5\.3 .sb-left-pane .e-treeview .e-list-item.e-active.e-hover .tree-text {
+    color: var(--color-sf-content-text-color);
+}
+
 #controlTree ul.e-list-parent {
     padding-left: 10px;
     overflow: hidden;
@@ -1244,6 +1255,10 @@
     color: #3C78EF;
 }
 
+#sb-source-tab .e-tab-text {
+    text-transform: lowercase;
+}
+
 .sb-right-pane-overlay {
     pointer-events: none;
 }
@@ -1368,6 +1383,16 @@
     padding-top: 20px;
     padding-bottom: 20px;
     min-height: 350px;
+}
+
+.fluent2-highcontrast .e-tab .e-content .e-item .control-section .rowdiv2,
+.material3-dark .e-tab .e-content .e-item .control-section .rowdiv2,
+.fluent-dark .e-tab .e-content .e-item .control-section .rowdiv2,
+.fluent2-dark .e-tab .e-content .e-item .control-section .rowdiv2,
+.bootstrap5\.3-dark .e-tab .e-content .e-item .control-section .rowdiv2,
+.tailwind-dark .e-tab .e-content .e-item .control-section .rowdiv2,
+.highcontrast .e-tab .e-content .e-item .control-section .rowdiv2 {
+    color: #000;
 }
 
 .sb-sample-content-area {
@@ -1868,6 +1893,11 @@ a.sb-ad-link, a.sb-ad-link:hover, a.sb-ad-link:active {
     .sb-right-pane.e-view.control-fullview .sb-ad-points-div {
         margin-left: 0px;
     }
+
+    .tailwind.e-bigger .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap, .e-tab.e-bigger .e-tab-header .e-toolbar-item .e-tab-wrap,
+    .tailwind-dark.e-bigger .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap, .e-tab.e-bigger .e-tab-header .e-toolbar-item .e-tab-wrap {
+        padding: 0px 12px;
+    }
 }
 
 @media (max-width: 447px) {
@@ -2258,6 +2288,12 @@ a.sb-ad-link, a.sb-ad-link:hover, a.sb-ad-link:active {
     .sb-left-pane-header {
         display: block;
     }
+    .highcontrast.e-bigger .e-samplestatus.preview.tree, .e-bigger .e-samplestatus.Preview.tree,
+    .highcontrast.e-bigger .e-samplestatus.update.tree, .e-bigger .e-samplestatus.Update.tree,
+    .highcontrast.e-bigger .e-samplestatus.new.tree, .e-bigger .e-samplestatus.New.tree {
+        top: 4px;
+        line-height: 18px;
+    }
     /*source tab header*/
     .sb-desktop-setting {
         display: none;
@@ -2278,8 +2314,7 @@ a.sb-ad-link, a.sb-ad-link:hover, a.sb-ad-link:active {
         text-align: center;
         height: 100%;
     }
-    .highcontrast .sb-mobilefooter > .e-btn.e-flat, .material-dark .sb-mobilefooter > .e-btn.e-flat, .fabric-dark .sb-mobilefooter > .e-btn.e-flat
-    .bootstrap-dark .sb-mobilefooter > .e-btn.e-flat, .tailwind-dark .sb-mobilefooter > .e-btn.e-flat {
+    .highcontrast .sb-mobilefooter > .e-btn.e-flat, .material-dark .sb-mobilefooter > .e-btn.e-flat, .fabric-dark .sb-mobilefooter > .e-btn.e-flat .bootstrap-dark .sb-mobilefooter > .e-btn.e-flat, .tailwind-dark .sb-mobilefooter > .e-btn.e-flat {
         background: #000;
         color: #fff;
     }
@@ -2314,6 +2349,9 @@ a.sb-ad-link, a.sb-ad-link:hover, a.sb-ad-link:active {
         font-size: 15px;
         display: inline-block;
         z-index: 1001;
+    }
+    .tailwind .sb-mobilefooter, .tailwind-dark .sb-mobilefooter {
+        background-color: unset;
     }
     .sb-mobilefooter>button:focus {
         outline: none;
@@ -3463,6 +3501,10 @@ body.tailwind-dark,
     border-right: none;
 }
 
+.material3 .sb-switch-popup #switch-sb li:hover, .bootstrap5\.3 .sb-switch-popup #switch-sb li:hover, .fluent .sb-switch-popup #switch-sb li:hover, .fluent2 .sb-switch-popup #switch-sb li:hover, .tailwind .sb-switch-popup #switch-sb li:hover {
+    background: rgb(238, 238, 238) !important;
+}
+
 .highcontrast .setting-responsive .sb-responsive-items.active {
     background: #ffd939;
     color: #000000;
@@ -3691,6 +3733,10 @@ body.tailwind-dark,
 
 .bootstrap5-dark .sb-left-pane .e-listview .e-list-item.e-hover, .bootstrap5-dark .sb-theme-popup li:hover, .sb-search-result .e-list-item:hover, .sb-switch-popup li:hover {
     background-color: #464d53 !important;
+}
+
+.fluent .sb-search-result .e-list-item:hover, .fluent2 .sb-search-result .e-list-item:hover, .tailwind .sb-search-result .e-list-item:hover, .material3 .sb-search-result .e-list-item:hover, .bootstrap5\.3 .sb-search-result .e-list-item:hover {
+    background-color: #e2f2ff !important;
 }
 
 .bootstrap5\.3-dark .sb-left-pane .e-listview .e-list-item.e-hover, .bootstrap5\.3-dark .sb-theme-popup li:hover, .sb-search-result .e-list-item:hover, .sb-switch-popup li:hover {
@@ -4593,19 +4639,23 @@ body.fluent2-dark,
 .fluent2-dark .sb-icon-Home,
 .fluent2-dark .sb-component-name,
 .fluent2-dark .sb-left-pane .e-listview .e-list-group-item,
-.fluent2-dark .sb-theme-popup li.active .sb-theme-select {
+.fluent2-dark .sb-theme-popup li.active .sb-theme-select,
+.fluent2-dark .sb-theme-popup li.active .switch-text{
     color: #115ea3;
 }
 
+.fluent2-dark .sb-theme-popup li.e-list:hover,
+.fluent2-dark .sb-theme-popup li#material3:hover {
+    color: #FFFFFF;
+}
 
 .fluent2-dark .sb-left-pane .e-listview .e-list-item.e-active, .fluent2-dark .sb-left-pane .e-listview .e-list-item.e-active:hover, .fluent2-dark .cont {
     background-color: #115ea3;
 }
 
-
-/*.fluent2-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
+.fluent2-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
     color: #000;
-}*/
+}
 
 .fluent2-dark .sb-search-result .e-list-item:hover,
 .fluent2-dark .sb-control-navigation .e-treeview .e-list-item.e-active > .e-fullrow {
@@ -4619,6 +4669,10 @@ body.fluent2-dark,
 
 .fluent2-dark .sb-content-tab > .e-tab > .e-tab-header > .e-items.e-toolbar-items > .e-indicator {
     background: #115ea3;
+}
+.fluent2-dark .sb-content-tab > .e-tab > .e-tab-header > .e-toolbar-items .e-toolbar-item.e-active::before {
+    left:auto;
+    right:auto;
 }
 
 .fluent2-dark .sb-content-tab > .e-tab > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item > .e-tab-wrap > .e-text-wrap > .e-tab-text {
@@ -4668,7 +4722,7 @@ body.fluent2-dark,
 
     .fluent2-dark .setting-responsive .sb-responsive-items.active {
         background-color: #115ea3;
-        color: #333333;
+        color: #FFFFFF;
     }
 
 .fluent2-dark .sb-content-tab > .e-tab > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item:hover > .e-tab-wrap > .e-text-wrap > .e-tab-text, .fluent2-dark .sb-source-section .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text, .fluent2-dark .sb-source-section .e-tab .e-tab-header .e-toolbar-item:hover .e-tab-text {

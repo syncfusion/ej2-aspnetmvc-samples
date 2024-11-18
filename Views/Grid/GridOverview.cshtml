@@ -45,7 +45,7 @@
     </script>
 
     <script type="text/javascript">
-        var hostUrl = 'https://services.syncfusion.com/aspnet/production/';
+        var hostUrl = 'https://ej2services.syncfusion.com/production/web-services/';
         var urlapi = new ej.data.DataManager({
             url: hostUrl + "api/UrlDataSource",
             adaptor: new ej.data.UrlAdaptor()
@@ -421,6 +421,11 @@
             margin-top: 36px;
         }
         }
+
+        @@-moz-document url-prefix() {     
+            #GridOverview.e-grid.e-grid-min-height .e-rowcell {       
+                line-height: 0 !important;
+        } }
 
         #samplecontainer {
             padding-top: 5px;

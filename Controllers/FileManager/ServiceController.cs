@@ -87,42 +87,60 @@ namespace EJ2MVCSampleBrowser.Controllers
         // Processing the Upload operation
         public ActionResult Upload(string path, IList<System.Web.HttpPostedFileBase> uploadFiles, string action)
         {
-            // Here we have restricted the upload operation for our online samples
-            if (Request.Url.Authority == "ej2.syncfusion.com")
+            try
             {
-                HttpResponse Response = System.Web.HttpContext.Current.Response;
-                Response.Clear();
-                Response.ContentType = "application/json; charset=utf-8";
-                Response.StatusCode = 403;
-                Response.StatusDescription = "File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install Syncfusion Essential Studio on your machine and run the demo";
-                Response.End();
-            }
-            // Use below code for performing upload operation
-            else
-            {
-                FileManagerResponse uploadResponse;
-                foreach (var file in uploadFiles)
+                // Here we have restricted the upload operation for our online samples
+                if (Request.Url.Authority == "ej2.syncfusion.com")
                 {
-                    var folders = (file.FileName).Split('/');
-                    // checking the folder upload
-                    if (folders.Length > 1)
+                    HttpResponse Response = System.Web.HttpContext.Current.Response;
+                    Response.Clear();
+                    Response.ContentType = "application/json; charset=utf-8";
+                    Response.StatusCode = 403;
+                    Response.StatusDescription = "File Manager's upload functionality is restricted in the online demo. If you need to test upload functionality, please install Syncfusion Essential Studio on your machine and run the demo";
+                    Response.End();
+                }
+                // Use below code for performing upload operation
+                else
+                {
+                    FileManagerResponse uploadResponse;
+                    foreach (var file in uploadFiles)
                     {
-                        for (var i = 0; i < folders.Length - 1; i++)
+                        var folders = (file.FileName).Split('/');
+                        // checking the folder upload
+                        if (folders.Length > 1)
                         {
-                            string newDirectoryPath = Path.Combine(this.basePath + path, folders[i]);
-                            if (!Directory.Exists(newDirectoryPath))
+                            for (var i = 0; i < folders.Length - 1; i++)
                             {
-                                this.operation.ToCamelCase(this.operation.Create(path, folders[i]));
+                                string newDirectoryPath = Path.Combine(this.basePath + path, folders[i]);
+                                if (Path.GetFullPath(newDirectoryPath) != (Path.GetDirectoryName(newDirectoryPath) + Path.DirectorySeparatorChar + folders[i]))
+                                {
+                                    throw new UnauthorizedAccessException("Access denied for Directory-traversal");
+                                }
+                                if (!Directory.Exists(newDirectoryPath))
+                                {
+                                    this.operation.ToCamelCase(this.operation.Create(path, folders[i]));
+                                }
+                                path += folders[i] + "/";
                             }
-                            path += folders[i] + "/";
                         }
                     }
+                    // Invoking upload operation with the required paramaters
+                    // path - Current path where the file is to uploaded; uploadFiles - Files to be uploaded; action - name of the operation(upload)
+                    uploadResponse = operation.Upload(path, uploadFiles, action, null);
                 }
-                // Invoking upload operation with the required paramaters
-                // path - Current path where the file is to uploaded; uploadFiles - Files to be uploaded; action - name of the operation(upload)
-                uploadResponse = operation.Upload(path, uploadFiles, action, null);
+                return Content("");
             }
-            return Content("");
+            catch (Exception e)
+            {
+                ErrorDetails er = new ErrorDetails();
+                er.Message = e.Message.ToString();
+                er.Code = "417";
+                er.Message = "Access denied for Directory-traversal";
+                Response.Clear();
+                Response.ContentType = "application/json; charset=utf-8";
+                Response.StatusCode = Convert.ToInt32(er.Code);
+                return Content("");
+            }
         }
         // Processing the Download operation
         public ActionResult Download(string downloadInput)

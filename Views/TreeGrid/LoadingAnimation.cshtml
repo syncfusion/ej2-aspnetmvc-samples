@@ -7,7 +7,7 @@
            <div class="control-section">
                 @Html.EJS().TreeGrid("TreeGrid").AllowSorting().DataSource(dataManger =>
                 {
-                dataManger.Url("https://services.syncfusion.com/aspnet/production/api/SelfReferenceData")
+                dataManger.Url("https://ej2services.syncfusion.com/production/web-services/api/SelfReferenceData")
                 .Adaptor("WebApiAdaptor")
                 .CrossDomain(true);
                 }).Columns(col =>

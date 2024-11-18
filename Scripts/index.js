@@ -349,6 +349,7 @@ function renderSbPopups() {
 
     next.appendTo('#next-sample');
 }
+
 function loadCulture(cul) {
 	if (cul != 'en') {
 		var locale = new ej.base.Ajax('../Scripts/locale/' + cul + '.json', 'GET', false);
@@ -356,12 +357,13 @@ function loadCulture(cul) {
 			ej.base.L10n.load(JSON.parse(value));
 		});
 		var ajax = new ej.base.Ajax('../Scripts/cldr-data/main/' + cul + '/all.json', 'GET', false);
-		ajax.send().then(function (result) {
+                ajax.send().then(function (result) {
 			ej.base.loadCldr(JSON.parse(result));
 			changeCulture(cul);
 		});
 	}
 }
+
 function changeCulture(cul) {
     if (cul === 'ar') {
         changeRtl(true);

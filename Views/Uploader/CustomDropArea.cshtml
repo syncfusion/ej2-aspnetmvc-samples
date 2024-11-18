@@ -14,7 +14,7 @@
             </div>
             <div id="dropArea">
                 <span id="drop" class="droparea"><a id="browse" onclick="browseClick()"><u>Browse</u></a> </span>
-                @Html.EJS().Uploader("fileupload").DropArea("#dropTarget").Template("#uploaderTemplate").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("https://services.syncfusion.com/aspnet/production/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://services.syncfusion.com/aspnet/production/api/FileUploader/Remove") }).Selected("onSelect").Success("onUploadSuccess").Failure("onUploadFailed").Progress("onUploadInProgress").Removing("onFileRemove").AllowedExtensions(".pdf, .png, .txt").Render()
+                @Html.EJS().Uploader("fileupload").DropArea("#dropTarget").Template("#uploaderTemplate").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Remove") }).Selected("onSelect").Success("onUploadSuccess").Failure("onUploadFailed").Progress("onUploadInProgress").Removing("onFileRemove").AllowedExtensions(".pdf, .png, .txt").Render()
             </div>
         </div>
     </div>
