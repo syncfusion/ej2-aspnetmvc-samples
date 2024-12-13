@@ -1,0 +1,167 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.InteractiveChat
+@using Newtonsoft.Json
+
+
+@section ControlsSection{
+    <div class="col-lg-8 control-section sb-property-border">
+        <div class="api-chatui">
+            @Html.EJS().ChatUI("chatui").HeaderText("Design Community").HeaderIconCss("chat_header_icon").ShowTimeBreak(true).TimeStampFormat("MM/dd hh:mm a").Created("onCreated").User(new ChatUIUser() { Id = "admin", User = "Alice" }).Render()
+        </div>
+    </div>
+    <div class="col-lg-4 property-section chat-property-section">
+        <div class="property-panel-header"> Properties </div>
+        <div class="property-panel-content">
+            <table class="property-panel-table">
+                <tbody>
+                    <tr>
+                        <td> Timestamp format </td>
+                        <td style="padding-right: 10px">
+                            @Html.EJS().DropDownList("chat_dateformats").Placeholder("Format").Width("180px").Value(ViewBag.DDBListValue).DataSource(ViewBag.TimeStampFormatOptions).Change("onTimeStampFormatChange").Render()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <div>Show timestamp</div> </td>
+                        <td style="padding-right: 10px">
+                            @Html.EJS().Switch("chatTimestamp").Checked(true).Change("onTimeStampSwitchChange").Render()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <div>Show timebreak</div> </td>
+                        <td style="padding-right: 10px">
+                            @Html.EJS().Switch("chatTimebreak").Checked(true).Change("onTimeBreakSwitchChange").Render()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <div>Show header</div> </td>
+                        <td style="padding-right: 10px">
+                            @Html.EJS().Switch("chatHeader").Checked(true).Change("onHeaderSwitchChange").Render()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <div>Show footer</div> </td>
+                        <td style="padding-right: 10px">
+                            @Html.EJS().Switch("chatFooter").Checked(true).Change("onFooterSwitchChange").Render()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <div>Typing users</div> </td>
+                        <td style="padding-right: 10px">
+                            @Html.EJS().MultiSelect("chat_typingUsers").Placeholder("Typing users...").Select("onTypingUsersSelect").Removed("onTypingUsersRemove").DataSource(ViewBag.TypingUserOptions).Render()
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+        .api-chatui {
+            height: 500px;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .api-chatui .chat_header_icon {
+            background-image: url('./../Content/chatui/images/public-event.png');
+            background-color: unset;
+        }
+
+        .chat-property-section .property-panel-content td {
+            padding: 10px 0px;
+        }
+
+        .chat-property-section .e-multiselect,
+        .chat-property-section .e-multi-select-wrapper {
+            padding-left: 0;
+            padding-top: 0;
+        }
+
+        @@media only screen and (max-width: 850px) {
+            .api-chatui {
+                width: 80%;
+            }
+        }
+    </style>
+    @*custom code end*@
+}
+
+@section PreScripts {
+    <script>
+        var chatUIObj;
+        var chatMessages = @Html.Raw(JsonConvert.SerializeObject(ViewBag.CommunityMessagedata));
+        chatMessages.forEach(message => {
+            message.timeStamp = new Date(message.timeStamp);
+        });
+        function onCreated() {
+            var chatUiEle = document.getElementById('chatui');
+            chatUIObj = ej.base.getInstance(chatUiEle, ejs.interactivechat.ChatUI);
+            chatUIObj.messages = chatMessages;
+            chatUIObj.dataBind();
+        }
+
+        function onTimeStampFormatChange(args) {
+            chatUIObj.timeStampFormat = args.value.toString();
+        }
+
+        function onTimeStampSwitchChange(args) {
+            chatUIObj.showTimeStamp = args.checked;
+        }
+
+        function onTimeBreakSwitchChange(args) {
+            chatUIObj.showTimeBreak = args.checked;
+        }
+
+        function onHeaderSwitchChange(args) {
+            chatUIObj.showHeader = args.checked;
+        }
+
+        function onFooterSwitchChange(args) {
+            chatUIObj.showFooter = args.checked;
+        }
+
+        function onTypingUsersSelect(args) {
+            const user = { user: args.itemData.value, avatarBgColor: '#bacbe4' };
+            if (['Laura', 'Charlie'].includes(args.itemData.value)) {
+                user.avatarBgColor = args.itemData.value === 'Charlie' ? '#e6cdde' : '#dec287';
+                user.avatarUrl = `./../Content/chatui/images/${args.itemData.value.toLowerCase()}.png`;
+            }
+            chatUIObj.typingUsers = [...chatUIObj.typingUsers, user];
+        }
+
+        function onTypingUsersRemove(args) {
+            chatUIObj.typingUsers = chatUIObj.typingUsers.filter(user => user.user !== args.itemData.value);
+        }
+    </script>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the API's in ASP.NET MVC AIAssistView control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the properties available in the Chat UI control, showcasing how various features can be customized through the property pane. It highlights the flexibility of the control, allowing users to adjust timestamps, headers, footers, time breaks, and more.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>In this sample, the following APIs and properties are demonstrated for customization:</p>
+        <ul>
+            <li><code>timeStampFormat</code>: Allows users to change the timestamp format by selecting an option from the property pane.</li>
+            <li><code>showTimeStamp</code>: Controls whether the timestamp is displayed in the chat, toggled via the property pane.</li>
+            <li><code>showTimeBreak</code>: Enables or disables the display of time breaks in the chat interface.</li>
+            <li><code>showHeader</code>: Lets users toggle the visibility of the chat header.</li>
+            <li><code>showFooter</code>: Toggles the visibility of the chat footer.</li>
+            <li><code>typingUsers</code>: Allows users to manage the list of users who are typing, updated through the multi-select options in the property pane.</li>
+        </ul>
+        <p>
+            These properties can be adjusted via the property pane for a highly flexible and customizable chat experience.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC AIAssistView API's Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of API's in ASP.NET MVC AIAssistView Control</h1>
+}
