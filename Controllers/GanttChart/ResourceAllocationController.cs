@@ -62,27 +62,27 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
             GanttResources Record1 = new GanttResources()
             {
                 ResourceId = 1,
-                ResourceName = "Rose Fuller"
+                ResourceName = "Martin Tamer"
             };
             GanttResources Record2 = new GanttResources()
             {
                 ResourceId = 2,
-                ResourceName = "Fuller King"
+                ResourceName = "Rose Fuller"
             };
             GanttResources Record3 = new GanttResources()
             {
                 ResourceId = 3,
-                ResourceName = "Tamer Vinet"
+                ResourceName = "Margaret Buchanan"
             };
             GanttResources Record4 = new GanttResources()
             {
                 ResourceId = 4,
-                ResourceName = "Van Jack"
+                ResourceName = "Fuller King"
             };
             GanttResources Record5 = new GanttResources()
             {
                 ResourceId = 5,
-                ResourceName = "Bergs Anton"
+                ResourceName = "Davolio Fuller"
             };
             GanttResourcesCollection.Add(Record1);
             GanttResourcesCollection.Add(Record2);

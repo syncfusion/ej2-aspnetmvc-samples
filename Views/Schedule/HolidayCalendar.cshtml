@@ -5,7 +5,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").CssClass("schedule-holiday-calendar").Width("100%").RowAutoHeight(true).Height("100%").SelectedDate(new DateTime(DateTime.Today.Year, 8, 5)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).EventRendered("onEventRender").ActionBegin("onActionBegin").DragStop("onEventDragOrResize").ResizeStop("onEventDragOrResize").CellClick("clickOnHoliday").CellDoubleClick("clickOnHoliday").Render();
+            @Html.EJS().Schedule("schedule").CssClass("schedule-holiday-calendar").Width("100%").RowAutoHeight(true).Height("100%").SelectedDate(new DateTime(DateTime.Today.Year, 8, 5)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).EventRendered("onEventRender").ActionBegin("onActionBegin").DragStop("onEventDragOrResize").ResizeStop("onEventDragOrResize").CellClick("clickOnHoliday").CellDoubleClick("clickOnHoliday").Render()
             @Html.EJS().Toast("schedule-reminder").Title("Information!").Position(p => p.X("Right")).CssClass("e-toast-info").Icon("e-info toast-icons").Target(".e-schedule").Render()
         </div>
     </div>

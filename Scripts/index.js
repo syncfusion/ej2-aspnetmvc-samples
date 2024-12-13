@@ -10,9 +10,9 @@ var searchInstance;
 var headerThemeSwitch = document.getElementById('header-theme-switcher');
 var settingElement = ej.base.select('.sb-setting-btn');
 var themeList = document.getElementById('themelist');
-var themes = ['material3', 'fluent', 'fluent2', 'bootstrap5.3', 'tailwind', 'highcontrast', 'fluent2-highcontrast'];
+var themes = ['material3', 'fluent', 'fluent2', 'bootstrap5.3', 'tailwind3', 'highcontrast', 'fluent2-highcontrast'];
 //var themes= ['material3', 'material3-dark', 'fluent', 'fluent-dark', 'bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'highcontrast'];
-var defaultTheme = 'fluent2';
+var defaultTheme = 'tailwind3';
 var themeDropDown;
 var contentTab;
 var ArrayItem;
@@ -92,7 +92,7 @@ var currentSampleID;
 var currentControl;
 var newYear = new Date().getFullYear();
 var copyRight = document.querySelector('.sb-footer-copyright');
-copyRight.innerHTML = "Copyright © 2001 - " + newYear + " Syncfusion Inc.";
+copyRight.innerHTML = "Copyright © 2001 - " + newYear + " Syncfusion<sup>&reg;</sup> Inc.";
 if(ej.base.registerLicense != undefined){
 	ej.base.registerLicense('');
 }
@@ -349,21 +349,19 @@ function renderSbPopups() {
 
     next.appendTo('#next-sample');
 }
-
 function loadCulture(cul) {
 	if (cul != 'en') {
 		var locale = new ej.base.Ajax('../Scripts/locale/' + cul + '.json', 'GET', false);
 		locale.send().then(function (value) {
 			ej.base.L10n.load(JSON.parse(value));
 		});
-		var ajax = new ej.base.Ajax('../Scripts/cldr-data/main/' + cul + '/all.json', 'GET', false);
-                ajax.send().then(function (result) {
-			ej.base.loadCldr(JSON.parse(result));
-			changeCulture(cul);
-		});
-	}
+    }
+    var ajax = new ej.base.Ajax('../Scripts/cldr-data/main/' + cul + '/all.json', 'GET', false);
+    ajax.send().then(function (result) {
+        ej.base.loadCldr(JSON.parse(result));
+        changeCulture(cul);
+    });
 }
-
 function changeCulture(cul) {
     if (cul === 'ar') {
         changeRtl(true);
@@ -956,7 +954,10 @@ function loadTheme(theme) {
     themeList.querySelector('.active').classList.remove('active');
     /* themeList.querySelector('#' + theme).classList.add('active');*/
     var currentUpdatedTheme = theme.replace("-dark", "");
-    currentUpdatedTheme == 'bootstrap5.3' ? themeList.querySelector('#bootstrap5\\.3').classList.add('active') : themeList.querySelector('#' + currentUpdatedTheme).classList.add('active');
+    if (currentUpdatedTheme != "tailwind")
+    {
+        currentUpdatedTheme == 'bootstrap5.3' ? themeList.querySelector('#bootstrap5\\.3').classList.add('active') : themeList.querySelector('#' + currentUpdatedTheme).classList.add('active');
+    }
     var path = location.origin + baseurl;
     var ajax = new ej.base.Ajax(path + 'Content/styles/' + theme + '.css', 'GET', false);
     selectedTheme = theme;
@@ -1604,7 +1605,7 @@ function loadJSON() {
     overlay();
     changeMouseOrTouch(switchText);
     // localStorage.removeItem('ej2-switch');
-    ej.base.enableRipple(selectedTheme === defaultTheme || !selectedTheme);
+    ej.base.enableRipple(selectedTheme?.indexOf('material3') !== -1 || !selectedTheme);
     loadTheme(selectedTheme);
     loadCulture(switchlocalization);
 }

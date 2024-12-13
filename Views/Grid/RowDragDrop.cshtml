@@ -6,18 +6,18 @@
     <div class="col-lg-6">
         @Html.EJS().Grid("RowDragDrop").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSelection().AllowRowDragAndDrop(true).Columns(col =>
 {
-    col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
-    col.Field("CustomerID").HeaderText("Customer Name").Width("150").ShowInColumnChooser(false).ValidationRules(new { required = true, minLength = 5 }).Add();
-    col.Field("OrderDate").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").Add();
+    col.Field("OrderID").Type("number").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+    col.Field("CustomerID").Type("string").HeaderText("Customer Name").Width("150").ShowInColumnChooser(false).ValidationRules(new { required = true, minLength = 5 }).Add();
+    col.Field("OrderDate").Type("date").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").Add();
 
 }).AllowPaging().AllowSorting().AllowFiltering().RowDragStart("rowDragStart").FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).SelectionSettings(select=>select.Type( Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(1).PageSize(10)).RowDropSettings(new Syncfusion.EJ2.Grids.GridRowDropSettings() { TargetID = "DestGrid" }).Render()
     </div>
     <div class="col-lg-6">
         @Html.EJS().Grid("DestGrid").AllowSelection().AllowRowDragAndDrop(true).Columns(col =>
 {
-    col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
-    col.Field("CustomerID").HeaderText("Customer Name").Width("150").ShowInColumnChooser(false).ValidationRules(new { required = true, minLength = 5 }).Add();
-    col.Field("OrderDate").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").Add();
+    col.Field("OrderID").Type("number").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+    col.Field("CustomerID").Type("string").HeaderText("Customer Name").Width("150").ShowInColumnChooser(false).ValidationRules(new { required = true, minLength = 5 }).Add();
+    col.Field("OrderDate").Type("date").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").Add();
 
 }).AllowPaging().AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).SelectionSettings(select=>select.Type( Syncfusion.EJ2.Grids.SelectionType.Multiple)).PageSettings(page => page.PageCount(1).PageSize(5)).RowDropSettings(new Syncfusion.EJ2.Grids.GridRowDropSettings() { TargetID = "RowDragDrop" }).Render()
     </div>

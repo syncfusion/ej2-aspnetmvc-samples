@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.MultiColumnComboBox
     {
         public ActionResult Filtering()
         {
-            ViewBag.data = new EJ2MVCSampleBrowser.Models.WorkDetails().GetAllRecords();
+            ViewBag.data = new EJ2MVCSampleBrowser.Models.Employee().GetAllRecords();
             return View();
         }
     }

@@ -5,15 +5,15 @@
     <div class="control-section">
         <div class="control-wrapper">
             <div style='padding-top:30px;'>
-                @Html.EJS().MultiColumnComboBox("keyboardnav").Placeholder("Select an author").Fields(new MultiColumnComboBoxFieldSettings
-                { Text = "Author", Value = "Title" }).Columns(col =>
+                <label>Select a product</label>
+                @Html.EJS().MultiColumnComboBox("keyboardnav").Placeholder("Select any product").Fields(new MultiColumnComboBoxFieldSettings
+                { Text = "ProductName", Value = "ProductID" }).Columns(col =>
                 {
-                    col.Field("Title").Header("Title").Width("180").Add();
-                    col.Field("Author").Header("Author").Width("150").Add();
-                    col.Field("Genre").Header("Genre").Width("100").Add();
-                    col.Field("PublishedYear").Header("Published Year").Width("120").Add();
-                    col.Field("Price").Header("Price").Width("80").Add();
-                }).PopupHeight("230px").DataSource((IEnumerable<BookDetails>)ViewBag.data).Render()
+                    col.Field("ProductID").Header("Product ID").Width("100").Add();
+                    col.Field("ProductName").Header("Product Name").Width("200").Add();
+                    col.Field("UnitPrice").Header("UnitPrice").Width("90").Add();
+                    col.Field("UnitsInStock").Header("Units In Stock").Width("120").Add();
+                }).PopupHeight("210px").PopupWidth("650px").DataSource((IEnumerable<ProductDetails>)ViewBag.data).Render()
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
     <style>
         .control-wrapper {
             margin: 0 auto;
-            width: 650px;
+            width: 250px;
         }
 
         @@media only screen and (max-width: 480px) {

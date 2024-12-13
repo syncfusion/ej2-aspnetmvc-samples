@@ -6,12 +6,12 @@
             <div class="control-section">
                 @Html.EJS().Grid("Selection").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSelection().RowSelecting("selectingEvent").CellSelecting("selectingEvent").Columns(col =>
        {
-           col.Field("EmployeeID").HeaderText("Employee ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
-           col.Field("FirstName").HeaderText("Name").Width("125").ValidationRules(new { required = true, minLength = 5 }).Add();
+           col.Field("EmployeeID").HeaderText("Employee ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).Add();
+           col.Field("FirstName").HeaderText("Name").Width("125").Add();
            col.Field("Title").HeaderText("Title").Width("180").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-           col.Field("HireDate").HeaderText("Hire Date").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").EditType("datepickeredit").Add();
+           col.Field("HireDate").HeaderText("Hire Date").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").Add();
 
-       }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).Render()
+       }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).Render()
             </div>
         </div>
     </div>

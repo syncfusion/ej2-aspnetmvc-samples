@@ -5,7 +5,7 @@
 {
     series.StartAngle(270).EndAngle(90).DataLabel(dl => dl.EnableRotation(true).Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).ConnectorStyle(cs => cs.Length("10%")).Font(ft => ft.FontWeight("600").Color("#ffffff"))).InnerRadius("40%").XName("Browser").YName("Users").TooltipMappingName("tooltipMappingName").DataSource(ViewBag.PieChartPoints).Add();
 }
-            ).EnableBorderOnMouseMove(false).LegendSettings(lg => lg.Visible(false)).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.tooltip}</b>").Header("")).Load("load").Annotations(an =>
+            ).EnableBorderOnMouseMove(false).LegendSettings(lg => lg.Visible(false)).Tooltip(tp => tp.Enable(true).EnableHighlight(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.tooltip}</b>").Header("")).Load("load").Annotations(an =>
                  {
                      an
                 .Region(Syncfusion.EJ2.Charts.Regions.Series).Add();

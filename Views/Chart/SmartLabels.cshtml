@@ -5,7 +5,7 @@
         {
             series.StartAngle(60).DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs => cs.Length("20px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)).Font(ft => ft.FontWeight("600"))).XName("Country").YName("Medal").DataSource(ViewBag.ChartPoints).Add();
         }
-            ).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>").Header("")).EnableSmartLabels(true).LegendSettings(ls => ls.Visible(false)).Title("Rio Olympics Gold").Load("load").Render()
+            ).Tooltip(tp => tp.Enable(true).EnableHighlight(true).Format("<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>").Header("")).EnableSmartLabels(true).LegendSettings(ls => ls.Visible(false)).Title("Rio Olympics Gold").Load("load").Render()
     </div>
     
     <script>

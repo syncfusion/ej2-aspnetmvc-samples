@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Events()
         {
-            string hostUrl = "https://services.syncfusion.com/aspnet/production/";
+            string hostUrl = "https://ej2-aspcore-service.azurewebsites.net/";
             ViewBag.AjaxSettings = new
             {
                 url = hostUrl + "api/FileManager/FileOperations",

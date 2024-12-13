@@ -7,8 +7,8 @@
 #endregion
 using System.Collections.Generic;
 using System.Web.Mvc;
+using EJ2MVCSampleBrowser.Models;
 using Syncfusion.EJ2.Navigations;
-using static EJ2MVCSampleBrowser.Controllers.Carousel.CarouselController;
 
 namespace EJ2MVCSampleBrowser.Controllers.AIAssistView
 {
@@ -36,13 +36,15 @@ namespace EJ2MVCSampleBrowser.Controllers.AIAssistView
             {
                 ImgPath = Url.Content("~/Content/carousel/images/london.jpg"),
                 Suggestion = "Steps to publish a e-book with marketing strategy"
-                });
+            });
             datasrc.Add(new AIAssitCarouselDataBinding
             {
                 ImgPath = Url.Content("~/Content/carousel/images/tokyo.jpg"),
                 Suggestion = "What tools or apps can help me prioritize tasks?"
             });
             ViewBag.CarouselDataSource = datasrc;
+            ViewBag.PromptResponseData = new PromptResponseData().GetTemplatePromptResponseData();
+            ViewBag.PromptSuggestionData = new PromptResponseData().GetAllSuggestionData();
             return View();
         }
 

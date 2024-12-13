@@ -4,15 +4,15 @@
     <div class="control-section">
         <div class="control-wrapper">
             <div style='padding-top:30px;'>
-                @Html.EJS().MultiColumnComboBox("virtual").Placeholder("Select an engineer").Fields(new MultiColumnComboBoxFieldSettings
-                { Text = "Engineer", Value = "TaskID" }).GridSettings(new MultiColumnComboBoxGridSettings { RowHeight = 40 }).Columns(col =>
+                <label>Select an employee</label>
+                @Html.EJS().MultiColumnComboBox("virtual").Placeholder("Se.g. Alice Johnson").Fields(new MultiColumnComboBoxFieldSettings
+                { Text = "Name", Value = "Name" }).GridSettings(new MultiColumnComboBoxGridSettings { RowHeight = 40 }).Columns(col =>
                 {
-                    col.Field("TaskID").Header("Task ID").Width("70").Add();
-                    col.Field("Engineer").Header("Engineer").Width("100").Add();
-                    col.Field("Designation").Header("Designation").Width("100").Add();
-                    col.Field("Estimation").Header("Estimation").Width("90").Add();
-                    col.Field("Status").Header("Status").Width("90").Add();
-                }).DataSource(@Model.Records).PopupHeight("230px").EnableVirtualization(true).Render()
+                    col.Field("Name").Header("Name").Width("100").Add();
+                    col.Field("Departments").Header("Departments").Width("100").Add();
+                    col.Field("Role").Header("Role").Width("90").Add();
+                    col.Field("Location").Header("Location").Width("90").Add();
+                }).DataSource(@Model.Records).PopupHeight("210px").PopupWidth("585px").EnableVirtualization(true).Render()
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
     <style>
         .control-wrapper {
             margin: 0 auto;
-            width: 585px;
+            width: 250px;
         }
 
         @@media only screen and (max-width: 480px) {

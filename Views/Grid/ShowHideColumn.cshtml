@@ -11,7 +11,7 @@
            {
                col.Field("CategoryName").HeaderText("Category Name").Width("160").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
                col.Field("ProductName").HeaderText("Product Name").Width("170").Add();
-               col.Field("UnitsInStock").HeaderText("UnitsIn Stock").Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("UnitsInStock").HeaderText("Units In Stock").Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
                col.Field("Discontinued").HeaderText("Discontinued").Width("150").DisplayAsCheckBox(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Type("boolean").Add();
 
            }).AllowPaging().PageSettings(page => page.PageCount(2)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Render()

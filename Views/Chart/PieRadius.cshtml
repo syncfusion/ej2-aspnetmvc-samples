@@ -16,7 +16,7 @@
                 .EnableAnimation(true)
                 .EnableBorderOnMouseMove(false)
                 .Title("Pie with different Radius")
-                .Tooltip(tp => tp.Enable(true).Header("").Format("<b>${point.x}</b><br>Area in square km: <b>${point.y}</b><br>Population density per square km: <b>${point.tooltip}</b>"))
+                .Tooltip(tp => tp.Enable(true).EnableHighlight(true).Header("").Format("<b>${point.x}</b><br>Area in square km: <b>${point.y}</b><br>Population density per square km: <b>${point.tooltip}</b>"))
                 .LegendSettings(leg => leg.Visible(true).Reverse(true)).TooltipRender("TooltipRender").Render()
         )
     </div>

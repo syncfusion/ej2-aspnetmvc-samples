@@ -25,7 +25,7 @@
       col.Field("CurrentSalary").HeaderText("Current Salary").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("160").Add();
       col.Field("Address").HeaderText("Address").Width("240").ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
 
-  }).EnableVirtualization(true).Height("400").RowHeight(38).EnableHover(false).EnableHeaderFocus(true).AllowSorting(true).Load("load").DataBound("startTimer").LoadingIndicator(l => { l.IndicatorType(Syncfusion.EJ2.Grids.IndicatorType.Shimmer); }).ActionComplete("complete").AllowSelection(true).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple).PersistSelection(true).CheckboxOnly(true)).Render()
+  }).EnableVirtualization(true).Height("400").RowHeight(38).EnableHover(false).AllowSorting(true).Load("load").DataBound("startTimer").LoadingIndicator(l => { l.IndicatorType(Syncfusion.EJ2.Grids.IndicatorType.Shimmer); }).ActionComplete("complete").AllowSelection(true).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple).PersistSelection(true).CheckboxOnly(true)).Render()
     </div>
 
 
@@ -264,14 +264,17 @@
 	.fluent .empimg {
        	    background-color: #106EBE;
     	}
-
+	.tailwind3 .empimg,
+	.tailwind3-dark .empimg{
+	    background-color:rgba(79, 70, 229);
+	}
         #Emptext {
-            top: -12px;
+            top: -14px;
             left: 41px;
             position: relative;
         }
         .e-grid.e-rtl #Emptext {
-            top: -12px;
+            top: -14px;
             left: -41px;
             position: relative;
         }
@@ -408,7 +411,7 @@
             margin-top: 3px;
         }
 
-        .fabric-dark #msg, .bootstrap-dark #msg, .tailwind-dark #msg, .bootstrap5-dark #msg, .material-dark #msg, .material3-dark #msg, .fluent-dark #msg, .fluent2-dark #msg, .fluent2-highcontrast #msg, .bootstrap5\.3-dark #msg {
+        .fabric-dark #msg, .bootstrap-dark #msg, .tailwind-dark #msg, .bootstrap5-dark #msg, .material-dark #msg, .material3-dark #msg, .fluent-dark #msg, .fluent2-dark #msg, .fluent2-highcontrast #msg, .bootstrap5\.3-dark #msg, .tailwind3-dark #msg {
             color: #ffffff !important;
         }
 

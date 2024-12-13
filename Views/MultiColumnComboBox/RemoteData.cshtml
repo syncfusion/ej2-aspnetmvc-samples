@@ -4,14 +4,15 @@
     <div class="control-section">
         <div class='control-wrapper'>
             <div style='padding-top:40px;'>
-                @Html.EJS().MultiColumnComboBox("remote").Placeholder("Select the name").DataSource(obj => obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").Adaptor(
+                <label>Select an employee</label>
+                @Html.EJS().MultiColumnComboBox("remote").Placeholder("eg. Andrew").DataSource(obj => obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").Adaptor(
                 "WebApiAdaptor").CrossDomain(true)).Fields(new MultiColumnComboBoxFieldSettings { Text = "FirstName", Value = "EmployeeID" }).Columns(col =>
                 {
                     col.Field("EmployeeID").Header("Employee ID").Width("120").Add();
                     col.Field("FirstName").Header("Name").Width("130").Add();
                     col.Field("Designation").Header("Designation").Width("120").Add();
                     col.Field("Country").Header("Country").Width("90").Add();
-                }).PopupHeight("230px").AllowSorting(false).Query((string)ViewBag.query).Render()
+                }).PopupHeight("210px").PopupWidth("500px").AllowSorting(false).Query((string)ViewBag.query).Render()
             </div>
         </div>
     </div>
@@ -19,7 +20,7 @@
     <style>
         .control-wrapper {
             margin: 0 auto;
-            width: 500px;
+            width: 250px;
         }
 
         @@media only screen and (max-width: 480px) {

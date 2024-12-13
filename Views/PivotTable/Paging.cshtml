@@ -11,7 +11,7 @@
     <div class="content-wrapper">
         @Html.EJS().PivotView("PivotView").Width("100%").Height("600").EnablePaging(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource(dataManger =>
         {
-            dataManger.Url("https://bi.syncfusion.com/northwindservice/api/orders").CrossDomain(true).Adaptor("WebApiAdaptor");
+            dataManger.Url("https://ej2services.syncfusion.com/aspnet/development/api/order").CrossDomain(true).Adaptor("WebApiAdaptor");
         }).ExpandAll(true).Columns(columns =>
         {
             columns.Name("ProductName").Caption("Product Name").Add();

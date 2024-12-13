@@ -52,7 +52,7 @@
             <tr>
                 <td class="left-side">Hierarchy Mode</td>
                 <td>
-                    @Html.EJS().DropDownList("FilterMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Render()
+                    @Html.EJS().DropDownList("FilterMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Width("115px").Render()
                 </td>
             </tr>
         </table>

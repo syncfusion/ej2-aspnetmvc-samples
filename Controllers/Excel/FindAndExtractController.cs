@@ -43,7 +43,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Excel
                 FillData();
                 return View();
             }
-
+            ViewData["selectoptionValue"] = selectoption;
             //New instance of XlsIO is created.[Equivalent to launching Microsoft Excel with no workbooks open].
             //The instantiation process consists of two steps.
 

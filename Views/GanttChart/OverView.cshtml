@@ -27,7 +27,7 @@
     <div class="control-section">
         <div class="content-wrapper">
             @(Html.EJS().Gantt("OverView").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("500px").AllowFiltering(true).HighlightWeekends(true).AllowSelection(true).AllowResizing(true).TreeColumnIndex(1)
-                .Toolbar(toolbarItems).Load("load").AllowSorting(true).ShowColumnMenu(true)
+                .DateFormat("MMM dd, y").Toolbar(toolbarItems).Load("load").AllowSorting(true).ShowColumnMenu(true)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("TimeLog").Progress("Progress")
                 .Dependency("Predecessor").ParentID("ParentID").ResourceInfo("Assignee"))
                 .Resources((IEnumerable<object>)ViewBag.Resources)
@@ -117,7 +117,7 @@
         var priorityContentStyle;
         var statusContentstyleColor;
         function load() {
-            var themeCollection = ['bootstrap5', 'bootstrap', 'bootstrap4', 'fluent', 'fabric', 'fusionnew', 'material3', 'material', 'highcontrast', 'tailwind'];
+            var themeCollection = ['bootstrap5', 'bootstrap', 'bootstrap4', 'fluent', 'fabric', 'fusionnew', 'material3', 'material', 'highcontrast', 'tailwind', 'fluent2', 'tailwind3', 'bootstrap5.3'];
             theme = window.themeName;
             var check = themeCollection.indexOf(theme);
             if (check >= 0) {

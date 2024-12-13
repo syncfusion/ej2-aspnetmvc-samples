@@ -5,39 +5,47 @@
         @(Html.EJS().AccumulationChart("container")
             .Series(sr =>
             {
-                sr.Radius("80%")
-                    .XName("ExpenseCategory")
+                sr.XName("ExpenseCategory")
                     .YName("ExpensePercentage")
                     .DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600").Color("#ffffff")).ConnectorStyle(cs => cs.Length("20px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)))
                     .StartAngle(30)
                     .Explode(false)
                     .ExplodeOffset("10%")
                     .ExplodeIndex(0)
-                    .InnerRadius("43%")
                     .Name("legendName")
+					.InnerRadius("50%")
                     .DataSource(ViewBag.PieChartPoints).Add();
             })
             
-            .EnableSmartLabels(true).EnableAnimation(false).EnableBorderOnMouseMove(false).SelectionMode(Syncfusion.EJ2.Charts.AccumulationSelectionMode.Point).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header(""))
+            .EnableSmartLabels(true).EnableAnimation(false).EnableBorderOnMouseMove(false).SelectionMode(Syncfusion.EJ2.Charts.AccumulationSelectionMode.Point).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header("").EnableHighlight(true))
             .LegendSettings(leg => leg.Visible(true)
                 .ToggleVisibility(false)
-                .MaximumLabelWidth(66)
-                .TextWrap(Syncfusion.EJ2.Charts.TextWrap.Wrap))
+                .Position(Syncfusion.EJ2.Charts.LegendPosition.Bottom)
+                .FixedWidth(true))
             .Annotations(an => { an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("52%").Y("50%").Add(); })
-            .Load("load")
+            .Load("load").PointRender("labelRender")
             .Render()
             )
     </div>
    
     <script>
+        var fluent2Colors = ["#6200EE", "#09AF74", "#0076E5", "#CB3587", "#E7910F", "#66CD15", "#F3A93C", "#107C10",
+            "#C19C00"];
         var load = function(args) {
             var selectedTheme = themeName ? themeName : 'Fluent2';
             args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
             args.accumulation.title = ej.base.Browser.isDevice ?  "Browser Market Shares" : '';
-            args.accumulation.legendSettings.position = ej.base.Browser.isDevice ? 'Bottom' : 'Right';
-            args.accumulation.legendSettings.height = ej.base.Browser.isDevice ?  '20%' : '30%';
-            args.accumulation.legendSettings.width = ej.base.Browser.isDevice ? '80%' :'20%';
+            args.accumulation.legendSettings.position = 'Bottom';
+            args.accumulation.legendSettings.maximumColumns = ej.base.Browser.isDevice ? 2 : 3;
             args.accumulation.annotations[0].content = ej.base.Browser.isDevice ? " " : "<div style='font-Weight:600;font-size:14px'>Browser <br> Market <br> Shares</div>";
+            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "80%" : "85%";
+        }
+        var labelRender = function (args) {
+            var selectedTheme = location.hash.split('/')[1];
+            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
+            if (selectedTheme === 'fluent2') {
+                args.fill = fluent2Colors[args.point.index % 10];
+            }
         }
         var count = 0;       
         function getFontSize(width) {
@@ -60,13 +68,12 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample shows statistics on expenditure made in a year using the donut chart with legends shown at the right side of the chart.
+        This sample demonstrates a donut chart showcasing mobile browser usage statistics, with legends displayed at the bottom of the chart.
     </p>
 }
 @section Description{
-    <p>
-        In this example, you can see how to render a doughnut chart with legends. You can use <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_Radius" aria-label="Radius">Radius<span class="sr-only">opens in a new tab</span></a> and <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_InnerRadius" aria-label="InnerRadius">InnerRadius<span class="sr-only">opens in a new tab</span></a>
-        properties to render the doughnut. Here, the legend text is wrapped using the <code>TextWrap</code> property.
+    <p> 
+        This example demonstrates how to render a donut chart with legends positioned at the bottom. The legend can be arranged in horizontal, vertical, or auto layout modes. Using the <code>MaximumColumns</code> property, you can define the maximum number of columns in auto layout. Additionally, a fixed width option ensures uniform legend sizes for a polished appearance.
     </p>
     <p>
         More information about the legend feature can be found in this

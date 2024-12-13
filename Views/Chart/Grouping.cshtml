@@ -20,7 +20,7 @@
                                .Add();
                     })
                     .EnableSmartLabels(true)
-                     .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>").Header(""))
+                     .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>").Header("").EnableHighlight(true))
                      .LegendSettings(leg => leg.Visible(false))
                      .Load("load").PointRender("pointRender").TextRender("textRender").EnableBorderOnMouseMove(false)
                      .Title("Rio Olympic Gold Medals").Render()

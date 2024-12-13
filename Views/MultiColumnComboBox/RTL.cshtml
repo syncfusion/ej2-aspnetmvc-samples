@@ -5,7 +5,8 @@
     <div class="control-section">
         <div class="control-wrapper">
             <div style='padding-top:30px;'>
-                @Html.EJS().MultiColumnComboBox("rtl").Placeholder("Select a title").Fields(new MultiColumnComboBoxFieldSettings
+                <label>Select a title</label>
+                @Html.EJS().MultiColumnComboBox("rtl").Placeholder("e.g. The Hobbit").Fields(new MultiColumnComboBoxFieldSettings
                 { Text = "Title", Value = "Author" }).EnableRtl(true).Columns(col =>
                 {
                     col.Field("Title").Header("Title").Width("200").Add();
@@ -13,7 +14,7 @@
                     col.Field("Genre").Header("Genre").Width("100").Add();
                     col.Field("PublishedYear").Header("Published Year").Width("125").Add();
                     col.Field("Price").Header("Price").Width("80").Add();
-                }).DataSource((IEnumerable<BookDetails>)ViewBag.data).PopupHeight("230px").Render()
+                }).DataSource((IEnumerable<BookDetails>)ViewBag.data).PopupHeight("210px").PopupWidth("680px").Render()
             </div>
         </div>
     </div>
@@ -21,7 +22,7 @@
     <style>
         .control-wrapper {
             margin: 0 auto;
-            width: 680px;
+            width: 250px;
         }
 
         @@media only screen and (max-width: 480px) {

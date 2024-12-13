@@ -7,9 +7,6 @@
 @using Syncfusion.EJ2.DropDowns
 @using Syncfusion.EJ2.Navigations
 @{
-    string serviceUrl = VirtualPathUtility.ToAbsolute("~/api/PdfViewer/");
-}
-@{
     string dropdownMenu = "#e-pv-e-sign-dropdown-menu-mob";
 }
 
@@ -59,7 +56,7 @@
         </div>
     </div>).HtmlAttributes(ViewBag.HtmlAttributes).Render();}
                 <div id="e-pv-e-sign-pdfViewer-div">
-                    @Html.EJS().PdfViewer("pdfviewer").EnableToolbar(false).EnableNavigationToolbar(false).EnableAnnotationToolbar(false).DownloadFileName("eSign_designMode.pdf").ShowNotificationDialog(false).DocumentPath("https://cdn.syncfusion.com/content/PDFViewer/Fill+and+Sign.pdf").DocumentLoad("documentLoad").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").FormFieldAdd("addFormField").PageClick("pageClick").ToolbarSettings(ts => ts.ShowTooltip(true).ToolbarItems("OpenOption,PageNavigationTool,MagnificationTool,DownloadOption,PrintOption,FormDesignerEditTool")).Render()
+                    @Html.EJS().PdfViewer("pdfviewer").EnableToolbar(false).EnableNavigationToolbar(false).EnableAnnotationToolbar(false).DownloadFileName("eSign_designMode.pdf").ShowNotificationDialog(false).DocumentPath("https://cdn.syncfusion.com/content/PDFViewer/Fill+and+Sign.pdf").DocumentLoad("documentLoad").ResourceUrl("https://cdn.syncfusion.com/ej2/27.2.2/dist/ej2-pdfviewer-lib").FormFieldAdd("addFormField").PageClick("pageClick").ToolbarSettings(ts => ts.ShowTooltip(true).ToolbarItems("OpenOption,PageNavigationTool,MagnificationTool,DownloadOption,PrintOption,FormDesignerEditTool")).Render()
                 </div>
                 <div>
                     @Html.EJS().Toolbar("e-pv-e-sign-toolbar-section-mob").Height("48px").OverflowMode(OverflowMode.Scrollable).Items(new List<ToolbarItem>  {
@@ -163,9 +160,9 @@
         border: 1px solid var(--Color-variables-outline, #79747E);
     }
 
-        #e-pv-e-sign-download span:first-child {
-            margin-top: 3px;
-        }
+    #e-pv-e-sign-download span:first-child {
+        margin-top: 3px;
+    }
 
     #e-pv-e-sign-dropdown-menu {
         width: 185px;
@@ -176,21 +173,21 @@
         z-index: 1000;
     }
 
-        #e-pv-e-sign-dropdown-menu .e-input-group,
-        #e-pv-e-sign-dropdown-menu-mob .e-input-group {
-            border: none;
-        }
+    #e-pv-e-sign-dropdown-menu .e-input-group,
+    #e-pv-e-sign-dropdown-menu-mob .e-input-group {
+        border: none;
+    }
 
-        #e-pv-e-sign-dropdown-menu .e-input-value {
-            width: 84% !important;
-        }
+    #e-pv-e-sign-dropdown-menu .e-input-value {
+        width: 84% !important;
+    }
 
-        #e-pv-e-sign-dropdown-menu .e-input-group:not(.e-float-icon-left):not(.e-float-input).e-input-focus::before,
-        #e-pv-e-sign-dropdown-menu .e-input-group:not(.e-float-icon-left):not(.e-float-input).e-input-focus::after,
-        #e-pv-e-sign-dropdown-menu-mob .e-input-group:not(.e-float-icon-left):not(.e-float-input).e-input-focus::before,
-        #e-pv-e-sign-dropdown-menu-mob .e-input-group:not(.e-float-icon-left):not(.e-float-input).e-input-focus::after {
-            width: 0px;
-        }
+    #e-pv-e-sign-dropdown-menu .e-input-group:not(.e-float-icon-left):not(.e-float-input).e-input-focus::before,
+    #e-pv-e-sign-dropdown-menu .e-input-group:not(.e-float-icon-left):not(.e-float-input).e-input-focus::after,
+    #e-pv-e-sign-dropdown-menu-mob .e-input-group:not(.e-float-icon-left):not(.e-float-input).e-input-focus::before,
+    #e-pv-e-sign-dropdown-menu-mob .e-input-group:not(.e-float-icon-left):not(.e-float-input).e-input-focus::after {
+        width: 0px;
+    }
 
     .e-pv-e-sign-name,
     .e-pv-e-sign-ename {
@@ -389,7 +386,6 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
-      pdfViewer.serviceUrl = '@serviceUrl';
       defaultZoomFactor = true;
 
       const buttons = [

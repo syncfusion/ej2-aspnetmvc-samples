@@ -54,7 +54,7 @@
                                 .DataSource(ViewBag.pieSource).Add();
                              })
                              .LegendSettings(ls => ls.Visible(false).ToggleVisibility(false))
-                             .Tooltip(tp => tp.Enable(true).Format("${point.tooltip}"))
+                             .Tooltip(tp => tp.Enable(true).Format("${point.tooltip}").EnableHighlight(true))
                              .Load("loadPiechart").PointRender("onPointRender").Render()
                              )
                         

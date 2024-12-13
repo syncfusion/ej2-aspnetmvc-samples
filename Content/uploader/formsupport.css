@@ -31,7 +31,8 @@
         background: #212529;
     }
     
-    .tailwind-dark #control_wrapper { 
+    .tailwind-dark #control_wrapper,
+    .tailwind3-dark #control_wrapper { 
         background: #6c757d;
     }
 
@@ -153,7 +154,9 @@
     .fluent .e-bigger .e-dialog .e-dlg-header-content,
     .fluent-dark .e-bigger .e-dialog .e-dlg-header-content,
     .tailwind .e-bigger .e-dialog .e-dlg-header-content,
-    .tailwind-dark .e-bigger .e-dialog .e-dlg-header-content{
+    .tailwind3 .e-bigger .e-dialog .e-dlg-header-content,
+    .tailwind-dark .e-bigger .e-dialog .e-dlg-header-content,
+    .tailwind3-dark .e-bigger .e-dialog .e-dlg-header-content{
         padding-bottom: 2%;
     }
     .material .e-bigger .e-dialog .e-dlg-header-content{

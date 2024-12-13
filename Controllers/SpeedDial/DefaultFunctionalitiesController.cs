@@ -22,22 +22,22 @@ namespace EJ2MVCSampleBrowser.Controllers
             items.Add(new SpeedDialItem
             {
                 Title ="Home",
-                IconCss = "speeddial-icons speeddial-icon-house"
+                IconCss = "e-icons e-home"
             });
             items.Add(new SpeedDialItem
             {
                 Title="People",
-                IconCss = "speeddial-icons speeddial-icon-people"
+                IconCss = "e-icons e-people"
             });
             items.Add(new SpeedDialItem
             {
                 Title="Search",
-                IconCss = "speeddial-icons speeddial-icon-search"
+                IconCss = "e-icons e-search"
             });
             items.Add(new SpeedDialItem
             {
                 Title="Message",
-                IconCss = "speeddial-icons speeddial-icon-message"
+                IconCss = "e-icons e-comment-show"
             });
             ViewBag.datasource = items;
             return View();

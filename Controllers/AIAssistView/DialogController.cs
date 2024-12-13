@@ -5,25 +5,25 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
-using System;
+using EJ2MVCSampleBrowser.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace EJ2MVCSampleBrowser.Controllers.AIAssistView
 {
     public partial class AIAssistViewController : Controller
     {
-        public List<AIAssistModel> DialogItems = new List<AIAssistModel>();
+        public List<ToolbarItemModel> DialogItems = new List<ToolbarItemModel>();
         public ActionResult Dialog()
         {
-            DialogItems.Add(new AIAssistModel { align = "Right", iconCss = "e-icons e-close" });
+            DialogItems.Add(new ToolbarItemModel { align = "Right", iconCss = "e-icons e-close" });
             ViewBag.ToolbarItems = DialogItems;
+            ViewBag.PromptResponseData = new PromptResponseData().GetAllPromptResponseData();
+            ViewBag.PromptSuggestionData = new PromptResponseData().GetAllSuggestionData();
             return View();
         }
 
-        public class AIAssistModel
+        public class ToolbarItemModel
         {
             public string type { get; set; }
             public string align { get; set; }

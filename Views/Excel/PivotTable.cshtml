@@ -21,79 +21,87 @@
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("PivotTable", "Excel", FormMethod.Post);
-        { 
-        <div class="rowdiv">
-            <p style="font-weight:normal">
-                Click the "Create Document" button to view the created Excel document and "Customize Pivot Table" button to view the Excel document created with customized pivot table. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
-            </p>
-        </div>
-        <br />
-        <div class="rowdiv">
-            <div class="celldiv">
-                <label style="font-weight:normal">
-                    Page Filter :
-                </label>
+            {
+                <div class="rowdiv">
+                    <p style="font-weight:normal">
+                        Click the "Create Document" button to view the created Excel document and "Customize Pivot Table" button to view the Excel document created with customized pivot table. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+                    </p>
+                </div>
+                <br />
+                <div class="rowdiv">
+                    <div class="celldiv">
+                        <label style="font-weight:normal">
+                            Page Filter :
+                        </label>
                 <input id="ckbPageFilter" type="checkbox" name="PageFilter" checked="checked" value="PageFilter" onclick="MultipleFilterDisable();" />
                 <label for="rbtnPageFilter" style="font-weight:normal">
-                    Page Filter
-                </label>
+                            Page Filter
+                        </label>
                 <input id="ckbMultiplePageFilter" type="checkbox" name="MultiplePageFilter" value="MultiplePageFilter" onclick="PageFilterDisable();" />
-                <label for="rbtnMultiplePageFilter" style="font-weight:normal">
-                    Multiple Page Filter
-                </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <br />
-            <div class="celldiv">
-                <label style="font-weight:normal">
-                    Row and Column Filter :
-                </label>
-                <input id="ckbRowFilter" type="checkbox" name="RowFilter" value="RowFilter" onclick="Enable();" />
-                <label for="rbtnRowFilter" style="font-weight:normal">
-                    Row Filter
-                </label>
-                <input id="ckbColumnFilter" type="checkbox" name="ColumnFilter" value="ColumnFilter" onclick="Enable();" />
-                <label for="rbtnColumnFilter" style="font-weight:normal">
-                    Column Filter
-                </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <br />
-            <div class="celldiv">
-                <input id="ckbApplyGrouping" type="checkbox" name="ApplyGrouping" value="ApplyGrouping" />
-                <label for="ApplyGrouping" style="font-weight:normal">
-                    Apply Grouping
-                </label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </div>
-            <div class="celldiv">
-                <input id="createdocument"  class="e-btn" name="button" type="submit" value="Create Document" style="width: 200px;" />
-                <input id="customizepivottable"  class="e-btn" name="button" type="submit" value="Customize Pivot Table"
-                       style="width: 200px;" />
-            </div>
-        </div>
-        <script type="text/javascript">
-            function PageFilterDisable() {
-                $("#ckbPageFilter").attr("checked", false);
+                        <label for="rbtnMultiplePageFilter" style="font-weight:normal">
+                            Multiple Page Filter
+                        </label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <br />
+                    <div class="celldiv">
+                        <label style="font-weight:normal">
+                            Row and Column Filter :
+                        </label>
+                        <input id="ckbRowFilter" type="checkbox" name="RowFilter" value="RowFilter" onclick="Enable();" />
+                        <label for="rbtnRowFilter" style="font-weight:normal">
+                            Row Filter
+                        </label>
+                        <input id="ckbColumnFilter" type="checkbox" name="ColumnFilter" value="ColumnFilter" onclick="Enable();" />
+                        <label for="rbtnColumnFilter" style="font-weight:normal">
+                            Column Filter
+                        </label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <br />
+                    <div class="celldiv">
+                        <input id="ckbApplyGrouping" type="checkbox" name="ApplyGrouping" value="ApplyGrouping" />
+                        <label for="ApplyGrouping" style="font-weight:normal">
+                            Apply Grouping
+                        </label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="celldiv">
+                        <input id="createdocument" class="e-btn" name="button" type="submit" value="Create Document" style="width: 200px;" />
+                        <input id="customizepivottable" class="e-btn" name="button" type="submit" value="Customize Pivot Table"
+                               style="width: 200px;" />
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    function MultipleFilterDisable() {
+                        // If Page Filter is checked, uncheck the Multiple Page Filter
+                        if ($("#ckbPageFilter").prop("checked")) {
+                            $("#ckbMultiplePageFilter").prop("checked", false);
+                        }
+                    }
+
+                    function PageFilterDisable() {
+                        // If Multiple Page Filter is checked, uncheck the Page Filter
+                        if ($("#ckbMultiplePageFilter").prop("checked")) {
+                            $("#ckbPageFilter").prop("checked", false);
+                        }
+                    }
+
+                    function Enable() {
+                        if (!$("#ckbRowFilter").prop("checked") && !$("#ckbColumnFilter").prop("checked")) {
+                            $("#rbtnLabelFilter").prop("disabled", false);
+                            $("#rbtnValueFilter").prop("disabled", false);
+                            $("#RCMultipleFilter").prop("disabled", false);
+                        }
+                        else {
+                            $("#rbtnLabelFilter").prop("disabled", true);
+                            $("#rbtnValueFilter").prop("disabled", true);
+                            $("#RCMultipleFilter").prop("disabled", true);
+                        }
+                    }
+                </script>
+                Html.EndForm();
             }
-            function MultipleFilterDisable() {
-                $("#ckbMultiplePageFilter").attr("checked", false);
-            }
-            function Enable() {
-                if (!$("#ckbRowFilter").attr("checked") && !$("#ckbColumnFilter").attr("checked")) {
-                    $("#rbtnLabelFilter").attr("disabled", false);
-                    $("#rbtnValueFilter").attr("disabled", false);
-                    $("#RCMultipleFilter").attr("disabled", false);
-                }
-                else {
-                    $("#rbtnLabelFilter").attr("disabled", true);
-                    $("#rbtnValueFilter").attr("disabled", true);
-                    $("#RCMultipleFilter").attr("disabled", true);
-                }
-            }
-        </script>
-        Html.EndForm();
-        }
         }
     </div>
 }

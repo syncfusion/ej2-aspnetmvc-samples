@@ -26,10 +26,10 @@
                             .Add();
                     })
                         .EnableSmartLabels(true)
-                        .EnableAnimation(false)
+                        .EnableAnimation(true)
                         .Title("Browser Market Share")
                         .LegendSettings(ls => ls.Visible(false))
-                        .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header(""))
+                        .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header("").EnableHighlight(true))
                         .Load("load").EnableBorderOnMouseMove(false).Render()
                         )
                 </div>

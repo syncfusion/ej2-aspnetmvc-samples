@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EJ2MVCSampleBrowser</RootNamespace>
     <AssemblyName>EJ2MVCSampleBrowser</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -31,7 +32,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;$(SyncfusionLicensing)</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;$(SyncfusionLicensing)</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -44,11 +45,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=4.2.0.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -56,78 +63,78 @@
       <HintPath>packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.0.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+	  <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=4.2.0.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+	  <HintPath>packages\Microsoft.Owin.Security.4.2.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+	  <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2">
-      <HintPath>packages\Syncfusion.EJ2.MVC5.27.2.2\lib\net45\Syncfusion.EJ2.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.MVC5.28.1.33\lib\net462\Syncfusion.EJ2.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.GridExport">
-      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.27.2.2\lib\net45\Syncfusion.EJ2.GridExport.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.28.1.33\lib\net462\Syncfusion.EJ2.GridExport.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base">
-      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.Pdf.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.HtmlConverter.Base">
-      <HintPath>packages\Syncfusion.HtmlToPdfConverter.IE.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.HtmlToPdfConverter.IE.AspNet.Mvc5.28.1.33\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocIO.Base">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.DocIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.DocIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.DocumentEditor">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.PdfViewer">
-      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.EJ2.PdfViewer.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.EJ2.PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChartToImageConverter.WPF">
-      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PdfToImageConverter.Base">
-      <HintPath>packages\Syncfusion.PdfToImageConverter.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.PdfToImageConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.PdfToImageConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Base">
-      <HintPath>packages\\lib\net45\Syncfusion.Compression.Base.dll</HintPath>
+      <HintPath>packages\\lib\net462\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChart.Base">
-      <HintPath>packages\\lib\net45\Syncfusion.OfficeChart.Base.dll</HintPath>
+      <HintPath>packages\\lib\net462\Syncfusion.OfficeChart.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Presentation.Base">
-      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.Presentation.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.Presentation.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PresentationToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelChartToImageConverter.WPF">
-      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.WPF">
       <HintPath>packages\\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.Base">
-      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.27.2.2\lib\net45\Syncfusion.XlsIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.28.1.33\lib\net462\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.Spreadsheet">
-      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.27.2.2\lib\net45\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.28.1.33\lib\net462\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing">
       <SpecificVersion>False</SpecificVersion>
@@ -135,8 +142,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data.Linq" />
+	<Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting">
       <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -147,8 +153,9 @@
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Core" />
     <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+	  <SpecificVersion>False</SpecificVersion>
       <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost">
@@ -163,7 +170,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
+	  <Private>True</Private>
       <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
@@ -171,40 +178,37 @@
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+	  <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+	  <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization">
+	  <Private>True</Private>
       <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+	  <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+	  <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+	  <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+	  <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
-      <Private>True</Private>
-      <HintPath>packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+	  <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +237,7 @@
     <Compile Include="Controllers\Chart\ChartCustomAnimationController.cs" />
     <Compile Include="Controllers\Chart\ChartPaginationController.cs" />
     <Compile Include="Controllers\Chart\ClickPointController.cs" />
+    <Compile Include="Controllers\Chart\ColumnDrilldownController.cs" />
     <Compile Include="Controllers\Chart\HorizontalWaterFallChartController.cs" />
     <Compile Include="Controllers\Chart\KeyboardController.cs" />
     <Compile Include="Controllers\Chart\LiveChartDataSortingController.cs" />
@@ -287,6 +292,7 @@
     <Compile Include="Controllers\Ribbon\RibbonBackstageController.cs" />
     <Compile Include="Controllers\Ribbon\RibbonResizingController.cs" />
     <Compile Include="Controllers\Ribbon\SimplifiedModeController.cs" />
+    <Compile Include="Controllers\Schedule\ClipboardController.cs" />
     <Compile Include="Controllers\Schedule\HolidayCalendarController.cs" />
     <Compile Include="Controllers\Signature\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Signature\ToolbarController.cs" />
@@ -370,6 +376,10 @@
     <Compile Include="Controllers\Carousel\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Carousel\KeyboardNavigationController.cs" />
     <Compile Include="Controllers\Carousel\TemplatesController.cs" />
+    <Compile Include="Controllers\ChatUI\DefaultFunctionalitiesController.cs" />
+    <Compile Include="Controllers\ChatUI\TemplateController.cs" />
+    <Compile Include="Controllers\ChatUI\APIController.cs" />
+    <Compile Include="Controllers\ChatUI\ChatIntegrationController.cs" />
     <Compile Include="Controllers\Grid\DragAndDropWithInGridController.cs" />
     <Compile Include="Controllers\Grid\InfiniteScrollingController.cs" />
     <Compile Include="Controllers\Grid\FrozenAPIController.cs" />
@@ -390,6 +400,7 @@
     <Compile Include="Controllers\AutoComplete\DiacriticsFilteringController.cs" />
     <Compile Include="Controllers\AutoComplete\GroupingAndIconController.cs" />
     <Compile Include="Controllers\AutoComplete\HighlightController.cs" />
+    <Compile Include="Controllers\AutoComplete\ResizeController.cs" />
     <Compile Include="Controllers\AutoComplete\TemplateController.cs" />
     <Compile Include="Controllers\AutoComplete\VirtualScrollController.cs" />
     <Compile Include="Controllers\AutoComplete\AutocompleteForController.cs" />
@@ -606,10 +617,12 @@
     <Compile Include="Controllers\ComboBox\DiacriticsFilteringController.cs" />
     <Compile Include="Controllers\ComboBox\FilteringController.cs" />
     <Compile Include="Controllers\ComboBox\GroupingAndIconController.cs" />
+    <Compile Include="Controllers\ComboBox\ResizeController.cs" />
     <Compile Include="Controllers\ComboBox\TemplateController.cs" />
     <Compile Include="Controllers\ComboBox\VirtualScrollController.cs" />
     <Compile Include="Controllers\ComboBox\ComboboxForController.cs" />
     <Compile Include="Controllers\ContextMenu\DefaultFunctionalitiesController.cs" />
+    <Compile Include="Controllers\ContextMenu\TemplateFunctionalitiesController.cs" />
     <Compile Include="Controllers\Grid\RowSpanningController.cs" />
     <Compile Include="Controllers\Grid\ServerSideExportingController.cs" />
     <Compile Include="Controllers\HeatMapChart\CellSelectionController.cs" />
@@ -811,6 +824,7 @@
     <Compile Include="Controllers\DropDownList\FilteringController.cs" />
     <Compile Include="Controllers\DropDownList\GroupingAndIconController.cs" />
     <Compile Include="Controllers\DropDownList\InlineController.cs" />
+    <Compile Include="Controllers\DropDownList\ResizeController.cs" />
     <Compile Include="Controllers\DropDownList\TemplateController.cs" />
     <Compile Include="Controllers\DropDownList\VirtualScrollController.cs" />
     <Compile Include="Controllers\DropDownList\DropdownlistForController.cs" />
@@ -894,6 +908,7 @@
     <Compile Include="Controllers\PivotTable\ToolbarController.cs" />
     <Compile Include="Controllers\PivotTable\CustomSortingController.cs" />
     <Compile Include="Controllers\PivotTable\DrillDownController.cs" />
+    <Compile Include="Controllers\PivotTable\ClassicLayoutController.cs" />
     <Compile Include="Controllers\ProgressBar\CircularController.cs" />
     <Compile Include="Controllers\ProgressBar\CustomController.cs" />
     <Compile Include="Controllers\ProgressBar\LinearController.cs" />
@@ -996,6 +1011,7 @@
     <Compile Include="Controllers\Maps\MultilayerController.cs" />
     <Compile Include="Controllers\Maps\NavigationController.cs" />
     <Compile Include="Controllers\Maps\OSMController.cs" />
+    <Compile Include="Controllers\Maps\OSMWithMarkerClusteringController.cs" />
     <Compile Include="Controllers\Maps\OSMWithNavigationLineController.cs" />
     <Compile Include="Controllers\Maps\OSMWithSubLayerController.cs" />
     <Compile Include="Controllers\Maps\OSMWithLegendController.cs" />
@@ -1029,6 +1045,7 @@
     <Compile Include="Controllers\MultiSelect\FilteringController.cs" />
     <Compile Include="Controllers\MultiSelect\GroupingController.cs" />
     <Compile Include="Controllers\MultiSelect\GroupingWithCheckBoxController.cs" />
+    <Compile Include="Controllers\MultiSelect\ResizeController.cs" />
     <Compile Include="Controllers\MultiSelect\SelectionLimitController.cs" />
     <Compile Include="Controllers\MultiSelect\VirtualScrollController.cs" />
     <Compile Include="Controllers\MultiSelect\TemplateController.cs" />
@@ -1556,7 +1573,7 @@
     <Compile Include="Controllers\Excel\WorksheetProtectionController.cs" />
     <Compile Include="Controllers\Excel\WorksheetToImageController.cs" />
     <Compile Include="Controllers\Excel\WhatIfAnalysisController.cs" />
-    <Compile Include="Controllers\Excel\CommentsController.cs" />
+    <Compile Include="Controllers\Excel\CommentsController.cs" />    
     <Compile Include="Controllers\InPlaceEditor\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\InPlaceEditor\DropDownsController.cs" />
     <Compile Include="Controllers\InPlaceEditor\PickersController.cs" />
@@ -1564,6 +1581,7 @@
     <Compile Include="Controllers\ImageEditor\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\ImageEditor\ProfilePictureController.cs" />
     <Compile Include="Controllers\ImageEditor\CustomToolbarController.cs" />
+    <Compile Include="Controllers\ImageEditor\FileRestrictController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1594,10 +1612,13 @@
     <Compile Include="Models\DropDownTreeLocalData.cs" />
     <Compile Include="Models\EditableEmployee.cs" />
     <Compile Include="Models\EditableOrder.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Employees.cs" />
     <Compile Include="Models\EmployeeData.cs" />
     <Compile Include="Models\EmployeeView.cs" />
     <Compile Include="Models\EmployeeDetails.cs" />
+    <Compile Include="Models\PromptResponseData.cs" />
+    <Compile Include="Models\ChatMessagesData.cs" />
     <Compile Include="Models\ScheduleEventsData.cs" />
     <Compile Include="Models\TaskDetail.cs" />
     <Compile Include="Models\FormatOption.cs" />
@@ -1624,6 +1645,8 @@
     <Compile Include="Models\PresentationData.cs" />
     <Compile Include="Models\PresetColors.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductDetails.cs" />
+    <Compile Include="Models\Products.cs" />
     <Compile Include="Models\QueryBuilderData.cs" />
     <Compile Include="Models\QueryTemplateModel.cs" />
     <Compile Include="Models\ScheduleData.cs" />
@@ -1677,6 +1700,15 @@
     <Content Include="Content\carousel\images\costa-rica.png" />
     <Content Include="Content\carousel\images\hunei.png" />
     <Content Include="Content\carousel\images\kaohsiung.png" />
+    <Content Include="Content\chatui\images\andrew.png" />
+    <Content Include="Content\chatui\images\bot.png" />
+    <Content Include="Content\chatui\images\calendar.png" />
+    <Content Include="Content\chatui\images\charlie.png" />
+    <Content Include="Content\chatui\images\laura.png" />
+    <Content Include="Content\chatui\images\michale.png" />
+    <Content Include="Content\chatui\images\public-event.png" />
+    <Content Include="Content\chatui\images\reena.png" />
+    <Content Include="Content\chatui\images\janet.png" />
     <Content Include="Content\appbar\images\prominent.png" />
     <Content Include="Content\gantt\images\DurationDark.png" />
     <Content Include="Content\gantt\images\ProgressDark.png" />
@@ -2035,11 +2067,13 @@
     <Content Include="Content\gantt\images\StartDate.png" />
     <Content Include="Content\gantt\images\TaskName.png" />
     <Content Include="Content\gantt\images\Van Jack.png" />
-    <Content Include="Content\gantt\images\S.svg" />
-    <Content Include="Content\gantt\images\M.svg" />
-    <Content Include="Content\gantt\images\T.svg" />
-    <Content Include="Content\gantt\images\W.svg" />
-    <Content Include="Content\gantt\images\F.svg" />
+    <Content Include="Content\gantt\images\0.svg" />
+    <Content Include="Content\gantt\images\5.svg" />
+    <Content Include="Content\gantt\images\3.svg" />
+    <Content Include="Content\gantt\images\2.svg" />
+    <Content Include="Content\gantt\images\1.svg" />
+    <Content Include="Content\gantt\images\4.svg" />
+    <Content Include="Content\gantt\images\6.svg" />
     <Content Include="Content\images\FileManager\Employees\1.png" />
     <Content Include="Content\images\FileManager\Employees\2.png" />
     <Content Include="Content\images\FileManager\Employees\3.png" />
@@ -2443,6 +2477,10 @@
     <Content Include="Content\Maps\weather-clear.png" />
     <Content Include="Content\Maps\weather-clouds.png" />
     <Content Include="Content\Maps\weather-rain.png" />
+    <Content Include="Content\Maps\cluster-china.svg" />
+    <Content Include="Content\Maps\cluster-france.svg" />
+    <Content Include="Content\Maps\cluster-india.svg" />
+    <Content Include="Content\Maps\cluster-usa.svg" />
     <Content Include="Content\Maps\wheel.png" />
     <Content Include="Content\menu\images\angular.png" />
     <Content Include="Content\menu\images\core.png" />
@@ -2587,6 +2625,8 @@
     <Content Include="Content\styles\bootstrap5-dark.css" />
     <Content Include="Content\styles\bootstrap5.3.css" />
     <Content Include="Content\styles\bootstrap5.3-dark.css" />
+    <Content Include="Content\styles\tailwind3.css" />
+    <Content Include="Content\styles\tailwind3-dark.css" />
     <Content Include="Content\images\treegrid\critical.png" />
     <Content Include="Content\images\treegrid\duration.png" />
     <Content Include="Content\images\treegrid\high.png" />
@@ -2857,6 +2897,7 @@
     <Content Include="Views\AutoComplete\GroupingAndIcon.cshtml" />
     <Content Include="Views\AutoComplete\Highlight.cshtml" />
     <Content Include="Views\AutoComplete\Template.cshtml" />
+    <Content Include="Views\AutoComplete\Resize.cshtml" />
     <Content Include="Views\AutoComplete\VirtualScroll.cshtml" />
     <Content Include="Views\AutoComplete\AutocompleteFor.cshtml" />
     <Content Include="Views\Avatar\Badge.cshtml" />
@@ -3064,9 +3105,11 @@
     <Content Include="Views\ComboBox\Filtering.cshtml" />
     <Content Include="Views\ComboBox\GroupingAndIcon.cshtml" />
     <Content Include="Views\ComboBox\Template.cshtml" />
+    <Content Include="Views\ComboBox\Resize.cshtml" />
     <Content Include="Views\ComboBox\VirtualScroll.cshtml" />
     <Content Include="Views\ComboBox\ComboboxFor.cshtml" />
     <Content Include="Views\ContextMenu\DefaultFunctionalities.cshtml" />
+    <Content Include="Views\ContextMenu\TemplateFunctionalities.cshtml" />
     <Content Include="Views\DatePicker\DateFormats.cshtml" />
     <Content Include="Views\DatePicker\DatePickerFor.cshtml" />
     <Content Include="Views\DatePicker\DateRange.cshtml" />
@@ -3237,6 +3280,7 @@
     <Content Include="Views\DropDownList\GroupingAndIcon.cshtml" />
     <Content Include="Views\DropDownList\Inline.cshtml" />
     <Content Include="Views\DropDownList\Template.cshtml" />
+     <Content Include="Views\DropDownList\Resize.cshtml" />
     <Content Include="Views\DropDownList\VirtualScroll.cshtml" />
     <Content Include="Views\DropDownList\DropdownlistFor.cshtml" />
     <Content Include="Views\DropDownTree\DefaultFunctionalities.cshtml" />
@@ -3365,6 +3409,7 @@
     <Content Include="Views\Maps\Navigation.cshtml" />
     <Content Include="Views\Maps\Polygon.cshtml" />
     <Content Include="Views\Maps\OSM.cshtml" />
+    <Content Include="Views\Maps\OSMWithMarkerClustering.cshtml" />
     <Content Include="Views\Maps\OSMWithNavigationLine.cshtml" />
     <Content Include="Views\Maps\OSMWithSubLayer.cshtml" />
     <Content Include="Views\Maps\OSMWithLegend.cshtml" />
@@ -3403,6 +3448,7 @@
     <Content Include="Views\MultiSelect\SelectionLimit.cshtml" />
     <Content Include="Views\MultiSelect\VirtualScroll.cshtml" />
     <Content Include="Views\MultiSelect\Template.cshtml" />
+    <Content Include="Views\MultiSelect\Resize.cshtml" />
     <Content Include="Views\MultiSelect\MultiselectFor.cshtml" />
     <Content Include="Views\NumericTextBox\CustomFormat.cshtml" />
     <Content Include="Views\NumericTextBox\DefaultFunctionalities.cshtml" />
@@ -3469,6 +3515,7 @@
     <Content Include="Views\PivotTable\Aggregation.cshtml" />
     <Content Include="Views\PivotTable\KeyboardNavigation.cshtml" />
     <Content Include="Views\PivotTable\CalculatedField.cshtml" />
+    <Content Include="Views\PivotTable\ClassicLayout.cshtml" />
     <Content Include="Views\PivotTable\PivotChart.cshtml" />
     <Content Include="Views\PivotTable\ConditionalFormatting.cshtml" />
     <Content Include="Views\PivotTable\Default.cshtml" />
@@ -3794,6 +3841,7 @@
     <Content Include="Views\ImageEditor\DefaultFunctionalities.cshtml" />
     <Content Include="Views\ImageEditor\ProfilePicture.cshtml" />
     <Content Include="Views\ImageEditor\CustomToolbar.cshtml" />
+    <Content Include="Views\ImageEditor\FileRestrict.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -4122,6 +4170,10 @@
     <Content Include="Views\Carousel\DataBinding.cshtml" />
     <Content Include="Views\Carousel\API.cshtml" />
     <Content Include="Views\Carousel\KeyboardNavigation.cshtml" />
+    <Content Include="Views\ChatUI\DefaultFunctionalities.cshtml" />
+    <Content Include="Views\ChatUI\Template.cshtml" />
+    <Content Include="Views\ChatUI\API.cshtml" />
+    <Content Include="Views\ChatUI\ChatIntegration.cshtml" />
     <Content Include="Views\GanttChart\CriticalPath.cshtml" />
     <Content Include="Views\GanttChart\UndoRedo.cshtml" />
     <Content Include="Views\Chart\Keyboard.cshtml" />
@@ -4217,6 +4269,8 @@
     <Content Include="Views\Chart\ChartCustomAnimation.cshtml" />
     <Content Include="Views\Chart\RoundedCorner.cshtml" />
     <Content Include="Views\Grid\FilterBarTemplate.cshtml" />
+    <Content Include="Views\Chart\ColumnDrilldown.cshtml" />
+    <Content Include="Views\Schedule\Clipboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\MapData\Africa_continent.json" />

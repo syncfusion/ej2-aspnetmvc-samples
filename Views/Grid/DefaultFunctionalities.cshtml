@@ -7,7 +7,7 @@
     <div class="control-section">
         @Html.EJS().Grid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col=> {
 
-       col.Field("OrderID").HeaderText("Order ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("120").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+       col.Field("OrderID").HeaderText("Order ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("180").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
        col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 5 }).Add();
        col.Field("OrderDate").HeaderText("Order Date").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("130").Format("yMd").EditType("datepickeredit").Add();
        col.Field("Freight").HeaderText("Freight").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("120").Format("C2").EditType("numericedit").ValidationRules(new { required = true, min = 0 }).Add();

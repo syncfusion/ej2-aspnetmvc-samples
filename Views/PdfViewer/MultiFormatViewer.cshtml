@@ -40,7 +40,7 @@
                 @Html.EJS().Uploader("fileUpload").Selected("onSelect").Multiple(false).DropArea("#dropArea").AllowedExtensions(".doc, .docx, .rtf, .docm, .dotm, .dotx, .dot, .xls, .xlsx, .pptx, .pptm, .potx, .potm .jpeg, .png, .bmp, .pdf, .jpg").Render()
             </div>
         </div>
-        <div id="pdfviewer-container" style="display:none">
+        <div id="pdfviewer-container" class="e-pv-multi-format-pdfviewer" style="display:none">
             <div class="flex-container">
                 <label class="switchLabel" for="checked">Standalone PDF Viewer</label>
                 <div class="e-message render-mode-info">
@@ -151,6 +151,9 @@
                 return;
             }
             document.getElementById("fileName").innerHTML = args.filesData[0].name;
+            let viewer = document.getElementById("pdfviewer").ej2_instances[0];
+            viewer.downloadFileName = args.filesData[0].name;
+            viewer.exportAnnotationFileName = args.filesData[0].name;
             let size = document.getElementById("fileSize");
             if ((args.filesData[0].size.toString()).length <= 6) {
                 size.innerHTML = ((args.filesData[0].size / 1024).toFixed(1)).toString() + " KB";
@@ -343,6 +346,14 @@
     #pdfviewer_viewerContainer {
         left: 0px !important;
         width: 100% !important;
+    }
+
+    .e-pv-multi-format-pdfviewer .e-pv-text-search-bar {
+        top: 40px !important;
+    }
+
+    .e-bigger .e-pv-multi-format-pdfviewer .e-pv-text-search-bar {
+        top: 48px !important;
     }
 </style>
 @*custom code end*@

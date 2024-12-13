@@ -4,14 +4,15 @@
     <div class="control-section">
         <div class="control-wrapper template-multicolumn">
             <div style='padding-top:30px;'>
-                @Html.EJS().MultiColumnComboBox("template").CssClass("multicolumn-customize").Placeholder("Select an employee").Fields(new MultiColumnComboBoxFieldSettings
+                <label>Select an employee</label>
+                @Html.EJS().MultiColumnComboBox("template").CssClass("multicolumn-customize").Placeholder("e.g. Andrew Fuller").Fields(new MultiColumnComboBoxFieldSettings
                { Text = "Name", Value = "Eimg" }).Columns(col =>
                {
                    col.Field("Eimg").Header("Photos").Width("90").HeaderTemplate("<div class=\"header\"> <span>Photo</span> </div>").Template("<div><img class=\"empImage\" src=\"../Content/images/dropdown-tree/${Eimg}.png\" alt=\"employee\"/> </div>").Add();
                    col.Field("Name").Header("Employee Name").Width("160").HeaderTemplate("<div class=\"header\"> <span class=\"e-icons e-multicolumn-userlogin\"></span> <span>Employee info</span> </div>").Template("<div class=\"ename\"> ${Name} </div><div class=\"job\"> ${Designation} </div>").Add();
                    col.Field("DateofJoining").Header("Date Of Joining").Width("165").HeaderTemplate("<div class=\"header\"> <span class=\"e-icons e-multicolumn-calender\"></span> <span>Date of joining</span> </div>").Template("<div class=\"dateOfJoining\"> ${DateofJoining} </div>").Add();
                    col.Field("Country").Header("Country").Width("100").HeaderTemplate("<div class=\"header\"> <span>Country</span> </div>").Template("<div class=\"country\"> ${Country} </div>").Add();
-               }).DataSource(@Model.Employees).PopupHeight("230px").GridSettings(new MultiColumnComboBoxGridSettings { RowHeight = 40 }).Render()
+               }).DataSource(@Model.Employees).PopupHeight("210px").PopupWidth("540px").GridSettings(new MultiColumnComboBoxGridSettings { RowHeight = 40 }).Render()
             </div>
         </div>
     </div>
@@ -19,7 +20,7 @@
     <style>
         .control-wrapper.template-multicolumn {
             margin: 0 auto;
-            width: 540px;
+            width: 250px;
         }
 
         @@media only screen and (max-width: 480px) {
@@ -31,6 +32,11 @@
         /* template styles */
         .multicolumn-customize .e-headercell.e-templatecell {
             height: 40px;
+        }
+
+        .multicolumn-customize .header {
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .multicolumn-customize .ename {

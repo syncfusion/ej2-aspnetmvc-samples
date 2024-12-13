@@ -14,7 +14,7 @@
                     .DataSource(ViewBag.ChartPoints)
                     .Add();
             }
-            ).EnableSmartLabels(true).EnableBorderOnMouseMove(false).Tooltip(tt => tt.Enable(true).Header("<b>Budget</b>").Format("${point.x}: <b>${point.y}%</b>"))
+            ).EnableSmartLabels(true).EnableBorderOnMouseMove(false).Tooltip(tt => tt.Enable(true).EnableHighlight(true).Header("<b>Budget</b>").Format("${point.x}: <b>${point.y}%</b>"))
             .LegendSettings(lg => lg.Visible(false)).Title("Company Budget Distribution").Load("load").PointRender("pointRender").Render())
         </div>
     </div>
@@ -72,7 +72,7 @@
 }
 @*custom code start*@
 @section Meta{
-    <meta name="description" content="This example demonstrates the Corner Radius in ASP.NET MVC Chart control. Explore here for more details." />
+    <meta name="description" content="This example demonstrates the Rounded Corner in ASP.NET MVC Chart control. Explore here for more details." />
 }
 @*custom code end*@
 @section ActionDescription{
@@ -93,7 +93,7 @@
     </p>
 }
 @section Title{
-    <title>ASP.NET MVC Chart Corner Radius Example - Syncfusion Demos </title>
+    <title>ASP.NET MVC Chart Rounded Corner Example - Syncfusion Demos </title>
 }
 @section Header{
     <h1 class='sb-sample-text'>Charts</h1>

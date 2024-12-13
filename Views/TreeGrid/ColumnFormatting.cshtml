@@ -25,15 +25,15 @@
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%;">
             <tr style="height: 50px">
-                <td class="left-side" style="width: 10% !important;">Column</td>
+                <td class="left-side" style="width: 10% !important; padding-right: 10px">Column</td>
                 <td>
-                    @Html.EJS().DropDownList("Columns").DataSource((IEnumerable<object>)ViewBag.columns).Index(0).Placeholder("Select a Column").PopupHeight("220px").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Change("columnChange").Render()
+                    @Html.EJS().DropDownList("Columns").DataSource((IEnumerable<object>)ViewBag.columns).Index(0).Placeholder("Select a Column").PopupHeight("220px").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Change("columnChange").Width("145px").Render()
                 </td>
             </tr>
             <tr style="height: 50px">
-                <td class="left-side" style="width: 10% !important;">Format</td>
+                <td class="left-side" style="width: 10% !important; padding-right: 10px">Format</td>
                 <td>
-                    @Html.EJS().DropDownList("Formats").DataSource((IEnumerable<object>)ViewBag.numberFormats).Index(2).Placeholder("Select a Format").PopupHeight("220px").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "format", Value = "id" }).Change("formatChange").Render()
+                    @Html.EJS().DropDownList("Formats").DataSource((IEnumerable<object>)ViewBag.numberFormats).Index(2).Placeholder("Select a Format").PopupHeight("220px").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "format", Value = "id" }).Change("formatChange").Width("145px").Render()
                 </td>
             </tr>
         </table>

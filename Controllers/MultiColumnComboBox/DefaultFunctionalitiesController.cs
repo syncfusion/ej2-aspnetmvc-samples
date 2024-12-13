@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.MultiColumnComboBox
     {
         public ActionResult DefaultFunctionalities()
         {
-            ViewBag.data = new EJ2MVCSampleBrowser.Models.WorkersDetails().GetAllRecords();
+            ViewBag.data = new EJ2MVCSampleBrowser.Models.Products().GetAllRecords();
             return View();
         }
     }

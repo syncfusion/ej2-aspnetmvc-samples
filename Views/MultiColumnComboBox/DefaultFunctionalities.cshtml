@@ -5,15 +5,16 @@
     <div class="col-lg-8 control-section">
         <div class="control-wrapper">
             <div style='padding-top:30px;'>
-                @Html.EJS().MultiColumnComboBox("multicolumnDefault").Placeholder("Select a name").ShowClearButton(true).Fields(new MultiColumnComboBoxFieldSettings
-                { Text = "Name", Value = "Department" }).Columns(col =>
+                <label>Select a product</label>
+                @Html.EJS().MultiColumnComboBox("multicolumnDefault").Placeholder("Select any product").ShowClearButton(true).Fields(new MultiColumnComboBoxFieldSettings
+                { Text = "Name", Value = "Category" }).Columns(col =>
                 {
-                    col.Field("Name").Header("Name").Width("90").Add();
-                    col.Field("Position").Header("Position").Width("85").Add();
-                    col.Field("Department").Header("Department").Width("98").Add();
-                    col.Field("PhoneNo").Header("Phone No").Width("105").Add();
-                    col.Field("Location").Header("Location").Width("98").Add();
-                }).PopupHeight("230px").Change("valueChange").Value("HR").Text("John Smith").DataSource((IEnumerable<WorkersDetails>)ViewBag.data).Render()
+                    col.Field("Name").Header("Name").Width("110").Add();
+                    col.Field("Price").Header("Price").Width("85").Add();
+                    col.Field("Availability").Header("Availability").Width("98").Add();
+                    col.Field("Category").Header("Category").Width("95").Add();
+                    col.Field("Rating").Header("Rating").Width("70").Add();
+                }).PopupHeight("220px").PopupWidth("500px").Change("valueChange").Value("Electronics").Text("Smartphone").DataSource((IEnumerable<Products>)ViewBag.data).Render()
             </div>
         </div>
     </div>
@@ -21,11 +22,11 @@
         <table id="property" title="Properties" style="width: 100%; margin:10px">
             <tr>
                 <td class="left-side">Value</td>
-                <td>:<span id='value' class="right-side">HR</span></td>
+                <td>:<span id='value' class="right-side">Electronics</span></td>
             </tr>
             <tr>
                 <td class="left-side">Text</td>
-                <td>:<span id='text' class="right-side">John Smith</span></td>
+                <td>:<span id='text' class="right-side">Laptop</span></td>
             </tr>
         </table>
     </div>
@@ -33,7 +34,7 @@
     <style>
         .control-wrapper {
             margin: 0 auto;
-            width: 500px;
+            width: 250px;
         }
 
         @@media only screen and (max-width: 480px) {

@@ -10,7 +10,7 @@
 
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("CustomerID").HeaderText("Customer Name").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).ShowInColumnChooser(false).Add();
-       col.Field("OrderDate").HeaderText("Order Date").EditType("datepickeredit").Width("130").Type("Date").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("OrderDate").HeaderText("Order Date").AllowGrouping(false).EditType("datepickeredit").Width("130").Type("Date").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("Freight").HeaderText("Freight").EditType("numericedit").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("ShipCountry").HeaderText("Ship Country").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).EditType("dropdownedit").Add();
 

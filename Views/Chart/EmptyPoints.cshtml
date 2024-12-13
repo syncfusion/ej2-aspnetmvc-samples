@@ -14,7 +14,7 @@
             })
             .Title("Annual Product-Wise Profit Analysis")
             .LegendSettings(ls => ls.Visible(false))
-            .Tooltip(tp => tp.Enable(true).Header("").Format("<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>"))
+            .Tooltip(tp => tp.Enable(true).EnableHighlight(true).Header("").Format("<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>"))
             .EnableBorderOnMouseMove(false).EnableSmartLabels(false)
             .Load("load").TextRender("textRender").Render()
     )

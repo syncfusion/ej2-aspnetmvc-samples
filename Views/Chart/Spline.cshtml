@@ -4,10 +4,10 @@
             @Html.EJS().Chart("container").Series(series =>
             {
                 series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MaxTemp")
-                    .Marker(mr => mr.Visible(true).Width(10).Height(10).IsFilled(true))
+                    .Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true))
                     .DataSource(ViewBag.SplineData).Name("Max Temp").Width(2).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("AvgTemp").Marker(mr => mr.Visible(true).Width(10).Height(10).IsFilled(true)).DataSource(ViewBag.SplineData).Name("Avg Temp").Width(2).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MinTemp").Marker(mr => mr.Visible(true).Width(10).Height(10).IsFilled(true)).DataSource(ViewBag.SplineData).Name("Min Temp").Width(2).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("AvgTemp").Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true)).DataSource(ViewBag.SplineData).Name("Avg Temp").Width(2).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MinTemp").Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true)).DataSource(ViewBag.SplineData).Name("Min Temp").Width(2).Add();
             }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
                 .MajorGridLines(mg => mg.Width(0)).Interval(1)
                 .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)

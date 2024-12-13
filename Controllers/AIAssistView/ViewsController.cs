@@ -5,6 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
+using EJ2MVCSampleBrowser.Models;
 using System.Web.Mvc;
 
 namespace EJ2MVCSampleBrowser.Controllers.AIAssistView
@@ -13,6 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.AIAssistView
     {
         public ActionResult Views()
         {
+            ViewBag.PromptResponseData = new PromptResponseData().GetAllPromptResponseData();
             return View();
         }
     }

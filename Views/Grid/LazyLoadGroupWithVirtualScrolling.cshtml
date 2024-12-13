@@ -5,7 +5,7 @@
         @Html.EJS().Grid("Grid").DataSource((IEnumerable<Object>)ViewBag.lazyLoadData).Height("400").EnableVirtualization(true).AllowGrouping(true).AllowSorting().Columns(col =>
    {
 
-       col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("OrderID").HeaderText("Order ID").AllowGrouping(false).Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("ProductName").HeaderText("Product Name").Width("160").Add();
        col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("CustomerID").HeaderText("Customer ID").Width("120").Add();

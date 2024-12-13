@@ -5,15 +5,16 @@
     <div class="control-section">
         <div class="control-wrapper">
             <div style='padding-top:30px;'>
-                @Html.EJS().MultiColumnComboBox("sorting").Placeholder("Select a name").Fields(new MultiColumnComboBoxFieldSettings
-                { Text = "Name", Value = "YearOfJoining" }).Columns(col =>
+                <label>Select a product</label>
+                @Html.EJS().MultiColumnComboBox("sorting").Placeholder("e.g. laptop").Fields(new MultiColumnComboBoxFieldSettings
+                { Text = "Name", Value = "Category" }).Columns(col =>
                 {
-                    col.Field("Name").Header("Name").Width("100").Add();
-                    col.Field("YearOfJoining").Header("Year of Joining").Width("100").Add();
-                    col.Field("Status").Header("Status").Width("60").Add();
-                    col.Field("Location").Header("Location").Width("90").Add();
-                    col.Field("Experience").Header("Experienced Year").Width("110").Add();
-                }).PopupHeight("230px").SortType(SortType.MultipleColumns).SortOrder(SortOrder.Ascending).DataSource((IEnumerable<WorkDetails>)ViewBag.data).Render()
+                    col.Field("Name").Header("Name").Width("110").Add();
+                    col.Field("Price").Header("Price").Width("85").Add();
+                    col.Field("Availability").Header("Availability").Width("98").Add();
+                    col.Field("Category").Header("Category").Width("95").Add();
+                    col.Field("Rating").Header("Rating").Width("70").Add();
+                }).PopupHeight("210px").PopupWidth("600px").SortType(SortType.MultipleColumns).SortOrder(SortOrder.Ascending).DataSource((IEnumerable<Products>)ViewBag.data).Render()
             </div>
         </div>
     </div>
@@ -21,7 +22,7 @@
     <style>
         .control-wrapper {
             margin: 0 auto;
-            width: 600px;
+            width: 250px;
         }
 
         @@media only screen and (max-width: 480px) {

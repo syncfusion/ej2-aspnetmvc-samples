@@ -13,7 +13,7 @@
                     .DataSource(ViewBag.ChartPoints)
                     .Add();
             }
-            ).EnableBorderOnMouseMove(false).Tooltip(tt => tt.Enable(true).Header("").Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>")
+            ).EnableBorderOnMouseMove(false).Tooltip(tt => tt.Enable(true).EnableHighlight(true).Header("").Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>")
             ).Title("Browser Market Share").LegendSettings(lg => lg.Visible(false)).Load("load").PointRender("pointRender").Render())
         </div>
     </div>

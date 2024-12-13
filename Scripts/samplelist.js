@@ -43,7 +43,7 @@ window.samplesList = [
                 "url": "AdaptiveLayout",
                 "name": "Adaptive Layout",
                 "category": "Data Grid",
-		"type": "update",
+                "type": "update",
                 "uid": "00008",
                 "order": 0,
                 "component": "Grid",
@@ -144,7 +144,6 @@ window.samplesList = [
                 "url": "ColumnTemplate",
                 "name": "Column Template",
                 "category": "Columns",
-                "type": "update",
                 "uid": "000020",
                 "order": 2,
                 "component": "Grid",
@@ -155,7 +154,6 @@ window.samplesList = [
                 "url": "HeaderTemplate",
                 "name": "Header Template",
                 "category": "Columns",
-                "type": "update",
                 "uid": "000024",
                 "order": 2,
                 "component": "Grid",
@@ -166,7 +164,6 @@ window.samplesList = [
                 "url": "StackedHeader",
                 "name": "Stacked Header",
                 "category": "Columns",
-                "type": "update",
                 "uid": "000021",
                 "order": 2,
                 "component": "Grid",
@@ -257,7 +254,6 @@ window.samplesList = [
             {
                 "url": "RowTemplate",
                 "name": "Row Template",
-                "type": "update",
                 "category": "Rows",
                 "uid": "000029",
                 "order": 3,
@@ -269,7 +265,6 @@ window.samplesList = [
                 "url": "DetailTemplate",
                 "name": "Detail Template",
                 "category": "Rows",
-                "type": "update",
                 "uid": "000030",
                 "order": 3,
                 "component": "Grid",
@@ -304,7 +299,8 @@ window.samplesList = [
                 "order": 3,
                 "component": "Grid",
                 "dir": "Grid",
-                "parentId": "00"
+                "parentId": "00",
+		"hideOnDevice": true
             },
             {
                 "url": "RowHeight",
@@ -429,7 +425,6 @@ window.samplesList = [
                 "name": "Filter Bar Template",
                 "category": "Filtering",
                 "uid": "000062",
-                "type": "new",
                 "order": 6,
                 "component": "Grid",
                 "dir": "Grid",
@@ -489,7 +484,6 @@ window.samplesList = [
                 "url": "DefaultAggregate",
                 "name": "Default Aggregate",
                 "category": "Aggregates",
-                "type": "update",
                 "uid": "000048",
                 "order": 9,
                 "component": "Grid",
@@ -500,7 +494,6 @@ window.samplesList = [
                 "url": "GroupAndCaptionAggregate",
                 "name": "Group and Caption Aggregate",
                 "category": "Aggregates",
-                "type": "update",
                 "uid": "000049",
                 "order": 9,
                 "component": "Grid",
@@ -695,7 +688,8 @@ window.samplesList = [
                 "order": 13,
                 "component": "Grid",
                 "dir": "Grid",
-                "parentId": "00"
+                "parentId": "00",
+                "hideOnDevice": true
             },
             {
                 "url": "GridLines",
@@ -786,6 +780,17 @@ window.samplesList = [
                 "component": "PivotTable",
                 "dir": "PivotTable",
                 "parentId": "01"
+            },
+            {
+                "url": "ClassicLayout",
+                "name": "Classic Layout",
+                "category": "Pivot Table",
+                "uid": "001134",
+                "order": 0,
+                "component": "PivotTable",
+                "dir": "PivotTable",
+                "parentId": "01",
+                "type": "new"
             },
             {
                 "url": "LiveData",
@@ -905,8 +910,7 @@ window.samplesList = [
                 "order": 4,
                 "component": "PivotTable",
                 "dir": "PivotTable",
-                "parentId": "01",
-                "type": "update"
+                "parentId": "01"
             },
             {
                 "url": "Selection",
@@ -1952,6 +1956,7 @@ window.samplesList = [
                 "category": "Line Charts",
                 "uid": "00440",
                 "order": 0,
+                "type": "update",
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -1992,7 +1997,6 @@ window.samplesList = [
                 "category": "Line Charts",
                 "uid": "0045125",
                 "order": 0,
-                "type": "new",
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2080,7 +2084,6 @@ window.samplesList = [
             {
                 "url": "StepAreaWithOutRiser",
                 "name": "Step Without Riser",
-                "type": "new",
                 "category": "Area Charts",
                 "uid": "0045118",
                 "order": 1,
@@ -2220,6 +2223,17 @@ window.samplesList = [
                 "parentId": "04"
             },
             {
+                "url": "ColumnDrilldown",
+                "name": "Column Drilldown",
+                "category": "Bar Charts",
+                "uid": "0045124",
+                "order": 2,
+                "type": "new",
+                "component": "Chart",
+                "dir": "Chart",
+                "parentId": "04"
+            },
+            {
                 "url": "RangeColumn",
                 "name": "Range Column",
                 "category": "Bar Charts",
@@ -2345,7 +2359,6 @@ window.samplesList = [
                 "category": "Other Types",
                 "uid": "0045120",
                 "order": 4,
-                "type": "new",
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2596,7 +2609,6 @@ window.samplesList = [
                 "category": "Real-time Charts",
                 "uid": "0045119",
                 "order": 8,
-                "type": "new",
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2606,7 +2618,7 @@ window.samplesList = [
                 "name": "Pie",
                 "category": "Accumulation Charts",
                 "uid": "004453",
-                "order": 9,
+                "order": 9,                
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2656,6 +2668,7 @@ window.samplesList = [
                 "name": "Pie with Legend",
                 "category": "Accumulation Charts",
                 "uid": "004458",
+                "type": "update",
                 "order": 9,
                 "component": "Chart",
                 "dir": "Chart",
@@ -2717,7 +2730,6 @@ window.samplesList = [
                 "category": "Accumulation Charts",
                 "uid": "0045121",
                 "order": 9,
-                "type": "new", 
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2727,8 +2739,7 @@ window.samplesList = [
                 "name": "Pie with Patterns",
                 "category": "Accumulation Charts",
                 "uid": "0045122",
-                "order": 9,
-                "type": "new", 
+                "order": 9, 
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -2738,8 +2749,7 @@ window.samplesList = [
                 "name": "Live Update",
                 "category": "Accumulation Charts",
                 "uid": "0045123",
-                "order": 9,
-                "type": "new", 
+                "order": 9, 
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -3130,6 +3140,7 @@ window.samplesList = [
                 "category": "User Interaction",
                 "uid": "004499",
                 "order": 15,
+                "type": "update",
                 "component": "Chart",
                 "dir": "Chart",
                 "parentId": "04"
@@ -3330,6 +3341,7 @@ window.samplesList = [
     {
         "name": "Stock Chart",
         "directory": "StockChart",
+        "type": "update",
         "category": "Data Visualization",
         "samples": [
             {
@@ -3397,6 +3409,7 @@ window.samplesList = [
                 "name": "Spline Area",
                 "category": "Stock Chart",
                 "uid": "00556",
+                "type": "update",
                 "order": 0,
                 "component": "StockChart",
                 "dir": "StockChart",
@@ -4656,6 +4669,7 @@ window.samplesList = [
     {
         "name": "Maps",
         "directory": "Maps",
+        "type": "update",
         "category": "Data Visualization",
         "samples": [
             {
@@ -4809,11 +4823,22 @@ window.samplesList = [
                 "parentId": "010"
             },
             {
+                "url": "OSMWithMarkerClustering",
+                "name": "OSM With Marker Clustering",
+                "category": "Map Providers",
+                "order": 2,
+                "uid": "00101014",
+                type: "new",
+                "component": "Maps",
+                "dir": "Maps",
+                "parentId": "010"
+            },
+            {
                 "url": "OSMWithSubLayer",
                 "name": "OSM With SubLayer",
                 "category": "Map Providers",
                 "order": 2,
-                "uid": "00101014",
+                "uid": "00101015",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4823,7 +4848,7 @@ window.samplesList = [
                 "name": "OSM With Legend",
                 "category": "Map Providers",
                 "order": 2,
-                "uid": "00101015",
+                "uid": "00101016",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4833,7 +4858,7 @@ window.samplesList = [
                 "name": "Tooltip",
                 "category": "User Interaction",
                 "order": 3,
-                "uid": "00101016",
+                "uid": "00101017",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4843,7 +4868,7 @@ window.samplesList = [
                 "name": "Selection & Highlight",
                 "category": "User Interaction",
                 "order": 3,
-                "uid": "00101017",
+                "uid": "00101018",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4853,7 +4878,7 @@ window.samplesList = [
                 "name": "Zooming & Panning",
                 "category": "User Interaction",
                 "order": 3,
-                "uid": "00101018",
+                "uid": "00101019",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4863,7 +4888,7 @@ window.samplesList = [
                 "name": "Zoom to fit all markers",
                 "category": "User Interaction",
                 "order": 3,
-                "uid": "00101019",
+                "uid": "00101020",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4873,7 +4898,7 @@ window.samplesList = [
                 "name": "Drill Down",
                 "category": "User Interaction",
                 "order": 3,
-                "uid": "00101020",
+                "uid": "00101021",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4883,7 +4908,7 @@ window.samplesList = [
                 "name": "Print",
                 "category": "Print and Export",
                 "order": 4,
-                "uid": "00101021",
+                "uid": "00101022",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4893,7 +4918,7 @@ window.samplesList = [
                 "name": "Export",
                 "category": "Print and Export",
                 "order": 4,
-                "uid": "00101022",
+                "uid": "00101023",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4903,7 +4928,7 @@ window.samplesList = [
                 "name": "Heat Map",
                 "category": "Use Cases",
                 "order": 5,
-                "uid": "00101023",
+                "uid": "00101024",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4913,7 +4938,7 @@ window.samplesList = [
                 "name": "Flight routes",
                 "category": "Use Cases",
                 "order": 5,
-                "uid": "00101024",
+                "uid": "00101025",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4923,7 +4948,7 @@ window.samplesList = [
                 "name": "Earthquake indication",
                 "category": "Use Cases",
                 "order": 5,
-                "uid": "00101025",
+                "uid": "00101026",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4933,7 +4958,7 @@ window.samplesList = [
                 "name": "Highlighted region",
                 "category": "Use Cases",
                 "order": 5,
-                "uid": "00101026",
+                "uid": "00101027",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4943,7 +4968,7 @@ window.samplesList = [
                 "name": "Cyber Attack Map",
                 "category": "Use Cases",
                 "order": 5,
-                "uid": "00101027",
+                "uid": "00101028",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4953,7 +4978,7 @@ window.samplesList = [
                 "name": "Dynamic Marker",
                 "category": "Use Cases",
                 "order": 5,
-                "uid": "00101028",
+                "uid": "00101029",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4963,7 +4988,7 @@ window.samplesList = [
                 "name": "Map with Pie Chart",
                 "category": "Use Cases",
                 "order": 5,
-                "uid": "00101029",
+                "uid": "00101030",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4973,7 +4998,7 @@ window.samplesList = [
                 "name": "Map With Slider",
                 "category": "Use Cases",
                 "order": 5,
-                "uid": "00101030",
+                "uid": "00101031",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4983,7 +5008,7 @@ window.samplesList = [
                 "name": "Sales map",
                 "category": "Use Cases",
                 "order": 5,
-                "uid": "00101031",
+                "uid": "00101032",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -4993,7 +5018,7 @@ window.samplesList = [
                 "name": "Bus seat booking",
                 "category": "Use Cases",
                 "order": 5,
-                "uid": "00101032",
+                "uid": "00101034",
                 "component": "Maps",
                 "dir": "Maps",
                 "parentId": "010"
@@ -5880,8 +5905,7 @@ window.samplesList = [
                 "component": "PdfViewer",
                 "dir": "PdfViewer",
                 "parentId": "065",
-                "uid": "0065655",
-                "type": "update"
+                "uid": "0065655"
             },
             {
                 "url": "CustomToolbar",
@@ -5941,7 +5965,7 @@ window.samplesList = [
                 "component": "PdfViewer",
                 "dir": "PdfViewer",
                 "parentId": "065",
-                "type": "new",
+                "type": "update",
                 "uid": "0065661",
 				"hideOnDevice": true
             },
@@ -5953,7 +5977,7 @@ window.samplesList = [
                 "component": "PdfViewer",
                 "dir": "PdfViewer",
                 "parentId": "065",
-                "type": "new",
+                "type": "update",
                 "uid": "0065662"
             },
             {
@@ -5965,7 +5989,6 @@ window.samplesList = [
                 "dir": "PdfViewer",
                 "parentId": "065",
                 "uid": "0065663",
-                "type": "update"
             },
             {
                 "url": "HandwrittenSignature",
@@ -5995,7 +6018,7 @@ window.samplesList = [
                 "component": "PdfViewer",
                 "dir": "PdfViewer",
                 "parentId": "065",
-                "type": "new",
+                "type": "update",
                 "uid": "0065666",
             },
         ],
@@ -6006,7 +6029,6 @@ window.samplesList = [
         "name": "Rich Text Editor",
         "directory": "RichTextEditor",
         "category": "Viewer & Editors",
-        "type": "update",
         "samples": [
             {
                 "url": "Overview",
@@ -6017,7 +6039,6 @@ window.samplesList = [
                 "component": "RichTextEditor",
                 "dir": "RichTextEditor",
                 "parentId": "018",
-                "type": "update"
             },
             {
                 "url": "DefaultFunctionalities",
@@ -6216,8 +6237,7 @@ window.samplesList = [
                 "order": 0,
                 "component": "RichTextEditor",
                 "dir": "RichTextEditor",
-                "parentId": "018",
-                "type": "new"
+                "parentId": "018"
             },
             {
                 "url": "ImageEditorIntegration",
@@ -6237,8 +6257,7 @@ window.samplesList = [
                 "order": 1,
                 "component": "RichTextEditor",
                 "dir": "RichTextEditor",
-                "parentId": "018",
-                "type": "update"
+                "parentId": "018"
             },
             {
                 "url": "ImportWord",
@@ -6248,8 +6267,7 @@ window.samplesList = [
                 "order": 1,
                 "component": "RichTextEditor",
                 "dir": "RichTextEditor",
-                "parentId": "018",
-                "type": "update"
+                "parentId": "018"
             },
             {
                 "url": "MentionIntegration",
@@ -6269,8 +6287,7 @@ window.samplesList = [
                 "order": 2,
                 "component": "RichTextEditor",
                 "dir": "RichTextEditor",
-                "parentId": "018",
-                "type": "update"
+                "parentId": "018"
             },
             {
                 "url": "Types",
@@ -6308,7 +6325,6 @@ window.samplesList = [
     },
     {
         "name": "Markdown Editor",
-        "type": "update",
         "directory": "MarkdownEditor",
         "category": "Viewer & Editors",
         "samples": [
@@ -6350,8 +6366,7 @@ window.samplesList = [
                 "order": 5,
                 "component": "Markdown Editor",
                 "dir": "MarkdownEditor",
-                "parentId": "069",
-                "type": "new"
+                "parentId": "069"
             }
         ],
         "order": 2,
@@ -6361,7 +6376,6 @@ window.samplesList = [
         "name": "DocumentEditor",
         "directory": "DocumentEditor",
         "category": "Viewer & Editors",
-        "type": "update",
         "hideOnDevice": true,
         "samples": [
             {
@@ -6549,7 +6563,6 @@ window.samplesList = [
                 "dir": "DocumentEditor",
                 "parentId": "019",
                 "uid": "00191932",
-                "type": "new",
                 "sourceFiles": [               
                     { "displayName": "AutoShapes.cshtml", "path": "../Home/GetHtml?path=Views/DocumentEditor/AutoShapes.cshtml" }
                 ]
@@ -6723,7 +6736,6 @@ window.samplesList = [
                 "url": "DefaultFunctionalities",
                 "name": "Default Functionalities",
                 "category": "Image Editor",
-                "type":"update",
                 "uid": "0024240",
                 "order": 0,
                 "component": "Image Editor",
@@ -6746,6 +6758,17 @@ window.samplesList = [
                 "category": "Image Editor",
                 "uid": "0024242",
                 "order": 0,
+                "component": "Image Editor",
+                "dir": "ImageEditor",
+                "parentId": "024"
+            },
+            {
+                "url": "FileRestrict",
+                "name": "File Restriction",
+                "category": "Image Editor",
+                "uid": "0024243",
+                "order": 0,
+                "type":"new",
                 "component": "Image Editor",
                 "dir": "ImageEditor",
                 "parentId": "024"
@@ -7120,7 +7143,6 @@ window.samplesList = [
                 "component": "Schedule",
                 "dir": "Schedule",
                 "parentId": "023",
-                "type": "new"
             },
             {
                 "url": "LocalData",
@@ -7252,7 +7274,6 @@ window.samplesList = [
                 "component": "Schedule",
                 "dir": "Schedule",
                 "parentId": "023",
-                "type": "new"
             },
             {
                 "url": "GridToSchedule",
@@ -7263,7 +7284,6 @@ window.samplesList = [
                 "component": "Schedule",
                 "dir": "Schedule",
                 "parentId": "023",
-                "type": "new"
             },
             {
                 "url": "VirtualScrolling",
@@ -7736,13 +7756,24 @@ window.samplesList = [
                 "parentId": "023"
             },
             {
+                "url": "Clipboard",
+                "name": "Clipboard",
+                "category": "Miscellaneous",
+                "uid": "00232362",
+                "order": 13,
+                "component": "Schedule",
+                "dir": "Schedule",
+                "parentId": "023",
+                "type": "new",
+                "description": "This demo showcases clipboard operations (cut, copy, and paste) with Scheduler events, along with a context menu for additional actions."
+            },
+            {
                 "url": "KeyboardInteraction",
                 "name": "Keyboard Interaction",
                 "category": "Miscellaneous",
                 "uid": "00232357",
                 "order": 13,
                 "component": "Schedule",
-                "type": "update",
                 "dir": "Schedule",
                 "parentId": "023"
             },
@@ -7765,7 +7796,6 @@ window.samplesList = [
         "directory": "GanttChart",
         "category": "Calendars",
         "uid": "025",
-	"type": "update",
         "order": 3,
         "samples": [
             {
@@ -7791,7 +7821,6 @@ window.samplesList = [
             {
                 "url": "Editing",
                 "name": "Editing",
-		"type": "update",
                 "category": "Gantt Chart",
                 "uid": "0025251",
                 "order": 0,
@@ -7987,7 +8016,6 @@ window.samplesList = [
                 "order": 4,
                 "component": "GanttChart",
                 "dir": "GanttChart",
-		"type": "update",
                 "parentId": "025"
             },
             {
@@ -8485,7 +8513,6 @@ window.samplesList = [
         "name": "DateTimePicker",
         "directory": "DateTimePicker",
         "category": "Calendars",
-        "type": "update",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -8512,7 +8539,6 @@ window.samplesList = [
                 "name": "Date Range",
                 "category": "DateTimePicker",
                 "order": 0,
-                "type": "update",
                 "component": "DateTimePicker",
                 "dir": "DateTimePicker",
                 "parentId": "028",
@@ -8635,6 +8661,7 @@ window.samplesList = [
         "name": "AutoComplete",
         "directory": "AutoComplete",
         "category": "Dropdowns",
+        'type': 'update',
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -8691,6 +8718,17 @@ window.samplesList = [
                 "name": "Template",
                 "category": "AutoComplete",
                 "uid": "0030303",
+                "order": 0,
+                "component": "AutoComplete",
+                "dir": "AutoComplete",
+                "parentId": "030"
+            },
+            {
+                "url": "Resize",
+                "name": "Popup Resize",
+                "category": "AutoComplete",
+                "type": "new",
+                "uid": "0030311",
                 "order": 0,
                 "component": "AutoComplete",
                 "dir": "AutoComplete",
@@ -8754,6 +8792,7 @@ window.samplesList = [
         "name": "ComboBox",
         "directory": "ComboBox",
         "category": "Dropdowns",
+        'type': 'update',
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -8826,6 +8865,17 @@ window.samplesList = [
                 "parentId": "031"
             },
             {
+                "url": "Resize",
+                "name": "Popup Resize",
+                "category": "ComboBox",
+                "uid": "0031322",
+                "type": "new",
+                "order": 0,
+                "component": "ComboBox",
+                "dir": "ComboBox",
+                "parentId": "031"
+            },
+            {
                 "url": "Filtering",
                 "name": "Filtering",
                 "category": "ComboBox",
@@ -8883,6 +8933,7 @@ window.samplesList = [
         "name": "Dropdown List",
         "directory": "DropDownList",
         "category": "Dropdowns",
+        "type": "update",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -8939,6 +8990,17 @@ window.samplesList = [
                 "name": "Template",
                 "category": "Dropdown List",
                 "uid": "0032323",
+                "order": 0,
+                "component": "DropDownList",
+                "dir": "DropDownList",
+                "parentId": "032"
+            },
+            {
+                "url": "Resize",
+                "name": "Popup Resize",
+                "category": "Dropdown List",
+                "uid": "0032332",
+                "type": "new",
                 "order": 0,
                 "component": "DropDownList",
                 "dir": "DropDownList",
@@ -9013,7 +9075,6 @@ window.samplesList = [
         "directory": "DropDownTree",
         "category": "Dropdowns",
         "ftName": "dropdown-tree",
-    	"type": "update",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -9065,7 +9126,6 @@ window.samplesList = [
                 "component": "DropDownTree",
                 "dir": "DropDownTree",
                 "parentId": "033",
-	    	"type": "update"
             },
             {
                 "url": "CustomTemplate",
@@ -9115,6 +9175,7 @@ window.samplesList = [
         "name": "MultiSelect Dropdown",
         "directory": "MultiSelect",
         "category": "Dropdowns",
+        "type": "update",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -9172,6 +9233,17 @@ window.samplesList = [
                 "category": "MultiSelect Dropdown",
                 "uid": "0034343",
                 "order": 0,
+                "component": "MultiSelect",
+                "dir": "MultiSelect",
+                "parentId": "034"
+            },
+            {
+                "url": "Resize",
+                "name": "Popup Resize",
+                "category": "MultiSelect Dropdown",
+                "uid": "0034350",
+                "order": 0,
+                "type": "new",
                 "component": "MultiSelect",
                 "dir": "MultiSelect",
                 "parentId": "034"
@@ -9274,7 +9346,6 @@ window.samplesList = [
         "name": "MultiColumn ComboBox",
         "directory": "MultiColumnComboBox",
         "category": "Dropdowns",
-        "type": "preview",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -9374,7 +9445,6 @@ window.samplesList = [
         "name": "Mention",
         "directory": "Mention",
         "category": "Dropdowns",
-        "type": "update",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -9411,7 +9481,6 @@ window.samplesList = [
                 "name": "Disabled Items",
                 "category": "Mention",
                 "uid": "0068683",
-                "type": "new",
                 "order": 0,
                 "component": "Mention",
                 "dir": "Mention",
@@ -9735,6 +9804,7 @@ window.samplesList = [
         "directory": "ContextMenu",
         "category": "Navigation",
         "ftName": "context-menu",
+        "type": "update",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -9745,6 +9815,17 @@ window.samplesList = [
                 "dir": "ContextMenu",
                 "parentId": "037",
                 "uid": "0037370"
+            },
+            {
+                "url": "TemplateFunctionalities",
+                "name": "Template",
+                "category": "Context Menu",
+                "order": 0,
+                "type": "new",
+                "component": "ContextMenu",
+                "dir": "ContextMenu",
+                "parentId": "037",
+                "uid": "0037371"
             }
         ],
         "order": 5,
@@ -9753,8 +9834,7 @@ window.samplesList = [
     {
         "name": "File Manager",
         "directory": "FileManager",
-        "category": "Navigation",
-	"type": "update",   
+        "category": "Navigation",  
         "ftName": "file-manager",  
         "samples": [
             {
@@ -9836,7 +9916,6 @@ window.samplesList = [
                 "order": 0,
                 "component": "FileManager",
                 "dir": "FileManager",
-		"type": "update",
                 "parentId": "038",
                 "uid": "0038382",
                 "sourceFiles": [
@@ -12150,7 +12229,6 @@ window.samplesList = [
         "name": "Word (DocIO)",
         "directory": "Word",
         "category": "Document Processing Libraries",
-        "type": "update",
         "samples": [
             {
                 "url": "UpdateFields",
@@ -12470,8 +12548,7 @@ window.samplesList = [
                 "component": "Word",
                 "dir": "Word",
                 "parentId": "061",
-                "uid": "00616131",
-                "type": "update"
+                "uid": "00616131"
             },
             {
                 "url": "HTMLtoDOC",
@@ -12481,8 +12558,7 @@ window.samplesList = [
                 "component": "Word",
                 "dir": "Word",
                 "parentId": "061",
-                "uid": "00616132",
-                "type": "update"
+                "uid": "00616132"
             },
             {
                 "url": "WordToMarkdown", 
@@ -12711,7 +12787,6 @@ window.samplesList = [
     {
         "name": "PDF",
         "directory": "PDF",
-        "type": "update",
         "category": "Document Processing Libraries",
         "samples": [
             {
@@ -13011,7 +13086,6 @@ window.samplesList = [
                 "order": 10,
                 "component": "PDF",
                 "dir": "PDF",
-                "type": "update", 
                 "parentId": "062",
                 "uid": "00626227"
             },
@@ -13632,7 +13706,6 @@ window.samplesList = [
         "name": "Excel (XlsIO)",
         "directory": "Excel",
         "category": "Document Processing Libraries",
-        "type": "update",
         "samples": [
             {
                 "url": "Default",
@@ -14039,7 +14112,6 @@ window.samplesList = [
                 "name": "Excel To PDF/UA",
                 "category": "Conversions",
                 "order": 9,
-                "type": "new",
                 "component": "Excel",
                 "dir": "Excel",
                 "parentId": "064",
@@ -14224,7 +14296,6 @@ window.samplesList = [
         "name": "AI AssistView",
         "directory": "AIAssistView",
         "category": "Interactive Chat",
-        "type": "preview",
         "samples": [
             {
                 "url": "DefaultFunctionalities",
@@ -14234,7 +14305,17 @@ window.samplesList = [
                 "order": 0,
                 "component": "AIAssistView",
                 "dir": "AIAssistView",
-                "parentId": "0208"
+                "parentId": "0208",
+                "sourceFiles": [
+                    {
+                        "displayName": "DefaultFunctionalities.cshtml",
+                        "path": "../Home/GetHtml?path=Views/AIAssistView/DefaultFunctionalities.cshtml"
+                    },
+                    {
+                        "displayName": "DefaultFunctionalitiesController.cs",
+                        "path": "../Controllers/AIAssistView/DefaultFunctionalitiesController.cs"
+                    }
+                ]
             },
             {
                 "url": "Views",
@@ -14244,7 +14325,17 @@ window.samplesList = [
                 "order": 0,
                 "component": "AIAssistView",
                 "dir": "AIAssistView",
-                "parentId": "0208"
+                "parentId": "0208",
+                "sourceFiles": [
+                    {
+                        "displayName": "Views.cshtml",
+                        "path": "../Home/GetHtml?path=Views/AIAssistView/Views.cshtml"
+                    },
+                    {
+                        "displayName": "ViewsController.cs",
+                        "path": "../Controllers/AIAssistView/ViewsController.cs"
+                    }
+                ]
             },
             {
                 "url": "Template",
@@ -14254,7 +14345,17 @@ window.samplesList = [
                 "order": 0,
                 "component": "AIAssistView",
                 "dir": "AIAssistView",
-                "parentId": "0208"
+                "parentId": "0208",
+                "sourceFiles": [
+                    {
+                        "displayName": "Template.cshtml",
+                        "path": "../Home/GetHtml?path=Views/AIAssistView/Template.cshtml"
+                    },
+                    {
+                        "displayName": "TemplateController.cs",
+                        "path": "../Controllers/AIAssistView/TemplateController.cs"
+                    }
+                ]
             },
             {
                 "url": "Dialog",
@@ -14264,10 +14365,110 @@ window.samplesList = [
                 "order": 1,
                 "component": "AIAssistView",
                 "dir": "AIAssistView",
-                "parentId": "0208"
+                "parentId": "0208",
+                "sourceFiles": [
+                    {
+                        "displayName": "Dialog.cshtml",
+                        "path": "../Home/GetHtml?path=Views/AIAssistView/Dialog.cshtml"
+                    },
+                    {
+                        "displayName": "DialogController.cs",
+                        "path": "../Controllers/AIAssistView/DialogController.cs"
+                    }
+                ]
             }
         ],
         "order": 2,
         "uid": "0208"
+    },
+    {
+        "name": "Chat UI",
+        "directory": "ChatUI",
+        "category": "Interactive Chat",
+        "type": "preview",
+        "samples": [
+            {
+                "url": "DefaultFunctionalities",
+                "name": "Default Functionalities",
+                "category": "Chat UI",
+                "uid": "006565067",
+                "order": 0,
+                "component": "ChatUI",
+                "dir": "ChatUI",
+                "parentId": "0209",
+                "sourceFiles": [
+                    {
+                        "displayName": "DefaultFunctionalities.cshtml",
+                        "path": "../Home/GetHtml?path=Views/ChatUI/DefaultFunctionalities.cshtml"
+                    },
+                    {
+                        "displayName": "DefaultFunctionalitiesController.cs",
+                        "path": "../Controllers/ChatUI/DefaultFunctionalitiesController.cs"
+                    }
+                ]
+            },
+            {
+                "url": "Template",
+                "name": "Template",
+                "category": "Chat UI",
+                "uid": "006565068",
+                "order": 0,
+                "component": "ChatUI",
+                "dir": "ChatUI",
+                "parentId": "0209",
+                "sourceFiles": [
+                    {
+                        "displayName": "Template.cshtml",
+                        "path": "../Home/GetHtml?path=Views/ChatUI/Template.cshtml"
+                    },
+                    {
+                        "displayName": "TemplateController.cs",
+                        "path": "../Controllers/ChatUI/TemplateController.cs"
+                    }
+                ]
+            },
+            {
+                "url": "API",
+                "name": "API",
+                "category": "Chat UI",
+                "uid": "006565069",
+                "order": 0,
+                "component": "ChatUI",
+                "dir": "ChatUI",
+                "parentId": "0209",
+                "sourceFiles": [
+                    {
+                        "displayName": "API.cshtml",
+                        "path": "../Home/GetHtml?path=Views/ChatUI/API.cshtml"
+                    },
+                    {
+                        "displayName": "APIController.cs",
+                        "path": "../Controllers/ChatUI/APIController.cs"
+                    }
+                ]
+            },
+            {
+                "url": "ChatIntegration",
+                "name": "Use Case",
+                "category": "Integration",
+                "uid": "006565070",
+                "order": 1,
+                "component": "ChatUI",
+                "dir": "ChatUI",
+                "parentId": "0209",
+                "sourceFiles": [
+                    {
+                        "displayName": "ChatIntegration.cshtml",
+                        "path": "../Home/GetHtml?path=Views/ChatUI/ChatIntegration.cshtml"
+                    },
+                    {
+                        "displayName": "ChatIntegrationController.cs",
+                        "path": "../Controllers/ChatUI/ChatIntegrationController.cs"
+                    }
+                ]
+            },
+        ],
+        "order": 2,
+        "uid": "0209"
     },
 ]

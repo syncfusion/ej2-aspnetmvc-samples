@@ -5,7 +5,7 @@
    {
        series.Type(Syncfusion.EJ2.Charts.AccumulationType.Pyramid).Width("45%").Height("80%").XName("Foods").YName("Calories").Name("Food").
        NeckWidth("15%").GapRatio(0.03).Explode(true).DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).Font(ft => ft.FontWeight("600")).ConnectorStyle(cs => cs.Length("20px"))).DataSource(ViewBag.ChartPoints).Add();
-   }).Title("Food Comparison Chart").Tooltip(tl => tl.Enable(true).Format("${point.x}: <b>${point.y}cal</b>").Header("")).LegendSettings(ls =>ls.Visible(false)).Load("load").Render())
+   }).Title("Food Comparison Chart").Tooltip(tl => tl.Enable(true).EnableHighlight(true).Format("${point.x}: <b>${point.y}cal</b>").Header("")).LegendSettings(ls =>ls.Visible(false)).Load("load").Render())
     </div>
     
     <script>

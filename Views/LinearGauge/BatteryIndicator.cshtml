@@ -29,7 +29,7 @@
             @* custom code end *@
             borderColor = sender.gauge.theme.indexOf('Dark') > -1 ? 'white' : '#bfbfbf';
             textColor = sender.gauge.theme.indexOf('Dark') > -1 || sender.gauge.theme.indexOf('HighContrast') > -1 ? '#FFFFFF' : '#000000';
-            if (sender.gauge.theme == 'Bootstrap5Dark' || sender.gauge.theme == 'TailwindDark') {
+            if (sender.gauge.theme == 'Bootstrap5Dark' || sender.gauge.theme == 'TailwindDark' || sender.gauge.theme == 'Tailwind3Dark') {
                 borderColor = "#4b5563";
             }
             if (sender.gauge.theme == 'FabricDark' || sender.gauge.theme == 'BootstrapDark' || sender.gauge.theme == 'MaterialDark' || sender.gauge.theme == 'HighContrast' || sender.gauge.theme == 'Material' || sender.gauge.theme == 'Fabric' || sender.gauge.theme == 'Bootstrap') {
@@ -41,11 +41,11 @@
             if (sender.gauge.theme == 'FluentDark' || sender.gauge.theme == 'Fluent2Dark' || sender.gauge.theme == 'Fluent2HighContrast') {
                 borderColor = "#292827";
             }
-            if (sender.gauge.theme == 'Bootstrap5' || sender.gauge.theme == 'Tailwind') {
+            if (sender.gauge.theme == 'Bootstrap5' || sender.gauge.theme == 'Tailwind' || sender.gauge.theme == 'Tailwind3') {
                 borderColor = "#E5E7EB";
             }
             sender.gauge.annotations[0].content = "<div style='width: 16px;height: 37px;border: 5px solid " + borderColor + ";margin-left:26px;margin-top:57px;border-radius: 6px;' />";
-            sender.gauge.annotations[1].content = "<div style='width: 134px;font-size: 20px;margin-top:150px;margin-left:40px;color: " + textColor + ";'>Charged: 75%</div>";
+            sender.gauge.annotations[1].content = "<div style='width: 137px;font-size: 20px;margin-top:150px;margin-left:40px;color: " + textColor + ";'>Charged: 75%</div>";
         }
         
     </script>

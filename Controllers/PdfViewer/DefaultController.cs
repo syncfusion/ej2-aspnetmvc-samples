@@ -126,7 +126,6 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
 
             return Content(JsonConvert.SerializeObject(result));
         }
-
         public Dictionary<string, string> JsonConverter(jsonObjects results)
         {
             Dictionary<string, object> resultObjects = new Dictionary<string, object>();
@@ -387,115 +386,118 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
         {
             string RedactionText = "Redacted";
             var finalbase64 = string.Empty;
-            PdfRenderer pdfviewer = new PdfRenderer();
-            string documentBase = pdfviewer.GetDocumentAsBase64(jsonObject);
-            string base64String = documentBase.Split(new string[] { "data:application/pdf;base64," }, StringSplitOptions.None)[1];
-            if (base64String != null || base64String != string.Empty)
+            if (jsonObject != null && jsonObject.ContainsKey("base64String"))
             {
-                byte[] byteArray = Convert.FromBase64String(base64String);
-                Console.WriteLine("redaction");
-                PdfLoadedDocument loadedDocument = new PdfLoadedDocument(byteArray);
-                foreach (PdfLoadedPage loadedPage in loadedDocument.Pages)
+                string base64 = jsonObject["base64String"];
+                string base64String = base64.Split(new string[] { "data:application/pdf;base64," }, StringSplitOptions.None)[1];
+                if (base64String != null || base64String != string.Empty)
                 {
-                    List<PdfLoadedAnnotation> removeItems = new List<PdfLoadedAnnotation>();
-                    foreach (PdfLoadedAnnotation annotation in loadedPage.Annotations)
+                    byte[] byteArray = Convert.FromBase64String(base64String);
+                    Console.WriteLine("redaction");
+                    PdfLoadedDocument loadedDocument = new PdfLoadedDocument(byteArray);
+                    foreach (PdfLoadedPage loadedPage in loadedDocument.Pages)
                     {
-                        if (annotation is PdfLoadedRectangleAnnotation)
+                        List<PdfLoadedAnnotation> removeItems = new List<PdfLoadedAnnotation>();
+                        foreach (PdfLoadedAnnotation annotation in loadedPage.Annotations)
                         {
-                            if (annotation.Author == "Redaction")
+                            if (annotation is PdfLoadedRectangleAnnotation)
                             {
-                                // Add the annotation to the removeItems list
-                                removeItems.Add(annotation);
-                                // Create a new redaction with the annotation bounds and color
-                                PdfRedaction redaction = new PdfRedaction(annotation.Bounds, annotation.Color);
-                                // Add the redaction to the page
-                                loadedPage.AddRedaction(redaction);
-                                annotation.Flatten = true;
+                                if (annotation.Author == "Redaction")
+                                {
+                                    // Add the annotation to the removeItems list
+                                    removeItems.Add(annotation);
+                                    // Create a new redaction with the annotation bounds and color
+                                    PdfRedaction redaction = new PdfRedaction(annotation.Bounds, annotation.Color);
+                                    // Add the redaction to the page
+                                    loadedPage.AddRedaction(redaction);
+                                    annotation.Flatten = true;
+                                }
+                                if (annotation.Author == "Text")
+                                {
+                                    // Add the annotation to the removeItems list
+                                    removeItems.Add(annotation);
+                                    // Create a new redaction with the annotation bounds and color
+                                    PdfRedaction redaction = new PdfRedaction(annotation.Bounds);
+                                    //Set the font family and font size
+                                    PdfStandardFont font = new PdfStandardFont(PdfFontFamily.Courier, 8);
+                                    //Create the appearance like repeated text in the redaction area 
+                                    CreateRedactionAppearance(redaction.Appearance.Graphics, PdfTextAlignment.Left, true, new SizeF(annotation.Bounds.Width, annotation.Bounds.Height), RedactionText, font, PdfBrushes.Red);
+                                    // Add the redaction to the page
+                                    loadedPage.AddRedaction(redaction);
+                                    annotation.Flatten = true;
+                                }
+                                //Apply the pattern for the Redaction
+                                if (annotation.Author == "Pattern")
+                                {
+                                    // Add the annotation to the removeItems list
+                                    removeItems.Add(annotation);
+                                    // Create a new redaction with the annotation bounds and color
+                                    PdfRedaction redaction = new PdfRedaction(annotation.Bounds);
+                                    RectangleF rect = new RectangleF(0, 0, 8, 8);
+                                    PdfTilingBrush tillingBrush = new PdfTilingBrush(rect);
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.Gray, new RectangleF(0, 0, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.White, new RectangleF(2, 0, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(4, 0, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.DarkGray, new RectangleF(6, 0, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.White, new RectangleF(0, 2, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(2, 2, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.Black, new RectangleF(4, 2, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(6, 2, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(0, 4, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.DarkGray, new RectangleF(2, 4, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(4, 4, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.White, new RectangleF(6, 4, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.Black, new RectangleF(0, 6, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(2, 6, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.Black, new RectangleF(4, 6, 2, 2));
+                                    tillingBrush.Graphics.DrawRectangle(PdfBrushes.DarkGray, new RectangleF(6, 6, 2, 2));
+                                    rect = new RectangleF(0, 0, 16, 14);
+                                    PdfTilingBrush tillingBrushNew = new PdfTilingBrush(rect);
+                                    tillingBrushNew.Graphics.DrawRectangle(tillingBrush, rect);
+                                    //Set the pattern for the redaction area
+                                    redaction.Appearance.Graphics.DrawRectangle(tillingBrushNew, new RectangleF(0, 0, annotation.Bounds.Width, annotation.Bounds.Height));
+                                    // Add the redaction to the page
+                                    loadedPage.AddRedaction(redaction);
+                                    annotation.Flatten = true;
+                                }
                             }
-                            if (annotation.Author == "Text")
+                            else if (annotation is PdfLoadedRubberStampAnnotation)
                             {
-                                // Add the annotation to the removeItems list
-                                removeItems.Add(annotation);
-                                // Create a new redaction with the annotation bounds and color
-                                PdfRedaction redaction = new PdfRedaction(annotation.Bounds);
-                                //Set the font family and font size
-                                PdfStandardFont font = new PdfStandardFont(PdfFontFamily.Courier, 8);
-                                //Create the appearance like repeated text in the redaction area 
-                                CreateRedactionAppearance(redaction.Appearance.Graphics, PdfTextAlignment.Left, true, new SizeF(annotation.Bounds.Width, annotation.Bounds.Height), RedactionText, font, PdfBrushes.Red);
-                                // Add the redaction to the page
-                                loadedPage.AddRedaction(redaction);
-                                annotation.Flatten = true;
-                            }
-                            //Apply the pattern for the Redaction
-                            if (annotation.Author == "Pattern")
-                            {
-                                // Add the annotation to the removeItems list
-                                removeItems.Add(annotation);
-                                // Create a new redaction with the annotation bounds and color
-                                PdfRedaction redaction = new PdfRedaction(annotation.Bounds);
-                                RectangleF rect = new RectangleF(0, 0, 8, 8);
-                                PdfTilingBrush tillingBrush = new PdfTilingBrush(rect);
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.Gray, new RectangleF(0, 0, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.White, new RectangleF(2, 0, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(4, 0, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.DarkGray, new RectangleF(6, 0, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.White, new RectangleF(0, 2, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(2, 2, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.Black, new RectangleF(4, 2, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(6, 2, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(0, 4, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.DarkGray, new RectangleF(2, 4, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(4, 4, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.White, new RectangleF(6, 4, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.Black, new RectangleF(0, 6, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.LightGray, new RectangleF(2, 6, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.Black, new RectangleF(4, 6, 2, 2));
-                                tillingBrush.Graphics.DrawRectangle(PdfBrushes.DarkGray, new RectangleF(6, 6, 2, 2));
-                                rect = new RectangleF(0, 0, 16, 14);
-                                PdfTilingBrush tillingBrushNew = new PdfTilingBrush(rect);
-                                tillingBrushNew.Graphics.DrawRectangle(tillingBrush, rect);
-                                //Set the pattern for the redaction area
-                                redaction.Appearance.Graphics.DrawRectangle(tillingBrushNew, new RectangleF(0, 0, annotation.Bounds.Width, annotation.Bounds.Height));
-                                // Add the redaction to the page
-                                loadedPage.AddRedaction(redaction);
-                                annotation.Flatten = true;
+                                if (annotation.Author == "Image")
+                                {
+                                    //Get the existing rubber stamp annotation.
+                                    PdfLoadedRubberStampAnnotation rubberStampAnnotation = annotation as PdfLoadedRubberStampAnnotation;
+                                    //Get the custom images used for the rubber stamp annotation.
+                                    Image[] images = rubberStampAnnotation.GetImages();
+                                    // Create a new redaction with the annotation bounds and color
+                                    PdfRedaction redaction = new PdfRedaction(annotation.Bounds);
+                                    // images[0].Position = 0;
+                                    PdfImage image = new PdfBitmap(images[0]);
+                                    //Apply the image to redaction area
+                                    redaction.Appearance.Graphics.DrawImage(image, new RectangleF(0, 0, annotation.Bounds.Width, annotation.Bounds.Height));
+                                    // Add the redaction to the page
+                                    loadedPage.AddRedaction(redaction);
+                                    annotation.Flatten = true;
+                                }
                             }
                         }
-                        else if (annotation is PdfLoadedRubberStampAnnotation)
+                        foreach (PdfLoadedAnnotation annotation1 in removeItems)
                         {
-                            if (annotation.Author == "Image")
-                            {
-                                //Get the existing rubber stamp annotation.
-                                PdfLoadedRubberStampAnnotation rubberStampAnnotation = annotation as PdfLoadedRubberStampAnnotation;
-                                //Get the custom images used for the rubber stamp annotation.
-                                Image[] images = rubberStampAnnotation.GetImages();
-                                // Create a new redaction with the annotation bounds and color
-                                PdfRedaction redaction = new PdfRedaction(annotation.Bounds);
-                                // images[0].Position = 0;
-                                PdfImage image = new PdfBitmap(images[0]);
-                                //Apply the image to redaction area
-                                redaction.Appearance.Graphics.DrawImage(image, new RectangleF(0, 0, annotation.Bounds.Width, annotation.Bounds.Height));
-                                // Add the redaction to the page
-                                loadedPage.AddRedaction(redaction);
-                                annotation.Flatten = true;
-                            }
+                            loadedPage.Annotations.Remove(annotation1);
                         }
                     }
-                    foreach (PdfLoadedAnnotation annotation1 in removeItems)
-                    {
-                        loadedPage.Annotations.Remove(annotation1);
-                    }
+                    loadedDocument.Redact();
+                    MemoryStream stream = new MemoryStream();
+                    loadedDocument.Save(stream);
+                    stream.Position = 0;
+                    loadedDocument.Close(true);
+                    byteArray = stream.ToArray();
+                    finalbase64 = "data:application/pdf;base64," + Convert.ToBase64String(byteArray);
+                    stream.Dispose();
+                    return Content(finalbase64);
                 }
-                loadedDocument.Redact();
-                MemoryStream stream = new MemoryStream();
-                loadedDocument.Save(stream);
-                stream.Position = 0;
-                loadedDocument.Close(true);
-                byteArray = stream.ToArray();
-                finalbase64 = "data:application/pdf;base64," + Convert.ToBase64String(byteArray);
-                stream.Dispose();
             }
-            return Content(finalbase64);
+            return Content("data:application/pdf;base64," + "");
         }
 
         //The Method used for apply the text in the full area of redaction rectangle

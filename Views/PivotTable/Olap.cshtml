@@ -13,8 +13,7 @@
         .Rows(rows => { rows.Name("[Customer].[Customer Geography]").Caption("Customer Geography").Add(); })
         .Columns(columns => { columns.Name("[Product].[Product Categories]").Caption("Product Categories").Add(); columns.Name("[Measures]").Caption("Measures").Add(); })
         .Values(values => { values.Name("[Measures].[Customer Count]").Caption("Customer Count").Add(); values.Name("[Measures].[Internet Sales Amount]").Caption("Internet Sales Amount").Add(); })
-        .Filters(filters => { filters.Name("[Date].[Fiscal]").Caption("Date Fiscal").Add();})
-        .FilterSettings(filterSettings => { filterSettings.Name("[Date].[Fiscal]").Items(ViewBag.filterMembers).LevelCount(3).Add();
+        .Filters(filters => { filters.Name("[Date].[Fiscal]").Caption("Date Fiscal").Add();
         })).GridSettings(new PivotViewGridSettings { ColumnWidth = 160 }).DisplayOption(new PivotViewDisplayOption { View = View.Both }).ChartSettings(new PivotViewChartSettings { Title="Sales Analysis" , Load="onChartLoad" }).Toolbar(new List<string>
             () { "New", "Save", "SaveAs", "Rename", "Remove", "Load",
             "Grid", "Chart", "MDX", "Export", "SubTotal", "GrandTotal", "ConditionalFormatting", "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").Render()

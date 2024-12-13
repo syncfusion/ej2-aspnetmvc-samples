@@ -4,12 +4,12 @@
         @Html.EJS().Grid("CaptionAggregate").DataSource((IEnumerable<object>)ViewBag.datasource).GridLines(Syncfusion.EJ2.Grids.GridLine.Vertical).AllowGrouping().Columns(col =>
    {
        col.Field("ID").IsPrimaryKey(true).Visible(false).Add();
-       col.Field("Month").HeaderText("Month").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Format("yMd").ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+       col.Field("Month").Type("date").HeaderText("Month").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Format("yMd").ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
        col.Field("ConsumptionCategory").HeaderText("Category").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
        col.TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).HeaderTemplate("#energyTemplate").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "EnergyConsumed", Width = "150", HeaderText = "Consumed", TextAlign = Syncfusion.EJ2.Grids.TextAlign.Right, ClipMode = Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip }, new Syncfusion.EJ2.Grids.GridColumn { Field = "EnergyProduced", Width = "300", HeaderText = "Produced", TextAlign = Syncfusion.EJ2.Grids.TextAlign.Right } }).Add();
        col.Field("WeatherCondition").HeaderText("Weather").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
        col.Field("EnergyPrice").HeaderText("Energy").Format("C2").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
-   }).Height("300").GroupSettings(group=>group.ShowGroupedColumn(true).ShowDropArea(false).Columns(new string[] { "ConsumptionCategory" })).Aggregates(agg =>
+   }).Height("300").EnableHover(false).GroupSettings(group=>group.ShowGroupedColumn(true).ShowDropArea(false).Columns(new string[] { "ConsumptionCategory" })).Aggregates(agg =>
    {
        agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "EnergyProduced", Type = "Sum", FooterTemplate = "Total Energy Produced: ${Sum} KWh" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "EnergyProduced", Type = "Sum", GroupFooterTemplate = "Total Energy Produced: ${Sum} KWh" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "EnergyProduced", Type = "Max", GroupCaptionTemplate = "<div><span class='e-maximum'> Max : ${Max}</span></div>" } }).Add();
        agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "EnergyProduced", Type = "Average", FooterTemplate = "Average Energy Produced: ${Average} KWh" } }).Add();
