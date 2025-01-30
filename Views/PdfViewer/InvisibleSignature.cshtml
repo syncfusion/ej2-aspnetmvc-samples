@@ -19,7 +19,7 @@
         @Html.EJS().Message("msg_success").Severity(Severity.Success).Visible(false).Render()
         @Html.EJS().Message("msg_warning").Severity(Severity.Warning).Visible(false).Render()
         @Html.EJS().Message("msg_error").Severity(Severity.Error).Visible(false).Render()
-        @Html.EJS().PdfViewer("pdfviewer").EnableToolbar(false).EnableNavigationToolbar(false).EnableThumbnail(false).EnableBookmark(false).ServiceUrl(VirtualPathUtility.ToAbsolute("~/api/PdfViewer/")).DocumentPath("InvisibleDigitalSignature.pdf").DocumentLoad("documentLoaded").AddSignature("addSignature").Render()
+        @Html.EJS().PdfViewer("pdfviewer").EnableToolbar(false).EnableNavigationToolbar(false).EnableThumbnail(false).EnableBookmark(false).ServiceUrl(VirtualPathUtility.ToAbsolute("~/api/PdfViewer/")).DocumentLoad("documentLoaded").AddSignature("addSignature").Render()
         <input type="file" id="fileUpload" accept=".pdf" style="display:block;visibility:hidden;width:0;height:0;">
     </div>
 }
@@ -129,6 +129,8 @@
         msgSuccess = document.getElementById('msg_success').ej2_instances[0];
         msgWarning = document.getElementById('msg_warning').ej2_instances[0];
         msgError = document.getElementById('msg_error').ej2_instances[0];
+        viewer.serviceUrl = '@serviceUrl';
+        viewer.load("InvisibleDigitalSignature.pdf", null);
         document.getElementById('fileUpload').addEventListener('change', readFile, false);
     }
 

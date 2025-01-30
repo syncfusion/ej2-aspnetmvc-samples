@@ -1,5 +1,5 @@
-#region Copyright Syncfusion Inc. 2001-2024.
-// Copyright Syncfusion Inc. 2001-2024. All rights reserved.
+#region Copyright Syncfusion® Inc. 2001-2025.
+// Copyright Syncfusion® Inc. 2001-2025. All rights reserved.
 // Use of this code is subject to the terms of our license.
 // A copy of the current license can be obtained at any time by e-mailing
 // licensing@syncfusion.com. Any infringement will be prosecuted under
@@ -62,7 +62,8 @@ namespace EJ2MVCSampleBrowser.Models
                     Author = new UserModel()
                     {
                         id = "user1",
-                        user = "Michale Suyama"
+                        user = "Michale Suyama",
+                        avatarBgColor = "#87cefa"
                     },
                     TimeStamp = new DateTime(2024, 10, 25, 8, 0, 0)
                 },
@@ -91,7 +92,8 @@ namespace EJ2MVCSampleBrowser.Models
                     Author = new UserModel()
                     {
                         id = "user1",
-                        user = "Michale Suyama"
+                        user = "Michale Suyama",
+                        avatarBgColor = "#87cefa"
                     },
                     TimeStamp = new DateTime(2024, 10, 26, 12, 15, 0)
                 },
@@ -131,7 +133,8 @@ namespace EJ2MVCSampleBrowser.Models
                     Author = new UserModel()
                     {
                         id = "user1",
-                        user = "Michale Suyama"
+                        user = "Michale Suyama",
+                        avatarBgColor = "#87cefa"
                     },
                     TimeStamp = DateTime.Now
                 },

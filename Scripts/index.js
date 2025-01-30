@@ -672,10 +672,13 @@ function highlight(searchString, listElement) {
 function setMouseOrTouch(e) {
     var ele = ej.base.closest(e.target, '.sb-responsive-items');
     var switchType = ele.id;
+    var modeType = document.body.classList.contains("e-bigger") ? "touch" : "mouse";
     changeMouseOrTouch(switchType);
     sbHeaderClick('closePopup');
     localStorage.setItem('ej2-switch', switchType);
-    location.reload();
+    if (!(switchType == modeType)) {
+        location.reload();
+    }
 }
 
 function onNextButtonClick(arg) {
@@ -1669,11 +1672,28 @@ document.addEventListener('keydown', function (e) {
     if (e.keyCode === 27) {
         var preference_popup = document.querySelector(".sb-setting-popup");
         var theme_popup = document.querySelector(".sb-theme-popup");
+        var sb_switcher_popup = document.querySelector(".sb-switch-popup");
         if (!preference_popup.classList.contains("e-popup-close")) {
             preference_popup.classList.add("e-popup-close");
         }
         if (!theme_popup.classList.contains("e-popup-close")) {
             theme_popup.classList.add("e-popup-close");
         }
+        if (!sb_switcher_popup.classList.contains("e-popup-close")) {
+            sb_switcher_popup.classList.add("e-popup-close");
+        }
     }
 });
+
+window.addEventListener('hashchange', () => {
+    if (isMobile) {
+        var hash = window.location.hash;
+        var themeValue = hash.split('/').pop();
+        themeValue = themeValue === 'bootstrap5-dark' ? 'bootstrap5.3-dark' : themeValue;
+        if (themeValue.includes('-dark') && themes.indexOf(themeValue.replace('-dark', '')) !== -1) {
+            localStorage.setItem('currentTheme', themeValue);
+            location.reload();
+        }
+    }
+});
+

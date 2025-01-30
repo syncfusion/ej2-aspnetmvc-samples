@@ -344,7 +344,7 @@ gulp.task('sitemap-generate', function (done) {
                 urls = LOCAL_SITE_URL;
                 urls = urls.replace(/{{:Type}}/g, 'new');
             }
-            urls = urls.replace(/{{:DemoPath}}/g, `${link}/${component.directory}/${sampleUrls[i]}`);
+            urls = urls.replace(/{{:DemoPath}}/g, `${link}/${component.directory.toLowerCase()}/${sampleUrls[i].toLowerCase()}`);
             urls = urls.replace(/{{:Date}}/g, date);
             xmlstring += urls;
         }

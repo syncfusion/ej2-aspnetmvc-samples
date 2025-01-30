@@ -144,7 +144,7 @@
             var cellValue = ej.base.select('.e-cellvalue', args.targetCell);
             cellValue.classList.add('e-hyperlinkcell');
             cellValue.addEventListener('click', hyperlinkCellClick.bind(pivotObj));
-            args.targetCell.insertBefore(imgElement, cellValue);
+            args.targetCell.firstElementChild.insertBefore(imgElement, cellValue);
         }
         return '';
     };
