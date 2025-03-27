@@ -8,7 +8,7 @@
                 <h3> Tags </h3>
 
                 @Html.EJS().MultiSelect("tag").Placeholder("Select Tags").AllowFiltering(true).DataSource(
-                              (IEnumerable<Tag>)ViewBag.tagdata).Fields(new MultiSelectFieldSettings { Value = "ID", Text = "Text", Disabled = "State" }).Render()
+                              (IEnumerable<Tag>)ViewData["tagdata"]).Fields(new MultiSelectFieldSettings { Value = "ID", Text = "Text", Disabled = "State" }).Render()
 
             </div>
         </div>
@@ -17,7 +17,7 @@
                 <h3> Vegetables </h3>
 
                 @Html.EJS().MultiSelect("vegetable").Placeholder("Select Vegetables").DataSource(
-                              (IEnumerable<VegetablesData>)ViewBag.vegetabledata).Mode(VisualMode.CheckBox).Fields(new MultiSelectFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "ID", Disabled = "Status" }).Render()
+                              (IEnumerable<VegetablesData>)ViewData["vegetabledata"]).Mode(VisualMode.CheckBox).Fields(new MultiSelectFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "ID", Disabled = "Status" }).Render()
 
             </div>
         </div>

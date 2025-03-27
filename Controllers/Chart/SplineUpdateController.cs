@@ -37,7 +37,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                new SplineUpdateChartData { X = new DateTime(2024, 06, 06, 6, 7, 31),  Y = 32 },
                new SplineUpdateChartData { X = new DateTime(2024, 06, 06, 6, 7, 33),  Y = 75 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class SplineUpdateChartData

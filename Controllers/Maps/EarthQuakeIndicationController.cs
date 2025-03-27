@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: EarthQuakeIndication
         public ActionResult EarthQuakeIndication()
         {
-            ViewBag.ShapeData = this.getAsiaMap();
+            ViewData["ShapeData"] = this.getAsiaMap();
             return View();
         }
     }

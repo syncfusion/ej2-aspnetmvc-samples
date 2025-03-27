@@ -59,7 +59,7 @@
                .FastPeriod(8).SlowPeriod(5).Period(3)
                .Type(Syncfusion.EJ2.Charts.TechnicalIndicators.Tma)
                .SeriesName("Apple Inc").Add();
-           }).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).ToolbarItems(ViewBag.toolbaritems)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Both).Enable(true)
+           }).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).ToolbarItems(ViewData["toolbaritems"])).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Both).Enable(true)
            ).PrimaryXAxis(px => px.CrosshairTooltip(ct=>ct.Enable(true)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).MajorGridLines(mg => mg.Width(0))
              ).PrimaryYAxis(py => py.RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None).CrosshairTooltip(ct=>ct.Enable(true)).RowIndex(1).OpposedPosition(true).LabelFormat("n0").Title("Price").LineStyle(ls => ls.Width(0)).PlotOffset(25)
              ).Height("350").ChartArea(area => area.Border(br=>br.Color("whitesmoke").Width(1))).Tooltip(tl => tl.Enable(true).Shared(true)).LegendSettings(lg => lg.Visible(false)).Load("chartload").AxisRangeCalculated("rangeCalculated").Loaded("chartloaded").AxisLabelRender("axislabelrender").PointRender("pointrender").ChartMouseMove("chartmousemove").ChartMouseLeave("chartmouseleave").TooltipRender("tooltiprender").Margin(mr=>mr.Top(0)).Render()
@@ -80,20 +80,19 @@
         }
     </style>
 <script src="~/Scripts/stock-chart-data.js"></script>
+    <script src="~/Scripts/range-navigator/theme-color.js"></script>
     <script>
         var chartData = chartData;
         var chartData1 = chartData;
         var index = 0;
-        var zoomFactor, zoomPosition;
-        var selectedTheme = themeName ? themeName : 'Fluent2';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+        var zoomFactor, zoomPosition;        
         var annotationString = '<div id="annotation" style="line-height: 18px;' +
                                 ' font-size: 13px;background: #fff; opacity:0.9; color: #464e56; ' +
                                 ' box-shadow:0 0 8px 0 rgba(70,78,86,.25); padding: 7px 10px;' +
                                 ' border-radius: 3px">';
         var pointColors = [];
         var load = function (args) {
-            args.rangeNavigator.theme = theme;
+            loadRangeNavigatorTheme(args);
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.rangeNavigator.dataSource = chartData;
             args.rangeNavigator.periodSelectorSettings.height = document.body.className.indexOf('e-bigger') > -1 ? 56 : 42;
@@ -128,7 +127,7 @@
             }
         }
         var chartload = function (args) {
-            args.chart.theme = theme;
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
             args.chart.series[0].dataSource = chartData1;
             args.chart.series[1].dataSource = chartData1;

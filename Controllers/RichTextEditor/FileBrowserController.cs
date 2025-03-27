@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers
         public ActionResult FileBrowser()
         {
             string hostUrl = "https://ej2-aspcore-service.azurewebsites.net/";
-            ViewBag.Items = new[] { "FileManager", "Image" };
-            ViewBag.AjaxSettings = new
+            ViewData["Items"] = new[] { "FileManager", "Image" };
+            ViewData["AjaxSettings"] = new
             {
                 url = hostUrl + "api/FileManager/FileOperations",
                 getImageUrl = hostUrl + "api/FileManager/GetImage",

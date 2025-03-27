@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Spreadsheet
 
 @section ControlsSection{
@@ -7,7 +7,7 @@
         {
         sheet.Name("Cart").Ranges(ranges =>
         {
-        ranges.DataSource(ViewBag.dataSource).StartCell("B3").Add();
+        ranges.DataSource(ViewData["dataSource"]).StartCell("B3").Add();
         }).Rows(row =>
         {
         row.Cells(cell =>

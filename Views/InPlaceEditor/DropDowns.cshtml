@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "DropDowns";
+    ViewData["Title"] = "DropDowns";
 }
 
 @using Syncfusion.EJ2;
@@ -16,7 +16,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("dropdownEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.DropDownList).Created("dropdownCreated").Value("Canada").ActionOnBlur(ActionBlur.Submit).Model(ViewBag.DropDownData).Render()
+                        @Html.EJS().InPlaceEditor("dropdownEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.DropDownList).Created("dropdownCreated").Value("Canada").ActionOnBlur(ActionBlur.Submit).Model(ViewData["DropDownData"]).Render()
                     </td>
                 </tr>
                 <tr>
@@ -26,7 +26,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("autoCompleteEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.AutoComplete).Value("Australia").Created("autocompleteCreated").ActionOnBlur(ActionBlur.Submit).Model(ViewBag.AutoCompleteData).Render()
+                        @Html.EJS().InPlaceEditor("autoCompleteEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.AutoComplete).Value("Australia").Created("autocompleteCreated").ActionOnBlur(ActionBlur.Submit).Model(ViewData["AutoCompleteData"]).Render()
                     </td>
                 </tr>
                 <tr>
@@ -36,7 +36,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("comboBoxEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.ComboBox).Value("Finland").Created("comboBoxCreated").ActionOnBlur(ActionBlur.Submit).Model(ViewBag.ComboData).Render()
+                        @Html.EJS().InPlaceEditor("comboBoxEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.ComboBox).Value("Finland").Created("comboBoxCreated").ActionOnBlur(ActionBlur.Submit).Model(ViewData["ComboData"]).Render()
                     </td>
                 </tr>
                 <tr>
@@ -46,7 +46,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("multiSelectEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.MultiSelect).Value(new string[] { "Canada", "Bermuda" }).PopupSettings(new InPlaceEditorPopupSettings { Model = new { width = "auto" } }).Created("multiSelectCreated").Model(ViewBag.MultiSelectData).Render()
+                        @Html.EJS().InPlaceEditor("multiSelectEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.MultiSelect).Value(new string[] { "Canada", "Bermuda" }).PopupSettings(new InPlaceEditorPopupSettings { Model = new { width = "auto" } }).Created("multiSelectCreated").Model(ViewData["MultiSelectData"]).Render()
                     </td>
                 </tr>
             </table>
@@ -59,7 +59,7 @@
                     <div>Mode</div>
                 </td>
                 <td style="width: 50%;">
-                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewBag.ModeData).Value("Inline").Change("changeEditorMode").Render()
+                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewData["ModeData"]).Value("Inline").Change("changeEditorMode").Render()
                 </td>
             </tr>
         </table>

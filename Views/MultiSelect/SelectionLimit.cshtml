@@ -5,7 +5,7 @@
     <div class="control-section col-lg-8">
         <div class="control-wrapper">
             <h4>CheckBox</h4>
-            @Html.EJS().MultiSelect("checkList").DataSource((IEnumerable<Countries>)ViewBag.data).Mode(VisualMode.CheckBox).Placeholder("Select countries").MaximumSelectionLength(3).ShowDropDownIcon(true).PopupHeight("350px").Fields(new MultiSelectFieldSettings { Value = "Code", Text = "Name" }).Render()
+            @Html.EJS().MultiSelect("checkList").DataSource((IEnumerable<Countries>)ViewData["data"]).Mode(VisualMode.CheckBox).Placeholder("Select countries").MaximumSelectionLength(3).ShowDropDownIcon(true).PopupHeight("350px").Fields(new MultiSelectFieldSettings { Value = "Code", Text = "Name" }).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">

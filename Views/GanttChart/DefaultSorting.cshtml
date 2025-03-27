@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Sorting";
+    ViewData["Title"] = "Sorting";
 }
 
 @section ControlsSection{
     <div class="control-section">
 
-        @(Html.EJS().Gantt("Sorting").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true)
+        @(Html.EJS().Gantt("Sorting").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true).AllowSelection(true)
                     .AllowSorting(true).TreeColumnIndex(1).SelectedRowIndex(0)
                     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                     .Dependency("Predecessor").Child("SubTasks"))

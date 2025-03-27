@@ -4,7 +4,7 @@
    <div class="col-lg-8 control-section">
     <div class="control-wrapper">
         <div class="control-section">
-            @Html.EJS().Grid("SelectionAPI").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSelection().Columns(col =>
+            @Html.EJS().Grid("SelectionAPI").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowSelection().Columns(col =>
        {
            col.Field("Inventor").HeaderText("Inventor Name").Width("180").Add();
            col.Field("NumberofPatentFamilies").HeaderText("No of Patent Families").Width("195").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

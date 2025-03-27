@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ColorPicker
     {
         public ActionResult Api()
         {
-            ViewBag.data = new GameList().ColorPickerModeModel();
+            ViewData["data"] = new GameList().ColorPickerModeModel();
             return View();
         }
     }

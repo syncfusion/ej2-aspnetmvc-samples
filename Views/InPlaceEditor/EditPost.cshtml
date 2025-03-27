@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "Forms";
+    ViewData["Title"] = "Forms";
 }
 
 @using Syncfusion.EJ2;
@@ -16,19 +16,19 @@
                         <label class="col-sm-6 control-label" style="text-align: left;font-size: 14px;">
                             Title
                         </label>
-                        @Html.EJS().InPlaceEditor("inplace_title_editor").Mode(RenderMode.Inline).EmptyText("Enter your question title").Name("Title").ValidationRules(ViewBag.TitleValidation).Model(ViewBag.TitleData).Created("titleCreated").Value("Succinctly E-Book about TypeScript").Render()
+                        @Html.EJS().InPlaceEditor("inplace_title_editor").Mode(RenderMode.Inline).EmptyText("Enter your question title").Name("Title").ValidationRules(ViewData["TitleValidation"]).Model(ViewData["TitleData"]).Created("titleCreated").Value("Succinctly E-Book about TypeScript").Render()
                     </div>
                     <div class="form-group">
                         <label class="col-sm-6 control-label" style="text-align: left;font-size: 14px;">
                             Comments
                         </label>
-                        @Html.EJS().InPlaceEditor("inplace_comment_editor").Mode(RenderMode.Inline).EditableOn(EditableType.EditIconClick).SubmitOnEnter(false).Type(Syncfusion.EJ2.InPlaceEditor.InputType.RTE).Name("rte").Created("commentCreated").EmptyText("Enter your comment").Model(ViewBag.CommentData).ValidationRules(ViewBag.CommentValidation).Value("<p>The extensive adoption of JavaScript for application development, and the ability to use HTML and JavaScript to create Windows Store apps, has made JavaScript a vital part of the Windows development ecosystem. Microsoft has done extensive work to make JavaScript easier to use.</p>").Render()
+                        @Html.EJS().InPlaceEditor("inplace_comment_editor").Mode(RenderMode.Inline).EditableOn(EditableType.EditIconClick).SubmitOnEnter(false).Type(Syncfusion.EJ2.InPlaceEditor.InputType.RTE).Name("rte").Created("commentCreated").EmptyText("Enter your comment").Model(ViewData["CommentData"]).ValidationRules(ViewData["CommentValidation"]).Value("<p>The extensive adoption of JavaScript for application development, and the ability to use HTML and JavaScript to create Windows Store apps, has made JavaScript a vital part of the Windows development ecosystem. Microsoft has done extensive work to make JavaScript easier to use.</p>").Render()
                     </div>
                     <div class="form-group">
                         <label class="col-sm-6 control-label" style="text-align: left;font-size: 14px;">
                             Tags
                         </label>
-                        @Html.EJS().InPlaceEditor("inplace_tag_editor").Mode(RenderMode.Inline).Value(new string[2] { "TypeScript", "JavaScript" }).ActionOnBlur(ActionBlur.Ignore).Name("Tag").Type(Syncfusion.EJ2.InPlaceEditor.InputType.MultiSelect).Created("tagCreated").EmptyText("Enter your tags").Model(ViewBag.TagData).ValidationRules(ViewBag.TagValidation).PopupSettings(new InPlaceEditorPopupSettings { Model = new { width = "auto" } }).ActionSuccess("actionSuccess").Render()
+                        @Html.EJS().InPlaceEditor("inplace_tag_editor").Mode(RenderMode.Inline).Value(new string[2] { "TypeScript", "JavaScript" }).ActionOnBlur(ActionBlur.Ignore).Name("Tag").Type(Syncfusion.EJ2.InPlaceEditor.InputType.MultiSelect).Created("tagCreated").EmptyText("Enter your tags").Model(ViewData["TagData"]).ValidationRules(ViewData["TagValidation"]).PopupSettings(new InPlaceEditorPopupSettings { Model = new { width = "auto" } }).ActionSuccess("actionSuccess").Render()
                     </div>
                 </form>
             </div>
@@ -41,7 +41,7 @@
                     <div>Mode</div>
                 </td>
                 <td style="width: 50%;">
-                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewBag.ModeData).Value("Inline").Change("changeEditorMode").Render()
+                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewData["ModeData"]).Value("Inline").Change("changeEditorMode").Render()
                 </td>
             </tr>
         </table>

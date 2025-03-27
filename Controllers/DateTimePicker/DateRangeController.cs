@@ -19,11 +19,11 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: DefaultFunctionalities
         public ActionResult DateRange()
         {
-            ViewBag.value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 09, 11, 00, 00);
-            ViewBag.minDate =new DateTime(DateTime.Now.Year, DateTime.Now.Month, 07, 10, 00, 00);
-            ViewBag.maxDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 27, 22, 30, 00);
-            ViewBag.minDateTime =new DateTime(DateTime.Now.Year, DateTime.Now.Month, 07, 10, 00, 00);
-            ViewBag.maxDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 27, 20, 30, 00);
+            ViewData["value"] = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 09, 11, 00, 00);
+            ViewData["minDate"] =new DateTime(DateTime.Now.Year, DateTime.Now.Month, 07, 10, 00, 00);
+            ViewData["maxDate"] = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 27, 22, 30, 00);
+            ViewData["minDateTime"] =new DateTime(DateTime.Now.Year, DateTime.Now.Month, 07, 10, 00, 00);
+            ViewData["maxDateTime"] = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 27, 20, 30, 00);
             return View();
         }
     }

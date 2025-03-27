@@ -19,13 +19,13 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         // GET: DefaultFunctionalities
         public ActionResult PagingAPI()
         { 
-            ViewBag.dropdata = new List<object>() {
+            ViewData["dropdata"] = new List<object>() {
                new { id= "All", mode= "All" },
                new { id= "Root", mode= "Root" }
             };
 
             var treeData = TreeGridItems.GetTreeData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
             return View();
         }
     }

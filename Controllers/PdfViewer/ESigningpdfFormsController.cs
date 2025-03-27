@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
         {
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new ModalButtonModel() { content = "OK" } });
-            ViewBag.ModalButton = buttons;
+            ViewData["ModalButton"] = buttons;
             return View();
         }
     }

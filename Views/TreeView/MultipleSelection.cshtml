@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
     <div class="control_wrapper">
-             @Html.EJS().TreeView("multiple").AllowMultiSelection(true).Fields(ViewBag.multipleFields).Render()
+             @Html.EJS().TreeView("multiple").AllowMultiSelection(true).Fields((TreeViewFieldsSettings)ViewData["multipleFields"]).Render()
        
         </div>
     </div>

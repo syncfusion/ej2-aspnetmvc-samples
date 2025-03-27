@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            @Html.EJS().RichTextEditor("defaultMarkDown").Value((string)ViewBag.Value).Height("250px").Placeholder("Enter your text here...").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).Created("created").ToolbarSettings(e => e.Items((object)ViewBag.Items)).Render()
+            @Html.EJS().RichTextEditor("defaultMarkDown").Value((string)ViewData["Value"]).Height("250px").Placeholder("Enter your text here...").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).Created("created").ToolbarSettings(e => e.Items((object)ViewData["Items"])).Render()
         </div>
     </div>
     <style>

@@ -31,7 +31,7 @@
                     <div style="max-width: 200px">
                         <!-- Prompt character options -->
                         @Html.EJS().DropDownList("ddl").PopupHeight("200px").Index(1).DataSource(
-                    (IEnumerable<GameList>)ViewBag.data).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "Mask", Value = "Id" }).Render()
+                    (IEnumerable<GameList>)ViewData["data"]).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "Mask", Value = "Id" }).Render()
                     </div>
                 </td>
             </tr>

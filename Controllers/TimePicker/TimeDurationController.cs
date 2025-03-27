@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: ListFormatting
         public ActionResult TimeDuration()
         {
-            ViewBag.value = DateTime.Now;
+            ViewData["value"] = DateTime.Now;
             return View();
         }
     }

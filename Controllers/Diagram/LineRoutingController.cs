@@ -143,8 +143,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             connectors.Add(new DiagramConnector() { Id = "connector10", SourceID = "card", TargetID = "document", SourcePortID = "port2", TargetPortID = "port1" });
 
 
-            ViewBag.nodes = nodes;
-            ViewBag.connectors = connectors;
+            ViewData["nodes"] = nodes;
+            ViewData["connectors"] = connectors;
             
             return View();
         }

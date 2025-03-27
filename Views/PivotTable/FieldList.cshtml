@@ -10,7 +10,7 @@
     <div class="content-wrapper">
         @Html.EJS().PivotView("pivotview").Width("99%").Height("600").EnginePopulated("onGridEnginePopulate").GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).Locale("en").Render()
 
-        @Html.EJS().PivotFieldList("pivotfieldlist").RenderMode(Mode.Fixed).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
+        @Html.EJS().PivotFieldList("pivotfieldlist").RenderMode(Mode.Fixed).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(false).EnableSorting(true)
            .FormatSettings(formatsettings => { formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add(); })
            .Rows(rows => { rows.Name("Country").Add(); rows.Name("Products").Add(); })
            .Columns(columns => { columns.Name("Year").Add(); columns.Name("Order_Source").Caption("Order Source").Add(); })

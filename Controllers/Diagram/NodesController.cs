@@ -40,14 +40,14 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             nodes.Add(new Node() { Id = "implement", text = "Implement", OffsetX = 352, OffsetY = 370, Annotations = Node4 });
             nodes.Add(new Node() { Id = "deploy", text = "Deploy", OffsetX = 184, OffsetY = 370, Annotations = Node5 });
             nodes.Add(new Node() { Id = "support", text = "Support", OffsetX = 130, OffsetY = 205, Annotations = Node6 });
-            ViewBag.nodes = nodes;
+            ViewData["nodes"] = nodes;
 
             List<DiagramConnector> Connectors = new List<DiagramConnector>();
             for (int i = 1; i < nodes.Count; i++)
             {
                 Connectors.Add(new DiagramConnector() {SourceID = nodes[i].Id, TargetID = nodes[(i % 5) + 1].Id });
             }
-            ViewBag.connectors = Connectors;
+            ViewData["connectors"] = Connectors;
             return View();
         }
     }

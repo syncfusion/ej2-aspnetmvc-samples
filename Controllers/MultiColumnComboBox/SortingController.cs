@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.MultiColumnComboBox
     {
         public ActionResult Sorting()
         {
-            ViewBag.data = new EJ2MVCSampleBrowser.Models.Products().GetAllRecords();
+            ViewData["data"] = new EJ2MVCSampleBrowser.Models.Products().GetAllRecords();
             return View();
         }
     }

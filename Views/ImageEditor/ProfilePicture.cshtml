@@ -13,7 +13,7 @@
         </div>
     </div>
   <div id="profile-dialog">
-          @Html.EJS().Dialog("dialog").Header("Edit Profile Image").Open("dialogOpen").Visible(false).CloseOnEscape(true).ShowCloseIcon(true).Width("340px").Height("420").Position(obj => obj.X("center").Y("100")).Target(".sb-desktop-wrapper").ContentTemplate(@<div class='dlg-content'>@Html.EJS().ImageEditor("image-editor").Created("created").FileOpened("imageEditorOpen").Toolbar(ViewBag.imageTool).Render()</div>).Buttons(ViewBag.ImageButton).Render()
+          @Html.EJS().Dialog("dialog").Header("Edit Profile Image").Open("dialogOpen").Visible(false).CloseOnEscape(true).ShowCloseIcon(true).Width("340px").Height("420").Position(obj => obj.X("center").Y("100")).Target(".sb-desktop-wrapper").ContentTemplate(@<div class='dlg-content'>@Html.EJS().ImageEditor("image-editor").Created("created").FileOpened("imageEditorOpen").Toolbar(ViewData["imageTool"]).Render()</div>).Buttons((List<Syncfusion.EJ2.Popups.DialogDialogButton>)ViewData["ImageButton"]).Render()
   </div>
 
 <script>

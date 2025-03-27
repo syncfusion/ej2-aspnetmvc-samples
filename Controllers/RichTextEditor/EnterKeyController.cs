@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: /<controller>/
         public ActionResult EnterKey()
         {
-            ViewBag.EnterData = new FormatOption().EnterOption();
-            ViewBag.ShiftEnterData = new FormatOption().ShiftEnterOption();
+            ViewData["EnterData"] = new FormatOption().EnterOption();
+            ViewData["ShiftEnterData"] = new FormatOption().ShiftEnterOption();
             return View();
         }
     }

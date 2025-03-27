@@ -7,14 +7,14 @@
                 <div class="col-lg-6 nested-data">
                     <div class="content">
                         <h4>Hierarchical Data</h4>
-                        @Html.EJS().TreeView("hierarchical").Fields(ViewBag.hierarchicalFields).Render()
+                        @Html.EJS().TreeView("hierarchical").Fields((TreeViewFieldsSettings)ViewData["hierarchicalFields"]).Render()
 
                     </div>
                 </div>
                 <div class="col-lg-6 list-data">
                     <div class="content">
                         <h4>List Data</h4>
-                        @Html.EJS().TreeView("localData").Fields(ViewBag.fields).Render()
+                        @Html.EJS().TreeView("localData").Fields((TreeViewFieldsSettings)ViewData["fields"]).Render()
                     </div>
                 </div>
             </div>

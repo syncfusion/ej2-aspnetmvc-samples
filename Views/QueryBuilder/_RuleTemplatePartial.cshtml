@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 
 @model EJ2MVCSampleBrowser.Models.QueryTemplateModel.ActionModel
 
@@ -11,7 +11,7 @@
         @Html.EJS().RadioButton(Model.RuleID + "_operator2").Label("Is Not Equal").Value("notequal").Name(Model.RuleID + "_operator").Change("operatorChange").Checked(Model.Rule.Operator == "notequal").Render()
     </div>
     <div class="e-rule-value e-value e-custom-value">
-        @Html.EJS().DropDownList(Model.RuleID + "_valueddl").Fields(Model.Fields).Value(Model.Rule.Value).DataSource(ViewBag.Items).Change("valueChange").Render()
+        @Html.EJS().DropDownList(Model.RuleID + "_valueddl").Fields(Model.Fields).Value(Model.Rule.Value).DataSource(ViewData["Items"]).Change("valueChange").Render()
     </div>
     <div class="e-rule-value-delete">
         <button class="e-removerule e-custom-delete e-rule-delete e-css e-btn e-small e-round">

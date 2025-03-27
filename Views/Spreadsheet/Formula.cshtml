@@ -7,7 +7,7 @@
    {
        sheet.Name("Stock Details").SelectedRange("F15").Ranges(ranges =>
        {
-           ranges.DataSource((IEnumerable<object>)ViewBag.formulaData).Add();
+           ranges.DataSource((IEnumerable<object>)ViewData["formulaData"]).Add();
        }).Rows(row =>{
            row.Height(40).Cells(cell => {
                cell.Index(3).Value("High (+)").Add();

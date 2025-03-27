@@ -24,7 +24,7 @@
             <div class="content-wrapper">
                 @Html.EJS().Maps("container").Load("mapsLoad").TooltipRender("tooltipRender").TitleSettings(title => title.Text("Population density (per square kilometers) - 2015")).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.Maps.LegendPosition.Top)).Layers(layer =>
        {
-           layer.ShapeDataPath("name").DataSource(ViewBag.data).ShapeSettings(new MapsShapeSettings { ColorValuePath = "density", Fill = "#E5E5E5" }).TooltipSettings(new MapsTooltipSettings { Visible = true, ValuePath = "name", Format = "${name} : ${density} per square kms" }).ShapeDataPath("name").ShapePropertyPath("name").ShapeData(ViewBag.shapeData).Add();
+           layer.ShapeDataPath("name").DataSource(ViewData["data"]).ShapeSettings(new MapsShapeSettings { ColorValuePath = "density", Fill = "#E5E5E5" }).TooltipSettings(new MapsTooltipSettings { Visible = true, ValuePath = "name", Format = "${name} : ${density} per square kms" }).ShapeDataPath("name").ShapePropertyPath("name").ShapeData(ViewData["shapeData"]).Add();
        }).Render();
                 <div style="margin-left:75%">
                     Source:

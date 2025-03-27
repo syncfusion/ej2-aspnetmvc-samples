@@ -6,7 +6,7 @@
 <div class="e-tab-section">
     <div class="col-lg-8 content-wrapper control-section">
         <div class="e-sample-resize-container">
-            @Html.EJS().Tab("adaptiveTab").Created("tabCreated").HeightAdjustMode(HeightStyles.None).Height("250px").Items(ViewBag.adaptiveItems).Render()
+            @Html.EJS().Tab("adaptiveTab").Created("tabCreated").HeightAdjustMode(HeightStyles.None).Height("250px").Items((List<Syncfusion.EJ2.Navigations.TabItem>)(List<Syncfusion.EJ2.Navigations.TabItem>)ViewData["adaptiveItems"]).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">
@@ -18,7 +18,7 @@
                     </td>
                     <td style="width: 50%; padding-right: 10px;">
                         <div>
-                            @Html.EJS().DropDownList("positionList").Width("100%").DataSource(ViewBag.positionData).Value("Scrollable").Change("changeOverFlowMode").Render()
+                            @Html.EJS().DropDownList("positionList").Width("100%").DataSource(ViewData["positionData"]).Value("Scrollable").Change("changeOverFlowMode").Render()
                         </div>
                     </td>
                 </tr>
@@ -28,7 +28,7 @@
                     </td>
                     <td style="width: 50%;">
                         <div>
-                            @Html.EJS().DropDownList("orientation").Width("90%").DataSource(ViewBag.orientationData).Value("Top").Change("changeHeaderPosition").Render()
+                            @Html.EJS().DropDownList("orientation").Width("90%").DataSource(ViewData["orientationData"]).Value("Top").Change("changeHeaderPosition").Render()
                         </div>
                     </td>
                 </tr>

@@ -34,7 +34,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new InversedRangeColumnData { Month = "Nov", CA_LowTemp = 28, CA_HighTemp = 54, Text = "November", CO_LowTemp = 20, CO_HighTemp = 60 },
                 new InversedRangeColumnData { Month = "Dec", CA_LowTemp = 29, CA_HighTemp = 56, Text = "December", CO_LowTemp = 20, CO_HighTemp = 60 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class InversedRangeColumnData

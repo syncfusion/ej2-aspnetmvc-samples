@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: ComplexHierarchicalTree
         public ActionResult ComplexHierarchicalTree()
         {            
-            ViewBag.Nodes = ComplexHierarchicalDataDetails.GetAllRecords();
+            ViewData["Nodes"] = ComplexHierarchicalDataDetails.GetAllRecords();
             return View();
         }
     }

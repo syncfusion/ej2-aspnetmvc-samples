@@ -10,7 +10,7 @@
                 <h5><b>Select Toolbar Items</b></h5>
             </div>
             <div class="content-wrapper">
-                @Html.EJS().MultiSelect("deCheckBox").Mode(Syncfusion.EJ2.DropDowns.VisualMode.CheckBox).Placeholder("Select Toolbar Items").ShowSelectAll(true).ShowDropDownIcon(true).PopupHeight("350px").FilterBarPlaceholder("Search toolbar items").EnableSelectionOrder(true).DataSource((string[])ViewBag.data).Render()
+                @Html.EJS().MultiSelect("deCheckBox").Mode(Syncfusion.EJ2.DropDowns.VisualMode.CheckBox).Placeholder("Select Toolbar Items").ShowSelectAll(true).ShowDropDownIcon(true).PopupHeight("350px").FilterBarPlaceholder("Search toolbar items").EnableSelectionOrder(true).DataSource((string[])ViewData["data"]).Render()
             </div>
         </div>
         <div style="margin-top:10px;padding-bottom: 10px">

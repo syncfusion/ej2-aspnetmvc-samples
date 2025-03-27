@@ -7,14 +7,14 @@
             <div class='content'>
                 <h4>Grouping</h4>
 
-                @Html.EJS().ComboBox("vegetables").Placeholder("Select a vegetable").Fields(new ComboBoxFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).PopupHeight("200px").DataSource((IEnumerable<Vegetables>)ViewBag.groupdata).Render()
+                @Html.EJS().ComboBox("vegetables").Placeholder("Select a vegetable").Fields(new ComboBoxFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).PopupHeight("200px").DataSource((IEnumerable<Vegetables>)ViewData["groupdata"]).Render()
 
             </div>
         </div>
         <div id='iconList' class='col-lg-6' style='padding-top:15px'>
             <div class='content'>
                 <h4> Icons</h4>
-                @Html.EJS().ComboBox("icons").Placeholder("Select a social media").Fields(new ComboBoxFieldSettings { Text = "SocialMediaName", IconCss = "Class", Value = "Id" }).DataSource((IEnumerable<SocialMedia>)ViewBag.icondata).Render()
+                @Html.EJS().ComboBox("icons").Placeholder("Select a social media").Fields(new ComboBoxFieldSettings { Text = "SocialMediaName", IconCss = "Class", Value = "Id" }).DataSource((IEnumerable<SocialMedia>)ViewData["icondata"]).Render()
             </div>
         </div>
     </div>

@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Toolbar
             alignItems.Add(new ToolbarItem { PrefixIcon = "e-tbar-search-icon tb-icons", TooltipText = "Search", Align = ItemAlign.Right });
             alignItems.Add(new ToolbarItem { PrefixIcon = "e-tbar-settings-icon tb-icons", TooltipText = "Popup", Align = ItemAlign.Right });
 
-            ViewBag.alignItems = alignItems;
+            ViewData["alignItems"] = alignItems;
 
             return View();
         }

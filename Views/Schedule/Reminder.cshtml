@@ -5,7 +5,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("Schedule").Height("550px").Timezone("UTC").Created("onCreated").Destroyed("onDestroyed").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.appointments }).Render()
+            @Html.EJS().Schedule("Schedule").Height("550px").Timezone("UTC").Created("onCreated").Destroyed("onDestroyed").EventSettings(new ScheduleEventSettings { DataSource = ViewData["appointments"] }).Render()
             @Html.EJS().Toast("schedule-reminder").CssClass("e-schedule-reminder e-toast-info").NewestOnTop(true).ShowCloseButton(true).TimeOut(0).Target(".e-schedule").Position(p => p.X("Right").Y("Top")).Animation(a => a.Hide(new ToastToastAnimations { Effect = "SlideRightOut" }).Show(new ToastToastAnimations { Effect = "SlideRightIn" })).Render()
         </div>
     </div>

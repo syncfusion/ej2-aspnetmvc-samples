@@ -3,7 +3,7 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).ShowFormulaBar(false).AllowEditing(false).Created("createdHandler").BeforeSelect("beforeSelectHandler").BeforeCellRender("beforeCellRenderHandler").ScrollSettings(scrollSettings =>
+        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).EnableContextMenu(false).ShowFormulaBar(false).AllowEditing(false).Created("createdHandler").BeforeSelect("beforeSelectHandler").BeforeCellRender("beforeCellRenderHandler").ContextMenuBeforeOpen("contextMenuBeforeOpenHandler").ScrollSettings(scrollSettings =>
    {
        scrollSettings.EnableVirtualization(false).IsFinite(true);
    }).SelectionSettings(selectionSettings =>
@@ -32,7 +32,7 @@
        }).Ranges(ranges =>
             {
            ranges.Template("<input />").Address("C2:C3").Add();
-           ranges.Template("<div><input type='radio' name='gender' value='male' /><input type='radio' name='gender' value='female'/></div>").Address("C4").Add();
+           ranges.Template("<div style='padding-left: 2px'><input type='radio' name='gender' value='male' /><input type='radio' name='gender' value='female'/></div>").Address("C4").Add();
            ranges.Template("<input />").Address("C5:C8").Add();
            ranges.Template("<textarea rows='3'/>").Address("C9").Add();
            ranges.Template("<button class='e-btn e-flat' style='float:right'>Add</button>").Address("C11").Add();
@@ -70,6 +70,7 @@
     function createdHandler() {
         //Applies format to specified range
         this.cellFormat({ fontWeight: 'bold' }, 'B2:B9');
+        this.cellFormat({ verticalAlign: 'middle' }, 'B2:C9');
     }
     function beforeSelectHandler(args) {
         //Prevents selection
@@ -124,6 +125,9 @@
             }
         }
     }
+    function contextMenuBeforeOpenHandler() {
+        this.enableContextMenuItems(['Duplicate'], false, false);
+    }
 </script>
 
 @*custom code start*@
@@ -156,6 +160,10 @@
 
     .tailwind3-dark .e-custom-spreadsheet.e-spreadsheet .e-sheet .e-sheet-content .e-cell-template .e-btn.e-flat {
         background-color: #111827;
+    }
+
+    .e-spreadsheet .e-row-header .e-table .e-header-cell {
+        vertical-align: middle;
     }
 
 </style>

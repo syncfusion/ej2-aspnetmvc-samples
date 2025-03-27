@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Navigation
         public ActionResult Navigation()
         {
-            ViewBag.shapeData = this.getWorldMap();
+            ViewData["shapeData"] = this.getWorldMap();
             return View();
         }
         

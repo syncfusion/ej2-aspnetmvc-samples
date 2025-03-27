@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult Adaptive()
         {
             var treeData = TreeGridItems.GetTreeData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
             return View();
         }
     }

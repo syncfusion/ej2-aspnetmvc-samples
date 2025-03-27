@@ -9,7 +9,7 @@
                "<span class='list_text'>${text} </span>" +
                "<span class='${badge}'>${messages}</span></div>";}
 
-            @Html.EJS().ListView("lists").Enable(true).DataSource((IEnumerable<object>)ViewBag.dataSource).HeaderTitle("Inbox").ShowHeader(true).Template(template).ActionComplete("actionComplete").Fields(new ListViewFieldSettings { GroupBy = "type" }).Render()
+            @Html.EJS().ListView("lists").Enable(true).DataSource((IEnumerable<object>)ViewData["dataSource"]).HeaderTitle("Inbox").ShowHeader(true).Template(template).ActionComplete("actionComplete").Fields(new ListViewFieldSettings { GroupBy = "type" }).Render()
         </div>
     </div>
 }

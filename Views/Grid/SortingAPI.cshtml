@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "SortingAPI";
+    ViewData["Title"] = "SortingAPI";
 }
 
 @using Syncfusion.EJ2
@@ -8,7 +8,7 @@
     <div class="col-lg-8 control-section">
         <div class="control-wrapper">            
                 <div class="control-section">
-                    @Html.EJS().Grid("SortingAPI").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+                    @Html.EJS().Grid("SortingAPI").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
                     {
 
                     col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
@@ -30,14 +30,14 @@
             <td class="left-side">Column</td>
             <td style="padding-bottom:10px">
 
-                @Html.EJS().DropDownList("column").DataSource((IEnumerable<object>)ViewBag.columns).Value("OrderID").Fields(field => { field.Value("value").Text("text"); }).Render()
+                @Html.EJS().DropDownList("column").DataSource((IEnumerable<object>)ViewData["columns"]).Value("OrderID").Fields(field => { field.Value("value").Text("text"); }).Render()
             </td>
         </tr>
 
         <tr>
             <td class="left-side">Direction</td>
             <td style="padding-bottom:10px">
-                @Html.EJS().DropDownList("direction").DataSource((IEnumerable<object>)ViewBag.direction).Value("Ascending").Fields(field => { field.Value("value").Text("text"); }).Render()
+                @Html.EJS().DropDownList("direction").DataSource((IEnumerable<object>)ViewData["direction"]).Value("Ascending").Fields(field => { field.Value("value").Text("text"); }).Render()
             </td>
         </tr>
 

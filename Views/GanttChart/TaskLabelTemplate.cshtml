@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "TaskLabelTemplate";
+    ViewData["Title"] = "TaskLabelTemplate";
 }
 
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
 
-            @(Html.EJS().Gantt("TaskLabelTemplate").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true).RowHeight(46).TreeColumnIndex(1)
+            @(Html.EJS().Gantt("TaskLabelTemplate").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true).AllowSelection(true).RowHeight(46).TreeColumnIndex(1)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                 .Dependency("Predecessor").ResourceInfo("ResourceId").Child("SubTasks"))
                 .Columns(col =>
@@ -21,7 +21,7 @@
                     col.Field("Progress").Add();
                     col.Field("ResourceId").Add();
                 })
-                .ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName")).Resources((IEnumerable<object>)ViewBag.Resources)
+                .ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName")).Resources((IEnumerable<object>)ViewData["Resources"])
                 .LabelSettings(ls => ls.LeftLabel("#leftLabel").RightLabel("#rightLabel").TaskLabel("${Progress}%"))
                 .SplitterSettings(sp => sp.Position("35%"))
                 .ProjectStartDate("03/24/2024")

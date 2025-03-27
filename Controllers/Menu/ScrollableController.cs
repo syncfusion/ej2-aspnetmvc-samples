@@ -157,8 +157,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Menu
                 Duration = 800
             };
 
-            ViewBag.menuItems = menuItems;
-            ViewBag.animationSettings = animationSettings;
+            ViewData["menuItems"] = menuItems;
+            ViewData["animationSettings"] = animationSettings;
             return View();
         }
     }

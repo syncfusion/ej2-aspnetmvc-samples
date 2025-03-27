@@ -8,14 +8,14 @@
                 <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("700px")
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes((List<SymbolPalettePalette>)ViewData["Palette"]).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("700px")
                      .SymbolMargin(new SymbolPaletteMargin() { Left = 10, Right = 10, Top = 10, Bottom = 10 }).SymbolHeight(90).SymbolWidth(90)
                      .GetNodeDefaults("getSymbolDefaults").Render()
                   )
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
-                @(Html.EJS().Diagram("diagram").Width("100%").Height("700px").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Created("created").DragEnter("dragEnter").SetNodeTemplate("setNodeTemplate").Nodes(ViewBag.nodes)
-                        .Connectors(ViewBag.connectors).Render()
+                @(Html.EJS().Diagram("diagram").Width("100%").Height("700px").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Created("created").DragEnter("dragEnter").SetNodeTemplate("setNodeTemplate").Nodes((List<DiagramNode>)ViewData["nodes"])
+                        .Connectors((List<DiagramConnector>)ViewData["connectors"]).Render()
                   )
             </div>
         </div>

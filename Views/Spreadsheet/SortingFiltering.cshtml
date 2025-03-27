@@ -6,7 +6,7 @@
    {
        sheet.Name("Employee Details").Ranges(ranges =>
             {
-           ranges.DataSource(ViewBag.FilteringData).ShowFieldAsHeader(true).Add();
+           ranges.DataSource(ViewData["FilteringData"]).ShowFieldAsHeader(true).Add();
            }).Columns(column =>
        {
            column.Width(110).Add();

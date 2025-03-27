@@ -62,7 +62,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new StepWithoutRiserChartData { X = new DateTime(2019, 01, 01), Y = 67 },
                 new StepWithoutRiserChartData { X = new DateTime(2020, 01, 01), Y = 89 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class StepWithoutRiserChartData

@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult DataBinding()
         {
-            ViewBag.localdata = new Countries().CountriesList();
-            ViewBag.sort = "Ascending";
+            ViewData["localdata"] = new Countries().CountriesList();
+            ViewData["sort"] = "Ascending";
             return View();
         }
     }

@@ -35,7 +35,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Toolbar
 
                 items.Add(new ToolbarItem { PrefixIcon = "e-icons e-list-unordered", TooltipText = "Bullets" });
             }
-            ViewBag.tbItems = items;
+            ViewData["tbItems"] = items;
 
             List<ToolbarItem> item = new List<ToolbarItem>();
             {
@@ -62,7 +62,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Toolbar
                 item.Add(new ToolbarItem { PrefixIcon = "e-icons e-decrease-indent", TooltipText = "Text Outdent", Text = "Text Outdent" });
                 item.Add(new ToolbarItem { PrefixIcon = "e-icons e-erase", TooltipText = "Clear", Text = "Clear" });
             }
-            ViewBag.overflowItems = item;
+            ViewData["overflowItems"] = item;
 
             return View();
         }

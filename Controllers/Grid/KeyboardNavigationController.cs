@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult KeyboardNavigation()
         {
             var order = Orders.GetAllRecords();
-            ViewBag.datasource = order;
+            ViewData["datasource"] = order;
             return View();
         }
     }

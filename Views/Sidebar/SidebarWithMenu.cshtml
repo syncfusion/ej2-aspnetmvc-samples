@@ -5,7 +5,7 @@
         <div id="wrapper">
             @*header-section  declaration*@
             <div>
-                @Html.EJS().Toolbar("menuToolbar").Clicked("toolbarCliked").Items(ViewBag.MenuToolItems).Render()
+                @Html.EJS().Toolbar("menuToolbar").Clicked("toolbarCliked").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["MenuToolItems"]).Render()
             </div>
             @*main content declaration*@
             <div class="main-content" id="maintext">
@@ -28,10 +28,10 @@
             @{Html.EJS().Sidebar("menuSidebar").EnableDock(true).DockSize("50px").Width("220px").Target(".main-content").IsOpen(true).ContentTemplate(@<div>
                 <div class="main-menu">
                     <div>
-                        @Html.EJS().Menu("dockMenu").Orientation(Syncfusion.EJ2.Navigations.Orientation.Vertical).CssClass("dock-menu").Items(ViewBag.Items).Render()
+                        @Html.EJS().Menu("dockMenu").Orientation(Syncfusion.EJ2.Navigations.Orientation.Vertical).CssClass("dock-menu").Items(ViewData["Items"]).Render()
                     </div>
                 </div>
-                </div>).HtmlAttributes(ViewBag.HtmlAttribute).Render();}            
+                </div>).HtmlAttributes(ViewData["HtmlAttribute"]).Render();}            
         </div>
     </div>
 }

@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
   <div class="control-section">
-    @Html.EJS().Grid("ForeignKey").DataSource((IEnumerable<object>)ViewBag.datasource).AllowFiltering().Columns(col =>
+    @Html.EJS().Grid("ForeignKey").DataSource((IEnumerable<object>)ViewData["datasource"]).AllowFiltering().Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
-       col.Field("CustomerID").ForeignKeyField("CustomerID").ForeignKeyValue("ContactName").DataSource((IEnumerable<object>)ViewBag.dataSource2).HeaderText("Contact Name").Width("150").ValidationRules(new { required = true }).Add();
+       col.Field("CustomerID").ForeignKeyField("CustomerID").ForeignKeyValue("ContactName").DataSource((IEnumerable<object>)ViewData["dataSource2"]).HeaderText("Contact Name").Width("150").ValidationRules(new { required = true }).Add();
        col.Field("Freight").HeaderText("Freight").Width("120").ValidationRules(new { required = true }).Format("C2").EditType("numericedit").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("ShipName").HeaderText("Ship Name").Width("150").Add();
        col.Field("ShipCity").HeaderText("Ship City").EditType("dropdownedit").Width("150").Add();

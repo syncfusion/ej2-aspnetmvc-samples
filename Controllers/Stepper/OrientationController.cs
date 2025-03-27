@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Stepper
             iconWithLabel.Add(new Step { IconCss = "sf-icon-review", Label = "Review" });
             iconWithLabel.Add(new Step { IconCss = "sf-icon-package", Label = "Packing" });
             iconWithLabel.Add(new Step { IconCss = "sf-icon-delivery", Label = "Shipping" });
-            ViewBag.IconWithLabel = iconWithLabel;
+            ViewData["IconWithLabel"] = iconWithLabel;
             return View();
         }
     }

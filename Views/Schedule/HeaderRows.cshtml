@@ -4,7 +4,7 @@
 ﻿@section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").HeaderRows(headerRow => { headerRow.Option(HeaderRowType.Month).Template("#month-template").Add(); headerRow.Option(HeaderRowType.Week).Template("#week-template").Add(); headerRow.Option(HeaderRowType.Date).Add(); }).Views(view => { view.Option(View.TimelineMonth).Interval(12).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).EventRendered("onEventRendered").SelectedDate(new DateTime(DateTime.Today.Year, 1, 1)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").HeaderRows(headerRow => { headerRow.Option(HeaderRowType.Month).Template("#month-template").Add(); headerRow.Option(HeaderRowType.Week).Template("#week-template").Add(); headerRow.Option(HeaderRowType.Date).Add(); }).Views(view => { view.Option(View.TimelineMonth).Interval(12).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).EventRendered("onEventRendered").SelectedDate(new DateTime(DateTime.Today.Year, 1, 1)).Render()
         </div>
     </div>
     <script src="~/Scripts/schedule/applyCategoryColor.js"></script>

@@ -10,7 +10,7 @@
                        .YName("FR_Temperature")
                        .Width(2)
                        .Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true))
-                       .DataSource(ViewBag.ChartPoints).Add();
+                       .DataSource(ViewData["ChartPoints"]).Add();
                 })
                   .PrimaryXAxis(xaxis =>
                      xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Double)
@@ -32,7 +32,7 @@
                   )
                 
                   .Title("Music Album Sales")
-                  .Tooltip(tp => tp.Enable(true).Shared(true).Format("${point.x}: <b>${point.y}</b>").Header("<b>Album Sale</b>"))
+                  .Tooltip(tp => tp.Enable(true).EnableHighlight(true).ShowNearestTooltip(true).Format("${point.x}: <b>${point.y}</b>").Header("<b>Album Sale</b>"))
                   .IsTransposed(true).ChartArea(area => area.Border(br => br.Width(1)))
                   .Load("load").Render()
             )
@@ -45,10 +45,10 @@
         }
     </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
@@ -66,7 +66,7 @@
         In this example, you can see how to render and configure the spline type charts. A Spline chart uses a curved line to connect points in a data series. <code>Markers</code> are used to represent individual data and its values.
     </p>
     <p>
-        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
     </p>
     <p>
         More information on the spline series can be found in this

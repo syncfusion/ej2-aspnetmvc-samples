@@ -1,6 +1,6 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @{
-    ViewBag.Title = "LoadingIndicator";
+    ViewData["Title"] = "LoadingIndicator";
 }
 
 @section ControlsSection{
@@ -9,7 +9,7 @@
             <div class="control-section">
 
                             @(Html.EJS().Gantt("Gantt").DataSource((IEnumerable<object>
-                )ViewBag.DataSource).Height("450px").EnableVirtualization(true).HighlightWeekends(true).AllowSelection(true).AllowFiltering(true).AllowSorting(true).LoadingIndicator(l => { l.IndicatorType(Syncfusion.EJ2.Grids.IndicatorType.Shimmer); })
+                )ViewData["DataSource"]).Height("450px").EnableVirtualization(true).HighlightWeekends(true).AllowSelection(true).AllowFiltering(true).AllowSorting(true).LoadingIndicator(l => { l.IndicatorType(Syncfusion.EJ2.Grids.IndicatorType.Shimmer); })
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                 .Child("SubTasks").ParentID("ParentID"))
                 .LabelSettings(ls=>ls.TaskLabel("Progress")).Columns(col =>
@@ -33,7 +33,7 @@
                             <div style="padding-left: 0; font-size: 14px; padding-top:0; ">Indicator Type</div>
                         </td>
                         <td style="width: 50%;padding-right: 10px;padding-left: 10px;">
-                            @Html.EJS().DropDownList("Dropdown").DataSource((IEnumerable<object>)ViewBag.data).Value("Shimmer").Change("onChange").Width("140").Render()
+                            @Html.EJS().DropDownList("Dropdown").DataSource((IEnumerable<object>)ViewData["data"]).Value("Shimmer").Change("onChange").Width("140").Render()
                         </td>
                     </tr>
                 </table>

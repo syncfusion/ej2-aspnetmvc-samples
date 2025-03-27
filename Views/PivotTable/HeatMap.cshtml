@@ -8,13 +8,13 @@
 
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().PivotView("PivotView-Heatmap").Width("100%").Height("500").EnginePopulated("enginePopulated").AggregateCellInfo("aggregateCellInfo").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(true).EnableSorting(false).ShowColumnSubTotals(false)
+            @Html.EJS().PivotView("PivotView-Heatmap").Width("100%").Height("500").EnginePopulated("enginePopulated").AggregateCellInfo("aggregateCellInfo").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(true).EnableSorting(false).ShowColumnSubTotals(false)
             .FormatSettings(formatsettings => { formatsettings.Name("SoldAmount").Format("C0").Add(); })
             .GroupSettings(groupSettings => { groupSettings.Name("Year").Type(GroupType.Number).RangeInterval(2).Add(); })
             .ValueSortSettings(new PivotViewValueSortSettings { HeaderDelimiter = " - " })
             .Rows(rows => { rows.Name("Year").Add(); })
             .Columns(columns => { columns.Name("ProductType").Add(); columns.Name("Product").Add(); })
-            .Values(values => { values.Name("SoldAmount").Caption("Sold Amount").Add(); })).GridSettings(gridSettings => gridSettings.ColumnWidth(120).RowHeight(36)).CellTemplate("${getCellContent(data)}").Render()
+            .Values(values => { values.Name("SoldAmount").Caption("Sold Amount").Add(); })).GridSettings(gridSettings => gridSettings.ColumnWidth(120).RowHeight(35)).CellTemplate("${getCellContent(data)}").Render()
         </div>
     </div>
 

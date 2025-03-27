@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult SelectionLimit()
         {
-            ViewBag.data = new Countries().CountriesList();
+            ViewData["data"] = new Countries().CountriesList();
             return View();
         }
     }

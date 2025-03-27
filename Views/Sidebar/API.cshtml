@@ -29,7 +29,7 @@
                             @*Sidebar types*@
                             <p class="inline-element" style="width:70%"><b>Types </b> - Specifies the act of expanding or collapsing the sidebar with main content.</p>
                             <div class="inline-element right" style="width:80px">
-                                @Html.EJS().DropDownList("apidd").PopupHeight("220px").Index(3).Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Text = "Type", Value = "value" }).CssClass("e-textbox right").Change("onChange").DataSource(ViewBag.Types).Render()
+                                @Html.EJS().DropDownList("apidd").PopupHeight("220px").Index(3).Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Text = "Type", Value = "value" }).CssClass("e-textbox right").Change("onChange").DataSource(ViewData["Types"]).Render()
                             </div>
                             <br />
                             <br />
@@ -56,7 +56,7 @@
             <div class="sub-title">
                 The ASP.NET MVC Sidebar is an expandable and collapsible component that typically acts as a side container to place primary or secondary content alongside the main content. It provides flexible options that can be shown and hidden based on user interactions.
             </div>
-        </div>).HtmlAttributes(ViewBag.HtmlAttribute).Render();}
+        </div>).HtmlAttributes(ViewData["HtmlAttribute"]).Render();}
     </div>
 }
 <script>

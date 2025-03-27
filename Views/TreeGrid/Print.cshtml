@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "Print";
+    ViewData["Title"] = "Print";
 }
 
 @*custom code end*@
@@ -13,7 +13,7 @@
     <div class="control-section">
         @(Html.EJS().TreeGrid("Print")
             .Height(410)
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .Toolbar(new List<string> { "Print" })
             .Columns(col =>
             {

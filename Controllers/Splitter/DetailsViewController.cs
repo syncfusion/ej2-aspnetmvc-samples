@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             data.Add(new { name = "Robert", imgUrl = @Url.Content("~/Content/splitter/images/robert.png"), id = "3" });
             data.Add(new { name = "Michale", imgUrl = @Url.Content("~/Content/splitter/images/michale.png"), id = "4" });
             data.Add(new { name = "Albert", imgUrl = @Url.Content("~/Content/splitter/images/albert.png"), id = "5" });
-            ViewBag.DataSource = data;
+            ViewData["DataSource"] = data;
             return View();
         }
     }

@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section dropdowntree-default">
         <div class="control-wrapper">
-            @Html.EJS().DropDownTree("default").ChangeOnBlur(false).Placeholder("Select a folder or file").PopupHeight("200px").Change("valueChange").Fields(ViewBag.fields).Render()
+            @Html.EJS().DropDownTree("default").ChangeOnBlur(false).Placeholder("Select a folder or file").PopupHeight("200px").Change("valueChange").Fields((DropDownTreeFields)ViewData["fields"]).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section dropdowntree-default">

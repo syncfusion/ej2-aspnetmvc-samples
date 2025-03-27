@@ -1,19 +1,19 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Editing";
+    ViewData["Title"] = "Editing";
 }
 
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @(Html.EJS().Gantt("Editing").DataSource((IEnumerable<object>)ViewBag.DataSource)
+            @(Html.EJS().Gantt("Editing").DataSource((IEnumerable<object>)ViewData["DataSource"])
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
                     .Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Notes").ResourceInfo("ResourceId"))
                 .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
                 .Toolbar(new List<string>() { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll", "Indent", "Outdent" })
                 .AllowSelection(true).GridLines(Syncfusion.EJ2.Gantt.GridLine.Both)
                 .Height("450px").TreeColumnIndex(1).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName"))
-                .Resources((IEnumerable<object>)ViewBag.Resources).HighlightWeekends(true).TimelineSettings(tl => tl.TopTier(tt =>
+                .Resources((IEnumerable<object>)ViewData["Resources"]).HighlightWeekends(true).TimelineSettings(tl => tl.TopTier(tt =>
                   tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week).Format("MMM dd, y")).
                 BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))).Columns(col =>
                 {
@@ -54,10 +54,10 @@
         var startDate
         function Created(args) {
             var gantt = document.getElementsByClassName('e-gantt')[0].ej2_instances[0];
-            gantt.treeGrid.grid.columns[1].validationRules = { required: true, minLength: [5, 'Task name should have a minimum length of 5 characters'] };
-            gantt.treeGrid.grid.columns[3].validationRules = { date: true, required: [customFn, 'Please enter a value greater than the start date.'] };
-            gantt.treeGrid.grid.columns[4].validationRules = { required: true };
-            gantt.treeGrid.grid.columns[5].validationRules = { required: true, min: 0, max: 100 };
+            gantt.columns[1].validationRules = { required: true, minLength: [5, 'Task name should have a minimum length of 5 characters'] };
+            gantt.columns[3].validationRules = { required: [customFn, 'Please enter a value greater than the start date.'] };
+            gantt.columns[4].validationRules = { required: true };
+            gantt.columns[5].validationRules = { required: true, min: 0, max: 100 };
         }
         function ActionBegin(args) {
             if (args.columnName === "EndDate" || args.requestType === "beforeOpenAddDialog" || args.requestType === "beforeOpenEditDialog") {
@@ -72,7 +72,8 @@
             var endDate;
             var gantt = (document.getElementsByClassName('e-gantt')[0]).ej2_instances[0];
             if (args.element && args.value) {
-                endDate = new Date(args.value);
+                var dateOptions = { format: gantt.dateFormat, type: 'dateTime', skeleton: 'yMd' };
+                endDate =  gantt.globalize.parseDate(args.value, dateOptions);
                 if (!startDate && gantt.editModule.dialogModule['beforeOpenArgs']) {
                     startDate = gantt.editModule.dialogModule['beforeOpenArgs'].rowData['ganttProperties'].startDate;
                     endDate = (gantt.editModule.dialogModule['beforeOpenArgs'].rowData['ganttProperties'].endDate);

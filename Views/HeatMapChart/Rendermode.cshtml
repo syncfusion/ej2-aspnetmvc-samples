@@ -7,19 +7,19 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Net Migration Rate of Northern Europe From 1965 to 2015").TextStyle(ViewBag.textStyle)).XAxis(
+                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Net Migration Rate of Northern Europe From 1965 to 2015").TextStyle(ViewData["textStyle"])).XAxis(
                     xAxis =>
                     {
                         xAxis.LabelRotation(-90)
                         .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                        .Labels(ViewBag.xLabels).TextStyle(ViewBag.labelTextStyle);
-                    }).YAxis(yaxis => yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle)).LegendSettings(legendSettings =>
-                    legendSettings.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).Width("200px").TextStyle(ViewBag.labelTextStyle)).RenderingMode(Syncfusion.EJ2.HeatMap.DrawType.SVG).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
+                        .Labels((string[])ViewData["xLabels"]).TextStyle(ViewData["labelTextStyle"]);
+                    }).YAxis(yaxis => yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"])).LegendSettings(legendSettings =>
+                    legendSettings.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).Width("200px").TextStyle(ViewData["labelTextStyle"])).RenderingMode(Syncfusion.EJ2.HeatMap.DrawType.SVG).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
                     {
                         palette.Color("#C06C84").Add();
                         palette.Color("#355C7D").Add();
                     })).CellSettings(cellSettings =>
-                    cellSettings.Border(ViewBag.border).ShowLabel(false).Format("{value} %")).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).Load("load").DataSource(ViewBag.dataSource).Render()
+                    cellSettings.Border(ViewData["border"]).ShowLabel(false).Format("{value} %")).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).Load("load").DataSource(ViewData["dataSource"]).Render()
 
                 </div>
             </div>

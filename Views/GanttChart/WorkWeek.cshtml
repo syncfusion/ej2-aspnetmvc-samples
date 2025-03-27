@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "WorkWeek";
+    ViewData["Title"] = "WorkWeek";
 }
 
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
-            @(Html.EJS().Gantt("WorkWeek").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true)
+            @(Html.EJS().Gantt("WorkWeek").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true).AllowSelection(true)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                 .Dependency("Predecessor").Child("SubTasks")).TreeColumnIndex(1)
                 .Columns(col =>
@@ -41,7 +41,7 @@
                 </td>
                 <td style="width:70%">
                     <div style="padding-top: 0px">
-                        @(Html.EJS().MultiSelect("WorkingDays").DataSource((IEnumerable<object>)ViewBag.Data)
+                        @(Html.EJS().MultiSelect("WorkingDays").DataSource((IEnumerable<object>)ViewData["Data"])
                             .Value(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" })
                             .Fields(new Syncfusion.EJ2.DropDowns.MultiSelectFieldSettings { Text = "day", Value = "id" })
                             .Mode(Syncfusion.EJ2.DropDowns.VisualMode.CheckBox).ShowDropDownIcon(true).PopupHeight("350px").Select("Select").Removed("Removed")

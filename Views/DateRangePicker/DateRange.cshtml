@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div id="wrapper">
-            @Html.EJS().DateRangePicker("daterange").Placeholder("Choose a Range").Min(ViewBag.minDate).Max(ViewBag.maxDate).Render()
+            @Html.EJS().DateRangePicker("daterange").Placeholder("Choose a Range").Min(ViewData["minDate"]).Max(ViewData["maxDate"]).Render()
         </div>
     </div>
 

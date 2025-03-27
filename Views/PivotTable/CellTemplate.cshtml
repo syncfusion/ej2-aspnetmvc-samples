@@ -8,8 +8,8 @@
 
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataBound("trend").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(true).EnableSorting(true)
-           .DrilledMembers(drilledmembers =>{drilledmembers.Name("Year").Items(ViewBag.drilledMembers).Add();})
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataBound("trend").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(true).EnableSorting(true)
+           .DrilledMembers(drilledmembers => { drilledmembers.Name("Year").Items((string[])ViewData["drilledMembers"]).Add();})
            .FormatSettings(formatsettings => { formatsettings.Name("ProCost").Format("C0").Add(); })
            .Rows(rows => { rows.Name("Year").Caption("Production Year").Add(); rows.Name("HalfYear").Caption("Half Year").Add(); })
            .Columns(columns => { columns.Name("EnerType").Caption("Energy Type").Add(); columns.Name("EneSource").Caption("Energy Source").Add(); })

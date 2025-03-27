@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "StackedHeader";
+    ViewData["Title"] = "StackedHeader";
 }
 
 @*custom code end*@
@@ -14,7 +14,7 @@
         @(Html.EJS().TreeGrid("StackedHeader")
             .AllowPaging()
             .PageSettings(page => page.PageCount(5))
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .Columns(col =>
             {
                 col.HeaderText("Order Details").Columns(

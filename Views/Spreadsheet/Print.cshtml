@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Spreadsheet
 
 @section ControlsSection{
@@ -7,12 +7,12 @@
    {
        sheet.Name("Car Sales").Ranges(ranges =>
        {
-           ranges.DataSource(ViewBag.PrintData).StartCell("A2").Add();
+           ranges.DataSource(ViewData["PrintData"]).StartCell("A2").Add();
        }).Rows(row =>
        {
            row.Height(51).Cells(cell =>
            {
-               cell.Image(new List<Image> { new Image() { Src = ViewBag.ImageUrl, Height = 40, Width = 80, Left = 130, Top = 5 } }).Add();
+               cell.Image(new List<Image> { new Image() { Src = (string)ViewData["ImageUrl"], Height = 40, Width = 80, Left = 130, Top = 5 } }).Add();
                cell.Value("          Ivaa Premium Cars").ColSpan(5).Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Left, FontSize = "30pt", VerticalAlign = VerticalAlign.Middle }).Add();
            }).Add();
            row.Index(1).Height(45).Cells(cell =>
@@ -267,12 +267,12 @@
        }).Add();
        sheet.Name("Yearly Report").Ranges(ranges =>
        {
-           ranges.StartCell("A2").DataSource(ViewBag.YearlyReportDataSource).Add();
+           ranges.StartCell("A2").DataSource(ViewData["YearlyReportDataSource"]).Add();
        }).Rows(row =>
        {
            row.Height(51).Cells(cell =>
            {
-               cell.Image(new List<Image> { new Image() { Src = ViewBag.ImageUrl, Height = 40, Width = 80, Left = 95, Top = 5 } }).Add();
+               cell.Image(new List<Image> { new Image() { Src = (string)ViewData["ImageUrl"], Height = 40, Width = 80, Left = 95, Top = 5 } }).Add();
                cell.Value("       Ivaa Premium Cars").ColSpan(6).Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Left, FontSize = "30pt", VerticalAlign = VerticalAlign.Middle }).Add();
            }).Add();
            row.Index(1).Height(23).Cells(cell =>

@@ -50,7 +50,7 @@
                     </td>
                     <td style="width: 50%;">
                         <div>
-                            @Html.EJS().DropDownList("dropdown").Index(0).DataSource(ViewBag.data).Value("Polar").Change("valueChange").Render()
+                            @Html.EJS().DropDownList("dropdown").Index(0).DataSource(ViewData["data"]).Value("Polar").Change("valueChange").Render()
                         </div>
                     </td>
                 </tr>
@@ -66,6 +66,7 @@
     }
 </style>
  @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
 <script>
     var cardData = [];
     var biDirData = [];
@@ -92,9 +93,7 @@
     }
     
     var load = function (args) {
-        var selectedTheme = themeName ? themeName : 'Fluent2';
-        args.chart.theme = (selectedTheme && selectedTheme.indexOf('fabric') > -1) ? 'Fabric' : 'Fluent2';
-        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+        loadChartTheme(args);
         args.chart.primaryXAxis.coefficient = ej.base.Browser.isDevice ? 80 : 100;
     };
      

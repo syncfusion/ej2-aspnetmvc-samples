@@ -104,12 +104,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             portvisibility.Add(new PortVisibilityList() { Name = "Hidden", Value = 2 });
             portvisibility.Add(new PortVisibilityList() { Name = "Hover", Value = 4 });
             portvisibility.Add(new PortVisibilityList() { Name = "Connect", Value = 8 });
-            ViewBag.PortVisibility = portvisibility;
+            ViewData["PortVisibility"] = portvisibility;
 
 
-            ViewBag.shape = shape;
-            ViewBag.nodes = nodes;
-            ViewBag.connectors = Connectors;
+            ViewData["shape"] = shape;
+            ViewData["nodes"] = nodes;
+            ViewData["connectors"] = Connectors;
             return View();
         }
     }

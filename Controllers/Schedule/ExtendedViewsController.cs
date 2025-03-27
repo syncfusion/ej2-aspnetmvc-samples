@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult ExtendedViews()
         {
-            ViewBag.datasource = new ScheduleData().GetFifaEventsData();
+            ViewData["datasource"] = new ScheduleData().GetFifaEventsData();
             return View();
         }
     }

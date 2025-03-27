@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "Selection";
+    ViewData["Title"] = "Selection";
 }
 
 @*custom code end*@
@@ -18,7 +18,7 @@
         .AllowPdfExport()
         .EditSettings(edit => edit.AllowAdding(true).AllowDeleting(true).AllowEditing(true).Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row))
             .PageSettings(page => page.PageSize(10))
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .ContextMenuItems(
                 new List<object>() { "SortAscending",
                                     "SortDescending", "Edit", "Delete",

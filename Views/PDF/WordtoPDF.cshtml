@@ -1,6 +1,6 @@
 @section ControlsSection{
     <div class="control-section">
-        @{ViewBag.Title = "    Essential DocIO (Word) : Word To PDF : Syncfusion";}
+        @{ViewData["Title"] = "    Essential DocIO (Word) : Word To PDF : Syncfusion";}
 
         @{Html.BeginForm("wordtopdf", "pdf", FormMethod.Post, new { enctype = "multipart/form-data" });
 
@@ -20,7 +20,7 @@
                         </div>
                         <br />
                         <div class="text-danger">
-                            @ViewBag.Message
+                            @ViewData["Message"]
                         </div>
                     </div>
                 </div>

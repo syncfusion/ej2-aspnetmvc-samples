@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateChartData { X = "Office Supplies",    Y = 68 },
                 new UpdateChartData { X = "Food",               Y = 45 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class UpdateChartData

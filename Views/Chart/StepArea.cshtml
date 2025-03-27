@@ -5,13 +5,13 @@
             @Html.EJS().Chart("container-vertical").Series(series =>
        {
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StepArea).XName("Period").YName("RenewableResourcesProduction").Border(br => br.Width(2))
-           .DataSource(ViewBag.ChartPoints).Name("Renewable").Opacity(0.6).Add();
+           .DataSource(ViewData["ChartPoints"]).Name("Renewable").Opacity(0.6).Add();
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StepArea).XName("Period").YName("NonRenewableResourcesProduction").Border(br => br.Width(2))
-           .Opacity(0.6).DataSource(ViewBag.ChartPoints).Name("Non-Renewable").Width(2).Add();
+           .Opacity(0.6).DataSource(ViewData["ChartPoints"]).Name("Non-Renewable").Width(2).Add();
        }).PrimaryXAxis(px => px.MajorGridLines(mg=>mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
        ).PrimaryYAxis(py => py.LabelFormat("{value}B").MajorTickLines(mt=>mt.Width(0))
        .LineStyle(ls=>ls.Width(0)).Title("Production (Billion as kWh)")
-       ).Title("Electricity - Production").ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(leg => leg.EnableHighlight(true)).Tooltip(tt => tt.Enable(true)).Load("load").Render()
+       ).Title("Electricity - Production").ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(leg => leg.EnableHighlight(true)).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true)).Load("load").Render()
         </div>
    
     @*custom code start*@
@@ -21,10 +21,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
@@ -42,6 +42,9 @@
 @section Description{
     <p>
         In this example, you can see how to render and configure a step area chart. This series forms a step progress by connecting points through vertical and horizontal lines with the area being filled.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
     </p>
     <p>
         More information on the area series can be found in this

@@ -25,7 +25,7 @@
            new MapsNavigationLine { Visible = true, Angle = -0.2, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 46.582184, 39.864171 }, Longitude = new double[] { 2.232903, -100.854833 } },
            new MapsNavigationLine { Visible = true, Angle = -0.2, Color = "#ffffb3", DashArray = "5.1", Latitude = new double[] { 0.390617, 39.864171 }, Longitude = new double[] { 37.893734, -100.854833 } }
        }).ShapeSettings(new MapsShapeSettings { Fill = "#FFFFE0", Border = (new MapsBorder { Color = "#D2691E", Width = 0.5, Opacity = 1 }) })
-         .ShapeData(ViewBag.shapeData).Add();
+         .ShapeData(ViewData["shapeData"]).Add();
    }).Render()
     </div>
     <div id="template" style="display:none">

@@ -4,11 +4,11 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add(); view.Option(View.Agenda).Add(); }).Group(group => group.Resources(ViewBag.Resources)).Resources(res =>
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add(); view.Option(View.Agenda).Add(); }).Group(group => group.Resources((string[])ViewData["Resources"])).Resources(res =>
             {
-                res.DataSource(ViewBag.Projects).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
-                res.DataSource(ViewBag.Categories).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").GroupIDField("groupId").ColorField("color").AllowMultiple(true).Add();
-            }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewBag.datasource)).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).WorkDays(ViewBag.workDays).Render()
+                res.DataSource(ViewData["Projects"]).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
+                res.DataSource(ViewData["Categories"]).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").GroupIDField("groupId").ColorField("color").AllowMultiple(true).Add();
+            }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewData["datasource"])).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).WorkDays((int[])ViewData["workDays"]).Render()
         </div>
     </div>
     <style type="text/css">

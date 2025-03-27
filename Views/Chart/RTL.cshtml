@@ -10,11 +10,11 @@
                 ).ChartArea(area => area.Border(br => br.Width(0))).Series(series =>
                 {
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("Sales").ColumnSpacing(0.1)
-                    .Width(2).DataSource(ViewBag.ChartPoints).Name("Sales").Add();
+                    .Width(2).DataSource(ViewData["ChartPoints"]).Name("Sales").Add();
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("Expense").ColumnSpacing(0.1)
-                    .Width(2).DataSource(ViewBag.ChartPoints).Name("Expense").Add();
+                    .Width(2).DataSource(ViewData["ChartPoints"]).Name("Expense").Add();
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("Profit").ColumnSpacing(0.1)
-                    .Width(2).DataSource(ViewBag.ChartPoints).Name("Profit").Add();
+                    .Width(2).DataSource(ViewData["ChartPoints"]).Name("Profit").Add();
                 }).Title("Company Performance").Load("load").AxisLabelRender("labelRender").EnableRtl(true).Tooltip(tooltip => tooltip.Enable(true)).LegendSettings(lg => lg.EnableHighlight(true)).Render()
             </div>
         </div>
@@ -26,10 +26,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
         var labelRender = function (args) {

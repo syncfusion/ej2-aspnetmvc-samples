@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.Navigations
 
 @{
-    ViewBag.Title = "Redaction";
+    ViewData["Title"] = "Redaction";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
@@ -61,9 +61,9 @@
 
         @Html.EJS().PdfViewer("pdfviewer").EnableToolbar(false).EnableNavigationToolbar(false).EnableAnnotationToolbar(false).DocumentPath("https://cdn.syncfusion.com/content/pdf/programmatical-annotations.pdf").ResourceUrl(resourceUrl).DocumentLoad("documentLoaded").DownloadEnd("documentLoaded").PageChange("pageChange").AnnotationAdd("annotationAdd").AnnotationRemove("annotationRemove").EnableCommentPanel(false).Render()
         <input type="file" id="fileUpload" accept=".pdf" style="display:block;visibility:hidden;width:0;height:0;">
-        @Html.EJS().ComboBox("combo-element").Value("100%").ShowClearButton(false).Change("zoomValueChange").Width("95px").PopupWidth("85px").DataSource((string[])ViewBag.zoomList).Render()
+        @Html.EJS().ComboBox("combo-element").Value("100%").ShowClearButton(false).Change("zoomValueChange").Width("95px").PopupWidth("85px").DataSource((string[])ViewData["zoomList"]).Render()
         <div id="e-pv-redact-sb-dialog">
-            @Html.EJS().Dialog("modal_dialog").IsModal(true).Header("Upload Image").ShowCloseIcon(true).Created("created").Width("477px").MinHeight("485px").Visible(false).ContentTemplate(@<div>  <div class="drop-area-wrap">@Html.EJS().Uploader("UploadFiles").Multiple(false).Change("onFileChange").AllowedExtensions(".png, .jpg, .jpeg,").AsyncSettings(asyncSettings).Render() <div>(Only JPG and PNG images will be accepted)</div></div> <div class="e-pv-redact-sb-image-list"> <div id='imageContainer' class="e-pv-redact-sb-image-container" style="display:none"><img id='imageView' class="e-pv-redact-sb-image-source" /></div></div></div>).Target("#e-pv-redact-sb-panel").Buttons(ViewBag.ModalButton).Render()
+            @Html.EJS().Dialog("modal_dialog").IsModal(true).Header("Upload Image").ShowCloseIcon(true).Created("created").Width("477px").MinHeight("485px").Visible(false).ContentTemplate(@<div>  <div class="drop-area-wrap">@Html.EJS().Uploader("UploadFiles").Multiple(false).Change("onFileChange").AllowedExtensions(".png, .jpg, .jpeg,").AsyncSettings(asyncSettings).Render() <div>(Only JPG and PNG images will be accepted)</div></div> <div class="e-pv-redact-sb-image-list"> <div id='imageContainer' class="e-pv-redact-sb-image-container" style="display:none"><img id='imageView' class="e-pv-redact-sb-image-source" /></div></div></div>).Target("#e-pv-redact-sb-panel").Buttons((List<Syncfusion.EJ2.Popups.DialogDialogButton>)ViewData["ModalButton"]).Render()
         </div>
 
     </div>

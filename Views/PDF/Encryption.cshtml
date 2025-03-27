@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.DropDowns
 @using EJ2MVCSampleBrowser.Models
 
-@{ViewBag.Title = "    Essential PDF : Encryption : Syncfusion";}
+@{ViewData["Title"] = "    Essential PDF : Encryption : Syncfusion";}
 
 @{Html.BeginForm("encryption", "pdf", FormMethod.Post); }
 
@@ -35,7 +35,7 @@
                                 <label style="font-weight:bold">
                                     Encryption Options&nbsp;&nbsp;&nbsp;
                                 </label>
-                                @Html.EJS().DropDownList("encryptOptionType").Width("280px").Index(0).PopupHeight("120px").DataSource(ViewBag.data).Render()
+                                @Html.EJS().DropDownList("encryptOptionType").Width("280px").Index(0).PopupHeight("120px").DataSource(ViewData["data"]).Render()
                             </div>
                             <div>
                                 <br>

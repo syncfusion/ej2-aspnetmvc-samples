@@ -21,9 +21,9 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult Selection()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.modeData = GetModeData();
-            ViewBag.typeData = GetTypeData();
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["modeData"] = GetModeData();
+            ViewData["typeData"] = GetTypeData();
             return View();
         }
         public List<SelectionData> GetModeData()

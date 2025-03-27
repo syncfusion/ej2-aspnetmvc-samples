@@ -17,8 +17,8 @@ namespace EJ2MVCSampleBrowser.Controllers.LinearGauge
     {
         public ActionResult Container()
         {
-            ViewBag.orientation = new string[] { "Vertical", "Horizontal" };
-            ViewBag.container = new string[] { "Thermometer", "Normal", "Rounded Rectangle" };
+            ViewData["orientation"] = new string[] { "Vertical", "Horizontal" };
+            ViewData["container"] = new string[] { "Thermometer", "Normal", "Rounded Rectangle" };
             return View();
         }
     }

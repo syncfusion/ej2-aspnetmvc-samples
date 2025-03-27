@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeView
             fields.Id = "Id";
             fields.ParentID = "PId";
             fields.Text = "Name";
-            ViewBag.fields = fields;
+            ViewData["fields"] = fields;
             return View();
         }
        

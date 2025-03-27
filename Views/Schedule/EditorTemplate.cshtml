@@ -7,7 +7,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").ActionBegin("onActionBegin").EventRendered("onEventRendered").PopupOpen("onPopupOpen").EventSettings(e => e.Fields(f => f.StartTime(st => st.Name("StartTime").Validation(validationRules)).EndTime(et => et.Name("EndTime").Validation(validationRules))).DataSource(ViewBag.datasource)).Views(ViewBag.view).EditorTemplate("#EventEditorTemplate").EditorHeaderTemplate("#EventEditorHeaderTemplate").ShowQuickInfo(false).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").ActionBegin("onActionBegin").EventRendered("onEventRendered").PopupOpen("onPopupOpen").EventSettings(e => e.Fields(f => f.StartTime(st => st.Name("StartTime").Validation(validationRules)).EndTime(et => et.Name("EndTime").Validation(validationRules))).DataSource(ViewData["datasource"])).Views(ViewData["view"]).EditorTemplate("#EventEditorTemplate").EditorHeaderTemplate("#EventEditorHeaderTemplate").ShowQuickInfo(false).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
     <style>

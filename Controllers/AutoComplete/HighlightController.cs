@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Highlight()
         {
-            ViewBag.countries = new Countries().CountriesList();
-            ViewBag.data = new string[] { "Contains", "StartsWith", "EndsWith" };
+            ViewData["countries"] = new Countries().CountriesList();
+            ViewData["data"] = new string[] { "Contains", "StartsWith", "EndsWith" };
             return View();
         }
     }

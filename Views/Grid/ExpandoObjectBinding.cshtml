@@ -2,7 +2,7 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("ExapandoObjectGrid").DataSource((IEnumerable<object>)ViewBag.ExpandoData).AllowSorting().AllowFiltering().Columns(col =>
+        @Html.EJS().Grid("ExapandoObjectGrid").DataSource((IEnumerable<object>)ViewData["ExpandoData"]).AllowSorting().AllowFiltering().Columns(col =>
    {
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("140").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 3 }).Add();

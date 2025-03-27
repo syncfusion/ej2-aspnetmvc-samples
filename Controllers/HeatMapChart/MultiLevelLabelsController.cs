@@ -19,26 +19,26 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
         // GET: MultiLeveLabels
         public ActionResult MultiLevelLabels()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
                 fontFamily = "inherit"
             };
-            ViewBag.labelTextStyle = new
+            ViewData["labelTextStyle"] = new
             {
                 fontFamily = "inherit"
             };
             string[] xlabels = new string[11] { "Laptop", "Mobile", "Gaming", "Cosmetics", "Fragrance",
                 "Watches", "Handbags", "Apparel", "Kitchenware", "Furniture", "Home Decor"};
-            ViewBag.xLabels = xlabels;
-            ViewBag.border = new { width = "0" };
-            ViewBag.xTextStyle = new { color = "black", fontFamily= "inherit"};
+            ViewData["xLabels"] = xlabels;
+            ViewData["border"] = new { width = "0" };
+            ViewData["xTextStyle"] = new { color = "black", fontFamily= "inherit"};
             string[] yLabels = new string[12] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-            ViewBag.yLabels = yLabels;
-            ViewBag.yTextStyle = new { color = "black", fontFamily= "inherit" };
-            ViewBag.dataSource = new HeatMapData().GetMultiLevelData();
+            ViewData["yLabels"] = yLabels;
+            ViewData["yTextStyle"] = new { color = "black", fontFamily= "inherit" };
+            ViewData["dataSource"] = new HeatMapData().GetMultiLevelData();
             return View();
         }
     }

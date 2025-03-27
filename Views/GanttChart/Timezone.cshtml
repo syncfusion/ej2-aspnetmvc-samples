@@ -1,10 +1,10 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Timeline";
+    ViewData["Title"] = "Timeline";
 }
 @section ControlsSection{
     <div class="control-section">
-        @(Html.EJS().Gantt("Timezone").DataSource((IEnumerable<object>)ViewBag.DataSource)
+        @(Html.EJS().Gantt("Timezone").DataSource((IEnumerable<object>)ViewData["DataSource"])
                     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                     .Dependency("Predecessor").ParentID("ParentID")).TreeColumnIndex(1)
                     .Columns(col =>

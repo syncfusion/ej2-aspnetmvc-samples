@@ -25,7 +25,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Avatar
             data.Add(new { text = "Michael", id = "s_05", pic= "pic02", avatar= "" });
             data.Add(new { text = "Steven", id = "s_06", pic= "pic03", avatar= "" });
             data.Add(new { text = "Margaret", id = "s_07", avatar= "M", pic= "" });
-            ViewBag.dataSource = data;
+            ViewData["dataSource"] = data;
             return View();
         }
     }

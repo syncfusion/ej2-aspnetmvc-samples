@@ -19,18 +19,18 @@ namespace EJ2MVCSampleBrowser.Controllers.ListBox
         public ActionResult Api()
         {
 
-            ViewBag.vegetableData = new Vegetables().VegetablesList();
+            ViewData["vegetableData"] = new Vegetables().VegetablesList();
 
             List<object> sortOrder = new List<object>();
             sortOrder.Add(new { Text = "None"});
             sortOrder.Add(new { Text = "Ascending"});
             sortOrder.Add(new { Text = "Descending" });
-            ViewBag.sortOrder = sortOrder;
+            ViewData["sortOrder"] = sortOrder;
 
             List<object> selectionType = new List<object>();
             selectionType.Add(new { Text = "Single" });
             selectionType.Add(new { Text = "Multiple" });
-            ViewBag.selectionType = selectionType;
+            ViewData["selectionType"] = selectionType;
             return View();
         }
     }

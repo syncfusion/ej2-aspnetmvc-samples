@@ -8,7 +8,7 @@
 
     <div class="control-section">
         <div class="content-wrapper">
-      @Html.EJS().PivotView("pivotview").Width("100%").Height("500").ShowToolbar(true).ShowFieldList(true).ShowGroupingBar(true).AllowExcelExport(true).EnableValueSorting(true).EnableFieldSearching(true).AllowConditionalFormatting(true).AllowPdfExport(true).ShowToolbar(true).AllowCalculatedField(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).EnableSorting(true)
+      @Html.EJS().PivotView("pivotview").Width("100%").Height("500").ShowToolbar(true).ShowFieldList(true).ShowGroupingBar(true).AllowExcelExport(true).EnableValueSorting(true).EnableFieldSearching(true).AllowConditionalFormatting(true).AllowPdfExport(true).ShowToolbar(true).AllowCalculatedField(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).EnableSorting(true)
         .Url("https://bi.syncfusion.com/olap/msmdpump.dll").Catalog("Adventure Works DW 2008 SE").Cube("Adventure Works").ProviderType(ProviderType.SSAS)
         .Rows(rows => { rows.Name("[Customer].[Customer Geography]").Caption("Customer Geography").Add(); })
         .Columns(columns => { columns.Name("[Product].[Product Categories]").Caption("Product Categories").Add(); columns.Name("[Measures]").Caption("Measures").Add(); })

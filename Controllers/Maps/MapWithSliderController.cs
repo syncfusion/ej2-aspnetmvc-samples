@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: MapWithSlider
         public ActionResult MapWithSlider()
         {
-            ViewBag.MapShapeData = this.getNorthAmericaMap();
-            ViewBag.DataSource = GetPopulationGrowthData();
+            ViewData["MapShapeData"] = this.getNorthAmericaMap();
+            ViewData["DataSource"] = GetPopulationGrowthData();
             return View();
         }
 

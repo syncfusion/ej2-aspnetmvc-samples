@@ -5,7 +5,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewData["view"]).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -14,7 +14,7 @@
                 <tr style="height: 50px">
                     <td style="width: 100%;">
                         <div>
-                            @Html.EJS().DropDownList("scheduleview").Index(1).DataSource(ViewBag.ddl).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Placeholder("Current View").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Render()
+                            @Html.EJS().DropDownList("scheduleview").Index(1).DataSource(ViewData["ddl"]).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Placeholder("Current View").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Render()
                         </div>
                     </td>
                 </tr>

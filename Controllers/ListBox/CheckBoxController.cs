@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ListBox
             data.Add(new { text = "Jaguar XJ220", id = "list-08" });
             data.Add(new { text = "McLaren P1", id = "list-09" });
             data.Add(new { text = "Ferrari LaFerrari", id = "list-10" });
-            ViewBag.data = data;
+            ViewData["data"] = data;
             return View();
         }
     }

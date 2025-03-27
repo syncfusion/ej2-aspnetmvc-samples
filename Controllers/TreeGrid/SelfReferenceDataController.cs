@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult SelfReferenceData()
         {
             var treeData = TreeGridItems.GetSelfData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
             return View();
         }
     }

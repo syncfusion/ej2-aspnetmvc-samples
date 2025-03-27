@@ -16,7 +16,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult CalendarExportImport()
         {
-            ViewBag.datasource = new ScheduleData().GetScheduleData();
+            ViewData["datasource"] = new ScheduleData().GetScheduleData();
             List<ScheduleView> viewOption = new List<ScheduleView>()
             {
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Day },
@@ -25,7 +25,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Month },
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Agenda }
             };
-            ViewBag.view = viewOption;
+            ViewData["view"] = viewOption;
             return View();
         }
     }

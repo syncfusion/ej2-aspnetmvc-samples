@@ -29,7 +29,7 @@
                     @Html.EJS().Uploader("icalendar").AllowedExtensions(".ics").CssClass("calendar-import").ShowFileList(false).Buttons(new Syncfusion.EJ2.Inputs.UploaderButtonsProps { Browse = "Import" }).Created("uploaderCreated").Selected("onSelected").Multiple(false).Render()
                     </div>
                     <div class="control-panel calendar-export">
-                    @Html.EJS().DropDownButton("exportBtn").CssClass("e-inherit").Content("Export").Items(ViewBag.ExportItems).Select("onExportItemSelect").Render()
+                    @Html.EJS().DropDownButton("exportBtn").CssClass("e-inherit").Content("Export").Items(ViewData["ExportItems"]).Select("onExportItemSelect").Render()
                     </div>
                     @Html.EJS().Button("settingsBtn").CssClass("overview-toolbar-settings e-inherit").IconCss("e-icons e-settings").IconPosition(Syncfusion.EJ2.Buttons.IconPosition.Top).Render()
                     </div>).Render())
@@ -51,11 +51,11 @@
                 <div class="overview-content">
                     <div class="left-panel">
                         <div class="overview-scheduler">
-                            @Html.EJS().Schedule("scheduler").CssClass("schedule-overview").Height("100%").Timezone("UTC").DateHeaderTemplate(dateHeaderTemplate).Group(group => group.Resources(ViewBag.Resources)).Resources(res =>
+                            @Html.EJS().Schedule("scheduler").CssClass("schedule-overview").Height("100%").Timezone("UTC").DateHeaderTemplate(dateHeaderTemplate).Group(group => group.Resources((string[])ViewData["Resources"])).Resources(res =>
                             {
-                            res.DataSource(ViewBag.Calendars); res.Query("new ej.data.Query().where('CalendarId', 'equal', 1)").Field("CalendarId").Title("Calendars").Name("Calendars").TextField("CalendarName").IdField("CalendarId").ColorField("CalendarColor").AllowMultiple(true).Add();
-                            }).Views(view => { view.Option(View.Day).Add(); view.Option(View.Week).Add(); view.Option(View.WorkWeek).Add(); view.Option(View.Month).Add(); view.Option(View.Year).Add(); view.Option(View.Agenda).Add(); view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add(); view.Option(View.TimelineYear).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.Appointments }).Render()
-                            @Html.EJS().ContextMenu("overviewContextMenu").CssClass("schedule-context-menu").BeforeOpen("onContextMenuBeforeOpen").Select("onMenuItemSelect").Target(".e-schedule").Items(ViewBag.MenuItems).Render()
+                            res.DataSource(ViewData["Calendars"]); res.Query("new ej.data.Query().where('CalendarId', 'equal', 1)").Field("CalendarId").Title("Calendars").Name("Calendars").TextField("CalendarName").IdField("CalendarId").ColorField("CalendarColor").AllowMultiple(true).Add();
+                            }).Views(view => { view.Option(View.Day).Add(); view.Option(View.Week).Add(); view.Option(View.WorkWeek).Add(); view.Option(View.Month).Add(); view.Option(View.Year).Add(); view.Option(View.Agenda).Add(); view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add(); view.Option(View.TimelineYear).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["Appointments"] }).Render()
+                            @Html.EJS().ContextMenu("overviewContextMenu").CssClass("schedule-context-menu").BeforeOpen("onContextMenuBeforeOpen").Select("onMenuItemSelect").Target(".e-schedule").Items(ViewData["MenuItems"]).Render()
                         </div>
                     </div>
                     <div class="right-panel hide">
@@ -65,8 +65,8 @@
                                     <label style="line-height: 34px; margin: 0;">Calendar</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().MultiSelect("resources").CssClass("schedule-workweek").Mode(VisualMode.CheckBox).EnableSelectionOrder(false).ShowDropDownIcon(true).ShowClearButton(false).Value(ViewBag.ResourceValues).DataSource(
-                                    ViewBag.Calendars).Fields(new MultiSelectFieldSettings { Text = "CalendarName", Value = "CalendarId" }).Change("onCalendarChange").Render()
+                                    @Html.EJS().MultiSelect("resources").CssClass("schedule-workweek").Mode(VisualMode.CheckBox).EnableSelectionOrder(false).ShowDropDownIcon(true).ShowClearButton(false).Value(ViewData["ResourceValues"]).DataSource(
+                                    ViewData["Calendars"]).Fields(new MultiSelectFieldSettings { Text = "CalendarName", Value = "CalendarId" }).Change("onCalendarChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -74,7 +74,7 @@
                                     <label style="line-height: 34px; margin: 0;">First Day of Week</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("weekFirstDay").Value("0").DataSource(ViewBag.WeekDays).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onWeekFirstDayChange").Render()
+                                    @Html.EJS().DropDownList("weekFirstDay").Value("0").DataSource(ViewData["WeekDays"]).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onWeekFirstDayChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -82,8 +82,8 @@
                                     <label style="line-height: 34px; margin: 0;">Work week</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().MultiSelect("workWeekDays").CssClass("schedule-workweek").Mode(VisualMode.CheckBox).EnableSelectionOrder(false).ShowDropDownIcon(true).ShowClearButton(false).Value(ViewBag.Values).DataSource(
-                                    ViewBag.WeekDays).Fields(new MultiSelectFieldSettings { Text = "text", Value = "value" }).Change("onWeekDaysChange").Render()
+                                    @Html.EJS().MultiSelect("workWeekDays").CssClass("schedule-workweek").Mode(VisualMode.CheckBox).EnableSelectionOrder(false).ShowDropDownIcon(true).ShowClearButton(false).Value(ViewData["Values"]).DataSource(
+                                    ViewData["WeekDays"]).Fields(new MultiSelectFieldSettings { Text = "text", Value = "value" }).Change("onWeekDaysChange").Render()
                                 </div>
 
                             </div>
@@ -92,7 +92,7 @@
                                     <label style="line-height: 34px; margin: 0;">Timezone</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("timezone").Value(timezone).PopupHeight("150px").DataSource(ViewBag.TimezoneData).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onTimezoneChange").Render()
+                                    @Html.EJS().DropDownList("timezone").Value(timezone).PopupHeight("150px").DataSource(ViewData["TimezoneData"]).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onTimezoneChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -132,7 +132,7 @@
                                     <label style="line-height: 34px; margin: 0;">Slot Duration</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("slotDuration").Value("60").PopupHeight("150px").DataSource(ViewBag.SlotIntervalDataSource).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onSlotIntervalChange").Render()
+                                    @Html.EJS().DropDownList("slotDuration").Value("60").PopupHeight("150px").DataSource(ViewData["SlotIntervalDataSource"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onSlotIntervalChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -140,7 +140,7 @@
                                     <label style="line-height: 34px; margin: 0;">Slot Interval</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("slotInterval").Value("2").PopupHeight("150px").DataSource(ViewBag.slotCounts).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onSlotCountChange").Render()
+                                    @Html.EJS().DropDownList("slotInterval").Value("2").PopupHeight("150px").DataSource(ViewData["slotCounts"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onSlotCountChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -148,7 +148,7 @@
                                     <label style="line-height: 34px; margin: 0;">Time Format</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("timeFormat").Value("hh:mm a").PopupHeight("150px").DataSource(ViewBag.TimeFormat).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onTimeFormatChange").Render()
+                                    @Html.EJS().DropDownList("timeFormat").Value("hh:mm a").PopupHeight("150px").DataSource(ViewData["TimeFormat"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("onTimeFormatChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -156,7 +156,7 @@
                                     <label style="line-height: 34px; margin: 0;">Week Numbers</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("week_number").Value("Off").PopupHeight("150px").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).DataSource(ViewBag.WeekNumber).Change("onWeekNumberChange").Render()
+                                    @Html.EJS().DropDownList("week_number").Value("Off").PopupHeight("150px").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).DataSource(ViewData["WeekNumber"]).Change("onWeekNumberChange").Render()
                                 </div>
                             </div>
                             <div class="col-row">
@@ -164,7 +164,7 @@
                                     <label style="line-height: 34px; margin: 0;">Tooltip</label>
                                 </div>
                                 <div class="col-right">
-                                    @Html.EJS().DropDownList("tooltip").Value("Off").PopupHeight("150px").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).DataSource(ViewBag.Tooltip).Change("onTooltipChange").Render()
+                                    @Html.EJS().DropDownList("tooltip").Value("Off").PopupHeight("150px").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).DataSource(ViewData["Tooltip"]).Change("onTooltipChange").Render()
                                 </div>
                             </div>
                         </div>
@@ -174,10 +174,6 @@
         </div>
     </div>
     <style>
-
-    .tailwind3 .schedule-overview .import-button .e-template-btn {
-        color: #fff;
-    }
 
     .tailwind .schedule-overview .overview-content .right-panel .control-panel,
     .tailwind3 .schedule-overview .overview-content .right-panel .control-panel {
@@ -385,6 +381,10 @@
     .schedule-overview .calendar-import.e-upload .e-file-select-wrap {
         padding: 0
     }
+
+        .schedule-overview .calendar-import.e-upload .e-file-select-wrap .e-file-select {
+            display: none;
+        }
 
     .schedule-overview .calendar-import.e-upload .e-file-select-wrap .e-file-drop,
     .calendar-import .e-upload-files {

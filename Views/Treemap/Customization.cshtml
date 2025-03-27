@@ -6,7 +6,7 @@
             <div id="container">
                         @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("US Gold medal categories in Summer Olympics - 2016").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Gold").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Sport} : ${Gold}" }).LeafItemSettings(leaf =>
                    leaf.ShowLabels(true).LabelPath("Sport").Fill("#993399").TemplatePosition(Syncfusion.EJ2.TreeMap.LabelPosition.Center)
-                   .Border(new TreeMapBorder { Color = "black", Width = 0.5 }).LabelFormat("${Sport} - ${Gold}").LabelTemplate(ViewBag.imagedata)
+                   .Border(new TreeMapBorder { Color = "black", Width = 0.5 }).LabelFormat("${Sport} - ${Gold}").LabelTemplate((string)ViewData["imagedata"])
                    ).Render()
             </div>
         </div>

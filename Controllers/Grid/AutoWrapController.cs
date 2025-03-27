@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         {
 
             var inventor = InventorDetails.GetAllRecords();
-            ViewBag.datasource = inventor;
+            ViewData["datasource"] = inventor;
             return View();
         }
       

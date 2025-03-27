@@ -15,8 +15,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult Timezone()
         {
-            ViewBag.datasource = new ScheduleData().GetFifaEventsData();
-            ViewBag.data = TimezoneData();
+            ViewData["datasource"] = new ScheduleData().GetFifaEventsData();
+            ViewData["data"] = TimezoneData();
             return View();
         }
 

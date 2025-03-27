@@ -83,7 +83,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Menu
             new MenuItem { Text = "Help" }
             };
 
-            ViewBag.menuItems = menuItems;
+            ViewData["menuItems"] = menuItems;
             return View();
         }
     }

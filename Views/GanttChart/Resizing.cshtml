@@ -1,14 +1,14 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
 @{
-    ViewBag.Title = "Resizing";
+    ViewData["Title"] = "Resizing";
 }
 
 @section ControlsSection{
     
 <div class="control-section">
 
-  @(Html.EJS().Gantt("Resizing").DataSource((IEnumerable<object>)ViewBag.DataSource).AllowResizing(true).Height("450px").HighlightWeekends(true)
+  @(Html.EJS().Gantt("Resizing").DataSource((IEnumerable<object>)ViewData["DataSource"]).AllowResizing(true).Height("450px").HighlightWeekends(true)
    .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
     .Dependency("Predecessor").Child("SubTasks"))
    .Columns(col =>

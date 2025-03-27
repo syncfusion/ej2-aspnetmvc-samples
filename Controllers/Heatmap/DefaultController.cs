@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
         // GET: Default
         public ActionResult Default()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size= "15px",
                 fontWeight= "500",
@@ -27,10 +27,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
                 fontFamily= "Segoe UI"
             };
             string[] xlabels = new string[12] { "Nancy", "Andrew", "Janet", "Margaret", "Steven", "Michael", "Robert", "Laura", "Anne", "Paul", "Karin", "Mario" };
-            ViewBag.xLabels = xlabels;
+            ViewData["xLabels"] = xlabels;
             string[] yLabels = new string[6] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-            ViewBag.yLabels = yLabels;
-            ViewBag.dataSource = GetDataSource();
+            ViewData["yLabels"] = yLabels;
+            ViewData["dataSource"] = GetDataSource();
             return View();
         }
         private int[,] GetDataSource()

@@ -38,7 +38,7 @@
                             </td>
                             <td>
                                 <div style="margin-top: -5px;height : 30px">
-                                    @Html.EJS().DropDownList("axisIndex").Index(0).Width("135%").DataSource((IEnumerable<object>)ViewBag.axis).Value("Axis 1").Change("valueChange").Render()
+                                    @Html.EJS().DropDownList("axisIndex").Index(0).Width("135%").DataSource((IEnumerable<object>)ViewData["axis"]).Value("Axis 1").Change("valueChange").Render()
                                 </div>
                             </td>
                         </tr>
@@ -48,7 +48,7 @@
                             </td>
                             <td>
                                 <div style="margin-top: -5px;height : 30px">
-                                    @Html.EJS().DropDownList("axisDirection").Index(0).Width("135%").DataSource((IEnumerable<object>)ViewBag.axisDirection).Value("Clockwise").Change("axisDirectionValueChange").Render()
+                                    @Html.EJS().DropDownList("axisDirection").Index(0).Width("135%").DataSource((IEnumerable<object>)ViewData["axisDirection"]).Value("Clockwise").Change("axisDirectionValueChange").Render()
                                 </div>
                             </td>
                         </tr>

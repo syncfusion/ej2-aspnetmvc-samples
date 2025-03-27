@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult HeaderRows()
         {
-            ViewBag.datasource = new ScheduleData().GetHeaderRowData();
+            ViewData["datasource"] = new ScheduleData().GetHeaderRowData();
             return View();
         }
     }

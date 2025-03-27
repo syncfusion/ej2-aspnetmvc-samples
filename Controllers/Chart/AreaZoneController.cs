@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: AreaZone
         public ActionResult AreaZone()
         {
-           ViewBag.content = "<div style='width:80px; padding: 5px;'> <table style='width: 100%'>" +
+           ViewData["content"] = "<div style='width:80px; padding: 5px;'> <table style='width: 100%'>" +
     "<tr><td><div style='width: 10px; height: 10px;background:linear-gradient(#4ca1af, #c4e0e5);border-radius: 15px;'></div>" +
     "</td><td style='padding-left: 5px;'>Winter</td></tr>" +
     "<tr><td><div style='width: 10px; height: 10px; background:linear-gradient(#ffa751, #ffe259);border-radius: 15px;'></div>" +

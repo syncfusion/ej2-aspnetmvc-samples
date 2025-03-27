@@ -6,17 +6,17 @@
         <div class='control-wrapper'>
             <div class="padding-top">
                 @Html.EJS().ComboBox("country").Placeholder("Select a country").PopupHeight("auto").AllowCustom(false).Change("countrychange").DataSource((IEnumerable<Country>
-                       )ViewBag.country).Fields(new ComboBoxFieldSettings { Text = "CountryName", Value = "CountryId" }).Render()
+                       )ViewData["country"]).Fields(new ComboBoxFieldSettings { Text = "CountryName", Value = "CountryId" }).Render()
             </div>
             <div class="padding-top">
 
-                @Html.EJS().ComboBox("state").Placeholder("Select a state").Enabled(false).AllowCustom(false).Change("statechange").PopupHeight("auto").DataSource((IEnumerable<State>)ViewBag.state).Fields(new ComboBoxFieldSettings { Text = "StateName", Value = "StateId" }).Render()
+                @Html.EJS().ComboBox("state").Placeholder("Select a state").Enabled(false).AllowCustom(false).Change("statechange").PopupHeight("auto").DataSource((IEnumerable<State>)ViewData["state"]).Fields(new ComboBoxFieldSettings { Text = "StateName", Value = "StateId" }).Render()
 
             </div>
             <div class="padding-top">
 
                 @Html.EJS().ComboBox("city").Placeholder("Select a city").Enabled(false).AllowCustom(false).PopupHeight("auto").DataSource((IEnumerable<Cities>
-                  )ViewBag.cities).Fields(new ComboBoxFieldSettings { Text = "CityName", Value = "CityId" }).Render()
+                  )ViewData["cities"]).Fields(new ComboBoxFieldSettings { Text = "CityName", Value = "CityId" }).Render()
             </div>
         </div>
     </div>

@@ -14,7 +14,7 @@
                     col.Field("Availability").Header("Availability").Width("98").Add();
                     col.Field("Category").Header("Category").Width("95").Add();
                     col.Field("Rating").Header("Rating").Width("70").Add();
-                }).PopupHeight("210px").PopupWidth("600px").SortType(SortType.MultipleColumns).SortOrder(SortOrder.Ascending).DataSource((IEnumerable<Products>)ViewBag.data).Render()
+                }).PopupHeight("210px").PopupWidth("600px").SortType(SortType.MultipleColumns).SortOrder(SortOrder.Ascending).DataSource((IEnumerable<Products>)ViewData["data"]).Render()
             </div>
         </div>
     </div>

@@ -1,11 +1,11 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 @using Syncfusion.EJ2.Notifications;
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").CssClass("schedule-holiday-calendar").Width("100%").RowAutoHeight(true).Height("100%").SelectedDate(new DateTime(DateTime.Today.Year, 8, 5)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).EventRendered("onEventRender").ActionBegin("onActionBegin").DragStop("onEventDragOrResize").ResizeStop("onEventDragOrResize").CellClick("clickOnHoliday").CellDoubleClick("clickOnHoliday").Render()
+            @Html.EJS().Schedule("schedule").CssClass("schedule-holiday-calendar").Width("100%").RowAutoHeight(true).Height("100%").SelectedDate(new DateTime(DateTime.Today.Year, 8, 5)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).EventRendered("onEventRender").ActionBegin("onActionBegin").DragStop("onEventDragOrResize").ResizeStop("onEventDragOrResize").CellClick("clickOnHoliday").CellDoubleClick("clickOnHoliday").Render()
             @Html.EJS().Toast("schedule-reminder").Title("Information!").Position(p => p.X("Right")).CssClass("e-toast-info").Icon("e-info toast-icons").Target(".e-schedule").Render()
         </div>
     </div>
@@ -34,7 +34,7 @@
         var holidayEventCollection = true;
         var holidayListCollection = true;
 
-        var combinedData = @Html.Raw(ViewBag.datasource);
+        var combinedData = @Html.Raw(ViewData["datasource"]);
         var holidayList = combinedData.filter(event => event.IsHoliday === true);
 
         function updateHolidayEventCollection(args) {
@@ -79,21 +79,19 @@
             }
         }
         function onActionBegin(args) {
-            var isHolidayDateRange = false;
-            if (args.requestType === 'eventCreate') {
-                var eventData = args.data[0];
-                isHolidayDateRange =
-                    !holidayEventCollection &&
+            var { requestType } = args;
+            var isCreateOrChange = requestType === 'eventCreate' || requestType === 'eventChange';
+            if (isCreateOrChange) {
+                var eventData = requestType === 'eventCreate' ? args.data[0]: args.data;
+                var adjustedEndTime = eventData.IsAllDay
+                    ? new Date(eventData.EndTime.setMinutes(eventData.EndTime.getMinutes() - 1))
+                    : eventData.EndTime;
+                var isHolidayDateRange = !holidayEventCollection &&
                     !eventData.RecurrenceRule &&
-                    isEventWithinHolidayRange(eventData.StartTime, eventData.EndTime);
-            } else if (args.requestType === 'eventChange') {
-                var data = args.data;
-                isHolidayDateRange =
-                    !holidayEventCollection &&
-                    isEventWithinHolidayRange(data.StartTime, data.EndTime);
+                    isEventWithinHolidayRange(eventData.StartTime, adjustedEndTime);
+                args.cancel = isHolidayDateRange;
+                showToastForAction(requestType, isHolidayDateRange);
             }
-            args.cancel = isHolidayDateRange;
-            showToastForAction(args.requestType, isHolidayDateRange);
         }
         function clickOnHoliday(args) {
             args.cancel =

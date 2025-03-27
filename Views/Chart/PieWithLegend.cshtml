@@ -14,10 +14,10 @@
                     .ExplodeIndex(0)
                     .Name("legendName")
 					.InnerRadius("50%")
-                    .DataSource(ViewBag.PieChartPoints).Add();
+                    .DataSource(ViewData["PieChartPoints"]).Add();
             })
             
-            .EnableSmartLabels(true).EnableAnimation(false).EnableBorderOnMouseMove(false).SelectionMode(Syncfusion.EJ2.Charts.AccumulationSelectionMode.Point).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header("").EnableHighlight(true))
+            .EnableSmartLabels(true).EnableAnimation(false).EnableBorderOnMouseMove(false).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header("").EnableHighlight(true))
             .LegendSettings(leg => leg.Visible(true)
                 .ToggleVisibility(false)
                 .Position(Syncfusion.EJ2.Charts.LegendPosition.Bottom)
@@ -27,13 +27,12 @@
             .Render()
             )
     </div>
-   
+   <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var fluent2Colors = ["#6200EE", "#09AF74", "#0076E5", "#CB3587", "#E7910F", "#66CD15", "#F3A93C", "#107C10",
             "#C19C00"];
         var load = function(args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadAccumulationChartTheme(args);
             args.accumulation.title = ej.base.Browser.isDevice ?  "Browser Market Shares" : '';
             args.accumulation.legendSettings.position = 'Bottom';
             args.accumulation.legendSettings.maximumColumns = ej.base.Browser.isDevice ? 2 : 3;

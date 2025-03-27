@@ -12,7 +12,7 @@
                         <td align="center" style="width: 30%;">Sales Percentage</td>
                         <td style="width: 30%;">
                             <div id="percentage" style="height:200px">
-                                @Html.EJS().Sparkline("percentage").Load("load1").Width("180px").Height("200px").LineWidth(1).Type(SparklineType.Column).ValueType(SparklineValueType.Category).XName("xval").YName("yval").MarkerSettings(marker => marker.Fill("red").Size(5)).TooltipSettings(tool => tool.Format("${xval}: ${yval}").TrackLineSettings(new SparklineTrackLineSettings { Color = "Red", Width = 1 })).DataSource(ViewBag.datasource).Render()
+                                @Html.EJS().Sparkline("percentage").Load("load1").Width("180px").Height("200px").LineWidth(1).Type(SparklineType.Column).ValueType(SparklineValueType.Category).XName("xval").YName("yval").MarkerSettings(marker => marker.Fill("red").Size(5)).TooltipSettings(tool => tool.Format("${xval}: ${yval}").TrackLineSettings(new SparklineTrackLineSettings { Color = "Red", Width = 1 })).DataSource(ViewData["datasource"]).Render()
                             </div>
                         </td>
                     </tr>
@@ -20,7 +20,7 @@
                         <td align="center" style="width: 30%;">Sales Count</td>
                         <td style="width: 30%;">
                             <div id="sales" style="height:200px">
-                                @Html.EJS().Sparkline("sales").Load("load2").Width("180px").Height("200px").LineWidth(1).Type(SparklineType.Column).ValueType(SparklineValueType.Category).XName("xval").YName("yval1").MarkerSettings(marker => marker.Fill("red").Size(5)).TooltipSettings(tool => tool.Format("${xval}: ${yval1}").TrackLineSettings(new SparklineTrackLineSettings { Color = "Red", Width = 1 })).DataSource(ViewBag.datasource).Render()
+                                @Html.EJS().Sparkline("sales").Load("load2").Width("180px").Height("200px").LineWidth(1).Type(SparklineType.Column).ValueType(SparklineValueType.Category).XName("xval").YName("yval1").MarkerSettings(marker => marker.Fill("red").Size(5)).TooltipSettings(tool => tool.Format("${xval}: ${yval1}").TrackLineSettings(new SparklineTrackLineSettings { Color = "Red", Width = 1 })).DataSource(ViewData["datasource"]).Render()
                             </div>
                         </td>
                     </tr>
@@ -167,23 +167,19 @@
             </tbody>
         </table>
     </div>
-
+    <script src="~/Scripts/Sparkline/theme-color.js"></script>
     <script>
         var sampleChange;
         var percentage, sales;
         function load1(args) {
             percentage = args.sparkline;
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Fluent2';
-            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5'));
+            loadSparkLineTheme(args);
             args.sparkline.axisSettings.lineSettings.width = 2;
             args.sparkline.axisSettings.lineSettings.color = "red";
         }
         function load2(args) {
             sales = args.sparkline;
-            var theme = location.hash.split('/')[1];
-            theme = theme ? theme : 'Fluent2';
-            args.sparkline.theme = (theme.charAt(0).toUpperCase() + theme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5'));
+            loadSparkLineTheme(args);
             args.sparkline.axisSettings.lineSettings.width = 2;
             args.sparkline.axisSettings.lineSettings.color = "red";
         }

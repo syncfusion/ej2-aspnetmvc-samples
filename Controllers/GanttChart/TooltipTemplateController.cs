@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult TooltipTemplate()
         {
-            ViewBag.DataSource = GanttData.TooltipData();
-            ViewBag.Resources = GanttData.EditingResources();
+            ViewData["DataSource"] = GanttData.TooltipData();
+            ViewData["Resources"] = GanttData.EditingResources();
             return View();
         }
     }

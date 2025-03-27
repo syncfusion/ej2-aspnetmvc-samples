@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "DefaultFunctionalities";
+    ViewData["Title"] = "DefaultFunctionalities";
 }
 
 @*custom code end*@
@@ -18,7 +18,7 @@
             .ShowColumnMenu()
             .PageSettings(p => p.PageSize(10))
             .FilterSettings(f=>f.Type(Syncfusion.EJ2.TreeGrid.FilterType.Menu))
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .Columns(col =>
             {
                 col.Field("TaskId").HeaderText("Task ID").Width(120).TextAlign(TextAlign.Right).Add();

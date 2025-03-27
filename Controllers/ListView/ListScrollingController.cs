@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ListView
             foodData.Add(new { text = "Pretzel", id = "list-09", price = "$25", src = Url.Content("~/Content/images/listview/pretzel.jpg"), type = "veg", description = "Made from a rope of dough, the pretzel is briefly boiled and then glazed with egg, salted, and baked", rating = 3 });
             foodData.Add(new { text = "Pancake", id = "list-10", price = "$23", src = Url.Content("~/Content/images/listview/pancake.jpg"), type = "veg", description = "A combination of eggs, milk on a hot surface such as a griddle or frying pan, often frying with oil or butter", rating = 4 });
 
-            ViewBag.foodData = foodData;
+            ViewData["foodData"] = foodData;
             return View();
         }
     }

@@ -91,9 +91,9 @@ namespace EJ2MVCSampleBrowser.Controllers
                 {
                 Text = "Save",
             });
-            ViewBag.datasource = items;
-            ViewBag.datasourceLabel = label;
-            ViewBag.datasourceLabelTitles = titles;
+            ViewData["datasource"] = items;
+            ViewData["datasourceLabel"] = label;
+            ViewData["datasourceLabelTitles"] = titles;
             return View();
         }
     }

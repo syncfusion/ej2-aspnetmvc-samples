@@ -1,11 +1,11 @@
 @{
-    ViewBag.Title = "ColumnResize";
+    ViewData["Title"] = "ColumnResize";
 }
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
     <div style="overflow-x: auto; margin-left: 4px;">
-        @Html.EJS().Grid("ColumnResize").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowResizing(true).Columns(col =>
+        @Html.EJS().Grid("ColumnResize").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowResizing(true).Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").MinWidth("115").Width("150").MaxWidth("200").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();

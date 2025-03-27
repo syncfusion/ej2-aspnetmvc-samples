@@ -8,7 +8,7 @@
                {
                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).
                    Name("Series").XName("x").YName("y").Border(br => br.Width(2).Color("BorderColor")).
-                   Animation(an => an.Enable(false)).DataSource(ViewBag.chartPoints).Fill("url(#fluent-gradient-chart)").Add();
+                   Animation(an => an.Enable(false)).DataSource(ViewData["chartPoints"]).Fill("url(#fluent-gradient-chart)").Add();
 
                }).PrimaryXAxis(
                    xAxis =>
@@ -39,19 +39,17 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var valueUrl = "url";
         var FillColor;
-        var themes = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentdark', 'material3', 'material3dark', 'fluent2', 'fluent2highcontrast', 'fluent2dark', 'tailwind3', 'tailwind3dark'];
-        var BorderColor = ['#FD7E14', '#FD7E14', '#5A61F6', '#8B5CF6', '#00bdae', '#9ECB08', '#a16ee5', '#a16ee5', '#a16ee5', '#4472c4', '#4472c4', '#79ECE4', '#1AC9E6', '#1AC9E6', '#6355C7', '#4EAAFF', '#6200EE', '#9BB449', '#9BB449', '#2F4074', '#8029F1'];
         var onChartLoad = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            var selectedTheme = loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
             args.chart.series[0].fill = 'url(#' + (selectedTheme.replace(/5.3/i, '5')) + '-gradient-chart)';
-            args.chart.series[0].border.color = BorderColor;
+            args.chart.series[0].border.color = borderColor;
         };
     </script>
     <style>

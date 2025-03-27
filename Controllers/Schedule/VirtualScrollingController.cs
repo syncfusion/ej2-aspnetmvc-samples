@@ -15,10 +15,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult VirtualScrolling()
         {
-            ViewBag.datasource = this.generateStaticEvents(new DateTime(DateTime.Today.Year, 4, 1), 300, 12);
-            ViewBag.resources = this.GenerateResourceData(1, 300);
+            ViewData["datasource"] = this.generateStaticEvents(new DateTime(DateTime.Today.Year, 4, 1), 300, 12);
+            ViewData["resources"] = this.GenerateResourceData(1, 300);
             string[] resources = new string[] { "Resources" };
-            ViewBag.Resource = resources;
+            ViewData["Resource"] = resources;
             return View();
         }
 

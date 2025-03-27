@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 ChartPoints[1].DataLabelMappingName = "Safari <br> 4.73%";
                 ChartPoints[4].DataLabelMappingName = "Others: 25.39%";
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class PieChartData

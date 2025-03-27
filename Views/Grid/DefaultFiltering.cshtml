@@ -1,11 +1,11 @@
 @{
-    ViewBag.Title = "DefaultFiltering";
+    ViewData["Title"] = "DefaultFiltering";
 }
 
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        @Html.EJS().Grid("DefaultFiltering").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowFiltering().Columns(col =>
+        @Html.EJS().Grid("DefaultFiltering").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowFiltering().Columns(col =>
    {
 
        col.Field("CategoryName").HeaderText("Category Name").Width("150").Add();

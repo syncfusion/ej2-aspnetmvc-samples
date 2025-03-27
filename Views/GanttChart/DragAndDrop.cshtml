@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
 @{
-    ViewBag.Title = "DragAndDrop";
+    ViewData["Title"] = "DragAndDrop";
 }
 
 @section ControlsSection{
     <div class="control-section">
 
-        @(Html.EJS().Gantt("DragAndDrop").DataSource((IEnumerable<object>)ViewBag.DataSource).AllowRowDragAndDrop(true).Height("450px").HighlightWeekends(true).TreeColumnIndex(1).AllowTaskbarDragAndDrop(true)
+        @(Html.EJS().Gantt("DragAndDrop").DataSource((IEnumerable<object>)ViewData["DataSource"]).AllowRowDragAndDrop(true).Height("450px").HighlightWeekends(true).TreeColumnIndex(1).AllowTaskbarDragAndDrop(true)
                     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                     .Dependency("Predecessor").Child("SubTasks"))
                     .SelectionSettings(sel =>

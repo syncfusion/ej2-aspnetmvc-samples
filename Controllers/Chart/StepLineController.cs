@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new StepLineChartData { Period = new DateTime(2005, 01, 01), CHN_UnemploymentRate = 16, AUS_UnemploymentRate = 65, ITA_UnemploymentRate = 8.5 },
                 new StepLineChartData { Period = new DateTime(2010, 01, 01), CHN_UnemploymentRate = 16, AUS_UnemploymentRate = 58, ITA_UnemploymentRate = 8.5 }
             };                                   
-            ViewBag.StepLineData = StepLineData;
+            ViewData["StepLineData"] = StepLineData;
             return View();
         }
 

@@ -131,12 +131,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 items.Add(new ToolbarItem { PrefixIcon = "e-icons e-bring-to-view", TooltipText = "Bring Into View" ,Disabled=true });
                 items.Add(new ToolbarItem { PrefixIcon = "e-icons e-bring-to-center", TooltipText = "Bring Into Center", Disabled = true });
             }
-            ViewBag.tbItems = items;
-            ViewBag.Nodes = data;
-            ViewBag.getNodeDefaults = "getNodeDefaults";
-            ViewBag.getConnectorDefaults = "getConnectorDefaults";
-            ViewBag.getLayoutInfo = "getLayoutInfo";
-            ViewBag.setNodeTemplate = "setNodeTemplate";
+            ViewData["tbItems"] = items;
+            ViewData["Nodes"] = data;
+            ViewData["getNodeDefaults"] = "getNodeDefaults";
+            ViewData["getConnectorDefaults"] = "getConnectorDefaults";
+            ViewData["getLayoutInfo"] = "getLayoutInfo";
+            ViewData["setNodeTemplate"] = "setNodeTemplate";
             return View();
         }
     }

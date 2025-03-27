@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularChart3D
                 new PieRadiusData { X = "Kazakhstan",         Y = 300000, R = "155.5",  Text = "Kazakhstan" },
                 new PieRadiusData { X = "Somalia",            Y = 357022, R = "160.6",  Text = "Somalia" }
             };
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class PieRadiusData

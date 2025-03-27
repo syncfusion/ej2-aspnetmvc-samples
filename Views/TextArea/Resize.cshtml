@@ -18,7 +18,7 @@
                 <td class="left-side">Resize Mode </td>
                 <td>
                     @Html.EJS().DropDownList("select").PopupHeight("200px").Text("Vertical").DataSource(
-                                            (IEnumerable<resizeValues>)ViewBag.data).Change("resizeHandler").Fields(new DropDownListFieldSettings { Text = "text", Value = "resizeValue" }).Render()
+                                            (IEnumerable<resizeValues>)ViewData["data"]).Change("resizeHandler").Fields(new DropDownListFieldSettings { Text = "text", Value = "resizeValue" }).Render()
                 </td>
             </tr>
         </table>

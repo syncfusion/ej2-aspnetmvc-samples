@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new RangeColumnChartData { Days = "Fri", IND_LowTemp = 6.0, IND_HighTemp = 12.5 },
                 new RangeColumnChartData { Days = "Sat", IND_LowTemp = 1.5, IND_HighTemp = 6.9 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class RangeColumnChartData

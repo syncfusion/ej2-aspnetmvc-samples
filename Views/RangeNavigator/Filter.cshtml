@@ -33,6 +33,7 @@
     </style>
                  @*custom code end*@
     <script src="~/Scripts/datasource.js"></script>
+    <script src="~/Scripts/range-navigator/theme-color.js"></script>
     <script>
         var employeeData = employeeData;
         var start, end;
@@ -40,8 +41,7 @@
             return (data.HireDate >= new Date(1992, 5, 1) && data.HireDate <= new Date(1993, 4, 1));
         });
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadRangeNavigatorTheme(args);
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
             args.rangeNavigator.dataSource = employeeData;
             args.rangeNavigator.value = [new Date('1992-06-01'), new Date('1993-05-01')];

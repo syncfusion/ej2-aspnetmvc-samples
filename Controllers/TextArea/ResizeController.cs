@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Resize()
         {
-            ViewBag.data = new resizeValues().TextAreaModel();
+            ViewData["data"] = new resizeValues().TextAreaModel();
             return View();
         }
     }

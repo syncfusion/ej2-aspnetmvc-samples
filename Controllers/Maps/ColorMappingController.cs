@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: ColorMapping
         public ActionResult ColorMapping()
         {
-            ViewBag.MapShapeData = this.getusMap();
-            ViewBag.DataSource = GetColorMappingData();
+            ViewData["MapShapeData"] = this.getusMap();
+            ViewData["DataSource"] = GetColorMappingData();
             return View();
         }
 

@@ -32,7 +32,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new DateTimeCategoryData { Period = new DateTime(2018, 1, 5), Sales = 53, DataLabelMappingName="53M"},
                 new DateTimeCategoryData { Period = new DateTime(2018, 1, 8), Sales = 45, DataLabelMappingName="45M"}
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class DateTimeCategoryData

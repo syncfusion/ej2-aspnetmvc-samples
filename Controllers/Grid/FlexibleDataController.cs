@@ -25,7 +25,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
             urlDataList.Add(new { text = "https://services.syncfusion.com/aspnet/production/api/Orders", value = "WebApiAdaptor" });
             urlDataList.Add(new { text = "https://services.syncfusion.com/aspnet/production/api/UrlDataSource", value = "UrlAdaptor" });
             urlDataList.Add(new { text = "https://services.odata.org/V4/Northwind/Northwind.svc/Orders", value = "Custom Binding" });
-            ViewBag.UrlDataList = urlDataList;
+            ViewData["UrlDataList"] = urlDataList;
             return View();
         }
     }

@@ -20,13 +20,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Mapwithpie
         public ActionResult Mapwithpie()
         {
-            ViewBag.shapeData = this.getWorldMap();
+            ViewData["shapeData"] = this.getWorldMap();
             List<MapsColorMapping> data = new List<MapsColorMapping>();
             data.Add(new MapsColorMapping { From = 1, To = 4, Color = "#634D6F", Label = "0-4 years" });
             data.Add(new MapsColorMapping { From = 5, To = 14, Color = "#B34D6D", Label = "5-14 years" });
             data.Add(new MapsColorMapping { From = 15, To = 59, Color = "#557C5C", Label = "15-59 years" });
             data.Add(new MapsColorMapping { From = 60, To = 64, Color = "#5E55E2", Label = "59-64 years" });
-            ViewBag.colormapping = data;
+            ViewData["colormapping"] = data;
             return View();
         }
     }

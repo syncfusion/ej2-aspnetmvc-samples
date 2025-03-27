@@ -48,7 +48,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
                 if (extension == ".doc" || extension == ".docx" || extension == ".rtf" || extension == ".dot" || extension == ".dotm" || extension == ".dotx" || extension == ".docm" || extension == ".xml")
                     return new WordDocument(file.InputStream, FormatType.Automatic);
                 else
-                    ViewBag.Message = string.Format("Please choose Word format document to convert to HTML");
+                    ViewData["Message"] = string.Format("Please choose Word format document to convert to HTML");
             }
             else
             {

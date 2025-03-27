@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         // GET: FrozenColumn
         public ActionResult FrozenColumn()
         {
-            ViewBag.datasource = TreeGridItems.GetTreeData();
+            ViewData["datasource"] = TreeGridItems.GetTreeData();
             return View();
         }
     }

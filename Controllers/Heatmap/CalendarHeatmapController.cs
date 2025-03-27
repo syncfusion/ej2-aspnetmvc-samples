@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
         // GET: CalendarHeatmap
         public ActionResult CalendarHeatmap()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
@@ -27,9 +27,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
                 fontFamily = "Segoe UI"
             };
             string[] yLabels = new string[7] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-            ViewBag.yLabels = yLabels;
-            ViewBag.border = new { color = "white" };
-            ViewBag.dataSource = new HeatMapData().GetCalendarData();
+            ViewData["yLabels"] = yLabels;
+            ViewData["border"] = new { color = "white" };
+            ViewData["dataSource"] = new HeatMapData().GetCalendarData();
             return View();
         }
     }

@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "Pickers";
+    ViewData["Title"] = "Pickers";
 }
 
 @using Syncfusion.EJ2;
@@ -16,7 +16,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("datePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Date).Created("datePickerCreated").Value(ViewBag.DateValue).Model(ViewBag.DateData).Render()
+                        @Html.EJS().InPlaceEditor("datePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Date).Created("datePickerCreated").Value(ViewData["DateValue"]).Model(ViewData["DateData"]).Render()
                     </td>
                 </tr>
                 <tr>
@@ -26,7 +26,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("timePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Time).Created("timePickerCreated").Value(ViewBag.DateValue).Model(ViewBag.TimeData).Render()
+                        @Html.EJS().InPlaceEditor("timePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Time).Created("timePickerCreated").Value(ViewData["DateValue"]).Model(ViewData["TimeData"]).Render()
                     </td>
                 </tr>
                 <tr>
@@ -36,7 +36,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("dateTimePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.DateTime).Created("dateTimePickerCreated").Value(ViewBag.DateValue).Model(ViewBag.DateTimeData).Render()
+                        @Html.EJS().InPlaceEditor("dateTimePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.DateTime).Created("dateTimePickerCreated").Value(ViewData["DateValue"]).Model(ViewData["DateTimeData"]).Render()
                     </td>
                 </tr>
                 <tr>
@@ -46,7 +46,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("dateRangePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.DateRange).Created("dateRangePickerCreated").Value(ViewBag.DateRangeValue).Model(ViewBag.DateRangeData).Render()
+                        @Html.EJS().InPlaceEditor("dateRangePickerEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.DateRange).Created("dateRangePickerCreated").Value(ViewData["DateRangeValue"]).Model(ViewData["DateRangeData"]).Render()
                     </td>
                 </tr>
             </table>
@@ -59,7 +59,7 @@
                     <div>Mode</div>
                 </td>
                 <td style="width: 50%;">
-                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewBag.ModeData).Value("Inline").Change("changeEditorMode").Render()
+                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewData["ModeData"]).Value("Inline").Change("changeEditorMode").Render()
                 </td>
             </tr>
         </table>

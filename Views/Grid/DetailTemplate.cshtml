@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "DetailTemplate";
+    ViewData["Title"] = "DetailTemplate";
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("DetailTemplate").DataSource((IEnumerable<object>)ViewBag.dataSource).DetailTemplate("#detailtemplate").DetailDataBound("detailDataBound").Height("600").Width("auto").Columns(col =>
+        @Html.EJS().Grid("DetailTemplate").DataSource((IEnumerable<object>)ViewData["dataSource"]).DetailTemplate("#detailtemplate").DetailDataBound("detailDataBound").Height("600").Width("auto").Columns(col =>
    {   
        col.HeaderText("Image").Width("110").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Template("#employeeImageTemplate").Add();   
        col.Field("EmployeeID").HeaderText("ID").Width("110").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
@@ -97,7 +97,7 @@ ${employeeTemplate(data)}
 </script>
 <script type="text/javascript">
     function detailDataBound(args) {
-        var data = @Html.Raw(Json.Encode(ViewBag.taskData));
+        var data = @Html.Raw(Json.Encode(ViewData["taskData"]));
         var rowData = args.data;
         var detailData = data.filter(function(item){ return item.Assignee === rowData.Name;});
         var salesData = generateData(detailData);

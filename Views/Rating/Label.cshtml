@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Inputs
 
 @section ControlsSection{
@@ -53,6 +53,21 @@
         justify-content: center;
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('right-pane')) {
+            document.getElementById('right-pane').addEventListener('scroll', hideTooltipOnScroll);
+        }
+
+        function hideTooltipOnScroll() {
+            var tooltipElement = document.querySelector('.e-rating-tooltip');
+            if (tooltipElement && ej.base.Browser.isDevice) {
+                tooltipElement.style.display = 'none';
+            }
+        }
+    });
+</script>
 
 @section Meta{
     <meta name="description" content="This example demonstrates the Label in ASP.NET MVC Rating Control. Explore here for more details." />

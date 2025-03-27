@@ -35,7 +35,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Breadcrumb
                 IconCss = value.IconCss
             }
             };
-            ViewBag.menuItems = menuItems;
+            ViewData["menuItems"] = menuItems;
             return PartialView("_AddressBarItemTemplatePartial", id);
         }
 
@@ -54,7 +54,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Breadcrumb
                     subMenuItems.Add(new MenuItem { Text = item.Text, Id = item.Type });
                 }
             }
-            ViewBag.subMenuItems = parentMenuItems;
+            ViewData["subMenuItems"] = parentMenuItems;
             return PartialView("_AddressBarSeparatorTemplatePartial", id);
         }
 

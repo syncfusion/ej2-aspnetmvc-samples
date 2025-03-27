@@ -44,7 +44,7 @@
                 </td>
                 <td style="width: 50%;">
                     <div>
-                        @Html.EJS().DropDownList("seriestype").Index(0).DataSource(ViewBag.data).Value("Column").Change("seriesChange").Render()
+                        @Html.EJS().DropDownList("seriestype").Index(0).DataSource(ViewData["data"]).Value("Column").Change("seriesChange").Render()
                     </div>
                 </td>
             </tr>
@@ -56,7 +56,7 @@
                 </td>
                 <td style="width: 50%;">
                     <div>
-                        @Html.EJS().DropDownList("emptymode").Index(0).DataSource(ViewBag.data1).Value("Gap").Change("modeChange").Render()
+                        @Html.EJS().DropDownList("emptymode").Index(0).DataSource(ViewData["data1"]).Value("Gap").Change("modeChange").Render()
                     </div>
                 </td>
             </tr>
@@ -69,11 +69,11 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
             args.chart.dataSource = [{ Product: "Rice", Profit: 80 },{ Product: "Wheat", Profit: null },{ Product: "Oil", Profit: 70 },{ Product: "Corn", Profit: 60 },{ Product: "Gram", Profit: null },{ Product: "Milk", Profit: 70 },{ Product: "Peas", Profit: 80 },{ Product: "Fruit", Profit: 60 },{ Product: "Butter", Profit: null }];
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
         };

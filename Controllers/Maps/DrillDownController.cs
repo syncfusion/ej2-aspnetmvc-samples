@@ -23,14 +23,14 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: DrillDown
         public ActionResult DrillDown()
         {
-            ViewBag.World = this.getWorldMap();
-            ViewBag.Africa = this.getAfricaMap();
-            ViewBag.Asia = this.getAsiaMap();
-            ViewBag.Eurpoe = this.getEuropeMap();
-            ViewBag.NorthAmerica = this.getNorthAmericaMap();
-            ViewBag.SouthAmerica = this.getSouthAmericaMap();
-            ViewBag.Oceania = this.getOceaniaMap();
-             ViewBag.DataSource = this.getDrillData();
+            ViewData["World"] = this.getWorldMap();
+            ViewData["Africa"] = this.getAfricaMap();
+            ViewData["Asia"] = this.getAsiaMap();
+            ViewData["Eurpoe"] = this.getEuropeMap();
+            ViewData["NorthAmerica"] = this.getNorthAmericaMap();
+            ViewData["SouthAmerica"] = this.getSouthAmericaMap();
+            ViewData["Oceania"] = this.getOceaniaMap();
+             ViewData["DataSource"] = this.getDrillData();
             return View();
         }
 

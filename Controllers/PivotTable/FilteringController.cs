@@ -22,10 +22,10 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
         List<FilterValue> filterValue = new List<FilterValue>();
         public ActionResult Filtering()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.typeData = new string[] { "Include", "Exclude" }; ;
-            ViewBag.fieldsData = new string[] { "Country", "Products", "Year" };
-            ViewBag.filterValue = filterValue;
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["typeData"] = new string[] { "Include", "Exclude" }; ;
+            ViewData["fieldsData"] = new string[] { "Country", "Products", "Year" };
+            ViewData["filterValue"] = filterValue;
             return View();
         }
         public class FilterValue

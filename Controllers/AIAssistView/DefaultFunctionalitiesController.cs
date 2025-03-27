@@ -17,9 +17,9 @@ namespace EJ2MVCSampleBrowser.Controllers.AIAssistView
         public ActionResult DefaultFunctionalities()
         {
             Items.Add(new ToolbarItemModel { align = "Right", iconCss = "e-icons e-refresh" });
-            ViewBag.ToolbarItems = Items;
-            ViewBag.PromptResponseData = new PromptResponseData().GetAllPromptResponseData();
-            ViewBag.PromptSuggestionData = new PromptResponseData().GetAllSuggestionData();
+            ViewData["ToolbarItems"] = Items;
+            ViewData["PromptResponseData"] = new PromptResponseData().GetAllPromptResponseData();
+            ViewData["PromptSuggestionData"] = new PromptResponseData().GetAllSuggestionData();
             return View();
         }
     }

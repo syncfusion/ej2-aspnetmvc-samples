@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult Default()
         {
-            ViewBag.datasource = new ScheduleEvents().GetAppointmentData();
+            ViewData["datasource"] = new ScheduleEvents().GetAppointmentData();
             return View();
         }
     }

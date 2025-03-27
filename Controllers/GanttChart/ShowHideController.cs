@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult ShowHide()
         {
-            ViewBag.DataSource = GanttData.ProjectNewData();
+            ViewData["DataSource"] = GanttData.ProjectNewData();
             List<object> ColumnNames = new List<object>();
             ColumnNames.Add(new { text = "ID", value = "TaskId" });
             ColumnNames.Add(new { text = "Start Date", value = "StartDate" });
@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
             ColumnNames.Add(new { text = "Duration", value = "Duration" });
             ColumnNames.Add(new { text = "Progress", value = "Progress" });
             ColumnNames.Add(new { text = "Dependency", value = "Predecessor" });
-            ViewBag.columns = ColumnNames;
+            ViewData["columns"] = ColumnNames;
             return View();
         }
     }

@@ -76,14 +76,14 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                     }
                     else
                     {
-                        ViewBag.Message = "Please enter a valid page number. The page number must be within the range 1 to " + loadedDocument.Pages.Count;
+                        ViewData["Message"] = "Please enter a valid page number. The page number must be within the range 1 to " + loadedDocument.Pages.Count;
                         loadedDocument.Close(true);
                         return View();
                     }
                 }
                 else
                 {
-                    ViewBag.Message = "Please select a PDF document to extract text.";
+                    ViewData["Message"] = "Please select a PDF document to extract text.";
                     return View();
                 }
             }

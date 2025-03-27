@@ -95,7 +95,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             }
             else
             {
-                ViewBag.lab = "Choose a valid PDF file.";
+                ViewData["lab"] = "Choose a valid PDF file.";
                 ViewData.Add("imageQuality", new SelectList(new string[] { "10", "20", "30", "40", "50", "60", "70", "80", "90", "100" }, "50"));
                 return View();
             }         

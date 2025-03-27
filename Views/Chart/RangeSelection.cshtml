@@ -6,10 +6,10 @@
  {
      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter).XName("Period").YName("ProductA_Sales").Opacity(1)
      .Marker(mr=>mr.Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle))
-     .DataSource(ViewBag.ChartPoints).Name("Product A").Add();
+     .DataSource(ViewData["ChartPoints"]).Name("Product A").Add();
      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter).XName("Period").Opacity(1)
      .Marker(mr => mr.Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Pentagon))
-     .YName("ProductB_Sales").DataSource(ViewBag.ChartPoints).Name("Product B").Add();
+     .YName("ProductB_Sales").DataSource(ViewData["ChartPoints"]).Name("Product B").Add();
 
  }).PrimaryXAxis(px => px.Minimum(1970).Maximum(2016).MajorGridLines(mg=>mg.Width(0))
        ).PrimaryYAxis(py => py.LabelFormat("{value}%").Title("Sales").Interval(25).Maximum(100).Minimum(0).MajorGridLines(mg=>mg.Width(1)).LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0))
@@ -23,7 +23,7 @@
             </td>
             <td style="width: 40%;">
                 <div style="margin-left: -70px">
-                    @Html.EJS().DropDownList("selmode").Index(0).DataSource(ViewBag.data).Value("DragXY").Change("selectionMode").Render()
+                    @Html.EJS().DropDownList("selmode").Index(0).DataSource(ViewData["data"]).Value("DragXY").Change("selectionMode").Render()
                 </div>
             </td>
         </tr>
@@ -47,10 +47,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
 
         };
         document.getElementById('select').onchange = function () {

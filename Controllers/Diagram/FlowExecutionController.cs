@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: FlowExecution
         public ActionResult FlowExecution()
         {
-            ViewBag.nodes = GetFlowExecutionNodes();
-            ViewBag.connectors = GetFlowExecutionConnectors();
+            ViewData["nodes"] = GetFlowExecutionNodes();
+            ViewData["connectors"] = GetFlowExecutionConnectors();
             return View();
         }
 

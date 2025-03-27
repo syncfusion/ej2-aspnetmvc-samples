@@ -4,12 +4,12 @@
 @section ControlsSection {
     <div class="control-section">
         <div class="control_wrapper">
-            @Html.EJS().Kanban("kanban").KeyField("Category").DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
+            @Html.EJS().Kanban("kanban").KeyField("Category").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col =>
                                      {
                                          col.HeaderText("Menu").KeyField("Menu").Add();
                                          col.HeaderText("Order").KeyField("Order").Add();
                                          col.HeaderText("Ready to Serve").KeyField("Ready to Serve").Add();
-                                         col.HeaderText("Delivered").KeyField("Delivered,Served").Add();
+                                         col.HeaderText("Delivered").KeyField("Delivered").Add();
                                      }).CardSettings(card =>
                                      {
                                          card.HeaderField("Id").Template("#cardTemplate");
@@ -123,7 +123,7 @@
                                                     </td>
                                                     ${/if}
                                                 </tr>
-                                                ${if(Category =="Delivered" || Category=="Served")}
+                                                ${if(Category =="Delivered")}
                                                 <tr>
                                                     <td colspan="2">
                                                         <label class="e-date">Deliver:</label>
@@ -153,7 +153,7 @@
     </script>
     <script>
         var kanbanObj;
-        var categoryData = ['Menu', 'Order', 'Ready to Serve', 'Delivered', 'Served'];
+        var categoryData = ['Menu', 'Order', 'Ready to Serve', 'Delivered'];
         function onKanbanCreated() {
             kanbanObj = this;
         }

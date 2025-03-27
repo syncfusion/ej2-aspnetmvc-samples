@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Template()
         {
-            ViewBag.data = new Employees().EmployeesList();
+            ViewData["data"] = new Employees().EmployeesList();
             return View();
         }
     }

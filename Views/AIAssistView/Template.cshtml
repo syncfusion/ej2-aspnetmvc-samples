@@ -7,11 +7,11 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="template-aiassistview">
-            @Html.EJS().AIAssistView("aiAssistView").Created("onCreated").PromptSuggestions(ViewBag.PromptSuggestionData).PromptSuggestionsHeader("Hello! Ask Questions, to better understand how your prompt interacts with AI AssistView!").PromptRequest("onPromptRequest").BannerTemplate("#bannerContent").PromptItemTemplate("#promptItemTemplate").ToolbarSettings(new AIAssistViewToolbarSettings() { Items = ViewBag.ToolbarItems }).ResponseItemTemplate("#responseItemTemplate").PromptSuggestionItemTemplate("#promptSuggestionItemTemplate").Render()
+            @Html.EJS().AIAssistView("aiAssistView").Created("onCreated").PromptSuggestions((string[])ViewData["PromptSuggestionData"]).PromptSuggestionsHeader("Hello! Ask Questions, to better understand how your prompt interacts with AI AssistView!").PromptRequest("onPromptRequest").BannerTemplate("#bannerContent").PromptItemTemplate("#promptItemTemplate").ToolbarSettings(new AIAssistViewToolbarSettings() { Items = ViewData["ToolbarItems"] }).ResponseItemTemplate("#responseItemTemplate").PromptSuggestionItemTemplate("#promptSuggestionItemTemplate").Render()
         </div>
         <div id="bannerContent" class="banner-content">
             <h3><span class="e-icons e-assistview-icon"></span>AI Assistance</h3>
-            @Html.EJS().Carousel("bannerCarousel").Width("100%").Height("60%").ShowIndicators(false).ButtonsVisibility(CarouselButtonVisibility.Visible).PartialVisible(true).DataSource(ViewBag.CarouselDataSource).ItemTemplate("#carouselTemplate").Render()
+            @Html.EJS().Carousel("bannerCarousel").Width("100%").Height("60%").ShowIndicators(false).ButtonsVisibility(CarouselButtonVisibility.Visible).PartialVisible(true).DataSource(ViewData["CarouselDataSource"]).ItemTemplate("#carouselTemplate").Render()
         </div>
     </div>
     @*custom code start*@
@@ -33,6 +33,12 @@
         .template-aiassistview .banner-content .e-assistview-icon:before,
         .template-aiassistview .response-header .e-assistview-icon:before {
             margin-right: 10px;
+        }
+
+        .template-aiassistview .e-rtl .banner-content .e-assistview-icon:before,
+        .template-aiassistview .e-rtl .responseItemContent .e-assistview-icon:before
+        {
+            margin-left: 10px;
         }
 
         .template-aiassistview .banner-content {
@@ -206,8 +212,8 @@
     <script>
         var assistObj;
         var carouselObj;
-        var prompts = @Html.Raw(Json.Encode(ViewBag.PromptResponseData));
-        var suggestions = @Html.Raw(Json.Encode(ViewBag.PromptSuggestionData));
+        var prompts = @Html.Raw(Json.Encode(ViewData["PromptResponseData"]));
+        var suggestions = @Html.Raw(Json.Encode(ViewData["PromptSuggestionData"]));
 
         function onCreated() {
             var assistEle = document.getElementById('aiAssistView');
@@ -226,20 +232,27 @@
                 var carouselEle = document.getElementById('bannerCarousel');
                 carouselObj = ej.base.getInstance(carouselEle, ejs.navigations.Carousel);
                 carouselObj.element.addEventListener('click', function (e) {
-                    var target = e.target;
-                    var prompt = '';
-                    if (target.tagName === 'IMG') {
-                        prompt = e.target.nextElementSibling.textContent;
-                    } else if (target.className === 'e-card-header') {
-                        prompt = e.target.textContent;
-                    }
-                    if (prompt) {
-                        assistObj.executePrompt(prompt);
-                    }
+                    handleAction(e);
+                });
+                carouselObj.element.addEventListener('touchstart', function (e) {
+                    handleAction(e);
                 });
             }, 500);
 
             splitBtnObj.appendTo('#ddMenu');
+        }
+
+        function handleAction(e) {
+            var target = e.target;
+            var prompt = '';
+            if (target.tagName === 'IMG') {
+                prompt = e.target.nextElementSibling.textContent;
+            } else if (target.className === 'e-card-header') {
+                prompt = e.target.textContent;
+            }
+            if (prompt) {
+                assistObj.executePrompt(prompt);
+            }
         }
 
         function onPromptRequest(args) {

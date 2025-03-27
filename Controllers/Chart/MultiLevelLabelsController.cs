@@ -32,7 +32,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new MultiLevelLabelsData { Fruits = "Cucumber",Sales = 41 },
                 new MultiLevelLabelsData { Fruits = "Onion",   Sales = 59 }
              };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class MultiLevelLabelsData

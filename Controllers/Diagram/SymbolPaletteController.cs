@@ -40,7 +40,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             basicShapes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "Pentagon", Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Pentagon } });
             basicShapes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "Cylinder", Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Cylinder } });
             basicShapes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "Star", Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Star } });
-            ViewBag.BasicShapes = basicShapes;
+            ViewData["BasicShapes"] = basicShapes;
 
             List<DiagramConnector> connectors = new List<DiagramConnector>();
             connectors.Add(new DiagramConnector() { Id = "link1", Type = Segments.Orthogonal, SourcePoint = new DiagramPoint() { X = 0, Y = 0 }, TargetPoint = new DiagramPoint() { X = 40, Y = 40 }, TargetDecorator = new ConnectorTargetDecoratorConnectors() { Shape = DecoratorShapes.Arrow, Style = new DiagramShapeStyle() { StrokeColor = "#757575", Fill = "#757575" } }, Style = new DiagramStrokeStyle() { StrokeWidth = 2, StrokeColor = "#757575" } });
@@ -48,22 +48,22 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             connectors.Add(new DiagramConnector() { Id = "Link21", Type = Segments.Straight, SourcePoint = new DiagramPoint() { X = 0, Y = 0 }, TargetPoint = new DiagramPoint() { X = 40, Y = 40 }, TargetDecorator = new ConnectorTargetDecoratorConnectors() { Shape = DecoratorShapes.Arrow, Style = new DiagramShapeStyle() { StrokeColor = "#757575", Fill = "#757575" } }, Style = new DiagramStrokeStyle() { StrokeWidth = 2, StrokeColor = "#757575" } });
             connectors.Add(new DiagramConnector() { Id = "link23", Type = Segments.Straight, SourcePoint = new DiagramPoint() { X = 0, Y = 0 }, TargetPoint = new DiagramPoint() { X = 40, Y = 40 }, TargetDecorator = new ConnectorTargetDecoratorConnectors() { Shape = DecoratorShapes.None }, Style = new DiagramStrokeStyle() { StrokeWidth = 2, StrokeColor = "#757575" } });
             connectors.Add(new DiagramConnector() { Id = "link33", Type = Segments.Bezier, SourcePoint = new DiagramPoint() { X = 0, Y = 0 }, TargetPoint = new DiagramPoint() { X = 40, Y = 40 }, TargetDecorator = new ConnectorTargetDecoratorConnectors() { Shape = DecoratorShapes.None }, Style = new DiagramStrokeStyle() { StrokeWidth = 2, StrokeColor = "#757575" } });
-            ViewBag.Connectors = connectors;
+            ViewData["Connectors"] = connectors;
 
             List<SymbolPalettePalette> palettes = new List<SymbolPalettePalette>();
             palettes.Add(new SymbolPalettePalette() { Id = "flow", Expanded = true, Symbols = flowShapes, IconCss = "e-ddb-icons e-flow", Title = "Flow Shapes" });
             palettes.Add(new SymbolPalettePalette() { Id = "basic", Expanded = true, Symbols = basicShapes, IconCss = "e-ddb-icons e-basic", Title = "Basic Shapes" });
             palettes.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = connectors, IconCss = "e-ddb-icons e-connector", Title = "Connectors" });
-            ViewBag.palettes = palettes;
+            ViewData["palettes"] = palettes;
 
             List<ExpandOptions> expand = new List<ExpandOptions>();
             expand.Add(new ExpandOptions() { text = "Single", value = "single"});
             expand.Add(new ExpandOptions() {text = "Multiple", value = "multiple" });
 
-            ViewBag.expand = expand;
+            ViewData["expand"] = expand;
 
             DiagramMargin margin = new DiagramMargin() { Left = 15, Bottom = 15, Right = 15, Top = 15 };
-            ViewBag.margin = margin;
+            ViewData["margin"] = margin;
 
             return View();
         }

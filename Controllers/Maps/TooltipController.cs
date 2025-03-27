@@ -24,14 +24,14 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Tooltip
         public ActionResult Tooltip()
         {
-            ViewBag.ShapeData = this.getWorldMap();
-            ViewBag.DataSource = this.getWorldCup();
+            ViewData["ShapeData"] = this.getWorldMap();
+            ViewData["DataSource"] = this.getWorldCup();
             List<MapsColorMapping> colorMapping = new List<MapsColorMapping>();
             colorMapping.Add(new MapsColorMapping{Value = "1", Color = "#b3daff", Label = null});
             colorMapping.Add(new MapsColorMapping{Value = "2", Color = "#80c1ff", Label = null});
             colorMapping.Add(new MapsColorMapping{Value = "3", Color = "#1a90ff", Label = null});
             colorMapping.Add(new MapsColorMapping{Value = "7", Color = "#005cb3", Label = null});
-            ViewBag.ColorMapping = colorMapping;
+            ViewData["ColorMapping"] = colorMapping;
             return View();
         }
 

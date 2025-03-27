@@ -7,16 +7,16 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Population Growth Rate of the most Populous Countries").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Population Growth Rate of the most Populous Countries").TextStyle(ViewData["textStyle"])).XAxis(xAxis =>
                     {
                         xAxis.LabelRotation(45)
                         .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                        .Labels(ViewBag.xLabels)
-                        .IsInversed(true).TextStyle(ViewBag.labelTextStyle);
+                        .Labels((string[])ViewData["xLabels"])
+                        .IsInversed(true).TextStyle(ViewData["labelTextStyle"]);
                     }).YAxis(yaxis =>
                     {
                         yaxis.IsInversed(true)
-                    .Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle);
+                    .Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"]);
                     }).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
                     {
                         palette.Value(0).Color("#4b7287").Add();
@@ -27,7 +27,7 @@
                         palette.Value(2.5).Color("#d7c7a7").Add();
                         palette.Value(3).Color("#6e888f").Add();
                     })).CellSettings(cellSettings =>
-                    cellSettings.Border(ViewBag.border).ShowLabel(false).Format("{value} %").TextStyle(ViewBag.labelTextStyle)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings => legendSettings.Visible(false)).Load("load").DataSource(ViewBag.dataSource).Render()
+                    cellSettings.Border(ViewData["border"]).ShowLabel(false).Format("{value} %").TextStyle(ViewData["labelTextStyle"])).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings => legendSettings.Visible(false)).Load("load").DataSource(ViewData["dataSource"]).Render()
                 </div>
                 <div style="float: right; margin-right: 10px;">
                     Source:

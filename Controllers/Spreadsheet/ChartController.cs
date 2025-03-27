@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Spreadsheet
                 new { Country= "UK", Year2017= "2.90", Year2018= "2.94", Year2019= "2.82", Year2020= "2.63" },
                 new { Country= "France", Year2017= "2.40", Year2018= "2.93", Year2019= "2.71", Year2020= "2.58" }
             };
-            ViewBag.GDPData = data;
+            ViewData["GDPData"] = data;
             return View();
         }
 

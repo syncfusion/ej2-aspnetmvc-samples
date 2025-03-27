@@ -24,9 +24,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             categories.Add(new ResourceDataSourceModel { text = "Smith", id = 4, groupId = 2, color = "#5978ee" });
             categories.Add(new ResourceDataSourceModel { text = "Michael", id = 5, groupId = 3, color = "#df5286" });
             categories.Add(new ResourceDataSourceModel { text = "Root", id = 6, groupId = 3, color = "#00bdae" });
-            ViewBag.Categories = categories;
+            ViewData["Categories"] = categories;
 
-            ViewBag.Resources = new string[] { "Categories" };
+            ViewData["Resources"] = new string[] { "Categories" };
 
             List<MonthData> months = new List<MonthData>();
             months.Add(new MonthData() { text = "January", value = 0 });
@@ -42,7 +42,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             months.Add(new MonthData() { text = "November", value = 10 });
             months.Add(new MonthData() { text = "December", value = 11 });
 
-            ViewBag.Months = months;
+            ViewData["Months"] = months;
             return View();
         }
     }

@@ -16,7 +16,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
         public ActionResult DocumentList()
         {
             var documentDetails = DocumentDetails.GetAllRecords();
-            ViewBag.dataSource = documentDetails;
+            ViewData["dataSource"] = documentDetails;
             return View();
         }
     }

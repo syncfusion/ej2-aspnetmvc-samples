@@ -9,6 +9,27 @@ Models/ExportEmployeeDetails.cs:aws-access-token:49
 Models/ExportOrderDetails.cs:aws-access-token:27
 Models/ExportOrderDetails.cs:aws-access-token:31
 Models/ExportOrderDetails.cs:aws-access-token:43
+Models/GanttData.cs:aws-access-token:1895
+Models/GanttData.cs:aws-access-token:1908
+Models/GanttData.cs:aws-access-token:1942
+Models/GanttData.cs:aws-access-token:1955
+Models/GanttData.cs:aws-access-token:1967
+Models/GanttData.cs:aws-access-token:1984
+Models/GanttData.cs:aws-access-token:2017
+Models/GanttData.cs:aws-access-token:2030
+Models/GanttData.cs:aws-access-token:2053
+Models/GanttData.cs:aws-access-token:2064
+Models/GanttData.cs:aws-access-token:2077
+Models/GanttData.cs:aws-access-token:2089
+Models/GanttData.cs:aws-access-token:2102
+Models/GanttData.cs:aws-access-token:2130
+Models/GanttData.cs:aws-access-token:2142
+Models/GanttData.cs:aws-access-token:2155
+Models/GanttData.cs:aws-access-token:2167
+Models/GanttData.cs:aws-access-token:2180
+Models/GanttData.cs:aws-access-token:2193
+Models/GanttData.cs:aws-access-token:2220
+Models/GanttData.cs:aws-access-token:2232
 /* Ignored false leaks in .cshtml files */
 Views/PivotTable/CellTemplate.cshtml:aws-access-token:35
 Views/Schedule/CalendarIntegration.cshtml:gcp-api-key:5

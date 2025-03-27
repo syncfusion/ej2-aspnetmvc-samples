@@ -23,10 +23,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Projection
         public ActionResult Export()
         {
-            ViewBag.shapeData = this.WorldMap();
-            ViewBag.dataSource = this.getUNOData();
-            ViewBag.format = new string[] { "JPEG", "PNG", "SVG", "PDF" };
-            ViewBag.format1 = new string[] { "Geometry", "OSM" };
+            ViewData["shapeData"] = this.WorldMap();
+            ViewData["dataSource"] = this.getUNOData();
+            ViewData["format"] = new string[] { "JPEG", "PNG", "SVG", "PDF" };
+            ViewData["format1"] = new string[] { "Geometry", "OSM" };
             return View();
         }
     }

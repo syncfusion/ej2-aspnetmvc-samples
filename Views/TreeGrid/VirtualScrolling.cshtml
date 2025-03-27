@@ -1,14 +1,14 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
 @{
-    ViewBag.Title = "VirtualScrolling";
+    ViewData["Title"] = "VirtualScrolling";
 }
 
 <h2>VirtualScrolling</h2>
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().TreeGrid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewBag.datasource).EditSettings(edit =>
+        @Html.EJS().TreeGrid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewData["datasource"]).EditSettings(edit =>
             {
                 edit.AllowAdding(true);
                 edit.AllowDeleting(true);

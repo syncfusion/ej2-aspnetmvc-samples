@@ -47,9 +47,9 @@ namespace EJ2MVCSampleBrowser.Controllers
             treedata.Add(new TreeDatas { nodeId = "08", nodeText = "Release Notes", iconCss = "icon-bookmark-empty icon" });
             treedata.Add(new TreeDatas { nodeId = "09", nodeText = "FAQ", iconCss = "icon-help-circled icon" });
             treedata.Add(new TreeDatas { nodeId = "10", nodeText = "License", iconCss = "icon-doc-text icon" });
-            ViewBag.HtmlAttribute = HtmlAttribute;
-            ViewBag.ResToolItems = popItems;
-            ViewBag.TreeData = treedata;
+            ViewData["HtmlAttribute"] = HtmlAttribute;
+            ViewData["ResToolItems"] = popItems;
+            ViewData["TreeData"] = treedata;
             return View();
         }
         public class TreeDatas

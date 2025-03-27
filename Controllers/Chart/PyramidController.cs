@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new PyramidChartData { Foods =  "Fruits",                 Calories = 520, DataLabelMappingName = "Fruits: 520 cal" },
                 new PyramidChartData { Foods =  "Bread, Rice, Pasta",     Calories = 930, DataLabelMappingName = "Bread, Rice, Pasta: 930 cal" }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class PyramidChartData

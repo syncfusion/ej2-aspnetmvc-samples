@@ -7,7 +7,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="scrollable-menu-control">
-            @Html.EJS().Menu("menu").Items(ViewBag.menuItems).EnableScrolling(true).CssClass("e-custom-scroll").BeforeOpen("onBeforeOpen").AnimationSettings(ViewBag.animationSettings).Render()
+            @Html.EJS().Menu("menu").Items(ViewData["menuItems"]).EnableScrolling(true).CssClass("e-custom-scroll").BeforeOpen("onBeforeOpen").AnimationSettings((Syncfusion.EJ2.Navigations.MenuAnimationSettings)ViewData["animationSettings"]).Render()
         </div>
     </div>
 }

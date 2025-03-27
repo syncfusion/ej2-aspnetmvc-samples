@@ -3,7 +3,7 @@
     <div class="control-section">
         <div class="contextmenu-control">
             <div id="contextmenutarget"></div>
-            @Html.EJS().ContextMenu("contextmenu").BeforeItemRender("beforeItemRender").Target("#contextmenutarget").Items(ViewBag.menuItems).Render()
+            @Html.EJS().ContextMenu("contextmenu").BeforeItemRender("beforeItemRender").Target("#contextmenutarget").Items(ViewData["menuItems"]).Render()
         </div>
     </div>
 }

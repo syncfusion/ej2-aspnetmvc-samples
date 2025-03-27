@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CssClass("virtual-scroll").SelectedDate(new DateTime(DateTime.Today.Year, 4, 1)).CurrentView(View.TimelineMonth).Views(view => { view.Option(View.TimelineMonth).EventTemplate("#timeline-event-template").AllowVirtualScrolling(true).Add(); view.Option(View.Month).EventTemplate("#timeline-event-template").AllowVirtualScrolling(true).Add(); }).Group(group => group.EnableCompactView(false).Resources(ViewBag.Resource)).Resources(res => { res.DataSource(ViewBag.resources).Field("ResourceId").Title("Resource").Name("Resources").TextField("Text").IdField("Id").ColorField("Color").AllowMultiple(true).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CssClass("virtual-scroll").SelectedDate(new DateTime(DateTime.Today.Year, 4, 1)).CurrentView(View.TimelineMonth).Views(view => { view.Option(View.TimelineMonth).EventTemplate("#timeline-event-template").AllowVirtualScrolling(true).Add(); view.Option(View.Month).EventTemplate("#timeline-event-template").AllowVirtualScrolling(true).Add(); }).Group(group => group.EnableCompactView(false).Resources((string[])ViewData["Resource"])).Resources(res => { res.DataSource(ViewData["resources"]).Field("ResourceId").Title("Resource").Name("Resources").TextField("Text").IdField("Id").ColorField("Color").AllowMultiple(true).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).Render()
         </div>
     </div>
     <style>

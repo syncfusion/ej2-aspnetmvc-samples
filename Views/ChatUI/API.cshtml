@@ -6,7 +6,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section sb-property-border">
         <div class="api-chatui">
-            @Html.EJS().ChatUI("chatui").HeaderText("Design Community").HeaderIconCss("chat_header_icon").ShowTimeBreak(true).TimeStampFormat("MM/dd hh:mm a").Created("onCreated").User(new ChatUIUser() { Id = "admin", User = "Alice" }).Render()
+            @Html.EJS().ChatUI("chatui").HeaderText("Design Community").HeaderIconCss("chat_header_icon").ShowTimeBreak(true).Messages((List<ChatUIMessage>)ViewData["CommunityMessagedata"]).TimeStampFormat("MM/dd hh:mm a").Created("onCreated").User(new ChatUIUser() { Id = "admin", User = "Alice" }).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section chat-property-section">
@@ -17,7 +17,7 @@
                     <tr>
                         <td> Timestamp format </td>
                         <td style="padding-right: 10px">
-                            @Html.EJS().DropDownList("chat_dateformats").Placeholder("Format").Width("180px").Value(ViewBag.DDBListValue).DataSource(ViewBag.TimeStampFormatOptions).Change("onTimeStampFormatChange").Render()
+                            @Html.EJS().DropDownList("chat_dateformats").Placeholder("Format").Width("180px").Value(ViewData["DDBListValue"]).DataSource(ViewData["TimeStampFormatOptions"]).Change("onTimeStampFormatChange").Render()
                         </td>
                     </tr>
                     <tr>
@@ -47,7 +47,7 @@
                     <tr>
                         <td> <div>Typing users</div> </td>
                         <td style="padding-right: 10px">
-                            @Html.EJS().MultiSelect("chat_typingUsers").Placeholder("Typing users...").Select("onTypingUsersSelect").Removed("onTypingUsersRemove").DataSource(ViewBag.TypingUserOptions).Render()
+                            @Html.EJS().MultiSelect("chat_typingUsers").Placeholder("Typing users...").Select("onTypingUsersSelect").Removed("onTypingUsersRemove").DataSource(ViewData["TypingUserOptions"]).Render()
                         </td>
                     </tr>
                 </tbody>
@@ -89,15 +89,9 @@
 @section PreScripts {
     <script>
         var chatUIObj;
-        var chatMessages = @Html.Raw(JsonConvert.SerializeObject(ViewBag.CommunityMessagedata));
-        chatMessages.forEach(message => {
-            message.timeStamp = new Date(message.timeStamp);
-        });
+
         function onCreated() {
-            var chatUiEle = document.getElementById('chatui');
-            chatUIObj = ej.base.getInstance(chatUiEle, ejs.interactivechat.ChatUI);
-            chatUIObj.messages = chatMessages;
-            chatUIObj.dataBind();
+            chatUIObj = ej.base.getInstance(document.getElementById('chatui'), ejs.interactivechat.ChatUI);
         }
 
         function onTimeStampFormatChange(args) {

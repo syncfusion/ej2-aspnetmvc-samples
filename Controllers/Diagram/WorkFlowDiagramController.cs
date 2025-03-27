@@ -272,9 +272,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 items.Add(new ToolbarItem { PrefixIcon = "e-diagram-icons e-diagram-reset", Disabled = true, Text = "Reset", TooltipText = "Reset" });
             }
 
-            ViewBag.nodes = nodes;
-            ViewBag.connectors = connectors;
-            ViewBag.tbItems = items;
+            ViewData["nodes"] = nodes;
+            ViewData["connectors"] = connectors;
+            ViewData["tbItems"] = items;
 
             return View();
         }

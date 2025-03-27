@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult ExternalBinding()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
             return View();
         }
     }

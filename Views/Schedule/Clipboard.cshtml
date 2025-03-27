@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
@@ -7,11 +7,11 @@
             @Html.EJS().Schedule("Schedule").Width("100%").Height("550px").AllowClipboard(true).ShowQuickInfo(false).CurrentView(View.Week).Views(view =>
                       {
                           view.Option(View.Week).Add(); view.Option(View.Day).Add(); view.Option(View.Month).Add(); view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add();
-                      }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).Render()
+                      }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).Render()
         </div>
     </div>
     <div>
-        @Html.EJS().ContextMenu("ScheduleContextMenu").CssClass("schedule-context-menu").BeforeOpen("onContextMenuBeforeOpen").Select("onMenuItemSelect").Target(".e-schedule").Items(ViewBag.menuItems).Render()
+        @Html.EJS().ContextMenu("ScheduleContextMenu").CssClass("schedule-context-menu").BeforeOpen("onContextMenuBeforeOpen").Select("onMenuItemSelect").Target(".e-schedule").Items(ViewData["menuItems"]).Render()
     </div>
     <style>
 

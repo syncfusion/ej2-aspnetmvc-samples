@@ -7,7 +7,7 @@
         <div class='control-wrapper'>
             <div style='padding-top:75px;'>
                 @Html.EJS().DropDownList("country").Placeholder("Select a country").AllowResize(true).DataSource(
-                  (IEnumerable<Countries>)ViewBag.data).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Code" }).Render()
+                  (IEnumerable<Countries>)ViewData["data"]).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Code" }).Render()
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult RowHover()
         {
             var DataSource = Product.GetAllRecords();
-            ViewBag.dataSource = DataSource;
+            ViewData["dataSource"] = DataSource;
             return View();
         }
     }

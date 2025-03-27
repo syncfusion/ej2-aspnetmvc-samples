@@ -46,7 +46,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Toolbar
             tbItems.Add(new ToolbarItem { PrefixIcon = "e-picture-icon tb-icons", TooltipText = "Picture", Text = "Picture", ShowTextOn = DisplayMode.Overflow });
             tbItems.Add(new ToolbarItem { PrefixIcon = "e-design-icon tb-icons", TooltipText = "Design", Text = "Design", ShowTextOn = DisplayMode.Overflow });
 
-            ViewBag.tbItems = tbItems;
+            ViewData["tbItems"] = tbItems;
 
             return View();
         }

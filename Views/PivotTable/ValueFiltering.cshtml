@@ -10,7 +10,7 @@
     <div class="col-lg-8 control-section" style="overflow:auto">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>
-                )ViewBag.Data).ExpandAll(false).AllowValueFilter(true)
+                )ViewData["Data"]).ExpandAll(false).AllowValueFilter(true)
                 .FormatSettings(formatsettings =>
                 {
                 formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
@@ -47,7 +47,7 @@
                     </td>
                     <td style="padding-bottom: 16px">
                         <div>
-                            @Html.EJS().DropDownList("fields").Index(0).DataSource((IEnumerable<object>)ViewBag.filterFields
+                            @Html.EJS().DropDownList("fields").Index(0).DataSource((IEnumerable<object>)ViewData["filterFields"]
                             ).Change("fieldsChange").Render()
                         </div>
                     </td>
@@ -60,7 +60,7 @@
                     </td>
                     <td style="padding-bottom: 16px">
                         <div>
-                            @Html.EJS().DropDownList("measures").Width("100%").DataSource((IEnumerable<object>)ViewBag.filterMeasures
+                            @Html.EJS().DropDownList("measures").Width("100%").DataSource((IEnumerable<object>)ViewData["filterMeasures"]
                             ).Value("In_Stock").Change("measuresChange").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
                         </div>
                     </td>
@@ -73,7 +73,7 @@
                     </td>
                     <td style="padding-bottom: 16px">
                         <div class="conditionscls">
-                            @Html.EJS().DropDownList("conditions").Width("100%").DataSource((IEnumerable<object>)ViewBag.filterOperators
+                            @Html.EJS().DropDownList("conditions").Width("100%").DataSource((IEnumerable<object>)ViewData["filterOperators"]
                             ).Change("conditionsChange").Value("DoesNotEquals").Render()
                         </div>
                     </td>

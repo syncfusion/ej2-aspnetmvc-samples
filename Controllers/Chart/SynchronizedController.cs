@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: Synchronized
         public ActionResult Synchronized()
         {
-            ViewBag.toolBarItems = new String[] { "Pan", "Reset" };
+            ViewData["toolBarItems"] = new String[] { "Pan", "Reset" };
             return View();
         }
     }

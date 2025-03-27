@@ -9,16 +9,16 @@
 
     <div class="col-lg-8 control-section" style="overflow:auto">
     <div class="content-wrapper">
-        @Html.EJS().PivotView("pivotview").Width("100%").Height("450").ShowGroupingBar(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.data).ExpandAll(false).EnableSorting(true)
+        @Html.EJS().PivotView("pivotview").Width("100%").Height("450").ShowGroupingBar(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["data"]).ExpandAll(false).EnableSorting(true)
             .DrilledMembers(drilledmembers =>
            {
-               drilledmembers.Name("Country").Items(ViewBag.drilledMembers).Add();
+               drilledmembers.Name("Country").Items((string[])ViewData["drilledMembers"]).Add();
            })
            .SortSettings(sortSettings =>
            {
-               sortSettings.Name("Country").Order(Sorting.Ascending).MembersOrder(ViewBag.sortSettings).Add();
-               sortSettings.Name("Year").Order(Sorting.Descending).MembersOrder(ViewBag.sortSettings_1).Add();
-               sortSettings.Name("Products").Order(Sorting.Descending).MembersOrder(ViewBag.sortSettings_2).Add();
+               sortSettings.Name("Country").Order(Sorting.Ascending).MembersOrder(ViewData["sortSettings"]).Add();
+               sortSettings.Name("Year").Order(Sorting.Descending).MembersOrder(ViewData["sortSettings_1"]).Add();
+               sortSettings.Name("Products").Order(Sorting.Descending).MembersOrder(ViewData["sortSettings_2"]).Add();
            })
            .Rows(rows =>
            {
@@ -64,7 +64,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("sorting-fields").Index(0).DataSource((IEnumerable<object>)ViewBag.customSortingFields
+                        @Html.EJS().DropDownList("sorting-fields").Index(0).DataSource((IEnumerable<object>)ViewData["customSortingFields"]
                         ).Change("onFieldChange").Enabled(true).Fields(new DropDownListFieldSettings { Text = "caption", Value = "Order" }).Render()
                     </div>
                 </td>
@@ -76,7 +76,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().MultiSelect("sorting-members").DataSource((IEnumerable<Object>)ViewBag.customSortingData).Mode(VisualMode.CheckBox).ShowDropDownIcon(true
+                        @Html.EJS().MultiSelect("sorting-members").DataSource((IEnumerable<Object>)ViewData["customSortingData"]).Mode(VisualMode.CheckBox).ShowDropDownIcon(true
                         ).ShowClearButton(false).EnableSelectionOrder(false).Fields(new MultiSelectFieldSettings { Text = "Member" }).Select("onSelect"
                         ).Removed("onRemoved").Open("onOpen").Placeholder("Select headers").Render()
                     </div>
@@ -89,7 +89,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("sorting-order").Index(0).DataSource((IEnumerable<object>)ViewBag.customSortingOrder
+                        @Html.EJS().DropDownList("sorting-order").Index(0).DataSource((IEnumerable<object>)ViewData["customSortingOrder"]
                         ).Change("onOrderChange").Enabled(true).Render()
                     </div>
                 </td>

@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ShowHideColumn";
+    ViewData["Title"] = "ShowHideColumn";
 }
 
 @section ControlsSection{
    <div class="col-lg-8 control-section">
     <div class="control-wrapper">
         <div class="control-section">
-            @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+            @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
            {
                col.Field("CategoryName").HeaderText("Category Name").Width("160").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
                col.Field("ProductName").HeaderText("Product Name").Width("170").Add();
@@ -29,7 +29,7 @@
         <tr>
             <td class="left-side">Column</td>
             <td style="padding-bottom:10px">
-                @Html.EJS().DropDownList("columns").DataSource((IEnumerable<object>)ViewBag.columns).Value("CategoryName").Fields(field => { field.Value("value").Text("text"); }).Change("onChange").Render()
+                @Html.EJS().DropDownList("columns").DataSource((IEnumerable<object>)ViewData["columns"]).Value("CategoryName").Fields(field => { field.Value("value").Text("text"); }).Change("onChange").Render()
             </td>
         </tr>
 

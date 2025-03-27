@@ -24,10 +24,10 @@ namespace EJ2MVCSampleBrowser.Controllers.ChatUI
             DefaultChatSuggestions = new string[] { "Awesome!", "What kind of painting ?" };
             HeaderToolbar1.Add(new ToolbarItemModel { type = "Input", align = "Right", template = "<button id=\"dduser1Menu\" style=\"border: none; background: none !important;\"></button>" });
             HeaderToolbar2.Add(new ToolbarItemModel { type = "Input", align = "Right", template = "<button id=\"dduser2Menu\" style=\"border: none; background: none !important;\"></button>" });
-            ViewBag.ChatMessagesData = ChatMessagesData;
-            ViewBag.DefaultChatSuggestions = DefaultChatSuggestions;
-            ViewBag.HeaderToolbar1 = HeaderToolbar1;
-            ViewBag.HeaderToolbar2 = HeaderToolbar2;
+            ViewData["ChatMessagesData"] = ChatMessagesData;
+            ViewData["DefaultChatSuggestions"] = DefaultChatSuggestions;
+            ViewData["HeaderToolbar1"] = HeaderToolbar1;
+            ViewData["HeaderToolbar2"] = HeaderToolbar2;
             return View();
         }
 

@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ThreeDimensionalChart
                 new StackedData { X = "2022", Y = 30.6, Y1 = 7.8, Y2 = 24.5, Y3 = 14.4 }
             };
             
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class StackedData

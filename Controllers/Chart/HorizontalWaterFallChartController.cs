@@ -28,9 +28,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new HorizontalChartData { X = "DEC",   Y = 45 },
                 new HorizontalChartData { X = "2023" }
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.sumIndexes = new int[] { 6 };
-            ViewBag.connector = new { width = 0.8, dashArray = "1,2", color = "#5F6A6A" };
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["sumIndexes"] = new int[] { 6 };
+            ViewData["connector"] = new { width = 0.8, dashArray = "1,2", color = "#5F6A6A" };
             return View();
         }
         public class HorizontalChartData

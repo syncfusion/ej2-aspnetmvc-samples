@@ -94,8 +94,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Menu
                 new { value = "Desktop", text = "Desktop" }
             };
 
-            ViewBag.data = menuItems;
-            ViewBag.ddlData = ddlData;
+            ViewData["data"] = menuItems;
+            ViewData["ddlData"] = ddlData;
             return View();
         }
     }

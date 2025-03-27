@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult IFrame()
         {
-            ViewBag.Items = new[] {"Bold", "Italic", "Underline", "StrikeThrough", "InlineCode", "SuperScript", "SubScript", "|",
+            ViewData["Items"] = new[] {"Bold", "Italic", "Underline", "StrikeThrough", "InlineCode", "SuperScript", "SubScript", "|",
                 "FontName", "FontSize", "FontColor", "BackgroundColor",  "|",
                 "LowerCase", "UpperCase",
                 "Formats", "Alignments", "Blockquote", "|", "NumberFormatList", "BulletFormatList", "|",
@@ -26,7 +26,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 "CreateLink", "Image", "FileManager", "Video", "Audio", "CreateTable", "|", "ClearFormat", "|", "EmojiPicker", "Print", "|",
                 "SourceCode", "FullScreen", "|", "Undo", "Redo"};
             string hostUrl = "https://ej2-aspcore-service.azurewebsites.net/";
-            ViewBag.AjaxSettings = new
+            ViewData["AjaxSettings"] = new
             {
                 url = hostUrl + "api/FileManager/FileOperations",
                 getImageUrl = hostUrl + "api/FileManager/GetImage",

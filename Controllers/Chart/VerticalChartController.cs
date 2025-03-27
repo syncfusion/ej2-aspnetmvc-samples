@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new VerticalChartData {Year = "2020", column =14500, series =3 },
                 new VerticalChartData {Year = "2021", column =12000, series =2.5 }
             };
-            ViewBag.chartPoints = chartPoints;
+            ViewData["chartPoints"] = chartPoints;
             return View();
         }
         public class VerticalChartData

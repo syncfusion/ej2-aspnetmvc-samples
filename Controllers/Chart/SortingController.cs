@@ -28,8 +28,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                     new SortingData { x= "Mexico ", car= 40, trucks= 50, bike= 80, cycle= 50 },
                     new SortingData { x= "US ", car= 140, trucks= 90, bike= 75, cycle= 70 }
             };
-            ViewBag.dataSource = chartData;
-            ViewBag.data = new string[] { "None", "Sort by X", "Sort by Y" };
+            ViewData["dataSource"] = chartData;
+            ViewData["data"] = new string[] { "None", "Sort by X", "Sort by Y" };
             return View();
         }
         public class SortingData

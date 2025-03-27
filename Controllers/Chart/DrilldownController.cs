@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new DrilldownData { x = "Pickup", y = 15 },
                 new DrilldownData { x = "Minivan", y = 23 }
             };
-            ViewBag.dataSource = chartData;
+            ViewData["dataSource"] = chartData;
             return View();
         }
     }

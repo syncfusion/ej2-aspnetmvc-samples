@@ -20,9 +20,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: MarkerTemplate
         public ActionResult MarkerTemplate()
         {
-            ViewBag.shapeData = this.GetAustralia();
+            ViewData["shapeData"] = this.GetAustralia();
             
-            ViewBag.palette = new string[] { "#E2B247", "#88DB46", "#42C4E2", "#C08AF8", "#52BACC", "#F4CE2F", "#6986ED" };
+            ViewData["palette"] = new string[] { "#E2B247", "#88DB46", "#42C4E2", "#C08AF8", "#52BACC", "#F4CE2F", "#6986ED" };
             return View();
         }
         public object GetAustralia()

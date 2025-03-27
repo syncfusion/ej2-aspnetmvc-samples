@@ -14,7 +14,7 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @{ViewBag.Title = "    Essential Presentation (Presentation) : PPTXToPdf/A : Syncfusion";}
+        @{ViewData["Title"] = "    Essential Presentation (Presentation) : PPTXToPdf/A : Syncfusion";}
 
         @{Html.BeginForm("PPTXToPdfA", "PowerPoint", FormMethod.Post, new { enctype = "multipart/form-data" });
             {

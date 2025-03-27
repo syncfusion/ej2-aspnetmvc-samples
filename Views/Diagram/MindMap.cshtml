@@ -5,8 +5,8 @@
     <div class="control-section" style="width: 100%;height:100%; float:left; padding:0px">
         <div class="diagram-control">
             @(Html.EJS().Diagram("diagram").Width("100%").Height("550px").GetCustomTool("getTool").Created("diagramCreated").SelectionChange("selectionChange").GetNodeDefaults("getNodeDefaults")
-                .GetConnectorDefaults("getConnectorDefaults").DataSourceSettings(ss => ss.Id("Id").ParentId("ParentId").DataSource(new DataManager() { Data = (List<MindMapDetails>)ViewBag.Nodes }))
-                .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.MindMap).GetBranch("getBranch")).ScrollSettings(s => s.Padding(new Syncfusion.EJ2.Diagrams.DiagramMargin { Left=50,Right=50  })).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).SelectedItems(ViewBag.selectedItems)
+                .GetConnectorDefaults("getConnectorDefaults").DataSourceSettings(ss => ss.Id("Id").ParentId("ParentId").DataSource(new DataManager() { Data = (List<MindMapDetails>)ViewData["Nodes"] }))
+                .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.MindMap).GetBranch("getBranch")).ScrollSettings(s => s.Padding(new Syncfusion.EJ2.Diagrams.DiagramMargin { Left=50,Right=50  })).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).SelectedItems((Syncfusion.EJ2.Diagrams.DiagramSelector)ViewData["selectedItems"])
                 .Render()
             )
 

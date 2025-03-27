@@ -9,7 +9,7 @@
             <div class='db-toolbar-editor' style="width: 100%;">
                 <div class='db-toolbar-container'>
                     <div id="toolbar_default" style="width: 100%">
-                        @Html.EJS().Toolbar("toolbarEditor").Clicked("toolbarClick").Items(ViewBag.tbItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
+                        @Html.EJS().Toolbar("toolbarEditor").Clicked("toolbarClick").Items((List<ToolbarItem>)ViewData["tbItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
                     </div>
                 </div>
             </div>
@@ -17,46 +17,46 @@
                 <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("700px")
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes((List<SymbolPalettePalette>)ViewData["Palette"]).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("700px")
                     .SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).SymbolHeight(60).SymbolWidth(60)
                     .GetNodeDefaults("getSymbolNodes").Render()
                 )
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
-                @(Html.EJS().Diagram("diagram").Width("100%").Height("700px").Created("diagramCreated").SnapSettings(s => s.HorizontalGridlines(ViewBag.gridLines).VerticalGridlines(ViewBag.gridLines))
-                    .GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").SelectionChange("selectionChange").HistoryChange("historyChange").ScrollChange("scrollChange").DragEnter("dragEnter").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
+                @(Html.EJS().Diagram("diagram").Width("100%").Height("700px").Created("diagramCreated").SnapSettings(s => s.HorizontalGridlines((DiagramGridlines)ViewData["gridLines"]).VerticalGridlines((DiagramGridlines)ViewData["gridLines"]))
+                    .GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").SelectionChange("selectionChange").HistoryChange("historyChange").ScrollChange("scrollChange").DragEnter("dragEnter").Nodes((List<DiagramNode>)ViewData["nodes"]).Connectors((List<DiagramConnector>)ViewData["connectors"]).Render()
                 )
             </div>
             <div>
-                @(Html.EJS().SplitButton("exportBtn").Items(ViewBag.exportItems).IconCss("e-export e-icons").Select("onselectExport").Render())
+                @(Html.EJS().SplitButton("exportBtn").Items(ViewData["exportItems"]).IconCss("e-export e-icons").Select("onselectExport").Render())
             </div>
             <div>
-                @(Html.EJS().SplitButton("conTypeBtn").Items(ViewBag.conTypeItems).IconCss("e-ddb-icons e-connector e-icons").Select("onConnectorSelect").Render())
+                @(Html.EJS().SplitButton("conTypeBtn").Items(ViewData["conTypeItems"]).IconCss("e-ddb-icons e-connector e-icons").Select("onConnectorSelect").Render())
             </div>
             <div>
-                @(Html.EJS().SplitButton("shapesBtn").Items(ViewBag.shapesItems).IconCss("e-shapes e-icons").Select("onShapesSelect").Render())
+                @(Html.EJS().SplitButton("shapesBtn").Items(ViewData["shapesItems"]).IconCss("e-shapes e-icons").Select("onShapesSelect").Render())
             </div>
 
             <div>
-                @(Html.EJS().SplitButton("alignBtn").Items(ViewBag.alignItems).IconCss("sf-icon-align-center-1").Select("onSelectAlignObjects").Render())
+                @(Html.EJS().SplitButton("alignBtn").Items(ViewData["alignItems"]).IconCss("sf-icon-align-center-1").Select("onSelectAlignObjects").Render())
             </div>
             <div>
-                @(Html.EJS().SplitButton("distributeBtn").Items(ViewBag.distributeItems).IconCss("sf-icon-distribute-horizontal").Select("onSelectDistributeObjects").Render())
+                @(Html.EJS().SplitButton("distributeBtn").Items(ViewData["distributeItems"]).IconCss("sf-icon-distribute-horizontal").Select("onSelectDistributeObjects").Render())
             </div>
             <div>
-                @(Html.EJS().SplitButton("orderBtn").Items(ViewBag.orderItems).IconCss("e-icons e-order").Select("onSelectOrder").Render())
+                @(Html.EJS().SplitButton("orderBtn").Items(ViewData["orderItems"]).IconCss("e-icons e-order").Select("onSelectOrder").Render())
             </div>
             <div>
-                @(Html.EJS().SplitButton("groupBtn").Items(ViewBag.groupItems).IconCss("e-icons e-group-1").Select("onSelectGroup").Render())
+                @(Html.EJS().SplitButton("groupBtn").Items(ViewData["groupItems"]).IconCss("e-icons e-group-1").Select("onSelectGroup").Render())
             </div>
             <div>
-                @(Html.EJS().SplitButton("rotateBtn").Items(ViewBag.rotateItems).IconCss("e-icons e-repeat").Select("onSelectRotate").Render())
+                @(Html.EJS().SplitButton("rotateBtn").Items(ViewData["rotateItems"]).IconCss("e-icons e-repeat").Select("onSelectRotate").Render())
             </div>
             <div>
-                @(Html.EJS().SplitButton("flipBtn").Items(ViewBag.flipItems).IconCss("e-icons e-flip-horizontal").Select("onSelectFlip").Render())
+                @(Html.EJS().SplitButton("flipBtn").Items(ViewData["flipItems"]).IconCss("e-icons e-flip-horizontal").Select("onSelectFlip").Render())
             </div>
             <div>
-                @(Html.EJS().SplitButton("btnZoomIncrement").Items(ViewBag.zoomMenuItems).Content("100%").Select("zoomChange").Render())
+                @(Html.EJS().SplitButton("btnZoomIncrement").Items(ViewData["zoomMenuItems"]).Content("100%").Select("zoomChange").Render())
             </div>
         </div>
     </div>

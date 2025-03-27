@@ -10,7 +10,7 @@
            XName("Period").
            YName("Sales").Opacity(1).Width(2).
                Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Name("DataLabelMappingName"))).
-           DataSource(ViewBag.ChartPoints).Add();
+           DataSource(ViewData["ChartPoints"]).Add();
        }).PrimaryXAxis(
        xAxis =>
        {
@@ -42,6 +42,7 @@
     }
 </style>
  @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var data = [
             { x: new Date(2017, 11, 20), y: 21 },
@@ -63,8 +64,7 @@
             args.chart.series[0].dataSource = data;
             args.chart.series[0].xName = "x";
             args.chart.series[0].yName = "y";
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Rotate45';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';

@@ -8,7 +8,7 @@
             @(Html.EJS().Diagram("container").Width("100%").Height("580px").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults")
                 .SetNodeTemplate("setNodeTemplate").SnapSettings(s => s.Constraints(SnapConstraints.None))
                 .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree).Orientation(Syncfusion.EJ2.Diagrams.LayoutOrientation.LeftToRight).VerticalSpacing(75).Margin(new Syncfusion.EJ2.Diagrams.DiagramMargin() { Left = 40, Right = 0, Bottom = 0, Top = 0 }))
-                .Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
+                .Nodes((List<DiagramNode>)ViewData["nodes"]).Connectors((List<DiagramConnector>)ViewData["connectors"]).Render()
             )
         </div>
     </div>
@@ -61,21 +61,21 @@
                 <label>Source Decorators</label>
                 <div>
                     @Html.EJS().DropDownList("sourceDecorator2").Index(0).Change("srcDecShapeChange").DataSource(
-(IEnumerable<object>)ViewBag.shapes).Change("srcDecShapeChange").Fields(new DropDownListFieldSettings() { Text = "text", Value = "value" }).Render()
+(IEnumerable<object>)ViewData["shapes"]).Change("srcDecShapeChange").Fields(new DropDownListFieldSettings() { Text = "text", Value = "value" }).Render()
                 </div>
             </div>
             <div class="row" style="padding-top: 8px; display: flex;">
                 <label>Target Decorators</label>
                 <div>
                     @Html.EJS().DropDownList("targetDecorator").Index(4).Change("tarDecShapeChange").DataSource(
-(IEnumerable<object>)ViewBag.shapes).Change("tarDecShapeChange").Fields(new DropDownListFieldSettings() { Text = "text", Value = "value" }).Render()
+(IEnumerable<object>)ViewData["shapes"]).Change("tarDecShapeChange").Fields(new DropDownListFieldSettings() { Text = "text", Value = "value" }).Render()
                 </div>
             </div>
             <div class="row" style="padding-top: 8px; display: flex;">
                 <label>Segment Decorators</label>
                 <div>
                     @Html.EJS().DropDownList("segmentDecorator").Index(2).Change("segDecShapeChange").DataSource(
-(IEnumerable<object>)ViewBag.shapes).Change("segDecShapeChange").Fields(new DropDownListFieldSettings() { Text = "text", Value = "value" }).Render()
+(IEnumerable<object>)ViewData["shapes"]).Change("segDecShapeChange").Fields(new DropDownListFieldSettings() { Text = "text", Value = "value" }).Render()
                 </div>
             </div>
         </div>

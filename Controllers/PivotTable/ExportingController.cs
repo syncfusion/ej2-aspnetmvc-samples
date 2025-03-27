@@ -21,8 +21,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult Exporting()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.exportMode = GetMode();
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["exportMode"] = GetMode();
             return View();
         }
         public List<ExportMode> GetMode()

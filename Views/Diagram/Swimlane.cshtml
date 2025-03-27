@@ -7,13 +7,13 @@
                 <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" class="sb-mobile-palette">                
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("570px")
-                                .SymbolHeight(48).SymbolWidth(48).SymbolMargin(ViewBag.margin).GetNodeDefaults("getSymbolNodes").Render()
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes((List<SymbolPalettePalette>)ViewData["Palette"]).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("570px")
+                                .SymbolHeight(48).SymbolWidth(48).SymbolMargin((SymbolPaletteMargin)ViewData["margin"]).GetNodeDefaults("getSymbolNodes").Render()
                 )
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
-                @(Html.EJS().Diagram("container").Width("100%").Height("100%").DragEnter("dragEnter").ContextMenuOpen("contextMenuOpen").ContextMenuClick("contextMenuClick").ContextMenuSettings(c=>c.Show(true).ShowCustomMenuOnly(true).Items(ViewBag.items)).SnapSettings(new Syncfusion.EJ2.Diagrams.DiagramSnapSettings() { Constraints = Syncfusion.EJ2.Diagrams.SnapConstraints.None }).SelectedItems(new DiagramSelector() { Constraints=SelectorConstraints.All &~SelectorConstraints.Rotate})
-                               .GetConnectorDefaults("getConnectorDefaults").GetNodeDefaults("getNodeDefaults").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
+                @(Html.EJS().Diagram("container").Width("100%").Height("100%").DragEnter("dragEnter").ContextMenuOpen("contextMenuOpen").ContextMenuClick("contextMenuClick").ContextMenuSettings(c=>c.Show(true).ShowCustomMenuOnly(true).Items(ViewData["items"])).SnapSettings(new Syncfusion.EJ2.Diagrams.DiagramSnapSettings() { Constraints = Syncfusion.EJ2.Diagrams.SnapConstraints.None }).SelectedItems(new DiagramSelector() { Constraints=SelectorConstraints.All &~SelectorConstraints.Rotate})
+                               .GetConnectorDefaults("getConnectorDefaults").GetNodeDefaults("getNodeDefaults").Nodes((List<DiagramNode>)ViewData["nodes"]).Connectors((List<DiagramConnector>)ViewData["connectors"]).Render()
                 )
             </div>
         </div>

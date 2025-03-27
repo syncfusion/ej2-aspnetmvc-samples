@@ -23,16 +23,16 @@
        }).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer>{
        new Syncfusion.EJ2.Maps.MapsLayer
        {
-           ShapeData = ViewBag.ShapeData,
+           ShapeData = ViewData["ShapeData"],
            ShapePropertyPath = "name",
            ShapeDataPath = "name",
-           DataSource =  ViewBag.DataSource,
+           DataSource =  ViewData["DataSource"],
            ShapeSettings = new MapsShapeSettings
            {
                Fill = "#fcfbf9",
                Border = new MapsBorder{ Width = 0.1 , Color = "black", Opacity = 1 },
                ColorValuePath="name",
-               ColorMapping = ViewBag.ColorMapping
+               ColorMapping = (List<MapsColorMapping>)ViewData["ColorMapping"]
            },
            NavigationLineSettings = new List<MapsNavigationLine>
            {

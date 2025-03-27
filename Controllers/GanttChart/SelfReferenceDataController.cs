@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult SelfReferenceData()
         {
-            ViewBag.DataSource = GanttData.SelfData();
+            ViewData["DataSource"] = GanttData.SelfData();
             return View();
         }
     }

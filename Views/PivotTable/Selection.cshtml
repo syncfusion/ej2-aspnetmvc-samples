@@ -8,7 +8,7 @@
     <div class="col-lg-8 control-section" style="overflow:auto">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("400").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>
-                )ViewBag.Data).ExpandAll(true).EnableSorting(true)
+                )ViewData["Data"]).ExpandAll(true).EnableSorting(true)
                 .Rows(rows =>
                 {
                     rows.Name("Country").Add();
@@ -46,7 +46,7 @@
                     </td>
                     <td>
                         <div>
-                            @Html.EJS().DropDownList("mode").DataSource((IEnumerable<object>)ViewBag.modeData).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
+                            @Html.EJS().DropDownList("mode").DataSource((IEnumerable<object>)ViewData["modeData"]).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
                             ).Index(0).Width("150").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("modeChange").Render()
                         </div>
                     </td>
@@ -59,7 +59,7 @@
                     </td>
                     <td>
                         <div>
-                            @Html.EJS().DropDownList("type").DataSource((IEnumerable<object>)ViewBag.typeData).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
+                            @Html.EJS().DropDownList("type").DataSource((IEnumerable<object>)ViewData["typeData"]).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
                             ).Index(1).Width("150").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Change("typeChange").Render()
                         </div>
                     </td>

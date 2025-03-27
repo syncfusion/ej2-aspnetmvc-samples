@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult RowTemplate()
         {
             var DataSource = PizzaData.GetAllRecords();
-            ViewBag.dataSource = DataSource;
+            ViewData["dataSource"] = DataSource;
             return View();
         }
     }

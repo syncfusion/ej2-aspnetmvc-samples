@@ -4,7 +4,7 @@
 @section ControlsSection {
     <div class="control-section">
         <div class="control_wrapper">
-            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
+            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col =>
             {
            col.HeaderText("To Do").KeyField("Open").Template("#headerTemplate").Add();
            col.HeaderText("In Progress").KeyField("InProgress").Template("#headerTemplate").Add();

@@ -1,11 +1,11 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Diagrams;
 @section ControlsSection{
 
     <div class="control-pane diagram-control-pane">
         <div class="col-lg-10 control-section" style="float: left;">
             <div class="content-wrapper" style="width:100%;background: white">
-                @Html.EJS().Diagram("diagram").Width("100%").Height("700px").RulerSettings(r => r.ShowRulers(true)).ContextMenuSettings(c => c.Show(true)).SelectedItems(ViewBag.selectedItems).GetCustomTool("getTool").Created("create").SelectionChange("selectionChange").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
+                @Html.EJS().Diagram("diagram").Width("100%").Height("700px").RulerSettings(r => r.ShowRulers(true)).ContextMenuSettings(c => c.Show(true)).SelectedItems((DiagramSelector)ViewData["selectedItems"]).GetCustomTool("getTool").Created("create").SelectionChange("selectionChange").Nodes((List<DiagramNode>)ViewData["nodes"]).Connectors((List<DiagramConnector>)ViewData["connectors"]).Render()
             </div>
         </div>
         <div class="col-lg-2 property-section" style="float:right;">

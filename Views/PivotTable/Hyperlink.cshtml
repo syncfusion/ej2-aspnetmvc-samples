@@ -9,14 +9,14 @@
     <div class="col-lg-8 control-section" style="overflow:auto">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("600").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>
-            )ViewBag.Data).ExpandAll(true)
+            )ViewData["Data"]).ExpandAll(true)
             .FormatSettings(formatsettings =>
             {
                 formatsettings.Name("Amount").Format("C0").Add();
             })
             .DrilledMembers(drilledmembers =>
             {
-                drilledmembers.Name("Country").Items(ViewBag.drilledMembers).Add();
+                drilledmembers.Name("Country").Items((string[])ViewData["drilledMembers"]).Add();
             })
             .Rows(rows =>
             {
@@ -48,9 +48,9 @@
                             Show Hyperlink:
                         </div>
                     </td>
-                    <td style="padding-bottom: 16px">
+                    <td>
                         <div>
-                            @Html.EJS().DropDownList("hyperlinks").Width("100%").Index(0).DataSource((IEnumerable<object>)ViewBag.hyperLinkOptions
+                            @Html.EJS().DropDownList("hyperlinks").Width("100%").Index(0).DataSource((IEnumerable<object>)ViewData["hyperLinkOptions"]
                             ).Value("Value cells").Change("optionsdll").Render()
                         </div>
                     </td>
@@ -68,9 +68,9 @@
                             Measures:
                         </div>
                     </td>
-                    <td style="padding-bottom: 16px">
+                    <td>
                         <div>
-                            @Html.EJS().DropDownList("measures").Width("100%").Index(0).DataSource((IEnumerable<object>)ViewBag.hyperLinkMeasures
+                            @Html.EJS().DropDownList("measures").Width("100%").Index(0).DataSource((IEnumerable<object>)ViewData["hyperLinkMeasures"]
                             ).Value("In Stock").Render()
                         </div>
                     </td>
@@ -81,9 +81,9 @@
                             Condition:
                         </div>
                     </td>
-                    <td style="padding-bottom: 16px">
+                    <td>
                         <div class="conditionscls">
-                            @Html.EJS().DropDownList("conditions").Width("100%").Index(0).DataSource((IEnumerable<object>)ViewBag.hyperLinkConditions
+                            @Html.EJS().DropDownList("conditions").Width("100%").Index(0).DataSource((IEnumerable<object>)ViewData["hyperLinkConditions"]
                             ).Value("NotEquals").Change("conditions").Render()
                         </div>
                     </td>
@@ -94,7 +94,7 @@
                             Value 1:
                         </div>
                     </td>
-                    <td style="padding-bottom: 16px">
+                    <td>
                         <div class="value1cls">
                             @Html.EJS().NumericTextBox("value1").Value(0).Width("100%").Placeholder("Example: 400").Render()
                         </div>
@@ -106,7 +106,7 @@
                             Value 2:
                         </div>
                     </td>
-                    <td style="padding-bottom: 16px">
+                    <td>
                         <div class="value2cls">
                             @Html.EJS().NumericTextBox("value2").Value(0).Width("100%").Placeholder("Example: 4000").Render()
                         </div>
@@ -125,7 +125,7 @@
                             Header Text:
                         </div>
                     </td>
-                    <td style="padding-bottom: 16px">
+                    <td>
                         <div class="textcls">
                             @Html.EJS().TextBox("text").Width("100%").Placeholder("Example: 'FY 2015.In Stock'").Render()
                         </div>

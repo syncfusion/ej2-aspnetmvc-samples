@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Buttons
 @using Syncfusion.EJ2.SplitButtons
 @section ControlsSection{
@@ -6,9 +6,9 @@
         <div id="speed-dial-wrapper">
             @Html.EJS().Tooltip("Detail").Target(".tooltip-speeddial .e-speeddial-li").Position(Syncfusion.EJ2.Popups.Position.LeftCenter).ContentTemplate(@<div>
                 <div class="speeddial-appearence-target custom-index" id="target">
-                    @Html.EJS().SpeedDial("API1").Target("#target").Content("Edit").IconPosition(IconPosition.Left).OpenIconCss("speeddial-icons speeddial-icon-edit").Position(FabPosition.BottomCenter).Items(ViewBag.datasource).Render()
-                    @Html.EJS().SpeedDial("API2").Target("#target").Content("Edit").Position(FabPosition.BottomLeft).Items(ViewBag.datasourceLabel).Render()
-                    @Html.EJS().SpeedDial("API3").Target("#target").HtmlAttributes(new Dictionary<string, object>() { { "title", "Edit" } }).Position(FabPosition.BottomRight).OpenIconCss("speeddial-icons speeddial-icon-edit").CssClass("tooltip-speeddial").Items(ViewBag.datasourceLabelTitles).Render()
+                    @Html.EJS().SpeedDial("API1").Target("#target").Content("Edit").IconPosition(IconPosition.Left).OpenIconCss("speeddial-icons speeddial-icon-edit").Position(FabPosition.BottomCenter).Items((List<SpeedDialItem>)ViewData["datasource"]).Render()
+                    @Html.EJS().SpeedDial("API2").Target("#target").Content("Edit").Position(FabPosition.BottomLeft).Items((List<SpeedDialItem>)ViewData["datasourceLabel"]).Render()
+                    @Html.EJS().SpeedDial("API3").Target("#target").HtmlAttributes(new Dictionary<string, object>() { { "title", "Edit" } }).Position(FabPosition.BottomRight).OpenIconCss("speeddial-icons speeddial-icon-edit").CssClass("tooltip-speeddial").Items((List<SpeedDialItem>)ViewData["datasourceLabelTitles"]).Render()
                 </div>
             </div>).Render()
         </div>

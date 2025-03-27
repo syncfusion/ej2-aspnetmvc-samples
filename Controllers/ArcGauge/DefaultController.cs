@@ -111,7 +111,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             tiktokRangeLine.EndWidth = "1";
             rangeCollections.Add(tiktokRangeLine);
 
-            ViewBag.Ranges = rangeCollections;
+            ViewData["Ranges"] = rangeCollections;
 
             List<CircularGaugeAnnotation> annotationCollections = new List<CircularGaugeAnnotation>();
             CircularGaugeAnnotation youtubeText = new CircularGaugeAnnotation();
@@ -184,9 +184,9 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             tiktokAnnotationValue.ZIndex = "1";
             annotationCollections.Add(tiktokAnnotationValue);
 
-            ViewBag.Annotations = annotationCollections;
+            ViewData["Annotations"] = annotationCollections;
 
-            ViewBag.labelFont = new CircularGaugeFont
+            ViewData["labelFont"] = new CircularGaugeFont
             {
                 FontFamily = "inherit",
                 Size = "0px",

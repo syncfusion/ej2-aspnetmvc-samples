@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Baseline";
+    ViewData["Title"] = "Baseline";
 }
 
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @(Html.EJS().Gantt("Baseline").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").RenderBaseline(true)
+            @(Html.EJS().Gantt("Baseline").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").RenderBaseline(true)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").BaselineStartDate("BaselineStartDate")
                 .BaselineEndDate("BaselineEndDate")).Columns(col =>
                 {

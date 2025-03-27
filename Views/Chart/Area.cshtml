@@ -9,43 +9,43 @@
                     .XName("Period")
                    .YName("USD")
                     .Border(br => br.Width(1.5).Color("white"))
-                   .DataSource(ViewBag.Compact)
+                   .DataSource(ViewData["Compact"])
                    .Add();
                 sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                     .XName("Period")
                    .YName("USD")
                     .Border(br => br.Width(1.5).Color("white"))
-                   .DataSource(ViewBag.Download)
+                   .DataSource(ViewData["Download"])
                    .Add();
                 sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                     .XName("Period")
                     .YName("USD")
                     .Border(br => br.Width(1.5).Color("white"))
-                    .DataSource(ViewBag.Streaming)
+                    .DataSource(ViewData["Streaming"])
                     .Add();
                 sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                     .XName("Period")
                     .YName("USD")
                     .Border(br => br.Width(1.5).Color("white"))
-                    .DataSource(ViewBag.Casette)
+                    .DataSource(ViewData["Casette"])
                     .Add();
                 sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                     .XName("Period")
                     .YName("USD")
                     .Border(br => br.Width(1.5).Color("white"))
-                    .DataSource(ViewBag.Vinyl)
+                    .DataSource(ViewData["Vinyl"])
                     .Add();
                 sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                     .XName("Period")
                     .YName("USD")
                     .Border(br => br.Width(1.5).Color("white"))
-                    .DataSource(ViewBag.Track)
+                    .DataSource(ViewData["Track"])
                     .Add();
                 sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                     .XName("Period")
                     .YName("USD")
                     .Border(br => br.Width(1.5).Color("white"))
-                    .DataSource(ViewBag.Other)
+                    .DataSource(ViewData["Other"])
                     .Add();
             })
             .Annotations(an => {
@@ -89,10 +89,10 @@
         }
     </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.annotations[0].content = ej.base.Browser.isDevice ? '<div style="font-weight: bold; color: white; font-size: 9px;">8-TRACK</div>' : '<div style="font-weight: bold; color: white; font-size: 11px;">8-TRACK</div>';
             args.chart.annotations[1].content = ej.base.Browser.isDevice ? '<div style="font-weight: bold; color: white; font-size: 9px;">VINYL</div>' : '<div style="font-weight: bold; color: white;font-size: 11px;">VINYL</div>';

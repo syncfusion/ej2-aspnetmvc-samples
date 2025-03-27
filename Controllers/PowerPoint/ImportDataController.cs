@@ -37,7 +37,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             PresentationData.presentationData = new PresentationData().GetAllRecords();
             order1.Add(new DataPosition() { text = "Top" });
             order1.Add(new DataPosition() { text = "Bottom" });
-            ViewBag.ddData = order1;
+            ViewData["ddData"] = order1;
             return View();
         }
         /// <summary>

@@ -4,7 +4,7 @@
         <div id="wrapper">
             @*header-section  declaration*@
             <div>
-                @Html.EJS().Toolbar("resToolbar").Clicked("toolbarCliked").Items(ViewBag.ResToolItems).Render()                
+                @Html.EJS().Toolbar("resToolbar").Clicked("toolbarCliked").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["ResToolItems"]).Render()                
             </div>
             @*end of header-section*@
             @{Html.EJS().Sidebar("sideTree").Width("290px").Target(".main-content").MediaQuery("(min-width: 600px)").IsOpen(true).ContentTemplate(@<div>
@@ -14,10 +14,10 @@
                             <p class="main-menu-header">TABLE OF CONTENTS</p>
                         </div>
                         <div>
-                            @Html.EJS().TreeView("mainTree").CssClass("main-treeview").ExpandOn(Syncfusion.EJ2.Navigations.ExpandOnSettings.Click).Fields(new Syncfusion.EJ2.Navigations.TreeViewFieldsSettings() { Id = "nodeId", Text = "nodeText", IconCss = "iconCss", DataSource = ViewBag.TreeData, HasChildren = "hasChild", ParentID = "pid" }).Render()
+                            @Html.EJS().TreeView("mainTree").CssClass("main-treeview").ExpandOn(Syncfusion.EJ2.Navigations.ExpandOnSettings.Click).Fields(new Syncfusion.EJ2.Navigations.TreeViewFieldsSettings() { Id = "nodeId", Text = "nodeText", IconCss = "iconCss", DataSource = ViewData["TreeData"], HasChildren = "hasChild", ParentID = "pid" }).Render()
                         </div>
                     </div>                 
-                 </div>).HtmlAttributes(ViewBag.HtmlAttribute).Render();}
+                 </div>).HtmlAttributes(ViewData["HtmlAttribute"]).Render();}
             @*end of sidebar element*@
             @*.main-sidebar-content declaration*@
             <div class="main-content" id="main-text">

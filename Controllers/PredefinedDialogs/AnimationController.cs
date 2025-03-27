@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PredefinedDialogs
         // GET: Animation
         public ActionResult Animation()
         {
-            ViewBag.Data = EffectList.EffectLists();
+            ViewData["Data"] = EffectList.EffectLists();
             return View();
         }
         public class EffectList

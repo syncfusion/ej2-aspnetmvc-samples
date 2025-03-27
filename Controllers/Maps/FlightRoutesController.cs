@@ -23,15 +23,15 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: FlightRoutes
         public ActionResult FlightRoutes()
         {
-            ViewBag.ShapeData = this.getWorldMap();
+            ViewData["ShapeData"] = this.getWorldMap();
             List<object> data = new List<object>();
             data.Add(new { name = "India" });
             data.Add(new { name = "China" });
-            ViewBag.DataSource = data;
+            ViewData["DataSource"] = data;
             List<MapsColorMapping> color = new List<MapsColorMapping>();
             color.Add(new MapsColorMapping { Value = "China", Color = "#f7d083", Label = null });
             color.Add(new MapsColorMapping { Value = "India", Color = "#FFFE99", Label = null });
-            ViewBag.ColorMapping = color;
+            ViewData["ColorMapping"] = color;
             return View();
         }
     }

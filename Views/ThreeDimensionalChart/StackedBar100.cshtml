@@ -1,14 +1,14 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
 
         @Html.EJS().Chart3D("container").EnableRotation(true).Rotation(22).Depth(100).Height("400").Title("Motor Vehicle Production by Manufacturer").PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.BetweenTicks)
    ).Series(series =>
    {
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar100).DataSource(ViewBag.ChartData).XName("X").YName("Y").Name("General Motors").ColumnWidth(0.5).Add();
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar100).DataSource(ViewBag.ChartData).XName("X").YName("Y1").Name("Honda").ColumnWidth(0.5).Add();
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar100).DataSource(ViewBag.ChartData).XName("X").YName("Y2").Name("Suzuki").ColumnWidth(0.5).Add();
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar100).DataSource(ViewBag.ChartData).XName("X").YName("Y3").Name("BMW").ColumnWidth(0.5).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar100).DataSource(ViewData["ChartData"]).XName("X").YName("Y").Name("General Motors").ColumnWidth(0.5).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar100).DataSource(ViewData["ChartData"]).XName("X").YName("Y1").Name("Honda").ColumnWidth(0.5).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar100).DataSource(ViewData["ChartData"]).XName("X").YName("Y2").Name("Suzuki").ColumnWidth(0.5).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar100).DataSource(ViewData["ChartData"]).XName("X").YName("Y3").Name("BMW").ColumnWidth(0.5).Add();
    }).PrimaryYAxis(py => py.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
         ).Tooltip(tt => tt.Enable(true).Format("${point.x} : <b>${point.y} (${point.percentage}%)</b>")
         ).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
@@ -21,6 +21,7 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/three-dimensional-chart/theme-color.js"></script>
     <script>
         var axisLabelRender = function (args) {
             if (args.axis.name === 'primaryYAxis') {
@@ -28,10 +29,7 @@
             }
         }
         var load = function (args) {
-            var stackedBarTheme = location.hash.split('/')[1];
-            stackedBarTheme = stackedBarTheme ? stackedBarTheme : 'Fluent2';
-            args.chart.theme = (stackedBarTheme.charAt(0).toUpperCase() +
-                stackedBarTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            load3DChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? '100%' : '70%';
             args.chart.primaryYAxis.interval = ej.base.Browser.isDevice ? 20 : 10;
         }

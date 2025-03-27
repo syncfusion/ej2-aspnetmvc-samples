@@ -18,9 +18,9 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Formatting()
         {
-            ViewBag.currencyValue = new int[] { 20, 80 };
-            ViewBag.kilometerValue = new int[] { 1100, 1850 };
-            ViewBag.timeValue = new decimal[] { 1373697000000, 1373718600000 };
+            ViewData["currencyValue"] = new int[] { 20, 80 };
+            ViewData["kilometerValue"] = new int[] { 1100, 1850 };
+            ViewData["timeValue"] = new decimal[] { 1373697000000, 1373718600000 };
             return View();
         }
     }

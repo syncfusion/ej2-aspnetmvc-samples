@@ -32,7 +32,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new SplineAreaChartData { Period = new DateTime(2010, 01, 01), US_InflationRate = 1.4, FR_InflationRate = 1.5, GER_InflationRate = 1.1 },
                 new SplineAreaChartData { Period = new DateTime(2011, 01, 01), US_InflationRate = 1.1, FR_InflationRate = 1.3, GER_InflationRate = 1.5 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class SplineAreaChartData

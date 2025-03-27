@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult GroupingAndIcon()
         {
-            ViewBag.groupdata = new Vegetables().VegetablesList();
-            ViewBag.icondata = new SocialMedia().SocialMediaList();
+            ViewData["groupdata"] = new Vegetables().VegetablesList();
+            ViewData["icondata"] = new SocialMedia().SocialMediaList();
             return View();
         }
     }

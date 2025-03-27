@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: RTLTree
         public ActionResult RTLTree()
         {
-            ViewBag.Nodes = RTLData.GetAllRecords();
+            ViewData["Nodes"] = RTLData.GetAllRecords();
             return View();
         }
     }

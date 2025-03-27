@@ -152,7 +152,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new CrosshairChartData { Time = "19:40", Value = 300.56 },
                 new CrosshairChartData { Time = "19:45", Value = 299.87 }
             };
-            ViewBag.ChartData = chartData;
+            ViewData["ChartData"] = chartData;
             return View();
         }
         public class CrosshairChartData

@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult RecurrencePopulateRule()
         {
-            ViewBag.datasource = GetRecurrenceData();
+            ViewData["datasource"] = GetRecurrenceData();
             return View();
         }
 

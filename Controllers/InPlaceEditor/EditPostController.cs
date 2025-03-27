@@ -18,21 +18,21 @@ namespace EJ2MVCSampleBrowser.Controllers.InPlaceEditor
     {
         public ActionResult EditPost()
         {
-            ViewBag.ModeData = new string[] { "Inline", "Popup" };
+            ViewData["ModeData"] = new string[] { "Inline", "Popup" };
             string[] data = new string[] { "Android", "JavaScript", "jQuery", "TypeScript", "Angular", "React", "Vue", "Ionic" };
-            ViewBag.TagData = new { mode="Box", dataSource=data, placeholder= "Enter your tags" };
+            ViewData["TagData"] = new { mode="Box", dataSource=data, placeholder= "Enter your tags" };
             string[] validation1 = new string[] { "true", "Enter valid tags" };
-            ViewBag.TagValidation = new { Tag = new { required = validation1 } };
+            ViewData["TagValidation"] = new { Tag = new { required = validation1 } };
             string[] validation2 = new string[] { "true", "Enter valid title" };
-            ViewBag.TitleValidation = new { Title = new { required = validation2 } };
-            ViewBag.TitleData = new { placeHolder = "Enter your question title" };
+            ViewData["TitleValidation"] = new { Title = new { required = validation2 } };
+            ViewData["TitleData"] = new { placeHolder = "Enter your question title" };
             string[] rteItems = new string[] { "Bold", "Italic", "Underline", "FontColor", "BackgroundColor", "LowerCase", "UpperCase", "|", "OrderedList", "UnorderedList" };
-            ViewBag.CommentData = new { toolbarSettings= new {enableFloating=false, items= rteItems } };
+            ViewData["CommentData"] = new { toolbarSettings= new {enableFloating=false, items= rteItems } };
             string[] validation3 = new string[] { "true", "Enter valid comments" };
-            ViewBag.CommentValidation = new { rte = new { required = validation3 } };
+            ViewData["CommentValidation"] = new { rte = new { required = validation3 } };
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "dialogBtnClick", ButtonModel = new DefaultButtonModel() { content = "ok", isPrimary = true } });
-            ViewBag.DefaultButtons = buttons;
+            ViewData["DefaultButtons"] = buttons;
             return View();
         }
     }

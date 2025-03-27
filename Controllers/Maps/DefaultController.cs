@@ -29,8 +29,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
             data.Add(new DataSource("Europe", "#39776C"));
             data.Add(new DataSource("Asia", "#266665"));
             data.Add(new DataSource("Australia", "#124F5E"));
-            ViewBag.shapeData = this.GetWorldMap();
-            ViewBag.dataSource = data;
+            ViewData["shapeData"] = this.GetWorldMap();
+            ViewData["dataSource"] = data;
             return View();
         }
         public object GetWorldMap()

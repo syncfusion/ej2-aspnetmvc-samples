@@ -7,12 +7,12 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Hourly Weather Forecast").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Hourly Weather Forecast").TextStyle(ViewData["textStyle"])).XAxis(xAxis =>
                     {
-                        xAxis.Labels(ViewBag.xLabels).TextStyle(ViewBag.labelTextStyle);
+                        xAxis.Labels((string[])ViewData["xLabels"]).TextStyle(ViewData["labelTextStyle"]);
                     }).YAxis(yaxis =>
                     {
-                        yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle);
+                        yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"]);
                     }).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
                     {
                         palette.Value(0).Color("#6EB5D0").Add();
@@ -21,8 +21,8 @@
                         palette.Value(22).Color("#DCD57E").Add();
                     })).CellSettings(cellSettings =>
                     cellSettings.ShowLabel(false).Format("{value} C")).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings =>
-                    legendSettings.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).Title(title => title.Text("Celsius").TextStyle(ViewBag.labelTextStyle)).
-                    LabelFormat("{value}\xB0 C").TextStyle(ViewBag.labelTextStyle)).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
+                    legendSettings.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).Title(title => title.Text("Celsius").TextStyle(ViewData["labelTextStyle"])).
+                    LabelFormat("{value}\xB0 C").TextStyle(ViewData["labelTextStyle"])).TooltipRender("tooltipRender").Load("load").DataSource(ViewData["dataSource"]).Render()
                 </div>
             </div>
         </div>

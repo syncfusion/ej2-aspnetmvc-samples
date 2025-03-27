@@ -1,11 +1,11 @@
 @{
-    ViewBag.Title = "DialogEditing";
+    ViewData["Title"] = "DialogEditing";
 }
 
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("DialogEditing").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+        @Html.EJS().Grid("DialogEditing").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

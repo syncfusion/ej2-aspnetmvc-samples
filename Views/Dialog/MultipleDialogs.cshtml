@@ -6,8 +6,8 @@
 
         @Html.EJS().Button("dialogBtn").CssClass("dlgbtn").Content("Open Dialog").Render()
 
-        @Html.EJS().Dialog("firstDialog").Visible(true).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("firstDlgCreated").Header("First Dialog").Close("dialogClose").Open("dialogOpen").ContentTemplate(@<div><p>This is the first dialog and acts as a parent dialog, you can open the second (child) dialog by clicking 'Next'.</p></div>).ShowCloseIcon(true).CloseOnEscape(true).Width("330px").Height("260px").Target("#target").Buttons(ViewBag.NextButton).Render()
-        @Html.EJS().Dialog("secondDialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("secondDlgCreated").IsModal(true).Header("Second Dialog").Close("dialogClose2").Open("dialogOpen").ContentTemplate(@<div><p>This is the second dialog and act as a child dialog.</p></div>).ShowCloseIcon(true).CloseOnEscape(true).Width("285px").Height("215px").Target("#target").Buttons(ViewBag.CloseButton).Render()
+        @Html.EJS().Dialog("firstDialog").Visible(true).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("firstDlgCreated").Header("First Dialog").Close("dialogClose").Open("dialogOpen").ContentTemplate(@<div><p>This is the first dialog and acts as a parent dialog, you can open the second (child) dialog by clicking 'Next'.</p></div>).ShowCloseIcon(true).CloseOnEscape(true).Width("330px").Height("260px").Target("#target").Buttons((List<DialogDialogButton>)ViewData["NextButton"]).Render()
+        @Html.EJS().Dialog("secondDialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("secondDlgCreated").IsModal(true).Header("Second Dialog").Close("dialogClose2").Open("dialogOpen").ContentTemplate(@<div><p>This is the second dialog and act as a child dialog.</p></div>).ShowCloseIcon(true).CloseOnEscape(true).Width("285px").Height("215px").Target("#target").Buttons((List<DialogDialogButton>)ViewData["CloseButton"]).Render()
 
     </div>
 }

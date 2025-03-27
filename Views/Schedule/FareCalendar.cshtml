@@ -9,7 +9,7 @@
             </div>
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").SelectedDate(new DateTime(DateTime.Today.Year, 4, 5)).Views(v => { v.Option(View.Month).Add(); }).Readonly(true).Resources(res =>
                 {
-                    res.Field("AirlineId").Title("Airline").Name("Airlines").AllowMultiple(true).DataSource(ViewBag.airlines).Add();
+                    res.Field("AirlineId").Title("Airline").Name("Airlines").AllowMultiple(true).DataSource(ViewData["airlines"]).Add();
                 }).EventSettings(new ScheduleEventSettings { Template = "#event-template", EnableTooltip = true, TooltipTemplate = "#tooltip-template" }).ActionBegin("onActionBegin").DataBinding("onDataBinding").DataBound("onDataBound").PopupOpen("onPopupOpen").Render()
         </div>
     </div>

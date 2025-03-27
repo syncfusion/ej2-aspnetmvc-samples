@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Seatbooking
         public ActionResult Seatbooking()
         {
-            ViewBag.shapeData = this.SeatData();
+            ViewData["shapeData"] = this.SeatData();
             return View();
         }
         public object SeatData()

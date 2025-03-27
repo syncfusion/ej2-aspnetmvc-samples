@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
         List<TabItem> adaptiveItems = new List<TabItem>();
         public ActionResult ResponsiveModes()
         {
-            ViewBag.positionData = new string[] { "Scrollable", "Popup" };
-            ViewBag.orientationData = new string[] { "Top", "Bottom", "Left", "Right" };
+            ViewData["positionData"] = new string[] { "Scrollable", "Popup" };
+            ViewData["orientationData"] = new string[] { "Top", "Bottom", "Left", "Right" };
 
             adaptiveItems.Add(new TabItem { Header = new TabHeader { Text = "HTML" }, Content = "HyperText Markup Language, commonly referred to as HTML, is the standard markup language used to create web pages. Along with CSS, and JavaScript, HTML is a cornerstone technology, used by most websites to create visually engaging web pages, user interfaces for web applications, and user interfaces for many mobile applications. Web browsers can read HTML files and render them into visible or audible web pages. HTML describes the structure of a website semantically along with cues for presentation, making it a markup language, rather than a programming language." });
             adaptiveItems.Add(new TabItem { Header = new TabHeader { Text = "C-Sharp(C#)" }, Content = "C# is intended to be a simple, modern, general-purpose, object-oriented programming language. Its development team is led by Anders Hejlsberg. The most recent version is C# 5.0, which was released on August 15, 2012." });
@@ -31,7 +31,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
             adaptiveItems.Add(new TabItem { Header = new TabHeader { Text = "ASP.NET MVC" }, Content = "The ASP.NET MVC is a web application framework developed by Microsoft, which implements the model–view–controller(MVC) pattern. It is open - source software, apart from the ASP.NET Web Forms component which is proprietary. In the later versions of ASP.NET, ASP.NET MVC, ASP.NET Web API, and ASP.NET Web Pages(a platform using only Razor pages) will merge into a unified MVC 6. The project is called ASP.NET vNext." });
             adaptiveItems.Add(new TabItem { Header = new TabHeader { Text = "JavaScript" }, Content = "JavaScript (JS) is an interpreted computer programming language. It was originally implemented as part of web browsers so that client - side scripts could interact with the user, control the browser, communicate asynchronously, and alter the document content that was displayed. More recently, however, it has become common in both game development and the creation of desktop applications." });
 
-            ViewBag.adaptiveItems = adaptiveItems;
+            ViewData["adaptiveItems"] = adaptiveItems;
             return View();
         }
     }

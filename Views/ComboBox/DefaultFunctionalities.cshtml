@@ -7,7 +7,7 @@
             <div id="default" style='padding-top:75px;'>
 
                 @Html.EJS().ComboBox("games").Placeholder("Select a game").PopupHeight("230px").Index(2).Change("valueChange").DataSource((IEnumerable<GameList>
-                  )ViewBag.data).Fields(new ComboBoxFieldSettings { Text = "Game", Value = "Id" }).Render()
+                  )ViewData["data"]).Fields(new ComboBoxFieldSettings { Text = "Game", Value = "Id" }).Render()
 
             </div>
         </div>

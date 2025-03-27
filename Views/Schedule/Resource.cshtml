@@ -5,8 +5,8 @@
         <div class="content-wrapper">
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Resources(res =>
                 {
-                    res.DataSource(ViewBag.Owners).Field("OwnerId").Title("Owners").Name("Owners").TextField("OwnerText").IdField("OwnerId").ColorField("Color").AllowMultiple(true).Add();
-                }).EventSettings(e => e.DataSource(ViewBag.datasource)).SelectedDate(new DateTime(DateTime.Today.Year, 6, 6)).Render()
+                    res.DataSource(ViewData["Owners"]).Field("OwnerId").Title("Owners").Name("Owners").TextField("OwnerText").IdField("OwnerId").ColorField("Color").AllowMultiple(true).Add();
+                }).EventSettings(e => e.DataSource(ViewData["datasource"])).SelectedDate(new DateTime(DateTime.Today.Year, 6, 6)).Render()
         </div>
     </div>
 

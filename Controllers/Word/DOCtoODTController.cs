@@ -52,12 +52,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
                 }
                 else
                 {
-                    ViewBag.Message = string.Format("Please choose Word format document to convert to ODT");
+                    ViewData["Message"] = string.Format("Please choose Word format document to convert to ODT");
                 }
             }
             else
             {
-                ViewBag.Message = string.Format("Browse a Word document and then click the button to convert as a ODT document");
+                ViewData["Message"] = string.Format("Browse a Word document and then click the button to convert as a ODT document");
             }
 
             return View();

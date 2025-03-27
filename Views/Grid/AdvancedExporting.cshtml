@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("AdvancedExporting").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowPdfExport().AllowExcelExport().AllowGrouping().Columns(col =>
+        @Html.EJS().Grid("AdvancedExporting").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowPdfExport().AllowExcelExport().AllowGrouping().Columns(col =>
    {
 
        col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
        col.Field("ProductName").HeaderText("Product Name").Width("200").ValidationRules(new { required = true, minLength = 5 }).Add();
        col.Field("QuantityPerUnit").HeaderText("Quantity Per Unit").Width("145").Add();
-       col.Field("UnitsInStock").HeaderText("Units In Stock").Width("140").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("UnitsInStock").HeaderText("Units In Stock").Width("140").AllowGrouping(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("UnitPrice").HeaderText("Unit Price").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("140").EditType("numericedit").Add();
 
    }).AllowPaging().PageSettings(p=>p.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "ExcelExport", "PdfExport"}).ToolbarClick("toolbarClick").Render()

@@ -19,23 +19,23 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
         // GET: Rendermode
         public ActionResult Tooltiptemplate()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
                 fontFamily = "inherit"
             };
-            ViewBag.labelTextStyle = new
+            ViewData["labelTextStyle"] = new
             {
                 fontFamily = "inherit"
             };
-            ViewBag.border = new { width = "0" };
+            ViewData["border"] = new { width = "0" };
             string[] xlabels = new string[8] { "Canada", "China", "Egypt", "Mexico", "Norway", "Russia", "UK", "USA"};
-            ViewBag.xLabels = xlabels;
+            ViewData["xLabels"] = xlabels;
             string[] yLabels = new string[11] { "2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010" };
-            ViewBag.yLabels = yLabels;
-            ViewBag.dataSource = new HeatMapData().GetTooltipData();
+            ViewData["yLabels"] = yLabels;
+            ViewData["dataSource"] = new HeatMapData().GetTooltipData();
             return View();
         }
     }

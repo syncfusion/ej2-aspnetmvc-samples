@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: TimeFormat
         public ActionResult TimeFormat()
         {
-            ViewBag.value = DateTime.Now;
+            ViewData["value"] = DateTime.Now;
             return View();
         }
     }

@@ -11,14 +11,14 @@
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("500").DataSourceSettings(dataSourceSettings =>
-            dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true).ShowGrandTotals(true).GrandTotalsPosition(GrandTotalsPosition.Bottom)
+            dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(false).EnableSorting(true).ShowGrandTotals(true).GrandTotalsPosition(GrandTotalsPosition.Bottom)
             .DrilledMembers(drilledmembers =>
             {
-            drilledmembers.Name("Country").Items(ViewBag.drilledMembers).Add();
+            drilledmembers.Name("Country").Items((string[])ViewData["drilledMembers"]).Add();
             })
             .FilterSettings(filterSettings =>
             {
-            filterSettings.Name("Products").Items(ViewBag.filterMembers).Type(Syncfusion.EJ2.PivotView.FilterType.Include).Add();
+            filterSettings.Name("Products").Items((string[])ViewData["filterMembers"]).Type(Syncfusion.EJ2.PivotView.FilterType.Include).Add();
             })
             .FormatSettings(formatsettings =>
                  {
@@ -50,7 +50,7 @@
                             </td>
                             <td style="width: auto">
                                 <div style="padding-left: 0;">
-                                    @Html.EJS().DropDownList("options").Width("100%").DataSource((IEnumerable<object>)ViewBag.summaryOption).Value("grandTotals"
+                                    @Html.EJS().DropDownList("options").Width("100%").DataSource((IEnumerable<object>)ViewData["summaryOption"]).Value("grandTotals"
                                     ).Change("onChange0").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
                                 </div>
                             </td>
@@ -204,7 +204,7 @@
                         <tr>
                             <td colspan="2">
                                 <div>
-                                    @Html.EJS().MultiSelect("values").DataSource((IEnumerable<Object>)ViewBag.summaryFields).Mode(VisualMode.CheckBox).ShowDropDownIcon(true).ShowClearButton(false
+                                    @Html.EJS().MultiSelect("values").DataSource((IEnumerable<Object>)ViewData["summaryFields"]).Mode(VisualMode.CheckBox).ShowDropDownIcon(true).ShowClearButton(false
                                     ).EnableSelectionOrder(false).Fields(new MultiSelectFieldSettings { Text = "Name" }).Select("onSelected").Removed("onRemoved").Open("onOpen"
                                     ).Placeholder("Select fields to hide its sub-totals").Render()
                                 </div>

@@ -4,11 +4,11 @@
     <div class="control-section">
         <div id="flat-list">
             <h4>Flat List</h4>
-            @Html.EJS().ListView("listview").Enable(true).DataSource((IEnumerable<object>)ViewBag.dataSource).Render()
+            @Html.EJS().ListView("listview").Enable(true).DataSource((IEnumerable<object>)ViewData["dataSource"]).Render()
         </div>
         <div id="group-list">
             <h4>Group List</h4>
-            @Html.EJS().ListView("listviewgrp").Enable(true).DataSource((IEnumerable<object>)ViewBag.groupData).Fields(new ListViewFieldSettings { GroupBy = "category" }).Render()
+            @Html.EJS().ListView("listviewgrp").Enable(true).DataSource((IEnumerable<object>)ViewData["groupData"]).Fields(new ListViewFieldSettings { GroupBy = "category" }).Render()
         </div>
 
     </div>

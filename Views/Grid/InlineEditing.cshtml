@@ -1,11 +1,11 @@
 @{
-    ViewBag.Title = "InlineEditing";
+    ViewData["Title"] = "InlineEditing";
 }
 
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        @Html.EJS().Grid("InlineEditing").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+        @Html.EJS().Grid("InlineEditing").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("140").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
@@ -27,7 +27,7 @@
                 </td>
                 <td style="width: 60%;padding-right: 10px">
                     <div id='typeddl'>
-                @Html.EJS().DropDownList("AddNewRowPosition").DataSource((IEnumerable<object>)ViewBag.ddData).Value("Top").Change("rowPositionChange").Render()
+                @Html.EJS().DropDownList("AddNewRowPosition").DataSource((IEnumerable<object>)ViewData["ddData"]).Value("Top").Change("rowPositionChange").Render()
                     </div>
                 </td>
             </tr>

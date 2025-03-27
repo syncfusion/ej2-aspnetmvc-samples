@@ -8,11 +8,11 @@
         @Html.EJS().Chart("container").Series(series =>
    {
 
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("PVT_Consumption").DataSource(ViewBag.ChartPoints).Name("Private Consumption").Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("GOVT_Consumption").DataSource(ViewBag.ChartPoints).Name("Government Consumption").Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("Investment").DataSource(ViewBag.ChartPoints).Name("Investment").Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("Trade").DataSource(ViewBag.ChartPoints).Name("Net Foreign Trade").Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).XName("Period").YName("GDP").Opacity(0.6).Marker(mr => mr.Visible(true).Height(7).Width(7)).DataSource(ViewBag.ChartPoints).Name("GDP").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("PVT_Consumption").DataSource(ViewData["ChartPoints"]).Name("Private Consumption").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("GOVT_Consumption").DataSource(ViewData["ChartPoints"]).Name("Government Consumption").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("Investment").DataSource(ViewData["ChartPoints"]).Name("Investment").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Period").YName("Trade").DataSource(ViewData["ChartPoints"]).Name("Net Foreign Trade").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).XName("Period").YName("GDP").Opacity(0.6).Marker(mr => mr.Visible(true).Height(7).Width(7)).DataSource(ViewData["ChartPoints"]).Name("GDP").Width(2).Add();
    }).PrimaryYAxis(px => px.Minimum(-3).Maximum(3).Interval(1).Title("Growth (in Billion)").LabelFormat("{value}B").LineStyle(ls=>ls.Width(0)).MajorTickLines(mt=>mt.Width(0))
        ).PrimaryXAxis(px => px.Title("Years").MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)
        ).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
@@ -29,10 +29,10 @@
     }
 </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.interval = ej.base.Browser.isDevice ? 2 : 1;
         };

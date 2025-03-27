@@ -16,12 +16,12 @@
                 <p>
                     It allows users to quickly and easily add an Image Editor to their Rich Text Editor. It provides a variety of features, including image cropping, resizing, rotation, and more. Additionally, it supports a wide range of image formats, including JPEG, PNG, and GIF.
                 </p>
-            </div>).QuickToolbarSettings(e => { e.Image((object)ViewBag.image); }).Render()
+            </div>).QuickToolbarSettings(e => { e.Image((object)ViewData["image"]); }).Render()
 
-            @Html.EJS().Dialog("default_dialog").Open("onOpen").Created("onDialogCreate").Header("Image Editor").ContentTemplate(@rteContent).ShowCloseIcon(true).Visible(false).Width("800px").Height("550px").Close("onClose").Buttons(btn =>
+            @Html.EJS().Dialog("default_dialog").BeforeOpen("onBeforeOpen").Open("open").Created("onDialogCreate").Header("Image Editor").ContentTemplate(@rteContent).ShowCloseIcon(true).Visible(false).Width("800px").Height("550px").Close("onClose").Buttons(btn =>
             {
-            btn.Click("onInsert").ButtonModel(ViewBag.insertButton).Add();
-            btn.Click("onCancel").ButtonModel(ViewBag.cancelButton).Add();
+            btn.Click("onInsert").ButtonModel(ViewData["insertButton"]).Add();
+            btn.Click("onCancel").ButtonModel(ViewData["cancelButton"]).Add();
             }).Render()
         </div>
     </div>
@@ -121,13 +121,15 @@
         rteObj.formatter.enableUndo(rteObj);
         dispose();
         dialogObj.hide();
-        imageELement.crossOrigin = null;
     }
     function onCancel() {
         dispose();
         dialogObj.hide();
         isLoaded = true;
-        imageELement.crossOrigin = null;
+    }
+    function open() {
+        imageEditorObj.update();
+        imageEditorObj.open(dataURL);
     }
     function dispose() {
         if (imageEditorObj !== null && imageEditorObj !== undefined) {
@@ -141,9 +143,8 @@
         dispose();
         dialogObj.hide();
         isLoaded = true;
-        imageELement.crossOrigin = null;
     }
-    function onOpen() {
+    function onBeforeOpen() {
         isLoaded = false;
         rteEle = document.getElementById("defaultRTE");
         rteObj = rteEle.ej2_instances[0];
@@ -158,16 +159,13 @@
             imageELement.onload = function () {
                 ctx.drawImage(imageELement, 0, 0, canvas.width, canvas.height);
                 dataURL = canvas.toDataURL();
-                if (!isLoaded) {
-                    imageEditorObj = new ej.imageeditor.ImageEditor({
-                        height: '450px',
-                        created: function () {
-                            imageEditorObj.open(dataURL);
-                        }
-                    });
-                    imageEditorObj.appendTo('#imageeditor');
-                }
             };
+            if (!isLoaded) {
+                imageEditorObj = new ej.imageeditor.ImageEditor({
+                    height: '450px'
+                });
+                imageEditorObj.appendTo('#imageeditor');
+            }
         }
     }
 </script>

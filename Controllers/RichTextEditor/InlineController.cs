@@ -5,7 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,14 +18,14 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Inline()
         {
-            ViewBag.Items = new[] { "Bold", "Italic", "Underline",
+            ViewData["Items"] = new[] { "Bold", "Italic", "Underline",
                 "Formats", "-", "Alignments", "OrderedList", "UnorderedList",
                 "CreateLink" };
-            ViewBag.Width = new
+            ViewData["Width"] = new
             {
                 width = "auto"
             };
-            ViewBag.Inline = new
+            ViewData["Inline"] = new
             {
                 enable = true,
                 onSelection = true

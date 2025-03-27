@@ -6,13 +6,13 @@
         <div id='groupList' class='col-lg-6' style='padding-top:15px'>
             <div class="content">
                 <h4>Grouping</h4>
-                @Html.EJS().AutoComplete("vegetables").DataSource((IEnumerable<Vegetables>)ViewBag.groupdata).ShowPopupButton(true).Placeholder("e.g. Cabbage").Fields(new AutoCompleteFieldSettings { GroupBy = "Category", Value = "Vegetable" }).Render()
+                @Html.EJS().AutoComplete("vegetables").DataSource((IEnumerable<Vegetables>)ViewData["groupdata"]).ShowPopupButton(true).Placeholder("e.g. Cabbage").Fields(new AutoCompleteFieldSettings { GroupBy = "Category", Value = "Vegetable" }).Render()
             </div>
         </div>
         <div id='iconList' class='col-lg-6' style='padding-top:15px'>
             <div class='content'>
                 <h4> Icons</h4>
-                @Html.EJS().AutoComplete("icons").DataSource((IEnumerable<SocialMedia>)ViewBag.icondata).ShowPopupButton(true).Placeholder("e.g. Facebook").Fields(new AutoCompleteFieldSettings { Value = "SocialMediaName", IconCss = "Class" }).Render()
+                @Html.EJS().AutoComplete("icons").DataSource((IEnumerable<SocialMedia>)ViewData["icondata"]).ShowPopupButton(true).Placeholder("e.g. Facebook").Fields(new AutoCompleteFieldSettings { Value = "SocialMediaName", IconCss = "Class" }).Render()
             </div>
         </div>
     </div>

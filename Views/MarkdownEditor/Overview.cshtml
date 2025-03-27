@@ -8,7 +8,7 @@
                 @Html.EJS().Splitter("splitter-rte-markdown-preview").Height("450px").Width("100%").Created("onCreateSplitter").Resizing("OnResizing").PaneSettings(paneItem =>
                 {
                     paneItem.Size("50%").Resizable(true).CssClass("pane1").Min("40%").ContentTemplate(@<div>
-                            @Html.EJS().RichTextEditor("defaultRTE").Height("448px").Placeholder("Enter your text here...").SaveInterval(1).MaxLength(5000).ShowCharCount(true).EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewBag.Items).Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false)).Value(ViewBag.Value).Created("onCreate").Change("onChange").ActionComplete("updateValue").Render()</div>).Add();
+                            @Html.EJS().RichTextEditor("defaultRTE").Height("448px").Placeholder("Enter your text here...").SaveInterval(1).MaxLength(5000).ShowCharCount(true).EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewData["Items"]).Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false)).Value((string)ViewData["Value"]).Created("onCreate").Change("onChange").ActionComplete("updateValue").Render()</div>).Add();
                     paneItem.Size("50%").Min("40%").CssClass("pane2").ContentTemplate(@<div class="heading right"><h6 class="title"><b>Markdown Preview</b></h6><div class="splitter-default-content source-code pane2"></div></div>).Add();
 }).Render()
             </div>

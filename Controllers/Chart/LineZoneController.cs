@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         public ActionResult LineZone()
         {
             
-            ViewBag.content = "<div style='width:80px; padding: 5px;'><table style='width: 100%'>" +
+            ViewData["content"] = "<div style='width:80px; padding: 5px;'><table style='width: 100%'>" +
     "<tr> <td><div style='width: 10px; height: 10px; background:blue;border-radius: 15px;'></div>" +
     "</td> <td style='padding-left: 5px;'>High</td></tr><tr><td>" +
     "<div style='width: 10px; height: 10px; background:green;;border-radius: 15px;'></div>" +

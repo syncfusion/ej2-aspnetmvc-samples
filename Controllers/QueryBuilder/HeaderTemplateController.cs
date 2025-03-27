@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
                     new QueryBuilderRule { Label="Country", Field="Country", Type="string", Operator="equal", Value = "USA" }
                 }
             };
-            ViewBag.rule = rule;
+            ViewData["rule"] = rule;
             return View();
         }
         public ActionResult HeaderTemplatePartial(QueryTemplateModel.ValueModel args)
@@ -40,7 +40,7 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
                 new {text = "AND", value="and" },
                 new {text = "OR", value="or"}
             };
-            ViewBag.Conditions = Conditions;
+            ViewData["Conditions"] = Conditions;
             return PartialView("_HeaderTemplatePartial", args.Value);
         }
     }

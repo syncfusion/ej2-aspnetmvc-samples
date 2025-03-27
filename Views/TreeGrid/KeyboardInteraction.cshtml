@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "KeyboardInteraction";
+    ViewData["Title"] = "KeyboardInteraction";
 }
 
 @*custom code end*@
@@ -25,7 +25,7 @@
                 edit.Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row);
             }).SelectionSettings(sel=> {
                     sel.Type(SelectionType.Multiple);
-            }).DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+            }).DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
        {
                 col.Field("TaskId").HeaderText("Task ID").IsPrimaryKey(true).Width(90)
                     .TextAlign(TextAlign.Right).Add();

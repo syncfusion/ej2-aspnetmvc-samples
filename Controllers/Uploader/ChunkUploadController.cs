@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Uploader
         // GET: ChunkUpload
         public ActionResult ChunkUpload()
         {
-            ViewBag.data = new chunkValues().UploaderModel();
+            ViewData["data"] = new chunkValues().UploaderModel();
             return View();
         }
     }

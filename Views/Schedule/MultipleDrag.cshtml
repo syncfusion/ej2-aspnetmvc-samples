@@ -4,10 +4,10 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="schedule-wrapper">
-            @Html.EJS().Schedule("Schedule").Width("100%").Height("650px").AllowMultiDrag(true).ShowQuickInfo(false).AllowResizing(false).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); view.Option(View.TimelineMonth).Add(); }).Group(group => group.Resources(ViewBag.Resources)).Resources(res =>
+            @Html.EJS().Schedule("Schedule").Width("100%").Height("650px").AllowMultiDrag(true).ShowQuickInfo(false).AllowResizing(false).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); view.Option(View.TimelineMonth).Add(); }).Group(group => group.Resources((string[])ViewData["Resources"])).Resources(res =>
             {
-            res.DataSource(ViewBag.Owners).Field("TaskId").Title("Owners").Name("Owners").TextField("text").IdField("id").ColorField("color").Add();
-            }).EventSettings(e => e.DataSource(ViewBag.datasource)).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).Render()
+            res.DataSource(ViewData["Owners"]).Field("TaskId").Title("Owners").Name("Owners").TextField("text").IdField("id").ColorField("color").Add();
+            }).EventSettings(e => e.DataSource(ViewData["datasource"])).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).Render()
         </div>
     </div>
 }

@@ -15,7 +15,7 @@
                      {
                          paneItem.Size("35%").Min("25%").ContentTemplate(@<div>
                                 <div>
-                                    @Html.EJS().ListView("ui-list").DataSource((IEnumerable<object>)ViewBag.DataSource).CssClass("e-list-template").ActionComplete("onComplete").Select("onSelect").Height("289px").Template(template).Render()
+                                    @Html.EJS().ListView("ui-list").DataSource((IEnumerable<object>)ViewData["DataSource"]).CssClass("e-list-template").ActionComplete("onComplete").Select("onSelect").Height("289px").Template(template).Render()
                                 </div>
                             </div>).Add();
       paneItem.Size("65%").Min("45%").ContentTemplate(@<div><div id="content"></div></div>).Add();

@@ -174,9 +174,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             DiagramSelector userHandle = new DiagramSelector();
             userHandle.Constraints = SelectorConstraints.UserHandle;
             userHandle.UserHandles = handle;
-            ViewBag.selectedItems = userHandle;
-            ViewBag.nodes = nodes;
-            ViewBag.connectors = Connectors;
+            ViewData["selectedItems"] = userHandle;
+            ViewData["nodes"] = nodes;
+            ViewData["connectors"] = Connectors;
             return View();
         }
     }

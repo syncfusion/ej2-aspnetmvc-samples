@@ -5,9 +5,9 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="schedule-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").FirstMonthOfYear(0).MonthsCount(12).CssClass("year-view").Height("650px").Views(view => { view.Option(View.Year).IsSelected(true).Add(); view.Option(View.TimelineYear).DisplayName("Horizontal Timeline Year").Add(); view.Option(View.TimelineYear).DisplayName("Vertical Timeline Year").Orientation(Orientation.Vertical).Group(new ScheduleGroup { Resources = ViewBag.Resources }).Add(); }).EventRendered("onEventRendered").Resources(res =>
+            @Html.EJS().Schedule("schedule").Width("100%").FirstMonthOfYear(0).MonthsCount(12).CssClass("year-view").Height("650px").Views(view => { view.Option(View.Year).IsSelected(true).Add(); view.Option(View.TimelineYear).DisplayName("Horizontal Timeline Year").Add(); view.Option(View.TimelineYear).DisplayName("Vertical Timeline Year").Orientation(Orientation.Vertical).Group(new ScheduleGroup { Resources = (string[])ViewData["Resources"] }).Add(); }).EventRendered("onEventRendered").Resources(res =>
             {
-                res.DataSource(ViewBag.Categories).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
+                res.DataSource(ViewData["Categories"]).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
             }).EventSettings(e => e.DataSource("generateEvents()")).Render()
         </div>
     </div>
@@ -16,7 +16,7 @@
             <tbody>
                 <tr>
                     <td>
-                        @Html.EJS().DropDownList("firstMonthElement").Placeholder("First month of year").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(0).DataSource(ViewBag.Months).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Change("firstMonthOfYear").Render()
+                        @Html.EJS().DropDownList("firstMonthElement").Placeholder("First month of year").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(0).DataSource(ViewData["Months"]).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Change("firstMonthOfYear").Render()
                     </td>
                 </tr>
                 <tr>

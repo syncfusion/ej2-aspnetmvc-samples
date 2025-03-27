@@ -51,7 +51,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Carousel
                 Content = "Moscow, on the Moskva River in western Russia, is the nation’s cosmopolitan capital. In its historic core is the Kremlin, a complex that’s home to the president and tsarist treasures in the Armoury. Outside its walls is Red Square, Russia`s symbolic center.",
                 URL = "https://en.wikipedia.org/wiki/Moscow"
             });
-            ViewBag.dataSource = datasrc;
+            ViewData["dataSource"] = datasrc;
             return View();
         }
         public class CarouselDataBinding

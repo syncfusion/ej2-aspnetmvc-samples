@@ -25,7 +25,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tooltip
             country.Add(new  { id = "5", text = "India" });
             country.Add(new  { id = "6", text = "Switzerland" });
             country.Add(new  { id = "7", text = "United States" });
-            ViewBag.data = country;
+            ViewData["data"] = country;
             return View();
 
         }

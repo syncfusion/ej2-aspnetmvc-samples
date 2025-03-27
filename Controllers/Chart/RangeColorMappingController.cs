@@ -37,10 +37,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                   new RangeColorMappingData { x= "Nov", y= 15.5},
                   new RangeColorMappingData { x= "Dec", y= 9.9}
             };
-            ViewBag.dataSource = chartData;
-            ViewBag.color1 = color1;
-            ViewBag.color2 = color2;
-            ViewBag.color3 = color3;
+            ViewData["dataSource"] = chartData;
+            ViewData["color1"] = color1;
+            ViewData["color2"] = color2;
+            ViewData["color3"] = color3;
             return View();
         }
         public class RangeColorMappingData

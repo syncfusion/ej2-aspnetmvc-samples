@@ -15,9 +15,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult DataVirtualization()
         {
-            ViewBag.resources = this.GenerateResourceData(1, 1000);
+            ViewData["resources"] = this.GenerateResourceData(1, 1000);
             string[] resources = new string[] { "Resources" };
-            ViewBag.Resource = resources;
+            ViewData["Resource"] = resources;
             return View();
         }
     }

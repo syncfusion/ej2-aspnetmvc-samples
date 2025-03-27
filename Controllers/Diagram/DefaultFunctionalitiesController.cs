@@ -202,8 +202,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 TargetID = "node12",
                 Style = new DiagramStrokeStyle() { StrokeDashArray = "2,2" }
             });
-            ViewBag.nodes = nodes;
-            ViewBag.connectors = Connectors;
+            ViewData["nodes"] = nodes;
+            ViewData["connectors"] = Connectors;
 
             List<Syncfusion.EJ2.Diagrams.DiagramNode> flowShapes = new List<Syncfusion.EJ2.Diagrams.DiagramNode>();
             flowShapes.Add(new DiagramNode() { Id = "Terminator", Shape = new { type = "Flow", shape = "Terminator" } });
@@ -283,15 +283,15 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             Palette.Add(new SymbolPalettePalette() { Id = "flow", Expanded = true, Symbols = flowShapes, IconCss = "shapes", Title = "Flow Shapes" });
             Palette.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = SymbolPaletteConnectors, IconCss = "shapes", Title = "Connectors" });
 
-            ViewBag.Palette = Palette;
+            ViewData["Palette"] = Palette;
 
             double[] intervals = { 1, 9, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75 };
             DiagramGridlines grIdLines = new DiagramGridlines()
             { LineColor = "#e0e0e0", LineIntervals = intervals };
-            ViewBag.gridLines = grIdLines;
+            ViewData["gridLines"] = grIdLines;
 
             DiagramMargin margin = new DiagramMargin() { Left = 15, Right = 15, Bottom = 15, Top = 15 };
-            ViewBag.margin = margin;
+            ViewData["margin"] = margin;
             List<ToolbarItem> items = new List<ToolbarItem>();
             {
                 items.Add(new ToolbarItem { PrefixIcon = "e-icons e-circle-add", TooltipText = "New Diagram" });
@@ -329,28 +329,28 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 items.Add(new ToolbarItem { Type = ItemType.Separator });
                 items.Add(new ToolbarItem { Template = "#btnZoomIncrement", Type = ItemType.Input, CssClass = "tb-item-end tb-zoom-dropdown-btn" });
             }
-            ViewBag.tbItems = items;
+            ViewData["tbItems"] = items;
             List<MenuItems> exportItems = new List<MenuItems>();
             {
                 exportItems.Add(new MenuItems { Text = "JPG" });
                 exportItems.Add(new MenuItems { Text = "PNG" });
                 exportItems.Add(new MenuItems { Text = "SVG" });
             }
-            ViewBag.exportItems = exportItems;
+            ViewData["exportItems"] = exportItems;
             List<ContextMenuItem> conTypeItems = new List<ContextMenuItem>();
             {
                 conTypeItems.Add(new ContextMenuItem { Text = "Straight", IconCss = "e-icons e-line" });
                 conTypeItems.Add(new ContextMenuItem { Text = "Orthogonal",IconCss = "sf-icon-orthogonal" });
                 conTypeItems.Add(new ContextMenuItem { Text = "Bezier",IconCss = "sf-icon-bezier" });
             }
-            ViewBag.conTypeItems = conTypeItems;
+            ViewData["conTypeItems"] = conTypeItems;
             List<ContextMenuItem> shapesItems = new List<ContextMenuItem>();
             {
                 shapesItems.Add(new ContextMenuItem { Text = "Rectangle", IconCss = "e-rectangle e-icons" });
                 shapesItems.Add(new ContextMenuItem { Text = "Ellipse", IconCss = " e-circle e-icons" });
                 shapesItems.Add(new ContextMenuItem { Text = "Polygon", IconCss = "e-line e-icons" });
             }
-            ViewBag.shapesItems = shapesItems;
+            ViewData["shapesItems"] = shapesItems;
             List<ContextMenuItem> alignItems = new List<ContextMenuItem>();
             {
                 alignItems.Add(new ContextMenuItem { Text = "Align Left", IconCss = "sf-icon-align-left-1" });
@@ -360,13 +360,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 alignItems.Add(new ContextMenuItem { Text = "Align Middle", IconCss = "sf-icon-align-middle-1" });
                 alignItems.Add(new ContextMenuItem { Text = "Align Bottom", IconCss = "sf-icon-align-bottom-1" });
             }
-            ViewBag.alignItems = alignItems;
+            ViewData["alignItems"] = alignItems;
             List<ContextMenuItem> distributeItems = new List<ContextMenuItem>();
             {
                 distributeItems.Add(new ContextMenuItem { Text = "Distribute Objects Vertically", IconCss = "sf-icon-distribute-vertical" });
                 distributeItems.Add(new ContextMenuItem { Text = "Distribute Objects Horizontally", IconCss = "sf-icon-distribute-horizontal" });
             }
-            ViewBag.distributeItems = distributeItems;
+            ViewData["distributeItems"] = distributeItems;
 
             List<ContextMenuItem> orderItems = new List<ContextMenuItem>();
             {
@@ -375,28 +375,28 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 orderItems.Add(new ContextMenuItem { Text = "Send Backward", IconCss = "e-icons e-send-backward" });
                 orderItems.Add(new ContextMenuItem { Text = "Send To Back", IconCss = "e-icons e-send-to-back" });
             }
-            ViewBag.orderItems = orderItems;
+            ViewData["orderItems"] = orderItems;
 
             List<ContextMenuItem> groupItems = new List<ContextMenuItem>();
             {
                 groupItems.Add(new ContextMenuItem { Text = "Group", IconCss = "e-icons e-group-1" });
                 groupItems.Add(new ContextMenuItem { Text = "Ungroup", IconCss = "e-icons e-ungroup-1" });
             }
-            ViewBag.groupItems = groupItems;
+            ViewData["groupItems"] = groupItems;
 
             List<ContextMenuItem> rotateItems = new List<ContextMenuItem>();
             {
                 rotateItems.Add(new ContextMenuItem { Text = "Rotate Clockwise", IconCss = "e-icons e-transform-right" });
                 rotateItems.Add(new ContextMenuItem { Text = "Rotate Counter-Clockwise", IconCss = "e-icons e-transform-left" });
             }
-            ViewBag.rotateItems = rotateItems;
+            ViewData["rotateItems"] = rotateItems;
 
             List<ContextMenuItem> flipItems = new List<ContextMenuItem>();
             {
                 flipItems.Add(new ContextMenuItem { Text = "Flip Horizontal", IconCss = "e-icons e-flip-horizontal" });
                 flipItems.Add(new ContextMenuItem { Text = "Flip Vertical", IconCss = "e-icons e-flip-vertical" });
             }
-            ViewBag.flipItems = flipItems;
+            ViewData["flipItems"] = flipItems;
 
             List<ContextMenuItem> zoomMenuItems = new List<ContextMenuItem>();
             {
@@ -407,7 +407,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 zoomMenuItems.Add(new ContextMenuItem { Text = "Zoom to 100%" });
                 zoomMenuItems.Add(new ContextMenuItem { Text = "Zoom to 200%" });
             }
-            ViewBag.zoomMenuItems = zoomMenuItems;
+            ViewData["zoomMenuItems"] = zoomMenuItems;
 
             return View();
         }

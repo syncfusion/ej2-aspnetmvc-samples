@@ -4,9 +4,9 @@
         @Html.EJS().Chart("container").Series(series =>
 {
     series.Name("Wind Speed (km/h)").XName("X").YName("Wind").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).LegendShape(Syncfusion.EJ2.Charts.LegendShape.HorizontalLine)
-    .DataSource(ViewBag.WeatherReportsA).Width(4).Add();
+    .DataSource(ViewData["WeatherReportsA"]).Width(4).Add();
     series.Name("Wind Gust (km/h)").XName("X").YName("Gust").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).LegendShape(Syncfusion.EJ2.Charts.LegendShape.HorizontalLine)
-    .DataSource(ViewBag.WeatherReportsB).Width(4).Add();
+    .DataSource(ViewData["WeatherReportsB"]).Width(4).Add();
 }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTimeCategory).LabelFormat("E dd/MM").LabelRotation(-90)
     .MajorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0))
     ).PrimaryYAxis(py => py.Minimum(0).Maximum(30).Interval(10).Title("Wind Speed and Gust (km/h)")
@@ -21,7 +21,7 @@
         sl.Start("28").End("30").Text("Fresh Breeze").Color("rgba(0, 0, 0, 0)").Visible(true).Border(br => br.Width(0)).TextStyle(tx => tx.Size("13px")).HorizontalAlignment(Syncfusion.EJ2.Charts.Anchor.Start).Add();
     })
     .LineStyle(ls => ls.Width(0)).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
-    ).LegendSettings(lg => lg.Visible(true).EnableHighlight(true).ShapeHeight(12).ShapeWidth(15)).Tooltip(tt => tt.Enable(true).Header("").Format("<b>${point.x}</b> <br> ${series.name} : <b>${point.y}</b>").EnableMarker(false)
+    ).LegendSettings(lg => lg.Visible(true).EnableHighlight(true).ShapeHeight(12).ShapeWidth(15)).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true).Header("").Format("<b>${point.x}</b> <br> ${series.name} : <b>${point.y}</b>").EnableMarker(false)
     ).Title("Wind Speed and Gust (km/h)").SubTitle("WorldWeatherOnline.com").TitleStyle(tl => tl.Position(Syncfusion.EJ2.Charts.TitlePosition.Bottom).TextAlignment(Syncfusion.EJ2.Charts.Alignment.Far)).ChartArea(area => area.Border(br => br.Width(0))).Load("load").Render()
     </div>
 
@@ -32,10 +32,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'Rotate90' : 'None';
         };

@@ -7,7 +7,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="toolbar-menu-control">
-            @Html.EJS().Toolbar("shoppingtoolbar").Created("create").Items(ViewBag.items).Render()
+            @Html.EJS().Toolbar("shoppingtoolbar").Created("create").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["items"]).Render()
         </div>
     </div>
 }

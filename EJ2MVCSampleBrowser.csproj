@@ -78,36 +78,33 @@
       <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2">
-      <HintPath>packages\Syncfusion.EJ2.MVC5.28.2.3\lib\net462\Syncfusion.EJ2.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.MVC5.29.1.33\lib\net462\Syncfusion.EJ2.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.GridExport">
-      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.28.2.3\lib\net462\Syncfusion.EJ2.GridExport.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.29.1.33\lib\net462\Syncfusion.EJ2.GridExport.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base">
-      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.Pdf.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Syncfusion.HtmlConverter.Base">
-      <HintPath>packages\Syncfusion.HtmlToPdfConverter.IE.AspNet.Mvc5.28.2.3\lib\net45\Syncfusion.HtmlConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocIO.Base">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.DocIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.DocIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.DocumentEditor">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.PdfViewer">
-      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.EJ2.PdfViewer.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.EJ2.PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChartToImageConverter.WPF">
-      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PdfToImageConverter.Base">
-      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.PdfToImageConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.PdfToImageConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Base">
       <HintPath>packages\\lib\net462\Syncfusion.Compression.Base.dll</HintPath>
@@ -116,25 +113,25 @@
       <HintPath>packages\\lib\net462\Syncfusion.OfficeChart.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Presentation.Base">
-      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.Presentation.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.Presentation.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PresentationToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelChartToImageConverter.WPF">
-      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.WPF">
-      <HintPath>packages\\lib\net45\Syncfusion.SfChart.WPF.dll</HintPath>
+      <HintPath>packages\\lib\net462\Syncfusion.SfChart.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.Base">
-      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.28.2.3\lib\net462\Syncfusion.XlsIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.29.1.33\lib\net462\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.Spreadsheet">
-      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.28.2.3\lib\net462\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.29.1.33\lib\net462\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing">
       <SpecificVersion>False</SpecificVersion>
@@ -233,6 +230,7 @@
     <Compile Include="Controllers\Barcode\upceController.cs" />
     <Compile Include="Controllers\Carousel\PartialVisibleController.cs" />
     <Compile Include="Controllers\Carousel\IndicatorTypeController.cs" />
+    <Compile Include="Controllers\Chart\AnnotationController.cs" />
     <Compile Include="Controllers\Chart\AreaNegativeController.cs" />
     <Compile Include="Controllers\Chart\ChartCustomAnimationController.cs" />
     <Compile Include="Controllers\Chart\ChartPaginationController.cs" />
@@ -269,6 +267,7 @@
     <Compile Include="Controllers\AIAssistView\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\AIAssistView\DialogController.cs" />
     <Compile Include="Controllers\AIAssistView\ViewsController.cs" />
+    <Compile Include="Controllers\AIAssistView\StreamingController.cs" />
     <Compile Include="Controllers\AIAssistView\TemplateController.cs" />
     <Compile Include="Controllers\MultiColumnComboBox\KeyboardNavigationController.cs" />
     <Compile Include="Controllers\MultiColumnComboBox\TemplateController.cs" />
@@ -310,6 +309,7 @@
     <Compile Include="Controllers\DashboardLayout\SEOAnalyticsController.cs" />
     <Compile Include="Controllers\Diagram\VirtualizationController.cs" />
     <Compile Include="Controllers\Diagram\LineRoutingController.cs" />
+	<Compile Include="Controllers\Diagram\AvoidLineOverlapController.cs" />
     <Compile Include="Controllers\DocumentEditor\AutoSaveController.cs" />
     <Compile Include="Controllers\DocumentEditor\BindUItoDocumentController.cs" />
     <Compile Include="Controllers\DocumentEditor\AutoShapesController.cs" />
@@ -342,6 +342,7 @@
     <Compile Include="Controllers\GanttChart\EventMarkersController.cs" />
     <Compile Include="Controllers\GanttChart\EventsController.cs" />
     <Compile Include="Controllers\GanttChart\ExportingController.cs" />
+    <Compile Include="Controllers\GanttChart\AdvanceExportingController.cs" />
     <Compile Include="Controllers\GanttChart\FilteringController.cs" />
     <Compile Include="Controllers\GanttChart\GridLinesController.cs" />
     <Compile Include="Controllers\GanttChart\HeaderTemplateController.cs" />
@@ -377,6 +378,7 @@
     <Compile Include="Controllers\Carousel\KeyboardNavigationController.cs" />
     <Compile Include="Controllers\Carousel\TemplatesController.cs" />
     <Compile Include="Controllers\ChatUI\DefaultFunctionalitiesController.cs" />
+    <Compile Include="Controllers\ChatUI\LoadOnDemandController.cs" />
     <Compile Include="Controllers\ChatUI\TemplateController.cs" />
     <Compile Include="Controllers\ChatUI\APIController.cs" />
     <Compile Include="Controllers\ChatUI\ChatIntegrationController.cs" />
@@ -556,6 +558,7 @@
     <Compile Include="Controllers\Chart\RangeStepAreaController.cs" />
     <Compile Include="Controllers\Chart\CylindricalColumnController.cs" />
     <Compile Include="Controllers\Chart\SynchronizedController.cs" />
+	<Compile Include="Controllers\Chart\SeriesAnimationController.cs" />
     <Compile Include="Controllers\ThreeDimensionalChart\BackToBackController.cs" />
     <Compile Include="Controllers\ThreeDimensionalChart\BarController.cs" />
     <Compile Include="Controllers\ThreeDimensionalChart\ColumnController.cs" />
@@ -608,6 +611,7 @@
     <Compile Include="Controllers\ColorPicker\ApiController.cs" />
     <Compile Include="Controllers\Chips\DefaultController.cs" />
     <Compile Include="Controllers\Chips\ApiController.cs" />
+    <Compile Include="Controllers\Chips\DragAndDropController.cs" />
     <Compile Include="Controllers\ComboBox\CascadingController.cs" />
     <Compile Include="Controllers\ComboBox\CustomValueController.cs" />
     <Compile Include="Controllers\ComboBox\DataBindingController.cs" />
@@ -792,6 +796,8 @@
     <Compile Include="Controllers\Word\CompareDocumentsController.cs" />
     <Compile Include="Controllers\Word\CreateUsingLaTeXController.cs" />
     <Compile Include="Controllers\Word\EditUsingLaTeXController.cs" />
+    <Compile Include="Controllers\Word\CreateSmartArtController.cs" />
+    <Compile Include="Controllers\Word\EditSmartArtController.cs" />
     <Compile Include="Controllers\Word\WordToHTMLController.cs" />
     <Compile Include="Controllers\DocumentEditor\BulletsAndNumberingController.cs" />
     <Compile Include="Controllers\DocumentEditor\CharacterFormattingController.cs" />
@@ -1055,7 +1061,7 @@
     <Compile Include="Controllers\NumericTextBox\RangeValidationController.cs" />
     <Compile Include="Controllers\NumericTextBox\RestrictDecimalsController.cs" />
     <Compile Include="Controllers\PdfViewer\customToolbarController.cs" />
-    <Compile Include="Controllers\PdfViewer\customContextMenuController.cs" />
+    <Compile Include="Controllers\PdfViewer\contextMenuController.cs" />
     <Compile Include="Controllers\PdfViewer\DefaultController.cs" />
     <Compile Include="Controllers\PdfViewer\RightToLeftController.cs" />
     <Compile Include="Controllers\PdfViewer\FormFillingController.cs" />
@@ -1064,6 +1070,7 @@
     <Compile Include="Controllers\PdfViewer\HandwrittenSignatureController.cs" />
     <Compile Include="Controllers\PdfViewer\FormDesignerController.cs" />
     <Compile Include="Controllers\PdfViewer\AnnotationsController.cs" />
+    <Compile Include="Controllers\PdfViewer\ProgrammaticOperationsController.cs" />
     <Compile Include="Controllers\PdfViewer\InvisibleSignatureController.cs" />
     <Compile Include="Controllers\PdfViewer\OrganizePagesController.cs" />
     <Compile Include="Controllers\PdfViewer\ReadOnlyController.cs" />
@@ -1240,6 +1247,7 @@
     <Compile Include="Controllers\Schedule\EditorTemplateController.cs" />
     <Compile Include="Controllers\Schedule\EditorValidationController.cs" />
     <Compile Include="Controllers\Schedule\EventsController.cs" />
+	<Compile Include="Controllers\Schedule\EventCalendarController.cs" />
     <Compile Include="Controllers\Schedule\EventTemplateController.cs" />
     <Compile Include="Controllers\Schedule\ExcelExportController.cs" />
     <Compile Include="Controllers\Schedule\ExtendedViewsController.cs" />
@@ -1283,6 +1291,7 @@
     <Compile Include="Controllers\Schedule\DragScheduleToScheduleController.cs" />
     <Compile Include="Controllers\Schedule\GridToScheduleController.cs" />
     <Compile Include="Controllers\Schedule\YearController.cs" />
+    <Compile Include="Controllers\Schedule\OverlapEventsController.cs" />
     <Compile Include="Controllers\SpeedDial\StylesController.cs" />
     <Compile Include="Controllers\SpeedDial\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\SpeedDial\ModalController.cs" />
@@ -1582,10 +1591,14 @@
     <Compile Include="Controllers\ImageEditor\ProfilePictureController.cs" />
     <Compile Include="Controllers\ImageEditor\CustomToolbarController.cs" />
     <Compile Include="Controllers\ImageEditor\FileRestrictController.cs" />
+    <compile Include="Controllers\SpeechToText\DefaultFunctionalitiesController.cs" />
+    <compile Include="Controllers\SpeechToText\IntegrationController.cs" />
+    <Compile Include="Controllers\SpeechToText\UseCaseController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ViewsController.cs" />
+    <Compile Include="Models\ProgrammaticOperationsModel.cs" />
     <Compile Include="Models\BookDetails.cs" />
     <Compile Include="Models\BreadcrumbItemModel.cs" />
     <Compile Include="Models\BooksData.cs" />
@@ -1595,6 +1608,8 @@
     <Compile Include="Models\ColorsData.cs" />
     <Compile Include="Models\ConnectorDecoratorShape.cs" />
     <Compile Include="Models\Countries.cs" />
+    <Compile Include="Models\DateTimePickerFormData .cs" />
+    <Compile Include="Models\DatePickerFormData.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Data.cs" />
@@ -1629,6 +1644,7 @@
     <Compile Include="Models\InventorDetails.cs" />
     <Compile Include="Models\KanbanDataModels.cs" />
     <Compile Include="Models\LiveData.cs" />
+    <Compile Include="Models\StackedHeader.cs" />
     <Compile Include="Models\Mention.cs" />
     <Compile Include="Models\MentionIntegration.cs" />
     <Compile Include="Models\RibbonData.cs" />
@@ -1771,6 +1787,26 @@
     <Content Include="Content\ProgressBar\fluentdark-pause.svg" />
     <Content Include="Content\ProgressBar\fluentdark-Play.svg" />
     <Content Include="Content\ProgressBar\fluentdark-Tick.svg" />
+    <Content Include="Content\ProgressBar\fluent2dark-Download.svg" />
+    <Content Include="Content\ProgressBar\fluent2dark-pause.svg" />
+    <Content Include="Content\ProgressBar\fluent2dark-Play.svg" />
+    <Content Include="Content\ProgressBar\fluent2dark-Tick.svg" />
+    <Content Include="Content\ProgressBar\fluent2-Download.svg" />
+    <Content Include="Content\ProgressBar\fluent2-pause.svg" />
+    <Content Include="Content\ProgressBar\fluent2-Play.svg" />
+    <Content Include="Content\ProgressBar\fluent2-Tick.svg" />
+    <Content Include="Content\ProgressBar\fluent2highcontrast-Download.svg" />
+    <Content Include="Content\ProgressBar\fluent2highcontrast-pause.svg" />
+    <Content Include="Content\ProgressBar\fluent2highcontrast-Play.svg" />
+    <Content Include="Content\ProgressBar\fluent2highcontrast-Tick.svg" />
+    <Content Include="Content\ProgressBar\tailwind3dark-Download.svg" />
+    <Content Include="Content\ProgressBar\tailwind3dark-pause.svg" />
+    <Content Include="Content\ProgressBar\tailwind3dark-Play.svg" />
+    <Content Include="Content\ProgressBar\tailwind3dark-Tick.svg" />
+    <Content Include="Content\ProgressBar\tailwind3-Download.svg" />
+    <Content Include="Content\ProgressBar\tailwind3-pause.svg" />
+    <Content Include="Content\ProgressBar\tailwind3-Play.svg" />
+    <Content Include="Content\ProgressBar\tailwind3-Tick.svg" />
     <Content Include="Content\ProgressBar\highcontrast-Download.svg" />
     <Content Include="Content\ProgressBar\highcontrast-pause.svg" />
     <Content Include="Content\ProgressBar\highcontrast-Play.svg" />
@@ -1890,6 +1926,8 @@
     <Content Include="App_Data\Data\Word\xlsfeatures.txt" />
     <Content Include="App_Data\Data\Word\WordToHTML.docx" />
     <Content Include="App_Data\Data\Word\HTMLToWord.html" />
+    <Content Include="App_Data\Data\Word\CreateSmartArtInput.docx" />
+    <Content Include="App_Data\Data\Word\EditSmartArtInput.docx" />
     <Content Include="App_Data\Data\Northwind.mdb" />
     <Content Include="App_Data\Data\NorthwindIO.sdf" />
     <Content Include="App_Data\Data\NorthwindIO_3.5.sdf" />
@@ -1949,6 +1987,9 @@
     <Content Include="App_Data\Images\Word\Vennila.png" />
     <Content Include="App_Data\Images\Word\XlsIO.gif" />
     <Content Include="App_Data\Images\Word\yahoo.gif" />
+    <Content Include="App_Data\Images\Word\Andrew Fuller.png" />
+    <Content Include="App_Data\Images\Word\Janet Leverling.png" />
+    <Content Include="App_Data\Images\Word\Nancy Davolio.png" />
     <Content Include="App_Data\Africa.js" />
     <Content Include="App_Data\Africa_Continent.js" />
     <Content Include="App_Data\Australia.js" />
@@ -2800,6 +2841,15 @@
     <Content Include="Scripts\cldr-data\supplemental\currencyData.json" />
     <Content Include="Scripts\cldr-data\supplemental\numberingSystems.json" />
     <Content Include="Scripts\crossroads.js" />
+	<Content Include="Scripts\bullet-chart\theme-color.js" />
+	<Content Include="Scripts\CircularChart3D\theme-color.js" />
+	<Content Include="Scripts\Progressbar\theme-color.js" />
+	<Content Include="Scripts\range-navigator\theme-color.js" />
+	<Content Include="Scripts\SmithChart\theme-color.js" />
+	<Content Include="Scripts\Sparkline\theme-color.js" />
+	<Content Include="Scripts\StockChartData\theme-color.js" />
+	<Content Include="Scripts\three-dimensional-chart\theme-color.js" />
+	<Content Include="Scripts\chart\theme-color.js" />
     <Content Include="Scripts\data-service.js" />
     <Content Include="Scripts\datasource.js" />
     <Content Include="Scripts\documenteditor\default-properties.js" />
@@ -3246,6 +3296,8 @@
     <Content Include="Views\Word\CompareDocuments.cshtml" />
     <Content Include="Views\Word\CreateUsingLaTeX.cshtml" />
     <Content Include="Views\Word\EditUsingLaTeX.cshtml" />
+    <Content Include="Views\Word\CreateSmartArt.cshtml" />
+    <Content Include="Views\Word\EditSmartArt.cshtml" />
     <Content Include="Views\Word\WordToHTML.cshtml" />
     <Content Include="Views\DocumentEditor\BulletsAndNumbering.cshtml" />
     <Content Include="Views\DocumentEditor\CharacterFormatting.cshtml" />
@@ -3636,6 +3688,7 @@
     <Content Include="Views\Schedule\EditorTemplate.cshtml" />
     <Content Include="Views\Schedule\EditorValidation.cshtml" />
     <Content Include="Views\Schedule\Events.cshtml" />
+	<Content Include="Views\Schedule\EventCalendar.cshtml" />
     <Content Include="Views\Schedule\EventTemplate.cshtml" />
     <Content Include="Views\Schedule\ExtendedViews.cshtml" />
     <Content Include="Views\Schedule\ExternalDragDrop.cshtml" />
@@ -3892,6 +3945,7 @@
     <Content Include="Views\Grid\DetailTemplateExport.cshtml" />
     <Content Include="Views\Chips\Api.cshtml" />
     <Content Include="Views\Chips\Default.cshtml" />
+    <Content Include="Views\Chips\DragAndDrop.cshtml" />
     <Content Include="Views\Schedule\CalendarIntegration.cshtml" />
     <Content Include="Views\Schedule\BlockEvents.cshtml" />
     <Content Include="Views\Schedule\ContextMenu.cshtml" />
@@ -4064,7 +4118,9 @@
     <Content Include="Views\GanttChart\Zooming.cshtml" />
     <Content Include="Views\TreeGrid\DragAndDrop.cshtml" />
     <Content Include="Views\Diagram\LineRouting.cshtml" />
+	<Content Include="Views\Diagram\AvoidLineOverlap.cshtml" />
     <Content Include="Views\GanttChart\Exporting.cshtml" />
+    <Content Include="Views\GanttChart\AdvanceExporting.cshtml" />
     <Content Include="Views\Excel\CreateMacro.cshtml" />
     <Content Include="Views\Excel\EditMacro.cshtml" />
     <Content Include="Views\GanttChart\ColumnMenu.cshtml" />
@@ -4155,6 +4211,7 @@
     <Content Include="Views\PdfViewer\HandwrittenSignature.cshtml" />
     <Content Include="Views\PdfViewer\FormDesigner.cshtml" />
     <Content Include="Views\PdfViewer\Annotations.cshtml" />
+    <Content Include="Views\PdfViewer\ProgrammaticOperations.cshtml" />
     <Content Include="Views\PdfViewer\Redaction.cshtml" />
     <Content Include="Views\DropDownTree\CustomTemplate.cshtml" />
     <Content Include="Views\TreeGrid\FrozenAPI.cshtml" />
@@ -4169,6 +4226,7 @@
     <Content Include="Views\Carousel\API.cshtml" />
     <Content Include="Views\Carousel\KeyboardNavigation.cshtml" />
     <Content Include="Views\ChatUI\DefaultFunctionalities.cshtml" />
+    <Content Include="Views\ChatUI\LoadOnDemand.cshtml" />
     <Content Include="Views\ChatUI\Template.cshtml" />
     <Content Include="Views\ChatUI\API.cshtml" />
     <Content Include="Views\ChatUI\ChatIntegration.cshtml" />
@@ -4249,6 +4307,7 @@
     <Content Include="Views\AIAssistView\Dialog.cshtml" />
     <Content Include="Views\AIAssistView\Template.cshtml" />
     <Content Include="Views\AIAssistView\Views.cshtml" />
+    <Content Include="Views\AIAssistView\Streaming.cshtml" />
     <Content Include="Views\MultiColumnComboBox\DefaultFunctionalities.cshtml" />
     <Content Include="Views\MultiColumnComboBox\RemoteData.cshtml" />
     <Content Include="Views\MultiColumnComboBox\Grouping.cshtml" />
@@ -4265,10 +4324,16 @@
     <Content Include="Views\Chart\LiveChartDataSorting.cshtml" />
     <Content Include="Views\Chart\ChartPagination.cshtml" />
     <Content Include="Views\Chart\ChartCustomAnimation.cshtml" />
+	<Content Include="Views\Chart\SeriesAnimation.cshtml" />
     <Content Include="Views\Chart\RoundedCorner.cshtml" />
     <Content Include="Views\Grid\FilterBarTemplate.cshtml" />
     <Content Include="Views\Chart\ColumnDrilldown.cshtml" />
     <Content Include="Views\Schedule\Clipboard.cshtml" />
+    <Content Include="Views\Schedule\OverlapEvents.cshtml" />
+    <Content Include="Views\Chart\Annotation.cshtml" />
+    <Content Include="Views\SpeechToText\DefaultFunctionalities.cshtml" />
+    <Content Include="Views\SpeechToText\Integration.cshtml" />
+    <Content Include="Views\SpeechToText\UseCase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\MapData\Africa_continent.json" />

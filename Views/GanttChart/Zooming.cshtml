@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Zooming";
+    ViewData["Title"] = "Zooming";
 }
 
 @section ControlsSection{
 <div class="control-section">
 
-    @(Html.EJS().Gantt("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px")
+    @(Html.EJS().Gantt("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px")
                     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                     .Dependency("Predecessor").Child("SubTasks")).TreeColumnIndex(1)
                     .Columns(col =>

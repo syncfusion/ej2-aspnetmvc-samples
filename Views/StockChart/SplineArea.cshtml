@@ -253,6 +253,7 @@
         </defs>
     </svg>
     @*custom code end*@
+    <script src="~/Scripts/StockChartData/theme-color.js"></script>
     <script>
         var data = window.googl;
         var themes = ['bootstrap5', 'bootstrap5dark', 'tailwind', 'tailwinddark', 'material', 'materialdark', 'bootstrap4', 'bootstrap', 'bootstrapdark', 'fabric', 'fabricdark', 'highcontrast', 'fluent', 'fluentdark', 'material3', 'material3dark', 'fluent2', 'fluent2highcontrast', 'fluent2dark', 'tailwind3', 'tailwind3dark'];
@@ -260,10 +261,9 @@
         var load = function (args) {
             args.stockChart.seriesType = [];
             args.stockChart.indicatorType = [];
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            var selectedTheme = loadStockChartTheme(args);
             args.stockChart.series[0].fill = 'url(#' + selectedTheme + '-gradient-chart)';
-            args.stockChart.series[0].border = { width: 2, color: borderColor[themes.indexOf(args.stockChart.theme.toLowerCase())] };
+            args.stockChart.series[0].border = { width: 2, color: window.borderColor[window.themes.indexOf(args.stockChart.theme.toLowerCase())] };
             args.stockChart.crosshair.lineType = 'Both';
         }
     </script>

@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Timeline
             customData.Add(new TimelineItem { Content = "Shipped \n 12:20 PM, January 4, 2024", DotCss = "state-success", CssClass = "completed" });
             customData.Add(new TimelineItem { Content = "Out for delivery \n 07:00 AM, January 8, 2024", DotCss = "state-progress", CssClass = "intermediate" });
             customData.Add(new TimelineItem { Content = "Delivered \n Estimated delivery by 09:20 AM" });
-            ViewBag.CustomData = customData;
+            ViewData["CustomData"] = customData;
 
             return View();
         }

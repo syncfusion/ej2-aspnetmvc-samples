@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tooltip
         public ActionResult Api()
         {
             string[] ddlData = new String[] { "Hover", "Click", "Auto" };
-            ViewBag.ddlData = ddlData;
+            ViewData["ddlData"] = ddlData;
             return View();
         }
     }

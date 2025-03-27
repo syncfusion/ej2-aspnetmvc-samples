@@ -1,15 +1,15 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 
 @section ControlsSection{
     <div class="control-section" align="center">
         @Html.EJS().CircularGauge("container").Height("400px").AllowMargin(false).Load("gaugeLoad").Title("Customer Satisfaction Score").TitleStyle(Ts => Ts.Size("18px").FontFamily("inherit").FontWeight("inherit")).CenterY("75%").LegendSettings(Ls => Ls.Position(LegendPosition.Bottom).Width("55%").Visible(true).TextStyle(Ts => Ts.Size("12px").FontFamily("inherit"))).Tooltip(Tip => Tip.Enable(true).Template("<div style='font-size:18px; background: white; font-weight:500;width:180px;color:#595959;border:1px solid #e8e8e8'>Current Score: 7.5 </div>")).Axes(axes => axes
-       .Radius("100%").StartAngle(270).EndAngle(90).Minimum(0).Maximum(10).LabelStyle(ls => ls.Position(Position.Outside).Font(ViewBag.labelFont).Offset(-16))
+       .Radius("100%").StartAngle(270).EndAngle(90).Minimum(0).Maximum(10).LabelStyle(ls => ls.Position(Position.Outside).Font((CircularGaugeFont)ViewData["labelFont"]).Offset(-16))
        .LineStyle(lin => lin.Width(0))
        .MinorTicks(mi => mi.Height(0.0).Color("Transparent")).MajorTicks(mj => mj.Width(1.5).Height(12).Interval(2).Offset(16))
-       .Pointers(ViewBag.Pointers)
-       .Annotations(ViewBag.Annotations)
-       .Ranges(ViewBag.Ranges).Add()).Render()
+       .Pointers((List<CircularGaugePointer>)ViewData["Pointers"])
+       .Annotations((List<CircularGaugeAnnotation>)ViewData["Annotations"])
+       .Ranges((List<CircularGaugeRange>)ViewData["Ranges"]).Add()).Render()
     </div>
     <script type="text/javascript">
         function gaugeLoad(sender) {

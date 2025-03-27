@@ -1,8 +1,8 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="e-sample-resize-container">
-            @Html.EJS().Toolbar("rtlToolbar").EnableRtl(true).Items(ViewBag.rtlItems).Created("toolbarCreated").Render()
+            @Html.EJS().Toolbar("rtlToolbar").EnableRtl(true).Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["rtlItems"]).Created("toolbarCreated").Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">
@@ -14,7 +14,7 @@
                     </td>
                     <td style="width: 70%;padding-right: 10px">
                         <div>
-                            @Html.EJS().DropDownList("drop").Width("100%").DataSource(ViewBag.overflowData).Value("Scrollable").Change("changeOverFlowMode").Render()
+                            @Html.EJS().DropDownList("drop").Width("100%").DataSource(ViewData["overflowData"]).Value("Scrollable").Change("changeOverFlowMode").Render()
                         </div>
                     </td>
                 </tr>

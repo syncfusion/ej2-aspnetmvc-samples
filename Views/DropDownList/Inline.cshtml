@@ -10,7 +10,7 @@
                     React top expert of this week is
 
                     @Html.EJS().DropDownList("inline").Placeholder("Select an employee").PopupWidth("140px").CssClass("inlinecss").PopupHeight("200px").Width("65px").Value("Michael").DataSource(
-                             (IEnumerable<InlineEmployees>)ViewBag.data).Fields(new DropDownListFieldSettings { Text = "Name" }).Render()
+                             (IEnumerable<InlineEmployees>)ViewData["data"]).Fields(new DropDownListFieldSettings { Text = "Name" }).Render()
                 </span>
             </div>
         </div>

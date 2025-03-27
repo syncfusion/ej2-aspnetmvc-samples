@@ -84,10 +84,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             connectors.Add(new DiagramConnector() { Id = "connector4", SourceID = "node6", TargetID = "node3", SourcePortID = "port4", TargetPortID = "portOut" });
             connectors.Add(new DiagramConnector() { Id = "connector5", SourceID = "node6", TargetID = "node4", SourcePortID = "port5", TargetPortID = "portOut" });
             connectors.Add(new DiagramConnector() { Id = "connector6", SourceID = "node6", TargetID = "node5", SourcePortID = "port6", TargetPortID = "portOut" });
-            ViewBag.nodes = nodes;
-            ViewBag.connectors = connectors;
+            ViewData["nodes"] = nodes;
+            ViewData["connectors"] = connectors;
             Models.ConnectorDecoratorShape dropDownModel = new Models.ConnectorDecoratorShape();
-            ViewBag.shapes = dropDownModel.decoratorShape();
+            ViewData["shapes"] = dropDownModel.decoratorShape();
             return View();
         }
     }

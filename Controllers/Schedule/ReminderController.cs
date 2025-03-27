@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult Reminder()
         {
-            ViewBag.appointments = new ScheduleData().GetReminderEventsData();
+            ViewData["appointments"] = new ScheduleData().GetReminderEventsData();
             return View();
         }
     }

@@ -32,7 +32,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new InversedLineChartData { Month = 2014, LDN_Temperature = 8, FR_Temperature = 17 },
                 new InversedLineChartData { Month = 2015, LDN_Temperature = 8, FR_Temperature = 5 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
 

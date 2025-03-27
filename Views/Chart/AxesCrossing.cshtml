@@ -3,7 +3,7 @@
 
     <div class="col-lg-8 control-section">
         
- @(Html.EJS().Chart("container-vertical")//.ChartArea(ca => ca.Border(ViewBag.border))
+ @(Html.EJS().Chart("container-vertical")//.ChartArea(ca => ca.Border(ViewData["border"]))
         .Series(sr =>
         {
             sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line)
@@ -12,14 +12,14 @@
               .Fill("Blue")
               .Name("Line Interpolation").Opacity(1)
               .EnableTooltip(false)
-              .Width(2).DataSource(ViewBag.LinePoints).Add();
+              .Width(2).DataSource(ViewData["LinePoints"]).Add();
             sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
               .XName("XValue")
               .YName("YValue")
               .Fill("Green")
               .Name("Cubic Spline Interpolation").Opacity(1)
               .EnableTooltip(false)
-              .Width(2).DataSource(ViewBag.SplinePoints).Add();
+              .Width(2).DataSource(ViewData["SplinePoints"]).Add();
             sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
               .XName("XValue")
               .YName("YValue")
@@ -27,7 +27,7 @@
               .Name("Data points").Opacity(1)
                 .EnableTooltip(true)
               .Marker(mr=>mr.Visible(true).Width(7).Height(7))
-              .Width(2).DataSource(ViewBag.ScatterPoints).Add();
+              .Width(2).DataSource(ViewData["ScatterPoints"]).Add();
         })
           .PrimaryXAxis(xaxis =>
              xaxis.Minimum(-8).Maximum(8).Interval(2)
@@ -63,7 +63,7 @@
                     </td>
                     <td>
                         <div>
-                            @Html.EJS().DropDownList("selectAxis").Index(0).DataSource(ViewBag.data).Value("X").Change("valueChange").Render()
+                            @Html.EJS().DropDownList("selectAxis").Index(0).DataSource(ViewData["data"]).Value("X").Change("valueChange").Render()
                         </div>
                     </td>
                 </tr>
@@ -103,10 +103,10 @@
     }
 </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
         };       
         
         document.getElementById('axisElements').onchange = function (e) {

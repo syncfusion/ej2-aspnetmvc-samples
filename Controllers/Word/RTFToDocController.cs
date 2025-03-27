@@ -54,12 +54,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
                 }
                 else
                 {
-                    ViewBag.Message = string.Format("Please choose RTF document to convert to Word document");
+                    ViewData["Message"] = string.Format("Please choose RTF document to convert to Word document");
                 }
             }
             else
             {
-                ViewBag.Message = string.Format("Browse a RTF document and then click the button to convert as a Word document");
+                ViewData["Message"] = string.Format("Browse a RTF document and then click the button to convert as a Word document");
             }
 
             return View();

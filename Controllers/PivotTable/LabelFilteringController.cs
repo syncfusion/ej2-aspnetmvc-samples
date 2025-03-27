@@ -21,9 +21,9 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult LabelFiltering()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.filterFields = new string[] { "Country", "Products", "Year" };
-            ViewBag.filterOperators = new string[] { "Equals", "DoesNotEquals", "BeginWith", "DoesNotBeginWith", "EndsWith",
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["filterFields"] = new string[] { "Country", "Products", "Year" };
+            ViewData["filterOperators"] = new string[] { "Equals", "DoesNotEquals", "BeginWith", "DoesNotBeginWith", "EndsWith",
                 "DoesNotEndsWith", "Contains", "DoesNotContains", "GreaterThan",
                 "GreaterThanOrEqualTo", "LessThan", "LessThanOrEqualTo", "Between", "NotBetween" };
             return View();

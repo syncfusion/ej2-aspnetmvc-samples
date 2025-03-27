@@ -67,17 +67,17 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 close = new Open() { effect = "FadeZoomOut", delay = 0 },
             };
 
-            ViewBag.content = "Tooltip";
-            ViewBag.position = Position.TopLeft;
-            ViewBag.animation = tooltipAnimation;
-            ViewBag.modeValue = modeValue;
-            ViewBag.positionValue = positionValue;
-            ViewBag.contentValue = contentValue;
-            ViewBag.effectValue = effectValue;
-            ViewBag.nodes = GetToolTipNodes();
-            ViewBag.connectors = GetToolConnectors();
-            ViewBag.getNodeDefaults = "getNodeDefaults";
-            ViewBag.getConnectorDefaults = "getConnectorDefaults";
+            ViewData["content"] = "Tooltip";
+            ViewData["position"] = Position.TopLeft;
+            ViewData["animation"] = tooltipAnimation;
+            ViewData["modeValue"] = modeValue;
+            ViewData["positionValue"] = positionValue;
+            ViewData["contentValue"] = contentValue;
+            ViewData["effectValue"] = effectValue;
+            ViewData["nodes"] = GetToolTipNodes();
+            ViewData["connectors"] = GetToolConnectors();
+            ViewData["getNodeDefaults"] = "getNodeDefaults";
+            ViewData["getConnectorDefaults"] = "getConnectorDefaults";
             return View();
         }
         private List<DiagramNode> GetToolTipNodes()

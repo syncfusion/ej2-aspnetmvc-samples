@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Stepper
             stepperWithText.Add(new Step { IconCss = "sf-icon-survey-intro", Text = "Survey Introduction" });
             stepperWithText.Add(new Step { IconCss = "sf-icon-survey-feedback", Text = "Feedback" });
             stepperWithText.Add(new Step { IconCss = "sf-icon-survey-status", Text = "Status" });
-            ViewBag.StepperWithText = stepperWithText;
+            ViewData["StepperWithText"] = stepperWithText;
             return View();
         }
     }

@@ -40,8 +40,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new PolarScatterData { TooltipMappingName= "France", Country = "France", GDP_2013 = 1.3, GDP_2014 = 1.3, GDP_2015 = 1.4 },
                 new PolarScatterData { TooltipMappingName= "Austria", Country = "Austria", GDP_2013 = 1.0, GDP_2014 = 1.5, GDP_2015 = 1.4 }
             };
-            ViewBag.Chartpoints = Chartpoints;
-            ViewBag.data = new string[] {"Polar", "Radar" };
+            ViewData["Chartpoints"] = Chartpoints;
+            ViewData["data"] = new string[] {"Polar", "Radar" };
             return View();
         }
         public class PolarScatterData

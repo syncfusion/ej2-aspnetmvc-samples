@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult DefaultAggregate()
         {
             var treeData = TreeDataFormat.GetDataFormat();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
             return View();
         }
     }

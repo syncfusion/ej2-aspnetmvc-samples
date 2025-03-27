@@ -6,13 +6,13 @@
         <div class='col-lg-6' style='padding-top:15px'>
             <div class='content'>
                 <h4> Hierarchical Data</h4>
-                @Html.EJS().DropDownTree("ddtlocal").Placeholder("Select a item").PopupHeight("200px").Fields(ViewBag.hierarchicalFields).Render()
+                @Html.EJS().DropDownTree("ddtlocal").Placeholder("Select a item").PopupHeight("200px").Fields((DropDownTreeFields)ViewData["hierarchicalFields"]).Render()
             </div>
         </div>
         <div class='col-lg-6' style='padding-top:15px'>
             <div class='content'>
                 <h4>List Data</h4>
-                @Html.EJS().DropDownTree("ddtlist").Placeholder("Select a item").PopupHeight("200px").Fields(ViewBag.localFields).Render()
+                @Html.EJS().DropDownTree("ddtlist").Placeholder("Select a item").PopupHeight("200px").Fields((DropDownTreeFields)ViewData["localFields"]).Render()
             </div>
         </div>
     </div>

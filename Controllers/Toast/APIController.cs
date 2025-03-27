@@ -21,11 +21,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Toast
             List<object> easingData = new List<object>();
             easingData.Add(new { Id = "ease", Value = "Ease" });
             easingData.Add(new { Id = "linear", Value = "Linear" });
-            ViewBag.EasingData = easingData;
+            ViewData["EasingData"] = easingData;
             List<object> directionData = new List<object>();
             directionData.Add(new { Id = "Rtl", Value = "Right to Left" });
             directionData.Add(new { Id = "Ltr", Value = "Left to Right" });
-            ViewBag.directionData = directionData;
+            ViewData["directionData"] = directionData;
             List<object> animationData = new List<object>();
             animationData.Add(new { Id = "SlideBottomIn", Value = "Slide Bottom In" });
             animationData.Add(new { Id = "FadeIn", Value = "Fade In" });
@@ -48,7 +48,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Toast
             animationData.Add(new { Id = "SlideTopOut", Value = "Slide Top Out" });
             animationData.Add(new { Id = "ZoomIn", Value = "Zoom In" });
             animationData.Add(new { Id = "ZoomOut", Value = "Zoom Out" });
-            ViewBag.AnimationData = animationData;
+            ViewData["AnimationData"] = animationData;
             return View();
         }
     }

@@ -27,9 +27,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             categories.Add(new QuickInfoDataSourceModel { Name = "Rainbow", Id = 8, Capacity = 8, Color = "#1aaa55", Type = "Cabin" });
             categories.Add(new QuickInfoDataSourceModel { Name = "Swarm", Id = 9, Capacity = 30, Color = "#df5286", Type = "Conference" });
             categories.Add(new QuickInfoDataSourceModel { Name = "Photogenic", Id = 10, Capacity = 25, Color = "#710193", Type = "Conference" });
-            ViewBag.Categories = categories;
+            ViewData["Categories"] = categories;
 
-            ViewBag.datasource = new ScheduleData().GetQuickInfoTemplateData();
+            ViewData["datasource"] = new ScheduleData().GetQuickInfoTemplateData();
             return View();
         }
     }

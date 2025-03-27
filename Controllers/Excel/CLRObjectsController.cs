@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
         }
         public  ActionResult CLRObjects(string Saveoption, string button)
         {
-            ViewBag.exportButtonState = "disabled=\"disabled\"";
+            ViewData["exportButtonState"] = "disabled=\"disabled\"";
             //Check FileName
             string fileName = "ExportSales.xlsx";
 
@@ -70,8 +70,8 @@ namespace EJ2MVCSampleBrowser.Controllers.XlsIO
                 }
                 //Set the grid value to the Session
                 _sales = CLRObjects;
-                ViewBag.DataSource = _sales;
-                ViewBag.exportButtonState = "";
+                ViewData["DataSource"] = _sales;
+                ViewData["exportButtonState"] = "";
                 button = null;
                 return View();
                 //return new CustomResult(HttpContext.ApplicationInstance.Response);

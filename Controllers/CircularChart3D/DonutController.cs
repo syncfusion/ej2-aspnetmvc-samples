@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularChart3D
                 new DonutCircularData { X = "Neta",    Y = 22449 },
                 new DonutCircularData { X = "BMW",     Y = 18733 }
             };
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class DonutCircularData

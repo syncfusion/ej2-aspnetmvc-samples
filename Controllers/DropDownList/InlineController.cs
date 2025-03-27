@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Inline()
         {
-            ViewBag.data = new InlineEmployees().EmployeesList();
+            ViewData["data"] = new InlineEmployees().EmployeesList();
             return View();
         }
     }

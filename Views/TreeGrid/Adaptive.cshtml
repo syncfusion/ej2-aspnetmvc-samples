@@ -3,7 +3,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "Adaptive";
+    ViewData["Title"] = "Adaptive";
 }
 
 @*custom code end*@
@@ -14,7 +14,7 @@
             <div class="control-section e-bigger e-adaptive-demo">
                 <div class="e-mobile-layout">
                     <div class="e-mobile-content">
-                        @Html.EJS().TreeGrid("adaptivebrowser").DataSource((IEnumerable<object>)ViewBag.datasource).TreeColumnIndex(1).Height("100%").EnableAdaptiveUI(true).AllowPaging(true).AllowFiltering(true).ChildMapping("Children").AllowSorting(true).Columns(col =>
+                        @Html.EJS().TreeGrid("adaptivebrowser").DataSource((IEnumerable<object>)ViewData["datasource"]).TreeColumnIndex(1).Height("100%").EnableAdaptiveUI(true).AllowPaging(true).AllowFiltering(true).ChildMapping("Children").AllowSorting(true).Columns(col =>
                        {
                            col.Field("TaskId").HeaderText("Task ID").Width(135).IsPrimaryKey(true).TextAlign(TextAlign.Right).ValidationRules(new { required = true, number = true }).Add();
                            col.Field("TaskName").HeaderText("Task Name").Width(280).ValidationRules(new { required = true }).Add();
@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="e-desktop-layout">
-                    @Html.EJS().TreeGrid("adaptivedevice").DataSource((IEnumerable<object>)ViewBag.datasource).TreeColumnIndex(1).Height("100%").EnableAdaptiveUI(true).AllowPaging(true).AllowFiltering(true).ChildMapping("Children").AllowSorting(true).Columns(col =>
+                    @Html.EJS().TreeGrid("adaptivedevice").DataSource((IEnumerable<object>)ViewData["datasource"]).TreeColumnIndex(1).Height("100%").EnableAdaptiveUI(true).AllowPaging(true).AllowFiltering(true).ChildMapping("Children").AllowSorting(true).Columns(col =>
                    {
                            col.Field("TaskId").HeaderText("Task ID").Width(135).IsPrimaryKey(true).TextAlign(TextAlign.Right).ValidationRules(new { required = true, number = true }).Add();
                            col.Field("TaskName").HeaderText("Task Name").Width(280).ValidationRules(new { required = true }).Add();
@@ -142,7 +142,9 @@
             box-shadow: -1px 2px white, -2px -2px white, 2px -2px white, 2px 1px white;
         }
 
-        .e-bigger .e-tooltip-wrap .e-tip-content, .e-tooltip-wrap.e-griderror .e-arrow-tip-inner.e-tip-top {
+        .e-bigger .e-tooltip-wrap .e-tip-content, .e-tooltip-wrap.e-grid
+        
+        .e-arrow-tip-inner.e-tip-top {
             background-color: #fee2e2;
         }
 

@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         // GET: LiveData
         public ActionResult LiveData()
         {
-            ViewBag.Data = EJ2MVCSampleBrowser.Models.LiveData.GetLiveDatas(100);
+            ViewData["Data"] = EJ2MVCSampleBrowser.Models.LiveData.GetLiveDatas(100);
             return View();
         }
     }

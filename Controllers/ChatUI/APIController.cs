@@ -35,10 +35,10 @@ namespace EJ2MVCSampleBrowser.Controllers.ChatUI
                 new { text = "Laura", value = "Laura" },
                 new { text = "Charlie", value = "Charlie" }
             };
-            ViewBag.CommunityMessagedata = CommunityMessagedata;
-            ViewBag.TimeStampFormatOptions = TimeStampFormatOptions;
-            ViewBag.TypingUserOptions = TypingUserOptions;
-            ViewBag.DDBListValue = DDBListValue;
+            ViewData["CommunityMessagedata"] = CommunityMessagedata;
+            ViewData["TimeStampFormatOptions"] = TimeStampFormatOptions;
+            ViewData["TypingUserOptions"] = TypingUserOptions;
+            ViewData["DDBListValue"] = DDBListValue;
             return View();
         }
     }

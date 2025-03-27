@@ -25,7 +25,7 @@ namespace EJ2CoreSampleBrowser.Controllers.Barcode
             encoding.Add(new ExpandOptionsdatamatrix() { text = "ASCIINumeric", value = "ASCIINumeric" });
             encoding.Add(new ExpandOptionsdatamatrix() { text = "Base256", value = "Base256" });
 
-            ViewBag.encoding = encoding;
+            ViewData["encoding"] = encoding;
 
 
             List<ExpandOptionsdatamatrix> size = new List<ExpandOptionsdatamatrix>();
@@ -61,7 +61,7 @@ namespace EJ2CoreSampleBrowser.Controllers.Barcode
             size.Add(new ExpandOptionsdatamatrix() { text = "Size16x36", value = "29" });
             size.Add(new ExpandOptionsdatamatrix() { text = "Size16x48", value = "30" });
 
-            ViewBag.size = size;
+            ViewData["size"] = size;
 
 
 

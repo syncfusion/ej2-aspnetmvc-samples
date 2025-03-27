@@ -19,8 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         // GET: StackedHeader
         public ActionResult StackedHeader()
         {
-            var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
+            ViewData["StackedHeaderData"] = EJ2MVCSampleBrowser.Models.StackedHeader.GetStackedHeaders(830);
             return View();
         }
     }

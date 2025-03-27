@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
     {
         public ActionResult MultipleAxes()
         {
-            ViewBag.axis = new string[] { "Axis 1", "Axis 2" };
-            ViewBag.axisDirection = new string[] { "Clockwise", "Anti-clockwise" };
+            ViewData["axis"] = new string[] { "Axis 1", "Axis 2" };
+            ViewData["axisDirection"] = new string[] { "Clockwise", "Anti-clockwise" };
             return View();
         }
     }

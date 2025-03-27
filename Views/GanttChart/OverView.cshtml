@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.DropDowns
 @{
-    ViewBag.Title = "OverView";
+    ViewData["Title"] = "OverView";
 }
 
 @section ControlsSection{
@@ -17,7 +17,7 @@
     }
     <div id="ToolbarTemplate">
         <div>
-            @(Html.EJS().DropDownList("Drop").DataSource((IEnumerable<object>)ViewBag.Data)
+            @(Html.EJS().DropDownList("Drop").DataSource((IEnumerable<object>)ViewData["Data"])
                 .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Placeholder("View").Width("99px").Change("Change")
                 .Render()
             )
@@ -26,11 +26,11 @@
 
     <div class="control-section">
         <div class="content-wrapper">
-            @(Html.EJS().Gantt("OverView").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("500px").AllowFiltering(true).HighlightWeekends(true).AllowSelection(true).AllowResizing(true).TreeColumnIndex(1)
+            @(Html.EJS().Gantt("OverView").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("500px").AllowFiltering(true).HighlightWeekends(true).AllowSelection(true).AllowResizing(true).TreeColumnIndex(1)
                 .DateFormat("MMM dd, y").Toolbar(toolbarItems).Load("load").AllowSorting(true).ShowColumnMenu(true)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("TimeLog").Progress("Progress")
                 .Dependency("Predecessor").ParentID("ParentID").ResourceInfo("Assignee"))
-                .Resources((IEnumerable<object>)ViewBag.Resources)
+                .Resources((IEnumerable<object>)ViewData["Resources"])
                 .ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName").Unit("ResourceUnit"))
                 .TaskbarHeight(24).RowHeight(36)
                 .Columns(col =>

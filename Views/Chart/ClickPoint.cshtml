@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
         @Html.EJS().Chart("AddPoint").Series(series =>
@@ -8,7 +8,7 @@
                  .YName("Y")
                  .Width(3)
                  .Marker(marker => marker.Visible(true).Width(13).Height(13).IsFilled(true))
-                 .DataSource(ViewBag.ChartPoints)
+                 .DataSource(ViewData["ChartPoints"])
                  .Add();
         }).PrimaryXAxis(px => px.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.Additional).MajorGridLines(mg => mg.Width(0))
         ).PrimaryYAxis(py => py.Title("Value").Interval(20).LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0))
@@ -22,13 +22,12 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var chart;
         function load(args) {
             chart = args.chart;
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5'));
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "70%";
             args.chart.series[0].marker.border.width = 2;
             args.chart.series[0].marker.border.color = "white";

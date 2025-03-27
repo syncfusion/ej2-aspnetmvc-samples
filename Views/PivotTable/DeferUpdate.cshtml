@@ -10,14 +10,14 @@
     <div class="content-wrapper">
         @Html.EJS().PivotView("pivotview").Width("99%").Height("620").EnginePopulated("onGridEnginePopulate").GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).AllowDeferLayoutUpdate(true).Locale("en").Render()
 
-        @Html.EJS().PivotFieldList("pivotfieldlist").RenderMode(Mode.Fixed).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
+        @Html.EJS().PivotFieldList("pivotfieldlist").RenderMode(Mode.Fixed).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(false).EnableSorting(true)
            .DrilledMembers(drilledmembers =>
            {
-               drilledmembers.Name("Country").Items(ViewBag.drilledMembers).Add();
+               drilledmembers.Name("Country").Items((string[])ViewData["drilledMembers"]).Add();
            })
            .FilterSettings(filterSettings =>
            {
-               filterSettings.Name("Products").Items(ViewBag.filterMembers).Type(FilterType.Include).Add();
+               filterSettings.Name("Products").Items((string[])ViewData["filterMembers"]).Type(FilterType.Include).Add();
            })
            .FormatSettings(formatsettings => { formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add(); })
            .Rows(rows => { rows.Name("Country").Add(); rows.Name("Products").Add(); })

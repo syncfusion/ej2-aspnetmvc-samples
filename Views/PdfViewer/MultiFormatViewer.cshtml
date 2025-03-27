@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "MultiFormatViewer";
+    ViewData["Title"] = "MultiFormatViewer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
@@ -46,9 +46,7 @@
                 <div class="e-message render-mode-info">
                     <span class="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
                 </div>
-                <div>
-                    @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
-                </div>
+                @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
             </div>
             @Html.EJS().PdfViewer("pdfviewer").ZoomMode(Syncfusion.EJ2.PdfViewer.ZoomMode.FitToPage).DocumentLoad("documentLoaded").AjaxRequestSuccess("ajaxRequestSuccess").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").ToolbarSettings(new Syncfusion.EJ2.PdfViewer.PdfViewerToolbarSettings { ShowTooltip = true, ToolbarItems = "DownloadOption UndoRedoTool PageNavigationTool MagnificationTool PanTool SelectionTool CommentTool SubmitForm SearchOption AnnotationEditTool FormDesignerEditTool PrintOption" }).Render()
         </div>
@@ -312,6 +310,7 @@
     .flex-container {
         display: flex;
         justify-content: flex-end;
+        align-items: center;
     }
 
     .render-mode-info {
@@ -332,10 +331,11 @@
         letter-spacing: 0.24px;
         text-align: right;
         font-size: 14px;
+        margin-bottom: 3px;
     }
 
     .render-mode-info .render-mode-info-icon::before {
-        line-height: 0.5rem;
+        line-height: normal;
     }
 
     .buttonSwitch {

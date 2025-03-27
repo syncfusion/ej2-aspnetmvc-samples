@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: SymmetricalLayout
         public ActionResult SymmetricalLayout()
         {
-            ViewBag.Nodes = SymmetricalDetails.GetAllRecords();
+            ViewData["Nodes"] = SymmetricalDetails.GetAllRecords();
             return View();
         }
     }

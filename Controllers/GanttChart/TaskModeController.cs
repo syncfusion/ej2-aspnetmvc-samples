@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Baseline
         public ActionResult TaskMode()
         {
-            ViewBag.DataSource = GanttData.TaskModeData();
-            ViewBag.Resources = GanttData.EditingResources();
+            ViewData["DataSource"] = GanttData.TaskModeData();
+            ViewData["Resources"] = GanttData.EditingResources();
             return View();
         }
     }

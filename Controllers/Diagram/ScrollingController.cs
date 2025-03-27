@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             basicShapes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "Decagon", Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Decagon } });
             basicShapes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "RightTriangle", Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.RightTriangle } });
             basicShapes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "Parallelogram", Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Parallelogram } });
-            ViewBag.BasicShapes = basicShapes;
+            ViewData["BasicShapes"] = basicShapes;
 
             List<Syncfusion.EJ2.Diagrams.DiagramNode> flowShapes = new List<Syncfusion.EJ2.Diagrams.DiagramNode>();
             flowShapes.Add(new DiagramNode() { Id = "Terminator", Shape = new { type = "Flow", shape = "Terminator" } });
@@ -113,9 +113,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             palettes.Add(new SymbolPalettePalette() { Id = "basic", Expanded = true, Symbols = basicShapes, IconCss = "shapes", Title = "Basic Shapes" });
             palettes.Add(new SymbolPalettePalette() { Id = "flow", Expanded = false, Symbols = flowShapes, IconCss = "shapes", Title = "Flow Shapes" });
             palettes.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = false, Symbols = SymbolPaletteConnectors, IconCss = "shapes", Title = "Connectors" });
-            ViewBag.palettes = palettes;
+            ViewData["palettes"] = palettes;
             Models.DropDownModel dropDownModel = new Models.DropDownModel();
-            ViewBag.data = dropDownModel.scrollFormats();
+            ViewData["data"] = dropDownModel.scrollFormats();
             return View();
         }
     }

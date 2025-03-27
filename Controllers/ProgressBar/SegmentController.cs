@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers.ProgressBar
         // GET: Segment
         public ActionResult Segment()
         {
-            ViewBag.color = new string[] { "#47a85c", "#0662c4", "#ed61d6", "#edb761" };
-            ViewBag.color1 = new string[] { "#c0b0f5", "#b39ff5", "#a48cf5", "#8d6ff2", "#7653ed" };
+            ViewData["color"] = new string[] { "#47a85c", "#0662c4", "#ed61d6", "#edb761" };
+            ViewData["color1"] = new string[] { "#c0b0f5", "#b39ff5", "#a48cf5", "#8d6ff2", "#7653ed" };
             return View();
         }
     }

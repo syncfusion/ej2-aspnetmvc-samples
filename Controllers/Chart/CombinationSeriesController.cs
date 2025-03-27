@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new CombinationChartData { Period = "2014", PVT_Consumption = 0.6, GOVT_Consumption = 0.6, Investment = -0.6, Trade = -0.6, GDP = 0.4 },
                 new CombinationChartData { Period = "2015", PVT_Consumption = 0.9, GOVT_Consumption = 0.5, Investment = 0, Trade = -0.3, GDP = 1.3 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class CombinationChartData

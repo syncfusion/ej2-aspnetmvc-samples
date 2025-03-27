@@ -19,26 +19,26 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
         // GET: BubbleHeatmap
         public ActionResult BubbleTypes()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
                 fontFamily = "inherit"
             };
-            ViewBag.labelTextStyle = new
+            ViewData["labelTextStyle"] = new
             {
                 fontFamily = "inherit"
             };
             string[] xlabels = new string[8] { "Singapore", "Spain", "Australia", "Germany", "Belgium", "USA", "France", "UK" };
-            ViewBag.xLabels = xlabels;
-            ViewBag.border = new
+            ViewData["xLabels"] = xlabels;
+            ViewData["border"] = new
             {
                 width = 1
             };
             string[] yLabels = new string[5] { "1995", "2000", "2005", "2010", "2015" };
-            ViewBag.yLabels = yLabels;
-            ViewBag.dataSource = new HeatMapData().tableBubbleData();
+            ViewData["yLabels"] = yLabels;
+            ViewData["dataSource"] = new HeatMapData().tableBubbleData();
             return View();
         }
     }

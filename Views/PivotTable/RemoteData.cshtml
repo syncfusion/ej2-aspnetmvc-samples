@@ -16,7 +16,7 @@
                         </td>
                         <td>
                             <div style="padding-left: 5px;">
-                                @Html.EJS().DropDownList("contenttype").Index(0).DataSource(ViewBag.contentTypeDropDown).Value("JSON").Change("contentType").Render()
+                                @Html.EJS().DropDownList("contenttype").Index(0).DataSource(ViewData["contentTypeDropDown"]).Value("JSON").Change("contentType").Render()
                             </div>
                         </td>
                     </tr>

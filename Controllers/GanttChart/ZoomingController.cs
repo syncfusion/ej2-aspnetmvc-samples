@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Zooming
         public ActionResult Zooming()
         {
-            ViewBag.DataSource = GanttData.ZoomingData();
+            ViewData["DataSource"] = GanttData.ZoomingData();
             return View();
         }
     }

@@ -20,21 +20,21 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult CellAlignment()
         {
             var treeData = TreeGridItems.GetTreeData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
 
              List<object> dd = new List<object>();
             dd.Add(new { name = "Task ID", id = "TaskId" });
             dd.Add(new { name = "Start Date", id = "StartDate" });
             dd.Add(new { name = "Duration", id = "Duration" });
             dd.Add(new { name = "Progress", id = "Progress" });
-            ViewBag.dd = dd;
+            ViewData["dd"] = dd;
 
             List<object> index = new List<object>();
             index.Add(new { name = "Right", id = "Right" });
             index.Add(new { name = "Left", id = "Left" });
             index.Add(new { name = "Center", id = "Center" });
             index.Add(new { name = "Justify", id = "Justify" });
-            ViewBag.index = index;
+            ViewData["index"] = index;
             return View();
         }
     }

@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("CheckboxSelection").DataSource((IEnumerable<object>)ViewBag.dataSource).SelectionSettings(sel => { sel.PersistSelection(true); }).Columns(col =>
+        @Html.EJS().Grid("CheckboxSelection").DataSource((IEnumerable<object>)ViewData["dataSource"]).SelectionSettings(sel => { sel.PersistSelection(true); }).Columns(col =>
    {
        col.Type("checkbox").Width("50").Add();
        col.Field("OrderID").HeaderText("Order ID").Width("120").IsPrimaryKey(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

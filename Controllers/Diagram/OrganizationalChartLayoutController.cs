@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: HierarchicalLayout
         public ActionResult OrganizationalChartLayout()
         {
-            ViewBag.Nodes = OrganizationalDetails.GetAllRecords();
+            ViewData["Nodes"] = OrganizationalDetails.GetAllRecords();
             return View();
         }
     }

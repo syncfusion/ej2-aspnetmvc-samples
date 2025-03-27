@@ -5,16 +5,16 @@
             <div id="button-control">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().DropDownButton("iconbtn").IconCss("e-ddb-icons e-profile").Items(ViewBag.datasource).Render()
+                        @Html.EJS().DropDownButton("iconbtn").IconCss("e-ddb-icons e-profile").Items(ViewData["datasource"]).Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().DropDownButton("textbtn").Content("Profile").Items(ViewBag.datasource).Render()
+                        @Html.EJS().DropDownButton("textbtn").Content("Profile").Items(ViewData["datasource"]).Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().DropDownButton("icontextbtn").Content("Profile").IconCss("e-ddb-icons e-profile").Items(ViewBag.datasource).Render()
+                        @Html.EJS().DropDownButton("icontextbtn").Content("Profile").IconCss("e-ddb-icons e-profile").Items(ViewData["datasource"]).Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().DropDownButton("custombtn").Content("Profile").CssClass("e-caret-hide").Items(ViewBag.datasource).Render()
+                        @Html.EJS().DropDownButton("custombtn").Content("Profile").CssClass("e-caret-hide").Items(ViewData["datasource"]).Render()
                     </div>
                 </div>
             </div>

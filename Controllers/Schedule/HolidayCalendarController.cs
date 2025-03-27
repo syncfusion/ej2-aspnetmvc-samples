@@ -35,7 +35,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             combinedData.AddRange(appointments);
 
             // Serialize combined data to JSON
-            ViewBag.datasource = JsonConvert.SerializeObject(combinedData);
+            ViewData["datasource"] = JsonConvert.SerializeObject(combinedData);
             return View();
         }
     }

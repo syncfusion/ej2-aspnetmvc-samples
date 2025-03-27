@@ -28,13 +28,13 @@
                                                                 {
                                                                                      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                                                                         .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").Fill("#00bdae")
-                                                                        .YName("y").DataSource(ViewBag.lineSource1).Name("Jan").Width(2).Add();
+                                                                        .YName("y").DataSource(ViewData["lineSource1"]).Name("Jan").Width(2).Add();
                                                                                      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
-                                                                        .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y").Fill("#e56691").DataSource(ViewBag.lineSource)
+                                                                        .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y").Fill("#e56691").DataSource(ViewData["lineSource"])
                                                                         .Name("Feb").Width(2).Add();
                                                                                      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                                                                         .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").Fill("#357cd2")
-                                                                        .YName("y").DataSource(ViewBag.lineSource2).Name("Mar").Width(2).Add();
+                                                                        .YName("y").DataSource(ViewData["lineSource2"]).Name("Mar").Width(2).Add();
 
                                                                                  }).PrimaryYAxis(px => px.LabelStyle(ls => ls.Color("transparent")).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
                                                                                  .MajorGridLines(mg => mg.Width(0))
@@ -61,8 +61,8 @@
                                                                                      .Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside))
                                                                                      .InnerRadius("40%").XName("x").YName("y").Name("Earnings")
                                                                                      .Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).Radius("85%")
-                                                                                     .StartAngle(0).Palettes(ViewBag.pallets).EndAngle(360).Explode(false)
-                                                                                     .DataSource(ViewBag.pieSource).Add();
+                                                                                     .StartAngle(0).Palettes((string[])ViewData["pallets"]).EndAngle(360).Explode(false)
+                                                                                     .DataSource(ViewData["pieSource"]).Add();
                                                                                               }).EnableSmartLabels(true).EnableAnimation(false)
                                                          .LegendSettings(ls => ls.Visible(false).ToggleVisibility(false))
                                                          .Tooltip(tp => tp.Enable(true).Header("<b>${point.x}</b>").Format("Composition : <b>${point.y}%</b>"))
@@ -83,8 +83,8 @@
                                     <div class="e-panel-content">
                                         @(Html.EJS().Chart("spline").Series(series =>
                                     {
-                                                                             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").Fill("rgb(239, 183, 202)").DataSource(ViewBag.splineSource1).Name("Jan").Add();
-                                                                             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").Fill("rgb(0, 189, 174)").DataSource(ViewBag.splineSource2).Name("Feb").Add();
+                                                                             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").Fill("rgb(239, 183, 202)").DataSource(ViewData["splineSource1"]).Name("Jan").Add();
+                                                                             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Opacity(0.5).XName("x").YName("y").Fill("rgb(0, 189, 174)").DataSource(ViewData["splineSource2"]).Name("Feb").Add();
 
                                                                          }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
                                                                          .MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)

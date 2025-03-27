@@ -10,7 +10,7 @@
                      XName("Year").
                      YName("Productivity").
                      Marker(mr=>mr.Visible(true).Border(br => br.Color("#333333").Width(2)).Fill("#C1272D").Width(7).Height(7)).
-                     DataSource(ViewBag.ConsumerDetails).
+                     DataSource(ViewData["ConsumerDetails"]).
                      Width(2).Add();
              }).PrimaryXAxis(
              xAxis =>
@@ -31,7 +31,7 @@
                      LineStyle(ls => ls.Width(0)).
                      MajorTickLines(mt=>mt.Width(0)).
                      MajorGridLines(mt=>mt.Color("#EFEFEF").Width(2));
-             }).Tooltip(tp => tp.Enable(true).Template("#Tooltip")).ChartArea(area => area.Border(br=>br.Width(0))).Title("USA Wheat Production").Load("load").Render()
+             }).Tooltip(tp => tp.Enable(true).ShowNearestTooltip(true).EnableHighlight(true).Template("#Tooltip")).ChartArea(area => area.Border(br=>br.Width(0))).Title("USA Wheat Production").Load("load").Render()
 
         </div>
     </div>
@@ -57,11 +57,10 @@
             </table>
         </div>
     </script>
-
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>

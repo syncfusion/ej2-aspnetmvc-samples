@@ -3,12 +3,12 @@
     <div class="control-section" align="center">
         @Html.EJS().Chart("container").Series(series =>
    {
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("6-9").XName("XValue").YName("YValue").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("9-11").XName("XValue").YName("YValue1").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("11-14").XName("XValue").YName("YValue2").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("14-17").XName("XValue").YName("YValue3").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("17-20").XName("XValue").YName("YValue4").Width(2).Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewBag.ChartPoints).Name("23 Above").XName("XValue").YName("YValue5").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewData["ChartPoints"]).Name("6-9").XName("XValue").YName("YValue").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewData["ChartPoints"]).Name("9-11").XName("XValue").YName("YValue1").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewData["ChartPoints"]).Name("11-14").XName("XValue").YName("YValue2").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewData["ChartPoints"]).Name("14-17").XName("XValue").YName("YValue3").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewData["ChartPoints"]).Name("17-20").XName("XValue").YName("YValue4").Width(2).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewData["ChartPoints"]).Name("23 Above").XName("XValue").YName("YValue5").Width(2).Add();
    }
        ).PrimaryXAxis(py => py.Interval(1).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.OnTicks).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
            ).Title("Wind Rose Chart").Tooltip(tl => tl.Enable(true)).LegendSettings(lg => lg.EnableHighlight(true)).Load("load").Render()
@@ -21,10 +21,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.primaryXAxis.coefficient = ej.base.Browser.isDevice ? 80 : 100;
         };
     </script>

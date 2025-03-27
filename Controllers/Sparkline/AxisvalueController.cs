@@ -18,9 +18,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Sparkline
         // GET: Axisvalue
         public ActionResult Axisvalue()
         {
-            ViewBag.datetime = DataSource.GetDatetimeData();
-            ViewBag.category = DataSource.GetCategoryData();
-            ViewBag.numeric = DataSource.GetNumericData();
+            ViewData["datetime"] = DataSource.GetDatetimeData();
+            ViewData["category"] = DataSource.GetCategoryData();
+            ViewData["numeric"] = DataSource.GetNumericData();
             return View();
         }
 

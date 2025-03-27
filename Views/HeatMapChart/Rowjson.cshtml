@@ -5,22 +5,22 @@
 @section ControlsSection{
     <div class="control-section">
         <div id="container" style="width:100%">
-            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Olympic Medal Achievements of most Successful Countries").TextStyle(ViewBag.textStyle)).XAxis(
+            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Olympic Medal Achievements of most Successful Countries").TextStyle(ViewData["textStyle"])).XAxis(
             xAxis =>
             {
                 xAxis.LabelRotation(45)
                 .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                .Labels(ViewBag.xLabels).TextStyle(ViewBag.labelTextStyle);
+                .Labels((string[])ViewData["xLabels"]).TextStyle(ViewData["labelTextStyle"]);
             }).YAxis(yaxis =>
             {
-                yaxis.Title(ViewBag.title).TextStyle(ViewBag.textStyle)
-                .Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle);
+                yaxis.Title(ViewData["title"]).TextStyle(ViewData["textStyle"])
+                .Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"]);
             }).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
             {
                 palette.Color("#F0C27B").Add();
                 palette.Color("#4B1248").Add();
             })).CellSettings(cellSettings =>
-            cellSettings.Border(ViewBag.border).TextStyle(ViewBag.labelTextStyle)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings => legendSettings.TextStyle(ViewBag.labelTextStyle)).DataSource("dataSource").TooltipRender("tooltipRender").DataSourceSettings(ds => { ds.IsJsonData(true).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Table).XDataMapping("Region"); }).Load("load").Render()
+            cellSettings.Border(ViewData["border"]).TextStyle(ViewData["labelTextStyle"])).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings => legendSettings.TextStyle(ViewData["labelTextStyle"])).DataSource("dataSource").TooltipRender("tooltipRender").DataSourceSettings(ds => { ds.IsJsonData(true).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Table).XDataMapping("Region"); }).Load("load").Render()
         </div>
         <div style="float: right; margin-right: 10px;">
             Source:

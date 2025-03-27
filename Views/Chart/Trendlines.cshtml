@@ -7,14 +7,14 @@
             series.Trendlines(tl=> { tl.Type(Syncfusion.EJ2.Charts.TrendlineTypes.Linear).Width(3).Name("Trends").Fill("#C64A75").EnableTooltip(false).Add(); })
                 .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
             .XName("Period").YName("Rupees").Marker(mr=>mr.Visible(true).IsFilled(true).Height(7).Width(7))
-           .Name("Rupees").DataSource(ViewBag.ChartPoints).Add();
+           .Name("Rupees").DataSource(ViewData["ChartPoints"]).Add();
         }).PrimaryXAxis(px => px.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("yyyy")
         .MajorGridLines(mg=>mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(1))
              ).PrimaryYAxis(py => py.Title("Rupees against Dollars").Interval(10).Minimum(0).Maximum(80).LabelFormat("₹{value}")
              .MajorTickLines(mt=>mt.Width(0)).MinorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
              ).ChartArea(area => area.Border(br => br.Width(0))
              ).Title("USD to INR Rates").LegendSettings(lg => lg.Visible(true).ShapeHeight(15).ShapeWidth(15)
-             ).Tooltip(tt => tt.Enable(true)).Load("load").Render()
+             ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true)).Load("load").Render()
             </div>
     
 <style>
@@ -42,10 +42,10 @@
         }
     }
 </style>
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script type="text/javascript">
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";   
         };
     </script>

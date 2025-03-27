@@ -13,25 +13,25 @@
                         <tr>
                             <td align="left" width="50%" style="padding:15px 7px 5px 0px">
                                 <text>Page Size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</text>
-                                @Html.DropDownList("pagesize", (IEnumerable<SelectListItem>)ViewBag.PageSizeList, new { @class = "e-btn", @id = "pagesize", @onchange = "updatePageDetails()", style = "width: 120px;" })
+                                @Html.DropDownList("pagesize", (IEnumerable<SelectListItem>)ViewData["PageSizeList"], new { @class = "e-btn", @id = "pagesize", @onchange = "updatePageDetails()", style = "width: 120px;" })
                             </td>
                         </tr>
                         <tr>
                             <td align="left" width="30%" style="padding:10px 7px 5px 0px">
                                 <text>Page Orientation &nbsp;:&nbsp;&nbsp;</text>
-                                @Html.DropDownList("pageOrientation", (IEnumerable<SelectListItem>)ViewBag.PageOrientationList, new { @class = "e-btn", @id = "pageOrientation", @onchange = "updatePageDetails()", style = "width: 120px;" })
+                                @Html.DropDownList("pageOrientation", (IEnumerable<SelectListItem>)ViewData["PageOrientationList"], new { @class = "e-btn", @id = "pageOrientation", @onchange = "updatePageDetails()", style = "width: 120px;" })
                             </td>
                         </tr>
                         <tr>
                             <td align="left" width="30%" style="padding:10px 7px 5px 0px">
                                 <text>Page Margin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</text>
-                                @Html.DropDownList("pageMargin", (IEnumerable<SelectListItem>)ViewBag.PageMarginList, new { @class = "e-btn", @id = "pageMargin", @onchange = "updatePageDetails()", style = "width: 120px;" })
+                                @Html.DropDownList("pageMargin", (IEnumerable<SelectListItem>)ViewData["PageMarginList"], new { @class = "e-btn", @id = "pageMargin", @onchange = "updatePageDetails()", style = "width: 120px;" })
                             </td>
                         </tr>
                         <tr>
                             <td align="left" width="30%" style="padding:10px 7px 5px 0px">
                                 <text>Page Rotation &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</text>
-                                @Html.DropDownList("pageRotation", (IEnumerable<SelectListItem>)ViewBag.PageRotationList, new { @class = "e-btn", @id = "pageRotation", @onchange = "updatePageDetails()", style = "width: 120px;" })
+                                @Html.DropDownList("pageRotation", (IEnumerable<SelectListItem>)ViewData["PageRotationList"], new { @class = "e-btn", @id = "pageRotation", @onchange = "updatePageDetails()", style = "width: 120px;" })
                             </td>
                         </tr>
                         <tr>

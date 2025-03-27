@@ -31,7 +31,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LiveChartData { X = "Finland",        Y = 48.50 },
                 new LiveChartData { X = "Brazil",         Y = 45.13 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             List<LiveChartData> ChartPoints2 = new List<LiveChartData>
             {
                 new LiveChartData { X = "India",          Y = 102.54 },
@@ -45,7 +45,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LiveChartData { X = "Finland",        Y = 43.13 },
                 new LiveChartData { X = "Brazil",         Y = 55.56 }
             };
-            ViewBag.ChartPoints2 = ChartPoints2;
+            ViewData["ChartPoints2"] = ChartPoints2;
             List<LiveChartData> ChartPoints3 = new List<LiveChartData>
             {
                 new LiveChartData { X = "India",          Y = 99.33 },
@@ -59,7 +59,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LiveChartData { X = "Finland",        Y = 43.15 },
                 new LiveChartData { X = "Brazil",         Y = 50.02 }
             };
-            ViewBag.ChartPoints3 = ChartPoints3;
+            ViewData["ChartPoints3"] = ChartPoints3;
             List<LiveChartData> ChartPoints4 = new List<LiveChartData>
             {
                 new LiveChartData { X = "India",          Y = 98.85 },
@@ -73,7 +73,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LiveChartData { X = "Finland",        Y = 43.41 },
                 new LiveChartData { X = "Brazil",         Y = 58.61 }
             };
-            ViewBag.ChartPoints4 = ChartPoints4;
+            ViewData["ChartPoints4"] = ChartPoints4;
             List<LiveChartData> ChartPoints5 = new List<LiveChartData>
             {
                 new LiveChartData { X = "India",          Y = 100.02 },
@@ -87,7 +87,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LiveChartData { X = "Finland",        Y = 46.18 },
                 new LiveChartData { X = "Brazil",         Y = 65.06 }
             };
-            ViewBag.ChartPoints5 = ChartPoints5;
+            ViewData["ChartPoints5"] = ChartPoints5;
             List<LiveChartData> ChartPoints6 = new List<LiveChartData>
             {
                 new LiveChartData { X = "India",          Y = 102.54 },
@@ -101,7 +101,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LiveChartData { X = "Finland",        Y = 44.73 },
                 new LiveChartData { X = "Brazil",         Y = 50.04 }
             };
-            ViewBag.ChartPoints6 = ChartPoints6;
+            ViewData["ChartPoints6"] = ChartPoints6;
             List<LiveChartData> ChartPoints7 = new List<LiveChartData>
             {
                 new LiveChartData { X = "India",          Y = 98.84 },
@@ -115,7 +115,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LiveChartData { X = "Finland",        Y = 42.99 },
                 new LiveChartData { X = "Brazil",         Y = 51.68 }
             };
-            ViewBag.ChartPoints7 = ChartPoints7;
+            ViewData["ChartPoints7"] = ChartPoints7;
             List<LiveChartData> ChartPoints8 = new List<LiveChartData>
             {
                 new LiveChartData { X = "India",          Y = 100.41 },
@@ -129,7 +129,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LiveChartData { X = "Finland",        Y = 43.32 },
                 new LiveChartData { X = "Brazil",         Y = 64.56 }
             };
-            ViewBag.ChartPoints8 = ChartPoints8;
+            ViewData["ChartPoints8"] = ChartPoints8;
             List<LiveChartData> ChartPoints9 = new List<LiveChartData>
             {
                 new LiveChartData { X = "India",          Y = 104.45 },
@@ -143,7 +143,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LiveChartData { X = "Finland",        Y = 43.69 },
                 new LiveChartData { X = "Brazil",         Y = 64.73 }
             };
-            ViewBag.ChartPoints9 = ChartPoints9;
+            ViewData["ChartPoints9"] = ChartPoints9;
             List<LiveChartData> ChartPoints10 = new List<LiveChartData>
             {
                 new LiveChartData { X = "India",          Y = 111.84 },
@@ -157,7 +157,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LiveChartData { X = "Finland",        Y = 45.67 },
                 new LiveChartData { X = "Brazil",         Y = 67.84 }
             };
-            ViewBag.ChartPoints10 = ChartPoints10;
+            ViewData["ChartPoints10"] = ChartPoints10;
             return View();
         }
         public class LiveChartData

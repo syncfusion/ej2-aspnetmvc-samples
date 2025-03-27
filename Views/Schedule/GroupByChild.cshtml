@@ -4,11 +4,11 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.WorkWeek).SelectedDate(new DateTime(DateTime.Today.Year, 6, 5)).StartHour("09:00").EndHour("19:00").Group(group => group.ByGroupID(false).Resources(ViewBag.Resources)).Resources(res =>
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.WorkWeek).SelectedDate(new DateTime(DateTime.Today.Year, 6, 5)).StartHour("09:00").EndHour("19:00").Group(group => group.ByGroupID(false).Resources((string[])ViewData["Resources"])).Resources(res =>
                 {
-                    res.DataSource(ViewBag.Projects).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
-                    res.DataSource(ViewBag.Categories).Field("CategoryId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
-                }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewBag.datasource)).Render()
+                    res.DataSource(ViewData["Projects"]).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
+                    res.DataSource(ViewData["Categories"]).Field("CategoryId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
+                }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewData["datasource"])).Render()
         </div>
     </div>
     <style>

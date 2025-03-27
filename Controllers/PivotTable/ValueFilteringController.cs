@@ -21,11 +21,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
         
         public ActionResult ValueFiltering()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.filterFields = new string[] { "Country", "Products", "Year" };
-            ViewBag.filterOperators = new string[] { "Equals", "DoesNotEquals", "GreaterThan", "GreaterThanOrEqualTo",
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["filterFields"] = new string[] { "Country", "Products", "Year" };
+            ViewData["filterOperators"] = new string[] { "Equals", "DoesNotEquals", "GreaterThan", "GreaterThanOrEqualTo",
             "LessThan", "LessThanOrEqualTo", "Between", "NotBetween" };
-            ViewBag.filterMeasures = GetMeasuresData();
+            ViewData["filterMeasures"] = GetMeasuresData();
             return View();
         }
         public List<ValueFilterData> GetMeasuresData()

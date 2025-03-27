@@ -5,10 +5,10 @@
 
         @Html.EJS().Chart("container").Series(series =>
    {
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("car").DataSource(ViewBag.dataSource).Name("Car").Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("trucks").DataSource(ViewBag.dataSource).Name("Truck").Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("bike").DataSource(ViewBag.dataSource).Name("Bike").Add();
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("cycle").DataSource(ViewBag.dataSource).Name("Cycle").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("car").DataSource(ViewData["dataSource"]).Name("Car").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("trucks").DataSource(ViewData["dataSource"]).Name("Truck").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("bike").DataSource(ViewData["dataSource"]).Name("Bike").Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("x").YName("cycle").DataSource(ViewData["dataSource"]).Name("Cycle").Add();
 
    }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45).MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)).
    MinorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
@@ -37,7 +37,7 @@
                         </td>
                         <td style="width: 40%;">
                             <div>
-                                @Html.EJS().DropDownList("sortmode").Index(0).DataSource(ViewBag.data).Value("None").Change("valueChange").Render()
+                                @Html.EJS().DropDownList("sortmode").Index(0).DataSource(ViewData["data"]).Value("None").Change("valueChange").Render()
                             </div>
                         </td>
                     </tr>
@@ -53,6 +53,7 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
         <script>
             var dataValues = [
                 { x: 'Asia', car: 120, trucks: 90, bike: 180, cycle: 90 },
@@ -64,8 +65,7 @@
             ];
             
             var load = function (args) {
-                var selectedTheme = themeName ? themeName : 'Fluent2';
-                args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+                loadChartTheme(args);
             }
             
             document.getElementById('decending').onchange = function () {

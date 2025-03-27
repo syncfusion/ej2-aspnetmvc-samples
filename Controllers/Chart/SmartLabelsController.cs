@@ -41,7 +41,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new SmartLabelsChartData { Country =  "South Africa",  Medal = 2,  DataLabelMappingName = "South Africa: 2" },
                 new SmartLabelsChartData { Country =  "North Korea",   Medal = 2,  DataLabelMappingName = "North Korea: 2" }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class SmartLabelsChartData

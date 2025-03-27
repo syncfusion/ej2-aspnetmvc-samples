@@ -1,10 +1,10 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
 
 @*custom code start*@
 
 @{
-    ViewBag.Title = "DefaultFunctionalities";
+    ViewData["Title"] = "DefaultFunctionalities";
 }
 
 @*custom code end*@
@@ -15,7 +15,7 @@
           @(Html.EJS().TreeGrid("TreeGrid")
               .AllowRowDragAndDrop(true)
               .RowDropSettings(new Syncfusion.EJ2.TreeGrid.TreeGridRowDropSettings() { TargetID = "DestTree" })
-              .DataSource((IEnumerable<object>)ViewBag.datasource)
+              .DataSource((IEnumerable<object>)ViewData["datasource"])
               .SelectionSettings(selection => selection.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple))
               .AllowPaging().PageSettings(page => page.PageCount(2).PageSize(10))
               .Columns(col =>

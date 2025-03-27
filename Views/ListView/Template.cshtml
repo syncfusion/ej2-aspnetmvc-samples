@@ -9,7 +9,7 @@
          + "<span class='share'></span></div> <div class='timeStamp'>"
          + "${timeStamp} </div> ${/if} </div>";}
     <div class="control-section">
-        @Html.EJS().ListView("listview_template").DataSource((IEnumerable<object>)ViewBag.dataSource).CssClass("e-list-template").ActionComplete("onComplete").HeaderTitle("Syncfusion Blog").ShowHeader(true).Template(template).Render()
+        @Html.EJS().ListView("listview_template").DataSource((IEnumerable<object>)ViewData["dataSource"]).CssClass("e-list-template").ActionComplete("onComplete").HeaderTitle("Syncfusion Blog").ShowHeader(true).Template(template).Render()
     </div>
 }
 

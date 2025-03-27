@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new ChartStripLine { IsSegmented = true, Start = 104, End = 106.5, Visible = true, SegmentStart  = 21, SegmentEnd = 26 },
                 new ChartStripLine { IsSegmented = true, Start = 109, End = 109.2, Visible = true, Text = "Oct - Dec", SegmentStart = 21, SegmentEnd = 26, Color = "transparent" }
             };
-            ViewBag.yAxisStrips = yAxisStrips;
+            ViewData["yAxisStrips"] = yAxisStrips;
 
             List<KeyBoardData> Quarter1 = new List<KeyBoardData>
             {
@@ -72,10 +72,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                new KeyBoardData { Month = "Dec 15", Sales = 90 },
                new KeyBoardData { Month = "Dec 31", Sales = 100 }
             };
-            ViewBag.Quarter1 = Quarter1;
-            ViewBag.Quarter2 = Quarter2;
-            ViewBag.Quarter3 = Quarter3;
-            ViewBag.Quarter4 = Quarter4;
+            ViewData["Quarter1"] = Quarter1;
+            ViewData["Quarter2"] = Quarter2;
+            ViewData["Quarter3"] = Quarter3;
+            ViewData["Quarter4"] = Quarter4;
             return View();
         }
         public class KeyBoardData

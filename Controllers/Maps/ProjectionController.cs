@@ -23,12 +23,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Projection
         public ActionResult Projection()
         {
-            ViewBag.shapeData = this.WorldMap();
-            ViewBag.dataSource = this.getUNOData();
+            ViewData["shapeData"] = this.WorldMap();
+            ViewData["dataSource"] = this.getUNOData();
             List<MapsColorMapping> data = new List<MapsColorMapping>();
             data.Add(new MapsColorMapping { Value = "Permanent", Color = "#EDB46F", Label = null });
             data.Add(new MapsColorMapping { Value = "Non-Permanent", Color = "#F1931B", Label = null });
-            ViewBag.colorMappings = data;
+            ViewData["colorMappings"] = data;
             return View();
         }
         public object WorldMap()

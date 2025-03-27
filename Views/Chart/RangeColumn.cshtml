@@ -5,7 +5,7 @@
             @Html.EJS().Chart("container").Series(series =>
        {
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.RangeColumn).XName("Days").High("IND_HighTemp").Low("IND_LowTemp")
-               .Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer))).Name("India").ColumnSpacing(0.1).DataSource(ViewBag.ChartPoints).Add();
+               .Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer))).Name("India").ColumnSpacing(0.1).DataSource(ViewData["ChartPoints"]).Add();
        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
        .MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt => mt.Width(0))
        ).PrimaryYAxis(py => py.LabelFormat("{value}˚C").Maximum(20).Title("Temperature (In Celsius)")
@@ -24,10 +24,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>           

@@ -18,10 +18,10 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult MultipleList()
         {
-            ViewBag.project = new ProjectsData().ProjectList();
-            ViewBag.cost = new UseCostsData().CostList();
-            ViewBag.status = new StatusData().StatusList();
-            ViewBag.query = "new ej.data.Query().select(['FirstName', 'EmployeeID']).take(10).requiresCount()";
+            ViewData["project"] = new ProjectsData().ProjectList();
+            ViewData["cost"] = new UseCostsData().CostList();
+            ViewData["status"] = new StatusData().StatusList();
+            ViewData["query"] = "new ej.data.Query().select(['FirstName', 'EmployeeID']).take(10).requiresCount()";
             return View();
         }
     }

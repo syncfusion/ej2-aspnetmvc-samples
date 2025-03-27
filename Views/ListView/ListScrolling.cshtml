@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
         <h4 style="text-align: center; padding-bottom: 10px">Food Items</h4>
-        @Html.EJS().ListView("list-scrolling-down").Enable(true).ActionComplete("ActionComplete").DataSource((IEnumerable<object>)ViewBag.foodData).Scroll("onListScroll").Height("500").Template("#loadTemplate").CssClass("e-list-template").Render()
+        @Html.EJS().ListView("list-scrolling-down").Enable(true).ActionComplete("ActionComplete").DataSource((IEnumerable<object>)ViewData["foodData"]).Scroll("onListScroll").Height("500").Template("#loadTemplate").CssClass("e-list-template").Render()
     </div>
     <script id='loadTemplate' type="text/x-template">
         <div class="e-list-wrapper" style="border-bottom: inset;">
@@ -61,7 +61,7 @@
     function ActionComplete(args) {
         var listObj_1 = document.getElementById("list-scrolling-down").ej2_instances[0];
         if (!isDevice) {
-            var foodData = @Html.Raw(Json.Encode(ViewBag.foodData));
+            var foodData = @Html.Raw(Json.Encode(ViewData["foodData"]));
             for (var i = 0; i < foodData.length; i++) {
                 let ratingObj = new ejs.inputs.Rating({
                     value: foodData[i].rating,

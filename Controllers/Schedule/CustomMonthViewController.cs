@@ -15,7 +15,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult CustomMonthView()
         {
-            ViewBag.appointments = this.generateObject();
+            ViewData["appointments"] = this.generateObject();
             return View();
         }
 

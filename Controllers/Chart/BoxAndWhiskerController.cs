@@ -41,7 +41,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new BoxAndWhiskerChartData { Department = "Training", Age = y8 },
                 new BoxAndWhiskerChartData { Department = "HR", Age = y9 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class BoxAndWhiskerChartData

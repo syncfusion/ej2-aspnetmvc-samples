@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="sample_container badge-toolbar">
-            @Html.EJS().Toolbar("toolbar").Items(ViewBag.items).Render()
+            @Html.EJS().Toolbar("toolbar").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["items"]).Render()
         </div>
     </div>
 

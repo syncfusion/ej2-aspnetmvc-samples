@@ -22,7 +22,7 @@
                    new Syncfusion.EJ2.QueryBuilder.QueryBuilderColumn { Field = "Region", Label = "Region", Type = "string"},
                    new Syncfusion.EJ2.QueryBuilder.QueryBuilderColumn { Field = "Name", Label = "Name", Type = "string" }
                }).Add();
-   }).Rule(ViewBag.rule).FieldMode(Syncfusion.EJ2.QueryBuilder.FieldMode.DropdownTree).Separator(".").Render()
+   }).Rule((Syncfusion.EJ2.QueryBuilder.QueryBuilderRule)ViewData["rule"]).FieldMode(Syncfusion.EJ2.QueryBuilder.FieldMode.DropdownTree).Separator(".").Render()
     </div>
 }
 

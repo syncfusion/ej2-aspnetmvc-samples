@@ -29,8 +29,8 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
                 }
             };
 
-            ViewBag.rule = rule;
-            ViewBag.dataSource = QueryBuilderData.hardwareData;
+            ViewData["rule"] = rule;
+            ViewData["dataSource"] = QueryBuilderData.hardwareData;
             return View();
         }
     }

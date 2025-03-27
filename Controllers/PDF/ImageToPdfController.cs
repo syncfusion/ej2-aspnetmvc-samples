@@ -88,7 +88,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             }
             else
             {
-                ViewBag.lab = "NOTE: Please select a image file to convert.";
+                ViewData["lab"] = "NOTE: Please select a image file to convert.";
                 return View();
             }
         }

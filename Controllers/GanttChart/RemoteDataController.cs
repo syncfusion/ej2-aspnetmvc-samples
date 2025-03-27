@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: RemoteData
         public ActionResult RemoteData()
         {
-            ViewBag.DataSource = GanttData.RemoteData();
+            ViewData["DataSource"] = GanttData.RemoteData();
             return View();
         }
     }

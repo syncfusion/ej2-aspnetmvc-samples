@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Resize()
         {
-            ViewBag.data = new Countries().CountriesList();
+            ViewData["data"] = new Countries().CountriesList();
             return View();
         }
     }

@@ -18,9 +18,9 @@ namespace EJ2MVCSampleBrowser.Controllers.RangeNavigator
         // GET: Print
         public ActionResult Print()
         {
-            ViewBag.lineWidth = new { width = 0.00001 };
-            ViewBag.border = new { width = 0.0001 };
-            ViewBag.animation = new { enable = false };
+            ViewData["lineWidth"] = new { width = 0.00001 };
+            ViewData["border"] = new { width = 0.0001 };
+            ViewData["animation"] = new { enable = false };
             return View();
         }
     }

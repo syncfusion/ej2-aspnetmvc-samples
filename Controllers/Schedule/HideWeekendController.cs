@@ -16,9 +16,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult HideWeekend()
         {
-            ViewBag.datasource = new ScheduleData().GetEmployeeEventData();
-            ViewBag.dropdown = DayList();
-            ViewBag.values = new string[] { "1", "3", "4", "5" };
+            ViewData["datasource"] = new ScheduleData().GetEmployeeEventData();
+            ViewData["dropdown"] = DayList();
+            ViewData["values"] = new string[] { "1", "3", "4", "5" };
             List<ScheduleView> viewOption = new List<ScheduleView>()
             {
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Day },
@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.TimelineWeek },
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.TimelineMonth }
             };
-            ViewBag.view = viewOption;
+            ViewData["view"] = viewOption;
             return View();
         }
 

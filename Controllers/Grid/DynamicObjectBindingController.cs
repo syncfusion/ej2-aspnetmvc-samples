@@ -36,7 +36,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
                 d.ShipCountry = shipCountrys[x % shipCountrys.Length];
                 return d;
             }).Cast<DynamicList>().ToList<DynamicList>();
-            ViewBag.DynamicData = DynamicOrders;
+            ViewData["DynamicData"] = DynamicOrders;
             return View();
         }
 

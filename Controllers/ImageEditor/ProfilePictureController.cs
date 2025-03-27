@@ -24,8 +24,8 @@ namespace EJ2MVCSampleBrowser.Controllers.ImageEditor
             buttons.Add(new DialogDialogButton() { Click = "resetBtn", ButtonModel = new ButtonModel() { content = "Reset", isPrimary = false, cssClass = "e-custom-img-btn e-img-custom-reset" } });
             buttons.Add(new DialogDialogButton() { Click = "rotateBtn", ButtonModel = new ButtonModel() { content = "Rotate", isPrimary = false, cssClass = "e-custom-img-btn e-img-custom-rotate" } });
             buttons.Add(new DialogDialogButton() { Click = "doneBtn", ButtonModel = new ButtonModel() { content = "Apply", isPrimary = true, cssClass = "e-custom-img-btn e-img-custom-apply" } });
-            ViewBag.ImageButton = buttons;
-            ViewBag.imageTool = new string[] { };
+            ViewData["ImageButton"] = buttons;
+            ViewData["imageTool"] = new string[] { };
             return View();
         }
     }

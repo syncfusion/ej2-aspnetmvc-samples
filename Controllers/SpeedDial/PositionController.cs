@@ -35,7 +35,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 IconCss = "speeddial-icons speeddial-icon-video"
             });
 
-            ViewBag.datasource = items;
+            ViewData["datasource"] = items;
             return View();
         }
     }

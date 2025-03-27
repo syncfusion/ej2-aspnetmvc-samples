@@ -26,7 +26,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new CornerRadiusChartData { X = "Research and Development",  Y = 20.0,  Text = "20.0%" },
                 new CornerRadiusChartData { X = "Marketing",                 Y = 25.0,  Text = "25.0%" }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class CornerRadiusChartData

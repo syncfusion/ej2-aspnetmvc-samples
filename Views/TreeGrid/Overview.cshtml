@@ -4,14 +4,14 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "Overview";
+    ViewData["Title"] = "Overview";
 }
 
 @*custom code end*@
 
 @section ControlsSection{
     <div class="control-section" role="region" aria-label="Tree Grid Overview">
-        @Html.EJS().TreeGrid("Overview").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+        @Html.EJS().TreeGrid("Overview").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
    {
        col.Field("name").HeaderText("Province").Width(210).Template("#flagtemplate").Filter(new { type = "Excel", itemTemplate = "#flagtemplate" }).Add();
        col.Field("population").HeaderText("Population (Million)").ValueAccessor("populationValue").Width(210).Add();

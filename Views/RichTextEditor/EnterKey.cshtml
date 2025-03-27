@@ -10,13 +10,13 @@
                         <td>
                             <div>
                                 @Html.EJS().DropDownList("enterList").PopupHeight("200px").Index(0).DataSource(
-                                (IEnumerable<FormatOption>)ViewBag.EnterData).Placeholder("When pressing the enter key").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Change("enterChange").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Format" }).Render()
+                                (IEnumerable<FormatOption>)ViewData["EnterData"]).Placeholder("When pressing the enter key").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Change("enterChange").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Format" }).Render()
                             </div>
                         </td>
                         <td>
                             <div>
                                 @Html.EJS().DropDownList("shiftEnterList").PopupHeight("200px").Index(0).DataSource(
-                                (IEnumerable<FormatOption>)ViewBag.ShiftEnterData).Placeholder("When pressing the shift + enter key").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Change("shiftEnterChange").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Format" }).Render()
+                                (IEnumerable<FormatOption>)ViewData["ShiftEnterData"]).Placeholder("When pressing the shift + enter key").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Change("shiftEnterChange").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Format" }).Render()
                             </div>
                         </td>
                     </tr>

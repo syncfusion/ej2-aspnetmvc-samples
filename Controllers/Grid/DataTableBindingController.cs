@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
                 dt.Rows.Add(code + 5, i + 4, "BOLID", 6.3 * i, new DateTime(1953, 02, 18), "Switzerland");
                 code += 5;
             }
-            ViewBag.datasource = dt;
+            ViewData["datasource"] = dt;
             return View();
         }
     }

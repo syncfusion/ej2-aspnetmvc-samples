@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult DefaultSorting()
         {
-            ViewBag.DataSource = GanttData.EditingData();
+            ViewData["DataSource"] = GanttData.EditingData();
             return View();
         }
     }

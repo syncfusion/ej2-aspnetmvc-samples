@@ -36,7 +36,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             nodes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "suplier", OffsetX = 90, OffsetY = 250 , Annotations = Node3 });
             nodes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "substitutes", OffsetX = 280, OffsetY = 390, Annotations = Node4 });
             nodes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "buyers", OffsetX = 470, OffsetY = 250, Annotations = Node5 });
-            ViewBag.nodes = nodes;
+            ViewData["nodes"] = nodes;
 
             List<DiagramConnector> connectors = new List<DiagramConnector>();
             connectors.Add(new DiagramConnector() { Id = "connector1", SourceID = "potential", TargetID = "industry", Type = Segments.Orthogonal});
@@ -57,7 +57,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             font.Add(new FontFamily() { Name = "Segoe UI" });
             font.Add(new FontFamily() { Name = "Verdana" });
 
-            ViewBag.font = font;
+            ViewData["font"] = font;
 
             List<TemplateList> templateList = new List<TemplateList>();
             templateList.Add(new TemplateList() { Value = "none", Text = "None" });
@@ -67,9 +67,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             templateList.Add(new TemplateList() { Value = "buyers", Text = "Buyers" });
             templateList.Add(new TemplateList() { Value = "substitutes", Text = "Substitutes" });
 
-            ViewBag.templateList = templateList;
+            ViewData["templateList"] = templateList;
 
-            ViewBag.connectors = connectors;
+            ViewData["connectors"] = connectors;
             return View();
         }
     }

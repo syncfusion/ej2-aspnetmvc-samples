@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult Tooltip()
         {
-            ViewBag.datasource = new ScheduleData().GetEventsData();
+            ViewData["datasource"] = new ScheduleData().GetEventsData();
             return View();
         }
     }

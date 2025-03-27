@@ -2,10 +2,10 @@
 @using EJ2MVCSampleBrowser.Controllers.Diagram;
 @section ControlsSection{
     <div class="col-lg-8 control-section">
-        @(Html.EJS().Diagram("diagram").Width("100%").Height("645px").CommandManager(c => c.Commands(ViewBag.commands))
+        @(Html.EJS().Diagram("diagram").Width("100%").Height("645px").CommandManager(c => c.Commands((List<Syncfusion.EJ2.Diagrams.DiagramCommand>)ViewData["commands"]))
                 .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).GetNodeDefaults("getNodeDefaults").ContextMenuSettings(s => s.Show(true))
                 .Layout(s => s.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree))
-                .DataSourceSettings(d => d.Id("id").ParentId("ancestor").DataSource(new DataManager() { Data = new List<KeyboardInformation>(ViewBag.Nodes) })).Render())
+                .DataSourceSettings(d => d.Id("id").ParentId("ancestor").DataSource(new DataManager() { Data = new List<KeyboardInformation>((List<KeyboardInformation>)ViewData["Nodes"]) })).Render())
     </div>
     <div class="col-lg-4 property-section">
         <div>

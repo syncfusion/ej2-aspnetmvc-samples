@@ -18,9 +18,9 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult DataBinding()
         {
-            ViewBag.localdata = new Countries().CountriesList();
-            ViewBag.sort = "Ascending";
-            ViewBag.query = "new ej.data.Query().select(['FirstName', 'EmployeeID']).take(10).requiresCount()";
+            ViewData["localdata"] = new Countries().CountriesList();
+            ViewData["sort"] = "Ascending";
+            ViewData["query"] = "new ej.data.Query().select(['FirstName', 'EmployeeID']).take(10).requiresCount()";
             return View();
         }
     }

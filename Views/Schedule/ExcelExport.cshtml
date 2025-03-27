@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).ActionBegin("onActionBegin").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewData["view"]).ActionBegin("onActionBegin").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
         </div>
     </div>
 

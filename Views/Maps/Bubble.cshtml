@@ -5,7 +5,7 @@
         <div id="outer" style="width:100%">
             @Html.EJS().Maps("container").Load("load").TitleSettings(title => title.Text("Top 30 countries with highest Internet users").TextStyle(new Syncfusion.EJ2.Maps.MapsFont{ Size = "16px", Opacity = 1 })).BubbleRendering("bubblerendering").Format("n").UseGroupingSeparator(true).ZoomSettings(zoom => zoom.Enable(true).PinchZooming(true)).Layers(layer =>
    {
-       layer.BubbleSettings(ViewBag.bubbleSettings).ShapeDataPath("name").ShapePropertyPath("name").ShapeSettings(new MapsShapeSettings{ Fill = "#E5E5E5" }).ShapeData(ViewBag.shapeData).Add();
+       layer.BubbleSettings((List<MapsBubble>)ViewData["bubbleSettings"]).ShapeDataPath("name").ShapePropertyPath("name").ShapeSettings(new MapsShapeSettings{ Fill = "#E5E5E5" }).ShapeData(ViewData["shapeData"]).Add();
    }).Render()
             <div style="margin-left:75%;">
                 Source:

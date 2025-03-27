@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "Pager";
+    ViewData["Title"] = "Pager";
 }
 
 @*custom code end*@
@@ -13,7 +13,7 @@
     <div class="control-section">
         @(Html.EJS().TreeGrid("Pager")
             .AllowPaging()
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .PageSettings(page => page.PageSizes(true).PageCount(2))
             .Columns(col =>
             {

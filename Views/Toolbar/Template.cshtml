@@ -1,16 +1,16 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Navigations;
 
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="e-sample-resize-container" style="margin-top: 100px">
-            @Html.EJS().Toolbar("template-Toolbar").CssClass("template").Items(ViewBag.templateItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
+            @Html.EJS().Toolbar("template-Toolbar").CssClass("template").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["templateItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
         </div>
         <div id="count-textbox">
             @Html.EJS().NumericTextBox("count").Width("50px").Max("100").Min("0").Value("1").ShowSpinButton(false).Format("###.##").Render()
             <span class="total-page">of 100</span>
         </div>
-        @Html.EJS().ComboBox("combo-element").Value("100%").ShowClearButton(false).Width("85px").PopupWidth("85px").DataSource((string[])ViewBag.data).Render()
+        @Html.EJS().ComboBox("combo-element").Value("100%").ShowClearButton(false).Width("85px").PopupWidth("85px").DataSource((string[])ViewData["data"]).Render()
         @Html.EJS().TextBox("text-element").Width("125px").Placeholder("Find Text").Created("onCreate").Render()
     </div>
 }

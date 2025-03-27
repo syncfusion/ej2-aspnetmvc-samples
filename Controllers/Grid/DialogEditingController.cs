@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult DialogEditing()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
+            ViewData["datasource"] = order;
             return View();
         }
     }

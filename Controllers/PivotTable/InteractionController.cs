@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult Interaction()
         {
-            ViewBag.data = new PivotTableData().GetDefaultData();
+            ViewData["data"] = new PivotTableData().GetDefaultData();
             return View();
         }
     }

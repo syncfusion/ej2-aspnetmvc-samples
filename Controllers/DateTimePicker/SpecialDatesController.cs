@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: DefaultFunctionalities
         public ActionResult SpecialDates()
         {
-            ViewBag.value = DateTime.Now;
+            ViewData["value"] = DateTime.Now;
             return View();
         }
     }

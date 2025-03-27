@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new ColumnChartData { Country = "NL", GoldMedal = 8, SilverMedal = 7, BronzeMedal = 4, MappingName = "NetherLand" },
                 new ColumnChartData { Country = "USA", GoldMedal = 46, SilverMedal = 37, BronzeMedal = 38, MappingName = "United States" },
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class ColumnChartData

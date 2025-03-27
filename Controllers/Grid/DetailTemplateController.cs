@@ -20,9 +20,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult DetailTemplate()
         {
             var DataSource = EmployeeDetails.GetAllRecords();
-            ViewBag.dataSource = DataSource;
+            ViewData["dataSource"] = DataSource;
             var taskDetail = TaskDetail.GetAllRecords();
-            ViewBag.taskData = taskDetail;
+            ViewData["taskData"] = taskDetail;
             return View();
         }
     }

@@ -31,7 +31,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new InversedAxisChartData { Year = "2014", ExchangeRate = 16 },
                 new InversedAxisChartData { Year = "2015", ExchangeRate = 17.1 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class InversedAxisChartData

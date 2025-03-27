@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new StackedColumnChartData100 { Year = "2016", General = 7793066, Honda = 4999266, Suzuki = 2945295, BMW = 2359756 },
                 new StackedColumnChartData100 { Year = "2017", General = 6856880, Honda = 5235842, Suzuki = 3302336, BMW = 2505741 },
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class StackedColumnChartData100

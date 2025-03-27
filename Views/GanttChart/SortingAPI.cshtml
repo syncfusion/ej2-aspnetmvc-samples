@@ -1,14 +1,14 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.DropDowns
 @{
-    ViewBag.Title = "SortingAPI";
+    ViewData["Title"] = "SortingAPI";
 }
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
 
-            @(Html.EJS().Gantt("SortingAPI").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true)
+            @(Html.EJS().Gantt("SortingAPI").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true)
                 .AllowSorting(true).TreeColumnIndex(1)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                 .Dependency("Predecessor").Child("SubTasks"))
@@ -42,7 +42,7 @@
             <tr>
                 <td style="width: 100%;padding-right: 10px">
                     <div style="width: 150px">
-                        @(Html.EJS().DropDownList("Columns").DataSource((IEnumerable<object>)ViewBag.Data1)
+                        @(Html.EJS().DropDownList("Columns").DataSource((IEnumerable<object>)ViewData["Data1"])
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value("TaskId")
                             .Render()
                         )
@@ -59,7 +59,7 @@
             <tr>
                 <td style="width: 100%;padding-right: 10px">
                     <div style="width: 150px">
-                        @(Html.EJS().DropDownList("Direction").DataSource((IEnumerable<object>)ViewBag.Data2)
+                        @(Html.EJS().DropDownList("Direction").DataSource((IEnumerable<object>)ViewData["Data2"])
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value("Ascending")
                             .Render()
                         )

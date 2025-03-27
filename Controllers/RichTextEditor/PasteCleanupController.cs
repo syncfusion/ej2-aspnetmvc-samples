@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: /<controller>/
         public ActionResult PasteCleanup()
         {
-            ViewBag.Data = new FormatOption().FormatOptions();
+            ViewData["Data"] = new FormatOption().FormatOptions();
             return View();
         }
     }

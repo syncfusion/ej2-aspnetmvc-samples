@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DropDownTree
             iconsFields.ImageUrl = "image";
             iconsFields.Expanded = "expanded";
             iconsFields.Child = "child";
-            ViewBag.iconsFields = iconsFields;
+            ViewData["iconsFields"] = iconsFields;
             return View();
         }
     }

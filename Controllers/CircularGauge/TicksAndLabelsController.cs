@@ -18,9 +18,9 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
     {
         public ActionResult TicksAndLabels()
         {
-            ViewBag.ticks = new string[] { "Major Ticks", "Minor Ticks" };
-            ViewBag.tickPosition = new string[] { "Inside", "Cross", "Outside" };
-            ViewBag.labelPosition = new string[] { "Outside", "Cross", "Inside" };
+            ViewData["ticks"] = new string[] { "Major Ticks", "Minor Ticks" };
+            ViewData["tickPosition"] = new string[] { "Inside", "Cross", "Outside" };
+            ViewData["labelPosition"] = new string[] { "Outside", "Cross", "Inside" };
             return View();
         }
     }

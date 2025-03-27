@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult InsertEmoticons()
          {
-            ViewBag.Items = new object[] { "Bold", "Italic", "Underline", "|", "Formats", "Alignments", "Blockquote", "OrderedList",
+            ViewData["Items"] = new object[] { "Bold", "Italic", "Underline", "|", "Formats", "Alignments", "Blockquote", "OrderedList",
                 "UnorderedList", "|", "CreateLink", "Image", "|", "SourceCode", "EmojiPicker", "|", "Undo", "Redo"
             };
             return View();

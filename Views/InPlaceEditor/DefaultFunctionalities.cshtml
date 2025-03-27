@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "DefaultFunctionalities";
+    ViewData["Title"] = "DefaultFunctionalities";
 }
 
 @using Syncfusion.EJ2;
@@ -16,7 +16,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("inplace_editor").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Text).Value("Andrew").Created("inplaceCreated").SubmitOnEnter(true).PopupSettings(new InPlaceEditorPopupSettings { Title = "Enter Employee Name" }).Model(ViewBag.ModalData).Render()
+                        @Html.EJS().InPlaceEditor("inplace_editor").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Text).Value("Andrew").Created("inplaceCreated").SubmitOnEnter(true).PopupSettings(new InPlaceEditorPopupSettings { Title = "Enter Employee Name" }).Model(ViewData["ModalData"]).Render()
                     </td>
                 </tr>
                 <tr>
@@ -26,7 +26,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("numericTextBoxEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Numeric).Created("numericCreated").Value("$100.00").Model(ViewBag.NumericData).Render()
+                        @Html.EJS().InPlaceEditor("numericTextBoxEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Numeric).Created("numericCreated").Value("$100.00").Model(ViewData["NumericData"]).Render()
                     </td>
                 </tr>
                 <tr>
@@ -36,7 +36,7 @@
                         </label>
                     </td>
                     <td>
-                        @Html.EJS().InPlaceEditor("maskedTextBoxEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Mask).Created("maskedCreated").Value("012-345-6789").Model(ViewBag.MaskData).Render()
+                        @Html.EJS().InPlaceEditor("maskedTextBoxEle").Mode(RenderMode.Inline).Type(Syncfusion.EJ2.InPlaceEditor.InputType.Mask).Created("maskedCreated").Value("012-345-6789").Model(ViewData["MaskData"]).Render()
                     </td>
                 </tr>
             </table>
@@ -49,7 +49,7 @@
                     <div>Mode</div>
                 </td>
                 <td style="width: 50%;">
-                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewBag.ModeData).Value("Inline").Change("changeEditorMode").Render()
+                    @Html.EJS().DropDownList("editorMode").Width("90%").DataSource((IEnumerable<object>)ViewData["ModeData"]).Value("Inline").Change("changeEditorMode").Render()
                 </td>
             </tr>
             <tr>
@@ -57,7 +57,7 @@
                     <div>Editable On</div>
                 </td>
                 <td style="width: 50%;">
-                    @Html.EJS().DropDownList("editableOn").Width("90%").DataSource((IEnumerable<object>)ViewBag.ClickData).Value("Click").Fields(new DropDownListFieldSettings { Text = "ClickType", Value = "Id" }).Change("onEditableOn").Render()
+                    @Html.EJS().DropDownList("editableOn").Width("90%").DataSource((IEnumerable<object>)ViewData["ClickData"]).Value("Click").Fields(new DropDownListFieldSettings { Text = "ClickType", Value = "Id" }).Change("onEditableOn").Render()
                 </td>
             </tr>
             <tr>

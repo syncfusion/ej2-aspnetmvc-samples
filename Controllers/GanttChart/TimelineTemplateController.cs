@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: TimelineTemplate
         public ActionResult TimelineTemplate()
         {
-            ViewBag.DataSource = GanttData.TimelineTemplateData();
+            ViewData["DataSource"] = GanttData.TimelineTemplateData();
             return View();
         }
     }

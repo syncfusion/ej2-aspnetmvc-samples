@@ -15,7 +15,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult BlockEvents()
         {
-            ViewBag.datasource = new ScheduleData().getBlockData();
+            ViewData["datasource"] = new ScheduleData().getBlockData();
             List<EmployeeData> employees = new List<EmployeeData>();
             employees.Add(new EmployeeData { text = "Alice", id = 1, groupId = 1, color = "#bbdc00", designation = "Content writer" });
             employees.Add(new EmployeeData { text = "Nancy", id = 2, groupId = 2, color = "#9e5fff", designation = "Designer" });
@@ -23,9 +23,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             employees.Add(new EmployeeData { text = "Robson", id = 4, groupId = 2, color = "#9e5fff", designation = "Support Engineer" });
             employees.Add(new EmployeeData { text = "Laura", id = 5, groupId = 1, color = "#bbdc00", designation = "Human Resource" });
             employees.Add(new EmployeeData { text = "Margaret", id = 6, groupId = 2, color = "#9e5fff", designation = "Content Analyst" });
-            ViewBag.Employees = employees;
+            ViewData["Employees"] = employees;
 
-            ViewBag.Resources = new string[] { "Employee" };
+            ViewData["Resources"] = new string[] { "Employee" };
             return View();
         }
 

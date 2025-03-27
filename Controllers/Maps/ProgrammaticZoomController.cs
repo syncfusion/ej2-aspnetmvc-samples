@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Marker
         public ActionResult ProgrammaticZoom()
         {
-            ViewBag.shapeData = this.GetWorldMap();
+            ViewData["shapeData"] = this.GetWorldMap();
             string capitals = System.IO.File.ReadAllText(Server.MapPath("~/App_Data/MapData/SouthAmericanCountryCapitals.js"));
             object datasrc = JsonConvert.DeserializeObject(capitals, typeof(object));
             MapsMarker marker = new MapsMarker();
@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
             marker.TooltipSettings = new MapsTooltipSettings{ Visible = true, ValuePath = "name", Format = "<b>Capital</b> : ${name}<br><b>Country</b> : ${Country}" };
             List<MapsMarker> markerSettings = new List<MapsMarker>();
             markerSettings.Add(marker);
-            ViewBag.markerSettings = markerSettings;
+            ViewData["markerSettings"] = markerSettings;
             return View();
         }
     }

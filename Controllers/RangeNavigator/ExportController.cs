@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.RangeNavigator
         // GET: Export
         public ActionResult Export()
         {
-            ViewBag.data = new string[] { "JPEG", "PNG", "SVG", "PDF" };
+            ViewData["data"] = new string[] { "JPEG", "PNG", "SVG", "PDF" };
              return View();
         }
     }

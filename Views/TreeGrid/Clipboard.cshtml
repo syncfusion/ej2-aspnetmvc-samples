@@ -5,7 +5,7 @@
 
 }
 @{
-    ViewBag.Title = "Clipboard";
+    ViewData["Title"] = "Clipboard";
 }
 
 @*custom code end*@
@@ -23,7 +23,7 @@
         <div class="control-wrapper">
             <div class="control-section">
                 @(Html.EJS().TreeGrid("TreeGrid")
-                    .DataSource((IEnumerable<object>)ViewBag.datasource)
+                    .DataSource((IEnumerable<object>)ViewData["datasource"])
                     .AllowPaging()
                     .Toolbar(toolbar)
                     .ToolbarClick("toolbarClick")
@@ -47,7 +47,7 @@
                     .Render()
                 )
             </div>
-            @Html.EJS().Dialog("alert_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Copy with Header").Content("Atleast one row should be selected to copy with header").Visible(false).Width("300px").Target(".control-section").Buttons(ViewBag.alertbutton).Render()
+            @Html.EJS().Dialog("alert_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Copy with Header").Content("Atleast one row should be selected to copy with header").Visible(false).Width("300px").Target(".control-section").Buttons((List<DialogDialogButton>)ViewData["alertbutton"]).Render()
         </div>
     </div>
 
@@ -56,7 +56,7 @@
             <tr>
                 <td class="left-side">Hierarchy Mode</td>
                 <td>
-                    @Html.EJS().DropDownList("SearchMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Width("100px").Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Render()
+                    @Html.EJS().DropDownList("SearchMode").DataSource((IEnumerable<object>)ViewData["dropdata"]).Width("100px").Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Render()
                 </td>
             </tr>
         </table>

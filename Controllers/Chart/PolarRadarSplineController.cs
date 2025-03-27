@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: PolarRadarSpline
         public ActionResult PolarRadarSpline()
         {
-            ViewBag.data = new string[] { "Polar", "Radar" };
+            ViewData["data"] = new string[] { "Polar", "Radar" };
             return View();
         }
     }

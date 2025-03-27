@@ -22,7 +22,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult ServerSideExporting()
         {
             var order = OrdersDetails.GetRecords();
-            ViewBag.datasource = order;
+            ViewData["datasource"] = order;
             return View();
         }
 

@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "ColumnTemplate";
+    ViewData["Title"] = "ColumnTemplate";
 }
 
 @*custom code end*@
@@ -12,7 +12,7 @@
 @section ControlsSection{
     <div class="control-section">
         @(Html.EJS().TreeGrid("ColumnTemplate")
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .Columns(col=>{
                     col.Field("EmpID").HeaderText("Employee ID").Width(95).Add();
                     col.Field("Name").HeaderText("Name").Width(90).Add();

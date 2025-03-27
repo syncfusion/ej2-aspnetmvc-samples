@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult FloatingLabel()
         {
-            ViewBag.data = new floatLabelValues().TextAreaModel();
+            ViewData["data"] = new floatLabelValues().TextAreaModel();
             return View();
         }
     }

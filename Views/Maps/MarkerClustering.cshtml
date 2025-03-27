@@ -28,7 +28,7 @@
         <div id="outer" style="width:100%">
             @Html.EJS().Maps("container").UseGroupingSeparator(true).Format("n").Load("load").TitleSettings(title => title.Text("Top 50 largest cities in the World").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).ZoomSettings(zoom => zoom.Enable(true)).Layers(layer =>
             {
-            layer.MarkerSettings(ViewBag.markerSettings).ShapeSettings(new MapsShapeSettings { Fill = "#C3E6ED" }).ShapeData(ViewBag.shapeData).MarkerClusterSettings(new MapsMarkerClusterSettings { AllowClustering= true, Height=40, Width=40, Shape =MarkerType.Image }).Add();
+            layer.MarkerSettings((List<MapsMarker>)ViewData["markerSettings"]).ShapeSettings(new MapsShapeSettings { Fill = "#C3E6ED" }).ShapeData(ViewData["shapeData"]).MarkerClusterSettings(new MapsMarkerClusterSettings { AllowClustering= true, Height=40, Width=40, Shape =MarkerType.Image }).Add();
             }).Render()
             <div style="float: right; margin-right: 10px;">
                 Source:

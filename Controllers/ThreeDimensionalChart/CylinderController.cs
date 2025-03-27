@@ -31,7 +31,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ThreeDimensionalChart
                 new ColumnData { X = "France", Y = 0.96 }
             };
             
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class ColumnData

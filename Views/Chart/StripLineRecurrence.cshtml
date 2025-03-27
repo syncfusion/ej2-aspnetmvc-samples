@@ -7,9 +7,9 @@
 @Html.EJS().Chart("container").Series(series =>
 {
     series.Name("All sources").XName("Period").YName("PollutionRate1").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).ColumnSpacing(0.1)
-    .DataSource(ViewBag.PollutionReports).Width(2).Add();
+    .DataSource(ViewData["PollutionReports"]).Width(2).Add();
     series.Name("Autos & Light Trucks").XName("Period").YName("PollutionRate2").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).ColumnSpacing(0.1)
-    .DataSource(ViewBag.PollutionReports).Width(2).Add();
+    .DataSource(ViewData["PollutionReports"]).Width(2).Add();
 }).PrimaryXAxis(px => px.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
 .StripLines(sl=> { sl.StartFromAxis(true).Size(5).SizeType(Syncfusion.EJ2.Charts.SizeType.Years).IsRepeat(true).RepeatEvery(10).Visible(true).Color("rgba(167,169,171, 0.1)").Add(); })
 .MajorGridLines(mg=>mg.Width(0)).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Trim).Minimum(new DateTime(1965,1,1)).Maximum(new DateTime(2010,1,1))
@@ -18,7 +18,7 @@
     .StripLines(sl=> { sl.StartFromAxis(true).Size(2000).IsRepeat(true).RepeatEvery(4000).Visible(true).Color("rgba(167,169,171, 0.1)").Add();
     })
     .LineStyle(ls=>ls.Width(0))
-    ).LegendSettings(lg => lg.EnableHighlight(true)).Tooltip(tt => tt.Format(" Year: <b>${point.x}</b> <br> Tons Per Day: <b>${point.y}</b>").Enable(true)
+    ).LegendSettings(lg => lg.EnableHighlight(true)).Tooltip(tt => tt.Format(" Year: <b>${point.x}</b> <br> Tons Per Day: <b>${point.y}</b>").EnableHighlight(true).Enable(true)
     ).Title("World Pollution Report").ChartArea(area => area.Border(br => br.Width(0))).Load("load").Render()
  
         </div>
@@ -68,10 +68,10 @@
     }
 </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
         };
         document.getElementById('xIndex').onchange = function () {
             var chart = document.getElementById('container').ej2_instances[0];

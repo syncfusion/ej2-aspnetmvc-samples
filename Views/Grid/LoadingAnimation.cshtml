@@ -23,7 +23,7 @@
         <tr>
             <td class="left-side">Indicator Type</td>
             <td>
-                @Html.EJS().DropDownList("Dropdown").DataSource((IEnumerable<object>)ViewBag.data).Value("Shimmer").Change("onChange").Width("100").Render()
+                @Html.EJS().DropDownList("Dropdown").DataSource((IEnumerable<object>)ViewData["data"]).Value("Shimmer").Change("onChange").Width("100").Render()
             </td>
         </tr>
     </table>

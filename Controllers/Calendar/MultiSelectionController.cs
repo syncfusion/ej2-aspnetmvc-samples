@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             var month = DateTime.Now.Month;
             var year = DateTime.Now.Year;
-            ViewBag.multiValue = new DateTime[] { new DateTime(year, month, 10), new DateTime(year, month, 15), new DateTime(year, month, 25) };
+            ViewData["multiValue"] = new DateTime[] { new DateTime(year, month, 10), new DateTime(year, month, 15), new DateTime(year, month, 25) };
             return View();
         }
     }

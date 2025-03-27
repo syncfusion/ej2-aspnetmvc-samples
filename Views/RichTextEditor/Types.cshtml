@@ -27,7 +27,7 @@
                     <li><p>You can upload an image.</p></li>
                     <li><p>Provides an option to customize the quick toolbar for an image.</p></li>
                 </ol><img alt='Logo' style="width:300px" src=@Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png") />
-            </div>).Created("created").ActionBegin("handleFullScreen").ActionComplete("actionCompleteHandler").Height("720px").ToolbarSettings(e => { e.Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false).Items((object)ViewBag.Items); }).Render()
+            </div>).Created("created").ActionBegin("handleFullScreen").ActionComplete("actionCompleteHandler").Height("720px").ToolbarSettings(e => { e.Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false).Items((object)ViewData["Items"]); }).Render()
         </div>
     </div>
 
@@ -37,7 +37,7 @@
                 <tr>
                     <td style="padding-right: 10px">
                         <div class="type-prop">
-                            @Html.EJS().DropDownList("typeDDL").DataSource((List<Data>)ViewBag.Data).Placeholder("Types").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto).Created("dropcreated").Change("onChange").Text("Expand").Fields(e => { e.Text("text").Value("value"); } ).Render()
+                            @Html.EJS().DropDownList("typeDDL").DataSource((List<Data>)ViewData["Data"]).Placeholder("Types").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto).Created("dropcreated").Change("onChange").Text("Expand").Fields(e => { e.Text("text").Value("value"); } ).Render()
                         </div>
                     </td>
                 </tr>

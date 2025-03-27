@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ThreeDimensionalChart
             {
                 ChartPoints[2].X = "Pyeongchang<br> 2018";
             };
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class StackedBarData

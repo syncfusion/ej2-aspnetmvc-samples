@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularChart3D
                 new PieCircularData { X = "United States",  Y = 32,  Text= "United States: 32" },
                 new PieCircularData { X = "Belgium",        Y = 34,  Text= "Belgium: 34" }
             };
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class PieCircularData

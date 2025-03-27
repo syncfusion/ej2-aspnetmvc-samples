@@ -35,7 +35,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             items.Add(new ToolbarItem { Type = ItemType.Separator });
             items.Add(new ToolbarItem { TooltipText = "Reset", Id = "Reset", PrefixIcon = "e-ddc-icons e-reset", Text = "Reset" });
 
-            ViewBag.tbItems = items;
+            ViewData["tbItems"] = items;
 
             DiagramCrudAction nodeCrud = new DiagramCrudAction()
             {
@@ -46,7 +46,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Destroy = "https://js.syncfusion.com/demos/ejServices/api/Diagram/DeleteNodes",
                 CustomFields = new object[] { "Id", "Description", "Color" },
             };
-            ViewBag.NodeCrud = nodeCrud;
+            ViewData["NodeCrud"] = nodeCrud;
 
            
 
@@ -67,18 +67,18 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     CustomFields = new object[] { "Id" },
                 }
             };
-            ViewBag.DataSource = dataSource;
+            ViewData["DataSource"] = dataSource;
 
             DiagramDataSource DataSourceSettings = new DiagramDataSource();
             DataSourceSettings.Id = "Name";
             DataSourceSettings.CrudAction = nodeCrud;
             DataSourceSettings.ConnectionDataSource = dataSource;
-            ViewBag.DataSourceSettings = DataSourceSettings;
+            ViewData["DataSourceSettings"] = DataSourceSettings;
 
             //Button control rendered in dialog to update node bgColor and label.
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new DefaultButtonModel() { content = "Update", isPrimary = true } });
-            ViewBag.DefaultButtons = buttons;
+            ViewData["DefaultButtons"] = buttons;
 
             return View();
         }

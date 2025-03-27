@@ -20,9 +20,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult Selection()
         {
             var DataSource = EmployeeView.GetAllRecords();
-            ViewBag.dataSource = DataSource;
-            ViewBag.type = new string[] { "Single", "Multiple" };
-            ViewBag.mode = new string[] { "Row", "Cell", "Both" };
+            ViewData["dataSource"] = DataSource;
+            ViewData["type"] = new string[] { "Single", "Multiple" };
+            ViewData["mode"] = new string[] { "Row", "Cell", "Both" };
             return View();
         }
     }

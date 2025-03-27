@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Sparkline
         // GET: Customization
         public ActionResult Customization()
         {
-            ViewBag.datasource = CustomData.GetData();
+            ViewData["datasource"] = CustomData.GetData();
             return View();
         }
 

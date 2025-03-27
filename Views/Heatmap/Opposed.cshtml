@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Heatmap control shows how to place the axis opposite to the default position in heatmap" />
 }
@@ -7,19 +7,19 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Monthly Flight Traffic at JFK Airport").TextStyle(ViewBag.textStyle)).XAxis(
+                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Monthly Flight Traffic at JFK Airport").TextStyle(ViewData["textStyle"])).XAxis(
                          xAxis =>
                          {
                              xAxis.LabelRotation(45)
                              .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                             .Labels(ViewBag.xLabels)
+                             .Labels(ViewData["xLabels"])
                              .OpposedPosition(true);
                          }).YAxis(yaxis =>
                          {
                              yaxis.OpposedPosition(true)
-                             .Labels(ViewBag.yLabels);
+                             .Labels(ViewData["yLabels"]);
                          }).CellSettings(cs =>
-                         cs.Border(ViewBag.border).ShowLabel(false).Format("{value} flights")).LegendSettings(ls => ls.Visible(false)).Load("load").DataSource(ViewBag.dataSource).Render()
+                         cs.Border(ViewData["border"]).ShowLabel(false).Format("{value} flights")).LegendSettings(ls => ls.Visible(false)).Load("load").DataSource(ViewData["dataSource"]).Render()
                 </div>
             </div>
         </div>

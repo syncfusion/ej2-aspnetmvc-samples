@@ -7,7 +7,7 @@
 
     <div class="col-lg-9 control-section" style="overflow:auto">
         <div class="content-wrapper">
-            @Html.EJS().PivotView("pivotview").Width("100%").Height("450").DisplayOption(new PivotViewDisplayOption { View = View.Chart }).ShowFieldList(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false)
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("450").DisplayOption(new PivotViewDisplayOption { View = View.Chart }).ShowFieldList(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(false)
             .EnableSorting(true).Rows(rows =>
             {
                 rows.Name("Country").Add();
@@ -41,7 +41,7 @@
                 <tr style="height: 50px">
                     <td>
                         <div>
-                            @Html.EJS().DropDownList("charttypesddl").DataSource((IEnumerable<object>)ViewBag.chartTypes).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
+                            @Html.EJS().DropDownList("charttypesddl").DataSource((IEnumerable<object>)ViewData["chartTypes"]).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
                             ).Placeholder("Chart Types").Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Index(1).Change("chartTypesChange").Render()
                         </div>
                     </td>

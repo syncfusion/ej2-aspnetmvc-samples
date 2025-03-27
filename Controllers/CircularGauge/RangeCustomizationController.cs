@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
     {
         public ActionResult RangeCustomization()
         {
-            ViewBag.rangeSelect = new string[] { "Low", "Medium", "High" };
+            ViewData["rangeSelect"] = new string[] { "Low", "Medium", "High" };
             return View();
         }
     }

@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Sparkline
         // GET: Default
         public ActionResult Default()
         {
-            ViewBag.datasource = PopulationData.GetData();
+            ViewData["datasource"] = PopulationData.GetData();
             return View();
         }
     }

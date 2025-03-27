@@ -22,7 +22,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
         // GET: /Encryption/
         public ActionResult Encryption()
         {
-            ViewBag.data = new string[] { "Encrypt all contents", "Encrypt all contents except metadata", "Encrypt only attachments [For AES only]" };
+            ViewData["data"] = new string[] { "Encrypt all contents", "Encrypt all contents except metadata", "Encrypt only attachments [For AES only]" };
             return View();
         }
 

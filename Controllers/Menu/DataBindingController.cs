@@ -66,7 +66,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Menu
                 new { id= "parent43", text= "Gaming Laptops", parentId= "parent5" }
             };
 
-            ViewBag.menuItems = menuItems;
+            ViewData["menuItems"] = menuItems;
             return View();
         }
     }

@@ -104,9 +104,9 @@ namespace EJ2MVCSampleBrowser.Controllers
                     }
                 }
             };
-            ViewBag.HtmlAttribute = HtmlAttribute;
-            ViewBag.MenuToolItems = popItems;
-            ViewBag.Items = MainMenuItems;
+            ViewData["HtmlAttribute"] = HtmlAttribute;
+            ViewData["MenuToolItems"] = popItems;
+            ViewData["Items"] = MainMenuItems;
             return View();
         }
     }

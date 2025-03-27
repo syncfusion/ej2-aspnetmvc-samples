@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult CustomFiltering()
         {
-            ViewBag.data = new BooksData().GetBooksData();
+            ViewData["data"] = new BooksData().GetBooksData();
             return View();
         }
     }

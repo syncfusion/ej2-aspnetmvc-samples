@@ -3,7 +3,7 @@
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
             @(Html.EJS().Diagram("container").Width("100%").Height("600px").Created("fitToPage").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
-                .GetNodeDefaults("getNodeDefaults").GetCustomTool("getTool").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).SelectedItems(ViewBag.selector).Render()
+                .GetNodeDefaults("getNodeDefaults").GetCustomTool("getTool").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).SelectedItems((Syncfusion.EJ2.Diagrams.DiagramSelector)ViewData["selector"]).Render()
             )
         </div>
     </div>

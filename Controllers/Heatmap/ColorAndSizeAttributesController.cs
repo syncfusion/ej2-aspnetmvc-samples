@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
         // GET: MultiDataMapping
         public ActionResult ColorAndSizeAttributes()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
@@ -27,14 +27,14 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
                 fontFamily = "Segoe UI"
             };
             string[] xlabels = new string[6] { "2017", "2016", "2015", "2014", "2013", "2012" };
-            ViewBag.xLabels = xlabels;
-            ViewBag.border = new
+            ViewData["xLabels"] = xlabels;
+            ViewData["border"] = new
             {
                 width = "0"
             };
             string[] yLabels = new string[6] { "Jan-Feb", "Mar-Apr", "May-Jun", "Jul-Aug", "Sep-Oct", "Nov-Dec" };
-            ViewBag.yLabels = yLabels;
-            ViewBag.dataSource = new HeatMapData().tableBubbleData();
+            ViewData["yLabels"] = yLabels;
+            ViewData["dataSource"] = new HeatMapData().tableBubbleData();
             return View();
         }
     }

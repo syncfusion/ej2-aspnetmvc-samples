@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "SelfReferenceData";
+    ViewData["Title"] = "SelfReferenceData";
 }
 
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @(Html.EJS().Gantt("SelfReferenceData").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true).TreeColumnIndex(1)
+            @(Html.EJS().Gantt("SelfReferenceData").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true).AllowSelection(true).TreeColumnIndex(1)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                 .Dependency("Predecessor").ParentID("ParentID"))
                 .Columns(col =>

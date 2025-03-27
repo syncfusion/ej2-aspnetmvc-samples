@@ -17,7 +17,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult TooltipTemplate()
         {
-            ViewBag.data = new KanbanDataModels().KanbanTasks();
+            ViewData["data"] = new KanbanDataModels().KanbanTasks();
             return View();
         }
     }

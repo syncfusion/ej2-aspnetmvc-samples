@@ -20,10 +20,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult Print()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.Datasource = order;
-            ViewBag.EmpDataSource = EmployeeView.GetAllRecords();
-            ViewBag.CustomerDataSource = Customer.GetAllRecords();
-            ViewBag.data = new List<string>() { "Expanded", "All", "None" };
+            ViewData["Datasource"] = order;
+            ViewData["EmpDataSource"] = EmployeeView.GetAllRecords();
+            ViewData["CustomerDataSource"] = Customer.GetAllRecords();
+            ViewData["data"] = new List<string>() { "Expanded", "All", "None" };
 
             return View();
         }

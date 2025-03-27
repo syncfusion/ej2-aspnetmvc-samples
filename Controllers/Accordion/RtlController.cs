@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Accordion
             rtlItems.Add(new AccordionItem { Header = "Water Games", Content = "#water_games", IconCss = "e-water-game e-acrdn-icons" });
             rtlItems.Add(new AccordionItem { Header = "Racing", Content = "#racing_games", IconCss = "e-racing-games e-acrdn-icons" });
             rtlItems.Add(new AccordionItem { Header = "Indoor Games", Content = "#indoor_games", IconCss = "e-indoor-games e-acrdn-icons" });
-            ViewBag.rtlItems = rtlItems;
+            ViewData["rtlItems"] = rtlItems;
             return View();
         }
     }

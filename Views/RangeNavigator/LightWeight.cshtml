@@ -52,11 +52,11 @@
     </style>
             @*custom code end*@
     <script src="~/Scripts/data-service.js"></script>
+    <script src="~/Scripts/range-navigator/theme-color.js"></script>
     <script>
         var data = GetDateTimeData(new Date('2018-01-01'), new Date('2019-01-01'));
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.rangeNavigator.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadRangeNavigatorTheme(args);
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
             args.rangeNavigator.dataSource = data;
             args.rangeNavigator.value = [new Date(2018, 5, 1), new Date(2018, 6, 1)];

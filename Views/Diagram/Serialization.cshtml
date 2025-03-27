@@ -7,16 +7,16 @@
             @Html.EJS().Uploader("fileupload").Success("onUploadSuccess").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Remove") }).Render()
         </div>
         <div>
-            @(Html.EJS().Toolbar("toolbar").Clicked("onItemClick").Items(ViewBag.tbItems).Render())
+            @(Html.EJS().Toolbar("toolbar").Clicked("onItemClick").Items((List<ToolbarItem>)ViewData["tbItems"]).Render())
         </div>
         <div id="palette-space" class="sb-mobile-palette">
-            @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).ExpandMode(ExpandMode.Multiple).GetNodeDefaults("getNodeDefaults").Width("100%").Height("645px")
+            @(Html.EJS().SymbolPalette("symbolPalette").Palettes((List<SymbolPalettePalette>)ViewData["Palette"]).ExpandMode(ExpandMode.Multiple).GetNodeDefaults("getNodeDefaults").Width("100%").Height("645px")
                             .SymbolHeight(60).SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).SymbolWidth(60).GetSymbolInfo("getSymbolInfo").Render()
                 )
         </div>
         <div id="diagram-space" class="sb-mobile-diagram">
-            @(Html.EJS().Diagram("container").Width("100%").Height("645px").SnapSettings(s => s.HorizontalGridlines(ViewBag.gridLines).VerticalGridlines(ViewBag.gridLines))
-                        .GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
+            @(Html.EJS().Diagram("container").Width("100%").Height("645px").SnapSettings(s => s.HorizontalGridlines((DiagramGridlines)ViewData["gridLines"]).VerticalGridlines((DiagramGridlines)ViewData["gridLines"]))
+                        .GetConnectorDefaults("getConnectorDefaults").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render()
             )
         </div>
     </div>    

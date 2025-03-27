@@ -37,7 +37,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                new StackedArea100ChartData { Period = new DateTime(2013, 01, 01), OrganicSales = 1.66, FairTradeSales = 1.55, VegAlternativesSales = 0.67, OtherSales = 2.51 },
                new StackedArea100ChartData { Period = new DateTime(2014, 01, 01), OrganicSales = 1.67, FairTradeSales = 1.65, VegAlternativesSales = 0.67, OtherSales = 2.61 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class StackedArea100ChartData

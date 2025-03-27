@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "ColumnFormatting";
+    ViewData["Title"] = "ColumnFormatting";
 }
 
 @*custom code end*@
@@ -13,7 +13,7 @@
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
 
-            @Html.EJS().TreeGrid("TreeGrid").AllowPaging().Load("load").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+            @Html.EJS().TreeGrid("TreeGrid").AllowPaging().Load("load").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
             {
                 col.Field("orderID").HeaderText("Order ID").Width(110).TextAlign(TextAlign.Right).Add();
                 col.Field("orderName").HeaderText("Order Name").Width(210).Add();
@@ -27,13 +27,13 @@
             <tr style="height: 50px">
                 <td class="left-side" style="width: 10% !important; padding-right: 10px">Column</td>
                 <td>
-                    @Html.EJS().DropDownList("Columns").DataSource((IEnumerable<object>)ViewBag.columns).Index(0).Placeholder("Select a Column").PopupHeight("220px").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Change("columnChange").Width("145px").Render()
+                    @Html.EJS().DropDownList("Columns").DataSource((IEnumerable<object>)ViewData["columns"]).Index(0).Placeholder("Select a Column").PopupHeight("220px").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Change("columnChange").Width("145px").Render()
                 </td>
             </tr>
             <tr style="height: 50px">
                 <td class="left-side" style="width: 10% !important; padding-right: 10px">Format</td>
                 <td>
-                    @Html.EJS().DropDownList("Formats").DataSource((IEnumerable<object>)ViewBag.numberFormats).Index(2).Placeholder("Select a Format").PopupHeight("220px").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "format", Value = "id" }).Change("formatChange").Width("145px").Render()
+                    @Html.EJS().DropDownList("Formats").DataSource((IEnumerable<object>)ViewData["numberFormats"]).Index(2).Placeholder("Select a Format").PopupHeight("220px").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "format", Value = "id" }).Change("formatChange").Width("145px").Render()
                 </td>
             </tr>
         </table>
@@ -41,8 +41,8 @@
 
 
     <script>
-        var priceFormat = @Html.Raw(Json.Encode(ViewBag.numberFormats));
-        var dateFormat = @Html.Raw(Json.Encode(ViewBag.dateFormats));
+        var priceFormat = @Html.Raw(Json.Encode(ViewData["numberFormats"]));
+        var dateFormat = @Html.Raw(Json.Encode(ViewData["dateFormats"]));
         function columnChange(e) {
             var treegrid = document.getElementById("TreeGrid").ej2_instances[0];
             var dropDownFormat = document.getElementById("Formats").ej2_instances[0];

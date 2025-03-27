@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Popups
 @{
-    ViewBag.Title = "Clipboard";
+    ViewData["Title"] = "Clipboard";
 }
 
 @section ControlsSection{
@@ -13,7 +13,7 @@
         toolbar.Add(new { text = "Copy With Header", tooltipText = "Copy With Header", prefixIcon = "e-copy", id = "copyHeader" });
     }
     <div class="control-section">
-        @Html.EJS().Grid("Clipboard").DataSource((IEnumerable<object>)ViewBag.dataSource).Toolbar(toolbar).SelectionSettings(sel => { sel.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple); } ).Columns(col =>
+        @Html.EJS().Grid("Clipboard").DataSource((IEnumerable<object>)ViewData["dataSource"]).Toolbar(toolbar).SelectionSettings(sel => { sel.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple); } ).Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
@@ -24,7 +24,7 @@
 
    }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).ToolbarClick("toolbarClick").Render()
     </div>
-    @Html.EJS().Dialog("alert_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Copy with Header").Content("Atleast one row should be selected to copy with header").Visible(false).Width("300px").Target(".control-section").Buttons(ViewBag.alertbutton).Render()
+    @Html.EJS().Dialog("alert_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Copy with Header").Content("Atleast one row should be selected to copy with header").Visible(false).Width("300px").Target(".control-section").Buttons((List<DialogDialogButton>)ViewData["alertbutton"]).Render()
 
 
     <script>

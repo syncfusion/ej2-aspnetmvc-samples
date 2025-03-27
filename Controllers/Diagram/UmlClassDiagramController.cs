@@ -210,14 +210,14 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             Palette.Add(new SymbolPalettePalette() { Id = "UMLActivity", Expanded = true, Symbols = umlShapes, Title = "UMLClass Nodes" });
             Palette.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = SymbolPaletteConnectors, Title = "UMLClass Connectors" });
 
-            ViewBag.Palette = Palette;
-            ViewBag.Nodes = GetClassNodeDiagram();
-            ViewBag.Connectors = GetClassConnectorDiagram();
-            ViewBag.getNodeDefaults = "getNodeDefaults";
-            ViewBag.getConnectorDefaults = "getConnectorDefaults";
-            ViewBag.setNodeTemplate = "setNodeTemplate";
-            ViewBag.getSymbolInfo = "getSymbolInfo";
-            ViewBag.getSymbolDefaults = "getSymbolDefaults";
+            ViewData["Palette"] = Palette;
+            ViewData["Nodes"] = GetClassNodeDiagram();
+            ViewData["Connectors"] = GetClassConnectorDiagram();
+            ViewData["getNodeDefaults"] = "getNodeDefaults";
+            ViewData["getConnectorDefaults"] = "getConnectorDefaults";
+            ViewData["setNodeTemplate"] = "setNodeTemplate";
+            ViewData["getSymbolInfo"] = "getSymbolInfo";
+            ViewData["getSymbolDefaults"] = "getSymbolDefaults";
             return View();
         }
 

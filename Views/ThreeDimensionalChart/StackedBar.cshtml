@@ -1,14 +1,14 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
 
         @Html.EJS().Chart3D("container").EnableRotation(true).Rotation(22).Depth(100).Height("400").Title("Olympic Gold Medal Comparison").PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.BetweenTicks)
    ).Series(series =>
    {
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar).DataSource(ViewBag.ChartData).XName("X").YName("Y").Name("America").ColumnWidth(0.6).Add();
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar).DataSource(ViewBag.ChartData).XName("X").YName("Y1").Name("Canada").ColumnWidth(0.6).Add();
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar).DataSource(ViewBag.ChartData).XName("X").YName("Y2").Name("France").ColumnWidth(0.6).Add();
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar).DataSource(ViewBag.ChartData).XName("X").YName("Y3").Name("Germany").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar).DataSource(ViewData["ChartData"]).XName("X").YName("Y").Name("America").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar).DataSource(ViewData["ChartData"]).XName("X").YName("Y1").Name("Canada").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar).DataSource(ViewData["ChartData"]).XName("X").YName("Y2").Name("France").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingBar).DataSource(ViewData["ChartData"]).XName("X").YName("Y3").Name("Germany").ColumnWidth(0.6).Add();
    }).PrimaryYAxis(py => py.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
         ).Tooltip(tt => tt.Enable(true)
         ).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
@@ -21,12 +21,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/three-dimensional-chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var stackedBarTheme = location.hash.split('/')[1];
-            stackedBarTheme = stackedBarTheme ? stackedBarTheme : 'Fluent2';
-            args.chart.theme = (stackedBarTheme.charAt(0).toUpperCase() +
-                stackedBarTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            load3DChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? '100%' : '75%';
             args.chart.primaryYAxis.interval = ej.base.Browser.isDevice ? 20 : 10;
         }

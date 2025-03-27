@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ColumnChooser";
+    ViewData["Title"] = "ColumnChooser";
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("ColumnChooser").DataSource((IEnumerable<object>)ViewBag.dataSource).ShowColumnChooser(true).Columns(col =>
+        @Html.EJS().Grid("ColumnChooser").DataSource((IEnumerable<object>)ViewData["dataSource"]).ShowColumnChooser(true).Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();

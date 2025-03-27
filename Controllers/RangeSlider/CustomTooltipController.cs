@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult CustomTooltip()
         {
-            ViewBag.sliderValue = new int[] { 30, 70 };
-            ViewBag.timeValue = new decimal[] { 1373697000000, 1373718600000 };
+            ViewData["sliderValue"] = new int[] { 30, 70 };
+            ViewData["timeValue"] = new decimal[] { 1373697000000, 1373718600000 };
             return View();
         }
     }

@@ -14,8 +14,8 @@
         <div class="content-wrapper">
             @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Resources(res =>
        {
-           res.Field("GroupId").Title("Owner").Name("Owners").DataSource(ViewBag.resourceData).TextField("GroupText").IdField("GroupId").ColorField("GroupColor").Add();
-       }).Views(viewOptions).CurrentView(View.Month).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 6, 20)).Render()
+           res.Field("GroupId").Title("Owner").Name("Owners").DataSource(ViewData["resourceData"]).TextField("GroupText").IdField("GroupId").ColorField("GroupColor").Add();
+       }).Views(viewOptions).CurrentView(View.Month).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 6, 20)).Render()
         </div>
     </div>
     <style>

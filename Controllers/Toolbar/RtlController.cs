@@ -44,9 +44,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Toolbar
             rtl_items.Add(new ToolbarItem { PrefixIcon = "e-table-icon tb-icons", TooltipText = "Table", Text = "Table", ShowTextOn = DisplayMode.Overflow });
             rtl_items.Add(new ToolbarItem { PrefixIcon = "e-picture-icon tb-icons", TooltipText = "Picture", Text = "Picture", ShowTextOn = DisplayMode.Overflow, Overflow = OverflowOption.Hide });
             rtl_items.Add(new ToolbarItem { PrefixIcon = "e-design-icon tb-icons", TooltipText = "Design", Text = "Design", ShowTextOn = DisplayMode.Overflow, Overflow = OverflowOption.Hide });
-            ViewBag.rtlItems = rtl_items;
+            ViewData["rtlItems"] = rtl_items;
 
-            ViewBag.overflowData = new string[] { "Scrollable", "Popup" };
+            ViewData["overflowData"] = new string[] { "Scrollable", "Popup" };
             return View();
         }
     }

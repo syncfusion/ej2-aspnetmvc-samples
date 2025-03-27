@@ -4,10 +4,10 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            @Html.EJS().RichTextEditor("mailMergeEditor").ActionBegin("actionBeginHandler").ActionComplete("actionCompleteHandler").SaveInterval(1).Created("created").ToolbarSettings(e => e.Items((object)ViewBag.Tools)).Value((string)ViewBag.RTEValue).Render()
+            @Html.EJS().RichTextEditor("mailMergeEditor").ActionBegin("actionBeginHandler").ActionComplete("actionCompleteHandler").SaveInterval(1).Created("created").ToolbarSettings(e => e.Items((object)ViewData["Tools"])).Value((string)ViewData["RTEValue"]).Render()
             @Html.EJS().Button("merge_data").Content("Merge Data").Click("onClickHandler").CssClass("e-tbar-btn e-btn").Render()
-            @Html.EJS().DropDownButton("insert_Field").Content("Insert Field").Select("onItemSelect").Items(ViewBag.Items).CssClass("e-rte-dropdown-btn e-rte-dropdown-popup e-rte-dropdown-items e-rte-elements e-tbar-btn").Render()
-            @Html.EJS().Mention("mentionField").MentionChar(ViewBag.MentionChar).Created("onMentionCreate").Target("#mailMergeEditor_rte-edit-view").DataSource((IEnumerable<MergeData>)ViewBag.MergeData).AllowSpaces(true).Fields(new MentionFieldSettings { Text = "Text" }).DisplayTemplate("<span> {{${Value}}} </span>").PopupWidth("250px").PopupHeight("200px").Render()
+            @Html.EJS().DropDownButton("insert_Field").Content("Insert Field").Select("onItemSelect").Items(ViewData["Items"]).CssClass("e-rte-dropdown-btn e-rte-dropdown-popup e-rte-dropdown-items e-rte-elements e-tbar-btn").Render()
+            @Html.EJS().Mention("mentionField").MentionChar((char)ViewData["MentionChar"]).Created("onMentionCreate").Target("#mailMergeEditor_rte-edit-view").DataSource((IEnumerable<MergeData>)ViewData["MergeData"]).AllowSpaces(true).Fields(new MentionFieldSettings { Text = "Text" }).DisplayTemplate("<span> {{${Value}}} </span>").PopupWidth("250px").PopupHeight("200px").Render()
         </div>
     </div>
 }
@@ -102,6 +102,7 @@
         if (args.item.text != null) {
             const value = textToValueMap[args.item.text];
             const trimmedValue = value.trim();
+            mailMergeEditor.formatter.editorManager.nodeSelection.restore();
             mailMergeEditor.executeCommand(
                 'insertHTML',
                 `<span contenteditable="false" class="e-mention-chip"><span>{{${trimmedValue}}}</span></span>&nbsp;`,

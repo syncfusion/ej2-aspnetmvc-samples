@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeView
             checkboxfields.Id = "Id";
             checkboxfields.ParentID = "PId";
             checkboxfields.Text = "Name";
-            ViewBag.checkboxfields = checkboxfields;
+            ViewData["checkboxfields"] = checkboxfields;
             return View();
         }
     }

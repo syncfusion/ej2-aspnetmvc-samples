@@ -11,7 +11,7 @@
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>
-                )ViewBag.Data).ExpandAll(false).AllowLabelFilter(true)
+                )ViewData["Data"]).ExpandAll(false).AllowLabelFilter(true)
                 .FormatSettings(formatsettings =>
                 {
                 formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
@@ -48,7 +48,7 @@
                     </td>
                     <td style="padding-bottom: 16px">
                         <div>
-                            @Html.EJS().DropDownList("fields").Index(0).DataSource((IEnumerable<object>)ViewBag.filterFields).Width("100%"
+                            @Html.EJS().DropDownList("fields").Index(0).DataSource((IEnumerable<object>)ViewData["filterFields"]).Width("100%"
                             ).Change("fieldsChange").Render()
                         </div>
                     </td>
@@ -61,7 +61,7 @@
                     </td>
                     <td style="padding-bottom: 16px">
                         <div class="conditionscls">
-                            @Html.EJS().DropDownList("conditions").DataSource((IEnumerable<object>)ViewBag.filterOperators).Value("DoesNotEquals"
+                            @Html.EJS().DropDownList("conditions").DataSource((IEnumerable<object>)ViewData["filterOperators"]).Value("DoesNotEquals"
                             ).Change("conditionsChange").Render()
                         </div>
                     </td>

@@ -19,13 +19,13 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult InlineEditing()
         {
             var treeData = TreeGridItems.GetTreeData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
 
             List<Object> dropData = new List<object>() {
                 new { value = "Row", text = "Row Editing" },
                 new { value = "Cell", text = "Cell Editing" },
             };
-            ViewBag.dropdata = dropData;
+            ViewData["dropdata"] = dropData;
             return View();
         }
     }

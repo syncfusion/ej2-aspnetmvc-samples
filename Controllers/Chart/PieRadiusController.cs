@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new PieRadiusChartData { Country = "Kazakhstan",         Population = 300000,  Radius = "155.5", text = "Kazakhstan" },
                 new PieRadiusChartData { Country = "Somalia",            Population = 357022,  Radius = "160.6", text = "Somalia" }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class PieRadiusChartData

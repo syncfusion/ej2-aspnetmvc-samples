@@ -31,8 +31,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new PolarStackedAreaData { Country = "India", GDP_2013 = 1857, GDP_2014 = 2034, GDP_2015 = 2088, GDP_2016 = 2256 },
                 new PolarStackedAreaData { Country = "Canada", GDP_2013 = 1843, GDP_2014 = 1793, GDP_2015 = 1553, GDP_2016 = 1529 }
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.data = new string[]{ "Polar", "Radar"};
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["data"] = new string[]{ "Polar", "Radar"};
             return View();
         }
         public class PolarStackedAreaData

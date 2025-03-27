@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource, EnableTooltip = true, TooltipTemplate = "#toolTip" }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"], EnableTooltip = true, TooltipTemplate = "#toolTip" }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
 

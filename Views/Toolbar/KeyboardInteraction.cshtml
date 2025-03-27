@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="e-sample-resize-container">
-            @Html.EJS().Toolbar("toolbarKeyboardInteraction").Items(ViewBag.tbItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
+            @Html.EJS().Toolbar("toolbarKeyboardInteraction").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["tbItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
         </div>
     </div>
 }

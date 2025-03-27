@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ImageEditor
     {
         public ActionResult CustomToolbar()
         {
-            ViewBag.imageTool = new string[] { };
+            ViewData["imageTool"] = new string[] { };
             return View();
         }
     }

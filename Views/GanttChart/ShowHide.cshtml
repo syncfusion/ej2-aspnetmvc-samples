@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ShowHide";
+    ViewData["Title"] = "ShowHide";
 }
 
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="control-section">
 
-         @(Html.EJS().Gantt("ShowHide").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true)
+         @(Html.EJS().Gantt("ShowHide").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true)
           .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
            .Dependency("Predecessor").Child("SubTasks")).Columns(col =>
            {
@@ -33,7 +33,7 @@
                     <div>Column</div>
                 </td>
                 <td style="width: 70%;padding-right: 10px">
-                    @Html.EJS().DropDownList("dropdown").DataSource((IEnumerable<object>)ViewBag.columns).Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onChange").Render()
+                    @Html.EJS().DropDownList("dropdown").DataSource((IEnumerable<object>)ViewData["columns"]).Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onChange").Render()
                 </td>
             </tr>
             <tr>

@@ -8,10 +8,10 @@
 	   {
 		   series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("Rate").EnableTooltip(false)
 			   .Marker(mr => mr.DataLabel(dl => dl.Visible(false).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-			   .Opacity(0.5).ColumnWidth(0.8).DataSource(ViewBag.ChartPoints).Add();
+			   .Opacity(0.5).ColumnWidth(0.8).DataSource(ViewData["ChartPoints"]).Add();
 		   series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("Literacy_Rate").TooltipMappingName("Text")
 			   .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-			   .ColumnWidth(0.8).DataSource(ViewBag.ChartPoints).Add();
+			   .ColumnWidth(0.8).DataSource(ViewData["ChartPoints"]).Add();
 	   }).PrimaryXAxis(px => px.Interval(1).MajorGridLines(mg=>mg.Width(0))
 		   .LabelPosition(Syncfusion.EJ2.Charts.AxisPosition.Outside).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
 			).PrimaryYAxis(py => py.Minimum(0).Maximum(100).LabelFormat("{value}%")
@@ -28,10 +28,10 @@
 		}
 	</style>
 	@*custom code end*@
+     <script src="~/Scripts/chart/theme-color.js"></script>
 	<script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "77%";
 			args.chart.series[0].cornerRadius.bottomLeft = ej.base.Browser.isDevice ? 12 : 35;
 			args.chart.series[0].cornerRadius.bottomRight = ej.base.Browser.isDevice ? 12 : 35;

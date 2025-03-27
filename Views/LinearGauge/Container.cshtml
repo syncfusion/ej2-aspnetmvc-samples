@@ -24,7 +24,7 @@
                     </td>
                     <td>
                         <div style="height:45px">
-                            @Html.EJS().DropDownList("orientationMode").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewBag.orientation).Value("Vertical").Change("valueChange").Render()
+                            @Html.EJS().DropDownList("orientationMode").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewData["orientation"]).Value("Vertical").Change("valueChange").Render()
                         </div>
                     </td>
                 </tr>
@@ -34,7 +34,7 @@
                     </td>
                     <td>
                         <div style="height:45px">
-                            @Html.EJS().DropDownList("containerMode").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewBag.container).Value("Thermometer").Change("valueContainerChange").Render()
+                            @Html.EJS().DropDownList("containerMode").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewData["container"]).Value("Thermometer").Change("valueContainerChange").Render()
                         </div>
                     </td>
                 </tr>

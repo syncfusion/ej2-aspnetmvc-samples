@@ -42,7 +42,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("Pager_Position").Index(1).DataSource((IEnumerable<object>)ViewBag.pagerPositions
+                        @Html.EJS().DropDownList("Pager_Position").Index(1).DataSource((IEnumerable<object>)ViewData["pagerPositions"]
                         ).Change("onDropDownChange").Render()
                     </div>
                 </td>
@@ -54,7 +54,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("Pager_View").Index(2).DataSource((IEnumerable<object>)ViewBag.pagerViewData
+                        @Html.EJS().DropDownList("Pager_View").Index(2).DataSource((IEnumerable<object>)ViewData["pagerViewData"]
                         ).Change("onDropDownChange").Render()
                     </div>
                 </td>
@@ -66,7 +66,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("Page_Size").Index(2).DataSource((IEnumerable<object>)ViewBag.pageSizes
+                        @Html.EJS().DropDownList("Page_Size").Index(2).DataSource((IEnumerable<object>)ViewData["pageSizes"]
                         ).Change("onDropDownChange").Render()
                     </div>
                 </td>

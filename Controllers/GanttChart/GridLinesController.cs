@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult GridLines()
         {
-            ViewBag.DataSource = GanttData.ProjectNewData();
-            ViewBag.Data = DropDownLists.GridLinesData();
+            ViewData["DataSource"] = GanttData.ProjectNewData();
+            ViewData["Data"] = DropDownLists.GridLinesData();
             return View();
         }
 

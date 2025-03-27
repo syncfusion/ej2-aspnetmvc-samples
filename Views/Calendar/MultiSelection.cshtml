@@ -4,7 +4,7 @@
         <div class="col-lg-7 control-section sb-property-border">
             <div class="calender-section">
                 <div id="calender-control" class="col-lg-6 col-sm-8 col-md-8 multiselectWrapper">
-                    @Html.EJS().Calendar("calendar").IsMultiSelection(true).Created("changeValue").Change("changeValue").Values(ViewBag.multiValue).Render()
+                    @Html.EJS().Calendar("calendar").IsMultiSelection(true).Created("changeValue").Change("changeValue").Values(ViewData["multiValue"]).Render()
                 </div>
             </div>
         </div>

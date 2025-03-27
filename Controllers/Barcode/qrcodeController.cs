@@ -25,7 +25,7 @@ namespace EJ2CoreSampleBrowser.Controllers.Barcode
             position.Add(new ExpandOptionsqrcode() { text = "Quartile", value = "25" });
             position.Add(new ExpandOptionsqrcode() { text = "High", value = "30" });
 
-            ViewBag.position = position;
+            ViewData["position"] = position;
 
          
            

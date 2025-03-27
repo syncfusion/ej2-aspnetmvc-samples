@@ -7,11 +7,11 @@
   @Html.EJS().Chart("container").Series(series =>
    {
        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).Width(2).XName("Period").Opacity(1)
-       .Marker(mr=>mr.Visible(true).Height(7).Width(7).IsFilled(true)).YName("ProfitInfo").DataSource(ViewBag.ChartPoints).Name("Product X").Add();
+       .Marker(mr=>mr.Visible(true).Height(7).Width(7).IsFilled(true)).YName("ProfitInfo").DataSource(ViewData["ChartPoints"]).Name("Product X").Add();
    }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("yyyy").MajorGridLines(mg => mg.Width(0))
     ).PrimaryYAxis(py => py.Maximum(100000).Minimum(0).MajorTickLines(mt=>mt.Width(0)).MinorTickLines(mt=>mt.Width(0)).LabelFormat("${value}")
     .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).ValueType(Syncfusion.EJ2.Charts.ValueType.Logarithmic).Interval(1).MinorTicksPerInterval(5).MajorGridLines(mg => mg.Width(1.5)).LineStyle(ls => ls.Width(0))
-       ).Title("Product X Growth [1995-2005]").Tooltip(tt => tt.Enable(true).Shared(true).Header("").Format("${point.x} : <b>${point.y}</b>")).LegendSettings(lg => lg.Visible(false)).ChartArea(area => area.Border(br => br.Width(0))).Load("load").Render()
+       ).Title("Product X Growth [1995-2005]").Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true).Header("").Format("${point.x} : <b>${point.y}</b>")).LegendSettings(lg => lg.Visible(false)).ChartArea(area => area.Border(br => br.Width(0))).Load("load").Render()
     </div>
 </div>
 
@@ -22,10 +22,10 @@
     }
 </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>

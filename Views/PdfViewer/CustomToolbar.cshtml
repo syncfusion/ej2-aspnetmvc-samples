@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "PdfViewer";
+    ViewData["Title"] = "PdfViewer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
@@ -21,9 +21,7 @@
             <div class="e-message render-mode-info">
                 <span class="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
             </div>
-            <div>
-                @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
-            </div>
+            @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
         </div>
         @Html.EJS().Toolbar("topToolbar").Height("56px").Items(new List<ToolbarItem> {
 new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-folder",TooltipText = "Open",Align=ItemAlign.Left,Click="openFile"},
@@ -90,8 +88,7 @@ new ToolbarItem { Type = ItemType.Button,  PrefixIcon = "e-icons e-print" ,Toolt
                 <div class="e-pv-search-bar-elements" id="container_search_box_elements" style="width:330px">
                     <div class="e-input-group e-pv-search-input" id="container_search_input_container">
                         <input class="e-input" id="container_search_input" type="text" placeholder="Find in document" onkeypress="searchInputKeypressed(event)" oninput="inputChange()" />
-                        <span class="e-input-group-icon e-input-search-group-icon e-icons e-search" id="container_search_box-icon" onclick="initiateTextSearch()"></span>
-                        <span class="e-input-group-icon e-input-search-group-icon e-icons e-close" id="container_close_search_box-icon" style="display: none; top:6px;" onclick="clearTextSearch()"></span>
+                        <span class="e-input-group-icon e-input-search-group-icon e-icons e-search" id="container_search_box-icon" onclick="searchClickHandler()"></span>
                     </div>
                     <button class="e-btn e-icon-btn e-pv-search-btn e-icons e-chevron-left" id="container_prev_occurrence" type="button" aria-label="Previous Search text">
                         <span class="e-pv-icon-search e-pv-prev-search-icon" id="container_prev_occurrenceIcon" onclick="previousTextSearch()"></span>
@@ -121,9 +118,9 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-pv-fit-page-icon", Too
 new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-add",TooltipText = "Zoom in",Click="zoomInClicked" },
 new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove", TooltipText = "Zoom out",Click="zoomOutClicked"},
 }).Render()
-            @Html.EJS().Menu("stampMenu").Items(ViewBag.menuItem).Select("onItemSelect").ShowItemOnClick(true).Render()
-            @Html.EJS().Menu("SignatureToolbar").Items(ViewBag.signItem).Select("onSignatureClick").ShowItemOnClick(true).Render()
-            @Html.EJS().Menu("formFieldSignatureMenu").Items(ViewBag.signItem).Select("onSignatureClick").ShowItemOnClick(true).Render()
+            @Html.EJS().Menu("stampMenu").Items(ViewData["menuItem"]).Select("onItemSelect").ShowItemOnClick(true).Render()
+            @Html.EJS().Menu("SignatureToolbar").Items(ViewData["signItem"]).Select("onSignatureClick").ShowItemOnClick(true).Render()
+            @Html.EJS().Menu("formFieldSignatureMenu").Items(ViewData["signItem"]).Select("onSignatureClick").ShowItemOnClick(true).Render()
 
         </div>
     </div>
@@ -271,6 +268,7 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
     .flex-container {
         display: flex;
         justify-content: flex-end;
+        align-items: center;
     }
 
     .render-mode-info {
@@ -291,10 +289,11 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         letter-spacing: 0.24px;
         text-align: right;
         font-size: 14px;
+        margin-bottom: 3px;
     }
 
     .render-mode-info .render-mode-info-icon::before {
-        line-height: 0.5rem;
+        line-height: normal;
     }
 
     .buttonSwitch {
@@ -793,14 +792,44 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
             pdfViewer.textSearchModule.clearAllOccurrences();
         }
     }
+     function searchClickHandler() {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        var searchBtn = document.getElementById('container_search_box-icon');
+        if (searchBtn.classList.contains('e-search')) {
+            pdfViewer.textSearch.cancelTextSearch();
+            initiateTextSearch();
+            updateSearchInputIcon(false);
+            searchText = '';
+        }
+        else if (searchBtn.classList.contains('e-close')) {
+            var searchInput = document.getElementById('container_search_input');
+            updateSearchInputIcon(true);
+            searchInput.value = '';
+            searchInput.focus();
+            pdfViewer.textSearch.cancelTextSearch();
+            searchText = '';
+        }
+    }
+     function updateSearchInputIcon(isEnable) {
+     var searchButton = document.getElementById('container_search_box-icon');
+     if (isEnable) {
+         searchButton.classList.remove('e-close');
+         searchButton.classList.add('e-search');
+        }
+     else {
+         searchButton.classList.add('e-close');
+         searchButton.classList.remove('e-search');
+        }
+    }
     function inputChange() {
         var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
         pdfViewer.textSearchModule.clearAllOccurrences();
         searchActive = false;
-        var textsearchcloseElement = document.getElementById('container_close_search_box-icon');
-        var textsearchElement = document.getElementById('container_search_box-icon');
-        textsearchcloseElement.style.display = 'none';
-        textsearchElement.style.display = 'block';
+        if (document.getElementById('container_search_input').value === '') {
+            updateSearchInputIcon(true);
+            pdfViewer.textSearch.cancelTextSearch();
+            searchText = '';
+        }
     }
     function searchInputKeypressed(event) {
         var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
@@ -817,42 +846,26 @@ new ToolbarItem { Type = ItemType.Button, PrefixIcon = "e-icons e-circle-remove"
         var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
         var textsearchPrevElement = document.getElementById('container_prev_occurrence');
         var textsearchNextElement = document.getElementById('container_next_occurrence');
-        var textsearchcloseElement = document.getElementById('container_close_search_box-icon');
         var textsearchElement = document.getElementById('container_search_box-icon');
-
-        if (textsearchPrevElement && textsearchNextElement && textsearchcloseElement && textsearchElement) {
+        if (textsearchPrevElement && textsearchNextElement && textsearchElement) {
             textsearchPrevElement.disabled = false;
             textsearchNextElement.disabled = false;
-            textsearchcloseElement.style.display = 'flex';
-            textsearchElement.style.display = 'none';
-            textsearchPrevElement.addEventListener("click", previousTextSearch);
+            textsearchElement.classList.add('e-close');
+      	    textsearchElement.classList.remove('e-search');
+	    textsearchPrevElement.addEventListener("click", previousTextSearch);
             textsearchNextElement.addEventListener("click", nextTextSearch);
-
-            var currentSearchText = document.getElementById('container_search_input').value;
-
-            if (searchText !== (document.getElementById('container_search_input')).value || prevMatchCase !== matchCase) {
-                pdfViewer.textSearchModule.cancelTextSearch();
-                searchText = (document.getElementById('container_search_input')).value;
-                pdfViewer.textSearchModule.searchText(searchText, matchCase);
+            if (searchText !== (document.getElementById('container_search_input').value) || prevMatchCase !== matchCase) {
+                pdfViewer.textSearch.cancelTextSearch();
+                searchText = (document.getElementById('container_search_input').value);
                 searchActive = true;
+                pdfViewer.textSearch.searchText(searchText, matchCase);
                 prevMatchCase = matchCase;
-            } else {
+            }
+            else {
                 nextTextSearch();
             }
         }
     }
-
-    function clearTextSearch() {
-        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
-        const textsearchcloseElement = document.getElementById('container_close_search_box-icon');
-        const textsearchElement = document.getElementById('container_search_box-icon');
-        textsearchcloseElement.style.display = 'none';
-        textsearchElement.style.display = 'block';
-        pdfViewer.textSearchModule.cancelTextSearch();
-        const searchTextElement = document.getElementById('container_search_input');
-        searchTextElement.value = '';
-    }
-
     function previousTextSearch() {
         var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
         pdfViewer.textSearchModule.searchPrevious();

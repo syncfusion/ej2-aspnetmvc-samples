@@ -28,8 +28,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new PolarRangeColumnData { Month = "May", MinTemp = 6, MaxTemp = 11 },
                 new PolarRangeColumnData { Month = "June", MinTemp = 8,MaxTemp = 14 }
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.data = new string[] { "Polar", "Radar" };
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["data"] = new string[] { "Polar", "Radar" };
             return View();
         }
         public class PolarRangeColumnData

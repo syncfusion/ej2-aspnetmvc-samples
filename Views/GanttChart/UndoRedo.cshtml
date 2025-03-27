@@ -1,12 +1,12 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @{
-    ViewBag.Title = "UndoRedo";
+    ViewData["Title"] = "UndoRedo";
 }
 
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @(Html.EJS().Gantt("UndoRedo").DataSource((IEnumerable<object>)ViewBag.DataSource)
+            @(Html.EJS().Gantt("UndoRedo").DataSource((IEnumerable<object>)ViewData["DataSource"])
                             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
                                 .Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Notes"))
                             .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))

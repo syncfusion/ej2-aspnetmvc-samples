@@ -7,16 +7,16 @@
             </div>
             <div id="custom-content" id="colorpicker-content" class="row">
                 <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 e-circle-wrap">
-                    @Html.EJS().ColorPicker("circle-palette").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).Inline(true).ShowButtons(false).Columns(4).BeforeTileRender("beforeCircleTileRender").PresetColors(@ViewBag.circlePaletteColors).Change("onChange").Render()
+                    @Html.EJS().ColorPicker("circle-palette").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).Inline(true).ShowButtons(false).Columns(4).BeforeTileRender("beforeCircleTileRender").PresetColors(@ViewData["circlePaletteColors"]).Change("onChange").Render()
                 </div>
                 <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 e-rounded-wrap">
-                    @Html.EJS().ColorPicker("rounded-palette").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).Inline(true).ShowButtons(false).Columns(5).BeforeTileRender("beforeRoundedTileRender").PresetColors(@ViewBag.roundedPaletteColors).Change("roundedPaletteChange").Render()
+                    @Html.EJS().ColorPicker("rounded-palette").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).Inline(true).ShowButtons(false).Columns(5).BeforeTileRender("beforeRoundedTileRender").PresetColors(@ViewData["roundedPaletteColors"]).Change("roundedPaletteChange").Render()
                 </div>
                 <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 e-square-wrap">
-                    @Html.EJS().ColorPicker("square-palette").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).Inline(true).ShowButtons(false).Columns(8).BeforeTileRender("beforeSquareTileRender").PresetColors(@ViewBag.squarePaletteColors).Change("onChange").Render()
+                    @Html.EJS().ColorPicker("square-palette").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).Inline(true).ShowButtons(false).Columns(8).BeforeTileRender("beforeSquareTileRender").PresetColors(@ViewData["squarePaletteColors"]).Change("onChange").Render()
                 </div>
                 <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 e-scroll-wrap">
-                    @Html.EJS().ColorPicker("scroll-palette").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).Inline(true).ShowButtons(false).Columns(4).BeforeTileRender("beforeScrollTileRender").PresetColors(@ViewBag.scrollPaletteColors).Change("onChange").Render()
+                    @Html.EJS().ColorPicker("scroll-palette").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).Inline(true).ShowButtons(false).Columns(4).BeforeTileRender("beforeScrollTileRender").PresetColors(@ViewData["scrollPaletteColors"]).Change("onChange").Render()
                 </div>
         </div>
     </div>

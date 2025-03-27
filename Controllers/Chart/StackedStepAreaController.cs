@@ -34,7 +34,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new StackedStepAreaChartData { xValue = 2010, yValue = 520, yValue1 = 220 },
                 new StackedStepAreaChartData { xValue = 2011, yValue = 520, yValue1 = 220 },
             };
-            ViewBag.dataSource = chartData;
+            ViewData["dataSource"] = chartData;
             return View();
         }
         public class StackedStepAreaChartData

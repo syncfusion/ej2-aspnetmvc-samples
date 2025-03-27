@@ -18,25 +18,25 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
         // GET: Emptypoints
         public ActionResult Emptypoints()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
                 fontFamily = "inherit"
             };
-            ViewBag.labelTextStyle = new
+            ViewData["labelTextStyle"] = new
             {
                 fontFamily= "inherit"
             };
-            ViewBag.border = new { width = "0", color= "white" };
-            ViewBag.cellTextStyle = new { color = "white" };
+            ViewData["border"] = new { width = "0", color= "white" };
+            ViewData["cellTextStyle"] = new { color = "white" };
             string[] xlabels = new string[11] { "2007", "2008", "2009", "2010", "2011",
                 "2012", "2013", "2014", "2015", "2016", "2017"};
-            ViewBag.xLabels = xlabels;
+            ViewData["xLabels"] = xlabels;
             string[] yLabels = new string[12] { "Jan", "Feb", "Mar", "Apr", "May",
                 "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"};
-            ViewBag.yLabels = yLabels;
+            ViewData["yLabels"] = yLabels;
             int?[,] dataSource = new int?[,]
             {
                 {8, 5, 2, 6, 8, 2, 9, 3, 7, 8, 7, 6},
@@ -51,7 +51,7 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
                 {1, null, 4, null, null, 2, null, 5, 1, 5, 2, 1},
                 {1, null, 2, 1, 5, null, null, null, 5, 2, 1, null}
             };
-            ViewBag.dataSource = dataSource;
+            ViewData["dataSource"] = dataSource;
 
             return View();
         }

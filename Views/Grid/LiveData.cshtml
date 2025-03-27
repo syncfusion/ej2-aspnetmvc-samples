@@ -11,7 +11,7 @@
             @Html.EJS().Button("clearbtn").Content("Stop Data Update").Disabled(true).Render()
         </div>
         <br />
-        @Html.EJS().Grid("LiveData").DataSource((IEnumerable<object>)ViewBag.Data).Columns(col =>
+        @Html.EJS().Grid("LiveData").DataSource((IEnumerable<object>)ViewData["Data"]).Columns(col =>
   {
       col.Field("id").Visible(false).IsPrimaryKey(true).HeaderText("ID").Width("140").Add();
       col.Field("CountryCode").HeaderText("Ticker").Width("70").Add();

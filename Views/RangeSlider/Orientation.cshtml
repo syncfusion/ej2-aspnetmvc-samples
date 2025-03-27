@@ -21,13 +21,13 @@
                     <td>
                         <div class="sliderwrap">
                             <div id='range'></div>
-                            @Html.EJS().Slider("range").Min(0).Max(100).Value(ViewBag.sliderValue).Enabled(true).Type(SliderType.Range).Orientation(SliderOrientation.Vertical).Ticks(new SliderTicksData { Placement = Placement.Before, LargeStep = 20, SmallStep = 5, ShowSmallTicks = true }).Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before }).Render()
+                            @Html.EJS().Slider("range").Min(0).Max(100).Value(ViewData["sliderValue"]).Enabled(true).Type(SliderType.Range).Orientation(SliderOrientation.Vertical).Ticks(new SliderTicksData { Placement = Placement.Before, LargeStep = 20, SmallStep = 5, ShowSmallTicks = true }).Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before }).Render()
                         </div>
                     </td>
                     <td>
                         <div class="sliderwrap">
                             <div id='reversible'></div>
-                            @Html.EJS().Slider("reversible").Min(100).Max(0).Value(ViewBag.sliderValue).Enabled(true).Type(SliderType.Range).Orientation(SliderOrientation.Vertical).Ticks(new SliderTicksData { Placement = Placement.Before, LargeStep = 20, SmallStep = 5, ShowSmallTicks = true }).Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before }).Render()
+                            @Html.EJS().Slider("reversible").Min(100).Max(0).Value(ViewData["sliderValue"]).Enabled(true).Type(SliderType.Range).Orientation(SliderOrientation.Vertical).Ticks(new SliderTicksData { Placement = Placement.Before, LargeStep = 20, SmallStep = 5, ShowSmallTicks = true }).Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before }).Render()
                         </div>
                     </td>
                 </tr>

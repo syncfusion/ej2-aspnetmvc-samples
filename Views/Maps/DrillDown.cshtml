@@ -42,10 +42,10 @@
            {
                new Syncfusion.EJ2.Maps.MapsLayer
                {
-                   ShapeData = ViewBag.World,
+                   ShapeData = ViewData["World"],
                    ShapePropertyPath = "continent",
                    ShapeDataPath = "continent",
-                   DataSource =  ViewBag.DataSource,
+                   DataSource =  ViewData["DataSource"],
                    TooltipSettings = new MapsTooltipSettings
                    {
                        Visible = true, ValuePath="continent"
@@ -66,21 +66,21 @@
                },
                new Syncfusion.EJ2.Maps.MapsLayer
                {
-                   ShapeData =  ViewBag.Africa,
+                   ShapeData =  ViewData["Africa"],
                    ShapeSettings = new MapsShapeSettings{  Fill="#80306A" },
                    HighlightSettings = new MapsHighlightSettings{ Enable = false, Fill="#80306A" },
                    TooltipSettings = new MapsTooltipSettings{ Visible = true,  ValuePath="name" }
                },
                 new Syncfusion.EJ2.Maps.MapsLayer
                {
-                   ShapeData = ViewBag.Eurpoe ,
+                   ShapeData = ViewData["Eurpoe"] ,
                    ShapeSettings = new MapsShapeSettings{  Fill="#622D6C" },
                    HighlightSettings = new MapsHighlightSettings{ Enable = true, Fill="#622D6C" },
                    TooltipSettings = new MapsTooltipSettings{ Visible = true,  ValuePath="name" }
                },
                  new Syncfusion.EJ2.Maps.MapsLayer
                {
-                   ShapeData =  ViewBag.Asia,
+                   ShapeData =  ViewData["Asia"],
                    ShapeSettings = new MapsShapeSettings{  Fill="#462A6D" },
                    HighlightSettings = new MapsHighlightSettings{ Enable = true, Fill="#462A6D" },
                    TooltipSettings = new MapsTooltipSettings{ Visible = true,  ValuePath="name" }
@@ -88,21 +88,21 @@
                },
                  new Syncfusion.EJ2.Maps.MapsLayer
                {
-                   ShapeData = ViewBag.NorthAmerica,
+                   ShapeData = ViewData["NorthAmerica"],
                    ShapeSettings = new MapsShapeSettings{  Fill="#C13664" },
                    HighlightSettings = new MapsHighlightSettings{ Enable = true, Fill="#C13664" },
                    TooltipSettings = new MapsTooltipSettings{ Visible = true,  ValuePath="name" }
                },
                   new Syncfusion.EJ2.Maps.MapsLayer
                {
-                   ShapeData = ViewBag.SouthAmerica,
+                   ShapeData = ViewData["SouthAmerica"],
                    ShapeSettings = new MapsShapeSettings{  Fill="#9C3367" },
                    HighlightSettings = new MapsHighlightSettings{ Enable = true, Fill="#9C3367" },
                    TooltipSettings = new MapsTooltipSettings{ Visible = true,  ValuePath="name" }
                },
                   new Syncfusion.EJ2.Maps.MapsLayer
                {
-                   ShapeData = ViewBag.Oceania,
+                   ShapeData = ViewData["Oceania"],
                    ShapeSettings = new MapsShapeSettings{  Fill="#2A2870" },
                    HighlightSettings = new MapsHighlightSettings{ Enable = true, Fill="#2A2870" },
                    TooltipSettings = new MapsTooltipSettings{ Visible = true,  ValuePath="name" }

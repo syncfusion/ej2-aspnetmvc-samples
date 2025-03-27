@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new ErrorBarChartData { Items = "Laptop", Quality = 650, error=40 },
                 new ErrorBarChartData { Items = "Battery", Quality = 525, error=84 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class ErrorBarChartData

@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult FilterMenu()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
-            ViewBag.filterType = new string[] { "Menu", "Excel", "CheckBox" };
+            ViewData["datasource"] = order;
+            ViewData["filterType"] = new string[] { "Menu", "Excel", "CheckBox" };
             return View();
         }
     }

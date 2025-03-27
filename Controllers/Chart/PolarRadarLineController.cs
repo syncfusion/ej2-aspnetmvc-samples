@@ -34,8 +34,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new PolarLineChartData { Month = "Nov", GER_Temp = -3.8, ENG_Temp = -13.4 },
                 new PolarLineChartData { Month = "Dec", GER_Temp = -6.8, ENG_Temp = -16.4 },
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.data = new string[] { "Polar", "Radar" };
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["data"] = new string[] { "Polar", "Radar" };
             return View();
         }
         public class PolarLineChartData

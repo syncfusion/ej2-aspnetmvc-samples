@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Spreadsheet
                 new { ProductName = "Hamilton Blender", Category = "Appliances", Quantity = 68, Price = "109", Total = "=PRODUCT(E11,D11)" },
                 new { ProductName = "Plate set", Category = "Kitchen", Quantity = 59, Price = "168", Total = "=PRODUCT(E12,D12)" }
             };
-            ViewBag.dataSource = products;
+            ViewData["dataSource"] = products;
             return View();
         }
         public ActionResult NotesOpen(OpenRequest openRequest)

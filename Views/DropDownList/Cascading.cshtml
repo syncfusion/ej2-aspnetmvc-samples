@@ -6,18 +6,18 @@
         <div class='control-wrapper'>
             <div class="padding-top">
 
-                @Html.EJS().DropDownList("country").Change("countrychange").Placeholder("Select a country").PopupHeight("auto").DataSource((IEnumerable<Country>)ViewBag.country).Fields(new DropDownListFieldSettings { Text = "CountryName", Value = "CountryId" }).Render()
+                @Html.EJS().DropDownList("country").Change("countrychange").Placeholder("Select a country").PopupHeight("auto").DataSource((IEnumerable<Country>)ViewData["country"]).Fields(new DropDownListFieldSettings { Text = "CountryName", Value = "CountryId" }).Render()
 
 
             </div>
             <div class="padding-top">
 
-                @Html.EJS().DropDownList("state").Change("statechange").Placeholder("Select a state").Enabled(false).PopupHeight("auto").DataSource((IEnumerable<State>)ViewBag.state).Fields(new DropDownListFieldSettings { Text = "StateName", Value = "StateId" }).Render()
+                @Html.EJS().DropDownList("state").Change("statechange").Placeholder("Select a state").Enabled(false).PopupHeight("auto").DataSource((IEnumerable<State>)ViewData["state"]).Fields(new DropDownListFieldSettings { Text = "StateName", Value = "StateId" }).Render()
 
             </div>
             <div class="padding-top">
 
-                @Html.EJS().DropDownList("city").Placeholder("Select a city").Enabled(false).PopupHeight("auto").DataSource((IEnumerable<Cities>)ViewBag.cities).Fields(new DropDownListFieldSettings { Text = "CityName", Value = "CityId" }).Render()
+                @Html.EJS().DropDownList("city").Placeholder("Select a city").Enabled(false).PopupHeight("auto").DataSource((IEnumerable<Cities>)ViewData["cities"]).Fields(new DropDownListFieldSettings { Text = "CityName", Value = "CityId" }).Render()
             
 
             </div>

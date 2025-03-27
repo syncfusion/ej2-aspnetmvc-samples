@@ -18,10 +18,10 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Cascading()
         {
-            ViewBag.state = new State().StateList();
-            ViewBag.country = new Country().CountryList();
-            ViewBag.cities = new Cities().CitiesList();
-            ViewBag.popupHeight = "auto";
+            ViewData["state"] = new State().StateList();
+            ViewData["country"] = new Country().CountryList();
+            ViewData["cities"] = new Cities().CitiesList();
+            ViewData["popupHeight"] = "auto";
             return View();
         }
     }

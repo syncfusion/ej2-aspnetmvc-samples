@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeView
             templateFields.Id = "id";
             templateFields.ParentID = "pid";
             templateFields.Text = "name";
-            ViewBag.templateFields = templateFields;
+            ViewData["templateFields"] = templateFields;
             return View();
         }
 

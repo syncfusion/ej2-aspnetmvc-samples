@@ -12,7 +12,7 @@
                     col.Field("FirstName").Header("Name").Width("130").Add();
                     col.Field("Designation").Header("Designation").Width("120").Add();
                     col.Field("Country").Header("Country").Width("90").Add();
-                }).PopupHeight("210px").PopupWidth("500px").AllowSorting(false).Query((string)ViewBag.query).Render()
+                }).PopupHeight("210px").PopupWidth("500px").AllowSorting(false).Query((string)ViewData["query"]).Render()
             </div>
         </div>
     </div>

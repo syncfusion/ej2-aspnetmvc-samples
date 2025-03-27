@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "Filtering";
+    ViewData["Title"] = "Filtering";
 }
 
 @*custom code end*@
@@ -15,7 +15,7 @@
         <div class="control-wrapper">
             <div class="control-section">
                 @(Html.EJS().TreeGrid("Filtering")
-                    .DataSource((IEnumerable<object>)ViewBag.datasource)
+                    .DataSource((IEnumerable<object>)ViewData["datasource"])
                     .AllowFiltering()
                     .AllowPaging()
                     .PageSettings(page => page.PageSize(10))
@@ -52,7 +52,7 @@
             <tr>
                 <td class="left-side">Hierarchy Mode</td>
                 <td>
-                    @Html.EJS().DropDownList("FilterMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Width("115px").Render()
+                    @Html.EJS().DropDownList("FilterMode").DataSource((IEnumerable<object>)ViewData["dropdata"]).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Change("onChange").Width("115px").Render()
                 </td>
             </tr>
         </table>

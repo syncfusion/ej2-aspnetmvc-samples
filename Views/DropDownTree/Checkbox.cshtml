@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section dropdowntree-default">
         <div class="control-wrapper">
-            @Html.EJS().DropDownTree("ddt").Placeholder("Select items").Mode(Mode.Delimiter).ShowCheckBox(true).PopupHeight("200px").Fields(ViewBag.checkboxFields).Render()
+            @Html.EJS().DropDownTree("ddt").Placeholder("Select items").Mode(Mode.Delimiter).ShowCheckBox(true).PopupHeight("200px").Fields((DropDownTreeFields)ViewData["checkboxFields"]).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">

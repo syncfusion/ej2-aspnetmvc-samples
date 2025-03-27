@@ -23,8 +23,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: HeatMap
         public ActionResult HeatMap()
         {
-            ViewBag.ShapeData = this.getIndiaMap();
-            ViewBag.DataSource = this.getIndiaData();
+            ViewData["ShapeData"] = this.getIndiaMap();
+            ViewData["DataSource"] = this.getIndiaData();
             List<MapsColorMapping> colorMapping = new List<MapsColorMapping>();
             colorMapping.Add(new MapsColorMapping { From = 60000, To = 400000, Color = "#9fdfdf", Label = "<0.4M" });
             colorMapping.Add(new MapsColorMapping { From = 400000, To = 10000000, Color = "#79d2d2", Label = "0.4-10M" });
@@ -32,7 +32,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
             colorMapping.Add(new MapsColorMapping { From = 20000000, To = 70000000, Color = "#39acac", Label = "20-70M" });
             colorMapping.Add(new MapsColorMapping { From = 70000000, To = 100000000, Color = "#339999", Label = "70-100M" });
             colorMapping.Add(new MapsColorMapping { From = 100000000, To = 200000000, Color = "#2d8686", Label = ">100M" });
-            ViewBag.ColorMapping = colorMapping;
+            ViewData["ColorMapping"] = colorMapping;
             return View();
         }
         public object getIndiaData()

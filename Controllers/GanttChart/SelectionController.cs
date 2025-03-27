@@ -19,10 +19,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult Selection()
         {
-            ViewBag.dataSource = GanttData.ProjectNewData();
-            ViewBag.data1 = DropDownListData1.SelectionModeList();
-            ViewBag.data2 = DropDownListData1.SelectionTypeList();
-            ViewBag.data3 = DropDownListData2.SelectionToggleList();
+            ViewData["dataSource"] = GanttData.ProjectNewData();
+            ViewData["data1"] = DropDownListData1.SelectionModeList();
+            ViewData["data2"] = DropDownListData1.SelectionTypeList();
+            ViewData["data3"] = DropDownListData2.SelectionToggleList();
             return View();
         }
         public class DropDownListData1

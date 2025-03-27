@@ -74,7 +74,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ChatUI
             };
             TemplateMessagedata = templateMessagedata;
 
-            ViewBag.TemplateMessagedata = TemplateMessagedata;
+            ViewData["TemplateMessagedata"] = TemplateMessagedata;
             return View();
         }
 

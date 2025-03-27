@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
   <div class="control-section">
-    @Html.EJS().Grid("RowTemplate").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("335").Width("auto").RowTemplate("#rowtemplate").Columns(col =>
+    @Html.EJS().Grid("RowTemplate").DataSource((IEnumerable<object>)ViewData["dataSource"]).Height("335").Width("auto").RowTemplate("#rowtemplate").Columns(col =>
    {
        col.HeaderText("PIZZA MENU").Field("Title").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).CustomAttributes(new { @class = "e-pizza-cell" }).Add();
    }).Render()

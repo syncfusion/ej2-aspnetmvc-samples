@@ -5,7 +5,7 @@
 @section ControlsSection {
 <div class="col-lg-9 control-section">
     <div class="control_wrapper">
-        @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewBag.data).Columns(col=> {
+        @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col=> {
        col.HeaderText("To Do").KeyField("Open").AllowToggle(true).ShowItemCount(true).MinCount(6).MaxCount(8).Add();
        col.HeaderText("In Progress").KeyField("InProgress").ShowItemCount(true).AllowToggle(true).MinCount(2).Add();
        col.HeaderText("Done").KeyField("Close").ShowItemCount(true).AllowToggle(true).MaxCount(4).Add();
@@ -16,7 +16,7 @@
         }).Created("onCreate").Render()
     </div>
     <div>
-        @Html.EJS().Dialog("defaultDialog").Header("Validation").IsModal(true).Width("350px").ShowCloseIcon(true).Visible(false).Buttons(ViewBag.DefaultButtons).Created("onDialogCreate").Render()
+        @Html.EJS().Dialog("defaultDialog").Header("Validation").IsModal(true).Width("350px").ShowCloseIcon(true).Visible(false).Buttons((List<Syncfusion.EJ2.Popups.DialogDialogButton>)ViewData["DefaultButtons"]).Created("onDialogCreate").Render()
     </div>
 </div>
     <div class="col-lg-3 property-section property-customization">
@@ -30,7 +30,7 @@
                         </td>
                         <td>
                             <div>
-                                @Html.EJS().DropDownList("type").Width("100%").Index(0).DataSource((IEnumerable<Object>)ViewBag.ColumnDropDowns).Fields(new DropDownListFieldSettings { Text = "Value", Value = "Value" }).Change("changeContrainType").Render()
+                                @Html.EJS().DropDownList("type").Width("100%").Index(0).DataSource((IEnumerable<Object>)ViewData["ColumnDropDowns"]).Fields(new DropDownListFieldSettings { Text = "Value", Value = "Value" }).Change("changeContrainType").Render()
                             </div>
                         </td>
                     </tr>
@@ -45,7 +45,7 @@
                                 <div>Columns</div>
                             </td>
                             <td>
-                                @Html.EJS().DropDownList("key").Width("100%").DataSource((IEnumerable<Object>)ViewBag.StatusData).Fields(new DropDownListFieldSettings { Text = "Value", Value = "ListId" }).Change("columnObj").Created("onDropDownCreate").Placeholder("Header Text").Render()
+                                @Html.EJS().DropDownList("key").Width("100%").DataSource((IEnumerable<Object>)ViewData["StatusData"]).Fields(new DropDownListFieldSettings { Text = "Value", Value = "ListId" }).Change("columnObj").Created("onDropDownCreate").Placeholder("Header Text").Render()
                             </td>
                         </tr>
                         <tr>

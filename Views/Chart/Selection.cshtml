@@ -4,9 +4,9 @@
     <div class="col-lg-8 control-section">
             @(Html.EJS().Chart("container").Series(series =>
         {
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("Children").Width(2).ColumnSpacing(0.1).Animation(animation => animation.Enable(false)).DataSource(ViewBag.ChartPoints).Name("Age 0-14").Add();
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("Adult").Width(2).ColumnSpacing(0.1).Animation(animation => animation.Enable(false)).DataSource(ViewBag.ChartPoints).Name("Age 15-64").Add();
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("SeniorAdult").Width(2).ColumnSpacing(0.1).Animation(animation => animation.Enable(false)).DataSource(ViewBag.ChartPoints).Name("Age 65 & Above").Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("Children").Width(2).ColumnSpacing(0.1).Animation(animation => animation.Enable(false)).DataSource(ViewData["ChartPoints"]).Name("Age 0-14").Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("Adult").Width(2).ColumnSpacing(0.1).Animation(animation => animation.Enable(false)).DataSource(ViewData["ChartPoints"]).Name("Age 15-64").Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("SeniorAdult").Width(2).ColumnSpacing(0.1).Animation(animation => animation.Enable(false)).DataSource(ViewData["ChartPoints"]).Name("Age 65 & Above").Add();
 
         }).PrimaryXAxis(px => px.Interval(1).MajorGridLines(mg => mg.Width(0)).MajorTickLines(mg => mg.Width(0))
         .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)).PrimaryYAxis(py => py.LabelFormat("{value}%").Title("Distribution").Interval(20).MajorTickLines(mg => mg.Width(0)).LineStyle(ls => ls.Width(0)))
@@ -93,11 +93,11 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var highlightselect = document.getElementById('highlight');
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
            // args.chart.width = ej.base.Browser.isDevice ? "100%" : "60%";
         }
         var mode = new ej.dropdowns.DropDownList({

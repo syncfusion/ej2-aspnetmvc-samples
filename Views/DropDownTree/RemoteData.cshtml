@@ -5,7 +5,7 @@
     <div class="control-section col-lg-12 dropdowntree-remote">
         <div style='padding-top:15px'>
             <div class='content'>
-                @Html.EJS().DropDownTree("ddtremote").Placeholder("Select a name").PopupHeight("200px").Fields(ViewBag.remoteFields).Render()
+                @Html.EJS().DropDownTree("ddtremote").Placeholder("Select a name").PopupHeight("200px").Fields((DropDownTreeFields)ViewData["remoteFields"]).Render()
             </div>
         </div>
     </div>

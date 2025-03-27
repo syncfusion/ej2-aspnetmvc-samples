@@ -15,8 +15,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
     {
         public ActionResult Fishbone()
         {
-            ViewBag.nodes = GetFishboneNodes();
-            ViewBag.connectors = GetFishboneConnectors();
+            ViewData["nodes"] = GetFishboneNodes();
+            ViewData["connectors"] = GetFishboneConnectors();
             return View();
         }
 

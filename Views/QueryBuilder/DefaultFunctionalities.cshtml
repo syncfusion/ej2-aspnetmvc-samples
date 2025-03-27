@@ -12,8 +12,8 @@
                             <span id="dlgSpan" style="visibility: hidden;">Invalid Query</span>
                         </form>).AnimationSettings(e => e.Effect(Syncfusion.EJ2.Popups.DialogEffect.Zoom).Duration(400).Delay(0)).Buttons(btn =>
                               {
-                                  btn.Click("cancelClick").ButtonModel(ViewBag.Cancelbtn).Add();
-                                  btn.Click("importClick").ButtonModel(ViewBag.ImportBtn).Add();
+                                  btn.Click("cancelClick").ButtonModel(ViewData["Cancelbtn"]).Add();
+                                  btn.Click("importClick").ButtonModel(ViewData["ImportBtn"]).Add();
                               }).Render()
                     </div>
                     @Html.EJS().QueryBuilder("querybuilder").Columns(col =>
@@ -25,7 +25,7 @@
                     col.Field("HireDate").Label("Hire Date").Type("date").Format("dd/MM/yyyy").Add();
                     col.Field("Country").Label("Country").Type("string").Add();
                     col.Field("City").Label("City").Type("string").Add();
-                    }).Rule(ViewBag.rule).DataSource(ViewBag.dataSource).Created("createdControl").RuleChange("updateRule").Render()
+                    }).Rule((Syncfusion.EJ2.QueryBuilder.QueryBuilderRule)ViewData["rule"]).DataSource(ViewData["dataSource"]).Created("createdControl").RuleChange("updateRule").Render()
 
                     <div id="json-preview" class="e-query-json-preview">
                         <div style="border: none; width: 100% ">

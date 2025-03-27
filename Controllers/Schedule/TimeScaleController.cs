@@ -16,12 +16,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
         // GET: TimeScale
         public ActionResult TimeScale()
         {
-            ViewBag.datasource = new ScheduleData().GetScheduleData();
-            ViewBag.workDays = new int[] { 0, 1, 2, 3, 4, 5 };
-            ViewBag.intervals = GetIntervalData();
-            ViewBag.slotCounts = GetSlotCounts();
-            ViewBag.timeScaleOptions = GetTimeScaleOptions();
-            ViewBag.timeScaleTemplateOptions = GetTimeScaleTemplateOptions();
+            ViewData["datasource"] = new ScheduleData().GetScheduleData();
+            ViewData["workDays"] = new int[] { 0, 1, 2, 3, 4, 5 };
+            ViewData["intervals"] = GetIntervalData();
+            ViewData["slotCounts"] = GetSlotCounts();
+            ViewData["timeScaleOptions"] = GetTimeScaleOptions();
+            ViewData["timeScaleTemplateOptions"] = GetTimeScaleTemplateOptions();
             return View();
         }
 

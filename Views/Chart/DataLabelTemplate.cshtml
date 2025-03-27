@@ -8,7 +8,7 @@
                 XName("Sports").
                 YName("Boys").ColumnWidth(0.75).ColumnSpacing(0.5).
                 Marker(mr => mr.Visible(false).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer).Margin(mar => mar.Top(70)).Template("#Boys-Material"))).
-                DataSource(ViewBag.PopulationDetails).
+                DataSource(ViewData["PopulationDetails"]).
                 Add();
 
             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).
@@ -16,7 +16,7 @@
                 XName("Sports").
                 YName("Girls").ColumnWidth(0.75).ColumnSpacing(0.5).
                 Marker(mr => mr.Visible(false).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer).Margin(mar => mar.Top(70)).Template("#Girls-Material"))).
-                DataSource(ViewBag.PopulationDetails)
+                DataSource(ViewData["PopulationDetails"])
                 .Add();
 
         }).PrimaryXAxis(
@@ -394,15 +394,14 @@
             </div>
         </div>
     </script>
-
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var theme;
         var textRender = function (args) {
             args.template = '#' + args.series.name + '-' + theme;
         };
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             theme = args.chart.theme
         };

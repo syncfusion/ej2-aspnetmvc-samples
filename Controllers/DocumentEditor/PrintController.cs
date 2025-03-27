@@ -36,7 +36,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
             zoomItems.Add(new { separator = true });
             zoomItems.Add(new { text = "Fit one page" });
             zoomItems.Add(new { text = "Fit page width" });
-            ViewBag.zoomList = zoomItems;
+            ViewData["zoomList"] = zoomItems;
             return PartialView();
         }
     }

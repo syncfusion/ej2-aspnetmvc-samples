@@ -18,10 +18,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Sparkline
         // GET: Layout
         public ActionResult Layout()
         {
-            ViewBag.lineData = LineData.GetLineData();
-            ViewBag.areaData = LineData.GetArea();
-            ViewBag.winlossData = LineData.getWinloss();
-            ViewBag.pieData = LineData.getPieData();
+            ViewData["lineData"] = LineData.GetLineData();
+            ViewData["areaData"] = LineData.GetArea();
+            ViewData["winlossData"] = LineData.getWinloss();
+            ViewData["pieData"] = LineData.getPieData();
             return View();
         }
         public class LineData

@@ -4,7 +4,7 @@
     <div class="col-lg-8 control-section">
         <div id="diagramEventsControlSection" class="content-wrapper" style="width:100%;background: white">
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolpalette").Palettes(ViewBag.Palettes).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("700px")
+                @(Html.EJS().SymbolPalette("symbolpalette").Palettes((List<SymbolPalettePalette>)ViewData["Palettes"]).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("700px")
                     .SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).SymbolHeight(60).SymbolWidth(60)
                     .GetNodeDefaults("getSymbolDefaults").Render()
                 )
@@ -27,7 +27,7 @@
         <div id="diagramEventsPropertySection" style="height:100%;border: 1px solid #e0e0e0">
             <div class="listbox">
                 <div class="heading" style="height:40px"><span>Client-side events</span></div>
-                @Html.EJS().ListView("listview").Height("calc(100% - 40px)").Enable(true).DataSource((IEnumerable<object>)ViewBag.dataSource).ShowCheckBox(true).Render()                
+                @Html.EJS().ListView("listview").Height("calc(100% - 40px)").Enable(true).DataSource((IEnumerable<object>)ViewData["dataSource"]).ShowCheckBox(true).Render()                
             </div>
             <div class="prop-grid content" style="height:50%; border-top: 1px solid #e0e0e0">
                 <div class="heading">

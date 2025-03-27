@@ -27,8 +27,8 @@ namespace EJ2MVCSampleBrowser.Controllers.ListView
             List<object> listdata = new List<object>();
             listdata.Add(new { id = "1", text = "1" });
 
-            ViewBag.ddlData = ddlData;
-            ViewBag.listData = listdata;
+            ViewData["ddlData"] = ddlData;
+            ViewData["listData"] = listdata;
             return View();
         }
     }

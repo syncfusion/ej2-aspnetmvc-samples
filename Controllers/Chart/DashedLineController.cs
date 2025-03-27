@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new DashedLineChartData { Period= "May", Banana_ProductionRate= 140 },
                 new DashedLineChartData { Period= "Jun", Banana_ProductionRate= 160 }
             };
-            ViewBag.ChartData = ChartData;
+            ViewData["ChartData"] = ChartData;
             List<DashedLineChartData> ChartDataValues = new List<DashedLineChartData>
             {
                 new DashedLineChartData { Period= "Jun", Banana_ProductionRate= 160 },
@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new DashedLineChartData { Period= "Nov", Banana_ProductionRate= 230 },
                 new DashedLineChartData { Period= "Dec", Banana_ProductionRate= 270 }
             };
-            ViewBag.ChartDataValues = ChartDataValues;
+            ViewData["ChartDataValues"] = ChartDataValues;
             return View();
         }
 

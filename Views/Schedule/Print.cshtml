@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -17,12 +17,12 @@
                 </tr>
                 <tr class="e-height-row e-hide-row">
                     <td>
-                        @Html.EJS().DropDownList("heightElement").Placeholder("Height").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(0).DataSource(ViewBag.printHeightAndWidthData).Render()
+                        @Html.EJS().DropDownList("heightElement").Placeholder("Height").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(0).DataSource(ViewData["printHeightAndWidthData"]).Render()
                     </td>
                 </tr>
                 <tr class="e-width-row e-hide-row">
                     <td>
-                        @Html.EJS().DropDownList("widthElement").Placeholder("Width").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(0).DataSource(ViewBag.printHeightAndWidthData).Render()
+                        @Html.EJS().DropDownList("widthElement").Placeholder("Width").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(0).DataSource(ViewData["printHeightAndWidthData"]).Render()
                     </td>
                 </tr>
                 <tr class="e-selected-date-row e-hide-row">

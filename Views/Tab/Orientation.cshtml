@@ -12,21 +12,21 @@
                 <div class="content-title">
                     <div class="cnt-text">Employee Info</div>
                 </div>
-                @Html.EJS().ListView("romeListView").Template(template).DataSource(ViewBag.romeData).Render()
+                @Html.EJS().ListView("romeListView").Template(template).DataSource(ViewData["romeData"]).Render()
             </div>
             <div id="paris" style="display: none">
                 <div class="content-title">
                     <div class="cnt-text">Employee Info</div>
                 </div>
-                @Html.EJS().ListView("parisListView").Template(template).DataSource(ViewBag.parisData).Render()
+                @Html.EJS().ListView("parisListView").Template(template).DataSource(ViewData["parisData"]).Render()
             </div>
             <div id="london" style="display: none">
                 <div class="content-title">
                     <div class="cnt-text">Employee Info</div>
                 </div>
-                @Html.EJS().ListView("londonListView").Template(template).DataSource(ViewBag.londonData).Render()
+                @Html.EJS().ListView("londonListView").Template(template).DataSource(ViewData["londonData"]).Render()
             </div>
-            @Html.EJS().Tab("orientationTab").Height("320").ShowCloseButton(true).Created("tabCreated").Items(ViewBag.orientationItems).Render()
+            @Html.EJS().Tab("orientationTab").Height("320").ShowCloseButton(true).Created("tabCreated").Items((List<Syncfusion.EJ2.Navigations.TabItem>)(List<Syncfusion.EJ2.Navigations.TabItem>)ViewData["orientationItems"]).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">
@@ -38,7 +38,7 @@
                     </td>
                     <td style="width: 50%;">
                         <div>
-                            @Html.EJS().DropDownList("orientation").Width("90%").DataSource(ViewBag.orientationData).Value("Top").Change("changeHeaderPosition").Render()
+                            @Html.EJS().DropDownList("orientation").Width("90%").DataSource(ViewData["orientationData"]).Value("Top").Change("changeHeaderPosition").Render()
                         </div>
                     </td>
                 </tr>
@@ -48,7 +48,7 @@
                     </td>
                     <td style="width: 50%;">
                         <div>
-                            @Html.EJS().DropDownList("headerStyles").Width("90%").DataSource(ViewBag.styleData).Value("Default").Change("changeHeaderStyle").Render()
+                            @Html.EJS().DropDownList("headerStyles").Width("90%").DataSource(ViewData["styleData"]).Value("Default").Change("changeHeaderStyle").Render()
                         </div>
                     </td>
                 </tr>

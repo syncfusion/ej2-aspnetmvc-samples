@@ -5,18 +5,18 @@
             {
                 series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MaxTemp")
                     .Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true))
-                    .DataSource(ViewBag.SplineData).Name("Max Temp").Width(2).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("AvgTemp").Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true)).DataSource(ViewBag.SplineData).Name("Avg Temp").Width(2).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MinTemp").Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true)).DataSource(ViewBag.SplineData).Name("Min Temp").Width(2).Add();
+                    .DataSource(ViewData["SplineData"]).Name("Max Temp").Width(2).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("AvgTemp").Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true)).DataSource(ViewData["SplineData"]).Name("Avg Temp").Width(2).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).XName("Days").YName("MinTemp").Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true)).DataSource(ViewData["SplineData"]).Name("Min Temp").Width(2).Add();
             }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
-                .MajorGridLines(mg => mg.Width(0)).Interval(1)
+                .MajorGridLines(mg => mg.Width(0)).Interval(1).MajorTickLines(mt => mt.Width(0))
                 .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-            ).PrimaryYAxis(py => py.LabelFormat("{value}°C")
+            ).PrimaryYAxis(py => py.LabelFormat("{value}°F").Minimum(0).Interval(20).Title("Temperature (°F)")
                 .MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
-            ).Title("NC Weather Report - 2016").Annotations(an => {
-                an.X("Sun").Y("2").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).VerticalAlignment(Syncfusion.EJ2.Charts.Position.Top).Content("#chart_cloud").Add();
-                an.X("Tue").Y("33").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).VerticalAlignment(Syncfusion.EJ2.Charts.Position.Top).Content("#chart_sunny").Add();
-            }).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br => br.Width(0))).Load("load").LegendSettings(leg => leg.EnableHighlight(true)).Render()
+            ).Title("2024 US Temperature Trends with Hottest Coldest and Average Records").SubTitle("Source: ncei.noaa.gov").Annotations(an => {
+                an.X("Jan").Y("22.75").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).VerticalAlignment(Syncfusion.EJ2.Charts.Position.Middle).Content("#chart_cloud").Add();
+                an.X("Jul").Y("88.43").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).VerticalAlignment(Syncfusion.EJ2.Charts.Position.Middle).Content("#chart_sunny").Add();
+            }).Tooltip(tt => tt.Enable(true).Shared(true).ShowNearestTooltip(true).Header("<b>${point.x}</b>").Format("${series.name} : <b>${point.y}</b>")).Crosshair(crosshair => crosshair.Enable(true).LineType(Syncfusion.EJ2.Charts.LineType.Vertical).HighlightCategory(true)).ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))).Load("load").LegendSettings(leg => leg.EnableHighlight(true)).Render()
         </div>
     
     <style>
@@ -25,16 +25,6 @@
             padding: 0px !important;
          }
     @*custom code end*@
-    #container_Series_0_Point_2_Symbol {
-        -webkit-animation: opac 1s ease-out infinite;
-        animation: opac 1s ease-out infinite;
-    }
-
-    #container_Series_2_Point_0_Symbol {
-        -webkit-animation: opac 1s ease-out infinite;
-        animation: opac 1s ease-in-out infinite;
-    }
-
     @@keyframes opac {
         0% {
             stroke-opacity: 1;
@@ -52,12 +42,13 @@
 <div id='chart_sunny' style="display:none">
     <img src="@Url.Content("~/Content/chart/sunny.png")" style='width: 41px; height: 41px' />
 </div>
-      
+     <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+           loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.height = "500px";
+            args.chart.crosshair.highlightCategory = true;
         }
     </script>
 }
@@ -73,10 +64,10 @@
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure a spline chart. The Spline chart uses a curved line to connect points in a data series. <code>Markers</code> are used to represent individual data and its values.
+        In this example, you can see how to render and configure a spline chart. The spline chart uses a smooth, curved line to connect points in a data series. <code>Markers</code> represent individual data points with different shapes, while the <code>crosshair</code> enhances data tracking by highlighting the category.
     </p>
     <p>
-        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
     </p>
     <p>
         More information about the spline series can be found in this

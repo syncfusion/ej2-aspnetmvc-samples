@@ -16,7 +16,7 @@
             <p>Using the quick toolbar, users can replace, display, and delete the selected audio.</p>
             <p><audio controls><source src="https://cdn.syncfusion.com/ej2/richtexteditor-resources/RTE-Audio.wav" type="audio/mp3" /></audio></p>
 
-        </div>).ToolbarSettings(e => e.Items((object)ViewBag.Items)).Render()
+        </div>).ToolbarSettings(e => e.Items((object)ViewData["Items"])).Render()
     </div>
 </div>
 

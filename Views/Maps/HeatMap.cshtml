@@ -24,10 +24,10 @@
 {
    new Syncfusion.EJ2.Maps.MapsLayer
    {
-       ShapeData = ViewBag.ShapeData,
+       ShapeData = ViewData["ShapeData"],
        ShapePropertyPath = "NAME_1",
        ShapeDataPath = "Name",
-       DataSource =  ViewBag.DataSource,
+       DataSource =  ViewData["DataSource"],
        TooltipSettings = new MapsTooltipSettings
        {
            Visible = true, ValuePath = "population",
@@ -37,7 +37,7 @@
        {
            Border = new MapsBorder{ Width = 0.2, Color = "white", Opacity = 1 },
            ColorValuePath = "population",
-           ColorMapping = ViewBag.ColorMapping
+           ColorMapping = (List<MapsColorMapping>)ViewData["ColorMapping"]
        }
    }}).Render()
             <div style="margin-left:75%">

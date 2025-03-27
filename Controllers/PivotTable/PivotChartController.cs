@@ -21,8 +21,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult PivotChart()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.chartTypes = GetChartTypes();
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["chartTypes"] = GetChartTypes();
             return View();
         }
         public List<ChartData> GetChartTypes()

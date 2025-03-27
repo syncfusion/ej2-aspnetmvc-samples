@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult MentionIntegration()
         {
-            ViewBag.emails = new EmailData().EmailList();
-            ViewBag.mentionChar = '@';
+            ViewData["emails"] = new EmailData().EmailList();
+            ViewData["mentionChar"] = '@';
             return View();
         }
     }

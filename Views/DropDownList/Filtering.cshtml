@@ -7,7 +7,7 @@
         <div class='control-wrapper'>
             <div style='padding-top:75px;'>
                 @Html.EJS().DropDownList("country").Placeholder("Select a country").FilterBarPlaceholder("Search").AllowFiltering(true).DataSource(
-                  (IEnumerable<Countries>)ViewBag.data).Filtering("onfiltering").Fields(new DropDownListFieldSettings { Text = "Name", Value = "Code" }).Render()
+                  (IEnumerable<Countries>)ViewData["data"]).Filtering("onfiltering").Fields(new DropDownListFieldSettings { Text = "Name", Value = "Code" }).Render()
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
         function onfiltering(e) {
             var query = new ej.data.Query();
             query = (e.text !== '') ? query.where('Name', 'startswith', e.text, true) : query;
-            e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.data)), query);
+            e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewData["data"])), query);
         }
     </script>
 }

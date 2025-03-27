@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
         @{
@@ -15,14 +15,14 @@
             templateOptionsDropDown = (new { create = "dropdownCreate", write = "dropdownWrite" });
         }
 
-        @Html.EJS().Grid("FilterBarTemplate").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowPaging(true).AllowFiltering(true).AllowSorting(true).FilterSettings(filter => filter.ShowFilterBarOperator(true).ShowFilterBarStatus(false)).GridLines(Syncfusion.EJ2.Grids.GridLine.Both).PageSettings(page => page.PageCount(5)).Columns(col =>
+        @Html.EJS().Grid("FilterBarTemplate").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowPaging(true).AllowFiltering(true).AllowSorting(true).FilterSettings(filter => filter.ShowFilterBarOperator(true).ShowFilterBarStatus(false)).GridLines(Syncfusion.EJ2.Grids.GridLine.Both).PageSettings(page => page.PageCount(5)).Columns(col =>
        {
            col.Field("ProductID").HeaderText("Product ID").Width(120).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).FilterBarTemplate(templateOptionsNumericTextBox).Add();
            col.Field("ProductName").HeaderText("Product Name").Width(220).FilterBarTemplate(templateOptionsStringTextBox).Add();
            col.Field("UnitPrice").HeaderText("Price").Width(200).Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).FilterBarTemplate(templateOptionsMinMax).Add();
            col.Field("UnitsInStock").HeaderText("Stock").Width(120).Format("N").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
            col.Field("Discontinued").DisplayAsCheckBox(true).Type("boolean").HeaderText("Discontinued").Width(150).FilterBarTemplate(templateOptionsDropDown).Add();
-       }).DataBound("dataBound").KeyPressed("keyPressed").Render()
+       }).DataBound("dataBound").KeyPressed("keyPressed").Created("gridCreated").Render()
     </div>
     <style type="text/css" class="cssStyles">
         .e-cus-label {
@@ -36,8 +36,12 @@
             display: flex;
         }
 
-        .e-min-max-separator {
+        .e-grid:not(.e-rtl) .e-min-max-separator {
             margin-right: 5px;
+        }
+
+        .e-rtl .e-min-max-separator {
+            margin-left: 5px;
         }
 
         .e-grid .e-gridheader tr th:first-child.e-filterbarcell.e-fltrtemp {
@@ -155,6 +159,17 @@
         }
 
         function dataBound() {
+            createStock();
+        }
+
+        function gridCreated() {
+            var grid = document.getElementById("FilterBarTemplate").ej2_instances[0];
+            grid.on('header-refreshed', () => {
+                createStock();
+            });
+        }
+
+        function createStock() {
             var grid = document.getElementById("FilterBarTemplate").ej2_instances[0];
             var filterBarOperatorDiv = grid.getHeaderTable().querySelector('.e-filterdiv.e-fltrinputdiv');
             if (!filterBarOperatorDiv.querySelector('.e-cus-label')) {

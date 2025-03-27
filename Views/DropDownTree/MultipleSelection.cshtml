@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            @Html.EJS().DropDownTree("ddt").Placeholder("Select items").AllowMultiSelection(true).PopupHeight("200px").Fields(ViewBag.selectionData).Render()
+            @Html.EJS().DropDownTree("ddt").Placeholder("Select items").AllowMultiSelection(true).PopupHeight("200px").Fields((Syncfusion.EJ2.DropDowns.DropDownTreeFields)ViewData["selectionData"]).Render()
         </div>
     </div>
 

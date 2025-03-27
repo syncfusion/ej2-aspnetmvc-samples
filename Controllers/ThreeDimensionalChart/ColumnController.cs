@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ThreeDimensionalChart
                 new ColumnChart { X = "Neta",     Y = 22449  },
                 new ColumnChart { X = "BMW",      Y = 18733  }
             };           
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class ColumnChart

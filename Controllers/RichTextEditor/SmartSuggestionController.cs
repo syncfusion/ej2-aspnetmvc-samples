@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult SmartSuggestion()
         {
-            ViewBag.items = new object[] { "Bold", "Italic", "Underline", "StrikeThrough", "SuperScript", "SubScript", "|",
+            ViewData["items"] = new object[] { "Bold", "Italic", "Underline", "StrikeThrough", "SuperScript", "SubScript", "|",
                 "FontName", "FontSize", "FontColor", "BackgroundColor",  "|",
                 "LowerCase", "UpperCase",
                 "Formats", "Alignments", "Blockquote", "|", "NumberFormatList", "BulletFormatList", "|",
@@ -26,7 +26,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 "CreateLink", "Image", "Video", "Audio", "CreateTable", "|", "FormatPainter", "ClearFormat", "|", "EmojiPicker", "|",
                 "SourceCode", "|", "Undo", "Redo"
             };
-            ViewBag.SlashMenuSettings = new Syncfusion.EJ2.RichTextEditor.RichTextEditorSlashMenuSettings
+            ViewData["SlashMenuSettings"] = new Syncfusion.EJ2.RichTextEditor.RichTextEditorSlashMenuSettings
             {
                 Enable = true,
                 Items = new object[] { "Paragraph", "Heading 1", "Heading 2", "Heading 3", "Heading 4", "OrderedList", "UnorderedList",

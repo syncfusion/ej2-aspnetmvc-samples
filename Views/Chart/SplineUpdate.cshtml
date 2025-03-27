@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
        @Html.EJS().Chart("spline").Series(series =>
@@ -8,7 +8,7 @@
                 .YName("Y")
                 .Width(2)
                 .Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true))
-                .DataSource(ViewBag.ChartPoints)
+                .DataSource(ViewData["ChartPoints"])
                 .Add();
        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Hide).Interval(7).PlotOffsetRight(30).MajorGridLines(mg => mg.Width(0))
        ).PrimaryYAxis(py => py.Title("Value").Interval(20).LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0))
@@ -39,14 +39,13 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
 
         var intervalId;
 
         function load(args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5'));
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.edgeLabelPlacement = ej.base.Browser.isDevice ? "None" : "Shift";
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? 45 : 0;

@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="control-section  dropdowntree-icons">
         <div class="control-wrapper">
-            @Html.EJS().DropDownTree("ddt").Placeholder("Select a folder or file").PopupHeight("200px").Fields(ViewBag.iconsFields).Render()
+            @Html.EJS().DropDownTree("ddt").Placeholder("Select a folder or file").PopupHeight("200px").Fields((Syncfusion.EJ2.DropDowns.DropDownTreeFields)ViewData["iconsFields"]).Render()
         </div>
     </div>
 }

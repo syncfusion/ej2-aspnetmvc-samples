@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Diagrams;
 @section ControlsSection{
 
@@ -24,7 +24,7 @@
                 <div id="palette-space" style="width:27%;float:left;height: 700px;overflow: auto;">
                     @Html.EJS().TreeView("treedata").AllowEditing(true).KeyPress("keyPress").Created("created").NodeEdited("nodeEdited").NodeClicked("nodeClicked").NodeSelected("nodeSelected").AllowDragAndDrop(true).Fields(field =>
                 field.Id("id").ParentID("pid").
-                Expanded("expanded").Text("name").HasChildren("hasChild").DataSource(ViewBag.data)).Render()
+                Expanded("expanded").Text("name").HasChildren("hasChild").DataSource(ViewData["data"])).Render()
                 </div>
                 <div id="diagram-space" style="width:72%;float:right">
                     @Html.EJS().Diagram("diagram").Width("100%").Height("700px").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("ConnectorDefaults").Created("diagramCreated").SelectionChange("selectionChange").DragEnter("dragEnter").Click("click").TextEdit("textEdit").Drop("drop").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render()

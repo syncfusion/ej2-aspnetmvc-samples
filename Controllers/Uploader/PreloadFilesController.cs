@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Uploader
             list.Add(new UploaderUploadedFiles { Name = "TypeScript Succinctly", Size = 12000, Type = ".pdf" });
             list.Add(new UploaderUploadedFiles { Name = "ASP.NET Webhooks", Size = 500000, Type = ".docx" });
 
-            ViewBag.datasource = list;
+            ViewData["datasource"] = list;
             return View();
         }
     }

@@ -39,11 +39,11 @@ namespace EJ2MVCSampleBrowser.Controllers.BulletChart
             {
                 new DefaultBulletData { value = 4.9, target = 4}
             };
-            ViewBag.dataSource1 = bulletData1;
-            ViewBag.dataSource2 = bulletData2;
-            ViewBag.dataSource3 = bulletData3;
-            ViewBag.dataSource4 = bulletData4;
-            ViewBag.dataSource5 = bulletData5;
+            ViewData["dataSource1"] = bulletData1;
+            ViewData["dataSource2"] = bulletData2;
+            ViewData["dataSource3"] = bulletData3;
+            ViewData["dataSource4"] = bulletData4;
+            ViewData["dataSource5"] = bulletData5;
             return View();
         }
         public class DefaultBulletData

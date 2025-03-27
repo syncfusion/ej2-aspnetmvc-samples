@@ -21,10 +21,10 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult Aggregation()
         {
-            ViewBag.data = new PivotTableData().GetrenewableEnergy();
-            ViewBag.drilledMembers = new string[] { "Biomass", "Free Energy" };
-            ViewBag.unitdrpdwnOptions = GetUnitData();
-            ViewBag.costdrpdwnOptions = GetCostData();
+            ViewData["data"] = new PivotTableData().GetrenewableEnergy();
+            ViewData["drilledMembers"] = new string[] { "Biomass", "Free Energy" };
+            ViewData["unitdrpdwnOptions"] = GetUnitData();
+            ViewData["costdrpdwnOptions"] = GetCostData();
             return View();
         }
         public List<AggregationFields> GetUnitData()

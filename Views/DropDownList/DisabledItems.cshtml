@@ -8,7 +8,7 @@
                 <h3> Status </h3>
 
                 @Html.EJS().DropDownList("status").Placeholder("Select Status").AllowFiltering(true).DataSource(
-                              (IEnumerable<Status>)ViewBag.statusdata).Fields(new DropDownListFieldSettings { Value = "ID", Text = "Text", Disabled = "State" }).Render()
+                              (IEnumerable<Status>)ViewData["statusdata"]).Fields(new DropDownListFieldSettings { Value = "ID", Text = "Text", Disabled = "State" }).Render()
 
             </div>
         </div>
@@ -17,7 +17,7 @@
                 <h3> Vegetable </h3>
 
                 @Html.EJS().DropDownList("vegetable").Placeholder("Select Vegetable").DataSource(
-                              (IEnumerable<VegetablesData>)ViewBag.vegetabledata).Fields(new DropDownListFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "ID", Disabled = "Status" }).Render()
+                              (IEnumerable<VegetablesData>)ViewData["vegetabledata"]).Fields(new DropDownListFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "ID", Disabled = "Status" }).Render()
 
             </div>
         </div>

@@ -36,8 +36,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new GroupingChartData { Country =  "Spain",         Medal = 7,  DataLabelMappingName = "Spain: 7" },
                 new GroupingChartData { Country =  "Kenya",         Medal = 6,  DataLabelMappingName = "Kenya: 6" }
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.data = new string[] { "Point", "Value" };
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["data"] = new string[] { "Point", "Value" };
             return View();
         }
         public class GroupingChartData

@@ -175,8 +175,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             Connectors.Add(new DiagramConnector() { Id = "connector11", SourceID = "Log", TargetID = "node9", SourcePortID = "portBottom", TargetPortID = "port4", Segments = segments });
             Connectors.Add(new DiagramConnector() { Id = "connector12", SourceID = "node9", TargetID = "CloseCall", });
             Connectors.Add(new DiagramConnector() { Id = "connector13", SourceID = "CloseCall", TargetID = "node11", });
-            ViewBag.nodes = nodes;
-            ViewBag.connectors = Connectors;
+            ViewData["nodes"] = nodes;
+            ViewData["connectors"] = Connectors;
 
             List<Syncfusion.EJ2.Diagrams.DiagramNode> umlShapes = new List<Syncfusion.EJ2.Diagrams.DiagramNode>();
             umlShapes.Add(new DiagramNode() { Id = "Action", Shape = new { type = "UmlActivity", shape = "Action" } });
@@ -231,10 +231,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             Palette.Add(new SymbolPalettePalette() { Id = "UMLActivity", Expanded = true, Symbols = umlShapes, Title = "UML Shapes" });
             Palette.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = SymbolPaletteConnectors, Title = "Connectors" });
 
-            ViewBag.Palette = Palette;
+            ViewData["Palette"] = Palette;
 
             SymbolPaletteMargin margin = new SymbolPaletteMargin() { Left = 15, Right = 15, Bottom = 15, Top = 15 };
-            ViewBag.margin = margin;
+            ViewData["margin"] = margin;
 
             return View();
         }

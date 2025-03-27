@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         // GET: LiveData
         public ActionResult LiveData()
         {
-            ViewBag.Data = TreeLiveData.GetTreeLiveDatas();
+            ViewData["Data"] = TreeLiveData.GetTreeLiveDatas();
             return View();
         }
     }

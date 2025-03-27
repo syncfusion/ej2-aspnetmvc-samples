@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").AllowDragAndDrop(false).AllowResizing(false).ResourceHeaderTemplate("#resourceTemplate").Group(group => group.Resources(ViewBag.Resources)).Resources(res => { res.DataSource(ViewBag.Doctors).Field("DoctorId").Title("Doctor Name").Name("Doctors").TextField("text").IdField("id").ColorField("color").WorkDaysField("workDays").StartHourField("startHour").EndHourField("endHour").Add(); }).Views(view => { view.Option(View.WorkWeek).Add(); view.Option(View.Month).Add(); }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Service Type")).Location(loc => loc.Name("Location").Title("Patient Name")).Description(des => des.Name("Description").Title("Summary")).StartTime(st => st.Name("StartTime").Title("From")).EndTime(et => et.Name("EndTime").Title("To"))).DataSource(ViewBag.datasource)).SelectedDate(new DateTime(DateTime.Today.Year, 4, 6)).PopupOpen("onPopupOpen").ActionBegin("onActionBegin").RenderCell("onRenderCell").ResizeStart("onResizeStart").DragStart("onDragStart").Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").AllowDragAndDrop(false).AllowResizing(false).ResourceHeaderTemplate("#resourceTemplate").Group(group => group.Resources((string[])ViewData["Resources"])).Resources(res => { res.DataSource(ViewData["Doctors"]).Field("DoctorId").Title("Doctor Name").Name("Doctors").TextField("text").IdField("id").ColorField("color").WorkDaysField("workDays").StartHourField("startHour").EndHourField("endHour").Add(); }).Views(view => { view.Option(View.WorkWeek).Add(); view.Option(View.Month).Add(); }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Service Type")).Location(loc => loc.Name("Location").Title("Patient Name")).Description(des => des.Name("Description").Title("Summary")).StartTime(st => st.Name("StartTime").Title("From")).EndTime(et => et.Name("EndTime").Title("To"))).DataSource(ViewData["datasource"])).SelectedDate(new DateTime(DateTime.Today.Year, 4, 6)).PopupOpen("onPopupOpen").ActionBegin("onActionBegin").RenderCell("onRenderCell").ResizeStart("onResizeStart").DragStart("onDragStart").Render()
         </div>
     </div>
     <style>
@@ -65,6 +65,15 @@
         .e-schedule .template-wrap .resource-image img {
             width: 45px;
             height: 45px;
+        }
+
+        @@media screen and (max-width: 768px) {
+            .e-schedule .template-wrap .resource-image img {
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top:4px;
+            }
         }
     </style>
     <script id="resourceTemplate" type="text/x-template">

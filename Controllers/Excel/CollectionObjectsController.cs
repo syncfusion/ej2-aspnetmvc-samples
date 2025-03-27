@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Excel
         {            
             string fileName = "ExportData.xlsx";
 
-            ViewBag.exportButtonState = "disabled=\"disabled\"";
+            ViewData["exportButtonState"] = "disabled=\"disabled\"";
 
             ///SaveOption Null
             if (saveOption == null || button == null)
@@ -73,8 +73,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Excel
                 }
                 //Set the grid value to the Session
                 _sales = businessObjects;
-                ViewBag.DataSource = _sales;
-                ViewBag.exportButtonState = "";
+                ViewData["DataSource"] = _sales;
+                ViewData["exportButtonState"] = "";
                 return View();
             }
             else

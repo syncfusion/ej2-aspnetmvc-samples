@@ -9,7 +9,7 @@
     .YName("Population")
     .DataLabel(dl => dl.Visible(true).Name("text").TextWrap(Syncfusion.EJ2.Charts.TextWrap.Normal).MaxWidth(double.NaN).Font(ft => ft.FontWeight("600")).ConnectorStyle(cs => cs.Length("20px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)))
     .InnerRadius("20%")
-    .Radius("Radius").TooltipMappingName("Radius").DataSource(ViewBag.ChartPoints)
+    .Radius("Radius").TooltipMappingName("Radius").DataSource(ViewData["ChartPoints"])
     .Add();
                 })
                 .EnableSmartLabels(true)
@@ -20,10 +20,10 @@
                 .LegendSettings(leg => leg.Visible(true).Reverse(true)).TooltipRender("TooltipRender").Render()
         )
     </div>
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadAccumulationChartTheme(args);
             args.accumulation.series[0].dataLabel.position = ej.base.Browser.isDevice ? "Inside" : "Outside";
             args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "10px" : "12px";
             args.accumulation.series[0].dataSource[2].Radius = ej.base.Browser.isDevice ? "120" : "118.7";

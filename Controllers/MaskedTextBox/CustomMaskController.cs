@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             CustomCharacters customObj = new CustomCharacters();
             customObj.P = "P,A,a,p";
             customObj.M = "M,m";
-            ViewBag.cusObj = customObj;
+            ViewData["cusObj"] = customObj;
 
             return View();
         }

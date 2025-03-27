@@ -13,16 +13,16 @@
         </div>
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("450").ShowFieldList(true).DataSourceSettings(dataSourceSettings
-                     => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
+                     => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(false).EnableSorting(true)
                      .DrilledMembers(drilledmembers =>
                      {
-                         drilledmembers.Name("Product_Categories").Items(ViewBag.drilledMembers).Add();
-                         drilledmembers.Name("Products").Delimiter("##").Items(ViewBag.drilledMembersProducts).Add();
+                         drilledmembers.Name("Product_Categories").Items((string[])ViewData["drilledMembers"]).Add();
+                         drilledmembers.Name("Products").Delimiter("##").Items((string[])ViewData["drilledMembersProducts"]).Add();
 
                      })
                      .FilterSettings(filtersettings =>
                      {
-                         filtersettings.Name("Products").Type(Syncfusion.EJ2.PivotView.FilterType.Exclude).Items(ViewBag.filtersettings).Add();
+                         filtersettings.Name("Products").Type(Syncfusion.EJ2.PivotView.FilterType.Exclude).Items((string[])ViewData["filtersettings"]).Add();
                      })
                      .FormatSettings(formatsettings =>
                      {

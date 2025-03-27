@@ -51,10 +51,10 @@ namespace EJ2MVCSampleBrowser.Controllers.ThreeDimensionalChart
                 new ColumnChartData { X = "Jack",    Y = 8,  Text = "Total 8"  },
                 new ColumnChartData { X = "Lucas",   Y = 10, Text = "Total 10" }
             };
-            ViewBag.Grapes = ChartPoints;
-            ViewBag.Orange = ChartPoints1;
-            ViewBag.Apple = ChartPoints2;
-            ViewBag.Total = ChartPoints3;
+            ViewData["Grapes"] = ChartPoints;
+            ViewData["Orange"] = ChartPoints1;
+            ViewData["Apple"] = ChartPoints2;
+            ViewData["Total"] = ChartPoints3;
             return View();
         }
         public class ColumnChartData

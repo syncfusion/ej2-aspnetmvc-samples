@@ -5,7 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult QuickFormatToolbar()
         {
-            ViewBag.Text = new[] {
+            ViewData["Text"] = new[] {
                 "Bold", "Italic", "Underline", "FontColor", "BackgroundColor", "Alignments", "-", "FontSize", "FontName", "Formats", "OrderedList", "UnorderedList", "FormatPainter"
             };
             return View();

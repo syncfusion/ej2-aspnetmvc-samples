@@ -4,17 +4,17 @@
         
       @Html.EJS().Chart("container-vertical").Series(series =>
  {
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).IsFilled(true)).XName("ExpensesCategory").YName("JohnExpenses").DataSource(ViewBag.ChartPoints).Name("John").Width(2).Add();
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true)).XName("ExpensesCategory").YName("PeterExpenses").DataSource(ViewBag.ChartPoints).Name("Peter").Width(2).Add();
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(5).Height(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).IsFilled(true)).XName("ExpensesCategory").YName("SteveExpenses").DataSource(ViewBag.ChartPoints).Name("Steve").Width(2).Add();
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(6).Height(6).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).IsFilled(true)).XName("ExpensesCategory").YName("CharleExpenses").DataSource(ViewBag.ChartPoints).Name("Charle").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).IsFilled(true)).XName("ExpensesCategory").YName("JohnExpenses").DataSource(ViewData["ChartPoints"]).Name("John").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true)).XName("ExpensesCategory").YName("PeterExpenses").DataSource(ViewData["ChartPoints"]).Name("Peter").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(5).Height(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).IsFilled(true)).XName("ExpensesCategory").YName("SteveExpenses").DataSource(ViewData["ChartPoints"]).Name("Steve").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(6).Height(6).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).IsFilled(true)).XName("ExpensesCategory").YName("CharleExpenses").DataSource(ViewData["ChartPoints"]).Name("Charle").Width(2).Add();
  }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
  .MajorGridLines(mg => mg.Width(0)).MinorGridLines(mg => mg.Width(0))
  .MajorTickLines(mt => mt.Width(0)).
  MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).Interval(1)
  ).PrimaryYAxis(py => py.Interval(20).LineStyle(ly => ly.Width(0)).MajorGridLines(mg => mg.Width(1)).MinorGridLines(mg => mg.Width(1))
      .MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0))
-       ).Title("Family Expenses for Year").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).Format("${point.x} : <b>${point.y} (${point.percentage}%)</b>")).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
+       ).Title("Family Expenses for Year").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true).Format("${point.x} : <b>${point.y} (${point.percentage}%)</b>")).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
         </div>
 
     @*custom code start*@
@@ -27,10 +27,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Trim';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';

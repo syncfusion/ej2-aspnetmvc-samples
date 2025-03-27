@@ -17,7 +17,7 @@
 		   }).Add();
 	   }).Ranges(ranges =>
 	   {
-		   ranges.DataSource(ViewBag.GDPData).StartCell("A3").Add();
+		   ranges.DataSource(ViewData["GDPData"]).StartCell("A3").Add();
 	   }).Columns(column =>
 	   {
 		   column.Width(80).Add();
@@ -63,6 +63,7 @@
 		this.merge('A1:E1');
 		this.cellFormat({ backgroundColor: '#e56590', color: '#fff', fontWeight: 'bold', textAlign: 'center' }, 'A3:E3');
 		this.numberFormat('$#,##0.00', 'B4:E10');
+		this.selectRange("A1");
 	}
 </script>
 

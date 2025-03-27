@@ -17,7 +17,7 @@
             <div class='sliderwrap'>
                 <label class='labeltext userselect'>Range Slider</label>
                 <div id='range'></div>
-                @Html.EJS().Slider("range").Min(0).Max(100).Value(ViewBag.sliderValue).Enabled(true).Type(SliderType.Range).Render()
+                @Html.EJS().Slider("range").Min(0).Max(100).Value(ViewData["sliderValue"]).Enabled(true).Type(SliderType.Range).Render()
             </div>
         </div>
     </div>

@@ -1,10 +1,10 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
         @Html.EJS().Chart("container-step-riser").Series(series =>
         {
             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StepArea).XName("X").YName("Y").Name("Product Sales").Opacity(0.1).Border(br => br.Width(2.5))
-            .NoRisers(true).Step(Syncfusion.EJ2.Charts.StepPosition.Center).Marker(mr => mr.AllowHighlight(false)).DataSource(ViewBag.ChartPoints).Add();
+            .NoRisers(true).Step(Syncfusion.EJ2.Charts.StepPosition.Center).DataSource(ViewData["ChartPoints"]).Add();
         }
         ).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).LabelFormat("yyyy").Interval(4).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years)
             .Minimum(new DateTime(1980, 01, 01)).Maximum(new DateTime(2020, 01, 01)).MajorGridLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
@@ -20,10 +20,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? "Rotate90" : "Rotate45";
         };

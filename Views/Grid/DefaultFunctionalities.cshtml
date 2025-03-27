@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "DefaultFunctionalities";
+    ViewData["Title"] = "DefaultFunctionalities";
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col=> {
+        @Html.EJS().Grid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col=> {
 
        col.Field("OrderID").HeaderText("Order ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("180").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
        col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 5 }).Add();

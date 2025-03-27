@@ -17,7 +17,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult ShowHideColumns()
         {
-            ViewBag.data = new KanbanDataModels().KanbanCardTasks();
+            ViewData["data"] = new KanbanDataModels().KanbanCardTasks();
             return View();
         }
     }

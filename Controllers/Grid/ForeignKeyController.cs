@@ -20,9 +20,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult ForeignKey()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
+            ViewData["datasource"] = order;
             var ForeignData = Customer.GetAllRecords();
-            ViewBag.dataSource2 = ForeignData;
+            ViewData["dataSource2"] = ForeignData;
             return View();
         }
     }

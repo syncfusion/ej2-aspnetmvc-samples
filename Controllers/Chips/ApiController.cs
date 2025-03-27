@@ -26,7 +26,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chips
             ddlData.Add(new { text = "Warning", id = "5" });
             ddlData.Add(new { text = "Info", id = "6" });
 
-            ViewBag.ddlData = ddlData;
+            ViewData["ddlData"] = ddlData;
 
             List<object> avatarData = new List<object>();
             avatarData.Add(new { text = "None", id = "1" });
@@ -34,7 +34,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chips
             avatarData.Add(new { text = "Image", id = "3" });
             avatarData.Add(new { text = "Letter", id = "4" });
 
-            ViewBag.avatarData = avatarData;
+            ViewData["avatarData"] = avatarData;
 
             return View();
 

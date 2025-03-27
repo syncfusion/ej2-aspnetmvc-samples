@@ -296,7 +296,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                     imageUrl = "https://ej2.syncfusion.com/demos/src/avatar/images/pic04.png"
                 }
             };
-            ViewBag.ResultData = resultData;
+            ViewData["ResultData"] = resultData;
             return View();
         }
     }

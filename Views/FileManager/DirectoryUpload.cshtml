@@ -36,7 +36,7 @@
                 new FileManagerToolbarItem { Name= "Details" }
               }).Success("onSuccess").Render()
 
-            @Html.EJS().DropDownButton("uploadTemplate").CssClass("e-tbar-btn e-tbtn-txt").IconCss("e-icons e-fe-upload").Content("Upload").Items(ViewBag.datasource).Select("onSelect").Render()
+            @Html.EJS().DropDownButton("uploadTemplate").CssClass("e-tbar-btn e-tbtn-txt").IconCss("e-icons e-fe-upload").Content("Upload").Items(ViewData["datasource"]).Select("onSelect").Render()
         </div>
     </div>
     <style>

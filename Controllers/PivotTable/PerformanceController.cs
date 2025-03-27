@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult Performance()
         {
-            ViewBag.performanceOptions = new PerformanceOptions1().GetPerformanceOptions();
+            ViewData["performanceOptions"] = new PerformanceOptions1().GetPerformanceOptions();
             return View();
         }
 

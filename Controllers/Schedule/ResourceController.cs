@@ -19,9 +19,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             ownerCollections.Add(new OwnerRes { OwnerText = "Margaret", OwnerId = 1, Color = "#ea7a57" });
             ownerCollections.Add(new OwnerRes { OwnerText = "Robert", OwnerId = 2, Color = "#df5286" });
             ownerCollections.Add(new OwnerRes { OwnerText = "Laura", OwnerId = 3, Color = "#865fcf" });
-            ViewBag.Owners = ownerCollections;
+            ViewData["Owners"] = ownerCollections;
 
-            ViewBag.datasource = new ScheduleData().GetResourceSampleData();
+            ViewData["datasource"] = new ScheduleData().GetResourceSampleData();
             return View();
         }
 

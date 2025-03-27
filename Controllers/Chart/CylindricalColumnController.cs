@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new CylindricalColumnChartData { Country = "Japan", GoldMedal = 12, MappingName = "Japan" },
                 new CylindricalColumnChartData { Country = "USA", GoldMedal = 46, MappingName = "United States" }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class CylindricalColumnChartData

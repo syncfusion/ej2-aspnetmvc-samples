@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Datalabel
         public ActionResult Datalabel()
         {
-            ViewBag.usmap = getusMap();
+            ViewData["usmap"] = getusMap();
             return View();
         }
         public object getusMap()

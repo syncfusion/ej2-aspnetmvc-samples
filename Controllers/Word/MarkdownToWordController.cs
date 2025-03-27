@@ -72,7 +72,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
                 if (extension == ".md")
                     return new WordDocument(file.InputStream, FormatType.Markdown);
                 else
-                    ViewBag.Message = string.Format("Please choose Markdown format document to convert to Word or PDF");
+                    ViewData["Message"] = string.Format("Please choose Markdown format document to convert to Word or PDF");
             }
             else
             {

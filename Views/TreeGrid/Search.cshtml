@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "Searching";
+    ViewData["Title"] = "Searching";
 }
 
 @*custom code end*@
@@ -14,15 +14,15 @@
         <div class="control-wrapper">
             <div class="control-section">
                 @(Html.EJS().TreeGrid("Searching")
-                    .DataSource((IEnumerable<object>)ViewBag.datasource)
+                    .DataSource((IEnumerable<object>)ViewData["datasource"])
                     .AllowPaging()
                     .Toolbar(new List<string> { "Search" })
                     .Columns(col =>
                     {
                         col.Field("TaskId").HeaderText("Task ID").Width(80).TextAlign(TextAlign.Right).Add();
                         col.Field("TaskName").HeaderText("Task Name").Width(200).Add();
-                        col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(100).Add();
                         col.Field("Duration").HeaderText("Duration").TextAlign(TextAlign.Right).Width(90).Add();
+                        col.Field("Priority").HeaderText("Priority").TextAlign(TextAlign.Left).Width(100).Add();
                         col.Field("Progress").HeaderText("Progress").TextAlign(TextAlign.Right).Width(90).Add();
                     })
                    .ChildMapping("Children")
@@ -39,7 +39,7 @@
             <tr>
                 <td class="left-side">Hierarchy Mode</td>
                 <td>
-                    @Html.EJS().DropDownList("SearchMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Width("115px").Change("onChange").Render()
+                    @Html.EJS().DropDownList("SearchMode").DataSource((IEnumerable<object>)ViewData["dropdata"]).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "mode" }).Width("115px").Change("onChange").Render()
                 </td>
             </tr>
         </table>

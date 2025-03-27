@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         // GET: VirtualScrolling
         public ActionResult VirtualScrolling()
         {
-            ViewBag.datasource = VirtualDataFormat.GetVirtualData();
+            ViewData["datasource"] = VirtualDataFormat.GetVirtualData();
             return View();
         }
     }

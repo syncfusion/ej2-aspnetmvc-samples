@@ -4,10 +4,10 @@
 
         @Html.EJS().Chart("container-vertical").Series(series =>
        {
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("OrganicSales").Opacity(1).DataSource(ViewBag.ChartPoints).Name("Bank Transfer").Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("FairTradeSales").Opacity(1).DataSource(ViewBag.ChartPoints).Name("Credit Card").Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("VegAlternativesSales").Opacity(1).DataSource(ViewBag.ChartPoints).Name("Debit Card").Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("OtherSales").Opacity(1).DataSource(ViewBag.ChartPoints).Name("Cash").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("OrganicSales").Opacity(1).DataSource(ViewData["ChartPoints"]).Name("Bank Transfer").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("FairTradeSales").Opacity(1).DataSource(ViewData["ChartPoints"]).Name("Credit Card").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("VegAlternativesSales").Opacity(1).DataSource(ViewData["ChartPoints"]).Name("Debit Card").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("OtherSales").Opacity(1).DataSource(ViewData["ChartPoints"]).Name("Cash").Add();
 
        }).PrimaryXAxis(px => px.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
        .MajorGridLines(mg=>mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years).LabelFormat("yyyy")
@@ -15,7 +15,7 @@
        .MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).Title("Amount of sales in €")
        .Interval(1).Minimum(0).Maximum(7)
        ).Title("Amount of Sales by Payment Mode"
-       ).ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true)).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
+       ).ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true)).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
 
  
         </div>
@@ -27,10 +27,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>      

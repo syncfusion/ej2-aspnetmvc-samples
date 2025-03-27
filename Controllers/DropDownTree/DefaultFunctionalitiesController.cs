@@ -22,7 +22,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DropDownTree
             fields.Text = "Name";
             fields.Expanded = "Expanded";
             fields.Child = "SubChild";
-            ViewBag.fields = fields;
+            ViewData["fields"] = fields;
             return View();
         }
     }

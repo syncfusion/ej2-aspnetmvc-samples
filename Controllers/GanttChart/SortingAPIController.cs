@@ -19,9 +19,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult SortingAPI()
         {
-            ViewBag.DataSource = GanttData.EditingData();
-            ViewBag.Data1 = DropDownList.Columns();
-            ViewBag.Data2 = DropDownList.Direction();
+            ViewData["DataSource"] = GanttData.EditingData();
+            ViewData["Data1"] = DropDownList.Columns();
+            ViewData["Data2"] = DropDownList.Direction();
             return View();
         }
 

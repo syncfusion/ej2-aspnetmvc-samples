@@ -22,7 +22,7 @@
                  new MapsMarker { Visible = true, AnimationDuration = 0 },
                  new MapsMarker { Visible = true, AnimationDuration = 0 },
                  new MapsMarker { Visible = true, AnimationDuration = 0 },
-            }).ShapeSettings(new MapsShapeSettings{ Fill = "#789071" }).ShapeData(ViewBag.shapeData).Add();
+            }).ShapeSettings(new MapsShapeSettings{ Fill = "#789071" }).ShapeData(ViewData["shapeData"]).Add();
         }).Render()
             <div style="margin-left: 75%">
                 Source:

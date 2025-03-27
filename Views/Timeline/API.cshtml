@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Layouts
 @using Syncfusion.EJ2.Buttons
 @using Syncfusion.EJ2.DropDowns
@@ -34,13 +34,13 @@
                 <tr>
                     <td> Orientation </td>
                     <td>
-                        @Html.EJS().DropDownList("orientation").Placeholder("Select orientation").DataSource((IEnumerable<Object>)ViewBag.OrientationData).PopupHeight("200px").Index(0).Change("orientationChange").Render()
+                        @Html.EJS().DropDownList("orientation").Placeholder("Select orientation").DataSource((IEnumerable<Object>)ViewData["OrientationData"]).PopupHeight("200px").Index(0).Change("orientationChange").Render()
                     </td>
                 </tr>
                 <tr>
                     <td> Alignment </td>
                     <td>
-                        @Html.EJS().DropDownList("align").Placeholder("Select alignment").DataSource((IEnumerable<Object>)ViewBag.AlignData).PopupHeight("200px").Index(1).Change("alignmentChange").Render()
+                        @Html.EJS().DropDownList("align").Placeholder("Select alignment").DataSource((IEnumerable<Object>)ViewData["AlignData"]).PopupHeight("200px").Index(1).Change("alignmentChange").Render()
                     </td>
                 </tr>
                 <tr>

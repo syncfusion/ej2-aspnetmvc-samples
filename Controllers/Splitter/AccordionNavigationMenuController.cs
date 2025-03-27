@@ -22,7 +22,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             accItems.Add(new AccordionItem { Header = "ASP.NET", Expanded = true, Content = "<div id='nested_Acc1'></div>" });
             accItems.Add(new AccordionItem { Header = "ASP.NET MVC", Content = "<div id='nested_Acc2'></div>" });
             accItems.Add(new AccordionItem { Header = "JavaScript", Content = "<div id='nested_Acc3'></div>" });
-            ViewBag.AccordionItems = accItems;
+            ViewData["AccordionItems"] = accItems;
             return View();
         }
     }

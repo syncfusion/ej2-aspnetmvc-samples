@@ -8,7 +8,7 @@
 @section ControlsSection {
     <div class="col-lg-12 control-section">
         <div class="control_wrapper">
-       @Html.EJS().Kanban("kanban").KeyField("Category").DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
+       @Html.EJS().Kanban("kanban").KeyField("Category").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col =>
        {
            col.HeaderText("Order").KeyField("Order").AllowDrop(false).AllowToggle(true).TransitionColumns(orderTransition).Add();
            col.HeaderText("Ready to Serve").KeyField("Ready to Serve").AllowToggle(true).TransitionColumns(serveTransition).Add();

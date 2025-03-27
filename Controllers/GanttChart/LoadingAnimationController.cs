@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: LoadingAnimation
         public ActionResult LoadingAnimation()
         {
-            ViewBag.dataSource = GanttData.VirtualData();
-            ViewBag.data = new string[] { "Shimmer", "Spinner" };
+            ViewData["dataSource"] = GanttData.VirtualData();
+            ViewData["data"] = new string[] { "Shimmer", "Spinner" };
             return View();
         }
     }

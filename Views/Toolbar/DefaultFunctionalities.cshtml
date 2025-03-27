@@ -3,19 +3,19 @@
     <div class="col-lg-12 control-section">
         <div class="e-sample-resize-container">
             <h5 style="display: inline-block">simple Toolbar</h5>
-            @Html.EJS().Toolbar("defaultToolbar").Items(ViewBag.tbItems).Render()
+            @Html.EJS().Toolbar("defaultToolbar").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["tbItems"]).Render()
             <br /><br />
             <h5 style="display: inline-block">Scrollable Toolbar</h5>
-            @Html.EJS().Toolbar("OverflowScrollable").Items(ViewBag.overflowItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
+            @Html.EJS().Toolbar("OverflowScrollable").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["overflowItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
             <br /> <br />
             <h5 style="display: inline-block">Popup Toolbar</h5>
-            @Html.EJS().Toolbar("OverflowPopup").Items(ViewBag.overflowItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
+            @Html.EJS().Toolbar("OverflowPopup").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["overflowItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
             <br /> <br />
             <h5 style="display: inline-block">MultiRow Toolbar</h5>
-            @Html.EJS().Toolbar("OverflowMultiRow").Items(ViewBag.overflowItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.MultiRow).Render()
+            @Html.EJS().Toolbar("OverflowMultiRow").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["overflowItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.MultiRow).Render()
             <br /> <br />
             <h5 style="display: inline-block">Extended Toolbar</h5>
-            @Html.EJS().Toolbar("OverflowExtended").Items(ViewBag.overflowItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Extended).Render()
+            @Html.EJS().Toolbar("OverflowExtended").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["overflowItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Extended).Render()
         </div>
     </div>
 }

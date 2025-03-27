@@ -7,7 +7,7 @@
             <div style='padding-top:75px;'>
 
 
-                @Html.EJS().ComboBox("employees").DataSource((IEnumerable<Employees>)ViewBag.data).PopupHeight("270px").Placeholder("Select an employee").PopupHeight("270px").Fields(new ComboBoxFieldSettings { Value = "Name" }).ItemTemplate("<div>" +
+                @Html.EJS().ComboBox("employees").DataSource((IEnumerable<Employees>)ViewData["data"]).PopupHeight("270px").Placeholder("Select an employee").PopupHeight("270px").Fields(new ComboBoxFieldSettings { Value = "Name" }).ItemTemplate("<div>" +
              "<img class=\"empImage\" src=\"../Content/dropdownlist/images/Employees/${Eimg}.png\" alt=\"employee\"/><div class=\"ename\"> ${Name} </div><div class=\"job\"> ${Designation} </div></div>").HeaderTemplate("<div " +
              "class=\"header\"> <span>Photo</span> <span class=\"info\">Employee Info</span></div>").Render()
             </div>

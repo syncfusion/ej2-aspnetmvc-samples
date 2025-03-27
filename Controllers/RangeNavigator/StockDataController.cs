@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.RangeNavigator
         // GET: StockData
         public ActionResult StockData()
         {
-           ViewBag.toolbaritems = new string[] { };
+           ViewData["toolbaritems"] = new string[] { };
            return View();
         }
     }

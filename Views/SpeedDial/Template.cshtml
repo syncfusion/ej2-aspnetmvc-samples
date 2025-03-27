@@ -1,11 +1,11 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Buttons
 @section ControlsSection{
     <div class="control-section">
         <div id="speed-dial-wrapper">
             <div class="speeddial-template-target fab-index" id="target">
                 @Html.EJS().SpeedDial("Template1").CssClass("popupSpeedDial").Created("onCreated").Target("#target").PopupTemplate("#popupTemplate").Content("Feedback").OpenIconCss("speeddial-icons speeddial-icon-feedback").Position(FabPosition.BottomLeft).Render()
-                @Html.EJS().SpeedDial("Template2").Target("#target").ItemTemplate("#itemTemplate").Content("Edit").OpenIconCss("speeddial-icons speeddial-icon-edit").Items(ViewBag.datasource).IconPosition(IconPosition.Right).Position(FabPosition.BottomRight).Render()
+                @Html.EJS().SpeedDial("Template2").Target("#target").ItemTemplate("#itemTemplate").Content("Edit").OpenIconCss("speeddial-icons speeddial-icon-edit").Items((List<SpeedDialItem>)ViewData["datasource"]).IconPosition(IconPosition.Right).Position(FabPosition.BottomRight).Render()
             </div>
         </div>
     </div>

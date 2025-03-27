@@ -7,7 +7,7 @@
     <div class="control-section" style="overflow:auto">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("300").ShowGroupingBar(true).ShowFieldList(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>
-                )ViewBag.Data).ExpandAll(false).EnableSorting(true)
+                )ViewData["Data"]).ExpandAll(false).EnableSorting(true)
                 .FormatSettings(formatsettings =>
                 {
                     formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();

@@ -30,11 +30,11 @@
         }
     </style>
      @*custom code end*@
+    <script src="~/Scripts/StockChartData/theme-color.js"></script>
     <script>
         var data = window.googl;
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadStockChartTheme(args);
         }
         function tooltipRender(args) {
             if (args.text.split('<br/>')[4]) {

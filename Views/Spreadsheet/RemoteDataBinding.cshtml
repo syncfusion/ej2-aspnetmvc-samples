@@ -10,7 +10,7 @@
         ranges.ShowFieldAsHeader(false).StartCell("A2").Query("new ej.data.Query().from('Orders').take(200)").DataSource(dataManger =>
         {
             dataManger.Url("https://services.odata.org/V4/Northwind/Northwind.svc").CrossDomain(true).Adaptor("ODataV4Adaptor");
-        }).FieldsOrder(ViewBag.FieldsOrder).Add();
+        }).FieldsOrder((string[])ViewData["FieldsOrder"]).Add();
       }).Rows(row =>
       {
           row.Cells(cell =>

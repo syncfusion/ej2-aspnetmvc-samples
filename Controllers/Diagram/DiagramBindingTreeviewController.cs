@@ -150,10 +150,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 name = "Craft Personnel4"
 
             });
-            ViewBag.Nodes = DataBindingDetails.GetAllRecords();
-            ViewBag.getConnectorDefaults = "ConnectorDefaults";
-            ViewBag.getNodeDefaults = "nodeDefaults";
-            ViewBag.data = treedata;
+            ViewData["Nodes"] = DataBindingDetails.GetAllRecords();
+            ViewData["getConnectorDefaults"] = "ConnectorDefaults";
+            ViewData["getNodeDefaults"] = "nodeDefaults";
+            ViewData["data"] = treedata;
             return View();
         }
 

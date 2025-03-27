@@ -4,7 +4,7 @@
 @section ControlsSection{
 <div class="control-section">
     <div class="col-lg-6">
-        @Html.EJS().Grid("RowDragDrop").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSelection().AllowRowDragAndDrop(true).Columns(col =>
+        @Html.EJS().Grid("RowDragDrop").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowSelection().AllowRowDragAndDrop(true).Columns(col =>
 {
     col.Field("OrderID").Type("number").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
     col.Field("CustomerID").Type("string").HeaderText("Customer Name").Width("150").ShowInColumnChooser(false).ValidationRules(new { required = true, minLength = 5 }).Add();

@@ -77,7 +77,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                         else
                         {
                             int pagecount = ldoc.Pages.Count;
-                            ViewBag.lab = "Invalid Page no: The page range should be 1 to " + pagecount;
+                            ViewData["lab"] = "Invalid Page no: The page range should be 1 to " + pagecount;
                         }
                     }
                     else
@@ -85,7 +85,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                         PdfLoadedDocument ldoc = new PdfLoadedDocument(file.InputStream);
                         int pagecount = ldoc.Pages.Count;
                         ldoc.Close(true);
-                        ViewBag.lab = "Invalid page range: The page range should be 1 to " + pagecount;
+                        ViewData["lab"] = "Invalid page range: The page range should be 1 to " + pagecount;
                     }
                 }
                 else
@@ -93,7 +93,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                     PdfLoadedDocument ldoc = new PdfLoadedDocument(file.InputStream);
                     int pagecount = ldoc.Pages.Count;
                     ldoc.Close(true);
-                    ViewBag.lab = "Invalid page range: The page range should be 1 to " + pagecount;
+                    ViewData["lab"] = "Invalid page range: The page range should be 1 to " + pagecount;
                 }
             }
             else if (splitOption == "fileCount")
@@ -147,12 +147,12 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                     }
                     else
                     {
-                        ViewBag.lab = "Invalid file count: The file count should be 1 to " + pageCount;
+                        ViewData["lab"] = "Invalid file count: The file count should be 1 to " + pageCount;
                     }
                 }
                 else
                 {
-                    ViewBag.lab = "Invalid file count: The file count should be 1 to " + pageCount;
+                    ViewData["lab"] = "Invalid file count: The file count should be 1 to " + pageCount;
                 }
 
                 ldoc.Close(true);
@@ -222,19 +222,19 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                     }
                     else
                     {
-                        ViewBag.lab = "Invalid page count: The page count should be 1 to " + pageCount;
+                        ViewData["lab"] = "Invalid page count: The page count should be 1 to " + pageCount;
                     }
                 }
                 else
                 {
-                    ViewBag.lab = "Invalid page count: The page count should be 1 to " + pageCount;
+                    ViewData["lab"] = "Invalid page count: The page count should be 1 to " + pageCount;
                 }
                 ldoc.Close(true);
 
             }
             else
             {
-                ViewBag.lab = "Enter the page no to split";
+                ViewData["lab"] = "Enter the page no to split";
             }
             return View();
         }
@@ -286,7 +286,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                 }
                 else
                 {
-                    ViewBag.Message = string.Format("Please choose a valid PDF document to add watermark");
+                    ViewData["Message"] = string.Format("Please choose a valid PDF document to add watermark");
                     return null;
                 }
             }

@@ -48,11 +48,11 @@
     var modifiedDataB = { addedRecords: [], deletedRecords: [], changedRecords: [] };
 
     var dataA = new ej.data.DataManager({
-        json: @Html.Raw(JsonConvert.SerializeObject(@ViewBag.groupA))
+        json: @Html.Raw(JsonConvert.SerializeObject(@ViewData["groupA"]))
         });
 
     var dataB = new ej.data.DataManager({
-        json: @Html.Raw(JsonConvert.SerializeObject(@ViewBag.groupB))
+        json: @Html.Raw(JsonConvert.SerializeObject(@ViewData["groupB"]))
         });
 
     function groupACreated() {

@@ -11,20 +11,20 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
                             @Html.EJS().DropDownList("startPoint").Placeholder("From").Width("100%").DataSource(
-                                  ViewBag.citiesData).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Name" }).Render()
+                                  ViewData["citiesData"]).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Name" }).Render()
                         </div>
                         <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
                             @Html.EJS().DropDownList("endPoint").Placeholder("To").Width("100%").DataSource(
-                                  ViewBag.citiesData).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Name" }).Render()
+                                  ViewData["citiesData"]).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Name" }).Render()
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
-                            @Html.EJS().DatePicker("date").Placeholder("Journey Date").Width("100%").Min(ViewBag.min).Max(ViewBag.max).Value(ViewBag.value).Render()
+                            @Html.EJS().DatePicker("date").Placeholder("Journey Date").Width("100%").Min(ViewData["min"]).Max(ViewData["max"]).Value(ViewData["value"]).Render()
                         </div>
                         <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 search-item">
                             @Html.EJS().DropDownList("quota").Placeholder("Ticket type").DataSource(
-                                  ViewBag.quota).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
+                                  ViewData["quota"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
                         </div>
                     </div>
                     <div class="btn-container">
@@ -35,7 +35,7 @@
             </div>
             <div id="selectTrain" style="display: none">
                 <div class="wizard-title">Select the train from the list </div>
-                @Html.EJS().Grid("availableTrain").Columns(ViewBag.availabletrain).Width("100%").RowSelected("trainSelected").Render()
+                @Html.EJS().Grid("availableTrain").Columns(ViewData["availabletrain"]).Width("100%").RowSelected("trainSelected").Render()
                 <br />
                 <div class="btn-container">
                     <button id="goToSearch" class="e-btn">Back</button>
@@ -72,10 +72,10 @@
                                     @Html.EJS().NumericTextBox("pass_age1").Format("n0").Value(18).Min(1).Max(100).ShowSpinButton(false).Render()
                                 </td>
                                 <td>
-                                    @Html.EJS().DropDownList("pass_gender1").Text("Male").DataSource(ViewBag.gender).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
+                                    @Html.EJS().DropDownList("pass_gender1").Text("Male").DataSource(ViewData["gender"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
                                 </td>
                                 <td>
-                                    @Html.EJS().DropDownList("pass_berth1").Placeholder("Optional").DataSource(ViewBag.berth).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
+                                    @Html.EJS().DropDownList("pass_berth1").Placeholder("Optional").DataSource(ViewData["berth"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
                                 </td>
                             </tr>
                             <tr>
@@ -86,10 +86,10 @@
                                     @Html.EJS().NumericTextBox("pass_age2").Format("n0").Value(18).Min(1).Max(100).ShowSpinButton(false).Render()
                                 </td>
                                 <td>
-                                    @Html.EJS().DropDownList("pass_gender2").Text("Male").DataSource(ViewBag.gender).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
+                                    @Html.EJS().DropDownList("pass_gender2").Text("Male").DataSource(ViewData["gender"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
                                 </td>
                                 <td>
-                                    @Html.EJS().DropDownList("pass_berth2").Placeholder("Optional").DataSource(ViewBag.berth).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
+                                    @Html.EJS().DropDownList("pass_berth2").Placeholder("Optional").DataSource(ViewData["berth"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
                                 </td>
                             </tr>
                             <tr>
@@ -100,10 +100,10 @@
                                     @Html.EJS().NumericTextBox("pass_age3").Format("n0").Value(18).Min(1).Max(100).ShowSpinButton(false).Render()
                                 </td>
                                 <td>
-                                    @Html.EJS().DropDownList("pass_gender3").Text("Male").DataSource(ViewBag.gender).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
+                                    @Html.EJS().DropDownList("pass_gender3").Text("Male").DataSource(ViewData["gender"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
                                 </td>
                                 <td>
-                                    @Html.EJS().DropDownList("pass_berth3").Placeholder("Optional").DataSource(ViewBag.berth).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
+                                    @Html.EJS().DropDownList("pass_berth3").Placeholder("Optional").DataSource(ViewData["berth"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Text" }).Render()
                                 </td>
                             </tr>
                         </tbody>
@@ -118,7 +118,7 @@
             </div>
             <div id="confirm" style="display: none">
                 <div class="tab-title1 wizardtitle">Confirm the details and proceed</div>
-                @Html.EJS().Grid("ticketDetailGrid").Width("100%").Columns(ViewBag.ticketgrid).Render()
+                @Html.EJS().Grid("ticketDetailGrid").Width("100%").Columns(ViewData["ticketgrid"]).Render()
                 <br />
                 <div id="amount"></div>
                 <br />
@@ -127,7 +127,7 @@
                     <button id="makePayment" class="e-btn">Pay</button>
                 </div>
             </div>
-            @Html.EJS().Tab("ej2Tab").HeightAdjustMode(HeightStyles.None).Height("auto").Created("tabCreated").Selecting("tabSelecting").Items(ViewBag.headeritems).Render()
+            @Html.EJS().Tab("ej2Tab").HeightAdjustMode(HeightStyles.None).Height("auto").Created("tabCreated").Selecting("tabSelecting").Items((List<Syncfusion.EJ2.Navigations.TabItem>)ViewData["headeritems"]).Render()
             <div>
                 @Html.EJS().Dialog("alertDialog").Header("Success").Target("#ej2Tab").ShowCloseIcon(true).Width("350").IsModal(true).Created("dlgCreated").Visible(false).Render()
             </div>

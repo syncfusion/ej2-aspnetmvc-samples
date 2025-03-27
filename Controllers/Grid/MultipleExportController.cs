@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
             // GET: MultipleExport
             public ActionResult MultipleExport()
             {
-                ViewBag.dataSource = OrdersDetails.GetAllRecords();
-                ViewBag.CustomerDataSource = Customer.GetAllRecords();
+                ViewData["dataSource"] = OrdersDetails.GetAllRecords();
+                ViewData["CustomerDataSource"] = Customer.GetAllRecords();
                 return View();
             }
     }

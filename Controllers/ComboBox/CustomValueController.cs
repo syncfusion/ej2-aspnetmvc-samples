@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         public ActionResult CustomValue()
         {
 
-            ViewBag.data = new Countries().CountriesList();
+            ViewData["data"] = new Countries().CountriesList();
             return View();
         }
     }

@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control_wrapper accordion-control-section">
-            @Html.EJS().Accordion("defaultAccordion").Items(ViewBag.accordionItems).Render()
+            @Html.EJS().Accordion("defaultAccordion").Items((List<Syncfusion.EJ2.Navigations.AccordionItem>)ViewData["accordionItems"]).Render()
         </div>
     </div>
 }

@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chips
 
             int[] choiceSelected = { 1 };
             int[] filterSelected = { 1, 3 };
-            ViewBag.choiceSelected = choiceSelected;
-            ViewBag.filterSelected = filterSelected;
+            ViewData["choiceSelected"] = choiceSelected;
+            ViewData["filterSelected"] = filterSelected;
             return View();
 
         }

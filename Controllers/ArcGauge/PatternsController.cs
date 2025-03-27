@@ -40,7 +40,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             gaugeOneMarkerPointer.PointerWidth = 40;
             gaugeOnePointerCollections.Add(gaugeOneMarkerPointer);
 
-            ViewBag.FirstGaugePointers = gaugeOnePointerCollections;
+            ViewData["FirstGaugePointers"] = gaugeOnePointerCollections;
 
             List<CircularGaugeRange> gaugeOneRangeCollections = new List<CircularGaugeRange>();
             CircularGaugeRange gaugeOneRangeOne = new CircularGaugeRange();
@@ -79,7 +79,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             gaugeOneRangeFour.EndWidth = "10";
             gaugeOneRangeCollections.Add(gaugeOneRangeFour);
 
-            ViewBag.FirstGaugeRanges = gaugeOneRangeCollections;
+            ViewData["FirstGaugeRanges"] = gaugeOneRangeCollections;
 
             List<CircularGaugeAnnotation> gaugeOneAnnotations = new List<CircularGaugeAnnotation>();
             CircularGaugeAnnotation gaugeOneAnnotationValue = new CircularGaugeAnnotation();
@@ -89,7 +89,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             gaugeOneAnnotationValue.Content = "<div style='font-size:30px;'>38</div>";
             gaugeOneAnnotations.Add(gaugeOneAnnotationValue);
 
-            ViewBag.FirstGaugeAnnotations = gaugeOneAnnotations;
+            ViewData["FirstGaugeAnnotations"] = gaugeOneAnnotations;
 
             // Second Gauge //
 
@@ -111,7 +111,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             secondGaugePointerCollections.Add(secondGaugeRangeBarPointerTwo);
 
 
-            ViewBag.SecondGaugePointers = secondGaugePointerCollections;
+            ViewData["SecondGaugePointers"] = secondGaugePointerCollections;
 
 
             List<CircularGaugeAnnotation> secondGaugeAnnotations = new List<CircularGaugeAnnotation>();
@@ -136,7 +136,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             secondGaugeEndAnnotationValue.Content = "<div style='font-size:22px;font-family:inherit;'>100%</div>";
             secondGaugeAnnotations.Add(secondGaugeEndAnnotationValue);
 
-            ViewBag.SecondGaugeAnnotations = secondGaugeAnnotations;
+            ViewData["SecondGaugeAnnotations"] = secondGaugeAnnotations;
 
             // Third Gauge //
 
@@ -177,7 +177,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             thirdGaugeRangeFour.EndWidth = "12";
             thirdGaugeRangeCollections.Add(thirdGaugeRangeFour);
 
-            ViewBag.ThirdGaugeRanges = thirdGaugeRangeCollections;
+            ViewData["ThirdGaugeRanges"] = thirdGaugeRangeCollections;
 
             List<CircularGaugeAnnotation> thirdGaugeAnnotationCollections = new List<CircularGaugeAnnotation>();
             CircularGaugeAnnotation thirdGaugeAnnotationValueOne = new CircularGaugeAnnotation();
@@ -209,7 +209,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             thirdGaugeAnnotationCollections.Add(thirdGaugeAnnotationValueFour);
 
 
-            ViewBag.ThirdGaugeAnnotations = thirdGaugeAnnotationCollections;
+            ViewData["ThirdGaugeAnnotations"] = thirdGaugeAnnotationCollections;
 
 
 
@@ -230,7 +230,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             };
             thirdGaugePointerCollections.Add(thirdGaugeMarkerPointer);
 
-            ViewBag.ThirdGaugePointers = thirdGaugePointerCollections;
+            ViewData["ThirdGaugePointers"] = thirdGaugePointerCollections;
 
 
             // Fourth gauge //
@@ -243,7 +243,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             fourthGaugeAnnotationValue.Content = "<div class='gaugeThirdText' style='font-size:30px;font-family:inherit;'>21%</div>";
             fourthGaugeAnnotations.Add(fourthGaugeAnnotationValue);
 
-            ViewBag.FourthGaugeAnnotations = fourthGaugeAnnotations;
+            ViewData["FourthGaugeAnnotations"] = fourthGaugeAnnotations;
 
             List<CircularGaugePointer> fourthGaugePointerCollections = new List<CircularGaugePointer>();
 
@@ -288,7 +288,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             };
             fourthGaugePointerCollections.Add(fourthGaugeCirclePointerOutside);
 
-            ViewBag.FourthGaugePointers = fourthGaugePointerCollections;
+            ViewData["FourthGaugePointers"] = fourthGaugePointerCollections;
 
 
             List<CircularGaugeRange> fourthGaugeRangeCollections = new List<CircularGaugeRange>();
@@ -341,7 +341,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             };
             fourthGaugeRangeCollections.Add(fourthGaugeRangeThree);
 
-            ViewBag.FourthGaugeRanges = fourthGaugeRangeCollections;
+            ViewData["FourthGaugeRanges"] = fourthGaugeRangeCollections;
 
 
             // Fifth Gauge //
@@ -387,7 +387,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             fifthGaugeRangeFour.EndWidth = "10";
             fifthGaugeRangeCollections.Add(fifthGaugeRangeFour);
 
-            ViewBag.FifthGaugeRanges = fifthGaugeRangeCollections;
+            ViewData["FifthGaugeRanges"] = fifthGaugeRangeCollections;
 
 
             List<CircularGaugePointer> fifthGaugeRangeBarPointers = new List<CircularGaugePointer>();
@@ -405,7 +405,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             fifthGaugeRangeBarPointers.Add(fifthGaugeRangeBarPointer);
 
 
-            ViewBag.FifthGaugePointers = fifthGaugeRangeBarPointers;
+            ViewData["FifthGaugePointers"] = fifthGaugeRangeBarPointers;
 
             List<CircularGaugeAnnotation> fifthGaugeAnnotations = new List<CircularGaugeAnnotation>();
             CircularGaugeAnnotation fifthGaugeAnnotationValue = new CircularGaugeAnnotation();
@@ -416,7 +416,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             fifthGaugeAnnotations.Add(fifthGaugeAnnotationValue);
 
 
-            ViewBag.FifthGaugeAnnotations = fifthGaugeAnnotations;
+            ViewData["FifthGaugeAnnotations"] = fifthGaugeAnnotations;
 
 
             // Sixth Gauge //
@@ -432,7 +432,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             sixthGaugeFullRange.EndWidth = "38";
             sixthGaugeRanges.Add(sixthGaugeFullRange);
 
-            ViewBag.SixthGaugeRanges = sixthGaugeRanges;
+            ViewData["SixthGaugeRanges"] = sixthGaugeRanges;
 
             List<CircularGaugePointer> sixthGaugePointerCollections = new List<CircularGaugePointer>();
             CircularGaugePointer sixthGaugeMarkerPointerOne = new CircularGaugePointer();
@@ -1477,7 +1477,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             };
             sixthGaugePointerCollections.Add(sixthGaugeMarkerPointerEightyOne);
 
-            ViewBag.SixthGaugePointers = sixthGaugePointerCollections;
+            ViewData["SixthGaugePointers"] = sixthGaugePointerCollections;
 
             List<CircularGaugeAnnotation> SixthGaugeAnnotations = new List<CircularGaugeAnnotation>();
             CircularGaugeAnnotation sixthGaugeAnnotationValue = new CircularGaugeAnnotation();
@@ -1487,7 +1487,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             sixthGaugeAnnotationValue.Content = "<div class='annotationText' style='font-size:18px;font-family:inherit;text-align:center'>80% <br/> <div> Completed </div> </div>";
             SixthGaugeAnnotations.Add(sixthGaugeAnnotationValue);
 
-            ViewBag.SixthGaugeAnnotations = SixthGaugeAnnotations;
+            ViewData["SixthGaugeAnnotations"] = SixthGaugeAnnotations;
 
             return View();
         }

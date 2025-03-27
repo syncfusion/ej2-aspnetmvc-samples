@@ -21,14 +21,14 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult CustomSorting()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.drilledMembers = new string[] { "Germany" };
-            ViewBag.sortSettings = new string[] { "France", "United States" };
-            ViewBag.sortSettings_1 = new string[] { "FY 2018", "FY 2017" };
-            ViewBag.sortSettings_2 = new string[] { "Gloves", "Bottles and Cages" };
-            ViewBag.customSortingOrder = new string[] { "Ascending", "Descending" };
-            ViewBag.customSortingFields = GetCustomSortingFields();
-            ViewBag.customSortingData = new string[] { };
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["drilledMembers"] = new string[] { "Germany" };
+            ViewData["sortSettings"] = new string[] { "France", "United States" };
+            ViewData["sortSettings_1"] = new string[] { "FY 2018", "FY 2017" };
+            ViewData["sortSettings_2"] = new string[] { "Gloves", "Bottles and Cages" };
+            ViewData["customSortingOrder"] = new string[] { "Ascending", "Descending" };
+            ViewData["customSortingFields"] = GetCustomSortingFields();
+            ViewData["customSortingData"] = new string[] { };
             return View();
         }
         public List<CustomSortingFields> GetCustomSortingFields()

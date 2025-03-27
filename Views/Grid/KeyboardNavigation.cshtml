@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "KeyboardNavigation";
+    ViewData["Title"] = "KeyboardNavigation";
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("KeyboardNavigation").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSelection().AllowFiltering().AllowSorting().AllowGrouping().Columns(col =>
+        @Html.EJS().Grid("KeyboardNavigation").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowSelection().AllowFiltering().AllowSorting().AllowGrouping().Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

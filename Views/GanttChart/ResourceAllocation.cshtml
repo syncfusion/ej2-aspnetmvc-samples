@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ResourceAllocation";
+    ViewData["Title"] = "ResourceAllocation";
 }
 
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
             @(Html.EJS().Gantt("ResourceAllocation").DataSource((IEnumerable<object>
-    )ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true).TaskType(Syncfusion.EJ2.Gantt.TaskType.FixedWork)
+    )ViewData["DataSource"]).Height("450px").HighlightWeekends(true).AllowSelection(true).TaskType(Syncfusion.EJ2.Gantt.TaskType.FixedWork)
     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").Work("Work").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
     .Dependency("Predecessor").ResourceInfo("Resources").Type("TaskType").Child("SubTasks")).QueryTaskbarInfo("queryTaskbarInfo").ActionBegin("actionBegin").ActionComplete("actionComplete").CellEdit("cellEdit")
     .TreeColumnIndex(1)
@@ -20,7 +20,7 @@
     .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
     .Toolbar(new List<string>
         () { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll" })
-        .Resources((IEnumerable<object>)ViewBag.Resources)
+        .Resources((IEnumerable<object>)ViewData["Resources"])
             .Columns(col =>
             {
                 col.Field("TaskId").Visible(false).Add();
@@ -224,13 +224,6 @@
             <code>FixedWork</code>: Work field will remain constant while updating resource unit or duration fields.</br>
 
             <code>FixedUnit</code>: Resource units will remain constant while updating duration or work field.
-        </p>
-        <p style="font-weight: 500">Injecting Module:</p>
-        <p>
-            Gantt control features are segregated into individual feature-wise modules. To use a selection, inject the
-            <code>Selection</code> module using the <code>Gantt.Inject(Selection)</code> method. To use markers, inject the
-            <code>DayMarkers</code> module using the <code>Gantt.Inject(DayMarkers)</code> method.
-            To edit resource unit, task type and duration, inject the <code>Toolbar</code> and <code>Edit</code> module.
         </p>
     </div>
 }

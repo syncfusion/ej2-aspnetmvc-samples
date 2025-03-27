@@ -7,7 +7,7 @@
    {
        sheet.Name("Gross Pay").SelectedRange("D3").Ranges(ranges =>
 	   {
-		   ranges.DataSource(ViewBag.GrossPay).StartCell("A3").Add();
+		   ranges.DataSource(ViewData["GrossPay"]).StartCell("A3").Add();
 	   }).Rows(row =>
        {
            row.Cells(cell =>

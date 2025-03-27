@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult HeatMap()
         {
-            ViewBag.data = new PivotTableData().GetProductData();
+            ViewData["data"] = new PivotTableData().GetProductData();
             return View();
         }
     }

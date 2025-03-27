@@ -1,18 +1,18 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Heatmap control shows the heat map control displayed with minimum configuration" />
 }
 @section ControlsSection{
     <div class="control-section">
         <div id="container" style="width:100%">
-            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Sales Revenue per Employee (in 1000 US$)").TextStyle(ViewBag.textStyle)).XAxis(
+            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Sales Revenue per Employee (in 1000 US$)").TextStyle(ViewData["textStyle"])).XAxis(
                  xAxis =>
                  {
-                     xAxis.Labels(ViewBag.xLabels);
+                     xAxis.Labels(ViewData["xLabels"]);
                  }).YAxis(yaxis =>
                  {
-                     yaxis.Labels(ViewBag.yLabels);
-                 }).DataSource(ViewBag.dataSource).Load("load").Render()
+                     yaxis.Labels(ViewData["yLabels"]);
+                 }).DataSource(ViewData["dataSource"]).Load("load").Render()
 
         </div>
     </div>

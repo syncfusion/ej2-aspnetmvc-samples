@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: VirtualScroll
         public ActionResult VirtualScroll()
         {
-            ViewBag.dataSource = GanttData.VirtualData();
+            ViewData["dataSource"] = GanttData.VirtualData();
             return View();
         }
     }

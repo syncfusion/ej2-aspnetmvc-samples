@@ -120,7 +120,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new HistogramChartData { Score = 95.750},
                 new HistogramChartData { Score = 95.250}
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class HistogramChartData

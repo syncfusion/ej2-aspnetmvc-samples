@@ -105,11 +105,11 @@ namespace EJ2MVCSampleBrowser.Controllers
                 Pid = "5",
                 Name = "Outbox"
             });
-            ViewBag.LocalData = LocalData;
-            ViewBag.ListData = InboxData;
-            ViewBag.ListTemplate = listTemplate;
-            ViewBag.HtmlAttributes = HtmlAttribute;
-            ViewBag.DefToolItems = popItems;
+            ViewData["LocalData"] = LocalData;
+            ViewData["ListData"] = InboxData;
+            ViewData["ListTemplate"] = listTemplate;
+            ViewData["HtmlAttributes"] = HtmlAttribute;
+            ViewData["DefToolItems"] = popItems;
             return View();
         }
         public class listData

@@ -59,7 +59,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             invertedTrianglePointer.Value = 76.6;
             pointerCollections.Add(invertedTrianglePointer);
 
-            ViewBag.Pointers = pointerCollections;
+            ViewData["Pointers"] = pointerCollections;
 
             List<CircularGaugeRange> rangeCollections = new List<CircularGaugeRange>();
             CircularGaugeRange fullRange = new CircularGaugeRange();
@@ -100,7 +100,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             halfRange.EndWidth = "30";
             rangeCollections.Add(halfRange);
 
-            ViewBag.Ranges = rangeCollections;
+            ViewData["Ranges"] = rangeCollections;
 
             List<CircularGaugeAnnotation> annotationCollections = new List<CircularGaugeAnnotation>();
             CircularGaugeAnnotation triangleAnnotation = new CircularGaugeAnnotation();
@@ -138,9 +138,9 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             annotationEndValue.Content = "<div style='font-size:22px;'>100</div>";
             annotationCollections.Add(annotationEndValue);
 
-            ViewBag.Annotations = annotationCollections;
+            ViewData["Annotations"] = annotationCollections;
 
-            ViewBag.labelFont = new CircularGaugeFont
+            ViewData["labelFont"] = new CircularGaugeFont
             {
                 Size = "0px",
             };

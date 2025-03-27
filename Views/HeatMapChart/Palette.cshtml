@@ -19,14 +19,14 @@
                         palette.Value(30).Color("#253494").Add();
                         palette.Value(32).Color("#081D58").Add();
                     }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed)).Load("load").TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings =>
-                    legendSettings.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).EnableSmartLegend(true).Width("400px").TextStyle(ViewBag.labelTextStyle)).CellSettings(cellSettings =>
-                    cellSettings.Border(ViewBag.border).ShowLabel(false)).TitleSettings(titleSettings => titleSettings.Text("U.S. Government Energy Consumption by Agency (Trillion Btu)").TextStyle(ViewBag.textStyle)).XAxis(
+                    legendSettings.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).EnableSmartLegend(true).Width("400px").TextStyle(ViewData["labelTextStyle"])).CellSettings(cellSettings =>
+                    cellSettings.Border(ViewData["border"]).ShowLabel(false)).TitleSettings(titleSettings => titleSettings.Text("U.S. Government Energy Consumption by Agency (Trillion Btu)").TextStyle(ViewData["textStyle"])).XAxis(
                     xAxis =>
                     {
                         xAxis.LabelRotation(45)
                         .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                        .Labels(ViewBag.xlabels).TextStyle(ViewBag.labelTextStyle);
-                    }).YAxis(yaxis => yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle)).DataSource(ViewBag.dataSource).Render()
+                        .Labels((string[])ViewData["xlabels"]).TextStyle(ViewData["labelTextStyle"]);
+                    }).YAxis(yaxis => yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"])).DataSource(ViewData["dataSource"]).Render()
                 </div>
             </div>
         </div>

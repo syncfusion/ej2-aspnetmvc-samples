@@ -7,7 +7,7 @@
     {
     sheet.Name("Order Details").ShowGridLines(false).Ranges(ranges =>
     {
-        ranges.DataSource((IEnumerable<object>)ViewBag.orderDetails).Add();
+        ranges.DataSource((IEnumerable<object>)ViewData["orderDetails"]).Add();
         }).Rows(row =>{
         row.Height(36).Cells(cell =>{
             cell.Value("Order ID").Style(new SpreadsheetCellStyle() { TextAlign = TextAlign.Right }).Add();

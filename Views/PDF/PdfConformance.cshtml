@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.DropDowns
 @using EJ2MVCSampleBrowser.Models
-@{ViewBag.Title = "    Essential PDF :PdfConformance : Syncfusion";}
+@{ViewData["Title"] = "    Essential PDF :PdfConformance : Syncfusion";}
 @{Html.BeginForm("pdfconformance", "pdf", FormMethod.Post); }
 @section ControlsSection
     {
@@ -22,7 +22,7 @@
                             Please select the conformance&nbsp;&nbsp;:&nbsp;&nbsp;
                         </label>
 
-                        @Html.EJS().DropDownList("conformance").Width("130px").Index(0).PopupHeight("200px").DataSource(ViewBag.data).Render()
+                        @Html.EJS().DropDownList("conformance").Width("130px").Index(0).PopupHeight("200px").DataSource(ViewData["data"]).Render()
 
 
                     </div>

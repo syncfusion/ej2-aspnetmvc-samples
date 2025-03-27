@@ -4,7 +4,7 @@
     <div class="col-xs-12 control-section">
         
             @(Html.EJS().Diagram("container").Width("100%").Height("600px").Created("create").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
-                .GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").DataSourceSettings(ss => ss.Id("Name").ParentId("Category").DataSource(new DataManager() { Data = (List<RTLData>)ViewBag.Nodes }))
+                .GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").DataSourceSettings(ss => ss.Id("Name").ParentId("Category").DataSource(new DataManager() { Data = (List<RTLData>)ViewData["Nodes"] }))
                 .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree).Orientation(Syncfusion.EJ2.Diagrams.LayoutOrientation.RightToLeft).VerticalSpacing(100).HorizontalSpacing(-10).VerticalAlignment(Syncfusion.EJ2.Diagrams.VerticalAlignment.Center).HorizontalAlignment(Syncfusion.EJ2.Diagrams.HorizontalAlignment.Center))
                 .Render()
             )

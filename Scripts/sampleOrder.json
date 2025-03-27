@@ -7,7 +7,7 @@
 "Dropdowns": [ "AutoComplete", "ComboBox", "DropDownList", "DropDownTree", "MultiSelect", "ListBox","Mention", "MultiColumnComboBox" ],
 "Navigation": [ "Accordion", "AppBar", "Breadcrumb", "Carousel", "ContextMenu", "FileManager", "Menu", "Sidebar", "Tab", "Toolbar", "TreeView", "Ribbon", "Stepper" ],
 "Notifications": [ "Message", "Badge", "Toast", "ProgressBar", "Skeleton" ],
-"Inputs": [ "TextBoxes", "TextArea", "MaskedTextBox", "NumericTextBox", "ColorPicker", "Uploader", "RangeSlider", "Signature", "Rating", "OtpInput" ],
+"Inputs": [ "TextBoxes", "TextArea", "MaskedTextBox", "NumericTextBox", "ColorPicker", "Uploader", "RangeSlider", "Signature", "Rating", "OtpInput", "SpeechToText" ],
 "Layout": [ "Avatar", "Card", "DashboardLayout", "Dialog","PredefinedDialogs", "ListView", "Tooltip", "Splitter", "Timeline" ],
 "Forms": [ "QueryBuilder" ],
 "Document Processing Libraries": [ "Word", "PDF", "PowerPoint", "Excel" ]

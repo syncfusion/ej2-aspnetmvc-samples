@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 
 @{
-    ViewBag.Title = "HeaderTemplate";
+    ViewData["Title"] = "HeaderTemplate";
 }
 
 @section ControlsSection{
 
 <div class="control-section">
-    @(Html.EJS().Gantt("HeaderTemplate").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).Resources((IEnumerable<object>)ViewBag.Resources).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName"))
+    @(Html.EJS().Gantt("HeaderTemplate").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true).Resources((IEnumerable<object>)ViewData["Resources"]).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName"))
          .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
           .Dependency("Predecessor").Child("SubTasks").ResourceInfo("ResourceId"))
          .Columns(col =>

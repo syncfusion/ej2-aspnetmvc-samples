@@ -132,12 +132,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             DiagramSelector selector = new DiagramSelector();
             selector.Constraints = SelectorConstraints.UserHandle;
             selector.UserHandles = Userhandle;
-            ViewBag.selector = selector;
+            ViewData["selector"] = selector;
 
-            ViewBag.connectors = Connectors;
-            ViewBag.userhandle = Userhandle;
+            ViewData["connectors"] = Connectors;
+            ViewData["userhandle"] = Userhandle;
 
-            ViewBag.nodes = nodes;
+            ViewData["nodes"] = nodes;
             return View();
         }
     }

@@ -5,27 +5,27 @@
         {
             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Viet_Growth").Name("Vietnam")
                 .Marker(mr=>mr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).IsFilled(true))
-                .DataSource(ViewBag.ChartData).Add();
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Can_Growth").Name("Canada")
+                .DataSource(ViewData["ChartData"]).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Can_Growth").Name("Indonesia")
                 .Marker(mr=>mr.Visible(true).Width(6).Height(6).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).IsFilled(true))
-                .DataSource(ViewBag.ChartData).Add();
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Mal_Growth").Name("Malaysia")
+                .DataSource(ViewData["ChartData"]).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Mal_Growth").Name("France")
                 .Marker(mr=>mr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true))
-                .DataSource(ViewBag.ChartData).Add();
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Egy_Growth").Name("Egypt")
+                .DataSource(ViewData["ChartData"]).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Egy_Growth").Name("Poland")
                 .Marker(mr=>mr.Visible(true).Width(5).Height(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).IsFilled(true))
-                .DataSource(ViewBag.ChartData).Add();
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Ind_Growth").Name("Indonesia")
+                .DataSource(ViewData["ChartData"]).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Ind_Growth").Name("Mexico")
                 .Marker(mr=>mr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Pentagon).IsFilled(true))
-                .DataSource(ViewBag.ChartData).Add();
-        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
-            .MajorGridLines(mg=>mg.Width(0)).LabelFormat("y")
+                .DataSource(ViewData["ChartData"]).Add();
+        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Double)
+            .MajorGridLines(mg=>mg.Width(0))
             .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
-        ).PrimaryYAxis(py => py.Title("Million Metric Tons").LabelFormat("{value}").RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
+        ).PrimaryYAxis(py => py.Title("Volume in million metric tons")
             .MajorTickLines(mt=>mt.Width(0)).MinorTickLines(mt => mt.Width(0))
-            .LineStyle(ls => ls.Width(0)).Interval(4).Minimum(0).Maximum(20)
-        ).Title("Crude Steel Production Annual Growth").Tooltip(tt => tt.Enable(true).EnableHighlight(true)
-        ).Load("load").ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)
+            .LineStyle(ls => ls.Width(0)).Interval(5).Minimum(0).Maximum(25)
+        ).Title("Annual Crude Steel Production by Country (2016-2024)").SubTitle("Source: wikipedia.org").Tooltip(tt => tt.Enable(true).Header("<b>${series.name}</b>").Format("${point.x} : <b>${point.y}M</b>").ShowNearestTooltip(true).EnableHighlight(true)
+        ).Load("load").ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)
         ).Render()
     </div>
     
@@ -36,10 +36,10 @@
         }
     </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>    
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";  
         };
     </script>
@@ -59,8 +59,10 @@
         ASP.NET MVC Line Chart represents and visualizes time-dependent data to show the trends at equal intervals. In this example, you can see how to render and configure a line chart. <code>Markers</code> are used to represent individual data and its values.
     </p>
     <p>
-        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices. The <code>EnableHighlight<code> property in the tooltip allows the corresponding series to be highlighted when a data point is hovered over.
-    </p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart. The <code>EnableHighlight</code>
+    property in the tooltip allows the corresponding series to be highlighted when a data point is hovered over.
+    The <code>showNearestTooltip</code> property displays tooltips for the nearest data point to the cursor.
+</p>
     </p>
     <p>
         More information about the line series can be found in this

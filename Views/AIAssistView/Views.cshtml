@@ -105,7 +105,7 @@
 @section PreScripts {
     <script>
         var assistObj;
-        var prompts = @Html.Raw(Json.Encode(ViewBag.PromptResponseData));
+        var prompts = @Html.Raw(Json.Encode(ViewData["PromptResponseData"]));
         promptsData = [];
 
         function onCreate() {

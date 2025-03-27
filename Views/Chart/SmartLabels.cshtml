@@ -3,15 +3,14 @@
     <div class="control-section" align="center">     
         @Html.EJS().AccumulationChart("container").EnableBorderOnMouseMove(false).Series(series =>
         {
-            series.StartAngle(60).DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs => cs.Length("20px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)).Font(ft => ft.FontWeight("600"))).XName("Country").YName("Medal").DataSource(ViewBag.ChartPoints).Add();
+            series.StartAngle(60).DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs => cs.Length("20px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)).Font(ft => ft.FontWeight("600"))).XName("Country").YName("Medal").DataSource(ViewData["ChartPoints"]).Add();
         }
             ).Tooltip(tp => tp.Enable(true).EnableHighlight(true).Format("<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>").Header("")).EnableSmartLabels(true).LegendSettings(ls => ls.Visible(false)).Title("Rio Olympics Gold").Load("load").Render()
     </div>
-    
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function(args){
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadAccumulationChartTheme(args);
             args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "65%";
             args.accumulation.series[0].dataSource[0].DataLabelMappingName = ej.base.Browser.isDevice ? "USA: 46" : "United States of America: 46";
             args.accumulation.series[0].dataSource[4].DataLabelMappingName = ej.base.Browser.isDevice ? "KZ: 3" : "Kazhakastan: 3";

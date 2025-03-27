@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.AIAssistView
     {
         public ActionResult Views()
         {
-            ViewBag.PromptResponseData = new PromptResponseData().GetAllPromptResponseData();
+            ViewData["PromptResponseData"] = new PromptResponseData().GetAllPromptResponseData();
             return View();
         }
     }

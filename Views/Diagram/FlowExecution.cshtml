@@ -26,7 +26,7 @@
 
         <div id="flowExecitionControlSection" class="content-wrapper" style="width: 100%;">
 
-            @Html.EJS().Diagram("diagram").Width("100%").Height("500px").SnapSettings(s=>s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Created("created").Render()
+            @Html.EJS().Diagram("diagram").Width("100%").Height("500px").SnapSettings(s=>s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Created("created").Render()
         </div>
     </div>
     <div id="flowExecitionPropertySection" class="col-lg-4 property-section">

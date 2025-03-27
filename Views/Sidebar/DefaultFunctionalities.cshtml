@@ -4,15 +4,15 @@
     <div class="control-section">
         <div id="sidebar-wrapper">
             <div>
-                @Html.EJS().Toolbar("toolbar").Height("50px").Clicked("Toggle").Items(ViewBag.DefToolItems).CssClass("defaultToolbar").Render()
+                @Html.EJS().Toolbar("toolbar").Height("50px").Clicked("Toggle").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["DefToolItems"]).CssClass("defaultToolbar").Render()
             </div>
             <div class="maincontent">
-                @Html.EJS().ListView("listView").Select("OnListSelect").Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings() { Id = "Id", Text = "Text" }).Template(ViewBag.ListTemplate).DataSource(ViewBag.ListData).CssClass("e-list-template").Render()
+                @Html.EJS().ListView("listView").Select("OnListSelect").Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings() { Id = "Id", Text = "Text" }).Template((string)ViewData["ListTemplate"]).DataSource(ViewData["ListData"]).CssClass("e-list-template").Render()
             </div>
         </div>
         @{Html.EJS().Sidebar("sidebarObj").Width("260px").Target(".maincontent").Position(Syncfusion.EJ2.Navigations.SidebarPosition.Left).ContentTemplate(@<div>
-            @Html.EJS().TreeView("treeObj").NodeSelecting("BeforeSelect").NodeSelected("OnSelect").Fields(new Syncfusion.EJ2.Navigations.TreeViewFieldsSettings() { Id = "Id", Text = "Name", Selected = "Selected", ParentID = "Pid", HasChildren = "HasChild", Expanded = "Expanded", DataSource = ViewBag.LocalData }).Render()
-        </div>).HtmlAttributes(ViewBag.HtmlAttributes).Render();}
+            @Html.EJS().TreeView("treeObj").NodeSelecting("BeforeSelect").NodeSelected("OnSelect").Fields(new Syncfusion.EJ2.Navigations.TreeViewFieldsSettings() { Id = "Id", Text = "Name", Selected = "Selected", ParentID = "Pid", HasChildren = "HasChild", Expanded = "Expanded", DataSource = ViewData["LocalData"] }).Render()
+        </div>).HtmlAttributes(ViewData["HtmlAttributes"]).Render();}
     </div>
 }
 <script>

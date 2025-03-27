@@ -22,10 +22,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult Clipboard()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
+            ViewData["datasource"] = order;
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "alertBtnClick", ButtonModel = new customButtonModel() { content = "OK", isPrimary = true } });
-            ViewBag.alertbutton = buttons;
+            ViewData["alertbutton"] = buttons;
             return View();
         }
     }

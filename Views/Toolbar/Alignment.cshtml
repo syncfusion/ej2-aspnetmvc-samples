@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="e-sample-resize-container">
-            @Html.EJS().Toolbar("alignmentToolbar").Items(ViewBag.alignItems).Render()
+            @Html.EJS().Toolbar("alignmentToolbar").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["alignItems"]).Render()
             <div class="e-mail-items">
                 <div class="e-mail-item">
                     <div class="e-mail-image">

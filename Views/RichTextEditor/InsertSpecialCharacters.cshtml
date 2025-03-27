@@ -3,12 +3,12 @@
       <div class="control-section">
         <div class="control-wrapper">
             <div id="rteSection">
-                @Html.EJS().RichTextEditor("customTool").ContentTemplate(@<div><p>The custom command 'insert special character' is configured as the last item of the toolbar. Click on the command and choose the special character you want to include from the popup.</p></div>).Created("created").ActionComplete("actionComplete").ToolbarSettings(e => e.Items((object)ViewBag.Items)).Render()
+                @Html.EJS().RichTextEditor("customTool").ContentTemplate(@<div><p>The custom command 'insert special character' is configured as the last item of the toolbar. Click on the command and choose the special character you want to include from the popup.</p></div>).Created("created").ActionComplete("actionComplete").ToolbarSettings(e => e.Items((object)ViewData["Items"])).Render()
 
                 @Html.EJS().Dialog("customTbarDialog").Visible(false).Header("Special Characters").Created("onDialogCreate").ZIndex(1000).ShowCloseIcon(false).IsModal(true).OverlayClick("dialogOverlay").Buttons(e =>
                 {
-                e.ButtonModel(ViewBag.InsertBtn).Click("onInsert").Add();
-                e.ButtonModel(ViewBag.CancelBtn).Click("dialogOverlay").Add();
+                e.ButtonModel(ViewData["InsertBtn"]).Click("onInsert").Add();
+                e.ButtonModel(ViewData["CancelBtn"]).Click("dialogOverlay").Add();
             }).ContentTemplate(@<div id="rteSpecial_char">
                         <div class="char_block" title="^">^</div>
                         <div class="char_block" title="_">_</div>

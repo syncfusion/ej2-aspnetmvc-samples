@@ -16,8 +16,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult Print()
         {
-            ViewBag.datasource = new ScheduleData().GetScheduleData();
-            ViewBag.printHeightAndWidthData = new List<string> { "auto", "100%", "500px" };
+            ViewData["datasource"] = new ScheduleData().GetScheduleData();
+            ViewData["printHeightAndWidthData"] = new List<string> { "auto", "100%", "500px" };
             return View();
         }
     }

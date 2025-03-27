@@ -14,7 +14,7 @@
                     col.Field("Availability").Header("Availability").Width("98").Add();
                     col.Field("Category").Header("Category").Width("95").Add();
                     col.Field("Rating").Header("Rating").Width("70").Add();
-                }).PopupHeight("220px").PopupWidth("500px").Change("valueChange").Value("Electronics").Text("Smartphone").DataSource((IEnumerable<Products>)ViewBag.data).Render()
+                }).PopupHeight("220px").PopupWidth("500px").Change("valueChange").Value("Electronics").Text("Smartphone").DataSource((IEnumerable<Products>)ViewData["data"]).Render()
             </div>
         </div>
     </div>

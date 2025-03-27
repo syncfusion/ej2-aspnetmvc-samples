@@ -8,7 +8,7 @@
         <div class='control-wrapper'>
             <div style='padding-top:75px;'>
 
-                @Html.EJS().ComboBox("country").Placeholder("Select a country").AllowResize(true).Fields(new ComboBoxFieldSettings { Text = "Name", Value = "Code" }).PopupHeight("270px").DataSource((IEnumerable<Countries>)ViewBag.data).Render()
+                @Html.EJS().ComboBox("country").Placeholder("Select a country").AllowResize(true).Fields(new ComboBoxFieldSettings { Text = "Name", Value = "Code" }).PopupHeight("270px").DataSource((IEnumerable<Countries>)ViewData["data"]).Render()
 
             </div>
         </div>

@@ -2,16 +2,16 @@
 @section ControlsSection{
     <div class="control-section" style="width:100%;height:100%;float:left; padding: 0px">
         <div>
-            @(Html.EJS().Toolbar("toolbar_default").Clicked("onItemClick").Items(ViewBag.tbItems).Render())
+            @(Html.EJS().Toolbar("toolbar_default").Clicked("onItemClick").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["tbItems"]).Render())
         </div>
         <div class="content-wrapper">
             @(Html.EJS().Diagram("container").Width("100%").Height("580px").Created("fitToPage").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
-    .PageSettings(s => s.Width(550).Height(500).MultiplePage(true)).GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
+    .PageSettings(s => s.Width(550).Height(500).MultiplePage(true)).GetConnectorDefaults("getConnectorDefaults").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render()
             )
 
         </div>
         <div>
-            @(Html.EJS().SplitButton("exportBtn").Content("Export").Items(ViewBag.exportItems).IconCss("e-export e-icons").Select("onselect").Render())
+            @(Html.EJS().SplitButton("exportBtn").Content("Export").Items(ViewData["exportItems"]).IconCss("e-export e-icons").Select("onselect").Render())
         </div>
         <div>
             @(Html.EJS().CheckBox("multiplePageCb").Label("Multiple Page").Render())

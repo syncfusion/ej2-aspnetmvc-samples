@@ -8,9 +8,9 @@
            {
                view.Option(View.TimelineMonth).EnableLazyLoading(true).Add();
                view.Option(View.Month).EnableLazyLoading(true).Add();
-           }).Group(group => group.EnableCompactView(false).Resources(ViewBag.Resource)).Resources(res =>
+           }).Group(group => group.EnableCompactView(false).Resources((string[])ViewData["Resource"])).Resources(res =>
            {
-               res.DataSource(ViewBag.resources).Field("ResourceId").Title("Resource").Name("Resources").TextField("Text").IdField("Id").ColorField("Color").Add();
+               res.DataSource(ViewData["resources"]).Field("ResourceId").Title("Resource").Name("Resources").TextField("Text").IdField("Id").ColorField("Color").Add();
            }).EventSettings(es => es.DataSource(dataManager =>
            {
                dataManager.Url("https://ej2services.syncfusion.com/production/web-services/api/VirtualEventData").CrossDomain(true).Adaptor("WebApiAdaptor");

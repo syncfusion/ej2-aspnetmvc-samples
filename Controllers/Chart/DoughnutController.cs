@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new DoughnutChartData { Browser= "Firefox", Users= 2.6, DataLabelMappingName= "Firefox: 2.6%" },
                 new DoughnutChartData { Browser= "Others", Users= 3.6, DataLabelMappingName= "Others: 3.6%" }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class DoughnutChartData

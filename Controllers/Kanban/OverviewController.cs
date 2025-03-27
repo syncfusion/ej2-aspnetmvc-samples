@@ -17,8 +17,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Overview()
         {
-            ViewBag.data = new KanbanDataModels().KanbanCardTasks();
-            ViewBag.dialogData = new KanbanDialogModels().DialogCardField();
+            ViewData["data"] = new KanbanDataModels().KanbanCardTasks();
+            ViewData["dialogData"] = new KanbanDialogModels().DialogCardField();
             return View();
         }
     }

@@ -15,30 +15,29 @@ namespace EJ2MVCSampleBrowser.Models
     {
         public List<ChatUIMessage> GetUserChatMessages()
         {
+            var UserChatMessagesUser1 = new UserModel
+            {
+                id = "user1",
+                user = "Albert",
+                avatarUrl = "./../Content/chatui/images/andrew.png"
+            };
+
+            var UserChatMessagesUser2 = new UserModel
+            {
+                id = "user2",
+                user = "Reena",
+                avatarUrl = "./../Content/chatui/images/reena.png"
+            };
+
             List<ChatUIMessage> UserChatMessages = new List<ChatUIMessage>()
             {
                 new ChatUIMessage() {
                     Text = "Hi there! How's it going?",
-                    Author = new UserModel()
-                    {
-                        id = "user1",
-                        user = "Albert",
-                        avatarUrl = "./../Content/chatui/images/andrew.png"
-                    }
+                    Author = UserChatMessagesUser1
                 },
-                new ChatUIMessage() { Text = "Hey! I'm doing well, thanks. How about you?", Author = new UserModel()
-                    {
-                        id = "user2",
-                        user = "Reena",
-                        avatarUrl = "./../Content/chatui/images/reena.png"
-                    }
+                new ChatUIMessage() { Text = "Hey! I'm doing well, thanks. How about you?", Author = UserChatMessagesUser2
                 },
-                new ChatUIMessage() { Text = "Mostly the usual stuff. I did start a new hobby - painting!", Author = new UserModel()
-                    {
-                        id = "user1",
-                        user = "Albert",
-                        avatarUrl = "./../Content/chatui/images/andrew.png"
-                    }
+                new ChatUIMessage() { Text = "Mostly the usual stuff. I did start a new hobby - painting!", Author = UserChatMessagesUser1
                 },
             };
             return UserChatMessages;
@@ -46,107 +45,85 @@ namespace EJ2MVCSampleBrowser.Models
 
         public List<ChatUIMessage> GetCommunityMessageData()
         {
+            var CommunityMessageUser1 = new UserModel
+            {
+                id = "admin",
+                user = "Alice"
+            };
+
+            var CommunityMessageUser2 = new UserModel
+            {
+                id = "user1",
+                user = "Michale Suyama",
+                avatarBgColor = "#87cefa"
+            };
+
+            var CommunityMessageUser3 = new UserModel
+            {
+                id = "user2",
+                user = "Charlie",
+                avatarUrl = "./../Content/chatui/images/charlie.png",
+                avatarBgColor = "#e6cdde"
+            };
+
+            var CommunityMessageUser4 = new UserModel
+            {
+                id = "user3",
+                user = "Janet",
+                avatarUrl = "./../Content/chatui/images/janet.png",
+                avatarBgColor = "#dec287"
+            };
+
             List<ChatUIMessage> CommunityMessages = new List<ChatUIMessage>()
             {
                 new ChatUIMessage() {
                     Text = "Hey Michale, Charlie! Seen the latest posts in the Design Community? Amazing projects!",
-                    Author = new UserModel()
-                    {
-                        id = "admin",
-                        user = "Alice"
-                    },
+                    Author = CommunityMessageUser1,
                     TimeStamp = new DateTime(2024, 10, 25, 23, 07, 30)
                 },
                 new ChatUIMessage() {
                     Text = "Hi Alice! Yes, Dana’s new UI design is incredible.",
-                    Author = new UserModel()
-                    {
-                        id = "user1",
-                        user = "Michale Suyama",
-                        avatarBgColor = "#87cefa"
-                    },
+                    Author = CommunityMessageUser2,
                     TimeStamp = new DateTime(2024, 10, 25, 8, 0, 0)
                 },
                 new ChatUIMessage() {
                     Text = "Hey! I loved Dana’s use of color. Frank’s typography guide was great too.",
-                    Author = new UserModel()
-                    {
-                        id = "user2",
-                        user = "Charlie",
-                        avatarUrl = "./../Content/chatui/images/charlie.png",
-                        avatarBgColor = "#e6cdde"
-                    },
+                    Author = CommunityMessageUser3,
                     TimeStamp = new DateTime(2024, 10, 25, 11, 0, 0)
                 },
                 new ChatUIMessage() {
                     Text = "Absolutely! Any new community events planned?",
-                    Author = new UserModel()
-                    {
-                        id = "admin",
-                        user = "Alice"
-                    },
+                    Author = CommunityMessageUser1,
                     TimeStamp = new DateTime(2024, 10, 26, 11, 0, 0)
                 },
                 new ChatUIMessage() {
                     Text = "We should organize a design challenge.",
-                    Author = new UserModel()
-                    {
-                        id = "user1",
-                        user = "Michale Suyama",
-                        avatarBgColor = "#87cefa"
-                    },
+                    Author = CommunityMessageUser2,
                     TimeStamp = new DateTime(2024, 10, 26, 12, 15, 0)
                 },
                 new ChatUIMessage() {
                     Text = "I am excited to see the new projects.",
-                    Author = new UserModel()
-                    {
-                        id = "user3",
-                        user = "Janet",
-                        avatarUrl = "./../Content/chatui/images/janet.png",
-                        avatarBgColor = "#dec287"
-                    },
+                    Author = CommunityMessageUser4,
                     TimeStamp = new DateTime(2024, 10, 26, 12, 17, 0)
                 },
                 new ChatUIMessage() {
                     Text = "Great idea! Let’s discuss it in the next meeting.",
-                    Author = new UserModel()
-                    {
-                        id = "user2",
-                        user = "Charlie",
-                        avatarUrl = "./../Content/chatui/images/charlie.png",
-                        avatarBgColor = "#e6cdde"
-                    },
+                    Author = CommunityMessageUser3,
                     TimeStamp = new DateTime(2024, 10, 26, 12, 30, 0)
                 },
                 new ChatUIMessage() {
                     Text = "Sounds good! This community is so inspiring.",
-                    Author = new UserModel()
-                    {
-                        id = "admin",
-                        user = "Alice"
-                    },
+                    Author = CommunityMessageUser1,
                     TimeStamp = DateTime.Now
                 },
                 new ChatUIMessage() {
                     Text = "Agreed! Excited to see everyone’s ideas.",
-                    Author = new UserModel()
-                    {
-                        id = "user1",
-                        user = "Michale Suyama",
-                        avatarBgColor = "#87cefa"
-                    },
+                    Author = CommunityMessageUser2,
                     TimeStamp = DateTime.Now
                 },
                 new ChatUIMessage() {
                     Text = "I am looking forward to the design challenge.",
-                    Author = new UserModel()
-                    {
-                        id = "user2",
-                        user = "Charlie",
-                        avatarUrl = "./../Content/chatui/images/charlie.png",
-                        avatarBgColor = "#e6cdde"
-                    },
+                    Author = CommunityMessageUser3,
                     TimeStamp = DateTime.Now
                 }
             };

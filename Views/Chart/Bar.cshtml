@@ -5,9 +5,9 @@
             @Html.EJS().Chart("container").Series(
             series => {
                 series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).Name("GDP").XName("Country").YName("GDP")
-                    .Marker(marker => marker.DataLabel(label => label.Visible(false).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewBag.ChartPoints).Width(2).ColumnSpacing(0.1).Add();
+                    .Marker(marker => marker.DataLabel(label => label.Visible(false).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Width(2).ColumnSpacing(0.1).Add();
                 series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).Name("Share in World's GDP").XName("Country").YName("WorldShare")
-                    .Marker(marker => marker.DataLabel(label => label.Visible(false).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewBag.ChartPoints).Width(2).ColumnSpacing(0.1).Add();
+                    .Marker(marker => marker.DataLabel(label => label.Visible(false).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Width(2).ColumnSpacing(0.1).Add();
 
             }).PrimaryXAxis(
             px => {
@@ -31,10 +31,10 @@
         }
     </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>

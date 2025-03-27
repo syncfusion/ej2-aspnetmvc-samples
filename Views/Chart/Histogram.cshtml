@@ -7,7 +7,7 @@
        {
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Histogram).YName("Score")
            .BinInterval(20).ShowNormalDistribution(true).ColumnWidth(0.99)
-           .Marker(mr => mr.Visible(true).Width(7).Height(7).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff")))).DataSource(ViewBag.ChartPoints).Add();
+           .Marker(mr => mr.Visible(true).Width(7).Height(7).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
        }).PrimaryXAxis(px => px.Maximum(100).Minimum(0).Title("Score of Final Examination").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).MajorGridLines(mg => mg.Width(0))
        ).PrimaryYAxis(px => px.Minimum(0).Maximum(50).Interval(10).Title("Number of Students").LineStyle(ls => ls.Width(0))
        ).Title("Examination Result").ChartArea(ca => ca.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true)).Load("load").Render()
@@ -21,10 +21,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            var selectedTheme = loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             if (selectedTheme === 'highcontrast') {
                 args.chart.series[0].marker.dataLabel.font.color = '#000000';

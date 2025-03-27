@@ -99,8 +99,8 @@
                 @(Html.EJS().AccumulationChart("pie1").Series(series =>
                                 {
                       series.DataLabel(dl => dl.Visible(true).Name("value").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(font => font.Size("16px").FontWeight("600").Color("white"))).InnerRadius("35%")
-                               .XName("Device").YName("Amount").Name("Revenue").Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).Radius("100%").StartAngle(0).Palettes(ViewBag.pallets).EndAngle(360)
-                               .Explode(false).DataSource(ViewBag.PieData1).Add();
+                               .XName("Device").YName("Amount").Name("Revenue").Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).Radius("100%").StartAngle(0).Palettes((string[])ViewData["pallets"]).EndAngle(360)
+                               .Explode(false).DataSource(ViewData["PieData1"]).Add();
                   })
                                 .EnableSmartLabels(true).EnableAnimation(false).Width("100%").Height("100%").LegendSettings(ls => ls.Visible(false).ToggleVisibility(false)).Tooltip(tp => tp.Enable(true).Header("<b>${point.x}</b>").Format("Composition : <b>${point.y}%</b>"))
                                               .Load("loadPiechart").Render())
@@ -116,9 +116,9 @@ Panel.SizeX(2).SizeY(2).Row(1).Col(2).ContentTemplate(@<div>
             <div style="height:100%;width:100%;display:block">
                 @Html.EJS().Maps("maps").Height("100%").Width("100%").Load("mapsLoad").Layers(layer =>
            {
-               layer.DataSource(ViewBag.dataSource).ShapeDataPath("continent")
+               layer.DataSource(ViewData["dataSource"]).ShapeDataPath("continent")
                .ShapePropertyPath("continent").ShapeSettings(new MapsShapeSettings { ColorValuePath = "color" })
-               .ShapeData(ViewBag.shapeData).Add();
+               .ShapeData(ViewData["shapeData"]).Add();
            }).Render()
             </div>
         </div>
@@ -134,13 +134,13 @@ Panel.SizeX(2).SizeY(2).Row(1).Col(4).ContentTemplate(@<div>
                                                                        {
                                                              series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                                                                       .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x")
-                                                                      .YName("y").DataSource(ViewBag.columnData).Name("Desktop").Width(2).Add();
+                                                                      .YName("y").DataSource(ViewData["columnData"]).Name("Desktop").Width(2).Add();
                                                              series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
-                                                                       .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y").Fill("#db3673c4").DataSource(ViewBag.columnData1)
+                                                                       .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y").Fill("#db3673c4").DataSource(ViewData["columnData1"])
                                                                       .Name("Mobil").Width(2).Add();
                                                              series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                                                                        .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x")
-                                                                       .YName("y").DataSource(ViewBag.columnData2).Name("Tablet").Width(2).Add();
+                                                                       .YName("y").DataSource(ViewData["columnData2"]).Name("Tablet").Width(2).Add();
 
                                                          }).PrimaryYAxis(px => px.LabelStyle(ls => ls.Color("transparent")).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
                                                                   .MajorGridLines(mg => mg.Width(0))
@@ -159,8 +159,8 @@ Panel.SizeX(4).SizeY(2).Row(3).Col(2).ContentTemplate(@<div>
         <div class="e-panel-content">
             @(Html.EJS().Chart("spline").Series(series =>
                                                              {
-                                                   series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Fill("rgb(239, 183, 202)").Opacity(0.5).XName("x").YName("y").DataSource(ViewBag.LineData).Name("Jan").Add();
-                                                   series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Fill("rgb(14, 64, 152, .6)").Opacity(0.5).XName("x").YName("y").DataSource(ViewBag.LineData1).Name("Feb").Add();
+                                                   series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Fill("rgb(239, 183, 202)").Opacity(0.5).XName("x").YName("y").DataSource(ViewData["LineData"]).Name("Jan").Add();
+                                                   series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Fill("rgb(14, 64, 152, .6)").Opacity(0.5).XName("x").YName("y").DataSource(ViewData["LineData1"]).Name("Feb").Add();
 
                                                }).PrimaryXAxis(px => px.LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90)
                                                         .MajorGridLines(mg => mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
@@ -180,7 +180,7 @@ Panel.SizeX(2).SizeY(2).Row(3).Col(0).ContentTemplate(@<div>
                                              {
                                    series.DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(font => font.Color("white").FontWeight("600")))
                                                          .XName("x").YName("y").Name("Revenue").Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).Radius("100%")
-                                                         .StartAngle(0).EndAngle(360).Explode(true).ExplodeIndex(2).ExplodeOffset("10%").DataSource(ViewBag.pieData).Add();
+                                                         .StartAngle(0).EndAngle(360).Explode(true).ExplodeIndex(2).ExplodeOffset("10%").DataSource(ViewData["pieData"]).Add();
                                }).EnableSmartLabels(true).EnableAnimation(false).LegendSettings(ls => ls.Visible(false).ToggleVisibility(false))
                                                         .Tooltip(tp => tp.Enable(true).Header("<b>${point.x}</b>").Format("Composition : <b>${point.y}%</b>"))
                                                         .Load("loadPiechart").Render())

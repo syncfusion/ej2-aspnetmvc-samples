@@ -19,7 +19,9 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: DefaultFunctionalities
         public ActionResult DateFormats()
         {
-            ViewBag.value = DateTime.Now;
+            ViewData["value"] = DateTime.Now;
+            ViewData["data"] = new DateFormats().GetDateFormatsWithId();
+            ViewData["formatData"] = new DateFormats().GetInputFormats();
             return View();
         }
     }

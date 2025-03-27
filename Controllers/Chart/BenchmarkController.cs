@@ -25,7 +25,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         public ActionResult Benchmark()
         {
             LoadPoints();           
-            ViewBag.chartPoints = chartData;
+            ViewData["chartPoints"] = chartData;
             return View();
 
         }

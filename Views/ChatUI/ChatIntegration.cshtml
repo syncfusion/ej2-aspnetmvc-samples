@@ -26,13 +26,13 @@
                             @Html.EJS().Button("teamsbtn").CssClass("chat_options e-flat").IconCss("e-icons e-people").Content("<span>Teams</span>").IconPosition(IconPosition.Top).Render()
                         </div>
                         <div id="toggle-chat-list" class="toggle-chat-listview e-card">
-                            @Html.EJS().ListView("listview_template").Template(template).HeaderTitle("Chats").CssClass("e-list-template").ShowHeader(true).ActionComplete("onActionComplete").Select("onSelect").DataSource(ViewBag.IntegrationListTemplateData).Render()
+                            @Html.EJS().ListView("listview_template").Template(template).HeaderTitle("Chats").CssClass("e-list-template").ShowHeader(true).ActionComplete("onActionComplete").Select("onSelect").DataSource(ViewData["IntegrationListTemplateData"]).Render()
                         </div>
                     </div>
                 ).Add();
                 paneItem.Size("80%").Resizable(false).ContentTemplate(
                     @<div class="chat-rightContent">
-                        @Html.EJS().ChatUI("integration-chat").HeaderText("Albert").HeaderIconCss("chat_user1_avatar").MessageSend("onMessageSend").Created("onCreated").User(new ChatUIUser() { Id = "user1", User = "Albert", AvatarUrl = "./../Content/chatui/images/andrew.png" }).HeaderToolbar(new ChatUIToolbarSettings() { Items = ViewBag.HeaderToolbar }).Render()
+                        @Html.EJS().ChatUI("integration-chat").HeaderText("Albert").HeaderIconCss("chat_user1_avatar").MessageSend("onMessageSend").Created("onCreated").User(new ChatUIUser() { Id = "user1", User = "Albert", AvatarUrl = "./../Content/chatui/images/andrew.png" }).HeaderToolbar(new ChatUIToolbarSettings() { Items = ViewData["HeaderToolbar"] }).Render()
                     </div>
                 ).Add();
             }).Render()
@@ -215,16 +215,15 @@
         var chatUIObj;
         var templateObj;
         var chatMessages = {
-            user1: @Html.Raw(JsonConvert.SerializeObject(ViewBag.IntegrationMessagedata)),
-            admin: @Html.Raw(JsonConvert.SerializeObject(ViewBag.BotMessagedata)),
-            user2: @Html.Raw(JsonConvert.SerializeObject(ViewBag.WalterMessagedata)),
-            user3: @Html.Raw(JsonConvert.SerializeObject(ViewBag.LauraMessagedata)),
-            team: @Html.Raw(JsonConvert.SerializeObject(ViewBag.TeamsMessagedata)),
-            user4: @Html.Raw(JsonConvert.SerializeObject(ViewBag.SuyamaMessagedata))
+            user1: @Html.Raw(JsonConvert.SerializeObject(ViewData["IntegrationMessagedata"])),
+            admin: @Html.Raw(JsonConvert.SerializeObject(ViewData["BotMessagedata"])),
+            user2: @Html.Raw(JsonConvert.SerializeObject(ViewData["WalterMessagedata"])),
+            user3: @Html.Raw(JsonConvert.SerializeObject(ViewData["LauraMessagedata"])),
+            team: @Html.Raw(JsonConvert.SerializeObject(ViewData["TeamsMessagedata"])),
+            user4: @Html.Raw(JsonConvert.SerializeObject(ViewData["SuyamaMessagedata"]))
         };
         function onCreated() {
-            var chatUiEle = document.getElementById('integration-chat');
-            chatUIObj = ej.base.getInstance(chatUiEle, ejs.interactivechat.ChatUI);
+            chatUIObj = ej.base.getInstance(document.getElementById('integration-chat'), ejs.interactivechat.ChatUI);
             chatUIObj.messages = chatMessages.user1;
         }
 
@@ -232,7 +231,7 @@
             chatUIObj.suggestions = [];
             setTimeout(() => {
                 if (args.message.author.id === 'admin') {
-                    var botData = @Html.Raw(JsonConvert.SerializeObject(ViewBag.BotData));
+                    var botData = @Html.Raw(JsonConvert.SerializeObject(ViewData["BotData"]));
                     var foundMessage = botData.find((message) => message.text === args.message.text);
                     var defaultResponse = "Use any real-time data streaming service to provide chat updates.";
                     var message = {
@@ -248,7 +247,7 @@
         function onActionComplete() {
             var templateEle = document.getElementById('listview_template');
             templateObj = ej.base.getInstance(templateEle, ejs.lists.ListView);
-            var integrationListTemplateData = @Html.Raw(JsonConvert.SerializeObject(ViewBag.IntegrationListTemplateData));
+            var integrationListTemplateData = @Html.Raw(JsonConvert.SerializeObject(ViewData["IntegrationListTemplateData"]));
             templateObj.selectItem(integrationListTemplateData[0]);
         }
 
@@ -271,7 +270,7 @@
         function setupChatUser(index) {
             const userSettings = [
                 { headerText: 'Albert', headerIconCss: 'chat_user1_avatar', user: { id: 'user1', user: 'Albert', avatarUrl: './../Content/chatui/images/andrew.png' }, messages: chatMessages.user1 },
-                { headerText: 'Decor bot', headerIconCss: 'chat_bot_avatar', user: { id: 'admin', user: 'Admin', avatarUrl: './../Content/chatui/images/bot.png' }, messages: chatMessages.admin, suggestions: @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChatIntegrationSuggestions)) },
+                { headerText: 'Decor bot', headerIconCss: 'chat_bot_avatar', user: { id: 'admin', user: 'Admin', avatarUrl: './../Content/chatui/images/bot.png' }, messages: chatMessages.admin, suggestions: @Html.Raw(JsonConvert.SerializeObject(ViewData["ChatIntegrationSuggestions"])) },
                 { headerText: 'Charlie', headerIconCss: 'chat_user2_avatar', user: { id: 'user2', user: 'Charlie', avatarUrl: './../Content/chatui/images/charlie.png' }, messages: chatMessages.user2 },
                 { headerText: 'Laura Callahan', headerIconCss: 'chat_user3_avatar', user: { id: 'user3', user: 'Laura', avatarUrl: './../Content/chatui/images/laura.png' }, messages: chatMessages.user3 },
                 { headerText: 'New Dev Team', headerIconCss: 'chat_team_avatar', user: { id: 'team', user: 'Admin', avatarUrl: './../Content/chatui/images/calendar.png' }, messages: chatMessages.team },

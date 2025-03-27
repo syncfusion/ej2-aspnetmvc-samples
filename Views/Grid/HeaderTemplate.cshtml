@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "HeaderTemplate";
+    ViewData["Title"] = "HeaderTemplate";
 }
 <link href="~/Content/grid/gridfont.css" rel="stylesheet" />
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("335").Width("auto").Columns(col =>
+        @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewData["dataSource"]).Height("335").Width("auto").Columns(col =>
    {
 
         col.HeaderText("Image").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Template("#template").HeaderTemplate("#employeetemplate").Width("180").Add();

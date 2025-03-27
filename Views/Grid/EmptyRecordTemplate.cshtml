@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "EmptyRecordTemplate";
-    var DropDownList = new Syncfusion.EJ2.DropDowns.DropDownList() { DataSource = ViewBag.datasource, Fields = new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Value = "ShipCountry", Text = "ShipCountry" } };
+    ViewData["Title"] = "EmptyRecordTemplate";
+    var DropDownList = new Syncfusion.EJ2.DropDowns.DropDownList() { DataSource = ViewData["datasource"], Fields = new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings() { Value = "ShipCountry", Text = "ShipCountry" } };
 }
 
 @section ControlsSection{

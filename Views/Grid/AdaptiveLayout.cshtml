@@ -6,7 +6,7 @@
             <div class="control-section e-bigger e-adaptive-demo">
                 <div class="e-mobile-layout">
                     <div class="e-mobile-content">
-                        @Html.EJS().Grid("adaptivebrowser").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("100%").EnableAdaptiveUI(true).AllowGrouping(false).ShowColumnMenu(true).ShowColumnChooser(true).RowRenderingMode(Syncfusion.EJ2.Grids.RowRenderingDirection.Vertical).AllowPaging(true).AllowFiltering(true).AllowSorting(true).AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
+                        @Html.EJS().Grid("adaptivebrowser").DataSource((IEnumerable<object>)ViewData["dataSource"]).Height("100%").EnableAdaptiveUI(true).AllowGrouping(false).ShowColumnMenu(true).ShowColumnChooser(true).RowRenderingMode(Syncfusion.EJ2.Grids.RowRenderingDirection.Vertical).AllowPaging(true).AllowFiltering(true).AllowSorting(true).AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
                    {
                        col.Field("OrderID").HeaderText("Order ID").Width("180").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
                        col.Field("Freight").HeaderText("Freight").Width("180").Format("C2").EditType("numericedit").ValidationRules(new { required = true }).Add();
@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="e-desktop-layout">
-                     @Html.EJS().Grid("adaptivedevice").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("100%").EnableAdaptiveUI(true).AllowGrouping(false).ShowColumnMenu(true).ShowColumnChooser(true).RowRenderingMode(Syncfusion.EJ2.Grids.RowRenderingDirection.Vertical).AllowPaging(true).AllowFiltering(true).AllowSorting(true).AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
+                     @Html.EJS().Grid("adaptivedevice").DataSource((IEnumerable<object>)ViewData["dataSource"]).Height("100%").EnableAdaptiveUI(true).AllowGrouping(false).ShowColumnMenu(true).ShowColumnChooser(true).RowRenderingMode(Syncfusion.EJ2.Grids.RowRenderingDirection.Vertical).AllowPaging(true).AllowFiltering(true).AllowSorting(true).AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
                    {
                        col.Field("OrderID").HeaderText("Order ID").Width("180").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
                        col.Field("Freight").HeaderText("Freight").Width("180").Format("C2").EditType("numericedit").ValidationRules(new { required = true }).Add();

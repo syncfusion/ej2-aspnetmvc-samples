@@ -50,7 +50,7 @@
                        .Open("Open").Close("Close").Volume("Volume")
                        .BearFillColor("#2ecd71").BullFillColor("#e74c3d").Name("Bitcoin").Width(2).Add();
                    }).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X)
-                   .ToolbarItems(ViewBag.toolbaritems)).Crosshair(cr => cr.Enable(true)
+                   .ToolbarItems(ViewData["toolbaritems"])).Crosshair(cr => cr.Enable(true)
                ).PrimaryXAxis(px => px.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
                .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).MajorGridLines(mg=>mg.Width(0))
                  ).PrimaryYAxis(py => py.OpposedPosition(true).LabelFormat("n0").LineStyle(ls=>ls.Width(0))
@@ -93,6 +93,7 @@
         }
     </style>
     <script src="~/Scripts/datasource.js"></script>
+    <script src="~/Scripts/range-navigator/theme-color.js"></script>
     <script>
         var data = [];
         var j = 0;
@@ -117,15 +118,13 @@
             }
         }
         var zoomFactor, zoomPosition, startDate, endDate;
-        var selectedTheme = themeName ? themeName : 'Fluent2';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
         var load = function (args) {
-            args.rangeNavigator.theme = theme;
+            loadRangeNavigatorTheme(args);
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
             args.rangeNavigator.dataSource = data;
         }
         var load1 = function (args) {
-            args.rangeNavigator.theme = theme;
+            loadRangeNavigatorTheme(args);
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
             args.rangeNavigator.series[0].dataSource = data;
 			args.rangeNavigator.value = [new Date('2016-05-15'), new Date('2018-05-15')];
@@ -156,6 +155,7 @@
             }
         }
         var chartload = function (args) {
+            var theme = loadChartTheme(args);
             args.chart.theme = theme;
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
             args.chart.series[0].dataSource = data;

@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ColumnMenu";
+    ViewData["Title"] = "ColumnMenu";
 }
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        @Html.EJS().Grid("ColumnMenu").DataSource((IEnumerable<object>)ViewBag.dataSource).ShowColumnMenu(true).AllowSorting().AllowFiltering(true).AllowGrouping().Columns(col =>
+        @Html.EJS().Grid("ColumnMenu").DataSource((IEnumerable<object>)ViewData["dataSource"]).ShowColumnMenu(true).AllowSorting().AllowFiltering(true).AllowGrouping().Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
@@ -25,7 +25,7 @@
                 </td>
                 <td style="width: 60%;padding-right: 10px">
                     <div id='typeddl'>
-                @Html.EJS().DropDownList("ColumnMenuDD").DataSource((IEnumerable<object>)ViewBag.ddData).Value("Default").Change("change").Width("120").Render()
+                @Html.EJS().DropDownList("ColumnMenuDD").DataSource((IEnumerable<object>)ViewData["ddData"]).Value("Default").Change("change").Width("120").Render()
                     </div>
                 </td>
             </tr>

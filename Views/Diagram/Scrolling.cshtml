@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Diagrams;
 @using Syncfusion.EJ2.DropDowns;
 @using Syncfusion.EJ2.Navigations;
@@ -10,7 +10,7 @@
                 <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" class="sb-mobile-palette" style="width:20%;float:left">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.palettes).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Single).Width("100%").Height("700px")
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes((List<SymbolPalettePalette>)ViewData["palettes"]).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Single).Width("100%").Height("700px")
                     .SymbolMargin(new SymbolPaletteMargin() { Left = 15, Right = 15, Top = 15, Bottom = 15 }).SymbolHeight(60).SymbolWidth(60)
                     .GetNodeDefaults("getSymbolNodes").Render()
                 )
@@ -32,7 +32,7 @@
                     <div class="col-xs-7 db-col-left" style="padding-top: 10px;padding-right: 0px;">
                         <div class="db-text-input">
                             @Html.EJS().DropDownList("scrollLimit").Index(0).Change("valueChange").DataSource(
-                            (IEnumerable<object>)ViewBag.data).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
+                            (IEnumerable<object>)ViewData["data"]).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
                         </div>
                     </div>
                 </div>

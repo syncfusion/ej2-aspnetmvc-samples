@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult KeyboardInteraction()
         {
-            ViewBag.datasource = new ScheduleData().GetZooEventData();
+            ViewData["datasource"] = new ScheduleData().GetZooEventData();
             return View();
         }
     }

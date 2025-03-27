@@ -6,7 +6,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div id="tooltipDiagramSection" class="content-wrapper" style="width: 100%">
-            @(Html.EJS().Diagram("diagram").Created("created").Width("100%").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Height("645px").SnapSettings(s=>s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Constraints(DiagramConstraints.Default | DiagramConstraints.Tooltip).SnapSettings(s=>s.Constraints(SnapConstraints.None)).Tooltip(t=>t.RelativeMode(TooltipRelativeMode.Object).Position(ViewBag.position).Content(ViewBag.content).Animation(ViewBag.animation)).Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render())
+            @(Html.EJS().Diagram("diagram").Created("created").Width("100%").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Height("645px").SnapSettings(s=>s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Constraints(DiagramConstraints.Default | DiagramConstraints.Tooltip).SnapSettings(s=>s.Constraints(SnapConstraints.None)).Tooltip(t=>t.RelativeMode(TooltipRelativeMode.Object).Position(ViewData["position"]).Content((string)ViewData["content"]).Animation(ViewData["animation"])).Nodes((List<DiagramNode>)ViewData["nodes"]).Connectors((List<DiagramConnector>)ViewData["connectors"]).Render())
         </div>
     </div>
     <div id="tooltipPropertySection" class="col-lg-4 property-section">
@@ -19,7 +19,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("mode").Index(0).PopupWidth("150").Width("85%").Placeholder("select a relative mode").Change("relativeModeChange").DataSource((IEnumerable<TooltipProperty>)ViewBag.modeValue).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
+                        @Html.EJS().DropDownList("mode").Index(0).PopupWidth("150").Width("85%").Placeholder("select a relative mode").Change("relativeModeChange").DataSource((IEnumerable<TooltipProperty>)ViewData["modeValue"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
                     </div>
                 </td>
             </tr>
@@ -31,7 +31,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("position").Index(0).PopupWidth("150").Width("85%").Placeholder("select a position").Change("positionChange").DataSource((IEnumerable<TooltipProperty>)ViewBag.positionValue).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
+                        @Html.EJS().DropDownList("position").Index(0).PopupWidth("150").Width("85%").Placeholder("select a position").Change("positionChange").DataSource((IEnumerable<TooltipProperty>)ViewData["positionValue"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
                     </div>
                 </td>
             </tr>
@@ -43,7 +43,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().NumericTextBox("duration").Value(1000).Min(1000).Max(6000).Step(100).Width("85%").Change("animationChange").Render()
+                        @Html.EJS().NumericTextBox("duration").Value(100).Min(100).Max(2000).Step(100).Width("85%").Change("animationChange").Render()
                     </div>
                 </td>
             </tr>
@@ -55,7 +55,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("effect").Index(0).PopupWidth("150").Width("85%").Placeholder("select a effect type").Change("effectChange").DataSource((IEnumerable<TooltipProperty>)ViewBag.effectValue).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
+                        @Html.EJS().DropDownList("effect").Index(0).PopupWidth("150").Width("85%").Placeholder("select a effect type").Change("effectChange").DataSource((IEnumerable<TooltipProperty>)ViewData["effectValue"]).Fields(new DropDownListFieldSettings { Text = "Text", Value = "Type" }).Render()
                     </div>
                 </td>
             </tr>

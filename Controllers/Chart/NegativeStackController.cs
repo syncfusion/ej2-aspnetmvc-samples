@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new NegativeStackChartData { Height = "5.7", Female = 63, Male = -70, Text = "70 KG", Female_Text = "63 KG" },
                 new NegativeStackChartData { Height = "6", Female = 69, Male = -74, Text = "74 KG", Female_Text = "69 KG" }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class NegativeStackChartData

@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ListView
             listdata.Add(new { Name = "Location", content = "ON / High accuracy", id = "7", css = "location", category = "Personal", order = "2" });
             listdata.Add(new { Name = "Security", id = "8", content = "Screen Lock", css = "security", category = "Personal", order = 2 });
             listdata.Add(new { Name = "Languages & input", content = "English (US)", id = "9", css = "language", category = "Personal", order = "2" });
-            ViewBag.dataSource = listdata;
+            ViewData["dataSource"] = listdata;
             return View();
         }
     }

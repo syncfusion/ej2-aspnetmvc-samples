@@ -7,10 +7,10 @@
 {
     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Fill("#1e90ff").XName("Over").YName("ENG_Score").Opacity(1).Width(2).ColumnSpacing(0.1)
     .Marker(mr =>mr.DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600"))))
-    .DataSource(ViewBag.ChartPoints).Name("England").Add();
+    .DataSource(ViewData["ChartPoints"]).Name("England").Add();
     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Fill("#b22222").XName("Over").YName("WI_Score").Opacity(1).Width(2).ColumnSpacing(0.1)
     .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600"))))
-    .DataSource(ViewBag.ChartPoints).Name("West Indies").Add();
+    .DataSource(ViewData["ChartPoints"]).Name("West Indies").Add();
 }).PrimaryXAxis(px => px.Minimum(15).Maximum(21).Interval(1).MajorGridLines(mg=>mg.Width(0))
        ).PrimaryYAxis(py => py.MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).LabelStyle(ls=>ls.Color("transparent"))
        ).Title("England vs West Indies").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tl => tl.Enable(true).Format("${point.x}th Over : <b>${point.y} Runs</b>")
@@ -24,10 +24,10 @@
     }
 </style>
  @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>

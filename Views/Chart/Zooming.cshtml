@@ -10,10 +10,10 @@
             ).ChartArea(area => area.Border(br => br.Width(0))
             ).LegendSettings(legend => legend.Visible(false)
             ).PrimaryXAxis(px => px.MajorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0)).
-                ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).ScrollbarSettings(sc => sc.EnableZoom(false))
-            ).PrimaryYAxis(py => py.Title("Temperature").LabelFormat("{value}°C").IntervalType(Syncfusion.EJ2.Charts.IntervalType.Months)
+                ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).ScrollbarSettings(sc => sc.EnableZoom(false).Position(Syncfusion.EJ2.Charts.ScrollbarPosition.Bottom))
+            ).PrimaryYAxis(py => py.Title("Temperature Anomaly (°C)").LabelFormat("{value}°C").IntervalType(Syncfusion.EJ2.Charts.IntervalType.Months)
                 .LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).EnableScrollbarOnZooming(false)
-            ).ZoomSettings(z => z.EnableMouseWheelZooming(true).EnableDeferredZooming(false)
+            ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("<b>${point.x}</b>").Format("Temperature: <b>${point.y}</b>")).ZoomSettings(z => z.EnableMouseWheelZooming(true).EnableDeferredZooming(false)
                 .EnableSelectionZooming(true).EnableScrollbar(true).EnablePinchZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X
                 ).ShowToolbar(true).ToolbarPosition(tb => tb.Y(-60).Draggable(true)).EnableAnimation(true)
             ).Margin(mg => mg.Top(20)).Load("load").Render()
@@ -206,6 +206,7 @@
             </linearGradient>
         </defs>
     </svg>
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var data = dataValue;
         var seriesData = [];
@@ -217,8 +218,7 @@
         }
 
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
             args.chart.title = ej.base.Browser.isDevice ? "Monthly Temperature Anomalies" : "Global Warming: Monthly Temperature Anomalies";
             args.chart.titleStyle.textAlignment = ej.base.Browser.isDevice ? "Near" : "Center";
@@ -254,6 +254,10 @@
         <li><b>Y</b> - Zoom the chart with respect to the vertical axis only.</li>
     </ul>
     <p>The <code>ToolbarPosition</code> property is used to adjust the position of the zoom toolbar. In this example, the toolbar is moved 60 pixels upward from its default position. The <code>Draggable</code> property is used to drag and drop the zoom toolbar to any position within the chart area.</p>
+    <p>The chart supports different scrollbar positions. By default, it appears next to the axis line, but you can adjust its placement using the <code>position</code> property of <code>scrollbarSettings</code>. This positioning allows better customization and flexibility in the chart's design.</p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
+    </p>
     <p>
         More information on the Zooming can be found in this
         <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/zooming" aria-label="documentation section">documentation section<span class="sr-only">opens in a new tab</span></a>.

@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ListBox
             groupA.Add(new { Name = "Finland", Code = "FI" });
             groupA.Add(new { Name = "Germany", Code = "DE" });
             groupA.Add(new { Name = "Hong Kong", Code = "HK" });
-            ViewBag.groupA = groupA.ToArray();
+            ViewData["groupA"] = groupA.ToArray();
 
             List<object> groupB = new List<object>();
             groupB.Add(new { Name = "India", Code = "IN" });
@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ListBox
             groupB.Add(new { Name = "Switzerland", Code = "CH" });
             groupB.Add(new { Name = "United Kingdom", Code = "GB" });
             groupB.Add(new { Name = "United States", Code = "US" });
-            ViewBag.groupB = groupB.ToArray();
+            ViewData["groupB"] = groupB.ToArray();
             return View();
         }
     }

@@ -1,14 +1,14 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
 
         @Html.EJS().Chart3D("container").EnableSideBySidePlacement(false).Depth(500).Height("400").Title("Fruit Consumption by Individuals").PrimaryXAxis(px => px.Interval(1)
 .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.BetweenTicks).LabelRotation(-45)).Series(series =>
 {
-    series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Column).DataSource(ViewBag.Grapes).XName("X").YName("Y").Name("Grapes").ColumnWidth(0.2).Add();
-    series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Column).DataSource(ViewBag.Orange).XName("X").YName("Y").Name("Orange").ColumnWidth(0.2).Add();
-    series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Column).DataSource(ViewBag.Apple).XName("X").YName("Y").Name("Apple").ColumnWidth(0.2).Add();
-    series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Column).DataSource(ViewBag.Total).XName("X").YName("Y").Name("Total").ColumnWidth(0.2).Add();
+    series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Column).DataSource(ViewData["Grapes"]).XName("X").YName("Y").Name("Grapes").ColumnWidth(0.2).Add();
+    series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Column).DataSource(ViewData["Orange"]).XName("X").YName("Y").Name("Orange").ColumnWidth(0.2).Add();
+    series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Column).DataSource(ViewData["Apple"]).XName("X").YName("Y").Name("Apple").ColumnWidth(0.2).Add();
+    series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Column).DataSource(ViewData["Total"]).XName("X").YName("Y").Name("Total").ColumnWidth(0.2).Add();
 }).Tooltip(tt => tt.Enable(true)).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)).Load("load").Render()
     </div>
 
@@ -19,10 +19,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/three-dimensional-chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            load3DChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? '100%' : '75%';
             args.chart.primaryYAxis.interval = ej.base.Browser.isDevice ? 4 : 2;
             args.chart.rotation = ej.base.Browser.isDevice ? 5 : 25;

@@ -13,12 +13,12 @@
         @Html.EJS().QueryBuilder("querybuilder").Columns(col =>
     {
         col.Field("Category").Label("Category").Type("string").Add();
-        col.Field("PaymentMode").Label("Payment Mode").Type("string").Template(new { create = "paymentCreate", destroy = "paymentDestroy", write = "paymentWrite" }).Operators(ViewBag.paymentOperator).Add();
-        col.Field("TransactionType").Label("Transaction Type").Type("boolean").Template(new { create = "transactionCreate", destroy = "transactionDestroy", write = "transactionWrite" }).Operators(ViewBag.transactionOperator).Add();
+        col.Field("PaymentMode").Label("Payment Mode").Type("string").Template(new { create = "paymentCreate", destroy = "paymentDestroy", write = "paymentWrite" }).Operators(ViewData["paymentOperator"]).Add();
+        col.Field("TransactionType").Label("Transaction Type").Type("boolean").Template(new { create = "transactionCreate", destroy = "transactionDestroy", write = "transactionWrite" }).Operators(ViewData["transactionOperator"]).Add();
         col.Field("Description").Label("Description").Type("string").Add();
         col.Field("Date").Label("Date").Type("date").Add();
-        col.Field("Amount").Label("Amount").Type("number").Template(new { create = "amountCreate", destroy = "amountDestroy", write = "amountWrite" }).Operators(ViewBag.amountOperator).Add();
-    }).DataSource(ViewBag.dataSource).Rule(ViewBag.rule).MaxGroupCount(5).Width("100%").RuleChange("updateRule").Render()
+        col.Field("Amount").Label("Amount").Type("number").Template(new { create = "amountCreate", destroy = "amountDestroy", write = "amountWrite" }).Operators(ViewData["amountOperator"]).Add();
+    }).DataSource(ViewData["dataSource"]).Rule((Syncfusion.EJ2.QueryBuilder.QueryBuilderRule)ViewData["rule"]).MaxGroupCount(5).Width("100%").RuleChange("updateRule").Render()
 
         <div class="e-query-preview">
             @(Html.EJS().Tab("defaultTab").Created("tabCreated").Selected("changeTab")

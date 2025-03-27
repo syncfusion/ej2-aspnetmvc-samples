@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-                @Html.EJS().RichTextEditor("customFormat").Value((string)ViewBag.value).Created("created").Height("150px").Placeholder("Enter your text here...").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewBag.Items)).Render()
+                @Html.EJS().RichTextEditor("customFormat").Value((string)ViewData["value"]).Created("created").Height("150px").Placeholder("Enter your text here...").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).ToolbarSettings(e => e.Items((object)ViewData["Items"])).Render()
         </div>
     </div>
 <style>
@@ -101,21 +101,32 @@
     </div>
 }
 <script>
-    var defaultRTE, textArea, mdPreview, mdsource;
+    var defaultRTE, textArea, mdPreview, mdsource, tooltipObj;
     function created() {
         defaultRTE = this;
-            mdPreview = document.getElementById('MD_Preview');
-            textArea = defaultRTE.contentModule.getEditPanel();
-            textArea.addEventListener('keyup', function (e) {
-                markdownConversion();
+        mdPreview = document.getElementById('MD_Preview');
+        textArea = defaultRTE.contentModule.getEditPanel();
+        textArea.addEventListener('keyup', function (e) {
+            markdownConversion();
+        });
+        setTimeout(function () {
+            tooltipObj = new ej.popups.Tooltip({
+                content: "Preview",
+                target: "#preview-code"
             });
+            tooltipObj.appendTo("#preview-code");
             mdsource = document.getElementById('preview-code');
-            mdsource.addEventListener('click', function (e) {
-                fullPreview();
-            });
+            if (mdsource) {
+                mdsource.addEventListener('click', function (e) {
+                    fullPreview();
+                });
+            }
+        }, 500);
     }
     loadExternalFile();
     // Dynamically load the marked.js file
+
+
     function loadExternalFile() {
         var script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.19/marked.js';
@@ -131,25 +142,43 @@
     function fullPreview() {
         var id = defaultRTE.getID() + 'html-preview';
         var htmlPreview = defaultRTE.element.querySelector('#' + id);
+        var panel = defaultRTE.contentModule.getPanel();
+        var editPanel = defaultRTE.contentModule.getEditPanel();
         if (mdsource.classList.contains('e-active')) {
             mdsource.classList.remove('e-active');
-            mdsource.parentElement.title = 'Preview';
             defaultRTE.enableToolbarItem(defaultRTE.toolbarSettings.items);
-            textArea.style.display = 'block';
-            htmlPreview.style.display = 'none';
+            panel.style.display = 'block';
+            if (editPanel && editPanel.value === '') {
+                if (htmlPreview && htmlPreview.getAttribute('data-markdown')) {
+                    editPanel.value = htmlPreview.getAttribute('data-markdown');
+                }
+            }
+            if (htmlPreview) {
+                htmlPreview.style.display = 'none';
+            }
+            tooltipObj.content = "Preview";
         }
         else {
             mdsource.classList.add('e-active');
             defaultRTE.disableToolbarItem(defaultRTE.toolbarSettings.items);
+            var markdownContent = editPanel ? editPanel.value : '';
             if (!htmlPreview) {
-                htmlPreview = ej.base.createElement('div', { className: 'e-content e-pre-source' });
-                htmlPreview.id = id;
-                textArea.parentNode.appendChild(htmlPreview);
+                htmlPreview = ej.base.createElement('div', {
+                    className: 'e-content e-pre-source',
+                    id: id,
+                });
+                panel.parentNode.appendChild(htmlPreview);
             }
-            textArea.style.display = 'none';
+            panel.style.display = 'none';
             htmlPreview.style.display = 'block';
-            htmlPreview.innerHTML = marked(defaultRTE.contentModule.getEditPanel().value);
-            mdsource.parentElement.title = 'Code View';
+            var panelStyles = window.getComputedStyle(panel);
+            if (markdownContent) {
+                htmlPreview.innerHTML = marked(markdownContent);
+                htmlPreview.style.fontFamily = panelStyles.fontFamily;
+                htmlPreview.style.fontSize = panelStyles.fontSize;
+            }
+            tooltipObj.content = "Code View";
         }
     }
+
 </script>

@@ -23,10 +23,10 @@ namespace EJ2MVCSampleBrowser.Controllers.DropDownTree
             customFields.Expanded = "expanded";
             customFields.HasChildren = "hasChild";
             customFields.ParentValue = "pid";
-            ViewBag.CustomFields = customFields;
+            ViewData["CustomFields"] = customFields;
             DropDownTreeTreeSettings treeSettings = new DropDownTreeTreeSettings();
             treeSettings.AutoCheck = true;
-            ViewBag.TreeSettings = treeSettings;
+            ViewData["TreeSettings"] = treeSettings;
             return View();
         }
     }

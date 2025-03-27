@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Filtering()
         {
-            ViewBag.data = new Countries().CountriesList();
-            ViewBag.query = "new ej.data.Query()";
+            ViewData["data"] = new Countries().CountriesList();
+            ViewData["query"] = "new ej.data.Query()";
             return View();
         }
     }

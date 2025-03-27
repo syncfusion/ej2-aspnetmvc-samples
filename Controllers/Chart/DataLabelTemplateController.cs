@@ -27,9 +27,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new TemplateData { Sports= "Football", Boys= 60, Girls= 21 },
                 new TemplateData { Sports= "Hockey", Boys= 15, Girls= 8 }
             };
-            ViewBag.PopulationDetails = PopulationDetails;
-            ViewBag.margin = new { Right = 30 };
-            ViewBag.margin1 = new { Right = 15 };
+            ViewData["PopulationDetails"] = PopulationDetails;
+            ViewData["margin"] = new { Right = 30 };
+            ViewData["margin1"] = new { Right = 15 };
             return View();
         }
         public class TemplateData

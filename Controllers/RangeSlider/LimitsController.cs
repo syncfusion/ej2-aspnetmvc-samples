@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Limits()
         {
-            ViewBag.rangeValue = new int[] { 25, 75 };
+            ViewData["rangeValue"] = new int[] { 25, 75 };
             return View();
         }
     }

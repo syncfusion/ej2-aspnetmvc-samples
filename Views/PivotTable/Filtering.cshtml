@@ -10,7 +10,7 @@
     <div class="col-lg-8 control-section" style="overflow:auto">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>
-                )ViewBag.Data).ExpandAll(false).EnableSorting(true)
+                )ViewData["Data"]).ExpandAll(false).EnableSorting(true)
                 .FormatSettings(formatsettings =>
                 {
                 formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
@@ -48,7 +48,7 @@
                     </td>
                     <td>
                         <div>
-                            @Html.EJS().DropDownList("fields").DataSource((IEnumerable<object>)ViewBag.fieldsData).Width("98%").Index(0).Change("onFieldChange").Render()
+                            @Html.EJS().DropDownList("fields").DataSource((IEnumerable<object>)ViewData["fieldsData"]).Width("98%").Index(0).Change("onFieldChange").Render()
                         </div>
                     </td>
                 </tr>
@@ -60,7 +60,7 @@
                     </td>
                     <td style="padding-bottom: 16px">
                         <div class="valuecls">
-                            @Html.EJS().MultiSelect("values").DataSource((IEnumerable<object>)ViewBag.filterValues).Mode(Syncfusion.EJ2.DropDowns.VisualMode.CheckBox
+                            @Html.EJS().MultiSelect("values").DataSource((IEnumerable<object>)ViewData["filterValues"]).Mode(Syncfusion.EJ2.DropDowns.VisualMode.CheckBox
                             ).ShowDropDownIcon(true).ShowClearButton(false).EnableSelectionOrder(true).Placeholder("Select members").Select("onSelect").Removed("onRemoved"
                             ).Fields(new MultiSelectFieldSettings() { Text = "Member" }).Open("onOpen").Render()
                         </div>
@@ -74,7 +74,7 @@
                     </td>
                     <td>
                         <div style="margin-top:-5px">
-                            @Html.EJS().DropDownList("type").DataSource((IEnumerable<object>)ViewBag.typeData).Width("98%").Index(1).Render()
+                            @Html.EJS().DropDownList("type").DataSource((IEnumerable<object>)ViewData["typeData"]).Width("98%").Index(1).Render()
                         </div>
                     </td>
                 </tr>

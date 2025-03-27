@@ -4,7 +4,7 @@
         <div class="content-wrapper">
             @(Html.EJS().Diagram("container").Width("100%").Height("700px").GetNodeDefaults("getNodeDefaults")
                 .GetConnectorDefaults("getConnectorDefaults").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
-                .Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
+                .Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render()
             )
 
         </div>

@@ -5,19 +5,19 @@
 @section ControlsSection{
     <div>
         <div class="control-section">
-            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Commercial Aviation Accidents and Fatalities by year 2012 - 2017").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Commercial Aviation Accidents and Fatalities by year 2012 - 2017").TextStyle(ViewData["textStyle"])).XAxis(xAxis =>
             {
-                xAxis.Labels(ViewBag.xLabels).TextStyle(ViewBag.labelTextStyle);
+                xAxis.Labels((string[])ViewData["xLabels"]).TextStyle(ViewData["labelTextStyle"]);
             }).YAxis(yaxis =>
             {
-                yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle);
+                yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"]);
             }).DataSource("dataSource").PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
             {
                 palette.Color("#C06C84").Add();
                 palette.Color("#355C7D").Add();
             }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Gradient)).CellSettings(cellSettings =>
-            cellSettings.ShowLabel(false).Border(ViewBag.border).TileType(Syncfusion.EJ2.HeatMap.CellType.Bubble).BubbleType(Syncfusion.EJ2.HeatMap.BubbleType.SizeAndColor)).LegendSettings(legendSettings =>
-            legendSettings.Visible(true).TextStyle(ViewBag.labelTextStyle)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).TooltipRender("tooltipRender").DataSourceSettings(dataSourceSettings => { dataSourceSettings.IsJsonData(true).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Cell).XDataMapping("Year").YDataMapping("Months").BubbleDataMapping(bubbleDataMapping => { bubbleDataMapping.Size("Accidents").Color("Fatalities"); }); }).Load("load").Render()
+            cellSettings.ShowLabel(false).Border(ViewData["border"]).TileType(Syncfusion.EJ2.HeatMap.CellType.Bubble).BubbleType(Syncfusion.EJ2.HeatMap.BubbleType.SizeAndColor)).LegendSettings(legendSettings =>
+            legendSettings.Visible(true).TextStyle(ViewData["labelTextStyle"])).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).TooltipRender("tooltipRender").DataSourceSettings(dataSourceSettings => { dataSourceSettings.IsJsonData(true).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Cell).XDataMapping("Year").YDataMapping("Months").BubbleDataMapping(bubbleDataMapping => { bubbleDataMapping.Size("Accidents").Color("Fatalities"); }); }).Load("load").Render()
         </div>
         <div style="float: right; margin-right: 10px;">
             Source:

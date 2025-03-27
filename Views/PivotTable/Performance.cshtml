@@ -9,7 +9,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div id="ddl-control">
-            @Html.EJS().DropDownList("performance").DataSource((IEnumerable<object>)ViewBag.performanceOptions).Change("onChange").Placeholder("Select a Data Range").PopupHeight("240px").Index(0).Width("240").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
+            @Html.EJS().DropDownList("performance").DataSource((IEnumerable<object>)ViewData["performanceOptions"]).Change("onChange").Placeholder("Select a Data Range").PopupHeight("240px").Index(0).Width("240").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
             <span id="performanceTime">Time Taken: 0 sec</span>
         </div>
         <div class="content-wrapper">

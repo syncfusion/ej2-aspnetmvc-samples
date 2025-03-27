@@ -4,7 +4,7 @@
 @section ControlsSection {
     <div class="control-section">
         <div class="control_wrapper">
-            @Html.EJS().Kanban("kanban").KeyField("Status").EnableTooltip(true).DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
+            @Html.EJS().Kanban("kanban").KeyField("Status").EnableTooltip(true).DataSource((IEnumerable<object>)ViewData["data"]).Columns(col =>
             {
            col.HeaderText("To Do").KeyField("Open").Template("#headerTemplate").AllowToggle(true).Add();
            col.HeaderText("In Progress").KeyField("InProgress").Template("#headerTemplate").AllowToggle(true).Add();
@@ -14,7 +14,7 @@
             card.HeaderField("Title").Template("#cardTemplate").SelectionType(SelectionType.Multiple);
             }).SwimlaneSettings(swim => {
             swim.KeyField("Assignee");
-            }).DialogSettings((item)=>item.Fields(ViewBag.dialogData)).CardRendered("cardRendered").Render()
+            }).DialogSettings((item)=>item.Fields(ViewData["dialogData"])).CardRendered("cardRendered").Render()
         </div>
     </div>
     <script id="headerTemplate" type="text/x-jsrender">

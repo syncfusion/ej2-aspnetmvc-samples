@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult ColumnMenu()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
-            ViewBag.ddData = new string[] { "Default", "Custom" };
+            ViewData["datasource"] = order;
+            ViewData["ddData"] = new string[] { "Default", "Custom" };
             return View();
         }
     }

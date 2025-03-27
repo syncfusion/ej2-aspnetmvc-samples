@@ -19,12 +19,12 @@
                                     <br />
                                     Choose the compression level
                                     &emsp;
-                                    @Html.DropDownList("compress", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "e-btn" })
+                                    @Html.DropDownList("compress", (IEnumerable<SelectListItem>)ViewData["PriorityID"], new { @class = "e-btn" })
                                     <br />
                                     <br />
                                     Image Compression
                                     &emsp;&emsp;&emsp;&emsp;&emsp;
-                                    @Html.DropDownList("img", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "e-btn" })
+                                    @Html.DropDownList("img", (IEnumerable<SelectListItem>)ViewData["PriorityID"], new { @class = "e-btn" })
                                 </td>
                             </tr>
                         </table>

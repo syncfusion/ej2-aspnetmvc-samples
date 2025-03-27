@@ -3,7 +3,7 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("AutoWrap").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowTextWrap().Columns(col =>
+        @Html.EJS().Grid("AutoWrap").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowTextWrap().Columns(col =>
    {
 
        col.Field("Inventor").HeaderText("Inventor Name").Width("140").Add();

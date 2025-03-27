@@ -747,8 +747,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Type = Segments.Orthogonal,
             });
 
-            ViewBag.nodes = nodes;
-            ViewBag.connectors = connectors;
+            ViewData["nodes"] = nodes;
+            ViewData["connectors"] = connectors;
 
             List<DiagramNode> symbols = new List<DiagramNode>();
             symbols.Add(new DiagramNode()
@@ -878,7 +878,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Title = "Connectors"
             });
 
-            ViewBag.Palette = palettes;
+            ViewData["Palette"] = palettes;
             return View();
         }
     }

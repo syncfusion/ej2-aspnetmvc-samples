@@ -58,7 +58,7 @@
                 @Html.EJS().Maps("container").TitleSettings(title => title.Text("Spring Precipitation Averages of US States").TextStyle(new MapsFont { Size = "16px" })).Load("mapsLoad").LegendSettings(
                 new MapsLegendSettings { Visible = true, Position = LegendPosition.Bottom, Height = "10", Width = "80%", Mode = LegendMode.Interactive, Title = new MapsCommonTitleSettings { Text = "Inches" } }).Layers(layer =>
        {
-           layer.TooltipSettings(t => t.Visible(true).ValuePath("State").Template("#template")).DataSource(ViewBag.DataSource).ShapeDataPath("State")
+           layer.TooltipSettings(t => t.Visible(true).ValuePath("State").Template("#template")).DataSource(ViewData["DataSource"]).ShapeDataPath("State")
            .ShapePropertyPath("name").ShapeSettings(new MapsShapeSettings
            {
                ColorValuePath = "inches",
@@ -72,7 +72,7 @@
                 new MapsColorMapping { From = 4 , To = 5, Color="#CEBF93", Label="4 - 5" },
                 new MapsColorMapping { From = 5 , To = 6, Color="#a69d70", Label="5 - 6" }
            }
-           }).ShapeData(ViewBag.MapShapeData).Add();
+           }).ShapeData(ViewData["MapShapeData"]).Add();
        }).Render()
                 <div style="margin-left:75%">
                     Source:

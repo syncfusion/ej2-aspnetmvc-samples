@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("CaptionAggregate").DataSource((IEnumerable<object>)ViewBag.datasource).GridLines(Syncfusion.EJ2.Grids.GridLine.Vertical).AllowGrouping().Columns(col =>
+        @Html.EJS().Grid("CaptionAggregate").DataSource((IEnumerable<object>)ViewData["datasource"]).GridLines(Syncfusion.EJ2.Grids.GridLine.Vertical).AllowGrouping().Columns(col =>
    {
        col.Field("ID").IsPrimaryKey(true).Visible(false).Add();
        col.Field("Month").Type("date").HeaderText("Month").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Format("yMd").ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();

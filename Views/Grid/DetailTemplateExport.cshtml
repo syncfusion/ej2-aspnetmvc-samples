@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "DetailTemplateExport";
+    ViewData["Title"] = "DetailTemplateExport";
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("DetailTemplateExport").DataSource((IEnumerable<object>)ViewBag.dataSource).DetailTemplate("#detailtemplate").Width("auto").Columns(col =>
+        @Html.EJS().Grid("DetailTemplateExport").DataSource((IEnumerable<object>)ViewData["dataSource"]).DetailTemplate("#detailtemplate").Width("auto").Columns(col =>
    {
        col.Field("EmployeeID").HeaderText("Employee ID").Width("110").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("FirstName").HeaderText("Name").Width("110").Add();

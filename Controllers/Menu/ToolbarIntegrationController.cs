@@ -26,7 +26,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Menu
                 new ToolbarItem { PrefixIcon ="em-icons e-shopping-cart", Align=Syncfusion.EJ2.Navigations.ItemAlign.Right }
             };
 
-            ViewBag.items = items;
+            ViewData["items"] = items;
             return View();
         }
     }

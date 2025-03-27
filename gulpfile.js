@@ -330,7 +330,7 @@ const LOCAL_SITE_URL = `
 gulp.task('sitemap-generate', function (done) {
     let siteMapFile = SITEMAP_TEMPLATE;
     let date = new Date().toISOString().substring(0, 10);
-    let link = 'https://ej2.syncfusion.com/aspnetmvc';
+    let link = 'https://ej2.syncfusion.com/aspnetmvc/demos';
     let xmlstring = '';
     let components = config.window.samplesList.map(com => { return { directory: com.directory, type: com.samples.map(list => { return list.type; }), sampleUrls: com.samples.map(samp => { return samp.url; }) }; });
     for (let component of components ? components : []) {

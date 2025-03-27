@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "CellAlignment";
+    ViewData["Title"] = "CellAlignment";
 }
 
 @*custom code end*@
@@ -12,7 +12,7 @@
 @section ControlsSection{
 <div class="col-lg-8 control-section">
     <div class="control-section">
-        @Html.EJS().TreeGrid("CellAlignment").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+        @Html.EJS().TreeGrid("CellAlignment").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
        {
            col.Field("TaskId").HeaderText("Task ID").Width(120).TextAlign(TextAlign.Right).Add();
            col.Field("TaskName").HeaderText("Task Name").Width(200).Add();
@@ -30,7 +30,7 @@
                     <div>Column</div>
                 </td>
                 <td style="width: 50%;padding-right: 10px">
-                    @Html.EJS().DropDownList("Column").DataSource((IEnumerable<object>)ViewBag.dd).Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Change("onChange").Render()
+                    @Html.EJS().DropDownList("Column").DataSource((IEnumerable<object>)ViewData["dd"]).Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Change("onChange").Render()
                 </td>
             </tr>
             <tr style="height: 50px">
@@ -38,7 +38,7 @@
                     <div>Cell Alignment</div>
                 </td>
                 <td style="width: 50%;padding-right: 10px">
-                    @Html.EJS().DropDownList("Alignment").DataSource((IEnumerable<object>)ViewBag.index).Value("Right").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Change("change").Render()
+                    @Html.EJS().DropDownList("Alignment").DataSource((IEnumerable<object>)ViewData["index"]).Value("Right").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Change("change").Render()
                 </td>
             </tr>
         </table>

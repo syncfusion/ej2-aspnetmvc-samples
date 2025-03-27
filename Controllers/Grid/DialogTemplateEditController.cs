@@ -20,20 +20,20 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult DialogTemplateEdit()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
+            ViewData["datasource"] = order;
             return View();
         }
         public ActionResult Editpartial(DialogTemplateModel value)
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
+            ViewData["datasource"] = order;
             return PartialView("_DialogEditpartial", value);
         }
 
         public ActionResult AddPartial()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
+            ViewData["datasource"] = order;
             return PartialView("_DialogAddpartial");
         }
     }

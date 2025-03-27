@@ -4,7 +4,7 @@
     <div class="col-lg-12 control-section">
         <div class="control-wrapper">
             <div style='padding-top:70px;'>
-                @Html.EJS().AutoComplete("games").DataSource((string[])ViewBag.data).Placeholder("e.g. Basketball").Render()
+                @Html.EJS().AutoComplete("games").DataSource((string[])ViewData["data"]).Placeholder("e.g. Basketball").Render()
             </div>
         </div>
     </div>

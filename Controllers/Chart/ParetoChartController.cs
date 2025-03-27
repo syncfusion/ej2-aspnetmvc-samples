@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new ParetoChartData { DefectCategory = "Sleeve Defect", Y = 6 },
                 new ParetoChartData { DefectCategory = "Other Defect", Y = 2 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class ParetoChartData

@@ -56,43 +56,43 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
             citiesData.Add(new CitiesFields { Name = "Seattle", Fare = 250 });
             citiesData.Add(new CitiesFields { Name = "Florida", Fare = 150 });
 
-            ViewBag.headerTextOne = new TabHeader { Text = "New Booking" };
-            ViewBag.headerTextTwo = new TabHeader { Text = "Train List" };
-            ViewBag.headerTextThree = new TabHeader { Text = "Add Passenger" };
-            ViewBag.headerTextFour = new TabHeader { Text = "Make Payment" };
+            ViewData["headerTextOne"] = new TabHeader { Text = "New Booking" };
+            ViewData["headerTextTwo"] = new TabHeader { Text = "Train List" };
+            ViewData["headerTextThree"] = new TabHeader { Text = "Add Passenger" };
+            ViewData["headerTextFour"] = new TabHeader { Text = "Make Payment" };
 
-            ViewBag.quota = quotaData;
-            ViewBag.gender = genderData;
-            ViewBag.berth = berthData;
-            ViewBag.citiesData = citiesData;
+            ViewData["quota"] = quotaData;
+            ViewData["gender"] = genderData;
+            ViewData["berth"] = berthData;
+            ViewData["citiesData"] = citiesData;
 
-            ViewBag.content1 = "#booking";
-            ViewBag.content2 = "#selectTrain";
-            ViewBag.content3 = "#details";
-            ViewBag.content4 = "#confirm";
+            ViewData["content1"] = "#booking";
+            ViewData["content2"] = "#selectTrain";
+            ViewData["content3"] = "#details";
+            ViewData["content4"] = "#confirm";
 
-            ViewBag.min = DateTime.Now;
-            ViewBag.max = DateTime.Now.AddMonths(3);
-			ViewBag.value = DateTime.Now;
+            ViewData["min"] = DateTime.Now;
+            ViewData["max"] = DateTime.Now.AddMonths(3);
+			ViewData["value"] = DateTime.Now;
 
-            headerItems.Add(new TabItem { Header = ViewBag.headerTextOne , Content = ViewBag.content1 });
-            headerItems.Add(new TabItem { Header = ViewBag.headerTextTwo , Content = ViewBag.content2, Disabled = true });
-            headerItems.Add(new TabItem { Header = ViewBag.headerTextThree , Content = ViewBag.content3, Disabled = true });
-            headerItems.Add(new TabItem { Header = ViewBag.headerTextFour , Content = ViewBag.content4, Disabled = true  });
-            ViewBag.headeritems = headerItems;
+            headerItems.Add(new TabItem { Header = (TabHeader)ViewData["headerTextOne"] , Content = (String)ViewData["content1"] });
+            headerItems.Add(new TabItem { Header = (TabHeader)ViewData["headerTextTwo"] , Content = (String)ViewData["content2"], Disabled = true });
+            headerItems.Add(new TabItem { Header = (TabHeader)ViewData["headerTextThree"] , Content = (String)ViewData["content3"], Disabled = true });
+            headerItems.Add(new TabItem { Header = (TabHeader)ViewData["headerTextFour"] , Content = (String)ViewData["content4"], Disabled = true  });
+            ViewData["headeritems"] = headerItems;
 
             ticketGrid.Add(new GridColumn { Field = "TrainNo", HeaderText = "Train No", Width = "120", Type = "number"});
             ticketGrid.Add(new GridColumn { Field = "PassName", HeaderText = "Name", Width = "140"});
             ticketGrid.Add(new GridColumn { Field = "Gender", HeaderText = "Gender", Width = "120"});
             ticketGrid.Add(new GridColumn { Field = "Berth", HeaderText = "Berth", Width = "140"});
-            ViewBag.ticketgrid = ticketGrid;
+            ViewData["ticketgrid"] = ticketGrid;
 
             availableTrain.Add(new GridColumn { Field = "TrainNo", HeaderText = "Train No", Width = "120", Type = "number" });
             availableTrain.Add(new GridColumn { Field = "Name", HeaderText = "Name", Width = "140" });
             availableTrain.Add(new GridColumn { Field = "Departure", HeaderText = "Departure", Width = "120" });
             availableTrain.Add(new GridColumn { Field = "Arrival", HeaderText = "Arrival", Width = "140" });
             availableTrain.Add(new GridColumn { Field = "Availability", HeaderText = "Availability", Width = "140", Type = "number" });
-            ViewBag.availabletrain = availableTrain;
+            ViewData["availabletrain"] = availableTrain;
 
             return View();
         }

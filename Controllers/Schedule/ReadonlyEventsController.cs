@@ -16,7 +16,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult ReadonlyEvents()
         {
-            ViewBag.datasource = new ScheduleData().GetReadonlyEventsData();
+            ViewData["datasource"] = new ScheduleData().GetReadonlyEventsData();
             List<ScheduleView> viewOption = new List<ScheduleView>()
             {
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Day },
@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.WorkWeek },
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Month }
             };
-            ViewBag.view = viewOption;
+            ViewData["view"] = viewOption;
             return View();
         }
     }

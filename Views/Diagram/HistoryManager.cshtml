@@ -36,7 +36,7 @@
         </style>
 
         <div id="historyControlSection" class="content-wrapper" style="width: 100%">
-            @(Html.EJS().Diagram("diagram").Width("100%").Height("600px").SnapSettings(s=>s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Created("created").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render())
+            @(Html.EJS().Diagram("diagram").Width("100%").Height("600px").SnapSettings(s=>s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Created("created").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render())
             </div>
     </div>
     <div id="historyPropertySection" class="col-lg-4 property-section" style="padding-right: 0px">
@@ -76,7 +76,7 @@
                         <div style="display: table-cell; vertical-align: middle">Stack Limit</div>
                     </div>
                     <div class="col-xs-6" style="padding-left: 0px; padding-right: 0px">
-                        @Html.EJS().NumericTextBox("StackLimit").Enabled(true).Format("###.##").Change("setStackLimit").Value(0).Step(1).Render()
+                        @Html.EJS().NumericTextBox("StackLimit").Enabled(true).Format("###.##").Change("setStackLimit").Min(0).Value(0).Step(1).Render()
                     </div>
                 </div>
                 <div class="row" style="padding-top: 10px">

@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: MindMap
         public ActionResult MindMap()
         {
-            ViewBag.Nodes = MindMapDetails.GetAllRecords();
+            ViewData["Nodes"] = MindMapDetails.GetAllRecords();
 
             List<DiagramUserHandle> handle = new List<DiagramUserHandle>();
             handle.Add(new DiagramUserHandle()
@@ -68,7 +68,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             DiagramSelector userHandle = new DiagramSelector();
             userHandle.Constraints = SelectorConstraints.UserHandle;
             userHandle.UserHandles = handle;
-            ViewBag.selectedItems = userHandle;
+            ViewData["selectedItems"] = userHandle;
 
 
             return View();

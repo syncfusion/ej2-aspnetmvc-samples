@@ -16,13 +16,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult Agenda()
         {
-            ViewBag.datasource = new ScheduleData().GetFifaEventsData();
+            ViewData["datasource"] = new ScheduleData().GetFifaEventsData();
             List<ScheduleView> viewOption = new List<ScheduleView>()
             {
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Agenda, AllowVirtualScrolling=false }
             };
-            ViewBag.view = viewOption;
-            ViewBag.data = GetScrollData();
+            ViewData["view"] = viewOption;
+            ViewData["data"] = GetScrollData();
             return View();
         }
 

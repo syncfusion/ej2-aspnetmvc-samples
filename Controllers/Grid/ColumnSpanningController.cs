@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult ColumnSpanning()
         {
             var DataSource = Merge.GetInversedData();
-            ViewBag.dataSource = DataSource;
+            ViewData["dataSource"] = DataSource;
             return View();
         }    
 

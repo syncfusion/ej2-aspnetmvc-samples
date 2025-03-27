@@ -1,8 +1,8 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @model EJ2MVCSampleBrowser.Models.QueryTemplateModel.ActionModel
 
 <div class="e-groupheader">
-    @Html.EJS().DropDownList(Model.RuleID + "_cndtnbtn").Fields(Model.Fields).Value(Model.Condition).DataSource(ViewBag.Conditions).Change("grpConditionChange").CssClass("e-outline").Width("100px").Render()
+    @Html.EJS().DropDownList(Model.RuleID + "_cndtnbtn").Fields(Model.Fields).Value(Model.Condition).DataSource(ViewData["Conditions"]).Change("grpConditionChange").CssClass("e-outline").Width("100px").Render()
     <div class="e-header">
         <div class="e-qb-hdr-content">
             <button id=@(Model.RuleID + "_addbtn") class="e-btn e-primary e-grp-btn" onclick="addgrpChange(event)">ADD Group</button>

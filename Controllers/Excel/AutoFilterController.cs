@@ -23,9 +23,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Excel
         {
             if (FilterType == null)
             {
-                ViewBag.datasource = AutoFilterIconList.GetSymbols();
-                ViewBag.datasource2 = AutoFilterIconList.GetRating();
-                ViewBag.datasource3 = AutoFilterIconList.GetArrows();
+                ViewData["datasource"] = AutoFilterIconList.GetSymbols();
+                ViewData["datasource2"] = AutoFilterIconList.GetRating();
+                ViewData["datasource3"] = AutoFilterIconList.GetArrows();
                 return View();
             }
             else if (button == "Input Template")

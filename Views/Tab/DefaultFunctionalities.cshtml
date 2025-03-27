@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="e-sample-resize-container">
-            @Html.EJS().Tab("defaultTab").Items(ViewBag.items).Render()
+            @Html.EJS().Tab("defaultTab").Items((List<Syncfusion.EJ2.Navigations.TabItem>)ViewData["items"]).Render()
         </div>
     </div>
 }

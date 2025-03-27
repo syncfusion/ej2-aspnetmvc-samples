@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Dialog
         {
             List<DialogDialogButton> button = new List<DialogDialogButton>() { };
             button.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new defaultButton() { content = "Hide", isPrimary = true } });
-            ViewBag.DefaultButton = button;
+            ViewData["DefaultButton"] = button;
             return View();
         }
     }

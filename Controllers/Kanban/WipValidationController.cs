@@ -18,12 +18,12 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult WipValidation()
         {
-            ViewBag.data = new KanbanDataModels().KanbanTasks();
-            ViewBag.ColumnDropDowns = new KanbanDataModels().ColumnDropDowns();
-            ViewBag.StatusData = new KanbanDataModels().StatusData();
+            ViewData["data"] = new KanbanDataModels().KanbanTasks();
+            ViewData["ColumnDropDowns"] = new KanbanDataModels().ColumnDropDowns();
+            ViewData["StatusData"] = new KanbanDataModels().StatusData();
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new DefaultButtonModel() { content = "OK", isPrimary = true } });
-            ViewBag.DefaultButtons = buttons;
+            ViewData["DefaultButtons"] = buttons;
             return View();
         }
     }

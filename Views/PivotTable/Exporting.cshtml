@@ -10,7 +10,7 @@
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("300").AllowExcelExport(true).AllowPdfExport(true).ShowFieldList(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>
-                )ViewBag.Data).ExpandAll(false).EnableSorting(true)
+                )ViewData["Data"]).ExpandAll(false).EnableSorting(true)
                 .FormatSettings(formatsettings =>
                 {
                     formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
@@ -48,7 +48,7 @@
                     </td>
                     <td style="width: 60%;">
                         <div style="margin-left: -20px">
-                            @Html.EJS().DropDownList("mode").Width("160").Index(0).DataSource((IEnumerable<object>)ViewBag.exportMode
+                            @Html.EJS().DropDownList("mode").Width("160").Index(0).DataSource((IEnumerable<object>)ViewData["exportMode"]
                             ).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
                         </div>
                     </td>

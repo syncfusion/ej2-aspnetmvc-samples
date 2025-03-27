@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult GridLines()
         {
             var DataSource = EmployeeView.GetAllRecords();
-            ViewBag.dataSource = DataSource;
-            ViewBag.data = new string[] { "Default", "Both", "None", "Horizontal", "Vertical" };
+            ViewData["dataSource"] = DataSource;
+            ViewData["data"] = new string[] { "Default", "Both", "None", "Horizontal", "Vertical" };
             return View();
         }
     }

@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult EventTemplate()
         {
-            ViewBag.datasource = new ScheduleData().GetWebinarData();
+            ViewData["datasource"] = new ScheduleData().GetWebinarData();
             return View();
         }
     }

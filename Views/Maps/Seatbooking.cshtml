@@ -12,7 +12,7 @@
                 <div id="container"></div>
                 @Html.EJS().Maps("container").ProjectionType(Syncfusion.EJ2.Maps.ProjectionType.Equirectangular).Load("mapsLoad").ItemSelection("itemSelection").Layers(layer =>
                  {
-                     layer.GeometryType(Syncfusion.EJ2.Maps.GeometryType.Normal).ShapeSettings(new MapsShapeSettings{ ColorValuePath = "fill" }).SelectionSettings(new MapsSelectionSettings{ Enable = true, Opacity = 1, EnableMultiSelect = true }).ShapeData(ViewBag.shapeData).Add();
+                     layer.GeometryType(Syncfusion.EJ2.Maps.GeometryType.Normal).ShapeSettings(new MapsShapeSettings{ ColorValuePath = "fill" }).SelectionSettings(new MapsSelectionSettings{ Enable = true, Opacity = 1, EnableMultiSelect = true }).ShapeData(ViewData["shapeData"]).Add();
                  }).Render()
             </div>
         </div>
@@ -95,8 +95,10 @@
 
     <script>
         var seatInfo = document.getElementById('selectedseats');
+        var maps;
         function mapsLoad(args) {
             var theme = themeName ? themeName : 'Material';
+            maps = args.maps;
             args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
         }
         function itemSelection(args) {
@@ -131,11 +133,12 @@
         }
 
         document.getElementById('clear-btn').onclick = function () {
-            seatInfo.innerHTML = '';
-            var selected = document.getElementsByClassName('ShapeselectionMapStyle');
-            for (var i = 0, length_1 = selected.length; i < length_1; i++) {
-                selected[0].setAttribute('class', '');
+            if (seatInfo.innerHTML === '') { return; }
+            var seats = seatInfo.innerText.split('-')[1].trim().split(',').map(num => Number(num.trim()));
+            for (var i = 0, length_1 = seats.length; i < length_1; i++) {
+                maps.shapeSelection(0, 'seatno', seats[i], false);
             }
+            seatInfo.innerHTML = '';
         };
     </script>
 }

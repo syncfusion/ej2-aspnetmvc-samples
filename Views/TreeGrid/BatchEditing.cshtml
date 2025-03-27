@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.Grids
 
 @{
-    ViewBag.Title = "BatchEditing";
+    ViewData["Title"] = "BatchEditing";
 }
 
 <h2>BatchEditing</h2>
@@ -16,7 +16,7 @@
             dict.Add("number", true);
             dict.Add("min", 0);
         }
-        @Html.EJS().TreeGrid("BatchEditing").DataSource((IEnumerable<object>)ViewBag.datasource).EditSettings(edit =>
+        @Html.EJS().TreeGrid("BatchEditing").DataSource((IEnumerable<object>)ViewData["datasource"]).EditSettings(edit =>
     {
         edit.AllowAdding(true);
         edit.AllowDeleting(true);
@@ -27,7 +27,7 @@
     {
         col.Field("TaskId").HeaderText("Task ID").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Width(90).TextAlign(TextAlign.Right).Add();
         col.Field("TaskName").HeaderText("Task Name").EditType("stringedit").ValidationRules(new { required = true }).Width(220).Add();
-        col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(130).EditType("datepickeredit").ValidationRules(new { date = true }).Add();
+        col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(130).EditType("datepickeredit").ValidationRules(new { required = true, date = "M/d/yyyy" }).Edit(new { @params = new { format = "M/d/yyyy" } }).Add();
         col.Field("Duration").HeaderText("Duration").Width(140).TextAlign(TextAlign.Right).EditType("numericedit").ValidationRules(dict).Edit(new { @params = new { format = "n" } }).Add();
         col.Field("Progress").HeaderText("Progress").Width(150).TextAlign(TextAlign.Right).EditType("numericedit").ValidationRules(dict).Edit(new { @params = new { format = "n" } }).Add();
         col.Field("Priority").HeaderText("Priority").Width(90).EditType("stringedit").ValidationRules(new { required = true }).Add();

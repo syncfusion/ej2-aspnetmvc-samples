@@ -27,8 +27,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new DoubleAxisData { Over = 19, ENG_Score = 7, WI_Score = 8 },
                 new DoubleAxisData { Over = 20, ENG_Score = 10, WI_Score = 24 }
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.font = new { fontWeight = "600", color = "#ffffff" };
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["font"] = new { fontWeight = "600", color = "#ffffff" };
             return View();
         }
         public class DoubleAxisData

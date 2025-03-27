@@ -28,8 +28,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new PolarAreaChartData { Period = "2004", ProductRevenue_A = 3.2, ProductRevenue_B = 3.6, ProductRevenue_C = 2.9 },
                 new PolarAreaChartData { Period = "2005", ProductRevenue_A = 3.9, ProductRevenue_B = 3  , ProductRevenue_C = 2   }
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.data = new string[] { "Polar", "Radar" };
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["data"] = new string[] { "Polar", "Radar" };
             return View();
         }
         public class PolarAreaChartData

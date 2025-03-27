@@ -3,7 +3,7 @@
 @section ControlsSection{
    <div class="control-section">
         <div class="content-wrapper" id="file-browser-sample">
-            @Html.EJS().RichTextEditor("fileBrowser").ToolbarSettings(e => e.Items((object)ViewBag.Items)).FileManagerSettings(e => { e.Enable(true); e.Path("/Pictures/Food"); e.AjaxSettings((object)ViewBag.AjaxSettings); }).ContentTemplate(@<div><p>Rich Text Editor allows inserting images from online sources as well as the local computers where you want to insert the image in your content.</p><p><b>Get started Quick Toolbar to click on the image</b></p><p>It is possible to add custom style on the selected image inside the RichTextEditor through the quick toolbar.</p><img alt='Logo' style='width: 300px; height: 300px; transform: rotate(0deg);' src="@Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png")" /></div>).Render()
+            @Html.EJS().RichTextEditor("fileBrowser").ToolbarSettings(e => e.Items((object)ViewData["Items"])).FileManagerSettings(e => { e.Enable(true); e.Path("/Pictures/Food"); e.AjaxSettings((object)ViewData["AjaxSettings"]); }).ContentTemplate(@<div><p>Rich Text Editor allows inserting images from online sources as well as the local computers where you want to insert the image in your content.</p><p><b>Get started Quick Toolbar to click on the image</b></p><p>It is possible to add custom style on the selected image inside the RichTextEditor through the quick toolbar.</p><img alt='Logo' style='width: 300px; height: 300px; transform: rotate(0deg);' src="@Url.Content("~/Content/images/RichTextEditor/RTEImage-Feather.png")" /></div>).Render()
         </div>
     </div>
 }

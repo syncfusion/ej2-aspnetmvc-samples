@@ -34,7 +34,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new CustomAnimationChartData { X = new DateTime(2021, 01, 01), Y = 6.08, Y1 = 4.12, Y2 = 3.58, Y3 = 1.74, Y4 = 1.29 },
                 new CustomAnimationChartData { X = new DateTime(2022, 01, 01), Y = 6.23, Y1 = 3.64, Y2 = 3.40, Y3 = 1.73, Y4 = 1.64 }
             };
-            ViewBag.ChartData = chartData;
+            ViewData["ChartData"] = chartData;
             return View();
         }
 

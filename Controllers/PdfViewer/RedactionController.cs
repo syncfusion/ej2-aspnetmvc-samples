@@ -21,10 +21,10 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
         // GET: Redaction
         public ActionResult Redaction()
         {
-            ViewBag.zoomList=new string[] {"10%","25%","50%","75%","100%","200%","400%"};
+            ViewData["zoomList"]=new string[] {"10%","25%","50%","75%","100%","200%","400%"};
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new RedactModalButtonModel() { content = "Cancel" } });
-            ViewBag.ModalButton = buttons;
+            ViewData["ModalButton"] = buttons;
             return View();
         }
 

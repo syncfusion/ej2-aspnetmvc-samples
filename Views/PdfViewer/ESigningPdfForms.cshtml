@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ESigningPdfForms";
+    ViewData["Title"] = "ESigningPdfForms";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @using Syncfusion.EJ2
@@ -23,10 +23,10 @@
                   new { Name = "Andrew Fuller", Eimg = "profile2", Id = "ff0000", Mail = "andrew@mycompany.com", fieldIds = new List<int>() },
                   new { Name = "Anne Dodsworth", Eimg = "profile1", Id = "00ff00", Mail = "anne@mycompany.com", fieldIds = new List<int>() }
                 };
-            ViewBag.userDetails = userDetails;
+            ViewData["userDetails"] = userDetails;
         }
         <div id="e-pv-e-sign-dropdown-menu" style="position: absolute; left: 0; z-index: 1000;">
-            @Html.EJS().DropDownList("e-pv-e-sign-employees").DataSource((IEnumerable<object>)ViewBag.userDetails).PopupHeight("200px").Index(0).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Id" }).ItemTemplate("<div style='display: flex; height: 50px; width: 200px;'><img class='e-pv-e-sign-empImage' src='../Content/pdfviewer/images/employees/${Eimg}.png' style='margin: 10px 6px; border-radius: 50%; border: 1px solid ${getBorderColor(Mail)};' height='30px' width='30px' alt='employee'/><div><div class='e-pv-e-sign-ename'>${Name}</div><div class='e-pv-e-sign-ejob'>${Mail}</div></div></div>").ValueTemplate("<div style='display: flex;'><img id='user-img' class='valueTemp' src='../Content/pdfviewer/images/employees/${Eimg}.png' style='margin: 3px 6px; border-radius: 50%; border: 1px solid ${getBorderColor(Mail)};' height='30px' width='30px' alt='employee'/><div><div class='e-pv-e-sign-name' style='margin-top: 3px;'>${Name}</div><div class='e-pv-e-sign-job'>${Mail}</div></div></div>").Select("userChange").Render()
+            @Html.EJS().DropDownList("e-pv-e-sign-employees").DataSource((IEnumerable<object>)ViewData["userDetails"]).PopupHeight("200px").Index(0).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Id" }).ItemTemplate("<div style='display: flex; height: 50px; width: 200px;'><img class='e-pv-e-sign-empImage' src='../Content/pdfviewer/images/employees/${Eimg}.png' style='margin: 10px 6px; border-radius: 50%; border: 1px solid ${getBorderColor(Mail)};' height='30px' width='30px' alt='employee'/><div><div class='e-pv-e-sign-ename'>${Name}</div><div class='e-pv-e-sign-ejob'>${Mail}</div></div></div>").ValueTemplate("<div style='display: flex;'><img id='user-img' class='valueTemp' src='../Content/pdfviewer/images/employees/${Eimg}.png' style='margin: 3px 6px; border-radius: 50%; border: 1px solid ${getBorderColor(Mail)};' height='30px' width='30px' alt='employee'/><div><div class='e-pv-e-sign-name' style='margin-top: 3px;'>${Name}</div><div class='e-pv-e-sign-job'>${Mail}</div></div></div>").Select("userChange").Render()
         </div>
         <div>
             @Html.EJS().Toolbar("e-pv-e-sign-toolbar-section").Height("50px").Items(new List<ToolbarItem>  {
@@ -34,9 +34,9 @@
                new ToolbarItem { Type = ItemType.Input, Template=@btntemplate, TooltipText = "Finish Signing",Align=ItemAlign.Right,Click="finishSigning"},
             }).Render()
         </div>
-        @Html.EJS().PdfViewer("pdfviewer").EnableToolbar(false).EnableAnnotationToolbar(false).EnableNavigationToolbar(false).DownloadFileName("eSign_designMode.pdf").ShowNotificationDialog(false).DocumentPath("https://cdn.syncfusion.com/content/pdf/eSign_filling.pdf").DocumentLoad("documentLoad").ResourceUrl("https://cdn.syncfusion.com/ej2/27.2.2/dist/ej2-pdfviewer-lib").FormFieldPropertiesChange("fieldChange").Height("640px").ToolbarSettings(ts => ts.ShowTooltip(true).ToolbarItems("OpenOption,PageNavigationTool,MagnificationTool,DownloadOption,PrintOption,FormDesignerEditTool")).Render()
+        @Html.EJS().PdfViewer("pdfviewer").EnableToolbar(false).EnableAnnotationToolbar(false).EnableNavigationToolbar(false).DownloadFileName("eSign_designMode.pdf").ShowNotificationDialog(false).DocumentPath("https://cdn.syncfusion.com/content/pdf/eSign_filling.pdf").DocumentLoad("documentLoad").ResourceUrl("https://cdn.syncfusion.com/ej2/27.2.2/dist/ej2-pdfviewer-lib").FormFieldPropertiesChange("fieldChange").Height("640px").ToolbarSettings(ts => ts.ShowTooltip(true).ToolbarItems("OpenOption,PageNavigationTool,MagnificationTool,DownloadOption,PrintOption,FormDesignerEditTool")).ZoomMode(Syncfusion.EJ2.PdfViewer.ZoomMode.FitToPage).Render()
         <div>
-            @Html.EJS().Dialog("modal_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).IsModal(true).ContentTemplate(@<div>Content</div>).CloseOnEscape(true).Width("335px").Created("modalCreated").Buttons(ViewBag.ModalButton).Visible(false).Render()
+            @Html.EJS().Dialog("modal_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).IsModal(true).ContentTemplate(@<div>Content</div>).CloseOnEscape(true).Width("335px").Created("modalCreated").Buttons((List<DialogDialogButton>)ViewData["ModalButton"]).Visible(false).Render()
         </div>
         <div id="e-pv-e-sign-btn-template">
             @Html.EJS().Button("e-pv-e-sign-finishSigning").Content("Finish Signing").CssClass("e-outline").Render()
@@ -336,7 +336,6 @@
         document.getElementById('e-pv-e-sign-finishSigning').disabled = true;
         pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
         pdfViewer.designerMode = false;
-        pdfViewer.magnification.fitToPage();
         updateUserFormField();
     }
 

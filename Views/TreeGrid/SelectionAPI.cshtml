@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "SelectionAPI";
+    ViewData["Title"] = "SelectionAPI";
 }
 
 @*custom code end*@
@@ -13,7 +13,7 @@
      <div class="col-lg-9 control-section">
         <div class="control-section">
             @(Html.EJS().TreeGrid("SelectionAPI")
-                .DataSource((IEnumerable<object>)ViewBag.datasource)
+                .DataSource((IEnumerable<object>)ViewData["datasource"])
                 .Columns(col =>
                 {
                     col.Field("TaskId").HeaderText("Task ID").Width(80).TextAlign(TextAlign.Right).Add();

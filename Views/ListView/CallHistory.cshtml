@@ -16,17 +16,17 @@
             <div class="layout">
                 <div id="list-container">
                     <div style="display:none">
-                        @Html.EJS().ListView("all").Enable(true).DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new ListViewFieldSettings { GroupBy = "category", Text = "text" }).Template(template).CssClass("e-list-template").Render()
-                        @Html.EJS().ListView("received").Enable(true).DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new ListViewFieldSettings { GroupBy = "category", Text = "text" }).Template(template).CssClass("e-list-template").Render()
-                        @Html.EJS().ListView("missed").Enable(true).DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new ListViewFieldSettings { GroupBy = "category", Text = "text" }).Template(template).CssClass("e-list-template").Render()
+                        @Html.EJS().ListView("all").Enable(true).DataSource((IEnumerable<object>)ViewData["dataSource"]).Fields(new ListViewFieldSettings { GroupBy = "category", Text = "text" }).Template(template).CssClass("e-list-template").Render()
+                        @Html.EJS().ListView("received").Enable(true).DataSource((IEnumerable<object>)ViewData["dataSource"]).Fields(new ListViewFieldSettings { GroupBy = "category", Text = "text" }).Template(template).CssClass("e-list-template").Render()
+                        @Html.EJS().ListView("missed").Enable(true).DataSource((IEnumerable<object>)ViewData["dataSource"]).Fields(new ListViewFieldSettings { GroupBy = "category", Text = "text" }).Template(template).CssClass("e-list-template").Render()
                     </div>
                     <div class="tabContainer">
                         <!-- Tab element -->
                         @Html.EJS().Tab("tab").Items(item =>
                                             {
-                                                item.Header(ViewBag.headerText1).Content(all).Add();
-                                                item.Header(ViewBag.headerText2).Content(received).Add();
-                                                item.Header(ViewBag.headerText3).Content(missed).Add();
+                                                item.Header((Syncfusion.EJ2.Navigations.TabHeader)ViewData["headerText1"]).Content(all).Add();
+                                                item.Header((Syncfusion.EJ2.Navigations.TabHeader)ViewData["headerText2"]).Content(received).Add();
+                                                item.Header((Syncfusion.EJ2.Navigations.TabHeader)ViewData["headerText3"]).Content(missed).Add();
                                             }).Selected("onSelection").Render()
 
                     </div>

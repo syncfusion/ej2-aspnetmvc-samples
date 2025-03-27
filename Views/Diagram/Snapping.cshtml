@@ -1,12 +1,12 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Diagrams;
 @section ControlsSection{
 
     <div class="col-lg-8 control-section"  style="float: left;width:70%;">
         <div class="content-wrapper" style="width: 100%">
             @(Html.EJS().Diagram("diagram").Width("100%").Height("645px").Created("diagramCreated").SelectionChange("selectionChange").RotateChange("rotateChange").OnUserHandleMouseDown("userHandelClick")
-        .RulerSettings(r => r.ShowRulers(true)).ContextMenuSettings(c => c.Show(true)).ScrollSettings(s => s.ScrollLimit(Syncfusion.EJ2.Diagrams.ScrollLimit.Infinity)).DrawingObject("Orthogonal").SelectedItems(ViewBag.selectedItems)
-        .GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
+        .RulerSettings(r => r.ShowRulers(true)).ContextMenuSettings(c => c.Show(true)).ScrollSettings(s => s.ScrollLimit(Syncfusion.EJ2.Diagrams.ScrollLimit.Infinity)).DrawingObject("Orthogonal").SelectedItems((DiagramSelector)ViewData["selectedItems"])
+        .GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render()
                 )
         </div>
     </div>

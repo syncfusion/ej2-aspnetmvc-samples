@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Navigations
 
 @section ControlsSection {
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="orientation-stepper-control">
-                @Html.EJS().Stepper("orientation-stepper").Steps(ViewBag.IconWithLabel).ActiveStep(1).Orientation(StepperOrientation.Horizontal).LabelPosition(StepLabelPosition.End).Render()
+                @Html.EJS().Stepper("orientation-stepper").Steps((List<Step>)ViewData["IconWithLabel"]).ActiveStep(1).Orientation(StepperOrientation.Horizontal).LabelPosition(StepLabelPosition.End).Render()
             </div>
         </div>
     </div>

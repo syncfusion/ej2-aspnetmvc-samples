@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "Exporting";
+    ViewData["Title"] = "Exporting";
 }
 @*custom code end*@
 
@@ -15,7 +15,7 @@
             .AllowExcelExport()
             .AllowPdfExport()
             .Height(400)
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .Toolbar(new List<string> { "ExcelExport" , "CsvExport", "PdfExport" })
             .Columns(col =>
             {

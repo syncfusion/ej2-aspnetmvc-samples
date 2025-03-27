@@ -34,7 +34,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new StepAreaChartData { Period = 2010, RenewableResourcesProduction = 520, NonRenewableResourcesProduction = 220 },
                 new StepAreaChartData { Period = 2011, RenewableResourcesProduction = 520, NonRenewableResourcesProduction = 220 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class StepAreaChartData

@@ -5,7 +5,7 @@
         <h4 class="list-header">National Sports</h4>
         <!-- Tooltip element rendering for AjaxContent loading -->
         @Html.EJS().Tooltip("Tooltip").Content("Loading...").CssClass("e-ajax-content").Target("#countrylist [title]").Position(Syncfusion.EJ2.Popups.Position.RightCenter).BeforeRender("onBeforeRender").ContentTemplate(@<div>
-            @Html.EJS().ListView("countrylist").Enable(true).DataSource((IEnumerable<object>)ViewBag.data).Fields(new ListViewFieldSettings { Text = "text", Tooltip = "id" }).Render()
+            @Html.EJS().ListView("countrylist").Enable(true).DataSource((IEnumerable<object>)ViewData["data"]).Fields(new ListViewFieldSettings { Text = "text", Tooltip = "id" }).Render()
         </div>).Render()
     </div>
 }

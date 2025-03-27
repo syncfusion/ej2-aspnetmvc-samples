@@ -13,7 +13,7 @@
 
     }
     <div class="control-section">
-        @Html.EJS().ListView("groupedList").Enable(true).DataSource((IEnumerable<object>)ViewBag.dataSource).ShowHeader(true).HeaderTitle("Settings").Fields(new ListViewFieldSettings { GroupBy = "order", Text = "Name" }).CssClass("e-list-template").GroupTemplate(groupTemplate).Template(template).Render()
+        @Html.EJS().ListView("groupedList").Enable(true).DataSource((IEnumerable<object>)ViewData["dataSource"]).ShowHeader(true).HeaderTitle("Settings").Fields(new ListViewFieldSettings { GroupBy = "order", Text = "Name" }).CssClass("e-list-template").GroupTemplate(groupTemplate).Template(template).Render()
     </div>
 }
 

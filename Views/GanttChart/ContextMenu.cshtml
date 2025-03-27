@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ContextMenu";
+    ViewData["Title"] = "ContextMenu";
 }
 
 @section ControlsSection{
@@ -13,7 +13,7 @@
     }
 <div class="control-section">
     <div class="content-wrapper">
-        @(Html.EJS().Gantt("ContextMenu").DataSource((IEnumerable<object>)ViewBag.DataSource)
+        @(Html.EJS().Gantt("ContextMenu").DataSource((IEnumerable<object>)ViewData["DataSource"])
                             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
                                 .Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Notes").ResourceInfo("ResourceId"))
                             .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
@@ -21,7 +21,7 @@
                             .AllowSelection(true).GridLines(Syncfusion.EJ2.Gantt.GridLine.Both).EnableContextMenu(true).AllowResizing(true).AllowSorting(true)
                             .ContextMenuItems(contextItems).ContextMenuOpen("ContextMenuOpen").ContextMenuClick("ContextMenuClick")
                             .Height("450px").TreeColumnIndex(1).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName"))
-                            .Resources((IEnumerable<object>)ViewBag.Resources).HighlightWeekends(true).TimelineSettings(tl => tl.TopTier(tt =>
+                            .Resources((IEnumerable<object>)ViewData["Resources"]).HighlightWeekends(true).TimelineSettings(tl => tl.TopTier(tt =>
                               tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week).Format("MMM dd, y")).
                             BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))).Columns(col =>
                             {

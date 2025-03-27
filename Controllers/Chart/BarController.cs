@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new BarChartData { Country = "France",  GDP = 1.82, WorldShare = 3.19 },
                 new BarChartData { Country = "Japan",  GDP = 1.71, WorldShare = 6.02 } 
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class BarChartData

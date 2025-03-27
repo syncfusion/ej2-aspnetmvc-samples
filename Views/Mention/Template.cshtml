@@ -12,7 +12,7 @@
                     <td>
                         <label id="template-size">Compose your content</label>
                         <div id="templateMention" placeholder="@Html.Raw("@") and tag user"></div>
-                        @Html.EJS().Mention("template").Target("#templateMention").MentionChar(nameMentionChar).AllowSpaces(true).ItemTemplate("<div class=\"listItems\"><img class=\"mentionEmpImage\" src=\"../Content/Mention/images/Employees/${Eimg}.png\" alt=\"employee\"/><span class=\"person\"> ${Name} </span><span class=\"email\">${EmailId}</span></div>").NoRecordsTemplate("No item related to the search").DisplayTemplate("${Name}").PopupWidth("250px").PopupHeight("200px").DataSource((IEnumerable<SportsData>)ViewBag.sports).Fields(new MentionFieldSettings { Text = "Name" }).Render()
+                        @Html.EJS().Mention("template").Target("#templateMention").MentionChar(nameMentionChar).AllowSpaces(true).ItemTemplate("<div class=\"listItems\"><img class=\"mentionEmpImage\" src=\"../Content/Mention/images/Employees/${Eimg}.png\" alt=\"employee\"/><span class=\"person\"> ${Name} </span><span class=\"email\">${EmailId}</span></div>").NoRecordsTemplate("No item related to the search").DisplayTemplate("${Name}").PopupWidth("250px").PopupHeight("200px").DataSource((IEnumerable<SportsData>)ViewData["sports"]).Fields(new MentionFieldSettings { Text = "Name" }).Render()
                     </td>
                 </tr>
             </table>

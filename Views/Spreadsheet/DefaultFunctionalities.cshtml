@@ -7,7 +7,7 @@
    {
        sheet.Name("Car Sales Report").Ranges(ranges =>
        {
-           ranges.DataSource((IEnumerable<object>)ViewBag.DefaultData).Add();
+           ranges.DataSource((IEnumerable<object>)ViewData["DefaultData"]).Add();
        }).Rows(row => {
            row.Cells(cell =>
            {

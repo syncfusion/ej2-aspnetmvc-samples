@@ -21,8 +21,8 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             var startDate = DateTime.Now;
             var endDate = DateTime.Now.AddDays(20);
-            ViewBag.start = startDate;
-            ViewBag.end = endDate;
+            ViewData["start"] = startDate;
+            ViewData["end"] = endDate;
             return View();
         }
     }

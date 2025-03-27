@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tooltip
             items.Add(new ToolbarItem { PrefixIcon = "e-bold-icon tb-icons", TooltipText = "Bold" });
             items.Add(new ToolbarItem { PrefixIcon = "e-underline-icon tb-icons", TooltipText = "Underline" });
             items.Add(new ToolbarItem { PrefixIcon = "e-italic-icon tb-icons", TooltipText = "Italic" });
-            ViewBag.tbItems = items;
+            ViewData["tbItems"] = items;
             return View();
         }
     }

@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult ResourceView()
         {
-            ViewBag.DataSource = GanttData.ResourceViewData();
-            ViewBag.Resources = GanttData.GetResourceGroup();
+            ViewData["DataSource"] = GanttData.ResourceViewData();
+            ViewData["Resources"] = GanttData.GetResourceGroup();
             return View();
         }
     }

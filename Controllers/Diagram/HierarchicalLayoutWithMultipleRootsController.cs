@@ -19,9 +19,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: HierarchicalLayoutWithMultipleRoots
         public ActionResult HierarchicalLayoutWithMultipleRoots()
         {
-            ViewBag.Nodes = HierarchicalMultipleRoots.GetAllRecords();
-            ViewBag.getConnectorDefaults = "ConnectorDefaults";
-            ViewBag.getNodeDefaults = "nodeDefaults";
+            ViewData["Nodes"] = HierarchicalMultipleRoots.GetAllRecords();
+            ViewData["getConnectorDefaults"] = "ConnectorDefaults";
+            ViewData["getNodeDefaults"] = "nodeDefaults";
             return View();
         }
 

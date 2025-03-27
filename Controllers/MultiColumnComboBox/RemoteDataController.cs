@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.MultiColumnComboBox
     {
         public ActionResult RemoteData()
         {
-            ViewBag.query = "new ej.data.Query().select(['FirstName', 'EmployeeID', 'Designation', 'Country']).take(10).requiresCount()";
+            ViewData["query"] = "new ej.data.Query().select(['FirstName', 'EmployeeID', 'Designation', 'Country']).take(10).requiresCount()";
             return View();
         }
     }

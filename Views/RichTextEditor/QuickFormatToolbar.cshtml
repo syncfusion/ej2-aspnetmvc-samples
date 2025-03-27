@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            @Html.EJS().RichTextEditor("quickRTE").ToolbarSettings(e => { e.Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.MultiRow).EnableFloating(false); }).QuickToolbarSettings(e => { e.Text((object)ViewBag.Text); }).ContentTemplate(@<div>
+            @Html.EJS().RichTextEditor("quickRTE").ToolbarSettings(e => { e.Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.MultiRow).EnableFloating(false); }).QuickToolbarSettings(e => { e.Text((object)ViewData["Text"]); }).ContentTemplate(@<div>
                 <p>Solar energy is radiant light and heat from the sun that is harnessed and converted into usable forms of energy. It
                         is a clean, renewable, and abundant source of power that has a wide range of applications across various sectors.
                         Solar energy is typically harnessed through solar technologies, such as photovoltaic (PV) cells and solar thermal

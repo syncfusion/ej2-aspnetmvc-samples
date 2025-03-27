@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             airlines.Add(new AirelineData { Text = "Airways 1", Id = 1 });
             airlines.Add(new AirelineData { Text = "Airways 2", Id = 2 });
             airlines.Add(new AirelineData { Text = "Airways 3", Id = 3 });
-            ViewBag.airlines = airlines;
+            ViewData["airlines"] = airlines;
             return View();
         }
     }

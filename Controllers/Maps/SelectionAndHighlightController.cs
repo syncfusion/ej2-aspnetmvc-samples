@@ -24,12 +24,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: SelectionAndHighlight
         public ActionResult SelectionAndHighlight()
         {
-            ViewBag.ShapeData = this.getUSAMap();
-            ViewBag.DataSource = this.getElectionData();
+            ViewData["ShapeData"] = this.getUSAMap();
+            ViewData["DataSource"] = this.getElectionData();
             List<MapsColorMapping> colorMapping = new List<MapsColorMapping>();
             colorMapping.Add(new MapsColorMapping { Value = "Trump", Color = "#D84444", Label = null });
             colorMapping.Add(new MapsColorMapping { Value = "Clinton", Color = "#316DB5", Label = null });
-            ViewBag.ColorMapping = colorMapping;
+            ViewData["ColorMapping"] = colorMapping;
             return View();
         }
 

@@ -1,6 +1,6 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
-        @Html.EJS().Diagram("diagram").Created("diagramCreated").Width("100%").Height("540px").SnapSettings(s => s.HorizontalGridlines(ViewBag.gridLines).VerticalGridlines(ViewBag.gridLines)).RulerSettings(r => r.ShowRulers(true).DynamicGrid(true)).Render()
+        @Html.EJS().Diagram("diagram").Created("diagramCreated").Width("100%").Height("540px").SnapSettings(s => s.HorizontalGridlines((Syncfusion.EJ2.Diagrams.DiagramGridlines)ViewData["gridLines"]).VerticalGridlines((Syncfusion.EJ2.Diagrams.DiagramGridlines)ViewData["gridLines"])).RulerSettings(r => r.ShowRulers(true).DynamicGrid(true)).Render()
     </div>
     <div class="col-lg-4 property-section">
         <div class="property-panel-header">

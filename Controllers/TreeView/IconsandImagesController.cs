@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeView
             iconFields.IconCss = "Icon";
             iconFields.Child = "NodeChild";
             iconFields.Expanded = "Expanded";
-            ViewBag.iconFields = iconFields;
+            ViewData["iconFields"] = iconFields;
             return View();
        
         }

@@ -17,8 +17,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult VirtualScrolling()
         {
-            ViewBag.data = new KanbanDataModels().VirtualScrollKanbanData();
-            ViewBag.dialogData = new KanbanDialogModels().VirtualScrollDialogCardField();
+            ViewData["data"] = new KanbanDataModels().VirtualScrollKanbanData();
+            ViewData["dialogData"] = new KanbanDialogModels().VirtualScrollDialogCardField();
             return View();
         }
     }

@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: OSMWithSubLayer
         public ActionResult OSMWithSubLayer()
         {
-            ViewBag.shapeData = this.getAfricaShape();
+            ViewData["shapeData"] = this.getAfricaShape();
             return View();
         }
 

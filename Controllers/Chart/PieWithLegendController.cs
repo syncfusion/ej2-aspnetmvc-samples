@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new PieWithLegendChartData { ExpenseCategory =  "Edge", ExpensePercentage = 7.48, legendName="Edge", DataLabelMappingName = "7.48%" },
                 new PieWithLegendChartData { ExpenseCategory =  "Others", ExpensePercentage = 14.06, legendName="Others", DataLabelMappingName = "18.76%" }
             };
-            ViewBag.PieChartPoints = PieChartPoints;
+            ViewData["PieChartPoints"] = PieChartPoints;
             return View();
         }
         public class PieWithLegendChartData

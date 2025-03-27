@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
     <meta name="description" content="This example demonstrates the Label Template in ASP.NET MVC HeatMap Chart control. Explore here for more details." />
 }
@@ -13,10 +13,10 @@
                     palette.Value(24).Color("#fcc81c").Add();
                     palette.Value(48).Color("#ff6354").Add();
                 }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed)).XAxis(
-                xAxis => xAxis.Title(ViewBag.xtitle).Labels(ViewBag.xLabels).TextStyle(ViewBag.labelTextStyle)
-                ).YAxis(yaxis => yaxis.Title(ViewBag.ytitle).Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle)
-                ).CellSettings(cellSettings => cellSettings.ShowLabel(true).LabelTemplate("<div><img src='${Image}' style='width: 35px; height: 35px;'/></div>").TextStyle(ViewBag.labelTextStyle)).LegendSettings(legendSettings => legendSettings.Visible(false)).TooltipSettings(tooltipSettings =>
-                tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).DataSourceSettings(dataSourceSettings => { dataSourceSettings.IsJsonData(true).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Cell).XDataMapping("RowId").YDataMapping("ColumnId").ValueMapping("Value"); }).DataSource(ViewBag.labelTemplateData).Load("load").Render()
+                xAxis => xAxis.Title(ViewData["xtitle"]).Labels((string[])ViewData["xLabels"]).TextStyle(ViewData["labelTextStyle"])
+                ).YAxis(yaxis => yaxis.Title(ViewData["ytitle"]).Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"])
+                ).CellSettings(cellSettings => cellSettings.ShowLabel(true).LabelTemplate("<div><img src='${Image}' style='width: 35px; height: 35px;'/></div>").TextStyle(ViewData["labelTextStyle"])).LegendSettings(legendSettings => legendSettings.Visible(false)).TooltipSettings(tooltipSettings =>
+                tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).DataSourceSettings(dataSourceSettings => { dataSourceSettings.IsJsonData(true).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Cell).XDataMapping("RowId").YDataMapping("ColumnId").ValueMapping("Value"); }).DataSource(ViewData["labelTemplateData"]).Load("load").Render()
             </div>
         </div>
     </div>

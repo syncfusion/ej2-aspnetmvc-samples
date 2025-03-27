@@ -6,9 +6,9 @@
         @Html.EJS().Chart("container").Series(series =>
    {
        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Day").YName("DEU_Temp").Opacity(1).Width(2).Name("Germany")
-           .Marker(mr=>mr.Visible(true).Width(7).Height(7)).DataSource(ViewBag.ChartPoints).Add();
+           .Marker(mr=>mr.Visible(true).Width(7).Height(7)).DataSource(ViewData["ChartPoints"]).Add();
        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).YAxisName("yAxis2").XName("Day").Opacity(1).Width(2)
-       .Marker(mr=>mr.Visible(true).Width(7).Height(7).IsFilled(true)).YName("JPN_Temp").DataSource(ViewBag.ChartPoints).Name("Japan").Add();
+       .Marker(mr=>mr.Visible(true).Width(7).Height(7).IsFilled(true)).YName("JPN_Temp").DataSource(ViewData["ChartPoints"]).Name("Japan").Add();
 
    }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0))
        .MajorTickLines(mt => mt.Width(0)).MinorGridLines(mg=>mg.Width(0))
@@ -19,8 +19,8 @@
        }
        ).Annotations(an =>
        {
-           an.X("SUN").Y("70").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).Content(ViewBag.content1).Add();
-           an.X("SAT").Y("35").YAxisName("yAxis2").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).Content(ViewBag.content).Add();
+           an.X("SUN").Y("70").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).Content((string)ViewData["content1"]).Add();
+           an.X("SAT").Y("35").YAxisName("yAxis2").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).Content((string)ViewData["content"]).Add();
        }
 ).Title("Weather Data").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true)).LegendSettings(lg=>lg.Visible(false)).Load("load").Render()
     </div>
@@ -38,11 +38,10 @@
 <div id='chart_sunny' style="display:none">
     <img src="@Url.Content("~/Content/chart/sunny.png")" style='width: 41px; height: 41px' />
 </div>
-
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>

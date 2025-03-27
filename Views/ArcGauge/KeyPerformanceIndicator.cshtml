@@ -1,15 +1,15 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 
 @section ControlsSection{
     <div class="control-section" align="center">
         @Html.EJS().CircularGauge("container").Load("gaugeLoad").Axes(axes => axes
-       .Radius("90%").StartAngle(220).EndAngle(140).Minimum(0).Maximum(100).LabelStyle(ls => ls.Position(Position.Outside).Font(ViewBag.labelFont))
+       .Radius("90%").StartAngle(220).EndAngle(140).Minimum(0).Maximum(100).LabelStyle(ls => ls.Position(Position.Outside).Font((CircularGaugeFont)ViewData["labelFont"]))
        .LineStyle(lin => lin.Width(0))
        .MinorTicks(mi => mi.Height(0.0).Color("Transparent")).MajorTicks(mj => mj.Width(0).Height(0).Color("Transparent"))
-       .Pointers(ViewBag.Pointers)
-       .Annotations(ViewBag.Annotations)
-       .Ranges(ViewBag.Ranges).Add()).Render()
+       .Pointers((List<CircularGaugePointer>)ViewData["Pointers"])
+       .Annotations((List<CircularGaugeAnnotation>)ViewData["Annotations"])
+       .Ranges((List<CircularGaugeRange>)ViewData["Ranges"]).Add()).Render()
     </div>
     <style>
         #container_Annotations_0 {

@@ -1,12 +1,12 @@
 @{
-    ViewBag.Title = "DialogTemplateEdit";
+    ViewData["Title"] = "DialogTemplateEdit";
 }
 
 @using Syncfusion.EJ2
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("DialogTemplateEdit").DataSource((IEnumerable<object>)ViewBag.dataSource).ActionComplete("actionComplete").Columns(col =>
+        @Html.EJS().Grid("DialogTemplateEdit").DataSource((IEnumerable<object>)ViewData["dataSource"]).ActionComplete("actionComplete").Columns(col =>
    {
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 3 }).Add();

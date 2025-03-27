@@ -21,9 +21,9 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult Paging()
         {
-            ViewBag.pagerPositions = new string[] { "Top", "Bottom" };
-            ViewBag.pageSizes = new string[] { "Row", "Column", "Both", "None" };
-            ViewBag.pagerViewData = new string[] { "Row", "Column", "Both" };
+            ViewData["pagerPositions"] = new string[] { "Top", "Bottom" };
+            ViewData["pageSizes"] = new string[] { "Row", "Column", "Both", "None" };
+            ViewData["pagerViewData"] = new string[] { "Row", "Column", "Both" };
             return View();
         }
     }

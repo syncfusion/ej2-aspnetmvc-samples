@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.BulletChart
                 new CustomBulletData { value = 1.7, target = 2.5}     
             };
            
-            ViewBag.dataSource = bulletData1;
+            ViewData["dataSource"] = bulletData1;
             return View();
         }
         public class CustomBulletData

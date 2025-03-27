@@ -21,14 +21,14 @@ namespace EJ2MVCSampleBrowser.Controllers.Timeline
             List<object> orientationData = new List<object>();
             orientationData.Add(new { text = "Vertical", value = "vertical" });
             orientationData.Add(new { text = "Horizontal", value = "horizontal" });
-            ViewBag.OrientationData = orientationData;
+            ViewData["OrientationData"] = orientationData;
 
             List<object> alignData = new List<object>();
             alignData.Add(new { text = "Before", value = "before" });
             alignData.Add(new { text = "After", value = "after" });
             alignData.Add(new { text = "Alternate", value = "alternate" });
             alignData.Add(new { text = "Alternate reverse", value = "alternatereverse" });
-            ViewBag.AlignData = alignData;
+            ViewData["AlignData"] = alignData;
 
             return View();
         }

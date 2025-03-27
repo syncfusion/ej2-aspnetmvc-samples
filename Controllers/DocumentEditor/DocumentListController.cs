@@ -16,7 +16,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
         public ActionResult DocumentList()
         {
             var documentDetails = DocumentDataDetails.GetAllRecords();
-            ViewBag.dataSource = documentDetails;
+            ViewData["dataSource"] = documentDetails;
             return View();
         }
     }

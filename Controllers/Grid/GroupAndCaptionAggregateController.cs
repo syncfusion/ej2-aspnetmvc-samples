@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult GroupAndCaptionAggregate()
         {
             var DataSource = EnergyData.GetAllRecords();
-            ViewBag.dataSource = DataSource;
+            ViewData["dataSource"] = DataSource;
             return View();
         }
     }

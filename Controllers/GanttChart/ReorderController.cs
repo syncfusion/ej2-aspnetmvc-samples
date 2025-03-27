@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult Reorder()
         {
-            ViewBag.DataSource = GanttData.ProjectNewData();
+            ViewData["DataSource"] = GanttData.ProjectNewData();
 
             List<object> columnNames = new List<object>();
             columnNames.Add(new { text = "ID", value = "TaskId" });
@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
             columnNames.Add(new { text = "Duration", value = "Duration" });
             columnNames.Add(new { text = "Dependency", value = "Predecessor" });
             columnNames.Add(new { text = "Progress", value = "Progress" });
-            ViewBag.columns = columnNames;
+            ViewData["columns"] = columnNames;
 
             List<object> ColumnsIindex = new List<object>();
             ColumnsIindex.Add(new { text = "1", value = "0" });
@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
             ColumnsIindex.Add(new { text = "5", value = "4" });
             ColumnsIindex.Add(new { text = "6", value = "5" });
             ColumnsIindex.Add(new { text = "7", value = "6" });
-            ViewBag.index = ColumnsIindex;
+            ViewData["index"] = ColumnsIindex;
             return View();
         }
     }

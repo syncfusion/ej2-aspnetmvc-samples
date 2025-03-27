@@ -1,12 +1,12 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="content-wrapper multiple-schedulers">
             <div class="schedule-container">
-                @Html.EJS().Schedule("first-schedule").EventDragArea(".content-wrapper").Width("100%").Height("650px").SelectedDate(new DateTime(DateTime.Today.Year, 4, 1)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).Group(group => group.Resources(ViewBag.ResourceNames)).Resources(res => { res.DataSource(ViewBag.firstScheduleResourceDataSource).Field("TaskId").Title("Employee").Name("Employees").TextField("text").IdField("id").ColorField("color").Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.firstScheduleData }).RowAutoHeight(true).DragStop("onFirstEventDragStop").Render()
-                @Html.EJS().Schedule("second-schedule").EventDragArea(".content-wrapper").Width("100%").Height("650px").SelectedDate(new DateTime(DateTime.Today.Year, 4, 1)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).Group(group => group.Resources(ViewBag.ResourceNames)).Resources(res => { res.DataSource(ViewBag.secondScheduleResourceDataSource).Field("TaskId").Title("Employee").Name("Employees").TextField("text").IdField("id").ColorField("color").Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.secondScheduleData }).RowAutoHeight(true).DragStop("onSecondEventDragStop").Render()
+                @Html.EJS().Schedule("first-schedule").EventDragArea(".content-wrapper").Width("100%").Height("650px").SelectedDate(new DateTime(DateTime.Today.Year, 4, 1)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).Group(group => group.Resources((string[])ViewData["ResourceNames"])).Resources(res => { res.DataSource(ViewData["firstScheduleResourceDataSource"]).Field("TaskId").Title("Employee").Name("Employees").TextField("text").IdField("id").ColorField("color").Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["firstScheduleData"] }).RowAutoHeight(true).DragStop("onFirstEventDragStop").Render()
+                @Html.EJS().Schedule("second-schedule").EventDragArea(".content-wrapper").Width("100%").Height("650px").SelectedDate(new DateTime(DateTime.Today.Year, 4, 1)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).Group(group => group.Resources((string[])ViewData["ResourceNames"])).Resources(res => { res.DataSource(ViewData["secondScheduleResourceDataSource"]).Field("TaskId").Title("Employee").Name("Employees").TextField("text").IdField("id").ColorField("color").Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["secondScheduleData"] }).RowAutoHeight(true).DragStop("onSecondEventDragStop").Render()
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@
         <div class='control-wrapper'>
             <div style='padding-top:75px;'>
 
-                @Html.EJS().ComboBox("country").Filtering("onfiltering").Placeholder("Select a country").AllowFiltering(true).Fields(new ComboBoxFieldSettings { Text = "Name", Value = "Code" }).PopupHeight("270px").DataSource((IEnumerable<Countries>)ViewBag.data).Render()
+                @Html.EJS().ComboBox("country").Filtering("onfiltering").Placeholder("Select a country").AllowFiltering(true).Fields(new ComboBoxFieldSettings { Text = "Name", Value = "Code" }).PopupHeight("270px").DataSource((IEnumerable<Countries>)ViewData["data"]).Render()
 
             </div>
         </div>
@@ -26,7 +26,7 @@
         function onfiltering(e) {
             var query = new ej.data.Query();
             query = (e.text !== '') ? query.where('Name', 'startswith', e.text, true) : query;
-            e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.data)), query);
+            e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewData["data"])), query);
         }
     </script>
 }

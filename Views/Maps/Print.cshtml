@@ -56,10 +56,10 @@
             ).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer>{
        new Syncfusion.EJ2.Maps.MapsLayer
        {
-           ShapeData = ViewBag.ShapeData,
+           ShapeData = ViewData["ShapeData"],
            ShapePropertyPath = "name",
            ShapeDataPath = "name",
-           DataSource =ViewBag.data,
+           DataSource =ViewData["data"],
            TooltipSettings = new MapsTooltipSettings
            {
                Visible = true, ValuePath = "population",

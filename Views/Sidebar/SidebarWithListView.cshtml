@@ -4,7 +4,7 @@
         <div id="wrapper">
             @*main content declaration*@
             <div>
-                @Html.EJS().Toolbar("listToolbar").Clicked("toolbarCliked").Items(ViewBag.ListToolItems).Render()
+                @Html.EJS().Toolbar("listToolbar").Clicked("toolbarCliked").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["ListToolItems"]).Render()
             </div>
             <div class="maincontent">
                 <div>
@@ -16,7 +16,7 @@
             @*end of main content declaration*@
         </div>
         @{Html.EJS().Sidebar("listSidebar").Width("250px").Target(".maincontent").Type(Syncfusion.EJ2.Navigations.SidebarType.Auto).IsOpen(true).ContentTemplate(@<div>
-            @Html.EJS().ListView("listSidebarList").Select("OnSelect").Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings() { Id = "Id", Text = "Text" }).CssClass("e-template-list").DataSource(ViewBag.ListData).Template(ViewBag.ListTemplate).Render()
+            @Html.EJS().ListView("listSidebarList").Select("OnSelect").Fields(new Syncfusion.EJ2.Lists.ListViewFieldSettings() { Id = "Id", Text = "Text" }).CssClass("e-template-list").DataSource(ViewData["ListData"]).Template((string)ViewData["ListTemplate"]).Render()
             </div>).Render();}
     </div>
 }

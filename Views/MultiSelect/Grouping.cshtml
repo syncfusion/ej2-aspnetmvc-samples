@@ -6,7 +6,7 @@
         <div class="control-wrapper">
             <h4>Grouping</h4>
             @Html.EJS().MultiSelect("group").PopupHeight("200px").Placeholder("Select a vegetables").DataSource(
-                       (IEnumerable<Vegetables>)ViewBag.groupdata).Fields(new MultiSelectFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).Render()
+                       (IEnumerable<Vegetables>)ViewData["groupdata"]).Fields(new MultiSelectFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).Render()
         </div>
     </div>
 

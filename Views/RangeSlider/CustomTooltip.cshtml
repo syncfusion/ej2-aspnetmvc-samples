@@ -8,7 +8,7 @@
                 <label class="labeltext userselect">
                     <span class="label-text">Background color</span>
                 </label>
-                @Html.EJS().Slider("timeObj").Min(1373693400000).Max(1373736600000).Enabled(true).TooltipChange("tooltipChangeHandler").RenderingTicks("renderingTicksHandler").Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before, CssClass = "e-tooltip-cutomization"}).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 3 * 3600000, SmallStep = 3600000, ShowSmallTicks = true }).Type(SliderType.Range).Value(ViewBag.timeValue).Render()
+                @Html.EJS().Slider("timeObj").Min(1373693400000).Max(1373736600000).Enabled(true).TooltipChange("tooltipChangeHandler").RenderingTicks("renderingTicksHandler").Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before, CssClass = "e-tooltip-cutomization"}).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 3 * 3600000, SmallStep = 3600000, ShowSmallTicks = true }).Type(SliderType.Range).Value(ViewData["timeValue"]).Render()
             </div>
             <div class="sliderwrap">
                 <label class="labeltext userselect">

@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Badge
             accItems.Add(new AccordionItem { Header = "Kevin", Content = template, IconCss = "e-people e-acrdn-icons" });
             accItems.Add(new AccordionItem { Header = "Eric", Content = template, IconCss = "e-people e-acrdn-icons" });
             accItems.Add(new AccordionItem { Header = "Peter", Content = template, IconCss = "e-people e-acrdn-icons" });
-            ViewBag.accordionItems = accItems;
+            ViewData["accordionItems"] = accItems;
             return View();
         }
     }

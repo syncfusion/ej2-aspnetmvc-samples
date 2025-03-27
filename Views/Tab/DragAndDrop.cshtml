@@ -4,14 +4,14 @@
     <div id="TabContainer">
         <div class="col-lg-4" style="margin-top: 10px;">
             <div class='property-panel-header'>List of Components</div>
-            @Html.EJS().TreeView("Tab_TreeView").AllowDragAndDrop(true).DragArea("#TabContainer").NodeDragStop("onNodeDragStop").NodeDragging("onNodeDrag").CssClass("treeview-external-drag-tab").Fields(field => field.DataSource(ViewBag.data).Id("id").Text("text")).Render()
+            @Html.EJS().TreeView("Tab_TreeView").AllowDragAndDrop(true).DragArea("#TabContainer").NodeDragStop("onNodeDragStop").NodeDragging("onNodeDrag").CssClass("treeview-external-drag-tab").Fields(field => field.DataSource(ViewData["data"]).Id("id").Text("text")).Render()
         </div>
         <div class="col-lg-8 content-wrapper control-section">
             @(Html.EJS().Tab("ej2Tab")
              .Items(new List<TabItem> {
-                new TabItem { Header = ViewBag.headerTextOne, Content = "#DataGrid" },
-                new TabItem { Header = ViewBag.headerTextTwo, Content = "#Chart" },
-                new TabItem { Header = ViewBag.headerTextThree, Content = "#Schedule" }
+                new TabItem { Header = (TabHeader)ViewData["headerTextOne"], Content = "#DataGrid" },
+                new TabItem { Header = (TabHeader)ViewData["headerTextTwo"], Content = "#Chart" },
+                new TabItem { Header = (TabHeader)ViewData["headerTextThree"], Content = "#Schedule" }
              })
              .Height("auto")
              .Created("onTabCreate")
@@ -24,7 +24,7 @@
             )
             <div class="content">
                 <div style="display: none" id="grid">
-                    @Html.EJS().Grid("DataGrid").DataSource((IEnumerable<object>)ViewBag.gridData).Columns(col =>
+                    @Html.EJS().Grid("DataGrid").DataSource((IEnumerable<object>)ViewData["gridData"]).Columns(col =>
                     {
                         col.Field("OrderID").HeaderText("Order ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("120").Type("number").Add();
                         col.Field("CustomerID").HeaderText("Customer ID").Width("140").Type("string").Add();
@@ -38,7 +38,7 @@
                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).
                        XName("month").
                        YName("sales").
-                       DataSource(ViewBag.chartData).Add();
+                       DataSource(ViewData["chartData"]).Add();
                     }).Render()
                 </div>
                 <div style="display: none" id="schedule">
@@ -58,7 +58,7 @@
                     )
                 </div>
                 <div style="display: none" id="dropdownList">
-                    @Html.EJS().DropDownList("Tab_DropdownList").Width("200").Placeholder("Select a game").DataSource((IEnumerable<Object>)ViewBag.sportsData).CssClass("DropdownList").Render()
+                    @Html.EJS().DropDownList("Tab_DropdownList").Width("200").Placeholder("Select a game").DataSource((IEnumerable<Object>)ViewData["sportsData"]).CssClass("DropdownList").Render()
                 </div>
                 <div style="display: none" id="datePicker">
                     @Html.EJS().DatePicker("Tab_DatePicker").Width("200").CssClass("DatePicker").Placeholder("Enter date").Render()

@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section" id="target">
         @Html.EJS().Button("dialogButton").Content("Open").Render()
-        @Html.EJS().Dialog("modal_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).IsModal(true).Open("dialogOpen").Close("dialogClose").Header("Software Update").ContentTemplate(@<div>Your current software version is up to date.</div>).CloseOnEscape(true).Width("335px").Created("created").Target("#target").Buttons(ViewBag.ModalButton).Render()
+        @Html.EJS().Dialog("modal_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).IsModal(true).Open("dialogOpen").Close("dialogClose").Header("Software Update").ContentTemplate(@<div>Your current software version is up to date.</div>).CloseOnEscape(true).Width("335px").Created("created").Target("#target").Buttons((List<DialogDialogButton>)ViewData["ModalButton"]).Render()
     </div>
     <div class="col-lg-4 property-section">
         <table id="property" title="Properties">

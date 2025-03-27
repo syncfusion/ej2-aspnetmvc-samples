@@ -11,7 +11,7 @@
                     </div>
                     <div class="layout">
                         <div id="container">
-                            @Html.EJS().Menu("menu").Items(ViewBag.data).HamburgerMode(true).ShowItemOnClick(true).Created("menuCreated").Render()
+                            @Html.EJS().Menu("menu").Items(ViewData["data"]).HamburgerMode(true).ShowItemOnClick(true).Created("menuCreated").Render()
                         </div>
                     </div>
                     <div class="outerButton"> </div>
@@ -28,7 +28,7 @@
                         </td>
                         <td style="width: 50%;padding-top:10px">
                             <div style="max-width: 200px">
-                                @Html.EJS().DropDownList("ddl").DataSource(ViewBag.ddlData).Value("Mobile").PopupHeight("200px").Change("ddlChange").Render()
+                                @Html.EJS().DropDownList("ddl").DataSource(ViewData["ddlData"]).Value("Mobile").PopupHeight("200px").Change("ddlChange").Render()
                             </div>
                         </td>
                     </tr>

@@ -8,7 +8,7 @@
                        .PrimaryYAxis(py => py.Title("Server Load").LabelFormat("{value}MB")).
                        Series(sr => sr.DataSource("GetDateTimeData(new Date(2009, 0, 1), new Date(2009, 8, 1))")
                        .XName("x").YName("y").Name("Server Load").Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Animation(an => an.Enable(false)).Add()).
-                       Tooltip(tl => tl.Enable(true).Shared(true)).Render()
+                       Tooltip(tl => tl.Enable(true).ShowNearestTooltip(true).EnableHighlight(true)).Render()
         )
     </div>
     <div class="col-lg-3 property-section">
@@ -57,6 +57,7 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var intl = new ejs.base.Internationalization();
         var chart;
@@ -66,8 +67,7 @@
                 minimum: new Date(2009, 0, 1),
                 maximum: new Date(2014, 0, 1)
             };
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.load = function () { };
         }
         function GetDateTimeData(start, end) {
@@ -201,6 +201,9 @@
 @section Description{
     <p>
         In this example, you can see how to load data for the chart on demand. The chart will fire the <code>ScrollEnd</code> event, and in that event, we can update the chart with the required data based on the point length and axis range. The scrollbar in the chart can be customized using the <code>Height</code>, <code>TrackColor</code>, <code>TrackRadius</code>, <code>ScrollbarRadius</code>, <code>ScrollbarColor</code>, <code>EnableZoom</code>, and <code>GripColor</code> properties in <code>ScrollbarSettings</code>.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
     </p>
     <p>
         More information about the lazy loading can be found in this

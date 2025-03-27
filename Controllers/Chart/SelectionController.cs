@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new SelectionChartData { Country = "Japan", Children = 13, Adult = 61, SeniorAdult = 26 },
                 new SelectionChartData { Country = "Brazil", Children = 24, Adult = 68, SeniorAdult = 8  }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class SelectionChartData

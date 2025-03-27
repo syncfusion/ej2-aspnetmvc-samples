@@ -7,7 +7,7 @@
    {
        sheet.Name("Gross Salary").FrozenRows(2).FrozenColumns(2).SelectedRange("C1").Ranges(ranges =>
        {
-           ranges.DataSource((IEnumerable<object>)ViewBag.freezePaneData).StartCell("A2").Add();
+           ranges.DataSource((IEnumerable<object>)ViewData["freezePaneData"]).StartCell("A2").Add();
        }).Rows(row =>{
            row.Cells(cell => {
                cell.Index(1).Value("Period").Style(new SpreadsheetCellStyle { FontSize = "12pt", FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, VerticalAlign = VerticalAlign.Middle }).Add();

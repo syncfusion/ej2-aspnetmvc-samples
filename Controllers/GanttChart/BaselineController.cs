@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Baseline
         public ActionResult Baseline()
         {
-            ViewBag.DataSource = GanttData.BaselineData();
+            ViewData["DataSource"] = GanttData.BaselineData();
             return View();
         }
     }

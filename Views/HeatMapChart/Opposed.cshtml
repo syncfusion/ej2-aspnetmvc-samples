@@ -7,19 +7,19 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Monthly Flight Traffic at JFK Airport").TextStyle(ViewBag.textStyle)).XAxis(
+                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Monthly Flight Traffic at JFK Airport").TextStyle(ViewData["textStyle"])).XAxis(
                     xAxis =>
                     {
                         xAxis.LabelRotation(45)
                         .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                        .Labels(ViewBag.xLabels)
-                        .OpposedPosition(true).TextStyle(ViewBag.labelTextStyle);
+                        .Labels((string[])ViewData["xLabels"])
+                        .OpposedPosition(true).TextStyle(ViewData["labelTextStyle"]);
                     }).YAxis(yaxis =>
                     {
                         yaxis.OpposedPosition(true)
-                        .Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle);
+                        .Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"]);
                     }).CellSettings(cellSettings =>
-                    cellSettings.Border(ViewBag.border).ShowLabel(false).Format("{value} flights")).LegendSettings(legendSettings => legendSettings.Visible(false)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).Load("load").DataSource(ViewBag.dataSource).Render()
+                    cellSettings.Border(ViewData["border"]).ShowLabel(false).Format("{value} flights")).LegendSettings(legendSettings => legendSettings.Visible(false)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).Load("load").DataSource(ViewData["dataSource"]).Render()
                 </div>
             </div>
         </div>

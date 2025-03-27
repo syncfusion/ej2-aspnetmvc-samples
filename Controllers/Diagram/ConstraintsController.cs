@@ -314,11 +314,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             DiagramSelector userHandle = new DiagramSelector();
             userHandle.Constraints = SelectorConstraints.UserHandle;
             userHandle.UserHandles = handle;
-            ViewBag.selectedItems = userHandle;
-            ViewBag.userhandle = handle;
-            ViewBag.nodes = nodes;
-            ViewBag.connectors = Connectors;
-            ViewBag.getTool = "getTool";
+            ViewData["selectedItems"] = userHandle;
+            ViewData["userhandle"] = handle;
+            ViewData["nodes"] = nodes;
+            ViewData["connectors"] = Connectors;
+            ViewData["getTool"] = "getTool";
             return View();
         }
         public class Node : DiagramNode

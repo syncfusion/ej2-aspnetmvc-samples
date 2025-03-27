@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
     {
         public ActionResult PrintExport()
         {
-            ViewBag.format = new string[] { "JPEG", "PNG", "SVG", "PDF" };
+            ViewData["format"] = new string[] { "JPEG", "PNG", "SVG", "PDF" };
             return View();
         }
     }

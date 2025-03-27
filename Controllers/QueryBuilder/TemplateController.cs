@@ -52,11 +52,11 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
                 new { key = "Not equal", value = "notequal" }
             };
 
-            ViewBag.rule = rule;
-            ViewBag.paymentOperator = paymentOperator;
-            ViewBag.transactionOperator = transactionOperator;
-            ViewBag.amountOperator = amountOperator;
-            ViewBag.dataSource = QueryBuilderData.expenseData;
+            ViewData["rule"] = rule;
+            ViewData["paymentOperator"] = paymentOperator;
+            ViewData["transactionOperator"] = transactionOperator;
+            ViewData["amountOperator"] = amountOperator;
+            ViewData["dataSource"] = QueryBuilderData.expenseData;
             return View();
         }
     }

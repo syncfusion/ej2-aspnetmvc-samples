@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers
 
         public ActionResult Formats()
         {
-            ViewBag.data = new GameList().MaskEditModel();
+            ViewData["data"] = new GameList().MaskEditModel();
             return View();
 
         }

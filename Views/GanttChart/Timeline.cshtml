@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Timeline";
+    ViewData["Title"] = "Timeline";
 }
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="control-wrapper">
             <div class="control-section">
-                @(Html.EJS().Gantt("Timeline").DataSource((IEnumerable<object>)ViewBag.DataSource)
+                @(Html.EJS().Gantt("Timeline").DataSource((IEnumerable<object>)ViewData["DataSource"])
                     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate")
                     .Duration("Duration").Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Notes"))
                     .Height("503px").HighlightWeekends(true).ProjectStartDate("02/03/2024").ProjectEndDate("03/23/2024")
@@ -69,7 +69,7 @@
                 </td>
                 <td style="width:70%;">
                     <div>
-                        @(Html.EJS().DropDownList("TopTierUnit").DataSource((IEnumerable<Object>)ViewBag.Units)
+                        @(Html.EJS().DropDownList("TopTierUnit").DataSource((IEnumerable<Object>)ViewData["Units"])
                             .Fields(fs => fs.Text("Unit").Value("Id")).Value("Week").Change("TopUnitChange").Render()
                         )
                     </div>
@@ -83,7 +83,7 @@
                 </td>
                 <td style="width:70%;">
                     <div>
-                        @(Html.EJS().DropDownList("TopTierFormat").DataSource((IEnumerable<Object>)ViewBag.WeekFormat)
+                        @(Html.EJS().DropDownList("TopTierFormat").DataSource((IEnumerable<Object>)ViewData["WeekFormat"])
                               .Fields(fs => fs.Text("Format").Value("Id")).Value("MMM dd, yyyy").Change("TopFormatChange").Render()
                         )
                     </div>
@@ -117,7 +117,7 @@
                 </td>
                 <td style="width:70%;">
                     <div>
-                        @(Html.EJS().DropDownList("BottomTierUnit").DataSource((IEnumerable<Object>)ViewBag.Units)
+                        @(Html.EJS().DropDownList("BottomTierUnit").DataSource((IEnumerable<Object>)ViewData["Units"])
                             .Fields(fs => fs.Text("Unit").Value("Id")).Value("Day").Change("BottomUnitChange").Render()
                         )
                     </div>
@@ -131,7 +131,7 @@
                 </td>
                 <td style="width:70%;">
                     <div>
-                        @(Html.EJS().DropDownList("BottomTierFormat").DataSource((IEnumerable<Object>)ViewBag.DayFormat)
+                        @(Html.EJS().DropDownList("BottomTierFormat").DataSource((IEnumerable<Object>)ViewData["DayFormat"])
                             .Fields(fs => fs.Text("Format").Value("Id")).Index(3).Change("BottomFormatChange").Render()
                         )
                     </div>

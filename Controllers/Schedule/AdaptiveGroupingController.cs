@@ -19,13 +19,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             ScheduleData data = new ScheduleData();
             List<ScheduleData.ResourceData> resourceData = data.GetResourceData();
             List<ScheduleData.ResourceData> timelineResourceData = data.GetTimelineResourceData();
-            ViewBag.datasource = resourceData.Concat(timelineResourceData);
+            ViewData["datasource"] = resourceData.Concat(timelineResourceData);
 
             List<ResourceDataSourceModel> projects = new List<ResourceDataSourceModel>();
             projects.Add(new ResourceDataSourceModel { text = "PROJECT 1", id = 1, color = "#cb6bb2" });
             projects.Add(new ResourceDataSourceModel { text = "PROJECT 2", id = 2, color = "#56ca85" });
             projects.Add(new ResourceDataSourceModel { text = "PROJECT 3", id = 3, color = "#df5286" });
-            ViewBag.Projects = projects;
+            ViewData["Projects"] = projects;
 
             List<ResourceDataSourceModel> categories = new List<ResourceDataSourceModel>();
             categories.Add(new ResourceDataSourceModel { text = "Nancy", id = 1, groupId = 1, color = "#df5286" });
@@ -34,9 +34,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             categories.Add(new ResourceDataSourceModel { text = "Smith", id = 4, groupId = 2, color = "#5978ee" });
             categories.Add(new ResourceDataSourceModel { text = "Michael", id = 5, groupId = 3, color = "#df5286" });
             categories.Add(new ResourceDataSourceModel { text = "Root", id = 6, groupId = 3, color = "#00bdae" });
-            ViewBag.Categories = categories;
+            ViewData["Categories"] = categories;
 
-            ViewBag.Resources = new string[] { "Projects", "Categories" };
+            ViewData["Resources"] = new string[] { "Projects", "Categories" };
             return View();
         }
     }

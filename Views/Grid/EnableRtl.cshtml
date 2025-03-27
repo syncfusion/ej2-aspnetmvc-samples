@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "EnableRtl";
+    ViewData["Title"] = "EnableRtl";
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("EnableRtl").DataSource((IEnumerable<object>)ViewBag.dataSource).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu); }).AllowFiltering().ShowColumnChooser(true).Columns(col =>
+        @Html.EJS().Grid("EnableRtl").DataSource((IEnumerable<object>)ViewData["dataSource"]).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu); }).AllowFiltering().ShowColumnChooser(true).Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

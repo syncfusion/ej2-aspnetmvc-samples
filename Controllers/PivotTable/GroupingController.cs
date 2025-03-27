@@ -21,8 +21,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult Grouping()
         {
-            ViewBag.selectedGroups = new string[] { "Years", "Months", "Days" };
-            ViewBag.groupData = new string[] { "Years", "Quarters", "Months", "Days" };
+            ViewData["selectedGroups"] = new string[] { "Years", "Months", "Days" };
+            ViewData["groupData"] = new string[] { "Years", "Quarters", "Months", "Days" };
             return View();
         }
     }

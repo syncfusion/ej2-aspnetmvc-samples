@@ -12,7 +12,7 @@
                    .Width(2)
                    .Border(br => br.Width(2))
                     .Marker(mr=>mr.Visible(true).Width(7).Height(7).IsFilled(true))
-                   .DataSource(ViewBag.ChartPoints)
+                   .DataSource(ViewData["ChartPoints"])
                     .Opacity(0.5).Add();
                 sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                    .Name("Thomas")
@@ -21,7 +21,7 @@
                    .Width(2)
                    .Border(br => br.Width(2))
                     .Marker(mr=>mr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true))
-                   .DataSource(ViewBag.ChartPoints)
+                   .DataSource(ViewData["ChartPoints"])
                     .Opacity(0.5).Add();
             })
               .PrimaryXAxis(xaxis =>
@@ -41,7 +41,7 @@
                         .Maximum(5)
                         .Interval(1)
               )
-          .Title("Data Consumption").Tooltip(tt => tt.Enable(true).Format("${point.x} : <b>${point.y}</b>"))
+          .Title("Data Consumption").Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true).Format("${point.x} : <b>${point.y}</b>"))
           .ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
 )        
         </div>
@@ -53,10 +53,10 @@
         }
     </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>

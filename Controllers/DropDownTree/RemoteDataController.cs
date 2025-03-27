@@ -41,7 +41,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DropDownTree
             childData.Text = "ShipName";
             childData.ParentValue = "EmployeeID";
             childData.DataSource = data;
-            ViewBag.remoteFields = parentData;
+            ViewData["remoteFields"] = parentData;
             return View();
         }
     }

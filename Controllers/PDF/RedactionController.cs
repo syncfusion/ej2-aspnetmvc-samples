@@ -100,12 +100,12 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                     }
                     else
                     {
-                        ViewBag.lab = "Fill proper redaction bounds to redact";
+                        ViewData["lab"] = "Fill proper redaction bounds to redact";
                     }
                 }
                 else
                 {
-                    ViewBag.lab = "Choose PDF document to redact";
+                    ViewData["lab"] = "Choose PDF document to redact";
                 }
             }
             return View();

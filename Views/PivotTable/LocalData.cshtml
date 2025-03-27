@@ -17,7 +17,7 @@
                         </td>
                         <td>
                             <div style="padding-left: 5px;">
-                                @Html.EJS().DropDownList("contenttype").Index(0).DataSource(ViewBag.contentTypeDropDown).Value("JSON").Change("contentType").Render()
+                                @Html.EJS().DropDownList("contenttype").Index(0).DataSource(ViewData["contentTypeDropDown"]).Value("JSON").Change("contentType").Render()
                             </div>
                         </td>
                     </tr>
@@ -25,10 +25,10 @@
             </table>
         </div>
         <div class="content-wrapper">
-            @Html.EJS().PivotView("pivotview").Width("100%").Height("290").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("290").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(false).EnableSorting(true)
             .DrilledMembers(drilledmembers =>
             {
-                drilledmembers.Name("EnerType").Items(ViewBag.drilledMembers).Add();
+                drilledmembers.Name("EnerType").Items((string[])ViewData["drilledMembers"]).Add();
             })
             .FormatSettings(formatsettings =>
             {

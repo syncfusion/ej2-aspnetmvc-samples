@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ThreeDimensionalChart
                 new EmptyData { X = "Serbia", Y = 3  }
             };
             
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class EmptyData

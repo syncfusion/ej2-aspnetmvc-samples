@@ -16,12 +16,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult MonthAgenda()
         {
-            ViewBag.datasource = new ScheduleData().GetFifaEventsData();
+            ViewData["datasource"] = new ScheduleData().GetFifaEventsData();
             List<ScheduleView> viewOption = new List<ScheduleView>()
             {
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.MonthAgenda }
             };
-            ViewBag.view = viewOption;
+            ViewData["view"] = viewOption;
             return View();
         }
     }

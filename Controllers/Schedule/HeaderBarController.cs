@@ -17,12 +17,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult HeaderBar()
         {
-            ViewBag.datasource = new ScheduleData().GetEmployeeEventData();
+            ViewData["datasource"] = new ScheduleData().GetEmployeeEventData();
             List<ScheduleView> viewOption = new List<ScheduleView>()
             {
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Month}
             };
-            ViewBag.view = viewOption;
+            ViewData["view"] = viewOption;
             List<ScheduleToolbarItem> toolbarItems = new List<ScheduleToolbarItem>()
             {
                 new ScheduleToolbarItem { Name = ToolbarName.Previous, Align = ItemAlign.Left },
@@ -31,7 +31,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
                 new ScheduleToolbarItem { Name = ToolbarName.Today, Align = ItemAlign.Right },
                 new ScheduleToolbarItem { Align = ItemAlign.Right, PrefixIcon = "user-icon", Text = "Nancy", CssClass = "e-schedule-user-icon", Click = "onIconClick" },
             };
-            ViewBag.toolbarItems = toolbarItems;
+            ViewData["toolbarItems"] = toolbarItems;
             return View();
         }
     }

@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ThreeDimensionalChart
                 new BarData { X = "Canada", Y = 3.05, Y1 = 2.04 }
             };
             
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class BarData

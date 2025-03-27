@@ -19,20 +19,20 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
         // GET: CalendarHeatmap
         public ActionResult CalendarHeatmap()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
                 fontFamily = "inherit"
             };
-            ViewBag.labelTextStyle = new
+            ViewData["labelTextStyle"] = new
             {
                 fontFamily = "inherit"
             };
             string[] yLabels = new string[7] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-            ViewBag.yLabels = yLabels;
-            ViewBag.dataSource = new HeatMapData().GetCalendarData();
+            ViewData["yLabels"] = yLabels;
+            ViewData["dataSource"] = new HeatMapData().GetCalendarData();
             return View();
         }
     }

@@ -1,11 +1,11 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using EJ2MVCSampleBrowser.Models
 
 @section ControlsSection {
     <div class="control-section">
         <div class="control-wrapper">
             @Html.EJS().RichTextEditor("exportEditor").ToolbarSettings(e =>
-                     e.Items((object)ViewBag.Tools)).ExportWord(ViewBag.ExportWord).ExportPdf(ViewBag.ExportPdf).Value((string)ViewBag.RTEValue).EnableXhtml(true).InsertImageSettings(ViewBag.InsertImageSettings).Render()
+                     e.Items((object)ViewData["Tools"])).ExportWord((Syncfusion.EJ2.RichTextEditor.RichTextEditorExportWord)ViewData["ExportWord"]).ExportPdf((Syncfusion.EJ2.RichTextEditor.RichTextEditorExportPdf)ViewData["ExportPdf"]).Value((string)ViewData["RTEValue"]).EnableXhtml(true).InsertImageSettings((Syncfusion.EJ2.RichTextEditor.RichTextEditorImageSettings)ViewData["InsertImageSettings"]).Render()
         </div>
     </div>
 }

@@ -17,10 +17,10 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult DialogEditing()
         {
-            ViewBag.data = new KanbanDataModels().KanbanTasks();
-            ViewBag.status = new KanbanDataModels().DialogStatus();
-            ViewBag.assignee = new KanbanDataModels().AssigneeData();
-            ViewBag.priority = new KanbanDataModels().PriorityData();
+            ViewData["data"] = new KanbanDataModels().KanbanTasks();
+            ViewData["status"] = new KanbanDataModels().DialogStatus();
+            ViewData["assignee"] = new KanbanDataModels().AssigneeData();
+            ViewData["priority"] = new KanbanDataModels().PriorityData();
             return View();
         }
     }

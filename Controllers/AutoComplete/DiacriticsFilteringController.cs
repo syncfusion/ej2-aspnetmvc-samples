@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult DiacriticsFiltering()
         {
-            ViewBag.data = new Diacritics().data;
+            ViewData["data"] = new Diacritics().data;
             return View();
         }
     }

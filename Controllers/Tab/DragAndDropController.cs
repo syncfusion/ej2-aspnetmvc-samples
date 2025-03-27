@@ -49,10 +49,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
                 id = "list-05",
                 name = "RichTextEditor"
             });
-            ViewBag.data = componentList;
-            ViewBag.headerTextOne = new TabHeader { Text = "DataGrid" };
-            ViewBag.headerTextTwo = new TabHeader { Text = "Chart" };
-            ViewBag.headerTextThree = new TabHeader { Text = "Scheduler" };
+            ViewData["data"] = componentList;
+            ViewData["headerTextOne"] = new TabHeader { Text = "DataGrid" };
+            ViewData["headerTextTwo"] = new TabHeader { Text = "Chart" };
+            ViewData["headerTextThree"] = new TabHeader { Text = "Scheduler" };
             List<GridData> gridDataSource = new List<GridData>
             {
                 new GridData { OrderID = 10248, CustomerID = "VINET", EmployeeID = 5, OrderDate = new DateTime(1991, 05, 15), ShipName = "Vins et alcools Chevalier", ShipCity = "Reims", ShipAddress = "59 rue de l Abbaye", ShipRegion = "CJ", ShipPostalCode = "51100", ShipCountry = "France", Freight = (decimal?)32.38 },
@@ -61,7 +61,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
                 new GridData { OrderID = 10251, CustomerID = "VICTE", EmployeeID = 3, OrderDate = new DateTime(1937, 09, 19), ShipName = "Victuailles en stock", ShipCity = "Lyon", ShipAddress = "2, rue du Commerce", ShipRegion = "CJ", ShipPostalCode = "69004", ShipCountry = "France", Freight = (decimal?)41.34 },
                 new GridData { OrderID = 10252, CustomerID = "SUPRD", EmployeeID = 2, OrderDate = new DateTime(1955, 03, 04), ShipName = "Suprêmes délices", ShipCity = "Charleroi", ShipAddress = "Boulevard Tirou, 255", ShipRegion = "CJ", ShipPostalCode = "B-6000", ShipCountry = "Belgium", Freight = (decimal?)51.3 }
             };
-            ViewBag.gridData = gridDataSource;
+            ViewData["gridData"] = gridDataSource;
             List<LineData> chartDataSource = new List<LineData>
             {
                 new LineData { month = "Jan", sales = 35 },
@@ -77,8 +77,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
                 new LineData { month = "Nov", sales = 25 },
                 new LineData { month = "Dec", sales = 32 },
             };
-            ViewBag.chartData = chartDataSource;
-            ViewBag.sportsData = new string[] { "Badminton", "Cricket", "Football", "Golf", "Tennis" };
+            ViewData["chartData"] = chartDataSource;
+            ViewData["sportsData"] = new string[] { "Badminton", "Cricket", "Football", "Golf", "Tennis" };
             return View();
         }
 

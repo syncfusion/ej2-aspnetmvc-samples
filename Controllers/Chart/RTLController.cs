@@ -26,7 +26,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new RTLData { Year = 2018, Sales = 1060, Expense = 920, Profit = 140 },
                 new RTLData { Year = 2019, Sales = 1030, Expense = 540, Profit = 490 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class RTLData

@@ -121,10 +121,9 @@
 @section PreScripts {
     <script>
     var chatUIObj;
-    var templateMessageData = @Html.Raw(JsonConvert.SerializeObject(ViewBag.TemplateMessagedata))
+    var templateMessageData = @Html.Raw(JsonConvert.SerializeObject(ViewData["TemplateMessagedata"]))
     function onCreated() {
-        var chatUiEle = document.getElementById('chatTemplate');
-        chatUIObj = ej.base.getInstance(chatUiEle, ejs.interactivechat.ChatUI);
+        chatUIObj = ej.base.getInstance(document.getElementById('chatTemplate'), ejs.interactivechat.ChatUI);
         setTimeout(() => {
             var message = {
                 author: { id: 'bot', user: 'Bot', avatarUrl: './../Content/chatui/images/bot.png' },

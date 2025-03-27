@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new RoundedColumnChartData { Country = "Singapore", Rate = 100, Literacy_Rate = 96.8, Text = "96.8%" },
                 new RoundedColumnChartData { Country = "Niger", Rate = 100, Literacy_Rate = 19.1, Text = "19.1%" },
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class RoundedColumnChartData

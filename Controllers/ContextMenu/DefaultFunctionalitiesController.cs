@@ -32,7 +32,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ContextMenu
                 new ContextMenuItem{ Text = "New Comment", IconCss = "e-cm-icons e-comment"}
             };
 
-            ViewBag.menuitems = menuitems;
+            ViewData["menuitems"] = menuitems;
             return View();
         }
       }

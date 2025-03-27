@@ -5,7 +5,7 @@
     <div class="control-section">
         <div class="control-wrapper">
             <div id="rteSection">
-                @Html.EJS().RichTextEditor("mentionInlineFormat").Placeholder("Type '/' and choose format").Created("created").ToolbarSettings(e => e.Items((object)ViewBag.Items)).SlashMenuSettings(ViewBag.SlashMenuSettings).SlashMenuItemSelect("slashMenuItemSelect").Render()
+                @Html.EJS().RichTextEditor("mentionInlineFormat").Placeholder("Type '/' and choose format").Created("created").ToolbarSettings(e => e.Items((object)ViewData["Items"])).SlashMenuSettings((Syncfusion.EJ2.RichTextEditor.RichTextEditorSlashMenuSettings)ViewData["SlashMenuSettings"]).SlashMenuItemSelect("slashMenuItemSelect").Render()
             </div>
         </div>
     </div>

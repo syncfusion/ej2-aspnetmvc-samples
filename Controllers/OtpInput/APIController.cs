@@ -22,14 +22,14 @@ namespace EJ2MVCSampleBrowser.Controllers.OtpInput
             stylingMode.Add(new { text = "Outlined", value = "Outlined" });
             stylingMode.Add(new { text = "Underlined", value = "Underlined" });
             stylingMode.Add(new { text = "Filled", value = "Filled" });
-            ViewBag.stylingMode = stylingMode;
+            ViewData["stylingMode"] = stylingMode;
 
             List<object> validationStatus = new List<object>();
             validationStatus.Add(new { text = "None", value = "" });
             validationStatus.Add(new { text = "Success", value = "e-success" });
             validationStatus.Add(new { text = "Warning", value = "e-warning" });
             validationStatus.Add(new { text = "Error", value = "e-error" });
-            ViewBag.validationStatus = validationStatus;
+            ViewData["validationStatus"] = validationStatus;
 
             return View();
         }

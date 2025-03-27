@@ -4,14 +4,14 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "SelfReferenceData";
+    ViewData["Title"] = "SelfReferenceData";
 }
 
 @*custom code end*@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().TreeGrid("TreeGrid").IdMapping("TaskId").ParentIdMapping("ParentId").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+        @Html.EJS().TreeGrid("TreeGrid").IdMapping("TaskId").ParentIdMapping("ParentId").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
        {
            col.Field("TaskId").HeaderText("Task ID").Width(140).TextAlign(TextAlign.Right).Add();
            col.Field("TaskName").HeaderText("Task Name").Width(160).Add();

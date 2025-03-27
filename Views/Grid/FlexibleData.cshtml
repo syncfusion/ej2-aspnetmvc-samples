@@ -1,6 +1,6 @@
 
 @{
-    ViewBag.Title = "FlexibleData";
+    ViewData["Title"] = "FlexibleData";
 }
 
 <h2>Flexible Data</h2>
@@ -29,7 +29,7 @@
                     </td>
                     <td style="width: 50%; ">
                         <div class="prop-value">
-                            @Html.EJS().DropDownList("service_drop").DataSource((IEnumerable<object>)ViewBag.UrlDataList).Value("ODataV4Adaptor").PopupWidth("auto").Change("serviceChange").Fields(field => { field.Value("value").Text("text"); }).Render()
+                            @Html.EJS().DropDownList("service_drop").DataSource((IEnumerable<object>)ViewData["UrlDataList"]).Value("ODataV4Adaptor").PopupWidth("auto").Change("serviceChange").Fields(field => { field.Value("value").Text("text"); }).Render()
                         </div>
                     </td>
                 </tr>

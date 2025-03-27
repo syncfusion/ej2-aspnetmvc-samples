@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ContextMenu";
+    ViewData["Title"] = "ContextMenu";
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowExcelExport(true).AllowPdfExport(true).EditSettings(edit=>edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true)).Columns(col =>
+        @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowExcelExport(true).AllowPdfExport(true).EditSettings(edit=>edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true)).Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").Width("120").IsPrimaryKey(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

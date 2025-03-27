@@ -5,7 +5,7 @@
 @section ControlsSection {
     <div class="col-lg-8 control-section">
         <div class="content-wrapper overflow">
-            @Html.EJS().Kanban("kanban").KeyField("Status").Height("500px").DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
+            @Html.EJS().Kanban("kanban").KeyField("Status").Height("500px").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col =>
             {
            col.HeaderText("To Do").KeyField("Open").Add();
            col.HeaderText("In Progress").KeyField("InProgress").Add();
@@ -26,7 +26,7 @@
                 <td>
                     <div>
                         @Html.EJS().DropDownList("sort").Width("100%").DataSource(
-                    (IEnumerable<object>)ViewBag.SortDropDown).Change("changeSortOrder").Fields(new DropDownListFieldSettings { Text = "Value", Value = "Value" }).Index(0).Render()
+                    (IEnumerable<object>)ViewData["SortDropDown"]).Change("changeSortOrder").Fields(new DropDownListFieldSettings { Text = "Value", Value = "Value" }).Index(0).Render()
                     </div>
                 </td>
             </tr>

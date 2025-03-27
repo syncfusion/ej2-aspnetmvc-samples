@@ -6,7 +6,7 @@
 @section ControlsSection {
     <div class="col-lg-9 control-section">
         <div class="control_wrapper">
-            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewBag.data).Columns(col=> {
+            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col=> {
            col.HeaderText("To Do").KeyField("Open").Add();
            col.HeaderText("In Progress").KeyField("InProgress").Add();
            col.HeaderText("Done").KeyField("Close").Add();
@@ -14,7 +14,7 @@
            card.ContentField("Summary").HeaderField("Id");
        }).Created("onCreate").Render()
             <div>
-                @Html.EJS().Dialog("defaultDialog").Header("Validation").IsModal(true).Width("350px").ShowCloseIcon(true).Visible(false).Buttons(ViewBag.DefaultButtons).Created("onDialogCreate").Render()
+                @Html.EJS().Dialog("defaultDialog").Header("Validation").IsModal(true).Width("350px").ShowCloseIcon(true).Visible(false).Buttons((List<DialogDialogButton>)ViewData["DefaultButtons"]).Created("onDialogCreate").Render()
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
                         </tr>
                         <tr>
                             <td>
-                                @Html.EJS().DropDownList("key").Width("100%").DataSource((IEnumerable<Object>)ViewBag.ApiDropDown).Fields(new DropDownListFieldSettings { Text = "Value", Value = "Value" }).Placeholder("Key Field").Render()
+                                @Html.EJS().DropDownList("key").Width("100%").DataSource((IEnumerable<Object>)ViewData["ApiDropDown"]).Fields(new DropDownListFieldSettings { Text = "Value", Value = "Value" }).Placeholder("Key Field").Render()
                             </td>
                         </tr>
                         <tr>

@@ -22,7 +22,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult ServerSideExporting()
         {
             var treeData = TreeGridItems.GetTreeData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
             return View();
         }
         public ActionResult ExcelExport(string treeGridModel)

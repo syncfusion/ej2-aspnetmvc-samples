@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Heatmap control demonstrates applying gradient colors or solid colors for the heatmap cells" />
 }
@@ -20,13 +20,13 @@
                              palette.Value(32).Color("#081D58").Add();
                          }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed)).Load("load").LegendSettings(ls =>
                       ls.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).EnableSmartLegend(true).Width("400px")).CellSettings(cs =>
-                      cs.Border(ViewBag.border).ShowLabel(false)).TitleSettings(ts => ts.Text("U.S. Government Energy Consumption by Agency (Trillion Btu)").TextStyle(ViewBag.textStyle)).XAxis(
+                      cs.Border(ViewData["border"]).ShowLabel(false)).TitleSettings(ts => ts.Text("U.S. Government Energy Consumption by Agency (Trillion Btu)").TextStyle(ViewData["textStyle"])).XAxis(
                          xAxis =>
                          {
                              xAxis.LabelRotation(45)
                             .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                            .Labels(ViewBag.xlabels);
-                         }).YAxis(yaxis => yaxis.Labels(ViewBag.yLabels)).DataSource(ViewBag.dataSource).Render()
+                            .Labels(ViewData["xlabels"]);
+                         }).YAxis(yaxis => yaxis.Labels(ViewData["yLabels"])).DataSource(ViewData["dataSource"]).Render()
                 </div>
             </div>
         </div>

@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.DropDowns
 @{
-    ViewBag.Title = "GridLines";
+    ViewData["Title"] = "GridLines";
 }
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
 
-        @(Html.EJS().Gantt("GridLines").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true).TreeColumnIndex(1)
+        @(Html.EJS().Gantt("GridLines").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true).AllowSelection(true).TreeColumnIndex(1)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                 .Dependency("Predecessor").Child("SubTasks"))
                 .Columns(col =>
@@ -41,7 +41,7 @@
             <tr>
                 <td style="width: 100%;padding: 10px 10px 10px 0px">
                     <div>
-                        @(Html.EJS().DropDownList("Drop").DataSource((IEnumerable<object>)ViewBag.Data)
+                        @(Html.EJS().DropDownList("Drop").DataSource((IEnumerable<object>)ViewData["Data"])
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value("Both").Change("Change")
                             .Render()
                         )

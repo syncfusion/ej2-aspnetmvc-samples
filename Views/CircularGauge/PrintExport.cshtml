@@ -27,7 +27,7 @@
                 </td>
                 <td style="width: 50%;">
                     <div style='margin-top: -5px;height : 45px'>
-                        @Html.EJS().DropDownList("Export").Index(0).Width("100%").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
+                        @Html.EJS().DropDownList("Export").Index(0).Width("100%").DataSource(ViewData["format"]).Value("JPEG").Change("valueChange").Render()
                     </div>
                 </td>
             </tr>

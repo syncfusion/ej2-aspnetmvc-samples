@@ -1,26 +1,26 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Heatmap control demonstrates how to bind the JSON object with data for each columns to heatmap" />
 }
 @section ControlsSection{
     <div class="control-section">
         <div id="container" style="width:100%">
-            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Olympic Medal Achievements of most Successful Countries").TextStyle(ViewBag.textStyle)).XAxis(
+            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Olympic Medal Achievements of most Successful Countries").TextStyle(ViewData["textStyle"])).XAxis(
                  xAxis =>
                  {
                      xAxis.LabelRotation(45)
                      .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
-                     .Labels(ViewBag.xLabels);
+                     .Labels(ViewData["xLabels"]);
                  }).YAxis(yaxis =>
                  {
-                     yaxis.Title(ViewBag.title)
-                     .Labels(ViewBag.yLabels);
+                     yaxis.Title(ViewData["title"])
+                     .Labels(ViewData["yLabels"]);
                  }).PaletteSettings(ps => ps.Palette(palette =>
                  {
                      palette.Color("#F0C27B").Add();
                      palette.Color("#4B1248").Add();
                  })).CellSettings(cs =>
-                 cs.Border(ViewBag.border)).DataSource("dataSource").TooltipRender("tooltipRender").Load("load").Render()
+                 cs.Border(ViewData["border"])).DataSource("dataSource").TooltipRender("tooltipRender").Load("load").Render()
         </div>
         <div style="float: right; margin-right: 10px;">
             Source:

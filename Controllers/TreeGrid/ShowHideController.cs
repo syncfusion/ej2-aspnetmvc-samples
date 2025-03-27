@@ -20,13 +20,13 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult ShowHide()
         {
             var treeData = TreeGridItems.GetTreeData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
             List<object> dd = new List<object>();
             dd.Add(new { text = "Task ID", value = "TaskId" });
             dd.Add(new { text = "Start Date", value = "StartDate" });
             dd.Add(new { text = "Duration", value = "Duration" });
             dd.Add(new { text = "Progress", value = "Progress" });
-            ViewBag.columns = dd;
+            ViewData["columns"] = dd;
 
             return View();
         }

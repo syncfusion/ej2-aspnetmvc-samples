@@ -25,12 +25,12 @@ namespace EJ2MVCSampleBrowser.Controllers.DropDownTree
             localFields.Value = "Id";
             localFields.ParentValue = "PId";
             localFields.Text = "Name";
-            ViewBag.localFields = localFields;
+            ViewData["localFields"] = localFields;
             hierarchicalFields.DataSource = dropDownTreeHierarchical.getDropDownTreeHierarchical();
             hierarchicalFields.Value = "Code";
             hierarchicalFields.Text = "Name";
             hierarchicalFields.Child = "Child";
-            ViewBag.hierarchicalFields = hierarchicalFields;
+            ViewData["hierarchicalFields"] = hierarchicalFields;
             return View();
         }
     }

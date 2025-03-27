@@ -34,8 +34,8 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
                 }
             };
 
-            ViewBag.rule = rule;
-            ViewBag.dataSource = EmployeeView.GetAllRecords();
+            ViewData["rule"] = rule;
+            ViewData["dataSource"] = EmployeeView.GetAllRecords();
             return View();
         }
     }

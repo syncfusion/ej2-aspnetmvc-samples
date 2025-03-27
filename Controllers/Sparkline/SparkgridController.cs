@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Sparkline
         // GET: Sparkgrid
         public ActionResult Sparkgrid()
         {
-            ViewBag.dataSource = this.getDataSource("OrderData");
+            ViewData["dataSource"] = this.getDataSource("OrderData");
             return View();
         }
         public object getDataSource(string filename)

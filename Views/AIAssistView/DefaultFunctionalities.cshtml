@@ -5,7 +5,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="default-aiassistview">
-            @Html.EJS().AIAssistView("aiAssistView").ToolbarSettings(new AIAssistViewToolbarSettings() { Items = ViewBag.ToolbarItems, ItemClicked = "toolbarItemClicked" }).PromptSuggestions(ViewBag.PromptSuggestionData).BannerTemplate("#bannerContent").PromptRequest("onPromptRequest").Render()
+            @Html.EJS().AIAssistView("aiAssistView").ToolbarSettings(new AIAssistViewToolbarSettings() { Items = ViewData["ToolbarItems"], ItemClicked = "toolbarItemClicked" }).PromptSuggestions((string[])ViewData["PromptSuggestionData"]).BannerTemplate("#bannerContent").PromptRequest("onPromptRequest").Render()
         </div>
     </div>
     @*custom code start*@
@@ -39,8 +39,8 @@
 
 @section PreScripts {
     <script>
-        var prompts = @Html.Raw(Json.Encode(ViewBag.PromptResponseData));
-        var suggestions = @Html.Raw(Json.Encode(ViewBag.PromptSuggestionData));
+        var prompts = @Html.Raw(Json.Encode(ViewData["PromptResponseData"]));
+        var suggestions = @Html.Raw(Json.Encode(ViewData["PromptSuggestionData"]));
         function onPromptRequest(args) {
             setTimeout(() => {
                 var foundPrompt = prompts.find(prompt => prompt.Prompt == args.prompt);

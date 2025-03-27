@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Heatmap control shows how to place the heatmap legend in different positions" />
 }
@@ -7,12 +7,12 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Hourly Weather Forecast (in Celsius)").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Hourly Weather Forecast (in Celsius)").TextStyle(ViewData["textStyle"])).XAxis(xAxis =>
                          {
-                             xAxis.Labels(ViewBag.xLabels);
+                             xAxis.Labels(ViewData["xLabels"]);
                          }).YAxis(yaxis =>
                          {
-                             yaxis.Labels(ViewBag.yLabels);
+                             yaxis.Labels(ViewData["yLabels"]);
                          }).PaletteSettings(ps => ps.Palette(palette =>
                          {
                              palette.Value(0).Color("#6EB5D0").Add();
@@ -22,7 +22,7 @@
                          })).CellSettings(cs =>
                          cs.ShowLabel(false).Format("{value} C")).LegendSettings(ls =>
                          ls.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Left).
-                         LabelFormat("{value}\xB0 C")).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
+                         LabelFormat("{value}\xB0 C")).TooltipRender("tooltipRender").Load("load").DataSource(ViewData["dataSource"]).Render()
                 </div>
             </div>
         </div>

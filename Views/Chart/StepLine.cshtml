@@ -6,12 +6,12 @@
        {
 
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StepLine).XName("Period").YName("AUS_UnemploymentRate").Opacity(1)
-           .Marker(mr => mr.Visible(true).Width(7).Height(7)).DataSource(ViewBag.StepLineData).Width(5).Add();
+           .Marker(mr => mr.Visible(true).Width(7).Height(7)).DataSource(ViewData["StepLineData"]).Width(5).Add();
        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
        .MajorGridLines(mg=>mg.Width(0)).Minimum(new DateTime(1971, 01, 1)).Maximum(new DateTime(2012, 01, 1))
        .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
        ).PrimaryYAxis(py => py.LabelFormat("{value}%").MajorTickLines(mt=>mt.Width(0)).Interval(10).LineStyle(ls=>ls.Width(0)).Title("Production (In Percentage)")
-       ).Title("Fruit Production Statistics").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).Shared(true).Header("<b>Fruit Production</b>").Format("${point.x} : <b>${point.y}</b>")).Load("load").Render()
+       ).Title("Fruit Production Statistics").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("<b>Fruit Production</b>").Format("${point.x} : <b>${point.y}</b>")).Load("load").Render()
         </div>
     
     @*custom code start*@
@@ -21,10 +21,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>
@@ -44,7 +44,7 @@
         In this example, you can see how to render and configure a step line chart. This chart forms the step line progress by connecting points using vertical and horizontal lines. <code>Markers</code> are used to represent individual data and its values.
     </p>
     <p>
-        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
     </p>
     <p>
         More information about the step line series can be found in this

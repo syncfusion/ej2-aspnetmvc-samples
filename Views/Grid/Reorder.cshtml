@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Reorder";
+    ViewData["Title"] = "Reorder";
 }
 
 @section ControlsSection{
@@ -8,7 +8,7 @@
 <div class="col-lg-8 control-section">
     <div class="control-wrapper">
         <div class="control-section">
-            @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).ActionComplete("actionComplete").AllowReordering().Columns(col =>
+            @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewData["dataSource"]).ActionComplete("actionComplete").AllowReordering().Columns(col =>
   {
 
       col.Field("EmployeeID").HeaderText("Employee ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
@@ -31,14 +31,14 @@
             <td class="left-side">Column</td>
             <td style="padding-bottom:10px">
 
-                @Html.EJS().DropDownList("column").DataSource((IEnumerable<object>)ViewBag.columns).Change("columnChange").PopupHeight("220px").Value("EmployeeID").Fields(field => { field.Value("value").Text("text"); }).Render()
+                @Html.EJS().DropDownList("column").DataSource((IEnumerable<object>)ViewData["columns"]).Change("columnChange").PopupHeight("220px").Value("EmployeeID").Fields(field => { field.Value("value").Text("text"); }).Render()
             </td>
         </tr>
 
         <tr>
             <td class="left-side">Column Index</td>
             <td>
-                @Html.EJS().DropDownList("columnIndex").DataSource((IEnumerable<object>)ViewBag.index).Change("indexChange").PopupHeight("220px").Value("0").Fields(field => { field.Value("value").Text("text"); }).Render()
+                @Html.EJS().DropDownList("columnIndex").DataSource((IEnumerable<object>)ViewData["index"]).Change("indexChange").PopupHeight("220px").Value("0").Fields(field => { field.Value("value").Text("text"); }).Render()
             </td>
         </tr>
 

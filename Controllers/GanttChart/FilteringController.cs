@@ -18,19 +18,19 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Filtering
         public ActionResult Filtering()
         {
-            ViewBag.DataSource = GanttData.FilteredData();
+            ViewData["DataSource"] = GanttData.FilteredData();
             List<Object> typedropData = new List<object>() {
                 new { id = "Menu", type = "Menu" },
                 new { id = "Excel", type = "Excel" }
             };
-            ViewBag.typedropdata = typedropData;
+            ViewData["typedropdata"] = typedropData;
             List<Object> modedropData = new List<object>() {
                 new { id = "Parent", type = "Parent" },
                 new { id = "Child", type = "Child" },
                  new { id = "Both", type = "Both" },
                   new { id = "None", type = "None" }
             };
-            ViewBag.modedropData = modedropData;
+            ViewData["modedropData"] = modedropData;
             return View();
         }
     }

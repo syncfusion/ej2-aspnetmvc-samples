@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new SemiPieChartData { Browser =  "Firefox", Users = 25, DataLabelMappingName = "Firefox (25M)<br>10%", tooltipMappingName="10%" },
                 new SemiPieChartData { Browser =  "Others", Users = 25, DataLabelMappingName = "Others (25M)<br>10%", tooltipMappingName="10%" }
             };
-            ViewBag.PieChartPoints = PieChartPoints;
+            ViewData["PieChartPoints"] = PieChartPoints;
             return View();
         }
         public class SemiPieChartData

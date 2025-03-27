@@ -22,7 +22,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         public ActionResult HierarchicalLayout()
         {
 
-            ViewBag.Nodes = HierarchicalDetails.GetAllRecords();            
+            ViewData["Nodes"] = HierarchicalDetails.GetAllRecords();            
             return View();
         }
     }

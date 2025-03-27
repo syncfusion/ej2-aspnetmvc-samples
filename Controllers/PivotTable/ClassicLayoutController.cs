@@ -21,10 +21,10 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult ClassicLayout()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.drilledMembers = new string[] { "Accessories", "Bikes" };
-            ViewBag.drilledMembersProducts = new string[] { "Accessories##Helmets" };
-            ViewBag.filtersettings = new string[] { "Cleaners", "Fenders" };
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["drilledMembers"] = new string[] { "Accessories", "Bikes" };
+            ViewData["drilledMembersProducts"] = new string[] { "Accessories##Helmets" };
+            ViewData["filtersettings"] = new string[] { "Cleaners", "Fenders" };
             return View();
         }
     }

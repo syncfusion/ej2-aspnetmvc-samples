@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div id="wrapper">
-            @Html.EJS().DateTimePicker("datetimepicker").CssClass("e-customStyle").RenderDayCell("customDates").Value(ViewBag.value).Render()
+            @Html.EJS().DateTimePicker("datetimepicker").CssClass("e-customStyle").RenderDayCell("customDates").Value(ViewData["value"]).Render()
         </div>
     </div>
 }

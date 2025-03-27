@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult FilterMenu()
         {
             var treeData = TreeGridItems.GetTreeData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
 
             List<Object> dropData = new List<object>() {
                 new { id = "Parent", mode = "Parent" },
@@ -27,12 +27,12 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
                 new { id = "Both", mode = "Both" },
                 new { id = "None", mode = "None" }
             };
-            ViewBag.dropdata = dropData;
+            ViewData["dropdata"] = dropData;
 			List<Object> typedropData = new List<object>() {
 				new { id = "Menu", type = "Menu" },
                 new { id = "Excel", type = "Excel" }
             };
-            ViewBag.typedropdata = typedropData;
+            ViewData["typedropdata"] = typedropData;
             return View();
         }
     }

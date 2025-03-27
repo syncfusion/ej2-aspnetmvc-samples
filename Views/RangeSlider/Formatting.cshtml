@@ -7,20 +7,20 @@
             <div class='sliderwrap'>
                 <label class="userselect">Currency Slider</label>
                 <div id='currency'>
-                    @Html.EJS().Slider("slider01").Min(0).Max(100).Value(ViewBag.currencyValue).Created("onCreated").Enabled(true).Tooltip(new SliderTooltipData { Placement = TooltipPlacement.Before, IsVisible = true, Format = "C2" }).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 20, SmallStep = 5, ShowSmallTicks = true,Format = "C2" }).Type(SliderType.Range).Render()
+                    @Html.EJS().Slider("slider01").Min(0).Max(100).Value(ViewData["currencyValue"]).Created("onCreated").Enabled(true).Tooltip(new SliderTooltipData { Placement = TooltipPlacement.Before, IsVisible = true, Format = "C2" }).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 20, SmallStep = 5, ShowSmallTicks = true,Format = "C2" }).Type(SliderType.Range).Render()
 
                 </div>
             </div>
             <div class='sliderwrap'>
                 <label class="userselect">Kilometer Slider</label>
                 <div id='kilometer'>
-                    @Html.EJS().Slider("slider02").Min(900).Max(2100).Value(ViewBag.kilometerValue).Enabled(true).Tooltip(new SliderTooltipData { Placement = TooltipPlacement.Before, IsVisible = true, Format = "00##.## km" }).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 400, SmallStep = 100, ShowSmallTicks = true, Format = "00##.## km" }).Type(SliderType.Range).Render()
+                    @Html.EJS().Slider("slider02").Min(900).Max(2100).Value(ViewData["kilometerValue"]).Enabled(true).Tooltip(new SliderTooltipData { Placement = TooltipPlacement.Before, IsVisible = true, Format = "00##.## km" }).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 400, SmallStep = 100, ShowSmallTicks = true, Format = "00##.## km" }).Type(SliderType.Range).Render()
                 </div>
             </div>
             <div class='sliderwrap'>
                 <label class="userselect">Time Slider</label>
                 <div id='time'>
-                    @Html.EJS().Slider("default03").Min(1373693400000).Max(1373736600000).Value(ViewBag.timeValue).Enabled(true).TooltipChange("tooltipChangeHandler").RenderingTicks("renderingTicksHandler").Tooltip(new SliderTooltipData { Placement = TooltipPlacement.Before, IsVisible = true }).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 10800000, SmallStep = 3600000, ShowSmallTicks = true }).Type(SliderType.Range).Render()
+                    @Html.EJS().Slider("default03").Min(1373693400000).Max(1373736600000).Value(ViewData["timeValue"]).Enabled(true).TooltipChange("tooltipChangeHandler").RenderingTicks("renderingTicksHandler").Tooltip(new SliderTooltipData { Placement = TooltipPlacement.Before, IsVisible = true }).Ticks(new SliderTicksData { Placement = Placement.After, LargeStep = 10800000, SmallStep = 3600000, ShowSmallTicks = true }).Type(SliderType.Range).Render()
 
 
                 </div>

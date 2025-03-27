@@ -1,8 +1,8 @@
-﻿
+
 
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "MultipleExport";
+    ViewData["Title"] = "MultipleExport";
     string[] exportGrids = { "MasterGrid", "DetailGrid" };
 }
 @section ControlsSection{
@@ -11,7 +11,7 @@
             <div class="control-section">
                 <div>
                     <p class="e-mastertext">Master Grid</p>
-                    @Html.EJS().Grid("MasterGrid").DataSource((IEnumerable<object>)ViewBag.CustomerDataSource).ToolbarClick("toolbarClick").SelectedRowIndex(1).Columns(col =>
+                    @Html.EJS().Grid("MasterGrid").DataSource((IEnumerable<object>)ViewData["CustomerDataSource"]).ToolbarClick("toolbarClick").SelectedRowIndex(1).Columns(col =>
                 {
                     col.Field("CustomerID").HeaderText("Customer ID").Width(150).Add();
                     col.Field("CompanyName").HeaderText("Company Name").Width(150).Add();
@@ -22,7 +22,7 @@
                 </div>
                 <p><div class='e-statustext'> Showing orders of Customer ID:  <b id="key"></b></div></p>
                 <div>
-                    @Html.EJS().Grid("DetailGrid").DataSource((IEnumerable<object>)ViewBag.dataSource1).AllowSelection(false).AllowPdfExport(true).AllowExcelExport(true).Columns(col =>
+                    @Html.EJS().Grid("DetailGrid").DataSource((IEnumerable<object>)ViewData["dataSource1"]).AllowSelection(false).AllowPdfExport(true).AllowExcelExport(true).Columns(col =>
                                 {
                                     col.Field("OrderID").HeaderText("Order ID").Width(150).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
                                     col.Field("Freight").HeaderText("Freight").Width(150).Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
@@ -48,7 +48,7 @@
     <script>
                     function selected(args) {
             var selectedRecord = args.data;
-                        var data = @Html.Raw(Json.Encode(ViewBag.datasource));
+                        var data = @Html.Raw(Json.Encode(ViewData["datasource"]));
                         var CustomerID = args.data.CustomerID;
                         var detaildata = new ej.data.DataManager(data).executeLocal(new ej.data.Query().where("CustomerID", "equal", CustomerID, false).take(10));
             var grid = document.getElementById("DetailGrid").ej2_instances[0];

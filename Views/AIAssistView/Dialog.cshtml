@@ -49,9 +49,9 @@
             }).Render()
         </div>
         @Html.EJS().Dialog("dialogElement").Target(".dialog-aiassistview").Visible(false).Width("440px").Height("100%").CssClass("custom-dialog").ContentTemplate(@<text>
-        @Html.EJS().AIAssistView("aiAssistView").PromptSuggestions(ViewBag.PromptSuggestionData).PromptRequest("onPromptRequest").BannerTemplate("#bannerContent").CssClass("custom-aiassistview").Created("onCreated").ToolbarSettings(new AIAssistViewToolbarSettings
+        @Html.EJS().AIAssistView("aiAssistView").PromptSuggestions((string[])ViewData["PromptSuggestionData"]).PromptRequest("onPromptRequest").BannerTemplate("#bannerContent").CssClass("custom-aiassistview").Created("onCreated").ToolbarSettings(new AIAssistViewToolbarSettings
         {
-            Items = ViewBag.ToolbarItems, ItemClicked = "toolbarItemClicked" }).ResponseToolbarSettings(new AIAssistViewResponseToolbarSettings { ItemClicked = "toolbarItemClicked" }).Render()
+            Items = ViewData["ToolbarItems"], ItemClicked = "toolbarItemClicked" }).ResponseToolbarSettings(new AIAssistViewResponseToolbarSettings { ItemClicked = "toolbarItemClicked" }).Render()
         </text>).Render()
         @Html.EJS().Fab("fabElem").IconCss("e-icons e-assistview-icon").Content("AI Assist").Target(".dialog-aiassistview").Render()
     </div>
@@ -193,8 +193,8 @@
         var assistObj;
         var fabObj;
         var dialog;
-        var prompts = @Html.Raw(Json.Encode(ViewBag.PromptResponseData));
-        var suggestions = @Html.Raw(Json.Encode(ViewBag.PromptSuggestionData));
+        var prompts = @Html.Raw(Json.Encode(ViewData["PromptResponseData"]));
+        var suggestions = @Html.Raw(Json.Encode(ViewData["PromptSuggestionData"]));
         function onCreated() {
             var assistEle = document.getElementById('aiAssistView');
             assistObj = ej.base.getInstance(assistEle, ejs.interactivechat.AIAssistView);

@@ -2,9 +2,9 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="e-sample-resize-container">
-            @Html.EJS().Toolbar("popupToolbar").Items(ViewBag.popItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
+            @Html.EJS().Toolbar("popupToolbar").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["popItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
             <br /> <br />
-            @Html.EJS().Toolbar("popupAlwaysToolbar").Items(ViewBag.popAlwaysItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
+            @Html.EJS().Toolbar("popupAlwaysToolbar").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["popAlwaysItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
         </div>
     </div>
 }

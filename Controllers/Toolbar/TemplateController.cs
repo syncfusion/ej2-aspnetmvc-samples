@@ -45,8 +45,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Toolbar
             templateItems.Add(new ToolbarItem { PrefixIcon = "e-icons e-print", TooltipText = "Print File", Text = "Print", ShowTextOn = DisplayMode.Overflow, Align = ItemAlign.Right });
             templateItems.Add(new ToolbarItem { PrefixIcon = "e-icons e-download", TooltipText = "Download File", Text = "Download", ShowTextOn = DisplayMode.Overflow, Align = ItemAlign.Right });
 
-            ViewBag.templateItems = templateItems;
-            ViewBag.data = new string[] { "25%", "50%", "75%", "100%" };
+            ViewData["templateItems"] = templateItems;
+            ViewData["data"] = new string[] { "25%", "50%", "75%", "100%" };
 
             return View();
 

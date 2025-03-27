@@ -26,7 +26,7 @@
                             <td id="dropdownChoose" colspan="2">
                                 <div id="dropdown" style="padding-top:25px;">
                                     @Html.EJS().DropDownList("position").Placeholder("Select a position").PopupHeight("200px").Index(5).DataSource(
-(IEnumerable<Position>)ViewBag.Data).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "Value", Value = "Value" }).Render()
+(IEnumerable<Position>)ViewData["Data"]).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "Value", Value = "Value" }).Render()
                                 </div>
                             </td>
                         </tr>

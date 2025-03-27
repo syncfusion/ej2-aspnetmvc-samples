@@ -14,7 +14,7 @@
             <div class='sliderwrap'>
                 <label class="userselect">Range Slider</label>
                 <div id='range'></div>
-                @Html.EJS().Slider("range").Min(0).Max(100).Enabled(true).Step(5).Value(ViewBag.sliderValue).Ticks(new SliderTicksData { Placement = Placement.Before, LargeStep = 20, SmallStep = 5, ShowSmallTicks = true }).Type(SliderType.Range).Render()
+                @Html.EJS().Slider("range").Min(0).Max(100).Enabled(true).Step(5).Value(ViewData["sliderValue"]).Ticks(new SliderTicksData { Placement = Placement.Before, LargeStep = 20, SmallStep = 5, ShowSmallTicks = true }).Type(SliderType.Range).Render()
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
                         <div class="userselect">Placement</div>
                     </td>
                     <td style="width: 50%;padding-right: 10px">
-                        @Html.EJS().DropDownList("placement").Index(0).Change("dropDownChange").Placeholder("Ticks Position").DataSource((IEnumerable<Object>)ViewBag.dataSource).Fields(new DropDownListFieldSettings { Text = "text", Value = "id" }).Render()
+                        @Html.EJS().DropDownList("placement").Index(0).Change("dropDownChange").Placeholder("Ticks Position").DataSource((IEnumerable<Object>)ViewData["dataSource"]).Fields(new DropDownListFieldSettings { Text = "text", Value = "id" }).Render()
                     </td>
                 </tr>
                 <tr>

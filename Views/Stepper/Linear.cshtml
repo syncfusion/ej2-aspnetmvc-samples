@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Navigations
 
 @section ControlsSection{
@@ -11,7 +11,7 @@
                 <label class="e-btn" for="nonLinear">Non-Linear</label>
             </div>
             <div class="linear-stepper-control">
-                @Html.EJS().Stepper("linear-stepper").Steps(ViewBag.LinearStepper).Linear(true).StepChanged("function(args){updateContent(args.activeStep)}").Render()
+                @Html.EJS().Stepper("linear-stepper").Steps((List<Step>)ViewData["LinearStepper"]).Linear(true).StepChanged("function(args){updateContent(args.activeStep)}").Render()
             </div>
         </div>
         <div id="linear-stepper-content">

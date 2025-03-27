@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
 @{
-    ViewBag.Title = "DefaultFunctionalities";
+    ViewData["Title"] = "DefaultFunctionalities";
 }
 
 @section ControlsSection{
     <div class="control-section" role="region" aria-label="Tree Grid Control section" tabindex="0">
-        @Html.EJS().TreeGrid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+        @Html.EJS().TreeGrid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
        {
            col.Type("checkbox").Width(50).Add();
            col.Field("TaskId").HeaderText("Task ID").IsPrimaryKey(true).Width(90).TextAlign(TextAlign.Right).Add();

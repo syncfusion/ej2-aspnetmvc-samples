@@ -7,13 +7,13 @@
 			@Html.EJS().Chart("container").HighlightMode(Syncfusion.EJ2.Charts.HighlightMode.Point).HighlightPattern(Syncfusion.EJ2.Charts.SelectionPattern.DiagonalForward).Series(series =>
        {
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("x").YName("y").CornerRadius(cr => cr.TopLeft(10).TopRight(10)).
-           Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer))).DataSource(ViewBag.dataSource).Name("USA").Add();
+           Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer))).DataSource(ViewData["dataSource"]).Name("USA").Add();
        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0))).PrimaryYAxis(py => py.LineStyle(mg => mg.Width(0)).MajorTickLines(mg => mg.Width(0)).MinorTickLines(mg => mg.Width(0)).LabelFormat("{value}°C")).LegendSettings(legend => legend.Mode(Syncfusion.EJ2.Charts.LegendMode.Range)
             .Visible(true).ToggleVisibility(false)).RangeColorSettings(ranges =>
             {
-                ranges.Label("1°C to 10°C").Start(1).End(10).Colors(ViewBag.color1).Add();
-                ranges.Label("11°C to 20°C").Start(11).End(20).Colors(ViewBag.color2).Add();
-                ranges.Label("21°C to 30°C").Start(21).End(30).Colors(ViewBag.color3).Add();
+                ranges.Label("1°C to 10°C").Start(1).End(10).Colors((string[])ViewData["color1"]).Add();
+                ranges.Label("11°C to 20°C").Start(11).End(20).Colors((string[])ViewData["color2"]).Add();
+                ranges.Label("21°C to 30°C").Start(21).End(30).Colors((string[])ViewData["color3"]).Add();
             }).Load("load").Title("USA CLIMATE - WEATHER BY MONTH").ChartArea(area => area.Border(br=>br.Width(0))).Tooltip(tt => tt.Enable(false)).Render()
 		</div>
 	</div>
@@ -25,10 +25,10 @@
 	}
 </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
 <script>
 	var load = function (args) {
-		var selectedTheme = themeName ? themeName : 'Fluent2';
-		args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+		loadChartTheme(args);
 		args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
 	};
 </script>

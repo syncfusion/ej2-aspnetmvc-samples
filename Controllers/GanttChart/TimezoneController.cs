@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Timezone
         public ActionResult Timezone()
         {
-            ViewBag.DataSource = TimezoneData();
+            ViewData["DataSource"] = TimezoneData();
             return View();
         }
 

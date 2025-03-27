@@ -18,11 +18,11 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Api()
         {
-            ViewBag.data = new KanbanDataModels().KanbanTasks();
-            ViewBag.ApiDropDown = new KanbanDataModels().ApiData();
+            ViewData["data"] = new KanbanDataModels().KanbanTasks();
+            ViewData["ApiDropDown"] = new KanbanDataModels().ApiData();
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new CustomButtonModel() { content = "OK", isPrimary = true } });
-            ViewBag.DefaultButtons = buttons;
+            ViewData["DefaultButtons"] = buttons;
             return View();
         }
     }

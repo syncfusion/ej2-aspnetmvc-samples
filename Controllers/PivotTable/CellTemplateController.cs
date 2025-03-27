@@ -21,8 +21,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult CellTemplate()
         {
-            ViewBag.data = new PivotTableData().GetrenewableEnergy();
-            ViewBag.drilledMembers = new string[] { "FY 2015", "FY 2017", "FY 2018" };
+            ViewData["data"] = new PivotTableData().GetrenewableEnergy();
+            ViewData["drilledMembers"] = new string[] { "FY 2015", "FY 2017", "FY 2018" };
             return View();
         }
     }

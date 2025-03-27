@@ -31,7 +31,7 @@
         <div id="mapslider">
             @Html.EJS().Maps("mapslider").Margin(margin=>margin.Bottom(20)).Annotations(a=>a.Content("#mapslider-annotation").Y("95%").HorizontalAlignment(AnnotationAlignment.Center).Add()).TitleSettings(title => title.Text("Average annual population growth in North American countries").TextStyle(new MapsFont { Size = "16px" })).Load("mapsLoad").Loaded("mapLoaded").Layers(layer =>
        {
-           layer.TooltipSettings(t => t.Visible(true).Format("${name} : ${population}%")).DataSource(ViewBag.DataSource).ShapeDataPath("name")
+           layer.TooltipSettings(t => t.Visible(true).Format("${name} : ${population}%")).DataSource(ViewData["DataSource"]).ShapeDataPath("name")
            .ShapePropertyPath("name").ShapeSettings(new MapsShapeSettings
            {
                ColorValuePath = "population",
@@ -44,7 +44,7 @@
                 new MapsColorMapping { From = 2.25 , To = 3, Color="#DCA87E" },
                 new MapsColorMapping { From = 3 , To = 3.75, Color="#d075c6" }
            }
-           }).ShapeData(ViewBag.MapShapeData).Add();
+           }).ShapeData(ViewData["MapShapeData"]).Add();
        }).Render()
         </div>
         <div id="mapslider-annotation" style="display: none;">

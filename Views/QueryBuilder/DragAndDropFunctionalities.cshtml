@@ -10,7 +10,7 @@
     <div class="control-pane">
         <div class="control-section">
             <div class="top-right-element">
-                @Html.EJS().DropDownButton("element").CssClass("e-caret-hide").Content("Import").Select("onSelect").Items(ViewBag.items).Render()
+                @Html.EJS().DropDownButton("element").CssClass("e-caret-hide").Content("Import").Select("onSelect").Items(ViewData["items"]).Render()
 
             </div>
             <div class="row">
@@ -21,8 +21,8 @@
                             <span id="dlgSpan" style="visibility: hidden;">Invalid Query</span>
                         </form>).AnimationSettings(e => e.Effect(Syncfusion.EJ2.Popups.DialogEffect.Zoom).Duration(400).Delay(0)).Buttons(btn =>
                     {
-                    btn.Click("cancelClick").ButtonModel(ViewBag.Cancelbtn).Add();
-                    btn.Click("importClick").ButtonModel(ViewBag.ImportBtn).Add();
+                    btn.Click("cancelClick").ButtonModel(ViewData["Cancelbtn"]).Add();
+                    btn.Click("importClick").ButtonModel(ViewData["ImportBtn"]).Add();
                     }).Render()
 
                     </div>
@@ -36,7 +36,7 @@
                     col.Field("PrimaryFramework").Label("Primary Framework").Type("string").Add();
                     col.Field("HireDate").Label("Hire Date").Type("date").Format("MM/dd/yyyy").Add();
                     col.Field("Country").Label("Country").Type("string").Add();
-                    }).DataSource(ViewBag.dataSource).Rule(ViewBag.rule).RuleChange("updateRule").AllowDragAndDrop(true).Render()
+                    }).DataSource(ViewData["dataSource"]).Rule((Syncfusion.EJ2.QueryBuilder.QueryBuilderRule)ViewData["rule"]).RuleChange("updateRule").AllowDragAndDrop(true).Render()
 
                     <div class="e-query-preview">
                         @(Html.EJS().Tab("defaultTab").Created("tabCreated").Selected("changeTab")

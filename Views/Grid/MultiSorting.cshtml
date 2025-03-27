@@ -9,7 +9,7 @@
                 cols.Add(new { field = "OrderDate", direction = "Ascending" });
                 cols.Add(new { field = "Freight", direction = "Descending" });
             }
-            @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowMultiSorting().AllowSorting().Columns(col =>
+            @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowMultiSorting().AllowSorting().Columns(col =>
            {
 
                col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();

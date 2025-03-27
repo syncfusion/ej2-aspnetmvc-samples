@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult ResourceMultiTaskbar()
         {
-            ViewBag.DataSource = GanttData.MultiTaskbarData();
-            ViewBag.Resources = GanttData.MultiTaskbarResource();
+            ViewData["DataSource"] = GanttData.MultiTaskbarData();
+            ViewData["Resources"] = GanttData.MultiTaskbarResource();
             return View();
         }
     }

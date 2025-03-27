@@ -47,7 +47,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Toolbar
             popItems.Add(new ToolbarItem { PrefixIcon = "e-picture-icon tb-icons", TooltipText = "Picture", Text = "Picture", ShowTextOn = DisplayMode.Overflow });
             popItems.Add(new ToolbarItem { PrefixIcon = "e-design-icon tb-icons", TooltipText = "Design", Text = "Design", ShowTextOn = DisplayMode.Overflow });
 
-            ViewBag.popItems = popItems;
+            ViewData["popItems"] = popItems;
 
             dateStr = String.Format("{0:MMMM}", DateTime.Now).ToString() + " " + DateTime.Now.Year.ToString();
             List<ToolbarItem> alwaysItems = new List<ToolbarItem>();
@@ -61,7 +61,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Toolbar
             alwaysItems.Add(new ToolbarItem { PrefixIcon = "e-print e-icons", TooltipText = "Print", Text = "Print", Overflow = OverflowOption.Hide, ShowAlwaysInPopup = true });
             alwaysItems.Add(new ToolbarItem { PrefixIcon = "e-reccurence-icon e-icons", TooltipText = "Sync", Text = "Sync", Overflow = OverflowOption.Hide, ShowAlwaysInPopup = true });
 
-            ViewBag.popAlwaysItems = alwaysItems;
+            ViewData["popAlwaysItems"] = alwaysItems;
 
             return View();
         }

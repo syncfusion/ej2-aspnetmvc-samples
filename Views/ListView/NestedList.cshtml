@@ -2,7 +2,7 @@
 @using Syncfusion.EJ2.Lists
 @section ControlsSection{
     <div class="control-section">
-            @Html.EJS().ListView("nestedlist").Enable(true).DataSource((IEnumerable<object>)ViewBag.dataSource).Fields(new ListViewFieldSettings { IconCss = "icon", Tooltip = "text" }).ShowHeader(true).HeaderTitle("Folder").ShowIcon(true).Render()
+            @Html.EJS().ListView("nestedlist").Enable(true).DataSource((IEnumerable<object>)ViewData["dataSource"]).Fields(new ListViewFieldSettings { IconCss = "icon", Tooltip = "text" }).ShowHeader(true).HeaderTitle("Folder").ShowIcon(true).Render()
     </div>
 }
 

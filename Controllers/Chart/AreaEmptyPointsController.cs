@@ -32,7 +32,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new AreaEmptyChartData { Period = new DateTime(2021, 11, 23), US_InflationRate = 1.4, IN_InflationRate = 0.5 },
                 new AreaEmptyChartData { Period = new DateTime(2021, 11, 24), US_InflationRate = 1.1, IN_InflationRate = 1.3 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class AreaEmptyChartData

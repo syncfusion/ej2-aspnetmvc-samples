@@ -1,12 +1,12 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section">
         <div style="text-align:center">
             @Html.EJS().Chart("container").Series(series =>
             {
                 series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Waterfall).Width(2).XName("X").YName("Y").Name("Increases").ColumnWidth(0.5).Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Middle))).Border(br => br.Width(0.2).Color("black")
-                ).CornerRadius(cr => cr.TopLeft(3).BottomLeft(3).BottomRight(3).TopRight(3)).SumIndexes(ViewBag.sumIndexes).Connector(ViewBag.connector).NegativeFillColor("#e56590")
-                .DataSource(ViewBag.ChartPoints).Add();
+                ).CornerRadius(cr => cr.TopLeft(3).BottomLeft(3).BottomRight(3).TopRight(3)).SumIndexes((int[])ViewData["sumIndexes"]).Connector(ViewData["connector"]).NegativeFillColor("#e56590")
+                .DataSource(ViewData["ChartPoints"]).Add();
             }
             ).PrimaryXAxis(py => py.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(1)).MajorTickLines(mt => mt.Width(0)).IsInversed(true).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
             ).PrimaryYAxis(py => py.Minimum(0).Maximum(150).Interval(25).MajorGridLines(mg => mg.Width(1)).LabelFormat("{value}K").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
@@ -23,10 +23,10 @@
     }
  @*custom code end*@
     </style>
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "70%";
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;

@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Image()
         {
-            ViewBag.Data = new FormatOption().SaveFormat();
+            ViewData["Data"] = new FormatOption().SaveFormat();
             object tools1 = new
             {
                 tooltipText = "Rotate Left",
@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 tooltipText = "Rotate Right",
                 template = "<button class='e-tbar-btn e-btn' id='roatateRight'><span class='e-btn-icon e-icons e-rotate-right'></span>"
             };
-            ViewBag.Image = new[] {
+            ViewData["Image"] = new[] {
                 "Replace", "Align", "Caption", "Remove", "InsertLink", "OpenImageLink", "-",
                 "EditImageLink", "RemoveImageLink", "Display", "AltText", "Dimension",tools1
                 , tools2

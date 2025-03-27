@@ -4,7 +4,7 @@
 @section ControlsSection {
     <div class="control-section">
         <div class="control_wrapper">
-            @Html.EJS().Kanban("KanbanVirtualScrolling").KeyField("Status").EnableTooltip(true).EnableVirtualization(true).DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
+            @Html.EJS().Kanban("KanbanVirtualScrolling").KeyField("Status").EnableTooltip(true).EnableVirtualization(true).DataSource((IEnumerable<object>)ViewData["data"]).Columns(col =>
             {
                 col.HeaderText("To Do").KeyField("Open").Add();
                 col.HeaderText("In Progress").KeyField("InProgress").Add();
@@ -13,7 +13,7 @@
             }).CardSettings(card =>
             {
                 card.HeaderField("Id").SelectionType(SelectionType.Multiple).Template("#cardTemplate");
-            }).DialogSettings((item) => item.Fields(ViewBag.dialogData)).CardRendered("onCardRendered").Created("onKanbanCreated").Render()
+            }).DialogSettings((item) => item.Fields(ViewData["dialogData"])).CardRendered("onCardRendered").Created("onKanbanCreated").Render()
         </div>
     </div>
     <script id="cardTemplate" type="text/x-jsrender">

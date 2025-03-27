@@ -8,10 +8,10 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().PivotView("pivotview").Width("100%").Height("290").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("290").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(false).EnableSorting(true)
            .DrilledMembers(drilledmembers =>
            {
-               drilledmembers.Name("EnerType").Items(ViewBag.drilledMembers).Add();
+               drilledmembers.Name("EnerType").Items((string[])ViewData["drilledMembers"]).Add();
            })
            .FormatSettings(formatsettings =>
            {
@@ -41,7 +41,7 @@
                         <div class="hdrlabel">Units:
                         </div>
                         <div>
-                            @Html.EJS().DropDownList("unitdrpdwn").DataSource((IEnumerable<object>)ViewBag.unitdrpdwnOptions).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
+                            @Html.EJS().DropDownList("unitdrpdwn").DataSource((IEnumerable<object>)ViewData["unitdrpdwnOptions"]).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
                             ).Change("unitdrpdwnChange").Index(0).Width("100%").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
                         </div>
                     </td>
@@ -51,7 +51,7 @@
                         <div class="hdrlabel">Cost:
                         </div>
                         <div>
-                            @Html.EJS().DropDownList("costdrpdwn").DataSource((IEnumerable<object>)ViewBag.costdrpdwnOptions).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
+                            @Html.EJS().DropDownList("costdrpdwn").DataSource((IEnumerable<object>)ViewData["costdrpdwnOptions"]).FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Auto
                             ).Change("costdrpdwnChange").Index(0).Width("100%").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
                         </div>
                     </td>

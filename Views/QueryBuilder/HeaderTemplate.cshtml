@@ -9,7 +9,7 @@
             col.Field("LastName").Label("Last Name").Type("string").Add();
             col.Field("HireDate").Label("Hire Date").Type("date").Format("dd/MM/yyyy").Add();
             col.Field("Country").Label("Country").Type("string").Add();
-        }).Rule(ViewBag.rule).HeaderTemplate("#headerTemplate").ActionBegin("actionBegin").Render()
+        }).Rule((Syncfusion.EJ2.QueryBuilder.QueryBuilderRule)ViewData["rule"]).HeaderTemplate("#headerTemplate").ActionBegin("actionBegin").Render()
     </div>
 }
 

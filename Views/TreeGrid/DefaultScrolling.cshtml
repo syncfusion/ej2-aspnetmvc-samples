@@ -1,14 +1,14 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.Grids
 @{
-    ViewBag.Title = "DefaultScrolling";
+    ViewData["Title"] = "DefaultScrolling";
 }
 
 <h2>DefaultScrolling</h2>
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().TreeGrid("DefaultScrolling").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+        @Html.EJS().TreeGrid("DefaultScrolling").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
     {
         col.Field("TaskId").HeaderText("Task ID").Width(70).TextAlign(TextAlign.Right).Add();
         col.Field("TaskName").HeaderText("Task Name").Width(200).Add();

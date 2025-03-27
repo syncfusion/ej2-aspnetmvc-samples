@@ -7,13 +7,13 @@
                 <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("505px")
-                                .SymbolHeight(55).SymbolWidth(55).GetNodeDefaults("getSymbolNodes").SymbolMargin(ViewBag.margin).Render()
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes((List<Syncfusion.EJ2.Diagrams.SymbolPalettePalette>)ViewData["Palette"]).GetSymbolInfo("getSymbolInfo").ExpandMode(ExpandMode.Multiple).Width("100%").Height("505px")
+                                .SymbolHeight(55).SymbolWidth(55).GetNodeDefaults("getSymbolNodes").SymbolMargin((Syncfusion.EJ2.Diagrams.SymbolPaletteMargin)ViewData["margin"]).Render()
                 )
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
                 @(Html.EJS().Diagram("container").Width("100%").Height("100%").SnapSettings(new Syncfusion.EJ2.Diagrams.DiagramSnapSettings() { Constraints = Syncfusion.EJ2.Diagrams.SnapConstraints.None })
-                                .Created("diagramCreated").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
+                                .Created("diagramCreated").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render()
                 )
             </div>
         </div>

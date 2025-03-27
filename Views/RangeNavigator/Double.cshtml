@@ -52,27 +52,27 @@
     </style>
              @*custom code end*@
     <script src="~/Scripts/datasource.js"></script>
+    <script src="~/Scripts/range-navigator/theme-color.js"></script>
     <script>
-        var selectedTheme = themeName ? themeName : 'Fluent2';
-        var theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
-        var backgroundColor = theme === 'Highcontrast' ? 'black' : 'white';
+        var backgroundColor;
         var slData = sl;
         var ausData = aus;      
         var zoomFactor, zoomPosition;
         var load = function (args) {
-            args.rangeNavigator.theme = theme;
+            loadRangeNavigatorTheme(args);
             args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
             args.rangeNavigator.series[0].dataSource = ausData;
             args.rangeNavigator.series[1].dataSource = slData;
             args.rangeNavigator.value = [31, 50];
         }
         var chartload = function (args) {
-            args.chart.theme = theme;
+            var theme = loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "80%";
             args.chart.series[0].dataSource = ausData;
             args.chart.series[1].dataSource = slData;
+            backgroundColor = theme === 'Highcontrast' ? 'black' : 'white';
             getAnnotation(ausData, ej.charts.getSeriesColor(theme)[0]);
-            getAnnotation(slData, ej.charts.getSeriesColor(theme)[1]);
+            getAnnotation(slData, ej.charts.getSeriesColor(theme)[1]);            
         }
         var chartloaded = function (args) {
             var chart = document.getElementById('chart').ej2_instances[0];

@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DropDownTree
             templateData.Expanded = "expanded";
             templateData.HasChildren = "hasChild";
             templateData.ParentValue = "pid";
-            ViewBag.templateData = templateData;
+            ViewData["templateData"] = templateData;
             return View();
         }
     }

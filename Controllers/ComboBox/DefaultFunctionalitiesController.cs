@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult DefaultFunctionalities()
         {
-            ViewBag.data = new GameList().GameLists();
+            ViewData["data"] = new GameList().GameLists();
             return View();
         }
     }

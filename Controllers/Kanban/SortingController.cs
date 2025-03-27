@@ -19,13 +19,13 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: Sorting
         public ActionResult Sorting()
         {
-            ViewBag.data = new KanbanDataModels().KanbanTasks();
+            ViewData["data"] = new KanbanDataModels().KanbanTasks();
             sortData.Add(new sortData { Id = "DataSourceOrder", Sort = "Data Source Order" });
             sortData.Add(new sortData { Id = "Index", Sort = "Index" });
             sortData.Add(new sortData { Id = "Custom", Sort = "Custom" });
-            ViewBag.SortByData = sortData;
-            ViewBag.FieldData = new string[] { "None" };
-            ViewBag.DirectionData = new string[] { "Ascending", "Descending" };
+            ViewData["SortByData"] = sortData;
+            ViewData["FieldData"] = new string[] { "None" };
+            ViewData["DirectionData"] = new string[] { "Ascending", "Descending" };
             return View();
         }
     }

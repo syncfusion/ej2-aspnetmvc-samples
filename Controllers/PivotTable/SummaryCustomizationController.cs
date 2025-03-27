@@ -21,11 +21,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult SummaryCustomization()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.drilledMembers = new string[] { "France", "Germany" };
-            ViewBag.filterMembers = new string[] { "Gloves", "Helmets", "Shorts", "Vests" };
-            ViewBag.summaryOption = GetSummaryOption();
-            ViewBag.summaryFields = GetSummaryFields();
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["drilledMembers"] = new string[] { "France", "Germany" };
+            ViewData["filterMembers"] = new string[] { "Gloves", "Helmets", "Shorts", "Vests" };
+            ViewData["summaryOption"] = GetSummaryOption();
+            ViewData["summaryFields"] = GetSummaryFields();
             return View();
         }
         public List<SummaryOption> GetSummaryOption()

@@ -1,4 +1,4 @@
-﻿@section ControlsSection{
+@section ControlsSection{
 
 <div class="control-section">
     @{Html.BeginForm("pdfa1bconverter", "pdf", FormMethod.Post, new { enctype = "multipart/form-data" });
@@ -31,7 +31,7 @@
                         <div id="errorlabel" value="error">
                             <br />
                             <p style="color: #FF0000;">
-                                @Html.Label("", (string)ViewBag.lab)
+                                @Html.Label("", (string)ViewData["lab"])
                         </div>
                         <table width="100%">
                             <tr>

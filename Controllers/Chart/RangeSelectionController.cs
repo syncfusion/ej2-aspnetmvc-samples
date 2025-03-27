@@ -67,8 +67,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new RangeSelectionData { Period = 2014, ProductA_Sales = 96, ProductB_Sales = 51 },
                 new RangeSelectionData { Period = 2015, ProductA_Sales = 32, ProductB_Sales = 58 }
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.data = new string[] { "DragXY", "DragX", "DragY", "Lasso" };
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["data"] = new string[] { "DragXY", "DragX", "DragY", "Lasso" };
             return View();
         }
         public class RangeSelectionData

@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
             exportItems.Add(new { text = "Word Document (*.docx)", id = "word" });
             exportItems.Add(new { text = "Word Template (*.dotx)", id = "dotx" });
             exportItems.Add(new { text = "Plain Text (*.txt)", id = "txt" });
-            ViewBag.ExportItems = exportItems;
+            ViewData["ExportItems"] = exportItems;
             
             return PartialView();
         }    

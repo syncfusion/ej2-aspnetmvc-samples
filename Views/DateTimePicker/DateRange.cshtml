@@ -4,13 +4,13 @@
         <div class="col-lg-6 datetimepicker-section">
             <div id="wrapper">
                 <label class="example-label">DateTime Restriction</label>
-                @Html.EJS().DateTimePicker("datetime1").Value(ViewBag.value).Min(ViewBag.minDate).Max(ViewBag.maxDate).Render()
+                @Html.EJS().DateTimePicker("datetime1").Value(ViewData["value"]).Min(ViewData["minDate"]).Max(ViewData["maxDate"]).Render()
             </div>
         </div>
         <div class="col-lg-6 datetimepicker-section">
             <div id="wrapper">
                 <label class="example-label">Time Restriction</label>
-                @Html.EJS().DateTimePicker("datetime2").Value(ViewBag.value).MinTime(ViewBag.minDateTime).MaxTime(ViewBag.maxDateTime).Render()
+                @Html.EJS().DateTimePicker("datetime2").Value(ViewData["value"]).MinTime(ViewData["minDateTime"]).MaxTime(ViewData["maxDateTime"]).Render()
             </div>
         </div>
     </div>

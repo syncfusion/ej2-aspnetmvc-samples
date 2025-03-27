@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult InlineEditing()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
-            ViewBag.ddData = new string[] { "Top", "Bottom" };
+            ViewData["datasource"] = order;
+            ViewData["ddData"] = new string[] { "Top", "Bottom" };
             return View();
         }
     }

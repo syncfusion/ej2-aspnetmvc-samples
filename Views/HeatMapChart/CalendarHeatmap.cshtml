@@ -5,17 +5,17 @@
 @section ControlsSection{
     <div class="control-section">
         <div id="container">
-            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Annual Summary of User Activities in GitLab").TextStyle(ViewBag.textStyle)).XAxis(
+            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Annual Summary of User Activities in GitLab").TextStyle(ViewData["textStyle"])).XAxis(
             xAxis =>
             {
                 xAxis.Minimum(new System.DateTime(2017, 6, 23)).Maximum(new System.DateTime(2018, 6, 30)).IntervalType(Syncfusion.EJ2.HeatMap.IntervalType.Days).ValueType(Syncfusion.EJ2.HeatMap.ValueType.DateTime).ShowLabelOn(Syncfusion.EJ2.HeatMap.LabelType.Months).
                 LabelFormat("MMM").OpposedPosition(true).
-                LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.Rotate45).Increment(7).TextStyle(ViewBag.labelTextStyle);
+                LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.Rotate45).Increment(7).TextStyle(ViewData["labelTextStyle"]);
             }).YAxis(yaxis =>
             {
-                yaxis.Labels(ViewBag.yLabels).IsInversed(true).TextStyle(ViewBag.labelTextStyle);
+                yaxis.Labels((string[])ViewData["yLabels"]).IsInversed(true).TextStyle(ViewData["labelTextStyle"]);
             }).LegendSettings(legendSettings => legendSettings.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).Width("20%").ShowLabel(true).
-            Alignment(Syncfusion.EJ2.HeatMap.Alignment.Near).LabelDisplayType(Syncfusion.EJ2.HeatMap.LabelDisplayType.None).TextStyle(ViewBag.labelTextStyle).
+            Alignment(Syncfusion.EJ2.HeatMap.Alignment.Near).LabelDisplayType(Syncfusion.EJ2.HeatMap.LabelDisplayType.None).TextStyle(ViewData["labelTextStyle"]).
             EnableSmartLegend(true)).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
             {
                 palette.Value(0).Color("rgb(238,238,238)").Label("no contributions").Add();
@@ -24,7 +24,7 @@
                 palette.Value(32).Color("rgb(82, 123, 160)").Label("31-49 contributions").Add();
                 palette.Value(50).Color("rgb(37, 78, 119)").Label("50+ contributions").Add();
             }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed).EmptyPointColor("white")).Height("300px").CellSettings(cellSettings =>
-            cellSettings.ShowLabel(false)).TooltipRender("tooltipRender").TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).Load("load").DataSource(ViewBag.dataSource).Render()
+            cellSettings.ShowLabel(false)).TooltipRender("tooltipRender").TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).Load("load").DataSource(ViewData["dataSource"]).Render()
         </div>
     </div>
     <style>

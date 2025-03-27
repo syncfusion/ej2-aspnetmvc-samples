@@ -96,7 +96,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
                 Category = "Drag or click the field to insert.",
                 htmlAttributes = new { draggable = true }
             });
-            ViewBag.dataSource = listdata;
+            ViewData["dataSource"] = listdata;
             return View();
         }
 

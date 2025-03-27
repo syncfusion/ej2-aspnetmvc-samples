@@ -23,8 +23,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: ZoomingAndPanning
         public ActionResult ZoomingAndPanning()
         {
-            ViewBag.ShapeData = this.getWorldMap();
-            ViewBag.DataSource = this.getData();
+            ViewData["ShapeData"] = this.getWorldMap();
+            ViewData["DataSource"] = this.getData();
             return View();
         }
 

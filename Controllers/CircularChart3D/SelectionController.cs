@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularChart3D
                 new SelectionCircularData { X = "Safari",             Y = 19.97 },
                 new SelectionCircularData { X = "Others",             Y = 2.34  }
             };
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class SelectionCircularData

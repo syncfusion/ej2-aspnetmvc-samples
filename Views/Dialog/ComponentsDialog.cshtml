@@ -41,7 +41,7 @@
         <div class="e-content">
             <div>
                 @Html.EJS().Grid("DefaultFunctionalities").DataSource((IEnumerable<object>
-                    )ViewBag.DataSource).Columns(col =>
+                    )ViewData["DataSource"]).Columns(col =>
                          {
                     col.Field("OrderID").HeaderText("Order ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("120").Add();
                     col.Field("CustomerID").HeaderText("Customer Name").Width("150").Add();
@@ -52,18 +52,18 @@
                     }).AllowPaging().PageSettings(page => page.PageCount(5).PageSizes(true).PageSize(5)).Render()
             </div>
             <div>
-                @Html.EJS().Schedule("schedule").Height("300px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.ScheduleData }).Created("scheduleCreated").SelectedDate(new DateTime(DateTime.Now.Year, 1, 10)).Render()
+                @Html.EJS().Schedule("schedule").Height("300px").EventSettings(new ScheduleEventSettings { DataSource = ViewData["ScheduleData"] }).Created("scheduleCreated").SelectedDate(new DateTime(DateTime.Now.Year, 1, 10)).Render()
             </div>
             <div>
                 @Html.EJS().Chart("chart").ChartArea(area => area.Border(br => br.Color("transparent"))).Series(series =>
                     {
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("xValue")
                     .Marker(mr => mr.Visible(true).Width(10).Height(10)).YName("yValue")
-                    .DataSource(ViewBag.ChartData).Name("Germany").Add();
+                    .DataSource(ViewData["ChartData"]).Name("Germany").Add();
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line)
                     .Width(2).XName("xValue").YName("yValue1")
                     .Marker(mr => mr.Visible(true).Width(10).Height(10))
-                    .DataSource(ViewBag.ChartData).Name("England").Add();
+                    .DataSource(ViewData["ChartData"]).Name("England").Add();
 
 
                     }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
@@ -144,7 +144,7 @@
         @Html.EJS().Dialog("defaultDialog").Header("Syncfusion Components inside Dialog").Open("dialogOpen").Close("dialogClose").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).ContentTemplate(@<div>
             @(Html.EJS().Tab("ej2Tab").ContentTemplate(@Content1).Selected("selected")
             .Render())
-        </div>).ShowCloseIcon(true).CloseOnEscape(true).Target("#target").Buttons(ViewBag.DefaultButtons).Created("created").Width("700px").Render()
+        </div>).ShowCloseIcon(true).CloseOnEscape(true).Target("#target").Buttons((List<DialogDialogButton>)ViewData["DefaultButtons"]).Created("created").Width("700px").Render()
     </div>
 }
 

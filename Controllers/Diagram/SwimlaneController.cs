@@ -32,10 +32,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             List<DiagramConnector> Connectors = new List<DiagramConnector>();
             GenerateDiagramConnectors(Connectors);
 
-            ViewBag.nodes = Nodes;
-            ViewBag.connectors = Connectors;
-            ViewBag.getNodeDefaults = "getNodeDefaults";
-            ViewBag.getConnectorDefaults = "getConnectorDefaults";
+            ViewData["nodes"] = Nodes;
+            ViewData["connectors"] = Connectors;
+            ViewData["getNodeDefaults"] = "getNodeDefaults";
+            ViewData["getConnectorDefaults"] = "getConnectorDefaults";
             List<DiagramPort> ports = new List<DiagramPort>();
             ports.Add(new DiagramPort() { Id = "Port1", Offset = new DiagramPoint() { X = 0, Y = 0.5 }, Visibility = PortVisibility.Connect | PortVisibility.Hover, Constraints = PortConstraints.Default | PortConstraints.Draw });
             ports.Add(new DiagramPort() { Id = "Port2", Offset = new DiagramPoint() { X = 0.5, Y = 0 }, Visibility = PortVisibility.Connect | PortVisibility.Hover, Constraints = PortConstraints.Default | PortConstraints.Draw });
@@ -207,12 +207,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             items.Add(new MenuItems() { Id = "Cut", Text = "Cut", Target = ".e-diagramcontent" });
             items.Add(new MenuItems() { Id = "InsertLaneBefore", Text = "InsertLaneBefore", Target = ".e-diagramcontent" });
             items.Add(new MenuItems() { Id = "InsertLaneAfter", Text = "InsertLaneAfter", Target = ".e-diagramcontent" });
-            ViewBag.items = items;
+            ViewData["items"] = items;
 
             SymbolPaletteMargin margin = new SymbolPaletteMargin() { Left = 8, Right = 8, Top = 8, Bottom = 8 };
 
-            ViewBag.margin = margin;
-            ViewBag.Palette = Palette;
+            ViewData["margin"] = margin;
+            ViewData["Palette"] = Palette;
             
             return View();
         }

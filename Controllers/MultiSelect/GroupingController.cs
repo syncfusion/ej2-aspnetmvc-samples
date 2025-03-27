@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Grouping()
         {
-            ViewBag.groupdata = new Vegetables().VegetablesList();
+            ViewData["groupdata"] = new Vegetables().VegetablesList();
             return View();
         }
     }

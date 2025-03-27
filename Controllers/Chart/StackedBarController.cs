@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new StackedBarChartData { Month = "May", AppleSales = 20, OrangeSales = 21, Wastage = -3 },
                 new StackedBarChartData { Month = "Jun", AppleSales = 24, OrangeSales = 25, Wastage = -3.5 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class StackedBarChartData

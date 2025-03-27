@@ -71,7 +71,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = Syncfusion.EJ2.Diagrams.BasicShapes.Ellipse },
                 Style = new DiagramShapeStyle() { Fill = "#ed1d79", StrokeColor = "#ed1d79", Opacity = 0.2 }
             });
-            ViewBag.nodes = Nodes;
+            ViewData["nodes"] = Nodes;
             return View();
         }
     }

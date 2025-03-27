@@ -8,7 +8,7 @@
             <h4>Resize</h4>
 
             @Html.EJS().MultiSelect("list").AllowResize(true).Placeholder("Select countries").DataSource(
-                    (IEnumerable<Countries>)ViewBag.data).Fields(new MultiSelectFieldSettings { Text = "Name", Value = "Code" }).Render()
+                    (IEnumerable<Countries>)ViewData["data"]).Fields(new MultiSelectFieldSettings { Text = "Name", Value = "Code" }).Render()
         </div>
     </div>
     <style>

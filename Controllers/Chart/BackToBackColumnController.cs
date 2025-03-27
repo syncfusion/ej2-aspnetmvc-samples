@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new ColumnPlacementChartData { ConsumerName = "Jack", TotalCount = 8, AppleCount = 5, OrangeCount = 2, GrapesCount = 1, DataLabelMappingName = "Total 8" },
                 new ColumnPlacementChartData { ConsumerName = "Lucas", TotalCount = 10, AppleCount = 6, OrangeCount = 3, GrapesCount = 1, DataLabelMappingName = "Total 10" }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class ColumnPlacementChartData

@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "BatchEditing";
+    ViewData["Title"] = "BatchEditing";
 }
 
 @using Syncfusion.EJ2
@@ -7,7 +7,7 @@
 
 
     <div class="control-section">
-        @Html.EJS().Grid("BatchEditing").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+        @Html.EJS().Grid("BatchEditing").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
    {
        col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("120").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
        col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 5 }).Add();

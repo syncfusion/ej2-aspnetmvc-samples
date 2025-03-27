@@ -3,7 +3,7 @@
     <div class="control-section" align="center">
         @Html.EJS().AccumulationChart("container").EnableAnimation(false).EnableBorderOnMouseMove(false).Series(series =>
 {
-    series.StartAngle(270).EndAngle(90).DataLabel(dl => dl.EnableRotation(true).Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).ConnectorStyle(cs => cs.Length("10%")).Font(ft => ft.FontWeight("600").Color("#ffffff"))).InnerRadius("40%").XName("Browser").YName("Users").TooltipMappingName("tooltipMappingName").DataSource(ViewBag.PieChartPoints).Add();
+    series.StartAngle(270).EndAngle(90).DataLabel(dl => dl.EnableRotation(true).Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).ConnectorStyle(cs => cs.Length("10%")).Font(ft => ft.FontWeight("600").Color("#ffffff"))).InnerRadius("40%").XName("Browser").YName("Users").TooltipMappingName("tooltipMappingName").DataSource(ViewData["PieChartPoints"]).Add();
 }
             ).EnableBorderOnMouseMove(false).LegendSettings(lg => lg.Visible(false)).Tooltip(tp => tp.Enable(true).EnableHighlight(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.tooltip}</b>").Header("")).Load("load").Annotations(an =>
                  {
@@ -11,11 +11,10 @@
                 .Region(Syncfusion.EJ2.Charts.Regions.Series).Add();
   }).Resized("onChartResized").Render()
     </div>
-
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadAccumulationChartTheme(args);
             args.accumulation.annotations[0].content = ej.base.Browser.isDevice ? "<div style='font-Weight:700; font-size:11px;'>Browser<br>Market<br>Shares</div>" : "<div style='font-Weight:600; font-size:14px;'>Browser<br>Market<br>Shares</div>";
             args.accumulation.series[0].radius = ej.base.Browser.isDevice ? '85%' : '100%';
             args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '11px';

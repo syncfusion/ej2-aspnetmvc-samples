@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
    <div class="control-section">
-    @Html.EJS().Grid("Search").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+    @Html.EJS().Grid("Search").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
    {
        col.Field("CategoryName").HeaderText("Category Name").Width("160").Add();
        col.Field("ProductName").HeaderText("Product Name").Width("170").Add();

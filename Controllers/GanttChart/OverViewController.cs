@@ -19,9 +19,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult OverView()
         {
-            ViewBag.DataSource = GanttData.OverviewData();
-            ViewBag.Resources = this.GetResources();
-            ViewBag.Data = GanttDropDownLists.GridLinesData();
+            ViewData["DataSource"] = GanttData.OverviewData();
+            ViewData["Resources"] = this.GetResources();
+            ViewData["Data"] = GanttDropDownLists.GridLinesData();
             return View();
         }
 

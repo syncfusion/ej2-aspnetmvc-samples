@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult AutoTag(string Browser)
+        public ActionResult AutoTag(string Browser, string accessibilityLevel)
         {
             string image1 = ResolveApplicationImagePath("AutoTag.jpg");
             string image2 = ResolveApplicationImagePath("autotagsmall.jpg");
@@ -48,9 +48,19 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
             PdfDocument document = new PdfDocument();
 
-            //Auto Tag the document 
 
-             document.AutoTag = true;
+            if (accessibilityLevel == "WTPDF")
+            {
+                document = new PdfDocument(PdfConformanceLevel.Pdf_A4);
+                document.FileStructure.Version = PdfVersion.Version2_0;
+
+            }
+            else if (accessibilityLevel == "PDF_UA_2")
+            {
+                document.FileStructure.Version = PdfVersion.Version2_0;
+            }
+            //Auto Tag the document 
+            document.AutoTag = true;
             document.DocumentInformation.Title = "AutoTag";
             #region page1
             //Add a page to the document.

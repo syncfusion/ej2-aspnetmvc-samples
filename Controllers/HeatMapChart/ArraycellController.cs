@@ -18,24 +18,24 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
         // GET: Arrayrow
         public ActionResult Arraycell()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
                 fontFamily = "inherit"
             };
-            ViewBag.labelTextStyle = new
+            ViewData["labelTextStyle"] = new
             {
                 fontFamily = "inherit"
             };
-            ViewBag.border = new { color = "white" };
-            ViewBag.cellTextStyle = new { color = "white" , fontFamily= "inherit"};
+            ViewData["border"] = new { color = "white" };
+            ViewData["cellTextStyle"] = new { color = "white" , fontFamily= "inherit"};
             string[] xlabels = new string[12] { "China", "India", "Australia", "Mexico", "Canada", "Brazil",
                 "USA", "UK", "Germany", "Russia", "France", "Japan"};
-            ViewBag.xLabels = xlabels;
+            ViewData["xLabels"] = xlabels;
             string[] yLabels = new string[7] { "2000", "2005", "2010", "2011", "2012", "2013", "2014" };
-            ViewBag.yLabels = yLabels;
+            ViewData["yLabels"] = yLabels;
             double[,] cellData = new double[,]
             {
                 {0, 0, 10.75}, {0, 1, 14.5}, {0, 2, 25.5}, {0, 3, 39.5}, {0, 4, 59.75}, {0, 5, 35.50}, {0, 6, 75.5},
@@ -50,7 +50,7 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
                 {9, 0, 14.31}, {9, 1, 42.87}, {9, 2, 77.28}, {9, 3, 77.82}, {9, 4, 81.44}, {9, 5, 81.92}, {9, 6, 83.75},
                 {10, 0, 25.5}, {10, 1, 35.5}, {10, 2, 40.5}, {10, 3, 45.05}, {10, 4, 50.5}, {10, 5, 75.5}, {10, 6, 90.58}
             };
-            ViewBag.dataSource = cellData;
+            ViewData["dataSource"] = cellData;
 
             return View();
         }

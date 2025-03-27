@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: HighlightedRegion
         public ActionResult HighlightedRegion()
         {
-            ViewBag.ShapeData = this.getOklahomaMap();
+            ViewData["ShapeData"] = this.getOklahomaMap();
             return View();
         }
 

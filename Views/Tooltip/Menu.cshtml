@@ -7,7 +7,7 @@
             <div class="toolbarContainer">
                 <!-- Toolbar element -->
                 @Html.EJS().Tooltip("tooltip").Target("#Toolbar [title]").Created("onCreated").Width("170").Position(Syncfusion.EJ2.Popups.Position.BottomCenter).WindowCollision(true).BeforeRender("onBeforeRender").CssClass("e-settings").OpensOn("Click").ContentTemplate(@<div>
-                    @Html.EJS().Toolbar("Toolbar").Items(ViewBag.popupItems).Render()
+                    @Html.EJS().Toolbar("Toolbar").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["popupItems"]).Render()
                 </div>).Render()
             </div>
         </div>

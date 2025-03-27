@@ -8,7 +8,7 @@
                 <h3>Grouping</h3>
 
                 @Html.EJS().DropDownList("vegetables").Placeholder("Select a vegetable").PopupHeight("200px").DataSource(
-                              (IEnumerable<Vegetables>)ViewBag.groupdata).Fields(new DropDownListFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).Render()
+                              (IEnumerable<Vegetables>)ViewData["groupdata"]).Fields(new DropDownListFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).Render()
 
             </div>
         </div>
@@ -17,7 +17,7 @@
                 <h3> Icons</h3>
 
                 @Html.EJS().DropDownList("icons").Placeholder("Select a social media").PopupHeight("200px").DataSource(
-                              (IEnumerable<SocialMedia>)ViewBag.icondata).Fields(new DropDownListFieldSettings { Text = "SocialMediaName", IconCss = "Class", Value = "Id" }).Render()
+                              (IEnumerable<SocialMedia>)ViewData["icondata"]).Fields(new DropDownListFieldSettings { Text = "SocialMediaName", IconCss = "Class", Value = "Id" }).Render()
 
             </div>
         </div>

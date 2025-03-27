@@ -22,8 +22,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
     {
         public ActionResult Print()
         {
-            ViewBag.shapeData = this.getusMap();
-            ViewBag.data = this.getUsPopulation();
+            ViewData["shapeData"] = this.getusMap();
+            ViewData["data"] = this.getUsPopulation();
             return View();
         }
         public object getUsPopulation()

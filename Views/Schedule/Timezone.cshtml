@@ -15,7 +15,7 @@
                         </td>
                         <td style="width: 70%;">
                             <div>
-                                @Html.EJS().DropDownList("scheduletimezone").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(1).PopupWidth("250").Width("250").DataSource(ViewBag.data).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Render()
+                                @Html.EJS().DropDownList("scheduletimezone").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(1).PopupWidth("250").Width("250").DataSource(ViewData["data"]).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Render()
                             </div>
                         </td>
                     </tr>
@@ -23,7 +23,7 @@
             </table>
         </div>
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 6, 20)).Timezone("UTC").Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 6, 20)).Timezone("UTC").Render()
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>

@@ -7,8 +7,8 @@
         <div class='control-wrapper'>
             <h4>Filtering</h4>
 
-            @Html.EJS().MultiSelect("list").AllowFiltering(true).Query((string)ViewBag.query).Placeholder("Select countries").DataSource(
-                    (IEnumerable<Countries>)ViewBag.data).Filtering("onFiltering").Fields(new MultiSelectFieldSettings { Text = "Name", Value = "Code" }).Render()
+            @Html.EJS().MultiSelect("list").AllowFiltering(true).Query((string)ViewData["query"]).Placeholder("Select countries").DataSource(
+                    (IEnumerable<Countries>)ViewData["data"]).Filtering("onFiltering").Fields(new MultiSelectFieldSettings { Text = "Name", Value = "Code" }).Render()
         </div>
     </div>
     <style>
@@ -40,7 +40,7 @@
             // frame the query based on search string with filter type.
             query = (e.text !== '') ? query.where('Name', 'startswith', e.text, true) : query;
             // pass the filter data source, filter query to updateData method.
-            e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.data)), query);
+            e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewData["data"])), query);
         }
     </script>
 

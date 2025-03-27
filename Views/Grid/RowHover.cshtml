@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("RowHover").DataSource((IEnumerable<object>)ViewBag.datasource).EnableHover().AllowPaging().Columns(col =>
+        @Html.EJS().Grid("RowHover").DataSource((IEnumerable<object>)ViewData["datasource"]).EnableHover().AllowPaging().Columns(col =>
    {
 
        col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();

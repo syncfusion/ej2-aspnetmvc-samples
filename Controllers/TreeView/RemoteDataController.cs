@@ -41,7 +41,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeView
             childData.Text = "ShipName";
             childData.ParentID = "EmployeeID";
             childData.DataSource = data;
-            ViewBag.remoteFields = parentData;
+            ViewData["remoteFields"] = parentData;
             return View();
         }
        

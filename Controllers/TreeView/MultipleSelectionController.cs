@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeView
             multipleFields.ParentID = "PId";
             multipleFields.Text = "Name";
             multipleFields.Selected = "Selected";
-            ViewBag.multipleFields = multipleFields;
+            ViewData["multipleFields"] = multipleFields;
             return View();
         }
       

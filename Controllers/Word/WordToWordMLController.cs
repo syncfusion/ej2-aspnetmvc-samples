@@ -53,12 +53,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
                 }
                 else
                 {
-                    ViewBag.Message = string.Format("Please choose Word format document to convert to WordML");
+                    ViewData["Message"] = string.Format("Please choose Word format document to convert to WordML");
                 }
             }
             else
             {
-                ViewBag.Message = string.Format("Browse a Word document and then click the button to convert as a WordML document");
+                ViewData["Message"] = string.Format("Browse a Word document and then click the button to convert as a WordML document");
             }
 
             return View();

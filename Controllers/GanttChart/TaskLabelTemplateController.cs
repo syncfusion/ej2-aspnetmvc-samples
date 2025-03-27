@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult TaskLabelTemplate()
         {
-            ViewBag.DataSource = GanttData.LabelData();
-            ViewBag.Resources = GanttData.EditingResources();
+            ViewData["DataSource"] = GanttData.LabelData();
+            ViewData["Resources"] = GanttData.EditingResources();
             return View();
         }
     }

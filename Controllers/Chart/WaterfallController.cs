@@ -31,10 +31,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new WaterfallChartData { X = "Tax", Y = -365 },
                 new WaterfallChartData { X = "Net Profit" },
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.intermediateSumIndexes = new int[] {4};
-            ViewBag.sumIndexes = new int[] {7};
-            ViewBag.connector = new {width = 0.8, dashArray = "1,2", color = "#5F6A6A"};
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["intermediateSumIndexes"] = new int[] {4};
+            ViewData["sumIndexes"] = new int[] {7};
+            ViewData["connector"] = new {width = 0.8, dashArray = "1,2", color = "#5F6A6A"};
             return View();
         }
         public class WaterfallChartData

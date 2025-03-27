@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new AreaChartData { Period = new DateTime(2013, 01, 01), USD = 0.161 },
                 new AreaChartData { Period = new DateTime(2018, 01, 01), USD = 0.080 }
             };
-            ViewBag.Other = Other;
+            ViewData["Other"] = Other;
             List<AreaChartData> Track = new List<AreaChartData>
             {
                 new AreaChartData { Period = new DateTime(1973, 01, 01), USD = 2.58 },
@@ -49,7 +49,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new AreaChartData { Period = new DateTime(1981, 01, 01), USD = -0.24 },
                 new AreaChartData { Period = new DateTime(1982, 01, 01), USD = -0 }
             };
-            ViewBag.Track = Track;
+            ViewData["Track"] = Track;
             List<AreaChartData> Streaming = new List<AreaChartData>
             {
                 new AreaChartData { Period = new DateTime(2011, 01, 01), USD = 0.48 },
@@ -57,7 +57,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new AreaChartData { Period = new DateTime(2015, 01, 01), USD = 2.17 },
                 new AreaChartData { Period = new DateTime(2017, 01, 01), USD = 7.18 }
             };
-            ViewBag.Streaming = Streaming;
+            ViewData["Streaming"] = Streaming;
             List<AreaChartData> Download = new List<AreaChartData>
             {
                 new AreaChartData { Period = new DateTime(2004, 01, 01), USD = 0.48 },
@@ -68,7 +68,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new AreaChartData { Period = new DateTime(2016, 01, 01), USD = 1.61 },
                 new AreaChartData { Period = new DateTime(2017, 01, 01), USD = 0.80 }
             };
-            ViewBag.Download = Download;
+            ViewData["Download"] = Download;
             List<AreaChartData> Compact = new List<AreaChartData>
             {
                 new AreaChartData { Period = new DateTime(1990, 01, 01), USD = 0.69 },
@@ -88,7 +88,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new AreaChartData { Period = new DateTime(2010, 01, 01), USD = 1.46 },
                 new AreaChartData { Period = new DateTime(2011, 01, 01), USD = 0.64 }
             };
-            ViewBag.Compact = Compact;
+            ViewData["Compact"] = Compact;
             List<AreaChartData> Casette = new List<AreaChartData>
             {
                 new AreaChartData { Period = new DateTime(1976, 01, 01), USD = 0.08 },
@@ -108,7 +108,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new AreaChartData { Period = new DateTime(1999, 01, 01), USD = 0.80 },
                 new AreaChartData { Period = new DateTime(2001, 01, 01), USD = 0.40 }
             };
-            ViewBag.Casette = Casette;
+            ViewData["Casette"] = Casette;
             List<AreaChartData> Vinyl = new List<AreaChartData>
             {
                 new AreaChartData { Period = new DateTime(1973, 01, 01), USD = 7.74 },
@@ -124,7 +124,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new AreaChartData { Period = new DateTime(1989, 01, 01), USD = 0.64 },
                 new AreaChartData { Period = new DateTime(1990, 01, 01), USD = 0 }
             };
-            ViewBag.Vinyl = Vinyl;
+            ViewData["Vinyl"] = Vinyl;
             return View();
         }
         

@@ -18,16 +18,16 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             List<object> exportItems = new List<object>();
             exportItems.Add(new { text = "iCalendar", iconCss = "e-icons e-export" });
             exportItems.Add(new { text = "Excel", iconCss = "e-icons e-export-excel" });
-            ViewBag.ExportItems = exportItems;
+            ViewData["ExportItems"] = exportItems;
 
             List<CalendarRes> calendarCollections = new List<CalendarRes>();
             calendarCollections.Add(new CalendarRes { CalendarName = "My Calendar", CalendarId = 1, CalendarColor = "#c43081" });
             calendarCollections.Add(new CalendarRes { CalendarName = "Company", CalendarId = 2, CalendarColor = "#ff7f50" });
             calendarCollections.Add(new CalendarRes { CalendarName = "Birthday", CalendarId = 3, CalendarColor = "#AF27CD" });
             calendarCollections.Add(new CalendarRes { CalendarName = "Holiday", CalendarId = 4, CalendarColor = "#808000" });
-            ViewBag.Calendars = calendarCollections;
+            ViewData["Calendars"] = calendarCollections;
 
-            ViewBag.Resources = new string[] { "Calendars" };
+            ViewData["Resources"] = new string[] { "Calendars" };
 
             List<object> menuItems = new List<object>();
             menuItems.Add(new { text = "New Event", iconCss = "e-icons e-plus", id = "Add" });
@@ -55,7 +55,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
                     new { text = "Delete Series", id = "DeleteSeries"}
                 }
             });
-            ViewBag.MenuItems = menuItems;
+            ViewData["MenuItems"] = menuItems;
 
             List<object> weekDays = new List<object>();
             weekDays.Add(new { text = "Sunday", value = "0" });
@@ -65,7 +65,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             weekDays.Add(new { text = "Thursday", value = "4" });
             weekDays.Add(new { text = "Friday", value = "5" });
             weekDays.Add(new { text = "Saturday", value = "6" });
-            ViewBag.WeekDays = weekDays;
+            ViewData["WeekDays"] = weekDays;
 
             List<object> timezoneData = new List<object>();
             timezoneData.Add(new { text = "UTC -12:00", value = "Etc/GMT+12" });
@@ -95,7 +95,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             timezoneData.Add(new { text = "UTC +12:00", value = "Etc/GMT-12" });
             timezoneData.Add(new { text = "UTC +13:00", value = "Etc/GMT-13" });
             timezoneData.Add(new { text = "UTC +14:00", value = "Etc/GMT-14" });
-            ViewBag.TimezoneData = timezoneData;
+            ViewData["TimezoneData"] = timezoneData;
 
             List<object> slotIntervalDataSource = new List<object>();
             slotIntervalDataSource.Add(new { Text = "1 hour", Value = "60" });
@@ -121,7 +121,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             slotIntervalDataSource.Add(new { Text = "11 hours", Value = "660" });
             slotIntervalDataSource.Add(new { Text = "11.5 hours", Value = "690" });
             slotIntervalDataSource.Add(new { Text = "12 hours", Value = "720" });
-            ViewBag.SlotIntervalDataSource = slotIntervalDataSource;
+            ViewData["SlotIntervalDataSource"] = slotIntervalDataSource;
 
             List<object> slots = new List<object>();
             slots.Add(new { Text = "1", Value = "1" });
@@ -134,26 +134,26 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             slots.Add(new { Text = "8", Value = "8" });
             slots.Add(new { Text = "9", Value = "9" });
             slots.Add(new { Text = "10", Value = "10" });
-            ViewBag.SlotCounts = slots;
+            ViewData["SlotCounts"] = slots;
             List<object> time = new List<object>();
             time.Add(new { Text = "12 hours", Value = "hh:mm a" });
             time.Add(new { Text = "24 hours", Value = "HH:mm" });
-            ViewBag.TimeFormat = time;
+            ViewData["TimeFormat"] = time;
             List<object> weekNumbersData = new List<object>();
             weekNumbersData.Add(new { Text = "Off", Value = "Off" });
             weekNumbersData.Add(new { Text = "First Day Of Year", Value = "FirstDay" });
             weekNumbersData.Add(new { Text = "First Full Week", Value = "FirstFullWeek" });
             weekNumbersData.Add(new { Text = "First Four-Day Week", Value = "FirstFourDayWeek" });
-            ViewBag.WeekNumber = weekNumbersData;
+            ViewData["WeekNumber"] = weekNumbersData;
             List<object> tooltipData = new List<object>();
             tooltipData.Add(new { Text = "Off", Value = "Off" });
             tooltipData.Add(new { Text = "On", Value = "On" });
-            ViewBag.Tooltip = tooltipData;
+            ViewData["Tooltip"] = tooltipData;
 
-            ViewBag.Values = new string[] { "1", "2", "3", "4", "5" };
-            ViewBag.ResourceValues = new string[] { "1" };
+            ViewData["Values"] = new string[] { "1", "2", "3", "4", "5" };
+            ViewData["ResourceValues"] = new string[] { "1" };
 
-            ViewBag.Appointments = this.GenerateEvents();
+            ViewData["Appointments"] = this.GenerateEvents();
 
             return View();
         }

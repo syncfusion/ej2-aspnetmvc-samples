@@ -1,14 +1,14 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
 
         @Html.EJS().Chart3D("container").EnableRotation(true).WallColor("transparent").Height("400").Rotation(7).Tilt(10).Depth(100).Title("Steel Production by Countries, Grouped by Continent").PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).Interval(1)
    ).Series(series =>
    {
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewBag.ChartData).XName("X").YName("Y").Name("Iran").StackingGroup("Asia").ColumnWidth(0.6).Add();
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewBag.ChartData).XName("X").YName("Y1").Name("Indonesia").StackingGroup("Asia").ColumnWidth(0.6).Add();
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewBag.ChartData).XName("X").YName("Y2").Name("Italy").StackingGroup("Europe").ColumnWidth(0.6).Add();
-       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewBag.ChartData).XName("X").YName("Y3").Name("France").StackingGroup("Europe").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewData["ChartData"]).XName("X").YName("Y").Name("Iran").StackingGroup("Asia").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewData["ChartData"]).XName("X").YName("Y1").Name("Indonesia").StackingGroup("Asia").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewData["ChartData"]).XName("X").YName("Y2").Name("Italy").StackingGroup("Europe").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewData["ChartData"]).XName("X").YName("Y3").Name("France").StackingGroup("Europe").ColumnWidth(0.6).Add();
    }).PrimaryYAxis(py => py.Interval(10)
         ).Tooltip(tt => tt.Enable(true).Format("${point.x} : <b>${point.y} Mmt")
         ).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").AxisLabelRender("axisLabelRender").Render()
@@ -21,6 +21,7 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/three-dimensional-chart/theme-color.js"></script>
     <script>
         var axisLabelRender = function (args) {
             if (args.axis.name === 'primaryYAxis') {
@@ -28,10 +29,7 @@
             }
         }
         var load = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() +
-                selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            load3DChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? '100%' : '75%';
             args.chart.primaryYAxis.maximum = ej.base.Browser.isDevice ? 50 : 60;
         }

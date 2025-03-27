@@ -65,7 +65,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
                    || extension == ".xml" || extension == ".rtf")
                     return new WordDocument(file.InputStream, FormatType.Automatic);
                 else
-                    ViewBag.Message = string.Format("Please choose Word format document to convert to Markdown");
+                    ViewData["Message"] = string.Format("Please choose Word format document to convert to Markdown");
             }
             else
             {

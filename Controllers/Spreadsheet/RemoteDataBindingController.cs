@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Spreadsheet
     {
         public ActionResult RemoteDataBinding()
         {
-            ViewBag.FieldsOrder = new string[] { "OrderID", "CustomerID", "Freight", "ShipName", "ShipCity", "ShipCountry" };
+            ViewData["FieldsOrder"] = new string[] { "OrderID", "CustomerID", "Freight", "ShipName", "ShipCity", "ShipCountry" };
             return View();
         }
 

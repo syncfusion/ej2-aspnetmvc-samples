@@ -12,7 +12,7 @@
                     <td>
                         <label id="disabled-size">Compose your content</label>
                         <div id="disabledMention" placeholder="@Html.Raw("@") and tag user"></div>
-                        @Html.EJS().Mention("disableditem").Target("#disabledMention").MentionChar(nameMentionChar).AllowSpaces(true).ItemTemplate("<div class=\"listItems\"><img class=\"mentionEmpImage\" src=\"../Content/Mention/images/Employees/${Eimg}.png\" alt=\"employee\"/><span class=\"person\"> ${Name} </span><span class=\"email\">${EmailId}</span></div>").NoRecordsTemplate("No item related to the search").DisplayTemplate("${Name}").PopupWidth("250px").PopupHeight("200px").DataSource((IEnumerable<DisabledEmailData>)ViewBag.emails).Fields(new MentionFieldSettings { Text = "Name", Disabled = "State" }).Render()
+                        @Html.EJS().Mention("disableditem").Target("#disabledMention").MentionChar(nameMentionChar).AllowSpaces(true).ItemTemplate("<div class=\"listItems\"><img class=\"mentionEmpImage\" src=\"../Content/Mention/images/Employees/${Eimg}.png\" alt=\"employee\"/><span class=\"person\"> ${Name} </span><span class=\"email\">${EmailId}</span></div>").NoRecordsTemplate("No item related to the search").DisplayTemplate("${Name}").PopupWidth("250px").PopupHeight("200px").DataSource((IEnumerable<DisabledEmailData>)ViewData["emails"]).Fields(new MentionFieldSettings { Text = "Name", Disabled = "State" }).Render()
                     </td>
                 </tr>
             </table>

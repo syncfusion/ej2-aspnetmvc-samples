@@ -1,7 +1,7 @@
 @using Syncfusion.EJ2.Popups
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Document List";
+    ViewData["Title"] = "Document List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var items = new List<object>
@@ -26,7 +26,7 @@
      	commands.Add(new {buttonOption = new {cssClass = "e-icons e-edit e-flat" }, title = "Edit" });
       }
       @(Html.EJS().Grid("Grid")
-      .DataSource((IEnumerable<object>)ViewBag.dataSource).RecordClick("recordClick")
+      .DataSource((IEnumerable<object>)ViewData["dataSource"]).RecordClick("recordClick")
       .Columns(col =>
       {
           col.Template("#filetemplate").HeaderText("File Name").Add();

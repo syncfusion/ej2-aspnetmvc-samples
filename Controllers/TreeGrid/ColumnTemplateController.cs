@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult ColumnTemplate()
         {
             var treeData = TreeGridItems.GetTemplateData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
             return View();
         }
     }

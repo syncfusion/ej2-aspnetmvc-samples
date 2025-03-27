@@ -18,7 +18,7 @@
                     col.Field("Role").Header("Role").Width("140").Add();
                     col.Field("Location").Header("Location").Width("100").Add();
                     col.Field("Experience").Header("Experience in Years").Width("150").Add();
-                }).PopupHeight("210px").PopupWidth("585px").DataSource((IEnumerable<Employee>)ViewBag.data).Render()
+                }).PopupHeight("210px").PopupWidth("585px").DataSource((IEnumerable<Employee>)ViewData["data"]).Render()
             </div>
         </div>
     </div>

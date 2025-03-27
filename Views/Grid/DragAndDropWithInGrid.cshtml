@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "DragAndDropWithInGrid";
+    ViewData["Title"] = "DragAndDropWithInGrid";
 }
 
 
@@ -9,7 +9,7 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("DragAndDropWithInGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+        @Html.EJS().Grid("DragAndDropWithInGrid").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
     {
         col.Field("OrderID").HeaderText("Order ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("120").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
         col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 5 }).Add();
@@ -20,7 +20,7 @@
 
     }).Created("created").AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).SelectionSettings(select => select.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)).AllowRowDragAndDrop().AllowGrouping().Height(400).Render()
     </div>
-    @Html.EJS().Dialog("alert_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Grouping").Content("Grouping is disabled for this column").Visible(false).Width("300px").Target(".control-section").Buttons(ViewBag.alertbutton).Render()
+    @Html.EJS().Dialog("alert_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Grouping").Content("Grouping is disabled for this column").Visible(false).Width("300px").Target(".control-section").Buttons((List<DialogDialogButton>)ViewData["alertbutton"]).Render()
     <script>
         function created(args) {
             var grid = this;

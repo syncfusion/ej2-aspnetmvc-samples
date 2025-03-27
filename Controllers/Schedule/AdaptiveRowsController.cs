@@ -15,7 +15,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult AdaptiveRows()
         {
-            ViewBag.datasource = new ScheduleData().GetRoomData();
+            ViewData["datasource"] = new ScheduleData().GetRoomData();
             List<RoomData> rooms = new List<RoomData>();
             rooms.Add(new RoomData { name = "Room A", id = 1, color = "#98AFC7" });
             rooms.Add(new RoomData { name = "Room B", id = 2, color = "#99c68e" });
@@ -27,9 +27,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             rooms.Add(new RoomData { name = "Room H", id = 8, color = "#3090C7" });
             rooms.Add(new RoomData { name = "Room I", id = 9, color = "#98AFC7" });
             rooms.Add(new RoomData { name = "Room J", id = 10, color = "#778899" });
-            ViewBag.RoomDatas = rooms;
+            ViewData["RoomDatas"] = rooms;
             string[] resources = new string[] { "MeetingRoom" };
-            ViewBag.ResourceNames = resources;
+            ViewData["ResourceNames"] = resources;
             return View();
         }
     }

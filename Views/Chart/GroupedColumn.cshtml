@@ -10,32 +10,32 @@
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("USA_Total")
                     .ColumnWidth(0.7).ColumnSpacing(0.1).Name("USA Total Medals").GroupName("USA")
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
-                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewBag.ChartPoints).Add();
+                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
 
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("USA_Gold")
                     .ColumnWidth(0.5).ColumnSpacing(0.1).Name("USA Gold Medals").GroupName("USA")
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
-                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewBag.ChartPoints).Add();
+                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
 
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("UK_Total")
                     .ColumnWidth(0.7).ColumnSpacing(0.1).Name("UK Total Medals").GroupName("UK")
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
-                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewBag.ChartPoints).Add();
+                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
 
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("UK_Gold")
                     .ColumnWidth(0.5).ColumnSpacing(0.1).Name("UK Gold Medals").GroupName("UK")
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
-                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewBag.ChartPoints).Add();
+                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
 
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("China_Total")
                     .ColumnWidth(0.7).ColumnSpacing(0.1).Name("China Total Medals").GroupName("China")
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
-                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewBag.ChartPoints).Add();
+                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
 
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("China_Gold")
                     .ColumnWidth(0.5).ColumnSpacing(0.1).Name("China Gold Medals").GroupName("China")
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
-                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewBag.ChartPoints).Add();
+                    .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
                 }).Title("Olympics Medal Tally").Load("load").Tooltip(tooltip => tooltip.Enable(true)).Render()
             </div>
         
@@ -46,10 +46,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>

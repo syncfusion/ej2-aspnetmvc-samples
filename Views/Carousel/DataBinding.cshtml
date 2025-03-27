@@ -8,7 +8,7 @@
                 .AnimationEffect(CarouselAnimationEffect.Fade)
                 .ButtonsVisibility(CarouselButtonVisibility.Hidden)
                 .ItemTemplate("#itemTemplate")
-                .DataSource((IEnumerable<object>)ViewBag.dataSource)
+                .DataSource((IEnumerable<object>)ViewData["dataSource"])
                 .Render()
             )
         </div>

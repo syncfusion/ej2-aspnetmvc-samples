@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.BulletChart
                 new LegendBulletData { value = 25, target = new double[]{ 20, 26, 28 } }
             };
 
-            ViewBag.dataSource = bulletData1;
+            ViewData["dataSource"] = bulletData1;
             return View();
         }
         public class LegendBulletData

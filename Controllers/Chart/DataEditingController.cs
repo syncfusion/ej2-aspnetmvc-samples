@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new DataEditingData { Period = "2010", ProductA_Sales = 57, ProductB_Sales= 78},
                 new DataEditingData { Period = "2011", ProductA_Sales = 70, ProductB_Sales= 84}
              };
-            ViewBag.ConsumerDetails = ConsumerDetails;
+            ViewData["ConsumerDetails"] = ConsumerDetails;
             return View();
         }
         public class DataEditingData

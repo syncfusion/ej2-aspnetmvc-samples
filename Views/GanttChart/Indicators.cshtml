@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Indicators";
+    ViewData["Title"] = "Indicators";
 }
 
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @(Html.EJS().Gantt("Indicators").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true)
+            @(Html.EJS().Gantt("Indicators").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true).AllowSelection(true)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                 .Dependency("Predecessor").Indicators("Indicators").Child("SubTasks")).TreeColumnIndex(1)
                 .Columns(col =>
@@ -54,26 +54,37 @@
         }
 
         .bootstrap5 #Indicators .okIcon::before,
-        .tailwind #Indicators .okIcon::before, .tailwind-dark #Indicators .okIcon::before,
-        .tailwind3 #Indicators .okIcon::before, .tailwind3-dark #Indicators .okIcon::before,
-        .fluent #Indicators .okIcon::before,.fluent2 #Indicators .okIcon::before,
-        .fluent2-dark #Indicators .okIcon::before,.fluent-dark #Indicators .okIcon::before,
-        .material3 #Indicators .okIcon::before, .material3-dark #Indicators .okIcon::before,
+        .tailwind #Indicators .okIcon::before,
+        .tailwind-dark #Indicators .okIcon::before,
+        .tailwind3 #Indicators .okIcon::before,
+        .tailwind3-dark #Indicators .okIcon::before,
+        .fluent #Indicators .okIcon::before,
+        .fluent2 #Indicators .okIcon::before,
+        .fluent2-dark #Indicators .okIcon::before,
+        .fluent-dark #Indicators .okIcon::before,
+        .material3 #Indicators .okIcon::before,
+        .material3-dark #Indicators .okIcon::before,
         .fluent2-highcontrast #Indicators .okIcon::before,
         .bootstrap5\.3 #Indicators .okIcon::before,
         .bootstrap5\.3-dark-lite #Indicators .okIcon::before,
         .bootstrap5\.3-dark #Indicators .okIcon::before, 
-        .bootstrap5\.3-lite #Indicators .okIcon::before{
+        .bootstrap5\.3-lite #Indicators .okIcon::before {
             content: '\e72b';
         }
 
         .bootstrap5 #Indicators .description::before,
-        .tailwind #Indicators .description::before, .tailwind-dark #Indicators .description::before,
-        .tailwind3 #Indicators .description::before, .tailwind3-dark #Indicators .description::before,
-        .fluent #Indicators .description::before,.fluent2 #Indicators .description::before, 
-        .fluent-dark #Indicators .description::before,.fluent2-dark #Indicators .description::before,
-        .material3 #Indicators .description::before, .material3-dark #Indicators .description::before
-        .material3-dark #Indicators .researchPhase::before, .material3 #Indicators .researchPhase::before,
+        .tailwind #Indicators .description::before,
+        .tailwind-dark #Indicators .description::before,
+        .tailwind3 #Indicators .description::before,
+        .tailwind3-dark #Indicators .description::before,
+        .fluent #Indicators .description::before,
+        .fluent2 #Indicators .description::before, 
+        .fluent-dark #Indicators .description::before,
+        .fluent2-dark #Indicators .description::before,
+        .material3 #Indicators .description::before,
+        .material3-dark #Indicators .description::before,
+        .material3-dark #Indicators .researchPhase::before,
+        .material3 #Indicators .researchPhase::before,
         .fluent2-highcontrast #Indicators .description::before,
         .fluent2-highcontrast #Indicators .researchPhase::before,
         .bootstrap5\.3 #Indicators .description::before,
@@ -83,12 +94,12 @@
         .bootstrap5\.3 #Indicators .researchPhase::before,
         .bootstrap5\.3-dark-lite #Indicators .researchPhase::before,
         .bootstrap5\.3-dark #Indicators .researchPhase::before, 
-        .bootstrap5\.3-lite #Indicators .researchPhase::before{
+        .bootstrap5\.3-lite #Indicators .researchPhase::before {
             content: '\e7c0';
         }
 
         .fabric #Indicators .description::before,
-        .fabric-dark #Indicators .description::before{
+        .fabric-dark #Indicators .description::before {
             content: '\e310';
         }
         .highcontrast #Indicators .description::before {
@@ -96,7 +107,7 @@
         }
         .fluent2 #Indicators .description::before,
         .fluent2-dark #Indicators .description::before,
-        .fluent2-highcontrast #Indicators .description::before{
+        .fluent2-highcontrast #Indicators .description::before {
             content: '\e7c0';
         }
     </style>

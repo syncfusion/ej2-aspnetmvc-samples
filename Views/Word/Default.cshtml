@@ -1,5 +1,5 @@
-﻿@using Syncfusion.EJ2
-@{ViewBag.Title = "    Essential DocIO (Word) : Default : Syncfusion";}
+@using Syncfusion.EJ2
+@{ViewData["Title"] = "    Essential DocIO (Word) : Default : Syncfusion";}
 @section ControlsSection{
     <div class="control-section">
         @{ Html.BeginForm("SalesInvoice", "Word", FormMethod.Post);
@@ -9,7 +9,7 @@
                     <div style="margin-top: 10px">
                         <div class="celldiv">
                             Select the Order ID :
-                            @Html.DropDownList("id", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "e-btn" })
+                            @Html.DropDownList("id", (IEnumerable<SelectListItem>)ViewData["PriorityID"], new { @class = "e-btn" })
                         </div>
                         <div style="margin-top: 10px">
                             Save As :

@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <script src="~/Scripts/stock-chart-data.js"></script>
     <div class="control-section">
@@ -10,9 +10,9 @@
                 .EmptyPointSettings(es => es.Mode(Syncfusion.EJ2.Charts.EmptyPointMode.Drop)).DataSource("ChartPoints").Add();
                 }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).Minimum(new DateTime(2023, 2, 18)).Maximum(new DateTime(2023, 8, 18)).LabelFormat("MMM d").MajorGridLines(mg => mg.Width(0)).LineStyle(ls => ls.Width(0))
                 ).PrimaryYAxis(px => px.LabelFormat("n2").Minimum(0.86).Maximum(0.96).Interval(0.025).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
-                ).Tooltip(tt => tt.Enable(true).Shared(true).Header("").Format("<b>€${point.y}</b> <br> ${point.x} 2023").EnableMarker(false)).ChartArea(area => area.Border(br => br.Width(0))
+                ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("").Format("<b>€${point.y}</b> <br> ${point.x} 2023").EnableMarker(false)).ChartArea(area => area.Border(br => br.Width(0))
                 ).TitleStyle(tl => tl.TextAlignment(Syncfusion.EJ2.Charts.Alignment.Near)
-                ).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).EnableScrollbar(false).EnableDeferredZooming(false).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true).ToolbarItems(ViewBag.toolbarItems)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true).DashArray("2,2")
+                ).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).EnableScrollbar(false).EnableDeferredZooming(false).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true).ToolbarItems(ViewData["toolbarItems"])).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true).DashArray("2,2")
                 ).Title("US to EURO").Load("load").ChartMouseMove("chartMouseMove1").ChartMouseLeave("chartMouseLeave1").ZoomComplete("zoomComplete").ChartMouseUp("chartMouseUp1").Render()
             </div>
             <div class="col" id="container2">
@@ -21,9 +21,9 @@
                 series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).XName("USD").YName("JPY").Width(2).DataSource("ChartPoints").Add();
                 }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).Minimum(new DateTime(2023, 2, 18)).Maximum(new DateTime(2023, 8, 18)).LabelFormat("MMM d").MajorGridLines(mg => mg.Width(0)).LineStyle(ls => ls.Width(0))
                 ).PrimaryYAxis(px => px.LabelFormat("{value}").Minimum(120).Maximum(152).Interval(8).LabelPadding(8).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
-                ).Tooltip(tt => tt.Enable(true).Shared(true).Header("").Format("<b>¥${point.y}</b> <br> ${point.x} 2023").EnableMarker(false)).ChartArea(area => area.Border(br => br.Width(0))
+                ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("").Format("<b>¥${point.y}</b> <br> ${point.x} 2023").EnableMarker(false)).ChartArea(area => area.Border(br => br.Width(0))
                 ).TitleStyle(tl => tl.TextAlignment(Syncfusion.EJ2.Charts.Alignment.Near)
-                ).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).EnableScrollbar(false).EnableDeferredZooming(false).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true).ToolbarItems(ViewBag.toolbarItems)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true).DashArray("2,2")
+                ).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).EnableScrollbar(false).EnableDeferredZooming(false).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true).ToolbarItems(ViewData["toolbarItems"])).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true).DashArray("2,2")
                 ).Title("US to Yen").Load("load").ChartMouseMove("chartMouseMove2").ChartMouseLeave("chartMouseLeave2").ZoomComplete("zoomComplete").ChartMouseUp("chartMouseUp2").Render()
             </div>
         </div>
@@ -34,9 +34,9 @@
                 series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).XName("USD").YName("SGD").Width(2).Opacity(0.6).Border(br => br.Width(2)).DataSource("ChartPoints").Add();
                 }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).Minimum(new DateTime(2023, 2, 18)).Maximum(new DateTime(2023, 8, 18)).LabelFormat("MMM d").MajorGridLines(mg => mg.Width(0)).LineStyle(ls => ls.Width(0))
                 ).PrimaryYAxis(px => px.LabelFormat("n2").Minimum(1.30).Maximum(1.37).Interval(0.0175).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
-                ).Tooltip(tt => tt.Enable(true).Shared(true).Header("").Format("<b>$${point.y}</b> <br> ${point.x} 2023").EnableMarker(false)).ChartArea(area => area.Border(br => br.Width(0))
+                ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("").Format("<b>$${point.y}</b> <br> ${point.x} 2023").EnableMarker(false)).ChartArea(area => area.Border(br => br.Width(0))
                 ).TitleStyle(tl => tl.TextAlignment(Syncfusion.EJ2.Charts.Alignment.Near)
-                ).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).EnableScrollbar(false).EnableDeferredZooming(false).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true).ToolbarItems(ViewBag.toolbarItems)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true).DashArray("2,2")
+                ).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).EnableScrollbar(false).EnableDeferredZooming(false).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true).ToolbarItems(ViewData["toolbarItems"])).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true).DashArray("2,2")
                 ).Title("US to SGD").Load("load").ChartMouseMove("chartMouseMove3").ChartMouseLeave("chartMouseLeave3").ZoomComplete("zoomComplete").ChartMouseUp("chartMouseUp3").Render()
             </div>
             <div class="col" id="container4">
@@ -45,9 +45,9 @@
                 series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area).XName("USD").YName("INR").Width(2).Opacity(0.6).Border(br => br.Width(2)).DataSource("ChartPoints").Add();
                 }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).Minimum(new DateTime(2023, 2, 18)).Maximum(new DateTime(2023, 8, 18)).LabelFormat("MMM d").MajorGridLines(mg => mg.Width(0)).LineStyle(ls => ls.Width(0))
                 ).PrimaryYAxis(px => px.LabelFormat("n1").Minimum(79).Maximum(85).Interval(1.5).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
-                ).Tooltip(tt => tt.Enable(true).Shared(true).Header("").Format("<b>₹${point.y}</b> <br> ${point.x} 2023").EnableMarker(false)).ChartArea(area => area.Border(br => br.Width(0))
+                ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("").Format("<b>₹${point.y}</b> <br> ${point.x} 2023").EnableMarker(false)).ChartArea(area => area.Border(br => br.Width(0))
                 ).TitleStyle(tl => tl.TextAlignment(Syncfusion.EJ2.Charts.Alignment.Near)
-                ).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).EnableScrollbar(false).EnableDeferredZooming(false).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true).ToolbarItems(ViewBag.toolbarItems)).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true).DashArray("2,2")
+                ).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).EnableScrollbar(false).EnableDeferredZooming(false).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true).ToolbarItems(ViewData["toolbarItems"])).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true).DashArray("2,2")
                 ).Title("US to INR").Load("load").ChartMouseMove("chartMouseMove4").ChartMouseLeave("chartMouseLeave4").ZoomComplete("zoomComplete").ChartMouseUp("chartMouseUp4").Render()
             </div>
         </div>
@@ -70,6 +70,7 @@
             height: 270px;
         }
     </style>
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var chart1;
         var chart2;
@@ -80,9 +81,7 @@
         var zoomPosition = 0;
         var ChartPoints = synchronizedData;
         function load(args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5'));
+            loadChartTheme(args);
             args.chart.primaryXAxis.interval = ej.base.Browser.isDevice ? 2 : 1;
             args.chart.primaryXAxis.edgeLabelPlacement = ej.base.Browser.isDevice ? 'None' : 'Shift';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
@@ -392,6 +391,9 @@
 @section Description{
     <p>
         This demo showcases the synchronization of multiple charts, with crosshair, tooltip, and zooming functionalities synchronized across the charts. Hover over or zoom in on one chart to observe the corresponding impact on the other charts as well.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
     </p>
     <p>
         More information on the user interaction can be found in this

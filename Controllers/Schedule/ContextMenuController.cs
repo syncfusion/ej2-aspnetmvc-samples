@@ -15,7 +15,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult ContextMenu()
         {
-            ViewBag.datasource = new ScheduleData().GetScheduleData();
+            ViewData["datasource"] = new ScheduleData().GetScheduleData();
 
             List<object> menuItems = new List<object>();
             menuItems.Add(new { text = "New Event", iconCss = "e-icons e-plus", id = "Add" });
@@ -44,7 +44,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
                 }
             });
 
-            ViewBag.menuItems = menuItems;
+            ViewData["menuItems"] = menuItems;
             return View();
         }
     }

@@ -7,16 +7,16 @@
             <div class='control-wrapper'>
                 <h3> Local Data</h3>
 
-                @Html.EJS().MultiSelect("local").Placeholder("Select countries").DataSource((IEnumerable<Countries>)ViewBag.localdata).Fields(new MultiSelectFieldSettings { Text = "Name", Value = "Code" }).Value((string[])ViewBag.val).Render()
+                @Html.EJS().MultiSelect("local").Placeholder("Select countries").DataSource((IEnumerable<Countries>)ViewData["localdata"]).Fields(new MultiSelectFieldSettings { Text = "Name", Value = "Code" }).Value((string[])ViewData["val"]).Render()
             </div>
         </div>
         <div id='remote-data'>
             <div class='control-wrapper'>
                 <h3>Remote Data</h3>
 
-                @Html.EJS().MultiSelect("remote").Placeholder("Select names").SortOrder((string)ViewBag.sort).Query((string)ViewBag.query).DataSource(
+                @Html.EJS().MultiSelect("remote").Placeholder("Select names").SortOrder((string)ViewData["sort"]).Query((string)ViewData["query"]).DataSource(
                    obj => obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").CrossDomain(true).Adaptor("WebApiAdaptor")).Fields(
-                   new MultiSelectFieldSettings { Text = "FirstName", Value = "EmployeeID" }).Value((string[])ViewBag.val).Render()
+                   new MultiSelectFieldSettings { Text = "FirstName", Value = "EmployeeID" }).Value((string[])ViewData["val"]).Render()
             </div>
         </div>
     </div>

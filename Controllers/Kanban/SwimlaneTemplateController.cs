@@ -17,8 +17,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult SwimlaneTemplate()
         {
-            ViewBag.data = new KanbanDataModels().KanbanTasks();
-            ViewBag.SortDropDown = new KanbanDataModels().SortDropDowns();
+            ViewData["data"] = new KanbanDataModels().KanbanTasks();
+            ViewData["SortDropDown"] = new KanbanDataModels().SortDropDowns();
             return View();
         }
     }

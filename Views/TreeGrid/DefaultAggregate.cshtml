@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "DefaultAggregate";
+    ViewData["Title"] = "DefaultAggregate";
 }
 
 @*custom code end*@
@@ -13,7 +13,7 @@
     <div class="col-lg-9 control-section">
         <div class="control-section">
             @(Html.EJS().TreeGrid("DefaultAggregate")
-                                        .DataSource((IEnumerable<object>)ViewBag.datasource)
+                                        .DataSource((IEnumerable<object>)ViewData["datasource"])
                                         .Columns(col =>
                                         {
                                             col.Field("orderID").HeaderText("Order ID").Width(90).TextAlign(TextAlign.Right).Add();

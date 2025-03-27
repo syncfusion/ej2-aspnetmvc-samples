@@ -16,7 +16,7 @@
            PinchZooming = false
        }).UseGroupingSeparator(true).TooltipDisplayMode(@Syncfusion.EJ2.Maps.TooltipGesture.Click).Format("n").Load("load").TitleSettings(title => title.Text("Sales details of products in various countries").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).Layers(layer =>
        {
-           layer.MarkerSettings(ViewBag.markerSettings).ShapeSettings(new MapsShapeSettings { Fill = "#C3E6ED" }).ShapeData(ViewBag.shapeData).MarkerClusterSettings(new MapsMarkerClusterSettings { AllowClusterExpand = true, AllowClustering= true, Height=40, Width=40, Shape =MarkerType.Image }).Add();
+           layer.MarkerSettings((List<MapsMarker>)ViewData["markerSettings"]).ShapeSettings(new MapsShapeSettings { Fill = "#C3E6ED" }).ShapeData(ViewData["shapeData"]).MarkerClusterSettings(new MapsMarkerClusterSettings { AllowClusterExpand = true, AllowClustering= true, Height=40, Width=40, Shape =MarkerType.Image }).Add();
        }).Render()
             <div style="margin-left:75%;">
                 Source:

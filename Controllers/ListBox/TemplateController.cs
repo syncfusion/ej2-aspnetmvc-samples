@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ListBox
             data.Add(new { text= "Angular", pic = "angular", description = "It is a TypeScript-based open-source web application framework." });
             data.Add(new { text= "React", pic = "react", description = "A JavaScript library for building user interfaces. It can also render on the server using Node." });
             data.Add(new { text= "Vue", pic = "vue", description = "A progressive framework for building user interfaces. it is incrementally adoptable." });
-            ViewBag.data = data;
+            ViewData["data"] = data;
             return View();
         }
     }

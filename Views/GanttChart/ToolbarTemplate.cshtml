@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ToolbarTemplate";
+    ViewData["Title"] = "ToolbarTemplate";
 }
 
 @section ControlsSection{
@@ -11,7 +11,7 @@
     }
 <div class="control-section">
 
-        @(Html.EJS().Gantt("ToolbarTemplate").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true).AllowFiltering(true).TreeColumnIndex(1)
+        @(Html.EJS().Gantt("ToolbarTemplate").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true).AllowSelection(true).AllowFiltering(true).TreeColumnIndex(1)
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
             .Dependency("Predecessor").Child("SubTasks"))
             .Columns(col =>

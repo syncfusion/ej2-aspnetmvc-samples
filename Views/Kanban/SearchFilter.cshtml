@@ -5,7 +5,7 @@
 @section ControlsSection {
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewBag.data).Columns(col => {
+            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col => {
             col.HeaderText("To Do").KeyField("Open").Add();
             col.HeaderText("In Progress").KeyField("InProgress").Add();
            col.HeaderText("Testing").KeyField("Testing").Add();
@@ -24,7 +24,7 @@
                         </td>
                         <td>
                             <div>
-                                @Html.EJS().DropDownList("priority_filter").DataSource((IEnumerable<object>)ViewBag.PriorityData).Created("priorityCreate").Select("prioritySelect").Index(0).Placeholder("Select a priority").Render()
+                                @Html.EJS().DropDownList("priority_filter").DataSource((IEnumerable<object>)ViewData["PriorityData"]).Created("priorityCreate").Select("prioritySelect").Index(0).Placeholder("Select a priority").Render()
                             </div>
                         </td>
                     </tr>
@@ -34,7 +34,7 @@
                         </td>
                         <td>
                             <div>
-                                @Html.EJS().DropDownList("status_filter").DataSource((IEnumerable<object>)ViewBag.StatusData).Created("statusCreate").Select("statusSelect").Fields(new DropDownListFieldSettings { Text = "Id", Value = "Value" }).Index(0).Placeholder("Select a status").Render()
+                                @Html.EJS().DropDownList("status_filter").DataSource((IEnumerable<object>)ViewData["StatusData"]).Created("statusCreate").Select("statusSelect").Fields(new DropDownListFieldSettings { Text = "Id", Value = "Value" }).Index(0).Placeholder("Select a status").Render()
                             </div>
                         </td>
                     </tr>

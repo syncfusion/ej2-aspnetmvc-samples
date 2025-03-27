@@ -21,7 +21,7 @@
                             Radius("70%").
                             StartAngle(0).
                             EndAngle(360).
-                            DataSource(ViewBag.dataSource).
+                            DataSource(ViewData["dataSource"]).
                             Explode(false).Add();
                     }).EnableSmartLabels(true).EnableBorderOnMouseMove(false).Title("Automobile Sales by Category").TextRender("textRender").LegendSettings(
                         legend =>
@@ -41,6 +41,7 @@
                 cursor: pointer !important;
             }
         </style>
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
             var suvs = [{ x: 'Toyota', y: 8 }, { x: 'Ford', y: 12 }, { x: 'GM', y: 17 }, { x: 'Renault', y: 6 }, { x: 'Fiat', y: 3 },
                { x: 'Hyundai', y: 16 }, { x: 'Honda', y: 8 }, { x: 'Maruthi', y: 10 }, { x: 'BMW', y: 20 }];
@@ -85,8 +86,7 @@
             var textRender = function (args) { args.text = args.point.x + ' ' + args.point.y + '%'; };
 
             var load = function (args) {
-                var selectedTheme = themeName ? themeName : 'Fluent2';
-                args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+                var selectedTheme = loadAccumulationChartTheme(args);
                 args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? '10px' : '12px';
                 if (selectedTheme === 'highcontrast' || selectedTheme.indexOf('dark') > -1) {
                            args.accumulation.series[0].dataLabel.font.color = "white";

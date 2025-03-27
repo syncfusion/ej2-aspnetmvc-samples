@@ -1,17 +1,17 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Navigations
 
 @section ControlsSection{
     <div class="control-section">
         <div class="default-stepper-section">
             <label>Custom Text</label>
-            @Html.EJS().Stepper("customText").Steps(ViewBag.CustomText).Created("customStepperCreated").StepType(StepType.Indicator).Render()
+            @Html.EJS().Stepper("customText").Steps((List<Step>)ViewData["CustomText"]).Created("customStepperCreated").StepType(StepType.Indicator).Render()
             <label>Icon Only</label>
-            @Html.EJS().Stepper("iconOnly").Steps(ViewBag.IconOnly).Created("iconStepperCreated").Render()
+            @Html.EJS().Stepper("iconOnly").Steps((List<Step>)ViewData["IconOnly"]).Created("iconStepperCreated").Render()
             <label>Icon with Label</label>
-            @Html.EJS().Stepper("iconWithLabel").Steps(ViewBag.IconWithLabel).Created("iconLabelStepperCreated").Render()
+            @Html.EJS().Stepper("iconWithLabel").Steps((List<Step>)(List<Step>)ViewData["IconWithLabel"]).Created("iconLabelStepperCreated").Render()
             <label>Label Only</label>
-            @Html.EJS().Stepper("labelOnly").Steps(ViewBag.LabelOnly).Created("labelStepperCreated").Render()
+            @Html.EJS().Stepper("labelOnly").Steps((List<Step>)ViewData["LabelOnly"]).Created("labelStepperCreated").Render()
         </div>
     </div>
 }

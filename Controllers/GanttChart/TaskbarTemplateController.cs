@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: TaskbarTemplate
         public ActionResult TaskbarTemplate()
         {
-            ViewBag.DataSource = GanttData.TaskbarTemplateData(); 
+            ViewData["DataSource"] = GanttData.TaskbarTemplateData(); 
             return View();
         }
     }

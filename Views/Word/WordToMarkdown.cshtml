@@ -1,5 +1,5 @@
-﻿@using Syncfusion.EJ2
-@{ViewBag.Title = "    Essential DocIO (Word) : Export, Word to Markdown, Conversion : Syncfusion";}
+@using Syncfusion.EJ2
+@{ViewData["Title"] = "    Essential DocIO (Word) : Export, Word to Markdown, Conversion : Syncfusion";}
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("WordToMarkdown", "Word", FormMethod.Post, new { enctype = "multipart/form-data" });
@@ -19,7 +19,7 @@
                 </div>
                 <br />
                 <div class="text-danger">
-                    @ViewBag.Message
+                    @ViewData["Message"]
                 </div>
                 Html.EndForm();
             }

@@ -35,10 +35,10 @@ namespace EJ2MVCSampleBrowser.Controllers.ListView
             listdata.Add(new { text = "Brooklyn", id = "missed-02", icon = "e-custom", type = "missed", group = "Missed", time = "Yesterday", category = "Yesterday" });
             listdata.Add(new { text = "Arianna", id = "received-01", icon = "e-custom", type = "received", group = "Received", time = "Yesterday", category = "Yesterday" });
             listdata.Add(new { text = "Katherine", id = "received-02", icon = "e-custom", type = "received", group = "Received", time = "Yesterday", category = "Yesterday" });
-            ViewBag.dataSource = listdata;
-            ViewBag.headerText1 = new TabHeader { Text = "All" };
-            ViewBag.headerText2 = new TabHeader { Text = "Received" };
-            ViewBag.headerText3 = new TabHeader { Text = "Missed" };
+            ViewData["dataSource"] = listdata;
+            ViewData["headerText1"] = new TabHeader { Text = "All" };
+            ViewData["headerText2"] = new TabHeader { Text = "Received" };
+            ViewData["headerText3"] = new TabHeader { Text = "Missed" };
             return View();
         }
     }

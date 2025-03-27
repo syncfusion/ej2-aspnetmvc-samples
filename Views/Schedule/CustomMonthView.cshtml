@@ -9,7 +9,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(viewOptions).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.appointments }).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(viewOptions).EventSettings(new ScheduleEventSettings { DataSource = ViewData["appointments"] }).Render()
         </div>
     </div>
 }

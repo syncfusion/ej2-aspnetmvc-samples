@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new DateTimeData { Period = new DateTime(2016, 8, 11), MaxTemp = 13.1, MinTemp = 2.6 },
                 new DateTimeData { Period = new DateTime(2016, 9, 16), MaxTemp = 4.1,  MinTemp = -4.9 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
 

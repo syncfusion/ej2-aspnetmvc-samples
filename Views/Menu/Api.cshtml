@@ -5,7 +5,7 @@
     <div class="control-section">
         <div class="col-lg-8 control-section">
             <div class="menu-control">
-                @Html.EJS().Menu("menu").Items(ViewBag.data).Fields(ViewBag.menuFields).Render()
+                @Html.EJS().Menu("menu").Items(ViewData["data"]).Fields((Syncfusion.EJ2.Navigations.MenuFieldSettings)ViewData["menuFields"]).Render()
             </div>
         </div>
 
@@ -18,7 +18,7 @@
                         </td>
                         <td style="width: 50%;padding-top:10px">
                             <div style="max-width: 200px">
-                                @Html.EJS().DropDownList("ddl").DataSource(ViewBag.ddlData).Value("Horizontal").PopupHeight("200px").Change("ddlChange").Render()
+                                @Html.EJS().DropDownList("ddl").DataSource(ViewData["ddlData"]).Value("Horizontal").PopupHeight("200px").Change("ddlChange").Render()
                             </div>
                         </td>
                     </tr>
@@ -28,7 +28,7 @@
                         </td>
                         <td style="width: 50%;padding-top:10px">
                             <div style="max-width: 200px">
-                                @Html.EJS().MultiSelect("enableDisable").DataSource(ViewBag.headerData).PopupHeight("250px").Width("160px").Mode(VisualMode.CheckBox).Placeholder("Select item").ShowDropDownIcon(true).Change("enableDisableChange").Render()
+                                @Html.EJS().MultiSelect("enableDisable").DataSource(ViewData["headerData"]).PopupHeight("250px").Width("160px").Mode(VisualMode.CheckBox).Placeholder("Select item").ShowDropDownIcon(true).Change("enableDisableChange").Render()
                             </div>
                         </td>
                     </tr>

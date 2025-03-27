@@ -59,8 +59,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Menu
                 Children = new string[] { "options" }
             };
 
-            ViewBag.data = data;
-            ViewBag.menuFields = menuFields;
+            ViewData["data"] = data;
+            ViewData["menuFields"] = menuFields;
             return View();
         }
     }

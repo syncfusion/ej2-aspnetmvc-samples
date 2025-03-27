@@ -4,7 +4,7 @@
         <div class="control_wrapper">
             <div class="tabs-wrap">
                 <div class="wrap">
-                    @Html.EJS().TimePicker("timepicker").ItemRender("itemRanderHandler").Value(ViewBag.value).Render()
+                    @Html.EJS().TimePicker("timepicker").ItemRender("itemRanderHandler").Value(ViewData["value"]).Render()
                 </div>
             </div>
         </div>

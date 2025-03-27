@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ColumnTemplate";
+    ViewData["Title"] = "ColumnTemplate";
 }
 
 @section ControlsSection{
@@ -13,7 +13,7 @@
         Object filterUI = new Object();
         filterUI = (new { type = "Menu", ui = new { read = "read", write = "write", create = "create" } });
     }
-        @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).Width("auto").Height("359").Columns(col =>
+        @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewData["dataSource"]).Width("auto").Height("359").Columns(col =>
    {
         col.HeaderText("Image").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Template("#template").Width("180").Add();
         col.Field("EmployeeID").HeaderText("ID").Width("160").Add();

@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
         // GET: Inversed
         public ActionResult Largedata()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
             string[] yLabels = new string[24] { "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8::00", "9:00", "10:00", "11:00",
                 "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00",
                 "22:00", "23:00", "24:00" };
-            ViewBag.yLabels = yLabels;
+            ViewData["yLabels"] = yLabels;
             List<largeDataPalette> palette = new List<largeDataPalette>
             {
                 new largeDataPalette { value = 150, color = "#A6DC7E" },
@@ -38,9 +38,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
                 new largeDataPalette { value = 300, color = "#DC8D7E" }
 
              };
-            ViewBag.palette = palette;
-            ViewBag.border = new { width = "0" };
-            ViewBag.dataSource = new HeatMapData().GetLargeData();
+            ViewData["palette"] = palette;
+            ViewData["border"] = new { width = "0" };
+            ViewData["dataSource"] = new HeatMapData().GetLargeData();
             return View();
         }
         public class largeDataPalette

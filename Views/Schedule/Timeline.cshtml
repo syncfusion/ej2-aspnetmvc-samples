@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="schedule-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add(); view.Option(View.Agenda).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.appointments }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).WorkDays(ViewBag.workDays).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add(); view.Option(View.Agenda).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["appointments"] }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).WorkDays((int[])ViewData["workDays"]).Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">

@@ -24,8 +24,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             List<ScheduleData.ResourceData> resourceData = data.GetResourceData();
             List<ScheduleData.ResourceData> timelineResourceData = data.GetTimelineResourceData();
 
-            // Combine resource data and set ViewBag.datasource
-            ViewBag.datasource = resourceData.Concat(timelineResourceData).ToList();
+            // Combine resource data and set ViewData["datasource"]
+            ViewData["datasource"] = resourceData.Concat(timelineResourceData).ToList();
 
             // Define New York office categories
             List<ResourceDataSourceModel> EmployeeData = new List<ResourceDataSourceModel>
@@ -60,9 +60,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
                 new { Task = "Bug fixing", Duration = "6 Hours" }
             };
 
-            ViewBag.EmployeeData = EmployeeData;
-            ViewBag.gridData = gridData;
-            ViewBag.Resources = new string[] { "Employees" };
+            ViewData["EmployeeData"] = EmployeeData;
+            ViewData["gridData"] = gridData;
+            ViewData["Resources"] = new string[] { "Employees" };
 
             return View();
         }

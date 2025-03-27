@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult ChipCustomization()
         {
-            ViewBag.data = new ColorsData().GetColorsData();
-            ViewBag.val = new string[] { "#2F5D81", "#D44FA3", "#4CD242", "#FE2A00", "#75523C"};
+            ViewData["data"] = new ColorsData().GetColorsData();
+            ViewData["val"] = new string[] { "#2F5D81", "#D44FA3", "#4CD242", "#FE2A00", "#75523C"};
             return View();
         }
     }

@@ -8,7 +8,7 @@
 
     /**/
 
-    ViewBag.Title = "DataMatrix";
+    ViewData["Title"] = "DataMatrix";
 }
 @section ControlsSection{
 
@@ -115,7 +115,7 @@
                     <div class="col-xs-2 top" style="padding-left: 0px;">Size</div>
                     <div class="col-xs-3" style="width: 33%;padding-left: 0px">
                         <div style="padding-bottom: 8px">
-                            @Html.EJS().DropDownList("Version").Enabled(true).Index(0).DataSource(ViewBag.size).Change("sizeChange").Render()
+                            @Html.EJS().DropDownList("Version").Enabled(true).Index(0).DataSource(ViewData["size"]).Change("sizeChange").Render()
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     <div class="col-xs-3" style="width: 33%;padding-left: 0px">
                         <div style="padding-bottom: 8px">
                             @*<input type="text" id='errorCorrection' />*@
-                            @Html.EJS().DropDownList("correcrtion").Enabled(true).Index(0).DataSource(ViewBag.encoding).Change("encodingChange").Render()
+                            @Html.EJS().DropDownList("correcrtion").Enabled(true).Index(0).DataSource(ViewData["encoding"]).Change("encodingChange").Render()
                         </div>
                     </div>
                 </div>

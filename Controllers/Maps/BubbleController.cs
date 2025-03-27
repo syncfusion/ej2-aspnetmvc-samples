@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Bubble
         public ActionResult Bubble()
         {
-            ViewBag.shapeData = this.GetWorldMap();
+            ViewData["shapeData"] = this.GetWorldMap();
             MapsBubble bubble = new MapsBubble();
             bubble.Visible = true;
             bubble.ValuePath = "value";
@@ -31,7 +31,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
             bubble.TooltipSettings = new MapsTooltipSettings{ Visible = true, ValuePath = "population", Template = "#template" };
             List<MapsBubble> bubbleSettings = new List<MapsBubble>();
             bubbleSettings.Add(bubble);
-            ViewBag.bubbleSettings = bubbleSettings;
+            ViewData["bubbleSettings"] = bubbleSettings;
             return View();
         }
     }

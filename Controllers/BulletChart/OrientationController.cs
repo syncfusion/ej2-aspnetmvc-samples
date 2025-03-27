@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.BulletChart
             {
                 new OrientationBulletData { value = 270, target = 250}     
             };
-            ViewBag.dataSource = bulletData1;
+            ViewData["dataSource"] = bulletData1;
             return View();
         }
         public class OrientationBulletData

@@ -10,7 +10,7 @@
                 <div id="errorlabel" value="error">
                     <br />
                     <p style="color: #FF0000;">
-                        @Html.Label("", (string)ViewBag.lab)
+                        @Html.Label("", (string)ViewData["lab"])
                 </div>
                 <div style="font-size:14px">
                     <input type="button" value="Choose File" onclick="openPage()">

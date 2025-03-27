@@ -117,7 +117,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                     Device = "Mobile",
                 }
             };
-            ViewBag.PieData1 = Data;
+            ViewData["PieData1"] = Data;
             List<lineData> LineDataSource = new List<lineData>
             {
                new lineData{ x =  new DateTime(2002, 1, 1), y =  2.2 }, new lineData{ x =  new DateTime(2003, 1, 1), y =  3.4 },
@@ -126,7 +126,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                new lineData{ x =  new DateTime(2008, 1, 1), y =  2.9 }, new lineData{ x =  new DateTime(2009, 1, 1), y =  3.8 },
                new lineData{ x =  new DateTime(2010, 1, 1), y =  1.4 }, new lineData{ x =  new DateTime(2011, 1, 1), y =  3.1 }
             };
-            ViewBag.LineData = LineDataSource;
+            ViewData["LineData"] = LineDataSource;
             List<lineData> LineDataSource1 = new List<lineData>
             {
                new lineData{ x =  new DateTime(2002, 1, 1), y =  2 }, new lineData{ x =  new DateTime(2003, 1, 1), y =  1.7 },
@@ -135,17 +135,17 @@ namespace EJ2MVCSampleBrowser.Controllers
                new lineData{ x =  new DateTime(2008, 1, 1), y =  1.5 }, new lineData{ x =  new DateTime(2009, 1, 1), y =  2.8 },
                new lineData{ x =  new DateTime(2010, 1, 1), y =  1.5 }, new lineData{ x =  new DateTime(2011, 1, 1), y =  2.3 }
             };
-            ViewBag.LineData1 = LineDataSource1;
+            ViewData["LineData1"] = LineDataSource1;
             List<columnData> columDataSource = new List<columnData>
             {
                 new columnData{ x =  "Jan", y =  46 }, new columnData{ x =  "Feb", y =  27 }, new columnData{ x =  "Mar", y =  26 }
             };
-            ViewBag.columnData = columDataSource;
+            ViewData["columnData"] = columDataSource;
             List<columnData> columDataSource1 = new List<columnData>
             {
                 new columnData{ x =  "Jan", y =  37 }, new columnData{ x =  "Feb", y =  23 }, new columnData{ x =  "Mar", y =  18 }
             };
-            ViewBag.columnData1 = columDataSource1;
+            ViewData["columnData1"] = columDataSource1;
             List<columnData> columDataSource2 = new List<columnData>
             {
                 new columnData{ x =  "Jan", y =  38 }, new columnData{ x =  "Feb", y =  17 }, new columnData{ x =  "Mar", y =  26 }
@@ -155,8 +155,8 @@ namespace EJ2MVCSampleBrowser.Controllers
                  new pieData{ x = "Desktop", y = 37, text = "60%" }, new pieData{ x = "Mobile", y = 17, text = "10%" },
                  new pieData{ x = "Tablet", y = 19, text = "20%" }
             };
-            ViewBag.pieData = pieDataSource;
-            ViewBag.columnData2 = columDataSource2;
+            ViewData["pieData"] = pieDataSource;
+            ViewData["columnData2"] = columDataSource2;
             List<DataSource> data = new List<DataSource>();
             data.Add(new DataSource("North America", "#71B081"));
             data.Add(new DataSource("South America", "#5A9A77"));
@@ -164,9 +164,9 @@ namespace EJ2MVCSampleBrowser.Controllers
             data.Add(new DataSource("Europe", "#39776C"));
             data.Add(new DataSource("Asia", "#266665"));
             data.Add(new DataSource("Australia", "#124F5E"));
-            ViewBag.shapeData = this.GetWorldMap();
-            ViewBag.dataSource = data;
-            ViewBag.pallets = new string[] { "#357cd2", "#00bdae", "#e36593" };
+            ViewData["shapeData"] = this.GetWorldMap();
+            ViewData["dataSource"] = data;
+            ViewData["pallets"] = new string[] { "#357cd2", "#00bdae", "#e36593" };
             spacingModel modelValue = new spacingModel();
             modelValue.cellSpacing = new double[] { 5, 5 };
             return View(modelValue);

@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Button
                 iconCss = "e-ddb-icons e-logout"
             });
 
-            ViewBag.datasource = items;
+            ViewData["datasource"] = items;
             return View();
         }
 

@@ -10,7 +10,7 @@
     col.Field("HireDate").Label("Hire Date").Type("date").Format("dd/MM/yyyy").Add();
     col.Field("Country").Label("Country").Type("string").Add();
     col.Field("City").Label("City").Type("string").Add();
-    }).Rule(ViewBag.rule).DataSource(ViewBag.dataSource).Created("createdControl").ShowButtons(new Syncfusion.EJ2.QueryBuilder.QueryBuilderShowButtons { LockGroup = true, LockRule = true }).Render()
+    }).Rule((Syncfusion.EJ2.QueryBuilder.QueryBuilderRule)ViewData["rule"]).DataSource(ViewData["dataSource"]).Created("createdControl").ShowButtons(new Syncfusion.EJ2.QueryBuilder.QueryBuilderShowButtons { LockGroup = true, LockRule = true }).Render()
 </div>
 }
 

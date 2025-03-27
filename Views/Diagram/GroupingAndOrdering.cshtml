@@ -1,29 +1,29 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Diagrams;
 @using Syncfusion.EJ2.Navigations;
 @section ControlsSection{
 
     <div class="control-section" style="width: 100%">
         <div class="db-toolbar-container">
-            @Html.EJS().Toolbar("toolbarEditor").Clicked("toolbarClick").Items(ViewBag.tbItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
+            @Html.EJS().Toolbar("toolbarEditor").Clicked("toolbarClick").Items((List<ToolbarItem>)ViewData["tbItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
         </div>
         <div>
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.palettes).ExpandMode(ExpandMode.Multiple).Width("100%").Height("500px")
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes((List<SymbolPalettePalette>)ViewData["palettes"]).ExpandMode(ExpandMode.Multiple).Width("100%").Height("500px")
         .SymbolMargin(new SymbolPaletteMargin() { Left = 5, Right = 5, Top = 5, Bottom = 10 }).SymbolHeight(50).SymbolWidth(50)
         .GetNodeDefaults("getSymbolNodes").Render()
                 )
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
-                @(Html.EJS().Diagram("diagram").Width("100%").Height("500px").RulerSettings(r => r.ShowRulers(true)).Created("diagramCreated").DrawingObject("Orthogonal").SelectedItems(ViewBag.selectedItems).OnUserHandleMouseDown("userHandelClick").SelectionChange("selectionChange")
-.Nodes(ViewBag.nodes).Render()
+                @(Html.EJS().Diagram("diagram").Width("100%").Height("500px").RulerSettings(r => r.ShowRulers(true)).Created("diagramCreated").DrawingObject("Orthogonal").SelectedItems((DiagramSelector)ViewData["selectedItems"]).OnUserHandleMouseDown("userHandelClick").SelectionChange("selectionChange")
+.Nodes((List<DiagramNode>)ViewData["nodes"]).Render()
                 )
             </div>
             <div>
-                @(Html.EJS().DropDownList("fontfamily").Value("Arial").DataSource(ViewBag.fontFamilyItems).Change("updateAnnotationValue").Render())
+                @(Html.EJS().DropDownList("fontfamily").Value("Arial").DataSource(ViewData["fontFamilyItems"]).Change("updateAnnotationValue").Render())
             </div>
             <div>
-                @(Html.EJS().NumericTextBox("fontSize").Value(12).Change("updateAnnotationValue").Render())
+                @(Html.EJS().NumericTextBox("fontSize").Min(1).Max(25).Value(12).Change("updateAnnotationValue").Render())
             </div>
             <div>
                 @(Html.EJS().ColorPicker("fontColors").Change("colorChange").Render())

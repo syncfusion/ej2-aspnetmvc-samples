@@ -24,9 +24,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Dialog
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new DefaultButtonModels() { content = "OK", isPrimary = true } });
             buttons.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new DefaultButtonModels() { content = "CANCEL" } });
-            ViewBag.DefaultButtons = buttons;
+            ViewData["DefaultButtons"] = buttons;
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.Datasource = order;
+            ViewData["Datasource"] = order;
             List<LineChartData> chartData = new List<LineChartData>
             {
                 new LineChartData { xValue = new DateTime(2005, 01, 01), yValue = 21, yValue1 = 28 },
@@ -37,8 +37,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Dialog
                 new LineChartData { xValue = new DateTime(2010, 01, 01), yValue = 57, yValue1 = 78 },
                 new LineChartData { xValue = new DateTime(2011, 01, 01), yValue = 70, yValue1 = 84 },
             };
-            ViewBag.ChartData = chartData;
-            ViewBag.ScheduleData = new ScheduleEvents().GetAppointmentData();
+            ViewData["ChartData"] = chartData;
+            ViewData["ScheduleData"] = new ScheduleEvents().GetAppointmentData();
             return View();
         }
     }

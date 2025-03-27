@@ -6,7 +6,7 @@
 
     /**/
 
-    ViewBag.Title = "Ean8";
+    ViewData["Title"] = "Ean8";
 }
 @section ControlsSection{
 
@@ -130,7 +130,7 @@
                         Position
                     </div>
                     <div class="textPropertyClass">
-                        @Html.EJS().DropDownList("shape").Enabled(true).Index(0).DataSource(ViewBag.position).Change("expandChange").Render()
+                        @Html.EJS().DropDownList("shape").Enabled(true).Index(0).DataSource(ViewData["position"]).Change("expandChange").Render()
                     </div>
                 </div>
                 <div class="row sb-child-row">
@@ -138,7 +138,7 @@
                         Alignment
                     </div>
                     <div class="textProperty">
-                        @Html.EJS().DropDownList("Alignment").Enabled(true).Index(0).DataSource(ViewBag.alignment).Change("alignChange").Render()
+                        @Html.EJS().DropDownList("Alignment").Enabled(true).Index(0).DataSource(ViewData["alignment"]).Change("alignChange").Render()
                     </div>
                 </div>
                 <div class="row sb-child-row">

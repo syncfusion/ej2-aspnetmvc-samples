@@ -28,7 +28,7 @@
                     <td style="width: 50%;padding-top:10px">
                         <div style="max-width: 200px">
                             @Html.EJS().DropDownList("ddl").PopupHeight("200px").Index(0).DataSource(
-                    (IEnumerable<GameList>)ViewBag.data).Change("valueChanged").Fields(new DropDownListFieldSettings { Text = "Mode", Value = "Id" }).Render()
+                    (IEnumerable<GameList>)ViewData["data"]).Change("valueChanged").Fields(new DropDownListFieldSettings { Text = "Mode", Value = "Id" }).Render()
                         </div>
                     </td>
                 </tr>

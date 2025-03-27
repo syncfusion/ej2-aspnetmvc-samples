@@ -38,7 +38,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 Title = "Delete",
                 IconCss = "speeddial-icons speeddial-icon-delete"
             });
-            ViewBag.datasource = items;
+            ViewData["datasource"] = items;
             return View();
         }
     }

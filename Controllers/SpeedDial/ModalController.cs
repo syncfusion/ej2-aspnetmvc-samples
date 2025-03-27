@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 Title="Message",
                 IconCss = "e-icons e-comment-show"
             });
-            ViewBag.datasource = items;
+            ViewData["datasource"] = items;
             return View();
         }
     }

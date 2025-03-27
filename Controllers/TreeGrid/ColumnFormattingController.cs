@@ -20,12 +20,12 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult ColumnFormatting()
         {
             var treeData = TreeDataFormat.GetDataFormat();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
             var columns = new List<Object>() {
                 new { id= "price", name= "Price" },
                 new { id= "shippedDate", name= "Shipped Date" }
             };
-            ViewBag.columns = columns;
+            ViewData["columns"] = columns;
 
             var numberFormats = new List<Object>() {
                new { id= "n2", format= "n2" },
@@ -35,7 +35,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
                new { id= "p2", format= "p2" },
                new { id= "p3", format= "p3" }
             };
-            ViewBag.numberFormats = numberFormats;
+            ViewData["numberFormats"] = numberFormats;
 
             var dateFormats = new List<Object>() {
                new { id= "M/d/yyyy", format= "Short Date" },
@@ -43,7 +43,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
                new { id= "MMMM, yyyy", format= "Month/Year" },
                new { id= "MMMM, dd", format= "Month/Day" }
             };
-            ViewBag.dateFormats = dateFormats;
+            ViewData["dateFormats"] = dateFormats;
 
             return View();
         }

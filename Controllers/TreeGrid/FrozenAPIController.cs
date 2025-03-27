@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         // GET: FrozenAPI
         public ActionResult FrozenAPI()
         {
-            ViewBag.datasource = FreezeDataSource.GetTreeData();
+            ViewData["datasource"] = FreezeDataSource.GetTreeData();
             List<object> dd = new List<object>();
             dd.Add(new { name = "Task ID", id = "TaskId" });
             dd.Add(new { name = "Task Name", id = "TaskName" });
@@ -31,15 +31,15 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
             dd.Add(new { name = "Designation", id = "Designation" });
             dd.Add(new { name = "Employee ID", id = "EmployeeID" });
             dd.Add(new { name = "Approved", id = "Approved" });
-            ViewBag.columns = dd;
+            ViewData["columns"] = dd;
             List<object> direction = new List<object>();
             direction.Add(new { name = "Left", id = "Left" });
             direction.Add(new { name = "Right", id = "Right" });
             direction.Add(new { name = "Center", id = "Center" });
-            ViewBag.direction = direction;
+            ViewData["direction"] = direction;
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "alertDlgBtnClick", ButtonModel = new DefaultButtonModel() { content = "OK", isPrimary = true } });
-            ViewBag.DefaultButtons = buttons;
+            ViewData["DefaultButtons"] = buttons;
             return View();
         }
 

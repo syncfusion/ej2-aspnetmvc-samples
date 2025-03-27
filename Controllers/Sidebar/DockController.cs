@@ -33,9 +33,9 @@ namespace EJ2MVCSampleBrowser.Controllers
                 new ListViewData {Id="4", Text = "Dialog", IconCss = "sb-icons icon-dialog e-sb-icon control-icon", Description = "The ASP.NET MVC Dialog is a useful user interface (UI) component for informing users about critical information, errors, warnings, and questions, as well as confirming decisions and collecting input from users. The component has a rich set of built-in features such as action buttons, positioning, animations, dragging, resizing, templating, and more with mobile dialog support. The ASP.NET MVC dialog provides two different types: modal dialogs and non-modal dialogs (modeless) based on interactions." },
                 new ListViewData {Id="5", Text = "Dropdown List", IconCss = "sb-icons icon-dropdownlist e-sb-icon control-icon", Description = "The ASP.NET MVC Dropdown List is a quick replacement of the HTML select tags. It has a rich appearance and allows users to select a single value that is non-editable from a list of predefined values. It has several out-of-the-box features, such as data binding, filtering, grouping, UI customization, accessibility, and preselected values." }
             };
-            ViewBag.ListData = List;
-            ViewBag.DockToolItems = popItems;
-            ViewBag.HtmlAttribute = HtmlAttribute;
+            ViewData["ListData"] = List;
+            ViewData["DockToolItems"] = popItems;
+            ViewData["HtmlAttribute"] = HtmlAttribute;
             return View();
         }
         public class ListViewData

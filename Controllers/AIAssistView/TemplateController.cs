@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.AIAssistView
         public ActionResult Template()
         {
             TemplateItems.Add(new ToolbarItem { Type = ItemType.Input, Align = ItemAlign.Right, Template = "<button id=\"ddMenu\"></button>" });
-            ViewBag.ToolbarItems = TemplateItems;
+            ViewData["ToolbarItems"] = TemplateItems;
 
             List<AIAssitCarouselDataBinding> datasrc = new List<AIAssitCarouselDataBinding>();            
             
@@ -42,9 +42,9 @@ namespace EJ2MVCSampleBrowser.Controllers.AIAssistView
                 ImgPath = Url.Content("~/Content/carousel/images/tokyo.jpg"),
                 Suggestion = "What tools or apps can help me prioritize tasks?"
             });
-            ViewBag.CarouselDataSource = datasrc;
-            ViewBag.PromptResponseData = new PromptResponseData().GetTemplatePromptResponseData();
-            ViewBag.PromptSuggestionData = new PromptResponseData().GetAllSuggestionData();
+            ViewData["CarouselDataSource"] = datasrc;
+            ViewData["PromptResponseData"] = new PromptResponseData().GetTemplatePromptResponseData();
+            ViewData["PromptSuggestionData"] = new PromptResponseData().GetAllSuggestionData();
             return View();
         }
 

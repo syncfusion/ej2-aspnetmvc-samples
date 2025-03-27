@@ -1,29 +1,29 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
         @Html.EJS().Chart("container").Series(series =>
         {
             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).Width(3).XName("X").YName("Y1").Name("United States")
                 .Animation(an => an.Enable(true).Duration(1500))
-                .DataSource(ViewBag.ChartData).Add();
+                .DataSource(ViewData["ChartData"]).Add();
             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).Width(3).XName("X").YName("Y2").Name("China")
                 .Animation(an => an.Enable(true).Duration(1500).Delay(2300))
-                .DataSource(ViewBag.ChartData).Add();
+                .DataSource(ViewData["ChartData"]).Add();
             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).Width(3).XName("X").YName("Y3").Name("Afghanistan")
                 .Animation(an => an.Enable(true).Duration(1500).Delay(3400))
-                .DataSource(ViewBag.ChartData).Add();
+                .DataSource(ViewData["ChartData"]).Add();
             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).Width(3).XName("X").YName("Y4").Name("Yemen")
                 .Animation(an => an.Enable(true).Duration(1500).Delay(4800))
-                .DataSource(ViewBag.ChartData).Add();
+                .DataSource(ViewData["ChartData"]).Add();
             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).Width(3).XName("X").YName("Y").Name("Australia")
                 .Animation(an => an.Enable(true).Duration(1500).Delay(6200))
-                .DataSource(ViewBag.ChartData).Add();
+                .DataSource(ViewData["ChartData"]).Add();
         }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
             .MajorGridLines(mg => mg.Width(0)).LabelFormat("y")
             .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
         ).PrimaryYAxis(py => py.Title("Yield (In Tons per Hectare)").MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0))
             .LineStyle(ls => ls.Width(0)).Interval(2).Maximum(8)
-        ).Title("Almond Yield").Tooltip(tt => tt.Enable(true).Shared(true).Header("<b>Almond Yield - ${point.x}</b>").Format("${series.name}: <b>${point.y}</b>")
+        ).Title("Almond Yield").Tooltip(tt => tt.Enable(true).EnableHighlight(true).ShowNearestTooltip(true).Header("<b>Almond Yield - ${point.x}</b>").Format("${series.name}: <b>${point.y}</b>")
         ).Load("load").ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)
         ).Render()
     </div>
@@ -35,10 +35,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         function load(args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>
@@ -58,7 +58,7 @@
         In this example, you can see how to render and configure a spline chart with multiple series representing almond yield across different countries over time. Spline charts are ideal for visualizing smooth trends in data over equal intervals, particularly time-dependent data. The <code>Width</code> and <code>Animation</code> properties are used to customize the appearance and behavior of the spline. The staggered animations enhance the visual experience by introducing each spline in sequence.
     </p>
     <p>
-        Tooltip is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
     </p>
     <p>
         More information on the spline series can be found in this

@@ -15,7 +15,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult TimelineResources()
         {
-            ViewBag.datasource = new ScheduleData().GetRoomData();
+            ViewData["datasource"] = new ScheduleData().GetRoomData();
             List<RoomData> rooms = new List<RoomData>();
             rooms.Add(new RoomData { name = "Jammy", id = 1, color = "#ea7a57", capacity = 20, type = "Conference" });
             rooms.Add(new RoomData { name = "Tweety", id = 2, color = "#7fa900", capacity = 7, type = "Cabin" });
@@ -27,10 +27,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             rooms.Add(new RoomData { name = "Rainbow", id = 8, color = "#1aaa55", capacity = 8, type = "Cabin" });
             rooms.Add(new RoomData { name = "Swarm", id = 9, color = "#df5286", capacity = 30, type = "Conference" });
             rooms.Add(new RoomData { name = "Photogenic", id = 10, color = "#710193", capacity = 25, type = "Conference" });
-            ViewBag.RoomDatas = rooms;
+            ViewData["RoomDatas"] = rooms;
 
             string[] resources = new string[] { "MeetingRoom" };
-            ViewBag.ResourceNames = resources;
+            ViewData["ResourceNames"] = resources;
             return View();
         }
 

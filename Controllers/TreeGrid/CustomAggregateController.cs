@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult CustomAggregate()
         {
             var treeData = ShipmentData.GetShipmentData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
             return View();
         }
     }

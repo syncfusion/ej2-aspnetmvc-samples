@@ -5,7 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -46,7 +46,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             string path = Request.Url.ToString().Replace("sitemap.xml", "");
             if (Request.Url.ToString().IndexOf("aspnetmvc.syncfusion.com") > -1)
             {
-                path = "https://ej2.syncfusion.com/aspnetmvc/";
+                path = "https://ej2.syncfusion.com/aspnetmvc/demos/";
             }
 
             foreach (var controller in controllers)

@@ -32,7 +32,7 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
                     }}
                 }
             };
-            ViewBag.rule = rule;
+            ViewData["rule"] = rule;
             return View();
         }
     }

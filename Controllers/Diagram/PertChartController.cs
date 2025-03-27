@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: PertChart
         public ActionResult PertChart()
         {
-            ViewBag.Nodes = pertChartDataDetails.GetAllRecords();
+            ViewData["Nodes"] = pertChartDataDetails.GetAllRecords();
             return View();
         }
     }

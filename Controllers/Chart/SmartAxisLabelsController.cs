@@ -35,11 +35,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new SmartAxisLabelsChartData { Country = "China",        User = 51, DataLabelMappingName = "51M" }
 
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.font = new { fontWeight = "600", color = "#ffffff" };
-            ViewBag.data = new string[] { "Hide", "Trim", "Wrap", "MultipleRows", "Rotate45", "Rotate90", "None" };
-            ViewBag.data1 = new string[] { "None", "Hide", "Shift" };
-            ViewBag.data2 = new string[] { "Outside", "Inside" };
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["font"] = new { fontWeight = "600", color = "#ffffff" };
+            ViewData["data"] = new string[] { "Hide", "Trim", "Wrap", "MultipleRows", "Rotate45", "Rotate90", "None" };
+            ViewData["data1"] = new string[] { "None", "Hide", "Shift" };
+            ViewData["data2"] = new string[] { "Outside", "Inside" };
             return View();
         }
         public class SmartAxisLabelsChartData

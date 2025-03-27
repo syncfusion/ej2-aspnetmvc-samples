@@ -23,15 +23,15 @@ namespace EJ2CoreSampleBrowser.Controllers.Barcode
             position.Add(new ExpandOptionsUpcA() { text = "Bottom", value = "bottom" });
             position.Add(new ExpandOptionsUpcA() { text = "Top", value = "top" });
 
-            ViewBag.position = position;
+            ViewData["position"] = position;
 
             List<ExpandOptionsUpcA> alignment = new List<ExpandOptionsUpcA>();
             alignment.Add(new ExpandOptionsUpcA() { text = "Center", value = "Center" });
             alignment.Add(new ExpandOptionsUpcA() { text = "Left", value = "Left" });
             alignment.Add(new ExpandOptionsUpcA() { text = "Right", value = "Right" });
 
-            ViewBag.alignment = alignment;
-            ViewBag.expandValue = "Bottom";
+            ViewData["alignment"] = alignment;
+            ViewData["expandValue"] = "Bottom";
            
             
             return View();

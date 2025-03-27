@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).ActionBegin("onActionBegin").PopupOpen("onPopupOpen").DragStop("onDragStop").ResizeStop("onResizeStop").Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewData["view"]).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).ActionBegin("onActionBegin").PopupOpen("onPopupOpen").DragStop("onDragStop").ResizeStop("onResizeStop").Render()
         </div>
     </div>
     <style>

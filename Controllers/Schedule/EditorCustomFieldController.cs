@@ -14,7 +14,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult EditorCustomField()
         {
-            ViewBag.datasource = new ScheduleData().GetEventsData();
+            ViewData["datasource"] = new ScheduleData().GetEventsData();
             return View();
         }
     }

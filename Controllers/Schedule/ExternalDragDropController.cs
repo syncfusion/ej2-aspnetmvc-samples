@@ -15,13 +15,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult ExternalDragDrop()
         {
-            ViewBag.treeDataSource = new ScheduleData().GetWaitingListData();
-            ViewBag.datasource = new ScheduleData().GetHospitalData();
+            ViewData["treeDataSource"] = new ScheduleData().GetWaitingListData();
+            ViewData["datasource"] = new ScheduleData().GetHospitalData();
 
             List<ResourceDataSourceModel> departments = new List<ResourceDataSourceModel>();
             departments.Add(new ResourceDataSourceModel { text = "GENERAL", id = 1, color = "#bbdc00" });
             departments.Add(new ResourceDataSourceModel { text = "DENTAL", id = 2, color = "#9e5fff" });
-            ViewBag.Departments = departments;
+            ViewData["Departments"] = departments;
 
             List<ConsultantDataSourceModel> consultants = new List<ConsultantDataSourceModel>();
             consultants.Add(new ConsultantDataSourceModel { text = "Alice", id = 1, groupId = 1, color = "#bbdc00", designation = "Cardiologist" });
@@ -30,9 +30,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             consultants.Add(new ConsultantDataSourceModel { text = "Robson", id = 4, groupId = 2, color = "#9e5fff", designation = "Periodontist" });
             consultants.Add(new ConsultantDataSourceModel { text = "Laura", id = 5, groupId = 1, color = "#bbdc00", designation = "Orthopedic" });
             consultants.Add(new ConsultantDataSourceModel { text = "Margaret", id = 6, groupId = 2, color = "#9e5fff", designation = "Endodontist" });
-            ViewBag.Consultants = consultants;
+            ViewData["Consultants"] = consultants;
 
-            ViewBag.Resources = new string[] { "Departments", "Consultants" };
+            ViewData["Resources"] = new string[] { "Departments", "Consultants" };
             return View();
         }
     }

@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "DataTableBinding";
+    ViewData["Title"] = "DataTableBinding";
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("LocalData").DataSource((System.Data.DataTable)ViewBag.dataSource).Columns(col =>
+        @Html.EJS().Grid("LocalData").DataSource((System.Data.DataTable)ViewData["dataSource"]).Columns(col =>
    {
        col.Field("OrderID").HeaderText("Order ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("120").Add();
        col.Field("EmployeeID").HeaderText("Employee ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("90").Add();

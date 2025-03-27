@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
 <div class="control-section" style="text-align:center">
     <div class="row linear-segment">
@@ -7,7 +7,7 @@
                 @(Html.EJS().ProgressBar("sl-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Linear).Value(100)
                                  .Width("500").Height("30px").SegmentCount(4).GapWidth(0.1)
                                  .ProgressColor("#ff8c45").TrackThickness(10).ProgressThickness(10).Minimum(0).Maximum(100)
-                                 .Animation(an => an.Enable(true).Delay(0).Duration(2000)).SegmentColor(ViewBag.color)
+                                 .Animation(an => an.Enable(true).Delay(0).Duration(2000)).SegmentColor((string[])ViewData["color"])
                                  .Render())
             </div>
         </div>
@@ -15,7 +15,7 @@
             @(Html.EJS().ProgressBar("mcls-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Linear).Value(100)
                                   .Width("500").Height("30px").CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round).SegmentCount(5)
                                   .ProgressColor("#4940fa").TrackThickness(10).ProgressThickness(10).Minimum(0).Maximum(100)
-                                  .Animation(an => an.Enable(true).Delay(0).Duration(2000)).SegmentColor(ViewBag.color1)
+                                  .Animation(an => an.Enable(true).Delay(0).Duration(2000)).SegmentColor((string[])ViewData["color1"])
                                   .Render())
         </div>
     </div>
@@ -24,14 +24,14 @@
             @(Html.EJS().ProgressBar("sc-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(100)
                                       .Width("90%").Height("200px").EnableRtl(true).SegmentCount(4).GapWidth(0.1).Minimum(0).Maximum(100)
                                       .ProgressColor("#f429ff").TrackThickness(10).ProgressThickness(10)
-                                      .Animation(an => an.Enable(true).Delay(0).Duration(2000)).SegmentColor(ViewBag.color)
+                                      .Animation(an => an.Enable(true).Delay(0).Duration(2000)).SegmentColor((string[])ViewData["color"])
                                       .Render())
         </div>
         <div class="col-lg-6 col-md-6 circular-progress">
             @(Html.EJS().ProgressBar("mccs-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(100)
                                   .Width("90%").Height("200px").SegmentCount(5).GapWidth(0.1).Minimum(0).Maximum(100)
                                   .ProgressColor("#b52123").TrackThickness(10).ProgressThickness(10).CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round)
-                                  .Animation(an => an.Enable(true).Delay(0).Duration(2000)).SegmentColor(ViewBag.color1)
+                                  .Animation(an => an.Enable(true).Delay(0).Duration(2000)).SegmentColor((string[])ViewData["color1"])
                                   .Render())
         </div>
     </div>

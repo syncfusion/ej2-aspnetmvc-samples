@@ -30,8 +30,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new CategoryData { Country = "Great Britain", Users = 115.1, TooltipMappingName = "GBR: 115.1" },
                 new CategoryData { Country = "Nigeria", Users = 97.2, TooltipMappingName = "NGR: 97.2" }
              };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.font = new
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["font"] = new
             {
                 fontWeight = "600",
                 color = "#ffffff"

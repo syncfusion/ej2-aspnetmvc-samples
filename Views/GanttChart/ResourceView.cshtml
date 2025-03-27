@@ -1,5 +1,5 @@
 @{
-    ViewBag.Title = "ResourceView";
+    ViewData["Title"] = "ResourceView";
 }
 
 @section ControlsSection{
@@ -18,13 +18,13 @@
                 }
 
             @(Html.EJS().Gantt("ResourceView").DataSource((IEnumerable<object>
-            )ViewBag.DataSource).Height("450px").ViewType(Syncfusion.EJ2.Gantt.ViewType.ResourceView).HighlightWeekends(true).AllowSelection(true).AllowResizing(true).ShowOverAllocation(true)
+            )ViewData["DataSource"]).Height("450px").ViewType(Syncfusion.EJ2.Gantt.ViewType.ResourceView).HighlightWeekends(true).AllowSelection(true).AllowResizing(true).ShowOverAllocation(true)
 			.ToolbarClick("ToolbarClick").Toolbar(toolbarItems).TaskType(Syncfusion.EJ2.Gantt.TaskType.FixedWork)
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").Work("Work").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
             .Dependency("Predecessor").ResourceInfo("Resources").Child("SubTasks"))
             .TreeColumnIndex(1).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName").Unit("ResourceUnit").Group("ResourceGroup"))
             .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
-            .Resources((IEnumerable<object>)ViewBag.Resources)
+            .Resources((IEnumerable<object>)ViewData["Resources"])
             .Columns(col =>
             {
                 col.Field("TaskId").Visible(false).Add();

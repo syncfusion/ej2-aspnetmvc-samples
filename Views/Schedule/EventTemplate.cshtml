@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(view => { view.Option(View.Week).EventTemplate("#event-template").Add(); view.Option(View.TimelineWeek).EventTemplate("#timeline-event-template").Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).Readonly(true).StartHour("08:00").EndHour("18:00").WorkHours(new ScheduleWorkHours { Start = "08:00" }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(view => { view.Option(View.Week).EventTemplate("#event-template").Add(); view.Option(View.TimelineWeek).EventTemplate("#timeline-event-template").Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).Readonly(true).StartHour("08:00").EndHour("18:00").WorkHours(new ScheduleWorkHours { Start = "08:00" }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
         </div>
     </div>
 }

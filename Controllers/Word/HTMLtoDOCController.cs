@@ -50,7 +50,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
             }
             else
             {
-                ViewBag.Message = string.Format("Browse a HTML document and then click the button to convert as a Word document");
+                ViewData["Message"] = string.Format("Browse a HTML document and then click the button to convert as a Word document");
             }
             return View();
         }

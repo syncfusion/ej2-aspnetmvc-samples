@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         // GET: DefaultFunctionalities
         public ActionResult Multiline()
         {
-            ViewBag.data = new floatValues().TextBoxModel();
+            ViewData["data"] = new floatValues().TextBoxModel();
             return View();
         }
     }

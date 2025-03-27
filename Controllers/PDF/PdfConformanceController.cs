@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
 
         public ActionResult PdfConformance()
         {
-            ViewBag.data = new string[] { "PDF/A-1a", "PDF/A-1b", "PDF/A-2a", "PDF/A-2b", "PDF/A-2u", "PDF/A-3a", "PDF/A-3b", "PDF/A-3u", "PDF/X-1a 2001", "PDF/A-4", "PDF/A-4e", "PDF/A-4f" };
+            ViewData["data"] = new string[] { "PDF/A-1a", "PDF/A-1b", "PDF/A-2a", "PDF/A-2b", "PDF/A-2u", "PDF/A-3a", "PDF/A-3b", "PDF/A-3u", "PDF/X-1a 2001", "PDF/A-4", "PDF/A-4e", "PDF/A-4f" };
             return View();
         }
 

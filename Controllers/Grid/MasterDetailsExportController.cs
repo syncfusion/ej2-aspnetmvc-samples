@@ -20,9 +20,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult MasterDetailsExport()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.Datasource = order;
-            ViewBag.EmpDataSource = EmployeeView.GetAllRecords();
-            ViewBag.CustomerDataSource = Customer.GetAllRecords();
+            ViewData["Datasource"] = order;
+            ViewData["EmpDataSource"] = EmployeeView.GetAllRecords();
+            ViewData["CustomerDataSource"] = Customer.GetAllRecords();
             return View();
         }
     }

@@ -8,7 +8,7 @@
                 <h4>Chip Customization</h4>
 
                 @Html.EJS().MultiSelect("chip-customization").Mode(VisualMode.Box).Placeholder("Favorite Colors").DataSource(
-             (IEnumerable<ColorsData>)ViewBag.data).Tagging("onTagging").Fields(new MultiSelectFieldSettings { Text = "Color", Value = "Code" }).Value((string[])ViewBag.val).Render()
+             (IEnumerable<ColorsData>)ViewData["data"]).Tagging("onTagging").Fields(new MultiSelectFieldSettings { Text = "Color", Value = "Code" }).Value((string[])ViewData["val"]).Render()
             </div>
         </div>
     </div>

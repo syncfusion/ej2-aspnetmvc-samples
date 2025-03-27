@@ -77,7 +77,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             Nodes.Add(CreateNode("Not2", 135, 329, 58, 100, notData, notPort));
             Nodes.Add(CreateNode("Not3", 157, 470, 58, 100, notData, notPort));
             Nodes.Add(CreateNode("And", 543, 329, 70, 104, andData, andPort));
-            ViewBag.Nodes = Nodes;
+            ViewData["Nodes"] = Nodes;
 
             List<DiagramConnector> Connectors = new List<DiagramConnector>();
             Connectors.Add(createConnector("line1", new DiagramPoint() { X = 140, Y = 130 }, null, null, "OR1", null, "Or_port1", decorator, null, new DiagramConnectorAnnotation() { Content = "A", Margin = new DiagramMargin() { Left = -20 } }, true, false));
@@ -96,7 +96,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             Connectors.Add(createConnector("line14", null, null, "OR2", "And", "Or_port4", "And_port2", null, null, new DiagramConnectorAnnotation() { Content = "(A' + B' + C)", Margin = new DiagramMargin() { Left = 0, Top = -20 } }, true, false));
             Connectors.Add(createConnector("line15", null, null, "OR3", "And", "Or_port4", "And_port3", null, null, new DiagramConnectorAnnotation() { Content = "(A + B' + C)", Margin = new DiagramMargin() { Left = 0, Top = -20 } }, true, false));
             Connectors.Add(createConnector("line16", null, new DiagramPoint() { X = 600, Y = 329 }, "And", null, "And_port4", null, null, decorator, new DiagramConnectorAnnotation() { Content = "F =(A+B+C)*(A+B'+C)*(A+B'+C)", Margin = new DiagramMargin() { Left = -80, Top = 60 } }, true, true));
-            ViewBag.Connectors = Connectors;
+            ViewData["Connectors"] = Connectors;
 
 
             List<Syncfusion.EJ2.Diagrams.DiagramNode> LogigGates = new List<Syncfusion.EJ2.Diagrams.DiagramNode>();
@@ -293,15 +293,15 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             Palette.Add(new SymbolPalettePalette() { Id = "flow", Expanded = true, Symbols = LogigGates, IconCss = "shapes", Title = "Flow Shapes" });
             Palette.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = PaletteLines, IconCss = "shapes", Title = "Connectors" });
 
-            ViewBag.Palette = Palette;
+            ViewData["Palette"] = Palette;
 
 
             DiagramSnapSettings snapSettings = new DiagramSnapSettings();
             snapSettings.Constraints = SnapConstraints.All & ~SnapConstraints.ShowLines;
-            ViewBag.SnapSettings = snapSettings;
+            ViewData["SnapSettings"] = snapSettings;
 
             DiagramConstraints constraints = DiagramConstraints.Default | DiagramConstraints.Bridging;
-            ViewBag.Constraints = constraints;
+            ViewData["Constraints"] = constraints;
             return View();
         }
 

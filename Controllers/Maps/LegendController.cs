@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Legend
         public ActionResult Legend()
         {
-            ViewBag.shapeData = this.GetWorldMap();
-            ViewBag.data = this.getPopulation();
+            ViewData["shapeData"] = this.GetWorldMap();
+            ViewData["data"] = this.getPopulation();
             return View();
         }
 

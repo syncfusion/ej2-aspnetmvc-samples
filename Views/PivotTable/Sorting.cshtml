@@ -9,7 +9,7 @@
 
     <div class="col-lg-8 control-section" style="overflow:auto">
     <div class="content-wrapper">
-        @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false).EnableSorting(true)
+        @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(false).EnableSorting(true)
            .FormatSettings(formatsettings =>
            {
                formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
@@ -55,7 +55,7 @@
                     </td>
                     <td>
                         <div style="margin-left: -20px">
-                            @Html.EJS().DropDownList("fields").Index(0).DataSource((IEnumerable<object>)ViewBag.fieldsData).Enabled(true
+                            @Html.EJS().DropDownList("fields").Index(0).DataSource((IEnumerable<object>)ViewData["fieldsData"]).Enabled(true
                             ).Change("onFieldChange").Fields(new DropDownListFieldSettings { Text = "Field", Value = "Order" }).Render()
                         </div>
                     </td>
@@ -68,7 +68,7 @@
                     </td>
                     <td>
                         <div style="margin-left: -20px">
-                            @Html.EJS().DropDownList("order").Index(0).DataSource((IEnumerable<object>)ViewBag.orderData).Enabled(true
+                            @Html.EJS().DropDownList("order").Index(0).DataSource((IEnumerable<object>)ViewData["orderData"]).Enabled(true
                             ).Change("onOrderChange").Render()
                         </div>
                     </td>

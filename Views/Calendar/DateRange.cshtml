@@ -3,7 +3,7 @@
     <div class="col-lg-12 control-section">
         <div id="control_wrapper">
             <div id="container" style="overflow:auto">
-                @Html.EJS().Calendar("calendar").Change("startDate").Min(ViewBag.minDate).Max(ViewBag.maxDate).Render()
+                @Html.EJS().Calendar("calendar").Change("startDate").Min(ViewData["minDate"]).Max(ViewData["maxDate"]).Render()
                 <br />
                 <span id="date_label"> Selected Value: </span>
             </div>

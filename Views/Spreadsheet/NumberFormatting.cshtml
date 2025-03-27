@@ -7,7 +7,7 @@
         {
             sheet.Name("Restaurant Invoice").SelectedRange("E17").Ranges(ranges =>
             {
-                ranges.DataSource((IEnumerable<object>)ViewBag.numberFormatData).StartCell("A3").Add();
+                ranges.DataSource((IEnumerable<object>)ViewData["numberFormatData"]).StartCell("A3").Add();
             }).Rows(row =>{
                 row.Height(30).Cells(cell =>{
                     cell.Value("Customer Name").Add();

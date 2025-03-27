@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "SortingApi";
+    ViewData["Title"] = "SortingApi";
 }
 
 @*custom code end*@
@@ -13,7 +13,7 @@
 <div class="col-lg-9 control-section">
      <div class="control-section">
         @(Html.EJS().TreeGrid("SortingApi")
-            .DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+            .DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
             {
                 col.Field("TaskId").HeaderText("Task ID").Width(120).TextAlign(TextAlign.Right).Add();
                 col.Field("TaskName").HeaderText("Task Name").Width(200).Add();
@@ -37,7 +37,7 @@
                     <div>Column</div>
                 </td>
                 <td style="width: 150%;padding-right: 10px">
-                    @Html.EJS().DropDownList("Column").DataSource((IEnumerable<object>)ViewBag.dd).Width("135px").Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Render()
+                    @Html.EJS().DropDownList("Column").DataSource((IEnumerable<object>)ViewData["dd"]).Width("135px").Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Render()
                 </td>
             </tr>
             <tr style="height: 20">
@@ -45,7 +45,7 @@
                     <div>Direction</div>
                 </td>
                 <td style="width: 150%;padding-right: 10px">
-                    @Html.EJS().DropDownList("Direction").DataSource((IEnumerable<object>)ViewBag.index).Width("135px").Value("Ascending").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Render()
+                    @Html.EJS().DropDownList("Direction").DataSource((IEnumerable<object>)ViewData["index"]).Width("135px").Value("Ascending").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Render()
                 </td>
             </tr>
             <tr>

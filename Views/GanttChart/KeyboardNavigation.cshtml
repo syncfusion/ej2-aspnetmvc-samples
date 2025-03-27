@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "KeyboardNavigation";
+    ViewData["Title"] = "KeyboardNavigation";
 }
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
 
-        @(Html.EJS().Gantt("KeyboardNavigation").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true).TreeColumnIndex(1)
+        @(Html.EJS().Gantt("KeyboardNavigation").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true).AllowSelection(true).TreeColumnIndex(1)
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
             .Dependency("Predecessor").Child("SubTasks"))
             .Columns(col =>

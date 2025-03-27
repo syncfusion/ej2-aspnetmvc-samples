@@ -4,7 +4,7 @@
     <div class="col-lg-12 control-section default">
 
         <div class="sample_container badge-accordion">
-            @Html.EJS().Accordion("accordion").Created("created").Items(ViewBag.accordionItems).Render()
+            @Html.EJS().Accordion("accordion").Created("created").Items((List<Syncfusion.EJ2.Navigations.AccordionItem>)ViewData["accordionItems"]).Render()
         </div>
     </div>
 }

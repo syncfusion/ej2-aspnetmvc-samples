@@ -20,7 +20,7 @@
                         .Subtitle("U.S. $")
                         .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Left)
                         .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
-                        .DataSource(ViewBag.dataSource1)
+                        .DataSource(ViewData["dataSource1"])
                         .Load("load1")
                         .Render()
             )
@@ -44,7 +44,7 @@
                     .Subtitle("%")
                     .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Left)
                     .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
-                    .DataSource(ViewBag.dataSource2)
+                    .DataSource(ViewData["dataSource2"])
                      .Load("load2")
                     .Render()
                 )
@@ -68,7 +68,7 @@
                     .Subtitle("U.S. $")
                     .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Left)
                     .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
-                    .DataSource(ViewBag.dataSource3)
+                    .DataSource(ViewData["dataSource3"])
                      .Load("load3")
                     .Render()
                 )
@@ -91,7 +91,7 @@
                     .Subtitle("Count")
                     .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Left)
                     .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
-                    .DataSource(ViewBag.dataSource4)
+                    .DataSource(ViewData["dataSource4"])
                      .Load("load4")
                     .Render()
                 )
@@ -114,7 +114,7 @@
                     .Subtitle("Top Rating of 5")
                     .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Left)
                     .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
-                    .DataSource(ViewBag.dataSource5)
+                    .DataSource(ViewData["dataSource5"])
                      .Load("load5")
                     .Render()
                 )
@@ -127,38 +127,34 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/bullet-chart/theme-color.js"></script>
     <script>
         var load1 = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadBulletChartTheme(args);
             args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 53;
             args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "60%";
             args.bulletChart.titlePosition = ej.base.Browser.isDevice ? 'Top' : 'Left';
         }
         var load2 = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadBulletChartTheme(args);
             args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 72;
             args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "60%";
             args.bulletChart.titlePosition = ej.base.Browser.isDevice ? 'Top' : 'Left';
         }
         var load3 = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadBulletChartTheme(args);
             args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 13;
             args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "60%";
             args.bulletChart.titlePosition = ej.base.Browser.isDevice ? 'Top' : 'Left';
         }
         var load4 = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadBulletChartTheme(args);
             args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 10;
             args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "60%";
             args.bulletChart.titlePosition = ej.base.Browser.isDevice ? 'Top' : 'Left';
         }
         var load5 = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadBulletChartTheme(args);
             args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 0;
             args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "60%";
             args.bulletChart.titlePosition = ej.base.Browser.isDevice ? 'Top' : 'Left';

@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Marker
         public ActionResult Marker()
         {
-            ViewBag.shapeData = this.GetWorldMap();
+            ViewData["shapeData"] = this.GetWorldMap();
             string population = System.IO.File.ReadAllText(Server.MapPath("~/App_Data/MapData/Population.js"));
             object datasrc = JsonConvert.DeserializeObject(population, typeof(object));
             MapsMarker marker = new MapsMarker();
@@ -34,7 +34,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
             marker.TooltipSettings = new MapsTooltipSettings{ Visible = true, ValuePath = "population", Template = "#template" };
             List<MapsMarker> markerSettings = new List<MapsMarker>();
             markerSettings.Add(marker);
-            ViewBag.markerSettings = markerSettings;
+            ViewData["markerSettings"] = markerSettings;
             return View();
         }
     }

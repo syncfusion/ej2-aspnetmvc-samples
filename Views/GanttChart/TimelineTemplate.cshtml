@@ -1,13 +1,13 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @{
-    ViewBag.Title = "TimelineTemplate";
+    ViewData["Title"] = "TimelineTemplate";
 }
 
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
 
-            @(Html.EJS().Gantt("TaskLabelTemplate").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").AllowSelection(true).TreeColumnIndex(1)
+            @(Html.EJS().Gantt("TaskLabelTemplate").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").AllowSelection(true).TreeColumnIndex(1)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                 .Dependency("Predecessor").Child("SubTasks")).TimelineTemplate("#timelineTemplates").TimelineSettings(ts => ts.TopTier(tt => tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day)).TimelineUnitSize(200))
                 .Columns(col =>

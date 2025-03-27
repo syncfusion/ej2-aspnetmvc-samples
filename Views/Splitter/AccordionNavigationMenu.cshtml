@@ -6,7 +6,7 @@
             <div>
                 @Html.EJS().Splitter("splitter-accordin").PaneSettings(paneItem =>
                      {
-                       paneItem.Size("39%").Min("30%").ContentTemplate(@<div>@(Html.EJS().Accordion("Accordion_default").Expanded("onexpanded").Expanding("onexpanding").Items(ViewBag.AccordionItems).Render())</div>).Add();
+                       paneItem.Size("39%").Min("30%").ContentTemplate(@<div>@(Html.EJS().Accordion("Accordion_default").Expanded("onexpanded").Expanding("onexpanding").Items((List<Syncfusion.EJ2.Navigations.AccordionItem>)ViewData["AccordionItems"]).Render())</div>).Add();
 paneItem.Size("65%").Min("45%").ContentTemplate(@<div><div id='content'></div></div>).Add();
 }).Height("288px").Width("100%").Render()
             </div>

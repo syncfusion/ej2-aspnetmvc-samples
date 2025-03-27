@@ -15,24 +15,24 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
         // GET: LabelTemplate
         public ActionResult LabelTemplate()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
                 fontFamily = "inherit"
             };
-            ViewBag.labelTextStyle = new
+            ViewData["labelTextStyle"] = new
             {
                 fontFamily = "inherit"
             };
-            ViewBag.xtitle = new { text = "LIKELIHOOD" };
-            ViewBag.ytitle = new { text = "IMPACT" };
+            ViewData["xtitle"] = new { text = "LIKELIHOOD" };
+            ViewData["ytitle"] = new { text = "IMPACT" };
             string[] xlabels = new string[5] { "Improbable", "Remote", "Occasional", "Probable", "Frequent" };
-            ViewBag.xLabels = xlabels;
+            ViewData["xLabels"] = xlabels;
             string[] yLabels = new string[5] { "Negligible", "Low", "Moderate", "Significant", "Catastrophic" };
-            ViewBag.yLabels = yLabels;
-            ViewBag.labelTemplateData = new HeatmapData().GetData();
+            ViewData["yLabels"] = yLabels;
+            ViewData["labelTemplateData"] = new HeatmapData().GetData();
             return View();
         }
 

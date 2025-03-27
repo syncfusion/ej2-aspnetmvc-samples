@@ -20,13 +20,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult ShowHideColumn()
         {
             var product = Categories.GetAllRecords().ToList();
-            ViewBag.datasource = product;
+            ViewData["datasource"] = product;
             List<object> dd = new List<object>();
             dd.Add(new { text = "Category Name", value = "CategoryName" });
             dd.Add(new { text = "Product Name", value = "ProductName" });
             dd.Add(new { text = "Units In Stock", value = "UnitsInStock" });
             dd.Add(new { text = "Discontinued", value = "Discontinued" });
-            ViewBag.columns = dd;
+            ViewData["columns"] = dd;
             return View();
         }
     }

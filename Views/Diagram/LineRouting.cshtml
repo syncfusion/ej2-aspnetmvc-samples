@@ -1,7 +1,7 @@
 @section ControlsSection {
     <div class="control-section">
         @(Html.EJS().Diagram("diagram").Width("100%").Height("600px").GetNodeDefaults("getNodeDefaults").Constraints(Syncfusion.EJ2.Diagrams.DiagramConstraints.Default | (Syncfusion.EJ2.Diagrams.DiagramConstraints.Bridging | Syncfusion.EJ2.Diagrams.DiagramConstraints.LineRouting)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
-                    .GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Created("diagramCreated").Render())
+                    .GetConnectorDefaults("getConnectorDefaults").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Created("diagramCreated").Render())
     </div>
 
     <script>

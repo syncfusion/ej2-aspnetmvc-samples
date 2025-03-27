@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult DefaultFunctionalities()
         {
-            ViewBag.Value = @"The sample is added to showcase **markdown editing**.
+            ViewData["Value"] = @"The sample is added to showcase **markdown editing**.
 
 Type or edit the content and apply formatting to view markdown formatted content.
 
@@ -30,7 +30,7 @@ The third-party library <b>Marked</b> is used in this sample to convert markdown
                 template = @"<button id='preview-code' class='e-tbar-btn e-control e-btn e-icon-btn' aria-label='Preview Code'>
                         <span class='e-btn-icon e-md-preview e-icons'></span></button>"
             };
-            ViewBag.Items = new object[] {"Bold", "Italic", "StrikeThrough", "|",
+            ViewData["Items"] = new object[] {"Bold", "Italic", "StrikeThrough", "|",
                 "Formats", "Blockquote", "OrderedList", "UnorderedList","Superscript", "Subscript", "|", "CreateTable",
                 "CreateLink", "Image", "|", tool
                 , "|", "Undo", "Redo"};

@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult LocalData()
         {
-            ViewBag.DataSource = GanttData.ProjectNewData();
+            ViewData["DataSource"] = GanttData.ProjectNewData();
             return View();
         }
     }

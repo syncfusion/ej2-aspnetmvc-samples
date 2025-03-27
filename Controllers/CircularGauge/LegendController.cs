@@ -18,9 +18,9 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularGauge
     {
         public ActionResult Legend()
         {
-            ViewBag.legendPosition = new string[] { "Bottom", "Top", "Left", "Right", "Auto" };
-            ViewBag.legendAlignment = new string[] { "Center", "Far", "Near" };
-            ViewBag.legendShape = new string[] { "Circle", "Rectangle", "Triangle", "Diamond", "Inverted Triangle" };
+            ViewData["legendPosition"] = new string[] { "Bottom", "Top", "Left", "Right", "Auto" };
+            ViewData["legendAlignment"] = new string[] { "Center", "Far", "Near" };
+            ViewData["legendShape"] = new string[] { "Circle", "Rectangle", "Triangle", "Diamond", "Inverted Triangle" };
             return View();
         }
     }

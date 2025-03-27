@@ -7,19 +7,19 @@
     {
         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
             .Marker(mr => mr.Visible(false).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle))
-            .XName("Breadth").YName("Circumference").Width(2).DataSource(ViewBag.Cluster1Value).Name("18-20 Years").Add();
+            .XName("Breadth").YName("Circumference").Width(2).DataSource(ViewData["Cluster1Value"]).Name("18-20 Years").Add();
         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
             .Marker(mr => mr.Visible(false).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle))
-            .XName("Breadth").YName("Circumference").Width(2).DataSource(ViewBag.Cluster2Value).Name("21-25 Years").Add();
+            .XName("Breadth").YName("Circumference").Width(2).DataSource(ViewData["Cluster2Value"]).Name("21-25 Years").Add();
         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
             .Marker(mr => mr.Visible(false).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle))
-            .XName("Breadth").YName("Circumference").Width(2).DataSource(ViewBag.Cluster3Value).Name("26-30 Years").Add();
+            .XName("Breadth").YName("Circumference").Width(2).DataSource(ViewData["Cluster3Value"]).Name("26-30 Years").Add();
         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
             .Marker(mr => mr.Visible(false).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle))
-            .XName("Breadth").YName("Circumference").Width(2).DataSource(ViewBag.Cluster4Value).Name("31-35 years").Add();
+            .XName("Breadth").YName("Circumference").Width(2).DataSource(ViewData["Cluster4Value"]).Name("31-35 years").Add();
         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
             .Marker(mr => mr.Visible(false).Width(10).Height(10).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle))
-            .XName("Breadth").YName("Circumference").Width(2).DataSource(ViewBag.Cluster5Value).Name("36+ Years").Add();
+            .XName("Breadth").YName("Circumference").Width(2).DataSource(ViewData["Cluster5Value"]).Name("36+ Years").Add();
     }).PrimaryXAxis(px => px.Title("Shoulder Breadth (cm)").Minimum(40).Maximum(56).MajorGridLines(mg => mg.Width(0))
         ).PrimaryYAxis(py => py.Title("Bust Chest Circumference (cm)").MajorTickLines(mt => mt.Width(0)).Minimum(70).Maximum(140).Interval(10).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
             .LineStyle(ls => ls.Width(0))
@@ -35,10 +35,10 @@
     }
 </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
     </script>

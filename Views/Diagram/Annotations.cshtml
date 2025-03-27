@@ -4,8 +4,8 @@
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
             @(Html.EJS().Diagram("container").Width("100%").Height("645px").GetNodeDefaults("getNodeDefaults").SelectionChange("selectionChange")
-                        .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes)
-                        .Connectors(ViewBag.connectors).Render()
+                        .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).GetConnectorDefaults("getConnectorDefaults").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"])
+                        .Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render()
             )
         </div>
     </div>
@@ -59,7 +59,7 @@
                     @Html.EJS().NumericTextBox("fontSize").Value(12).Min(1).Max(50).Enabled(false).Format("##.##").Step(1).Width("100%").Change("textBoxChanged").Render()
                 </div>
                 <div class="col-xs-4 column-style">
-                    @Html.EJS().DropDownList("fontFamily").Enabled(false).Placeholder("Select a font type").Index(0).PopupWidth("150").DataSource(ViewBag.font).Created("diagramCreated").Fields(new DropDownListFieldSettings() { Value = "Name", Text = "Name" }).Change("fontChange").Render()
+                    @Html.EJS().DropDownList("fontFamily").Enabled(false).Placeholder("Select a font type").Index(0).PopupWidth("150").DataSource(ViewData["font"]).Created("diagramCreated").Fields(new DropDownListFieldSettings() { Value = "Name", Text = "Name" }).Change("fontChange").Render()
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                 Templates
             </div>
             <div class="row col-xs-8" style="padding-left: 0px; padding-top: 8px">
-                @Html.EJS().DropDownList("template").Placeholder("Select a template").PopupWidth("200").Width("100%").DataSource(ViewBag.templateList).Fields(new DropDownListFieldSettings() { Value = "Value", Text = "Text" }).Change("onLabelTemplateChange").Render()
+                @Html.EJS().DropDownList("template").Placeholder("Select a template").PopupWidth("200").Width("100%").DataSource(ViewData["templateList"]).Fields(new DropDownListFieldSettings() { Value = "Value", Text = "Text" }).Change("onLabelTemplateChange").Render()
             </div>
         </div>
         <div class="row" style="padding-top: 10px">

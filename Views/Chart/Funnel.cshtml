@@ -8,31 +8,32 @@
                 sr.Type(Syncfusion.EJ2.Charts.AccumulationType.Funnel)
                     .XName("InterviewProcess")
                     .YName("Candidates")
-                    .DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600")).TextWrap(Syncfusion.EJ2.Charts.TextWrap.Normal).ConnectorStyle(cs => cs.Length("20px")))
+                    .DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600").Size("13px")).TextWrap(Syncfusion.EJ2.Charts.TextWrap.Normal).ConnectorStyle(cs => cs.Length("20px")))
                     .Height("80%")
-                    .GapRatio(0.03)
-                    .NeckHeight("18%")
-                    .Explode(false)
-                    .DataSource(ViewBag.ChartPoints)
+                    .Explode(false).FunnelMode(Syncfusion.EJ2.Charts.FunnelModes.Trapezoidal)
+                    .DataSource(ViewData["ChartPoints"])
                     .Add();
             })
             .EnableAnimation(false)
             .Tooltip(tp => tp.Enable(false))
             .LegendSettings(leg => leg.Visible(false))
-            .Load("load")
-            .Title("Recruitment Process").Render()
+            .Load("load").PointRender("pointRender")
+            .Title("Recruitment Funnel: From Application to Hiring").Width("75%").Render()
             )
     </div>
         </div>
-
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
+        var pointRender = function (args) {
+            funnelPointRender(args);
+        };
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
-            args.accumulation.series[0].width = ej.base.Browser.isDevice ? "90%" : "45%";
-            args.accumulation.series[0].neckWidth = ej.base.Browser.isDevice ? "25%" : "15%";
-            args.accumulation.series[0].dataSource[1].DataLabelMappingName = ej.base.Browser.isDevice ? "Personal <br> Interview: 58" : "Personal Interview: 58";
-            args.accumulation.series[0].dataSource[2].DataLabelMappingName = ej.base.Browser.isDevice ? "Telephonic <br> Interview: 85" : "Telephonic Interview: 85";
+            loadAccumulationChartTheme(args);
+            args.accumulation.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.accumulation.series[0].dataSource[2].DataLabelMappingName = ej.base.Browser.isDevice ? "Screening <br> Completed: 105" : "Screening Completed: 105";
+            args.accumulation.series[0].dataSource[3].DataLabelMappingName = ej.base.Browser.isDevice ? "Phone <br> Interview: 85" : "Phone Interview: 85";
+            args.accumulation.series[0].dataSource[4].DataLabelMappingName = ej.base.Browser.isDevice ? "Final <br> Interview: 58" : "Final Interview: 58";
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "11px" : "13px";
         };
     </script>
 }
@@ -48,8 +49,7 @@
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure a funnel chart. The labels are smartly arranged to avoid overlapping. The width and height of the funnel chart can be customized using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_NeckWidth" aria-label="NeckWidth">NeckWidth<span class="sr-only">opens in a new tab</span></a> and
-        <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_NeckHeight" aria-label="NeckHeight">NeckHeight<span class="sr-only">opens in a new tab</span></a> properties.
+        In this example, you can see how to render and configure a funnel chart to visualize the recruitment process. The <code>trapezoidal</code> funnelMode is set to display the stages of the employment cycle, from the number of candidates who applied to the number of hires. The labels are smartly arranged to avoid overlapping.
     </p>
     <p>
         More information about the funnel series can be found in this

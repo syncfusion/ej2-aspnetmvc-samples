@@ -55,7 +55,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             }
             else
             {
-                ViewBag.lab = "Choose a valid PDF file.";
+                ViewData["lab"] = "Choose a valid PDF file.";
                 return View();
             }
 

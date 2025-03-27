@@ -1,7 +1,7 @@
-﻿﻿@using Syncfusion.EJ2
+﻿@using Syncfusion.EJ2
 @using Syncfusion.EJ2.PdfViewer
 @{
-    ViewBag.Title = "ReadOnly";
+    ViewData["Title"] = "ReadOnly";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @{
@@ -23,9 +23,7 @@
             <div class="e-message render-mode-info">
                 <span class="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
             </div>
-            <div>
-                @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
-            </div>
+            @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
         </div>
         @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/restricted-formfield.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").EnableStickyNotesAnnotation(false).DocumentLoad("documentLoad").AnnotationSettings(annotationSettings).ToolbarSettings(new Syncfusion.EJ2.PdfViewer.PdfViewerToolbarSettings { ShowTooltip = true, ToolbarItems = "OpenOption PanTool PageNavigationTool MagnificationTool PrintOption" }).Render()
     </div>
@@ -62,6 +60,7 @@
     .flex-container {
         display: flex;
         justify-content: flex-end;
+        align-items: center;
     }
 
     .render-mode-info {
@@ -82,10 +81,11 @@
         letter-spacing: 0.24px;
         text-align: right;
         font-size: 14px;
+        margin-bottom: 3px;
     }
 
     .render-mode-info .render-mode-info-icon::before {
-        line-height: 0.5rem;
+        line-height: normal;
     }
 
     .buttonSwitch {

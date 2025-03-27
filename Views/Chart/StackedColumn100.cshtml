@@ -4,10 +4,10 @@
         
             @Html.EJS().Chart("container-vertical").Series(series =>
             {
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("General").Border(br => br.Width(1).Color("#ffffff")).Name("General Motors").Width(2).ColumnWidth(0.5).DataSource(ViewBag.ChartPoints).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("Honda").Border(br => br.Width(1).Color("#ffffff")).Name("Honda").Width(2).ColumnWidth(0.5).DataSource(ViewBag.ChartPoints).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("Suzuki").Border(br => br.Width(1).Color("#ffffff")).Name("Suzuki").Width(2).ColumnWidth(0.5).DataSource(ViewBag.ChartPoints).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("BMW").Border(br => br.Width(1).Color("#ffffff")).Name("BMW").Width(2).ColumnWidth(0.5).DataSource(ViewBag.ChartPoints).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("General").Border(br => br.Width(1).Color("#ffffff")).Name("General Motors").Width(2).ColumnWidth(0.5).DataSource(ViewData["ChartPoints"]).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("Honda").Border(br => br.Width(1).Color("#ffffff")).Name("Honda").Width(2).ColumnWidth(0.5).DataSource(ViewData["ChartPoints"]).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("Suzuki").Border(br => br.Width(1).Color("#ffffff")).Name("Suzuki").Width(2).ColumnWidth(0.5).DataSource(ViewData["ChartPoints"]).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("BMW").Border(br => br.Width(1).Color("#ffffff")).Name("BMW").Width(2).ColumnWidth(0.5).DataSource(ViewData["ChartPoints"]).Add();
             }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0)).
                 MinorTickLines(mt => mt.Width(0)).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45)
                 ).PrimaryYAxis(py => py.Interval(20).MajorGridLines(mg=>mg.Width(1)).MajorTickLines(mt => mt.Width(0)).
@@ -23,10 +23,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>

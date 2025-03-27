@@ -17,7 +17,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DocumentEditor
     {
         public ActionResult ToolbarCustomization()
         {
-            ViewBag.data = new string[] {"New", "Open", "Undo", "Redo","Comments", "Image","Table", "Hyperlink","Bookmark", "TableOfContents", "Header",  "Footer",
+            ViewData["data"] = new string[] {"New", "Open", "Undo", "Redo","Comments", "Image","Table", "Hyperlink","Bookmark", "TableOfContents", "Header",  "Footer",
         "PageSetup", "PageNumber","Break","Find","LocalClipboard", "RestrictEditing" } ;
             this.DocumentEditorViewResultHelper();
             return View();

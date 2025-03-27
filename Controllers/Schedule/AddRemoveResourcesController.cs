@@ -19,14 +19,14 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
         {
             List<CalendarRes> calendarCollections = new List<CalendarRes>();
             calendarCollections.Add(new CalendarRes { CalendarName = "My Calendar", CalendarId = 1, CalendarColor = "#c43081" });
-            ViewBag.Calendars = calendarCollections;
+            ViewData["Calendars"] = calendarCollections;
 
             ScheduleData data = new ScheduleData();
             List<ScheduleData.ResourceEventsData> holidayData = data.GetHolidayData();
             List<ScheduleData.ResourceEventsData> birthdayData = data.GetBirthdayData();
             List<ScheduleData.ResourceEventsData> companyData = data.GetCompanyData();
             List<ScheduleData.ResourceEventsData> personalData = data.GetPersonalData();
-            ViewBag.datasource = holidayData.Concat(birthdayData).Concat(companyData).Concat(personalData);
+            ViewData["datasource"] = holidayData.Concat(birthdayData).Concat(companyData).Concat(personalData);
 
             List<ScheduleView> viewOption = new List<ScheduleView>()
             {
@@ -34,10 +34,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.TimelineWeek },
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.TimelineMonth }
             };
-            ViewBag.view = viewOption;
+            ViewData["view"] = viewOption;
 
             string[] resources = new string[] { "Calendars" };
-            ViewBag.Resources = resources;
+            ViewData["Resources"] = resources;
 
             return View();
         }

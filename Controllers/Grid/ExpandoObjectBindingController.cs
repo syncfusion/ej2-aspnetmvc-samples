@@ -38,7 +38,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
                 d.ShipCountry = shipCountrys[x % shipCountrys.Length];
                 return d;
             }).Cast<ExpandoObject>().ToList<ExpandoObject>();
-            ViewBag.ExpandoData = ExpandoOrders;
+            ViewData["ExpandoData"] = ExpandoOrders;
             return View();
         }
     }

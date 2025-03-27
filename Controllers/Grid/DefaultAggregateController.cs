@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult DefaultAggregate()
         {
             var order = OverAllData.GetAllRecords();
-            ViewBag.datasource = order;
+            ViewData["datasource"] = order;
             return View();
         }
     }

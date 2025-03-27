@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new SymbolsData { Country = "Middle East Africa", FBUser_07 = 30, FBUser_08 = 45.7, FBUser_09 = 61.5, TooltipMappingName = "Middle East Africa"},
                 new SymbolsData { Country = "North America", FBUser_07 = 25.3, FBUser_08 = 35.9, FBUser_09 = 64, TooltipMappingName = "North America"},
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class SymbolsData

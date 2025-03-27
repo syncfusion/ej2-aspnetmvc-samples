@@ -4,10 +4,10 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).AllowDragAndDrop(false).AllowResizing(false).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).AllowDragAndDrop(false).AllowResizing(false).Render()
         </div>
         <div>
-            @Html.EJS().ContextMenu("contextmenu").CssClass("schedule-context-menu").BeforeOpen("onContextMenuBeforeOpen").Select("onMenuItemSelect").Target(".e-schedule").Items(ViewBag.menuItems).Render()
+            @Html.EJS().ContextMenu("contextmenu").CssClass("schedule-context-menu").BeforeOpen("onContextMenuBeforeOpen").Select("onMenuItemSelect").Target(".e-schedule").Items(ViewData["menuItems"]).Render()
         </div>
     </div>
     <style>

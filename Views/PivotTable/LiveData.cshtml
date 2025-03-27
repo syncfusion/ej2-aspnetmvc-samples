@@ -26,7 +26,7 @@
             })
             .SortSettings(sortSettings =>
             {
-                sortSettings.Name("Type").Order(Sorting.Ascending).MembersOrder(ViewBag.sortSettings).Add();
+                sortSettings.Name("Type").Order(Sorting.Ascending).MembersOrder(ViewData["sortSettings"]).Add();
             })
             .Rows(rows =>
             {

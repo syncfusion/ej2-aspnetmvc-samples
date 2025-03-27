@@ -4,13 +4,13 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "HeaderTemplate";
+    ViewData["Title"] = "HeaderTemplate";
 }
 @*custom code end*@
 
 @section ControlsSection{
     <div class="control-section" role="region" aria-label="Tree Grid Overview">
-        @Html.EJS().TreeGrid("TreeGrid").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+        @Html.EJS().TreeGrid("TreeGrid").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
        {
            col.Field("Name").HeaderTemplate("#projectName").Width(200).Add();
            col.Field("StartDate").HeaderTemplate("#dateTemplate").Format("yMd").TextAlign(TextAlign.Right).Width(140).Add();

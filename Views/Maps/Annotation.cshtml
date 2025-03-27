@@ -5,7 +5,7 @@
         <div id="outer" style="width:100%">
             @Html.EJS().Maps("maps").Load("mapsLoad").Layers(layer =>
    {
-       layer.ShapePropertyPath("name").ShapeSettings(new MapsShapeSettings{ Fill = "url(#grad1)" }).ShapeDataPath("name").ShapeData(ViewBag.shapeData).Add();
+       layer.ShapePropertyPath("name").ShapeSettings(new MapsShapeSettings{ Fill = "url(#grad1)" }).ShapeDataPath("name").ShapeData(ViewData["shapeData"]).Add();
    }).Render()
             <div style="margin-left:75%;">
                 Source:

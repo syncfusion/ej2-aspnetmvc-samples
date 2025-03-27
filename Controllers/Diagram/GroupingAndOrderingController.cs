@@ -36,11 +36,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             basicShapes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "RightTriangle", Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.RightTriangle }, Style = new DiagramStrokeStyle { StrokeWidth = 2 } });
             basicShapes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "Cylinder", Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Cylinder }, Style = new DiagramStrokeStyle { StrokeWidth = 2 } });
             basicShapes.Add(new Syncfusion.EJ2.Diagrams.DiagramNode() { Id = "Diamond", Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Diamond }, Style = new DiagramStrokeStyle { StrokeWidth = 2 } });
-            ViewBag.BasicShapes = basicShapes;
+            ViewData["BasicShapes"] = basicShapes;
 
             List<SymbolPalettePalette> palettes = new List<SymbolPalettePalette>();
             palettes.Add(new SymbolPalettePalette() { Id = "basic", Expanded = true, Symbols = basicShapes, IconCss = "shapes", Title = "Basic Shapes" });
-            ViewBag.palettes = palettes;
+            ViewData["palettes"] = palettes;
 
             List<DiagramNode> nodes = new List<DiagramNode>();
             List<DiagramNodeAnnotation> Node1 = new List<DiagramNodeAnnotation>();
@@ -109,7 +109,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Annotations = Node4,
                 Shape = new { type = "Basic", shape = "Rectangle" }
             });
-            ViewBag.nodes = nodes;
+            ViewData["nodes"] = nodes;
 
             List<DiagramUserHandle> handle = new List<DiagramUserHandle>();
             handle.Add(new DiagramUserHandle()
@@ -143,7 +143,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             DiagramSelector userHandle = new DiagramSelector();
             userHandle.Constraints = SelectorConstraints.UserHandle;
             userHandle.UserHandles = handle;
-            ViewBag.selectedItems = userHandle;
+            ViewData["selectedItems"] = userHandle;
 
             List<ToolbarItem> items = new List<ToolbarItem>();
             {
@@ -164,7 +164,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 items.Add(new ToolbarItem { Template = "#fontColors", Type = ItemType.Input, TooltipText = "Font Color" });
 
             }
-            ViewBag.tbItems = items;
+            ViewData["tbItems"] = items;
 
             List<ContextMenuItem> fontFamilyItems = new List<ContextMenuItem>();
             {
@@ -177,7 +177,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 fontFamilyItems.Add(new ContextMenuItem { Text = "Verdana"});
 
             }
-            ViewBag.fontFamilyItems = fontFamilyItems;
+            ViewData["fontFamilyItems"] = fontFamilyItems;
             return View();
         }
         public class Node2 : DiagramNode

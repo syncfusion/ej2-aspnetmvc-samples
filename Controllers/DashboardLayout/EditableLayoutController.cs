@@ -66,7 +66,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                     text = "March"
                 }
             };
-            ViewBag.pieSource = pieChartData;
+            ViewData["pieSource"] = pieChartData;
             List<LineData> LineChartData = new List<LineData>
             {
                 new LineData {
@@ -82,7 +82,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                     y = 18,
                 }
             };
-            ViewBag.lineSource = LineChartData;
+            ViewData["lineSource"] = LineChartData;
             List<LineData> LineChartData1 = new List<LineData>
             {
                 new LineData {
@@ -98,7 +98,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                     y = 26,
                 }
             };
-            ViewBag.lineSource1 = LineChartData1;
+            ViewData["lineSource1"] = LineChartData1;
             List<LineData> LineChartData2 = new List<LineData>
             {
                 new LineData {
@@ -114,8 +114,8 @@ namespace EJ2MVCSampleBrowser.Controllers
                     y = 26,
                 }
             };
-            ViewBag.lineSource2 = LineChartData2;
-            ViewBag.pallets = new string[] { "#00bdae", "#357cd2", "#e56691" };
+            ViewData["lineSource2"] = LineChartData2;
+            ViewData["pallets"] = new string[] { "#00bdae", "#357cd2", "#e56691" };
             List<SplineData> SplineChartData1 = new List<SplineData>
             {
                 new SplineData { x =  new DateTime(2002, 1, 1), y =  2.2 }, new SplineData { x =  new DateTime(2003, 1, 1), y =  3.4 },
@@ -124,7 +124,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 new SplineData { x =  new DateTime(2008, 1, 1), y =  2.9 }, new SplineData { x =  new DateTime(2009, 1, 1), y =  3.8 },
                 new SplineData { x =  new DateTime(2010, 1, 1), y =  1.4 }, new SplineData { x = new DateTime(2011, 1, 1), y =  3.1 }
             };
-            ViewBag.splineSource1 = SplineChartData1;
+            ViewData["splineSource1"] = SplineChartData1;
             List<SplineData> SplineChartData2 = new List<SplineData>
             {
                 new SplineData { x =  new DateTime(2002, 1, 1), y =  2 }, new SplineData { x =  new DateTime(2003, 1, 1), y =  1.7 },
@@ -133,7 +133,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 new SplineData { x =  new DateTime(2008, 1, 1), y =  1.5 }, new SplineData { x =  new DateTime(2009, 1, 1), y =  2.8 },
                 new SplineData { x =  new DateTime(2010, 1, 1), y =  1.5 }, new SplineData { x = new DateTime(2011, 1, 1), y =  2.3 }
             };
-            ViewBag.splineSource2 = SplineChartData2;
+            ViewData["splineSource2"] = SplineChartData2;
             List<SplineAreaChartData> chartData = new List<SplineAreaChartData>
             {
                 new SplineAreaChartData { xValue = new DateTime(2002, 01, 01), yValue = 2.2, yValue1 = 2, yValue2 = 0.8  },
@@ -147,7 +147,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 new SplineAreaChartData { xValue = new DateTime(2010, 01, 01), yValue = 1.4, yValue1 = 1.5, yValue2 = 1.1 },
                 new SplineAreaChartData { xValue = new DateTime(2011, 01, 01), yValue = 3.1, yValue1 = 2.3, yValue2 = 2.3 },
             };
-            ViewBag.dataSource = chartData;
+            ViewData["dataSource"] = chartData;
             spacingModel modelValue = new spacingModel();
             modelValue.cellSpacing = new double[] { 10, 10 };
             return View(modelValue);

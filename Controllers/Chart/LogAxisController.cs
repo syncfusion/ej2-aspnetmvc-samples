@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new LogAxisChartData { Period = new DateTime(2004, 1, 1),  ProfitInfo = 8000 },
                 new LogAxisChartData { Period = new DateTime(2005, 1, 1),  ProfitInfo = 11000 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class LogAxisChartData

@@ -5,9 +5,9 @@
             @Html.EJS().Chart("container-vertical").Series(series =>
             {
             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingStepArea).Border(br => br.Width(2)).XName("xValue").YName("yValue")
-            .DataSource(ViewBag.dataSource).Name("Renewable").Width(2).Fill("#56CCF2").Opacity(0.5).Add();
+            .DataSource(ViewData["dataSource"]).Name("Renewable").Width(2).Fill("#56CCF2").Opacity(0.5).Add();
             series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingStepArea).Border(br => br.Width(2)).XName("xValue")
-            .YName("yValue1").DataSource(ViewBag.dataSource).Name("Non-Renewable").Width(2).Fill("#2F80ED").Opacity(0.5).Add();
+            .YName("yValue1").DataSource(ViewData["dataSource"]).Name("Non-Renewable").Width(2).Fill("#2F80ED").Opacity(0.5).Add();
             }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Double)
             .MajorGridLines(mg=>mg.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
             ).PrimaryYAxis(py => py.LabelFormat("{value}B").MajorTickLines(mt=>mt.Width(0))
@@ -22,10 +22,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+           loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>

@@ -1,22 +1,22 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Heatmap control shows how to bind the multiple data to bubble heat map" />
 }
 @section ControlsSection{
     <div>
         <div class="control-section">
-            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Commercial Aviation Accidents and Fatalities by year 2012 - 2017").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Commercial Aviation Accidents and Fatalities by year 2012 - 2017").TextStyle(ViewData["textStyle"])).XAxis(xAxis =>
                                         {
-                                            xAxis.Labels(ViewBag.xLabels);
+                                            xAxis.Labels(ViewData["xLabels"]);
                                         }).YAxis(yaxis =>
                                         {
-                                            yaxis.Labels(ViewBag.yLabels);
+                                            yaxis.Labels(ViewData["yLabels"]);
                                         }).DataSource("dataSource").PaletteSettings(ps => ps.Palette(palette =>
                                         {
                                             palette.Color("#C06C84").Add();
                                             palette.Color("#355C7D").Add();
                                         }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Gradient)).CellSettings(cs =>
-                                        cs.ShowLabel(false).Border(ViewBag.border).TileType(Syncfusion.EJ2.HeatMap.CellType.Bubble).BubbleType(Syncfusion.EJ2.HeatMap.BubbleType.SizeAndColor)).LegendSettings(ls =>
+                                        cs.ShowLabel(false).Border(ViewData["border"]).TileType(Syncfusion.EJ2.HeatMap.CellType.Bubble).BubbleType(Syncfusion.EJ2.HeatMap.BubbleType.SizeAndColor)).LegendSettings(ls =>
                                         ls.Visible(true)).TooltipRender("tooltipRender").Load("load").Render()
         </div>
         <div style="float: right; margin-right: 10px;">

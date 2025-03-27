@@ -4,8 +4,8 @@
     <div class="control-section" align="center">
         @Html.EJS().Chart("container-verticals").Series(series =>
         {
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("column").Name("Sales").Width(2).DataSource(ViewBag.chartPoints).Add();
-            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).XName("Year").YName("series").YAxisName("yAxis2").Name("Profit Margin").Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true)).Width(2).DataSource(ViewBag.chartPoints).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("column").Name("Sales").Width(2).DataSource(ViewData["chartPoints"]).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).XName("Year").YName("series").YAxisName("yAxis2").Name("Profit Margin").Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true)).Width(2).DataSource(ViewData["chartPoints"]).Add();
         }).Axes(ax => {
                           ax.LineStyle(ls => ls.Width(0))
                               .OpposedPosition(true)
@@ -29,11 +29,11 @@
         }
     </style>
      @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>     
         var load = function (args) {
             chart = args.chart;
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };       
     </script>

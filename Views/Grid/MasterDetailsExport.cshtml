@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 
 @{
-    ViewBag.Title = "MasterDetailsExport";
+    ViewData["Title"] = "MasterDetailsExport";
 }
 
 @{
     var SecondChildGrid = new Syncfusion.EJ2.Grids.Grid()
     {
-        DataSource = (IEnumerable<object>)ViewBag.CustomerDataSource,
+        DataSource = (IEnumerable<object>)ViewData["CustomerDataSource"],
         QueryString = "CustomerID",
         Columns = new List<Syncfusion.EJ2.Grids.GridColumn> {
                 new Syncfusion.EJ2.Grids.GridColumn(){ Field="CustomerID", HeaderText="Customer ID", Width="90", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right },
@@ -18,7 +18,7 @@
     };
     var ChildGrid = new Syncfusion.EJ2.Grids.Grid()
     {
-        DataSource = (IEnumerable<object>)ViewBag.DataSource,
+        DataSource = (IEnumerable<object>)ViewData["DataSource"],
         QueryString = "EmployeeID",
         Columns = new List<Syncfusion.EJ2.Grids.GridColumn> {
                 new Syncfusion.EJ2.Grids.GridColumn(){ Field="OrderID", HeaderText="Order ID", Width="120" },
@@ -32,7 +32,7 @@
 
 @section ControlsSection{
     <div class="control-section ">
-        @Html.EJS().Grid("MasterDetailsExport").DataSource((IEnumerable<object>)ViewBag.EmpDataSource).Columns(col =>
+        @Html.EJS().Grid("MasterDetailsExport").DataSource((IEnumerable<object>)ViewData["EmpDataSource"]).Columns(col =>
    {
 
        col.Field("EmployeeID").HeaderText("Employee ID").Width("125").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

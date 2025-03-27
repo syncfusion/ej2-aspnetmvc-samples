@@ -6,11 +6,11 @@
        {
 
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).TooltipMappingName("MappingName").XName("Country")
-           .YName("GoldMedal").DataSource(ViewBag.ChartPoints).Name("Gold").ColumnSpacing(0.1).Add();
+           .YName("GoldMedal").DataSource(ViewData["ChartPoints"]).Name("Gold").ColumnSpacing(0.1).Add();
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).TooltipMappingName("MappingName").XName("Country")
-               .YName("SilverMedal").DataSource(ViewBag.ChartPoints).Name("Silver").ColumnSpacing(0.1).Add();
+               .YName("SilverMedal").DataSource(ViewData["ChartPoints"]).Name("Silver").ColumnSpacing(0.1).Add();
            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).TooltipMappingName("MappingName").XName("Country")
-               .YName("BronzeMedal").DataSource(ViewBag.ChartPoints).Name("Bronze").ColumnSpacing(0.1).Add();
+               .YName("BronzeMedal").DataSource(ViewData["ChartPoints"]).Name("Bronze").ColumnSpacing(0.1).Add();
 
        }).PrimaryYAxis(px => px.Title("Medal Count").LineStyle(ls=>ls.Width(0)).MajorTickLines(mg=>mg.Width(0)).Maximum(50).Interval(10)
                 ).PrimaryXAxis(px => px.Interval(1)
@@ -26,10 +26,10 @@
         }
     </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Trim';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';

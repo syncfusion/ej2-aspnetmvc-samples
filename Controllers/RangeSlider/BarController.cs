@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Bar()
         {
-            ViewBag.sliderValue = new int[] { 30, 70 };
+            ViewData["sliderValue"] = new int[] { 30, 70 };
             return View();
         }
     }

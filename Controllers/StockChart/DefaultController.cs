@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.StockChart
         // GET: Default
         public ActionResult Default()
         {
-            //ViewBag.datasource = this.GetChartData();
+            //ViewData["datasource"] = this.GetChartData();
             return View();
         }
         //public DataStock[] GetChartData()

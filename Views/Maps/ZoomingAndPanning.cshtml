@@ -114,8 +114,8 @@
    {
        new Syncfusion.EJ2.Maps.MapsLayer
        {
-           ShapeData = ViewBag.ShapeData,
-           DataSource = ViewBag.DataSource,
+           ShapeData = ViewData["ShapeData"],
+           DataSource = ViewData["DataSource"],
            ShapePropertyPath = "continent",
            ShapeDataPath = "continent",
            ShapeSettings = new MapsShapeSettings
@@ -195,14 +195,18 @@
 
     <script type="text/javascript">
         var maps;
+	var isLoad = false;
         function onMapLoad(args) {
             if (!maps) {
                 args.maps.layers[0].animationDuration = 500;
             }
             maps = args.maps;
-            var theme = themeName ? themeName : 'Material';
-            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
-            args.maps.zoomSettings.toolbarSettings.buttonSettings.toolbarItems = ['Zoom', 'ZoomIn', 'ZoomOut', 'Pan', 'Reset'];
+	    if (!isLoad) {
+		isLoad = true;
+                var theme = themeName ? themeName : 'Material';
+                args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+                args.maps.zoomSettings.toolbarSettings.buttonSettings.toolbarItems = ['Zoom', 'ZoomIn', 'ZoomOut', 'Pan', 'Reset'];
+	    }
         }
 
         var sliderChange;

@@ -4,7 +4,7 @@
         
             @(Html.EJS().Chart("container").Title("Profit and Loss").Load("load").ChartArea(ca => ca.Border(br => br.Width(0)))
                         .LegendSettings(legend => legend.Visible(true).EnableHighlight(true))
-                        .Tooltip(tooltip => tooltip.Enable(true))
+                        .Tooltip(tooltip => tooltip.Enable(true).ShowNearestTooltip(true).EnableHighlight(true))
                         .PrimaryXAxis(xaxis => xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("yyyy")
                                       .MajorGridLines(grid => grid.Width(0)).Minimum(new DateTime(2017, 01, 01)).Maximum(new DateTime(2021, 01, 01)).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years).LabelStyle(ls=>ls.FontStyle("bold")))
                         .PrimaryYAxis(yaxis => yaxis.Minimum(-4000).Maximum(8000).Interval(2000).LabelFormat("${value}")
@@ -20,7 +20,7 @@
                                     .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                                     .Border(br => br.Width(2))
                                     .Marker(marker => marker.Visible(true).IsFilled(true).Height(7).Width(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle))
-                                    .DataSource(ViewBag.MaryValues).Add();
+                                    .DataSource(ViewData["MaryValues"]).Add();
                                 series.Name("Company B").
                                     XName("Vegetable")
                                     .YName("Price")
@@ -29,7 +29,7 @@
                                     .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                                     .Border(br => br.Width(2))
                                     .Marker(marker => marker.Visible(true).IsFilled(true).Height(7).Width(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond))
-                                    .DataSource(ViewBag.PatriciaValues).Add();
+                                    .DataSource(ViewData["PatriciaValues"]).Add();
                                 series.Name("Company C").
                                     XName("Vegetable")
                                     .YName("Price")
@@ -38,7 +38,7 @@
                                     .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Area)
                                     .Border(br => br.Width(2))
                                     .Marker(marker => marker.Visible(true).IsFilled(true).Height(5).Width(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle))
-                                    .DataSource(ViewBag.LindaValues).Add();
+                                    .DataSource(ViewData["LindaValues"]).Add();
 
                             })
         .Render()
@@ -53,10 +53,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>

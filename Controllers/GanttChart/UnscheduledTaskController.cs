@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: UnscheduledTask
         public ActionResult UnscheduledTask()
         {
-            ViewBag.DataSource = GanttData.UnscheduledData();
+            ViewData["DataSource"] = GanttData.UnscheduledData();
             return View();
         }
     }

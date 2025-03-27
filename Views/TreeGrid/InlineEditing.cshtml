@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "InlineEditing";
+    ViewData["Title"] = "InlineEditing";
 }
 
 @*custom code end*@
@@ -18,7 +18,7 @@
                 dict.Add("min", 0);
             }
             @(Html.EJS().TreeGrid("Editing")
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .EditSettings(edit =>
             {
                 edit.AllowAdding(true);
@@ -36,7 +36,8 @@
                     .ValidationRules(new { required = true }).Add();
                 col.Field("StartDate").HeaderText("Start Date").Width(130).Format("yMd")
                     .EditType("datepickeredit")
-                    .ValidationRules(new { date = true })
+                    .ValidationRules(new { required = true, date = "M/d/yyyy" })
+                    .Edit(new { @params = new { format = "M/d/yyyy" } })
                     .TextAlign(TextAlign.Right).Add();
                 col.Field("Duration").HeaderText("Duration").Width(140).EditType("numericedit")
                     .ValidationRules(dict)
@@ -57,7 +58,7 @@
                     <div>Edit Mode</div>
                 </td>
                 <td style="width: 50%;padding-right: 10px;padding-left: 10px;">
-                    @Html.EJS().DropDownList("EditMode").DataSource((IEnumerable<object>)ViewBag.dropdata).Width("138").Value("Cell").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onChange").Render()
+                    @Html.EJS().DropDownList("EditMode").DataSource((IEnumerable<object>)ViewData["dropdata"]).Width("138").Value("Cell").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onChange").Render()
                 </td>
             </tr>
         </table>

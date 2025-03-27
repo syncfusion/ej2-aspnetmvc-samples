@@ -20,14 +20,14 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: RadialTreeLayout
         public ActionResult RadialTreeLayout()
         {
-            ViewBag.Nodes = RadialTreeDetails.GetAllRecords();
+            ViewData["Nodes"] = RadialTreeDetails.GetAllRecords();
             List<ToolbarItem> items = new List<ToolbarItem>();
             {
                 items.Add(new ToolbarItem { PrefixIcon = "e-ddb-icons e-zoomin",Text="Zoom In",TooltipText="ZoomIn",Type= ItemType.Button});                   
                 items.Add(new ToolbarItem { PrefixIcon = "e-ddb-icons e-zoomout", Text = "Zoom Out", TooltipText = "ZoomOut", Type = ItemType.Button });
                 items.Add(new ToolbarItem { PrefixIcon = "e-diagram-icons e-diagram-reset", Text = "Reset", TooltipText = "Reset", Type = ItemType.Button});
             }
-            ViewBag.tbItems = items;
+            ViewData["tbItems"] = items;
             return View();
         }
     }

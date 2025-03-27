@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Carousel
     {
         public ActionResult API()
         {
-            ViewBag.showArrowData = GetArrowData();
-            ViewBag.intervalData = GetIntervalData();
+            ViewData["showArrowData"] = GetArrowData();
+            ViewData["intervalData"] = GetIntervalData();
             return View();
         }
         public class ShowArrow

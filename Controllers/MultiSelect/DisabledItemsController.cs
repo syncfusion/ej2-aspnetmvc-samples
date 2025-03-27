@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult DisabledItems()
         {
-            ViewBag.tagdata = new Tag().TagDataList();
-            ViewBag.vegetabledata = new VegetablesData().VegetablesDataList();
+            ViewData["tagdata"] = new Tag().TagDataList();
+            ViewData["vegetabledata"] = new VegetablesData().VegetablesDataList();
             return View();
         }
     }

@@ -2,7 +2,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            @Html.EJS().DropDownTree("ddt").Placeholder("Select an item").AllowFiltering(true).PopupHeight("250px").FilterBarPlaceholder("Search").Fields(ViewBag.filteringData).Render()
+            @Html.EJS().DropDownTree("ddt").Placeholder("Select an item").AllowFiltering(true).PopupHeight("250px").FilterBarPlaceholder("Search").Fields((Syncfusion.EJ2.DropDowns.DropDownTreeFields)ViewData["filteringData"]).Render()
         </div>
     </div>
 }

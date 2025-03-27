@@ -18,13 +18,13 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult OnlineHtmlEditor()
         {
-            ViewBag.Tools = new[] { "Bold", "Italic", "Underline", "StrikeThrough",
+            ViewData["Tools"] = new[] { "Bold", "Italic", "Underline", "StrikeThrough",
                 "FontName", "FontSize", "FontColor", "BackgroundColor",
                 "Formats", "Alignments", "Blockquote", "|", "OrderedList", "UnorderedList", "|",
                 "Outdent", "Indent", "|",
                 "CreateLink", "Image", "Video", "Audio", "CreateTable", "|", "FormatPainter", "ClearFormat", "|", "EmojiPicker",
                 "SourceCode", "|", "Undo", "Redo"};
-            ViewBag.Value = @"
+            ViewData["Value"] = @"
                             <h3>Welcome to the HTML real-time live editor!</h3>
                             <p>Create and edit the valid HTML code simply! You don't worry about the HTML syntax to format your text content. The WYSIWYG editor (left side view) provided the toolbar to make format text and insert images, tables, and more options.</p>
                             <h4>Don't worry about syntax</h4>

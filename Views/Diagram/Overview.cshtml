@@ -12,7 +12,7 @@
             .DataSource(new DataManager()
             {
                 Data = (List<OverviewData>
-                )ViewBag.Nodes
+                )ViewData["Nodes"]
             }))
                 .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.OrganizationalChart).GetLayoutInfo("getLayoutInfo"))
                 .SnapSettings(se => se.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).SetNodeTemplate("setNodeTemplate")

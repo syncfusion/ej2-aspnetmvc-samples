@@ -14,7 +14,7 @@
                 "${/if}" +
                 "<span class='list-text'>" +
                 "${text} </span> </div>";}
-            @Html.EJS().ListView("letterAvatarList").Enable(true).DataSource((IEnumerable<object>)ViewBag.dataSource).HeaderTitle("Contacts").ShowHeader(true).Template(template).SortOrder(SortOrder.Ascending).Render()
+            @Html.EJS().ListView("letterAvatarList").Enable(true).DataSource((IEnumerable<object>)ViewData["dataSource"]).HeaderTitle("Contacts").ShowHeader(true).Template(template).SortOrder(SortOrder.Ascending).Render()
         </div>
     </div>
 }

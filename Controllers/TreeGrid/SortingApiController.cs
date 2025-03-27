@@ -20,19 +20,19 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult SortingApi()
         {
             var treeData = TreeGridItems.GetTreeData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
 
             List<object> dd = new List<object>();
             dd.Add(new { name = "Task ID", id = "TaskId" });
             dd.Add(new { name = "Start Date", id = "StartDate" });
             dd.Add(new { name = "Duration", id = "Duration" });
             dd.Add(new { name = "Progress", id = "Progress" });
-            ViewBag.dd = dd;
+            ViewData["dd"] = dd;
 
             List<object> index = new List<object>();
             index.Add(new { name = "Ascending", id = "Ascending" });
             index.Add(new { name = "Descending", id = "Descending" });
-            ViewBag.index = index;
+            ViewData["index"] = index;
             return View();
         }
     }

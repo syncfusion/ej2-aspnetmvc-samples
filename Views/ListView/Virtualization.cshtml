@@ -5,7 +5,7 @@
     
     <div class="col-lg-8  control-section">
         <!-- ListView element -->
-        @Html.EJS().ListView("ui-list").EnableVirtualization(true).CssClass("e-list-template").DataSource((IEnumerable<object>)ViewBag.listData).HeaderTitle("Contacts").ShowHeader(true).Height("500").Fields(new ListViewFieldSettings { Text = "name" }).Template("#listTemplate").ActionBegin("onActionBegin").ActionComplete("onActionComplete").Render()
+        @Html.EJS().ListView("ui-list").EnableVirtualization(true).CssClass("e-list-template").DataSource((IEnumerable<object>)ViewData["listData"]).HeaderTitle("Contacts").ShowHeader(true).Height("500").Fields(new ListViewFieldSettings { Text = "name" }).Template("#listTemplate").ActionBegin("onActionBegin").ActionComplete("onActionComplete").Render()
     </div>
     <div class="col-lg-4 property-section">
         <table id="property" title="Properties">
@@ -17,7 +17,7 @@
                     <td style="width: 50%;padding-right: 10px">
                         <div>
                             @Html.EJS().DropDownList("ddl").Placeholder("Select a range").PopupHeight("200px").Index(0).DataSource(
-(IEnumerable<object>)ViewBag.ddlData).Change("onChange").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
+(IEnumerable<object>)ViewData["ddlData"]).Change("onChange").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
                         </div>
                     </td>
                 </tr>

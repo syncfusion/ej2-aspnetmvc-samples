@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult API()
         {
-            ViewBag.dataSource = new string[] { "NewFolder", "Cut", "Copy", "Paste", "Delete", "Download", "Rename", "SortBy", "Refresh", "Selection", "View", "Details" };
+            ViewData["dataSource"] = new string[] { "NewFolder", "Cut", "Copy", "Paste", "Delete", "Download", "Rename", "SortBy", "Refresh", "Selection", "View", "Details" };
             return View();
         }
     }

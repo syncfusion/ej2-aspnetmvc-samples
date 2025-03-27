@@ -17,7 +17,7 @@ namespace EJ2MVCSampleBrowser.Controllers.LinearGauge
     {
         public ActionResult PrintExport()
         {
-            ViewBag.format = new string[] { "JPEG", "PNG", "SVG", "PDF" };
+            ViewData["format"] = new string[] { "JPEG", "PNG", "SVG", "PDF" };
             return View();
         }
     }

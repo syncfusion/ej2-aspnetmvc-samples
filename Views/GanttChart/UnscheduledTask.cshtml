@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Unscheduled Task";
+    ViewData["Title"] = "Unscheduled Task";
 }
 
 @section ControlsSection{
@@ -15,7 +15,7 @@
             prefixIcon = "e-add-icon tb-icons"
         });
     }
-    @(Html.EJS().Gantt("UnscheduledTask").DataSource((IEnumerable<object>)ViewBag.DataSource)
+    @(Html.EJS().Gantt("UnscheduledTask").DataSource((IEnumerable<object>)ViewData["DataSource"])
             .Height("450px")
             .HighlightWeekends(true)
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration"))
@@ -67,16 +67,21 @@
 		}
         .bootstrap5 #UnscheduledTask .e-add-icon:before,
         .bootstrap5-dark #UnscheduledTask .e-add-icon:before,
-        .tailwind #UnscheduledTask .e-add-icon:before, .tailwind-dark #UnscheduledTask .e-add-icon:before,
-        .tailwind3 #UnscheduledTask .e-add-icon:before, .tailwind3-dark #UnscheduledTask .e-add-icon:before,
-        .fluent #UnscheduledTask .e-add-icon:before, .fluent-dark #UnscheduledTask .e-add-icon:before,
-        .material3 #UnscheduledTask .e-add-icon:before, .material3-dark #UnscheduledTask .e-add-icon:before,
-        .fluent2 #UnscheduledTask .e-add-icon:before,.fluent2-dark #UnscheduledTask .e-add-icon:before,
+        .tailwind #UnscheduledTask .e-add-icon:before,
+        .tailwind-dark #UnscheduledTask .e-add-icon:before,
+        .tailwind3 #UnscheduledTask .e-add-icon:before,
+        .tailwind3-dark #UnscheduledTask .e-add-icon:before,
+        .fluent #UnscheduledTask .e-add-icon:before,
+        .fluent-dark #UnscheduledTask .e-add-icon:before,
+        .material3 #UnscheduledTask .e-add-icon:before,
+        .material3-dark #UnscheduledTask .e-add-icon:before,
+        .fluent2 #UnscheduledTask .e-add-icon:before,
+        .fluent2-dark #UnscheduledTask .e-add-icon:before,
         .fluent2-highcontrast #UnscheduledTask .e-add-icon:before,
-        .bootstrap5\.3 #Unscheduled .e-add-icon:before,
-        .bootstrap5\.3-dark-lite #Unscheduled .e-add-icon:before,
-        .bootstrap5\.3-dark #Unscheduled .e-add-icon:before, 
-        .bootstrap5\.3-lite #Unscheduled .e-add-icon:before {
+        .bootstrap5\.3 #UnscheduledTask .e-add-icon:before,
+        .bootstrap5\.3-dark-lite #UnscheduledTask .e-add-icon:before,
+        .bootstrap5\.3-dark #UnscheduledTask .e-add-icon:before, 
+        .bootstrap5\.3-lite #UnscheduledTask .e-add-icon:before {
             content: "\e836"
         }
     </style>

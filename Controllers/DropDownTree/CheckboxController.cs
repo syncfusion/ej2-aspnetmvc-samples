@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.DropDownTree
             checkboxFields.Expanded = "expanded";
             checkboxFields.HasChildren = "hasChild";
             checkboxFields.ParentValue = "pid";
-            ViewBag.checkboxfields = checkboxFields;
+            ViewData["checkboxfields"] = checkboxFields;
             return View();
         }
     }

@@ -31,7 +31,7 @@
                     </td>
                     <td style="width: 50%;">
                         <div>
-                            @Html.EJS().DropDownList("emptyPoint").Index(0).DataSource(ViewBag.data).Value("Drop").Change("changeEmptyPointMode").Render()
+                            @Html.EJS().DropDownList("emptyPoint").Index(0).DataSource(ViewData["data"]).Value("Drop").Change("changeEmptyPointMode").Render()
 
                         </div>
                     </td>
@@ -47,11 +47,11 @@
     }
 </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
             args.accumulation.dataSource = [{ Product: "Rice", ProfitPercentage: 80 },{ Product: "Wheat", ProfitPercentage: null },{ Product: "Oil", ProfitPercentage: 70 },{ Product: "Corn", ProfitPercentage: 60 },{ Product: "Gram", ProfitPercentage: null },{ Product: "Milk", ProfitPercentage: 70 },{ Product: "Peas", ProfitPercentage: 80 },{ Product: "Fruit", ProfitPercentage: 60 },{ Product: "Butter", ProfitPercentage: null }]; 
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            var selectedTheme = loadAccumulationChartTheme(args);
             if ((selectedTheme.replace(/5.3/i, '5')) === 'bootstrap5-dark') {
                 args.chart.series[0].emptyPointSettings.fill = '#FF7F7F';
             }

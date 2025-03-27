@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Stepper
             linearStepper.Add(new Step { IconCss = "sf-icon-tasksheet", Label = "Task Planning" });
             linearStepper.Add(new Step { IconCss = "sf-icon-progress", Label = "Progress Tracking" });
             linearStepper.Add(new Step { IconCss = "sf-icon-submit", Label = "Project Completion" });
-            ViewBag.LinearStepper = linearStepper;
+            ViewData["LinearStepper"] = linearStepper;
 
             return View();
         }

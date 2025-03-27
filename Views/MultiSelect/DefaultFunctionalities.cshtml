@@ -8,21 +8,21 @@
                 <div>
                     <h4> Default Mode</h4>
 
-                    @Html.EJS().MultiSelect("default").Mode(VisualMode.Default).Placeholder("Favorite Sports").DataSource((string[])ViewBag.data).Render()
+                    @Html.EJS().MultiSelect("default").Mode(VisualMode.Default).Placeholder("Favorite Sports").DataSource((string[])ViewData["data"]).Render()
 
 
                 </div>
                 <div class="control-styles">
                     <h4>Box Mode</h4>
 
-                    @Html.EJS().MultiSelect("box").Mode(VisualMode.Box).Placeholder("Favorite Sports").DataSource((string[])ViewBag.data).Render()
+                    @Html.EJS().MultiSelect("box").Mode(VisualMode.Box).Placeholder("Favorite Sports").DataSource((string[])ViewData["data"]).Render()
 
                 </div>
 
                 <div class="control-styles">
                     <h4>Delimiter Mode</h4>
 
-                    @Html.EJS().MultiSelect("delimiter").Mode(VisualMode.Delimiter).Placeholder("Favorite Sports").DataSource((string[])ViewBag.data).Render()
+                    @Html.EJS().MultiSelect("delimiter").Mode(VisualMode.Delimiter).Placeholder("Favorite Sports").DataSource((string[])ViewData["data"]).Render()
 
 
                 </div>

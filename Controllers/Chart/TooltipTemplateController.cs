@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new TooltipTemplateData { Year = 2011, Productivity = 2.00 },
                 new TooltipTemplateData { Year = 2012, Productivity = 1.70 },
             };
-            ViewBag.ConsumerDetails = ConsumerDetails;
+            ViewData["ConsumerDetails"] = ConsumerDetails;
             return View();
         }
         public class TooltipTemplateData

@@ -24,7 +24,7 @@
      .LabelFormat("{value}mm").RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
      ).Title("Annual Mean Rainfall in Australia"
      ).ChartArea(area => area.Border(br => br.Width(0))
-     ).Tooltip(tt => tt.Enable(true).Shared(true).Header("<b>Rainfall</b>").Format("${point.x} : <b>${point.y}</b>").EnableMarker(true)
+     ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true).Shared(true).Header("<b>Rainfall</b>").Format("${point.x} : <b>${point.y}</b>").EnableAnimation(false)
      ).Annotations(an => { 
                              an.Region(Syncfusion.EJ2.Charts.Regions.Series)
                                  .Content("<div style='color:green;font-weight:bold;font-size:14px'>Medium</div>").Add();
@@ -42,6 +42,7 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var annualMean = [];
         [
@@ -56,8 +57,7 @@
         });
 
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.annotations[0].x = ej.base.Browser.isDevice ? "21%" : "19%";
             args.chart.annotations[0].y = ej.base.Browser.isDevice ? "42%" : "47%";

@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         // GET: RemoteData
         public ActionResult LoadingAnimation()
         {
-            ViewBag.data = new string[] { "Shimmer", "Spinner" };
+            ViewData["data"] = new string[] { "Shimmer", "Spinner" };
             return View();
         }
     }

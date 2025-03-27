@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "ToolbarTemplate";
+    ViewData["Title"] = "ToolbarTemplate";
 }
 
 @*custom code end*@
@@ -17,7 +17,7 @@
         toolbarItems.Add("CollapseAll");
         toolbarItems.Add(new { text = "Quick Filter", tooltipText = "Quick Filter", id = "toolbarfilter" });
     }
-    @(Html.EJS().TreeGrid("ToolbarTemplate").AllowFiltering().DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+    @(Html.EJS().TreeGrid("ToolbarTemplate").AllowFiltering().DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
         {
             col.Field("TaskId").HeaderText("Task ID").Width(90).TextAlign(TextAlign.Right).Add();
             col.Field("TaskName").HeaderText("Task Name").Width(130).Add();

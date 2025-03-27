@@ -3,7 +3,7 @@
 <div class="col-lg-12 control-section">
     <div id="listbox-control">
         <h4>Select your favorite car:</h4>
-        @Html.EJS().ListBox("listbox").DataSource((IEnumerable<object>)ViewBag.data).Render()
+        @Html.EJS().ListBox("listbox").DataSource((IEnumerable<object>)ViewData["data"]).Render()
     </div>
 </div>
 }

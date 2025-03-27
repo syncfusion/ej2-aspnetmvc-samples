@@ -4,7 +4,7 @@
     <div class="col-lg-8 control-section">
         <div class="control_wrapper">
 
-            @Html.EJS().TreeView("checkbox").ShowCheckBox(true).Fields(ViewBag.checkboxfields).Render()
+            @Html.EJS().TreeView("checkbox").ShowCheckBox(true).Fields((TreeViewFieldsSettings)ViewData["checkboxfields"]).Render()
 
         </div>
     </div>

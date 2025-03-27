@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         {
             if (customerDetails.Count == 0)
                 BindCustomerDataSource();
-            ViewBag.lazyLoadData = customerDetails;
+            ViewData["lazyLoadData"] = customerDetails;
             return View();
         }
         private void BindCustomerDataSource()

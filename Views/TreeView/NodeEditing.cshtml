@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
     <div class="control_wrapper">
-             @Html.EJS().TreeView("nodeediting").AllowEditing(true).Fields(ViewBag.nodefields).Render()
+             @Html.EJS().TreeView("nodeediting").AllowEditing(true).Fields((TreeViewFieldsSettings)ViewData["nodefields"]).Render()
        
         </div>
     </div>

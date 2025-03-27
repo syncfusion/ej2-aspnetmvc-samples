@@ -15,7 +15,7 @@
                     <td class="left-side">Float Label Type</td>
                     <td>
                         @Html.EJS().DropDownList("floatText").Placeholder("Select float type").PopupHeight("220px").Text("Auto").DataSource(
-                                            (IEnumerable<floatValues>)ViewBag.data).Change("floatHandler").Fields(new DropDownListFieldSettings { Text = "text", Value = "floatValue" }).Render()
+                                            (IEnumerable<floatValues>)ViewData["data"]).Change("floatHandler").Fields(new DropDownListFieldSettings { Text = "text", Value = "floatValue" }).Render()
                     </td>
                 </tr>
                 <tr>

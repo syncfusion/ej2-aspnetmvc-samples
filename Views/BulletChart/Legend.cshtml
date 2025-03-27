@@ -20,7 +20,7 @@
                  .Subtitle("in Thousands").LegendSettings(lg => lg.Visible(true))
                  .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Top)
                  .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
-                 .DataSource(ViewBag.dataSource)
+                 .DataSource(ViewData["dataSource"])
                  .Load("load").LegendRender("legendRender")
                  .Render())
 
@@ -42,10 +42,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/bullet-chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.bulletChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadBulletChartTheme(args);
             args.bulletChart.legendSettings.visible = true;
             args.bulletChart.width = ej.base.Browser.isDevice ? '100%' : '70%';
         }

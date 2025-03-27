@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Heatmap control shows  Size, Color and SizeAndColor bubble heat map type" />
 }
@@ -7,12 +7,12 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Female Participation Rate in Labor Force for the Countries").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Female Participation Rate in Labor Force for the Countries").TextStyle(ViewData["textStyle"])).XAxis(xAxis =>
                                                  {
-                                                     xAxis.Labels(ViewBag.xLabels);
+                                                     xAxis.Labels(ViewData["xLabels"]);
                                                  }).YAxis(yaxis =>
                                                  {
-                                                     yaxis.Labels(ViewBag.yLabels);
+                                                     yaxis.Labels(ViewData["yLabels"]);
                                                  }).PaletteSettings(ps => ps.Palette(palette =>
                                                  {
                                                      palette.Value(35).Color("#50A3B1").Add();
@@ -21,8 +21,8 @@
                                                      palette.Value(65).Color("#EDF8B6").Add();
                                                      palette.Value(78).Color("#FFFFDA").Add();
                                                  })).CellSettings(cs =>
-                                                 cs.ShowLabel(false).Border(ViewBag.border).TileType(Syncfusion.EJ2.HeatMap.CellType.Bubble).BubbleType(Syncfusion.EJ2.HeatMap.BubbleType.Size)).LegendSettings(ls =>
-                                                 ls.Visible(true)).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
+                                                 cs.ShowLabel(false).Border(ViewData["border"]).TileType(Syncfusion.EJ2.HeatMap.CellType.Bubble).BubbleType(Syncfusion.EJ2.HeatMap.BubbleType.Size)).LegendSettings(ls =>
+                                                 ls.Visible(true)).TooltipRender("tooltipRender").Load("load").DataSource(ViewData["dataSource"]).Render()
                 </div>
                 <div style="float: right; margin-right: 10px;">
                     Source:

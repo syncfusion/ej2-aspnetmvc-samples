@@ -30,14 +30,14 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeView
             localFields.Selected = "Selected";
             localFields.ParentID = "PId";
             localFields.Text = "Name";
-            ViewBag.fields = localFields;
+            ViewData["fields"] = localFields;
             hierarchicalFields.DataSource = treeviewHierarchical.getTreeviewHierarchicalModel();
             hierarchicalFields.Expanded = "Expanded";
             hierarchicalFields.Id = "Code";
             hierarchicalFields.Selected = "Selected";
             hierarchicalFields.Text = "Name";
             hierarchicalFields.Child = "Child";
-            ViewBag.hierarchicalFields = hierarchicalFields;
+            ViewData["hierarchicalFields"] = hierarchicalFields;
             return View();
         }
        

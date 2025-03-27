@@ -42,7 +42,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             localData.Add(new LocalDataDetails("Birds", "Vertebrates"));
             localData.Add(new LocalDataDetails("Mammals", "Vertebrates"));
 
-            ViewBag.Nodes = localData;
+            ViewData["Nodes"] = localData;
             return View();
         }
     }

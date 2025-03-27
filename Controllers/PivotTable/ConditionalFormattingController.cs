@@ -21,8 +21,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult ConditionalFormatting()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.drilledMembers = new string[] { "France", "Germany" };
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["drilledMembers"] = new string[] { "France", "Germany" };
             return View();
         }
     }

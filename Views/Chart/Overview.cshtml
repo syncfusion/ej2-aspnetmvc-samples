@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Layouts;
 @model EJ2MVCSampleBrowser.Controllers.Chart.ChartController.spacingModel
 @section ControlsSection{
@@ -17,18 +17,18 @@
                  <div class="e-panel-content">
                      @(Html.EJS().Chart("linechart").Series(series =>
                      {
-                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).CornerRadius(conrnerRadius => conrnerRadius.TopLeft(4).TopRight(4))
                             .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Middle).Font(ft => ft.Color("white")))).XName("Period").Fill("#2485FA")
-                            .YName("OnlinePercentage").DataSource(ViewBag.columnSource).Name("Online").Width(2).Add();
-                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+                            .YName("OnlinePercentage").DataSource(ViewData["columnSource"]).Name("Online").Width(2).Add();
+                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).CornerRadius(conrnerRadius => conrnerRadius.TopLeft(4).TopRight(4))
                             .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Middle).Font(ft=>ft.Color("white")))).XName("Period").Fill("#FEC200")
-                            .YName("RetailPercentage").DataSource(ViewBag.columnSource).Name("Retail").Width(2).Add();
+                            .YName("RetailPercentage").DataSource(ViewData["columnSource"]).Name("Retail").Width(2).Add();
                         }).PrimaryYAxis(px => px.LabelFormat("{value}%").LabelStyle(ls => ls.Size("11px")).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
                         .Minimum(0).Maximum(100)
                         ).PrimaryXAxis(px => px.Interval(1).LabelStyle(ls=>ls.Size("11px"))
                         .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0))
                         ).ChartArea(area => area.Border(br => br.Color("transparent"))
-                        ).LegendSettings(lg => lg.Visible(true).Padding(5).ShapeHeight(8).ShapeWidth(8)).Load("loadLinechart").Render())
+                        ).LegendSettings(lg => lg.Visible(true).Padding(5).ShapeHeight(8).ShapeWidth(8).EnableHighlight(true)).Load("loadLinechart").Render())
                   </div>
              </div>
             </div>
@@ -38,7 +38,7 @@
               <div class="e-panel-container" id="chart2">
                   <div class="e-panel-header">
                       <div class="title" id="header2">
-                           Product Wise Sales - 2021
+                           Product Wise Sales - 2024
                       </div>
                   </div>
                   <div class="e-panel-content">
@@ -50,8 +50,8 @@
                                 .InnerRadius("40%").Radius("75%").XName("Product").YName("Percentage")
                                 .Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
                                 .Border(br => br.Width(3))
-                                .StartAngle(270).Palettes(ViewBag.palettes).EndAngle(270).Explode(false)
-                                .DataSource(ViewBag.pieSource).Add();
+                                .StartAngle(270).Palettes((string[])ViewData["palettes"]).EndAngle(270).Explode(false)
+                                .DataSource(ViewData["pieSource"]).Add();
                              })
                              .LegendSettings(ls => ls.Visible(false).ToggleVisibility(false))
                              .Tooltip(tp => tp.Enable(true).Format("${point.tooltip}").EnableHighlight(true))
@@ -67,7 +67,7 @@
             <div class="e-panel-container" id="chart3">
                 <div class="e-panel-header">
                     <div class="title" id="header3">
-                        Monthly Sales for 2021
+                        Monthly Sales for 2024
                     </div>
                 </div>
                 <div class="e-panel-content">
@@ -75,14 +75,14 @@
                     {
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea)
                         .Border(br => br.Width(2.75).Color("#2485FA")).Width(2.5).Opacity(0.3).XName("Period")
-                        .YName("OnlinePercentage").Fill("#2485FA").DataSource(ViewBag.splineSource).Name("Online").Add();
+                        .YName("OnlinePercentage").Fill("#2485FA").DataSource(ViewData["splineSource"]).Name("Online").Add();
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea)
                         .Border(br => br.Width(2.75).Color("#FEC200")).Width(2.5).Opacity(0.3).XName("Period")
-                        .YName("RetailPercentage").Fill("#FEC200").DataSource(ViewBag.splineSource).Name("Retail").Add();
+                        .YName("RetailPercentage").Fill("#FEC200").DataSource(ViewData["splineSource"]).Name("Retail").Add();
                     }).PrimaryXAxis(px => px.MajorTickLines(mt=>mt.Width(0)).LabelStyle(ls=>ls.Size("11px")).MajorGridLines(mg => mg.Width(0))
                     .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
                     ).PrimaryYAxis(py => py.LabelFormat("${value}").Minimum(0).Maximum(12000).LabelStyle(ls => ls.Size("11px")).LineStyle(ls => ls.Width(0))
-                    ).Tooltip(tt => tt.Enable(true).Shared(true).EnableMarker(false)).LegendSettings(ls=>ls.EnableHighlight(true)).ChartArea(area => area.Border(br => br.Color("transparent"))).Load("loadSplinechart").Render())
+                    ).Tooltip(tt => tt.Enable(true).EnableHighlight(true).ShowNearestTooltip(true).EnableMarker(false)).LegendSettings(ls=>ls.EnableHighlight(true)).ChartArea(area => area.Border(br => br.Color("transparent"))).Load("loadSplinechart").Render())
                 </div>
             </div>
         </div>
@@ -161,6 +161,7 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         function onCreated(args) {
             var dashboardObject = document.getElementById("editableLayout").ej2_instances[0];
@@ -190,20 +191,14 @@
             lineObj.refresh(); pieObj.refresh(); splineObj.refresh();
         });
         var loadLinechart = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
         }
 
         var loadPiechart = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadAccumulationChartTheme(args);
         }
         var loadSplinechart = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
         }
         var layoutColor;
         var onPointRender = function (args) {
@@ -310,6 +305,9 @@
 @section Description{
     <p>
         The ASP.NET MVC Chart is a well-crafted charting component to visualize data. In this example, you will see how to render and configure line, column, and pie charts with different features such as highlight, legend, tooltip and annotation. The Chart uses <code>SfDataManager</code>, which supports both RESTful JSON data services binding and IEnumerable binding.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
     </p>
     <p>
         More information on the ASP.NET MVC chart types can be found in this

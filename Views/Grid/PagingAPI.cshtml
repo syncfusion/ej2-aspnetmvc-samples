@@ -3,7 +3,7 @@
    <div class="col-lg-8 control-section">
     <div class="control-wrapper">
         <div class="control-section">
-            @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewBag.dataSource).Columns(col =>
+            @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
            {
 
                col.Field("ProductID").HeaderText("Product ID").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();

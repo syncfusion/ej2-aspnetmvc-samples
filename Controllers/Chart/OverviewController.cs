@@ -39,13 +39,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         {
             List<LayoutData> ColumnChartData = new List<LayoutData>
             {
-                new LayoutData {Period = "2017", OnlinePercentage = 60, RetailPercentage = 40 },
-                new LayoutData {Period = "2018", OnlinePercentage = 56, RetailPercentage = 44 },
-                new LayoutData {Period = "2019", OnlinePercentage = 71, RetailPercentage = 29 },
-                new LayoutData {Period = "2020", OnlinePercentage = 85, RetailPercentage = 15 },
-                new LayoutData {Period = "2021", OnlinePercentage = 73, RetailPercentage = 27 }
+                new LayoutData {Period = "2020", OnlinePercentage = 60, RetailPercentage = 40 },
+                new LayoutData {Period = "2021", OnlinePercentage = 56, RetailPercentage = 44 },
+                new LayoutData {Period = "2022", OnlinePercentage = 71, RetailPercentage = 29 },
+                new LayoutData {Period = "2023", OnlinePercentage = 85, RetailPercentage = 15 },
+                new LayoutData {Period = "2024", OnlinePercentage = 73, RetailPercentage = 27 }
             };
-            ViewBag.columnSource = ColumnChartData;
+            ViewData["columnSource"] = ColumnChartData;
 
             List<LayoutPieData> PieData = new List<LayoutPieData>
             {
@@ -56,7 +56,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                  new LayoutPieData{ Product = "Camera : 27 (11%)", Percentage = 11, text = "Camera, 27<br>11%" },
 
             };
-            ViewBag.pieSource = PieData;
+            ViewData["pieSource"] = PieData;
 
             List<LayoutData> SplineChartData = new List<LayoutData>
             {
@@ -73,8 +73,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                     new LayoutData{ Period = "Nov", OnlinePercentage = 5700, RetailPercentage = 6400 },
                     new LayoutData{ Period = "Dec", OnlinePercentage = 8000, RetailPercentage = 6800 }
             };
-            ViewBag.splineSource = SplineChartData;
-            ViewBag.palettes = new string[] { "#61EFCD", "#CDDE1F", "#FEC200", "#CA765A", "#2485FA", "#F57D7D", "#C152D2",
+            ViewData["splineSource"] = SplineChartData;
+            ViewData["palettes"] = new string[] { "#61EFCD", "#CDDE1F", "#FEC200", "#CA765A", "#2485FA", "#F57D7D", "#C152D2",
                 "#8854D9", "#3D4EB8", "#00BCD7", "#4472c4", "#ed7d31", "#ffc000", "#70ad47", "#5b9bd5", "#c1c1c1", "#6f6fe2", "#e269ae", "#9e480e", "#997300" };
             spacingModel modelValue = new spacingModel();
             modelValue.cellSpacing = new double[] { 15, 15 };

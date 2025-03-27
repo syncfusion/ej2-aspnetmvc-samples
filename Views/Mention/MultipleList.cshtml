@@ -21,13 +21,13 @@
                        {
                            Text = "FirstName",
                            Value = "EmployeeID"
-                       }).Query((string)ViewBag.query).Render()
+                       }).Query((string)ViewData["query"]).Render()
 
-                        @Html.EJS().Mention("project").MentionChar(projectMentionChar).Target("#multipleList").AllowSpaces(true).DataSource((IEnumerable<ProjectsData>)ViewBag.project).DisplayTemplate("<span class=\"e-success\">${Value}</span>").Fields(new MentionFieldSettings { Text = "Value" }).Render()
+                        @Html.EJS().Mention("project").MentionChar(projectMentionChar).Target("#multipleList").AllowSpaces(true).DataSource((IEnumerable<ProjectsData>)ViewData["project"]).DisplayTemplate("<span class=\"e-success\">${Value}</span>").RequireLeadingSpace(false).Fields(new MentionFieldSettings { Text = "Value" }).Render()
 
-                        @Html.EJS().Mention("cost").MentionChar(costMentionChar).Target("#multipleList").AllowSpaces(true).DataSource((IEnumerable<UseCostsData>)ViewBag.cost).DisplayTemplate("<span class=\"e-error\">${Value}</span>").Fields(new MentionFieldSettings { Text = "Value" }).Render()
+                        @Html.EJS().Mention("cost").MentionChar(costMentionChar).Target("#multipleList").AllowSpaces(true).DataSource((IEnumerable<UseCostsData>)ViewData["cost"]).DisplayTemplate("<span class=\"e-error\">${Value}</span>").Fields(new MentionFieldSettings { Text = "Value" }).Render()
 
-                        @Html.EJS().Mention("status").MentionChar(statusMentionChar).Target("#multipleList").AllowSpaces(true).DataSource((IEnumerable<StatusData>)ViewBag.status).DisplayTemplate("<span class=\"e-warning\">${Value}</span>").Fields(new MentionFieldSettings { Text = "Value" }).Render()
+                        @Html.EJS().Mention("status").MentionChar(statusMentionChar).Target("#multipleList").AllowSpaces(true).DataSource((IEnumerable<StatusData>)ViewData["status"]).DisplayTemplate("<span class=\"e-warning\">${Value}</span>").Fields(new MentionFieldSettings { Text = "Value" }).Render()
                     </td>
                 </tr>
             </table>
@@ -45,6 +45,10 @@
     </div>
 }
 @section Description{
+    <p>
+        The <code>RequireLeadingSpace</code> property in Mention controls whether a space is needed before triggering the Mention suggestion popup. 
+        When set to <code>false</code>, it activates without a space; when set to <code>true</code>, a space is required before the Mention character. To see this feature in action, start typing with <code>#</code>.
+    </p>
     <p>In the above sample, the following are configured for the contenteditable div element with @Html.Raw("mention") integrated.</p>
     <ul>
         <li><code>@@</code> - Typing <code>@@</code> lists out the suggestions of the employee names.</li>

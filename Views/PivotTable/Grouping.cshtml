@@ -33,8 +33,8 @@
                     </td>
                     <td style="padding-bottom: 16px">
                         <div class="datecls">
-                            @Html.EJS().MultiSelect("dategroup").Mode(Syncfusion.EJ2.DropDowns.VisualMode.CheckBox).DataSource((IEnumerable<object>)ViewBag.groupData
-                            ).ShowDropDownIcon(true).EnableSelectionOrder(true).PopupWidth("150px").Width("150px").Placeholder("Select Toolbar Items").Value((IEnumerable<object>)ViewBag.selectedGroups
+                            @Html.EJS().MultiSelect("dategroup").Mode(Syncfusion.EJ2.DropDowns.VisualMode.CheckBox).DataSource((IEnumerable<object>)ViewData["groupData"]
+                            ).ShowDropDownIcon(true).EnableSelectionOrder(true).PopupWidth("150px").Width("150px").Placeholder("Select Toolbar Items").Value((IEnumerable<object>)ViewData["selectedGroups"]
                             ).FilterBarPlaceholder("Search group").Select("onSelect").Removed("onRemoved").Render()
                         </div>
                     </td>

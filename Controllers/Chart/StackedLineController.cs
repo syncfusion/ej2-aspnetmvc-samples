@@ -34,7 +34,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new StackedChartData { ExpensesCategory= "Nov", JohnExpenses= 45, PeterExpenses= 15, SteveExpenses= 45,  CharleExpenses= 195 },
                 new StackedChartData { ExpensesCategory= "Dec", JohnExpenses= 75, PeterExpenses= 45, SteveExpenses= 65,  CharleExpenses= 115 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class StackedChartData

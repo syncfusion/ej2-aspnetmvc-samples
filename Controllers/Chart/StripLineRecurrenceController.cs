@@ -30,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new StripLineRecurrenceChartData { Period = new DateTime(2000, 1, 1), PollutionRate1 = 13300, PollutionRate2 = 4000 },
                 new StripLineRecurrenceChartData { Period = new DateTime(2005, 1, 1), PollutionRate1 = 12800, PollutionRate2 = 4800 }
             };
-            ViewBag.PollutionReports = PollutionReports;
+            ViewData["PollutionReports"] = PollutionReports;
             return View();
         }
         public class StripLineRecurrenceChartData

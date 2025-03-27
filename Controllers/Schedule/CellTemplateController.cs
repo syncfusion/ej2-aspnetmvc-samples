@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             {
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Month}
             };
-            ViewBag.view = viewOption;
+            ViewData["view"] = viewOption;
             return View();
         }
     }

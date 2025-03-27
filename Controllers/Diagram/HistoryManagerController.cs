@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         // GET: Annotations
         public ActionResult HistoryManager()
         {
-            ViewBag.nodes = GetHistoryManagerNodes();
-            ViewBag.connectors = GetHistoryManagerConnectors();
+            ViewData["nodes"] = GetHistoryManagerNodes();
+            ViewData["connectors"] = GetHistoryManagerConnectors();
             return View();
         }
 

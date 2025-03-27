@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Diagrams;
 @using EJ2MVCSampleBrowser.Models;
 @using EJ2MVCSampleBrowser.Controllers.Diagram;
@@ -6,7 +6,7 @@
 
     <div class="control-section">
         @Html.EJS().Diagram("diagram").Created("create").Width("100%").Height("500px").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults").DataSourceSettings(ss => ss.Id("Id").ParentId("ParentId")
-.DataSource(new DataManager() { Data = (List<HierarchicalMultipleRoots>)ViewBag.Nodes })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree).VerticalSpacing(30).HorizontalSpacing(40).EnableAnimation(true)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render()
+.DataSource(new DataManager() { Data = (List<HierarchicalMultipleRoots>)ViewData["Nodes"] })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree).VerticalSpacing(30).HorizontalSpacing(40).EnableAnimation(true)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render()
     </div>
 
     <style>

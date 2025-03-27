@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section Meta{
     <meta name="description" content="This demo for Essential JS2 Heatmap control shows how to select the cell." />
 }
@@ -7,13 +7,13 @@
         <div id="container" style="height:300px" align="center">
             @Html.EJS().HeatMap("container").TitleSettings(ts =>
             ts.Text("Top export products 2014-2018, Value in USD million")).XAxis(xAxis =>
-            xAxis.Labels(ViewBag.xLabels)).YAxis(yaxis =>
-            yaxis.Labels(ViewBag.yLabels)).AllowSelection(true).PaletteSettings(ps => ps.Palette(palette =>
+            xAxis.Labels(ViewData["xLabels"])).YAxis(yaxis =>
+            yaxis.Labels(ViewData["yLabels"])).AllowSelection(true).PaletteSettings(ps => ps.Palette(palette =>
             {
                 palette.Color("#3C5E62").Add();
                 palette.Color("#86C843").Add();
 
-            })).CellSelected("cellSelected").LegendSettings(ls=>ls.Visible(false)).ShowTooltip(true).Load("load").DataSource(ViewBag.dataSource).Render()
+            })).CellSelected("cellSelected").LegendSettings(ls=>ls.Visible(false)).ShowTooltip(true).Load("load").DataSource(ViewData["dataSource"]).Render()
         </div>
         <div id="container1" style="height:300px" align="center">
             @Html.EJS().Chart("container1").PrimaryXAxis(
@@ -32,25 +32,25 @@
            {
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                .Marker(mr => mr.DataLabel(dl=>dl.Visible(false))).XName("x").YName("y")
-               .DataSource(ViewBag.dataSource1).Width(2).Name("Cereals").Add();
+               .DataSource(ViewData["dataSource1"]).Width(2).Name("Cereals").Add();
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y")
-               .DataSource(ViewBag.dataSource2).Width(2).Name("Meat").Add();
+               .DataSource(ViewData["dataSource2"]).Width(2).Name("Meat").Add();
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y")
-               .DataSource(ViewBag.dataSource3).Width(2).Name("Spices").Add();
+               .DataSource(ViewData["dataSource3"]).Width(2).Name("Spices").Add();
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y")
-               .DataSource(ViewBag.dataSource4).Width(2).Name("Tea").Add();
+               .DataSource(ViewData["dataSource4"]).Width(2).Name("Tea").Add();
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y")
-               .DataSource(ViewBag.dataSource5).Width(2).Name("Edible Oil").Add();
+               .DataSource(ViewData["dataSource5"]).Width(2).Name("Edible Oil").Add();
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y")
-               .DataSource(ViewBag.dataSource6).Width(2).Name("Dairy Products").Add();
+               .DataSource(ViewData["dataSource6"]).Width(2).Name("Dairy Products").Add();
                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
                .Marker(mr => mr.DataLabel(dl => dl.Visible(false))).XName("x").YName("y")
-               .DataSource(ViewBag.dataSource7).Width(2).Name("Wheat").Add();
+               .DataSource(ViewData["dataSource7"]).Width(2).Name("Wheat").Add();
            }).Load("chartLoad").Render()
         </div>
     </div>

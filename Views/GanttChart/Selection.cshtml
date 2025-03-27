@@ -1,14 +1,14 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.DropDowns
 @{
-    ViewBag.Title = "Selection";
+    ViewData["Title"] = "Selection";
 }
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
 
-            @(Html.EJS().Gantt("Selection").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true)
+            @(Html.EJS().Gantt("Selection").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true)
                 .AllowSelection(true).TreeColumnIndex(1)
                 .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
                 .Dependency("Predecessor").Child("SubTasks"))
@@ -34,7 +34,7 @@
             <tr>
                 <td style="width: 100%;padding-right: 5px">
                     <div style="width: 150px">
-                        @(Html.EJS().DropDownList("SelectionModeList").DataSource((IEnumerable<object>)ViewBag.Data1).PopupWidth("100px")
+                        @(Html.EJS().DropDownList("SelectionModeList").DataSource((IEnumerable<object>)ViewData["Data1"]).PopupWidth("100px")
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value("Row")
                             .Render()
                         )
@@ -51,7 +51,7 @@
             <tr>
                 <td style="width: 100%;padding-right: 5px">
                     <div style="width: 150px">
-                        @(Html.EJS().DropDownList("SelectionTypeList").DataSource((IEnumerable<object>)ViewBag.Data2).PopupWidth("100px")
+                        @(Html.EJS().DropDownList("SelectionTypeList").DataSource((IEnumerable<object>)ViewData["Data2"]).PopupWidth("100px")
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value("Single")
                             .Render()
                         )
@@ -68,7 +68,7 @@
             <tr>
                 <td style="width: 100%;padding-right: 5px">
                     <div style="width: 150px">
-                        @(Html.EJS().DropDownList("SelectionToggleList").DataSource((IEnumerable<object>)ViewBag.Data3).PopupWidth("100px")
+                        @(Html.EJS().DropDownList("SelectionToggleList").DataSource((IEnumerable<object>)ViewData["Data3"]).PopupWidth("100px")
                             .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value(false)
                             .Render()
                         )

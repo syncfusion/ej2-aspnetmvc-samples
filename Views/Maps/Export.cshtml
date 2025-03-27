@@ -52,7 +52,7 @@
                 @Html.EJS().Maps("container").Load("loadMaps").AllowPdfExport(true).AllowImageExport(true).TitleSettings(title => title.Text("Location of the Wonders in the World").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).LegendSettings(legend => legend.Visible(true)).ZoomSettings(zoom => zoom.Enable(false)).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer>{
        new Syncfusion.EJ2.Maps.MapsLayer
        {
-           ShapeData = ViewBag.ShapeData,
+           ShapeData = ViewData["ShapeData"],
 
            MarkerSettings = new List<Syncfusion.EJ2.Maps.MapsMarker>
            {
@@ -84,7 +84,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("Map").Index(0).Width("100%").DataSource(ViewBag.format1).Value("Geometry").Change("valueChange1").Render()
+                        @Html.EJS().DropDownList("Map").Index(0).Width("100%").DataSource(ViewData["format1"]).Value("Geometry").Change("valueChange1").Render()
                     </div>
                 </td>
             </tr>
@@ -96,7 +96,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("Export").Index(0).Width("100%").DataSource(ViewBag.format).Value("JPEG").Change("valueChange").Render()
+                        @Html.EJS().DropDownList("Export").Index(0).Width("100%").DataSource(ViewData["format"]).Value("JPEG").Change("valueChange").Render()
                     </div>
                 </td>
             </tr>

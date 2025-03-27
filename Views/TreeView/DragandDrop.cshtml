@@ -6,13 +6,13 @@
             <div class="col-lg-4 tree1-data">
                 <h4>TreeView-1</h4>
                 <div class="content">
-                    @Html.EJS().TreeView("tree1").AllowDragAndDrop(true).NodeDragStop("onDragStop").Fields(ViewBag.dragfields).Render()
+                    @Html.EJS().TreeView("tree1").AllowDragAndDrop(true).NodeDragStop("onDragStop").Fields((TreeViewFieldsSettings)ViewData["dragfields"]).Render()
                 </div>
             </div>
             <div class="col-lg-4 tree2-data">
                 <h4>TreeView-2</h4>
                 <div class="content">
-                    @Html.EJS().TreeView("tree2").AllowDragAndDrop(true).NodeDragStop("onDragStop").Fields(ViewBag.dropfields).Render()
+                    @Html.EJS().TreeView("tree2").AllowDragAndDrop(true).NodeDragStop("onDragStop").Fields((TreeViewFieldsSettings)ViewData["dropfields"]).Render()
                 </div>
             </div>
             <div class="col-lg-4 tree3-data">

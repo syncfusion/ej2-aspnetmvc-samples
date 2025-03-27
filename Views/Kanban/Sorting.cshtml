@@ -5,7 +5,7 @@
 @section ControlsSection {
     <div class="col-lg-9 control-section">
         <div class="control_wrapper">
-            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewBag.data).Columns(col =>
+            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col =>
        {
            col.HeaderText("To Do").KeyField("Open").Add();
            col.HeaderText("In Progress").KeyField("InProgress").Add();
@@ -24,7 +24,7 @@
                 </td>
                 <td>
                     @Html.EJS().DropDownList("sortBy").Width("100%").DataSource(
-                    (IEnumerable<object>)ViewBag.SortByData).Change("onChange").Fields(new DropDownListFieldSettings { Text = "Sort", Value = "Id" }).Index(1).Created("sortCreate").Render()
+                    (IEnumerable<object>)ViewData["SortByData"]).Change("onChange").Fields(new DropDownListFieldSettings { Text = "Sort", Value = "Id" }).Index(1).Created("sortCreate").Render()
                 </td>
             </tr>
             <tr>
@@ -32,7 +32,7 @@
                     <div>Field</div>
                 </td>
                 <td>
-                    @Html.EJS().DropDownList("field").Width("100%").DataSource((IEnumerable<object>)ViewBag.FieldData).Index(0).Enabled(false).Created("fieldCreate").Render()
+                    @Html.EJS().DropDownList("field").Width("100%").DataSource((IEnumerable<object>)ViewData["FieldData"]).Index(0).Enabled(false).Created("fieldCreate").Render()
                 </td>
             </tr>
             <tr>
@@ -40,7 +40,7 @@
                     <div>Direction</div>
                 </td>
                 <td>
-                    @Html.EJS().DropDownList("direction").Width("100%").DataSource((IEnumerable<object>)ViewBag.DirectionData).Change("onChange").Index(0).Created("directionCreate").Render()
+                    @Html.EJS().DropDownList("direction").Width("100%").DataSource((IEnumerable<object>)ViewData["DirectionData"]).Change("onChange").Index(0).Created("directionCreate").Render()
                 </td>
             </tr>
             <tr>

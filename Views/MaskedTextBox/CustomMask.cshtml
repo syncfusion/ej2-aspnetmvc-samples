@@ -7,7 +7,7 @@
             <div class="control-label">
                 Time (ex: 10:00 PM, 10:00 AM)
             </div>
-            @Html.EJS().MaskedTextBox("mask1").Mask("00:00 >PM").CustomCharacters(ViewBag.cusObj).Render()
+            @Html.EJS().MaskedTextBox("mask1").Mask("00:00 >PM").CustomCharacters(ViewData["cusObj"]).Render()
 
             <div class="control-label">
             IP Address (ex: 212.212.111.222)

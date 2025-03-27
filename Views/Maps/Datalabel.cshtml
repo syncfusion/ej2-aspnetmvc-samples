@@ -5,7 +5,7 @@
         <div id="outer" style="width:100%">
             @Html.EJS().Maps("container").Load("mapsLoad").Layers(layer =>
    {
-       layer.ShapeSettings(new MapsShapeSettings{ Autofill = true }).TooltipSettings(new MapsTooltipSettings{ Visible = true, ValuePath = "name" }).DataLabelSettings(new MapsDataLabelSettings{ Visible = true, LabelPath = "name", SmartLabelMode = SmartLabelMode.Trim }).ShapeData(ViewBag.usmap).Add();
+       layer.ShapeSettings(new MapsShapeSettings{ Autofill = true }).TooltipSettings(new MapsTooltipSettings{ Visible = true, ValuePath = "name" }).DataLabelSettings(new MapsDataLabelSettings{ Visible = true, LabelPath = "name", SmartLabelMode = SmartLabelMode.Trim }).ShapeData(ViewData["usmap"]).Add();
    }).Render()
         </div>
     </div>

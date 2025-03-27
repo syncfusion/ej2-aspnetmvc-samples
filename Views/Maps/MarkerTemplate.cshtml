@@ -11,7 +11,7 @@
                 new MapsMarker() {Visible = true, Height = 30, Width = 30 },
                 new MapsMarker() {Visible = true, Height = 30, Width = 30 },
                 new MapsMarker() {Visible = true, Height = 30, Width = 30 },
-                new MapsMarker() {Visible = true, Height = 30, Width = 30 }}).ShapeSettings(new MapsShapeSettings{ Autofill = true, Palette = ViewBag.palette }).ShapeDataPath("name").ShapeData(ViewBag.shapeData).Add();
+                new MapsMarker() {Visible = true, Height = 30, Width = 30 }}).ShapeSettings(new MapsShapeSettings{ Autofill = true, Palette = (string[])ViewData["palette"] }).ShapeDataPath("name").ShapeData(ViewData["shapeData"]).Add();
         }).Render()
         </div>
     </div>

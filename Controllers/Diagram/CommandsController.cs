@@ -430,8 +430,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
 
 
             }
-            ViewBag.tbItems = items;
-            ViewBag.nodes = nodes;
+            ViewData["tbItems"] = items;
+            ViewData["nodes"] = nodes;
             return View();
         }
     }

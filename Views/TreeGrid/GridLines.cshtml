@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "GridLines";
+    ViewData["Title"] = "GridLines";
 }
 
 @*custom code end*@
@@ -13,7 +13,7 @@
     <div class="col-lg-9 control-section">
         <div class="control-section">
             @(Html.EJS().TreeGrid("GridLines")
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .Columns(col =>
             {
            col.Field("TaskId").HeaderText("Task ID").Width(80).TextAlign(TextAlign.Right).Add();
@@ -37,7 +37,7 @@
                     <div style="padding-left:1px">Grid Lines</div>
                 </td>
                 <td style="width: 50%">
-                    @Html.EJS().DropDownList("Lines").DataSource((IEnumerable<object>)ViewBag.dropdata).Width("130").Value("Horizontal").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "type", Value = "id" }).Change("onChange").Render()
+                    @Html.EJS().DropDownList("Lines").DataSource((IEnumerable<object>)ViewData["dropdata"]).Width("130").Value("Horizontal").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "type", Value = "id" }).Change("onChange").Render()
                 </td>
             </tr>
         </table>

@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult DisabledItems()
         {
-            ViewBag.emails = new DisabledEmailData().DisabledEmailList();
+            ViewData["emails"] = new DisabledEmailData().DisabledEmailList();
             return View();
         }
     }

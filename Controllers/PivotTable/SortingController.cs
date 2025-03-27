@@ -21,15 +21,15 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult Sorting()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.fieldsData = GetFieldsData();
-            ViewBag.orderData = new string[] { "Ascending", "Descending" }; ;
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["fieldsData"] = GetFieldsData();
+            ViewData["orderData"] = new string[] { "Ascending", "Descending" }; ;
             return View();
         }
         public List<SortData> GetFieldsData()
         {
             List<SortData> fieldsData = new List<SortData>();
-            fieldsData.Add(new SortData { Field = "Country", Order = "Country_as" });
+            fieldsData.Add(new SortData { Field = "Country", Order = "Country_asc" });
             fieldsData.Add(new SortData { Field = "Products", Order = "Products_asc" });
             fieldsData.Add(new SortData { Field = "Year", Order = "Year_asc" });
             fieldsData.Add(new SortData { Field = "Order Source", Order = "Order Source_asc" });

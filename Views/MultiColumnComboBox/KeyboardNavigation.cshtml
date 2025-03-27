@@ -13,7 +13,7 @@
                     col.Field("ProductName").Header("Product Name").Width("200").Add();
                     col.Field("UnitPrice").Header("UnitPrice").Width("90").Add();
                     col.Field("UnitsInStock").Header("Units In Stock").Width("120").Add();
-                }).PopupHeight("210px").PopupWidth("650px").DataSource((IEnumerable<ProductDetails>)ViewBag.data).Render()
+                }).PopupHeight("210px").PopupWidth("650px").DataSource((IEnumerable<ProductDetails>)ViewData["data"]).Render()
             </div>
         </div>
     </div>

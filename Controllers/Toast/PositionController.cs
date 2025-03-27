@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Toast
         // GET: Types
         public ActionResult Position()
         {
-            ViewBag.Data = new Position().Positions();
+            ViewData["Data"] = new Position().Positions();
             return View();
         }
     }

@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult WorkWeek()
         {
-            ViewBag.DataSource = GanttData.ProjectNewData();
-            ViewBag.Data = CheckList.Days();
+            ViewData["DataSource"] = GanttData.ProjectNewData();
+            ViewData["Data"] = CheckList.Days();
             return View();
         }
 

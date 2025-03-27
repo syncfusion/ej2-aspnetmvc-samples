@@ -56,7 +56,7 @@
                     <td>Show Arrows</td>
                     <td>
                         <div class='datepicker-control-section'>
-                            @Html.EJS().DropDownList("arrow").Index(1).Change("showArrowChange").Fields(new DropDownListFieldSettings { Text = "Arrow", Value = "Id" }).DataSource((IEnumerable<object>)ViewBag.showArrowData).Render()
+                            @Html.EJS().DropDownList("arrow").Index(1).Change("showArrowChange").Fields(new DropDownListFieldSettings { Text = "Arrow", Value = "Id" }).DataSource((IEnumerable<object>)ViewData["showArrowData"]).Render()
                         </div>
                     </td>
                 </tr>
@@ -64,7 +64,7 @@
                     <td>Slide Interval</td>
                     <td>
                         <div class='datepicker-control-section'>
-                            @Html.EJS().DropDownList("interval").Index(1).Change("intervalChange").Fields(new DropDownListFieldSettings { Text = "Interval", Value = "Id" }).DataSource((IEnumerable<object>)ViewBag.intervalData).Render()
+                            @Html.EJS().DropDownList("interval").Index(1).Change("intervalChange").Fields(new DropDownListFieldSettings { Text = "Interval", Value = "Id" }).DataSource((IEnumerable<object>)ViewData["intervalData"]).Render()
                         </div>
                     </td>
                 </tr>

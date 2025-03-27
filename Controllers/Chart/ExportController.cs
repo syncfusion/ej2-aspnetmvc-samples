@@ -47,8 +47,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 ChartPoints[8].DataLabelMappingName = "3";
                 ChartPoints[9].DataLabelMappingName = "2.9";
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.data = new string[] { "JPEG", "PNG", "SVG", "PDF", "XLSX", "CSV" };
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["data"] = new string[] { "JPEG", "PNG", "SVG", "PDF", "XLSX", "CSV" };
             return View();
         }
         public class ExportChartData

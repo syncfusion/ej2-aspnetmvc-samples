@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult WorkingTimeRange()
         {
-            ViewBag.DataSource = GanttData.ProjectNewData();
-            ViewBag.workWeek = DropDownData.GetDays();
+            ViewData["DataSource"] = GanttData.ProjectNewData();
+            ViewData["workWeek"] = DropDownData.GetDays();
             return View();
         }
 

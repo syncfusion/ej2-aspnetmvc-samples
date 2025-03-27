@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Default
         public ActionResult CyberAttackMap()
         {
-            ViewBag.shapeData = this.GetWorldMap();
+            ViewData["shapeData"] = this.GetWorldMap();
             return View();
         }
     }

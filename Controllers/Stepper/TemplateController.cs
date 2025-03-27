@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Stepper
             stepperTemplate.Add(new Step { IconCss = "e-icons e-check", Text = "Step 2" });
             stepperTemplate.Add(new Step { IconCss = "e-icons e-check", Text = "Step 3" });
             stepperTemplate.Add(new Step { IconCss = "e-icons e-check", Text = "Step 4" });
-            ViewBag.StepperTemplate = stepperTemplate;
+            ViewData["StepperTemplate"] = stepperTemplate;
             return View();
         }
     }

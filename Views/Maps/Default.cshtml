@@ -13,9 +13,9 @@
                 new MapsMarker() { Visible = true, AnimationDuration= 0},
                 new MapsMarker() { Visible = true, AnimationDuration= 0},
                 new MapsMarker() { Visible = true, AnimationDuration= 0},
-           }).DataSource(ViewBag.dataSource).ShapeDataPath("continent")
+           }).DataSource(ViewData["dataSource"]).ShapeDataPath("continent")
            .ShapePropertyPath("continent").ShapeSettings(new MapsShapeSettings { ColorValuePath = "color" })
-           .ShapeData(ViewBag.shapeData).Add();
+           .ShapeData(ViewData["shapeData"]).Add();
         }).Render()
             <div style="margin-left: 75%">
                 Source:

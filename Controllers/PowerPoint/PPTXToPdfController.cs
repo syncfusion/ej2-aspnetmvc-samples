@@ -35,7 +35,7 @@ namespace EJ2MVCSampleBrowser.Controllers
 
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult PPTXToPdf(string button, HttpPostedFileBase file)
+        public ActionResult PPTXToPdf(string button, HttpPostedFileBase file, string renderingMode1)
         {
             if (button == null)
                 return View();
@@ -49,8 +49,10 @@ namespace EJ2MVCSampleBrowser.Controllers
                 PresentationToPdfConverterSettings settings = new PresentationToPdfConverterSettings();
                 settings.ShowHiddenSlides = true;
                 settings.EnablePortableRendering = true;
-                
-				// Add a custom fallback font collection for Presentation.
+                //Enables a flag to preserve form fields by converting shapes with names starting with 'FormField_' into editable text form fields in the PDF.
+                if (renderingMode1 == "PreserveFormFields")
+                    settings.PreserveFormFields = true;
+                // Add a custom fallback font collection for Presentation.
                 AddFallbackFonts(presentation);
 
                 //Convert presentation document into PDF document
@@ -107,7 +109,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                     return presentation;
                 }
                 else
-                    ViewBag.Message = string.Format("Please choose PowerPoint Presentation document(PPTX) to convert as PDF");
+                    ViewData["Message"] = string.Format("Please choose PowerPoint Presentation document(PPTX) to convert as PDF");
             }
             else
             {

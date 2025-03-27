@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Badge
             data.Add(new { id = "p_07", text = "Sent", messages = "", badge = "", icons = "sent", type = "All Labels" });
             data.Add(new { id = "p_08", text = "Outbox", messages = "", badge = "", icons = "outbox", type = "All Labels" });
             data.Add(new { id = "p_09", text = "Drafts", messages = "7 New", badge = "e-badge e-badge-warning", icons = "draft", type = "All Labels" });
-            ViewBag.dataSource = data;
+            ViewData["dataSource"] = data;
             return View();
         }
     }

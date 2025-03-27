@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new IndexedCategoryData { Country = "Cambodia", GDPGrowthRate = 7.0 },
                 new IndexedCategoryData { Country = "China", GDPGrowthRate = 6.9 },
              };
-            ViewBag.GDP_2015 = GDP_2015;
+            ViewData["GDP_2015"] = GDP_2015;
             List<IndexedCategoryData> GDP_2016 = new List<IndexedCategoryData>
             {
                 new IndexedCategoryData { Country = "Australia", GDPGrowthRate = 2.5 },
@@ -36,7 +36,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new IndexedCategoryData { Country = "Canada", GDPGrowthRate = 1.4 },
                 new IndexedCategoryData { Country = "Germany", GDPGrowthRate = 1.8 },
              };
-            ViewBag.GDP_2016 = GDP_2016;
+            ViewData["GDP_2016"] = GDP_2016;
             return View();
         }
         public class IndexedCategoryData

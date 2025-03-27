@@ -20,12 +20,12 @@
                      {
                          paneItem.Size("28%").Min("27%").ContentTemplate(@<div>
                                 <div class="content">
-                                    @Html.EJS().TreeView("tree").NodeTemplate(treeTemplate).Fields(ViewBag.TemplateFields).Render()
+                                    @Html.EJS().TreeView("tree").NodeTemplate(treeTemplate).Fields((Syncfusion.EJ2.Navigations.TreeViewFieldsSettings)ViewData["TemplateFields"]).Render()
                                 </div>
                             </div>).Add();
        paneItem.Size("33%").Min("23%").ContentTemplate(@<div>
                                     <div class="content">
-                                        @Html.EJS().ListView("groupedList").DataSource((IEnumerable<object>)ViewBag.ListData).Fields(new ListViewFieldSettings { Text = "Name" }).CssClass("e-list-template").Template(template).Render()
+                                        @Html.EJS().ListView("groupedList").DataSource((IEnumerable<object>)ViewData["ListData"]).Fields(new ListViewFieldSettings { Text = "Name" }).CssClass("e-list-template").Template(template).Render()
                                     </div>
                                 </div>).Add();
   paneItem.Size("37%").Min("30%").ContentTemplate(@<div>

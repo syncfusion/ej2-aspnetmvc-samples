@@ -16,12 +16,12 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult ExcelExport()
         {
-            ViewBag.datasource = new ScheduleData().GetScheduleData();
+            ViewData["datasource"] = new ScheduleData().GetScheduleData();
             List<ScheduleView> viewOption = new List<ScheduleView>()
             {
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Week}
             };
-            ViewBag.view = viewOption;
+            ViewData["view"] = viewOption;
             return View();
         }
     }

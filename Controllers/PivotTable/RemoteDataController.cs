@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult RemoteData()
         {
-            ViewBag.contentTypeDropDown = new string[] { "JSON", "CSV" };
+            ViewData["contentTypeDropDown"] = new string[] { "JSON", "CSV" };
             return View();
         }
     }

@@ -22,7 +22,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tooltip
             popupItems.Add(new ToolbarItem { PrefixIcon = "e-copy-icon tb-icons", TooltipText = "Wireless", Text = "Wireless", Overflow = OverflowOption.Hide });
             popupItems.Add(new ToolbarItem { PrefixIcon = "e-copy-icon tb-icons", TooltipText = "Device", Text = "Device", Overflow = OverflowOption.Hide });
             popupItems.Add(new ToolbarItem { PrefixIcon = "e-copy-icon tb-icons", TooltipText = "Personal", Text = "Personal", Overflow = OverflowOption.Hide });
-            ViewBag.popupItems = popupItems;
+            ViewData["popupItems"] = popupItems;
             return View();
         }
     }

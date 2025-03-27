@@ -51,7 +51,7 @@
                     </td>
                     <td>
                         <div style="margin-top: -5px; height: 40px;">
-                            @Html.EJS().DropDownList("legendPosition").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewBag.legendPosition).Value("Bottom").Change("valueChange").Render()
+                            @Html.EJS().DropDownList("legendPosition").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewData["legendPosition"]).Value("Bottom").Change("valueChange").Render()
                         </div>
                     </td>
                 </tr>
@@ -61,7 +61,7 @@
                     </td>
                     <td>
                         <div style="margin-top: -5px; height: 40px;">
-                            @Html.EJS().DropDownList("Alignment").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewBag.legendAlignment).Value("Center").Change("legendPositionValueChange").Render()
+                            @Html.EJS().DropDownList("Alignment").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewData["legendAlignment"]).Value("Center").Change("legendPositionValueChange").Render()
                         </div>
                     </td>
                 </tr>
@@ -71,7 +71,7 @@
                     </td>
                     <td>
                         <div style="margin-top: -5px; height: 40px;">
-                            @Html.EJS().DropDownList("Shape").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewBag.legendShape).Value("Circle").Change("legendShapeValueChange").Render()
+                            @Html.EJS().DropDownList("Shape").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewData["legendShape"]).Value("Circle").Change("legendShapeValueChange").Render()
                         </div>
                     </td>
                 </tr>

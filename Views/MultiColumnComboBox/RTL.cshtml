@@ -14,7 +14,7 @@
                     col.Field("Genre").Header("Genre").Width("100").Add();
                     col.Field("PublishedYear").Header("Published Year").Width("125").Add();
                     col.Field("Price").Header("Price").Width("80").Add();
-                }).DataSource((IEnumerable<BookDetails>)ViewBag.data).PopupHeight("210px").PopupWidth("680px").Render()
+                }).DataSource((IEnumerable<BookDetails>)ViewData["data"]).PopupHeight("210px").PopupWidth("680px").Render()
             </div>
         </div>
     </div>

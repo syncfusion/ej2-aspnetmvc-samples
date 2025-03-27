@@ -7,12 +7,12 @@
         <div class="col-md-8 control-section">
             <div class="content-wrapper">
                 <div id="container" style="width:92%">
-                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Female Participation Rate in Labor Force for the Countries").TextStyle(ViewBag.textStyle)).XAxis(xAxis =>
+                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Female Participation Rate in Labor Force for the Countries").TextStyle(ViewData["textStyle"])).XAxis(xAxis =>
                     {
-                        xAxis.Labels(ViewBag.xLabels).TextStyle(ViewBag.labelTextStyle);
+                        xAxis.Labels((string[])ViewData["xLabels"]).TextStyle(ViewData["labelTextStyle"]);
                     }).YAxis(yaxis =>
                     {
-                        yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle);
+                        yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"]);
                     }).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
                     {
                         palette.Value(35).Color("#50A3B1").Add();
@@ -21,8 +21,8 @@
                         palette.Value(65).Color("#EDF8B6").Add();
                         palette.Value(78).Color("#FFFFDA").Add();
                     })).CellSettings(cellSettings =>
-                    cellSettings.ShowLabel(false).Border(ViewBag.border).TileType(Syncfusion.EJ2.HeatMap.CellType.Bubble).BubbleType(Syncfusion.EJ2.HeatMap.BubbleType.Size)).LegendSettings(legendSettings =>
-                    legendSettings.Visible(true).TextStyle(ViewBag.labelTextStyle)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
+                    cellSettings.ShowLabel(false).Border(ViewData["border"]).TileType(Syncfusion.EJ2.HeatMap.CellType.Bubble).BubbleType(Syncfusion.EJ2.HeatMap.BubbleType.Size)).LegendSettings(legendSettings =>
+                    legendSettings.Visible(true).TextStyle(ViewData["labelTextStyle"])).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).TooltipRender("tooltipRender").Load("load").DataSource(ViewData["dataSource"]).Render()
                 </div>
                 <div style="float: right; margin-right: 10px;">
                     Source:

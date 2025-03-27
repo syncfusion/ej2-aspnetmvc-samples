@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
         // GET= DefaultFunctionalities
         public ActionResult DragAndDropFunctionalities()
         {
-            ViewBag.ImportBtn = new ButtonModel() { isPrimary = true, cssClass = "e-flat", content = "Import" };
-            ViewBag.CancelBtn = new ButtonModel() { content = "Cancel", cssClass = "e-flat" };
+            ViewData["ImportBtn"] = new ButtonModel() { isPrimary = true, cssClass = "e-flat", content = "Import" };
+            ViewData["CancelBtn"] = new ButtonModel() { content = "Cancel", cssClass = "e-flat" };
             QueryBuilderRule rule = new QueryBuilderRule()
             {
                 Condition = "and",
@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
                     
                 }
             };
-            ViewBag.rule = rule;
+            ViewData["rule"] = rule;
 
             List<object> items = new List<object>();
             items.Add(new
@@ -54,10 +54,10 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
             {
                 text = "Import Named Parameter Sql"
             });
-            ViewBag.items = items;
+            ViewData["items"] = items;
 
-            ViewBag.rule = rule;
-            ViewBag.dataSource = EmployeeData.GetAllRecords();
+            ViewData["rule"] = rule;
+            ViewData["dataSource"] = EmployeeData.GetAllRecords();
 
             return View();
         }

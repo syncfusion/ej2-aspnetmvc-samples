@@ -13,7 +13,7 @@
                                 .YName("Quality")
                                 .ErrorBar(eb => eb.VerticalError("error").Visible(true))
                                 .Marker(mr => mr.Width(7).Height(7))
-                                .DataSource(ViewBag.ChartPoints).Add();
+                                .DataSource(ViewData["ChartPoints"]).Add();
                         })
                         .PrimaryXAxis(xaxis =>
                             xaxis.MajorGridLines(mg => mg.Width(0))
@@ -46,10 +46,10 @@
     }
 </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            var selectedTheme = loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Rotate45';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';

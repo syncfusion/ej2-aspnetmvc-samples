@@ -78,9 +78,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Execute = "executeNavigationRight",
                 Gesture = new DiagramKeyGesture() { Key = Keys.Right }
             });
-            ViewBag.commands = commands;
+            ViewData["commands"] = commands;
 
-            ViewBag.Nodes = data;
+            ViewData["Nodes"] = data;
             return View();
         }
     }

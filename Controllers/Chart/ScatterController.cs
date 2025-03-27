@@ -225,7 +225,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new ScatterPlotChartData { Breadth = 44.7, Circumference = 90.4 },
                 new ScatterPlotChartData { Breadth = 44.7, Circumference = 90.45 }
             };
-            ViewBag.Cluster1Value = Cluster1Value;
+            ViewData["Cluster1Value"] = Cluster1Value;
             List<ScatterPlotChartData> Cluster2Value = new List<ScatterPlotChartData>
             {
                 new ScatterPlotChartData { Breadth = 45.6, Circumference = 91.6 },
@@ -327,7 +327,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new ScatterPlotChartData { Breadth = 47.3, Circumference = 110.8 },
                 new ScatterPlotChartData { Breadth = 47.4, Circumference = 106.8 }
             };
-            ViewBag.Cluster2Value = Cluster2Value;
+            ViewData["Cluster2Value"] = Cluster2Value;
             List<ScatterPlotChartData> Cluster3Value = new List<ScatterPlotChartData>
             {
                 new ScatterPlotChartData { Breadth = 47.6, Circumference = 96.5 },
@@ -428,7 +428,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new ScatterPlotChartData { Breadth = 49.0, Circumference = 112.0 },
                 new ScatterPlotChartData { Breadth = 48.8, Circumference = 109.3 }
             };
-            ViewBag.Cluster3Value = Cluster3Value;
+            ViewData["Cluster3Value"] = Cluster3Value;
             List<ScatterPlotChartData> Cluster4Value = new List<ScatterPlotChartData>
             {
                 new ScatterPlotChartData { Breadth = 50.3, Circumference = 107.0 },
@@ -481,7 +481,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new ScatterPlotChartData { Breadth = 52.5, Circumference = 120.2 },
                 new ScatterPlotChartData { Breadth = 52.8, Circumference = 119.7 }
             };
-            ViewBag.Cluster4Value = Cluster4Value;
+            ViewData["Cluster4Value"] = Cluster4Value;
             List<ScatterPlotChartData> Cluster5Value = new List<ScatterPlotChartData>
             {
                 new ScatterPlotChartData { Breadth = 53.1, Circumference = 121.3 },
@@ -505,7 +505,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new ScatterPlotChartData { Breadth = 53.8, Circumference = 124.61 },
                 new ScatterPlotChartData { Breadth = 53.5, Circumference = 123.5 }
             };
-            ViewBag.Cluster5Value = Cluster5Value;
+            ViewData["Cluster5Value"] = Cluster5Value;
             return View();
         }
         public class ScatterPlotChartData

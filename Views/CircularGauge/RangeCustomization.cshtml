@@ -38,7 +38,7 @@
                         </td>
                         <td>
                             <div style="margin-top: -5px;height : 30px">
-                                @Html.EJS().DropDownList("rangeSelect").Index(0).Width("125%").DataSource((IEnumerable<object>)ViewBag.rangeSelect).Value("Low").Change("valueChange").Render()
+                                @Html.EJS().DropDownList("rangeSelect").Index(0).Width("125%").DataSource((IEnumerable<object>)ViewData["rangeSelect"]).Value("Low").Change("valueChange").Render()
                             </div>
                         </td>
                     </tr>

@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 @using Syncfusion.EJ2.DropDowns
 @{
-    ViewBag.Title = "WorkingTimeRange";
+    ViewData["Title"] = "WorkingTimeRange";
 }
 
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
-            @(Html.EJS().Gantt("WorkingTimeRange").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px")
+            @(Html.EJS().Gantt("WorkingTimeRange").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px")
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
             .Dependency("Predecessor").Child("SubTasks")).TreeColumnIndex(1)
             .Columns(col =>
@@ -84,7 +84,7 @@
                 </td>
                 <td style="width:70%">
                     <div style="width: 150px">
-                        @(Html.EJS().DropDownList("dropdown").DataSource((IEnumerable<object>)ViewBag.workWeek)
+                        @(Html.EJS().DropDownList("dropdown").DataSource((IEnumerable<object>)ViewData["workWeek"])
         .Fields(new DropDownListFieldSettings { Text = "day", Value = "id" }).Value("Monday").Select("SelectedDay")
         .Render()
     )

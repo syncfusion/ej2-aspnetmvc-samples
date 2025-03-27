@@ -7,7 +7,7 @@
 {
     sheet.Name("Cart").SelectedRange("D3").Ranges(ranges =>
 	   {
-		   ranges.DataSource(ViewBag.HyperlinkCart).StartCell("B3").Add();
+		   ranges.DataSource(ViewData["HyperlinkCart"]).StartCell("B3").Add();
 	   }).Rows(row =>
     {
         row.Cells(cell =>
@@ -71,7 +71,7 @@
     }).Add();
     sheet.Name("Stock").SelectedRange("D3").Ranges(ranges =>
 	   {
-		   ranges.DataSource(ViewBag.HyperlinkStock).Add();
+		   ranges.DataSource(ViewData["HyperlinkStock"]).Add();
 	   }).Rows(row =>
     {
         row.Cells(cell =>

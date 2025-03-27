@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control_wrapper accordion-control-section">
-            @Html.EJS().Accordion("iconsAccordion").Items(ViewBag.iconsItems).Render()
+            @Html.EJS().Accordion("iconsAccordion").Items((List<Syncfusion.EJ2.Navigations.AccordionItem>)ViewData["iconsItems"]).Render()
         </div>
         <ul id="athletics" style="display:none">
             <li><span class="e-acrdn-icons e-content-icon marathon"></span> Marathon</li>

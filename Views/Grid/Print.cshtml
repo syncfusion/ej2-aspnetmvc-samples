@@ -1,13 +1,13 @@
 @using Syncfusion.EJ2
 
 @{
-    ViewBag.Title = "Print";
+    ViewData["Title"] = "Print";
 }
 
 @{ 
     var SecondChildGrid = new Syncfusion.EJ2.Grids.Grid()
     {
-        DataSource = (IEnumerable<object>)ViewBag.CustomerDataSource,
+        DataSource = (IEnumerable<object>)ViewData["CustomerDataSource"],
         QueryString = "CustomerID",
         Columns = new List<Syncfusion.EJ2.Grids.GridColumn> {
                 new Syncfusion.EJ2.Grids.GridColumn(){ Field="CustomerID", HeaderText="Customer ID", Width="90", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right },
@@ -17,7 +17,7 @@
         }
     };
     var ChildGrid = new Syncfusion.EJ2.Grids.Grid() {
-        DataSource = (IEnumerable<object>)ViewBag.DataSource,
+        DataSource = (IEnumerable<object>)ViewData["DataSource"],
         QueryString = "EmployeeID",
         HierarchyPrintMode = Syncfusion.EJ2.Grids.HierarchyGridPrintMode.All,
         Columns = new List<Syncfusion.EJ2.Grids.GridColumn> {
@@ -32,7 +32,7 @@
 
     @section ControlsSection{
     <div class="control-section col-lg-9">
-        @Html.EJS().Grid("HierarchyPrint").DataSource((IEnumerable<object>)ViewBag.EmpDataSource).Columns(col =>
+        @Html.EJS().Grid("HierarchyPrint").DataSource((IEnumerable<object>)ViewData["EmpDataSource"]).Columns(col =>
    {
 
        col.Field("EmployeeID").HeaderText("Employee ID").Width("125").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
@@ -47,7 +47,7 @@
         <tr>
             <td class="left-side">Hierarchy PrintMode</td>
             <td>
-                @Html.EJS().DropDownList("PrintMode").DataSource((IEnumerable<object>)ViewBag.data).Value("All").Change("onChange").Render()
+                @Html.EJS().DropDownList("PrintMode").DataSource((IEnumerable<object>)ViewData["data"]).Value("All").Change("onChange").Render()
             </td>
         </tr>
     </table>

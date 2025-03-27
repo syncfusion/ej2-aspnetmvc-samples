@@ -16,7 +16,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult DayHourLimit()
         {
-            ViewBag.datasource = new ScheduleData().GetEmployeeEventData();
+            ViewData["datasource"] = new ScheduleData().GetEmployeeEventData();
             List<ScheduleView> viewOption = new List<ScheduleView>()
             {
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Day },
@@ -24,7 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.TimelineDay },
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.TimelineWeek }
             };
-            ViewBag.view = viewOption;
+            ViewData["view"] = viewOption;
             return View();
         }
     }

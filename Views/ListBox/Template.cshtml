@@ -2,7 +2,7 @@
 @section ControlsSection{
 <div class="col-lg-12 control-section">
     <div id="listbox-control">
-        @Html.EJS().ListBox("listbox").DataSource((IEnumerable<object>)ViewBag.data).ItemTemplate(
+        @Html.EJS().ListBox("listbox").DataSource((IEnumerable<object>)ViewData["data"]).ItemTemplate(
         "<div class=\"list-wrapper\"><span class=\"e-avatar e-avatar-xlarge e-avatar-circle\"><img src=\"../Content/listbox/pic/${pic}.svg\" alt=\"pic\"/></span><span class=\"text\"> ${text} </span><span class=\"description\"> ${description} </span></div>").Render()
     </div>
 </div>

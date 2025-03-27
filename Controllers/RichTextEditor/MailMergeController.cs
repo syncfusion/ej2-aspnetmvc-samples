@@ -18,16 +18,16 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult MailMerge()
         {
-            ViewBag.MergeData = new MergeDataModel().MergeDataList;
-            ViewBag.MentionChar = '{';
-            ViewBag.RTEValue = @"<p>Dear <span contenteditable=""false"" class=""e-mention-chip""><span>{{FirstName}}</span></span> <span contenteditable=""false"" class=""e-mention-chip""><span>{{LastName}}</span></span>,</p>
+            ViewData["MergeData"] = new MergeDataModel().MergeDataList;
+            ViewData["MentionChar"] = '{';
+            ViewData["RTEValue"] = @"<p>Dear <span contenteditable=""false"" class=""e-mention-chip""><span>{{FirstName}}</span></span> <span contenteditable=""false"" class=""e-mention-chip""><span>{{LastName}}</span></span>,</p>
                 <p>We are thrilled to have you with us! Your unique promotional code for this month is: <span contenteditable=""false"" class=""e-mention-chip""><span>{{PromoCode}}</span></span>.</p>
                 <p>Your current subscription plan is: <span contenteditable=""false"" class=""e-mention-chip""><span>{{SubscriptionPlan}}</span></span>.</p>
                 <p>Your customer ID is: <span contenteditable=""false"" class=""e-mention-chip""><span>{{CustomerID}}</span></span>.</p>
                 <p>Your promotional code expires on: <span contenteditable=""false"" class=""e-mention-chip""><span>{{ExpirationDate}}</span></span>.</p>
                 <p>Feel free to browse our latest offerings and updates. If you need any assistance, don't hesitate to contact us at <a href=""mailto:{{SupportEmail}}""><span contenteditable=""false"" class=""e-mention-chip""><span>{{SupportEmail}}</span></span></a> or call us at <span contenteditable=""false"" class=""e-mention-chip""><span>{{SupportPhoneNumber}}</span></span>.</p>
                 <p>Best regards,<br>The <span contenteditable=""false"" class=""e-mention-chip""><span>{{CompanyName}}</span></span> Team</p>";
-            ViewBag.Tools = new object[]  {
+            ViewData["Tools"] = new object[]  {
                 "Bold",
                 "Italic",
                 "Underline",
@@ -48,7 +48,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 "Undo",
                 "Redo",
             };
-            ViewBag.Items = new List<object>
+            ViewData["Items"] = new List<object>
             {
                 new { text = "First Name" },
                 new { text = "Last Name" },

@@ -4,7 +4,7 @@
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
+        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewData["view"]).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">

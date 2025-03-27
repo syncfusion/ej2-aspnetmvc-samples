@@ -11,7 +11,7 @@
                     </span>
                 </div>
                 <div class="grid-freezecol">
-                    @Html.EJS().DropDownList("column").DataSource((IEnumerable<object>)ViewBag.columns).Change("columnChange").Value("OrderID").Fields(field => { field.Value("id").Text("name"); }).Render()
+                    @Html.EJS().DropDownList("column").DataSource((IEnumerable<object>)ViewData["columns"]).Change("columnChange").Value("OrderID").Fields(field => { field.Value("id").Text("name"); }).Render()
                 </div>
             </div>
             <div class="grid-freezecol">
@@ -21,11 +21,11 @@
                     </span>
                 </div>
                 <div class="grid-freezecol">
-                    @Html.EJS().DropDownList("FreezeDirection").DataSource((IEnumerable<object>)ViewBag.direction).Change("directionChange").Value("Left").Fields(field => { field.Value("id").Text("name"); }).Render()
+                    @Html.EJS().DropDownList("FreezeDirection").DataSource((IEnumerable<object>)ViewData["direction"]).Change("directionChange").Value("Left").Fields(field => { field.Value("id").Text("name"); }).Render()
                 </div>
             </div>
         </div>
-        @Html.EJS().Grid("FrozenGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("410").EnableHover(false).FrozenRows(2).Columns(col =>
+        @Html.EJS().Grid("FrozenGrid").DataSource((IEnumerable<object>)ViewData["dataSource"]).Height("410").EnableHover(false).FrozenRows(2).Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Freeze(Syncfusion.EJ2.Grids.FreezeDirection.Left).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
@@ -38,7 +38,7 @@
        col.Field("ShipCountry").HeaderText("Ship Country").Width("250").EditType("dropdownedit").Add();
 
    }).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
-        @Html.EJS().Dialog("AlertDialog").Header("Frozen").Content("Atleast one Column should be in movable").ShowCloseIcon(false).Target(".control-section").Width("300px").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Buttons(ViewBag.DefaultButtons).Render()
+        @Html.EJS().Dialog("AlertDialog").Header("Frozen").Content("Atleast one Column should be in movable").ShowCloseIcon(false).Target(".control-section").Width("300px").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Buttons((List<DialogDialogButton>)ViewData["DefaultButtons"]).Render()
     </div>
 
     <style>

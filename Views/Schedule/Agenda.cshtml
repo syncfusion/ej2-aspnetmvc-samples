@@ -4,7 +4,7 @@
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
-        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).Views(ViewBag.view).CurrentView(View.Agenda).SelectedDate(new DateTime(DateTime.Today.Year, 6, 20)).Render()
+        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).Views(ViewData["view"]).CurrentView(View.Agenda).SelectedDate(new DateTime(DateTime.Today.Year, 6, 20)).Render()
     </div>
     <div class="col-lg-3 property-section">
         <table id="property" title="Properties" style="width: 100%">
@@ -12,14 +12,14 @@
                 <tr style="height: 50px">
                     <td style="width: 100%;">
                         <div>
-                            @Html.EJS().DropDownList("virtualscroll").Value("false").Placeholder("Allow Virtual Scrolling").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).DataSource(ViewBag.data).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("scrollChange").Render()
+                            @Html.EJS().DropDownList("virtualscroll").Value("false").Placeholder("Allow Virtual Scrolling").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).DataSource(ViewData["data"]).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("scrollChange").Render()
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
                     <td style="width: 100%;">
                         <div>
-                            @Html.EJS().DropDownList("showhideemptydays").Value("true").Placeholder("Hide Empty Days").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).DataSource(ViewBag.data).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onDayChange").Render()
+                            @Html.EJS().DropDownList("showhideemptydays").Value("true").Placeholder("Hide Empty Days").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).DataSource(ViewData["data"]).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onDayChange").Render()
                         </div>
                     </td>
                 </tr>

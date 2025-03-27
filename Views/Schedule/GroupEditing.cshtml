@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.WorkWeek).Group(group => group.AllowGroupEdit(true).Resources(ViewBag.Resources)).Resources(res => { res.DataSource(ViewBag.Conferences).Field("ConferenceId").Title("Attendees").Name("Conferences").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add(); }).ResourceHeaderTemplate("#resourceTemplate").EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Conference Name")).Description(des => des.Name("Description").Title("Summary")).StartTime(st => st.Name("StartTime").Title("From")).EndTime(et => et.Name("EndTime").Title("To"))).DataSource(ViewBag.datasource)).Views(ViewBag.view).SelectedDate(new DateTime(DateTime.Today.Year, 6, 5)).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.WorkWeek).Group(group => group.AllowGroupEdit(true).Resources((string[])ViewData["Resources"])).Resources(res => { res.DataSource(ViewData["Conferences"]).Field("ConferenceId").Title("Attendees").Name("Conferences").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add(); }).ResourceHeaderTemplate("#resourceTemplate").EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Conference Name")).Description(des => des.Name("Description").Title("Summary")).StartTime(st => st.Name("StartTime").Title("From")).EndTime(et => et.Name("EndTime").Title("To"))).DataSource(ViewData["datasource"])).Views(ViewData["view"]).SelectedDate(new DateTime(DateTime.Today.Year, 6, 5)).Render()
         </div>
     </div>
     <style>
@@ -60,6 +60,15 @@
         .e-schedule .template-wrap .resource-image img {
             width: 45px;
             height: 45px;
+        }
+
+        @@media screen and (max-width: 768px) {
+            .e-schedule .template-wrap .resource-image img {
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top:4px;
+            }
         }
     </style>
     <script id="resourceTemplate" type="text/x-template">

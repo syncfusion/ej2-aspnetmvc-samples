@@ -19,25 +19,25 @@ namespace EJ2MVCSampleBrowser.Controllers.HeatMapChart
         // GET: Inversed
         public ActionResult Inversed()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
                 fontFamily = "inherit"
             };
-            ViewBag.labelTextStyle = new
+            ViewData["labelTextStyle"] = new
             {
                 fontFamily = "inherit"
             };
-            ViewBag.border = new { width = "0" };
+            ViewData["border"] = new { width = "0" };
             string[] xlabels = new string[10] {"China", "India", "USA", "Indonesia", "Brazil", "Pakistan",
                 "Nigeria", "Bangladesh", "Russia", "Mexico"};
-            ViewBag.xLabels = xlabels;
+            ViewData["xLabels"] = xlabels;
             string[] yLabels = new string[10] { "1965-1970", "1970-1975", "1975-1980", "1980-1985", "1985-1990",
                 "1990-1995", "1995-2000", "2000-2005", "2005-2010", "2010-2015" };
-            ViewBag.yLabels = yLabels;
-            ViewBag.dataSource = new HeatMapData().GetInverseData();
+            ViewData["yLabels"] = yLabels;
+            ViewData["dataSource"] = new HeatMapData().GetInverseData();
             return View();
         }
     }

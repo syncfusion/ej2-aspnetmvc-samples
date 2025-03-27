@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new TrendlinesChartData {Period = 2020, Rupees = 76.67},
                 new TrendlinesChartData {Period = 2021, Rupees = 72.75}
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class TrendlinesChartData

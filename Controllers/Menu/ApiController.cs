@@ -75,10 +75,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Menu
                 new { value = "Vertical", text = "Vertical" },
             };
 
-            ViewBag.data = data;
-            ViewBag.menuFields = menuFields;
-            ViewBag.ddlData = ddlData;
-            ViewBag.headerData = headerData;
+            ViewData["data"] = data;
+            ViewData["menuFields"] = menuFields;
+            ViewData["ddlData"] = ddlData;
+            ViewData["headerData"] = headerData;
             return View();
         }
     }

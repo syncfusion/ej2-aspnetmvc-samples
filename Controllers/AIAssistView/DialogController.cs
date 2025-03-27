@@ -17,9 +17,9 @@ namespace EJ2MVCSampleBrowser.Controllers.AIAssistView
         public ActionResult Dialog()
         {
             DialogItems.Add(new ToolbarItemModel { align = "Right", iconCss = "e-icons e-close" });
-            ViewBag.ToolbarItems = DialogItems;
-            ViewBag.PromptResponseData = new PromptResponseData().GetAllPromptResponseData();
-            ViewBag.PromptSuggestionData = new PromptResponseData().GetAllSuggestionData();
+            ViewData["ToolbarItems"] = DialogItems;
+            ViewData["PromptResponseData"] = new PromptResponseData().GetAllPromptResponseData();
+            ViewData["PromptSuggestionData"] = new PromptResponseData().GetAllSuggestionData();
             return View();
         }
 

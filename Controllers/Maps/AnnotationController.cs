@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Annotation
         public ActionResult Annotation()
         {
-            ViewBag.shapeData = this.getAnnotation();
+            ViewData["shapeData"] = this.getAnnotation();
             
             return View();
         }

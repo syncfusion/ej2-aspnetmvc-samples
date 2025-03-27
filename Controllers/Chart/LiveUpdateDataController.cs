@@ -28,7 +28,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateDataChartData { X = "Oracle",     Y = 21.0090 },
                 new UpdateDataChartData { X = "Netflix",    Y = 16.8242 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             List<UpdateDataChartData> ChartPoints2 = new List<UpdateDataChartData>
             {
                 new UpdateDataChartData { X = "Apple",      Y = 10.9899  },
@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateDataChartData { X = "Oracle",     Y = 26.0708  },
                 new UpdateDataChartData { X = "Netflix",    Y = 27.4937  }
             };
-            ViewBag.ChartPoints2 = ChartPoints2;
+            ViewData["ChartPoints2"] = ChartPoints2;
             List<UpdateDataChartData> ChartPoints3 = new List<UpdateDataChartData>
             {
                 new UpdateDataChartData { X = "Apple",      Y = 17.4344   },
@@ -50,7 +50,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateDataChartData { X = "Oracle",     Y = 24.9828   },
                 new UpdateDataChartData { X = "Netflix",    Y = 11.8551   }
             };
-            ViewBag.ChartPoints3 = ChartPoints3;
+            ViewData["ChartPoints3"] = ChartPoints3;
             List<UpdateDataChartData> ChartPoints4 = new List<UpdateDataChartData>
             {
                 new UpdateDataChartData { X = "Apple",      Y = 14.5929  },
@@ -61,7 +61,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateDataChartData { X = "Oracle",     Y = 28.5474  },
                 new UpdateDataChartData { X = "Netflix",    Y = 35.2718  }
             };
-            ViewBag.ChartPoints4 = ChartPoints4;
+            ViewData["ChartPoints4"] = ChartPoints4;
             List<UpdateDataChartData> ChartPoints5 = new List<UpdateDataChartData>
             {
                 new UpdateDataChartData { X = "Apple",      Y = 20.4231  },
@@ -72,7 +72,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateDataChartData { X = "Oracle",     Y = 34.4296  },
                 new UpdateDataChartData { X = "Netflix",    Y = 57.4951  }
             };
-            ViewBag.ChartPoints5 = ChartPoints5;
+            ViewData["ChartPoints5"] = ChartPoints5;
             List<UpdateDataChartData> ChartPoints6 = new List<UpdateDataChartData>
             {
                 new UpdateDataChartData { X = "Apple",      Y = 27.0239 },
@@ -83,7 +83,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateDataChartData { X = "Oracle",     Y = 35.4508 },
                 new UpdateDataChartData { X = "Netflix",    Y = 91.8956 }
             };
-            ViewBag.ChartPoints6 = ChartPoints6;
+            ViewData["ChartPoints6"] = ChartPoints6;
             List<UpdateDataChartData> ChartPoints7 = new List<UpdateDataChartData>
             {
                 new UpdateDataChartData { X = "Apple",      Y = 24.0368   },
@@ -94,7 +94,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateDataChartData { X = "Oracle",     Y = 34.6261   },
                 new UpdateDataChartData { X = "Netflix",    Y = 102.0304  }
             };
-            ViewBag.ChartPoints7 = ChartPoints7;
+            ViewData["ChartPoints7"] = ChartPoints7;
             List<UpdateDataChartData> ChartPoints8 = new List<UpdateDataChartData>
             {
                 new UpdateDataChartData { X = "Apple",      Y = 35.2487  },
@@ -105,7 +105,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateDataChartData { X = "Oracle",     Y = 41.7164  },
                 new UpdateDataChartData { X = "Netflix",    Y = 165.3743 }
             };
-            ViewBag.ChartPoints8 = ChartPoints8;
+            ViewData["ChartPoints8"] = ChartPoints8;
             List<UpdateDataChartData> ChartPoints9 = new List<UpdateDataChartData>
             {
                 new UpdateDataChartData { X = "Apple",      Y = 44.9396  },
@@ -116,7 +116,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateDataChartData { X = "Oracle",     Y = 43.7122  },
                 new UpdateDataChartData { X = "Netflix",    Y = 319.2903 }
             };
-            ViewBag.ChartPoints9 = ChartPoints9;
+            ViewData["ChartPoints9"] = ChartPoints9;
             List<UpdateDataChartData> ChartPoints10 = new List<UpdateDataChartData>
             {
                 new UpdateDataChartData { X = "Apple",      Y = 50.2883  },
@@ -127,7 +127,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new UpdateDataChartData { X = "Oracle",     Y = 49.6689  },
                 new UpdateDataChartData { X = "Netflix",    Y = 328.8713 }
             };
-            ViewBag.ChartPoints10 = ChartPoints10;
+            ViewData["ChartPoints10"] = ChartPoints10;
             return View();
         }
         public class UpdateDataChartData

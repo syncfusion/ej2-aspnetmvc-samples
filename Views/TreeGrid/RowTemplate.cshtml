@@ -4,14 +4,14 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "RowTemplate";
+    ViewData["Title"] = "RowTemplate";
 }
 
 @*custom code end*@
 
 @section ControlsSection{
 <div class="control-section">
-    @Html.EJS().TreeGrid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+    @Html.EJS().TreeGrid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
    {
        col.Field("EmpID").HeaderText("Employee ID").Width(180).Add();
        col.Field("Name").HeaderText("Employee Name").Width(140).Add();

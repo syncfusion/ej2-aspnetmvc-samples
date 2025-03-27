@@ -21,9 +21,9 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult LocalData()
         {
-            ViewBag.data = new PivotTableData().GetrenewableEnergy();
-            ViewBag.drilledMembers = new string[] { "Biomass", "Free Energy" };
-            ViewBag.contentTypeDropDown = new string[] { "JSON", "CSV" };
+            ViewData["data"] = new PivotTableData().GetrenewableEnergy();
+            ViewData["drilledMembers"] = new string[] { "Biomass", "Free Energy" };
+            ViewData["contentTypeDropDown"] = new string[] { "JSON", "CSV" };
             return View();
         }
     }

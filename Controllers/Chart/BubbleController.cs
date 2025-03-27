@@ -40,7 +40,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new BubbleChartData { Literacy= 66.8,  GDPGrowth= 3.9,  BubbleSize= 0.028,  Text= "Mongolia",       TooltipMappingName= "MN" },
                 new BubbleChartData { Literacy= 78.4,  GDPGrowth= 2.9,  BubbleSize= 0.231,  Text= "Taiwan",         TooltipMappingName= "Taiwan" }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class BubbleChartData

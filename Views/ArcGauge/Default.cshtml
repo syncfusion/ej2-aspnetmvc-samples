@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 
 @section ControlsSection{
@@ -35,12 +35,12 @@
     </style>
     <div class="control-section" align="center">
         @Html.EJS().CircularGauge("container").Height("500px").Title("Female (% usage) on popular social network").TitleStyle(Ts => Ts.Size("18px").FontFamily("inherit").FontWeight("inherit")).Load("gaugeLoad").Axes(axes => axes
-            .Radius("100%").StartAngle(0).EndAngle(270).Minimum(0).Maximum(100).LabelStyle(ls => ls.Position(Position.Inside).Font(ViewBag.labelFont).Offset(-5))
+            .Radius("100%").StartAngle(0).EndAngle(270).Minimum(0).Maximum(100).LabelStyle(ls => ls.Position(Position.Inside).Font((CircularGaugeFont)ViewData["labelFont"]).Offset(-5))
             .Pointers(pt => pt.Radius("0%").Cap(cp => cp.Radius(0).Border(br => br.Width(0))))
             .LineStyle(lin => lin.Width(0))
             .MinorTicks(mi => mi.Width(0.0).Color("Transparent")).MajorTicks(mj => mj.Width(0.0).Color("Transparent"))
-            .Annotations(ViewBag.Annotations)
-            .Ranges(ViewBag.Ranges).Add()).Render()
+            .Annotations((List<CircularGaugeAnnotation>)ViewData["Annotations"])
+            .Ranges((List<CircularGaugeRange>)ViewData["Ranges"]).Add()).Render()
     </div>
     <script type="text/javascript">
         function gaugeLoad(sender) {

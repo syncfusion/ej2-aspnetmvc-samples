@@ -18,20 +18,20 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
         // GET: Arrayrow
         public ActionResult Arraycell()
         {
-            ViewBag.textStyle = new
+            ViewData["textStyle"] = new
             {
                 size = "15px",
                 fontWeight = "500",
                 fontStyle = "Normal",
                 fontFamily = "Segoe UI"
             };
-            ViewBag.border = new { width = "0" };
-            ViewBag.cellTextStyle = new { color = "white" };
+            ViewData["border"] = new { width = "0" };
+            ViewData["cellTextStyle"] = new { color = "white" };
             string[] xlabels = new string[12] { "China", "India", "Australia", "Mexico", "Canada", "Brazil",
                 "USA", "UK", "Germany", "Russia", "France", "Japan"};
-            ViewBag.xLabels = xlabels;
+            ViewData["xLabels"] = xlabels;
             string[] yLabels = new string[7] { "2000", "2005", "2010", "2011", "2012", "2013", "2014" };
-            ViewBag.yLabels = yLabels;
+            ViewData["yLabels"] = yLabels;
             double[,] cellData = new double[,]
             {
                 {0, 0, 10.75}, {0, 1, 14.5}, {0, 2, 25.5}, {0, 3, 39.5}, {0, 4, 59.75}, {0, 5, 35.50}, {0, 6, 75.5},
@@ -52,7 +52,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Heatmap
                 adaptorType = "Cell",
                 data = cellData
             };
-            ViewBag.dataSource = dataSource;
+            ViewData["dataSource"] = dataSource;
 
             return View();
         }

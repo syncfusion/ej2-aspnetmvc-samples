@@ -21,11 +21,11 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult Hyperlink()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.drilledMembers = new string[] { "France", "Germany" };
-            ViewBag.hyperLinkOptions = GetOptions();
-            ViewBag.hyperLinkMeasures = GetMeasures();
-            ViewBag.hyperLinkConditions = new string[] { "Equals", "NotEquals", "GreaterThan", "GreaterThanOrEqualTo",
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["drilledMembers"] = new string[] { "France", "Germany" };
+            ViewData["hyperLinkOptions"] = GetOptions();
+            ViewData["hyperLinkMeasures"] = GetMeasures();
+            ViewData["hyperLinkConditions"] = new string[] { "Equals", "NotEquals", "GreaterThan", "GreaterThanOrEqualTo",
             "LessThan", "LessThanOrEqualTo", "Between", "NotBetween" };
             return View();
         }

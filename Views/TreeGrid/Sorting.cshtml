@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "Sorting";
+    ViewData["Title"] = "Sorting";
 }
 
 @*custom code end*@
@@ -16,7 +16,7 @@
                 .AllowSorting()
                 .AllowPaging()
                 .AllowMultiSorting()
-                .DataSource((IEnumerable<object>)ViewBag.datasource)
+                .DataSource((IEnumerable<object>)ViewData["datasource"])
                 .SortSettings(sort=>sort.Columns(
                     new List<object>() {
                         new { field = "category", direction = "Ascending" },

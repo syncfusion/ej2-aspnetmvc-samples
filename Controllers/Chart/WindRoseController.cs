@@ -38,7 +38,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                   new PolarWindRoseData { XValue = "NW", YValue= 2, YValue1= 2.5, YValue2= 2, YValue3= 1, YValue4= 0.2, YValue5= 0.7 },
                   new PolarWindRoseData { XValue = "NNW", YValue= 1.8, YValue1= 1.1, YValue2= 0.8, YValue3= 0.1, YValue4= 0.4, YValue5= 0.2 }
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class PolarWindRoseData

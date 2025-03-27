@@ -14,7 +14,7 @@
             <div class='sliderwrap'>
                 <label class="userselect">Range Slider</label>
                 <div id='range'>
-                    @Html.EJS().Slider("slider02").Min(0).Max(100).Enabled(true).Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before, ShowOn = TooltipShowOn.Focus }).ShowButtons(true).Type(SliderType.Range).Value(ViewBag.sliderValue).Render()
+                    @Html.EJS().Slider("slider02").Min(0).Max(100).Enabled(true).Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before, ShowOn = TooltipShowOn.Focus }).ShowButtons(true).Type(SliderType.Range).Value(ViewData["sliderValue"]).Render()
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                         <div class="userselect">Placement</div>
                     </td>
                     <td style="width: 50%;padding: 5px">
-                        @Html.EJS().DropDownList("placement").Index(0).Change("placementChange").Placeholder("Placement Position").DataSource((IEnumerable<Object>)ViewBag.placement).Fields(new DropDownListFieldSettings { Text = "text", Value = "id" }).Render()
+                        @Html.EJS().DropDownList("placement").Index(0).Change("placementChange").Placeholder("Placement Position").DataSource((IEnumerable<Object>)ViewData["placement"]).Fields(new DropDownListFieldSettings { Text = "text", Value = "id" }).Render()
                     </td>
                 </tr>
 
@@ -36,7 +36,7 @@
                         <div class="userselect">ShowOn</div>
                     </td>
                     <td style="width: 50%;padding : 5px">
-                        @Html.EJS().DropDownList("showOn").Index(1).Change("showOnChange").Placeholder("ShowOn Position").DataSource((IEnumerable<Object>)ViewBag.showon).Fields(new DropDownListFieldSettings { Text = "text", Value = "id" }).Render()
+                        @Html.EJS().DropDownList("showOn").Index(1).Change("showOnChange").Placeholder("ShowOn Position").DataSource((IEnumerable<Object>)ViewData["showon"]).Fields(new DropDownListFieldSettings { Text = "text", Value = "id" }).Render()
                     </td>
                 </tr>
             </tbody>

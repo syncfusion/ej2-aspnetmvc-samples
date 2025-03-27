@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: MarkerClustering
         public ActionResult MarkerClustering()
         {
-            ViewBag.shapeData = this.GetWorldMap();
+            ViewData["shapeData"] = this.GetWorldMap();
             string population = System.IO.File.ReadAllText(Server.MapPath("~/App_Data/MapData/ClusterData.js"));
             object datasrc = JsonConvert.DeserializeObject(population, typeof(object));
             MapsMarker marker = new MapsMarker();
@@ -36,7 +36,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
             marker.TooltipSettings = new MapsTooltipSettings { Visible = true, ValuePath = "area", Template ="#template" };
             List<MapsMarker> markerSettings = new List<MapsMarker>();
             markerSettings.Add(marker);
-            ViewBag.markerSettings = markerSettings;
+            ViewData["markerSettings"] = markerSettings;
             return View(); ;
         }
     }

@@ -35,10 +35,10 @@ namespace EJ2MVCSampleBrowser.Controllers
                 new listDatas {Id="4", Text = "React", Pic = "react", Description = "React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”. It can also render on the server using Node." },
                 new listDatas {Id="5", Text = "Vue", Pic = "vue", Description = "A progressive framework for building user interfaces. It is incrementally adoptable. The core library is focused on the view layer only and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries." }
             };
-            ViewBag.ListData = List;
-            ViewBag.ListToolItems = popItems;
-            ViewBag.HtmlAttribute = HtmlAttribute;
-            ViewBag.ListTemplate = listTemplate;
+            ViewData["ListData"] = List;
+            ViewData["ListToolItems"] = popItems;
+            ViewData["HtmlAttribute"] = HtmlAttribute;
+            ViewData["ListTemplate"] = listTemplate;
             return View();
         }
         public class listDatas

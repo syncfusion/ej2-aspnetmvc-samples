@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Taskbar Template";
+    ViewData["Title"] = "Taskbar Template";
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @(Html.EJS().Gantt("TaskbarTemplate").DataSource((IEnumerable<object>)ViewBag.DataSource).DateFormat("MM/dd/yyyy hh:mm ss a")
+        @(Html.EJS().Gantt("TaskbarTemplate").DataSource((IEnumerable<object>)ViewData["DataSource"]).DateFormat("MM/dd/yyyy hh:mm ss a")
     .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate")
     .Progress("Progress").Dependency("Predecessor"))
     .Columns(col =>
@@ -71,32 +71,27 @@
             border: 1px solid #3f51b5;
         }
 
-
-
         .moments, .face-mask, .oscar {
             position: relative;
             top: 14px;
             left: 5px;
             padding-right: 4px;
         }
-
-        .e-milestone-top {
-            border-bottom-color: #7ab748 !important;
-            border-bottom: 1px solid #3f51b5;
-        }
-
-        .e-milestone-bottom {
-            border-top-color: #7ab748 !important;
-            border-top: 1px solid #3f51b5;
-        }
     </style>
     <script type="text/x-jsrender" id="milestone">
         <div style="margin-top=-7px;">
-            <div class="e-gantt-milestone" style="position:absolute;">
-                <img class="moments" height="24" width="48" src="@Url.Content("~/Content/gantt/images/moments.svg")" />
-                <div class="e-milestone-top" style="border-right-width:26px; margin-top: -24px;border-left-width:26px;border-bottom-width:26px;"></div>
-                <div class="e-milestone-bottom" style="top:26px;border-right-width:26px; border-left-width:26px; border-top-width:26px;"></div>
-            </div>
+            <div style="position:absolute; left: 3px;top: 4px">
+                <img class="moments" 
+                    height="24" 
+                    width="48" 
+                    style="z-index:1;left:-3px;top:12px" 
+                    role="presentation" 
+                    src="@Url.Content("~/Content/gantt/images/moments.svg")" 
+                    alt="Moments svg"/>
+                <div class="e-gantt-milestone" 
+                    style="width:41px; height:41px; transform: rotate(45deg); background-color: #7ab748 !important; border: 0;left:-3px;top:3px">
+                </div>
+              </div>
         </div>
     </script>
     <script type="text/x-jsrender" id="childtask">

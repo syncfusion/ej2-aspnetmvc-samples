@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             ScheduleData data = new ScheduleData();
             List<ScheduleData.ResourceData> resourceData = data.GetResourceData();
             List<ScheduleData.ResourceData> timelineResourceData = data.GetTimelineResourceData();
-            ViewBag.datasource = resourceData.Concat(timelineResourceData);
+            ViewData["datasource"] = resourceData.Concat(timelineResourceData);
 
             List<ResourceDataSourceModel> categories = new List<ResourceDataSourceModel>();
             categories.Add(new ResourceDataSourceModel { text = "Nancy", id = 1, groupId = 1, color = "#df5286" });
@@ -28,10 +28,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             categories.Add(new ResourceDataSourceModel { text = "Smith", id = 4, groupId = 2, color = "#5978ee" });
             categories.Add(new ResourceDataSourceModel { text = "Michael", id = 5, groupId = 3, color = "#df5286" });
             categories.Add(new ResourceDataSourceModel { text = "Root", id = 6, groupId = 3, color = "#00bdae" });
-            ViewBag.Categories = categories;
+            ViewData["Categories"] = categories;
 
-            ViewBag.Resources = new string[] { "Categories" };
-            ViewBag.workDays = new int[] { 0, 1, 2, 3, 4, 5 };
+            ViewData["Resources"] = new string[] { "Categories" };
+            ViewData["workDays"] = new int[] { 0, 1, 2, 3, 4, 5 };
             return View();
         }
     }

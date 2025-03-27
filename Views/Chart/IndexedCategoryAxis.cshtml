@@ -13,7 +13,7 @@
             .Width(2)
             .Opacity(1)
             .Marker(mr=>mr.Visible(false).Width(10).Height(10).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)))
-            .DataSource(ViewBag.GDP_2015).Add();
+            .DataSource(ViewData["GDP_2015"]).Add();
         sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
             .Name("2016")
             .XName("Country")
@@ -21,7 +21,7 @@
             .Width(2)
             .Opacity(1)
             .Marker(mr => mr.Visible(false).Width(10).Height(10).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)))
-            .DataSource(ViewBag.GDP_2016).Add();
+            .DataSource(ViewData["GDP_2016"]).Add();
     })
       .PrimaryXAxis(xaxis =>
          xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
@@ -74,10 +74,10 @@
     }
 </style>
  @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
             args.chart.series[0].marker.dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '11px';

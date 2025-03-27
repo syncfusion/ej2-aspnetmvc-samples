@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult DefaultExporting()
         {
             var employee = ExportEmployeeDetails.GetAllRecords();
-            ViewBag.datasource = employee;
+            ViewData["datasource"] = employee;
             return View();
         }
     }

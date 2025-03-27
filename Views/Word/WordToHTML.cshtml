@@ -1,5 +1,5 @@
 @using Syncfusion.EJ2
-@{ViewBag.Title = "    Essential DocIO (Word) : Import, Word to HTML : Syncfusion";}
+@{ViewData["Title"] = "    Essential DocIO (Word) : Import, Word to HTML : Syncfusion";}
 @section ControlsSection{
     <div class="control-section">
         @{Html.BeginForm("WordToHTML", "Word", FormMethod.Post, new { enctype = "multipart/form-data" });
@@ -17,7 +17,7 @@
                     <div style="margin-top: 8px">
                         <input id="generate" name="Button" class="e-btn" type="submit" value="Convert to HTML" style="width:170px; text-transform:capitalize" />
                         <div class="text-danger">
-                            @ViewBag.Message
+                            @ViewData["Message"]
                         </div>
                     </div>
                 </div>

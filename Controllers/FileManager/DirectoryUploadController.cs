@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             {
                 text = "Files"
             });
-            ViewBag.datasource = items;
+            ViewData["datasource"] = items;
             return View();
         }
     }

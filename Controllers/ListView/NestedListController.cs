@@ -101,7 +101,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ListView
 
             });
 
-            ViewBag.dataSource = listdata;
+            ViewData["dataSource"] = listdata;
             return View();
         }
     }

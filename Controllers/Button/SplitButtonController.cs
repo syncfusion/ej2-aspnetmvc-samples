@@ -38,7 +38,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Button
                 text = "Paste as Hyperlink",
                 iconCss = "e-btn-icons e-paste-hyperlink"
             });
-            ViewBag.datasource = items;
+            ViewData["datasource"] = items;
             return View();
         }
     }

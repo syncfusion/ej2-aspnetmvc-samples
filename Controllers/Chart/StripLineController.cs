@@ -37,7 +37,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                new StripLineChartData { X = new DateTime(2023, 5, 14), Wind = 5 },
                new StripLineChartData { X = new DateTime(2023, 5, 15), Wind = 8 }
             };
-            ViewBag.WeatherReportsA = WeatherReportsA;
+            ViewData["WeatherReportsA"] = WeatherReportsA;
             List<StripLineChartData> WeatherReportsB = new List<StripLineChartData>
             {
                 new StripLineChartData { X = new DateTime(2023, 5, 1), Gust = 30 },
@@ -56,7 +56,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new StripLineChartData { X = new DateTime(2023, 5, 14), Gust = 10 },
                 new StripLineChartData { X = new DateTime(2023, 5, 15), Gust = 15 }
             };
-            ViewBag.WeatherReportsB = WeatherReportsB;
+            ViewData["WeatherReportsB"] = WeatherReportsB;
             return View();
         }
         public class StripLineChartData

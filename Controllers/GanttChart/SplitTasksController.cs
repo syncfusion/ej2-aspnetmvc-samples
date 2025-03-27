@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Gantt
         public ActionResult SplitTasks()
         {
-            ViewBag.DataSource = GanttData.SplitTasksData();
+            ViewData["DataSource"] = GanttData.SplitTasksData();
             return View();
         }
     }

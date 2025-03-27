@@ -206,6 +206,7 @@
             </linearGradient>
         </defs>
     </svg>
+    <script src="~/Scripts/StockChartData/theme-color.js"></script>
     <script>
         var data = window.aapl;
         var load = function (args) {
@@ -223,8 +224,7 @@
                 crosshairTooltip: { enable: false },
                 majorTickLines: { color: 'transparent', height: 0 }
             };
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            var selectedTheme = loadStockChartTheme(args);
             args.stockChart.series[0].fill = 'url(#' + (selectedTheme.replace(/5.3/i, '5')).toLowerCase() + '-gradient-chart)';
         }
     </script>

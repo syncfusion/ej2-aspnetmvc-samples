@@ -22,17 +22,17 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult Clipboard()
         {
             var treeData = TreeGridItems.GetTreeData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "alertBtnClick", ButtonModel = new customButtonModel() { content = "OK", isPrimary = true } });
-            ViewBag.alertbutton = buttons;
+            ViewData["alertbutton"] = buttons;
             List<Object> dropData = new List<object>() {
                 new { id = "Parent", mode = "Parent" },
                 new { id = "Child", mode = "Child" },
                 new { id = "Both", mode = "Both" },
                 new { id = "None", mode = "None" }
             };
-            ViewBag.dropdata = dropData;
+            ViewData["dropdata"] = dropData;
             return View();
         }
         public class customButtonModel

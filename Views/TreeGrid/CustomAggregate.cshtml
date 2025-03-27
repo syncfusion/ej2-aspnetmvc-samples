@@ -4,18 +4,18 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "CustomAggregate";
+    ViewData["Title"] = "CustomAggregate";
 }
 
 @*custom code end*@
 
 @section ControlsSection{
     <div class="control-section">
-        @(Html.EJS().TreeGrid("CustomAggregate").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+        @(Html.EJS().TreeGrid("CustomAggregate").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
                     {
                         col.Field("ID").HeaderText("Order ID").Width(60).TextAlign(TextAlign.Right).Add();
                         col.Field("Name").HeaderText("Shipment Name").Width(170).Add();
-                        col.Field("Category").HeaderText("Category").Width(250).Add();
+                        col.Field("Category").HeaderText("Category").Width(260).MinWidth(260).Add();
                         col.Field("Units").HeaderText("Units").TextAlign(TextAlign.Right).Width(60).Add();
                         col.Field("UnitPrice").HeaderText("Unit Price").TextAlign(TextAlign.Right).Width(85).Format("C0").Add();
                         col.Field("Units").HeaderText("Units").TextAlign(TextAlign.Right).Format("C0").Width(90).Add();

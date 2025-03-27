@@ -1,6 +1,6 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Events";
+    ViewData["Title"] = "Events";
 }
 
 @section ControlsSection{
@@ -9,7 +9,7 @@
     <div class="control-wrapper">
         <div class="control-section">
 
-            @Html.EJS().Grid("Events").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowGrouping().AllowReordering().Columns(col =>
+            @Html.EJS().Grid("Events").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowGrouping().AllowReordering().Columns(col =>
 {
 
     col.Field("CategoryName").HeaderText("Category Name").Width("170").Add();

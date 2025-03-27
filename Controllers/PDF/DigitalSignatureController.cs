@@ -100,7 +100,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                 }
                 else 
                 {
-                   ViewBag.lab = "NOTE: Fill all fields and then create PDF";
+                   ViewData["lab"] = "NOTE: Fill all fields and then create PDF";
                    return View();
                 }
             }

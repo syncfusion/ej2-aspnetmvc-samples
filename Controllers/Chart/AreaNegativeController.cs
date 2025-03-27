@@ -43,9 +43,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new AreaNegativeChartData { Vegetable = new DateTime(2020, 01, 01),   Price = 4000 },
                 new AreaNegativeChartData { Vegetable = new DateTime(2021, 01, 01), Price = 1000 }
             };
-            ViewBag.MaryValues = MaryValues;
-            ViewBag.PatriciaValues = PatriciaValues;
-            ViewBag.LindaValues = LindaValues;
+            ViewData["MaryValues"] = MaryValues;
+            ViewData["PatriciaValues"] = PatriciaValues;
+            ViewData["LindaValues"] = LindaValues;
             return View();
         }
         public class AreaNegativeChartData

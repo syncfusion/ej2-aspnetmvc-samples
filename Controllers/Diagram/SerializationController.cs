@@ -117,8 +117,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             connectors.Add(new DiagramConnector() { Id = "connector6", SourceID = "Hit", TargetID = "Relay" });
             connectors.Add(new DiagramConnector() { Id = "connector7", SourceID = "Relay", TargetID = "Alarm" });
 
-            ViewBag.nodes = nodes;
-            ViewBag.connectors = connectors;
+            ViewData["nodes"] = nodes;
+            ViewData["connectors"] = connectors;
 
             List<DiagramNode> flowShapes = new List<DiagramNode>();
             flowShapes.Add(new DiagramNode() { Id = "Terminator", Shape = new { type = "Flow", shape = "Terminator" } });
@@ -198,17 +198,17 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             palettes.Add(new SymbolPalettePalette() { Id = "flow", Expanded = true, Symbols = flowShapes, IconCss = "shapes", Title = "Flow Shapes" });
             palettes.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = paletteConnectors, IconCss = "shapes", Title = "Connectors" });
 
-            ViewBag.Palette = palettes;
+            ViewData["Palette"] = palettes;
 
-            ViewBag.Spconnectors = paletteConnectors;
+            ViewData["Spconnectors"] = paletteConnectors;
 
             double[] intervals = { 1, 9, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75 };
             DiagramGridlines grIdLines = new DiagramGridlines()
             { LineColor = "#e0e0e0", LineIntervals = intervals };
-            ViewBag.gridLines = grIdLines;
+            ViewData["gridLines"] = grIdLines;
 
             DiagramMargin margin = new DiagramMargin() { Left = 15, Right = 15, Bottom = 15, Top = 15 };
-            ViewBag.margin = margin;
+            ViewData["margin"] = margin;
 
             List<ToolbarItem> items = new List<ToolbarItem>();
             {
@@ -218,7 +218,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 items.Add(new ToolbarItem { Type = ItemType.Separator });
                 items.Add(new ToolbarItem { PrefixIcon = "e-ddb-icons e-open", Text = "Load", TooltipText = "Load"});
             }
-            ViewBag.tbItems = items;
+            ViewData["tbItems"] = items;
             return View();
         }
     }

@@ -18,8 +18,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: ContextMenu
         public ActionResult ContextMenu()
         {
-            ViewBag.DataSource = GanttData.EditingData();
-            ViewBag.Resources = GanttData.EditingResources();
+            ViewData["DataSource"] = GanttData.EditingData();
+            ViewData["Resources"] = GanttData.EditingResources();
             return View();
         }
     }

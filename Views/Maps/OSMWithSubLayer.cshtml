@@ -15,7 +15,7 @@
 			new Syncfusion.EJ2.Maps.MapsLayer
 			{
 			Type = Syncfusion.EJ2.Maps.Type.SubLayer,
-			ShapeData = ViewBag.shapeData,
+			ShapeData = ViewData["shapeData"],
 			ShapeSettings = new MapsShapeSettings{ Fill="#5100a3", Opacity = 0.4 }
 			}
 			}).Render()

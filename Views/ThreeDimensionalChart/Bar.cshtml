@@ -1,12 +1,12 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
 
         @Html.EJS().Chart3D("container").EnableRotation(true).Rotation(22).Depth(100).Height("400").Title("GDP Percentage by Country in 2017").PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.BetweenTicks)
    ).Series(series =>
         {
-            series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Bar).DataSource(ViewBag.ChartData).XName("X").YName("Y").Name("GDP").ColumnSpacing(0.1).Add();
-            series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Bar).DataSource(ViewBag.ChartData).XName("X").YName("Y1").Name("Share in World's GDP").ColumnSpacing(0.1).Add();
+            series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Bar).DataSource(ViewData["ChartData"]).XName("X").YName("Y").Name("GDP").ColumnSpacing(0.1).Add();
+            series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Bar).DataSource(ViewData["ChartData"]).XName("X").YName("Y1").Name("Share in World's GDP").ColumnSpacing(0.1).Add();
         }).PrimaryYAxis(py => py.LabelFormat("{value}%").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
         ).Tooltip(tt => tt.Enable(true)
         ).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
@@ -19,12 +19,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/three-dimensional-chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() +
-                selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            load3DChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? '100%' : '70%';
             args.chart.primaryYAxis.maximum = ej.base.Browser.isDevice ? 8 : 7;
             args.chart.primaryYAxis.interval = ej.base.Browser.isDevice ? 2 : 1;

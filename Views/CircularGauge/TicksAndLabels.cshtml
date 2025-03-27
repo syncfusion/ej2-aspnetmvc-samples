@@ -33,7 +33,7 @@
                         </td>
                         <td>
                             <div style='margin-top: -5px;height : 30px'>
-                                @Html.EJS().DropDownList("Ticks").Index(0).Width("120%").DataSource((IEnumerable<object>)ViewBag.ticks).Value("Major Ticks").Change("valueChange").Render()
+                                @Html.EJS().DropDownList("Ticks").Index(0).Width("120%").DataSource((IEnumerable<object>)ViewData["ticks"]).Value("Major Ticks").Change("valueChange").Render()
                             </div>
                         </td>
                     </tr>
@@ -43,7 +43,7 @@
                         </td>
                         <td>
                             <div style='margin-top: -5px;height : 30px'>
-                                @Html.EJS().DropDownList("TickPosition").Index(0).Width("120%").DataSource((IEnumerable<object>)ViewBag.tickPosition).Value("Inside").Change("tickPositionValueChange").Render()
+                                @Html.EJS().DropDownList("TickPosition").Index(0).Width("120%").DataSource((IEnumerable<object>)ViewData["tickPosition"]).Value("Inside").Change("tickPositionValueChange").Render()
                             </div>
                         </td>
                     </tr>
@@ -53,7 +53,7 @@
                         </td>
                         <td>
                             <div style='margin-top: -5px;height : 30px'>
-                                @Html.EJS().DropDownList("LabelPosition").Index(0).Width("120%").DataSource((IEnumerable<object>)ViewBag.labelPosition).Value("Outside").Change("labelPositionValueChange").Render()
+                                @Html.EJS().DropDownList("LabelPosition").Index(0).Width("120%").DataSource((IEnumerable<object>)ViewData["labelPosition"]).Value("Outside").Change("labelPositionValueChange").Render()
                             </div>
                         </td>
                     </tr>

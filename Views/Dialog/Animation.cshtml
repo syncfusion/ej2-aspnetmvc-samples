@@ -20,7 +20,7 @@
                 @Html.EJS().Button("FlipYRight").CssClass("e-outline").IsPrimary(true).Content("FlipY Right").Render()
             </div>
 
-            @Html.EJS().Dialog("animationDialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.Zoom }).Header("Animation Dialog").Created("created").ContentTemplate(@<div><span>The dialog is configured with animation effect. It is opened or closed with 'Zoom In or Out' animation.</span></div>).IsModal(true).ShowCloseIcon(true).CloseOnEscape(true).Width("285px").Target("#target").Buttons(ViewBag.DefaultButton).Render()
+            @Html.EJS().Dialog("animationDialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.Zoom }).Header("Animation Dialog").Created("created").ContentTemplate(@<div><span>The dialog is configured with animation effect. It is opened or closed with 'Zoom In or Out' animation.</span></div>).IsModal(true).ShowCloseIcon(true).CloseOnEscape(true).Width("285px").Target("#target").Buttons((List<DialogDialogButton>)ViewData["DefaultButton"]).Render()
 
         </div>
     </div>

@@ -21,10 +21,10 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult DrillDown()
         {
-            ViewBag.data = new PivotTableData().GetPivot_Data();
-            ViewBag.drillDownOptions = GetDrillOptions();
-            ViewBag.drillDownFields = GetFields();
-            ViewBag.drillDownValues = new List<object>();
+            ViewData["data"] = new PivotTableData().GetPivot_Data();
+            ViewData["drillDownOptions"] = GetDrillOptions();
+            ViewData["drillDownFields"] = GetFields();
+            ViewData["drillDownValues"] = new List<object>();
             return View();
         }
         public List<DrillDownOptions> GetDrillOptions()

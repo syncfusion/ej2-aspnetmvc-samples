@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult GroupingWithCheckBox()
         {
-            ViewBag.data = new Vegetables().VegetablesList();
+            ViewData["data"] = new Vegetables().VegetablesList();
             return View();
         }
     }

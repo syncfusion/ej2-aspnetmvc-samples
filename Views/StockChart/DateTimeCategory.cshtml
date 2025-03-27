@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 <script src="~/Scripts/StockChartData/datetime-category.js"></script>
 @section ControlsSection{
     @*custom code start*@
@@ -22,12 +22,11 @@
         .ChartArea(area => area.Border(br=>br.Width(0)))
         .Render())
     </div>
+    <script src="~/Scripts/StockChartData/theme-color.js"></script>
     <script>
         var data = window.datetime;
         var load = function (args) {
-            let selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadStockChartTheme(args);
         }
     </script>
 }

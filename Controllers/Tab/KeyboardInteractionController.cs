@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Tab
             adaptiveItems.Add(new TabItem { Header = new TabHeader { Text = "ASP.NET MVC" }, Content = "The ASP.NET MVC is a web application framework developed by Microsoft, which implements the model–view–controller(MVC) pattern. It is open - source software, apart from the ASP.NET Web Forms component which is proprietary. In the later versions of ASP.NET, ASP.NET MVC, ASP.NET Web API, and ASP.NET Web Pages(a platform using only Razor pages) will merge into a unified MVC 6. The project is called ASP.NET vNext." });
             adaptiveItems.Add(new TabItem { Header = new TabHeader { Text = "JavaScript" }, Content = "JavaScript (JS) is an interpreted computer programming language. It was originally implemented as part of web browsers so that client - side scripts could interact with the user, control the browser, communicate asynchronously, and alter the document content that was displayed. More recently, however, it has become common in both game development and the creation of desktop applications." });
 
-            ViewBag.adaptiveItems = adaptiveItems;
+            ViewData["adaptiveItems"] = adaptiveItems;
             return View();
         }
     }

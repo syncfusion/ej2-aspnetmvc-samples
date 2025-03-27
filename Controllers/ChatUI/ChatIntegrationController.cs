@@ -90,107 +90,120 @@ namespace EJ2MVCSampleBrowser.Controllers.ChatUI
                 }
             };
 
+            var IntegrationMessageUser1 = new Author { id = "user1", user = "Reena", avatarUrl = "./../Content/chatui/images/reena.png" };
+            var IntegrationMessageUser2 = new Author { id = "user2", user = "Albert", avatarUrl = "./../Content/chatui/images/andrew.png" };
+
             IntegrationMessagedata = new List<MessageData>
             {
                 new MessageData
                 {
-                    author = new Author { id = "user1", user = "Reena", avatarUrl = "./../Content/chatui/images/reena.png" },
+                    author = IntegrationMessageUser1,
                     text = "Hey, I'm having trouble with my computer. It keeps freezing."
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user2", user = "Albert", avatarUrl = "./../Content/chatui/images/andrew.png" },
+                    author = IntegrationMessageUser2,
                     text = "Oh, that's annoying. Have you tried restarting it?"
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user1", user = "Reena", avatarUrl = "./../Content/chatui/images/reena.png" },
+                    author = IntegrationMessageUser1,
                     text = "Yeah, I did, but it didn't help."
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user2", user = "Albert", avatarUrl = "./../Content/chatui/images/andrew.png" },
+                    author = IntegrationMessageUser2,
                     text = "Sometimes, outdated software or malware can cause issues."
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user1", user = "Reena", avatarUrl = "./../Content/chatui/images/reena.png" },
+                    author = IntegrationMessageUser1,
                     text = "Okay, I'll try that. Thanks for the help!"
                 }
             };
+
+            var BotMessageUser = new Author { id = "bot", user = "Bot", avatarUrl = "./../Content/chatui/images/bot.png" };
 
             BotMessagedata = new List<MessageData>
             {
                 new MessageData
                 {
-                    author = new Author { id = "bot", user = "Bot", avatarUrl = "./../Content/chatui/images/bot.png" },
+                    author = BotMessageUser,
                     text = "Hello Sam, I am a virtual assistant."
                 },
                 new MessageData
                 {
-                    author = new Author { id = "bot", user = "Bot", avatarUrl = "./../Content/chatui/images/bot.png" },
+                    author = BotMessageUser,
                     text = "Which room are you looking to decorate?"
                 }
             };
+
+            var WalterMessageUser1 = new Author { id = "user2", user = "Sam", avatarUrl = "./../Content/chatui/images/laura.png" };
+            var WalterMessageUser2 = new Author { id = "user5", user = "Charlie", avatarUrl = "./../Content/chatui/images/charlie.png" };
 
             WalterMessagedata = new List<MessageData>
             {
                 new MessageData
                 {
-                    author = new Author { id = "user2", user = "Sam", avatarUrl = "./../Content/chatui/images/laura.png" },
+                    author = WalterMessageUser1,
                     text = "Hey Charlie, have you thought about where you want to go for our vacation?"
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user5", user = "Charlie", avatarUrl = "./../Content/chatui/images/charlie.png" },
+                    author = WalterMessageUser2,
                     text = "Hi Sam! I was thinking about going to Bali. I've heard the beaches are beautiful and there's so much to do."
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user2", user = "Sam", avatarUrl = "./../Content/chatui/images/laura.png" },
+                    author = WalterMessageUser1,
                     text = "Bali sounds amazing! I've always wanted to try surfing. Do you know any good places to stay?"
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user5", user = "Charlie", avatarUrl = "./../Content/chatui/images/charlie.png" },
+                    author = WalterMessageUser2,
                     text = "Yes, I found a few nice resorts and some budget-friendly options too. I'll send you the links."
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user2", user = "Sam", avatarUrl = "./../Content/chatui/images/laura.png" },
+                    author = WalterMessageUser1,
                     text = "Great! Let's finalize our plans this weekend."
                 }
             };
+
+            var LauraMessageUser1 = new Author { id = "user1", user = "Laura Callahan", avatarUrl = "./../Content/chatui/images/laura.png" };
+            var LauraMessageUser2 = new Author { id = "user3", user = "Sam", avatarUrl = "./../Content/chatui/images/laura.png" };
 
             LauraMessagedata = new List<MessageData>
             {
                 new MessageData
                 {
-                    author = new Author { id = "user1", user = "Laura Callahan", avatarUrl = "./../Content/chatui/images/laura.png" },
+                    author = LauraMessageUser1,
                     text = "Hey Sam, can we have a quick meeting tomorrow morning to discuss the new project?"
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user3", user = "Sam", avatarUrl = "./../Content/chatui/images/laura.png" },
+                    author = LauraMessageUser2,
                     text = "Sure, what time works best for you?"
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user1", user = "Laura Callahan", avatarUrl = "./../Content/chatui/images/laura.png" },
+                    author = LauraMessageUser1,
                     text = "10 AM?"
                 },
                 new MessageData
                 {
-                    author = new Author { id = "user3", user = "Sam", avatarUrl = "./../Content/chatui/images/laura.png" },
+                    author = LauraMessageUser2,
                     text = "10 AM works for me."
                 }
             };
+
+            var TeamsMessageUser1 = new Author { id = "team", user = "Admin" };
 
             TeamsMessagedata = new List<MessageData>
             {
                 new MessageData
                 {
-                    author = new Author { id = "team", user = "Admin" },
+                    author = TeamsMessageUser1,
                     text = "Hi, everyone! Welcome to the new web team."
                 },
                 new MessageData
@@ -210,7 +223,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ChatUI
                 },
                 new MessageData
                 {
-                    author = new Author { id = "team", user = "Admin" },
+                    author = TeamsMessageUser1,
                     text = "Charlie, we are planning for a new portal launch, hence grouping all in one place."
                 }
             };
@@ -223,16 +236,16 @@ namespace EJ2MVCSampleBrowser.Controllers.ChatUI
                     text = "Hi, are you available?"
                 }
             };
-            ViewBag.IntegrationMessagedata = IntegrationMessagedata;
-            ViewBag.BotMessagedata = BotMessagedata;
-            ViewBag.WalterMessagedata = WalterMessagedata;
-            ViewBag.LauraMessagedata = LauraMessagedata;
-            ViewBag.TeamsMessagedata = TeamsMessagedata;
-            ViewBag.SuyamaMessagedata = SuyamaMessagedata;
-            ViewBag.IntegrationListTemplateData = IntegrationListTemplateData;
-            ViewBag.HeaderToolbar = HeaderToolbar;
-            ViewBag.BotData = BotData;
-            ViewBag.ChatIntegrationSuggestions = ChatIntegrationSuggestions;
+            ViewData["IntegrationMessagedata"] = IntegrationMessagedata;
+            ViewData["BotMessagedata"] = BotMessagedata;
+            ViewData["WalterMessagedata"] = WalterMessagedata;
+            ViewData["LauraMessagedata"] = LauraMessagedata;
+            ViewData["TeamsMessagedata"] = TeamsMessagedata;
+            ViewData["SuyamaMessagedata"] = SuyamaMessagedata;
+            ViewData["IntegrationListTemplateData"] = IntegrationListTemplateData;
+            ViewData["HeaderToolbar"] = HeaderToolbar;
+            ViewData["BotData"] = BotData;
+            ViewData["ChatIntegrationSuggestions"] = ChatIntegrationSuggestions;
             return View();
         }
 

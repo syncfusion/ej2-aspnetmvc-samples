@@ -63,7 +63,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             };
             pointerCollections.Add(pointerLineTwo);
 
-            ViewBag.Pointers = pointerCollections;
+            ViewData["Pointers"] = pointerCollections;
 
             List<CircularGaugeRange> rangeCollections = new List<CircularGaugeRange>();
             CircularGaugeRange poorRange = new CircularGaugeRange();
@@ -116,7 +116,7 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             excellentRange.LegendText = "Excellent";
             rangeCollections.Add(excellentRange);
 
-            ViewBag.Ranges = rangeCollections;
+            ViewData["Ranges"] = rangeCollections;
 
             List<CircularGaugeAnnotation> annotations = new List<CircularGaugeAnnotation>();
             CircularGaugeAnnotation pointerAnnotationValue = new CircularGaugeAnnotation();
@@ -126,9 +126,9 @@ namespace EJ2MVCSampleBrowser.Controllers.ArcGauge
             pointerAnnotationValue.ZIndex = "1";
             annotations.Add(pointerAnnotationValue);
 
-            ViewBag.Annotations = annotations;
+            ViewData["Annotations"] = annotations;
 
-            ViewBag.labelFont = new CircularGaugeFont
+            ViewData["labelFont"] = new CircularGaugeFont
             {
                 Size = "12px",
                 Opacity = 1,

@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "InlineEditing";
+    ViewData["Title"] = "InlineEditing";
 }
 
 @*custom code end*@
@@ -25,12 +25,13 @@
 
         }
         @(Html.EJS().TreeGrid("Editing")
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .EditSettings(edit =>
             {
                 edit.AllowAdding(true);
                 edit.AllowDeleting(true);
                 edit.AllowEditing(true);
+                edit.AllowEditOnDblClick(false);
                 edit.Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row);
             })
             .Columns(col =>
@@ -42,7 +43,8 @@
                     .ValidationRules(new { required = true }).Add();
                 col.Field("StartDate").HeaderText("Start Date").Width(140).Format("yMd")
                     .EditType("datepickeredit")
-                    .ValidationRules(new { date = true })
+                    .ValidationRules(new { required = true, date = "M/d/yyyy" })
+                    .Edit(new { @params = new { format = "M/d/yyyy" } })
                     .TextAlign(TextAlign.Right).Add();
                 col.Field("Duration").HeaderText("Duration").Width(130).EditType("numericedit")
                     .ValidationRules(dict)

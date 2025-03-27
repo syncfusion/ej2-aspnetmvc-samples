@@ -19,19 +19,19 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult Reorder()
         {
             var DataSource = EmployeeView.GetAllRecords();
-            ViewBag.dataSource = DataSource;
+            ViewData["dataSource"] = DataSource;
             List<object> dd = new List<object>();
             dd.Add(new { text = "Employee ID", value = "EmployeeID" });
             dd.Add(new { text = "Name", value = "FirstName" });
             dd.Add(new { text = "Title", value = "Title" });
             dd.Add(new { text = "Hire Date", value = "HireDate" });
-            ViewBag.columns = dd;
+            ViewData["columns"] = dd;
             List<object> index = new List<object>();
             index.Add(new { text = "1", value = "0" });
             index.Add(new { text = "2", value = "1" });
             index.Add(new { text = "3", value = "2" });
             index.Add(new { text = "4", value = "3" });
-            ViewBag.index = index;
+            ViewData["index"] = index;
             return View();
         }
     }

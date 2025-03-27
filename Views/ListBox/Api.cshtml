@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div id="listbox-control1">
-            @Html.EJS().ListBox("listbox").DataSource((IEnumerable<object>)ViewBag.vegetableData).Fields(new Syncfusion.EJ2.DropDowns.ListBoxFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).Render()
+            @Html.EJS().ListBox("listbox").DataSource((IEnumerable<object>)ViewData["vegetableData"]).Fields(new Syncfusion.EJ2.DropDowns.ListBoxFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">
@@ -16,7 +16,7 @@
                     <td style="width: 50%;padding-top:10px">
                         <div style="max-width: 200px">
                             @Html.EJS().DropDownList("ddl").PopupHeight("200px").Value("None").DataSource(
-                        (IEnumerable<object>)ViewBag.sortOrder).Fields(new DropDownListFieldSettings { Text = "Text" }).Change("orderChange").Render()
+                        (IEnumerable<object>)ViewData["sortOrder"]).Fields(new DropDownListFieldSettings { Text = "Text" }).Change("orderChange").Render()
                         </div>
                     </td>
                 </tr>
@@ -27,7 +27,7 @@
                     <td style="width: 50%;padding-top:10px">
                         <div style="max-width: 200px">
                             @Html.EJS().DropDownList("mode").PopupHeight("200px").Value("Multiple").DataSource(
-                        (IEnumerable<object>)ViewBag.selectionType).Fields(new DropDownListFieldSettings { Text = "Text" }).Change("modeChange").Render()
+                        (IEnumerable<object>)ViewData["selectionType"]).Fields(new DropDownListFieldSettings { Text = "Text" }).Change("modeChange").Render()
                         </div>
                     </td>
                 </tr>

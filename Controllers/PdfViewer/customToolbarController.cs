@@ -80,8 +80,8 @@ namespace EJ2MVCSampleBrowser.Controllers.PdfViewer
 
                 }
             });
-            ViewBag.menuItem = menuItems;
-            ViewBag.signItem = signItems;
+            ViewData["menuItem"] = menuItems;
+            ViewData["signItem"] = signItems;
 
             return View();
         }

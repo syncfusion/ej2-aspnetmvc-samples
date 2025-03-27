@@ -27,7 +27,7 @@ namespace EJ2MVCSampleBrowser.Controllers.CircularChart3D
                 new PieWithLegendCircularData { X = "Safari",            Y = 19.97, Text = "19.97%" },
                 new PieWithLegendCircularData { X = "Others",            Y = 2.34,  Text = "2.34%"  }
             };
-            ViewBag.ChartData = ChartPoints;
+            ViewData["ChartData"] = ChartPoints;
             return View();
         }
         public class PieWithLegendCircularData

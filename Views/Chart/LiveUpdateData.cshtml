@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Newtonsoft.Json;
 @section ControlsSection{
     <div class="control-section">
@@ -10,7 +10,7 @@
                     .YName("Y")
                     .InnerRadius("65%")
                     .DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).Font(ft => ft.FontWeight("600")).ConnectorStyle(cs => cs.Width(2).Type(Syncfusion.EJ2.Charts.ConnectorType.Line)))
-                    .DataSource(ViewBag.ChartPoints)
+                    .DataSource(ViewData["ChartPoints"])
                     .Add();
             }
             ).EnableBorderOnMouseMove(false).Title("Average Stock Market Prices of Leading Tech Giants"
@@ -18,30 +18,30 @@
             ).LegendSettings(lg => lg.Visible(false)).Load("load").TextRender("textRender").Render())
         </div>
     </div>
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var year = 10;
         var intervalId;
         var yearIndex = 1;
 
         var chartDataSet = [
-            @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChartPoints)),
-            @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChartPoints2)),
-            @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChartPoints3)),
-            @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChartPoints4)),
-            @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChartPoints5)),
-            @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChartPoints6)),
-            @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChartPoints7)),
-            @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChartPoints8)),
-            @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChartPoints9)),
-            @Html.Raw(JsonConvert.SerializeObject(ViewBag.ChartPoints10))
+            @Html.Raw(JsonConvert.SerializeObject(ViewData["ChartPoints"])),
+            @Html.Raw(JsonConvert.SerializeObject(ViewData["ChartPoints2"])),
+            @Html.Raw(JsonConvert.SerializeObject(ViewData["ChartPoints3"])),
+            @Html.Raw(JsonConvert.SerializeObject(ViewData["ChartPoints4"])),
+            @Html.Raw(JsonConvert.SerializeObject(ViewData["ChartPoints5"])),
+            @Html.Raw(JsonConvert.SerializeObject(ViewData["ChartPoints6"])),
+            @Html.Raw(JsonConvert.SerializeObject(ViewData["ChartPoints7"])),
+            @Html.Raw(JsonConvert.SerializeObject(ViewData["ChartPoints8"])),
+            @Html.Raw(JsonConvert.SerializeObject(ViewData["ChartPoints9"])),
+            @Html.Raw(JsonConvert.SerializeObject(ViewData["ChartPoints10"]))
         ];
 
         var load = function (args) {
             year = 10;
             yearIndex = 1;
             args.accumulation.centerLabel.text = "2010";
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.accumulation.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadAccumulationChartTheme(args);
             args.accumulation.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.accumulation.centerLabel.textStyle.size = ej.base.Browser.isDevice ? "25px" : "40px";
             args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "75%";

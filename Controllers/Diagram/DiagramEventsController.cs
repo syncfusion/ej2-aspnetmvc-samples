@@ -115,8 +115,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = SymbolPaletteConnectors, IconCss = "e-ddb-icons e-connector", Title = "Connectors" }
             };
 
-            ViewBag.dataSource = data;
-            ViewBag.Palettes = Palettes;
+            ViewData["dataSource"] = data;
+            ViewData["Palettes"] = Palettes;
             
             return View();
         }

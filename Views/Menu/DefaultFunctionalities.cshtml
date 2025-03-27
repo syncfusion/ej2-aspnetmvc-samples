@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="menu-control">
-            @Html.EJS().Menu("menu").Items(ViewBag.menuItems).Render()
+            @Html.EJS().Menu("menu").Items(ViewData["menuItems"]).Render()
         </div>
     </div>
 }

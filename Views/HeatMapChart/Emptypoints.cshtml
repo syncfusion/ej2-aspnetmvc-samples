@@ -5,21 +5,21 @@
 @section ControlsSection{
     <div class="control-section">
         <div id="container">
-            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Defective Count per 1000 Products from a Manufacturing Unit").TextStyle(ViewBag.textStyle)).XAxis(
+            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Defective Count per 1000 Products from a Manufacturing Unit").TextStyle(ViewData["textStyle"])).XAxis(
             xAxis =>
             {
-                xAxis.Labels(ViewBag.xLabels).TextStyle(ViewBag.labelTextStyle);
+                xAxis.Labels((string[])ViewData["xLabels"]).TextStyle(ViewData["labelTextStyle"]);
             }).YAxis(yaxis =>
             {
-                yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle);
-            }).LegendSettings(legendSettings => legendSettings.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).Width("250px").ShowLabel(true).TextStyle(ViewBag.labelTextStyle)).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
+                yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"]);
+            }).LegendSettings(legendSettings => legendSettings.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).Width("250px").ShowLabel(true).TextStyle(ViewData["labelTextStyle"])).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
             {
                 palette.Color("rgb(172, 213, 242)").Add();
                 palette.Color("rgb(127, 168, 201)").Add();
                 palette.Color("rgb(82, 123, 160)").Add();
                 palette.Color("rgb(37, 78, 119)").Add();
             }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Gradient)).CellSettings(cellSettings =>
-            cellSettings.Border(ViewBag.border).ShowLabel(true).TextStyle(ViewBag.labelTextStyle)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).TooltipRender("tooltipRender").Load("load").DataSource(ViewBag.dataSource).Render()
+            cellSettings.Border(ViewData["border"]).ShowLabel(true).TextStyle(ViewData["labelTextStyle"])).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).TooltipRender("tooltipRender").Load("load").DataSource(ViewData["dataSource"]).Render()
         </div>
     </div>
 

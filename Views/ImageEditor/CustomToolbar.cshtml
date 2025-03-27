@@ -35,7 +35,7 @@
                 </div>
 
                 <div id="imageEditor">
-                    @Html.EJS().ImageEditor("image-editor").Toolbar(ViewBag.imageTool).Created("imageEditorCreated").FileOpened("imageEditorFileOpened").ShowQuickAccessToolbar(false).ShapeChanging("shapeChanging").ShapeChange("shapeChange").Click("click").Render()
+                    @Html.EJS().ImageEditor("image-editor").Toolbar(ViewData["imageTool"]).Created("imageEditorCreated").FileOpened("imageEditorFileOpened").ShowQuickAccessToolbar(false).ShapeChanging("shapeChanging").ShapeChange("shapeChange").Click("click").Render()
                 </div>
 
                 <div id="bottom-toolbarArea">

@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.Schedule
 @using Syncfusion.EJ2.Grids
 
@@ -8,14 +8,14 @@
             <div class="schedule-container">
                 <div class="schedule-content">
                     <h5 style="text-align: center; margin: 0; position: relative; bottom: 10px;">Task Management</h5>
-                    @Html.EJS().Schedule("Schedule").EventDragArea(".content-wrapper").CssClass("grid-schedule").Width("100%").Height("100%").RowAutoHeight(true).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).CurrentView(View.TimelineDay).Views(view => { view.Option(View.TimelineDay).Add(); }).Group(group => group.EnableCompactView(false).Resources(ViewBag.Resources)).Resources(res =>
+                    @Html.EJS().Schedule("Schedule").EventDragArea(".content-wrapper").CssClass("grid-schedule").Width("100%").Height("100%").RowAutoHeight(true).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).CurrentView(View.TimelineDay).Views(view => { view.Option(View.TimelineDay).Add(); }).Group(group => group.EnableCompactView(false).Resources((string[])ViewData["Resources"])).Resources(res =>
                        {
-                           res.DataSource(ViewBag.EmployeeData).Field("TaskId").Title("Employee").Name("Employees").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
-                       }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).DragStop("dragStop").DataBound("onScheduledataBound").Render()
+                           res.DataSource(ViewData["EmployeeData"]).Field("TaskId").Title("Employee").Name("Employees").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
+                       }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).DragStop("dragStop").DataBound("onScheduledataBound").Render()
                 </div>
                 <div class="grid-content">
                     <h5 style="text-align: center; margin: 0; position: relative; bottom: 10px;">Unplanned Tasks</h5>
-                    @Html.EJS().Grid("Grid").Width("280px").CssClass("drag-grid").Height("100%").DataSource((IEnumerable<object>)ViewBag.gridData).AllowSelection().AllowRowDragAndDrop(true).Columns(col =>
+                    @Html.EJS().Grid("Grid").Width("280px").CssClass("drag-grid").Height("100%").DataSource((IEnumerable<object>)ViewData["gridData"]).AllowSelection().AllowRowDragAndDrop(true).Columns(col =>
                     {
                         col.Field("Task").HeaderText("Task").Width(50).Add();
                         col.Field("Duration").HeaderText("Duration").Width(30).Add();

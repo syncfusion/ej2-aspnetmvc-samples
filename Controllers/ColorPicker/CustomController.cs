@@ -51,10 +51,10 @@ namespace EJ2MVCSampleBrowser.Controllers.ColorPicker
                 "#FF8A65", "#FF7043", "#FF5722"}
             });
 
-            ViewBag.circlePaletteColors = custom[0];
-            ViewBag.squarePaletteColors = custom[1];
-            ViewBag.roundedPaletteColors = custom[2];
-            ViewBag.scrollPaletteColors = custom[3];
+            ViewData["circlePaletteColors"] = custom[0];
+            ViewData["squarePaletteColors"] = custom[1];
+            ViewData["roundedPaletteColors"] = custom[2];
+            ViewData["scrollPaletteColors"] = custom[3];
             return View();
         }
     }

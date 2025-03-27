@@ -12,7 +12,7 @@
 		   }).Add();
 	   }).Ranges(ranges =>
 	   {
-		   ranges.DataSource(ViewBag.ConditionalFormattingData).StartCell("A2").Add();
+		   ranges.DataSource(ViewData["ConditionalFormattingData"]).StartCell("A2").Add();
 	   }).Columns(column =>
 	   {
 		   column.Width(100).Add();

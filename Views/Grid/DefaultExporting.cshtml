@@ -3,7 +3,7 @@
     <div class="col-lg-9 control-section">
         <div class="control-wrapper">
             <div class="control-section">
-                @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSorting().AllowGrouping().AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
+                @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowSorting().AllowGrouping().AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
            {
                col.HeaderText("Employee Image").Template("#template1").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
                col.Field("FirstName").HeaderText("Name").Width("130").Add();
@@ -59,7 +59,7 @@
             if (args.item.id === 'Grid_excelexport') {
                 gridObj.excelExport();
             }
-            if (args.item.id === 'Grid_csvexport') {
+	    if (args.item.id === 'Grid_csvexport') {
                 gridObj.csvExport();
             }
         }
@@ -91,12 +91,10 @@
                 grid.toolbarModule.toolbar.hideItem(2, false);
             }
         };
-        var isInitial = true;
         function gridDataBound(args) {
-            if (isInitial) {
+            if (!this.isInitialLoad) {
                 var grid = document.getElementById("Grid").ej2_instances[0];
                 grid.toolbarModule.toolbar.hideItem(2, true);
-                isInitial = false;
             }
         }
 

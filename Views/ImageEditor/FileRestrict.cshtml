@@ -10,7 +10,7 @@
     });
 }
 @section ControlsSection{
-    <div class="col-lg-12 control-section">
+   <div class="col-lg-12 control-section">
        <div class="ie-file-restrict">
             <div class="e-img-editor-dropdown-container">
                 <label>Size As</label><br />
@@ -34,7 +34,7 @@
         <div class="e-img-editor-sample">
             @Html.EJS().ImageEditor("image-editor").UploadSettings(us => us.MinFileSize(1 * 1024).MaxFileSize(100 * 1024).AllowedExtensions(".jpeg, .jpg, .png, .svg, .webp")).Render()
         </div>
-    </div>
+   </div>
 
    <script>
        var fileExtensionsList = [
@@ -110,7 +110,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            var imageEditorEle = document.getElementById('image-editor');
+        var imageEditorEle = document.getElementById('image-editor');
             if (imageEditorEle) {
                 var imageEditorObj = ej.base.getComponent(imageEditorEle, 'image-editor');
                 if (imageEditorObj) {
@@ -182,10 +182,10 @@
     .control-wrapper {
         height: 100%;
     }
-
     .e-img-editor-dropdown-container #dropdownbtn {
         font-weight: 400;
     }
+
 
     @@media only screen and (max-width: 700px) {
         .e-img-editor-sample {
@@ -201,7 +201,6 @@
             text-align: center;
         }
     }
-
 </style>
 @*custom code end*@
 

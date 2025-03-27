@@ -70,7 +70,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Excel
                    || extension == ".xml" || extension == ".tsv" || extension == ".xlsb")
                     return application.Workbooks.Open(file.InputStream, ExcelOpenType.Automatic);
                 else
-                    ViewBag.Message = string.Format("Please choose Excel format document to convert to PDF");
+                    ViewData["Message"] = string.Format("Please choose Excel format document to convert to PDF");
             }
             else
             {

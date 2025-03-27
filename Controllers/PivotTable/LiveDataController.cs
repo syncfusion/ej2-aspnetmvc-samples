@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult LiveData()
         {
-            ViewBag.sortSettings = new string[] { "Corn", "Rice", "Wheat", "Soybean", "Coffee", "Cocoa" };
+            ViewData["sortSettings"] = new string[] { "Corn", "Rice", "Wheat", "Soybean", "Coffee", "Cocoa" };
             return View();
         }
     }

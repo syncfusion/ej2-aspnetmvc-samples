@@ -42,7 +42,7 @@
                        chip.Text("Large").Enabled(true).Add();
                        chip.Text("Extra large").Enabled(true).Add();
 
-                   }).SelectedChips(ViewBag.filterSelected).Render()
+                   }).SelectedChips(ViewData["filterSelected"]).Render()
             </div>
 
             <div class="chips-headers">Choice Chips</div>
@@ -55,7 +55,7 @@
                   chip.Text("Set a reminder").LeadingIconCss("alarm").Enabled(true).Add();
                   chip.Text("Read my emails").LeadingIconCss("mail").Enabled(true).Add();
                   chip.Text("Play a game").LeadingIconCss("game").Enabled(true).Add();
-              }).SelectedChips(ViewBag.choiceSelected).Render()
+              }).SelectedChips(ViewData["choiceSelected"]).Render()
             </div>
         </div>
     </div>

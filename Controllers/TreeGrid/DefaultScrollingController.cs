@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         // GET: DefaultScrolling
         public ActionResult DefaultScrolling()
         {
-            ViewBag.datasource = TreeGridItems.GetTreeData();
+            ViewData["datasource"] = TreeGridItems.GetTreeData();
             return View();
         }
     }

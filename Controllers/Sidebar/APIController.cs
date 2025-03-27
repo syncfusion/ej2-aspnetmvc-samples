@@ -25,8 +25,8 @@ namespace EJ2MVCSampleBrowser.Controllers
             dataList.Add(new { Type = "Auto", value = "Auto" });
             Dictionary<string, object> HtmlAttribute = new Dictionary<string, object>()
             {   {"class", "default-sidebar" } };
-            ViewBag.HtmlAttribute = HtmlAttribute;
-            ViewBag.Types = dataList;
+            ViewData["HtmlAttribute"] = HtmlAttribute;
+            ViewData["Types"] = dataList;
             return View();
         }
     }

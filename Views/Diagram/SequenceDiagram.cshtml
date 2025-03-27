@@ -1,7 +1,7 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="col-lg-8 control-section sb-property-border" style="width: 100%">
-        @Html.EJS().Diagram("diagram").Created("create").Width("100%").Height("700px").GetConnectorDefaults("connectorDefaults").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Render()
+        @Html.EJS().Diagram("diagram").Created("create").Width("100%").Height("700px").GetConnectorDefaults("connectorDefaults").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render()
     </div>
 
     <script>

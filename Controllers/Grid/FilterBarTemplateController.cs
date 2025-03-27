@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult FilterBarTemplate()
         {
             var product = Product.GetAllRecords();
-            ViewBag.datasource = product;
+            ViewData["datasource"] = product;
             return View();
         }
     }

@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Dialog
         {
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "dlgButtonClick", ButtonModel = new AjaxButtonModel() { content = "More Details", isPrimary = true } });
-            ViewBag.AjaxButton = buttons;
+            ViewData["AjaxButton"] = buttons;
             return View();
         }
     }

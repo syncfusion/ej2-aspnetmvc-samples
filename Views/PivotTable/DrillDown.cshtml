@@ -10,7 +10,7 @@
 <div class="col-lg-8 control-section" style="overflow:auto">
     <div class="content-wrapper">
         @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings =>
-        dataSourceSettings.DataSource((IEnumerable<object>)ViewBag.Data).ExpandAll(false)
+        dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(false)
         .FormatSettings(formatsettings =>
         {
         formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
@@ -48,7 +48,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("expandall").Width("100%").Index(0).DataSource((IEnumerable<object>)ViewBag.drillDownOptions).Change("onOptionChange"
+                        @Html.EJS().DropDownList("expandall").Width("100%").Index(0).DataSource((IEnumerable<object>)ViewData["drillDownOptions"]).Change("onOptionChange"
                         ).Value("rowHeaders").Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
                     </div>
                 </td>
@@ -60,7 +60,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().MultiSelect("expand-fields").DataSource((IEnumerable<Object>)ViewBag.drillDownFields).Mode(VisualMode.CheckBox).ShowDropDownIcon(true
+                        @Html.EJS().MultiSelect("expand-fields").DataSource((IEnumerable<Object>)ViewData["drillDownFields"]).Mode(VisualMode.CheckBox).ShowDropDownIcon(true
                         ).Enabled(true).ShowClearButton(false).EnableSelectionOrder(false).Fields(new MultiSelectFieldSettings { Text = "Field" }).Select("onFieldSelect"
                         ).Removed("onFieldRemoved").Placeholder("Select headers").Render()
                     </div>
@@ -73,7 +73,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().DropDownList("expand-fields-1").Width("100%").Index(0).DataSource((IEnumerable<object>)ViewBag.drillDownFields).Change("multiFieldChange"
+                        @Html.EJS().DropDownList("expand-fields-1").Width("100%").Index(0).DataSource((IEnumerable<object>)ViewData["drillDownFields"]).Change("multiFieldChange"
                         ).Value("Country").Fields(new DropDownListFieldSettings { Text = "Field" }).Placeholder("Select field").Render()
                     </div>
                 </td>
@@ -85,7 +85,7 @@
                 </td>
                 <td>
                     <div>
-                        @Html.EJS().MultiSelect("expand-members").DataSource((IEnumerable<Object>)ViewBag.drillDownValues).Mode(VisualMode.CheckBox).ShowDropDownIcon(true
+                        @Html.EJS().MultiSelect("expand-members").DataSource((IEnumerable<Object>)ViewData["drillDownValues"]).Mode(VisualMode.CheckBox).ShowDropDownIcon(true
                         ).ShowClearButton(false).EnableSelectionOrder(false).Fields(new MultiSelectFieldSettings { Text = "Member" }).Select("onSelect"
                         ).Removed("onRemoved").Open("onOpen").Placeholder("Select headers").Render()
                     </div>

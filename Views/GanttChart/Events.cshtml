@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Events";
+    ViewData["Title"] = "Events";
 }
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
 
-        @(Html.EJS().Gantt("Events").DataSource((IEnumerable<object>)ViewBag.DataSource).Height("450px").HighlightWeekends(true).AllowSelection(true).TreeColumnIndex(1)
+        @(Html.EJS().Gantt("Events").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true).AllowSelection(true).TreeColumnIndex(1)
             .AllowReordering(true).AllowResizing(true).AllowSorting(true).EnableContextMenu(true).ShowColumnMenu(true)
             .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
             .Dependency("Predecessor").Child("SubTasks"))

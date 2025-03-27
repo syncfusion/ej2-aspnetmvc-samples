@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult FrozenAPI()
         {
             var order = OrdersDetails.GetAllRecords();
-            ViewBag.datasource = order;
+            ViewData["datasource"] = order;
             List<object> dd = new List<object>();
             dd.Add(new { name = "Order ID", id = "OrderID" });
             dd.Add(new { name = "Freight", id = "Freight" });
@@ -31,16 +31,16 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
             dd.Add(new { name = "Ship Address", id = "ShipAddress" });
             dd.Add(new { name = "Ship City", id = "ShipCity" });
             dd.Add(new { name = "Ship Country", id = "ShipCountry" });
-            ViewBag.columns = dd;
+            ViewData["columns"] = dd;
             List<object> direction = new List<object>();
             direction.Add(new { name = "Left", id = "Left" });
             direction.Add(new { name = "Right", id = "Right" });
             direction.Add(new { name = "Center", id = "Center" });
              direction.Add(new { name = "Fixed", id = "Fixed" });
-            ViewBag.direction = direction;
+            ViewData["direction"] = direction;
             List<DialogDialogButton> buttons = new List<DialogDialogButton>() { };
             buttons.Add(new DialogDialogButton() { Click = "alertDlgBtnClick", ButtonModel = new DefaultButtonModel() { content = "OK", isPrimary = true } });
-            ViewBag.DefaultButtons = buttons;
+            ViewData["DefaultButtons"] = buttons;
             return View();
         }
         public class DefaultButtonModel

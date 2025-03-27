@@ -4,9 +4,9 @@
 
         @Html.EJS().Chart("container-vertical").Series(series =>
        {
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("Month").YName("AppleSales").Border(br => br.Width(1).Color("#ffffff")).Name("Apple").ColumnWidth(0.6).Width(2).DataSource(ViewBag.ChartPoints).Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("Month").YName("OrangeSales").Border(br => br.Width(1).Color("#ffffff")).Name("Orange").ColumnWidth(0.6).Width(2).DataSource(ViewBag.ChartPoints).Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("Month").YName("Wasteage").Border(br => br.Width(1).Color("#ffffff")).Name("Wastage").ColumnWidth(0.6).Width(2).DataSource(ViewBag.ChartPoints).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("Month").YName("AppleSales").Border(br => br.Width(1).Color("#ffffff")).Name("Apple").ColumnWidth(0.6).Width(2).DataSource(ViewData["ChartPoints"]).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("Month").YName("OrangeSales").Border(br => br.Width(1).Color("#ffffff")).Name("Orange").ColumnWidth(0.6).Width(2).DataSource(ViewData["ChartPoints"]).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("Month").YName("Wasteage").Border(br => br.Width(1).Color("#ffffff")).Name("Wastage").ColumnWidth(0.6).Width(2).DataSource(ViewData["ChartPoints"]).Add();
            
        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0))
        ).PrimaryYAxis(py => py.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
@@ -20,10 +20,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
     </script>

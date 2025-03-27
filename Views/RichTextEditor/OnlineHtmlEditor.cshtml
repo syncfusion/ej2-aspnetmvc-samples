@@ -9,7 +9,7 @@
                     @Html.EJS().Splitter("splitter-rte-online-html-editor").Height("450px").Width("100%").Created("onCreateSplitter").Resizing("OnResizing").PaneSettings(paneItem =>
                     {
                         paneItem.Size("50%").Resizable(true).CssClass("pane1").Min("40%").ContentTemplate(@<div>
-    @Html.EJS().RichTextEditor("defaultRTE").Height("448px").SaveInterval(1).MaxLength(5000).ShowCharCount(true).ToolbarSettings(e => e.Items((object)ViewBag.Tools).Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false)).Value(ViewBag.Value).Created("onCreate").Change("onChange").ActionComplete("updateValue").Render()
+    @Html.EJS().RichTextEditor("defaultRTE").Height("448px").SaveInterval(1).MaxLength(5000).ShowCharCount(true).ToolbarSettings(e => e.Items((object)ViewData["Tools"]).Type(Syncfusion.EJ2.RichTextEditor.ToolbarType.Expand).EnableFloating(false)).Value((string)ViewData["Value"]).Created("onCreate").Change("onChange").ActionComplete("updateValue").Render()
 </div>).Add();
                             paneItem.Size("50%").Min("40%").CssClass("pane2").ContentTemplate(@<div class="heading right">
                             <h6 class="title"><b>HTML SOURCE</b></h6>

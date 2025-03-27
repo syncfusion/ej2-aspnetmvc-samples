@@ -11,7 +11,7 @@
        }).PrimaryXAxis(px => px.MajorGridLines(mg => mg.Width(0))
            .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).LabelFormat("dd MMM")
           ).PrimaryYAxis(py => py.LabelFormat("{value}˚C").Minimum(-10).Maximum(25).Interval(5).MajorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
-          ).Title("Temperature Variation by Month").ChartArea(area => area.Border(br => br.Width(0))).Load("load").Tooltip(tt => tt.Enable(true).Shared(false).Format("Temperature : <b>${point.low} - ${point.high}</b>").Header("<b>${point.x}</b>")).LegendSettings(lg => lg.Visible(false)).Render()
+          ).Title("Temperature Variation by Month").ChartArea(area => area.Border(br => br.Width(0))).Load("load").Tooltip(tt => tt.Enable(true).Shared(true).ShowNearestTooltip(true).Format("Temperature : <b>${point.low} - ${point.high}</b>").Header("<b>${point.x}</b>")).LegendSettings(lg => lg.Visible(false)).Render()
 
         </div>
     </div>
@@ -22,11 +22,11 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var ChartPoints = chartDataValues;
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.primaryXAxis.edgeLabelPlacement = ej.base.Browser.isDevice ? 'Shift' : 'Hide';
         };
@@ -45,6 +45,9 @@
 @section Description{
     <p>
         In this example, you can see how to render and configure the spline range area chart. This chart is used to display continuous data points as a set of curved lines varying between high and low values over a certain time period.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
     </p>
     <p>
         More information on the area series can be found in this

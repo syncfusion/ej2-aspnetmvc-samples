@@ -8,7 +8,7 @@
 
                 /**/
 
-                ViewBag.Title = "Qrcode";
+                ViewData["Title"] = "Qrcode";
 }
 @section ControlsSection{
 
@@ -116,7 +116,7 @@
                     <div class="col-xs-3" style="width: 33%;padding-left: 0px">
                         <div style="padding-bottom: 8px">
                             @(Html.EJS().NumericTextBox("version").Value(1).Format("###.##").Enabled(true).Step(2).Min("-10").Max(30).Change("VersionChange").Render() )
-                            @*<ejs-dropdownlist id="level" dataSource="ViewBag.level" value="ViewBag.value" change="versionChange"></ejs-dropdownlist>*@
+                            @*<ejs-dropdownlist id="level" dataSource="ViewData["level"]" value="ViewData["value"]" change="versionChange"></ejs-dropdownlist>*@
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                     <div class="col-xs-3" style="width: 33%;padding-left: 0px">
                         <div style="padding-bottom: 8px">
                             @*<input type="text" id='errorCorrection' />*@
-                            @Html.EJS().DropDownList("correcrtion").Enabled(true).Index(0).DataSource(ViewBag.position).Change("correcrtionChange").Render()
+                            @Html.EJS().DropDownList("correcrtion").Enabled(true).Index(0).DataSource(ViewData["position"]).Change("correcrtionChange").Render()
                         </div>
                     </div>
                 </div>

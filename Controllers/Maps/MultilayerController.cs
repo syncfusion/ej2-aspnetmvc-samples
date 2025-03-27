@@ -23,8 +23,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
         // GET: Multilayer
         public ActionResult Multilayer()
         {
-            ViewBag.shapeData = this.getusMap();
-            ViewBag.africa = this.GetCalifornia();
+            ViewData["shapeData"] = this.getusMap();
+            ViewData["africa"] = this.GetCalifornia();
             MapsMarker marker = new MapsMarker();
             List<marketData> markData = new List<marketData>();
             markData.Add(new marketData(50.32087157990324, 90.015625, "Asia"));
@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Maps
             marker.AnimationDuration = 0;
             List<MapsMarker> markerSettings = new List<MapsMarker>();
             markerSettings.Add(marker);
-            ViewBag.markerSettings = markerSettings;
+            ViewData["markerSettings"] = markerSettings;
             return View();
         }
         

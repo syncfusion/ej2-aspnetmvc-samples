@@ -17,7 +17,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Workflow()
         {
-            ViewBag.data = new KanbanDataModels().KanbanPizzaData();
+            ViewData["data"] = new KanbanDataModels().KanbanPizzaData();
             return View();
         }
     }

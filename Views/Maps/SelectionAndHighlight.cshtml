@@ -129,10 +129,10 @@
    {
        new Syncfusion.EJ2.Maps.MapsLayer
        {
-           ShapeData = ViewBag.ShapeData,
+           ShapeData = ViewData["ShapeData"],
            ShapePropertyPath = "name",
            ShapeDataPath = "State",
-           DataSource =  ViewBag.DataSource,
+           DataSource =  ViewData["DataSource"],
            TooltipSettings = new MapsTooltipSettings
            {
                Visible = true, ValuePath = "State"
@@ -144,7 +144,7 @@
            {
                Fill = "#E5E5E5",
                 ColorValuePath="Candidate",
-               ColorMapping = ViewBag.ColorMapping
+               ColorMapping = (List<MapsColorMapping>)ViewData["ColorMapping"]
            }
        }}).Render()
             <div style="margin-left:75%">

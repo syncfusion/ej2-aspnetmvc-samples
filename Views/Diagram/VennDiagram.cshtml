@@ -3,7 +3,7 @@
     <div class="control-section" style="padding:0px">
         <div style="text-align:center">
             @(Html.EJS().Diagram("container").Width("100%").Height("580px").Created("create").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
-                .Nodes(ViewBag.nodes).Render()
+                .Nodes((List<DiagramNode>)ViewData["nodes"]).Render()
             )
         </div>
     </div>

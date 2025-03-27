@@ -29,7 +29,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeView
             dragfields.Id = "Id";
             dragfields.ParentID = "PId";
             dragfields.Text = "Name";
-            ViewBag.dragfields = dragfields;
+            ViewData["dragfields"] = dragfields;
           
            
             dropfields.DataSource = treeviewDrag.getTreeviewDrag();
@@ -38,7 +38,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeView
             dropfields.Id = "Id";
             dropfields.ParentID = "PId";
             dropfields.Text = "Name";
-            ViewBag.dropfields = dropfields;
+            ViewData["dropfields"] = dropfields;
 
             return View();
         }

@@ -77,7 +77,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             }
             else
             {
-                ViewBag.lab = "NOTE: Please select a valid image file or enter text to add a watermark.";
+                ViewData["lab"] = "NOTE: Please select a valid image file or enter text to add a watermark.";
                 return View();
             }
             //Stream the output to the browser.    
@@ -105,7 +105,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                 }
                 else
                 {
-                    ViewBag.Message = string.Format("Please choose a valid PDF document to add watermark");
+                    ViewData["Message"] = string.Format("Please choose a valid PDF document to add watermark");
                     return null;
                 }
             }

@@ -3,7 +3,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         @(Html.EJS().Diagram("container").Width("100%").Height("580px").GetNodeDefaults("getNodeDefaults").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
-            .GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes).SelectionChange("selectChange").Connectors(ViewBag.connectors).Render())
+            .GetConnectorDefaults("getConnectorDefaults").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).SelectionChange("selectChange").Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render())
     </div>
     <div class="col-lg-4 property-section" style="padding-bottom:10px;">
         <div class="property-panel-header">
@@ -17,7 +17,7 @@
                             Visibility
                         </div>
                         <div>
-                            @Html.EJS().DropDownList("portsVisiblity").Enabled(true).Fields(new DropDownListFieldSettings() { Text = "Name", Value = "Value" }).DataSource(ViewBag.PortVisibility).Change("portVisibilityDropOnChange").Render()
+                            @Html.EJS().DropDownList("portsVisiblity").Enabled(true).Fields(new DropDownListFieldSettings() { Text = "Name", Value = "Value" }).DataSource(ViewData["PortVisibility"]).Change("portVisibilityDropOnChange").Render()
                         </div>
                     </div>
                     <div class="col-xs-6">
@@ -25,7 +25,7 @@
                             Shape
                         </div>
                         <div>
-                            @Html.EJS().DropDownList("shape").Enabled(true).Placeholder("Select a Shape").DataSource(ViewBag.shape).Fields(new DropDownListFieldSettings() { Value = "Name", Text = "Name" }).Change("portShapeDropOnChange").Render()
+                            @Html.EJS().DropDownList("shape").Enabled(true).Placeholder("Select a Shape").DataSource(ViewData["shape"]).Fields(new DropDownListFieldSettings() { Value = "Name", Text = "Name" }).Change("portShapeDropOnChange").Render()
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                             Stroke Width
                         </div>
                         <div style="padding-bottom: 8px">
-                            @Html.EJS().NumericTextBox("width").Enabled(true).Format("###.##").Change("widthChange").Value(1).Step(0.5).Render()
+                            @Html.EJS().NumericTextBox("width").Enabled(true).Format("###.##").Change("widthChange").Value(1).Min(1).Max(10).Step(0.5).Render()
                         </div>
                     </div>
                     <div class="col-xs-6">
@@ -61,7 +61,7 @@
                             Size
                         </div>
                         <div style="padding-bottom: 8px">
-                            @Html.EJS().NumericTextBox("size").Enabled(true).Format("###.##").Change("sizeChange").Created("diagramCreated").Value(6).Step(1).Render()
+                            @Html.EJS().NumericTextBox("size").Enabled(true).Format("###.##").Change("sizeChange").Created("diagramCreated").Min(1).Max(30).Value(6).Step(1).Render()
                         </div>
                     </div>
                 </div>

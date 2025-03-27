@@ -15,7 +15,7 @@
                 <td class="left-side">Chunk Size: </td>
                 <td style="padding-top: 10px">
                     @Html.EJS().DropDownList("chunksize").Placeholder("Select chunk size").PopupHeight("220px").Text("500 KB").DataSource(
-                                        (IEnumerable<chunkValues>)ViewBag.data).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "text", Value = "chunkValue" }).Render()
+                                        (IEnumerable<chunkValues>)ViewData["data"]).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "text", Value = "chunkValue" }).Render()
                 </td>
             </tr>
         </table>

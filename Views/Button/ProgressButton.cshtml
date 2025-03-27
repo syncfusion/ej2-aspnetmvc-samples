@@ -1,4 +1,5 @@
 @using Syncfusion.EJ2
+@using Syncfusion.EJ2.SplitButtons
 @section ControlsSection{
     <div class="control-section">
     <div class="progress-button-section">
@@ -9,22 +10,22 @@
                         @Html.EJS().ProgressButton("spinleft").Content("Spin Left").IsPrimary(true).Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("spinright").Content("Spin Right").IsPrimary(true).SpinSettings(ViewBag.spinRight).Render()
+                        @Html.EJS().ProgressButton("spinright").Content("Spin Right").IsPrimary(true).SpinSettings((ProgressButtonSpinSettings)ViewData["spinRight"]).Render()
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("spintop").Content("Spin Top").IsPrimary(true).SpinSettings(ViewBag.spinTop).Render()
+                        @Html.EJS().ProgressButton("spintop").Content("Spin Top").IsPrimary(true).SpinSettings((ProgressButtonSpinSettings)ViewData["spinTop"]).Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("spinbottom").Content("Spin Bottom").IsPrimary(true).SpinSettings(ViewBag.spinBottom).Render()
+                        @Html.EJS().ProgressButton("spinbottom").Content("Spin Bottom").IsPrimary(true).SpinSettings((ProgressButtonSpinSettings)ViewData["spinBottom"]).Render()
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("roundbtn").SpinSettings(ViewBag.spinCenter).AnimationSettings(ViewBag.zoomOut).CssClass("e-round e-bigger e-success").IconCss("e-btn-sb-icons e-play-icon").Render()
+                        @Html.EJS().ProgressButton("roundbtn").SpinSettings((ProgressButtonSpinSettings)ViewData["spinCenter"]).AnimationSettings((ProgressButtonAnimationSettings)ViewData["zoomOut"]).CssClass("e-round e-bigger e-success").IconCss("e-btn-sb-icons e-play-icon").Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
                         @Html.EJS().ProgressButton("contract").Content("Contract").EnableProgress(true).CssClass("e-small e-success").Begin("contractBegin").End("contractEnd").Render()
@@ -32,20 +33,20 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("slideleft").Content("Slide Left").EnableProgress(true).SpinSettings(ViewBag.spinCenter).AnimationSettings(ViewBag.slideLeft).CssClass("e-flat e-success").Render()
+                        @Html.EJS().ProgressButton("slideleft").Content("Slide Left").EnableProgress(true).SpinSettings((ProgressButtonSpinSettings)ViewData["spinCenter"]).AnimationSettings((ProgressButtonAnimationSettings)ViewData["slideLeft"]).CssClass("e-flat e-success").Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("slideright").Content("Slide Right").EnableProgress(true).SpinSettings(ViewBag.spinCenter).AnimationSettings(ViewBag.slideRight).CssClass("e-outline e-success").Render()
+                        @Html.EJS().ProgressButton("slideright").Content("Slide Right").EnableProgress(true).SpinSettings((ProgressButtonSpinSettings)ViewData["spinCenter"]).AnimationSettings((ProgressButtonAnimationSettings)ViewData["slideRight"]).CssClass("e-outline e-success").Render()
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("zoomin").Content("Zoom In").EnableProgress(true).SpinSettings(ViewBag.spinCenter).AnimationSettings(ViewBag.zoomIn).CssClass("e-round-corner e-danger").Render()
+                        @Html.EJS().ProgressButton("zoomin").Content("Zoom In").EnableProgress(true).SpinSettings((ProgressButtonSpinSettings)ViewData["spinCenter"]).AnimationSettings((ProgressButtonAnimationSettings)ViewData["zoomIn"]).CssClass("e-round-corner e-danger").Render()
                     </div>
                     <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
-                        @Html.EJS().ProgressButton("zoomout").Content("Zoom Out").EnableProgress(true).SpinSettings(ViewBag.spinCenter).AnimationSettings(ViewBag.zoomOut).CssClass("e-small e-danger").Render()
+                        @Html.EJS().ProgressButton("zoomout").Content("Zoom Out").EnableProgress(true).SpinSettings((ProgressButtonSpinSettings)ViewData["spinCenter"]).AnimationSettings((ProgressButtonAnimationSettings)ViewData["zoomOut"]).CssClass("e-small e-danger").Render()
                     </div>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">

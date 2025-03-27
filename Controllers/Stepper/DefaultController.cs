@@ -25,7 +25,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Stepper
             customText.Add(new Step { Text = "3" });
             customText.Add(new Step { Text = "4" });
             customText.Add(new Step { Text = "5" });
-            ViewBag.CustomText = customText;
+            ViewData["CustomText"] = customText;
 
             List<Step> iconOnly = new List<Step>();
             iconOnly.Add(new Step { IconCss = "sf-icon-cart" });
@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Stepper
             iconOnly.Add(new Step { IconCss = "sf-icon-transport" });
             iconOnly.Add(new Step { IconCss = "sf-icon-payment" });
             iconOnly.Add(new Step { IconCss = "sf-icon-success" });
-            ViewBag.IconOnly = iconOnly;
+            ViewData["IconOnly"] = iconOnly;
 
             List<Step> labelOnly = new List<Step>();
             labelOnly.Add(new Step { Label = "Cart" });
@@ -41,7 +41,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Stepper
             labelOnly.Add(new Step { Label = "Delivery" });
             labelOnly.Add(new Step { Label = "Payment" });
             labelOnly.Add(new Step { Label = "Ordered" });
-            ViewBag.LabelOnly = labelOnly;
+            ViewData["LabelOnly"] = labelOnly;
 
             List<Step> iconWithLabel = new List<Step>();
             iconWithLabel.Add(new Step { Label = "Cart", IconCss = "sf-icon-cart" });
@@ -49,7 +49,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Stepper
             iconWithLabel.Add(new Step { Label = "Delivery", IconCss = "sf-icon-transport" });
             iconWithLabel.Add(new Step { Label = "Payment", IconCss = "sf-icon-payment", Optional = true });
             iconWithLabel.Add(new Step { Label = "Ordered", IconCss = "sf-icon-success" });
-            ViewBag.IconWithLabel = iconWithLabel;
+            ViewData["IconWithLabel"] = iconWithLabel;
 
             return View();
         }

@@ -23,8 +23,8 @@ namespace EJ2MVCSampleBrowser.Controllers.BulletChart
             {
                 new DotBulletData { value = 270, target = 250}     
             };
-            ViewBag.dataSource = bulletData1;
-            ViewBag.data = new String[] {"Rect", "Dot"};
+            ViewData["dataSource"] = bulletData1;
+            ViewData["data"] = new String[] {"Rect", "Dot"};
             return View();
         }
         public class DotBulletData

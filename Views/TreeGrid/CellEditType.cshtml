@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "CellEditType";
+    ViewData["Title"] = "CellEditType";
 }
 
 @*custom code end*@
@@ -18,7 +18,7 @@
                 dict.Add("min", 0);
             }
             @(Html.EJS().TreeGrid("CellEditType")
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .EditSettings(edit =>
             {
                 edit.AllowAdding(true);
@@ -38,7 +38,8 @@
                     .ValidationRules(new { required = true }).Add();
                 col.Field("StartDate").HeaderText("Start Date").Width(180)
                     .EditType("datepickeredit")
-                    .ValidationRules(new { date = true })
+                    .ValidationRules(new { required = true, date = "M/d/y hh:mm a" })
+                    .Edit(new { @params = new { format = "M/d/y hh:mm a" } })
                     .TextAlign(TextAlign.Right).Add();
                 col.Field("Approved").HeaderText("Approved").DisplayAsCheckBox(true).TextAlign(TextAlign.Center).Type("boolean").EditType("booleanedit").Width(90).Add();
                 col.Field("Progress").HeaderText("Progress").Width(120).EditType("numericedit")

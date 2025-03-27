@@ -7,7 +7,7 @@
             <div class='content'>
                 <h4>Local Data</h4>
 
-                @Html.EJS().DropDownList("games").Placeholder("Select a game").PopupHeight("200px").DataSource((IEnumerable<GameList>)ViewBag.localdata).Fields(new DropDownListFieldSettings { Text = "Game" }).Render()
+                @Html.EJS().DropDownList("games").Placeholder("Select a game").PopupHeight("200px").DataSource((IEnumerable<GameList>)ViewData["localdata"]).Fields(new DropDownListFieldSettings { Text = "Game" }).Render()
 
             </div>
         </div>
@@ -20,7 +20,7 @@
                        {
                            Text = "FirstName",
                            Value = "EmployeeID"
-                       }).SortOrder((string)ViewBag.sort).Query((string)ViewBag.query).Render()
+                       }).SortOrder((string)ViewData["sort"]).Query((string)ViewData["query"]).Render()
 
             </div>
         </div>

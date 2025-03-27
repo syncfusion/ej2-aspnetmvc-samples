@@ -9,11 +9,11 @@
     @*custom code start*@
     <div class="control-section">
         <div style="width:100%;height: 10%;margin-top: 10px;">
-            @(Html.EJS().Toolbar("toolbar").Clicked("onItemClick").Items(ViewBag.tbItems).Render())
+            @(Html.EJS().Toolbar("toolbar").Clicked("onItemClick").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["tbItems"]).Render())
         </div>
         @*custom code end*@
         @(Html.EJS().Diagram("diagram").Width("100%").Height("580px").Created("create").GetNodeDefaults("nodeDefaults").Constraints(Syncfusion.EJ2.Diagrams.DiagramConstraints.Default | (Syncfusion.EJ2.Diagrams.DiagramConstraints.Virtualization)).GetConnectorDefaults("connectorDefaults").
-         DataSourceSettings(ss => ss.Id("Id").ParentId("ParentId").DataSource(new DataManager() { Data = (List<VirtualizationDetails>)ViewBag.Data })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree).HorizontalSpacing(40)
+         DataSourceSettings(ss => ss.Id("Id").ParentId("ParentId").DataSource(new DataManager() { Data = (List<VirtualizationDetails>)ViewData["Data"] })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree).HorizontalSpacing(40)
          .VerticalSpacing(50)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render())
         @*custom code start*@
     </div>

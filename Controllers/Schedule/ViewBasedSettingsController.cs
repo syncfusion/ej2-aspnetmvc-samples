@@ -16,13 +16,13 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
         public ActionResult ViewBasedSettings()
         {
             // Datasource for events
-            ViewBag.datasource = new ScheduleData().GetFifaEventsData();
+            ViewData["datasource"] = new ScheduleData().GetFifaEventsData();
 
             //Datasource for Resources
             List<ResourceFields> Resources = new List<ResourceFields>();
             Resources.Add(new ResourceFields { GroupText = "Group A", GroupId = 1, GroupColor = "#1aaa55" });
             Resources.Add(new ResourceFields { GroupText = "Group B", GroupId = 2, GroupColor = "#357cd2" });
-            ViewBag.resourceData = Resources;
+            ViewData["resourceData"] = Resources;
 
             return View();
         }

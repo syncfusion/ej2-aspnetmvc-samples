@@ -23,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Timeline
             customData.Add(new TimelineItem { Content = "Created 1 repository", DotCss = "sf-icon-create" });
             customData.Add(new TimelineItem { Content = "Created a pull request in <u>syncfusion/new-control-roadmap</u>", DotCss = "sf-icon-pull" });
             customData.Add(new TimelineItem { Content = "Reviewed 3 pull requests in 2 repositories", DotCss = "sf-icon-review" });
-            ViewBag.CustomData = customData;
+            ViewData["CustomData"] = customData;
 
             return View();
         }

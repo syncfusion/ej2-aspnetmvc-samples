@@ -1,11 +1,11 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "ColumnSpanning";
+    ViewData["Title"] = "ColumnSpanning";
 }
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("CellMerging").DataSource((IEnumerable<object>)ViewBag.datasource).EnableHover(false).AllowSelection(false).QueryCellInfo("QueryCellEvent").GridLines(Syncfusion.EJ2.Grids.GridLine.Both).Columns(col =>
+        @Html.EJS().Grid("CellMerging").DataSource((IEnumerable<object>)ViewData["datasource"]).EnableHover(false).AllowSelection(false).QueryCellInfo("QueryCellEvent").GridLines(Syncfusion.EJ2.Grids.GridLine.Both).Columns(col =>
         {
             col.Field("EmployeeID").HeaderText("Employee ID").IsPrimaryKey(true).Freeze(Syncfusion.EJ2.Grids.FreezeDirection.Left).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("150").Add();
             col.Field("EmployeeName").HeaderText("Employee Name").Width("200").Add();

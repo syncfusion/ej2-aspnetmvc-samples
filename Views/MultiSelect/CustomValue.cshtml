@@ -8,7 +8,7 @@
                 <h4>Custom Value Support</h4>
 
                 @Html.EJS().MultiSelect("default").Mode(VisualMode.Box).Placeholder("Select countries").AllowCustomValue(true).DataSource(
-                  (IEnumerable<Countries>)ViewBag.data).Fields(new MultiSelectFieldSettings { Text = "Name", Value = "Code" }).Value((string[])ViewBag.val).Render()
+                  (IEnumerable<Countries>)ViewData["data"]).Fields(new MultiSelectFieldSettings { Text = "Name", Value = "Code" }).Value((string[])ViewData["val"]).Render()
             </div>
         </div>
     </div>

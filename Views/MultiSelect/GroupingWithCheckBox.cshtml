@@ -6,7 +6,7 @@
         <div class="control-wrapper">
             <h4>Grouping with CheckBox</h4>
             @Html.EJS().MultiSelect("group").PopupHeight("200px").Placeholder("Select vegetables").Mode(VisualMode.CheckBox).AllowFiltering(true).ShowSelectAll(true).FilterBarPlaceholder("Search Vegetables").EnableGroupCheckBox(true).DataSource(
-            (IEnumerable<Vegetables>)ViewBag.data).Fields(new MultiSelectFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).EnableSelectionOrder(false).Render()
+            (IEnumerable<Vegetables>)ViewData["data"]).Fields(new MultiSelectFieldSettings { GroupBy = "Category", Text = "Vegetable", Value = "Id" }).EnableSelectionOrder(false).Render()
         </div>
     </div>
 

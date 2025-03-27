@@ -5,7 +5,7 @@
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewBag.view).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).ShowWeekend(false).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).WorkHours(new ScheduleWorkHours { Start = "08:00" }).Render()
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewData["view"]).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).ShowWeekend(false).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).WorkHours(new ScheduleWorkHours { Start = "08:00" }).Render()
         </div>
     </div>
 
@@ -15,8 +15,8 @@
                 <tr>
                     <td style="width: 100%">
                         <div>
-                            @Html.EJS().MultiSelect("workdayscheckbox").Placeholder("Working days").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Mode(VisualMode.CheckBox).PopupWidth("180").ShowDropDownIcon(true).ShowClearButton(false).Value(ViewBag.values).DataSource(
-                            ViewBag.dropdown).Fields(new MultiSelectFieldSettings { Text = "DayText", Value = "DayValue" }).Change("onDayChange").Render()
+                            @Html.EJS().MultiSelect("workdayscheckbox").Placeholder("Working days").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Mode(VisualMode.CheckBox).PopupWidth("180").ShowDropDownIcon(true).ShowClearButton(false).Value(ViewData["values"]).DataSource(
+                            ViewData["dropdown"]).Fields(new MultiSelectFieldSettings { Text = "DayText", Value = "DayValue" }).Change("onDayChange").Render()
                         </div>
                     </td>
                 </tr>

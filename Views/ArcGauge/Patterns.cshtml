@@ -1,4 +1,4 @@
-﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2
 @using Syncfusion.EJ2.CircularGauge
 
 @section ControlsSection{
@@ -26,7 +26,7 @@
                         Width = 0,
                         Height = 0,
                         Color = "transparent"
-                    }).Minimum(0).Maximum(100).Pointers(ViewBag.FirstGaugePointers).Ranges(ViewBag.FirstGaugeRanges).Annotations(ViewBag.FirstGaugeAnnotations).Add()).Render()
+                    }).Minimum(0).Maximum(100).Pointers((List<CircularGaugePointer>)ViewData["FirstGaugePointers"]).Ranges((List<CircularGaugeRange>)ViewData["FirstGaugeRanges"]).Annotations((List<CircularGaugeAnnotation>)ViewData["FirstGaugeAnnotations"]).Add()).Render()
                 </td>
                 <td class="gaugeAlign">
                     @Html.EJS().CircularGauge("container2").Width("280px").Height("300px").Load("gaugeLoadTwo").CenterY("60%").Axes(axes => axes.Radius("80%").StartAngle(270).EndAngle(90)
@@ -47,7 +47,7 @@
                         Width = 0,
                         Height = 0,
                         Color = "transparent"
-                    }).Minimum(0).Maximum(100).Pointers(ViewBag.SecondGaugePointers).Annotations(ViewBag.SecondGaugeAnnotations).Add()).Render()
+                    }).Minimum(0).Maximum(100).Pointers((List<CircularGaugePointer>)ViewData["SecondGaugePointers"]).Annotations((List<CircularGaugeAnnotation>)ViewData["SecondGaugeAnnotations"]).Add()).Render()
                 </td>
                 <td class="gaugeAlign">
                     @Html.EJS().CircularGauge("container3").Width("280px").Height("300px").Load("gaugeLoadThree").Axes(axes => axes.Radius("80%").StartAngle(220).EndAngle(140)
@@ -67,7 +67,7 @@
                         Width = 0,
                         Height = 0,
                         Color = "transparent"
-                    }).Minimum(0).Maximum(600).Ranges(ViewBag.ThirdGaugeRanges).Pointers(ViewBag.ThirdGaugePointers).Annotations(ViewBag.ThirdGaugeAnnotations).Add()).Render()
+                    }).Minimum(0).Maximum(600).Ranges((List<CircularGaugeRange>)ViewData["ThirdGaugeRanges"]).Pointers((List<CircularGaugePointer>)ViewData["ThirdGaugePointers"]).Annotations((List<CircularGaugeAnnotation>)ViewData["ThirdGaugeAnnotations"]).Add()).Render()
                 </td>
             </tr>
             <tr>
@@ -90,7 +90,7 @@
                         Width = 0,
                         Height = 0,
                         Color = "transparent"
-                    }).Minimum(0).Maximum(100).Ranges(ViewBag.FourthGaugeRanges).Pointers(ViewBag.FourthGaugePointers).Annotations(ViewBag.FourthGaugeAnnotations).Add()).Render()
+                    }).Minimum(0).Maximum(100).Ranges((List<CircularGaugeRange>)ViewData["FourthGaugeRanges"]).Pointers((List<CircularGaugePointer>)ViewData["FourthGaugePointers"]).Annotations((List<CircularGaugeAnnotation>)ViewData["FourthGaugeAnnotations"]).Add()).Render()
                 </td>
                 <td class="gaugeAlign">
                     @Html.EJS().CircularGauge("container5").Width("280px").Height("300px").Load("gaugeLoadFive").Axes(axes => axes.Radius("80%").StartAngle(220).EndAngle(140)
@@ -110,7 +110,7 @@
                         Width = 0,
                         Height = 0,
                         Color = "transparent"
-                    }).Minimum(0).Maximum(100).Pointers(ViewBag.FifthGaugePointers).Ranges(ViewBag.FifthGaugeRanges).Annotations(ViewBag.FifthGaugeAnnotations).Add()).Render()
+                    }).Minimum(0).Maximum(100).Pointers((List<CircularGaugePointer>)ViewData["FifthGaugePointers"]).Ranges((List<CircularGaugeRange>)ViewData["FifthGaugeRanges"]).Annotations((List<CircularGaugeAnnotation>)ViewData["FifthGaugeAnnotations"]).Add()).Render()
                 </td>
                 <td class="gaugeAlign">
                     @Html.EJS().CircularGauge("container6").Width("280px").Height("300px").Load("gaugeLoadSix").Axes(axes => axes.Radius("80%").StartAngle(220).EndAngle(140)
@@ -133,7 +133,7 @@
                     Width = 0,
                     Height = 0,
                     Color = "transparent"
-                    }).Minimum(0).Maximum(100).Pointers(ViewBag.SixthGaugePointers).Ranges(ViewBag.SixthGaugeRanges).Annotations(ViewBag.SixthGaugeAnnotations).Add()).Render()
+                    }).Minimum(0).Maximum(100).Pointers((List<CircularGaugePointer>)ViewData["SixthGaugePointers"]).Ranges((List<CircularGaugeRange>)ViewData["SixthGaugeRanges"]).Annotations((List<CircularGaugeAnnotation>)ViewData["SixthGaugeAnnotations"]).Add()).Render()
                 </td>
             </tr>
         </table>

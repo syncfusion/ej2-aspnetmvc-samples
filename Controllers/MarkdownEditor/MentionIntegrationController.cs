@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult MentionIntegration()
         {
-            ViewBag.Value = @"Hello [Albert](mailto:albert@gmail.com)
+            ViewData["Value"] = @"Hello [Albert](mailto:albert@gmail.com)
 
 Welcome to the mention integration with markdown editor demo. Type @ character and tag user from the suggestion list.";
             var tool = new {
@@ -26,11 +26,11 @@ Welcome to the mention integration with markdown editor demo. Type @ character a
                 template = @"<button id='preview-code' class='e-tbar-btn e-control e-btn e-icon-btn' aria-label='Preview Code'>
                         <span class='e-btn-icon e-md-preview e-icons'></span></button>"
             };
-            ViewBag.Items = new object[] {"Bold", "Italic", "StrikeThrough", "|",
+            ViewData["Items"] = new object[] {"Bold", "Italic", "StrikeThrough", "|",
                 "Formats", "Blockquote", "OrderedList", "UnorderedList","Superscript", "Subscript", "|", "CreateTable",
                 "CreateLink", "Image", "|", tool
                 , "|", "Undo", "Redo"};
-            ViewBag.EmailData = new EmailDatas().EmailList();
+            ViewData["EmailData"] = new EmailDatas().EmailList();
             return View();
         }
     }

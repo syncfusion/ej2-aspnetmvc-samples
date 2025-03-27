@@ -4,10 +4,10 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="content-wrapper">
-            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").AllowInline(true).CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineMonth).Add(); }).EventRendered("onEventRendered").Group(group => group.Resources(ViewBag.Resources)).Resources(res =>
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").AllowInline(true).CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineMonth).Add(); }).EventRendered("onEventRendered").Group(group => group.Resources((string[])ViewData["Resources"])).Resources(res =>
                 {
-                    res.DataSource(ViewBag.Categories).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
-                }).EventSettings(new ScheduleEventSettings { DataSource = ViewBag.datasource }).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).WorkDays(ViewBag.workDays).Render()
+                    res.DataSource(ViewData["Categories"]).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
+                }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).WorkDays((int[])ViewData["workDays"]).Render()
         </div>
     </div>
     <style>

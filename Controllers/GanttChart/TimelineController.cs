@@ -18,11 +18,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: Timeline
         public ActionResult Timeline()
         {
-            ViewBag.DataSource = GanttData.TimelineData();
-            ViewBag.Resources = GanttData.TimelineResources();
-            ViewBag.WeekFormat = DayFormat.GetWeekFormat();
-            ViewBag.DayFormat = DayFormat.GetDayFormat();
-            ViewBag.Units = TimelineUnit.GetUnits();
+            ViewData["DataSource"] = GanttData.TimelineData();
+            ViewData["Resources"] = GanttData.TimelineResources();
+            ViewData["WeekFormat"] = DayFormat.GetWeekFormat();
+            ViewData["DayFormat"] = DayFormat.GetDayFormat();
+            ViewData["Units"] = TimelineUnit.GetUnits();
             return View();
         }
         public class DayFormat

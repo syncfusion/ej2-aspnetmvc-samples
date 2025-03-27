@@ -20,8 +20,8 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
         // GET= DefaultFunctionalities
         public ActionResult DefaultFunctionalities()
         {
-            ViewBag.ImportBtn = new ButtonModel() { isPrimary = true, cssClass = "e-flat", content = "Import" };
-            ViewBag.CancelBtn = new ButtonModel() { content = "Cancel", cssClass = "e-flat" };
+            ViewData["ImportBtn"] = new ButtonModel() { isPrimary = true, cssClass = "e-flat", content = "Import" };
+            ViewData["CancelBtn"] = new ButtonModel() { content = "Cancel", cssClass = "e-flat" };
             QueryBuilderRule rule = new QueryBuilderRule()
             {
                 Condition = "and",
@@ -32,8 +32,8 @@ namespace EJ2MVCSampleBrowser.Controllers.QueryBuilder
                 }
             };
 
-            ViewBag.rule = rule;
-            ViewBag.dataSource = EmployeeView.GetAllRecords();
+            ViewData["rule"] = rule;
+            ViewData["dataSource"] = EmployeeView.GetAllRecords();
             return View();
         }
     }

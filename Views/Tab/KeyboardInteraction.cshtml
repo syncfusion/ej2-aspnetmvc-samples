@@ -5,7 +5,7 @@
 <div class="e-tab-section">
     <div class="col-lg-8 content-wrapper control-section">
         <div class="e-sample-resize-container">
-            @Html.EJS().Tab("keyboardInteractionTab").OverflowMode(OverflowMode.Popup).Items(ViewBag.adaptiveItems).Render()
+            @Html.EJS().Tab("keyboardInteractionTab").OverflowMode(OverflowMode.Popup).Items((List<Syncfusion.EJ2.Navigations.TabItem>)ViewData["adaptiveItems"]).Render()
         </div>
     </div>
 </div>

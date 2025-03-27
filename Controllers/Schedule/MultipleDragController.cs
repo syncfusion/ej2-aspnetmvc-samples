@@ -22,7 +22,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             ScheduleData data = new ScheduleData();
             List<ScheduleData.ResourceData> resourceData = data.GetResourceData();
             List<ScheduleData.ResourceData> timelineResourceData = data.GetTimelineResourceData();
-            ViewBag.datasource = resourceData.Concat(timelineResourceData);
+            ViewData["datasource"] = resourceData.Concat(timelineResourceData);
 
             List<ResourceDataSourceModel> ownerData = new List<ResourceDataSourceModel>();
             ownerData.Add(new ResourceDataSourceModel { text = "Nancy", id = 1, color = "#df5286" });
@@ -30,9 +30,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             ownerData.Add(new ResourceDataSourceModel { text = "Robert", id = 3, color = "#ea7a57" });
             ownerData.Add(new ResourceDataSourceModel { text = "Smith", id = 4, color = "#5978ee" });
             ownerData.Add(new ResourceDataSourceModel { text = "Michael", id = 5, color = "#df5286" });
-            ViewBag.Owners = ownerData;
+            ViewData["Owners"] = ownerData;
 
-            ViewBag.Resources = new string[] { "Owners" };
+            ViewData["Resources"] = new string[] { "Owners" };
             return View();
         }
     }

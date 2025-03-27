@@ -14,21 +14,21 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
     {
         public ActionResult DragScheduleToSchedule()
         {
-            ViewBag.firstScheduleData = new ScheduleData().GetResourceData();
+            ViewData["firstScheduleData"] = new ScheduleData().GetResourceData();
 
-            ViewBag.secondScheduleData = new ScheduleData().GetTimelineResourceData();
+            ViewData["secondScheduleData"] = new ScheduleData().GetTimelineResourceData();
 
-            ViewBag.firstScheduleResourceDataSource = new[]
+            ViewData["firstScheduleResourceDataSource"] = new[]
             {
                 new { text = "Steven", id = 1, color = "#7fa900" }
             };
 
-            ViewBag.secondScheduleResourceDataSource = new[]
+            ViewData["secondScheduleResourceDataSource"] = new[]
             {
                 new { text = "John", id = 2, color = "#ffb74d" }
             };
 
-            ViewBag.ResourceNames = new string[] { "Employees" };
+            ViewData["ResourceNames"] = new string[] { "Employees" };
 
             return View();
         }

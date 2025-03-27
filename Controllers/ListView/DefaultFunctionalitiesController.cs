@@ -100,8 +100,8 @@ namespace EJ2MVCSampleBrowser.Controllers.ListView
             data.Add(new { text = "Mercedes-Benz Aston Martin", id = "list-11" });
             data.Add(new { text = "Zenvo ST1", id = "list-12" });
             data.Add(new { text = "Lamborghini Veneno", id = "list-13" });
-            ViewBag.groupData = listdata;
-            ViewBag.dataSource = data;
+            ViewData["groupData"] = listdata;
+            ViewData["dataSource"] = data;
             return View();
         }
     }

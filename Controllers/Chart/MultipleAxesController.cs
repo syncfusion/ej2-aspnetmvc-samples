@@ -19,8 +19,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: MultipleAxes
         public ActionResult MultipleAxes()
         {
-            ViewBag.content1 = "#chart_cloud";
-            ViewBag.content = "#chart_sunny";
+            ViewData["content1"] = "#chart_cloud";
+            ViewData["content"] = "#chart_sunny";
 
             List<MultipleAxesChartData> ChartPoints = new List<MultipleAxesChartData>
             {
@@ -32,7 +32,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new MultipleAxesChartData { Day = "FRI", DEU_Temp = 55, JPN_Temp = 32},
                 new MultipleAxesChartData { Day = "SAT", DEU_Temp = 50, JPN_Temp = 34 },
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class MultipleAxesChartData

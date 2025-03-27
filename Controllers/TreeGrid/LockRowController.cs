@@ -19,13 +19,13 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         public ActionResult LockRow()
         {
             var treeData = TreeGridItems.GetTreeData();
-            ViewBag.datasource = treeData;
+            ViewData["datasource"] = treeData;
 
             List<Object> dropdata = new List<Object>();
             for(var i = 1; i <= 36; i++) {
                 dropdata.Add(new { text = i.ToString(), value = i });
             }
-            ViewBag.dropdata = dropdata;
+            ViewData["dropdata"] = dropdata;
 
             return View();
         }

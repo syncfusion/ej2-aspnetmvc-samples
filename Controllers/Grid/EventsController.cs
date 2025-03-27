@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Grid
         public ActionResult Events()
         {
             var product = Categories.GetAllRecords();
-            ViewBag.datasource = product;
+            ViewData["datasource"] = product;
             return View();
         }
     }

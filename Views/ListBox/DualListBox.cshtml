@@ -4,12 +4,12 @@
     <div class="dual-list-wrapper">
         <div class="dual-list-groupa">
             <h4>Group A</h4>
-            @Html.EJS().ListBox("listbox1").Scope("#listbox2").Height("330px").ToolbarSettings(new Syncfusion.EJ2.DropDowns.ListBoxToolbarSettings { Items = new string[] { "moveUp", "moveDown", "moveTo", "moveFrom", "moveAllTo", "moveAllFrom" } }).Fields(new Syncfusion.EJ2.DropDowns.ListBoxFieldSettings { Text = "Name" }).DataSource((IEnumerable<object>)ViewBag.groupA).NoRecordsTemplate(
+            @Html.EJS().ListBox("listbox1").Scope("#listbox2").Height("330px").ToolbarSettings(new Syncfusion.EJ2.DropDowns.ListBoxToolbarSettings { Items = new string[] { "moveUp", "moveDown", "moveTo", "moveFrom", "moveAllTo", "moveAllFrom" } }).Fields(new Syncfusion.EJ2.DropDowns.ListBoxFieldSettings { Text = "Name" }).DataSource((IEnumerable<object>)ViewData["groupA"]).NoRecordsTemplate(
             "<div class=\"e-list-nrt\"><span>NO DATA AVAILABLE</span></div>").Render()
         </div>
         <div class="dual-list-groupb">
             <h4>Group B</h4>
-            @Html.EJS().ListBox("listbox2").Height("330px").Fields(new Syncfusion.EJ2.DropDowns.ListBoxFieldSettings { Text = "Name" }).DataSource((IEnumerable<object>)ViewBag.groupB).NoRecordsTemplate(
+            @Html.EJS().ListBox("listbox2").Height("330px").Fields(new Syncfusion.EJ2.DropDowns.ListBoxFieldSettings { Text = "Name" }).DataSource((IEnumerable<object>)ViewData["groupB"]).NoRecordsTemplate(
             "<div class=\"e-list-nrt\"><span>NO DATA AVAILABLE</span></div>").Render()
         </div>
     </div>

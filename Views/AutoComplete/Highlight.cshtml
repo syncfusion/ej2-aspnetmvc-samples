@@ -5,7 +5,7 @@
     <div class="col-lg-8 control-section">
         <div class="control-wrapper">
             <div style='padding-top:70px;'>
-                @Html.EJS().AutoComplete("country").DataSource((IEnumerable<Countries>)ViewBag.countries).Placeholder("e.g. Australia").Highlight(true).Fields(new AutoCompleteFieldSettings { Value = "Name" }).Render()
+                @Html.EJS().AutoComplete("country").DataSource((IEnumerable<Countries>)ViewData["countries"]).Placeholder("e.g. Australia").Highlight(true).Fields(new AutoCompleteFieldSettings { Value = "Name" }).Render()
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
             <tr>
                 <td class="left-side">FilterType :</td>
                 <td style="padding-top: 10px">
-                    @Html.EJS().DropDownList("filtertype").DataSource((string[])ViewBag.data).Text("Contains").Placeholder("Select a type").Change("onchange").Width("150px").Render()
+                    @Html.EJS().DropDownList("filtertype").DataSource((string[])ViewData["data"]).Text("Contains").Placeholder("Select a type").Change("onchange").Width("150px").Render()
                 </td>
             </tr>
         </table>

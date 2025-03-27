@@ -37,20 +37,20 @@ namespace EJ2MVCSampleBrowser.Controllers
             data.Add(new { id = 13, pid = 5, name = "Junk Email" });
             data.Add(new { id = 14, pid = 5, name = "RSS Feed" });
             data.Add(new { id = 15, pid = 5, name = "Trash" });
-            ViewBag.TreeData = data;
+            ViewData["TreeData"] = data;
             List<object> listdata = new List<object>();
             listdata.Add(new { Name = "Selma Tally", Content1 = "Apology marketing email", Content2 = "Hello Ananya Singleton", Id = "1", Order = 0 });
             listdata.Add(new { Name = "Illa Russo", Content1 = "Annual conference", Content2 = "Hi jeani Moresa", Id = "4", Order = 0 });
             listdata.Add(new { Name = "Camden Macmellon", Content1 = "Reference request- Camden hester", Content2 = "Hello Kerry Best", Id = "3", Order = 0 });
             listdata.Add(new { Name = "Garth Owen", Content1 = "Application for job Title", Content2 = "Hello Illa Russo", Id = "2", Order = 0 });
             listdata.Add(new { Name = "Ursula Patterson", Content1 = "Programmaer Position Applicant", Content2 = "Hello Kerry best", Id = "5", Order = 0 });
-            ViewBag.ListData = listdata;
+            ViewData["ListData"] = listdata;
             templateFields.DataSource = data;
             templateFields.HasChildren = "hasChild";
             templateFields.Id = "id";
             templateFields.ParentID = "pid";
             templateFields.Text = "name";
-            ViewBag.TemplateFields = templateFields;
+            ViewData["TemplateFields"] = templateFields;
             return View();
         }
     }

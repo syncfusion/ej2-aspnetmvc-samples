@@ -4,18 +4,17 @@
         
       @Html.EJS().Chart("container-vertical").Series(series =>
  {
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Year").YName("General").Border(br => br.Width(1).Color("#ffffff")).DataSource(ViewBag.ChartPoints).Name("General Motors").ColumnWidth(0.5).Width(2).Add();
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Year").YName("Honda").Border(br => br.Width(1).Color("#ffffff")).DataSource(ViewBag.ChartPoints).Name("Honda").ColumnWidth(0.5).Width(2).Add();
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Year").YName("Suzuki").Border(br => br.Width(1).Color("#ffffff")).DataSource(ViewBag.ChartPoints).Name("Suzuki").ColumnWidth(0.5).Width(2).Add();
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("Year").YName("BMW").Border(br => br.Width(1).Color("#ffffff")).DataSource(ViewBag.ChartPoints).Name("BMW").ColumnWidth(0.5).Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("X").YName("Y").DataSource(ViewData["ChartPoints"]).Border(br => br.Width(1).Color("#ffffff")).Name("India").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).ColumnWidth(0.4).Marker(marker => marker.Visible(false).DataLabel(dl => dl.Visible(true).Font(ft => ft.Size("13px")))).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("X").YName("Y").DataSource(ViewData["ChartPoints1"]).Border(br => br.Width(1).Color("#ffffff")).Name("China").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).ColumnWidth(0.4).Marker(marker => marker.Visible(false).DataLabel(dl => dl.Visible(true).Font(ft => ft.Size("13px")))).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn).XName("X").YName("Y").DataSource(ViewData["ChartPoints2"]).Border(br => br.Width(1).Color("#ffffff")).Name("United States").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).ColumnWidth(0.4).Marker(marker => marker.Visible(false).DataLabel(dl => dl.Visible(true).Font(ft => ft.Size("13px")))).CornerRadius(cr => cr.TopLeft(4).TopRight(4)).Add();
  }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
  .MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg => mg.Width(0))
  .MajorTickLines(mt => mt.Width(0)).
  MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).Interval(1)
  .LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45)
        ).PrimaryYAxis(py => py.MajorTickLines(mt => mt.Width(0)).
-       MinorTickLines(mt => mt.Width(0)).MinorGridLines(mg => mg.Width(1)).LineStyle(ls => ls.Width(0)).Title("Vehicles Production (In Millions)")
-       ).Title("Motor Vehicle Production by Manufacturer").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true)).Load("load").AxisLabelRender("axisLabelRender").LegendSettings(leg => leg.Visible(true).EnableHighlight(true)).Render()
+       MinorTickLines(mt => mt.Width(0)).MinorGridLines(mg => mg.Width(1)).LineStyle(ls => ls.Width(0)).Title("Production (60KG Bags)").LabelFormat("{value}M").Interval(20)
+       ).Title("Global Cotton Production by Country (2019-2024)").SubTitle("Source: fas.usda.gov").ChartArea(area => area.Border(br => br.Width(0)).Margin(mr => mr.Bottom(12))).Tooltip(tt => tt.Enable(true).Header("<b>${point.x}</b>").Format("${series.name} : <b>${point.y}</b>")).Load("load").LegendClick("onLegendClick").AxisLabelRender("axisLabelRender").StackLabels(stackLabels => stackLabels.Visible(true).Format("{value}M")).LegendSettings(leg => leg.Visible(true).EnableHighlight(true).ShapeHeight(8).ShapeWidth(8)).Render()
         </div>
 
     @*custom code start*@
@@ -25,11 +24,68 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+        }
+        var onLegendClick = function (args) {
+            if (args.series.index === 0) {
+                if (args.chart.series[2].visible) {
+                    args.chart.series[2].cornerRadius.topLeft = 4;
+                    args.chart.series[2].cornerRadius.topRight = 4;
+                    args.chart.series[0].cornerRadius.topLeft = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else if (args.chart.series[1].visible) {
+                    args.chart.series[1].cornerRadius.topLeft = 4;
+                    args.chart.series[1].cornerRadius.topRight = 4;
+                    args.chart.series[0].cornerRadius.topLeft = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else {
+                    args.chart.series[0].cornerRadius.topLeft = 4;
+                    args.chart.series[0].cornerRadius.topRight = 4;
+                }
+            }
+            if (args.series.index === 1) {
+                if (args.chart.series[2].visible) {
+                    args.chart.series[2].cornerRadius.topLeft = 4;
+                    args.chart.series[2].cornerRadius.topRight = 4;
+                    args.chart.series[1].cornerRadius.topLeft = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                } else if (args.series.visible && args.chart.series[0].visible) {
+                    args.chart.series[0].cornerRadius.topLeft = 4;
+                    args.chart.series[0].cornerRadius.topRight = 4;
+                    args.chart.series[1].cornerRadius.topLeft = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                } else {
+                    args.chart.series[1].cornerRadius.topLeft = 4;
+                    args.chart.series[1].cornerRadius.topRight = 4;
+                    args.chart.series[0].cornerRadius.topLeft = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                }
+            }
+
+            if (args.series.index === 2) {
+                if (!args.series.visible) {
+                    args.chart.series[2].cornerRadius.topLeft = 4;
+                    args.chart.series[2].cornerRadius.topRight = 4;
+                    args.chart.series[1].cornerRadius.topLeft = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                    args.chart.series[0].cornerRadius.topLeft = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else if (args.chart.series[1].visible) {
+                    args.chart.series[1].cornerRadius.topLeft = 4;
+                    args.chart.series[1].cornerRadius.topRight = 4;
+                    args.chart.series[2].cornerRadius.topLeft = 0;
+                    args.chart.series[2].cornerRadius.topRight = 0;
+                } else if (args.series.visible && args.chart.series[0].visible) {
+                    args.chart.series[0].cornerRadius.topLeft = 4;
+                    args.chart.series[0].cornerRadius.topRight = 4;
+                    args.chart.series[2].cornerRadius.topLeft = 0;
+                    args.chart.series[2].cornerRadius.topRight = 0;
+                }
+            }
         }
         var axisLabelRender = function (args) {
             {
@@ -45,12 +101,13 @@
    @*custom code end*@
 @section ActionDescription{
     <p>
-        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/stacked-column-chart" aria-label="ASP.NET MVC Stacked ColumnChart">ASP.NET MVC Stacked ColumnChart <span class="sr-only">opens in a new tab</span></a> example visualizes motor vehicle production by manufacturer with a default stacked column series. The legend in the sample shows more information about those series.
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/stacked-column-chart" aria-label="ASP.NET MVC Stacked ColumnChart">ASP.NET MVC Stacked ColumnChart <span class="sr-only">opens in a new tab</span></a> example visualizes global cotton production trends over the years, with data points enhanced by data labels.
     </p>
 }
 @section Description{
     <p>
         In this example, you can see how to render and configure the stacked column chart. The stacked column chart stacks points in the series vertically. You can also use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartSeries.html#Syncfusion_EJ2_Charts_ChartSeries_StackingGroup" aria-label="StackingGroup">StackingGroup<span class="sr-only">opens in a new tab</span></a> property to group stacked collections based on category.
+        This chart displays data labels for individual points and the total value on top of each stack.
     </p>
     <p>
         <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.

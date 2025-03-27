@@ -5,7 +5,7 @@
 // licensing@syncfusion.com. Any infringement will be prosecuted under
 // applicable laws. 
 #endregion
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -27,11 +27,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             palettes.Add(new SymbolPalettePalette() { Id = "BPMN", Expanded = true, Symbols = GetBPMNShapes(), IconCss = "e-ddb-icons e-basic", Title = "BPMN Shapes" });
             palettes.Add(new SymbolPalettePalette() { Id = "Connector", Expanded = true, Symbols = GetBPMNConnectors(), IconCss = "e-ddb-icons e-basic", Title = "connectors" });
 
-            ViewBag.Nodes = GetBPMNDiagramNodes();
-            ViewBag.Connectors = GetBPMNDiagramConnectors();
-            ViewBag.Palettes = palettes;
-            ViewBag.getSymbolNode = "getSymbolNodes";
-            ViewBag.ContextMenuItems = GetContextMenuItems();
+            ViewData["Nodes"] = GetBPMNDiagramNodes();
+            ViewData["Connectors"] = GetBPMNDiagramConnectors();
+            ViewData["Palettes"] = palettes;
+            ViewData["getSymbolNode"] = "getSymbolNodes";
+            ViewData["ContextMenuItems"] = GetContextMenuItems();
 
 
             return View();
@@ -505,7 +505,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             EventItem.Add(AddItems("Start", "Start", "e-event e-bpmn-icons e-NoneStart", "", new List<ContextMenuItem>() { }));
             EventItem.Add(AddItems("Intermediate", "NonInterruptingStart", "e-event e-bpmn-icons e-InterruptingNone", "", new List<ContextMenuItem>() { }));
             EventItem.Add(AddItems("NonInterruptingStart", "NonInterruptingStart", "e-event e-bpmn-icons e-Noninterruptingstart", "", new List<ContextMenuItem>() { }));
-            EventItem.Add(AddItems("ThrowingIntermediate", "ThrowingIntermediate", "e-event e-bpmn-icons e-InterruptingNone", "", new List<ContextMenuItem>() { }));
+            EventItem.Add(AddItems("ThrowingIntermediate", "ThrowingIntermediate", "e-event e-bpmn-icons e-ThrowingIntermediate", "", new List<ContextMenuItem>() { }));
             EventItem.Add(AddItems("NonInterruptingIntermediate", "NonInterruptingIntermediate", "e-event e-bpmn-icons e-NoninterruptingIntermediate", "", new List<ContextMenuItem>() { }));
             EventItem.Add(AddItems("End", "End", "e-event e-bpmn-icons e-NoneEnd", "", new List<ContextMenuItem>() { }));
             item.Add(AddItems("Event Type", "EventType", "", "", EventItem));
@@ -517,7 +517,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             taskItem.Add(AddItems("Manual", "Manual", "e-task e-bpmn-icons e-ManualCall", "", new List<ContextMenuItem>() { }));
             taskItem.Add(AddItems("Receive", "Receive", "e-task e-bpmn-icons e-InMessage", "", new List<ContextMenuItem>() { }));
             taskItem.Add(AddItems("Script", "Script", "e-bpmn-icons e-ScriptCall", "", new List<ContextMenuItem>() { }));
-            taskItem.Add(AddItems("Send", "Send", "e-task e-bpmn-icons e-InMessage", "", new List<ContextMenuItem>() { }));
+            taskItem.Add(AddItems("Send", "Send", "e-task e-bpmn-icons e-OutMessage", "", new List<ContextMenuItem>() { }));
             taskItem.Add(AddItems("User", "User", "e-task e-bpmn-icons e-UserCall", "", new List<ContextMenuItem>() { }));
             item.Add(AddItems("Task Type", "TaskType", "", "", taskItem));
             List<ContextMenuItem> gateWayItem = new List<ContextMenuItem>();

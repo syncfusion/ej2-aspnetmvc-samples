@@ -51,10 +51,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new AxesCrossingData { XValue = 1.5, YValue = 3.5 },
                 new AxesCrossingData { XValue = 6,   YValue = 4.5 }               
              };
-            ViewBag.LinePoints = LinePoints;
-            ViewBag.SplinePoints = SplinePoints;
-            ViewBag.ScatterPoints = ScatterPoints;
-            ViewBag.data = new string[] { "X", "Y" };
+            ViewData["LinePoints"] = LinePoints;
+            ViewData["SplinePoints"] = SplinePoints;
+            ViewData["ScatterPoints"] = ScatterPoints;
+            ViewData["data"] = new string[] { "X", "Y" };
             return View();
         }
         public class AxesCrossingData

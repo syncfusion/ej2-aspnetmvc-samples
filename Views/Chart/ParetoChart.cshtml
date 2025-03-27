@@ -12,7 +12,7 @@
              .Opacity(0.75)
              .ColumnWidth(0.4)
              .ParetoOptions(pr=>pr.DashArray("3,2").Marker(mr => mr.Visible(true).Width(7).Height(7).IsFilled(true)).Width(2))
-             .DataSource(ViewBag.ChartPoints)
+             .DataSource(ViewData["ChartPoints"])
              .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Pareto).Add();
     })
       .PrimaryXAxis(xaxis =>
@@ -50,10 +50,10 @@
     }
 </style>
 @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         function load(args) {
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            var selectedTheme = loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.series[0].cornerRadius.topLeft = ej.base.Browser.isDevice ? 4 : 6;
             args.chart.series[0].cornerRadius.topRight = ej.base.Browser.isDevice ? 4 : 6;

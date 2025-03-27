@@ -6,7 +6,7 @@
         <div class="col-lg-8 control-section">
             <div id="wrapper" class="dateRangepicker-section">
                 <div id="dateRangepicker-control">
-                    @Html.EJS().DateRangePicker("Rangepicker").Format("dd/MMM/yy hh:mm a").StartDate(ViewBag.start).EndDate(ViewBag.end).Render()
+                    @Html.EJS().DateRangePicker("Rangepicker").Format("dd/MMM/yy hh:mm a").StartDate(ViewData["start"]).EndDate(ViewData["end"]).Render()
                 </div>
             </div>
         </div>

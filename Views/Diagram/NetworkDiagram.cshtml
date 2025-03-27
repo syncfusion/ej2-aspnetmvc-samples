@@ -8,7 +8,7 @@
                 <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             <div id="palette-space" class="sb-mobile-palette">
-                @(Html.EJS().SymbolPalette("symbolPalette").Palettes(ViewBag.Palette).ExpandMode(ExpandMode.Multiple).GetNodeDefaults("getSymbolDefaults").Width("100%").Height("calc(100% - 50px)")
+                @(Html.EJS().SymbolPalette("symbolPalette").Palettes((List<Syncfusion.EJ2.Diagrams.SymbolPalettePalette>)ViewData["Palette"]).ExpandMode(ExpandMode.Multiple).GetNodeDefaults("getSymbolDefaults").Width("100%").Height("calc(100% - 50px)")
                                     .SymbolHeight(48).SymbolWidth(48).GetSymbolInfo("getSymbolInfo").Render()
                 )
                 <div id='dropArea'>
@@ -18,7 +18,7 @@
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
                 @(Html.EJS().Diagram("container").Width("100%").Height("100%").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).GetNodeDefaults("getNodeDefaults")
-                                    .GetConnectorDefaults("getConnectorDefaults").Nodes(ViewBag.nodes).Connectors(ViewBag.connectors).Created("diagramCreated").Render()
+                                    .GetConnectorDefaults("getConnectorDefaults").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Created("diagramCreated").Render()
                 )
             </div>
         </div>

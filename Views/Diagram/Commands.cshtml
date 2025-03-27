@@ -1,15 +1,15 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Diagrams;
 @section ControlsSection{
 
     <div class="control-section">
         <div>
             <div id="toolbar_default" style="width: 100%">
-                @Html.EJS().Toolbar("toolbar").Clicked("onItemClick").Items(ViewBag.tbItems).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
+                @Html.EJS().Toolbar("toolbar").Clicked("onItemClick").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["tbItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
             </div>
         </div>
         <div id="command-diagram" class="control-section" style="width: 100%">
-            @Html.EJS().Diagram("diagram").Width("100%").Height("800px").RulerSettings(r => r.ShowRulers(true)).GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults").SelectionChange("selectionChange").HistoryChange("historyChange").Nodes(ViewBag.nodes).Render()
+            @Html.EJS().Diagram("diagram").Width("100%").Height("800px").RulerSettings(r => r.ShowRulers(true)).GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults").SelectionChange("selectionChange").HistoryChange("historyChange").Nodes((List<DiagramNode>)ViewData["nodes"]).Render()
         </div>
 
     </div>

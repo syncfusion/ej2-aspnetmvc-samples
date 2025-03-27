@@ -1,12 +1,12 @@
 @using Syncfusion.EJ2
 @{
-    ViewBag.Title = "Filtering";
+    ViewData["Title"] = "Filtering";
 }
 
 @section ControlsSection{
     <div class="col-lg-9 control-section">
         <div class="content-wrapper">
-            @(Html.EJS().Gantt("Filtering").DataSource((IEnumerable<object>)ViewBag.DataSource).DateFormat("MM/dd/yyyy hh:mm:ss")
+            @(Html.EJS().Gantt("Filtering").DataSource((IEnumerable<object>)ViewData["DataSource"]).DateFormat("MM/dd/yyyy hh:mm:ss")
                         .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
                         .Dependency("Predecessor").Child("SubTasks")).Columns(col =>
                         {
@@ -39,13 +39,13 @@
             <tr>
                 <td class="left-side">Filter Type</td>
                 <td>
-                    @Html.EJS().DropDownList("FilterType").DataSource((IEnumerable<object>)ViewBag.typedropdata).Value("Menu").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "type" }).Change("Change").Render()
+                    @Html.EJS().DropDownList("FilterType").DataSource((IEnumerable<object>)ViewData["typedropdata"]).Value("Menu").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "type" }).Change("Change").Render()
                 </td>
             </tr>
             <tr>
                 <td class="left-side">Hierarchy Mode</td>
                 <td>
-                    @Html.EJS().DropDownList("FilterMode").DataSource((IEnumerable<object>)ViewBag.modedropData).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "type" }).Change("ChangeMode").Render()
+                    @Html.EJS().DropDownList("FilterMode").DataSource((IEnumerable<object>)ViewData["modedropData"]).Value("Parent").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "id", Value = "type" }).Change("ChangeMode").Render()
                 </td>
             </tr>
         </table>

@@ -2,7 +2,7 @@
 
 @section ControlsSection{
     <div class="control-section">
-        @Html.EJS().Grid("LazyGroupGrid").DataSource((IEnumerable<Object>)ViewBag.lazyLoadData).AllowPaging(true).AllowGrouping(true).AllowSorting().Height("400").Columns(col =>
+        @Html.EJS().Grid("LazyGroupGrid").DataSource((IEnumerable<Object>)ViewData["lazyLoadData"]).AllowPaging(true).AllowGrouping(true).AllowSorting().Height("400").Columns(col =>
    {
 
        col.Field("OrderID").HeaderText("Order ID").AllowGrouping(false).Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();

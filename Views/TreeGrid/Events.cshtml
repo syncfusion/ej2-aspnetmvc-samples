@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "Events";
+    ViewData["Title"] = "Events";
 }
 
 @*custom code end*@
@@ -17,7 +17,7 @@
                 dict.Add("number", true);
                 dict.Add("min", 0);
             }
-        @Html.EJS().TreeGrid("Events").DataSource((IEnumerable<object>)ViewBag.datasource).EditSettings(edit =>
+        @Html.EJS().TreeGrid("Events").DataSource((IEnumerable<object>)ViewData["datasource"]).EditSettings(edit =>
    {
        edit.AllowEditing(true);
    }).Columns(col =>

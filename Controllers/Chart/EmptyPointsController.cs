@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: EmptyPoints
         public ActionResult EmptyPoints()
         {
-            ViewBag.data = new string[] { "Drop", "Average", "Zero" };
+            ViewData["data"] = new string[] { "Drop", "Average", "Zero" };
             return View();
         }
     }

@@ -1,11 +1,11 @@
-﻿@using Syncfusion.EJ2;
+@using Syncfusion.EJ2;
 @section ControlsSection{
     <div class="control-section" align="center">
         @Html.EJS().CircularChart3D("container").Tilt(-30).Title("Browser Market Shares in November 2023").HighlightMode(Syncfusion.EJ2.Charts.CircularChart3DHighlightMode.Point
         ).Series(series =>
         {
         series.XName("X").YName("Y").DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.CircularChart3DLabelPosition.Outside).Name("X")
-        .Font(ft => ft.FontWeight("600"))).DataSource(ViewBag.ChartData).Add();
+        .Font(ft => ft.FontWeight("600"))).DataSource(ViewData["ChartData"]).Add();
         }).SelectionMode(Syncfusion.EJ2.Charts.CircularChart3DSelectionMode.Point
         ).SelectionPattern(Syncfusion.EJ2.Charts.SelectionPattern.DiagonalForward
         ).Tooltip(tt => tt.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header("")
@@ -19,11 +19,10 @@
         }
     </style>
     @*custom code end*@
+    <script src="~/Scripts/CircularChart3D/theme-color.js"></script>
     <script>
         function load(args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1).replace(/-dark/i, 'Dark').replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5'));
+            loadCircular3DChartTheme(args);
             args.chart.legendSettings.position = ej.base.Browser.isDevice ? "Bottom" : "Right";
             args.chart.series[0].dataLabel.connectorStyle.length = ej.base.Browser.isDevice ? "20px" : "40px";
             args.chart.series[0].radius = ej.base.Browser.isDevice ? "50%" : "70%";

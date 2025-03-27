@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Sparkline
         // GET: Liveupdate
         public ActionResult Liveupdate()
         {
-            ViewBag.datasource = LiveData.GetData();
+            ViewData["datasource"] = LiveData.GetData();
             return View();
         }
 

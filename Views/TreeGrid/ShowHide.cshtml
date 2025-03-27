@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "ShowHide";
+    ViewData["Title"] = "ShowHide";
 }
 
 @*custom code end*@
@@ -12,7 +12,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="control-section">
-        @Html.EJS().TreeGrid("ShowHide").DataSource((IEnumerable<object>)ViewBag.datasource).Columns(col =>
+        @Html.EJS().TreeGrid("ShowHide").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
        {
            col.Field("TaskId").HeaderText("Task ID").Width(120).TextAlign(TextAlign.Right).Add();
            col.Field("TaskName").HeaderText("Task Name").Width(200).Add();
@@ -30,7 +30,7 @@
                     <div>Column</div>
                 </td>
                 <td style="width: 70%;padding-right: 10px">
-                    @Html.EJS().DropDownList("dropdown").DataSource((IEnumerable<object>)ViewBag.columns).Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onChange").Render()
+                    @Html.EJS().DropDownList("dropdown").DataSource((IEnumerable<object>)ViewData["columns"]).Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onChange").Render()
                 </td>
             </tr>
         <tr>
@@ -55,8 +55,12 @@
         </table>
     </div>
     <script>
+        var show;
+        var hide;
         function onChange(args) {
             var treegrid = document.getElementById("ShowHide").ej2_instances[0];
+            show = document.getElementById("show").ej2_instances[0];
+            hide = document.getElementById("hide").ej2_instances[0];
           let columnName = args.value;
             let column = treegrid.getColumnByField(columnName);
             if (column.visible === undefined || column.visible) {
@@ -70,6 +74,8 @@
     var hiddenColumns = document.getElementById('hiddencolumns');
     document.getElementById('show').addEventListener('click', () => {
          var treegrid = document.getElementById("ShowHide").ej2_instances[0];
+        show = document.getElementById("show").ej2_instances[0];
+        hide = document.getElementById("hide").ej2_instances[0];
         var dropDownListObject = document.getElementById("dropdown").ej2_instances[0];
         var columnName = dropDownListObject.value;
         var column = treegrid.getColumnByField(columnName);
@@ -80,6 +86,8 @@
     });
     document.getElementById('hide').addEventListener('click', () => {
          var treegrid = document.getElementById("ShowHide").ej2_instances[0];
+        show = document.getElementById("show").ej2_instances[0];
+        hide = document.getElementById("hide").ej2_instances[0];
         var dropDownListObject = document.getElementById("dropdown").ej2_instances[0];
         var columnName = dropDownListObject.value;
         var column = treegrid.getColumnByField(columnName);

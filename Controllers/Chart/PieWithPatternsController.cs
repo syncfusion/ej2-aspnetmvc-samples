@@ -39,7 +39,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 ChartPoints[5].Text = "Edge:<br> 7.48%";
                 ChartPoints[6].Text = "Others:<br> 14.06%";
             };
-            ViewBag.ChartPoints = ChartPoints;
+            ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class PiePatternsChartData

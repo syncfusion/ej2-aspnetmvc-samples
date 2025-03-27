@@ -25,6 +25,7 @@
         }
     </style>
       @*custom code end*@
+    <script src="~/Scripts/StockChartData/theme-color.js"></script>
     <script>
         var data = window.aman;
         var load = function (args) {
@@ -35,8 +36,7 @@
                 majorTickLines: { color: 'transparent', height: 0 },
                 stripLines: [{ start: 340, end: 380, color: '#3CB371', opacity: 0.1 }]
             };
-            var selectedTheme = themeName ? themeName : 'Fluent2';
-            args.stockChart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast').replace(/5.3/i, '5');
+            loadStockChartTheme(args);
             args.stockChart.indicatorType = [];
             args.stockChart.seriesType = [];
         }

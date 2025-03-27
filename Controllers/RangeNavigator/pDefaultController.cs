@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.RangeNavigator
         // GET: pDefault
         public ActionResult pDefault()
         {
-            ViewBag.toolbaritems = new string[] { };
+            ViewData["toolbaritems"] = new string[] { };
             return View();
         }
     }

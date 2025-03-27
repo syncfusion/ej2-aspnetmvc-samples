@@ -18,7 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Gantt
         // GET: UnscheduledTask
         public ActionResult CriticalPath()
         {
-            ViewBag.DataSource = GanttData.ProjectNewData();
+            ViewData["DataSource"] = GanttData.ProjectNewData();
             return View();
         }
     }

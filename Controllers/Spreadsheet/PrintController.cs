@@ -111,9 +111,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Spreadsheet
                 new { Model= "XK", Year2018= "0", Year2019= "0", Year2020= "1", Year2021= "4", Year2022= "0", Year2023= "0" }
 
             };
-            ViewBag.ImageUrl = this.GetImageSource();
-            ViewBag.PrintData = printData;
-            ViewBag.YearlyReportDataSource = yearlyReport;
+            ViewData["ImageUrl"] = this.GetImageSource();
+            ViewData["PrintData"] = printData;
+            ViewData["YearlyReportDataSource"] = yearlyReport;
             return View();
         }
 

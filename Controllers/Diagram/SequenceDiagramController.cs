@@ -374,9 +374,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Style = new DiagramStrokeStyle() { StrokeDashArray = "4 4" }
 
             });
-            ViewBag.connectors = Connectors;
-            ViewBag.nodes = nodes;
-            ViewBag.getConnectorDefaults = "ConnectorDefaults";
+            ViewData["connectors"] = Connectors;
+            ViewData["nodes"] = nodes;
+            ViewData["getConnectorDefaults"] = "ConnectorDefaults";
             return View();
         }
     }

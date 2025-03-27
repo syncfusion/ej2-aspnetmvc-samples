@@ -4,7 +4,7 @@
 @*custom code start*@
 
 @{
-    ViewBag.Title = "TextWrap";
+    ViewData["Title"] = "TextWrap";
 }
 
 @*custom code end*@
@@ -12,7 +12,7 @@
 @section ControlsSection{
     <div class="control-section">
         @(Html.EJS().TreeGrid("TreeGrid")
-            .DataSource((IEnumerable<object>)ViewBag.datasource)
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
             .AllowTextWrap()
             .AllowPaging()
             .PageSettings(p => p.PageSize(10))

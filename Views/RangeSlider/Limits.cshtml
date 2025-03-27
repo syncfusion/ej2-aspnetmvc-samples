@@ -10,7 +10,7 @@
             </div>
             <div class='sliderwrap'>
                 <label class="userselect">Range Slider With Limits</label>
-                @Html.EJS().Slider("range").Min(0).Max(100).Value(ViewBag.rangeValue).Type(SliderType.Range).Enabled(true).Ticks(new SliderTicksData { Placement = Placement.Before, LargeStep = 20, SmallStep = 5, ShowSmallTicks = true }).Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before, ShowOn = TooltipShowOn.Focus }).Created("created").Limits(new SliderLimitData { Enabled = true, MinStart = 10, MinEnd = 40, MaxStart = 60, MaxEnd = 90}).Render()
+                @Html.EJS().Slider("range").Min(0).Max(100).Value(ViewData["rangeValue"]).Type(SliderType.Range).Enabled(true).Ticks(new SliderTicksData { Placement = Placement.Before, LargeStep = 20, SmallStep = 5, ShowSmallTicks = true }).Tooltip(new SliderTooltipData { IsVisible = true, Placement = TooltipPlacement.Before, ShowOn = TooltipShowOn.Focus }).Created("created").Limits(new SliderLimitData { Enabled = true, MinStart = 10, MinEnd = 40, MaxStart = 60, MaxEnd = 90}).Render()
             </div>
         </div>
     </div>

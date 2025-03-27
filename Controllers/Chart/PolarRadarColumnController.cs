@@ -32,8 +32,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
                 new PolarColumnData { TooltipMappingName= "Philippines", Country = "Philippines", MobileSubscriber = 109.5, Population = 96.7, NetworkSubscriber = 16.6 },
                 new PolarColumnData { TooltipMappingName= "Mexico", Country = "Mexico", MobileSubscriber = 102.7, Population = 120.8, NetworkSubscriber = 19.8 }
             };
-            ViewBag.ChartPoints = ChartPoints;
-            ViewBag.data = new string[] { "Polar", "Radar" };
+            ViewData["ChartPoints"] = ChartPoints;
+            ViewData["data"] = new string[] { "Polar", "Radar" };
             return View();
         }
         public class PolarColumnData

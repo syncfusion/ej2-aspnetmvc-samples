@@ -17,14 +17,14 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
         // GET: Recurrence
         public ActionResult RecurrenceEvents()
         {
-            ViewBag.datasource = new ScheduleData().GetRecurrenceData();
+            ViewData["datasource"] = new ScheduleData().GetRecurrenceData();
             List<ScheduleView> viewOption = new List<ScheduleView>()
             {
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Day },
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Week },
                 new ScheduleView {Option = Syncfusion.EJ2.Schedule.View.Month }
             };
-            ViewBag.view = viewOption;
+            ViewData["view"] = viewOption;
             return View();
         }
     }

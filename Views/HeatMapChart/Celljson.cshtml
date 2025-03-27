@@ -5,17 +5,17 @@
 @section ControlsSection{
     <div class="control-section">
         <div id="container">
-            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Most Visited Destinations by International Tourist Arrivals").TextStyle(ViewBag.textStyle)).XAxis(
-            xAxis => xAxis.Labels(ViewBag.xLabels).TextStyle(ViewBag.labelTextStyle)).YAxis(yaxis =>
-            yaxis.Labels(ViewBag.yLabels).TextStyle(ViewBag.labelTextStyle)).DataSource("dataSource").PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
+            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Most Visited Destinations by International Tourist Arrivals").TextStyle(ViewData["textStyle"])).XAxis(
+            xAxis => xAxis.Labels((string[])ViewData["xLabels"]).TextStyle(ViewData["labelTextStyle"])).YAxis(yaxis =>
+            yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"])).DataSource("dataSource").PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
             {
                 palette.Color("#DCD57E").Add();
                 palette.Color("#A6DC7E").Add();
                 palette.Color("#7EDCA2").Add();
                 palette.Color("#6EB5D0").Add();
             })).CellSettings(cellSettings =>
-            cellSettings.Border(ViewBag.border).ShowLabel(true).Format("{value} M").TextStyle(ViewBag.labelTextStyle)).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings => 
-            legendSettings.TextStyle(ViewBag.labelTextStyle)).DataSourceSettings(dataSourceSettings => { dataSourceSettings.IsJsonData(true).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Cell).XDataMapping("rowid").YDataMapping("columnid").ValueMapping("value"); }).Load("load").Render()
+            cellSettings.Border(ViewData["border"]).ShowLabel(true).Format("{value} M").TextStyle(ViewData["labelTextStyle"])).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings => 
+            legendSettings.TextStyle(ViewData["labelTextStyle"])).DataSourceSettings(dataSourceSettings => { dataSourceSettings.IsJsonData(true).AdaptorType(Syncfusion.EJ2.HeatMap.AdaptorType.Cell).XDataMapping("rowid").YDataMapping("columnid").ValueMapping("value"); }).Load("load").Render()
         </div>
         <div style="float: right; margin-right: 10px;">
             Source:

@@ -5,7 +5,7 @@
  <div class="col-lg-8 control-section">
     <div class="control-wrapper">
         <div class="control-section">
-            @Html.EJS().Grid("FrozenGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowSelection(false).AllowResizing().Height("410").FrozenRows(2).FrozenColumns(1).Columns(col =>
+            @Html.EJS().Grid("FrozenGrid").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowSelection(false).AllowResizing().Height("410").FrozenRows(2).FrozenColumns(1).Columns(col =>
        {
 
            col.Field("OrderID").HeaderText("Order ID").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).Add();

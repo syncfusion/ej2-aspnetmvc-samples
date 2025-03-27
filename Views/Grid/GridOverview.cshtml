@@ -6,7 +6,7 @@
     <div class="control-section">
         <div>
             @Html.EJS().DropDownList("DataRange").Index(0).Width("220px").Placeholder("Select a Data Range").DataSource(
-                  (IEnumerable<object>)ViewBag.Data).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Render()
+                  (IEnumerable<object>)ViewData["Data"]).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Value" }).Render()
             <span id='msg'></span>
         </div>
         <br />
