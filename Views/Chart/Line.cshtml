@@ -1,0 +1,77 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @Html.EJS().Chart("container").Series(series =>
+        {
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Viet_Growth").Name("Vietnam")
+                .Marker(mr=>mr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).IsFilled(true))
+                .DataSource(ViewData["ChartData"]).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Can_Growth").Name("Indonesia")
+                .Marker(mr=>mr.Visible(true).Width(6).Height(6).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).IsFilled(true))
+                .DataSource(ViewData["ChartData"]).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Mal_Growth").Name("France")
+                .Marker(mr=>mr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true))
+                .DataSource(ViewData["ChartData"]).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Egy_Growth").Name("Poland")
+                .Marker(mr=>mr.Visible(true).Width(5).Height(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).IsFilled(true))
+                .DataSource(ViewData["ChartData"]).Add();
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).Width(2).XName("Period").YName("Ind_Growth").Name("Mexico")
+                .Marker(mr=>mr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Pentagon).IsFilled(true))
+                .DataSource(ViewData["ChartData"]).Add();
+        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Double)
+            .MajorGridLines(mg=>mg.Width(0))
+            .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+        ).PrimaryYAxis(py => py.Title("Volume in million metric tons")
+            .MajorTickLines(mt=>mt.Width(0)).MinorTickLines(mt => mt.Width(0))
+            .LineStyle(ls => ls.Width(0)).Interval(5).Minimum(0).Maximum(25)
+        ).Title("Annual Crude Steel Production by Country (2016-2024)").SubTitle("Source: wikipedia.org").Tooltip(tt => tt.Enable(true).Header("<b>${series.name}</b>").Format("${point.x} : <b>${point.y}M</b>").ShowNearestTooltip(true).EnableHighlight(true)
+        ).Load("load").ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)
+        ).Render()
+    </div>
+    
+@*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+@*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>    
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";  
+        };
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/line-chart" aria-label="ASP.NET MVC Line Chart">ASP.NET MVC Line Chart<span class="sr-only">opens in a new tab</span></a> example represents the crude steel production annual growth data with default line series in the chart. Data points are enhanced with markers and tooltips.
+    </p>
+}
+ @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Line in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section Description{
+    <p>
+        ASP.NET MVC Line Chart represents and visualizes time-dependent data to show the trends at equal intervals. In this example, you can see how to render and configure a line chart. <code>Markers</code> are used to represent individual data and its values.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart. The <code>EnableHighlight</code>
+    property in the tooltip allows the corresponding series to be highlighted when a data point is hovered over.
+    The <code>showNearestTooltip</code> property displays tooltips for the nearest data point to the cursor.
+</p>
+    </p>
+    <p>
+        More information about the line series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/line" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Line Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }

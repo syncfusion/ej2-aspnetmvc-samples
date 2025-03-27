@@ -1,0 +1,44 @@
+@using Syncfusion.EJ2
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("LazyGroupGrid").DataSource((IEnumerable<Object>)ViewData["lazyLoadData"]).AllowPaging(true).AllowGrouping(true).AllowSorting().Height("400").Columns(col =>
+   {
+
+       col.Field("OrderID").HeaderText("Order ID").AllowGrouping(false).Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("ProductName").HeaderText("Product Name").Width("160").Add();
+       col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("CustomerID").HeaderText("Customer ID").Width("120").Add();
+       col.Field("CustomerName").HeaderText("Customer Name").Width("160").Add();
+   }).GroupSettings(group => group.EnableLazyLoading(true).Columns(new string[] { "ProductName", "CustomerName" })).Render()
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the lazy load grouping feature of the Grid component.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Lazy Load Grouping in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            The Lazy load grouping, allows the Grid to render only the initial level caption rows in the collapsed state while grouping.
+            The child rows of each caption will render only when we expand the captions.
+            To enable lazy load grouping, set <code>groupSettings->enableLazyLoading</code> property as <code>true</code>.
+        </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Lazy Load Grouping Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Lazy Load Grouping in ASP.NET MVC Data Grid Control</h1>
+                }

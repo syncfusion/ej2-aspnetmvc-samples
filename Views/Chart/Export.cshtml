@@ -1,0 +1,161 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        @(Html.EJS().Chart("export-container")
+    .Series(sr =>
+    {
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+            .XName("Country")
+            .YName("GigaWatts")
+            .Name("Measurements (in Gigawatt)")
+            .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff").Size("7px"))))
+            .DataSource(ViewData["ChartPoints"]).Add();
+    })
+      .PrimaryXAxis(xaxis =>
+         xaxis.MajorGridLines(mg=>mg.Width(0))
+              .MajorTickLines(mt => mt.Width(0))
+              .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+              .Interval(1)
+              .LabelRotation(-45)
+      )
+      .PrimaryYAxis(yaxis =>
+          yaxis.Minimum(0)
+               .Maximum(40)
+               .MajorGridLines(mg=>mg.Width(2))
+               .MajorTickLines(mt => mt.Width(0))
+               .LineStyle(ls => ls.Width(0))
+               .Interval(10)
+               .LabelFormat("{value}GW")
+      )
+      .Title("Top 10 Countries Using Solar Power").LegendSettings(leg => leg.Visible(false))
+      .Load("load").ChartArea(area => area.Border(br => br.Width(0))).PointRender("labelRender").Render()
+   )
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%;">
+            <tr style="height: 50px">
+                <td style="width: 20%">
+                    <div style="margin-left: -8%;">
+                        Export Type
+                    </div>
+                </td>
+                <td style="width: 80%;">
+                    <div style="margin-left: -20px">
+                        @Html.EJS().DropDownList("Export").Index(0).DataSource(ViewData["data"]).Value("JPEG").Change("valueChange").Render()
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td style="width: 40%">
+                    <div style="margin-left: -8%;">File Name</div>
+                </td>
+                <td style="width: 40%;">
+                    <div class="e-float-input" style='margin-top:5%;width:115%;margin-left:0%'>
+                        <input type="text" value="Chart" id="fileName" style="margin-left: -20px">
+                    </div>
+                </td>
+            </tr>
+            <tr id="button-control" style="height: 50px" align='center'>
+                <td>
+                    <div style="margin-left: 62%;">
+                        @Html.EJS().Button("togglebtn").IsPrimary(true).Content("Export").IconCss("e-icons e-export icon").Render()
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <style>
+        #button-control {
+            width: 100%;
+            text-align: center;
+        }
+        @*custom code start*@
+        #control-container {
+            padding: 0px !important;
+        }
+        @*custom code end*@
+        .e-icons.e-export::before {
+            content: '\e728';
+        }
+
+        .e-view.fabric .e-icons.e-export::before, .e-view.fabric-dark .e-icons.e-export::before {
+            content: '\e710';
+        }
+
+        .e-view.bootstrap4 .e-icons.e-export::before {
+            content: '\e780';
+        }
+
+        .e-view.tailwind-dark .e-icons.e-export::before, .e-view.tailwind3-dark .e-icons.e-export::before, .e-view.tailwind .e-icons.e-export::before, .e-view.tailwind3 .e-icons.e-export::before {
+            content: '\e7bf';
+        }
+
+        .e-view.highcontrast .e-icons.e-export::before {
+            content: '\e710';
+        }
+
+        .e-view.bootstrap5\.3 .e-icons.e-export::before, .e-view.bootstrap5\.3-dark .e-icons.e-export::before {
+            content: '\e72e';
+        }
+
+        .e-view.fluent .e-icons.e-export::before, .e-view.fluent-dark .e-icons.e-export::before {
+            content: '\e72e';
+        }
+
+        .e-view.fluent2 .e-icons.e-export::before, .e-view.fluent2-dark .e-icons.e-export::before, .e-view.fluent2-highcontrast .e-icons.e-export::before {
+            content: '\e72e';
+        }
+
+        .e-view.material3 .e-icons.e-export::before, .e-view.material3-dark .e-icons.e-export::before {
+            content: '\e72e';
+        }
+    </style>
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+            var load = function (args) {
+                loadChartTheme(args);
+                args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice? 'None' : 'Trim';
+                args.chart.series[0].marker.dataLabel.enableRotation = ej.base.Browser.isDevice? 'true' : 'false';
+                args.chart.series[0].marker.dataLabel.angle = ej.base.Browser.isDevice? -90 : 0;
+            };
+            var labelRender = function (args) {
+                pointRender(args);
+            };
+            var mode = "JPEG";
+            function valueChange() {
+                var exportType = document.getElementById('Export').ej2_instances[0];
+                mode = exportType.value;
+            }
+            document.getElementById('togglebtn').onclick = function () {
+                var chart = document.getElementById('export-container').ej2_instances[0];
+                var fileName = (document.getElementById('fileName')).value;
+                chart.exportModule.export(mode, fileName);
+            };
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Export in ASP.NET MVC Chart control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample demonstrates client-side exporting of the chart, enabling you to export its data to Excel, PDF, and CSV formats. Additionally, it allows you to save the chart in image formats such as JPEG, PNG, and SVG.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how the export functionality is configured. The rendered chart can be exported in JPEG, PNG, SVG, and PDF file types. Data from the chart can also be exported to Excel and CSV files.
+    </p>
+    <p>
+        More information on the export can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-print?cs-save-lang=1&cs-lang=razor#export" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+
+@section Title{
+    <title>ASP.NET MVC Chart Export Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Export in ASP.NET MVC Chart Control</h1>
+}

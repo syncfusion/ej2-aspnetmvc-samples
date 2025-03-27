@@ -1,0 +1,50 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="col-lg-8 control-section sb-property-border" style="width: 100%">
+        @Html.EJS().Diagram("diagram").Created("create").Width("100%").Height("700px").GetConnectorDefaults("connectorDefaults").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render()
+    </div>
+
+    <script>
+
+        function create() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.fitToPage();
+            diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
+            diagram.dataBind();
+        }
+
+        function connectorDefaults(obj) {
+            obj.targetDecorator.style = { fill: '#489ECC', strokeColor: '#489ECC' };
+            if (obj.targetDecorator.shape === 'Arrow') {
+                obj.style = { strokeColor: '#489ECC', strokeWidth: 2 };
+            }
+        }
+
+    </script>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample illustrates an employee’s leave request sequence using a UML sequence diagram. The shapes for the sequence were designed with the port feature for Diagram's nodes.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the UML Sequence Diagram in ASP.NET MVC Diagram control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            This example shows how to create a UML sequence diagram using the port feature for nodes. The <code>type</code> property allows you to define the type of shape.  The basic shape property allows you to define the shape of a node.
+        </p>
+        <br />
+    </div>
+}
+
+
+@section Title{
+    <title>ASP.NET MVC Diagram UML Sequence Diagram Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of UML Sequence Diagram in ASP.NET MVC Diagram Control</h1>
+}
