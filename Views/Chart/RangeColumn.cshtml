@@ -4,16 +4,17 @@
         
             @Html.EJS().Chart("container").Series(series =>
        {
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.RangeColumn).XName("Days").High("IND_HighTemp").Low("IND_LowTemp")
-               .Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer))).Name("India").ColumnSpacing(0.1).DataSource(ViewData["ChartPoints"]).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.RangeColumn).XName("Month").High("Max").Low("Min")
+               .Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer))).ColumnSpacing(0.4).
+               CornerRadius(cr => cr.TopLeft(4).TopRight(4).BottomRight(4).BottomLeft(4)).TooltipMappingName("TooltipText").DataSource(ViewData["ChartPoints"]).Add();
        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-       .MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt => mt.Width(0))
-       ).PrimaryYAxis(py => py.LabelFormat("{value}˚C").Maximum(20).Title("Temperature (In Celsius)")
+       .MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
+       ).PrimaryYAxis(py => py.LabelFormat("{value}˚F").Minimum(0).Maximum(100).Interval(20).Title("Monthly Temperature Variation (°F)")
        .MajorTickLines(mt => mt.Width(0))
        .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
        .LineStyle(ls => ls.Width(0))
-       ).Title("Temperature Variation by Week").ChartArea(area => area.Border(br => br.Width(0))
-       ).Load("load").Tooltip(tt => tt.Enable(true).Header("<b>${point.x}</b>").
+       ).Title("Contiguous U.S. Average Temperature in 2024").SubTitle("Source: ncei.noaa.gov").ChartArea(area => area.Border(br => br.Width(0))
+       ).Load("load").Tooltip(tt => tt.Enable(true).Header("<b>${point.tooltip}</b>").
            Format("Temperature : <b>${point.low} - ${point.high}</b>")).LegendSettings(leg => leg.Visible(false).EnableHighlight(true)).Render()
         </div>
     
@@ -39,7 +40,7 @@
          @*custom code end*@
 @section ActionDescription{
     <p>
-        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/range-column-chart" aria-label="ASP.NET MVC Range Column Chart">ASP.NET MVC Range Column Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the maximum and minimum temperatures for a week in different countries with the default range column series.
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/range-column-chart" aria-label="ASP.NET MVC Range Column Chart">ASP.NET MVC Range Column Chart<span class="sr-only">opens in a new tab</span></a> example demonstrates the Range Column series, highlighting the maximum and minimum temperature changes in the Contiguous U.S. for the year 2024 over different months.
     </p>
 }
 @section Description{

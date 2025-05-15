@@ -1,4 +1,5 @@
- @using System.Windows.Forms @using Syncfusion.EJ2;
+
+@using Syncfusion.EJ2;
  @using Syncfusion.EJ2.Charts
  @section ControlsSection{
 	<script src="~/Scripts/theme-color.js"></script>
@@ -6,19 +7,16 @@
 
 		@Html.EJS().Chart("container").Series(series =>
 	   {
-		   series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("Rate").EnableTooltip(false)
-			   .Marker(mr => mr.DataLabel(dl => dl.Visible(false).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-			   .Opacity(0.5).ColumnWidth(0.8).DataSource(ViewData["ChartPoints"]).Add();
-		   series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").YName("Literacy_Rate").TooltipMappingName("Text")
-			   .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("text").Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-			   .ColumnWidth(0.8).DataSource(ViewData["ChartPoints"]).Add();
-	   }).PrimaryXAxis(px => px.Interval(1).MajorGridLines(mg=>mg.Width(0))
+		   series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).XName("X").YName("Y")
+			   .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Name("TooltipText").EnableRotation(false).Angle(-90).Font(ff => ff.FontWeight("600"))))
+			   .ColumnWidth(0.5).DataSource(ViewData["ChartPoints"]).Add();
+	   }).PrimaryXAxis(px => px.Interval(1).MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt => mt.Width(0)).LineStyle(mg => mg.Width(0)).MinorTickLines(mt => mt.Width(0)).MinorGridLines(mg => mg.Width(0))
 		   .LabelPosition(Syncfusion.EJ2.Charts.AxisPosition.Outside).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-			).PrimaryYAxis(py => py.Minimum(0).Maximum(100).LabelFormat("{value}%")
-				.Interval(25).MajorTickLines(mg => mg.Width(0)).MinorTickLines(mg => mg.Width(0)).LineStyle(mg => mg.Width(0))
-			).Title("Literacy rate by Country in 2015").ChartArea(area => area.Border(br => br.Width(0))
-			).Tooltip(tt => tt.Enable(true).Header("<b>${point.x}</b>").Format("Rate : <b>${point.tooltip}</b>")).LegendSettings(lg => lg.Visible(false)
-			).EnableSideBySidePlacement(false).Load("load").PointRender("pointRender").Render()
+			).PrimaryYAxis(py => py.Minimum(0).Maximum(50).LabelFormat("{value}%").Title("Sector-wise Growth (%)")
+				.Interval(10).MajorTickLines(mg => mg.Width(0)).MajorGridLines(mg => mg.Width(0)).LineStyle(mg => mg.Width(0)).OpposedPosition(true)
+			).Title("Top Performing Market Sectors by Growth Rate (2024)").SubTitle("Source: visualcapitalist.com").TitleStyle(ts => ts.Position(TitlePosition.Bottom)).ChartArea(area => area.Border(br => br.Width(0))
+			).Tooltip(tt => tt.Enable(true).Header("<b>${point.x}</b>").Format("Growth Rate : <b>${point.text}</b>")).LegendSettings(lg => lg.Visible(false)
+			).Load("load").PointRender("pointRender").Render()
 		</div>
 	
 	@*custom code start*@
@@ -33,19 +31,11 @@
         var load = function (args) {
             loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "77%";
-			args.chart.series[0].cornerRadius.bottomLeft = ej.base.Browser.isDevice ? 12 : 35;
-			args.chart.series[0].cornerRadius.bottomRight = ej.base.Browser.isDevice ? 12 : 35;
-			args.chart.series[0].cornerRadius.topLeft = ej.base.Browser.isDevice ? 12 : 35;
-			args.chart.series[0].cornerRadius.topRight = ej.base.Browser.isDevice ? 12 : 35;
-			args.chart.series[1].cornerRadius.bottomLeft = ej.base.Browser.isDevice ? 12 : 35;
-            args.chart.series[1].cornerRadius.bottomRight = ej.base.Browser.isDevice ? 12 : 35;
-            args.chart.series[1].cornerRadius.topLeft = ej.base.Browser.isDevice ? 12 : 35;
-            args.chart.series[1].cornerRadius.topRight = ej.base.Browser.isDevice ? 12 : 35;
-			args.chart.series[1].marker.dataLabel.enableRotation = ej.base.Browser.isDevice ? "true" : "false";
-            args.chart.series[1].marker.dataLabel.angle = ej.base.Browser.isDevice ? -90 : 0;
-			args.chart.series[1].marker.dataLabel.font.size = ej.base.Browser.isDevice ? "9px" : "11px";
+			args.chart.series[0].cornerRadius.bottomLeft = ej.base.Browser.isDevice ? 8 : 10;
+			args.chart.series[0].cornerRadius.bottomRight = ej.base.Browser.isDevice ? 8 : 10;
+			args.chart.series[0].cornerRadius.topLeft = ej.base.Browser.isDevice ? 8 : 10;
+			args.chart.series[0].cornerRadius.topRight = ej.base.Browser.isDevice ? 8 : 10;
 			args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Rotate45';
-            args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';
         };
         
         var pointRender = function (args) {
@@ -140,16 +130,16 @@
                 }
 @*custom code end*@
 @section ActionDescription{
-	<p>
-		This sample shows the literacy rate by country in 2015 with the default column series in the chart.
-	</p>
+    <p>
+        This sample showcases a bar chart with rounded corners, illustrating the anticipated growth rates across various sectors in 2024.
+    </p>
 }
 @section Description{
+    <p>
+        In this example, this example, you can see how to render and configure the bar chart. The bar chart is similar to the column chart, but the orientation of the y-axis is horizontal rather than vertical. You can use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartCornerRadius.html" aria-label="ChartCornerRadius">ChartCornerRadius<span class="sr-only">opens in a new tab</span></a> option to customize the horizontal rectangle, resulting in a rounded bar.
+    </p>
 	<p>
-		In this example, you can see how to render and configure the column chart. The column chart is used to compare the frequency, count, total, or average of data in different categories. You can use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartCornerRadius.html" aria-label="ChartCornerRadius">ChartCornerRadius<span class="sr-only">opens in a new tab</span></a> option to customize the vertical rectangle, resulting in a rounded column.
-	</p>
-	<p>
-		<code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+		<code>Tooltips</code> are enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
 	</p>
 }
 @section Title{

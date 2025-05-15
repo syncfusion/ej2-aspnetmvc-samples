@@ -92,8 +92,6 @@
         var filePath = args.rowData.Url;
         dialogObj.header = fileName;
         var viewer = document.getElementById('pdfviewer').ej2_instances[0];
-        viewer.documentPath = filePath;
-        dialogObj.show();
 
         if (args.target.title == "View") {
             mode = "View";
@@ -177,7 +175,9 @@
                     'RadioButtonTool', 'DropdownTool', 'ListboxTool', 'DrawSignatureTool', 'DeleteTool']
             };
         }
+        dialogObj.show();
         viewer.dataBind();
+        viewer.documentPath = filePath;
     }
     </script>
 }

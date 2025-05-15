@@ -40,7 +40,7 @@
              .Interval(1)
       )
       .Title("GDP in current prices (USD Billion)")
-      .Tooltip(tp => tp.Enable(true).Header("").Format("<b>${point.x}</b><br>GDP: <b>${point.y}USD</b>"))
+      .Tooltip(tp => tp.Enable(true).Header("").Format("<b>${point.x}</b><br>GDP: <b>${point.y}USD</b>").EnableHighlight(true))
       .LegendSettings(lg => lg.EnableHighlight(true))
       .Load("load").Render()
 )

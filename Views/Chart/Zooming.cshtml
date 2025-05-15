@@ -13,7 +13,7 @@
                 ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).ScrollbarSettings(sc => sc.EnableZoom(false).Position(Syncfusion.EJ2.Charts.ScrollbarPosition.Bottom))
             ).PrimaryYAxis(py => py.Title("Temperature Anomaly (°C)").LabelFormat("{value}°C").IntervalType(Syncfusion.EJ2.Charts.IntervalType.Months)
                 .LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).EnableScrollbarOnZooming(false)
-            ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("<b>${point.x}</b>").Format("Temperature: <b>${point.y}</b>")).ZoomSettings(z => z.EnableMouseWheelZooming(true).EnableDeferredZooming(false)
+            ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("<b>${point.x}</b>").Format("Temperature: <b>${point.y}</b>").EnableHighlight(true)).ZoomSettings(z => z.EnableMouseWheelZooming(true).EnableDeferredZooming(false)
                 .EnableSelectionZooming(true).EnableScrollbar(true).EnablePinchZooming(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X
                 ).ShowToolbar(true).ToolbarPosition(tb => tb.Y(-60).Draggable(true)).EnableAnimation(true)
             ).Margin(mg => mg.Top(20)).Load("load").Render()

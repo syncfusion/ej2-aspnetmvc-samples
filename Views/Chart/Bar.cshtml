@@ -4,23 +4,24 @@
         
             @Html.EJS().Chart("container").Series(
             series => {
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).Name("GDP").XName("Country").YName("GDP")
-                    .Marker(marker => marker.DataLabel(label => label.Visible(false).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Width(2).ColumnSpacing(0.1).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).Name("Share in World's GDP").XName("Country").YName("WorldShare")
-                    .Marker(marker => marker.DataLabel(label => label.Visible(false).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Width(2).ColumnSpacing(0.1).Add();
-
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).Name("Apple").XName("Year").YName("Count1")
+                    .CornerRadius(cr => cr.TopRight(4).BottomRight(4)).LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).DataSource(ViewData["ChartPoints"]).ColumnSpacing(0.3).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).Name("Xiaomi").XName("Year").YName("Count2")
+                    .CornerRadius(cr => cr.TopRight(4).BottomRight(4)).LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).DataSource(ViewData["ChartPoints"]).ColumnSpacing(0.3).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar).Name("Oppo").XName("Year").YName("Count3")
+                    .CornerRadius(cr => cr.TopRight(4).BottomRight(4)).LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).DataSource(ViewData["ChartPoints"]).ColumnSpacing(0.3).Add();
             }).PrimaryXAxis(
-            px => {
+            px => 
                 px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).
-                    MajorTickLines(mt=>mt.Width(0));
-            }).PrimaryYAxis(
-            py => {
-                py.LabelFormat("{value}%").Title("GDP (In Percentage)").
-                EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LineStyle(ls=>ls.Width(0)).MajorTickLines(mt=>mt.Width(0));
-            }).Tooltip(
-            tooltip => {
-                tooltip.Enable(true);
-            }).ChartArea(area => area.Border(br => br.Width(0))).Title("GDP by Country in 2017").LegendSettings(leg => leg.Visible(true).EnableHighlight(true)).Load("load").Render()       
+                    MajorTickLines(mt=>mt.Width(0))
+            ).PrimaryYAxis(
+            py => 
+                py.LabelFormat("{value}M").Title("Units Sold (in Millions)").Maximum(300).
+                EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LineStyle(ls=>ls.Width(0)).MajorTickLines(mt=>mt.Width(0))
+            ).Tooltip(
+            tooltip => 
+                tooltip.Enable(true).EnableHighlight(true).Header("<b>${series.name}</b>").Format("${point.x} : <b>${point.y}</b>")
+            ).ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))).Title("Global Smartphone Sales Trends by Brand (2021-2023)").SubTitle("Source: wikipedia.org").LegendSettings(leg => leg.Visible(true).EnableHighlight(true).ShapeHeight(9).ShapeWidth(9)).Load("load").Render()       
         
         </div>
     
@@ -46,7 +47,7 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/bar-chart" aria-label="ASP.NET MVC Bar Chart">ASP.NET MVC Bar Chart<span class="sr-only">opens in a new tab</span></a> example visualizes GDP data by country for the year 2017 with a default bar series.
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/bar-chart" aria-label="ASP.NET MVC Bar Chart">ASP.NET MVC Bar Chart<span class="sr-only">opens in a new tab</span></a> example demonstrates the global smartphone sales trends by brand from 2021 to 2023 using a bar chart. The data is visualized with bars representing unit sales for different brands, highlighting the comparative performance of each brand over the years.
     </p>
 }
 @section Description{

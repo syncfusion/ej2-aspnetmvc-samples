@@ -353,10 +353,6 @@ function loadCulture(cul) {
         var locale = new ej.base.Ajax('../Scripts/locale/' + cul + '.json', 'GET', false);
         locale.send().then(function (value) {
             ej.base.L10n.load(JSON.parse(value));
-            if (url.includes("spreadsheet")){
-                var spreadsheet = document.querySelector("#spreadsheet").ej2_instances[0];
-                spreadsheet.refresh();
-            }
         });
     }
     var ajax = new ej.base.Ajax('../Scripts/cldr-data/main/' + cul + '/all.json', 'GET', false);
@@ -368,11 +364,13 @@ function loadCulture(cul) {
     }
 }
 function changeCulture(cul) {
-    if (cul === 'ar') {
-        changeRtl(true);
-    }
-    ej.base.setCurrencyCode(sessionStorage.getItem("ej2-currency") || matchedCurrency[cul]);
-    ej.base.setCulture(cul);
+    setTimeout(function () {
+        if (cul === 'ar') {
+            changeRtl(true);
+        }
+        ej.base.setCurrencyCode(sessionStorage.getItem("ej2-currency") || matchedCurrency[cul])
+        ej.base.setCulture(cul); // Set the culture after components are ready
+    },0);
 }
 function changeRtl(bool) {
     setTimeout(function () {

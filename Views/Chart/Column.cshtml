@@ -5,18 +5,16 @@
             @Html.EJS().Chart("container").Series(series =>
        {
 
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).TooltipMappingName("MappingName").XName("Country")
-           .YName("GoldMedal").DataSource(ViewData["ChartPoints"]).Name("Gold").ColumnSpacing(0.1).Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).TooltipMappingName("MappingName").XName("Country")
-               .YName("SilverMedal").DataSource(ViewData["ChartPoints"]).Name("Silver").ColumnSpacing(0.1).Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).TooltipMappingName("MappingName").XName("Country")
-               .YName("BronzeMedal").DataSource(ViewData["ChartPoints"]).Name("Bronze").ColumnSpacing(0.1).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country").CornerRadius(cornerRadius => cornerRadius.TopLeft(4).TopRight(4))
+           .YName("Walnuts").DataSource(ViewData["ChartPoints"]).Name("Walnuts").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).ColumnSpacing(0.4).Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Country")
+               .YName("Almonds").DataSource(ViewData["ChartPoints"]).Name("Almonds").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).ColumnSpacing(0.4).Add();
 
-       }).PrimaryYAxis(px => px.Title("Medal Count").LineStyle(ls=>ls.Width(0)).MajorTickLines(mg=>mg.Width(0)).Maximum(50).Interval(10)
+       }).PrimaryYAxis(px => px.Title("Metric Tons").LineStyle(ls=>ls.Width(0)).MajorTickLines(mg=>mg.Width(0)).Interval(40000)
                 ).PrimaryXAxis(px => px.Interval(1)
        .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0))
-       ).Tooltip(tt => tt.Enable(true).Shared(true).Header("<b>${point.tooltip}</b>")).ChartArea(area => area.Border(br => br.Width(0))
-       ).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)).Title("Olympic Medal Counts - RIO").Load("load").Render()
+       ).Tooltip(tt => tt.Enable(true).EnableHighlight(true).Header("<b>${point.x}</b>").Format("${series.name}: <b>${point.y}</b>")).ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))
+       ).LegendSettings(leg => leg.Visible(true).EnableHighlight(true).ShapeHeight(9).ShapeWidth(9)).Title("Walnuts and Almonds Estimated Production for 2023").SubTitle("Source: fas.usda.gov").Load("load").AxisLabelRender("axisLabelRender").TooltipRender("tooltipRender").Render()
         </div>
     
  @*custom code start*@
@@ -34,6 +32,20 @@
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Trim';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';
         }
+
+        var axisLabelRender = function (args) {
+            var value = parseInt(args.text.replace(/,/g, ''), 10);
+            if (value >= 1000) {
+                args.text = (value / 1000) + 'K';
+            }
+        }
+
+        var tooltipRender = function (args) {
+            if (args.text) {
+                var value = args.point.y.toLocaleString('en-US');
+                args.text = args.series.name + ': <b>' + value + '</b>';
+            }
+        }
     </script>
 }
  @*custom code start*@
@@ -43,12 +55,12 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/column-chart" aria-label="ASP.NET MVC Column Chart">ASP.NET MVC Column Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the medal count from the Rio Olympics with the default column series in the chart.
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/column-chart" aria-label="ASP.NET MVC Column Chart">ASP.NET MVC Column Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the production of Walnuts and Almonds for different countries in 2023.
     </p>
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure a column chart. The column chart is used to compare the frequency, count, total or average of data in different categories.
+        In this example, you can see how to render and configure a column chart. The column chart is used to compare the frequency, count, total, or average of data in different categories.
     </p>
     <p>
         <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.

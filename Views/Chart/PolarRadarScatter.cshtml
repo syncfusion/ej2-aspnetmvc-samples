@@ -42,7 +42,7 @@
                  .Maximum(8)
       )
       .Title("GDP by Countries").LegendSettings(ls => ls.EnableHighlight(true))
-      .Tooltip(tp => tp.Enable(true).Header("").Format("<b>${point.x}</b> <br>GDP: <b>${point.y}%</b>"))
+      .Tooltip(tp => tp.Enable(true).Header("").Format("<b>${point.x}</b> <br>GDP: <b>${point.y}%</b>").EnableHighlight(true))
       .Load("load").Render()
 )
     </div>

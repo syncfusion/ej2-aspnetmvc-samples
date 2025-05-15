@@ -5,14 +5,14 @@
         @Html.EJS().Chart("container").Series(series =>
    {
 
-       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).ColumnFacet(Syncfusion.EJ2.Charts.ShapeType.Cylinder).TooltipMappingName("MappingName").XName("Country")
-       .YName("GoldMedal").DataSource(ViewData["ChartPoints"]).Width(2).ColumnSpacing(0.1).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).ColumnFacet(Syncfusion.EJ2.Charts.ShapeType.Cylinder).XName("Year")
+       .YName("Energy").Name("India").DataSource(ViewData["ChartPoints"]).Width(2).ColumnSpacing(0.3).Add();
 
-   }).PrimaryYAxis(px => px.Title("Medal Count").LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0)).Maximum(50).Interval(10)
+   }).PrimaryYAxis(px => px.Title("Total Renewable Power (TWh)").LabelFormat("{value}TWh").Minimum(150).Maximum(400).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0)).Interval(50)
             ).PrimaryXAxis(px => px.Interval(1)
    .ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0))
-   ).Tooltip(tt => tt.Enable(true).Header("<b>${point.tooltip}</b>").Format("Gold Medal: <b>${point.y}</b>")).ChartArea(area => area.Border(br => br.Width(0))
-   ).Title("Olympic Gold Medal Counts - RIO").Load("load").Render()
+   ).Tooltip(tt => tt.Enable(true).Header("<b>${point.x}</b>").Format("${series.name}: <b>${point.y}</b>")).LegendSettings(ls => ls.Visible(false)).ChartArea(area => area.Border(br => br.Width(0))
+   ).Title("Year-wise Renewable Energy Generation Trends in India").SubTitle("Source: wikipedia.org").Load("load").Render()
     </div>
 
     @*custom code start*@
@@ -39,7 +39,7 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample visualizes the gold medal count from the Rio Olympics using a cylindrical column chart.
+        This sample visualizes the year-wise renewable energy generation trends in India using a cylindrical column chart. The chart displays the total renewable energy generation in terawatt-hours (TWh) for each year from 2017 to 2023.
     </p>
 }
 @section Description{

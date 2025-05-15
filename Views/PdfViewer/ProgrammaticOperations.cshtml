@@ -445,6 +445,7 @@
     .e-pv-flex-container {
         display: flex;
         justify-content: flex-end;
+        align-items: center;
     }
 
     .e-pv-render-mode-info {
@@ -459,7 +460,7 @@
         }
 
             .e-pv-render-mode-info .e-pv-render-mode-info-icon::before {
-                line-height: 0.5rem;
+                line-height: normal;
             }
 
     .e-pv-pdfviewer-control-section {
@@ -1482,7 +1483,7 @@
             selectedAnnotation.allowedInteractions = ["None"];
             selectedAnnotation.strokeColor = "#FF0000";
             if (selectedAnnotation.annotationType === "FreeText") {
-                selectedAnnotation.strokeColor = "#00000000";
+                selectedAnnotation.strokeColor = "#FFFFFF00";
             }
             selectedAnnotation.fillColor = "#00000000";
             if (selectedAnnotation.annotationType === "Highlight") {

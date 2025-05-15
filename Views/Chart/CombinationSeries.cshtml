@@ -16,7 +16,7 @@
    }).PrimaryYAxis(px => px.Minimum(-3).Maximum(3).Interval(1).Title("Growth (in Billion)").LabelFormat("{value}B").LineStyle(ls=>ls.Width(0)).MajorTickLines(mt=>mt.Width(0))
        ).PrimaryXAxis(px => px.Title("Years").MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)
        ).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-       ).Tooltip(tt => tt.Enable(true)).ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(lg => lg.EnableHighlight(true)).Title("Annual Growth of GDP in France").Load("load").Render()
+       ).Tooltip(tt => tt.Enable(true).EnableHighlight(true)).ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(lg => lg.EnableHighlight(true)).Title("Annual Growth of GDP in France").Load("load").Render()
 
        
     </div>

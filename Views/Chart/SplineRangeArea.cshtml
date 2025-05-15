@@ -11,7 +11,7 @@
        }).PrimaryXAxis(px => px.MajorGridLines(mg => mg.Width(0))
            .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).LabelFormat("dd MMM")
           ).PrimaryYAxis(py => py.LabelFormat("{value}˚C").Minimum(-10).Maximum(25).Interval(5).MajorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
-          ).Title("Temperature Variation by Month").ChartArea(area => area.Border(br => br.Width(0))).Load("load").Tooltip(tt => tt.Enable(true).Shared(true).ShowNearestTooltip(true).Format("Temperature : <b>${point.low} - ${point.high}</b>").Header("<b>${point.x}</b>")).LegendSettings(lg => lg.Visible(false)).Render()
+          ).Title("Temperature Variation by Month").ChartArea(area => area.Border(br => br.Width(0))).Load("load").Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Format("Temperature : <b>${point.low} - ${point.high}</b>").Header("<b>${point.x}</b>")).LegendSettings(lg => lg.Visible(false)).Render()
 
         </div>
     </div>

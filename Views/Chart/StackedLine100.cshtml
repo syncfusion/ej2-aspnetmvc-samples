@@ -4,17 +4,17 @@
         
       @Html.EJS().Chart("container-vertical").Series(series =>
  {
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).IsFilled(true)).XName("ExpensesCategory").YName("JohnExpenses").DataSource(ViewData["ChartPoints"]).Name("John").Width(2).Add();
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true)).XName("ExpensesCategory").YName("PeterExpenses").DataSource(ViewData["ChartPoints"]).Name("Peter").Width(2).Add();
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(5).Height(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).IsFilled(true)).XName("ExpensesCategory").YName("SteveExpenses").DataSource(ViewData["ChartPoints"]).Name("Steve").Width(2).Add();
-     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(6).Height(6).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).IsFilled(true)).XName("ExpensesCategory").YName("CharleExpenses").DataSource(ViewData["ChartPoints"]).Name("Charle").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).IsFilled(true)).XName("X").YName("Y").DataSource(ViewData["ChartPoints"]).Name("Canada").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true)).XName("X").YName("Y1").DataSource(ViewData["ChartPoints"]).Name("Algeria").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(5).Height(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).IsFilled(true)).XName("X").YName("Y2").DataSource(ViewData["ChartPoints"]).Name("Ireland").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(6).Height(6).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).IsFilled(true)).XName("X").YName("Y3").DataSource(ViewData["ChartPoints"]).Name("Armenia").Width(2).Add();
  }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
  .MajorGridLines(mg => mg.Width(0)).MinorGridLines(mg => mg.Width(0))
  .MajorTickLines(mt => mt.Width(0)).
- MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).Interval(1)
- ).PrimaryYAxis(py => py.Interval(20).LineStyle(ly => ly.Width(0)).MajorGridLines(mg => mg.Width(1)).MinorGridLines(mg => mg.Width(1))
+ MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
+ ).PrimaryYAxis(py => py.Interval(20).Title("Population Share (%)").LineStyle(ly => ly.Width(0)).MajorGridLines(mg => mg.Width(1)).MinorGridLines(mg => mg.Width(1))
      .MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0))
-       ).Title("Family Expenses for Year").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true).Format("${point.x} : <b>${point.y} (${point.percentage}%)</b>")).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
+       ).Title("Blood Type Distribution by Country").SubTitle("Source: wikipedia.org").ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true).Format("${point.x} : <b>${point.y}% (${point.percentage}%)</b>")).LegendSettings(leg => leg.EnableHighlight(true)).LegendClick("legendClick").Load("load").Render()
         </div>
 
     @*custom code start*@
@@ -35,6 +35,73 @@
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Trim';
             args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';
         }
+        var legendClick = function (args) {
+            if (args.series.index === 0) {
+                if (args.chart.series[3].visible) {
+                    args.chart.series[3].width = 3;
+                    args.chart.series[0].width = 2;
+                } else if (args.chart.series[2].visible) {
+                    args.chart.series[2].width = 3;
+                    args.chart.series[0].width = 2;
+                } else if (args.chart.series[1].visible) {
+                    args.chart.series[1].width = 3;
+                    args.chart.series[0].width = 2;
+                } else {
+                    args.chart.series[0].width = 3;
+                }
+            }
+
+            if (args.series.index === 1) {
+                if (args.chart.series[3].visible) {
+                    args.chart.series[3].width = 3;
+                    args.chart.series[1].width = 2;
+                } else if (args.chart.series[2].visible) {
+                    args.chart.series[2].width = 3;
+                    args.chart.series[1].width = 2;
+                } else if (args.series.visible && args.chart.series[0].visible) {
+                    args.chart.series[0].width = 3;
+                    args.chart.series[1].width = 2;
+                } else {
+                    args.chart.series[1].width = 3;
+                    args.chart.series[0].width = 2;
+                }
+            }
+
+            if (args.series.index === 2) {
+                if (args.chart.series[3].visible) {
+                    args.chart.series[3].width = 3;
+                    args.chart.series[2].width = 2;
+                } else if (!args.series.visible) {
+                    args.chart.series[2].width = 3;
+                    args.chart.series[1].width = 2;
+                    args.chart.series[0].width = 2;
+                } else if (args.chart.series[1].visible) {
+                    args.chart.series[1].width = 3;
+                    args.chart.series[2].width = 2;
+                } else if (args.series.visible && args.chart.series[0].visible) {
+                    args.chart.series[0].width = 3;
+                    args.chart.series[2].width = 2;
+                }
+            }
+
+            if (args.series.index === 3) {
+                if (!args.series.visible) {
+                    args.chart.series[3].width = 3;
+                    args.chart.series[2].width = 2;
+                    args.chart.series[1].width = 2;
+                    args.chart.series[0].width = 2;
+                } else if (args.chart.series[2].visible) {
+                    args.chart.series[2].width = 3;
+                    args.chart.series[3].width = 2;
+                } else if (args.chart.series[1].visible) {
+                    args.chart.series[1].width = 3;
+                    args.chart.series[3].width = 2;
+                } else if (args.series.visible && args.chart.series[0].visible) {
+                    args.chart.series[0].width = 3;
+                    args.chart.series[3].width = 2;
+                }
+            }
+        }
     </script>
 }
 @section Meta{
@@ -42,7 +109,7 @@
                 }
 @section ActionDescription{
     <p>
-        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/100-stacked-line-chart" aria-label="ASP.NET MVC 100% Stacked Line Chart">ASP.NET MVC 100% Stacked Line Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the family expenses with 100% stacked line series to identify who spent more money in each category. Data points are enhanced with markers and tooltips.
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/100-stacked-line-chart" aria-label="ASP.NET MVC 100% Stacked Line Chart">ASP.NET MVC 100% Stacked Line Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the blood type distribution across different countries.
     </p>
 }
 @section Description{
@@ -50,7 +117,7 @@
         In this example, you can see how to render and configure the 100% stacked line chart. This chart displays multiple series of data as stacked lines, ensuring that the cumulative proportion of each stacked element always totals 100%. <code>Markers</code> are used to represent individual data and its values.
     </p>
     <p>
-        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+        <code>Tooltip</code> is enabled in this example. To see a tooltip in action, hover over or tap on the chart.
     </p>
     <p>
          More information about the 100% stacked line series can be found in this

@@ -60,6 +60,7 @@
             var chart = document.getElementById("container").ej2_instances[0];
             var mode = document.getElementById("emptyPoint").ej2_instances[0];
             chart.series[0].emptyPointSettings.mode = mode.value;
+            chart.series[0].animation.enable = false;
             chart.refresh();
         }
         function textRender(args)

@@ -42,7 +42,7 @@
           yaxis.LabelFormat("{value}M")
       )
       .Title("Top 10 Mobile Markets by Number of Subscriptions")
-      .Tooltip(tp => tp.Enable(true).Header("").Format("<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>"))
+      .Tooltip(tp => tp.Enable(true).Header("").Format("<b>${point.text}</b> <br> ${series.name} : <b>${point.y}</b>").EnableHighlight(true))
       .LegendSettings(lg => lg.EnableHighlight(true))
       .Load("load").Render()
   )

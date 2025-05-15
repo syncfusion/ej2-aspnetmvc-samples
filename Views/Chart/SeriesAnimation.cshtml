@@ -130,7 +130,7 @@ Maximum(80).Interval(10).MajorTickLines(gr => gr.Width(0)).RangePadding(Syncfusi
             .XName("x")
             .YName("y").Width(2.5)
             .Type(Syncfusion.EJ2.Charts.ChartSeriesType.StepLine)
-            .Marker(marker => marker.Visible(false).DataLabel(dataLabel => dataLabel.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer)))
+            .Marker(marker => marker.Visible(false).DataLabel(dataLabel => dataLabel.Visible(false)))
             .Animation(anim => anim.Enable(true))
             .Add();
             }).ChartArea(area => area.Border(border => border.Width(0))).Width("100%").Render())

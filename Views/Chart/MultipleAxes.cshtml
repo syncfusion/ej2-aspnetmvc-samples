@@ -22,7 +22,7 @@
            an.X("SUN").Y("70").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).Content((string)ViewData["content1"]).Add();
            an.X("SAT").Y("35").YAxisName("yAxis2").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).Content((string)ViewData["content"]).Add();
        }
-).Title("Weather Data").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true)).LegendSettings(lg=>lg.Visible(false)).Load("load").Render()
+).Title("Weather Data").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).EnableHighlight(true)).LegendSettings(lg=>lg.Visible(false)).Load("load").Render()
     </div>
 </div>
  @*custom code start*@

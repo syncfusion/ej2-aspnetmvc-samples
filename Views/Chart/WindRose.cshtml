@@ -11,7 +11,7 @@
        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar).DrawType(Syncfusion.EJ2.Charts.ChartDrawType.StackingColumn).DataSource(ViewData["ChartPoints"]).Name("23 Above").XName("XValue").YName("YValue5").Width(2).Add();
    }
        ).PrimaryXAxis(py => py.Interval(1).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.OnTicks).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-           ).Title("Wind Rose Chart").Tooltip(tl => tl.Enable(true)).LegendSettings(lg => lg.EnableHighlight(true)).Load("load").Render()
+           ).Title("Wind Rose Chart").Tooltip(tl => tl.Enable(true).EnableHighlight(true)).LegendSettings(lg => lg.EnableHighlight(true)).Load("load").Render()
     </div>
 
     @*custom code start*@

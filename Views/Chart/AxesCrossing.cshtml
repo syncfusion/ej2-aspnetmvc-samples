@@ -47,7 +47,7 @@
                    .PlaceNextToAxisLine(true)
           )
           .Title("Spline Interpolation")
-          .Tooltip(tp => tp.Enable(true))
+          .Tooltip(tp => tp.Enable(true).EnableHighlight(true))
           .ChartArea(area => area.Border(br => br.Width(0)))
           .LegendSettings(lg => lg.EnableHighlight(true))
           .Load("load").Render()

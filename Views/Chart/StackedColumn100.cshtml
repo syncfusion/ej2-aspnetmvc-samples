@@ -4,15 +4,15 @@
         
             @Html.EJS().Chart("container-vertical").Series(series =>
             {
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("General").Border(br => br.Width(1).Color("#ffffff")).Name("General Motors").Width(2).ColumnWidth(0.5).DataSource(ViewData["ChartPoints"]).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("Honda").Border(br => br.Width(1).Color("#ffffff")).Name("Honda").Width(2).ColumnWidth(0.5).DataSource(ViewData["ChartPoints"]).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("Suzuki").Border(br => br.Width(1).Color("#ffffff")).Name("Suzuki").Width(2).ColumnWidth(0.5).DataSource(ViewData["ChartPoints"]).Add();
-                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("Year").YName("BMW").Border(br => br.Width(1).Color("#ffffff")).Name("BMW").Width(2).ColumnWidth(0.5).DataSource(ViewData["ChartPoints"]).Add();
-            }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0)).
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("X").YName("Y1").Border(br => br.Width(1).Color("#ffffff")).Name("India").ColumnWidth(0.4).LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).DataSource(ViewData["ChartPoints"]).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("X").YName("Y2").Border(br => br.Width(1).Color("#ffffff")).Name("China").ColumnWidth(0.4).LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).DataSource(ViewData["ChartPoints"]).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("X").YName("Y3").Border(br => br.Width(1).Color("#ffffff")).Name("United States").ColumnWidth(0.4).LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).DataSource(ViewData["ChartPoints"]).Add();
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn100).XName("X").YName("Y4").Border(br => br.Width(1).Color("#ffffff")).Name("Brazil").ColumnWidth(0.4).LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).CornerRadius(cr => cr.TopLeft(4).TopRight(4)).DataSource(ViewData["ChartPoints"]).Add();
+            }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0)).Interval(1).
                 MinorTickLines(mt => mt.Width(0)).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45)
-                ).PrimaryYAxis(py => py.Interval(20).MajorGridLines(mg=>mg.Width(1)).MajorTickLines(mt => mt.Width(0)).
-                    MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)
-                ).Title("Motor Vehicle Production by Manufacturer").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).Format("${point.x} : <b>${point.y} (${point.percentage}%)</b>")).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)).Load("load").Render()
+                ).PrimaryYAxis(py => py.Interval(20).MajorGridLines(mg=>mg.Width(1)).MajorTickLines(mt => mt.Width(0)).MinorGridLines(mg => mg.Width(0)).
+                    MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
+                ).SubTitle("Source: fas.usda.gov").ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))).Tooltip(tt => tt.Enable(true).EnableHighlight(true).Header("<b>${point.x}</b>")).LegendSettings(leg => leg.Visible(true).EnableHighlight(true).ShapeHeight(9).ShapeWidth(9)).LegendClick("legendClick").TooltipRender("tooltipRender").Load("load").Render()
  
         </div>
 
@@ -28,6 +28,116 @@
         var load = function (args) {
             loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.title = ej.base.Browser.isDevice ? "Global Cotton Production by Country (2021-2024)" : "Global Cotton Production by Country (2019-2024)" ;
+        }
+
+        var legendClick = function (args) {
+            if (args.series.index === 0) {
+                if (args.chart.series[3].visible) {
+                    args.chart.series[3].cornerRadius.topLeft = 4;
+                    args.chart.series[3].cornerRadius.topRight = 4;
+                    args.chart.series[0].cornerRadius.topLeft = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else if (args.chart.series[2].visible) {
+                    args.chart.series[2].cornerRadius.topLeft = 4;
+                    args.chart.series[2].cornerRadius.topRight = 4;
+                    args.chart.series[0].cornerRadius.topLeft = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else if (args.chart.series[1].visible) {
+                    args.chart.series[1].cornerRadius.topLeft = 4;
+                    args.chart.series[1].cornerRadius.topRight = 4;
+                    args.chart.series[0].cornerRadius.topLeft = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else {
+                    args.chart.series[0].cornerRadius.topLeft = 4;
+                    args.chart.series[0].cornerRadius.topRight = 4;
+                }
+            }
+
+            if (args.series.index === 1) {
+                if (args.chart.series[3].visible) {
+                    args.chart.series[3].cornerRadius.topLeft = 4;
+                    args.chart.series[3].cornerRadius.topRight = 4;
+                    args.chart.series[1].cornerRadius.topLeft = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                } else if (args.chart.series[2].visible) {
+                    args.chart.series[2].cornerRadius.topLeft = 4;
+                    args.chart.series[2].cornerRadius.topRight = 4;
+                    args.chart.series[1].cornerRadius.topLeft = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                } else if (args.series.visible && args.chart.series[0].visible) {
+                    args.chart.series[0].cornerRadius.topLeft = 4;
+                    args.chart.series[0].cornerRadius.topRight = 4;
+                    args.chart.series[1].cornerRadius.topLeft = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                } else {
+                    args.chart.series[1].cornerRadius.topLeft = 4;
+                    args.chart.series[1].cornerRadius.topRight = 4;
+                    args.chart.series[0].cornerRadius.topLeft = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                }
+            }
+
+            if (args.series.index === 2) {
+                if (args.chart.series[3].visible) {
+                    args.chart.series[3].cornerRadius.topLeft = 4;
+                    args.chart.series[3].cornerRadius.topRight = 4;
+                    args.chart.series[2].cornerRadius.topLeft = 0;
+                    args.chart.series[2].cornerRadius.topRight = 0;
+                } else if (!args.series.visible) {
+                    args.chart.series[2].cornerRadius.topLeft = 4;
+                    args.chart.series[2].cornerRadius.topRight = 4;
+                    args.chart.series[1].cornerRadius.topLeft = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                    args.chart.series[0].cornerRadius.topLeft = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else if (args.chart.series[1].visible) {
+                    args.chart.series[1].cornerRadius.topLeft = 4;
+                    args.chart.series[1].cornerRadius.topRight = 4;
+                    args.chart.series[2].cornerRadius.topLeft = 0;
+                    args.chart.series[2].cornerRadius.topRight = 0;
+                } else if (args.series.visible && args.chart.series[0].visible) {
+                    args.chart.series[0].cornerRadius.topLeft = 4;
+                    args.chart.series[0].cornerRadius.topRight = 4;
+                    args.chart.series[2].cornerRadius.topLeft = 0;
+                    args.chart.series[2].cornerRadius.topRight = 0;
+                }
+            }
+
+            if (args.series.index === 3) {
+                if (!args.series.visible) {
+                    args.chart.series[3].cornerRadius.topLeft = 4;
+                    args.chart.series[3].cornerRadius.topRight = 4;
+                    args.chart.series[2].cornerRadius.topLeft = 0;
+                    args.chart.series[2].cornerRadius.topRight = 0;
+                    args.chart.series[1].cornerRadius.topLeft = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                    args.chart.series[0].cornerRadius.topLeft = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else if (args.chart.series[2].visible) {
+                    args.chart.series[2].cornerRadius.topLeft = 4;
+                    args.chart.series[2].cornerRadius.topRight = 4;
+                    args.chart.series[3].cornerRadius.topLeft = 0;
+                    args.chart.series[3].cornerRadius.topRight = 0;
+                } else if (args.chart.series[1].visible) {
+                    args.chart.series[1].cornerRadius.topLeft = 4;
+                    args.chart.series[1].cornerRadius.topRight = 4;
+                    args.chart.series[3].cornerRadius.topLeft = 0;
+                    args.chart.series[3].cornerRadius.topRight = 0;
+                } else if (args.series.visible && args.chart.series[0].visible) {
+                    args.chart.series[0].cornerRadius.topLeft = 4;
+                    args.chart.series[0].cornerRadius.topRight = 4;
+                    args.chart.series[3].cornerRadius.topLeft = 0;
+                    args.chart.series[3].cornerRadius.topRight = 0;
+                }
+            }
+        }
+
+        var tooltipRender = function (args) {
+            if (args.text) {
+                var value = args.point.y.toLocaleString('en-US');
+                args.text = args.series.name + ': <b>' + value + 'M (' + args.point.percentage + '%)</b>';
+            }
         }
     </script>
 }

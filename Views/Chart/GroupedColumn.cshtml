@@ -4,39 +4,39 @@
     <div class="control-section" align="center">
         
                 @Html.EJS().Chart("container").PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0)).Interval(1)
-                ).PrimaryYAxis(py => py.LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).Title("Medal Count")
-                ).ChartArea(area => area.Border(br => br.Width(0))).Series(series =>
+                ).PrimaryYAxis(py => py.LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0)).Title("Number of Medals Won")
+                ).ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))).Series(series =>
                 {
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("USA_Total")
-                    .ColumnWidth(0.7).ColumnSpacing(0.1).Name("USA Total Medals").GroupName("USA")
+                    .ColumnWidth(0.7).ColumnSpacing(0.1).Name("USA Total Medals").GroupName("USA").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
                     .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
 
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("USA_Gold")
-                    .ColumnWidth(0.5).ColumnSpacing(0.1).Name("USA Gold Medals").GroupName("USA")
+                    .ColumnWidth(0.5).ColumnSpacing(0.1).Name("USA Gold Medals").GroupName("USA").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
                     .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
 
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("UK_Total")
-                    .ColumnWidth(0.7).ColumnSpacing(0.1).Name("UK Total Medals").GroupName("UK")
+                    .ColumnWidth(0.7).ColumnSpacing(0.1).Name("UK Total Medals").GroupName("UK").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
                     .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
 
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("UK_Gold")
-                    .ColumnWidth(0.5).ColumnSpacing(0.1).Name("UK Gold Medals").GroupName("UK")
+                    .ColumnWidth(0.5).ColumnSpacing(0.1).Name("UK Gold Medals").GroupName("UK").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
                     .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
 
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("China_Total")
-                    .ColumnWidth(0.7).ColumnSpacing(0.1).Name("China Total Medals").GroupName("China")
+                    .ColumnWidth(0.7).ColumnSpacing(0.1).Name("China Total Medals").GroupName("China").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
                     .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
 
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("China_Gold")
-                    .ColumnWidth(0.5).ColumnSpacing(0.1).Name("China Gold Medals").GroupName("China")
+                    .ColumnWidth(0.5).ColumnSpacing(0.1).Name("China Gold Medals").GroupName("China").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
                     .Marker(marker => marker.DataLabel(label => label.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)
                     .Font(font => font.FontWeight("600").Color("#ffffff")))).DataSource(ViewData["ChartPoints"]).Add();
-                }).Title("Olympics Medal Tally").Load("load").Tooltip(tooltip => tooltip.Enable(true)).Render()
+                }).Title("Olympic Medal Trends by Country and Year").SubTitle("A Historical Overview of Medal Counts Across Nations").LegendSettings(leg => leg.Visible(true).ShapeHeight(9).ShapeWidth(9)).Load("load").TooltipRender("tooltipRender").Tooltip(tooltip => tooltip.Enable(true).EnableHighlight(true).Header("<b>${point.x}</b>").Format("${series.groupName} : <b>${point.y} Gold</b>")).Render()
             </div>
         
     @*custom code start*@
@@ -52,6 +52,13 @@
             loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         };
+
+        var tooltipRender = function (args) {
+            var seriesName = args.series.name;
+            var groupName = (args.series && args.series.groupName) ? args.series.groupName : '';
+            var value = args.point.y;
+            args.text = seriesName.includes('Gold') ? groupName + ': <b>' + value + ' Gold</b>' : groupName + ': <b>' + value + ' Total</b>';
+        }
     </script>
 }
 @*custom code start*@
@@ -66,7 +73,7 @@
 }
 @section Description{
     <p>
-        In this example, you can see how to render and configure column charts. Column charts are used for comparing the frequency, count, total or average of data in different categories. You can group the column series by using the <code>GroupName</code> property.
+        In this example, you can see how to render and configure the column type charts. Column type charts are used for comparing the frequency, count, total or average of data in different categories. You can group the column series by using <code>groupName</code> property.
     </p>
     <p>
         <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.

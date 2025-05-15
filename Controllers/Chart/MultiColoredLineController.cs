@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: MultiColoredLine
         public ActionResult MultiColoredLine()
         {
-           return View();
+            return View();
         }
     }
 }

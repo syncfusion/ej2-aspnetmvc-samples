@@ -13,7 +13,7 @@
     .DataSource(ViewData["ChartPoints"]).Name("West Indies").Add();
 }).PrimaryXAxis(px => px.Minimum(15).Maximum(21).Interval(1).MajorGridLines(mg=>mg.Width(0))
        ).PrimaryYAxis(py => py.MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).LabelStyle(ls=>ls.Color("transparent"))
-       ).Title("England vs West Indies").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tl => tl.Enable(true).Format("${point.x}th Over : <b>${point.y} Runs</b>")
+       ).Title("England vs West Indies").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tl => tl.Enable(true).EnableHighlight(true).Format("${point.x}th Over : <b>${point.y} Runs</b>")
            ).LegendSettings(lg => lg.Visible(true).EnableHighlight(true)).Load("load").Render()
     </div>
 

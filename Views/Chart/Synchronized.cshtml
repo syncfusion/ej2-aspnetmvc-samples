@@ -10,7 +10,7 @@
                 .EmptyPointSettings(es => es.Mode(Syncfusion.EJ2.Charts.EmptyPointMode.Drop)).DataSource("ChartPoints").Add();
                 }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).Minimum(new DateTime(2023, 2, 18)).Maximum(new DateTime(2023, 8, 18)).LabelFormat("MMM d").MajorGridLines(mg => mg.Width(0)).LineStyle(ls => ls.Width(0))
                 ).PrimaryYAxis(px => px.LabelFormat("n2").Minimum(0.86).Maximum(0.96).Interval(0.025).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
-                ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("").Format("<b>€${point.y}</b> <br> ${point.x} 2023").EnableMarker(false)).ChartArea(area => area.Border(br => br.Width(0))
+                ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("").Format("<b>€${point.y}</b> <br> ${point.x} 2023").EnableMarker(false).EnableHighlight(true)).ChartArea(area => area.Border(br => br.Width(0))
                 ).TitleStyle(tl => tl.TextAlignment(Syncfusion.EJ2.Charts.Alignment.Near)
                 ).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).EnableScrollbar(false).EnableDeferredZooming(false).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true).ToolbarItems(ViewData["toolbarItems"])).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true).DashArray("2,2")
                 ).Title("US to EURO").Load("load").ChartMouseMove("chartMouseMove1").ChartMouseLeave("chartMouseLeave1").ZoomComplete("zoomComplete").ChartMouseUp("chartMouseUp1").Render()
@@ -21,7 +21,7 @@
                 series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line).XName("USD").YName("JPY").Width(2).DataSource("ChartPoints").Add();
                 }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).Minimum(new DateTime(2023, 2, 18)).Maximum(new DateTime(2023, 8, 18)).LabelFormat("MMM d").MajorGridLines(mg => mg.Width(0)).LineStyle(ls => ls.Width(0))
                 ).PrimaryYAxis(px => px.LabelFormat("{value}").Minimum(120).Maximum(152).Interval(8).LabelPadding(8).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
-                ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("").Format("<b>¥${point.y}</b> <br> ${point.x} 2023").EnableMarker(false)).ChartArea(area => area.Border(br => br.Width(0))
+                ).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("").Format("<b>¥${point.y}</b> <br> ${point.x} 2023").EnableMarker(false).EnableHighlight(true)).ChartArea(area => area.Border(br => br.Width(0))
                 ).TitleStyle(tl => tl.TextAlignment(Syncfusion.EJ2.Charts.Alignment.Near)
                 ).ZoomSettings(zn => zn.EnableMouseWheelZooming(true).EnableScrollbar(false).EnableDeferredZooming(false).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true).ToolbarItems(ViewData["toolbarItems"])).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true).DashArray("2,2")
                 ).Title("US to Yen").Load("load").ChartMouseMove("chartMouseMove2").ChartMouseLeave("chartMouseLeave2").ZoomComplete("zoomComplete").ChartMouseUp("chartMouseUp2").Render()

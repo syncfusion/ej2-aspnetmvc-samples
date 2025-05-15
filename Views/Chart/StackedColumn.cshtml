@@ -14,7 +14,7 @@
  .LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate45)
        ).PrimaryYAxis(py => py.MajorTickLines(mt => mt.Width(0)).
        MinorTickLines(mt => mt.Width(0)).MinorGridLines(mg => mg.Width(1)).LineStyle(ls => ls.Width(0)).Title("Production (60KG Bags)").LabelFormat("{value}M").Interval(20)
-       ).Title("Global Cotton Production by Country (2019-2024)").SubTitle("Source: fas.usda.gov").ChartArea(area => area.Border(br => br.Width(0)).Margin(mr => mr.Bottom(12))).Tooltip(tt => tt.Enable(true).Header("<b>${point.x}</b>").Format("${series.name} : <b>${point.y}</b>")).Load("load").LegendClick("onLegendClick").AxisLabelRender("axisLabelRender").StackLabels(stackLabels => stackLabels.Visible(true).Format("{value}M")).LegendSettings(leg => leg.Visible(true).EnableHighlight(true).ShapeHeight(8).ShapeWidth(8)).Render()
+       ).Title("Global Cotton Production by Country (2019-2024)").SubTitle("Source: fas.usda.gov").ChartArea(area => area.Border(br => br.Width(0)).Margin(mr => mr.Bottom(12))).Tooltip(tt => tt.Enable(true).EnableHighlight(true).Header("<b>${point.x}</b>").Format("${series.name} : <b>${point.y}</b>")).Load("load").LegendClick("onLegendClick").AxisLabelRender("axisLabelRender").StackLabels(stackLabels => stackLabels.Visible(true).Format("{value}M")).LegendSettings(leg => leg.Visible(true).EnableHighlight(true).ShapeHeight(8).ShapeWidth(8)).Render()
         </div>
 
     @*custom code start*@

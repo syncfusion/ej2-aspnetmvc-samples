@@ -22,11 +22,11 @@
                             .ExplodeOffset("10%")
                             .ExplodeIndex(0)
                             .InnerRadius("0%")
-                            .DataSource(ViewData["ChartPoints"])
+                            .DataSource(ViewData["ChartPoints"]).Radius("70%").StartAngle(55)
                             .Add();
                     })
                         .EnableSmartLabels(true)
-                        .EnableAnimation(true)
+                        .EnableAnimation(true).Center(center => center.X("50%").Y("50%"))
                         .Title("Browser Market Share")
                         .LegendSettings(ls => ls.Visible(false))
                         .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header("").EnableHighlight(true))
@@ -38,8 +38,8 @@
     <script>
         var load = function (args) {
             loadAccumulationChartTheme(args);
-            args.accumulation.series[0].startAngle = ej.base.Browser.isDevice ? 70 : 30;
-            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "60%";
+            //args.accumulation.series[0].startAngle = ej.base.Browser.isDevice ? 55 : 35;
+            //args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "70%";
         };
     </script>
 }

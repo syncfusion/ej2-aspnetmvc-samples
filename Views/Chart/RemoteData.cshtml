@@ -37,7 +37,7 @@
 .YName("Freight").DataSource("dataManager").Query("query").Add();
 
 }).PrimaryXAxis(px => px.RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.Additional).MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mg=>mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-       ).ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tl => tl.Enable(true).Header("<b>Freight rate</b>")).PrimaryYAxis(py => py.MajorGridLines(mg=>mg.Width(1)).MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).Title("Freight rate in U.S. dollars")).Title("Container freight rate").LegendSettings(lg => lg.Visible(false)).PointRender("remotepointRender").TooltipRender("tooltipRender").AxisLabelRender("axisLabelRender").Load("load").Render()
+       ).ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tooltip => tooltip.Enable(true).Header("<b>Freight rate</b>")).PrimaryYAxis(py => py.MajorGridLines(mg=>mg.Width(1)).MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).Title("Freight rate in U.S. dollars")).Title("Container freight rate").LegendSettings(lg => lg.Visible(false)).PointRender("remotepointRender").TooltipRender("tooltipRender").AxisLabelRender("axisLabelRender").Load("load").Loaded("loadedChart").Render()
 
         <div id="waitingpopup" class="waitingpopup" style="display:none">
             <span id="gif" class="image"></span>
@@ -62,6 +62,18 @@
      
         var remotepointRender = function (args) {
             pointRender(args);
+        };
+
+        var loaded = 1;
+        var loadedChart = function (args) {
+            var div = document.getElementById('waitingpopup');
+            div.style.display = 'none';
+            setTimeout(() => {
+            if (loaded) {
+                loaded = 0;
+                args.chart.refresh();
+                }
+            }, 10);
         };
 
         var load = function (args) {

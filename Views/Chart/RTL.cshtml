@@ -15,7 +15,7 @@
                     .Width(2).DataSource(ViewData["ChartPoints"]).Name("Expense").Add();
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).XName("Year").YName("Profit").ColumnSpacing(0.1)
                     .Width(2).DataSource(ViewData["ChartPoints"]).Name("Profit").Add();
-                }).Title("Company Performance").Load("load").AxisLabelRender("labelRender").EnableRtl(true).Tooltip(tooltip => tooltip.Enable(true)).LegendSettings(lg => lg.EnableHighlight(true)).Render()
+                }).Title("Company Performance").Load("load").AxisLabelRender("labelRender").EnableRtl(true).Tooltip(tooltip => tooltip.Enable(true).EnableHighlight(true)).LegendSettings(lg => lg.EnableHighlight(true)).Render()
             </div>
         </div>
     </div>

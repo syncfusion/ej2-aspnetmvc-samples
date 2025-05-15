@@ -42,7 +42,7 @@
           yaxis.Title("Revenue in Millios")
                  .LabelFormat("{value}M")
       )
-      .Title("Average Sales Comparison").Tooltip(tl => tl.Enable(true)).LegendSettings(lg => lg.EnableHighlight(true)).Load("load").Render()
+      .Title("Average Sales Comparison").Tooltip(tl => tl.Enable(true).EnableHighlight(true)).LegendSettings(lg => lg.EnableHighlight(true)).Load("load").Render()
    )
     </div>
     <div class="col-lg-4 property-section">

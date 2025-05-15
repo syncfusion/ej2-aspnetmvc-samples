@@ -23,8 +23,8 @@
             .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
         ).PrimaryYAxis(py => py.Title("Yield (In Tons per Hectare)").MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0))
             .LineStyle(ls => ls.Width(0)).Interval(2).Maximum(8)
-        ).Title("Almond Yield").Tooltip(tt => tt.Enable(true).EnableHighlight(true).ShowNearestTooltip(true).Header("<b>Almond Yield - ${point.x}</b>").Format("${series.name}: <b>${point.y}</b>")
-        ).Load("load").ChartArea(area => area.Border(br => br.Width(0))).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)
+        ).Title("Almond Yield Comparison Across Countries (2010-2022)").Tooltip(tt => tt.Enable(true).EnableHighlight(true).ShowNearestTooltip(true).Header("<b>Almond Yield - ${point.x}</b>").Format("${series.name}: <b>${point.y}</b>")
+        ).Load("load").ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)
         ).Render()
     </div>
 

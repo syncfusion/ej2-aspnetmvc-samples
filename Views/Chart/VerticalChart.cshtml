@@ -20,7 +20,7 @@
                               .Add();
         }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorTickLines(mt => mt.Width(0)).MajorGridLines(mg=>mg.Width(0))
             ).PrimaryYAxis(py => py.Title("Sales in Billion").MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).Minimum(11000).Maximum(15000).Interval(1000).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
-            ).Title("Sales Vs Profit Margin").ChartArea(area => area.Border(br => br.Width(0))).IsTransposed(true).Tooltip(tr => tr.Enable(true)).LegendSettings(legend => legend.Visible(false).Position(Syncfusion.EJ2.Charts.LegendPosition.Right)).Load("load").Render()
+            ).Title("Sales Vs Profit Margin").ChartArea(area => area.Border(br => br.Width(0))).IsTransposed(true).Tooltip(tr => tr.Enable(true).EnableHighlight(true)).LegendSettings(legend => legend.Visible(false).Position(Syncfusion.EJ2.Charts.LegendPosition.Right)).Load("load").Render()
     </div>
      @*custom code start*@
     <style>

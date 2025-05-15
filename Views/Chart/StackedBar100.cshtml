@@ -3,14 +3,17 @@
     <div class="control-section" align="center">
 
         @Html.EJS().Chart("container-vertical").Series(series =>
-       {
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("Month").YName("AppleSales").Border(br => br.Width(1).Color("#ffffff")).Name("Apple").ColumnWidth(0.6).Width(2).DataSource(ViewData["ChartPoints"]).Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("Month").YName("OrangeSales").Border(br => br.Width(1).Color("#ffffff")).Name("Orange").ColumnWidth(0.6).Width(2).DataSource(ViewData["ChartPoints"]).Add();
-           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("Month").YName("Wasteage").Border(br => br.Width(1).Color("#ffffff")).Name("Wastage").ColumnWidth(0.6).Width(2).DataSource(ViewData["ChartPoints"]).Add();
-           
-       }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0))
+   {
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("X").YName("Y1").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).Marker(marker => marker.DataLabel(dl => dl.Visible(false)))
+            .Border(br => br.Width(1).Color("#ffffff")).Name("Wind").Width(2).ColumnWidth(0.6).DataSource(ViewData["ChartPoints"]).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("X").YName("Y2").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).Marker(marker => marker.DataLabel(dl => dl.Visible(false)))
+           .Border(br => br.Width(1).Color("#ffffff")).Name("Solar").Width(2).ColumnWidth(0.6).DataSource(ViewData["ChartPoints"]).Add();
+       series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar100).XName("X").YName("Y3").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).Marker(marker => marker.DataLabel(dl => dl.Visible(false)))
+           .CornerRadius(cr => cr.TopRight(4).BottomRight(4)).Border(br => br.Width(1).Color("#ffffff")).Name("Hydro").Width(2).ColumnWidth(0.6).DataSource(ViewData["ChartPoints"]).Add();
+
+   }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0))
        ).PrimaryYAxis(py => py.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
-       ).Title("Sales Comparison").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).Format("${point.x} : <b>${point.y} (${point.percentage}%)</b>")).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)).Load("load").Render()
+       ).Title("Annual Renewable Energy Generation in China (2020-2023) by Source").SubTitle("Source: wikipedia.org").ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))).Tooltip(tt => tt.Enable(true).EnableHighlight(true).Header("<b>Renewable Energy Generation</b>")).LegendSettings(leg => leg.Visible(true).EnableHighlight(true).ShapeHeight(9).ShapeWidth(9)).LegendClick("legendClick").TooltipRender("tooltipRender").Load("load").Render()
         
         </div>
     @*custom code start*@
@@ -26,6 +29,71 @@
             loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
         }
+
+        var legendClick = function (args) {
+            if (args.series.index === 0) {
+                if (args.chart.series[2].visible) {
+                    args.chart.series[2].cornerRadius.bottomRight = 4;
+                    args.chart.series[2].cornerRadius.topRight = 4;
+                    args.chart.series[0].cornerRadius.bottomRight = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else if (args.chart.series[1].visible) {
+                    args.chart.series[1].cornerRadius.bottomRight = 4;
+                    args.chart.series[1].cornerRadius.topRight = 4;
+                    args.chart.series[0].cornerRadius.bottomRight = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else {
+                    args.chart.series[0].cornerRadius.bottomRight = 4;
+                    args.chart.series[0].cornerRadius.topRight = 4;
+                }
+            }
+            if (args.series.index === 1) {
+                if (args.chart.series[2].visible) {
+                    args.chart.series[2].cornerRadius.bottomRight = 4;
+                    args.chart.series[2].cornerRadius.topRight = 4;
+                    args.chart.series[1].cornerRadius.bottomRight = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                } else if (args.series.visible && args.chart.series[0].visible) {
+                    args.chart.series[0].cornerRadius.bottomRight = 4;
+                    args.chart.series[0].cornerRadius.topRight = 4;
+                    args.chart.series[1].cornerRadius.bottomRight = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                } else {
+                    args.chart.series[1].cornerRadius.bottomRight = 4;
+                    args.chart.series[1].cornerRadius.topRight = 4;
+                    args.chart.series[0].cornerRadius.bottomRight = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                }
+            }
+
+            if (args.series.index === 2) {
+                if (!args.series.visible) {
+                    args.chart.series[2].cornerRadius.bottomRight = 4;
+                    args.chart.series[2].cornerRadius.topRight = 4;
+                    args.chart.series[1].cornerRadius.bottomRight = 0;
+                    args.chart.series[1].cornerRadius.topRight = 0;
+                    args.chart.series[0].cornerRadius.bottomRight = 0;
+                    args.chart.series[0].cornerRadius.topRight = 0;
+                } else if (args.chart.series[1].visible) {
+                    args.chart.series[1].cornerRadius.bottomRight = 4;
+                    args.chart.series[1].cornerRadius.topRight = 4;
+                    args.chart.series[2].cornerRadius.bottomRight = 0;
+                    args.chart.series[2].cornerRadius.topRight = 0;
+                } else if (args.series.visible && args.chart.series[0].visible) {
+                    args.chart.series[0].cornerRadius.bottomRight = 4;
+                    args.chart.series[0].cornerRadius.topRight = 4;
+                    args.chart.series[2].cornerRadius.bottomRight = 0;
+                    args.chart.series[2].cornerRadius.topRight = 0;
+                }
+            }
+        }
+
+        var tooltipRender = function (args) {
+            if (args.text) {
+                var value = args.point.y.toLocaleString('en-US');
+                args.text = args.series.name + ': <b>' + value + 'TWh (' + args.point.percentage + '%)</b>';
+            }
+        }
     </script>
 }
    @*custom code start*@
@@ -35,7 +103,7 @@
    @*custom code end*@
 @section ActionDescription{
     <p>
-        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/100-stacked-bar-chart" aria-label="ASP.NET MVC 100% Stacked Bar Chart">ASP.NET MVC 100% Stacked Bar Chart<span class="sr-only">opens in a new tab</span></a> example visualizes a comparison of sales percentages over several months with a default 100% stacked bar series. The legend in the sample shows more information about the series.
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/100-stacked-bar-chart" aria-label="ASP.NET MVC 100% Stacked Bar Chart">ASP.NET MVC 100% Stacked Bar Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the comparison of renewable energy generation in China from 2020 to 2023, segmented by wind, solar, and hydro sources, using a default 100% stacked bar series. The legend provides additional information about the series.
     </p>
 }
 @section Description{

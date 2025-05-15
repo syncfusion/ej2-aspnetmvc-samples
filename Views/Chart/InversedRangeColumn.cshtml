@@ -6,27 +6,25 @@
     .Series(sr =>
     {
         sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.RangeColumn)
-            .XName("Month")
-            .High("CA_HighTemp")
-            .Low("CA_LowTemp")
-            .ColumnSpacing(0.1)
-            .TooltipMappingName("Text")
+            .XName("Country")
+            .High("High")
+            .Low("Low")
+            .ColumnSpacing(0.4).CornerRadius(cr => cr.TopLeft(4).TopRight(4).BottomRight(4).BottomLeft(4))
             .Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer)))
             .DataSource(ViewData["ChartPoints"]).Add();
     })
       .PrimaryXAxis(xaxis =>
          xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
-               .MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0))
+               .MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)).LineStyle(ls => ls.Width(0))
                )
       .PrimaryYAxis(yaxis =>yaxis.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
                  .LineStyle(ls=>ls.Width(0))
-                 .MajorTickLines(mt=>mt.Width(0))
-                 .LabelFormat("{value}˚F")
-                 .Title("Temperature (In Fahrenheit)")
+                 .MajorTickLines(mt=>mt.Width(0)).Minimum(0).Maximum(200).Interval(20)
+                 .LabelFormat("{value}")
+                 .Title("Growth in Visa-Free Destinations")
     )
-      .Title("Temperature Variation")
-      .Tooltip(tp => tp.Enable(true).Header("<b>${point.tooltip}</b>").EnableMarker(false).
-          Format("Temperature : <b>${point.low} - ${point.high}</b>"))
+      .Title("Global Passport Rankings: Growth in Visa-Free Access (2006–2024)").SubTitle("Source: wikipedia.org")
+      .Tooltip(tp => tp.Enable(true).Format("${point.x}: <b>${point.low} - ${point.high}</b>").EnableMarker(true))
       .IsTransposed(true).ChartArea(area => area.Border(br => br.Width(0)))
       .Load("load").Render()
 )
@@ -54,7 +52,7 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample shows the maximum and minimum temperatures for several months with the default range column series inverted. The tooltip shows the information for each data point.
+        This sample visually represents changes in visa-free access for various countries using an inverted Range Column chart. It highlights the countries that have experienced the most significant increases and decreases over the past decade.
     </p>
 }
 @section Description{

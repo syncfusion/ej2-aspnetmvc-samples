@@ -4,31 +4,22 @@
         
             @Html.EJS().Chart("container").Series(
 series => {
-    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Total").XName("ConsumerName").YName("TotalCount")
-    .Marker(mr=>mr.DataLabel(dl=>dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-    .DataSource(ViewData["ChartPoints"]).Width(2).ColumnWidth(0.5).Add();
-    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Apple").XName("ConsumerName").YName("AppleCount")
-   .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-    .DataSource(ViewData["ChartPoints"]).Width(2).ColumnWidth(0.4).Add();
-    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Orange").XName("ConsumerName").YName("OrangeCount")
-    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-    .DataSource(ViewData["ChartPoints"]).Width(2).ColumnWidth(0.3).Add();
-    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Grapes").XName("ConsumerName").YName("GrapesCount")
-    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Font(ff => ff.FontWeight("600").Color("#ffffff"))))
-    .DataSource(ViewData["ChartPoints"]).Width(2).ColumnWidth(0.2).Add();
+    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Total").XName("Country").YName("Population")
+    .DataSource(ViewData["ChartPoints"]).Width(2).ColumnWidth(0.5).CornerRadius(cr => cr.TopLeft(4).TopRight(4)).LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).Add();
+    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Male").XName("Country").YName("Male")
+    .DataSource(ViewData["ChartPoints"]).Width(2).ColumnWidth(0.3).CornerRadius(cr => cr.TopLeft(4).TopRight(4)).LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).Add();
+    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).Name("Female").XName("Country").YName("Female")
+    .DataSource(ViewData["ChartPoints"]).Width(2).ColumnWidth(0.2).CornerRadius(cr => cr.TopLeft(4).TopRight(4)).LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).Add();
 
 }).PrimaryXAxis(px => {
     px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)).
     Interval(1);
 }).PrimaryYAxis(py => {
-    py.Title("Fruits Count").
+    py.Title("Inhabitants (Millions)").Interval(300000000).
     LineStyle(ls => ls.Width(0)).
         MajorTickLines(mt=>mt.Width(0));
-}).EnableSideBySidePlacement(false).Title("Fruit Consumption").ChartArea(area => area.Border(br => br.Width(0))
-).Load("load").Tooltip( tt => { tt.Enable(true).Shared(true); }).LegendSettings(lg => lg.Visible(true)).Render()
-
-
-
+}).EnableSideBySidePlacement(false).Title("Population Distribution of the Top 5 Most Populous Countries (2024)").SubTitle("Source: statisticstimes.com").ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))
+).Load("load").AxisLabelRender("onAxisLabelRender").SharedTooltipRender("onSharedTooltiptipRender").Resized("onResized").Tooltip( tt => { tt.Enable(true).Shared(true); }).LegendSettings(lg => lg.Visible(true).ShapeWidth(9).ShapeHeight(9).MaximumColumns(1).Position(Syncfusion.EJ2.Charts.LegendPosition.Custom).Location(location => location.X(750).Y(80))).Render()
         </div>
     
 @*custom code start*@
@@ -41,12 +32,42 @@ series => {
     <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            loadChartTheme(args);
+            var selectedTheme = loadChartTheme(args);
             args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
             args.chart.series[0].marker.dataLabel.alignment = ej.base.Browser.isDevice ? "Top" : "Top";
             args.chart.series[0].marker.dataLabel.enableRotation = ej.base.Browser.isDevice ? "true" : "false";
             args.chart.series[0].marker.dataLabel.angle = ej.base.Browser.isDevice ? -90 : 0;
+            if (selectedTheme.indexOf('Dark') !== -1 || selectedTheme.indexOf('HighContrast') !== -1) {
+                args.chart.legendSettings.border = { width: 1, color: '#FFFFFF' };
+            } else {
+                args.chart.legendSettings.border = { width: 1, color: '#777777' };
+            }
         }
+
+        var onAxisLabelRender = function (args) {
+            var value = parseInt(args.text.replace(/,/g, ''), 10);
+            if (value >= 1000000) {
+                args.text = (value / 1000000).toFixed(0) + 'M';
+            }
+        }
+
+        var onSharedTooltiptipRender = function (args) {
+            if (args.text && args.point && args.series) {
+                for (var i = 0; i < args.point.length; i++) {
+                    if (args.point[i] && args.point[i].y !== undefined) {
+                        var formattedValue = args.point[i].y.toLocaleString('en-US');
+                        var seriesName = args.series[i] ? args.series[i].name : 'Series ' + (i + 1);
+                        args.text[i] = seriesName + ': <b>' + formattedValue + '</b>';
+                    }
+                }
+            }
+        }
+
+        var onResized = function (args) {
+            var maxWidth = args.chart.availableSize.width;
+            args.chart.legendSettings.location.x = maxWidth - 115;
+        }
+
     </script>
 }
 @*custom code start*@

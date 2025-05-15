@@ -15,7 +15,7 @@
 .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).ValueType(Syncfusion.EJ2.Charts.ValueType.Category).MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg=>mg.Width(0)).MajorTickLines(mt=>mt.Width(0)).
    MinorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
        ).PrimaryYAxis(py => py.LabelFormat("{value}K").Title("Sales").MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0))
-       ).Tooltip(tooltip => tooltip.Enable(true)).Title("Vehicle Sales by Region").Load("load").ChartArea(area => area.Border(br=>br.Color("transparent"))).Render()
+       ).Tooltip(tooltip => tooltip.Enable(true).EnableHighlight(true)).Title("Vehicle Sales by Region").Load("load").ChartArea(area => area.Border(br=>br.Color("transparent"))).Render()
        
     </div>
         <div class="col-lg-3 property-section">

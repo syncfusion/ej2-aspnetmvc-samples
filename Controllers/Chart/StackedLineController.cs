@@ -19,31 +19,28 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         // GET: StackedLine
         public ActionResult StackedLine()
         {
-            List<StackedChartData> ChartPoints = new List<StackedChartData>
-            {
-                new StackedChartData { ExpensesCategory= "Jan", JohnExpenses= 90, PeterExpenses= 40, SteveExpenses= 70,  CharleExpenses= 120 },
-                new StackedChartData { ExpensesCategory= "Feb", JohnExpenses= 80, PeterExpenses= 90, SteveExpenses= 110, CharleExpenses= 70  },
-                new StackedChartData { ExpensesCategory= "Mar", JohnExpenses= 50, PeterExpenses= 80, SteveExpenses= 120, CharleExpenses= 50  },
-                new StackedChartData { ExpensesCategory= "Apr", JohnExpenses= 70, PeterExpenses= 30, SteveExpenses= 60,  CharleExpenses= 180 },
-                new StackedChartData { ExpensesCategory= "May", JohnExpenses= 30, PeterExpenses= 80, SteveExpenses= 80,  CharleExpenses= 30  },
-                new StackedChartData { ExpensesCategory= "Jun", JohnExpenses= 10, PeterExpenses= 40, SteveExpenses= 30,  CharleExpenses= 270 },
-                new StackedChartData { ExpensesCategory= "Jul", JohnExpenses= 100,PeterExpenses= 30, SteveExpenses= 70,  CharleExpenses= 40  },
-                new StackedChartData { ExpensesCategory= "Aug", JohnExpenses= 55, PeterExpenses= 95, SteveExpenses= 55,  CharleExpenses= 75  },
-                new StackedChartData { ExpensesCategory= "Sep", JohnExpenses= 20, PeterExpenses= 50, SteveExpenses= 40,  CharleExpenses= 65  },
-                new StackedChartData { ExpensesCategory= "Oct", JohnExpenses= 40, PeterExpenses= 20, SteveExpenses= 80,  CharleExpenses= 95  },
-                new StackedChartData { ExpensesCategory= "Nov", JohnExpenses= 45, PeterExpenses= 15, SteveExpenses= 45,  CharleExpenses= 195 },
-                new StackedChartData { ExpensesCategory= "Dec", JohnExpenses= 75, PeterExpenses= 45, SteveExpenses= 65,  CharleExpenses= 115 }
+            List<StackedChartData> ChartPoints = new List<StackedChartData>{
+            
+                new StackedChartData { X = 2015, Y = 28.2, Y1 = 15.0, Y2 = 8.1, Y3 = 4.6 },
+                new StackedChartData { X = 2016, Y = 28.6, Y1 = 16.7, Y2 = 8.4, Y3 = 7.5 },
+                new StackedChartData { X = 2017, Y = 46.0, Y1 = 14.2, Y2 = 7.73, Y3 =12.1 },
+                new StackedChartData { X = 2018, Y = 52.7, Y1 = 15.3, Y2 = 5.1, Y3 = 25.9 },
+                new StackedChartData { X = 2019, Y = 62.0, Y1 = 16.4, Y2 = 8.7, Y3 = 39.3 },
+                new StackedChartData { X = 2020, Y = 64.6, Y1 = 13.9, Y2 = 9.4, Y3 = 50.1 },
+                new StackedChartData { X = 2021, Y = 60.1, Y1 = 14.8, Y2 = 10.3, Y3 = 60.4 },
+                new StackedChartData { X = 2022, Y = 68.6, Y1 = 16.1, Y2 = 10.4, Y3 = 73.5 },
+                new StackedChartData { X = 2023, Y = 71.81, Y1 = 16.02, Y2 = 11.17, Y3 = 102.01 }
             };
             ViewData["ChartPoints"] = ChartPoints;
             return View();
         }
         public class StackedChartData
         {
-            public string ExpensesCategory;
-            public double JohnExpenses;
-            public double PeterExpenses;
-            public double SteveExpenses;
-            public double CharleExpenses;
+            public double X;
+            public double Y;
+            public double Y1;
+            public double Y2;
+            public double Y3;
         }
     }
 }
