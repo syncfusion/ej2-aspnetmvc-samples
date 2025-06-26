@@ -16,7 +16,7 @@
         .Filters(filters => { filters.Name("[Date].[Fiscal]").Caption("Date Fiscal").Add();
         })).GridSettings(new PivotViewGridSettings { ColumnWidth = 160 }).DisplayOption(new PivotViewDisplayOption { View = View.Both }).ChartSettings(new PivotViewChartSettings { Title="Sales Analysis" , Load="onChartLoad" }).Toolbar(new List<string>
             () { "New", "Save", "SaveAs", "Rename", "Remove", "Load",
-            "Grid", "Chart", "MDX", "Export", "SubTotal", "GrandTotal", "ConditionalFormatting", "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").Render()
+            "Grid", "Chart", "MDX", "Export", "SubTotal", "GrandTotal", "ConditionalFormatting", "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").DataBound("dataBound").Render()
         </div>
     </div>
 
@@ -36,6 +36,14 @@
         }
     </style>
     <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function fetchReport(args) {
             var reportsCollection = [];
             var reeportsList = [];

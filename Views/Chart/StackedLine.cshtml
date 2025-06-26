@@ -8,7 +8,7 @@
      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true)).XName("X").YName("Y1").DataSource(ViewData["ChartPoints"]).Name("Bio mass").Width(2).Add();
      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine).Opacity(1).Marker(mkr => mkr.Visible(true).Width(5).Height(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).IsFilled(true)).XName("X").YName("Y2").DataSource(ViewData["ChartPoints"]).Name("Small Hydro").Width(2).Add();
      series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine).Opacity(1).Marker(mkr => mkr.Visible(true).Width(6).Height(6).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).IsFilled(true)).XName("X").YName("Y3").DataSource(ViewData["ChartPoints"]).Name("Solar").Width(2).Add();
- }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Double)
+ }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Double).Interval(1)
  .MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg => mg.Width(0))
  .MajorTickLines(mt => mt.Width(0)).
  MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))

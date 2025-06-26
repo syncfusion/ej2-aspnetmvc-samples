@@ -1880,4 +1880,119 @@ namespace EJ2MVCSampleBrowser.Models
         }
     }
 
+    public class RestaurantMenus
+    {
+        // Parameterless constructor
+        public RestaurantMenus() { }
+
+        // Parameterized constructor
+        public RestaurantMenus(int foodId, string foodCategory, string foodName, string foodType,
+                              double newPrice, double originalPrice, string image, int? categoryId,
+                              double rating, int totalReviews, string foodDescription, bool isBestseller,
+                              int vegCount, int nonvegCount, List<string> ingredients)
+        {
+            this.FoodId = foodId;
+            this.FoodCategory = foodCategory;
+            this.FoodName = foodName;
+            this.FoodType = foodType;
+            this.NewPrice = newPrice;
+            this.OriginalPrice = originalPrice;
+            this.Image = image;
+            this.CategoryId = categoryId;
+            this.Rating = rating;
+            this.TotalReviews = totalReviews;
+            this.FoodDescription = foodDescription;
+            this.IsBestseller = isBestseller;
+            this.VegCount = vegCount;
+            this.NonvegCount = nonvegCount;
+            this.Ingredients = ingredients;
+        }
+
+        // Properties
+        public int FoodId { get; set; }
+        public string FoodCategory { get; set; }
+        public string FoodName { get; set; }
+        public string FoodType { get; set; }
+        public double NewPrice { get; set; }
+        public double OriginalPrice { get; set; }
+        public string Image { get; set; }
+        public int? CategoryId { get; set; }
+        public double Rating { get; set; }
+        public int TotalReviews { get; set; }
+        public string FoodDescription { get; set; }
+        public bool IsBestseller { get; set; }
+        public int VegCount { get; set; }
+        public int NonvegCount { get; set; }
+        public List<string> Ingredients { get; set; }
+
+        // Method to get all records
+        public static List<RestaurantMenus> GetMenuItems()
+        {
+            List<RestaurantMenus> menuList = new List<RestaurantMenus>
+        {
+            new RestaurantMenus(1, "Salads", "Salads", "Veg", 0, 0, "", null, 0, 0, "", false, 2, 4, new List<string>()),
+            new RestaurantMenus(2, "Salads", "House Salad", "Veg", 7.99, 9.99, "../Content/images/treegrid/house-salad", 1, 4.5, 120, "A refreshing blend of crisp lettuce, cherry tomatoes, cucumbers, and carrots.", true, 0, 0, new List<string> { "Lettuce", "Tomatoes", "Cucumbers", "Carrots" }),
+            new RestaurantMenus(3, "Salads", "Cranberry Chicken Salad", "Non-veg", 13.99, 0, "../Content/images/treegrid/cranberry-chicken-salad", 1, 4.6, 110, "Grilled chicken breast with mixed greens and dried cranberries.", true, 0, 0, new List<string> { "Chicken breast", "Mixed greens", "Cranberries" }),
+            new RestaurantMenus(4, "Salads", "Chili Chicken Steamed", "Non-veg", 12.49, 14.49, "../Content/images/treegrid/chili-chicken-steamed", 1, 4.4, 90, "Steamed chicken tossed with green chilies and garlic.", false, 0, 0, new List<string> { "Chicken", "Green chilies", "Garlic" }),
+            new RestaurantMenus(5, "Salads", "Spinach Salad", "Veg", 8.99, 0, "../Content/images/treegrid/spinach-salad", 1, 4.3, 80, "Fresh baby spinach, cherry tomatoes, and walnuts.", false, 0, 0, new List<string> { "Spinach", "Tomatoes", "Walnuts" }),
+            new RestaurantMenus(6, "Salads", "Caesar Salad", "Non-veg", 10.99, 12.99, "../Content/images/treegrid/caesar-salad", 1, 4.7, 140, "Romaine lettuce with Parmesan and croutons.", true, 0, 0, new List<string> { "Romaine lettuce", "Parmesan", "Croutons" }),
+            new RestaurantMenus(7, "Salads", "Blue Chicken Salad", "Non-veg", 12.99, 14.99, "../Content/images/treegrid/blue-chicken-salad", 1, 4.2, 60, "Grilled chicken, blue cheese, and mixed greens.", false, 0, 0, new List<string> { "Chicken", "Blue cheese", "Mixed greens" }),
+            
+            // Pizza Category
+            new RestaurantMenus(8, "Pizza", "Pizza", "Veg", 0, 0, "", null, 0, 0, "", false, 3, 3, new List<string>()),
+            new RestaurantMenus(9, "Pizza", "Veggie Pizza", "Veg", 14.99, 0, "../Content/images/treegrid/veggie-pizza", 8, 4.6, 100, "Bell peppers, onions, olives, and mozzarella cheese.", true, 0, 0, new List<string> { "Bell peppers", "Onions", "Olives", "Mozzarella" }),
+            new RestaurantMenus(10, "Pizza", "Margherita Pizza", "Veg", 13.99, 0, "../Content/images/treegrid/margherita-pizza", 8, 4.7, 120, "Fresh mozzarella, tomato sauce, and basil.", true, 0, 0, new List<string> { "Mozzarella", "Tomato sauce", "Basil" }),
+            new RestaurantMenus(11, "Pizza", "Quattro Formaggi Pizza", "Veg", 15.99, 18.99, "../Content/images/treegrid/quattro-formaggi", 8, 4.8, 80, "Mozzarella, cheddar, parmesan, and blue cheese.", false, 0, 0, new List<string> { "Mozzarella", "Cheddar", "Parmesan", "Blue cheese" }),
+            new RestaurantMenus(12, "Pizza", "Capricciosa Pizza", "Non-veg", 16.99, 0, "../Content/images/treegrid/capricciosa-pizza", 8, 4.5, 60, "Ham, mushrooms, artichokes, and olives.", false, 0, 0, new List<string> { "Ham", "Mushrooms", "Artichokes", "Olives" }),
+            new RestaurantMenus(13, "Pizza", "Pepperoni Pizza", "Non-veg", 15.99, 0, "../Content/images/treegrid/pepperoni-pizza", 8, 4.9, 140, "Pepperoni and mozzarella cheese.", true, 0, 0, new List<string> { "Pepperoni", "Mozzarella" }),
+            new RestaurantMenus(14, "Pizza", "BBQ Chicken Pizza", "Non-veg", 16.49, 19.49, "../Content/images/treegrid/bbq-chicken-pizza", 8, 4.8, 110, "BBQ chicken, onions, and mozzarella.", false, 0, 0, new List<string> { "Chicken", "Onions", "Mozzarella" }),
+            
+            // Burger Category
+            new RestaurantMenus(15, "Burger", "Burger", "Veg", 0, 0, "", null, 0, 0, "", false, 2, 7, new List<string>()),
+            new RestaurantMenus(16, "Burger", "Cheeseburger", "Non-veg", 8.99, 10.99, "../Content/images/treegrid/cheese-burger", 15, 4.5, 90, "Beef patty with cheese, lettuce, and tomato.", true, 0, 0, new List<string> { "Beef patty", "Cheese", "Lettuce", "Tomato" }),
+            new RestaurantMenus(17, "Burger", "Smash Burger", "Non-veg", 9.99, 0, "../Content/images/treegrid/smash-burger", 15, 4.6, 80, "Double beef patties with cheese and pickles.", false, 0, 0, new List<string> { "Beef patties", "Cheese", "Pickles" }),
+            new RestaurantMenus(18, "Burger", "Butter Burger", "Non-veg", 8.99, 10.99, "../Content/images/treegrid/butter-burger", 15, 4.4, 70, "Beef patty with buttery glaze and lettuce.", false, 0, 0, new List<string> { "Beef patty", "Butter", "Lettuce" }),
+            new RestaurantMenus(19, "Burger", "Chili Burger", "Non-veg", 9.49, 11.49, "../Content/images/treegrid/chili-burger", 15, 4.3, 60, "Chili beef patty with jalapeños and cheese.", false, 0, 0, new List<string> { "Beef patty", "Jalapeños", "Cheese" }),
+            new RestaurantMenus(20, "Burger", "Veggie Burger", "Veg", 7.99, 0, "../Content/images/treegrid/veggie-burger", 15, 4.2, 50, "Vegetable patty with lettuce and tomato.", false, 0, 0, new List<string> { "Vegetable patty", "Lettuce", "Tomato" }),
+            new RestaurantMenus(21, "Burger", "Black Bean Burger", "Veg", 8.49, 0, "../Content/images/treegrid/black-bean-burger", 15, 4.1, 40, "Black bean patty with greens and tomato.", false, 0, 0, new List<string> { "Black bean patty", "Greens", "Tomato" }),
+            new RestaurantMenus(22, "Burger", "Mushroom Burger", "Veg", 8.99, 10.99, "../Content/images/treegrid/mushroom-burger", 15, 4.3, 30, "Mushroom patty with Swiss cheese and lettuce.", false, 0, 0, new List<string> { "Mushroom patty", "Swiss cheese", "Lettuce" }),
+            new RestaurantMenus(23, "Burger", "Salmon Burger", "Non-veg", 11.99, 0, "../Content/images/treegrid/salmon-burger", 15, 4.5, 20, "Salmon patty with lettuce and tomato.", false, 0, 0, new List<string> { "Salmon patty", "Lettuce", "Tomato" }),
+            new RestaurantMenus(24, "Burger", "Chicken Burger", "Non-veg", 9.99, 11.99, "../Content/images/treegrid/chicken-burger", 15, 4.6, 60, "Chicken fillet with lettuce.", true, 0, 0, new List<string> { "Chicken fillet", "Lettuce" }),
+            
+            // Hot Dogs Category
+            new RestaurantMenus(25, "Hot Dogs", "Hot Dogs", "Veg", 0, 0, "", null, 0, 0, "", false, 1, 5, new List<string>()),
+            new RestaurantMenus(26, "Hot Dogs", "Classic Hot Dog", "Non-veg", 5.99, 7.99, "../Content/images/treegrid/classic-hot-dog", 25, 4.6, 60, "Hot dog sausage in a bun.", true, 0, 0, new List<string> { "Hot dog sausage", "Bun" }),
+            new RestaurantMenus(27, "Hot Dogs", "Onion Dog", "Non-veg", 6.49, 0, "../Content/images/treegrid/onion-dog", 25, 4.6, 60, "Hot dog with caramelized onions.", true, 0, 0, new List<string> { "Hot dog sausage", "Bun", "Onions" }),
+            new RestaurantMenus(28, "Hot Dogs", "Bacon Dog", "Non-veg", 7.49, 9.49, "../Content/images/treegrid/bacon-dog", 25, 4.6, 60, "Hot dog wrapped in bacon.", true, 0, 0, new List<string> { "Hot dog sausage", "Bacon", "Bun" }),
+            new RestaurantMenus(29, "Hot Dogs", "BBQ Veggie Dog", "Veg", 6.99, 0, "../Content/images/treegrid/bbq-veggie-dog", 25, 4.6, 60, "Veggie sausage with BBQ sauce.", true, 0, 0, new List<string> { "Veggie sausage", "Bun" }),
+            new RestaurantMenus(30, "Hot Dogs", "Cheese Hot Dog", "Non-veg", 6.99, 8.99, "../Content/images/treegrid/cheese-hot-dog", 25, 4.6, 60, "Hot dog with melted cheese.", true, 0, 0, new List<string> { "Hot dog sausage", "Cheese", "Bun" }),
+            new RestaurantMenus(31, "Hot Dogs", "Chili Dog", "Non-veg", 7.49, 9.49, "../Content/images/treegrid/chili-dog", 25, 4.6, 60, "Hot dog topped with chili.", true, 0, 0, new List<string> { "Hot dog sausage", "Chili", "Bun" }),
+
+            // Chowmein Category
+            new RestaurantMenus(32, "Chowmein", "Chowmein", "Veg", 0, 0, "", null, 0, 0, "", false, 0, 11, new List<string>()),
+            new RestaurantMenus(33, "Chowmein", "Manchurian Chicken Chowmein", "Non-veg", 12.99, 0, "../Content/images/treegrid/manchurian-chowmein", 32, 4.4, 60, "Noodles with chicken and vegetables.", false, 0, 0, new List<string> { "Noodles", "Chicken", "Vegetables" }),
+            new RestaurantMenus(34, "Chowmein", "Fish Chowmein", "Non-veg", 13.49, 0, "../Content/images/treegrid/fish-chowmein", 32, 4.3, 55, "Noodles with fish and vegetables.", false, 0, 0, new List<string> { "Noodles", "Fish", "Vegetables" }),
+            new RestaurantMenus(35, "Chowmein", "Paneer and Chicken Chowmein", "Non-veg", 13.99, 0, "../Content/images/treegrid/paneer-chowmein", 32, 4.2, 40, "Noodles with paneer, chicken, and vegetables.", false, 0, 0, new List<string> { "Noodles", "Paneer", "Chicken" }),
+            new RestaurantMenus(36, "Chowmein", "Egg Chowmein", "Non-veg", 11.99, 0, "../Content/images/treegrid/egg-chowmein", 32, 4.5, 50, "Noodles with scrambled eggs and vegetables.", false, 0, 0, new List<string> { "Noodles", "Eggs", "Vegetables" }),
+            new RestaurantMenus(37, "Chowmein", "Chicken Chowmein", "Non-veg", 12.99, 14.99, "../Content/images/treegrid/chicken-chowmein", 32, 4.6, 70, "Noodles with chicken and vegetables.", false, 0, 0, new List<string> { "Noodles", "Chicken", "Vegetables" }),
+            new RestaurantMenus(38, "Chowmein", "Chili Garlic Chicken Chowmein", "Non-veg", 13.49, 15.49, "../Content/images/treegrid/chilli-garlic-chowmein", 32, 4.3, 45, "Spicy noodles with chicken and garlic.", false, 0, 0, new List<string> { "Noodles", "Chicken", "Garlic" }),
+            new RestaurantMenus(39, "Chowmein", "Tandoori Chicken Chowmein", "Non-veg", 13.99, 0, "../Content/images/treegrid/tandoori-chicken-chowmein", 32, 4.2, 35, "Noodles with tandoori chicken.", false, 0, 0, new List<string> { "Noodles", "Tandoori chicken" }),
+            new RestaurantMenus(40, "Chowmein", "Sichuan Chicken Chowmein", "Non-veg", 13.49, 15.49, "../Content/images/treegrid/sichuan-chowmein", 32, 4.1, 30, "Spicy Sichuan noodles with chicken.", false, 0, 0, new List<string> { "Noodles", "Chicken" }),
+            new RestaurantMenus(41, "Chowmein", "Shrimp Chowmein", "Non-veg", 14.99, 16.99, "../Content/images/treegrid/shrimp-chowmein", 32, 4.5, 25, "Noodles with shrimp and vegetables.", false, 0, 0, new List<string> { "Noodles", "Shrimp", "Vegetables" }),
+            new RestaurantMenus(42, "Chowmein", "Hakka Mutton Chowmein", "Non-veg", 13.99, 15.99, "../Content/images/treegrid/hakka-chowmein", 32, 4.3, 40, "Hakka noodles with mutton.", false, 0, 0, new List<string> { "Noodles", "Mutton" }),
+            new RestaurantMenus(43, "Chowmein", "Tandoori Prawn Chowmein", "Non-veg", 14.99, 16.99, "../Content/images/treegrid/tandoori-prawn-chowmein", 32, 4.2, 35, "Noodles with tandoori prawn.", false, 0, 0, new List<string> { "Noodles", "Prawn" }),
+
+            // Desserts Category
+            new RestaurantMenus(44, "Desserts", "Desserts", "Veg", 0, 0, "", null, 0, 0, "", false, 6, 0, new List<string>()),
+            new RestaurantMenus(46, "Desserts", "Chocolate Truffles", "Veg", 5.99, 0, "../Content/images/treegrid/chocolate-truffles", 44, 4.8, 60, "Chocolate ganache rolled in cocoa.", false, 0, 0, new List<string> { "Chocolate", "Cream" }),
+            new RestaurantMenus(47, "Desserts", "Brownies", "Veg", 4.99, 5.99, "../Content/images/treegrid/brownies", 44, 4.6, 50, "Fudgy chocolate brownies.", false, 0, 0, new List<string> { "Chocolate", "Flour" }),
+            new RestaurantMenus(48, "Desserts", "Gelato", "Veg", 5.49, 6.49, "../Content/images/treegrid/gelato", 44, 4.7, 40, "Italian-style ice cream.", false, 0, 0, new List<string> { "Milk", "Sugar" }),
+            new RestaurantMenus(49, "Desserts", "Sorbet", "Veg", 4.99, 0, "../Content/images/treegrid/sorbet", 44, 4.5, 30, "Refreshing fruit sorbet.", false, 0, 0, new List<string> { "Fruit", "Sugar" }),
+            new RestaurantMenus(50, "Desserts", "Fruit Tart", "Veg", 5.99, 7.99, "../Content/images/treegrid/fruit-tart", 44, 4.6, 20, "Tart shell with custard and fresh fruits.", false, 0, 0, new List<string> { "Tart shell", "Custard", "Fruits" })
+        };
+
+            return menuList;
+        }
+    }
+
 }

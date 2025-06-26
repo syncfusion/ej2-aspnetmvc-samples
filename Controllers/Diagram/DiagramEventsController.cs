@@ -33,7 +33,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             data.Add(new { text = "Connection Change", id = "connectionChange", isChecked = true });
             data.Add(new { text = "SourcePoint Change", id = "sourcePointChange" });
             data.Add(new { text = "TargetPoint Change", id = "targetPointChange" });
-            data.Add(new { text = "Property Change", id = "propertyChange", isChecked = true });
+            data.Add(new { text = "Property Change", id = "propertyChange" });
             data.Add(new { text = "Position Change", id = "positionChange", isChecked = true });
             data.Add(new { text = "Rotate Change", id = "rotateChange", isChecked = true });
             data.Add(new { text = "Collection Change", id = "collectionChange", isChecked = true });

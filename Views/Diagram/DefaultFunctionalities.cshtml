@@ -7,7 +7,7 @@
                 @Html.EJS().Uploader("fileupload").Success("onUploadSuccess").AsyncSettings(new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Remove") }).Render()
             </div>
             <div class='db-toolbar-editor' style="width: 100%;">
-                <div class='db-toolbar-container'>
+                <div class='diagram-toolbar-container'>
                     <div id="toolbar_default" style="width: 100%">
                         @Html.EJS().Toolbar("toolbarEditor").Clicked("toolbarClick").Items((List<ToolbarItem>)ViewData["tbItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
                     </div>
@@ -23,7 +23,7 @@
                 )
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
-                @(Html.EJS().Diagram("diagram").Width("100%").Height("700px").Created("diagramCreated").SnapSettings(s => s.HorizontalGridlines((DiagramGridlines)ViewData["gridLines"]).VerticalGridlines((DiagramGridlines)ViewData["gridLines"]))
+                @(Html.EJS().Diagram("diagram").Width("100%").Height("700px").Created("diagramCreated").TextEdit("textEdit").SnapSettings(s => s.HorizontalGridlines((DiagramGridlines)ViewData["gridLines"]).VerticalGridlines((DiagramGridlines)ViewData["gridLines"]))
                     .GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").SelectionChange("selectionChange").HistoryChange("historyChange").ScrollChange("scrollChange").DragEnter("dragEnter").Nodes((List<DiagramNode>)ViewData["nodes"]).Connectors((List<DiagramConnector>)ViewData["connectors"]).Render()
                 )
             </div>
@@ -195,7 +195,7 @@
             right: 15px;
         }
 
-        .e-toggle-palette::before {
+        .e-ddb-icons1.e-toggle-palette::before {
             content: "\e700"
         }
 
@@ -272,7 +272,7 @@
             content: "\e8ca";
         }
   
-        .db-toolbar-container {
+        .diagram-toolbar-container {
             width: 100%;
             height: 44px;
         }
@@ -287,7 +287,9 @@
             if (node.width === undefined) {
                 node.width = 145;
             }
-            node.style = { fill: '#357BD2', strokeColor: 'white' };
+            if (node.shape.type !== 'Text') {
+                node.style = { fill: '#357BD2', strokeColor: 'white' };
+            }
             for (var i = 0; i < node.annotations.length; i++) {
                 node.annotations[i].style = {
                     color: 'white',
@@ -335,6 +337,15 @@
             ];
             return ports;
 
+        }
+
+        // Sets annotation text color to white when editing node annotation
+        function textEdit(args) {
+            var obj = args.element;
+            obj.annotations[0].style = {
+                color: 'white',
+                fill: 'transparent',
+            };
         }
 
         function getSymbolNodes(symbol, diagram) {
@@ -737,7 +748,8 @@
             for (var i = 0; i < diagram.selectedItems.nodes.length; i++) {
                 var node = diagram.selectedItems.nodes[i];
                 if (node.constraints & ej.diagrams.NodeConstraints.Drag) {
-                    node.constraints = ej.diagrams.NodeConstraints.PointerEvents | ej.diagrams.NodeConstraints.Select;
+                    
+                    node.constraints = ej.diagrams.NodeConstraints.PointerEvents | ej.diagrams.NodeConstraints.Select | ej.diagrams.NodeConstraints.ReadOnly;
                 } else {
                     node.constraints = ej.diagrams.NodeConstraints.Default;
                 }
@@ -745,7 +757,7 @@
             for (var j = 0; j < diagram.selectedItems.connectors.length; j++) {
                 var connector = diagram.selectedItems.connectors[j];
                 if (connector.constraints & ej.diagrams.ConnectorConstraints.Drag) {
-                    connector.constraints = ej.diagrams.ConnectorConstraints.PointerEvents | ej.diagrams.ConnectorConstraints.Select;
+                    connector.constraints = ej.diagrams.ConnectorConstraints.PointerEvents | ej.diagrams.ConnectorConstraints.Select | ej.diagrams.ConnectorConstraints.ReadOnly;
                 } else {
                     connector.constraints = ej.diagrams.ConnectorConstraints.Default;
                 }

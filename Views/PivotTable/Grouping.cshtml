@@ -19,7 +19,7 @@
            {
                values.Name("Sold").Caption("Units Sold").Add();
                values.Name("Amount").Caption("Sold Amount").Add();
-           })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140, ColumnRender = "beforeColumnsRender" }).Render()
+           })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140, ColumnRender = "beforeColumnsRender" }).DataBound("dataBound").Render()
         </div>
     </div>
     <div class="col-lg-4 property-section pivot-table-property-section">
@@ -88,6 +88,7 @@
     <script type="text/javascript">
         var selectedGroups = ['Years', 'Months', 'Days'];
         var groupData = ['Years', 'Quarters', 'Months', 'Days'];
+        var isInitialRender = true;
 
         function onSelect(args) {
             applyGroupSettings(args);
@@ -140,6 +141,13 @@
                     { name: 'Product_ID', type: 'Number', rangeInterval: 4 }]
                 }
             }, true);
+        }
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
         }
 
         function beforeColumnsRender(args) {

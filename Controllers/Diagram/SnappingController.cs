@@ -93,7 +93,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 Shape = PortShapes.Square,
                 Offset = new DiagramPoint()
                 {
-                    X = 0.5,
+                    X = 0,
                     Y = 0.5
                 },
                 Style = new DiagramShapeStyle()
@@ -102,6 +102,8 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 },
                 Visibility = PortVisibility.Visible,
                 Constraints = PortConstraints.Default | PortConstraints.Draw,
+                Height = 100,
+                Width = 7,
             });
             nodes.Add(new DiagramNode()
             {

@@ -87,6 +87,9 @@
             margin-left: 1px;
             margin-bottom: 5px;
         }
+        .tailwind3 #panel-two {
+            font-size: 16px !important;
+        }
     </style>
 
     <style type="text/css" media="screen and (max-width:1160px)">
@@ -94,7 +97,7 @@
             width: 165px !important;
         }
 
-        .firstcontent {
+        .firstcontent, .tailwind3 #panel-two {
             font-size: 13px !important;
         }
 
@@ -129,7 +132,7 @@
             margin-top: 2% !important;
         }
 
-        .firstcontent {
+        .firstcontent, .tailwind3 #panel-two {
             font-size: 16px !important;
         }
 
@@ -235,7 +238,7 @@
                     .Pointers(pointer => pointer.RoundedCornerRadius(5).Value(43).Type(PointerType.RangeBar).Radius("100%").Color("#99ff01").Animation(animation => animation.Enable(true)).PointerWidth(8).Add()).Add()).Render()
                 </div>
                 <div class="content">
-                    <span class="firstcontent" style="font-size: 17px;">EXERCISE</span>
+                    <span class="firstcontent" id="panel-two" style="font-size: 17px;">EXERCISE</span>
                     <span class="firstcontent" style="font-size: 17px; color: #a6ff00">43%</span><br />
                     <span class="secondcontent" style="color: #a6ff00; font-size: 19px">13/30 MIN</span>
                 </div>

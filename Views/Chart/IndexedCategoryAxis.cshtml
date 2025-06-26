@@ -79,7 +79,6 @@
         var load = function (args) {
             loadChartTheme(args);
             args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
-            args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
             args.chart.series[0].marker.dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '11px';
             args.chart.series[1].marker.dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '11px';
         }

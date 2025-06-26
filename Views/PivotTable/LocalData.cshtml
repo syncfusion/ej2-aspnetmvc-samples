@@ -46,7 +46,7 @@
                 columns.Name("EnerType").Caption("Energy Type").Add();
                 columns.Name("EneSource").Caption("Energy Source").Add();
             })
-            .Values(values => { values.Name("PowUnits").Caption("Units (GWh)").Add(); values.Name("ProCost").Caption("Cost (MM)").Add(); })).GridSettings(new PivotViewGridSettings { ColumnWidth = 120 }).Load("onLoad").Render()
+            .Values(values => { values.Name("PowUnits").Caption("Units (GWh)").Add(); values.Name("ProCost").Caption("Cost (MM)").Add(); })).GridSettings(new PivotViewGridSettings { ColumnWidth = 120 }).Load("onLoad").DataBound("dataBound").Render()
         </div>
     </div>
 
@@ -111,6 +111,14 @@
             filters: []
         };
 
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function contentType() {
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];
             var contentDropDown = document.getElementById("contenttype").ej2_instances[0];

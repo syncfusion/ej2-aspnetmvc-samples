@@ -34,7 +34,7 @@
                      {
                          values.Name("Sold").Caption("Units Sold").Add();
                          values.Name("Amount").Caption("Sold Amount").Add();
-                     })).GridSettings(new PivotViewGridSettings { ColumnWidth = 120, Layout = GridLayout.Tabular }).Load("onLoad").Render()
+                     })).GridSettings(new PivotViewGridSettings { ColumnWidth = 120, Layout = GridLayout.Tabular }).Load("onLoad").DataBound("dataBound").Render()
         </div>
     </div>
 
@@ -62,6 +62,14 @@
         }
     </style>
     <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function onLoad() {
             if (ej.base.Browser.isDevice) {
                 var pivotObj = document.getElementById('pivotview').ej2_instances[0];

@@ -13,6 +13,7 @@ using Syncfusion.Pdf.Graphics;
 using Syncfusion.Pdf.Interactive;
 using Syncfusion.Pdf.Security;
 using System.Drawing;
+using System.IO;
 
 namespace EJ2MVCSampleBrowser.Controllers.PDF
 {
@@ -22,7 +23,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
         // GET: /Encryption/
         public ActionResult Encryption()
         {
-            ViewData["data"] = new string[] { "Encrypt all contents", "Encrypt all contents except metadata", "Encrypt only attachments [For AES only]" };
+            ViewData["data"] = new string[] { "Encrypt all contents", "Encrypt all contents except metadata", "Encrypt only attachments [For AES and AES-GCM only]" };
             return View();
         }
 
@@ -69,8 +70,14 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
                 security.KeySize = PdfEncryptionKeySize.Key256BitRevision6;
                 security.Algorithm = PdfEncryptionAlgorithm.AES;
             }
+            else if (encryptionType == "256_AES_GCM")
+            {
+                security.KeySize = PdfEncryptionKeySize.Key256Bit;
+                security.Algorithm = PdfEncryptionAlgorithm.AESGCM;
+                document.FileStructure.Version = PdfVersion.Version2_0;
+            }
             //set Encryption options
-            if (encryptOptionType == "Encrypt only attachments [For AES only]")
+            if (encryptOptionType == "Encrypt only attachments [For AES and AES-GCM only]")
             {
                 //Creates an attachment
                 PdfAttachment attachment = new PdfAttachment(ResolveApplicationDataPath("Products.xml"));
@@ -106,12 +113,33 @@ namespace EJ2MVCSampleBrowser.Controllers.PDF
             {
                 text += String.Format("\n\nRevision: {0}", "Revision 5");
             }
+            else if (encryptionType == "256_AES_GCM")
+            {
+                text += String.Format("\n\nRevision: {0}", "Revision 7");
+            }
             graphics.DrawString("Document is Encrypted with following settings", font, brush, PointF.Empty);
             font = new PdfStandardFont(PdfFontFamily.TimesRoman, 11f, PdfFontStyle.Bold);
             graphics.DrawString(text, font, brush, new PointF(0, 40));
 
-            //Stream the output to the browser.    
-            if (InsideBrowser == "Browser")
+            //Stream the output to the browser. 
+            if (encryptionType == "256_AES_GCM")
+            {
+                MemoryStream stream = new MemoryStream();
+                document.Save(stream);
+                document.Close(true);
+                Response.ClearContent();
+                Response.Expires = 0;
+                Response.Buffer = true;
+
+                string disposition = "content-disposition";
+                Response.AddHeader(disposition, "attachment; filename=sample.pdf");
+                Response.AddHeader("Content-Type", "application/pdf");
+                Response.Clear();
+                stream.WriteTo(Response.OutputStream);
+                Response.End();
+                return View();
+            }   
+            else if (InsideBrowser == "Browser")
                 return document.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Open);
             else
                 return document.ExportAsActionResult("sample.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);

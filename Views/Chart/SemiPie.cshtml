@@ -3,9 +3,9 @@
     <div class="control-section" align="center">
         @Html.EJS().AccumulationChart("container").EnableAnimation(false).EnableBorderOnMouseMove(false).Series(series =>
 {
-    series.StartAngle(270).EndAngle(90).DataLabel(dl => dl.EnableRotation(true).Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).ConnectorStyle(cs => cs.Length("10%")).Font(ft => ft.FontWeight("600").Color("#ffffff"))).InnerRadius("40%").XName("Browser").YName("Users").TooltipMappingName("tooltipMappingName").DataSource(ViewData["PieChartPoints"]).Add();
+    series.StartAngle(270).EndAngle(90).Radius("100%").Border(border => border.Width(1).Color("#FFFFFF")).DataLabel(dl => dl.EnableRotation(true).Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).ConnectorStyle(cs => cs.Length("10%")).Font(ft => ft.FontWeight("600").Color("#ffffff"))).InnerRadius("50%").XName("Browser").YName("Users").BorderRadius(3).DataSource(ViewData["PieChartPoints"]).Add();
 }
-            ).EnableBorderOnMouseMove(false).LegendSettings(lg => lg.Visible(false)).Tooltip(tp => tp.Enable(true).EnableHighlight(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.tooltip}</b>").Header("")).Load("load").Annotations(an =>
+            ).EnableBorderOnMouseMove(false).LegendSettings(lg => lg.Visible(false)).Tooltip(tp => tp.Enable(false)).Load("load").Annotations(an =>
                  {
                      an
                 .Region(Syncfusion.EJ2.Charts.Regions.Series).Add();
@@ -15,11 +15,10 @@
     <script>
         var load = function (args) {
             loadAccumulationChartTheme(args);
-            args.accumulation.annotations[0].content = ej.base.Browser.isDevice ? "<div style='font-Weight:700; font-size:11px;'>Browser<br>Market<br>Shares</div>" : "<div style='font-Weight:600; font-size:14px;'>Browser<br>Market<br>Shares</div>";
-            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? '85%' : '100%';
-            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '11px';
-            args.accumulation.annotations[0].properties.x = ej.base.Browser.isDevice ? "52%" : "50%";
-            args.accumulation.annotations[0].properties.y = ej.base.Browser.isDevice ? "82%" : "85%";
+            args.accumulation.annotations[0].content = ej.base.Browser.isDevice ? "<div style='font-Weight:600; font-size:10px;'>Browser<br>Market<br>Shares</div>" : "<div style='font-Weight:600; font-size:14px;'>Browser<br>Market<br>Shares</div>";
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? '7px' : '11px';
+            args.accumulation.annotations[0].properties.x = "50%";
+            args.accumulation.annotations[0].properties.y = "85%";
         };
         var onChartResized =  function (args)
         {
@@ -47,8 +46,7 @@
 }
 @section Description{
     <p>
-        In this example, you can see how to render a semi pie chart using <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_StartAngle" aria-label="StartAngle">StartAngle<span class="sr-only">opens in a new tab</span></a> and <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_EndAngle" aria-label="EndAngle">EndAngle<span class="sr-only">opens in a new tab</span></a> properties.
-        Data labels are wrapped to fit inside the pie slice. To enable the datalabel wrap feature, use the <a target="blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationDataLabelSettings.html#Syncfusion_EJ2_Charts_AccumulationDataLabelSettings_TextWrap" aria-label="TextWrap">TextWrap<span class="sr-only">opens in a new tab</span></a> datalabel property.
+        In this example, you can see how to render a semi pie chart using <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_StartAngle" aria-label="StartAngle">StartAngle<span class="sr-only">opens in a new tab</span></a> and <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_EndAngle" aria-label="EndAngle">EndAngle<span class="sr-only">opens in a new tab</span></a> properties. Data labels are wrapped to fit inside the pie slice. To enable the datalabel wrap feature, use the <code>TextWrap</code> datalabel property.
     </p>
     <p>
         <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.

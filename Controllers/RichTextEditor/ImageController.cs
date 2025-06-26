@@ -31,7 +31,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                 template = "<button class='e-tbar-btn e-btn' id='roatateRight'><span class='e-btn-icon e-icons e-rotate-right'></span>"
             };
             ViewData["Image"] = new[] {
-                "Replace", "Align", "Caption", "Remove", "InsertLink", "OpenImageLink", "-",
+                "Replace", "Align", "Caption", "Remove", "InsertLink", "OpenImageLink", "|",
                 "EditImageLink", "RemoveImageLink", "Display", "AltText", "Dimension",tools1
                 , tools2
             };

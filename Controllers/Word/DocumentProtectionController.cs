@@ -21,9 +21,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
     public partial class WordController : Controller
     {
         #region Document Protection
-        public ActionResult DocumentProtection(string Protection_Type, string Password1, string Group2)
+        public ActionResult DocumentProtection(string Protection_Type, string Password1, string EditableRangeOption)
         {
-            if (Group2 == null)
+            if (Protection_Type == null)
                 return View();
 
             WordDocument document;
@@ -32,29 +32,44 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
             //Loads the template document.
             if (Protection_Type == "AllowOnlyFormFields")
             {
-                document = new WordDocument(ResolveApplicationDataPath("TemplateFormFields.doc", "Data\\Word"));
+                document = new WordDocument(ResolveApplicationDataPath("TemplateFormFields.docx", "Data\\Word"));
                 // Sets the protection type as allow only Form Fields.
                 protectionType = ProtectionType.AllowOnlyFormFields;
             }
             else if (Protection_Type == "AllowOnlyComments")
             {
-                document = new WordDocument(ResolveApplicationDataPath("TemplateComments.doc", "Data\\Word"));
+                document = new WordDocument(ResolveApplicationDataPath("TemplateComments.docx", "Data\\Word"));
+                // If the "Make part of the document editable for everyone" checkbox is checked,
+                // add editable ranges to allow unrestricted editing in specific sections.
+
+                if (EditableRangeOption == "EditableRange")
+                    AddEditableRange(document);
                 // Sets the protection type as allow only Comments.
                 protectionType = ProtectionType.AllowOnlyComments;
             }
             else if (Protection_Type == "AllowOnlyRevisions")
             {
-                document = new WordDocument(ResolveApplicationDataPath("TemplateRevisions.doc", "Data\\Word"));
+                document = new WordDocument(ResolveApplicationDataPath("TemplateRevisions.docx", "Data\\Word"));
                 // Enables track changes in the document.
                 document.TrackChanges = true;
                 // Sets the protection type as allow only Revisions.
                 protectionType = ProtectionType.AllowOnlyRevisions;
             }
-            else
+            else if (Protection_Type == "AllowOnlyReading")
             {
-                document = new WordDocument(ResolveApplicationDataPath("Essential DocIO.doc", "Data\\Word"));
+                document = new WordDocument(ResolveApplicationDataPath("TemplateReading.docx", "Data\\Word"));
+                // If the "Make part of the document editable for everyone" checkbox is checked,
+                // add editable ranges to allow unrestricted editing in specific sections.
+                if (EditableRangeOption == "EditableRange")
+                    AddEditableRange(document);
                 // Sets the protection type as allow only Reading.
                 protectionType = ProtectionType.AllowOnlyReading;
+            }
+            else
+            {
+                document = new WordDocument(ResolveApplicationDataPath("TemplateFormFields.docx", "Data\\Word"));
+                // Sets the protection type as allow only Form Fields.
+                protectionType = ProtectionType.AllowOnlyFormFields;
             }
             // Enforces protection of the document.
             if (string.IsNullOrEmpty(Password1))
@@ -62,25 +77,41 @@ namespace EJ2MVCSampleBrowser.Controllers.Word
             else
                 document.Protect(protectionType, Password1);
 
-            #region saveOption
-            //Save as .doc format
-            if (Group2 == "WordDoc")
-            {
-                return document.ExportAsActionResult("Sample.doc", FormatType.Doc, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
-            }
-            //Save as .docx format
-            else if (Group2 == "WordDocx")
-            {
-                return document.ExportAsActionResult("Sample.docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
-            }
-            // Save as WordML(.xml) format
-            else if (Group2 == "WordML")
-            {
-                return document.ExportAsActionResult("Sample.xml", FormatType.WordML, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
-            }
-            #endregion saveOption
+            //Save as .docx format.
+            return document.ExportAsActionResult(Protection_Type + ".docx", FormatType.Docx, HttpContext.ApplicationInstance.Response, HttpContentDisposition.Attachment);
 
-            return View();
+        }
+        private void AddEditableRange(WordDocument document)
+        {
+            // Access the paragraph
+            WParagraph paragraph = document.Sections[0].Body.ChildEntities[5] as WParagraph;
+            // Create a new editable range start
+            EditableRangeStart editableRangeStart = new EditableRangeStart(document);
+            // Insert the editable range start at the beginning of the selected paragraph
+            paragraph.ChildEntities.Insert(0, editableRangeStart);
+            // Set the editor group for the editable range to allow everyone to edit
+            editableRangeStart.EditorGroup = EditorType.Everyone;
+            // Append an editable range end to close the editable region
+            paragraph.AppendEditableRangeEnd();
+
+            // Access the first table in the first section of the document
+            WTable table = document.Sections[0].Tables[0] as WTable;
+            // Access the paragraph in the third row and third column of the table
+            paragraph = table[2, 2].ChildEntities[0] as WParagraph;
+            // Create a new editable range start for the table cell paragraph
+            editableRangeStart = new EditableRangeStart(document);
+            // Insert the editable range start at the beginning of the paragraph
+            paragraph.ChildEntities.Insert(0, editableRangeStart);
+            // Set the editor group for the editable range to allow everyone to edit
+            editableRangeStart.EditorGroup = EditorType.Everyone;
+            // Apply editable range to second column only
+            editableRangeStart.FirstColumn = 1;
+            editableRangeStart.LastColumn = 1;
+            // Access the paragraph
+            paragraph = table[5, 2].ChildEntities[0] as WParagraph;
+            // Append an editable range end to close the editable region
+            paragraph.AppendEditableRangeEnd();
+
         }
         #endregion Document Protection
     }

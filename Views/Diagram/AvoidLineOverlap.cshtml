@@ -48,7 +48,9 @@
         function diagramCreated() {
             diagram = document.getElementById("container").ej2_instances[0];
             diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
-            diagram.fitToPage();
+            setTimeout(() => {
+                diagram.fitToPage();
+            }, 200);
         }
 
     </script>

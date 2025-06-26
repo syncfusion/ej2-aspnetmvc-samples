@@ -1,8 +1,8 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="control-section">
-        <div style="margin: 0 auto; width:350px;">
-            @Html.EJS().DropDownTree("ddt").CssClass("ddt-template").Placeholder("Select an employee").Width("350px").PopupHeight("250px").Fields((Syncfusion.EJ2.DropDowns.DropDownTreeFields)ViewData["templateData"]).ItemTemplate(
+        <div style="margin: 0 auto; width:370px;">
+            @Html.EJS().DropDownTree("ddt").CssClass("ddt-template").Placeholder("Select an employee").Width("370px").PopupHeight("250px").Fields((Syncfusion.EJ2.DropDowns.DropDownTreeFields)ViewData["templateData"]).ItemTemplate(
                   "<div><img class=\"eimage\" src=\"../Content/images/dropdown-tree/${image}.png\" alt=\"employee\"/><div><div class=\"ename\">${name}</div><div class=\"ejob\">${job}</div><span class=\"e-badge icons\"><span class=\"${status}\"></span></span></div></div>").HeaderTemplate(
                   "<div class=\"head\">Employee List</div>").FooterTemplate("<div class=\"footer\"><div class=\"footer-content\"><span class=\"e-badge\"><span class=\"display available\"><span class=\"status online\"></span>Available</span><span class=\"display meeting\"><span class=\"status busy\"></span>Busy</span><span class=\"display unavailable\"><span class=\"status away\"></span>Away</span></span></div></div>").ValueTemplate(
                   "<div><div>${name} - ${job}</div></div>").Render()

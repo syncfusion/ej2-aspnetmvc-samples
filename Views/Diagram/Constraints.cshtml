@@ -8,7 +8,7 @@
                 @Html.EJS().Diagram("diagram").Width("100%").Height("700px").RulerSettings(r => r.ShowRulers(true)).ContextMenuSettings(c => c.Show(true)).SelectedItems((DiagramSelector)ViewData["selectedItems"]).GetCustomTool("getTool").Created("create").SelectionChange("selectionChange").Nodes((List<DiagramNode>)ViewData["nodes"]).Connectors((List<DiagramConnector>)ViewData["connectors"]).Render()
             </div>
         </div>
-        <div class="col-lg-2 property-section" style="float:right;">
+        <div class="col-lg-2 property-section diagram-constraints-panel" style="float:right;">
             <div class="property-panel-header">
                 Diagram Constraints
             </div>
@@ -37,7 +37,7 @@
 
     <style>
         /* Property panel CSS */
-        .row {
+        .diagram-constraints-panel .row {
             margin-left: 10px;
             margin-right: 0px;
         }

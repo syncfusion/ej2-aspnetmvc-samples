@@ -2,24 +2,22 @@
 @section ControlsSection{
     <div class="control-section" style="padding:0px">
         <div style="text-align:center">
-            @(Html.EJS().Diagram("container").Width("100%").Height("580px").Created("create").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
+            @(Html.EJS().Diagram("diagram-container").Width("100%").Height("580px").Created("create").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
                 .Nodes((List<DiagramNode>)ViewData["nodes"]).Render()
             )
         </div>
     </div>
     <style>
-        .row {
-            display: block;
-        }
-
-        #container {
+        #diagram-container {
             display: block;
         }
     </style>
     <script>
         function create() {
-            var diagram = document.getElementById("container").ej2_instances[0];
-            diagram.fitToPage();
+            var diagram = document.getElementById("diagram-container").ej2_instances[0];
+            setTimeout(() => {
+                diagram.fitToPage();
+            }, 100);
             diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
             diagram.dataBind();
         }

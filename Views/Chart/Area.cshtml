@@ -2,6 +2,7 @@
 @section ControlsSection{
     <div class="control-section" align="center">
 
+
         @(Html.EJS().Chart("container")
             .Series(sr =>
             {
@@ -49,13 +50,13 @@
                     .Add();
             })
             .Annotations(an => {
-                           an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("8%").Y("95%").Add();
-                           an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("12%)").Y("80%").Add();
-                           an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("35%").Y("87%").Add();
-                                   an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("63%").Y("70%").Add();
-                                   an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("75%").Y("98%").Add();
-                                   an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("85%").Y("93%").Add();
-                                   an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("93%").Y("96%").Add();
+                           an.Region(Syncfusion.EJ2.Charts.Regions.Series).CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).X(new DateTime(1976, 1, 1)).Y(1.5).Add();
+                           an.Region(Syncfusion.EJ2.Charts.Regions.Series).CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).X(new DateTime(1977, 1, 1)).Y(5).Add();
+                           an.Region(Syncfusion.EJ2.Charts.Regions.Series).CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).X(new DateTime(1990, 1, 1)).Y(3).Add();
+                           an.Region(Syncfusion.EJ2.Charts.Regions.Series).CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).X(new DateTime(2001, 1, 1)).Y(10).Add();
+                           an.Region(Syncfusion.EJ2.Charts.Regions.Series).CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).X(new DateTime(2006, 1, 1)).Y(0.50).Add();
+                           an.Region(Syncfusion.EJ2.Charts.Regions.Series).CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).X(new DateTime(2011, 6, 1)).Y(1.8).Add();
+                           an.Region(Syncfusion.EJ2.Charts.Regions.Series).CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).X(new DateTime(2015, 1, 1)).Y(1.2).Add();
             })
               .PrimaryXAxis(xaxis =>
                  xaxis.MajorGridLines(mg=>mg.Width(0))

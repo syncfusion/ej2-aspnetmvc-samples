@@ -72,7 +72,7 @@
     </style>
     @*custom code end*@
     <script>
-
+        var isInitialRender = true;
         window.getCellContent = function (e) {
             var template;
             if (e && e.targetCell.className.indexOf('e-valuescontent') > -1) {
@@ -176,6 +176,10 @@
                         }
                     }
                 }
+            }
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
             }
         }
         /* jshint ignore:end */

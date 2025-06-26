@@ -18,13 +18,12 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult IFrame()
         {
-            ViewData["Items"] = new[] {"Bold", "Italic", "Underline", "StrikeThrough", "InlineCode", "SuperScript", "SubScript", "|",
-                "FontName", "FontSize", "FontColor", "BackgroundColor",  "|",
-                "LowerCase", "UpperCase",
-                "Formats", "Alignments", "Blockquote", "|", "NumberFormatList", "BulletFormatList", "|",
-                "Outdent", "Indent", "|",
-                "CreateLink", "Image", "FileManager", "Video", "Audio", "CreateTable", "|", "ClearFormat", "|", "EmojiPicker", "Print", "|",
-                "SourceCode", "FullScreen", "|", "Undo", "Redo"};
+            ViewData["Items"] = new[] {"Undo", "Redo", "|", "ImportWord", "ExportWord", "ExportPdf", "|",
+                "Bold", "Italic", "Underline", "StrikeThrough", "InlineCode", "|", "CreateLink", "Image", "CreateTable", "CodeBlock",
+                "HorizontalLine", "Blockquote", "|", "BulletFormatList", "NumberFormatList", "|", "Formats", "Alignments", "|", "Outdent", "Indent", "|",
+                "FontColor", "BackgroundColor", "FontName", "FontSize", "|", "LowerCase", "UpperCase", "|", "SuperScript", "SubScript", "|",
+                "EmojiPicker", "FileManager", "Video", "Audio", "|", "FormatPainter", "ClearFormat",
+                "|", "Print", "FullScreen", "|", "SourceCode"};
             string hostUrl = "https://ej2-aspcore-service.azurewebsites.net/";
             ViewData["AjaxSettings"] = new
             {
@@ -32,6 +31,23 @@ namespace EJ2MVCSampleBrowser.Controllers
                 getImageUrl = hostUrl + "api/FileManager/GetImage",
                 uploadUrl = hostUrl + "api/FileManager/Upload",
                 downloadUrl = hostUrl + "api/FileManager/Download"
+            };
+            ViewData["ExportWord"] = new Syncfusion.EJ2.RichTextEditor.RichTextEditorExportWord
+            {
+                ServiceUrl = "https://services.syncfusion.com/aspnet/production/api/RichTextEditor/ExportToDocx",
+                FileName = "RichTextEditor.docx",
+                Stylesheet = ".e-rte-content{ font-size: 1em; font-weight: 400; margin: 0; }"
+            };
+
+            ViewData["ExportPdf"] = new Syncfusion.EJ2.RichTextEditor.RichTextEditorExportPdf
+            {
+                ServiceUrl = "https://services.syncfusion.com/aspnet/production/api/RichTextEditor/ExportToPdf",
+                FileName = "RichTextEditor.pdf",
+                Stylesheet = ".e-rte-content{ font-size: 1em; font-weight: 400; margin: 0; }"
+            };
+            ViewData["ImportWord"] = new Syncfusion.EJ2.RichTextEditor.RichTextEditorImportWord
+            {
+                ServiceUrl = "https://services.syncfusion.com/aspnet/production/api/RichTextEditor/ImportFromWord",
             };
             return View();
         }

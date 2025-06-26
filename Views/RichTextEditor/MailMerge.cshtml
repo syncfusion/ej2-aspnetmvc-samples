@@ -6,7 +6,7 @@
         <div class="control-wrapper">
             @Html.EJS().RichTextEditor("mailMergeEditor").ActionBegin("actionBeginHandler").ActionComplete("actionCompleteHandler").SaveInterval(1).Created("created").ToolbarSettings(e => e.Items((object)ViewData["Tools"])).Value((string)ViewData["RTEValue"]).Render()
             @Html.EJS().Button("merge_data").Content("Merge Data").Click("onClickHandler").CssClass("e-tbar-btn e-btn").Render()
-            @Html.EJS().DropDownButton("insert_Field").Content("Insert Field").Select("onItemSelect").Items(ViewData["Items"]).CssClass("e-rte-dropdown-btn e-rte-dropdown-popup e-rte-dropdown-items e-rte-elements e-tbar-btn").Render()
+            @Html.EJS().DropDownButton("insert_Field").Content("Insert Field").Close("onDropDownClose").Select("onItemSelect").Items(ViewData["Items"]).CssClass("e-rte-dropdown-btn e-rte-dropdown-popup e-rte-dropdown-items e-rte-elements e-rte-dropdown-menu").Render()
             @Html.EJS().Mention("mentionField").MentionChar((char)ViewData["MentionChar"]).Created("onMentionCreate").Target("#mailMergeEditor_rte-edit-view").DataSource((IEnumerable<MergeData>)ViewData["MergeData"]).AllowSpaces(true).Fields(new MentionFieldSettings { Text = "Text" }).DisplayTemplate("<span> {{${Value}}} </span>").PopupWidth("250px").PopupHeight("200px").Render()
         </div>
     </div>
@@ -96,6 +96,11 @@
             mentionObj.element.classList.contains('e-popup-open')
         ) {
             args.cancel = true;
+        }
+    }
+    function onDropDownClose() {
+        if (mailMergeEditor) {
+            mailMergeEditor.focusIn();
         }
     }
     function onItemSelect(args) {

@@ -20,16 +20,15 @@
                             .Name("Browser")
                             .Explode(true)
                             .ExplodeOffset("10%")
-                            .ExplodeIndex(0)
-                            .InnerRadius("0%")
-                            .DataSource(ViewData["ChartPoints"]).Radius("70%").StartAngle(55)
+                            .InnerRadius("0%").Border(border => border.Width(1).Color("#FFFFFF"))
+                            .DataSource(ViewData["ChartPoints"]).BorderRadius(3)
                             .Add();
                     })
                         .EnableSmartLabels(true)
                         .EnableAnimation(true).Center(center => center.X("50%").Y("50%"))
-                        .Title("Browser Market Share")
+                        .Title("Global Electricity Generation by Source - 2024").SubTitle("Source: wikipedia.org")
                         .LegendSettings(ls => ls.Visible(false))
-                        .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header("").EnableHighlight(true))
+                        .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Percentage: <b>${point.y}%</b>").Header("").EnableHighlight(true))
                         .Load("load").EnableBorderOnMouseMove(false).Render()
                         )
                 </div>
@@ -38,8 +37,11 @@
     <script>
         var load = function (args) {
             loadAccumulationChartTheme(args);
-            //args.accumulation.series[0].startAngle = ej.base.Browser.isDevice ? 55 : 35;
-            //args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "70%";
+            args.accumulation.series[0].startAngle = ej.base.Browser.isDevice ? 55 : 35;
+            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "60%";
+            args.accumulation.series[0].dataLabel.connectorStyle.length = ej.base.Browser.isDevice ? '10px' : '20px';
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '12px';
+            args.accumulation.series[0].explodeIndex = 0;
         };
     </script>
 }
@@ -50,7 +52,7 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/pie-chart" aria-label="ASP.NET MVC Pie Chart">ASP.NET MVC Pie Chart<span class="sr-only">opens in a new tab</span></a> example demonstrates a pie chart for mobile browsers usage statistics. Datalabels show information about the points.
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/pie-chart" aria-label="ASP.NET MVC Pie Chart">ASP.NET MVC Pie Chart<span class="sr-only">opens in a new tab</span></a> example demonstrates a pie chart for global electricity generation. Datalabels show information about the points.
     </p>
 }
 @section Description{

@@ -45,16 +45,16 @@
                     <span class="db-prop-text-style text-content" style="font-weight: bold;">Snapping To Lines</span>
                 </div>
 
-                <div class="row radio-text-style" style="margin-left: 7px;">
+                <div class="row snapping-radio-text-style" style="margin-left: 7px;">
                     @Html.EJS().RadioButton("radio1").Label("Snap To Gridlines").Name("snapToLines").Value("Snap To Gridlines").Checked(true).Change("snapToLines").Render()
                 </div>
-                <div class="row radio-text-style" style="margin-left: 7px;">
+                <div class="row snapping-radio-text-style" style="margin-left: 7px;">
                     @Html.EJS().RadioButton("radio2").Label("Snap To Horizontal Gridlines").Name("snapToLines").Value("Snap To Horizontal Gridlines").Change("snapToLines").Render()
                 </div>
-                <div class="row radio-text-style" style="margin-left: 7px;">
+                <div class="row snapping-radio-text-style" style="margin-left: 7px;">
                     @Html.EJS().RadioButton("radio3").Label("Snap To Vertical Gridlines").Name("snapToLines").Value("Snap To Vertical Gridlines").Change("snapToLines").Render()
                 </div>
-                <div class="row radio-text-style" style="margin-left: 7px;">
+                <div class="row snapping-radio-text-style" style="margin-left: 7px;">
                     @Html.EJS().RadioButton("radio4").Label("None").Name("snapToLines").Value("None").Change("snapToLines").Render()
                 </div>
             </div>
@@ -84,7 +84,7 @@
             margin-top: 25px;
         }
 
-        .radio-text-style {
+        .snapping-radio-text-style {
             font-size: 13px;
             font-weight: normal;
             font-family: 'Calibri';

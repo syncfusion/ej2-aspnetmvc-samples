@@ -48,14 +48,14 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.Core.2.4.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.3\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.11.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.11.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=4.2.0.2, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -72,39 +72,39 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-	  <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+	  <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2">
-      <HintPath>packages\Syncfusion.EJ2.MVC5.29.2.4\lib\net462\Syncfusion.EJ2.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.MVC5.30.1.37\lib\net462\Syncfusion.EJ2.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.GridExport">
-      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.29.2.4\lib\net462\Syncfusion.EJ2.GridExport.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.GridExport.MVC5.30.1.37\lib\net462\Syncfusion.EJ2.GridExport.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Pdf.Base">
-      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.Pdf.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Pdf.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.Pdf.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocIO.Base">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.DocIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.DocIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.DocumentEditor">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.WordEditor.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.EJ2.DocumentEditor.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.PdfViewer">
-      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.EJ2.PdfViewer.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.EJ2.PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.OfficeChartToImageConverter.WPF">
-      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.OfficeChartToImageConverter.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.OfficeChartToImageConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PdfToImageConverter.Base">
-      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.PdfToImageConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.PdfViewer.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.PdfToImageConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.DocToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.DocToPdfConverter.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.DocToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Compression.Base">
       <HintPath>packages\\lib\net462\Syncfusion.Compression.Base.dll</HintPath>
@@ -113,25 +113,25 @@
       <HintPath>packages\\lib\net462\Syncfusion.OfficeChart.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Presentation.Base">
-      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.Presentation.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.Presentation.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.PresentationToPdfConverter.Base">
-      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.PresentationToPdfConverter.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.PresentationToPdfConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelChartToImageConverter.WPF">
-      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelChartToImageConverter.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.ExcelChartToImageConverter.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.ExcelToPDFConverter.Base">
-      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.ExcelToPdfConverter.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.SfChart.WPF">
       <HintPath>packages\\lib\net462\Syncfusion.SfChart.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.XlsIO.Base">
-      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.29.2.4\lib\net462\Syncfusion.XlsIO.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.XlsIO.AspNet.Mvc5.30.1.37\lib\net462\Syncfusion.XlsIO.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.EJ2.Spreadsheet">
-      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.29.2.4\lib\net462\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
+      <HintPath>packages\Syncfusion.EJ2.Spreadsheet.AspNet.MVC5.30.1.37\lib\net462\Syncfusion.EJ2.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing">
       <SpecificVersion>False</SpecificVersion>
@@ -142,7 +142,7 @@
 	<Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting">
-      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.9\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.6.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -151,12 +151,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Http, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
 	  <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.3.0\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost">
-      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.9\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.3.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Web" />
@@ -178,9 +178,9 @@
 	  <Private>True</Private>
       <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="System.Web.Mvc, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
 	  <Private>True</Private>
-      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.3.0\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Optimization">
 	  <Private>True</Private>
@@ -228,6 +228,9 @@
     <Compile Include="Controllers\Barcode\qrcodeController.cs" />
     <Compile Include="Controllers\Barcode\upcaController.cs" />
     <Compile Include="Controllers\Barcode\upceController.cs" />
+    <Compile Include="Controllers\BlockEditor\APIController.cs" />
+    <Compile Include="Controllers\BlockEditor\EventsController.cs" />
+    <Compile Include="Controllers\BlockEditor\OverviewController.cs" />
     <Compile Include="Controllers\Carousel\PartialVisibleController.cs" />
     <Compile Include="Controllers\Carousel\IndicatorTypeController.cs" />
     <Compile Include="Controllers\Chart\AnnotationController.cs" />
@@ -246,13 +249,18 @@
     <Compile Include="Controllers\Chart\SplineUpdateController.cs" />
     <Compile Include="Controllers\Chart\StepAreaWithOutRiserController.cs" />
     <Compile Include="Controllers\Chart\UpdateDataSourceController.cs" />
+    <Compile Include="Controllers\Diagram\ContainerController.cs" />
     <Compile Include="Controllers\FileManager\DirectoryUploadController.cs" />
     <Compile Include="Controllers\FileManager\VirtualizationController.cs" />
+    <Compile Include="Controllers\GanttChart\ConstraintsController.cs" />
     <Compile Include="Controllers\GanttChart\CriticalPathController.cs" />
     <Compile Include="Controllers\GanttChart\TimelineTemplateController.cs" />
     <Compile Include="Controllers\GanttChart\UndoRedoController.cs" />
     <Compile Include="Controllers\GanttChart\LoadingAnimationController.cs" />
+    <Compile Include="Controllers\GanttChart\WBSColumnController.cs" />
     <Compile Include="Controllers\Grid\AdaptiveLayoutController.cs" />
+    <Compile Include="Controllers\Grid\ChartController.cs" />
+    <Compile Include="Controllers\Grid\FIFAStatisticsController.cs" />
     <Compile Include="Controllers\Grid\FilterBarTemplateController.cs" />
     <Compile Include="Controllers\Grid\FrozenRowsColumnsController.cs" />
     <Compile Include="Controllers\Grid\LazyLoadGroupWithInfiniteScrollingController.cs" />
@@ -269,6 +277,7 @@
     <Compile Include="Controllers\AIAssistView\ViewsController.cs" />
     <Compile Include="Controllers\AIAssistView\StreamingController.cs" />
     <Compile Include="Controllers\AIAssistView\TemplateController.cs" />
+    <Compile Include="Controllers\AIAssistView\AttachmentController.cs" />
     <Compile Include="Controllers\MultiColumnComboBox\KeyboardNavigationController.cs" />
     <Compile Include="Controllers\MultiColumnComboBox\TemplateController.cs" />
     <Compile Include="Controllers\MultiColumnComboBox\SortingController.cs" />
@@ -292,6 +301,8 @@
     <Compile Include="Controllers\Ribbon\RibbonResizingController.cs" />
     <Compile Include="Controllers\Ribbon\SimplifiedModeController.cs" />
     <Compile Include="Controllers\Schedule\ClipboardController.cs" />
+    <Compile Include="Controllers\Schedule\EmployeeShiftManagementController.cs" />
+    <Compile Include="Controllers\Schedule\EventManagementController.cs" />
     <Compile Include="Controllers\Schedule\HolidayCalendarController.cs" />
     <Compile Include="Controllers\Signature\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Signature\ToolbarController.cs" />
@@ -315,6 +326,7 @@
     <Compile Include="Controllers\DocumentEditor\AutoShapesController.cs" />
     <Compile Include="Controllers\DocumentEditor\ChartController.cs" />
     <Compile Include="Controllers\DocumentEditor\CommentsController.cs" />
+    <Compile Include="Controllers\DocumentEditor\RibbonCustomizationController.cs" />
     <Compile Include="Controllers\DocumentEditor\CustomContextMenuController.cs" />
     <Compile Include="Controllers\DocumentEditor\MailMergeController.cs" />
     <Compile Include="Controllers\DocumentEditor\NotesController.cs" />
@@ -1221,6 +1233,7 @@
     <Compile Include="Controllers\RichTextEditor\FormatPainterController.cs" />
     <Compile Include="Controllers\RichTextEditor\ExportDocumentController.cs" />
     <Compile Include="Controllers\RichTextEditor\ImportWordController.cs" />
+    <Compile Include="Controllers\RichTextEditor\BottomToolbarController.cs" />
     <Compile Include="Controllers\MarkdownEditor\CustomFormatController.cs" />
     <Compile Include="Controllers\MarkdownEditor\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\MarkdownEditor\OverviewController.cs" />
@@ -1459,6 +1472,10 @@
     <Compile Include="Controllers\TreeGrid\VirtualScrollingController.cs" />
     <Compile Include="Controllers\TreeGrid\InfiniteScrollingController.cs" />
     <Compile Include="Controllers\TreeGrid\AdaptiveController.cs" />
+    <Compile Include="Controllers\TreeGrid\EmployeeMgmtController.cs" />
+    <Compile Include="Controllers\TreeGrid\RestaurantMenuController.cs" />
+    <Compile Include="Controllers\TreeGrid\StickyHeaderController.cs" />
+    <Compile Include="Controllers\TreeGrid\RemoteVirtualController.cs" />
     <Compile Include="Controllers\TreeMap\ColorMappingController.cs" />
     <Compile Include="Controllers\TreeMap\CustomizationController.cs" />
     <Compile Include="Controllers\TreeMap\DatalabelController.cs" />
@@ -1522,6 +1539,7 @@
     <Compile Include="Controllers\PowerPoint\SmartArtCreationController.cs" />
     <Compile Include="Controllers\PowerPoint\TablesController.cs" />
     <Compile Include="Controllers\Excel\AutoFilterController.cs" />
+	<Compile Include="Controllers\Excel\AutoFillController.cs" />
     <Compile Include="Controllers\Excel\SlicerController.cs" />
     <Compile Include="Controllers\Excel\AttendanceTrackerController.cs" />
     <Compile Include="Controllers\Excel\YearlySalesController.cs" />
@@ -1598,6 +1616,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ViewsController.cs" />
+    <Compile Include="Models\BlockData.cs" />
+	<Compile Include="Models\AutoFillOptionsModel.cs" />
+    <Compile Include="Models\DateRangeFormats.cs" />
+    <Compile Include="Models\EmployeeMgmt.cs" />
+    <Compile Include="Models\EmployeeShiftManagement.cs" />
+    <Compile Include="Models\EventManagement.cs" />
+    <Compile Include="Models\FIFAStatisticsData.cs" />
     <Compile Include="Models\ProgrammaticOperationsModel.cs" />
     <Compile Include="Models\BookDetails.cs" />
     <Compile Include="Models\BreadcrumbItemModel.cs" />
@@ -1634,6 +1659,7 @@
     <Compile Include="Models\EmployeeDetails.cs" />
     <Compile Include="Models\PromptResponseData.cs" />
     <Compile Include="Models\ChatMessagesData.cs" />
+    <Compile Include="Models\SalesData.cs" />
     <Compile Include="Models\ScheduleEventsData.cs" />
     <Compile Include="Models\TaskDetail.cs" />
     <Compile Include="Models\FormatOption.cs" />
@@ -1733,6 +1759,121 @@
     <Content Include="Content\gantt\images\TaskNameDark.png" />
     <Content Include="Content\grid\adaptive-layout.css" />
     <Content Include="Content\images\diagram\Images\drawingTool\connector\freehand.png" />
+    <Content Include="Content\images\EmployeeShiftImage\alice.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Ava.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Benjamin.png" />
+    <Content Include="Content\images\EmployeeShiftImage\brian%403x.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Chloe.png" />
+    <Content Include="Content\images\EmployeeShiftImage\David.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Emma.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Grace.png" />
+    <Content Include="Content\images\EmployeeShiftImage\jake%403x.png" />
+    <Content Include="Content\images\EmployeeShiftImage\James.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Jennifer.png" />
+    <Content Include="Content\images\EmployeeShiftImage\laura.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Lily.png" />
+    <Content Include="Content\images\EmployeeShiftImage\margaret.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Michael.png" />
+    <Content Include="Content\images\EmployeeShiftImage\nancy.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Olivia.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Ricky.png" />
+    <Content Include="Content\images\EmployeeShiftImage\robert.png" />
+    <Content Include="Content\images\EmployeeShiftImage\robson.png" />
+    <Content Include="Content\images\EmployeeShiftImage\salman%403x.png" />
+    <Content Include="Content\images\EmployeeShiftImage\Thomas.png" />
+    <Content Include="Content\images\EmployeeShiftImage\will-smith.png" />
+    <Content Include="Content\images\EmployeeShiftImage\William.png" />
+    <Content Include="Content\images\FifaStatistics\background\WorldCup.png" />
+    <Content Include="Content\images\FifaStatistics\best_player\Diego Forlán.jpg" />
+    <Content Include="Content\images\FifaStatistics\best_player\Diego Maradona.jpg" />
+    <Content Include="Content\images\FifaStatistics\best_player\Lionel Messi.jpg" />
+    <Content Include="Content\images\FifaStatistics\best_player\Luka Modrić.jpg" />
+    <Content Include="Content\images\FifaStatistics\best_player\Oliver Kahn.jpg" />
+    <Content Include="Content\images\FifaStatistics\best_player\Romário.jpg" />
+    <Content Include="Content\images\FifaStatistics\best_player\Ronaldo.jpg" />
+    <Content Include="Content\images\FifaStatistics\best_player\Zinedine Zidane.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Aimé Jacquet.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Alberto Suppici.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Alf Ramsey.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Aymoré Moreira.png" />
+    <Content Include="Content\images\FifaStatistics\coach\Carlos Alberto Parreira.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Carlos Bilardo.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\César Luis Menotti.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Didier Deschamps.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Enzo Bearzot.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Franz Beckenbauer.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Helmut Schön.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Joachim Löw.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Lionel Scaloni.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Luiz Felipe Scolari.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Marcello Lippi.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Mário Zagallo.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Sepp Herberger.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Vicente del Bosque.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Vicente Feola.jpg" />
+    <Content Include="Content\images\FifaStatistics\coach\Vittorio Pozzo.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\Argentina.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\Brazil.png" />
+    <Content Include="Content\images\FifaStatistics\country\Bulgaria.png" />
+    <Content Include="Content\images\FifaStatistics\country\Chile.png" />
+    <Content Include="Content\images\FifaStatistics\country\Colombia.png" />
+    <Content Include="Content\images\FifaStatistics\country\Croatia.png" />
+    <Content Include="Content\images\FifaStatistics\country\Czechoslovakia.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\England.png" />
+    <Content Include="Content\images\FifaStatistics\country\France.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\Germany.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\Hungary.png" />
+    <Content Include="Content\images\FifaStatistics\country\Italy.png" />
+    <Content Include="Content\images\FifaStatistics\country\Japan.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\Mexico.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\Poland.png" />
+    <Content Include="Content\images\FifaStatistics\country\Portugal.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\Qatar.png" />
+    <Content Include="Content\images\FifaStatistics\country\Russia.png" />
+    <Content Include="Content\images\FifaStatistics\country\South Africa.png" />
+    <Content Include="Content\images\FifaStatistics\country\South Korea.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\Spain.png" />
+    <Content Include="Content\images\FifaStatistics\country\Sweden.png" />
+    <Content Include="Content\images\FifaStatistics\country\Switzerland.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\United States.jpg" />
+    <Content Include="Content\images\FifaStatistics\country\Uruguay.png" />
+    <Content Include="Content\images\FifaStatistics\country\West Germany.jpg" />
+    <Content Include="Content\images\FifaStatistics\team\Argentina.png" />
+    <Content Include="Content\images\FifaStatistics\team\Brazil.png" />
+    <Content Include="Content\images\FifaStatistics\team\Bulgaria.png" />
+    <Content Include="Content\images\FifaStatistics\team\Colombia.png" />
+    <Content Include="Content\images\FifaStatistics\team\Czechoslovakia.png" />
+    <Content Include="Content\images\FifaStatistics\team\England.png" />
+    <Content Include="Content\images\FifaStatistics\team\France.png" />
+    <Content Include="Content\images\FifaStatistics\team\Germany.png" />
+    <Content Include="Content\images\FifaStatistics\team\Hungary.png" />
+    <Content Include="Content\images\FifaStatistics\team\Italy.png" />
+    <Content Include="Content\images\FifaStatistics\team\Poland.png" />
+    <Content Include="Content\images\FifaStatistics\team\Portugal.png" />
+    <Content Include="Content\images\FifaStatistics\team\Russia.png" />
+    <Content Include="Content\images\FifaStatistics\team\Spain.png" />
+    <Content Include="Content\images\FifaStatistics\team\Uruguay.png" />
+    <Content Include="Content\images\FifaStatistics\team\West Germany.png" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Ademir.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Davor Šuker.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Eusébio.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Gary Lineker.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Gerd Müller.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Grzegorz Lato.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Guillermo Stábile.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Harry Kane.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Hristo Stoichkov.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\James Rodríguez.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Just Fontaine.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Kylian Mbappé.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Leônidas.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Mario Kempes.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Miroslav Klose.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Oldřich Nejedlý.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Oleg Salenko.JPG" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Paolo Rossi.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Salvatore Schillaci.jpg" />
+    <Content Include="Content\images\FifaStatistics\top_scorer\Sándor Kocsis.jpg" />
     <Content Include="Content\images\treegrid\darkduration.png" />
     <Content Include="Content\images\treegrid\darkprogress.png" />
     <Content Include="Content\images\treegrid\darkResources.png" />
@@ -1835,6 +1976,8 @@
     <Content Include="Content\ProgressBar\tailwinddark-pause.svg" />
     <Content Include="Content\ProgressBar\tailwinddark-Play.svg" />
     <Content Include="Content\ProgressBar\tailwinddark-Tick.svg" />
+    <Content Include="Content\schedule\EmployeeShiftManagement.css" />
+    <Content Include="Content\schedule\EventManagement.css" />
     <Content Include="Content\skeleton\1.png" />
     <Content Include="Content\skeleton\2.png" />
     <Content Include="Content\skeleton\3.png" />
@@ -1889,10 +2032,11 @@
     <Content Include="App_Data\Data\Word\Template.doc" />
     <Content Include="App_Data\Data\Word\Template_Letter.doc" />
     <Content Include="App_Data\Data\Word\Template_Report.doc" />
-    <Content Include="App_Data\Data\Word\TemplateComments.doc" />
-    <Content Include="App_Data\Data\Word\TemplateFormFields.doc" />
+    <Content Include="App_Data\Data\Word\TemplateComments.docx" />
+    <Content Include="App_Data\Data\Word\TemplateFormFields.docx" />
     <Content Include="App_Data\Data\Word\TemplateMaster.doc" />
-    <Content Include="App_Data\Data\Word\TemplateRevisions.doc" />
+    <Content Include="App_Data\Data\Word\TemplateRevisions.docx" />
+    <Content Include="App_Data\Data\Word\TemplateReading.docx" />
     <Content Include="App_Data\Data\Word\TemplateSource1.doc" />
     <Content Include="App_Data\Data\Word\TemplateSource2.doc" />
     <Content Include="App_Data\Data\Word\TemplateTableStyle.doc" />
@@ -2159,16 +2303,79 @@
     <Content Include="Content\images\Kanban\Steven walker.png" />
     <Content Include="Content\images\treegrid\AndrewFuller.png" />
     <Content Include="Content\images\treegrid\AnneDodsworth.png" />
+    <Content Include="Content\images\treegrid\AriaJose.png" />
+    <Content Include="Content\images\treegrid\BobbyKnight.png" />
+    <Content Include="Content\images\treegrid\ChrisMathew.png" />
+    <Content Include="Content\images\treegrid\DaveyHanks.png" />
     <Content Include="Content\images\treegrid\DavidWilliam.png" />
+    <Content Include="Content\images\treegrid\GeorgeMiller.png" />
+    <Content Include="Content\images\treegrid\HenryWilliams.png" />
+    <Content Include="Content\images\treegrid\IsabellaJohnson.png" />
     <Content Include="Content\images\treegrid\JanetLeverling.png" />
+    <Content Include="Content\images\treegrid\JadeLynch.png" />
+    <Content Include="Content\images\treegrid\JasonGills.png" />
     <Content Include="Content\images\treegrid\LauraCallahan.png" />
+    <Content Include="Content\images\treegrid\LindaBelton.png" />
     <Content Include="Content\images\treegrid\MargaretPeacock.png" />
+    <Content Include="Content\images\treegrid\MerlynLawrance.png" />
     <Content Include="Content\images\treegrid\MichaelSuyama.png" />
     <Content Include="Content\images\treegrid\NancyDavolio.png" />
+    <Content Include="Content\images\treegrid\NathanDrake.png" />
+    <Content Include="Content\images\treegrid\NeilKepler.png" />
+    <Content Include="Content\images\treegrid\RichardRoe.png" />
     <Content Include="Content\images\treegrid\RobertKing.png" />
     <Content Include="Content\images\treegrid\RomeyWilson.png" />
+    <Content Include="Content\images\treegrid\SaraCallagen.png" />
+    <Content Include="Content\images\treegrid\ScarletPortman.png" />
+    <Content Include="Content\images\treegrid\SherlyHathaway.png" />
     <Content Include="Content\images\treegrid\StevenBuchanan.png" />
     <Content Include="Content\images\treegrid\TeddLawson.png" />
+    <Content Include="Content\images\treegrid\YvonneMcKay.png" />
+    <Content Include="Content\images\treegrid\house-salad.png" />
+    <Content Include="Content\images\treegrid\cranberry-chicken-salad.png" />
+    <Content Include="Content\images\treegrid\chili-chicken-steamed.png" />
+    <Content Include="Content\images\treegrid\spinach-salad.png" />
+    <Content Include="Content\images\treegrid\caesar-salad.png" />
+    <Content Include="Content\images\treegrid\blue-chicken-salad.png" />
+    <Content Include="Content\images\treegrid\veggie-pizza.png" />
+    <Content Include="Content\images\treegrid\margherita-pizza.png" />
+    <Content Include="Content\images\treegrid\quattro-formaggi.png" />
+    <Content Include="Content\images\treegrid\capricciosa-pizza.png" />
+    <Content Include="Content\images\treegrid\pepperoni-pizza.png" />
+    <Content Include="Content\images\treegrid\bbq-chicken-pizza.png" />
+    <Content Include="Content\images\treegrid\cheese-burger.png" />
+    <Content Include="Content\images\treegrid\smash-burger.png" />
+    <Content Include="Content\images\treegrid\butter-burger.png" />
+    <Content Include="Content\images\treegrid\chili-burger.png" />
+    <Content Include="Content\images\treegrid\veggie-burger.png" />
+    <Content Include="Content\images\treegrid\black-bean-burger.png" />
+    <Content Include="Content\images\treegrid\mushroom-burger.png" />
+    <Content Include="Content\images\treegrid\salmon-burger.png" />
+    <Content Include="Content\images\treegrid\chicken-burger.png" />
+    <Content Include="Content\images\treegrid\classic-hot-dog.png" />
+    <Content Include="Content\images\treegrid\onion-dog.png" />
+    <Content Include="Content\images\treegrid\bacon-dog.png" />
+    <Content Include="Content\images\treegrid\bbq-veggie-dog.png" />
+    <Content Include="Content\images\treegrid\cheese-hot-dog.png" />
+    <Content Include="Content\images\treegrid\chili-dog.png" />
+    <Content Include="Content\images\treegrid\manchurian-chowmein.png" />
+    <Content Include="Content\images\treegrid\fish-chowmein.png" />
+    <Content Include="Content\images\treegrid\paneer-chowmein.png" />
+    <Content Include="Content\images\treegrid\egg-chowmein.png" />
+    <Content Include="Content\images\treegrid\chicken-chowmein.png" />
+    <Content Include="Content\images\treegrid\chilli-garlic-chowmein.png" />
+    <Content Include="Content\images\treegrid\tandoori-chicken-chowmein.png" />
+    <Content Include="Content\images\treegrid\sichuan-chowmein.png" />
+    <Content Include="Content\images\treegrid\shrimp-chowmein.png" />
+    <Content Include="Content\images\treegrid\hakka-chowmein.png" />
+    <Content Include="Content\images\treegrid\tandoori-prawn-chowmein.png" />
+    <Content Include="Content\images\treegrid\kulfi.png" />
+    <Content Include="Content\images\treegrid\chocolate-truffles.png" />
+    <Content Include="Content\images\treegrid\brownies.png" />
+    <Content Include="Content\images\treegrid\gelato.png" />
+    <Content Include="Content\images\treegrid\sorbet.png" />
+    <Content Include="Content\images\treegrid\fruit-tart.png" />
+    <Content Include="Content\images\treegrid\male.png" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\card\1.png" />
     <Content Include="Content\card\2.png" />
@@ -2418,6 +2625,26 @@
     <Content Include="Content\images\pizza\Peppy_Paneer.jpg" />
     <Content Include="Content\images\pizza\Veg_Extravaganz.jpg" />
     <Content Include="Content\images\pizza\Veggie_Paradise.jpg" />
+    <Content Include="Content\images\product\Avocados.png" />
+    <Content Include="Content\images\product\Bananas.png" />
+    <Content Include="Content\images\product\Beef.png" />
+    <Content Include="Content\images\product\BellPeppers.png" />
+    <Content Include="Content\images\product\BrownRice.png" />
+    <Content Include="Content\images\product\ButterSticks.png" />
+    <Content Include="Content\images\product\Cheese.png" />
+    <Content Include="Content\images\product\Chicken.png" />
+    <Content Include="Content\images\product\Eggs.png" />
+    <Content Include="Content\images\product\GranolaCereal.png" />
+    <Content Include="Content\images\product\MilkBottle.png" />
+    <Content Include="Content\images\product\OliveOil.png" />
+    <Content Include="Content\images\product\PeanutButter.png" />
+    <Content Include="Content\images\product\Pork.png" />
+    <Content Include="Content\images\product\Salmon.png" />
+    <Content Include="Content\images\product\SpaghettiPasta.png" />
+    <Content Include="Content\images\product\Spinach.png" />
+    <Content Include="Content\images\product\Strawberries.png" />
+    <Content Include="Content\images\product\TurkeyBreast.png" />
+    <Content Include="Content\images\product\Yogurt.png" />
     <Content Include="Content\images\listview\1.png" />
     <Content Include="Content\images\listview\2.png" />
     <Content Include="Content\images\listview\3.png" />
@@ -2471,6 +2698,7 @@
     <Content Include="Content\images\RichTextEditor\bridge.png" />
     <Content Include="Content\images\RichTextEditor\thumb_no.png" />
     <Content Include="Content\images\RichTextEditor\thumb_yes.png" />
+    <Content Include="Content\images\RichTextEditor\QuickFormatToolbarImage.png" />
     <Content Include="Content\images\sb-icons\fonts\icons.eot" />
     <Content Include="Content\images\sb-icons\fonts\icons.svg" />
     <Content Include="Content\images\sb-icons\fonts\icons.ttf" />
@@ -2959,6 +3187,9 @@
     <Content Include="Views\Badge\Notification.cshtml" />
     <Content Include="Views\Badge\Toolbar.cshtml" />
     <Content Include="Views\Badge\Types.cshtml" />
+    <Content Include="Views\BlockEditor\Overview.cshtml" />
+    <Content Include="Views\BlockEditor\API.cshtml" />
+    <Content Include="Views\BlockEditor\Events.cshtml" />
     <Content Include="Views\Signature\Toolbar.cshtml" />
     <Content Include="Views\Signature\DefaultFunctionalities.cshtml" />
     <Content Include="Views\Breadcrumb\AddressBar.cshtml" />
@@ -3320,6 +3551,7 @@
     <Content Include="Views\DocumentEditor\AdvancedExporting.cshtml" />
     <Content Include="Views\DocumentEditor\ColorpickerCustomization.cshtml" />
     <Content Include="Views\DocumentEditor\HeadingNavigation.cshtml" />
+    <Content Include="Views\DocumentEditor\RibbonCustomization.cshtml" />
     <Content Include="Views\DropDownList\Cascading.cshtml" />
     <Content Include="Views\DropDownList\DataBinding.cshtml" />
     <Content Include="Views\DropDownList\ObjectValueBinding.cshtml" />
@@ -3671,6 +3903,7 @@
     <Content Include="Views\RichTextEditor\FormatPainter.cshtml" />
     <Content Include="Views\RichTextEditor\ImportWord.cshtml" />
     <Content Include="Views\RichTextEditor\ExportDocument.cshtml" />
+    <Content Include="Views\RichTextEditor\BottomToolbar.cshtml" />
     <Content Include="Views\MarkdownEditor\CustomFormat.cshtml" />
     <Content Include="Views\MarkdownEditor\DefaultFunctionalities.cshtml" />
     <Content Include="Views\MarkdownEditor\Overview.cshtml" />
@@ -3831,6 +4064,7 @@
     <Content Include="Views\Uploader\Template.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Excel\AutoFilter.cshtml" />
+	<Content Include="Views\Excel\AutoFill.cshtml" />
     <Content Include="Views\Excel\Slicer.cshtml" />
     <Content Include="Views\Excel\AttendanceTracker.cshtml" />
     <Content Include="Views\Excel\ExpensesReport.cshtml" />
@@ -4077,6 +4311,7 @@
     <Content Include="Views\GanttChart\Timeline.cshtml" />
     <Content Include="Views\GanttChart\TimelineTemplate.cshtml" />
     <Content Include="Views\GanttChart\UnscheduledTask.cshtml" />
+    <Content Include="Views\GanttChart\WBSColumn.cshtml" />
     <Content Include="Views\GanttChart\LoadOnDemand.cshtml" />
     <Content Include="Views\Spreadsheet\DefaultFunctionalities.cshtml" />
     <Content Include="Views\Spreadsheet\CellDataBinding.cshtml" />
@@ -4231,6 +4466,7 @@
     <Content Include="Views\ChatUI\API.cshtml" />
     <Content Include="Views\ChatUI\ChatIntegration.cshtml" />
     <Content Include="Views\GanttChart\CriticalPath.cshtml" />
+    <Content Include="Views\GanttChart\Constraints.cshtml" />
     <Content Include="Views\GanttChart\UndoRedo.cshtml" />
     <Content Include="Views\Chart\Keyboard.cshtml" />
     <Content Include="Views\Schedule\DragScheduleToSchedule.cshtml" />
@@ -4308,6 +4544,7 @@
     <Content Include="Views\AIAssistView\Template.cshtml" />
     <Content Include="Views\AIAssistView\Views.cshtml" />
     <Content Include="Views\AIAssistView\Streaming.cshtml" />
+    <Content Include="Views\AIAssistView\Attachment.cshtml" />
     <Content Include="Views\MultiColumnComboBox\DefaultFunctionalities.cshtml" />
     <Content Include="Views\MultiColumnComboBox\RemoteData.cshtml" />
     <Content Include="Views\MultiColumnComboBox\Grouping.cshtml" />
@@ -4334,6 +4571,15 @@
     <Content Include="Views\SpeechToText\DefaultFunctionalities.cshtml" />
     <Content Include="Views\SpeechToText\Integration.cshtml" />
     <Content Include="Views\SpeechToText\UseCase.cshtml" />
+    <Content Include="Views\Schedule\EmployeeShiftManagement.cshtml" />
+    <Content Include="Views\Grid\FIFAStatistics.cshtml" />
+    <Content Include="Views\TreeGrid\RestaurantMenu.cshtml" />
+    <Content Include="Views\TreeGrid\EmployeeMgmt.cshtml" />
+    <Content Include="Views\TreeGrid\StickyHeader.cshtml" />
+    <Content Include="Views\TreeGrid\RemoteVirtual.cshtml" />
+    <Content Include="Views\Schedule\EventManagement.cshtml" />
+    <Content Include="Views\Grid\Chart.cshtml" />
+    <Content Include="Views\Diagram\Container.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\MapData\Africa_continent.json" />

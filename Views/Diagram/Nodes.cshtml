@@ -9,7 +9,7 @@
 
         </div>
     </div>
-    <div class="col-lg-4 property-section">
+    <div class="col-lg-4 property-section diagram-nodes-container">
         <div class="property-panel-header">
             Properties
         </div>
@@ -46,7 +46,7 @@
     </div>
     <style>
         /* Css for images in property panel  */
-        .image-pattern-style {
+        .diagram-nodes-container .image-pattern-style {
             background-color: white;
             background-size: contain;
             background-repeat: no-repeat;
@@ -58,17 +58,17 @@
             float: left;
         }
 
-        .row {
+        .diagram-nodes-container .row {
             margin-left: 0px;
             margin-right: 0px;
         }
 
-        .row-header {
+        .diagram-nodes-container .row-header {
             font-size: 13px;
             font-weight: 500;
         }
         /* Selection indicator */
-        .e-selected-style {
+        .diagram-nodes-container .e-selected-style {
             border-color: #006CE6;
             border-width: 2px;
         }
@@ -78,8 +78,6 @@
         function getNodeDefaults(node, diagram) {
             node.shape = { shape: 'Ellipse' };
             node.style = { fill: '#37909A', strokeColor: '#024249' };
-            node.width = 100;
-            node.height = 100;
             return node;
         }
         function getConnectorDefaults(connector, diagram) {
@@ -178,17 +176,29 @@
         function lockChanged(args) {
             var label = "Lock";
             var diagram = document.getElementById("container").ej2_instances[0];
+            // Toggling constraints for nodes
             for (var i = 0; i < diagram.nodes.length; i++) {
                 node = diagram.nodes[i];
                 if (args.checked) {
                     node.constraints &= ~(ej.diagrams.NodeConstraints.Resize | ej.diagrams.NodeConstraints.Rotate | ej.diagrams.NodeConstraints.Drag);
                     node.constraints |= ej.diagrams.NodeConstraints.ReadOnly;
                 } else {
-                    node.constraints |= ej.diagrams.NodeConstraints.Default & ~(ej.diagrams.NodeConstraints.ReadOnly);
+                    node.constraints &= ~ej.diagrams.NodeConstraints.ReadOnly;
+                    node.constraints |= (ej.diagrams.NodeConstraints.Resize | ej.diagrams.NodeConstraints.Rotate | ej.diagrams.NodeConstraints.Drag);
                 }
-                diagram.dataBind();
             }
-
+            // Toggling constraints for connectors
+            for (var i = 0; i < diagram.connectors.length; i++) {
+                connector = diagram.connectors[i];
+                if (args.checked) {
+                    connector.constraints &= ~(ej.diagrams.ConnectorConstraints.DragSourceEnd | ej.diagrams.ConnectorConstraints.DragTargetEnd | ej.diagrams.ConnectorConstraints.Drag | ej.diagrams.ConnectorConstraints.Delete);
+                    connector.constraints |= ej.diagrams.ConnectorConstraints.ReadOnly;
+                } else {
+                    connector.constraints &= ~ej.diagrams.ConnectorConstraints.ReadOnly;
+                    connector.constraints |= (ej.diagrams.ConnectorConstraints.DragSourceEnd | ej.diagrams.ConnectorConstraints.DragTargetEnd | ej.diagrams.ConnectorConstraints.Drag | ej.diagrams.ConnectorConstraints.Delete);
+                }
+            }
+            diagram.dataBind();
         }
 
         function applyStyle(node, width, array, con, type) {

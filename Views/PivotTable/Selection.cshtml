@@ -31,7 +31,7 @@
                 .Filters(filters =>
                 {
                     filters.Name("Product_Categories").Caption("Product Categories").Add();
-                })).GridSettings(new PivotViewGridSettings { ColumnWidth = 120, AllowSelection = true}).Load("onLoad").CellSelected("onCellSelected").Render()
+                })).GridSettings(new PivotViewGridSettings { ColumnWidth = 120, AllowSelection = true}).Load("onLoad").CellSelected("onCellSelected").DataBound("dataBound").Render()
         </div>
     </div>
 
@@ -94,6 +94,14 @@
     }
     </style>
     <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function onLoad(args) {
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];
             pivotObj.gridSettings.selectionSettings = { mode: 'Cell', type: 'Multiple', cellSelectionMode: 'Box' };

@@ -1,8 +1,14 @@
 /* Ignored false leaks in .cs files */
 Controllers/PDF/EncryptionController.cs:generic-api-key:40
+Controllers/PDF/EncryptionController.cs:generic-api-key:41
 Controllers/PDF/EncryptionController.cs:generic-api-key:45
+Controllers/PDF/EncryptionController.cs:generic-api-key:46
 Controllers/PDF/EncryptionController.cs:generic-api-key:51
+Controllers/PDF/EncryptionController.cs:generic-api-key:52
 Controllers/PDF/EncryptionController.cs:generic-api-key:57
+Controllers/PDF/EncryptionController.cs:generic-api-key:58
+Controllers/PDF/EncryptionController.cs:generic-api-key:67
+Controllers/PDF/EncryptionController.cs:generic-api-key:68
 Models/ExportEmployeeDetails.cs:aws-access-token:33
 Models/ExportEmployeeDetails.cs:aws-access-token:37
 Models/ExportEmployeeDetails.cs:aws-access-token:49
@@ -30,6 +36,20 @@ Models/GanttData.cs:aws-access-token:2180
 Models/GanttData.cs:aws-access-token:2193
 Models/GanttData.cs:aws-access-token:2220
 Models/GanttData.cs:aws-access-token:2232
+Models/GanttData.cs:aws-access-token:1897
+Models/GanttData.cs:aws-access-token:2019
+Models/GanttData.cs:aws-access-token:2032
+Models/GanttData.cs:aws-access-token:2055
+Models/GanttData.cs:aws-access-token:2066
+Models/GanttData.cs:aws-access-token:2079
+Models/GanttData.cs:aws-access-token:2091
+Models/GanttData.cs:aws-access-token:2104
+Models/GanttData.cs:aws-access-token:2144
+Models/GanttData.cs:aws-access-token:2157
+Models/GanttData.cs:aws-access-token:2169
+Models/GanttData.cs:aws-access-token:2182
+Models/GanttData.cs:aws-access-token:2222
+Models/GanttData.cs:aws-access-token:2234
 /* Ignored false leaks in .cshtml files */
 Views/PivotTable/CellTemplate.cshtml:aws-access-token:35
 Views/Schedule/CalendarIntegration.cshtml:gcp-api-key:5

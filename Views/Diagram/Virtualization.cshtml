@@ -23,10 +23,6 @@
         #diagram {
             display: block;
         }
-
-        .row {
-            display: block;
-        }
        /* Toolbar Icon CSS */
         @@font-face {
             font-family: 'e-ddb-icons';
@@ -115,7 +111,9 @@
             //Disables all interactions except zoom/pan
             diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
             //fit the diagram to the page with respect to mode and region
-            diagram.fitToPage({ mode: 'Page', region: 'CustomBounds', margin: { left: 50, right: 50 }, customBounds: bound });
+            setTimeout(() => {
+                diagram.fitToPage({ mode: 'Page', region: 'CustomBounds', margin: { left: 50, right: 50 }, customBounds: bound });
+            }, 500);
             diagram.dataBind();
         }
         @* custom code start *@

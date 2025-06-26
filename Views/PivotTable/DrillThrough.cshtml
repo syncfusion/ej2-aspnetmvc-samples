@@ -32,7 +32,7 @@
            .Filters(filters =>
            {
                filters.Name("Product_Categories").Caption("Product Categories").Add();
-           })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).ShowFieldList(true).AllowDrillThrough(true).ShowTooltip(false).Render()
+           })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).ShowFieldList(true).AllowDrillThrough(true).ShowTooltip(false).DataBound("dataBound").Render()
     </div>
 </div>
 
@@ -48,6 +48,16 @@
             min-height: 255px !important;
         }
     </style>
+    <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
+    </script>
 }
 
 @section PreScripts {

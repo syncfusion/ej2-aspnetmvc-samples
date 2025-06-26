@@ -21,8 +21,8 @@ namespace EJ2MVCSampleBrowser.Controllers
             ViewData["Value"] = @"Hello [Albert](mailto:albert@gmail.com)
 
 Welcome to the mention integration with markdown editor demo. Type @ character and tag user from the suggestion list.";
+            ViewData["MentionChar"] = '@';
             var tool = new {
-                tooltipText = "Preview",
                 template = @"<button id='preview-code' class='e-tbar-btn e-control e-btn e-icon-btn' aria-label='Preview Code'>
                         <span class='e-btn-icon e-md-preview e-icons'></span></button>"
             };

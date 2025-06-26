@@ -24,6 +24,7 @@ namespace EJ2MVCSampleBrowser.Controllers
             datasource.Add(new Data() { text = "Expand", value = 1 });
             datasource.Add(new Data() { text = "Multi Row", value = 2 });
             datasource.Add(new Data() { text = "Scrollable", value = 3 });
+            datasource.Add(new Data() { text = "Popup", value = 4 });
             ViewData["Data"] = datasource;
             ViewData["Items"] = new[] {"Bold", "Italic", "Underline", "StrikeThrough", "SuperScript", "SubScript", "|",
                 "FontName", "FontSize", "FontColor", "BackgroundColor",  "|",

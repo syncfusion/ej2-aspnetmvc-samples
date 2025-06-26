@@ -5,6 +5,7 @@
 }
 @{
     string serviceUrl = VirtualPathUtility.ToAbsolute("~/api/PdfViewer/");
+    object pageOrganizerSettings = new { showImageZoomingSlider = true };
 }
 
 @section ControlsSection{
@@ -16,7 +17,7 @@
             </div>
             @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
         </div>
-        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").DocumentLoad("documentLoad").Render()
+        @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/pdf-succinctly.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").DocumentLoad("documentLoad").PageOrganizerSettings(pageOrganizerSettings).Render()
     </div>
 }
 
@@ -44,6 +45,7 @@
         <li>Undo and redo actions are available at the organize pages dialog.</li>
         <li>Enjoy real-time updates as any changes made to the page organization are instantly reflected within the PDF Viewer, when you click on the <code>Save</code> button.</li>
         <li>Utilize the <code>Save As</code> feature to preserve edits, enabling users to download the modified version of the PDF document for future reference.</li>
+        <li>Zoom in or out of page images using the slider opened through the page zoom icon available in the toolbar or using keyboard accessibility.</li>
     </ul> 
     <div id="description">
         <p>

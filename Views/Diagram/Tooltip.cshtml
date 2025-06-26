@@ -6,7 +6,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div id="tooltipDiagramSection" class="content-wrapper" style="width: 100%">
-            @(Html.EJS().Diagram("diagram").Created("created").Width("100%").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Height("645px").SnapSettings(s=>s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Constraints(DiagramConstraints.Default | DiagramConstraints.Tooltip).SnapSettings(s=>s.Constraints(SnapConstraints.None)).Tooltip(t=>t.RelativeMode(TooltipRelativeMode.Object).Position(ViewData["position"]).Content((string)ViewData["content"]).Animation(ViewData["animation"])).Nodes((List<DiagramNode>)ViewData["nodes"]).Connectors((List<DiagramConnector>)ViewData["connectors"]).Render())
+            @(Html.EJS().Diagram("diagram").Created("created").Width("100%").GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").Height("645px").SnapSettings(s=>s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).SnapSettings(s=>s.Constraints(SnapConstraints.None)).Tooltip(t=>t.RelativeMode(TooltipRelativeMode.Object).Position(ViewData["position"]).Content((string)ViewData["content"]).Animation(ViewData["animation"])).Nodes((List<DiagramNode>)ViewData["nodes"]).Connectors((List<DiagramConnector>)ViewData["connectors"]).Render())
         </div>
     </div>
     <div id="tooltipPropertySection" class="col-lg-4 property-section">

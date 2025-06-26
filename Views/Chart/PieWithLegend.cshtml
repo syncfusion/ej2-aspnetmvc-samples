@@ -5,25 +5,21 @@
         @(Html.EJS().AccumulationChart("container")
             .Series(sr =>
             {
-                sr.XName("ExpenseCategory")
-                    .YName("ExpensePercentage")
-                    .DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).Font(ft => ft.FontWeight("600").Color("#ffffff")).ConnectorStyle(cs => cs.Length("20px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)))
-                    .StartAngle(30)
+                sr.XName("X")
+                    .YName("Y")
+                    .DataLabel(dl => dl.Visible(false))
                     .Explode(false)
                     .ExplodeOffset("10%")
-                    .ExplodeIndex(0)
-                    .Name("legendName")
-					.InnerRadius("50%")
+                    .ExplodeIndex(0).BorderRadius(3)
+                    .InnerRadius("50%").Border(br => br.Width(1).Color("#ffffff"))
                     .DataSource(ViewData["PieChartPoints"]).Add();
             })
-            
-            .EnableSmartLabels(true).EnableAnimation(false).EnableBorderOnMouseMove(false).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header("").EnableHighlight(true))
+            .EnableSmartLabels(true).EnableAnimation(false).EnableBorderOnMouseMove(false).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Percentage: <b>${point.y}%</b>").Header(""))
             .LegendSettings(leg => leg.Visible(true)
                 .ToggleVisibility(false)
-                .Position(Syncfusion.EJ2.Charts.LegendPosition.Bottom)
-                .FixedWidth(true))
-            .Annotations(an => { an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("52%").Y("50%").Add(); })
-            .Load("load").PointRender("labelRender")
+                .Position(Syncfusion.EJ2.Charts.LegendPosition.Bottom))
+            .Annotations(an => { an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("50%").Y("50%").Add(); })
+            .Load("load").SelectionMode(Syncfusion.EJ2.Charts.AccumulationSelectionMode.Point)
             .Render()
             )
     </div>
@@ -33,30 +29,9 @@
             "#C19C00"];
         var load = function(args) {
             loadAccumulationChartTheme(args);
-            args.accumulation.title = ej.base.Browser.isDevice ?  "Browser Market Shares" : '';
-            args.accumulation.legendSettings.position = 'Bottom';
-            args.accumulation.legendSettings.maximumColumns = ej.base.Browser.isDevice ? 2 : 3;
-            args.accumulation.annotations[0].content = ej.base.Browser.isDevice ? " " : "<div style='font-Weight:600;font-size:14px'>Browser <br> Market <br> Shares</div>";
+            args.accumulation.legendSettings.textWrap = 'Wrap';
+            args.accumulation.annotations[0].content = ej.base.Browser.isDevice ? " " : "<div style='font-Weight:600;font-size:14px'>Internet Users <br> by Country<br>2025</div>";
             args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "80%" : "85%";
-        }
-        var labelRender = function (args) {
-            var selectedTheme = location.hash.split('/')[1];
-            selectedTheme = selectedTheme ? selectedTheme : 'Fluent2';
-            if (selectedTheme === 'fluent2') {
-                args.fill = fluent2Colors[args.point.index % 10];
-            }
-        }
-        var count = 0;       
-        function getFontSize(width) {
-            if (width > 300) {
-                return '13px';
-            }
-            else if (width > 250) {
-                return '8px';
-            }
-            else {
-                return '6px';
-            }
         }        
     </script>
 }
@@ -67,12 +42,12 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample demonstrates a donut chart showcasing mobile browser usage statistics, with legends displayed at the bottom of the chart.
+        This sample shows statistics on internet usage by country using the donut chart with legends shown at the bottom of the chart.
     </p>
 }
 @section Description{
-    <p> 
-        This example demonstrates how to render a donut chart with legends positioned at the bottom. The legend can be arranged in horizontal, vertical, or auto layout modes. Using the <code>MaximumColumns</code> property, you can define the maximum number of columns in auto layout. Additionally, a fixed width option ensures uniform legend sizes for a polished appearance.
+    <p>
+        In this example, you can see how to render a donut chart with legends. You can use <code>radius</code> and <code>innerRadius</code> properties to render the donut.
     </p>
     <p>
         More information about the legend feature can be found in this

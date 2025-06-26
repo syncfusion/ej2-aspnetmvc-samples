@@ -28,11 +28,11 @@
             </div>
             <div class="e-img-editor-dropdown-container">
                 <label>Allowed Extensions</label><br />
-                @Html.EJS().MultiSelect("allowedExtensions").DataSource("fileExtensionsList").Fields(f => f.Text("Name").Value("Value")).Mode(Syncfusion.EJ2.DropDowns.VisualMode.CheckBox).ShowSelectAll(true).Value(new string[] { "jpeg", "jpg", "png", "svg", "webp" }).Change("updateAllowedExtensions").Width("180px").Render()
+                @Html.EJS().MultiSelect("allowedExtensions").DataSource("fileExtensionsList").Fields(f => f.Text("Name").Value("Value")).Mode(Syncfusion.EJ2.DropDowns.VisualMode.CheckBox).ShowSelectAll(true).Value(new string[] { "jpeg", "jpg", "png", "svg", "webp", "bmp" }).Change("updateAllowedExtensions").Width("180px").Render()
             </div>
         </div>
         <div class="e-img-editor-sample">
-            @Html.EJS().ImageEditor("image-editor").UploadSettings(us => us.MinFileSize(1 * 1024).MaxFileSize(100 * 1024).AllowedExtensions(".jpeg, .jpg, .png, .svg, .webp")).Render()
+            @Html.EJS().ImageEditor("image-editor").UploadSettings(us => us.MinFileSize(1 * 1024).MaxFileSize(100 * 1024).AllowedExtensions(".jpeg, .jpg, .png, .svg, .webp, .bmp")).Render()
         </div>
    </div>
 
@@ -42,13 +42,14 @@
             { Name: "JPG", Value: "jpg" },
             { Name: "PNG", Value: "png" },
             { Name: "SVG", Value: "svg" },
-            { Name: "WebP", Value: "webp" }
+            { Name: "WebP", Value: "webp" },
+            { Name: "BMP", Value: "bmp" }
         ];
 
         var uploadSettings = {
             minFileSize: 1,
             maxFileSize: 100,
-            allowedExtensions: [".jpeg", ".jpg", ".png", ".svg", ".webp"]
+            allowedExtensions: [".jpeg", ".jpg", ".png", ".svg", ".webp", ".bmp"]
         };
 
         function updateMinFileSize(args) {
@@ -69,7 +70,7 @@
             if (Array.isArray(args.value) && args.value.length > 0) {
                 uploadSettings.allowedExtensions = args.value;
             } else {
-                uploadSettings.allowedExtensions = ".jpeg, .jpg, .png, .svg, .webp";
+                uploadSettings.allowedExtensions = ".jpeg, .jpg, .png, .svg, .webp, .bmp";
             }
             updateUploadSettings();
         }
@@ -134,12 +135,12 @@
             This sample highlights the enhanced configuration capabilities of the Image Editor component through the <b>UploadSettings</b> property. The following features are included:
         </p>
         <ul>
-            <li><b>File Extensions</b>: Use a multi-select dropdown with checkboxes to dynamically choose the allowed file extensions. Supported values include <code>jpeg</code>, <code>jpg</code>, <code>png</code>, <code>svg</code>, and <code>webp</code>.</li>
+            <li><b>File Extensions</b>: Use a multi-select dropdown with checkboxes to dynamically choose the allowed file extensions. Supported values include <code>jpeg</code>, <code>jpg</code>, <code>png</code>, <code>svg</code>, <code>webp</code>, and <code>bmp</code>.</li>
             <li><b>File Size</b>: Two numeric textboxes are provided at the top of the page to set the minimum and maximum file sizes (in bytes). These values dynamically update the <code>uploadSettings</code> property.</li>
             <li><b>Dynamic Updates</b>: Changes made to the numeric textboxes or the dropdown options immediately reflect in the component's <code>uploadSettings</code>.</li>
             <li><b>Upload Settings</b>: Predefined settings include:
                 <ul>
-                    <li><b>Allowed Extensions</b>: <code>.jpeg</code>, <code>.png</code>, <code>.svg</code>, <code>.webp</code></li>
+                    <li><b>Allowed Extensions</b>: <code>.jpeg</code>, <code>.png</code>, <code>.svg</code>, <code>.webp</code>, <code>.bmp</code></li>
                     <li><b>Minimum File Size</b>: 1 KB</li>
                     <li><b>Maximum File Size</b>: 100 KB</li>
                 </ul>

@@ -22,7 +22,7 @@
                filters.Name("Product_Categories").Caption("Product Categories").Add();
            })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DisplayOption(new PivotViewDisplayOption { View = View.Both }).ChartSettings(new PivotViewChartSettings { Title="Sales Analysis" , Load="onChartLoad" }).Toolbar(new List<string>
                 () { "New", "Save", "SaveAs", "Rename", "Remove", "Load",
-                "Grid", "Chart", "Export", "SubTotal", "GrandTotal", "Formatting", "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").Render()
+                "Grid", "Chart", "Export", "SubTotal", "GrandTotal", "Formatting", "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").DataBound("dataBound").Render()
         </div>
     </div>
 
@@ -44,6 +44,14 @@
         }
     </style>
     <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function onChartLoad(args) {
             var selectedTheme = location.hash.split("/")[1];
             selectedTheme = selectedTheme ? selectedTheme : "Material";

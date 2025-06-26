@@ -8,11 +8,11 @@
                     {
                         sr.XName("Country")
                                .YName("Medal")
-                               .Name("RIO")
+                               .Name("Summer Olympics")
                                .Explode(true)
                                .DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs=>cs.Type(Syncfusion.EJ2.Charts.ConnectorType.Curve).Length("20px")).Font(ft => ft.FontWeight("600")))
-                               .StartAngle(0)
-                               .EndAngle(360)
+                               .StartAngle(-20)
+                               .EndAngle(340).Border(br => br.Width(1).Color("#ffffff"))
                                .GroupTo("9")
                                .GroupMode(Syncfusion.EJ2.Charts.GroupModes.Point)
                                .InnerRadius("0%")
@@ -22,8 +22,8 @@
                     .EnableSmartLabels(true)
                      .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>").Header("").EnableHighlight(true))
                      .LegendSettings(leg => leg.Visible(false))
-                     .Load("load").PointRender("pointRender").TextRender("textRender").EnableBorderOnMouseMove(false)
-                     .Title("Rio Olympic Gold Medals").Render()
+                     .Load("load").EnableBorderOnMouseMove(false)
+                     .Title("Summer Olympic 2024 - Gold Medals").SubTitle("Source: wikipedia.org").Render()
             )
    </div>
         
@@ -65,22 +65,11 @@
 </div>      
     <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
-        var pointRender = function(args) {
-            if (args.point.isClubbed || args.point.isSliced) {
-                args.fill = '#D3D3D3';
-            }
-        }
-        var textRender = function(args) {
-            args.text = args.point.x + ' ' + args.point.y;
-        }
         var load = function(args) {
             loadAccumulationChartTheme(args);
-            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "70%";
-            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "9px" : "13px";
-            args.accumulation.series[0].dataSource[1].DataLabelMappingName = ej.base.Browser.isDevice ? "Russia: <br> 19" : "Russia: 19";
-            args.accumulation.series[0].dataSource[2].DataLabelMappingName = ej.base.Browser.isDevice ? "Germany: <br> 17" : "Germany: 17";
-            args.accumulation.series[0].dataSource[7].DataLabelMappingName = ej.base.Browser.isDevice ? "Italy: <br> 8" : "Italy: 8";
-            args.accumulation.series[0].dataSource[8].DataLabelMappingName = ej.base.Browser.isDevice ? "Australia: <br> 8" : "Australia: 8";                    
+            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "55%";
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "8px" : "13px";
+            args.accumulation.series[0].dataLabel.connectorStyle.length = ej.base.Browser.isDevice ? '10px' : '20px';                    
         }
         function clubchange(value) {
             var pie = document.getElementById("container").ej2_instances[0];
@@ -110,7 +99,7 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample shows the gold medal count scored by each country at the Rio Olympic Games, along with the pie series grouping functionality.
+        This sample shows the gold medal count scored by each country at the summer olympic 2024 games, along with the pie series grouping functionality.
     </p>
 }
 @section Description{

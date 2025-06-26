@@ -4,7 +4,7 @@
 @section ControlsSection{
     <div class="col-lg-12 control-section">
         <div class="e-sample-resize-container" style="margin-top: 100px">
-            @Html.EJS().Toolbar("template-Toolbar").CssClass("template").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["templateItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).Render()
+            @Html.EJS().Toolbar("template-Toolbar").CssClass("template").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["templateItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).KeyDown("OnKeyDown").Render()
         </div>
         <div id="count-textbox">
             @Html.EJS().NumericTextBox("count").Width("50px").Max("100").Min("0").Value("1").ShowSpinButton(false).Format("###.##").Render()
@@ -17,6 +17,25 @@
 <script type="text/javascript">
     function onCreate() {
         this.addIcon('prepend', 'e-icons e-search');
+    }
+
+    function OnKeyDown(args) {
+        if (args.originalEvent.action === 'moveRight') {
+            focusInputElement(args.nextItem, args);
+        }
+        else if (args.originalEvent.action === 'moveLeft') {
+            focusInputElement(args.nextItem, args);
+        }
+    }
+
+    function focusInputElement(item, args) {
+        if (item && item.classList.contains('e-template')) {
+            var inputElement = item.querySelector('input');
+            if (inputElement) {
+                inputElement.focus();
+                args.cancel = true;
+            }
+        }
     }
 </script>
 

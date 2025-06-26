@@ -1,6 +1,13 @@
 @using Syncfusion.EJ2
 @section ControlsSection{
     <div class="col-lg-9 control-section">
+        <div class="flex-container">
+            <label class="switchLabel" for="checked">Ribbon UI</label>
+            <div class="e-message render-mode-info">
+                <span class="e-msg-icon render-mode-info-icon" title="Turn OFF to switch from Ribbon to toolbar UI"></span>
+            </div>
+            @Html.EJS().Switch("toolbarSwitch").CssClass("buttonSwitch").Change("onSwitchChange").Checked(true).Render()
+        </div>
         <div id='documenteditor_titlebar' class="e-de-ctn-title"></div>
         @Html.EJS().DocumentEditorContainer("container").Height("590px").EnableToolbar(true).Render()
     </div>
@@ -42,11 +49,14 @@
     <script>
     var contentChanged = false;
     var documenteditor;
-    document.addEventListener('DOMContentLoaded', function () {
+    ej.documenteditor.DocumentEditorContainer.Inject(ej.documenteditor.Toolbar, ej.documenteditor.Ribbon);
+
+document.addEventListener('DOMContentLoaded', function () {
         var documenteditorElement = document.getElementById("container");
         documenteditorElement.style.height = "590px";
         documenteditorElement.style.width = "100%";
         var container = documenteditorElement.ej2_instances[0];
+            container.toolbarMode = "Ribbon";
         container.showPropertiesPane = true;
         container.documentEditorSettings.showRuler = true;
         documenteditor = container.documentEditor;
@@ -61,6 +71,7 @@
         };
         titleBarDiv = document.getElementById('documenteditor_titlebar');
         initComponentAndWireEvent();
+        showButtons(false);
 
         container.documentChange = function () {
             updateDocumentTitle();
@@ -98,13 +109,49 @@
 }
 
 @section Meta{
-                    <meta name="description" content="This example demonstrates the Auto Save in ASP.NET MVC DocumentEditor control. Explore here for more details."/>
-                }
+    <meta name="description" content="This example demonstrates the Auto Save in ASP.NET MVC DocumentEditor control. Explore here for more details." />
+}
 
 <style>
     #container {
         display: block;
         height: 500px;
+    }
+
+    .flex-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .render-mode-info {
+        background: none;
+        border: none;
+        padding-left: 0px;
+    }
+
+        .render-mode-info .render-mode-info-icon {
+            height: 16px;
+            width: 16px;
+        }
+
+    .switchLabel {
+        font-family: "Segoe UI", "GeezaPro", "DejaVu Serif", sans-serif;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.24px;
+        text-align: right;
+        font-size: 14px;
+        margin-bottom: 0px;
+    }
+
+    .render-mode-info .render-mode-info-icon::before {
+        line-height: normal;
+    }
+
+    .buttonSwitch {
+        Width: 40px;
+        Height: 24px;
     }
 
     #documenteditor_titlebar {
@@ -175,8 +222,8 @@
 </style>
 
 @section Title{
-                    <title>ASP.NET MVC DocumentEditor Auto Save Example - Syncfusion Demos </title> 
-                }
+    <title>ASP.NET MVC DocumentEditor Auto Save Example - Syncfusion Demos </title>
+}
 @section Header{
-                    <h1 class='sb-sample-text'>Example of Auto Save in ASP.NET MVC DocumentEditor Control</h1>
-                }
+    <h1 class='sb-sample-text'>Example of Auto Save in ASP.NET MVC DocumentEditor Control</h1>
+}

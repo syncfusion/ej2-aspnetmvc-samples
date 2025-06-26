@@ -23,312 +23,66 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
     {
         public ActionResult WorkFlowDiagram()
         {
-            List<DiagramNode> nodes = new List<DiagramNode>();
-
-            nodes.Add(new DiagramNode()
+            // Main Toolbar Items
+            List<ToolbarItem> firstTbItems = new List<ToolbarItem>
             {
-                Id = "newTravelRequestRecieved",
-                OffsetX = 100,
-                OffsetY = 245,
-                Width = 60,
-                Height = 60,
-                Shape = new  Bpmn_Shapes() { Type = "Bpmn" },
-            });
+                new ToolbarItem { PrefixIcon = "e-icons e-circle-add", Text = "New", TooltipText = "New Diagram" },
+                new ToolbarItem { PrefixIcon = "e-icons e-folder-open", Text = "Open", TooltipText = "Open Diagram" },
+                new ToolbarItem { PrefixIcon = "e-icons e-save", Text = "Save", TooltipText = "Save Diagram" },
+                new ToolbarItem { Type = ItemType.Separator },
+                new ToolbarItem { PrefixIcon = "e-icons e-play", Text = "Execute", TooltipText = "Start Workflow", Width= "90", Overflow = OverflowOption.Show },
+                new ToolbarItem { PrefixIcon = "e-icons e-reset", Text = "Reset", TooltipText = "Reset View/State", Overflow= OverflowOption.Show },
+                new ToolbarItem { PrefixIcon = "e-icons e-trash", Text = "Delete", TooltipText = "Delete Selected" },
+                new ToolbarItem { Type = ItemType.Separator },
+                new ToolbarItem { PrefixIcon = "e-icons e-mouse-pointer", Text = "Select", TooltipText = "Select Tool", Overflow= OverflowOption.Show },
+                new ToolbarItem { PrefixIcon = "e-icons e-pan", Text = "Pan", TooltipText = "Pan Tool", Overflow= OverflowOption.Show },
+                new ToolbarItem { Type = ItemType.Separator },
+                new ToolbarItem { Text = "Palette", Template = "<aside id='symbolPalette'></aside>", Overflow= OverflowOption.Show }
+            };
 
-            nodes.Add(new DiagramNode()
+            // Second Toolbar with toggle switch
+            List<ToolbarItem> secondTbItems = new List<ToolbarItem>
             {
-                Id = "getTravelRequestDetails",
-                OffsetX = 250,
-                OffsetY = 245,
-                Width = 100,
-                Height = 80,
+                new ToolbarItem { Template = "<div id='switch-container'><span id='editLabel' style='font-size: 14px; margin-right: 6px;'>Edit</span><input type='checkbox' id='switchMode' /></div>" },
+            };
 
-                Shape = new  Bpmn_Shapes()
+            // User handles Items
+            List<DiagramUserHandle> userHandles = new List<DiagramUserHandle>
+            {
+                new DiagramUserHandle
                 {
-                    Shape = "Activity",
-                    Type = "Bpmn",
-                    Activity = new DiagramBpmnActivity()
-                    {
-                        Activity = BpmnActivities.Task,
-                    }
+                    Name = "delete",
+                    PathData = "M0.97,3.04 L12.78,3.04 L12.78,12.21 C12.78,12.64,12.59,13,12.2,13.3 C11.82,13.6,11.35,13.75,10.8,13.75 L2.95,13.75 C2.4,13.75,1.93,13.6,1.55,13.3 C1.16,13,0.97,12.64,0.97,12.21 Z M4.43,0 L9.32,0 L10.34,0.75 L13.75,0.75 L13.75,2.29 L0,2.29 L0,0.75 L3.41,0.75 Z",
+                    Tooltip = new DiagramDiagramTooltip { Content = "Delete Node" },
+                    Side = Side.Bottom,
+                    Offset = 0.5,
+                    Margin = new DiagramMargin { Bottom = 5 },
+                    DisableConnectors = true
                 },
-            });
-
-            nodes.Add(new DiagramNode()
-            {
-                Id = "getRequesterProfile",
-                OffsetX = 400,
-                OffsetY = 245,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
+                new DiagramUserHandle
                 {
-                    Shape = "Activity",
-                    Type = "Bpmn",
-                    Activity = new DiagramBpmnActivity()
-                    {
-                        Activity = BpmnActivities.Task,
-                    }
+                    Name = "drawConnector",
+                    PathData = "M6.09,0 L13.75,6.88 L6.09,13.75 L6.09,9.64 L0,9.64 L0,4.11 L6.09,4.11 Z",
+                    Tooltip = new DiagramDiagramTooltip { Content = "Draw Connector" },
+                    Side = Side.Right,
+                    Offset = 0.5,
+                    Margin = new DiagramMargin { Right = 5 },
+                    DisableConnectors = true
                 },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "getManagerDetails",
-                OffsetX = 550,
-                OffsetY = 245,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
+                new DiagramUserHandle
                 {
-                    Shape = "Activity",
-                    Type = "Bpmn",
-                    Activity = new DiagramBpmnActivity()
-                    {
-                        Activity = BpmnActivities.Task,
-                    }
-                },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "setStatusAsRejected",
-                OffsetX = 700,
-                OffsetY = 245,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
-                {
-                    Shape = "Activity",
-                    Type = "Bpmn",
-                    Activity = new DiagramBpmnActivity()
-                    {
-                        Activity = BpmnActivities.Task,
-                    }
-                },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "setStatusAsAccepted",
-                OffsetX = 850,
-                OffsetY = 245,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
-                {
-                    Shape = "Activity",
-                    Type = "Bpmn",
-                    Activity = new DiagramBpmnActivity()
-                    {
-                        Activity = BpmnActivities.Task,
-                    }
-                },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "setNextApprovalStatusAsRejected",
-                OffsetX = 1100,
-                OffsetY = 245,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
-                {
-                    Shape = "Activity",
-                    Type = "Bpmn",
-                    Activity = new DiagramBpmnActivity()
-                    {
-                        Activity = BpmnActivities.Task,
-                    }
-                },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "setNextApprovalStatusAsAccepted",
-                OffsetX = 1250,
-                OffsetY = 245,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
-                {
-                    Shape = "Activity",
-                    Type = "Bpmn",
-                    Activity = new DiagramBpmnActivity()
-                    {
-                        Activity = BpmnActivities.Task,
-                    }
-                },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "initiateApprovalWithManager",
-                OffsetX = 550,
-                OffsetY = 445,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
-                {
-                    Shape = "Activity",
-                    Type = "Bpmn",
-                    Activity = new DiagramBpmnActivity()
-                    {
-                        Activity = BpmnActivities.Task,
-                    }
-                },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "checkApprovalStatus",
-                OffsetX = 700,
-                OffsetY = 445,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
-                {
-                    Shape = "Gateway",
-                    Type = "Bpmn",
+                    Name = "stopAnimation",
+                    PathData = "M4.75,0.75 L9.25,0.75 L9.25,9.25 L4.75,9.25 Z",
+                    Tooltip = new DiagramDiagramTooltip { Content = "Enable Animation" },
+                    DisableNodes = true
+                }
+            };
 
-                    gateWay = new DiagramBpmnGateway()
-                    {
-                        Type = BpmnGateways.Exclusive,
-                    }
-                },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "checkIfItIsAnInternaltionalTravel",
-                OffsetX = 850,
-                OffsetY = 445,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
-                {
-                    Shape = "Gateway",
-                    Type = "Bpmn",
-
-                    gateWay = new DiagramBpmnGateway()
-                    {
-                        Type = BpmnGateways.Exclusive,
-                    }
-                },
-            });
-
-            nodes.Add(new DiagramNode()
-            {
-                Id = "initialteApprovalWithNextLevelManager",
-                OffsetX = 1000,
-                OffsetY = 445,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
-                {
-                    Shape = "Activity",
-                    Type = "Bpmn",
-                    Activity = new DiagramBpmnActivity()
-                    {
-                        Activity = BpmnActivities.Task,
-                    }
-                },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "checkLevel2-ApprovalStatus",
-                OffsetX = 1130,
-                OffsetY = 445,
-                Width = 100,
-                Height = 80,
-                Shape = new  Bpmn_Shapes()
-                {
-                    Type = "Bpmn",
-                    Shape = "Gateway",
-
-                    gateWay = new DiagramBpmnGateway()
-                    {
-                        Type = BpmnGateways.Parallel
-                    }
-                },
-            });
-
-
-
-            List<DiagramConnector> connectors = new List<DiagramConnector>();
-            connectors.Add(new DiagramConnector() { Id = "newTravelRequestRecieved-getTravelRequestDetails", SourceID = "newTravelRequestRecieved", TargetID = "getTravelRequestDetails", });
-            connectors.Add(new DiagramConnector() { Id = "getTravelRequestDetails-getRequesterProfile", SourceID = "getTravelRequestDetails", TargetID = "getRequesterProfile", });
-            connectors.Add(new DiagramConnector() { Id = "getRequesterProfile-getManagerDetails", SourceID = "getRequesterProfile", TargetID = "getManagerDetails", });
-            connectors.Add(new DiagramConnector() { Id = "getManagerDetails-initiateApprovalWithManager", SourceID = "getManagerDetails", TargetID = "initiateApprovalWithManager", });
-            connectors.Add(new DiagramConnector() { Id = "initiateApprovalWithManager-checkApprovalStatus", SourceID = "initiateApprovalWithManager", TargetID = "checkApprovalStatus", });
-            connectors.Add(new DiagramConnector() { Id = "checkApprovalStatus-setStatusAsRejected", SourceID = "checkApprovalStatus", TargetID = "setStatusAsRejected", Annotations = new List<DiagramConnectorAnnotation>() { new DiagramConnectorAnnotation() { Content = "Rejected", Offset = 0.4, Style = new DiagramTextStyle { Fill = "white" } } } });
-            connectors.Add(new DiagramConnector() { Id = "checkApprovalStatus-checkIfItIsAnInternaltionalTravel", SourceID = "checkApprovalStatus", TargetID = "checkIfItIsAnInternaltionalTravel", Annotations = new List<DiagramConnectorAnnotation>() { new DiagramConnectorAnnotation() { Content = "Accepted", Offset = 0.4, Style = new DiagramTextStyle { Fill = "white" } } } });
-            connectors.Add(new DiagramConnector() { Id = "checkIfItIsAnInternaltionalTravel-setStatusAsAccepted", SourceID = "checkIfItIsAnInternaltionalTravel", TargetID = "setStatusAsAccepted", Annotations = new List<DiagramConnectorAnnotation>() { new DiagramConnectorAnnotation() { Content = "No", Offset = 0.4, Style = new DiagramTextStyle { Fill = "white" } } } });
-            connectors.Add(new DiagramConnector() { Id = "checkIfItIsAnInternaltionalTravel-initialteApprovalWithNextLevelManager", SourceID = "checkIfItIsAnInternaltionalTravel", TargetID = "initialteApprovalWithNextLevelManager", Annotations = new List<DiagramConnectorAnnotation>() { new DiagramConnectorAnnotation() { Content = "Yes", Offset = 0.4, Style = new DiagramTextStyle { Fill = "white" } } } });
-            connectors.Add(new DiagramConnector() { Id = "initialteApprovalWithNextLevelManager-checkLevel2-ApprovalStatus", SourceID = "initialteApprovalWithNextLevelManager", TargetID = "checkLevel2-ApprovalStatus", });
-            connectors.Add(new DiagramConnector() { Id = "checkLevel2-ApprovalStatus-setNextApprovalStatusAsRejected", SourceID = "checkLevel2-ApprovalStatus", TargetID = "setNextApprovalStatusAsRejected", Annotations = new List<DiagramConnectorAnnotation>() { new DiagramConnectorAnnotation() { Content = "Rejected", Offset = 0.4, Style = new DiagramTextStyle { Fill = "white" } } } });
-            connectors.Add(new DiagramConnector() { Id = "checkLevel2-ApprovalStatus-setNextApprovalStatusAsAccepted", SourceID = "checkLevel2-ApprovalStatus", TargetID = "setNextApprovalStatusAsAccepted", Annotations = new List<DiagramConnectorAnnotation>() { new DiagramConnectorAnnotation() { Content = "Accepted", Offset = 0.4, Style = new DiagramTextStyle { Fill = "white" } } } });
-
-
-
-
-
-            List<ToolbarItem> items = new List<ToolbarItem>();
-            {
-                items.Add(new ToolbarItem { PrefixIcon = "e-play", Text = "Execute", TooltipText = "Execute" });
-                items.Add(new ToolbarItem { PrefixIcon = "e-diagram-icons e-diagram-reset", Disabled = true, Text = "Reset", TooltipText = "Reset" });
-            }
-
-            ViewData["nodes"] = nodes;
-            ViewData["connectors"] = connectors;
-            ViewData["tbItems"] = items;
+            ViewData["firstTbItems"] = firstTbItems;
+            ViewData["secondTbItems"] = secondTbItems;
+            ViewData["userHandles"] = userHandles;
 
             return View();
-        }
-    }
-
-    public class Bpmn_Shapes
-    {
-        [DefaultValue(null)]
-        [HtmlAttributeName("type")]
-        [JsonProperty("type")]
-        public string Type
-        {
-            get;
-            set;
-        }
-        [DefaultValue(null)]
-        [HtmlAttributeName("shape")]
-        [JsonProperty("shape")]
-        public string Shape
-        {
-            get;
-            set;
-        }
-        [DefaultValue(null)]
-        [HtmlAttributeName("activity")]
-        [JsonProperty("activity")]
-        public DiagramBpmnActivity Activity
-        {
-            get;
-            set;
-        }
-        [DefaultValue(null)]
-        [HtmlAttributeName("event")]
-        [JsonProperty("event")]
-        public DiagramBpmnEvent Event
-        {
-            get;
-            set;
-        }
-        [DefaultValue(null)]
-        [HtmlAttributeName("gateWay")]
-        [JsonProperty("gateWay")]
-        public DiagramBpmnGateway gateWay
-        {
-            get;
-            set;
-        }
-        [DefaultValue(null)]
-        [HtmlAttributeName("dataObject")]
-        [JsonProperty("dataObject")]
-        public DiagramBpmnDataObject dataObject
-        {
-            get;
-            set;
         }
     }
 }

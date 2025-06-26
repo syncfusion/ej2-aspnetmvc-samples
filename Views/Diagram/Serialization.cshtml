@@ -15,16 +15,12 @@
                 )
         </div>
         <div id="diagram-space" class="sb-mobile-diagram">
-            @(Html.EJS().Diagram("container").Width("100%").Height("645px").SnapSettings(s => s.HorizontalGridlines((DiagramGridlines)ViewData["gridLines"]).VerticalGridlines((DiagramGridlines)ViewData["gridLines"]))
+            @(Html.EJS().Diagram("container").Width("100%").Height("645px").Loaded("onDiagramLoad").SnapSettings(s => s.HorizontalGridlines((DiagramGridlines)ViewData["gridLines"]).VerticalGridlines((DiagramGridlines)ViewData["gridLines"]))
                         .GetConnectorDefaults("getConnectorDefaults").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render()
             )
         </div>
     </div>    
     <style>
-        .e-file-select-wrap {
-            display: none;
-        }
-
         #symbolPalette, #container {
             display: block;
         }
@@ -211,6 +207,16 @@
         }
     </style>
     <script>
+
+        function onDiagramLoad(args) {
+            // selecting first node on diagram load
+            setTimeout(() => {
+                if (args?.diagram?.nodes?.length > 0) {
+                    args.diagram.select([args.diagram.nodes[0]]);
+                }
+            }, 100);
+        }
+
         function getConnectorDefaults(args, diagram) {
             args.targetDecorator.height = 5;
             args.targetDecorator.width = 5;
@@ -323,11 +329,8 @@
                 }   
 @section Description{
     <p>
-        In this example, you can drag and drop the shapes and connectors from symbol palette to build diagrams. Also you can
-        save the diagram as text files and can edit the pre-saved diagrams. You can use the
-        saveDiagram method to save the diagram as string. You can use the loadDiagram method to load the diagram from a string.
-        In this example, context menu and undo redo features are enabled.
-    </p>
+        This example shows how to drag-and-drop shapes and connectors from symbol palette to build diagrams. You can save the diagram as text files and edit the pre-saved diagrams. The <code>saveDiagram</code> method can be used to save the diagram as string. The <code>loadDiagram</code> method can be used to load the diagram from a string.The <code>loaded</code> event is triggered once the diagram has completely loaded, and the first node in the diagram has been selected during the event call. In this example, context menu and undo/redo features are enabled.
+</p>
     <p>
         The uploader API control is used to load the JSON data into a diagram asynchronously. Define the properties
         <code>saveUrl</code>, which will receive the uploaded files and save them on the server, and <code>removeUrl</code>,

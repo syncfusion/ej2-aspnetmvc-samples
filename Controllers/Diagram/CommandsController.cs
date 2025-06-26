@@ -421,7 +421,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 items.Add(new ToolbarItem { PrefixIcon = "e-icons e-flip-vertical", TooltipText = "Flip Vertical", Disabled = true });
                 items.Add(new ToolbarItem { PrefixIcon = "e-icons e-flip-horizontal", TooltipText = "Flip Horizontal", Disabled = true });
                 items.Add(new ToolbarItem { Type = ItemType.Separator });
-                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-distribute-horizontal", TooltipText = "Distribute Objetcs Horizontally", Disabled = true });
+                items.Add(new ToolbarItem { PrefixIcon = "sf-icon-distribute-horizontal", TooltipText = "Distribute Objects Horizontally", Disabled = true });
                 items.Add(new ToolbarItem { PrefixIcon = "sf-icon-distribute-vertical", TooltipText = "Distribute Objects Vertically", Disabled = true });
                 items.Add(new ToolbarItem { Type = ItemType.Separator });
                 items.Add(new ToolbarItem { PrefixIcon = "sf-icon-same-width", TooltipText = "Same Width", Disabled = true });

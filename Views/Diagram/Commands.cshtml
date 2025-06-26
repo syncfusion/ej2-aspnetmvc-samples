@@ -8,7 +8,7 @@
                 @Html.EJS().Toolbar("toolbar").Clicked("onItemClick").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["tbItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Scrollable).Render()
             </div>
         </div>
-        <div id="command-diagram" class="control-section" style="width: 100%">
+        <div id="command-diagram" style="width: 100%">
             @Html.EJS().Diagram("diagram").Width("100%").Height("800px").RulerSettings(r => r.ShowRulers(true)).GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults").SelectionChange("selectionChange").HistoryChange("historyChange").Nodes((List<DiagramNode>)ViewData["nodes"]).Render()
         </div>
 
@@ -128,10 +128,6 @@
 
         .e-connector::before {
             content: "\e725";
-        }
-
-        .e-file-select-wrap {
-            display: none;
         }
 
     </style>

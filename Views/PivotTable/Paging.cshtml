@@ -11,7 +11,7 @@
     <div class="content-wrapper">
         @Html.EJS().PivotView("PivotView").Width("100%").Height("600").EnablePaging(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource(dataManger =>
         {
-            dataManger.Url("https://ej2services.syncfusion.com/aspnet/development/api/order").CrossDomain(true).Adaptor("WebApiAdaptor");
+            dataManger.Url("https://ej2services.syncfusion.com/aspnet/release/api/order").CrossDomain(true).Adaptor("WebApiAdaptor");
         }).ExpandAll(true).Columns(columns =>
         {
             columns.Name("ProductName").Caption("Product Name").Add();
@@ -28,7 +28,7 @@
             formatsettings.Name("UnitPrice").Format("C0").Add();
         })).PageSettings(pageSettings => pageSettings.ColumnPageSize(5).RowPageSize(10).CurrentColumnPage(1).CurrentRowPage(1)
         ).PagerSettings(pagerSettings => pagerSettings.Position(PagerPosition.Bottom).EnableCompactView(false).ShowRowPager(true).ShowColumnPager(true)
-        ).GridSettings(new PivotViewGridSettings { ColumnWidth = 120 }).Render()
+        ).GridSettings(new PivotViewGridSettings { ColumnWidth = 120 }).DataBound("dataBound").Render()
     </div>
 </div>
 
@@ -123,6 +123,14 @@
     }
 </style>
 <script>
+    var isInitialRender = true;
+    function dataBound() {
+        var pivotObj = document.getElementById('PivotView').ej2_instances[0];
+        if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+            pivotObj.layoutRefresh();
+            isInitialRender = false;
+        }
+    }
     function onDropDownChange(args) {
         var pivotObj = document.getElementById('PivotView').ej2_instances[0];
         if (args.element.id === 'Pager_Position') {

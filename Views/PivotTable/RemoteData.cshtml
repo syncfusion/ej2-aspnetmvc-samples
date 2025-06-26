@@ -26,7 +26,7 @@
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource(dataManger =>
             {
-                dataManger.Url("https://ej2services.syncfusion.com/aspnet/development/api/order").CrossDomain(true).Adaptor("WebApiAdaptor");
+                dataManger.Url("https://ej2services.syncfusion.com/aspnet/release/api/order").CrossDomain(true).Adaptor("WebApiAdaptor");
             }).ExpandAll(true).FormatSettings(formatsettings =>
             {
                 formatsettings.Name("UnitPrice").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
@@ -41,18 +41,19 @@
             {
                 values.Name("Quantity").Add();
                 values.Name("UnitPrice").Caption("Unit Price").Add();
-            })).GridSettings(new PivotViewGridSettings { ColumnWidth = 120 }).Render()
+            })).GridSettings(new PivotViewGridSettings { ColumnWidth = 120 }).DataBound("dataBound").Render()
         </div>
     </div>
     <script>
+        var isInitialRender = true;
         var remoteData = new ej.data.DataManager({
-            url: 'https://ej2services.syncfusion.com/aspnet/development/api/order',
+            url: 'https://ej2services.syncfusion.com/aspnet/release/api/order',
             adaptor: new ej.data.WebApiAdaptor,
             crossDomain: true
         });
 
         var csvReport = {
-            url: 'https://ej2services.syncfusion.com/aspnet/development/api/product',
+            url: 'https://ej2services.syncfusion.com/aspnet/release/api/product',
             type: 'CSV',
             enableSorting: true,
             expandAll: false,
@@ -86,6 +87,13 @@
             values: [{ name: 'Quantity' }, { name: 'UnitPrice', caption: 'Unit Price' }]
         };
 
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function contentType() {
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];
             var contentDropDown = document.getElementById("contenttype").ej2_instances[0];

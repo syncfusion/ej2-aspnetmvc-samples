@@ -58,6 +58,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 OffsetY = 160,
                 Constraints = NodeConstraints.None,
                 Annotations = Node1,
+                Style = new NodeStyleNodes()
+                {
+                    Fill = "#C7E6FF",
+                    StrokeColor = "#1587FF"
+                },
                 Shape = new { type = "Basic", shape = "Rectangle" },
             });
             nodes.Add(new Node()
@@ -69,6 +74,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 OffsetY = 160,
                 Constraints = NodeConstraints.Default & ~NodeConstraints.Drag,
                 Annotations = Node2,
+                Style = new NodeStyleNodes()
+                {
+                    Fill = "#C7E6FF",
+                    StrokeColor = "#1587FF"
+                },
                 Shape = new { type = "Basic", shape = "Ellipse", cornerRadius = 10 },
             });
             nodes.Add(new Node()
@@ -80,6 +90,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 OffsetY = 160,
                 Constraints = NodeConstraints.Default & ~NodeConstraints.Delete,
                 Annotations = Node3,
+                Style = new NodeStyleNodes()
+                {
+                    Fill = "#C7E6FF",
+                    StrokeColor = "#1587FF"
+                },
                 Shape = new { type = "Basic", shape = "Heptagon" },
             });
             nodes.Add(new Node()
@@ -92,6 +107,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 RotateAngle = -45,
                 Constraints = NodeConstraints.Default & ~NodeConstraints.Rotate,
                 Annotations = Node4,
+                Style = new NodeStyleNodes()
+                {
+                    Fill = "#C7E6FF",
+                    StrokeColor = "#1587FF"
+                },
                 Shape = new { type = "Flow", shape = "DirectData" },
             });
             nodes.Add(new Node()
@@ -102,6 +122,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 OffsetX = 530,
                 OffsetY = 160,
                 Annotations = Node5,
+                Style = new NodeStyleNodes()
+                {
+                    Fill = "#C7E6FF",
+                    StrokeColor = "#1587FF"
+                },
                 Shape = new { type = "Basic", shape = "Plus" },
             });
             nodes.Add(new Node()
@@ -113,6 +138,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 OffsetY = 160,
                 Annotations = Node6,
                 Constraints = NodeConstraints.Default & ~NodeConstraints.Resize,
+                Style = new NodeStyleNodes()
+                {
+                    Fill = "#C7E6FF",
+                    StrokeColor = "#1587FF"
+                },
                 Shape = new { type = "Flow", shape = "Decision" },
             });
             nodes.Add(new Node()

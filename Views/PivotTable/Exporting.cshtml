@@ -34,7 +34,7 @@
                 .Filters(filters =>
                 {
                     filters.Name("Product_Categories").Caption("Product Categories").Add();
-                })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).Render()
+                })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DataBound("dataBound").Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">
@@ -78,6 +78,7 @@
         }
     </style>
     <script>
+        var isInitialRender = true;
         document.getElementById('export-btn').onclick = function () {
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];
             var exportType = document.getElementById('mode').ej2_instances[0];
@@ -91,6 +92,14 @@
                 pivotObj.pdfExport();
             }
         };
+
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
     </script>
 }
 

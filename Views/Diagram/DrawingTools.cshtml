@@ -1,8 +1,8 @@
 @section ControlsSection{
-    <div class="col-lg-8 control-section">
+    <div class="col-lg-8 control-section diagram-sample-container">
         @Html.EJS().Diagram("diagram").Created("diagramCreated").Width("100%").Height("540px").SnapSettings(s => s.HorizontalGridlines((Syncfusion.EJ2.Diagrams.DiagramGridlines)ViewData["gridLines"]).VerticalGridlines((Syncfusion.EJ2.Diagrams.DiagramGridlines)ViewData["gridLines"])).RulerSettings(r => r.ShowRulers(true).DynamicGrid(true)).Render()
     </div>
-    <div class="col-lg-4 property-section">
+    <div class="col-lg-4 property-section diagram-drawing-tools-panel">
         <div class="property-panel-header">
             Properties
         </div>
@@ -62,11 +62,11 @@
             display: block;
         }
 
-        .row {
+        .diagram-drawing-tools-panel .row {
             display: block;
         }
         /* Css for images in property panel  */
-        .image-pattern-style {
+        .diagram-drawing-tools-panel .image-pattern-style {
             background-color: white;
             background-size: contain;
             background-repeat: no-repeat;
@@ -78,40 +78,32 @@
             float: left;
         }
         /* Property panel CSS */
-        .row {
+        .diagram-drawing-tools-panel .row {
             margin-left: 0px;
             margin-right: 0px;
         }
 
-        .row-header {
+        .diagram-drawing-tools-panel .row-header {
             font-size: 12px;
             font-weight: 500;
         }
 
-        .property-panel-header {
+        .diagram-drawing-tools-panel .property-panel-header {
             padding-top: 15px;
             padding-bottom: 5px;
         }
         /* Selection indicator */
-        .e-selected-style {
+        .diagram-drawing-tools-panel .e-selected-style {
             border-color: #006CE6;
             border-width: 2px;
         }
         /* Diagram Div CSS */
-        .control-section {
+        .diagram-sample-container {
             padding-top: 0px;
             padding-bottom: 0px;
             padding-right: 0px;
         }
-        /* Overall div */
-        .container-fluid {
-            padding-left: 0px;
-        }
 
-        .col-xs-6 {
-            padding-left: 0px;
-            padding-right: 0px;
-        }
     </style>
 
     <script type="text/javascript">

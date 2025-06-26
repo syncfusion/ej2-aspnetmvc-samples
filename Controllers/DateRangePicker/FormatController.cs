@@ -23,6 +23,8 @@ namespace EJ2MVCSampleBrowser.Controllers
             var endDate = DateTime.Now.AddDays(20);
             ViewData["start"] = startDate;
             ViewData["end"] = endDate;
+            ViewData["data"] = new DateRangeFormats().GetDateFormatsWithId();
+            ViewData["formatData"] = new DateRangeFormats().GetInputFormats();
             return View();
         }
     }

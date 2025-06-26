@@ -23,6 +23,7 @@ namespace EJ2MVCSampleBrowser.Models
             annotations.Add(new ProgrammaticOperationsModel { ID = "Highlight", Text = "Highlight" });
             annotations.Add(new ProgrammaticOperationsModel { ID = "Underline", Text = "Underline" });
             annotations.Add(new ProgrammaticOperationsModel { ID = "Strikethrough", Text = "Strikethrough" });
+            annotations.Add(new ProgrammaticOperationsModel { ID = "Squiggly", Text = "Squiggly" });
             annotations.Add(new ProgrammaticOperationsModel { ID = "Line", Text = "Line" });
             annotations.Add(new ProgrammaticOperationsModel { ID = "Arrow", Text = "Arrow" });
             annotations.Add(new ProgrammaticOperationsModel { ID = "Rectangle", Text = "Rectangle" });

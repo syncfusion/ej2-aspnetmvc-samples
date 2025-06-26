@@ -5,17 +5,17 @@
     <div class="control-section">
     @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewData["StackedHeaderData"]).Columns(col =>
 {
-    col.Field("CustomerID").HeaderText("Customer ID").Width("160").MinWidth("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ShowInColumnChooser(false).ValidationRules(new { required = true, number = true }).Add();
-    col.Field("CustomerName").HeaderText("Name").Width("100").MinWidth("100").Add();
+    col.Field("CustomerID").HeaderText("Customer ID").Width("160").MinWidth("115").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ShowInColumnChooser(false).ValidationRules(new { required = true, number = true }).Add();
+    col.Field("CustomerName").HeaderText("Name").Width("150").MinWidth("120").Add();
     col.HeaderText("Order Details").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() {
         new Syncfusion.EJ2.Grids.GridColumn { Field = "OrderID", Width = "90", HeaderText = "ID", MinWidth="90", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right},
-        new Syncfusion.EJ2.Grids.GridColumn { Field = "OrderDate", Width = "110", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, Format="yMd", HeaderText = "Date", MinWidth="100", EditType="datepickeredit" } }).Add();
+        new Syncfusion.EJ2.Grids.GridColumn { Field = "OrderDate", Width = "110", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, Format="yMd", HeaderText = "Date", MinWidth="105", EditType="datepickeredit" } }).Add();
     col.HeaderText("Shipping Details").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() {
-        new Syncfusion.EJ2.Grids.GridColumn { Field = "ShipCountry", Width = "115",  HeaderText = "Country", MinWidth="100", EditType="dropdownedit", Template= "#locationTemplate", ValidationRules = new { required = true } },
-        new Syncfusion.EJ2.Grids.GridColumn { Field = "Freight", Width = "130", HeaderText = "Charges", EditType = "numericedit", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, MinWidth="100", Format="C2", ValidationRules = new { required = true, number = true }}}).Add();
+        new Syncfusion.EJ2.Grids.GridColumn { Field = "ShipCountry", Width = "150",  HeaderText = "Country", MinWidth="120", EditType="dropdownedit", Template= "#locationTemplate", ValidationRules = new { required = true } },
+        new Syncfusion.EJ2.Grids.GridColumn { Field = "Freight", Width = "130", HeaderText = "Charges", EditType = "numericedit", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Right, MinWidth="115", Format="C2", ValidationRules = new { required = true, number = true }}}).Add();
     col.HeaderText("Delivery Details").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() {
-        new Syncfusion.EJ2.Grids.GridColumn { Field = "Status", Width = "110", HeaderText = "Status", EditType="dropdownedit", MinWidth="100", ValidationRules = new { required = true }, TextAlign=Syncfusion.EJ2.Grids.TextAlign.Center},
-        new Syncfusion.EJ2.Grids.GridColumn { Field = "Feedback", Width = "130",  HeaderText = "Feedback", AllowResizing = false, MinWidth="100", EditType = "numericedit", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Center, Template= "#feedbackTemplate", ValidationRules = new { required = true, min = 0, max = 5 } }}).Add();
+        new Syncfusion.EJ2.Grids.GridColumn { Field = "Status", Width = "150", HeaderText = "Status", EditType="dropdownedit", MinWidth="120", ValidationRules = new { required = true }, TextAlign=Syncfusion.EJ2.Grids.TextAlign.Center},
+        new Syncfusion.EJ2.Grids.GridColumn { Field = "Feedback", Width = "130",  HeaderText = "Feedback", AllowResizing = false, MinWidth="115", EditType = "numericedit", TextAlign=Syncfusion.EJ2.Grids.TextAlign.Center, Template= "#feedbackTemplate", ValidationRules = new { required = true, min = 0, max = 5 } }}).Add();
 }).AllowPaging().PageSettings(new Syncfusion.EJ2.Grids.GridPageSettings() { PageCount = 5 }).AllowSorting().AllowMultiSorting().AllowFiltering().EnableHover(false).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).ShowColumnChooser(true).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true);
 }).ColumnChooserSettings(new Syncfusion.EJ2.Grids.GridColumnChooserSettings { Template= "#column-chooser-template", HeaderTemplate = "#ccHeadertemplate", FooterTemplate = "#ccFootertemplate", RenderCustomColumnChooser = "renderCustomColumnChooser" }).QueryCellInfo("queryCellInfo").Created("onCreated").Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "ColumnChooser" }).AllowResizing().Render()
 </div>

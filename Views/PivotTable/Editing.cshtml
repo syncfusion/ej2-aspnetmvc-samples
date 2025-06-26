@@ -31,7 +31,7 @@
                values.Name("Sold").Caption("Units Sold").Add();
                values.Name("Amount").Caption("Sold Amount").Add();
            })
-           ).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).EditSettings(new PivotViewCellEditSettings { AllowEditing= true, AllowAdding= true, AllowDeleting= true, Mode= EditMode.Normal }).ShowTooltip(false).Render()
+           ).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).EditSettings(new PivotViewCellEditSettings { AllowEditing= true, AllowAdding= true, AllowDeleting= true, Mode= EditMode.Normal }).ShowTooltip(false).DataBound("dataBound").Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -82,6 +82,14 @@
         }
     </style>
     <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function onChange(args) {
             var id = args.event.target.id;
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];

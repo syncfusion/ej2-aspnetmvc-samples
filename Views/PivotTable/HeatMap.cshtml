@@ -14,7 +14,7 @@
             .ValueSortSettings(new PivotViewValueSortSettings { HeaderDelimiter = " - " })
             .Rows(rows => { rows.Name("Year").Add(); })
             .Columns(columns => { columns.Name("ProductType").Add(); columns.Name("Product").Add(); })
-            .Values(values => { values.Name("SoldAmount").Caption("Sold Amount").Add(); })).GridSettings(gridSettings => gridSettings.ColumnWidth(120).RowHeight(35)).CellTemplate("${getCellContent(data)}").Render()
+            .Values(values => { values.Name("SoldAmount").Caption("Sold Amount").Add(); })).GridSettings(gridSettings => gridSettings.ColumnWidth(120).RowHeight(35)).CellTemplate("${getCellContent(data)}").DataBound("dataBound").Render()
         </div>
     </div>
 
@@ -150,6 +150,7 @@
     }
     </style>
     <script>
+        var isInitialRender = true;
         var colourScheme = ['range1', 'range2', 'range3', 'range4', 'range5', 'range6', 'range7', 'range8', 'range9',
         'range10', 'range11', 'range12', 'range13', 'range14'];
         var minValue = 0;
@@ -179,6 +180,13 @@
         function enginePopulated() {
             minValue = minValue - 1000;
             maxValue = maxValue + 1000;
+        }
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
         }
     </script>
 }

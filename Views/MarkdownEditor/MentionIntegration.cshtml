@@ -4,8 +4,8 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            @Html.EJS().RichTextEditor("defaultMarkDown").Value((string)ViewData["Value"]).Height("250px").Placeholder("Enter your text here...").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).Created("created").ToolbarSettings(e => e.Items((object)ViewData["Items"])).Render()
-            @Html.EJS().Mention("mention").Target("#defaultMarkDown_editable-content").Created("MentionCreated").SortOrder(SortOrder.Ascending).ItemTemplate("<div class=\"editor-mention-item-template\"><div class=\"em-header\"><div class=\"em-avatar\" style=\"background-color: ${BgColor}; color: ${Color}\"><div class=\"em-initial\">${Initial}</div></div></div><div class=\"em-content\"><div class=\"em-name\">${Name}</div><div class=\"em-email\">${Email}</div></div></div>").NoRecordsTemplate("No item related to the search").DisplayTemplate("[@@${Name}](mailto:${Email})").PopupWidth("250px").PopupHeight("200px").DataSource((IEnumerable<EmailDatas>)ViewData["EmailData"]).Fields(new MentionFieldSettings { Text = "Name" }).Render()
+            @Html.EJS().RichTextEditor("defaultMarkDown").Value((string)ViewData["Value"]).Height("250px").Placeholder("Enter your text here...").EditorMode(Syncfusion.EJ2.RichTextEditor.EditorMode.Markdown).Created("created").ToolbarSettings(e => e.Items ((object )ViewData["Items"])).Render()
+            @Html.EJS().Mention("mention").MentionChar((char)ViewData["MentionChar"]).Target("#defaultMarkDown_editable-content").Created("MentionCreated").SortOrder(SortOrder.Ascending).ItemTemplate("<div class=\"editor-mention-item-template\"><div class=\"em-header\"><div class=\"em-avatar\" style=\"background-color: ${BgColor}; color: ${Color}\"><div class=\"em-initial\">${Initial}</div></div></div><div class=\"em-content\"><div class=\"em-name\">${Name}</div><div class=\"em-email\">${Email}</div></div></div>").NoRecordsTemplate("No item related to the search").DisplayTemplate("[${Name}](mailto:${Email})").PopupWidth("250px").PopupHeight("200px").DataSource((IEnumerable<EmailDatas>)ViewData["EmailData"]).Fields(new MentionFieldSettings { Text = "Name" }).Render()
         </div>
     </div>
     <style>
@@ -147,18 +147,25 @@
         textArea.addEventListener('keyup', function (e) {
             markdownConversion();
         });
-        mdsource = document.getElementById('preview-code');
-        mdsource.addEventListener('click', function (e) {
-            fullPreview();
-            if (e.currentTarget.classList.contains('e-active')) {
-                rteObj.disableToolbarItem(['Bold', 'Italic', 'StrikeThrough', 'OrderedList',
-                    'UnorderedList', 'CreateTable', 'CreateLink', 'Image', 'Formats', 'Blockquote', 'Undo', 'Redo', 'SuperScript', 'SubScript']);
-            }
-            else {
-                rteObj.enableToolbarItem(['Bold', 'Italic', 'StrikeThrough', 'OrderedList',
-                    'UnorderedList', 'CreateTable', 'CreateLink', 'Image', 'Formats', 'Blockquote', 'Undo', 'Redo', 'SuperScript', 'SubScript']);
-            }
-        });
+        setTimeout(function () {
+            mdsource = document.getElementById('preview-code');
+            tooltipObj = new ej.popups.Tooltip({
+                content: "Preview",
+                target: "#preview-code"
+            });
+            tooltipObj.appendTo("#preview-code");
+            mdsource.addEventListener('click', function (e) {
+                fullPreview();
+                if (e.currentTarget.classList.contains('e-active')) {
+                    rteObj.disableToolbarItem(['Bold', 'Italic', 'StrikeThrough', 'OrderedList',
+                        'UnorderedList', 'CreateTable', 'CreateLink', 'Image', 'Formats', 'Blockquote', 'Undo', 'Redo', 'SuperScript', 'SubScript']);
+                }
+                else {
+                    rteObj.enableToolbarItem(['Bold', 'Italic', 'StrikeThrough', 'OrderedList',
+                        'UnorderedList', 'CreateTable', 'CreateLink', 'Image', 'Formats', 'Blockquote', 'Undo', 'Redo', 'SuperScript', 'SubScript']);
+                }
+            });
+        }, 500)
     }
     loadExternalFile();
     function loadExternalFile() {
@@ -169,34 +176,48 @@
     function fullPreview() {
         var id = rteObj.getID() + 'html-preview';
         var htmlPreview = rteObj.element.querySelector('#' + id);
+        var panel = rteObj.contentModule.getPanel();
+        var editPanel = rteObj.contentModule.getEditPanel();
         var previewTextArea = rteObj.element.querySelector('.e-rte-content');
         if (mdsource.classList.contains('e-active')) {
             mdsource.classList.remove('e-active');
-            mdsource.parentElement.title = 'Preview';
-            textArea.style.display = 'block';
-            htmlPreview.style.display = 'none';
-            previewTextArea.style.overflow = 'hidden';
+            panel.style.display = 'block';
+            if (editPanel && editPanel.value === '') {
+                if (htmlPreview && htmlPreview.getAttribute('data-markdown')) {
+                    editPanel.value = htmlPreview.getAttribute('data-markdown');
+                }
+            }
+            if (htmlPreview) {
+                htmlPreview.style.display = 'none';
+            }
+            tooltipObj.content = "Preview";
         }
         else {
             mdsource.classList.add('e-active');
+            var markdownContent = editPanel ? editPanel.value : '';
             if (!htmlPreview) {
                 htmlPreview = ej.base.createElement('div', { className: 'e-content e-pre-source' });
                 htmlPreview.id = id;
-                textArea.parentNode.appendChild(htmlPreview);
+                panel.parentNode.appendChild(htmlPreview);
                 previewTextArea.style.overflow = 'auto';
             }
             if (previewTextArea.style.overflow === 'hidden') {
                 previewTextArea.style.overflow = 'auto';
             }
-            textArea.style.display = 'none';
+            panel.style.display = 'none';
             htmlPreview.style.display = 'block';
-            htmlPreview.innerHTML = marked(rteObj.contentModule.getEditPanel().value);
-            mdsource.parentElement.title = 'Code View';
+            var panelStyles = window.getComputedStyle(panel);
+            if (markdownContent) {
+                htmlPreview.innerHTML = marked(markdownContent);
+                htmlPreview.style.fontFamily = panelStyles.fontFamily;
+                htmlPreview.style.fontSize = panelStyles.fontSize;
+            }
+            tooltipObj.content = "Code View";
         }
     }
     function markdownConversion() {
         if (mdsource.classList.contains('e-active')) {
-            var id = rteObj.getID() + 'html-preview';
+            var id = rteObj.getID() + 'html-view';
             var htmlPreview = rteObj.element.querySelector('#' + id);
             htmlPreview.innerHTML = marked(rteObj.contentModule.getEditPanel().value);
         }

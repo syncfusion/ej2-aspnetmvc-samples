@@ -10,7 +10,7 @@
            .FormatSettings(formatsettings => { formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add(); })
            .Rows(rows => { rows.Name("Country").Add(); rows.Name("Products").Add(); })
            .Columns(columns => { columns.Name("Year").Add(); columns.Name("Quarter").Add(); })
-           .Values(values => { values.Name("Sold").Caption("Units Sold").Add(); values.Name("Amount").Caption("Sold Amount").Add(); })).ShowFieldList(true).GridSettings(new PivotViewGridSettings { ColumnWidth = 140, AllowReordering = true, AllowResizing = true,  AllowTextWrap = true }).Render()
+           .Values(values => { values.Name("Sold").Caption("Units Sold").Add(); values.Name("Amount").Caption("Sold Amount").Add(); })).ShowFieldList(true).GridSettings(new PivotViewGridSettings { ColumnWidth = 140, AllowReordering = true, AllowResizing = true,  AllowTextWrap = true }).DataBound("dataBound").Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -55,6 +55,7 @@
         }
     </style>
     <script>
+        var isInitialRender = true;
         var lines = [
             { id: 'Default', type: 'Default' },
             { id: 'Both', type: 'Both' },
@@ -74,6 +75,13 @@
             },
         });
         gridlines.appendTo('#gridlines');
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function onChange(args) {
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];
             if (args.event.target.id === 'reorder') {

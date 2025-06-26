@@ -15,7 +15,7 @@
                      </div>
                  </div>
                  <div class="e-panel-content">
-                     @(Html.EJS().Chart("linechart").Series(series =>
+                     @(Html.EJS().Chart("linechart").Height("100%").Width("100%").Series(series =>
                      {
                         series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).CornerRadius(conrnerRadius => conrnerRadius.TopLeft(4).TopRight(4))
                             .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Middle).Font(ft => ft.Color("white")))).XName("Period").Fill("#2485FA")
@@ -42,7 +42,7 @@
                       </div>
                   </div>
                   <div class="e-panel-content">
-                      @(Html.EJS().AccumulationChart("pie").EnableAnimation(true)
+                      @(Html.EJS().AccumulationChart("pie").Height("100%").Width("100%").EnableAnimation(true)
                              .EnableBorderOnMouseMove(false).EnableSmartLabels(false).Series(series => {
                              series.TooltipMappingName("Product").DataLabel(dl => dl.Visible(true).Name("text")
                                 .Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside)
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="e-panel-content">
-                    @(Html.EJS().Chart("spline").Series(series =>
+                    @(Html.EJS().Chart("spline").Height("100%").Width("100%").Series(series =>
                     {
                     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea)
                         .Border(br => br.Width(2.75).Color("#2485FA")).Width(2.5).Opacity(0.3).XName("Period")

@@ -25,7 +25,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             
             List<SymbolPalettePalette> palettes = new List<SymbolPalettePalette>();
             palettes.Add(new SymbolPalettePalette() { Id = "BPMN", Expanded = true, Symbols = GetBPMNShapes(), IconCss = "e-ddb-icons e-basic", Title = "BPMN Shapes" });
-            palettes.Add(new SymbolPalettePalette() { Id = "Connector", Expanded = true, Symbols = GetBPMNConnectors(), IconCss = "e-ddb-icons e-basic", Title = "connectors" });
+            palettes.Add(new SymbolPalettePalette() { Id = "Connector", Expanded = true, Symbols = GetBPMNConnectors(), IconCss = "e-ddb-icons e-basic", Title = "Connectors" });
 
             ViewData["Nodes"] = GetBPMNDiagramNodes();
             ViewData["Connectors"] = GetBPMNDiagramConnectors();
@@ -345,7 +345,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                 {
                     Type = "Bpmn",
                     Shape = "Gateway",
-                    gateWay = new DiagramBpmnGateway()
+                    Gateway = new DiagramBpmnGateway()
                     {
                         Type = BpmnGateways.Exclusive
                     }
@@ -613,9 +613,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             set;
         }
         [DefaultValue(null)]
-        [HtmlAttributeName("gateWay")]
-        [JsonProperty("gateWay")]
-        public DiagramBpmnGateway gateWay
+        [HtmlAttributeName("gateway")]
+        [JsonProperty("gateway")]
+        public DiagramBpmnGateway Gateway
         {
             get;
             set;

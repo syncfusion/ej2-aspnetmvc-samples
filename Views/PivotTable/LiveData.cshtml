@@ -52,7 +52,7 @@
             }).ChartSettings(chartSettings => chartSettings.ChartSeries(chartSeries => chartSeries.Type(ChartSeriesType.Column)).Value("Price").Load("chartOnLoad")
                 .LegendSettings(legendSettings => legendSettings.Visible(false))
                 .ZoomSettings(zoomSettings => zoomSettings.EnableScrollbar(false).ToolbarItems("@(new string[]{})").EnableSelectionZooming(false))
-            ).GridSettings(gridSettings => gridSettings.ColumnWidth(100)).CellTemplate("${getCellContent(data)}").Render()
+            ).GridSettings(gridSettings => gridSettings.ColumnWidth(100)).CellTemplate("${getCellContent(data)}").DataBound("dataBound").Render()
         </div>
     </div>
 
@@ -106,6 +106,7 @@
     <script>
         var timerID;
         var initial = true;
+        var isInitialRender = true;
         var previousPivotValues;
         var colourScheme = ['bg-fade', 'bg-fade1', 'bg-fade2'];
         var REGIONS = [
@@ -230,6 +231,13 @@
                 j = j > 5 ? 0 : j;
             }
             return currData;
+        }
+        function dataBound() {
+            var pivotObj = document.getElementById('PivotView-LiveData').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
         }
         function onLoad() {
             var pivotObj = document.getElementById('PivotView-LiveData').ej2_instances[0];

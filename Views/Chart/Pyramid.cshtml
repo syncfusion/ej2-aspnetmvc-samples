@@ -4,16 +4,15 @@
         @(Html.EJS().AccumulationChart("container").Series(series =>
    {
        series.Type(Syncfusion.EJ2.Charts.AccumulationType.Pyramid).Width("45%").Height("80%").XName("Foods").YName("Calories").Name("Food").
-       NeckWidth("15%").GapRatio(0.03).Explode(true).DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).Font(ft => ft.FontWeight("600")).ConnectorStyle(cs => cs.Length("20px"))).DataSource(ViewData["ChartPoints"]).Add();
-   }).Title("Food Comparison Chart").Tooltip(tl => tl.Enable(true).EnableHighlight(true).Format("${point.x}: <b>${point.y}cal</b>").Header("")).LegendSettings(ls =>ls.Visible(false)).Load("load").Render())
+       NeckWidth("15%").GapRatio(0.03).Explode(false).DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).Font(ft => ft.FontWeight("600")).ConnectorStyle(cs => cs.Length("20px"))).DataSource(ViewData["ChartPoints"]).Add();
+   }).Title("Food Consumption Pyramid").SubTitle("Source: wikipedia.org").Tooltip(tl => tl.Enable(true).EnableHighlight(true).Format("${point.x}: <b>${point.y}% of Daily Intake</b>").Header("")).LegendSettings(ls =>ls.Visible(false)).Load("load").Render())
     </div>
     <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function(args) {
             loadAccumulationChartTheme(args);
-            args.accumulation.series[0].dataLabel.textWrap = ej.base.Browser.isDevice ? "Wrap" : "Normal";
-            args.accumulation.series[0].dataLabel.maxWidth = ej.base.Browser.isDevice ? 80 : NaN;
-            args.accumulation.series[0].dataSource[4].DataLabelMappingName = ej.base.Browser.isDevice ? "Bread, Rice,<br> Pasta: 930 cal" : "Bread, Rice, Pasta: 930 cal";          
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "7px" : "12px";
+            args.accumulation.series[0].dataLabel.connectorStyle.length = ej.base.Browser.isDevice ? '10px' : '20px';       
         }      
     </script>
 }

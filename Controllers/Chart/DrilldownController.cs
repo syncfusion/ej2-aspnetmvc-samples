@@ -22,10 +22,11 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
 
             List<DrilldownData> chartData = new List<DrilldownData>
             {
-                new DrilldownData { x = "SUV", y = 25 },
-                new DrilldownData { x = "Car", y = 37 },
-                new DrilldownData { x = "Pickup", y = 15 },
-                new DrilldownData { x = "Minivan", y = 23 }
+                new DrilldownData { x = "Asia-Pacific", y = 45 },
+                new DrilldownData { x = "Europe", y = 25 },
+                new DrilldownData { x = "North America", y = 25 },
+                new DrilldownData { x = "Latin America", y = 7 },
+                new DrilldownData { x = "Middle East & Africa", y = 3 }
             };
             ViewData["dataSource"] = chartData;
             return View();

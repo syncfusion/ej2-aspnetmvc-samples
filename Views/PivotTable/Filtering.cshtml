@@ -128,6 +128,7 @@
         }
     </style>
     <script>
+        var isInitialRender = true;
         var fieldCollections = {};
         var filterCollections = {};
         var isInitial = true;
@@ -160,6 +161,10 @@
 			for (var i = 0, filters = pivotObj.dataSourceSettings.filterSettings; i < filters.length; i++) {
                 var field = filters[i];
                 filterCollections[field.name] = field;
+            }
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
             }
         }
         function onSelect(args) {

@@ -9,13 +9,13 @@
                   .XName("Product")
                   .YName("ProfitPercentage")
                   .EmptyPointSettings(ep => ep.Fill("#e6e6e6"))
-                  .Name("Profit").Radius("80%")
+                  .Name("Profit").Radius("80%").BorderRadius(3).Border(br => br.Width(1).Color("#ffffff")).DataSource(ViewData["ChartPoints"])
                   .Add();
             })
-            .Title("Annual Product-Wise Profit Analysis")
+            .Title("Movie Genre Revenue Share")
             .LegendSettings(ls => ls.Visible(false))
             .Tooltip(tp => tp.Enable(true).EnableHighlight(true).Header("").Format("<b>${point.x}</b><br> Profit: <b>$${point.y}K</b>"))
-            .EnableBorderOnMouseMove(false).EnableSmartLabels(false)
+            .EnableBorderOnMouseMove(false).EnableSmartLabels(false).EnableAnimation(false)
             .Load("load").TextRender("textRender").Render()
     )
             </div>
@@ -50,11 +50,11 @@
     <script src="~/Scripts/chart/theme-color.js"></script>
     <script>
         var load = function (args) {
-            args.accumulation.dataSource = [{ Product: "Rice", ProfitPercentage: 80 },{ Product: "Wheat", ProfitPercentage: null },{ Product: "Oil", ProfitPercentage: 70 },{ Product: "Corn", ProfitPercentage: 60 },{ Product: "Gram", ProfitPercentage: null },{ Product: "Milk", ProfitPercentage: 70 },{ Product: "Peas", ProfitPercentage: 80 },{ Product: "Fruit", ProfitPercentage: 60 },{ Product: "Butter", ProfitPercentage: null }]; 
             var selectedTheme = loadAccumulationChartTheme(args);
             if ((selectedTheme.replace(/5.3/i, '5')) === 'bootstrap5-dark') {
                 args.chart.series[0].emptyPointSettings.fill = '#FF7F7F';
             }
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '12px';
         }
         function changeEmptyPointMode() {
             var chart = document.getElementById("container").ej2_instances[0];
@@ -76,7 +76,7 @@
  @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample illustrates the annual product-wise profit analysis of an organization with empty point functionality in the pie series.
+        This sample illustrates the movie genre revenue share with empty point functionality in the pie series. The Mode of empty point can be changed by using <code>Empty Point Mode</code> in property panel.
     </p>
 }
 @section Description{

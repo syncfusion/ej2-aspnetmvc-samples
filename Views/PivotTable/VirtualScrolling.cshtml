@@ -68,6 +68,7 @@
         var date2;
         var isInit;
         var dt = 0;
+        var isInitialRender = true;
         var data = function (count) {
             var result = [];
             for (var i = 1; i < (count + 1); i++) {
@@ -122,6 +123,10 @@
                 isInit = false;
                 button.disabled = true;
                 document.getElementById('popup').style.display = 'none';
+            }
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
             }
         }
 

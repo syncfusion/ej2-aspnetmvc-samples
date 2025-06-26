@@ -141,13 +141,6 @@ function cusResize() {
     window.dispatchEvent(event);
 }
 
-setTimeout(function () {
-    if (sidebar.isOpen) {
-        document.getElementById('right-pane').style.left = '0px';
-    }
-}, 600);
-
-
 function preventTabSwipe(e) {
     if (e.isSwiped) {
         e.cancel = true;
@@ -356,7 +349,7 @@ function loadCulture(cul) {
         });
     }
     var ajax = new ej.base.Ajax('../Scripts/cldr-data/main/' + cul + '/all.json', 'GET', false);
-    if (!url.includes("richtexteditor") || cul !== 'en') {
+    if (!url.includes("richtexteditor") && !url.includes("markdowneditor") && !url.includes("filemanager") || cul !== 'en') {
         ajax.send().then(function (result) {
             ej.base.loadCldr(JSON.parse(result));
             changeCulture(cul);
@@ -373,21 +366,19 @@ function changeCulture(cul) {
     },0);
 }
 function changeRtl(bool) {
-    setTimeout(function () {
-        var elementlist = ej.base.selectAll('.e-control', ej.base.select('.control-section'));
-        for (var i = 0; i < elementlist.length; i++) {
-            var control = elementlist[i];
-            if (control.classList.contains('e-richtexteditor')) {
-                control.ej2_instances = control.getElementsByTagName("textArea")[0].ej2_instances;
-            }
-            if (control.ej2_instances) {
-                for (var a = 0; a < control.ej2_instances.length; a++) {
-                    var instance = control.ej2_instances[a];
-                    instance.enableRtl = bool;
-                }
+    var elementlist = ej.base.selectAll('.e-control', ej.base.select('.control-section'));
+    for (var i = 0; i < elementlist.length; i++) {
+        var control = elementlist[i];
+        if (control.classList.contains('e-richtexteditor')) {
+            control.ej2_instances = control.getElementsByTagName("textArea")[0].ej2_instances;
+        }
+        if (control.ej2_instances) {
+            for (var a = 0; a < control.ej2_instances.length; a++) {
+                var instance = control.ej2_instances[a];
+                instance.enableRtl = bool;
             }
         }
-    }, 400);
+    }
 }
 function renderCopyCode() {
     var ele = ej.base.createElement('div', {
@@ -970,6 +961,10 @@ function loadTheme(theme) {
     var path = location.origin + baseurl;
     var ajax = new ej.base.Ajax(path + 'Content/styles/' + theme + '.css', 'GET', false);
     selectedTheme = theme;
+    var rightPaneSB = document.getElementById('right-pane');
+    if (rightPaneSB) {
+        rightPaneSB.style.marginLeft = '';
+    }
     renderLeftPaneComponents();
     renderSbPopups();
     bindEvents();

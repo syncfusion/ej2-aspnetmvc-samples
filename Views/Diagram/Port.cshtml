@@ -53,7 +53,7 @@
                             Stroke Width
                         </div>
                         <div style="padding-bottom: 8px">
-                            @Html.EJS().NumericTextBox("width").Enabled(true).Format("###.##").Change("widthChange").Value(1).Min(1).Max(10).Step(0.5).Render()
+                            @Html.EJS().NumericTextBox("width").Enabled(true).Format("###.##").Change("widthChange").Value(1).Min(1).Max(15).Step(0.5).Render()
                         </div>
                     </div>
                     <div class="col-xs-6">
@@ -73,11 +73,7 @@
         .sb-child-row {
             margin-top: 8px;
         }
-        /* To align the property panel*/
-        .property-panel-header {
-            padding-top: 15px;
-            padding-bottom: 15px;
-        }
+
         /* To disable pointer events when there is no selection in diagram */
         .property-section .e-remove-selection {
             cursor: not-allowed;
@@ -233,7 +229,7 @@
                         break;
                     case 'Custom':
                         port[j].shape = 'Custom';
-                        port[j].pathData = 'M6.805,0L13.61L10.703L0,10.703z';
+                        port[j].pathData = 'M3,0 L6,6 L0,6 Z ';
                         break;
                 }
                 diagram.dataBind();

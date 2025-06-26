@@ -25,7 +25,7 @@
                         @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
                     </div>
                 </div>
-                @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/annotations.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").DocumentLoad("documentLoaded").AnnotationSelect("AnnotationSelectedEvent").AnnotationUnSelect("AnnotationUnSelectedEvent").AnnotationResize("UpdateAnnotationPropertiesToPanel").AnnotationMove("UpdateAnnotationPropertiesToPanel").AnnotationRemove("AnnotationUnSelectedEvent").EnableAnnotationToolbar(false).ToolbarSettings(new Syncfusion.EJ2.PdfViewer.PdfViewerToolbarSettings { ShowTooltip = true, ToolbarItems = new List<string> { "OpenOption", "UndoRedoTool", "PageNavigationTool", "MagnificationTool", "PanTool", "SelectionTool", "CommentTool", "SubmitForm", "FormDesignerEditTool", "FreeTextAnnotationOption", "InkAnnotationOption", "ShapeAnnotationOption", "StampAnnotation", "SignatureOption", "SearchOption", "PrintOption", "DownloadOption" }, FormDesignerToolbarItems = new List<string> { "TextboxTool", "PasswordTool", "CheckBoxTool", "RadioButtonTool", "DropdownTool", "ListboxTool", "DrawSignatureTool", "DeleteTool"} }).Render()
+                @Html.EJS().PdfViewer("pdfviewer").DocumentPath("https://cdn.syncfusion.com/content/pdf/annotations-v3.pdf").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").DocumentLoad("documentLoaded").AnnotationSelect("AnnotationSelectedEvent").AnnotationUnSelect("AnnotationUnSelectedEvent").AnnotationResize("UpdateAnnotationPropertiesToPanel").AnnotationMove("UpdateAnnotationPropertiesToPanel").AnnotationRemove("AnnotationUnSelectedEvent").EnableAnnotationToolbar(false).ToolbarSettings(new Syncfusion.EJ2.PdfViewer.PdfViewerToolbarSettings { ShowTooltip = true, ToolbarItems = new List<string> { "OpenOption", "UndoRedoTool", "PageNavigationTool", "MagnificationTool", "PanTool", "SelectionTool", "CommentTool", "SubmitForm", "FormDesignerEditTool", "FreeTextAnnotationOption", "InkAnnotationOption", "ShapeAnnotationOption", "StampAnnotation", "SignatureOption", "SearchOption", "PrintOption", "DownloadOption" }, FormDesignerToolbarItems = new List<string> { "TextboxTool", "PasswordTool", "CheckBoxTool", "RadioButtonTool", "DropdownTool", "ListboxTool", "DrawSignatureTool", "DeleteTool"} }).Render()
             </div>
         </div>
 
@@ -678,17 +678,21 @@
         var viewer = document.getElementById('pdfviewer').ej2_instances[0];
         totalPageCount = viewer.pageCount;
         pageNumberElement.max = totalPageCount;
-        if (e.documentName === 'annotations.pdf') {
+        if (e.documentName === 'annotations-v3.pdf') {
             viewer.annotation.addAnnotation("Highlight", {
-                bounds: [{ x: 97, y: 610, width: 350, height: 14 }],
+                bounds: [{ x: 97, y: 610, width: 340, height: 14 }],
                 pageNumber: 1
             });
             viewer.annotation.addAnnotation("Underline", {
-                bounds: [{ x: 97, y: 723, width: 353.5, height: 14 }],
+                bounds: [{ x: 97, y: 705, width: 346, height: 14 }],
                 pageNumber: 1
             });
             viewer.annotation.addAnnotation("Strikethrough", {
-                bounds: [{ x: 97, y: 836, width: 376.5, height: 14 }],
+                bounds: [{ x: 97, y: 800, width: 367, height: 14 }],
+                pageNumber: 1
+            });
+            viewer.annotation.addAnnotation("Squiggly", {
+                bounds: [{ x: 97, y: 895.5, width: 336, height: 14 }],
                 pageNumber: 1
             });
             viewer.annotation.addAnnotation("Line", {
@@ -1001,13 +1005,13 @@
                     resetAnnotationProperties();
                 }
                 if (selectedAnnotation.annotationSelected && event.isInteracted) {
-                    if ((property === 'x' || property === 'y') && (selectedAnnotation.annotationType === "Polygon" || selectedAnnotation.annotationType === "Area" || selectedAnnotation.annotationType === 'Volume' || selectedAnnotation.annotationType === 'Perimeter' || selectedAnnotation.annotationType === 'Highlight' || selectedAnnotation.annotationType === 'Underline' || selectedAnnotation.annotationType === 'Strikethrough')) {
+                    if ((property === 'x' || property === 'y') && (selectedAnnotation.annotationType === "Polygon" || selectedAnnotation.annotationType === "Area" || selectedAnnotation.annotationType === 'Volume' || selectedAnnotation.annotationType === 'Perimeter' || selectedAnnotation.annotationType === 'Highlight' || selectedAnnotation.annotationType === 'Underline' || selectedAnnotation.annotationType === 'Strikethrough' || selectedAnnotation.annotationType === 'Squiggly')) {
                         document.getElementById('updateAnnotation').disabled = true;
                     }
                     else if(property === "replyAuthor" || property === "replyComment" || property === "replyState"){
                         document.getElementById('updateAnnotation').disabled = true;
                     }
-                    else if ((property === "width" || property === 'height') && (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough")) {
+                    else if ((property === "width" || property === 'height') && (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough" || selectedAnnotation.annotationType === "Squiggly")) {
                         document.getElementById('updateAnnotation').disabled = true;
                     }
                     else {
@@ -1025,7 +1029,7 @@
         var viewer = document.getElementById("pdfviewer").ej2_instances[0];
         selectedAnnotation.annotationType = collection.shapeAnnotationType;
         findStampComments('null');
-        if (collection.textMarkupAnnotationType === "Highlight" || collection.textMarkupAnnotationType === "Underline" || collection.textMarkupAnnotationType === "Strikethrough") {
+        if (collection.textMarkupAnnotationType === "Highlight" || collection.textMarkupAnnotationType === "Underline" || collection.textMarkupAnnotationType === "Strikethrough" || collection.textMarkupAnnotationType === "Squiggly") {
             annotationElement.value = collection.textMarkupAnnotationType;
             selectedAnnotation.annotationType = collection.textMarkupAnnotationType;
         }
@@ -1126,7 +1130,7 @@
         }
         selectedAnnotation.pageNumber = collection.pageNumber + 1;
         pageNumberElement.value = collection.pageNumber + 1;
-        if (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough" && (collection.annotationAddMode === "Imported Annotation" || collection.annotationAddMode === "Existing Annotation")) {
+        if (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough" || selectedAnnotation.annotationType === "Squiggly" && (collection.annotationAddMode === "Imported Annotation" || collection.annotationAddMode === "Existing Annotation")) {
             selectedAnnotation.width = collection.bounds[0].Width;
             widthElement.value = selectedAnnotation.width;
             selectedAnnotation.height = collection.bounds[0].Height;
@@ -1136,7 +1140,7 @@
             selectedAnnotation.y = collection.bounds[0].Y;
             yPositionElement.value = selectedAnnotation.y;
         }
-        else if (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough" && (collection.annotationAddMode === "UI Drawn Annotation")) {
+        else if (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough" || selectedAnnotation.annotationType === "Squiggly" && (collection.annotationAddMode === "UI Drawn Annotation")) {
             selectedAnnotation.width = collection.bounds[0].width;
             widthElement.value = collection.bounds[0].width;
             selectedAnnotation.height = collection.bounds[0].height;
@@ -1253,7 +1257,7 @@
             selectedAnnotation.allowedInteractions = collection.allowedInteractions;
             allowedInteractionsElement.value = collection.allowedInteractions;
         }
-        if (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough") {
+        if (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough" || selectedAnnotation.annotationType === "Squiggly") {
             selectedAnnotation.fillColor = collection.color ? (collection.color.includes("rgba") ? rgbaStringToHex(collection.color) : collection.color) : "";
             fillColorElement.value = collection.color ? (collection.color.includes("rgba") ? rgbaStringToHex(collection.color) : collection.color) : "";
         }
@@ -1311,7 +1315,7 @@
             selectedAnnotation.vertexPoints = collection.vertexPoints;
             generateTable();
         }
-        else if (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough") {
+        else if (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough" || selectedAnnotation.annotationType === "Squiggly") {
             selectedAnnotation.bounds = collection.bounds;
             generateTable();
         }
@@ -1459,7 +1463,7 @@
                 selectedAnnotation.width = 100;
                 selectedAnnotation.height = 100;
             }
-            else if (shapeAnnotation === "Highlight" || shapeAnnotation === "Underline" || shapeAnnotation === "Strikethrough") {
+            else if (shapeAnnotation === "Highlight" || shapeAnnotation === "Underline" || shapeAnnotation === "Strikethrough" || shapeAnnotation === "Squiggly") {
                 selectedAnnotation.width = 100;
                 selectedAnnotation.height = 14;
             }
@@ -1495,6 +1499,9 @@
             else if (selectedAnnotation.annotationType === "Strikethrough") {
                 selectedAnnotation.fillColor = "#ff0000";
             }
+            else if (selectedAnnotation.annotationType === "Squiggly") {
+                selectedAnnotation.fillColor = "#ff0000";
+            }
             selectedAnnotation.opacity = 100;
             selectedAnnotation.thickness = 1;
             selectedAnnotation.replyAuthor = "Guest";
@@ -1502,7 +1509,7 @@
             selectedAnnotation.replyComment = "";
             replyCommentElement.placeholder = "Reply Comment";
             selectedAnnotation.replyComments = [];
-            if (shapeAnnotation === "Highlight" || shapeAnnotation === "Underline" || shapeAnnotation === "Strikethrough" || shapeAnnotation === "FreeText" || shapeAnnotation === "Polygon" || shapeAnnotation === "Perimeter" || shapeAnnotation === "Area" || shapeAnnotation === "Volume") {
+            if (shapeAnnotation === "Highlight" || shapeAnnotation === "Underline" || shapeAnnotation === "Strikethrough" || shapeAnnotation === "Squiggly" || shapeAnnotation === "FreeText" || shapeAnnotation === "Polygon" || shapeAnnotation === "Perimeter" || shapeAnnotation === "Area" || shapeAnnotation === "Volume") {
                 selectedAnnotation.x = 10;
                 selectedAnnotation.y = 10;
             }
@@ -1620,6 +1627,7 @@
             case 'Highlight':
             case 'Underline':
             case 'Strikethrough':
+            case 'Squiggly':
                 {
                     document.getElementById('strokeThickness').style.display = 'none';
                     document.getElementById('deladdboundsButtons').style.display = 'block';
@@ -1925,6 +1933,7 @@
             case "Highlight":
             case "Underline":
             case "Strikethrough":
+            case "Squiggly":
                 {
                     viewer.annotation.addAnnotation(selectedAnnotation.annotationType, currentAnnotationSettings);
                     break;
@@ -2044,7 +2053,13 @@
             thickness: selectedAnnotation.thickness,
             strokeColor: selectedAnnotation.strokeColor,
             fillColor: selectedAnnotation.fillColor,
-            bounds: [{ x: selectedAnnotation.x, y: selectedAnnotation.y, width: selectedAnnotation.width, height: selectedAnnotation.height }],
+            bounds: (selectedAnnotation.bounds && selectedAnnotation.bounds.length > 0) ? selectedAnnotation.bounds.map((item) => ({ x: item.X, y: item.Y, width: item.Width, height: item.Height })) :
+                [{
+                    x: selectedAnnotation.x,
+                    y: selectedAnnotation.y,
+                    width: selectedAnnotation.width,
+                    height: selectedAnnotation.height
+                }],
             vertexPoints: selectedAnnotation.vertexPoints,
             fontFamily: selectedAnnotation.fontFamily,
             fontStyle: selectedAnnotation.fontStyle,
@@ -2273,7 +2288,7 @@
     }
     //Method to set updated values to annotation
     function updateAnnotationSettings(currentannotation) {
-        if (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough")
+        if (selectedAnnotation.annotationType === "Highlight" || selectedAnnotation.annotationType === "Underline" || selectedAnnotation.annotationType === "Strikethrough" || selectedAnnotation.annotationType === "Squiggly")
         {
             currentannotation.bounds = [];
             currentannotation.color = selectedAnnotation.fillColor ? (selectedAnnotation.fillColor.includes("rgba") ? rgbaStringToHex(selectedAnnotation.fillColor) : selectedAnnotation.fillColor) : "";

@@ -18,9 +18,7 @@ namespace EJ2MVCSampleBrowser.Controllers
     {
         public ActionResult Inline()
         {
-            ViewData["Items"] = new[] { "Bold", "Italic", "Underline",
-                "Formats", "-", "Alignments", "OrderedList", "UnorderedList",
-                "CreateLink" };
+            ViewData["Items"] = new[] { "Formats", "|", "Bold", "Italic", "Fontcolor", "BackgroundColor", "|", "CreateLink", "Image", "CreateTable", "|", "Unorderedlist", "Orderedlist" };
             ViewData["Width"] = new
             {
                 width = "auto"

@@ -6,16 +6,16 @@
             {
                 series.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
                     .XName("X")
-                    .YName("Y")
-                    .InnerRadius("50%")
-                    .DataLabel(dl => dl.Visible(true).Name("X").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs => cs.Width(0)))
-                    .Border(br => br.Width(3))
+                    .YName("Y").Name("Project")
+                    .InnerRadius("50%").Explode(false).StartAngle(120)
+                    .DataLabel(dl => dl.Visible(true).Name("Text").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).Font(ft => ft.FontWeight("600")).ConnectorStyle(cs => cs.Length("20px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)))
+                    .Border(br => br.Width(0.5).Color("#ffffff"))
                     .BorderRadius(8)
                     .DataSource(ViewData["ChartPoints"])
                     .Add();
             }
-            ).EnableSmartLabels(true).EnableBorderOnMouseMove(false).Tooltip(tt => tt.Enable(true).EnableHighlight(true).Header("<b>Budget</b>").Format("${point.x}: <b>${point.y}%</b>"))
-            .LegendSettings(lg => lg.Visible(false)).Title("Company Budget Distribution").Load("load").PointRender("pointRender").Render())
+            ).EnableAnimation(true).EnableBorderOnMouseMove(false).Tooltip(tt => tt.Enable(true).EnableHighlight(true).Header("").Format("<b>${point.x}</b><br>Operating System Usage: <b>${point.y}%</b>"))
+            .LegendSettings(lg => lg.Visible(false)).Title("Global Operating System Usage Share - 2024").SubTitle("Source: wikipedia.org").Load("load").PointRender("pointRender").Render())
         </div>
     </div>
     <script src="~/Scripts/chart/theme-color.js"></script>
@@ -23,13 +23,7 @@
         var load = function (args) {
             loadAccumulationChartTheme(args);
             args.accumulation.width = ej.base.Browser.isDevice ? "100%" : "75%";
-            args.accumulation.annotations = [
-                { x: "Operations", y: 30.0, content: `<div style=" padding: 5px 5px 5px 5px; font-size: ${ej.base.Browser.isDevice ? '10px' : '14px'}; color: #FFFFFF;">30%</div>`, region: "Series", coordinateUnits: "Point" },
-                { x: "Miscellaneous", y: 10.0, content: `<div style=" padding: 5px 5px 5px 5px; font-size: ${ej.base.Browser.isDevice ? '10px' : '14px'}; color: #FFFFFF;">10%</div>`, region: "Series", coordinateUnits: "Point" },
-                { x: "Human Resources", y: 15.0, content: `<div style=" padding: 5px 5px 5px 5px; font-size: ${ej.base.Browser.isDevice ? '10px' : '14px'}; color: #FFFFFF;">15%</div>`, region: "Series", coordinateUnits: "Point" },
-                { x: "Research and Development", y: 20.0, content: `<div style=" padding: 5px 5px 5px 5px; font-size: ${ej.base.Browser.isDevice ? '10px' : '14px'}; color: #FFFFFF;">20%</div>`, region: "Series", coordinateUnits: "Point" },
-                { x: "Marketing", y: 25.0, content: `<div style=" padding: 5px 5px 5px 5px; font-size: ${ej.base.Browser.isDevice ? '10px' : '14px'}; color: #FFFFFF;">25%</div>`, region: "Series", coordinateUnits: "Point" }
-            ];
+            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "25%" : "70%";
         };
 
         var pointRender = function (args) {
@@ -77,7 +71,7 @@
 @*custom code end*@
 @section ActionDescription{
     <p>
-        This sample demonstrates the company's budget distribution over a year using a donut chart with rounded corners.
+        This sample demonstrates the global usage share of operating systems across all platforms in 2024 using a donut chart with rounded corners.
     </p>
 }
 @section Description{

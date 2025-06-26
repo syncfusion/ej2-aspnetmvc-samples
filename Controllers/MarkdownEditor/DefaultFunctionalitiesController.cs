@@ -26,7 +26,6 @@ We can add our own custom formation syntax for the Markdown formation, [sample l
 
 The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content";
             var tool = new {
-                tooltipText = "Preview",
                 template = @"<button id='preview-code' class='e-tbar-btn e-control e-btn e-icon-btn' aria-label='Preview Code'>
                         <span class='e-btn-icon e-md-preview e-icons'></span></button>"
             };

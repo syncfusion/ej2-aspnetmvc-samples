@@ -58,7 +58,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
         private List<ScheduleData.ResourceEventsData> GetNonAllDayData()
         {
             List<ScheduleData.ResourceEventsData> nonAllDayData = new List<ScheduleData.ResourceEventsData>();
-            DateTime currentDate = new DateTime(DateTime.Today.Year, 5, 1);
+            DateTime currentDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
             Random random = new Random();
             string[] subjects = new string[] {
             "Team Meeting", "Client Call", "Product Launch", "Training Session",

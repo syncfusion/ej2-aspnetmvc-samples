@@ -40,10 +40,15 @@
         var xLabels = [];
         var yLabels = [];
         var jsonDataSource = [];
+        var isInitialRender = true;
         function onDataBound(args) {
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];
             if (onInit && pivotObj.grid.getRows().length > 1) {
                 pivotObj.grid.selectionModule.selectCellsByRange({ cellIndex: 1, rowIndex: 1 }, { cellIndex: 3, rowIndex: 4 });
+            }
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
             }
         }
 

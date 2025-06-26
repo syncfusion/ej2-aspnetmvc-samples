@@ -20,23 +20,22 @@ namespace EJ2MVCSampleBrowser.Controllers.Chart
         public ActionResult PieWithLegend()
         {
             List<PieWithLegendChartData> PieChartPoints = new List<PieWithLegendChartData>
-            {                
-                new PieWithLegendChartData { ExpenseCategory =  "Chrome", ExpensePercentage = 57.28, legendName="Chrome", DataLabelMappingName = "57.28%" },
-                new PieWithLegendChartData { ExpenseCategory =  "UC Browser", ExpensePercentage = 4.37, legendName="UC Browser", DataLabelMappingName = "4.37%" },
-                new PieWithLegendChartData { ExpenseCategory =  "Internet Explorer", ExpensePercentage = 6.12, legendName="Internet <br> Explorer", DataLabelMappingName = "6.12%" },
-                new PieWithLegendChartData { ExpenseCategory =  "QQ", ExpensePercentage = 5.96, legendName="QQ", DataLabelMappingName = "5.96%" },
-                new PieWithLegendChartData { ExpenseCategory =  "Edge", ExpensePercentage = 7.48, legendName="Edge", DataLabelMappingName = "7.48%" },
-                new PieWithLegendChartData { ExpenseCategory =  "Others", ExpensePercentage = 14.06, legendName="Others", DataLabelMappingName = "18.76%" }
+            {
+                new PieWithLegendChartData { X = "China",     Y = 35,   Text = "35%" },
+                new PieWithLegendChartData { X = "India",     Y = 30,   Text = "30%" },
+                new PieWithLegendChartData { X = "USA",       Y = 10.7, Text = "10.7%" },
+                new PieWithLegendChartData { X = "Indonesia", Y = 7,    Text = "7%" },
+                new PieWithLegendChartData { X = "Brazil",    Y = 5.3,  Text = "5.3%" },
+                new PieWithLegendChartData { X = "Others",    Y = 12,   Text = "12%" }
             };
             ViewData["PieChartPoints"] = PieChartPoints;
             return View();
         }
         public class PieWithLegendChartData
         {
-            public string ExpenseCategory;
-            public double ExpensePercentage;
-            public string legendName; 
-            public string DataLabelMappingName;
+            public string X;
+            public double Y;
+            public string Text;
         }
     }
 }

@@ -65,6 +65,7 @@
     var date2;
     var isInit = true;
     var dt = 0;
+    var isInitialRender = true
     var data = function (count) {
         var result = [];
         for (var i = 1; i < (count + 1); i++) {
@@ -119,6 +120,10 @@
                 document.getElementById('performanceTime').innerHTML = 'Time Taken: ' + (date2 - date1) / 1000 + ' sec';
             }
             isInit = false;
+        }
+        if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+            pivotObj.layoutRefresh();
+            isInitialRender = false;
         }
     }
 

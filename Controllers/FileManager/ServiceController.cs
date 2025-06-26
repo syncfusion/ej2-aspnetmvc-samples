@@ -71,7 +71,7 @@ namespace EJ2MVCSampleBrowser.Controllers
                     {
                         args.Names = new string[] { };
                     }
-                    return Json(operation.ToCamelCase(this.operation.Details(args.Path, args.Names)));
+                    return Json(operation.ToCamelCase(this.operation.Details(args.Path, args.Names, args.Data)));
                 case "create":
                     // Path - Current path where the folder is to be created; Name - Name of the new folder
                     return Json(operation.ToCamelCase(this.operation.Create(args.Path, args.Name)));

@@ -136,6 +136,7 @@
     </style>
     <script>
         var fieldCollections = {};
+        var isInitialRender = true;
         var operators = ['Equals', 'DoesNotEquals', 'GreaterThan', 'GreaterThanOrEqualTo',
             'LessThan', 'LessThanOrEqualTo', 'Between', 'NotBetween'];
         var fields = ['Country', 'Products', 'Year'];
@@ -203,6 +204,10 @@
             for (var i = 0, filters = pivotObj.dataSourceSettings.filterSettings; i < filters.length; i++) {
                 var field = filters[i];
                 fieldCollections[field.name] = field;
+            }
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
             }
         }
         function setFilters(fieldName, measureName, condition, operand1, operand2) {

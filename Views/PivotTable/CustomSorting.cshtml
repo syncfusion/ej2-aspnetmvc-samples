@@ -119,6 +119,7 @@
     }
     </style>
     <script>
+        var isInitialRender = true;
         var isInitial = true;
         var fieldCollections = {};
         var getMembers = {'Country': [], 'Products': [], 'Year': [], 'Order_Source': []};
@@ -174,6 +175,10 @@
                 membersOrder.value = updateSelectedMembers("Country").reverse();
                 membersOrder.dataBind();
                 isInitial = false;
+            }
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
             }
         }
         function actionComplete(args) {

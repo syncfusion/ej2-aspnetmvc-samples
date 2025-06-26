@@ -34,7 +34,7 @@
             .Filters(filters =>
             {
             filters.Name("Product_Categories").Caption("Product Categories").Add();
-            })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).Render()
+            })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DataBound("dataBound").Render()
         </div>
     </div>
     <div class="col-lg-3 property-section pivot-table-property-section">
@@ -255,6 +255,14 @@
     }
     </style>
     <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function onRemoved(args) {
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];
             for (var i = 0; i < pivotObj.dataSourceSettings.columns.length; i++) {

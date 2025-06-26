@@ -4,9 +4,9 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         @Html.EJS().Diagram("diagram").Width("100%").Height("580px").Created("create").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults").DataSourceSettings(ss => ss.Id("Name").ParentId("ReportingPersons")
-.DataSource(new DataManager() { Data = (List<ComplexHierarchicalDataDetails>)ViewData["Nodes"] })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.ComplexHierarchicalTree).HorizontalSpacing(40).VerticalSpacing(40).ConnectionPointOrigin(Syncfusion.EJ2.Diagrams.ConnectionPointOrigin.DifferentPoint)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render();
+.DataSource(new DataManager() { Data = (List<ComplexHierarchicalDataDetails>)ViewData["Nodes"] })).Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.ComplexHierarchicalTree).HorizontalSpacing(40).VerticalSpacing(40).ConnectionPointOrigin(Syncfusion.EJ2.Diagrams.ConnectionPointOrigin.DifferentPoint)).SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Render()
     </div>
-    <div class="col-lg-4 property-section">
+    <div class="col-lg-4 property-section complex-hierarchical-panel">
         <div class="property-panel-header">
             Layout Settings
         </div>
@@ -71,7 +71,7 @@
     @*custom code start*@
     <style>
         /* Css for images in property panel  */
-        .image-pattern-style {
+        .complex-hierarchical-panel .image-pattern-style {
             background-color: white;
             background-size: contain;
             background-repeat: no-repeat;
@@ -83,17 +83,17 @@
             float: left;
         }
         /* Property panel CSS */
-        .row {
+        .complex-hierarchical-panel .row {
             margin-left: 0px;
             margin-right: 0px;
         }
 
-        .row-header {
+        .complex-hierarchical-panel .row-header {
             font-size: 15px;
             font-weight: 500;
         }
         /* Selection indicator */
-        .e-selected-style {
+        .complex-hierarchical-panel .e-selected-style {
             border-color: #006CE6;
             border-width: 2px;
         }

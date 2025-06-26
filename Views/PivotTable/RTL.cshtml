@@ -27,7 +27,7 @@
                     values.Name("In_Stock").Caption("In Stock").Add();
                     values.Name("Sold").Caption("Units Sold").Add();
                     values.Name("Amount").Caption("Sold Amount").Add();
-                })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).AllowCalculatedField(true).EnableRtl(true).Render()
+                })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).AllowCalculatedField(true).EnableRtl(true).DataBound("dataBound").Render()
         </div>
     </div>
 
@@ -52,6 +52,16 @@
             }
         }
     </style>
+    <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
+    </script>
 }
 
 @section PreScripts {

@@ -21,7 +21,6 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
         {
             List<DiagramNode> flowShapes = new List<DiagramNode>();
             flowShapes.Add(new DiagramNode() { Id = "Terminator", Shape = new { type = "Flow", shape = "Terminator" } });
-            flowShapes.Add(new DiagramNode() { Id = "Terminator", Shape = new { type = "Flow", shape = "Terminator" } });
             flowShapes.Add(new DiagramNode() { Id = "Process", Shape = new { type = "Flow", shape = "Process" } });
             flowShapes.Add(new DiagramNode() { Id = "Decision", Shape = new { type = "Flow", shape = "Decision" } });
             flowShapes.Add(new DiagramNode() { Id = "Document", Shape = new { type = "Flow", shape = "Document" } });
@@ -51,9 +50,9 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
             ViewData["Connectors"] = connectors;
 
             List<SymbolPalettePalette> palettes = new List<SymbolPalettePalette>();
-            palettes.Add(new SymbolPalettePalette() { Id = "flow", Expanded = true, Symbols = flowShapes, IconCss = "e-ddb-icons e-flow", Title = "Flow Shapes" });
-            palettes.Add(new SymbolPalettePalette() { Id = "basic", Expanded = true, Symbols = basicShapes, IconCss = "e-ddb-icons e-basic", Title = "Basic Shapes" });
-            palettes.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = connectors, IconCss = "e-ddb-icons e-connector", Title = "Connectors" });
+            palettes.Add(new SymbolPalettePalette() { Id = "flow", Expanded = true, Symbols = flowShapes, IconCss = "diagram-symbol-palette-icons  e-flow", Title = "Flow Shapes" });
+            palettes.Add(new SymbolPalettePalette() { Id = "basic", Expanded = true, Symbols = basicShapes, IconCss = "diagram-symbol-palette-icons  e-basic", Title = "Basic Shapes" });
+            palettes.Add(new SymbolPalettePalette() { Id = "connectors", Expanded = true, Symbols = connectors, IconCss = "diagram-symbol-palette-icons  e-connector", Title = "Connectors" });
             ViewData["palettes"] = palettes;
 
             List<ExpandOptions> expand = new List<ExpandOptions>();

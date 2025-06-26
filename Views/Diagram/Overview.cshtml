@@ -27,11 +27,6 @@
         #diagram, #overview {
             display: block;
         }
-
-        .row {
-            display: block;
-        }
-
     </style>
 
     <script type="text/javascript">
@@ -44,7 +39,7 @@
         function getLayoutInfo(node, tree) {
             if (!tree.hasSubTree) {
                 tree.orientation = 'Vertical';
-                tree.type = 'Right';
+                tree.type = 'Alternate'; // fixes the issue of empty space in overview panel
             }
         }
         function getNodeDefaults(obj, diagram) {

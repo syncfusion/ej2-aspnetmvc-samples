@@ -42,6 +42,26 @@ function initComponentAndWireEvent(isRtl) {
 }
 //Documentloader implementation ends
 
+function showButtons(show) {
+    var displayStyle = show ? 'block' : 'none';
+
+    if (print) {
+        print.element.style.display = displayStyle;
+    }
+    if (download) {
+        download.element.style.display = displayStyle;
+    }
+}
+function onSwitchChange(args) {
+    var documentContainer = document.getElementById("container").ej2_instances[0];
+    if (args.checked) {
+        documentContainer.toolbarMode = 'Ribbon';
+    }
+    else {
+        documentContainer.toolbarMode = 'Toolbar';
+    }
+    showButtons(documentContainer.toolbarMode !== 'Ribbon');
+};
 
 // Title Bar Sample starts 
 var documentTitle;

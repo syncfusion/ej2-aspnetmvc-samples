@@ -113,6 +113,7 @@
     }
 </style>
 <script>
+    var isInitialRender = true;
     var isInitial = true;
     var fieldCollections = {};
     var storeMembers = { 'Country': [], 'Year': [] };
@@ -152,6 +153,10 @@
             membersOrder.dataBind();
             fieldsddl.dataBind();
             isInitial = false;
+        }
+        if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+            pivotObj.layoutRefresh();
+            isInitialRender = false;
         }
     }
     function onOptionChange(args) {

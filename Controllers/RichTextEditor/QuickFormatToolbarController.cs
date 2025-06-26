@@ -19,7 +19,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         public ActionResult QuickFormatToolbar()
         {
             ViewData["Text"] = new[] {
-                "Bold", "Italic", "Underline", "FontColor", "BackgroundColor", "Alignments", "-", "FontSize", "FontName", "Formats", "OrderedList", "UnorderedList", "FormatPainter"
+                "Formats", "|", "Bold", "Italic", "Fontcolor", "BackgroundColor", "|", "CreateLink", "Image", "CreateTable", "Blockquote", "|", "Unorderedlist", "Orderedlist", "Indent", "Outdent"
             };
             return View();
         }

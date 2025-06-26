@@ -16,367 +16,68 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
 {
     public partial class DiagramController : Controller
     {
+        public int spaceBetweenParticipants { get; set; }
+        public List<object> participants { get; set; }
+        public List<object> messages { get; set; }
+        public List<object> fragments { get; set; }
         // GET: SequenceDiagram
         public ActionResult SequenceDiagram()
         {
-            List<DiagramPort> ports1 = new List<DiagramPort>();
-            ports1.Add(new DiagramPort() { Id = "port1", Offset = new DiagramPoint() { X = 1, Y = 0.05 }, Visibility = PortVisibility.Hidden });
-            ports1.Add(new DiagramPort() { Id = "port2", Offset = new DiagramPoint() { X = 1, Y = 0.97 }, Visibility = PortVisibility.Hidden });
-            List<DiagramPort> ports2 = new List<DiagramPort>();
-            ports2.Add(new DiagramPort() { Id = "port1", Offset = new DiagramPoint() { X = 0, Y = 0.07 }, Visibility = PortVisibility.Hidden });
-            ports2.Add(new DiagramPort() { Id = "port2", Offset = new DiagramPoint() { X = 1, Y = 0.92 }, Visibility = PortVisibility.Hidden });
-            ports2.Add(new DiagramPort() { Id = "port3", Offset = new DiagramPoint() { X = 1, Y = 0.5 }, Visibility = PortVisibility.Hidden });
-            List<DiagramPort> ports3 = new List<DiagramPort>();
-            ports3.Add(new DiagramPort() { Id = "port1", Offset = new DiagramPoint() { X = 0, Y = 0.5 }, Visibility = PortVisibility.Hidden });
-            List<DiagramPort> ports4 = new List<DiagramPort>();
-            ports4.Add(new DiagramPort() { Id = "port1", Offset = new DiagramPoint() { X = 0, Y = 0.1 }, Visibility = PortVisibility.Hidden });
-            ports4.Add(new DiagramPort() { Id = "port2", Offset = new DiagramPoint() { X = 0, Y = 0.9 }, Visibility = PortVisibility.Hidden });
-            List<DiagramNode> nodes = new List<DiagramNode>();
-            nodes.Add(new DiagramNode()
-            {
-                Id = "employee",
-                Width = 100,
-                Height = 60,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "transparent",
-                    Bold = true
-                },
-                OffsetX = 100,
-                OffsetY = 100,
-                Shape = new { type = "Text", content = "Employee" },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "teamLead",
-                Width = 100,
-                Height = 60,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "transparent",
-                    Bold = true
-                },
-                OffsetX = 350,
-                OffsetY = 100,
-                Shape = new { type = "Text", content = "Team Lead" },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "dashboard",
-                Width = 100,
-                Height = 60,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "transparent",
-                    Bold = true
-                },
-                OffsetX = 600,
-                OffsetY = 100,
-                Shape = new { type = "Text", content = "Dashboard" },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "manager",
-                Width = 100,
-                Height = 60,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "transparent",
-                    Bold = true
-                },
-                OffsetX = 850,
-                OffsetY = 100,
-                Shape = new { type = "Text", content = "Manager" },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "leaveRequest",
-                Width = 100,
-                Height = 60,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "transparent",
-                },
-                OffsetX = 225,
-                OffsetY = 250,
-                Shape = new { type = "Text", content = "Leave Request" },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "leaveApproval",
-                Width = 100,
-                Height = 60,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "transparent",
-                },
-                OffsetX = 225,
-                OffsetY = 484,
-                Shape = new { type = "Text", content = "Leave Approval" },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "checkEmplyeeAvail",
-                Width = 175,
-                Height = 30,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "transparent",
-                },
-                OffsetX = 470,
-                OffsetY = 345,
-                Shape = new { type = "Text", content = "Check Employee availability and task status" },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "forwardLeaveMssg",
-                Width = 150,
-                Height = 30,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "transparent",
-                },
-                OffsetX = 600,
-                OffsetY = 420,
-                Shape = new { type = "Text", content = "Forward Leave Request" },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "noObjection",
-                Width = 150,
-                Height = 30,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "transparent",
-                },
-                OffsetX = 600,
-                OffsetY = 460,
-                Shape = new { type = "Text", content = "No Objection" },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "employeeNode",
-                Width = 10,
-                Height = 250,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "orange",
-                    StrokeColor = "orange"
-                },
-                OffsetX = 100,
-                OffsetY = 350,
-                Ports = ports1,
-                Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Rectangle },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "teamLeadNode",
-                Width = 10,
-                Height = 190,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "orange",
-                    StrokeColor = "orange"
-                },
-                OffsetX = 350,
-                OffsetY = 320,
-                Ports = ports2,
-                Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Rectangle },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "dashboardNode",
-                Width = 10,
-                Height = 25,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "orange",
-                    StrokeColor = "orange"
-                },
-                OffsetX = 600,
-                OffsetY = 320,
-                Ports = ports3,
-                Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Rectangle },
-            });
-            nodes.Add(new DiagramNode()
-            {
-                Id = "managerNode",
-                Width = 10,
-                Height = 50,
-                Style = new DiagramTextStyle()
-                {
-                    Fill = "orange",
-                    StrokeColor = "orange"
-                },
-                OffsetX = 850,
-                OffsetY = 420,
-                Ports = ports4,
-                Shape = new DiagramBasicShape() { Type = Syncfusion.EJ2.Diagrams.Shapes.Basic, Shape = BasicShapes.Rectangle },
-            });
-            List<DiagramConnector> Connectors = new List<DiagramConnector>();
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "employeeCon1",
-                SourcePoint = new DiagramPoint() { X = 100, Y = 120 },
-                TargetPoint = new DiagramPoint() { X = 100, Y = 225 },
-                Type = Segments.Straight,
-                TargetDecorator = new DiagramDecorator()
-                {
-                    Shape = DecoratorShapes.None,
-                },
-                Style = new DiagramStrokeStyle() { StrokeColor = "#A5A6A7" }
 
-            });
-            Connectors.Add(new DiagramConnector()
+            object SequenceModel = new 
             {
-                Id = "employeeCon2",
-                SourcePoint = new DiagramPoint() { X = 100, Y = 475 },
-                TargetPoint = new DiagramPoint() { X = 100, Y = 600 },
-                Type = Segments.Straight,
-                TargetDecorator = new DiagramDecorator()
+                spaceBetweenParticipants = 250,
+                participants = new List<object>
                 {
-                    Shape = DecoratorShapes.None,
-
+                    new {
+                        id = "User",
+                        content = "User",
+                        isActor = true
+                    },
+                    new {
+                        id = "Transaction",
+                        content = "Transaction",
+                        activationBoxes = new List<object>
+                        {
+                            new { id = "act1", startMessageID = "msg1", endMessageID = "msg4" }
+                        }
+                    },
+                    new {
+                        id = "FraudDetectionSystem",
+                        content = "Fraud Detection System",
+                        activationBoxes = new List<object>
+                        {
+                            new { id = "act2", startMessageID = "msg2", endMessageID = "msg3" },
+                            new { id = "act3", startMessageID = "msg5", endMessageID = "msg6" }
+                        }
+                    }
                 },
-                Style = new DiagramStrokeStyle() { StrokeColor = "#A5A6A7" }
-
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "teamLeanCon1",
-                SourcePoint = new DiagramPoint() { X = 350, Y = 120 },
-                TargetPoint = new DiagramPoint() { X = 350, Y = 225 },
-                Type = Segments.Straight,
-                TargetDecorator = new DiagramDecorator()
+                messages = new List<object>
                 {
-                    Shape = DecoratorShapes.None,
-
+                    new { id = "msg1", content = "Initiate Transaction", fromParticipantID = "User", toParticipantID = "Transaction", type = "Synchronous" },
+                    new { id = "msg2", content = "Send Transaction Data", fromParticipantID = "Transaction", toParticipantID = "FraudDetectionSystem", type = "Synchronous" },
+                    new { id = "msg3", content = "Validate Transaction", fromParticipantID = "FraudDetectionSystem", toParticipantID = "Transaction", type = "Reply" },
+                    new { id = "msg4", content = "Transaction Approved", fromParticipantID = "Transaction", toParticipantID = "User", type = "Asynchronous" },
+                    new { id = "msg5", content = "Flag Transaction", fromParticipantID = "Transaction", toParticipantID = "FraudDetectionSystem", type = "Synchronous" },
+                    new { id = "msg6", content = "Fraud Detected", fromParticipantID = "FraudDetectionSystem", toParticipantID = "User", type = "Reply" },
+                    new { id = "msg7", content = "Cancel Transaction", fromParticipantID = "User", toParticipantID = "Transaction", type = "Synchronous" },
+                    new { id = "msg8", content = "Complete Transaction", fromParticipantID = "User", toParticipantID = "Transaction", type = "Synchronous" }
                 },
-                Style = new DiagramStrokeStyle() { StrokeColor = "#A5A6A7" }
-
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "teamLeanCon2",
-                SourcePoint = new DiagramPoint() { X = 350, Y = 415 },
-                TargetPoint = new DiagramPoint() { X = 350, Y = 600 },
-                Type = Segments.Straight,
-                TargetDecorator = new DiagramDecorator()
+                fragments = new List<object>
                 {
-                    Shape = DecoratorShapes.None,
+                    new {
+                        id = "1",
+                        type = "Alternative",
+                        conditions = new List<object>
+                        {
+                            new { content = "Fraud Detected", messageIds = new List<string> { "msg5", "msg6", "msg7" } },
+                            new { content = "No Fraud Detected", messageIds = new List<string> { "msg8" } }
+                        }
+                    }
+                }
+            };
 
-                },
-                Style = new DiagramStrokeStyle() { StrokeColor = "#A5A6A7" }
-
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "dashboardCon1",
-                SourcePoint = new DiagramPoint() { X = 600, Y = 120 },
-                TargetPoint = new DiagramPoint() { X = 600, Y = 307 },
-                Type = Segments.Straight,
-                TargetDecorator = new DiagramDecorator()
-                {
-                    Shape = DecoratorShapes.None,
-
-                },
-                Style = new DiagramStrokeStyle() { StrokeColor = "#A5A6A7" }
-
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "dashboardCon2",
-                SourcePoint = new DiagramPoint() { X = 600, Y = 333 },
-                TargetPoint = new DiagramPoint() { X = 600, Y = 600 },
-                Type = Segments.Straight,
-                TargetDecorator = new DiagramDecorator()
-                {
-                    Shape = DecoratorShapes.None,
-
-                },
-                Style = new DiagramStrokeStyle() { StrokeColor = "#A5A6A7" }
-
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "managerCon1",
-                SourcePoint = new DiagramPoint() { X = 850, Y = 120 },
-                TargetPoint = new DiagramPoint() { X = 850, Y = 395 },
-                Type = Segments.Straight,
-                TargetDecorator = new DiagramDecorator()
-                {
-                    Shape = DecoratorShapes.None,
-
-                },
-                Style = new DiagramStrokeStyle() { StrokeColor = "#A5A6A7" }
-
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "managerCon2",
-                SourcePoint = new DiagramPoint() { X = 850, Y = 445 },
-                TargetPoint = new DiagramPoint() { X = 850, Y = 600 },
-                Type = Segments.Straight,
-                TargetDecorator = new DiagramDecorator()
-                {
-                    Shape = DecoratorShapes.None,
-
-                },
-                Style = new DiagramStrokeStyle() { StrokeColor = "#A5A6A7" }
-
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "empToTeamLead",
-                Type = Segments.Straight,
-                SourceID = "employeeNode",
-                TargetID = "teamLeadNode",
-                SourcePortID = "port1",
-                TargetPortID = "port1"
-
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "teamLeadToEmp",
-                Type = Segments.Straight,
-                SourcePoint = new DiagramPoint() { X = 350, Y = 465 },
-                TargetID = "employeeNode",
-                TargetPortID = "port2",
-                Style = new DiagramStrokeStyle() { StrokeDashArray = "4 4" }
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "teamLeadToDash",
-                Type = Segments.Straight,
-                SourceID = "teamLeadNode",
-                TargetID = "dashboardNode",
-                SourcePortID = "port3",
-                TargetPortID = "port1"
-
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "teamLeadToManager",
-                Type = Segments.Straight,
-                SourceID = "teamLeadNode",
-                TargetID = "managerNode",
-                SourcePortID = "port2",
-                TargetPortID = "port1"
-
-            });
-            Connectors.Add(new DiagramConnector()
-            {
-                Id = "managerToTeamLead",
-                Type = Segments.Straight,
-                SourceID = "managerNode",
-                SourcePortID = "port2",
-                TargetPoint = new DiagramPoint() { X = 350, Y = 440 },
-                Style = new DiagramStrokeStyle() { StrokeDashArray = "4 4" }
-
-            });
-            ViewData["connectors"] = Connectors;
-            ViewData["nodes"] = nodes;
-            ViewData["getConnectorDefaults"] = "ConnectorDefaults";
+            ViewData["SequenceModel"] = SequenceModel;
             return View();
         }
     }

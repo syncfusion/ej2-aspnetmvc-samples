@@ -74,7 +74,7 @@
         }).Toolbar(new List<string>
         () { "New", "Save", "SaveAs", "Rename", "Remove", "Load",
         "Grid", "Chart", "Export", "SubTotal", "GrandTotal", "Formatting",
-        "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").ChartSeriesCreated("chartSeriesCreated").CellTemplate("${getCellContent(data)}").Render()
+        "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").ChartSeriesCreated("chartSeriesCreated").DataBound("dataBound").CellTemplate("${getCellContent(data)}").Render()
     </div>
     <div class="urllink">
         Source:
@@ -123,6 +123,7 @@
     }
 </style>
 <script>
+    var isInitialRender = true;
     window.getCellContent = function (args) {
         var pivotObj = document.getElementById('pivotview').ej2_instances[0];
         if (args.cellInfo && args.cellInfo.axis === 'value' && pivotObj.pivotValues[args.cellInfo.rowIndex] && pivotObj.pivotValues[args.cellInfo.rowIndex][0].hasChild) {
@@ -164,6 +165,13 @@
         var selectedTheme = location.hash.split("/")[1];
         selectedTheme = selectedTheme ? selectedTheme : "Material";
         args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast');
+    }
+    function dataBound() {
+        var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+        if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+            pivotObj.layoutRefresh();
+            isInitialRender = false;
+        }
     }
     function saveReport(args) {
         var reports = [];

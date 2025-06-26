@@ -123,6 +123,7 @@
         }
     </style>
     <script>
+        var isInitialRender = true;
         var fieldCollections = {};
         var operators = ['Equals', 'DoesNotEquals', 'BeginWith', 'DoesNotBeginWith', 'EndsWith',
             'DoesNotEndsWith', 'Contains', 'DoesNotContains', 'GreaterThan',
@@ -180,6 +181,10 @@
             for (var i = 0, filters = pivotObj.dataSourceSettings.filterSettings; i < filters.length; i++) {
                 var field = filters[i];
                 fieldCollections[field.name] = field;
+            }
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
             }
         }
         function setFilters(fieldName, condition, operand1, operand2) {

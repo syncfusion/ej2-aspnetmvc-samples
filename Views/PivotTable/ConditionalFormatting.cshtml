@@ -37,7 +37,7 @@
                format.Conditions(Condition.LessThan).Measure("In_Stock").Value1(5000).Style( style => { style.BackgroundColor("#80cbc4").Color("black").FontFamily("Tahoma").FontSize("12px"); }).Add();
                format.Conditions(Condition.Between).Measure("Sold").Value1(3400).Value2(40000).Style(style => { style.BackgroundColor("#f48fb1").Color("black").FontFamily("Tahoma").FontSize("12px"); }).Add();
            })
-           ).GridSettings(new PivotViewGridSettings { ColumnWidth = 100 }).AllowConditionalFormatting(true).ShowFieldList(true).Render()
+           ).GridSettings(new PivotViewGridSettings { ColumnWidth = 100 }).AllowConditionalFormatting(true).ShowFieldList(true).DataBound("dataBound").Render()
         </div>
     </div>
     <div class="col-lg-3 property-section">
@@ -71,6 +71,7 @@
     }
     </style>
     <script>
+        var isInitialRender = true;
         document.getElementById("conditional-formatting-btn").addEventListener('click', function () {
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];
             pivotObj.conditionalFormattingModule.showConditionalFormattingDialog();
@@ -84,6 +85,14 @@
             pivotObj.conditionalFormattingModule.destroy();
             document.getElementById('conditional-formatting-reset-btn').blur();
         });
+        
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
     </script>
 }
 

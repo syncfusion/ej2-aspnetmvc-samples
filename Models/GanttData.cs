@@ -44,6 +44,8 @@ namespace EJ2MVCSampleBrowser.Models
             public List<GanttSegment> Segments { get; set; }
             public string ResourcesImage { get; set; }
             public string EmailId { get; set; }
+            public int? ConstraintType { get; set; }
+            public DateTime? ConstraintDate { get; set; }
 
         }
 
@@ -80,7 +82,7 @@ namespace EJ2MVCSampleBrowser.Models
             public string name { get; set; }
             public string tooltip { get; set; }
         }
-       
+
 
         public class GanttSegment
         {
@@ -497,7 +499,7 @@ namespace EJ2MVCSampleBrowser.Models
             return GanttDataSourceCollection;
         }
 
-public static List<GanttDataSource> TimelineTemplateData()
+        public static List<GanttDataSource> TimelineTemplateData()
         {
             List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
 
@@ -5034,7 +5036,7 @@ public static List<GanttDataSource> TimelineTemplateData()
                    new ResourceModel { ResourceId = 1, ResourceUnit = 75 },
                 },
                 Predecessor = "2"
-                
+
             };
             Record1.SubTasks.Add(Record1Child1);
             Record1.SubTasks.Add(Record1Child2);
@@ -5329,7 +5331,7 @@ public static List<GanttDataSource> TimelineTemplateData()
 
             return GanttDataSourceCollection;
         }
-        
+
         public static List<GanttDataSource> TaskModeData()
         {
             List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
@@ -5762,7 +5764,7 @@ public static List<GanttDataSource> TimelineTemplateData()
             GanttDataSourceCollection.Add(Record5);
             return GanttDataSourceCollection;
         }
-		public static List<ResourceGroupCollection> MultiTaskbarResource()
+        public static List<ResourceGroupCollection> MultiTaskbarResource()
         {
             List<ResourceGroupCollection> GanttResourcesCollection = new List<ResourceGroupCollection>();
 
@@ -6993,6 +6995,910 @@ public static List<GanttDataSource> TimelineTemplateData()
 
             };
             return Tasks;
+        }
+
+        public static List<GanttDataSource> WBSData()
+        {
+            List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
+            List<IndicatorsModel> Indicators = new List<IndicatorsModel>();
+            GanttDataSource Record1 = new GanttDataSource()
+            {
+                TaskId = 1,
+                TaskName = "Product concept",
+                StartDate = new DateTime(2024, 04, 02),
+                EndDate = new DateTime(2024, 04, 21)
+            };
+            GanttDataSource Record2 = new GanttDataSource()
+            {
+                TaskId = 2,
+                TaskName = "Defining the product and its usage",
+                StartDate = new DateTime(2024, 04, 02),
+                Duration = 3,
+                Progress = 30,
+                ParentID = 1
+            };
+            GanttDataSource Record3 = new GanttDataSource()
+            {
+                TaskId = 3,
+                TaskName = "Defining target audience",
+                StartDate = new DateTime(2024, 04, 02),
+                Duration = 3,
+                ParentID = 1
+            };
+            GanttDataSource Record4 = new GanttDataSource()
+            {
+                TaskId = 4,
+                TaskName = "Prepare product sketch and notes",
+                StartDate = new DateTime(2024, 04, 02),
+                Duration = 2,
+                Progress = 30,
+                Predecessor = "2FS+1",
+                ParentID = 1
+            };
+            GanttDataSource Record5 = new GanttDataSource()
+            {
+                TaskId = 5,
+                TaskName = "Manufacturing cost",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 2,
+                Progress = 30,
+                ParentID = 4
+            };
+            GanttDataSource Record6 = new GanttDataSource()
+            {
+                TaskId = 6,
+                TaskName = "Selling cost",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 2,
+                ParentID = 4
+            };
+            GanttDataSource Record7 = new GanttDataSource()
+            {
+                TaskId = 7,
+                TaskName = "Selling Items",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 2,
+                ParentID = 6
+            };
+            GanttDataSource Record8 = new GanttDataSource()
+            {
+                TaskId = 8,
+                TaskName = "Market research",
+                StartDate = new DateTime(2024, 04, 02),
+                EndDate = new DateTime(2024, 04, 21)
+            };
+            GanttDataSource Record9 = new GanttDataSource()
+            {
+                TaskId = 9,
+                TaskName = "Demand analysis",
+                StartDate = new DateTime(2024, 04, 04),
+                EndDate = new DateTime(2024, 04, 21),
+                ParentID = 8
+            };
+            GanttDataSource Record10 = new GanttDataSource()
+            {
+                TaskId = 10,
+                TaskName = "Customer strength",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 4,
+                Progress = 30,
+                Predecessor = "5",
+                ParentID = 9
+            };
+            GanttDataSource Record11 = new GanttDataSource()
+            {
+                TaskId = 11,
+                TaskName = "Market opportunity analysis",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 4,
+                Predecessor = "5",
+                ParentID = 9
+            };
+            GanttDataSource Record12 = new GanttDataSource()
+            {
+                TaskId = 12,
+                TaskName = "Competitor analysis",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 4,
+                Predecessor = "7, 8",
+                Progress = 30,
+                ParentID = 8
+            };
+            GanttDataSource Record13 = new GanttDataSource()
+            {
+                TaskId = 13,
+                TaskName = "Product strength analysis",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 4,
+                Predecessor = "9",
+                ParentID = 8
+            };
+            GanttDataSource Record14 = new GanttDataSource()
+            {
+                TaskId = 14,
+                TaskName = "Research complete",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 0,
+                Predecessor = "10",
+                ParentID = 8,
+                Indicators = new List<IndicatorsModel>()
+            {
+            new IndicatorsModel()
+            {
+                date  = new DateTime(2024, 04, 27),
+                name = "Research completed",
+                tooltip = "Research completed",
+                iconClass = "description e-icons"
+            }
+            }
+            };
+            GanttDataSource Record15 = new GanttDataSource()
+            {
+                TaskId = 15,
+                TaskName = "Product design and development",
+                StartDate = new DateTime(2024, 04, 04),
+                EndDate = new DateTime(2024, 04, 21)
+            };
+            GanttDataSource Record16 = new GanttDataSource()
+            {
+                TaskId = 16,
+                TaskName = "Functionality design",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 3,
+                Progress = 30,
+                Predecessor = "12",
+                ParentID = 15
+            };
+            GanttDataSource Record17 = new GanttDataSource()
+            {
+                TaskId = 17,
+                TaskName = "Quality design",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 3,
+                Predecessor = "12",
+                ParentID = 15
+            };
+            GanttDataSource Record18 = new GanttDataSource()
+            {
+                TaskId = 18,
+                TaskName = "Define reliability",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 2,
+                Progress = 30,
+                Predecessor = "15",
+                ParentID = 15
+            };
+            GanttDataSource Record19 = new GanttDataSource()
+            {
+                TaskId = 19,
+                TaskName = "Identifying raw materials",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 2,
+                Predecessor = "14",
+                ParentID = 15
+            };
+            GanttDataSource Record20 = new GanttDataSource()
+            {
+                TaskId = 20,
+                TaskName = "Define cost plan",
+                StartDate = new DateTime(2024, 04, 04),
+                EndDate = new DateTime(2024, 04, 21),
+                ParentID = 15
+            };
+            GanttDataSource Record21 = new GanttDataSource()
+            {
+                TaskId = 21,
+                TaskName = "Manufacturing cost",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 2,
+                Progress = 30,
+                Predecessor = "17",
+                ParentID = 20
+            };
+            GanttDataSource Record22 = new GanttDataSource()
+            {
+                TaskId = 22,
+                TaskName = "Selling cost",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 2,
+                Predecessor = "17",
+                ParentID = 20
+            };
+            GanttDataSource Record23 = new GanttDataSource()
+            {
+                TaskId = 23,
+                TaskName = "Development of the final design",
+                StartDate = new DateTime(2024, 04, 04),
+                EndDate = new DateTime(2024, 04, 21),
+                ParentID = 15
+            };
+            GanttDataSource Record24 = new GanttDataSource()
+            {
+                TaskId = 24,
+                TaskName = "Defining dimensions and package volume",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 2,
+                Predecessor = "19, 20",
+                Progress = 30,
+                ParentID = 23
+            };
+            GanttDataSource Record25 = new GanttDataSource()
+            {
+                TaskId = 25,
+                TaskName = "Develop design to meet industry standards",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 2,
+                Predecessor = "22",
+                ParentID = 23
+            };
+            GanttDataSource Record26 = new GanttDataSource()
+            {
+                TaskId = 26,
+                TaskName = "Include all the details",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 3,
+                Predecessor = "23",
+                ParentID = 23
+            };
+            GanttDataSource Record27 = new GanttDataSource()
+            {
+                TaskId = 27,
+                TaskName = "CAD computer-aided design",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 3,
+                Progress = 30,
+                Predecessor = "24",
+                ParentID = 15
+            };
+            GanttDataSource Record28 = new GanttDataSource()
+            {
+                TaskId = 28,
+                TaskName = "CAM computer-aided manufacturing",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 3,
+                Predecessor = "25",
+                ParentID = 15
+            };
+            GanttDataSource Record29 = new GanttDataSource()
+            {
+                TaskId = 29,
+                TaskName = "Design complete",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 0,
+                Predecessor = "26",
+                ParentID = 15
+            };
+            GanttDataSource Record30 = new GanttDataSource()
+            {
+                TaskId = 30,
+                TaskName = "Prototype testing",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 4,
+                Progress = 30,
+                Predecessor = "27"
+            };
+            GanttDataSource Record31 = new GanttDataSource()
+            {
+                TaskId = 31,
+                TaskName = "Include feedback",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 4,
+                Predecessor = "28",
+                Indicators = new List<IndicatorsModel>()
+                {
+                    new IndicatorsModel()
+                    {
+                        date  = new DateTime(2024, 05, 31),
+                        name = "Production phase",
+                        tooltip = "Production phase completed",
+                        iconClass = "okIcon e-icons"
+                    }
+                }
+            };
+            GanttDataSource Record32 = new GanttDataSource()
+            {
+                TaskId = 32,
+                TaskName = "Manufacturing",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 5,
+                Progress = 30,
+                Predecessor = "28,29"
+            };
+            GanttDataSource Record33 = new GanttDataSource()
+            {
+                TaskId = 33,
+                TaskName = "Assembling materials to finished goods",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 5,
+                Predecessor = "30"
+            };
+            GanttDataSource Record34 = new GanttDataSource()
+            {
+                TaskId = 34,
+                TaskName = "Feedback and testing",
+                StartDate = new DateTime(2024, 04, 04),
+                EndDate = new DateTime(2024, 04, 21)
+            };
+            GanttDataSource Record35 = new GanttDataSource()
+            {
+                TaskId = 35,
+                TaskName = "Internal testing and feedback",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 3,
+                Progress = 45,
+                Predecessor = "31",
+                ParentID = 34
+            };
+            GanttDataSource Record36 = new GanttDataSource()
+            {
+                TaskId = 36,
+                TaskName = "Customer testing and feedback",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 3,
+                Progress = 50,
+                Predecessor = "33",
+                ParentID = 34
+            };
+            GanttDataSource Record37 = new GanttDataSource()
+            {
+                TaskId = 37,
+                TaskName = "Final product development",
+                StartDate = new DateTime(2024, 04, 04),
+                EndDate = new DateTime(2024, 04, 21)
+            };
+            GanttDataSource Record38 = new GanttDataSource()
+            {
+                TaskId = 38,
+                TaskName = "Important improvements",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 4,
+                Progress = 30,
+                Predecessor = "34",
+                ParentID = 37
+            };
+            GanttDataSource Record39 = new GanttDataSource()
+            {
+                TaskId = 39,
+                TaskName = "Address any unforeseen issues",
+                StartDate = new DateTime(2024, 04, 04),
+                Duration = 4,
+                Progress = 30,
+                Predecessor = "36",
+                ParentID = 37,
+                Indicators = new List<IndicatorsModel>()
+                {
+                       new IndicatorsModel()
+                        {
+                            date = new DateTime(2024, 05, 27),
+                            name = "Final review",
+                            tooltip = "Final review completed",
+                            iconClass = "description e-icons"
+                        }
+                }
+            };
+
+            GanttDataSourceCollection.Add(Record1);
+            GanttDataSourceCollection.Add(Record2);
+            GanttDataSourceCollection.Add(Record3);
+            GanttDataSourceCollection.Add(Record4);
+            GanttDataSourceCollection.Add(Record5);
+            GanttDataSourceCollection.Add(Record6);
+            GanttDataSourceCollection.Add(Record7);
+            GanttDataSourceCollection.Add(Record8);
+            GanttDataSourceCollection.Add(Record9);
+            GanttDataSourceCollection.Add(Record10);
+            GanttDataSourceCollection.Add(Record11);
+            GanttDataSourceCollection.Add(Record12);
+            GanttDataSourceCollection.Add(Record13);
+            GanttDataSourceCollection.Add(Record14);
+            GanttDataSourceCollection.Add(Record15);
+            GanttDataSourceCollection.Add(Record16);
+            GanttDataSourceCollection.Add(Record17);
+            GanttDataSourceCollection.Add(Record18);
+            GanttDataSourceCollection.Add(Record19);
+            GanttDataSourceCollection.Add(Record20);
+            GanttDataSourceCollection.Add(Record21);
+            GanttDataSourceCollection.Add(Record22);
+            GanttDataSourceCollection.Add(Record23);
+            GanttDataSourceCollection.Add(Record24);
+            GanttDataSourceCollection.Add(Record25);
+            GanttDataSourceCollection.Add(Record26);
+            GanttDataSourceCollection.Add(Record27);
+            GanttDataSourceCollection.Add(Record28);
+            GanttDataSourceCollection.Add(Record29);
+            GanttDataSourceCollection.Add(Record30);
+            GanttDataSourceCollection.Add(Record31);
+            GanttDataSourceCollection.Add(Record32);
+            GanttDataSourceCollection.Add(Record33);
+            GanttDataSourceCollection.Add(Record34);
+            GanttDataSourceCollection.Add(Record35);
+            GanttDataSourceCollection.Add(Record36);
+            GanttDataSourceCollection.Add(Record37);
+            GanttDataSourceCollection.Add(Record38);
+            GanttDataSourceCollection.Add(Record39);
+
+            return GanttDataSourceCollection;
+        }
+
+        public static List<GanttDataSource> ConstraintData()
+        {
+
+            List<GanttDataSource> GanttData = new List<GanttDataSource>
+            {
+                new GanttDataSource()
+                {
+                    TaskId = 1,
+                    TaskName = "Planning and Permits",
+                    StartDate = new DateTime(2025, 4, 2),
+                    EndDate = new DateTime(2025, 4, 10),
+                    Duration = 7,
+                    Progress = 100,
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 2,
+                    TaskName = "Site Evaluation",
+                    StartDate = new DateTime(2025, 4, 2),
+                    EndDate = new DateTime(2025, 4, 4),
+                    Duration = 2,
+                    Progress = 100,
+                    ParentID = 1,
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 4, 2)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 3,
+                    TaskName = "Environmental Studies",
+                    StartDate = new DateTime(2025, 4, 5),
+                    EndDate = new DateTime(2025, 4, 7),
+                    Duration = 2,
+                    Progress = 100,
+                    ParentID = 1,
+                    Predecessor = "2FS",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 4, 5)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 4,
+                    TaskName = "Obtain Permits",
+                    StartDate = new DateTime(2025, 4, 8),
+                    EndDate = new DateTime(2025, 4, 10),
+                    Duration = 2,
+                    Progress = 100,
+                    ParentID = 1,
+                    Predecessor = "3FS",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 4, 8)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 5,
+                    TaskName = "Site Work",
+                    StartDate = new DateTime(2025, 4, 11),
+                    EndDate = new DateTime(2025, 4, 13),
+                    Duration = 2,
+                    Progress = 80,
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 6,
+                    TaskName = "Clearing and Grading",
+                    StartDate = new DateTime(2025, 4, 11),
+                    EndDate = new DateTime(2025, 4, 12),
+                    Duration = 1,
+                    Progress = 100,
+                    ParentID = 5,
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 4, 11)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 7,
+                    TaskName = "Soil Testing",
+                    StartDate = new DateTime(2025, 4, 13),
+                    EndDate = new DateTime(2025, 4, 13),
+                    Duration = 0,
+                    Progress = 60,
+                    ParentID = 5,
+                    Predecessor = "6FS",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 4, 13)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 8,
+                    TaskName = "Foundation",
+                    StartDate = new DateTime(2025, 4, 14),
+                    EndDate = new DateTime(2025, 4, 18),
+                    Duration = 4,
+                    Progress = 50,
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 9,
+                    TaskName = "Excavation",
+                    StartDate = new DateTime(2025, 4, 14),
+                    EndDate = new DateTime(2025, 4, 15),
+                    Duration = 1,
+                    Progress = 100,
+                    ParentID = 8,
+                    Predecessor = "7FS",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 4, 14)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 10,
+                    TaskName = "Pour Footings",
+                    StartDate = new DateTime(2025, 4, 16),
+                    EndDate = new DateTime(2025, 4, 17),
+                    Duration = 1,
+                    Progress = 50,
+                    ParentID = 8,
+                    Predecessor = "9FS",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 4, 16)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 11,
+                    TaskName = "Roof Installation",
+                    StartDate = new DateTime(2025, 5, 15),
+                    EndDate = new DateTime(2025, 5, 21),
+                    Duration = 7,
+                    Progress = 0,
+                    ParentID = 10,
+                    Predecessor = "9",
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 12,
+                    TaskName = "Roof Inspection",
+                    StartDate = new DateTime(2025, 5, 22),
+                    EndDate = new DateTime(2025, 5, 23),
+                    Duration = 2,
+                    Progress = 0,
+                    ParentID = 10,
+                    Predecessor = "11",
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 13,
+                    TaskName = "Wall Painting",
+                    StartDate = new DateTime(2025, 5, 23),
+                    EndDate = new DateTime(2025, 5, 29),
+                    Duration = 7,
+                    Progress = 0,
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 14,
+                    TaskName = "Window Installation",
+                    StartDate = new DateTime(2025, 5, 16),
+                    EndDate = new DateTime(2025, 5, 20),
+                    Duration = 5,
+                    Progress = 0,
+                    Predecessor = "11",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 5, 16)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 15,
+                    TaskName = "Door Installation",
+                    StartDate = new DateTime(2025, 5, 18),
+                    EndDate = new DateTime(2025, 5, 22),
+                    Duration = 5,
+                    Progress = 0,
+                    Predecessor = "14",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 5, 18)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 16,
+                    TaskName = "Flooring",
+                    StartDate = new DateTime(2025, 5, 20),
+                    EndDate = new DateTime(2025, 5, 25),
+                    Duration = 6,
+                    Progress = 0,
+                    Predecessor = "15",
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 17,
+                    TaskName = "Plumbing",
+                    StartDate = new DateTime(2025, 5, 22),
+                    EndDate = new DateTime(2025, 5, 28),
+                    Duration = 7,
+                    Progress = 0,
+                    Predecessor = "16",
+                    ConstraintType = 7,
+                    ConstraintDate = new DateTime(2025, 5, 22)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 18,
+                    TaskName = "Electrical",
+                    StartDate = new DateTime(2025, 5, 21),
+                    EndDate = new DateTime(2025, 5, 23),
+                    Duration = 3,
+                    Progress = 0,
+                    Predecessor = "17",
+                    ConstraintType = 5,
+                    ConstraintDate = new DateTime(2025, 5, 21)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 19,
+                    TaskName = "Interior Finishing",
+                    StartDate = new DateTime(2025, 5, 23),
+                    EndDate = new DateTime(2025, 5, 28),
+                    Duration = 6,
+                    Progress = 0,
+                    Predecessor = "18",
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 20,
+                    TaskName = "Exterior Work",
+                    StartDate = new DateTime(2025, 5, 23),
+                    EndDate = new DateTime(2025, 5, 29),
+                    Duration = 7,
+                    Progress = 0,
+                    Predecessor = "19",
+                    ConstraintType = 6,
+                    ConstraintDate = new DateTime(2025, 5, 29)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 21,
+                    TaskName = "Electrical Installation",
+                    StartDate = new DateTime(2025, 5, 22),
+                    EndDate = new DateTime(2025, 5, 24),
+                    Duration = 3,
+                    Progress = 0,
+                    ParentID = 18,
+                    Predecessor = "20",
+                    ConstraintType = 7,
+                    ConstraintDate = new DateTime(2025, 5, 24)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 22,
+                    TaskName = "Interior Finishing",
+                    StartDate = new DateTime(2025, 5, 26),
+                    EndDate = new DateTime(2025, 6, 17),
+                    Duration = 15,
+                    Progress = 0,
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 23,
+                    TaskName = "Insulation and Drywall",
+                    StartDate = new DateTime(2025, 5, 26),
+                    EndDate = new DateTime(2025, 5, 30),
+                    Duration = 5,
+                    Progress = 0,
+                    ParentID = 22,
+                    Predecessor = "21",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 5, 26)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 24,
+                    TaskName = "Interior Painting",
+                    StartDate = new DateTime(2025, 6, 3),
+                    EndDate = new DateTime(2025, 6, 6),
+                    Duration = 4,
+                    Progress = 0,
+                    ParentID = 22,
+                    Predecessor = "23FS",
+                    ConstraintType = 6,
+                    ConstraintDate = new DateTime(2025, 6, 6)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 25,
+                    TaskName = "Flooring Installation",
+                    StartDate = new DateTime(2025, 6, 6),
+                    EndDate = new DateTime(2025, 6, 9),
+                    Duration = 4,
+                    Progress = 0,
+                    ParentID = 22,
+                    Predecessor = "24",
+                    ConstraintType = 5,
+                    ConstraintDate = new DateTime(2025, 6, 6)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 26,
+                    TaskName = "Cabinet and Fixture Setup",
+                    StartDate = new DateTime(2025, 6, 10),
+                    EndDate = new DateTime(2025, 6, 12),
+                    Duration = 3,
+                    Progress = 0,
+                    ParentID = 22,
+                    Predecessor = "25",
+                    ConstraintType = 1
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 27,
+                    TaskName = "Final Fixture Installation",
+                    StartDate = new DateTime(2025, 6, 13),
+                    EndDate = new DateTime(2025, 6, 15),
+                    Duration = 3,
+                    Progress = 0,
+                    ParentID = 22,
+                    Predecessor = "26",
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 28,
+                    TaskName = "Exterior Finishing",
+                    StartDate = new DateTime(2025, 6, 23),
+                    EndDate = new DateTime(2025, 6, 26),
+                    Duration = 4,
+                    Progress = 0,
+                    ConstraintType = 2,
+                    ConstraintDate = new DateTime(2025, 6, 23)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 29,
+                    TaskName = "Landscaping",
+                    StartDate = new DateTime(2025, 6, 20),
+                    EndDate = new DateTime(2025, 6, 25),
+                    Duration = 5,
+                    Progress = 0,
+                    Predecessor = "28",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 6, 20)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 30,
+                    TaskName = "Final Inspection",
+                    StartDate = new DateTime(2025, 7, 7),
+                    EndDate = new DateTime(2025, 7, 9),
+                    Duration = 3,
+                    Progress = 0,
+                    Predecessor = "29FS+1",
+                    ConstraintType = 3,
+                    ConstraintDate = new DateTime(2025, 7, 7)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 31,
+                    TaskName = "Correction of Issues",
+                    StartDate = new DateTime(2025, 7, 1),
+                    EndDate = new DateTime(2025, 7, 3),
+                    Duration = 3,
+                    Progress = 0,
+                    Predecessor = "30",
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 32,
+                    TaskName = "Final Walkthrough",
+                    StartDate = new DateTime(2025, 7, 4),
+                    EndDate = new DateTime(2025, 7, 7),
+                    Duration = 2,
+                    Progress = 0,
+                    Predecessor = "31",
+                    ConstraintType = 1
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 33,
+                    TaskName = "Handover Preparation",
+                    StartDate = new DateTime(2025, 7, 8),
+                    EndDate = new DateTime(2025, 7, 10),
+                    Duration = 3,
+                    Progress = 0,
+                    Predecessor = "32",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 7, 8)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 34,
+                    TaskName = "Client Handover",
+                    StartDate = new DateTime(2025, 7, 11),
+                    EndDate = new DateTime(2025, 7, 12),
+                    Duration = 2,
+                    Progress = 0,
+                    Predecessor = "33",
+                    ConstraintType = 6,
+                    ConstraintDate = new DateTime(2025, 7, 12)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 35,
+                    TaskName = "Warranty Period Begins",
+                    StartDate = new DateTime(2025, 7, 14),
+                    EndDate = new DateTime(2025, 7, 15),
+                    Duration = 2,
+                    Progress = 0,
+                    Predecessor = "34FS",
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 36,
+                    TaskName = "Routine Maintenance Visits",
+                    StartDate = new DateTime(2025, 7, 16),
+                    EndDate = new DateTime(2025, 7, 25),
+                    Duration = 10,
+                    Progress = 0,
+                    Predecessor = "35",
+                    ConstraintType = 1
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 37,
+                    TaskName = "First Year Warranty Review",
+                    StartDate = new DateTime(2025, 7, 28),
+                    EndDate = new DateTime(2025, 8, 1),
+                    Duration = 5,
+                    Progress = 0,
+                    Predecessor = "36FS",
+                    ConstraintType = 4,
+                    ConstraintDate = new DateTime(2025, 7, 28)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 38,
+                    TaskName = "Final Project Documentation",
+                    StartDate = new DateTime(2025, 8, 4),
+                    EndDate = new DateTime(2025, 8, 6),
+                    Duration = 3,
+                    Progress = 0,
+                    Predecessor = "37FS",
+                    ConstraintType = 6,
+                    ConstraintDate = new DateTime(2025, 8, 6)
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 39,
+                    TaskName = "Celebrate Project Completion",
+                    StartDate = new DateTime(2025, 8, 7),
+                    EndDate = new DateTime(2025, 8, 9),
+                    Duration = 3,
+                    Progress = 0,
+                    Predecessor = "38",
+                    ConstraintType = 0
+                },
+                new GanttDataSource()
+                {
+                    TaskId = 40,
+                    TaskName = "Begin Next Project Planning",
+                    StartDate = new DateTime(2025, 8, 10),
+                    EndDate = new DateTime(2025, 8, 13),
+                    Duration = 4,
+                    Progress = 0,
+                    Predecessor = "39FS",
+                    ConstraintType = 1
+                }
+            };
+
+            return GanttData;
+
         }
     }
 }

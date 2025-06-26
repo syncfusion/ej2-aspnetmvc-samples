@@ -36,7 +36,7 @@
             .Filters(filters =>
             {
                 filters.Name("Product_Categories").Caption("Product Categories").Add();
-            })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).HyperlinkSettings(hyperlinksettings => hyperlinksettings.ShowValueCellHyperlink(true).CssClass("e-custom-class")).HyperlinkCellClick("onCellClick").ShowTooltip(false).Render()
+            })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).HyperlinkSettings(hyperlinksettings => hyperlinksettings.ShowValueCellHyperlink(true).CssClass("e-custom-class")).HyperlinkCellClick("onCellClick").ShowTooltip(false).DataBound("dataBound").Render()
         </div>
     </div>
     <div class="col-lg-4 property-section pivottable-property-section">
@@ -206,6 +206,14 @@
         }
     </style>
     <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function optionsdll() {
             var pivotObj = document.getElementById('pivotview').ej2_instances[0];
             var operatorddl = document.getElementById('conditions').ej2_instances[0];

@@ -16,7 +16,7 @@
            .FormatSettings(formatsettings =>
            {
                formatsettings.Name("PowUnits").Format("N").Add();
-               formatsettings.Name("ProCost").Format("C").Add();
+               formatsettings.Name("ProCost").Format("C2").Add();
            })
            .Rows(rows =>
            {
@@ -29,7 +29,7 @@
                columns.Name("EnerType").Caption("Energy Type").Add();
                columns.Name("EneSource").Caption("Energy Source").Add();
            })
-           .Values(values => { values.Name("PowUnits").Caption("Units (GWh)").Add(); values.Name("ProCost").Caption("Cost (MM)").Add(); })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).ShowFieldList(true).Render()
+           .Values(values => { values.Name("PowUnits").Caption("Units (GWh)").Add(); values.Name("ProCost").Caption("Cost (MM)").Add(); })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).ShowFieldList(true).DataBound("dataBound").Render()
         </div>
     </div>
 
@@ -76,6 +76,14 @@
         }
     </style>
     <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
         function costdrpdwnChange(args) {
             setSummaryType('ProCost', args.value);
         }

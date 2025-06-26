@@ -150,7 +150,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     {
                         Type = "Bpmn",
                         Shape = "Gateway",
-                        gateWay = new DiagramBpmnGateway() { Type = BpmnGateways.Exclusive }
+                        Gateway = new DiagramBpmnGateway() { Type = BpmnGateways.Exclusive }
                     },
                     Tooltip = new DiagramDiagramTooltip() { Content = "proceed to validate?" }
                 });
@@ -168,7 +168,6 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     {
                         Type = "Bpmn",
                         Shape = "Gateway",
-                        gateWay = new DiagramBpmnGateway() { Type = BpmnGateways.Exclusive }
                     },
                     Tooltip = new DiagramDiagramTooltip() { Content = "Whether the reported/requested bug/feature is valid?" }
                 });
@@ -312,7 +311,10 @@ namespace EJ2MVCSampleBrowser.Controllers.Diagram
                     {
                         Type = "Bpmn",
                         Shape = "Gateway",
-                        gateWay = new DiagramBpmnGateway() { Type = BpmnGateways.Parallel }
+                        Gateway = new DiagramBpmnGateway()
+                        {
+                            Type = BpmnGateways.Parallel
+                        }
                     },
                     Tooltip = new DiagramDiagramTooltip() { Content = "can log?" }
                 });

@@ -57,7 +57,7 @@
 @section Scripts{
 <script>
     var documenteditor;    
-    document.addEventListener('DOMContentLoaded', function () {        
+document.addEventListener('DOMContentLoaded', function () {        
         var documenteditorElement = document.getElementById("container");
         documenteditorElement.style.height = "590px";
         documenteditorElement.style.width = "100%";
@@ -79,7 +79,7 @@
             updateDocumentTitle();
         };
         titleBarDiv = document.getElementById('documenteditor_titlebar');
-        initComponentAndWireEvent();       
+        initComponentAndWireEvent();     
     });
     document.getElementById("picker").addEventListener('change', function (args) {
         var container = document.getElementById("container").ej2_instances[0];
@@ -121,6 +121,7 @@
         display: block;
         height: 500px;
     }
+
     #documenteditor_titlebar {
         border-bottom: 1px solid #2B3481;
         height: 36px;
