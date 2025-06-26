@@ -5,7 +5,7 @@ This repository contains the demos of [Syncfusion ASP.NET MVC Components](https:
 The following topics can help you to use the Syncfusion ASP.NET MVC Components and run this application in your local.
 
 * [Requirements to run the demo](#requirements-to-run-the-demo)
-* [How to run the demo](#how-to-run-the-demo)
+* [How to run the demo](#how-to-run-the-demo) 
 * [ASP.NET MVC documentation](https://ej2.syncfusion.com/aspnetmvc/documentation/introduction)
 * [ASP.NET MVC Components Catalog](#aspnet-mvc-components-catalog)
 * [License](#license)
