@@ -1,0 +1,236 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div id="control_wrapper">
+            <div id="container" style="overflow:auto">
+                @Html.EJS().Calendar("calendar").Change("startDate").Min(ViewData["minDate"]).Max(ViewData["maxDate"]).Render()
+                <br />
+                <span id="date_label"> Selected Value: </span>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function startDate(args) {
+        /*Displays selected date in the label*/
+        var globalize = new ej.base.Internationalization(this.locale);
+        var selectedValue = globalize.formatDate(args.value);
+        (document.getElementById('date_label')).textContent = 'Selected Value: ' + selectedValue;
+    }
+</script>
+
+<style>
+    #control_wrapper {
+        margin: 0 auto;
+        max-width: 300px;
+    }
+
+    .control-section {
+        margin: 25px auto;
+    }
+
+    #control_wrapper #container {
+        min-height: 300px;
+    }
+
+    .e-bigger #control_wrapper #container {
+        min-height: 380px;
+    }
+
+    body.fluent-dark #date_label,
+    body.fluent2-dark #date_label,
+    body.fluent2-highcontrast #date_label,
+    body.bootstrap5-dark #date_label,
+    body.tailwind-dark #date_label,
+    body.tailwind3-dark #date_label,
+    body.material-dark #date_label,
+    body.material3-dark #date_label,
+    body.fabric-dark #date_label,
+    body.bootstrap-dark #date_label {
+        color: white;
+    } 
+
+    #selected {
+        height: 50px;
+        width: 242px;
+        display: block;
+        font-weight: inherit;
+        line-height: 50px;
+        color: rgba(0, 0, 0, 0.58);
+    }
+
+    span.e-icons.highlight {
+        margin-top: -13px;
+        display: block;
+        margin-left: 4px;
+    }
+
+        span.e-icons.highlight,
+        span.e-icons.highlight:before {
+            color: rgb(0, 0, 255);
+        }
+
+            span.e-icons.highlight:before {
+                content: "\e865";
+                vertical-align: middle;
+                margin-right: 3px;
+                font-size: 4px;
+                position: relative;
+                top: -1px;
+                font-weight: normal;
+            }
+
+    .e-selected span.e-icons.highlight:before {
+        color: #fff;
+    }
+
+    span.e-icons.highlight {
+        margin-top: -11px;
+        display: block;
+        margin-left: 4px;
+    }
+
+    .e-customStyle span.e-icons.highlight {
+        margin-top: -13px;
+        display: block;
+        margin-left: 4px;
+    }
+
+        .e-customStyle span.e-icons.highlight,
+        .e-customStyle span.e-icons.highlight:before {
+            color: rgb(0, 0, 255);
+        }
+
+    .e-customStyle .e-other-month span.e-icons.highlight:before {
+        content: "";
+    }
+
+    .e-customStyle span.e-icons.highlight:before {
+        content: "\e865";
+        vertical-align: middle;
+        margin-right: 3px;
+        font-size: 4px;
+        position: relative;
+        top: -1px;
+        font-weight: normal;
+    }
+
+    .e-customStyle .e-selected span.e-icons.highlight:before {
+        color: #fff;
+    }
+
+    .e-customStyle span.e-icons.highlight {
+        margin-top: -11px;
+        display: block;
+        margin-left: 4px;
+    }
+
+    .e-customStyle .e-calendar .e-content span.special,
+    .e-customStyle .e-calendar .e-content span.daycell {
+        font-weight: bold;
+    }
+
+    .e-customStyle .e-calendar .e-content span.special {
+        border-radius: 50%;
+    }
+
+    .e-customStyle span.special.e-day.birthday {
+        color: orangered;
+    }
+
+    .e-customStyle span.special.e-day.farewell {
+        color: rgba(0, 0, 255, 1);
+    }
+
+    .e-customStyle span.special.e-day.vacation {
+        color: rgba(60, 118, 61, 1);
+    }
+
+    #start,
+    #end {
+        line-height: normal;
+        height: 36px;
+        width: 100%;
+        border: 1px solid rgba(158, 158, 158, 0.45);
+        text-indent: .857em;
+        font-size: 13px;
+        font-family: Segoe UI;
+        margin-bottom: 10px;
+    }
+
+    .form-group .content-wrapper {
+        float: left;
+        padding: 0 10px;
+    }
+
+    ::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: black;
+        font-size: 14px;
+        opacity: 0.5;
+        font-style: oblique;
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        color: black;
+        font-size: 14px;
+        opacity: 0.5;
+        font-style: oblique;
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: black;
+        font-size: 14px;
+        opacity: 0.5;
+        font-style: oblique;
+    }
+
+    :-ms-input-placeholder {
+        color: black;
+        font-size: 14px;
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        font-style: oblique;
+    }
+
+    #cultures {
+        display: block;
+        width: 100px;
+    }
+
+    body.highcontrast #date_label {
+        color: white;
+    }
+</style>
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+             In the following sample, a specific date ranges from 5th to 27th of a month has been set to select from the Calendar. All the other dates are out of range and <code>restricted</code> to set or select.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            Date Range sample illustrates the date selection within a specific range in a calendar by using the <code>min</code> and <code>max</code> properties. Here, the date selection range was resricted within 5th to 27th of this month.
+        </p>
+        <p>
+            More information on the date range restriction can be found in this
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/calendar/date-range/" target="_blank" aria-label="documentation section"> documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Date Range in ASP.NET MVC Calendar control. Explore here for more details."/>
+                }
+@section Title{
+                    <title>ASP.NET MVC Calendar Date Range Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Date Range in ASP.NET MVC Calendar Control</h1>
+                }

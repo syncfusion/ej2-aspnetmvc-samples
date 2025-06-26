@@ -1,0 +1,53 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @Html.EJS().CircularChart3D("container").Rotation(15).Tilt(-15).Title("Browser Market Shares in November 2023").HighlightMode(Syncfusion.EJ2.Charts.CircularChart3DHighlightMode.Point
+        ).Series(series =>
+        {
+            series.XName("X").YName("Y").InnerRadius("55%").Radius("75%")
+            .DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.CircularChart3DLabelPosition.Inside).EnableRotation(true).Name("Text").Font(ft => ft.FontWeight("600"))
+            .ConnectorStyle(cl => cl.Length("20px"))).DataSource(ViewData["ChartData"]).Add();
+        }).Tooltip(tt => tt.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header("")
+        ).LegendSettings(leg => leg.Visible(true).EnableHighlight(true)).Load("load").Render()
+    </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/CircularChart3D/theme-color.js"></script>
+    <script>
+        function load(args) {
+            loadCircular3DChartTheme(args);
+            args.chart.legendSettings.position = ej.base.Browser.isDevice ? "Bottom" : "Right";
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the 3D Circular Chart Pie with Legend in ASP.NET MVC 3D Circular Chart control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample shows the browser market share using a 3D donut chart with a legend displayed on the right side of the chart.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render a 3D donut chart with a legend. The legend provides information about the data points in the chart. Clicking on a legend item can collapse the corresponding data point, and hovering over a legend item can highlight the data point.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point on touch-enabled devices.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC 3D Circular Chart Pie with Legend Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of 3D Circular Chart Pie with Legend in ASP.NET MVC 3D Circular Chart Control</h1>
+}
+

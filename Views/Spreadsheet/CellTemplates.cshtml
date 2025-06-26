@@ -1,0 +1,178 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Spreadsheet
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Spreadsheet("spreadsheet").ShowRibbon(false).EnableContextMenu(false).ShowFormulaBar(false).AllowEditing(false).Created("createdHandler").BeforeSelect("beforeSelectHandler").BeforeCellRender("beforeCellRenderHandler").ContextMenuBeforeOpen("contextMenuBeforeOpenHandler").ScrollSettings(scrollSettings =>
+   {
+       scrollSettings.EnableVirtualization(false).IsFinite(true);
+   }).SelectionSettings(selectionSettings =>
+   {
+       selectionSettings.Mode(SelectionMode.None);
+   }).Sheets(sheet =>
+   {
+       sheet.Name("Registration Form").RowCount(40).ColCount(30).ShowGridLines(false).Rows(row =>
+       {
+           row.Height(55).Cells(cell => cell.Index(1).Value("Interview Registration Form").Style(style =>
+           {
+               style.FontWeight(FontWeight.Bold).TextAlign(TextAlign.Center).VerticalAlign(VerticalAlign.Middle).FontSize("12pt");
+           }).Add()).Add();
+           row.Height(45).Cells(cell => cell.Index(1).Value("Name").Add()).Add();
+           row.Height(45).Cells(cell => cell.Index(1).Value("Date of Birth:").Add()).Add();
+           row.Height(45).Cells(cell => cell.Index(1).Value("Gender:").Add()).Add();
+           row.Height(45).Cells(cell => cell.Index(1).Value("Year of Experience:").Add()).Add();
+           row.Height(45).Cells(cell => cell.Index(1).Value("Areas of Interest:").Add()).Add();
+           row.Height(45).Cells(cell => cell.Index(1).Value("Mobile Number:").Add()).Add();
+           row.Height(45).Cells(cell => cell.Index(1).Value("Email:").Add()).Add();
+           row.Height(82).Cells(cell => cell.Index(1).Value("Address:").Add()).Add();
+       }).Columns(column =>
+            {
+           column.Index(1).Width(190).Add();
+           column.Width(350).Add();
+       }).Ranges(ranges =>
+            {
+           ranges.Template("<input />").Address("C2:C3").Add();
+           ranges.Template("<div style='padding-left: 2px'><input type='radio' name='gender' value='male' /><input type='radio' name='gender' value='female'/></div>").Address("C4").Add();
+           ranges.Template("<input />").Address("C5:C8").Add();
+           ranges.Template("<textarea rows='3'/>").Address("C9").Add();
+           ranges.Template("<button class='e-btn e-flat' style='float:right'>Add</button>").Address("C11").Add();
+       }).Add();
+   }).Render()
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Cell Templates in ASP.NET MVC Spreadsheet control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the cell template feature with interview registration form scenario using input components.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, cell template is applied to `C2:C9` and instantiated with input components like TextBox, DropDownList,
+            RadioButton, MultiSelect, DatePicker etc.
+        </p>
+        <p>
+            More information about cell template feature can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started-mvc" aria-label="documentation section">
+                documentation
+            <span class="sr-only">opens in a new tab</span></a> section.
+        </p>
+    </div>
+}
+
+<script>
+    function createdHandler() {
+        //Applies format to specified range
+        this.cellFormat({ fontWeight: 'bold' }, 'B2:B9');
+        this.cellFormat({ verticalAlign: 'middle' }, 'B2:C9');
+    }
+    function beforeSelectHandler(args) {
+        //Prevents selection
+        args.cancel = true;
+    }
+    function beforeCellRenderHandler(args) {
+        //Initializing input components before cell rendering
+        if (this.activeSheetIndex === 0) {
+            var target = args.element.firstElementChild;
+            switch (args.address) {
+                case 'B1':
+                    args.element.colSpan = 2;
+                    break;
+                case 'C2':
+                    new ej.inputs.TextBox({ placeholder: 'Name' }, target);
+                    break;
+                case 'C3':
+                    new ej.calendars.DatePicker({ placeholder: 'DOB', }, target);
+                    break;
+                case 'C4':
+                    new ej.buttons.RadioButton({ label: 'Male' }, args.element.firstElementChild.firstElementChild);
+                    new ej.buttons.RadioButton({ label: 'Female' }, args.element.firstElementChild.lastElementChild);
+                    break;
+                case 'C5':
+                    var experience =  ['0 - 1 year', '1 - 3 years', '3 - 5 years', '5 - 10 years'];
+                    new ej.dropdowns.DropDownList({
+                        placeholder: 'Experience',
+                        dataSource: experience
+                    }, target);
+                    break;
+                case 'C6':
+                    var languages = ['JAVA', 'C#', 'SQL'];
+                    new ej.dropdowns.MultiSelect({
+                        showClearButton: false,
+                        placeholder: 'Areas of Interest',
+                        dataSource: languages
+                    }, target);
+                    break;
+                case 'C7':
+                    new ej.inputs.TextBox({
+                        placeholder: 'Mobile Number'
+                    }, target);
+                    break;
+                case 'C8':
+                    new ej.inputs.TextBox({
+                        placeholder: 'Email'
+                    }, target);
+                    break;
+                case 'C9':
+                    new ej.inputs.TextBox(null, target);
+                    break;
+            }
+        }
+    }
+    function contextMenuBeforeOpenHandler() {
+        this.enableContextMenuItems(['Duplicate'], false, false);
+    }
+</script>
+
+@*custom code start*@
+
+<style>
+    .control-section {
+        height: 550px;
+    }
+
+    #sb-content .e-spreadsheet .e-tab .e-tab-text {
+        display: inherit;
+    }
+
+    .e-spreadsheet .e-cell .e-radio-wrapper {
+        margin: 5px;
+    }
+
+    .e-spreadsheet .e-cell .e-radio-wrapper:first-child {
+            margin-left: 0;
+    }
+
+    .e-spreadsheet .e-cell .e-radio + label .e-label {
+        color: rgba(0, 0, 0, 0.87);
+    }
+
+    .bootstrap5\.3-dark .e-custom-spreadsheet.e-spreadsheet .e-sheet .e-sheet-content .e-cell-template .e-btn.e-flat {
+        background-color: #212529;
+        color: #dee2e6;
+    }
+
+    .tailwind3-dark .e-custom-spreadsheet.e-spreadsheet .e-sheet .e-sheet-content .e-cell-template .e-btn.e-flat {
+        background-color: #111827;
+    }
+
+    .e-spreadsheet .e-row-header .e-table .e-header-cell {
+        vertical-align: middle;
+    }
+
+</style>
+
+@*custom code end*@
+
+@section Title{
+                    <title>ASP.NET MVC Spreadsheet Cell Templates Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Cell Templates in ASP.NET MVC Spreadsheet Control</h1>
+                }

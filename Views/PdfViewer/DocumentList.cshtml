@@ -1,0 +1,415 @@
+@using Syncfusion.EJ2.Popups
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "DocumentList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string serviceUrl = VirtualPathUtility.ToAbsolute("~/api/PdfViewer/");
+}
+
+@section ControlsSection{
+    <div id="target" class="col-lg-12 control-section">
+        <div class="flex-container">
+            <label class="switchLabel" for="checked">Standalone PDF Viewer</label>
+            <div class="e-message render-mode-info">
+                <span class="e-msg-icon render-mode-info-icon" title="Turn OFF to render the PDF Viewer as server-backed"></span>
+            </div>
+            @Html.EJS().Switch("checked").Checked(true).Change("change").CssClass("buttonSwitch").Render()
+        </div>
+        @{
+            List<object> commands = new List<object>();
+            commands.Add(new { buttonOption = new { cssClass = "e-icons e-eye e-flat" }, title = "View" });
+            commands.Add(new { buttonOption = new { cssClass = "e-icons e-edit e-flat" }, title = "Edit" });
+
+        }
+        @(Html.EJS().Grid("Grid")
+    .DataSource((IEnumerable<object>)ViewData["dataSource"]).RecordClick("recordClick")
+    .Columns(col =>
+    {
+        col.Template("#filetemplate").HeaderText("File Name").Add();
+        col.HeaderText("Author").Field("Author").Add();
+        col.HeaderText("Actions").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Commands(commands).Add();
+    }).Render()
+    )
+
+        @Html.EJS().Dialog("defaultDialog").Open("dialogOpen").Close("dialogClose").IsModal(true).ContentTemplate(@<div>
+            <div class="control-section">
+                @Html.EJS().PdfViewer("pdfviewer").ResourceUrl("https://cdn.syncfusion.com/ej2/23.2.6/dist/ej2-pdfviewer-lib").DocumentLoad("documentLoaded").Height("745px").Render()
+            </div>
+        </div>).ShowCloseIcon(true).CloseOnEscape(true).Created("created").Width("90%").Height("90%").Render()
+    </div>
+}
+
+@section PreScripts {
+    <script>
+    var dialogObj, gridObj, mode;
+
+    function dialogClose() {
+        document.getElementById('Grid').style.display = 'block';
+    }
+
+    function dialogOpen() {
+        document.getElementById('Grid').style.display = 'none';
+    }
+
+    function dlgButtonClick() {
+        dialogObj.hide();
+        document.getElementById('Grid').style.display = 'block';
+    }
+
+    function documentLoaded() {
+        var pdfViewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (mode == "View") {
+            pdfViewer.enablePageOrganizer = false;
+        }
+        else {
+            pdfViewer.enablePageOrganizer = true;
+        }
+    }
+
+    function created() {
+        dialogObj = this;
+        dialogObj.hide();
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        gridObj = document.getElementById('Grid').ej2_instances[0];
+    });
+
+    function change(args) {
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (args.checked) {
+            viewer.serviceUrl = '';
+        } else {
+            viewer.serviceUrl = '@serviceUrl';
+        }
+    }
+
+    function recordClick(args) {
+        document.getElementById('Grid').style.display = 'none';
+        var fileName = args.rowData.FileName;
+        var filePath = args.rowData.Url;
+        dialogObj.header = fileName;
+        var viewer = document.getElementById('pdfviewer').ej2_instances[0];
+        if (args.target.title == "View") {
+            mode = "View";
+            viewer.textFieldSettings = {
+                isReadOnly: true,
+            };
+            viewer.radioButtonFieldSettings = {
+                isReadOnly: true,
+            };
+            viewer.DropdownFieldSettings = {
+                isReadOnly: true,
+            };
+            viewer.checkBoxFieldSettings = {
+                isReadOnly: true,
+            };
+            viewer.signatureFieldSettings = {
+                isReadOnly: true,
+            };
+            viewer.listBoxFieldSettings = {
+                isReadOnly: true,
+            };
+            viewer.passwordFieldSettings = {
+                isReadOnly: true,
+            };
+            viewer.initialFieldSettings = {
+                isReadOnly: true,
+            };
+            viewer.contextMenuOption = "None";
+            viewer.annotationSettings = { isLock: true , author: 'Guest' };
+            viewer.enableStickyNotesAnnotation = false;
+            viewer.isFormDesignerToolbarVisible = false;
+            viewer.isAnnotationToolbarVisible = false;
+            viewer.toolbarSettings = {
+                showTooltip: true, toolbarItems: ['OpenOption', 'PageNavigationTool',
+                    'MagnificationTool', 'PanTool','PrintOption']
+            };
+        }
+        else {
+            mode = "Edit";
+            viewer.textFieldSettings = {
+                isReadOnly: false,
+            };
+            viewer.radioButtonFieldSettings = {
+                isReadOnly: false,
+            };
+            viewer.DropdownFieldSettings = {
+                isReadOnly: false,
+            };
+            viewer.checkBoxFieldSettings = {
+                isReadOnly: false,
+            };
+            viewer.signatureFieldSettings = {
+                isReadOnly: false,
+            };
+            viewer.listBoxFieldSettings = {
+                isReadOnly: false,
+            };
+            viewer.passwordFieldSettings = {
+                isReadOnly: false,
+            };
+            viewer.initialFieldSettings = {
+                isReadOnly: false,
+            };
+            viewer.contextMenuOption = "Block";
+            viewer.annotationSettings = { isLock: false , author: 'Guest' };
+            viewer.enableStickyNotesAnnotation = true;
+            viewer.toolbarSettings = {
+                showTooltip: true, toolbarItems: ['OpenOption', 'UndoRedoTool', 'PageNavigationTool',
+                    'MagnificationTool',
+                    'PanTool', 'SelectionTool', 'CommentTool', 'SubmitForm', 'AnnotationEditTool',
+                    'FormDesignerEditTool', 'FreeTextAnnotationOption', 'InkAnnotationOption',
+                    'ShapeAnnotationOption', 'StampAnnotation', 'SignatureOption', 'SearchOption',
+                    'PrintOption', 'DownloadOption'],
+                annotationToolbarItems: ['HighlightTool', 'UnderlineTool', 'StrikethroughTool',
+                    'ColorEditTool', 'OpacityEditTool', 'AnnotationDeleteTool', 'StampAnnotationTool',
+                    'HandWrittenSignatureTool', 'InkAnnotationTool', 'ShapeTool', 'CalibrateTool',
+                    'StrokeColorEditTool', 'ThicknessEditTool', 'FreeTextAnnotationTool', 'FontFamilyAnnotationTool',
+                    'FontSizeAnnotationTool', 'FontStylesAnnotationTool', 'FontAlignAnnotationTool',
+                    'FontColorAnnotationTool', 'CommentPanelTool'],
+                formDesignerToolbarItems: ['TextboxTool', 'PasswordTool', 'CheckBoxTool',
+                    'RadioButtonTool', 'DropdownTool', 'ListboxTool', 'DrawSignatureTool', 'DeleteTool']
+            };
+        }
+        dialogObj.show();
+        viewer.dataBind();
+        viewer.documentPath = filePath;
+    }
+    </script>
+}
+
+<script type="text/x-template" id="filetemplate">
+    <div class="file-name-content">
+        <div class="icon-and-text">
+            <svg width="24" height="30" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 3C0 1.34315 1.34315 0 3 0H13.7574C14.553 0 15.3161 0.316071 15.8787 0.87868L23.1213 8.12132C23.6839 8.68393 24 9.44699 24 10.2426V27C24 28.6569 22.6569 30 21 30H3C1.34315 30 0 28.6569 0 27V3Z" fill="#F54848" />
+                <path d="M14.5 11H22V10.5042C22 9.76949 21.7304 9.0603 21.2422 8.51114L16.9463 3.67818C15.9974 2.61074 14.6374 2 13.2092 2H13V9.5C13 10.3284 13.6716 11 14.5 11Z" fill="#FFB7B7" />
+                <path d="M16.3787 22V14.7273H21.3432V16.1549H18.1365V17.6463H21.0271V19.0774H18.1365V22H16.3787Z" fill="white" />
+                <path d="M11.7622 22H9.07397V14.7273H11.7586C12.4996 14.7273 13.1377 14.8729 13.6727 15.1641C14.2101 15.4529 14.6244 15.8696 14.9156 16.4141C15.2068 16.9562 15.3524 17.6049 15.3524 18.3601C15.3524 19.1177 15.2068 19.7687 14.9156 20.3132C14.6268 20.8577 14.2137 21.2756 13.6762 21.5668C13.1388 21.8556 12.5008 22 11.7622 22ZM10.8318 20.5014H11.6947C12.1019 20.5014 12.4464 20.4328 12.7281 20.2955C13.0122 20.1558 13.2264 19.9297 13.3709 19.6172C13.5176 19.3023 13.591 18.8833 13.591 18.3601C13.591 17.8369 13.5176 17.4202 13.3709 17.1101C13.2241 16.7976 13.0074 16.5727 12.721 16.4354C12.4369 16.2957 12.0865 16.2259 11.6699 16.2259H10.8318V20.5014Z" fill="white" />
+                <path d="M2.55054 22V14.7273H5.5548C6.09931 14.7273 6.56924 14.8338 6.9646 15.0469C7.36233 15.2576 7.66891 15.5523 7.88434 15.9311C8.09978 16.3076 8.2075 16.7455 8.2075 17.2451C8.2075 17.7469 8.09741 18.1861 7.87724 18.5625C7.65944 18.9366 7.34812 19.2266 6.94329 19.4326C6.53846 19.6385 6.05788 19.7415 5.50153 19.7415H3.64784V18.3566H5.17483C5.43998 18.3566 5.66133 18.3104 5.83889 18.2181C6.01881 18.1257 6.15494 17.9967 6.24727 17.831C6.3396 17.6629 6.38576 17.4676 6.38576 17.2451C6.38576 17.0201 6.3396 16.826 6.24727 16.6627C6.15494 16.4969 6.01881 16.3691 5.83889 16.2791C5.65897 16.1892 5.43761 16.1442 5.17483 16.1442H4.30835V22H2.55054Z" fill="white" />
+            </svg>
+            <div class="file-name-text"> ${FileName}</div>
+        </div>
+    </div>
+</script>
+
+<style>
+    .control-section {
+        padding-left: 10px;
+    }
+
+    /* custom code start */
+
+    @@media screen and (min-width: 150px) and (max-width: 480px) {
+        .control-section {
+            margin-bottom: 30px;
+        }
+
+        .control-wrapper {
+            margin-bottom: 0px;
+        }
+    }
+
+    #defaultDialog {
+        top: 0% !important;
+    }
+
+    .e-error,
+    .e-float-text {
+        font-weight: 500;
+    }
+
+    .e-custom-label {
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 20px;
+    }
+
+    #formId {
+        padding-top: 10px;
+        border: 1px solid #ccc;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+        border-radius: 5px;
+        background: #f9f9f9;
+        height: 267px;
+        overflow-y: scroll;
+    }
+
+    .material3-dark #formId,
+    .material-dark #formId,
+    .bootstrap5-dark #formId {
+        background: #212529;
+    }
+
+    .bootstrap-dark #formId {
+        background: #1a1a1a;
+    }
+
+    .fabric-dark #formId {
+        background: #201f1f;
+    }
+
+    .tailwind-dark #formId {
+        background: #1f2937;
+    }
+
+    .fluent-dark #formId {
+        background: #111111;
+    }
+
+    .material-dark .form-title,
+    .material3-dark .form-title,
+    .bootstrap-dark .form-title,
+    .fabric-dark .form-title,
+    .tailwind-dark .form-title,
+    .bootstrap5-dark .form-title,
+    .fluent-dark .form-title {
+        color: rgb(249 249 249);
+    }
+
+    .highcontrast form,
+    .highcontrast .header {
+        color: #fff;
+        background: #000000;
+    }
+
+    .header {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    table,
+    td,
+    th {
+        padding: 3px;
+    }
+
+    .form-horizontal .form-group {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-bottom: 5px;
+    }
+
+    #pdfviewer {
+        display: block;
+    }
+
+    .flex-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .render-mode-info {
+        background: none;
+        border: none;
+        padding-left: 0px;
+    }
+
+        .render-mode-info .render-mode-info-icon {
+            height: 16px;
+            width: 16px;
+        }
+
+    .switchLabel {
+        font-family: "Segoe UI", "GeezaPro", "DejaVu Serif", sans-serif;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.24px;
+        text-align: right;
+        font-size: 14px;
+        margin-bottom: 3px;
+    }
+
+    .render-mode-info .render-mode-info-icon::before {
+        line-height: normal;
+    }
+
+    .buttonSwitch {
+        Width: 40px;
+        Height: 24px;
+    }
+
+    @@font-face {
+        font-family: 'Font';
+        src: url(data:application/x-font-ttf;charset=utf-8;base64,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) format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    [class^="sf-icon-"], [class*=" sf-icon-"] {
+        font-family: 'Font' !important;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .sf-icon-edit::before {
+        content: "\e200";
+        font-family: 'Font' !important;
+    }
+
+    .sf-icon-eye::before {
+        content: "\e201";
+        font-family: 'Font' !important;
+    }
+
+    .file-name-container {
+        display: flex;
+        justify-content: left;
+    }
+
+    .file-name-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .icon-and-text {
+        display: flex;
+        align-items: left;
+    }
+
+    .file-name-text {
+        text-align: center;
+        margin-left: 8px;
+        margin-top: 5px;
+    }
+    /* custom code end */
+</style>
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the PDF Viewer inside Dialog in ASP.NET MVC. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demonstration showcases the process of presenting a list of PDF documents in a grid layout and accessing the document for viewing or editing through the PDF Viewer within a dialog box.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            More information on adding annotation programmatically can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/pdfviewer/getting-started/" aria-label="documentation section">
+                documentation section
+            <span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+
+@section Title{
+    <title>ASP.NET MVC PDF Viewer Document List Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Document List in ASP.NET MVC PDF Viewer Control</h1>
+}

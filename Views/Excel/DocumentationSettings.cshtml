@@ -1,0 +1,46 @@
+@using Syncfusion.EJ2;
+
+@section ActionDescription{
+    This sample demonstrates how to include document properties to spreadsheets using Excel (XlsIO) Library.
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Documentation Settings in ASP.NET MVC Excel (XlsIO) library. Explore here for more details."/>
+                }
+@section Description{
+    Document properties are details about a file. They include information about title, author name, subject, keywords, etc. You can also have custom properties. Essential XlsIO provides support for custom properties.
+    <br />
+    <br />Excel provides various page-setup options to control the way your spreadsheet fits onto paper; this is done using the "Page Setup" dialog. This allows you to select the size and orientation of the paper, the width of the margins, the headers and footers for each page, and the order of printing cells for sheets that will take several pieces of paper.
+    <br />
+}
+@section ControlsSection{
+    <div class="control-section">
+        @{Html.BeginForm("DocumentationSettings", "Excel", FormMethod.Post);
+        {
+            <p style="font-weight:normal">
+				Click the "Create Document" button to view the created Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.
+			</p>
+            <br />
+            <div>
+				Save As :
+				<input type="radio" id="XLS" name="SaveOption" value="Xls" />
+				<label for="XLS" style="font-weight:normal">XLS</label>
+				&nbsp;
+				<input type="radio" id="XLSX" name="SaveOption" value="xlsx" checked="checked" />
+				<label for="XLSX" style="font-weight:normal">XLSX</label>
+			</div>
+            <br />
+            <div class="celldiv">
+                @Html.EJS().Button("createbtn").Content("Create Document").Render()
+            </div>
+        Html.EndForm();
+        }
+            }
+        </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Excel (XlsIO) library - Documentation Settings Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Documentation Settings in ASP.NET MVC Excel (XlsIO) Library</h1>
+                }
