@@ -1,4 +1,6 @@
-# Syncfusion� ASP.NET MVC Components Examples  
+[![.NET](https://github.com/syncfusion/ej2-aspnetmvc-samples/actions/workflows/dotnet.yml/badge.svg)](https://github.com/syncfusion/ej2-aspnetmvc-samples/actions/workflows/dotnet.yml)
+
+# Syncfusion® ASP.NET MVC Components Examples  
 
 This repository contains the demos of [Syncfusion ASP.NET MVC Components](https://www.syncfusion.com/aspnet-mvc-ui-controls/). This is the best place to check our controls to get more insight into the usage of APIs.
 
@@ -196,7 +198,7 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
 
 Syncfusion ASP.NET MVC Components is available under the Syncfusion Essential Studio program, and can be licensed either under the Syncfusion Community License Program or the Syncfusion commercial license.
 
-To be qualified for the Syncfusion Community License Program you must have a gross revenue of less than one (1) million U.S. dollars (USD 1,000,000.00) per year and have less than five (5) developers in your organization, and agree to be bound by Syncfusion’s terms and conditions.
+To be qualified for the Syncfusion Community License Program you must have a gross revenue of less than one (1) million U.S. dollars (USD 1,000,000.00) per year and have less than five (5) developers in your organization, and agree to be bound by Syncfusionâs terms and conditions.
 
 Customers who do not qualify for the community license can contact sales@syncfusion.com for commercial licensing options.
 
