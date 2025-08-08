@@ -6356,8 +6356,8 @@ if (!window) {
         "uid": "00232314"
       },
       {
-        "url": "InvisibleSignature",
-        "name": "Invisible Signature",
+        "url": "InvisibleDigitalSignature",
+        "name": "Invisible Digital Signature",
         "category": "Signature",
         "order": 8,
         "component": "PdfViewer",
@@ -7654,7 +7654,8 @@ if (!window) {
         "component": "Schedule",
         "dir": "Schedule",
         "parentId": "034",
-        "type": "new"
+        "type": "new",
+        "hideOnDevice": true
       },
       {
         "url": "LocalData",

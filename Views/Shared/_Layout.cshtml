@@ -3,6 +3,8 @@
 @using System.IO;
 
 @{
+    var buildConfig = HttpContext.Current.Items["BuildConfig"] as string;
+    var isRelease = (buildConfig == "Release");
     String licenseKey = "";
     var path = Server.MapPath("~/SyncfusionLicense.txt");
     if (File.Exists(path) && File.ReadAllText(path).Trim().Length > 0)
@@ -13,17 +15,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager -->
-    <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-W8WD8WN');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0 , user-scalable=yes , maximum-scale=2.0" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -47,12 +38,14 @@
         var baseurl = window.baseurl = getAbsoluteURL();
         var themeName = location.hash.split('#/')[1];
         themeName = themeName ? themeName : 'tailwind3';
-        themeName = themeName === "bootstrap5" ? 'bootstrap5.3' : themeName === "bootstrap5-dark" ? "bootstrap5.3-dark" : themeName;
+        if (@isRelease.ToString().ToLower() !== "true") {
+            themeName = themeName === "bootstrap5" ? 'bootstrap5.3' : themeName === "bootstrap5-dark" ? "bootstrap5.3-dark" : themeName;
+        }
         document.write('<link href="' + baseurl + 'Content/styles/' + themeName + '.css" rel="stylesheet" />');
         if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
             document.write('<script src="' + baseurl + 'Scripts/bluebird.min.js"><\/script>');
             document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/shim.min.js"><\/script>');
-             if (window.NodeList && !NodeList.prototype.forEach) {
+            if (window.NodeList && !NodeList.prototype.forEach) {
                 NodeList.prototype.forEach = Array.prototype.forEach;
             }
         }
@@ -111,7 +104,7 @@
         }
         function highContrast() {
             // Check if the URL ends with "highcontrast"
-            if (window.location.href.endsWith("highcontrast")) {
+            if (window.location.href.endsWith("highcontrast") || window.location.href.endsWith("bootstrap4")) {
                 // Get the div element by its id
                 var themeSwitchDiv = document.getElementById("themeSwitchDiv");
                 // Hide the div by setting its display property to "none"
@@ -124,7 +117,7 @@
     </script>
     @Styles.Render("~/Content/css")
 </head>
-<body class="e-view">
+<body class="e-view" data-is-staging="@isRelease.ToString().ToLower()">
     @RenderBody()
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8WD8WN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -243,7 +236,7 @@
                     </div>
                 </div>
                 <div class="sb-header-item sb-table-cell  sb-header-settings sb-icons" id="prevent"></div>
-                @if(!(HttpContext.Current.Request.Url.Host == "localhost")) {
+                @if (!(HttpContext.Current.Request.Url.Host == "localhost")) {
                     <div class="sb-header-splitter sb-download-splitter"></div>
                     <div class='sb-header-item sb-table-cell sb-download-wrapper'>
                         <a href='https://www.syncfusion.com/downloads/aspnetmvc-js2?tag=es-seo-ej2-aspnetmvc-demo-menu-trial' target="_blank" aria-label="Free trial">
@@ -285,14 +278,24 @@
             </div>
             <div id='theme-switcher-popup' class='sb-theme-popup'>
                 <ul id="themelist" class="options" role="list">
-                    <li class="active" id="material3" role="listitem">
+                    @if (isRelease)
+                    {
+                        <li class="active" id="material" role="listitem">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Material</span>
+                        </li>
+                    }
+                    <li class="e-list" id="material3" role="listitem">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Material 3</span>
                     </li>
-                    @*<li class="e-list" id="material3-dark">
-            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-            <span class="switch-text">Material 3 Dark</span>
-        </li>*@
+                    @if (isRelease)
+                    {
+                        <li class="e-list" id="fabric" role="listitem">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Fabric</span>
+                        </li>
+                    }
                     <li class="e-list" id="fluent" role="listitem">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Fluent</span>
@@ -301,53 +304,46 @@
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">Fluent 2</span>
                     </li>
-                    @*<li class="e-list" id="fluent-dark">
-            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-            <span class="switch-text">Fluent Dark</span>
-        </li>*@
-                    <li class="e-list" id="bootstrap5.3" role="listitem">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Bootstrap 5</span>
-                    </li>
-                    @*<li class="e-list" id="bootstrap5-dark">
-            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-            <span class="switch-text">Bootstrap v5 Dark</span>
-        </li>*@
-                    @*<li class="e-list" id="bootstrap5.3" role="listitem">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Bootstrap 5.3</span>
-                    </li>*@
-                    @*<li class="e-list" id="tailwind">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Tailwind CSS</span>
-                    </li>*@
-                    <li class="e-list" id="tailwind3">
-                        <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                        <span class="switch-text">Tailwind CSS</span>
-                    </li>
-                    @*<li class="e-list" id="tailwind-dark">
-            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-            <span class="switch-text">Tailwind CSS Dark</span>
-        </li>*@
-                    @*<li class='e-list' id="material" role="listitem">
-            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-            <span class="switch-text">Material</span>
-        </li>*@
-                    @*<li class="e-list" id="bootstrap4" role="listitem">
-            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-            <span class="switch-text">Bootstrap v4</span>
-        </li>
-        @if (SampleHelpers.IsDebug)
-        {
-            <li class="e-list" id="bootstrap" role="listitem">
-                <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                <span class="switch-text">Bootstrap</span>
-            </li>
-            <li class="e-list" id="bootstrap-dark">
-                <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
-                <span class="switch-text">Bootstrap Dark</span>
-            </li>
-        }*@
+                    @if (isRelease)
+                    {
+                        <li class="e-list" id="bootstrap" role="listitem">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Bootstrap</span>
+                        </li>
+                        <li class="e-list" id="bootstrap4" role="listitem">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Bootstrap 4</span>
+                        </li>
+                        <li class="e-list" id="bootstrap5" role="listitem">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Bootstrap 5</span>
+                        </li>
+                        <li class="e-list" id="bootstrap5.3" role="listitem">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Bootstrap 5.3</span>
+                        </li>
+                        <li class="e-list" id="tailwind" role="listitem">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Tailwind CSS</span>
+                        </li>
+                        <li class="e-list" id="tailwind3" role="listitem">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Tailwind3 CSS</span>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="e-list" id="bootstrap5.3" role="listitem">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Bootstrap 5</span>
+                        </li>
+                        <li class="active" id="tailwind3">
+                            <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
+                            <span class="switch-text">Tailwind CSS</span>
+                        </li>
+                    }
+
                     <li class="e-list" id="highcontrast">
                         <span class='sb-icons sb-theme-select sb-icon-icon-selection'></span>
                         <span class="switch-text">High Contrast</span>
@@ -373,26 +369,35 @@
                         </div>
                         <div class='setting-content  setting-theme-change'>
                             <select id='sb-setting-theme' class='sb-setting-theme-select'>
-                                <option value="material3">Material 3</option>
-                                @* <option value="material3-dark">Material3 Dark</option>*@
-                                <option value="fluent">Fluent</option>
-                                <option value="fluent2">Fluent 2</option>
-                                @*<option value="fluent-dark" >Fluent Dark</option>*@
-                                <option value="bootstrap5.3">Bootstrap 5</option>
-                                @* <option value="bootstrap5-dark">Bootstrap v5 Dark</option>*@
-                                @*<option value="bootstrap5.3">Bootstrap 5.3</option>*@
-                                <option value="tailwind3">Tailwind CSS</option>
-                                @*<option value="tailwind">Tailwind CSS</option>*@
-                                @* <option value="tailwind-dark">Tailwind CSS Dark</option>*@
-                                @*<option value="material">Material</option>
-        <option value="bootstrap4">Bootstrap v4</option>
-        @if (SampleHelpers.IsDebug)
-        {
-            <option value="bootstrap">Bootstrap</option>
-            <option value="bootstrap-dark">Bootstrap Dark</option>
-        }*@
-                                <option value="highcontrast">High Contrast</option>
-                                <option value="fluent2-highcontrast">Fluent 2 High Contrast</option>
+                                    @if (isRelease)
+                                    {
+                                        <option value="material">Material</option>
+                                    }
+                                        <option value="material3">Material 3</option>
+                                    @if (isRelease)
+                                    {
+                                        <option value="fabric">Fabric</option>
+                                    }
+                                    <option value="fluent">Fluent</option>
+                                    <option value="fluent2">Fluent 2</option>
+                                    @if (isRelease)
+                                    {
+                                        <option value="bootstrap">Bootstrap</option>
+                                        <option value="bootstrap4">Bootstrap v4</option>
+                                        <option value="bootstrap5">Bootstrap v5</option>
+                                        <option value="bootstrap5.3">Bootstrap 5.3</option>
+                                        <option value="tailwind">Tailwind CSS</option>
+                                        <option value="tailwind3">Tailwind3 CSS</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="bootstrap5.3">Bootstrap 5</option>
+                                        <option value="tailwind3">Tailwind CSS</option>
+                                    }
+
+                                    <option value="highcontrast">High Contrast</option>
+                                    <option value="fluent2-highcontrast">Fluent 2 High Contrast</option>
+                                }
                             </select>
                         </div>
                     </div>

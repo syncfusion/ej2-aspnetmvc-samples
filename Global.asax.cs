@@ -67,6 +67,16 @@ namespace EJ2MVCSampleBrowser
             }
         }
 
+        protected void Application_AcquireRequestState(object sender, EventArgs e)
+        {
+#if RELEASE && STAGING
+            HttpContext.Current.Items["BuildConfig"] = "Release";
+#else
+            HttpContext.Current.Items["BuildConfig"] = "Debug";
+#endif
+        }
+
+
     }
 
 }

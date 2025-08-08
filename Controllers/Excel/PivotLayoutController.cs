@@ -57,12 +57,17 @@ namespace EJ2MVCSampleBrowser.Controllers.Excel
 
                 try
                 {
-                    return new Syncfusion.Mvc.Pdf.PdfResult(pdfDoc, "PivotLayout.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
+                    pdfDoc.Save("PivotLayout.pdf", HttpContext.ApplicationInstance.Response, HttpReadType.Save);
 
                 }
                 catch (Exception)
                 {
                 }
+                finally
+                {
+
+                }
+                return View();
 
             }
             else

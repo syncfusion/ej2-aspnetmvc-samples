@@ -185,8 +185,31 @@
 .bootstrap.e-bigger .e-samplestatus.new, .bootstrap.e-bigger .e-samplestatus.New,
 .bootstrap-dark.e-bigger .e-samplestatus.preview, .bootstrap-dark.e-bigger .e-samplestatus.Preview,
 .bootstrap-dark.e-bigger .e-samplestatus.update, .bootstrap-dark.e-bigger .e-samplestatus.Update,
-.bootstrap-dark.e-bigger .e-samplestatus.new, .bootstrap-dark.e-bigger .e-samplestatus.New {
-    top: 13px;
+.bootstrap-dark.e-bigger .e-samplestatus.new, .bootstrap-dark.e-bigger .e-samplestatus.New,
+.fabric.e-bigger .e-samplestatus.preview, .fabric.e-bigger .e-samplestatus.Preview,
+.fabric.e-bigger .e-samplestatus.update, .fabric.e-bigger .e-samplestatus.Update,
+.fabric.e-bigger .e-samplestatus.new, .fabric.e-bigger .e-samplestatus.New,
+.fabric-dark.e-bigger .e-samplestatus.preview, .fabric-dark.e-bigger .e-samplestatus.Preview,
+.fabric-dark.e-bigger .e-samplestatus.update, .fabric-dark.e-bigger .e-samplestatus.Update,
+.fabric-dark.e-bigger .e-samplestatus.new, .fabric-dark.e-bigger .e-samplestatus.New {
+    line-height: 11px !important;
+    top: 12px;
+}
+
+.fabric .e-samplestatus.preview, .fabric .e-samplestatus.Preview,
+.fabric .e-samplestatus.update, .fabric .e-samplestatus.Update,
+.fabric .e-samplestatus.new, .fabric .e-samplestatus.New,
+.fabric-dark .e-samplestatus.preview, .fabric-dark .e-samplestatus.Preview,
+.fabric-dark .e-samplestatus.update, .fabric-dark .e-samplestatus.Update,
+.fabric-dark .e-samplestatus.new, .fabric-dark .e-samplestatus.New  {
+    top: 8.5px;
+}
+
+.bootstrap4.e-bigger .e-samplestatus.preview.tree, .bootstrap4.e-bigger .e-samplestatus.Preview.tree,
+.bootstrap4.e-bigger .e-samplestatus.update.tree, .bootstrap4.e-bigger .e-samplestatus.Update.tree,
+.bootstrap4.e-bigger .e-samplestatus.new.tree, .bootstrap4.e-bigger .e-samplestatus.New.tree {
+    top: 9px;
+    line-height: 11px;
 }
 
 .highcontrast.e-bigger .e-samplestatus.preview, .highcontrast.e-bigger .e-samplestatus.Preview,
@@ -1440,6 +1463,7 @@ body.tailwind3-dark,
     top: 66px;
     height: calc(100% - 66px);
     -webkit-overflow-scrolling: touch;
+    border: unset;
 }
 
 .sb-left-back {
@@ -2580,7 +2604,8 @@ a.sb-ad-link, a.sb-ad-link:hover, a.sb-ad-link:active {
         top: 255px !important;
     }
 
-    .fluent2-highcontrast #sb-setting-currency_popup {
+    .fluent2-highcontrast #sb-setting-currency_popup,
+    .bootstrap4 #sb-setting-currency_popup {
         top: 370px !important;
     }
 
@@ -3102,7 +3127,7 @@ body.fluent-dark, .fluent-dark .sb-content, .fluent-dark .sb-content-section {
 .fluent-dark #search-input-wrapper input,
 .fluent-dark #search-input-wrapper input::placeholder {
     color: rgba(255, 255, 255, 0.87);
-    background: #252423;
+    background: #292827;
     border-bottom: 1px solid #969696;
 }
 .fluent-dark .sb-header, .fluent-dark .sb-switch-popup {
@@ -3151,7 +3176,7 @@ body.fluent-dark, .fluent-dark .sb-content, .fluent-dark .sb-content-section {
     color: #0000;
 }
 .fluent-dark .sb-theme-select {
-    color: #252423;
+    color: #292827;
 }
 .tailwind-dark .sb-theme-select {
     color: #1f2937;
@@ -3404,9 +3429,12 @@ body.tailwind-dark,
 .bootstrap5\.3-dark .sb-setting-translate,
 .bootstrap5\.3-dark .sample-navigation > button:hover,
 .bootstrap5\.3-dark .sb-switch-popup li:first-child,
-.bootstrap5\.3-dark .sb-theme-popup li.active .sb-theme-select, .bootstrap5\.3-dark .sb-icon-Home,
+.bootstrap5\.3-dark .sb-icon-Home,
 .bootstrap5\.3-dark .sb-left-pane .e-listview .e-list-group-item, .bootstrap5\.3-dark .sb-component-name {
     color: #0d6efd;
+}
+.bootstrap5\.3-dark .sb-theme-popup li.active .sb-theme-select {
+    color: #fff
 }
 .bootstrap5-dark .sb-icon-Home, .fluent-dark .sb-icon-Home {
     color: #A0A1A3;
@@ -3580,13 +3608,16 @@ body.tailwind-dark,
     color: #ffffff;
 }
 .fluent-dark .sb-left-pane .e-listview .e-list-item.e-active {
-    background: #292827;
+    background: #3b3a39;
     color: #ffffff;
 }
 .fluent-dark .sb-left-pane .e-listview .e-list-item.e-active:hover {
-    background: #292827;
+    background: #3b3a39;
 }
 
+.fluent-dark .sb-left-pane .e-treeview .e-list-item.e-active > .e-fullrow {
+    background-color: #3b3a39;
+}
 .tailwind-dark .sb-left-pane .e-listview .e-list-item.e-active {
     background: #5CC8E8;
     color: #000000;
@@ -4075,9 +4106,18 @@ body.tailwind-dark,
 .fabric-dark .sb-left-pane .e-treeview .e-list-item.e-hover > .e-fullrow {
     background-color: #73A6F4;
 }
-.bootstrap-dark .sb-left-pane .e-treeview .e-list-item.e-hover > .e-fullrow {
-    background-color: rgba(255, 255, 255, 0.06);
+.bootstrap .sb-left-pane .e-treeview .e-list-item.e-hover > .e-fullrow {
+    background-color: #317ab9;
 }
+.bootstrap-dark .sb-left-pane .e-treeview .e-list-item.e-hover > .e-fullrow {
+    background-color: #0070f0;
+}
+.bootstrap4 .sb-left-pane .e-treeview .e-list-item.e-active.e-hover > .e-text-content .e-list-text,
+.bootstrap5 .sb-left-pane .e-treeview .e-list-item.e-active.e-hover > .e-text-content .e-list-text,
+.highcontrast .sb-left-pane .e-treeview .e-list-item.e-hover > .e-text-content .e-list-text,
+.fluent2-highcontrast .sb-left-pane .e-treeview .e-list-item.e-active > .e-text-content .e-list-text {
+    color: #000000;
+}  
 .bootstrap5-dark .sb-left-pane .e-treeview .e-list-item.e-hover > .e-fullrow {
     background: #464d53;
 }
@@ -4112,7 +4152,7 @@ body.tailwind-dark,
 .fluent-dark .sb-search-result .e-list-item:hover,
 .fluent-dark .sb-left-pane .e-listview .e-list-item:hover,
 .fluent-dark .sb-left-pane .e-treeview .e-list-item.e-hover > .e-fullrow {
-    background-color: #252423;
+    background-color: #3b3a39;
     color: #FFFFFF;
 }
 .fluent-dark .sb-theme-popup li:hover {
@@ -4398,6 +4438,9 @@ body.material3-dark,
     color: rgb(208, 188, 255);
 }
 
+.bootstrap5-dark .sb-left-pane .e-listview .e-list-group-item, .bootstrap5-dark .sb-component-name {
+    color: rgba(255, 255, 255, 0.87);
+}
 
 .material3-dark .sb-left-pane .e-listview .e-list-item.e-active, .material3-dark .sb-left-pane .e-listview .e-list-item.e-active:hover, .material3-dark .cont {
     background-color: rgb(208, 188, 255);
@@ -4410,8 +4453,16 @@ body.material3-dark,
 
 .material3-dark .sb-search-result .e-list-item:hover,
 .material3-dark .sb-control-navigation .e-treeview .e-list-item.e-active > .e-fullrow {
-    color: rgb(208, 188, 255);
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color: rgb(208, 188, 255);
+    border: unset;
+}
+
+.material3-dark .sb-control-navigation .e-treeview .e-list-item.e-active > .e-text-content .e-list-text,
+.material3-dark .sb-control-navigation .e-treeview .e-list-item.e-active > .e-text-content .e-icon-collapsible,
+.material3-dark .sb-control-navigation .e-treeview .e-list-item.e-active > .e-text-content .e-icon-expandable,
+.material3-dark .sb-control-navigation .e-treeview .e-list-item.e-hover > .e-text-content .e-icon-collapsible,
+.material3-dark .sb-control-navigation .e-treeview .e-list-item.e-hover > .e-text-content .e-icon-expandable {
+    color: #000000;
 }
 
 .material3-dark .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item.e-active > .e-tab-wrap > .e-text-wrap > .e-tab-text, .material3-dark .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item:hover > .e-tab-wrap > .e-text-wrap > .e-tab-text {
@@ -4631,7 +4682,7 @@ body.material3-dark,
 
 /*Adding this styles to ActionDescription anchor Tag*/
 .sb-action-description p a {
-    background-color: #FFFFFF;
+    background-color: transparent;
     text-decoration: underline;
 }
 
@@ -4763,8 +4814,7 @@ body.fluent2-highcontrast,
 
 .fluent2-highcontrast .sb-search-result .e-list-item:hover,
 .fluent2-highcontrast .sb-control-navigation .e-treeview .e-list-item.e-active > .e-fullrow {
-    color: #1aebff;
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color: #1aebff;
 }
 
 .fluent2-highcontrast .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item.e-active > .e-tab-wrap > .e-text-wrap > .e-tab-text, .fluent2-highcontrast .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item:hover > .e-tab-wrap > .e-text-wrap > .e-tab-text {
@@ -4859,6 +4909,7 @@ body.fluent2-highcontrast,
 .fluent2-highcontrast .e-samplestatus.new,
 .fluent2-highcontrast .e-samplestatus.update {
     top: 6px;
+    right: 8px;
 }
 .e-bigger.fluent2-highcontrast .e-samplestatus.update.tree,
 .e-bigger.fluent2-highcontrast .e-samplestatus.preview.tree,
@@ -4879,6 +4930,7 @@ body.fluent2-highcontrast,
 .fluent2-dark .e-samplestatus.update.tree, 
 .fluent2-dark .e-samplestatus.new.tree {
     top: 6px;
+    right: 8px;
     line-height: 8px;
 }
 .fluent2-dark .e-samplestatus.preview,
@@ -4888,6 +4940,7 @@ body.fluent2-highcontrast,
 .fluent2 .e-samplestatus.update,
 .fluent2 .e-samplestatus.new {
     top: 6px;
+    right: 8px;
     line-height: 8px;
 }
 .fluent2.e-bigger .e-samplestatus.preview,
@@ -5037,8 +5090,7 @@ body.fluent2-dark,
 
 .fluent2-dark .sb-search-result .e-list-item:hover,
 .fluent2-dark .sb-control-navigation .e-treeview .e-list-item.e-active > .e-fullrow {
-    color: #115ea3;
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color: #115ea3;
 }
 
 .fluent2-dark .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item.e-active > .e-tab-wrap > .e-text-wrap > .e-tab-text, .fluent2-dark .sb-content-tab > .e-tab.e-nested > .e-tab-header > .e-items.e-toolbar-items > .e-toolbar-item:hover > .e-tab-wrap > .e-text-wrap > .e-tab-text {
@@ -5178,8 +5230,8 @@ body.fluent2-dark,
 /* Styles for the browser's autofill feature */
 .fluent-dark #search-input:-webkit-autofill {
     -webkit-text-fill-color: #ffffff;
-    -webkit-box-shadow: 0 0 0px 1000px #252423 inset;
-    border-color: #252423;
+    -webkit-box-shadow: 0 0 0px 1000px #292827 inset;
+    border-color: #292827;
 }
 .material3-dark #search-input:-webkit-autofill,
 .fluent2-dark #search-input:-webkit-autofill,

@@ -7,10 +7,11 @@ var sidebar;
 var settingsidebar;
 var prevAction;
 var searchInstance;
+var isStaging = document.body.dataset.isStaging === "true";
 var headerThemeSwitch = document.getElementById('header-theme-switcher');
 var settingElement = ej.base.select('.sb-setting-btn');
 var themeList = document.getElementById('themelist');
-var themes = ['material3', 'fluent', 'fluent2', 'bootstrap5.3', 'tailwind3', 'highcontrast', 'fluent2-highcontrast'];
+var themes = isStaging ? ['material', 'material3', 'fabric', 'fluent', 'fluent2', 'bootstrap', 'bootstrap4', 'bootstrap5', 'bootstrap5.3', 'tailwind', 'tailwind3', 'highcontrast', 'fluent2-highcontrast']  : ['material3', 'fluent', 'fluent2', 'bootstrap5.3', 'tailwind3', 'highcontrast', 'fluent2-highcontrast'];
 //var themes= ['material3', 'material3-dark', 'fluent', 'fluent-dark', 'bootstrap5', 'bootstrap5-dark', 'tailwind', 'tailwind-dark', 'highcontrast'];
 var defaultTheme = 'tailwind3';
 var themeDropDown;
@@ -223,9 +224,9 @@ function renderSbPopups() {
             }
             var localtheme = localStorage.getItem("currentTheme");
             // If "-dark" is present in the URL, modify the value accordingly
-            if (localtheme != null && localtheme.includes("-dark") && e.value != "highcontrast" && e.value != "fluent2-highcontrast") {
-                if (isDarkModeURL() || window.location.href.includes('highcontrast') || window.location.href.includes('fluent2-highcontrast')) {
-                e.value += "-dark";
+            if (localtheme != null && localtheme.includes("-dark") && e.value != "highcontrast" && e.value != "fluent2-highcontrast" && e.value != "bootstrap4") {
+                if (isDarkModeURL() || window.location.href.includes('highcontrast') || window.location.href.includes('fluent2-highcontrast') || window.location.href.includes('bootstrap4')) {
+                    e.value += "-dark";
                 }
             } 
             switchTheme(e.value);
@@ -542,9 +543,11 @@ function changeTheme(e) {
     var target = e.target;
     target = ej.base.closest(target, 'li');
     var themeName = target.id;
-    themeName = themeName === 'bootstrap5.3' ? 'bootstrap5' : themeName;
+    if (!isStaging) {
+        themeName = themeName === 'bootstrap5.3' ? 'bootstrap5' : themeName;
+    }
     var storedURL = localStorage.getItem('PreviousURL');
-    if (storedURL != null && storedURL.includes("-dark") && themeName != "highcontrast" && themeName != "fluent2-highcontrast") {
+    if (storedURL != null && storedURL.includes("-dark") && themeName != "highcontrast" && themeName != "fluent2-highcontrast" && themeName != "bootstrap4") {
         themeName = themeName + "-dark";
     } else {
         themeName = themeName;
@@ -559,7 +562,9 @@ function changeTheme(e) {
 
 function switchTheme(str) {
     var hash = location.hash.split('/');
-    str = str === 'bootstrap5.3' ? 'bootstrap5' : str === 'bootstrap5.3-dark' ? 'bootstrap5-dark' : str;
+    if (!isStaging) {
+        str = str === 'bootstrap5.3' ? 'bootstrap5' : str === 'bootstrap5.3-dark' ? 'bootstrap5-dark' : str;
+    }
     if (hash[1] !== str) {
         hash[1] = str;
         localStorage.setItem('ej2-switch', ej.base.select('.sb-responsive-section .active').id);
@@ -949,7 +954,9 @@ function loadTheme(theme) {
             body.classList.remove(themes[themeItem]);
         }
     }
-    theme = theme == 'bootstrap5' ? 'bootstrap5.3' : theme == 'bootstrap5-dark' ? 'bootstrap5.3-dark' : theme;
+    if (!isStaging) {
+        theme = theme == 'bootstrap5' ? 'bootstrap5.3' : theme == 'bootstrap5-dark' ? 'bootstrap5.3-dark' : theme;
+    }
     body.classList.add(theme);
     themeList.querySelector('.active').classList.remove('active');
     /* themeList.querySelector('#' + theme).classList.add('active');*/
@@ -981,7 +988,7 @@ function loadTheme(theme) {
     hasher.initialized.add(parseHash);
     hasher.changed.add(parseHash);
     hasher.init();
-    if (theme == 'fluent2-highcontrast') {
+    if (theme == 'fluent2-highcontrast' || theme == 'bootstrap4') {
         var theamswitchDivDisable = document.getElementById("themeSwitchDiv");
         theamswitchDivDisable.style.display = 'none';
     }
@@ -1514,7 +1521,18 @@ function onDataSourceLoad(node, subNode, control, sample, sampleName) {
         }
     }
 }
-
+function initializeGTM() {
+    setTimeout(function () {
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-W8WD8WN');
+    }, 500);
+}
 function removeOverlay() {
     setTimeout(function () {
         contentTab.hideTab(1);
@@ -1526,6 +1544,7 @@ function removeOverlay() {
         mobNavOverlay(false);
         if (!sbBodyOverlay.classList.contains('sb-hide')) {
             sbBodyOverlay.classList.add('sb-hide');
+			initializeGTM();
         }
         if (!isMobile) {
             sbRightPane.scrollTop = 0;
@@ -1692,7 +1711,9 @@ window.addEventListener('hashchange', () => {
     if (isMobile) {
         var hash = window.location.hash;
         var themeValue = hash.split('/').pop();
-        themeValue = themeValue === 'bootstrap5-dark' ? 'bootstrap5.3-dark' : themeValue;
+        if (!isStaging) {
+            themeValue = themeValue === 'bootstrap5-dark' ? 'bootstrap5.3-dark' : themeValue;
+        }
         if (themeValue.includes('-dark') && themes.indexOf(themeValue.replace('-dark', '')) !== -1) {
             localStorage.setItem('currentTheme', themeValue);
             location.reload();
