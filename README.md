@@ -12,7 +12,7 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
 * [ASP.NET MVC Components Catalog](#aspnet-mvc-components-catalog)
 * [License](#license)
 * [Support and feedback](#support-and-feedback)
-
+ 
 ## Requirements to run the demo
 
 * [System requirements](https://ej2.syncfusion.com/aspnetmvc/documentation/system-requirements/)
