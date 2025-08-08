@@ -1,0 +1,139 @@
+@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.PivotView
+@using Syncfusion.EJ2.DropDowns
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Export in ASP.NET MVC Pivot Table control. Explore here for more details."/>
+                }
+@section ControlsSection{
+
+    <div class="col-lg-8 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("300").AllowExcelExport(true).AllowPdfExport(true).ShowFieldList(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>
+                )ViewData["Data"]).ExpandAll(false).EnableSorting(true)
+                .FormatSettings(formatsettings =>
+                {
+                    formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
+                })
+                .Rows(rows =>
+                {
+                    rows.Name("Country").Add();
+                    rows.Name("Products").Add();
+                })
+                .Columns(columns =>
+                {
+                    columns.Name("Year").Add();
+                    columns.Name("Order_Source").Caption("Order Source").Add();
+                })
+                .Values(values =>
+                {
+                    values.Name("In_Stock").Caption("In Stock").Add();
+                    values.Name("Sold").Caption("Units Sold").Add();
+                    values.Name("Amount").Caption("Sold Amount").Add();
+                })
+                .Filters(filters =>
+                {
+                    filters.Name("Product_Categories").Caption("Product Categories").Add();
+                })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DataBound("dataBound").Render()
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%;height:100%;">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 40%">
+                        <div>
+                            Export Type:
+                        </div>
+                    </td>
+                    <td style="width: 60%;">
+                        <div style="margin-left: -20px">
+                            @Html.EJS().DropDownList("mode").Width("160").Index(0).DataSource((IEnumerable<object>)ViewData["exportMode"]
+                            ).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td></td>
+                    <td>
+                        <div style="float: right">
+                            @Html.EJS().Button("export-btn").Content("Export").IsPrimary(true).Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        #pivotview {
+            width: 100%;
+            height: 100%;
+        }
+        .sb-sample-content-area {
+            min-height: 255px !important;
+        }
+        .control-section {
+            min-height: 255px !important;
+        }
+    </style>
+    <script>
+        var isInitialRender = true;
+        document.getElementById('export-btn').onclick = function () {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            var exportType = document.getElementById('mode').ej2_instances[0];
+            if (exportType.value === 'excel') {
+                pivotObj.excelExport();
+            }
+            else if (exportType.value === 'csv') {
+                pivotObj.csvExport();
+            }
+            else {
+                pivotObj.pdfExport();
+            }
+        };
+
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
+    </script>
+}
+
+@section PreScripts {
+    <script>
+        ej.base.enableRipple(false);
+    </script>
+}
+
+@section ActionDescription{
+   <div id="action-description">
+       <p>This sample demonstrates client-side exporting of the pivot table to Excel, CSV and PDF formats.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The pivot table supports client-side exporting and exports its data to the Excel, CSV and PDF formats data using
+            the
+            <code>excelExport</code>,
+            <code>csvExport</code> and
+            <code>pdfExport</code> methods.
+        </p>
+        <p>
+            Choose the export document type in the dropdown list available inside the property panel and click the export button to export
+            the pivot table to the selected document format.
+        </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Pivot Table Export Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Export in ASP.NET MVC Pivot Table Control</h1>
+                }

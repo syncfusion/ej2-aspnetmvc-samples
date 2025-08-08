@@ -1,0 +1,441 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Spreadsheet
+
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        @Html.EJS().Spreadsheet("spreadsheet").OpenUrl("PrintOpen").SaveUrl("PrintSave").Created("createdEvent").Sheets(sheet =>
+   {
+       sheet.Name("Car Sales").Ranges(ranges =>
+       {
+           ranges.DataSource(ViewData["PrintData"]).StartCell("A2").Add();
+       }).Rows(row =>
+       {
+           row.Height(51).Cells(cell =>
+           {
+               cell.Image(new List<Image> { new Image() { Src = (string)ViewData["ImageUrl"], Height = 40, Width = 80, Left = 130, Top = 5 } }).Add();
+               cell.Value("          Ivaa Premium Cars").ColSpan(5).Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Left, FontSize = "30pt", VerticalAlign = VerticalAlign.Middle }).Add();
+           }).Add();
+           row.Index(1).Height(45).Cells(cell =>
+           {
+               cell.Value("Customer Name").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("Mail ID").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("Model").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("No. of cars").Wrap(true).Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("Delivery Date").Wrap(true).Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("Amount").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "sarah.johnson@example.com" }).Add();
+               cell.Index(7).Chart(new List<Syncfusion.EJ2.Spreadsheet.Chart> { new Syncfusion.EJ2.Spreadsheet.Chart() { Type = Syncfusion.EJ2.Spreadsheet.ChartType.Column, Range = "C2:D58" } }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "michael.smith@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "emily.davis@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "john.anderson@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "jessica.martinez@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "daniel.thompson@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "samantha.harris@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "christopher.wilson@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "ashley.brown@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "matthew.taylor@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "olivia.garcia@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "david.hernandez@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "emma.moore@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "andrew.lewis@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "elizabeth.clark@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "james.walker@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "ava.rodriguez@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "ryan.white@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "madison.lee@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "nicholas.martin@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "sophia.hall@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "joshua.young@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "isabella.king@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "joseph.allen@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "charlotte.scott@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "william.green@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "amelia.adams@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "ethan.carter@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "mia.turner@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "alexander.baker@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "chloe.hill@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "benjamin.nelson@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "grace.mitchell@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "jacob.perez@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "avery.roberts@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "ethan.thomas@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "lily.phillips@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "samuel.davis@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "zoey.campbell@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "daniel.cooper@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "madeline.collins@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "nathan.edwards@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "evelyn.stewart@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "alexander.rivera@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "sophia.henderson@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "isaac.morris@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "claire.rogers@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "luke.flores@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "aubrey.long@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "julian.coleman@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "leah.reed@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "gabriel.bell@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "natalie.ward@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "lucas.brooks@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "hailey.mitchell@example.com" }).Add();
+           }).Add();
+           row.Cells(cell =>
+           {
+               cell.Index(1).Hyperlink(new SpreadsheetHyperlink() { Address = "jackson.ward@example.com" }).Add();
+           }).Add();
+
+           row.Index(58).Height(25).Cells(cell =>
+           {
+               cell.Index(4).Value("Total Amount").Style(new SpreadsheetCellStyle() { Border = "1px solid #A6A6A6", FontWeight = FontWeight.Bold, VerticalAlign = VerticalAlign.Middle, TextAlign = TextAlign.Center }).Add();
+               cell.Formula("=Sum(F3:F56)").Format("$#,##0.00").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, VerticalAlign = VerticalAlign.Middle, TextAlign = TextAlign.Right, Border = "1px solid #A6A6A6" }).Add();
+           }).Add();
+       }).Columns(column =>
+       {
+           column.Width(125).Add();
+           column.Width(205).Add();
+           column.Width(115).Add();
+           column.Width(50).Add();
+           column.Width(90).Add();
+           column.Width(80).Add();
+           column.Width(20).Add();
+       }).Add();
+       sheet.Name("Yearly Report").Ranges(ranges =>
+       {
+           ranges.StartCell("A2").DataSource(ViewData["YearlyReportDataSource"]).Add();
+       }).Rows(row =>
+       {
+           row.Height(51).Cells(cell =>
+           {
+               cell.Image(new List<Image> { new Image() { Src = (string)ViewData["ImageUrl"], Height = 40, Width = 80, Left = 95, Top = 5 } }).Add();
+               cell.Value("       Ivaa Premium Cars").ColSpan(6).Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Left, FontSize = "30pt", VerticalAlign = VerticalAlign.Middle }).Add();
+           }).Add();
+           row.Index(1).Height(23).Cells(cell =>
+           {
+               cell.Value("Model").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("Year 2018").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("Year 2019").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("Year 2020").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("Year 2021").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("Year 2022").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+               cell.Value("Year 2023").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Center, FontSize = "13pt", BackgroundColor = "#919aff", Color = "#ffffff", VerticalAlign = VerticalAlign.Middle }).Add();
+           }).Add();
+           row.Index(31).Height(25).Cells(cell =>
+           {
+               cell.Value("Total cars sold").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Left, VerticalAlign = VerticalAlign.Middle, Border = "1px solid #A6A6A6" }).Add();
+               cell.Formula("=Sum(B3:B31)").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Right, VerticalAlign = VerticalAlign.Middle, Border = "1px solid #A6A6A6" }).Add();
+               cell.Formula("=Sum(C3:C31)").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Right, VerticalAlign = VerticalAlign.Middle, Border = "1px solid #A6A6A6" }).Add();
+               cell.Formula("=Sum(D3:D31)").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Right, VerticalAlign = VerticalAlign.Middle, Border = "1px solid #A6A6A6" }).Add();
+               cell.Formula("=Sum(E3:E31)").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Right, VerticalAlign = VerticalAlign.Middle, Border = "1px solid #A6A6A6" }).Add();
+               cell.Formula("=Sum(F3:F31)").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Right, VerticalAlign = VerticalAlign.Middle, Border = "1px solid #A6A6A6" }).Add();
+               cell.Formula("=Sum(G3:G31)").Style(new SpreadsheetCellStyle() { FontWeight = FontWeight.Bold, TextAlign = TextAlign.Right, VerticalAlign = VerticalAlign.Middle, Border = "1px solid #A6A6A6" }).Add();
+           }).Add();
+       }).Columns(column =>
+       {
+           column.Width(120).Add();
+           column.Width(80).Add();
+           column.Width(80).Add();
+           column.Width(80).Add();
+           column.Width(80).Add();
+           column.Width(80).Add();
+           column.Width(80).Add();
+           column.Width(80).Add();
+       }).Add();
+   }).Render()
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td>
+                        <div style="padding-left: 0px;">Print type</div>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="selectIndex" autocomplete="off" id="printType">
+                                <option value="ActiveSheet" selected>Active Sheet</option>
+                                <option value="Workbook">Workbook</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div id="headerText" style="margin-top: 22px; margin-left: -10px;">Enable row and column headers</div><br />
+                    </td>
+                    <td>
+                        <div style="padding-top: 0px; margin-top:2px; margin-left: -10px;">
+                            <input type="checkbox" id="header" style="margin-top: 10px;" />
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div style="padding-top: 7px;margin-left:-10px;">Enable gridlines</div>
+                    </td>
+                    <td>
+                        <div style="padding-top: 0px; margin-top:-3px; margin-left: -10px;">
+                            <input type="checkbox" id="gridline" />
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td align='center' colspan="2">
+                        <div>
+                            @Html.EJS().Button("printbtn").Content("Print").IsPrimary(true).Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Printing functionality in ASP.NET MVC Spreadsheet control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the print functionality of the Spreadsheet within a car sales scenario as an example.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, the spreadsheet's <b>"File"</b> menu features a <b>"Print"</b> option, allowing you to print the current worksheet without gridlines as well as row and column headers, which serves as the default print setting.
+            You can also invoke the print option using the <kbd>Ctrl</kbd> + <kbd>P</kbd> keyboard shortcut. Any texts, charts, images, and formatted content incorporated into the document will be previewed and then printed.
+        </p>
+        <p>
+            Furthermore, there are built-in customization options available. If you need to print either the current worksheet or the entire workbook, you can select the appropriate option from the <b>"Print type"</b> dropdown list in the property panel.
+            To include row and column headers in the printed output, you can check the <b>"Enable row and column headers"</b> checkbox. Similarly, you can include gridlines in the printed output by checking the <b>"Enable gridlines"</b> checkbox.
+            Upon selecting the desired options in the property panel and clicking the <b>"Print"</b> button, the <code>print</code> method of the spreadsheet is invoked, facilitating customized printing.
+        </p>
+    </div>
+}
+
+<script>
+    var spreadsheet;
+    function createdEvent() {
+        this.numberFormat('$#,##0.00', 'Car Sales!F3:F59');
+        this.numberFormat('m/d/yyyy', 'Car Sales!E3:E58');
+        spreadsheet = this;
+    }
+    var printType = "ActiveSheet"
+    var allowRowColumnHeader = false;
+    var allowGridlines = false;
+    window.onload = function () {
+        var printTypeValue = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Print Type',
+            width: '100%',
+            change: () => {
+                printType = printTypeValue.value;
+            }
+        });
+        printTypeValue.appendTo('#printType');
+        var headerChange = new ej.buttons.CheckBox(
+            {
+                change: (args) => {
+                    allowRowColumnHeader = args.checked;
+                },
+                checked: false
+            },
+            '#header');
+
+        var gridlineChange = new ej.buttons.CheckBox(
+            {
+                change: (args) => {
+                    allowGridlines = args.checked;
+                },
+                checked: false
+            },
+            '#gridline');
+
+        document.getElementById('printbtn').onclick = () => {
+            spreadsheet.print({ type: printType, allowGridLines: allowGridlines, allowRowColumnHeader: allowRowColumnHeader });
+        };
+    }
+</script>
+
+@*custom code start*@
+
+<style>
+    .control-section {
+        height: 550px;
+    }
+</style>
+
+@*custom code end*@
+@section Title{
+    <title>ASP.NET MVC Spreadsheet Print Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Print in ASP.NET MVC Spreadsheet Control</h1>
+}

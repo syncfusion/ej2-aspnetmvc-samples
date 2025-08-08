@@ -1,0 +1,184 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+
+    <div class="col-lg-8 control-section">
+        
+ @(Html.EJS().Chart("container-vertical")//.ChartArea(ca => ca.Border(ViewData["border"]))
+        .Series(sr =>
+        {
+            sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line)
+              .XName("XValue")
+              .YName("YValue")
+              .Fill("Blue")
+              .Name("Line Interpolation").Opacity(1)
+              .EnableTooltip(false)
+              .Width(2).DataSource(ViewData["LinePoints"]).Add();
+            sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+              .XName("XValue")
+              .YName("YValue")
+              .Fill("Green")
+              .Name("Cubic Spline Interpolation").Opacity(1)
+              .EnableTooltip(false)
+              .Width(2).DataSource(ViewData["SplinePoints"]).Add();
+            sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
+              .XName("XValue")
+              .YName("YValue")
+              .Fill("Red")
+              .Name("Data points").Opacity(1)
+                .EnableTooltip(true)
+              .Marker(mr=>mr.Visible(true).Width(7).Height(7))
+              .Width(2).DataSource(ViewData["ScatterPoints"]).Add();
+        })
+          .PrimaryXAxis(xaxis =>
+             xaxis.Minimum(-8).Maximum(8).Interval(2)
+                    .MajorGridLines(mg => mg.Width(0))
+                    .CrossesAt(0)
+                    .MinorTicksPerInterval(3)
+                    .PlaceNextToAxisLine(true)
+          )
+          .PrimaryYAxis(yaxis =>
+              yaxis
+                   .CrossesAt(0)
+                   .MinorTicksPerInterval(3)
+                   .Minimum(-8)
+                   .Maximum(8)
+                   .Interval(2)
+                   .MajorTickLines(mt=>mt.Width(0))
+                   .PlaceNextToAxisLine(true)
+          )
+          .Title("Spline Interpolation")
+          .Tooltip(tp => tp.Enable(true).EnableHighlight(true))
+          .ChartArea(area => area.Border(br => br.Width(0)))
+          .LegendSettings(lg => lg.EnableHighlight(true))
+          .Load("load").Render()
+    )
+            </div>
+    
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="font-size:14px">
+                        <div>Axis:</div>
+                    </td>
+                    <td>
+                        <div>
+                            @Html.EJS().DropDownList("selectAxis").Index(0).DataSource(ViewData["data"]).Value("X").Change("valueChange").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 60%">
+                        <div>Crosses Value:</div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div style="margin-top: 0px;">
+                            @Html.EJS().NumericTextBox("crossingValue").Value(0).Min(-8).Max(8).Step(2).Width("120").Change("change").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 50%">
+                        <div>Label Near to Axis Line: </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div>
+                            <input type="checkbox" id="axisElements" name="PlaceNextToAxisLine" checked="">
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+@*custom code start*@
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+    #axisElements:hover {
+        cursor: pointer !important;
+    }
+</style>
+@*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            loadChartTheme(args);
+        };       
+        
+        document.getElementById('axisElements').onchange = function (e) {
+            var chart = document.getElementById('container-vertical').ej2_instances[0];
+            var axes = document.getElementById("selectAxis").ej2_instances[0];
+            var value = e.target.checked;
+            if (axes.index === 0) {
+                chart.primaryXAxis.placeNextToAxisLine = value;
+            }
+            else {
+                chart.primaryYAxis.placeNextToAxisLine = value;
+            }
+            chart.dataBind();
+        };
+        var valueChange = function () {
+            var chart = document.getElementById('container-vertical').ej2_instances[0];
+            var crossValue = document.getElementById("crossingValue").ej2_instances[0];
+            var target = document.getElementById('axisElements');
+            var axes = document.getElementById("selectAxis").ej2_instances[0];
+            if (axes.index === 0) {
+                target.checked = chart.primaryXAxis.placeNextToAxisLine;
+                crossValue.value = +chart.primaryXAxis.crossesAt;
+            }
+            else {
+                target.checked = chart.primaryYAxis.placeNextToAxisLine;
+                crossValue.value = +chart.primaryYAxis.crossesAt;
+            }
+            chart.dataBind();
+        };
+        var change = function () {
+            var chart = document.getElementById('container-vertical').ej2_instances[0];
+            var axes = document.getElementById("selectAxis").ej2_instances[0];
+            var crossValue = document.getElementById("crossingValue").ej2_instances[0];
+            if (axes.index === 0) {
+                chart.primaryXAxis.crossesAt = crossValue.value;
+            }
+            else {
+                chart.primaryYAxis.crossesAt = crossValue.value;
+            }
+            chart.dataBind();
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Axes Crossing in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates the interpolation of data points between linear and cubic using the spline and line series.
+    </p>
+}
+@section Description{
+    <p>
+        This sample demonstrates the axis-crossing behavior in a chart. The axis can be positioned anywhere in the chart area using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartAxis.html#Syncfusion_EJ2_Charts_ChartAxis_CrossesAt" aria-label="CrossesAt">CrossesAt<span class="sr-only">opens in a new tab</span></a> property of the axis, which specifies where the horizontal axis should intersect the vertical axis and vice-versa.
+    </p>
+    <p>
+        You can use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartAxis.html#Syncfusion_EJ2_Charts_ChartAxis_PlaceNextToAxisLine" aria-label="PlaceNextToAxisLine">PlaceNextToAxisLine<span class="sr-only">opens in a new tab</span></a> property to place the axis labels and ticks next to the axis line. If there are multiple axes, the cross-axis can be selected using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.ChartAxis.html#Syncfusion_EJ2_Charts_ChartAxis_CrossesInAxis" aria-label="CrossesInAxis">CrossesInAxis<span class="sr-only">opens in a new tab</span></a> property.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p>
+        More information about the axis crossing can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/axis-customization#axis-crossing" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Chart Axes Crossing Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Axes Crossing in ASP.NET MVC Chart Control</h1>
+                }

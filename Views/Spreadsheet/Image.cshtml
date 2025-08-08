@@ -1,0 +1,133 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Spreadsheet
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Spreadsheet("spreadsheet").Created("createdHandler").ShowFormulaBar(false).ShowRibbon(false).OpenUrl("ImageOpen").SaveUrl("ImageSave").Sheets(sheet =>
+   {
+	   sheet.Name("Weekly Diet Planner").SelectedRange("B4").ShowGridLines(false).Rows(row =>
+	   {
+		   row.Height(20).Add();
+		   row.Height(150).Cells(cell =>
+		   {
+			   cell.Index(1).Image(new List<Image> { new Image() { Src = (string)ViewData["Base64ImageUrl"],
+				   Height = 149, Width = 907, Left = 20, Top = 20 } }).Add();
+		   }).Add();
+		   row.Height(20).Add();
+		   row.Height(50).Cells(cell =>
+		   {
+			   cell.Index(1).Value("Weekly Diet Planner").Add();
+		   }).Add();
+		   row.Height(20).Add();
+		   row.Height(50).Cells(cell =>
+		   {
+			   cell.Index(2).Value("BREAKFAST").Add();
+			   cell.Value("LUNCH").Add();
+			   cell.Value("DINNER").Add();
+			   cell.Value("SNACKS").Add();
+		   }).Add();
+		   row.Height(50).Cells(cell =>
+		   {
+			   cell.Index(1).Value("S").Add();
+			   cell.Value("Bacon, Eggs, and Toast").Add();
+		   }).Add();
+		   row.Height(50).Cells(cell =>
+		   {
+			   cell.Index(1).Value("M").Add();
+			   cell.Value("Strawberry Waffles").Add();
+		   }).Add();
+		   row.Height(50).Cells(cell =>
+		   {
+			   cell.Index(1).Value("T").Add();
+			   cell.Value("Pancakes and Maple Syrup").Add();
+		   }).Add();
+		   row.Height(50).Cells(cell =>
+		   {
+			   cell.Index(1).Value("W").Add();
+			   cell.Value("Sausage and Egg Sandwich").Add();
+		   }).Add();
+		   row.Height(50).Cells(cell =>
+		   {
+			   cell.Index(1).Value("T").Add();
+		   }).Add();
+		   row.Height(50).Cells(cell =>
+		   {
+			   cell.Index(1).Value("F").Add();
+		   }).Add();
+		   row.Height(50).Cells(cell =>
+		   {
+			   cell.Index(1).Value("S").Add();
+		   }).Add();
+	   }).Columns(column =>
+	   {
+		   column.Width(20).Add();
+		   column.Width(100).Add();
+		   column.Width(208).Add();
+		   column.Width(200).Add();
+		   column.Width(200).Add();
+		   column.Width(200).Add();
+	   }).Add();
+   }).Render()
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Image in ASP.NET MVC Spreadsheet control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <div id="action-description">
+		<p>
+			This sample explains about the image feature by using weekly diet planner as an example. You can change the height and width of the picture by resizing and move it to another position by drag and drop.
+		</p>
+    </div>
+}
+@section Description{
+	<div id="description">
+		<p>
+			In this demo, the image has been inserted in the specific cell position by using the <code>image</code> property in the cell object. You can also insert an image by using the <code>insertImage</code> method.
+			To enable or disable this feature use the <code>allowImage</code> property in Spreadsheet.
+		</p>
+		<p>
+			This sample is configured with import and export options. Use <b>Ctrl + O</b> to open an excel file and <b>Ctrl + S</b> to save an excel file with a picture.
+		</p>
+		<p>
+			More information about the Spreadsheet component can be found in this
+			<a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started-mvc" aria-label="documentation section">
+				documentation
+			<span class="sr-only">opens in a new tab</span></a> section.
+		</p>
+	</div>
+}
+
+<script>
+	//Application level customization
+    function createdHandler() {
+            this.merge('B2:F2');
+            this.merge('B4:F4');
+            this.cellFormat({ fontSize: '28pt', fontFamily: 'Arial', color: '#3a3838', verticalAlign: 'middle', textAlign: 'center' }, 'B4');
+            this.cellFormat({ fontSize: '16pt', fontFamily: 'Calibri', color: '#757171', verticalAlign: 'middle' }, 'B6:F6');
+            this.cellFormat({ fontSize: '14pt', fontFamily: 'Calibri', color: '#757171', verticalAlign: 'middle', textAlign: 'center' }, 'B7:B13');
+			this.cellFormat({ fontSize: '14pt', color: '#000000', verticalAlign: 'middle' }, 'C7:F13');
+		    this.setBorder({ border: '1px solid #e0e0e0' }, 'B7:F13', 'Horizontal');
+            }
+</script>
+
+@*custom code start*@
+
+<style>
+    .control-section {
+        height: 550px;
+    }
+
+    #sb-content .e-spreadsheet .e-tab .e-tab-text {
+        display: inherit;
+    }
+</style>
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Spreadsheet Image Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Image in ASP.NET MVC Spreadsheet Control</h1>
+                }

@@ -1,0 +1,95 @@
+﻿
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.DropDowns;
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Diagram("container").Width("100%").Height("600px")
+                .SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"])
+                .GetNodeDefaults("nodeDefaults")
+                .Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Created("diagramCreated")
+                        .Constraints(Syncfusion.EJ2.Diagrams.DiagramConstraints.Default |(Syncfusion.EJ2.Diagrams.DiagramConstraints.LineRouting | Syncfusion.EJ2.Diagrams.DiagramConstraints.AvoidLineOverlapping)).Render()
+            )
+        </div>
+    </div>
+    <style>
+        #container {
+            display: block;
+        }
+    </style>
+    <script>
+        ej.diagrams.Diagram.Inject(ej.diagrams.LineRouting, ej.diagrams.AvoidLineOverlapping, ej.diagrams.ConnectorEditing, ej.diagrams.Snapping);
+        var diagram;
+        function nodeDefaults(node) {
+            node.shape = { type: 'Path' };
+            var PathData1 = "M55,0 L55,7.5 L80,7.5 L55,7.5 L55,22.5 L80,22.5 L55,22.5 L55,37.5 L80,37.5 L55,37.5 L55,52.5 L80,52.5 L55,52.5 L55,67.5 L80,67.5 L55,67.5 L55,82.5 L80,82.5 L55,82.5 L55,97.5 L80,97.5 L55,97.5 L55,112.5 L80,112.5 L55,112.5 L55,127.5 L80,127.5 L55,127.5 L55,142.5 L80,142.5 L55,142.5 L55,157.5 L80,157.5 L55,157.5 L55,172.5 L80,172.5 L55,172.5 L55,187.5 L80,187.5 L55,187.5 L55,202.5 L80,202.5 L55,202.5 L55,217.5 L80,217.5 L55,217.5 L55,232.5 L80,232.5 L55,232.5 L55,240 L25,240 L25,120 L0,120 L25,120 L25,0 Z";
+            var PathData2 = "M75,0 L75,7.5 L100,7.5 L75,7.5 L75,22.5 L100,22.5 L75,22.5 L75,37.5 L100,37.5 L75,37.5 L75,52.5 L100,52.5 L75,52.5 L75,67.5 L100,67.5 L75,67.5 L75,135 L25,135 L25,127.5 L0,127.5 L25,127.5 L25,112.5 L0,112.5 L25,112.5 L25,97.5 L0,97.5 L25,97.5 L25,82.5 L0,82.5 L25,82.5 L25,67.5 L0,67.5 L25,67.5 L25,52.5 L0,52.5 L25,52.5 L25,37.5 L0,37.5 L25,37.5 L25,22.5 L0,22.5 L25,22.5 L25,7.5 L0,7.5 L25,7.5 L25,0 Z";
+            var PathData3 = "M55,0 L55,120 L80,120 L55,120 L55,240 L25,240 L25,232.5 L0,232.5 L25,232.5 L25,217.5 L0,217.5 L25,217.5 L25,202.5 L0,202.5 L25,202.5 L25,187.5 L0,187.5 L25,187.5 L25,172.5 L0,172.5 L25,172.5 L25,157.5 L0,157.5 L25,157.5 L25,142.5 L0,142.5 L25,142.5 L25,127.5 L0,127.5 L25,127.5 L25,112.5 L0,112.5 L25,112.5 L25,97.5 L0,97.5 L25,97.5 L25,82.5 L0,82.5 L25,82.5 L25,67.5 L0,67.5 L25,67.5 L25,52.5 L0,52.5 L25,52.5 L25,37.5 L0,37.5 L25,37.5 L25,22.5 L0,22.5 L25,22.5 L25,7.5 L0,7.5 L25,7.5 L25,0 Z";
+            var PathData4 = "M55,0 L55,15 L80,15 L55,15 L55,30 L0,30 L0,0 Z";
+            var PathData5 = "M80,0 L80,30 L25,30 L25,15 L0,15 L25,15 L25,0 Z";
+            if (node.id == "node1" || node.id == "node2") {
+                node.shape = { type: 'Path', data: PathData1 };
+            }
+            else if (node.id == "node3" || node.id == "node4" || node.id == "node5" || node.id == "node6") {
+                node.shape = { type: 'Path', data: PathData2 };
+            }
+            else if (node.id == "node7") {
+                node.shape = { type: 'Path', data: PathData3 };
+            }
+            else if (node.id == "node8" || node.id == "node9" || node.id == "node10") {
+                node.shape = { type: 'Path', data: PathData4 };
+            }
+            else if (node.id == "node11" || node.id == "node12") {
+                node.shape = { type: 'Path', data: PathData5 };
+            }
+            node.style = { strokeColor: "black", strokeWidth: 2 };
+            return node;
+        }
+        function diagramCreated() {
+            diagram = document.getElementById("container").ej2_instances[0];
+            diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
+            setTimeout(() => {
+                diagram.fitToPage();
+            }, 200);
+        }
+
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the connectors that automatically adjust to minimize visual overlap, ensuring clear and distinct representations of connections within the diagram.
+
+    </p>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Avoid Connector overlap Diagram Feature in ASP.NET MVC Diagram control. Explore here for more details" />
+}
+@section Description{
+    <p>
+        This example showcases a circuit diagram created using the Syncfusion<sup>®</sup> Diagram control. It
+        demonstrates the
+        <code>
+            <a target="_blank" class="code"
+               href="https://ej2.syncfusion.com/aspnetmvc/documentation/diagram/constraints#diagram-constraints">AvoidLineOverlapping</a>
+        </code>
+        feature, which ensures that connectors do not visually overlap by automatically adjusting line segments for
+        better visualization of connections.
+    </p>
+
+    <p>
+        To use this feature we need enable the <b>AvoidLineOverlapping</b> feature in the
+        <code>
+            <a target="_blank" class="code"
+               href="https://ej2.syncfusion.com/aspnetmvc/documentation/diagram/constraints#diagram-constraints">DiagramConstraints</a>
+        </code> property.
+    </p>
+}
+
+
+
+@section Title{
+    <title>ASP.NET MVC Diagram Avoid Connector Overlap Diagram Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Avoid Line Overlapping Circuit Diagram in ASP.NET MVC Diagram Control</h1>
+}

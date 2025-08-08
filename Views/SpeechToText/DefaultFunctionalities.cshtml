@@ -1,0 +1,277 @@
+@using Syncfusion.EJ2.Inputs
+@using Syncfusion.EJ2.DropDowns
+@using Syncfusion.EJ2
+
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="default-speechToText-section">
+            <div class="speechToText-container">
+                <!-- Initialize Speech to Text component -->
+                @Html.EJS().SpeechToText("speech-to-text").TranscriptChanged("onTranscriptChanged").OnStart("onListeningStart").OnStop("onListeningStop").Created("created").OnError("onErrorHandler").Render()
+                <mark class="speech-recognition-status">Click the mic button to start speaking...</mark>
+            </div>
+            <div class="output-container">
+                <h4>Live Speech Transcription</h4>
+                <!-- Initialize TextArea for output -->
+                @Html.EJS().TextArea("output-textarea").CssClass("e-outline").ResizeMode(Resize.None).Rows(10).Placeholder("Transcribed text will appear here...").Created("onTextAreaCreated").Input("handleInputEvent").Render()
+                <div class="output-options">
+                    @Html.EJS().Button("transcript-copy-button").CssClass("e-btn").Content("Copy").Click("handleCopyButton").Disabled(true).Render()
+                    @Html.EJS().Button("transcript-clear-button").CssClass("e-btn").Content("Clear").Click("handleClearButton").Render()
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 default-speechToText property-section">
+        <div class="property-panel-header"> Properties </div>
+        <div class="property-panel-content">
+            <table>
+                <tbody>
+                    <tr>
+                        <td> Styling </td>
+                        <td>
+                            <!-- Initialize DropDownList for styling options -->
+                            @Html.EJS().DropDownList("stt-styling-ddl").DataSource(ViewData["color"]).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Index(0).Change("handleMiColor").Render()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Language </td>
+                        <td>
+                            <!-- Initialize DropDownList for language options -->
+                            @Html.EJS().DropDownList("stt-lang-ddl").DataSource(ViewData["language"]).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Index(0).Change("handleLanguageType").Created("onDropdownCreated").Render()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Interim results</td>
+                        <td>
+                            <!-- Initialize Switch for interim results -->
+                            @Html.EJS().Switch("interim-switch").Checked(true).Change("handleAllowInterimResults").Created("onSwitchCreated").Render()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Show tooltip</td>
+                        <td>
+                            <!-- Initialize Switch for tooltip -->
+                            @Html.EJS().Switch("tooltip-switch").Checked(true).Change("handleShowTooltip").Render()
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Show icon with text</td>
+                        <td>
+                            <!-- Initialize Switch for icon with text -->
+                            @Html.EJS().Switch("icon-with-text-switch").Checked(false).Change("handleIconWithText").Render()
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+<style>
+    .default-speechToText-section,
+    .default-speechToText-section .output-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .default-speechToText-section {
+        gap: 50px;
+        margin: 50px auto;
+    }
+
+    .default-speechToText-section .output-container {
+        width: 75%;
+        gap: 10px;
+    }
+
+    .default-speechToText-section .output-container h4 {
+        margin: 0;
+        align-self: baseline;
+    }
+
+    .default-speechToText-section .speech-recognition-status {
+        font-size: 12px;
+    }
+
+    .default-speechToText .property-panel-content td {
+        padding: 10px 0px;
+        width: 50%;
+    }
+
+    .default-speechToText-section .speechToText-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .default-speechToText-section #transcript-copy-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    } 
+
+    @@media only screen and (max-width: 750px) {
+        .default-speechToText-section .output-container {
+            width: 100%;
+        }
+
+        .default-speechToText-section .output-options {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+</style>
+
+<script>
+    var speechToTextObj;
+    var textareaObj;
+    var languageDropdownObj;
+    var interimSwitchObj;
+    var isSupportedBrowser = true;
+
+    function created() {
+        speechToTextObj = ej.base.getComponent(document.getElementById("speech-to-text"), "speech-to-text");
+    }
+
+    function onTextAreaCreated() {
+        textareaObj = ej.base.getComponent(document.getElementById("output-textarea"), "textarea");
+    }
+
+    function onDropdownCreated() {
+        languageDropdownObj = ej.base.getComponent(document.getElementById("stt-lang-ddl"), "dropdownlist");
+    }
+
+    function onSwitchCreated() {
+        interimSwitchObj = ej.base.getComponent(document.getElementById("interim-switch"), "switch");
+    }
+
+    function handleInputEvent() {
+        toggleCopyButtonState();
+    }
+
+    // Event handler for transcript change
+    function onTranscriptChanged(args) {
+        if (!args.isInterimResult)
+            args.transcript += ' ';
+        textareaObj.value = args.transcript;
+        toggleCopyButtonState();
+    }
+
+    // Event handler for listening start
+    function onListeningStart() {
+        if (isSupportedBrowser) {
+            if (textareaObj.value)
+                speechToTextObj.transcript = textareaObj.value + '\n';
+
+            updateStatus('Listening... Speak now...');
+        } else {
+            updateStatus('For unsupported browsers, use event callbacks to handle Speech-to-Text actions.');
+        }
+        interimSwitchObj.disabled = true;
+        languageDropdownObj.enabled = false;
+    }
+
+    // Event handler for listening stop
+    function onListeningStop(args) {
+        if (isSupportedBrowser) {
+            if (args.isInteracted)
+                updateStatus('Click the mic button to start speaking...');
+        } else {
+            updateStatus('For unsupported browsers, use event callbacks to handle Speech-to-Text actions.');
+        }
+        interimSwitchObj.disabled = false;
+        languageDropdownObj.enabled = true;
+    }
+
+    // Event handler for errors
+    function onErrorHandler(args) {
+        updateStatus(args.errorMessage);
+        if (args.error === 'unsupported-browser')
+            isSupportedBrowser = false;
+    }
+
+    // Function to updates the speech recognition status message
+    function updateStatus(status) {
+        document.querySelector('.speech-recognition-status').innerText = status;
+    }
+
+    function toggleCopyButtonState() {
+        var copyButton = ej.base.getComponent(document.getElementById("transcript-copy-button"), "btn");
+        var hasText = textareaObj.element.value.trim() !== '';
+        copyButton.disabled = hasText ? false : true;
+    }
+
+    function handleCopyButton() {
+        var copyText = textareaObj.value;
+        var copyBtnElem = document.getElementById("transcript-copy-button")
+        if (copyText && navigator.clipboard) {
+            navigator.clipboard.writeText(copyText).then(function () {
+                copyBtnElem.innerText = 'Copied!';
+                setTimeout(function () {
+                    copyBtnElem.innerText = 'Copy';
+                }, 1000);
+            }).catch(function (err) {
+                console.error('Clipboard write failed', err);
+            });
+        }
+    }
+
+    function handleClearButton() {
+        textareaObj.value = textareaObj.element.value = speechToTextObj.transcript = '';
+        toggleCopyButtonState();
+    }
+
+    function handleAllowInterimResults(args) {
+        speechToTextObj.allowInterimResults = args.checked;
+    }
+    function handleShowTooltip(args) {
+        speechToTextObj.showTooltip = args.checked;
+    }
+    function handleMiColor(args) {
+        speechToTextObj.cssClass = args.value;
+    }
+    function handleLanguageType(args) {
+        speechToTextObj.lang = args.value;
+    }
+    function handleIconWithText(args) {
+        speechToTextObj.buttonSettings = {
+            content: args.checked ? 'Start Listening' : '',
+            stopContent: args.checked ? 'Stop Listening' : ''
+        };
+    }
+</script>
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC SpeechToText control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample showcases the functionality of the SpeechToText control, which converts spoken words into text using your device's microphone. It utilizes the built-in JavaScript SpeechRecognition API for speech processing. Speak into the microphone to see the transcribed text appear in the text area.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The SpeechToText control enables real-time speech-to-text conversion using the JavaScript <code>SpeechRecognition</code> API. This demo explores its key features and customization options:
+        </p>
+        <ul>
+            <li><code>CssClass</code>: Modify the microphone button's appearance with predefined styles such as Success, Warning, or Danger.</li>
+            <li><code>Lang</code>: Select a preferred language for speech recognition.</li>
+            <li><code>AllowInterimResults</code>: Choose whether to display words as you speak or only after completing a phrase.</li>
+            <li><code>ShowTooltip</code>: Enable or disable tooltips for additional guidance.</li>
+            <li><code>ButtonSettings</code>: Configure the button to display text alongside the microphone icon.</li>
+        </ul>
+        <p>
+            These options allow you to configure the SpeechToText control to suit your needs. Try different settings in the property panel to see how they affect the control's appearance and functionality.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC SpeechToText DefaultFunctionalities Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of DefaultFunctionalities in ASP.NET MVC SpeechToText Control</h1>
+}
