@@ -1,0 +1,172 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Navigations
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section template-carousel-section">
+        <div class="e-sample-resize-container carousel-sample">
+            @(Html.EJS().Carousel("template-carousel").CssClass("templateCarousel")
+                .PreviousButtonTemplate("#previousButtonTemplate").NextButtonTemplate("#nextButtonTemplate")
+                .IndicatorsTemplate("#indicatorTemplate")
+                .AnimationEffect(CarouselAnimationEffect.Fade)
+                .Items(new List<CarouselItem> {
+                    new CarouselItem { Template = "#itemTemplate1"  },
+                    new CarouselItem { Template = "#itemTemplate2"  },
+                    new CarouselItem { Template = "#itemTemplate3"  },
+                    new CarouselItem { Template = "#itemTemplate4"  },
+                    new CarouselItem { Template = "#itemTemplate5"  }
+                })
+                .Render()
+            )
+        </div>
+    </div>
+
+    <script id="itemTemplate1" type="text/x-template">
+        <figure class="img-container">
+            <img src="@Url.Content("~/Content/carousel/images/cardinal.png")" alt="cardinal" style="height:100%;width:100%;" />
+        </figure>
+    </script>
+    <script id="itemTemplate2" type="text/x-template">
+        <figure class="img-container">
+            <img src="@Url.Content("~/Content/carousel/images/hunei.png")" alt="hunei" style="height:100%;width:100%;" />
+        </figure>
+    </script>
+    <script id="itemTemplate3" type="text/x-template">
+        <figure class="img-container">
+            <img src="@Url.Content("~/Content/carousel/images/costa-rica.png")" alt="costa-rica" style="height:100%;width:100%;" />
+        </figure>
+    </script>
+    <script id="itemTemplate4" type="text/x-template">
+        <figure class="img-container">
+            <img src="@Url.Content("~/Content/carousel/images/kaohsiung.png")" alt="kaohsiung" style="height:100%;width:100%;" />
+        </figure>
+    </script>
+    <script id="itemTemplate5" type="text/x-template">
+        <figure class="img-container">
+            <img src="@Url.Content("~/Content/carousel/images/bee-eater.png")" alt="bee-eater" style="height:100%;width:100%;" />
+        </figure>
+    </script>
+    <script id="previousButtonTemplate" type="text/x-template">
+        <button id="previous" title="${type}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m13.5 7.01 13 13m-13 13 13-13"></path>
+            </svg>
+        </button>
+    </script>
+    <script id="nextButtonTemplate" type="text/x-template">
+        <button id="next" title="${type}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+                <path d="m13.5 7.01 13 13m-13 13 13-13"></path>
+            </svg>
+        </button>
+    </script>
+    <script id="indicatorTemplate" type="text/x-template">
+        <div class="indicator">
+            <img src="../Content/carousel/images/${getThumpImage(data.index)}.png" alt="image" style="height:100%;width:100%;" />
+        </div>
+    </script>
+
+    <script type="text/javascript">
+        function getThumpImage(index) {
+            var images = ['cardinal', 'hunei', 'costa-rica', 'kaohsiung', 'bee-eater'];
+            return images[index];
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var prevBtn = new ej.buttons.Button({ cssClass: 'e-flat e-outline nav-btn' });
+            prevBtn.appendTo('#previous');
+            var nextBtn = new ej.buttons.Button({ cssClass: 'e-flat e-outline nav-btn' });
+            nextBtn.appendTo('#next');
+        });
+    </script>
+}
+
+@section ActionDescription{
+    <p>
+        This sample demonstrates the customization of the <a href="https://www.syncfusion.com/aspnet-mvc-ui-controls/carousel" target="_blank" aria-label="ASP.NET MVC Carousel">ASP.NET MVC Carousel<span class="sr-only">opens in a new tab</span></a> component using various templates.
+    </p>
+}
+
+@section Description{
+    <p>
+        In this demo, the <code>ASP.NET MVC Carousel</code> component is customized by using the templates. The
+        navigators and indicators are customized using <code>nextButtonTemplate</code>, <code>previousButtonTemplate</code>, <code>indicatorsTemplate</code>.
+        The carousel item is customized using <code>template</code> option.
+    </p>
+    <p>
+        More information about customizing ASP.NET MVC Carousel component can be found in this <a target='_blank' href="https://ej2.syncfusion.com/documentation/carousel/getting-started" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Templates in ASP.NET MVC Carousel control. Explore here for more details."/>
+                }
+
+<style>
+    .template-carousel-section .carousel-sample {
+        margin: 0 auto 2em;
+        max-width: 500px;
+        height: 350px;
+    }
+
+    .templateCarousel .e-carousel-items,
+    .templateCarousel .e-carousel-navigators {
+        height: calc(100% - 3rem);
+    }
+
+        .templateCarousel .e-carousel-navigators .e-previous,
+        .templateCarousel .e-carousel-navigators .e-next,
+        .templateCarousel .e-carousel-navigators .nav-btn {
+            padding: 0;
+        }
+
+            .templateCarousel .e-carousel-navigators .nav-btn:active,
+            .templateCarousel .e-carousel-navigators .nav-btn:focus,
+            .templateCarousel .e-carousel-navigators .nav-btn:hover {
+                background-color: transparent !important;
+                color: inherit;
+            }
+
+        .templateCarousel .e-carousel-navigators svg {
+            fill: none;
+            stroke: currentColor;
+            stroke-linecap: square;
+            stroke-width: 8px;
+            height: 2rem;
+            vertical-align: middle;
+            width: 2rem;
+        }
+
+        .templateCarousel .e-carousel-navigators .e-previous svg {
+            transform: rotate(180deg);
+        }
+
+    .templateCarousel .e-carousel-indicators .e-indicator-bars .e-indicator-bar .indicator {
+        background-color: #ECECEC;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        height: 3.5rem;
+        margin: 0.5rem;
+        width: 5rem;
+    }
+
+    .templateCarousel .e-carousel-indicators .e-indicator-bars .e-indicator-bar.e-active .indicator {
+        background-color: #3C78EF;
+    }
+
+    @@media screen and (max-width: 480px) {
+        .template-carousel-section .carousel-sample {
+            width: 100%;
+            height: 250px;
+        }
+
+        .templateCarousel .img-container {
+            margin: 12px;
+        }
+    }
+</style>
+
+@section Title{
+                    <title>ASP.NET MVC Carousel Templates Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Templates in ASP.NET MVC Carousel Control</h1>
+                }

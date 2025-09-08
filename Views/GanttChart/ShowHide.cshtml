@@ -1,0 +1,131 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "ShowHide";
+}
+
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="control-section">
+
+         @(Html.EJS().Gantt("ShowHide").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true)
+          .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+           .Dependency("Predecessor").Child("SubTasks")).Columns(col =>
+           {
+               col.Field("TaskId").Width(100).Add();
+               col.Field("TaskName").HeaderText("Name").Width(250).Add();
+               col.Field("StartDate").Add();
+               col.Field("EndDate").Add();
+               col.Field("Duration").Add();
+               col.Field("Progress").Add();
+               col.Field("Predecessor").HeaderText("Dependency").Add();
+           }).TreeColumnIndex(1).SplitterSettings(ss => ss.ColumnIndex(3))
+          .LabelSettings(ls => ls.LeftLabel("TaskName"))
+          .ProjectStartDate("03/24/2024")
+          .ProjectEndDate("07/06/2024")
+          .Render()
+            )
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tr style="height: 50px">
+                <td style="width: 30%">
+                    <div>Column</div>
+                </td>
+                <td style="width: 70%;padding-right: 10px">
+                    @Html.EJS().DropDownList("dropdown").DataSource((IEnumerable<object>)ViewData["columns"]).Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "text", Value = "value" }).Change("onChange").Render()
+                </td>
+            </tr>
+            <tr>
+                <td class="left-side" style="width: 30%; padding-bottom:10px; padding-left: 10px;">
+                    @Html.EJS().Button("hide").Content("HIDE").Render()
+                </td>
+                <td style="padding-bottom:10px; width: 70%;">
+                    @Html.EJS().Button("show").Disabled(true).Content("SHOW").Render()
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%">
+                    <div style="padding-top: 10px">
+                        Hidden Columns
+                    </div>
+                </td>
+                <td style="width: 50%; padding:10px 10px 0px 0px">
+                    <textarea id="hiddencolumns" style="resize: none;height:65px;background-color: #fff; padding: 6px"
+                              class="form-control" readonly="readonly"></textarea>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function onChange(args) {
+            var gantt = document.getElementById("ShowHide").ej2_instances[0];
+            let columnName = args.value;
+            let column = gantt.treeGrid.grid.getColumnByField(columnName);
+            if (column.visible === undefined || column.visible) {
+                show.disabled = true;
+                hide.disabled = false;
+            } else {
+                hide.disabled = true;
+                show.disabled = false;
+            }
+        }
+        var hiddenColumns = document.getElementById('hiddencolumns');
+        document.getElementById('show').addEventListener('click', () => {
+            var gantt = document.getElementById("ShowHide").ej2_instances[0];
+            var dropDownListObject = document.getElementById("dropdown").ej2_instances[0];
+            var dropValue = dropDownListObject.value;
+            var columnName = gantt.treeGrid.getColumnByField(dropValue).headerText;
+            gantt.showColumn(columnName);
+            show.disabled = true;
+            hide.disabled = false;
+            hiddenColumns.value = hiddenColumns.value.replace(columnName + '\n', '');
+        });
+        document.getElementById('hide').addEventListener('click', () => {
+            var gantt = document.getElementById("ShowHide").ej2_instances[0];
+            var dropDownListObject = document.getElementById("dropdown").ej2_instances[0];
+            var dropValue = dropDownListObject.value;
+            var columnName = gantt.treeGrid.getColumnByField(dropValue).headerText;
+            gantt.hideColumn(columnName);
+            hide.disabled = true;
+            show.disabled = false;
+            hiddenColumns.value = hiddenColumns.value + columnName + '\n';
+        });
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates dynamic show/hide columns feature of Gantt. Select column name from the properties panel,
+            and then click hide/show to toggle visibility.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Show or Hide Column in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>The Gantt column can be shown or hidden dynamically using the <code>showColumn</code> and <code>hideColumn</code> methods of the Gantt.</p>
+        <p>
+            In this demo, the columns can be shown and hidden by selecting the column name in dropdown. Click the Show or Hide button to toggle the visibility.
+            The visibility of column is toggled based on the
+            <code>Columns -> HeaderText</code> value.
+        </p>
+        <br />
+        <p>
+            The <code>Columns -> Visible</code> property specifies the visibility of a column.
+            To hide a column at the initial rendering, set the <code>Columns -> Visible</code> property to false.
+        </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Gantt Show or Hide Column Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Show or Hide Column in ASP.NET MVC Gantt Control</h1>
+                }

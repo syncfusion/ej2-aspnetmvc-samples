@@ -1,0 +1,194 @@
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Diagrams;
+@using EJ2MVCSampleBrowser.Controllers.Diagram;
+@section ControlsSection{
+
+    <div class="col-lg-12 control-section">
+        <div class="content-wrapper">
+            <div style="width: 100%">
+                @Html.EJS().Toolbar("toolbar_default").Clicked("onItemClick").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["tbItems"]).Render()
+            </div>
+            <div>
+                @(Html.EJS().Diagram("diagram").Width("100%").Height("590px").GetNodeDefaults("getNodeDefaults")
+            .GetConnectorDefaults("getConnectorDefaults")
+            .ScrollSettings(s => s.ScrollLimit(Syncfusion.EJ2.Diagrams.ScrollLimit.Infinity))
+            .DataSourceSettings(ss => ss.Id("Id").ParentId("ReportingPerson")
+            .DataSource(new DataManager()
+            {
+                Data = (List<OverviewData1>
+    )ViewData["Nodes"]
+    }))
+    .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.OrganizationalChart).GetLayoutInfo("getLayoutInfo"))
+    .SnapSettings(se => se.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None)).SetNodeTemplate("setNodeTemplate")
+    .Created("diagramCreated").SelectionChange("selectionChange").Render())
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function onItemClick(args) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            switch (args.item.tooltipText) {
+                case 'Zoom In':
+                    var zoomin = { type: 'ZoomIn', zoomFactor: 0.2 };
+                    diagram.zoomTo(zoomin);
+                    break;
+                case 'Zoom Out':
+                    var zoomout = { type: 'ZoomOut', zoomFactor: 0.2 };
+                    diagram.zoomTo(zoomout);
+                    break;
+                case 'Reset':
+                    diagram.reset();
+                    break;
+                case 'Pan Tool':
+                    diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
+                    break;
+                case 'Pointer':
+                    diagram.clearSelection();
+                    diagram.drawingObject = {};
+                    diagram.tool = ej.diagrams.DiagramTools.SingleSelect | ej.diagrams.DiagramTools.MultipleSelect;
+                    break;
+                case 'Fit To Page':
+                    diagram.fitToPage();
+                    break;
+                case 'Bring Into View':
+                    if (diagram.selectedItems.nodes.length > 0) {
+                        var bound = diagram.selectedItems.nodes[0].wrapper.bounds;
+                        diagram.bringIntoView(bound);
+                    }
+                    break;
+                case 'Bring Into Center':
+                    if (diagram.selectedItems.nodes.length > 0) {
+                        var bounds = diagram.selectedItems.nodes[0].wrapper.bounds;
+                        diagram.bringToCenter(bounds);
+                    }
+                    break;
+            }
+        }
+
+        function diagramCreated() {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            diagram.dataBind();
+        }
+        function getLayoutInfo(node, tree) {
+            if (!tree.hasSubTree) {
+                tree.orientation = 'Vertical';
+                tree.type = 'Right';
+            }
+        }
+        function getNodeDefaults(obj, diagram) {
+            obj.height = 50;
+            obj.style = { fill: 'transparent', strokeWidth: 2 };
+            return obj;
+        }
+        function getConnectorDefaults(connector, diagram) {
+            connector.targetDecorator.shape = 'None';
+            connector.type = 'Orthogonal';
+            connector.style.strokeColor = 'gray';
+            return connector;
+        }
+        function selectionChange(args) {
+            var diagram = document.getElementById("diagram").ej2_instances[0];
+            var toolbarObj = document.getElementById("toolbar_default").ej2_instances[0];
+            if (args.state === 'Changed') {
+                var selectedItems = diagram.selectedItems.nodes;
+                if (selectedItems.length === 0) {
+                    toolbarObj.items[9].disabled = true;
+                    toolbarObj.items[10].disabled = true;
+                }
+                if (selectedItems.length === 1) {
+                    toolbarObj.items[9].disabled = false;
+                    toolbarObj.items[10].disabled = false;
+                }
+                if (selectedItems.length > 1) {
+                    toolbarObj.items[9].disabled = false;
+                    toolbarObj.items[10].disabled = false;
+                }
+            }
+        }
+
+        function setNodeTemplate(obj, diagram) {
+            var content = new ej.diagrams.StackPanel();
+            content.id = obj.id + '_outerstack';
+            content.orientation = 'Horizontal';
+            content.style.strokeColor = 'gray';
+            content.padding = { left: 5, right: 10, top: 5, bottom: 5 };
+
+            var image = new ej.diagrams.ImageElement();
+            image.width = 50;
+            image.height = 50;
+            image.style.strokeColor = 'none';
+            image.source = obj.data.Image;
+            image.id = obj.id + '_pic';
+            var innerStack = new ej.diagrams.StackPanel();
+            innerStack.style.strokeColor = 'none';
+            innerStack.margin = { left: 5, right: 0, top: 0, bottom: 0 };
+            innerStack.id = obj.id + '_innerstack';
+
+            var text = new ej.diagrams.TextElement();
+            text.content = obj.data.Name;
+            text.style.color = 'black';
+            text.style.bold = true;
+            text.style.strokeColor = 'none';
+            text.horizontalAlignment = 'Left';
+            text.style.fill = 'none';
+            text.id = obj.id + '_text1';
+
+            var desigText = new ej.diagrams.TextElement();
+            desigText.margin = { left: 0, right: 0, top: 5, bottom: 0 };
+            desigText.content = obj.data.Designation;
+            desigText.style.color = 'black';
+            desigText.style.strokeColor = 'none';
+            desigText.style.fontSize = 12;
+            desigText.style.fill = 'none';
+            desigText.horizontalAlignment = 'Left';
+            desigText.style.textWrapping = 'Wrap';
+            desigText.id = obj.id + '_desig';
+            innerStack.children = [text, desigText];
+
+            content.children = [image, innerStack];
+
+            return content;
+        }
+    </script>
+
+
+}
+@section ActionDescription{
+    <p>
+        This sample illustrates how to zoom and pan in the diagram.
+    </p>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Connectors in ASP.NET MVC Diagram control. Explore here for more details." />
+}
+@section Description{
+    <p>
+        This example explains zooming, panning, reset, fit to page, bring into view, and bring to center.
+    </p>
+    <p>
+        The <code>fitToPage</code> method adjusts the zoom level of a diagram so that all its content is visible within the viewport.
+    </p>
+    <p>
+        The <code>bringIntoView</code> method brings the specified rectangular or bounds region into the diagram viewport.
+    </p>
+    <p>
+        The <code>bringToCenter</code> method brings the specified rectangular region of the diagram content to the center of the viewport. You can zoom in and out using the zoom method, and reset the zoom and scroller offsets to default values using the reset zoom method.
+    </p>
+    <p>
+        In this sample,  use <code>pan</code>, <code>reset</code>, <code>zoomIn</code>, and <code>ZoomOut</code> options to pan, reset the zoom and zoomin/out the diagram.
+    </p>
+    <br>
+}
+
+
+
+@section Title{
+    <title>ASP.NET MVC Diagram Connectors Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Connectors in ASP.NET MVC Diagram Control</h1>
+}
+
+

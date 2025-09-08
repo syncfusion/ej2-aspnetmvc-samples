@@ -1,0 +1,155 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "ColumnSpanning";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("CellMerging").DataSource((IEnumerable<object>)ViewData["datasource"]).EnableHover(false).AllowSelection(false).QueryCellInfo("QueryCellEvent").GridLines(Syncfusion.EJ2.Grids.GridLine.Both).Columns(col =>
+        {
+            col.Field("EmployeeID").HeaderText("Employee ID").IsPrimaryKey(true).Freeze(Syncfusion.EJ2.Grids.FreezeDirection.Left).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("150").Add();
+            col.Field("EmployeeName").HeaderText("Employee Name").Width("200").Add();
+            col.Field("Time900").HeaderText("9.00 AM").Width("120").Add();
+            col.Field("Time930").HeaderText("9.30 AM").Width("120").Add();
+            col.Field("Time1000").HeaderText("10.00 AM").Width("120").Add();
+            col.Field("Time1030").HeaderText("10.30 AM").Width("120").Add();
+            col.Field("Time1100").HeaderText("11.00 AM").Width("120").Add();
+            col.Field("Time1130").HeaderText("11.30 AM").Width("120").Add();
+            col.Field("Time1200").HeaderText("12.00 PM").Width("120").Add();
+            col.Field("Time1230").HeaderText("12.30 PM").Width("120").Add();
+            col.Field("Time100").HeaderText("1.00 PM").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();           
+            col.Field("Time200").HeaderText("2.00 PM").Width("120").Add();
+            col.Field("Time230").HeaderText("2.30 PM").Width("120").Add();
+            col.Field("Time300").HeaderText("3.00 PM").Width("120").Add();
+            col.Field("Time330").HeaderText("3.30 PM").Width("120").Add();
+            col.Field("Time400").HeaderText("4.00 PM").Width("120").Add();
+            col.Field("Time430").HeaderText("4.30 PM").Width("120").Add();
+            col.Field("Time500").HeaderText("5.00 PM").Width("120").Add();
+        }).Render()
+        
+    </div>
+
+    <script>
+
+        function QueryCellEvent(args) {
+            var data = args.data;
+            switch (data.EmployeeID) {
+                case 10001:
+                    if (args.column.field === 'Time900' || args.column.field === 'Time230' || args.column.field === 'Time430') {
+                        args.colSpan = 2;
+                    } else if (args.column.field === 'Time1100') {
+                        args.colSpan = 3;
+                    }
+                    break;
+                case 10002:
+                    if (args.column.field === 'Time900' || args.column.field === 'Time230' ||
+                        args.column.field === 'Time430') {
+                        args.colSpan = 3;
+                    } else if (args.column.field === 'Time1100') {
+                        args.colSpan = 4;
+                    }
+                    break;
+                case 10003:
+                    if (args.column.field === 'Time900' || args.column.field === 'Time1130') {
+                        args.colSpan = 3;
+                    } else if (args.column.field === 'Time1030' || args.column.field === 'Time330' ||
+                        args.column.field === 'Time430' || args.column.field === 'Time230') {
+                        args.colSpan = 2;
+                    }
+                    break;
+                case 10004:
+                    if (args.column.field === 'Time900') {
+                        args.colSpan = 3;
+                    } else if (args.column.field === 'Time1100') {
+                        args.colSpan = 4;
+                    } else if (args.column.field === 'Time400' || args.column.field === 'Time230') {
+                        args.colSpan = 2;
+                    }
+                    break;
+                case 10005:
+                    if (args.column.field === 'Time900') {
+                        args.colSpan = 4;
+                    } else if (args.column.field === 'Time1130') {
+                        args.colSpan = 3;
+                    } else if (args.column.field === 'Time330' || args.column.field === 'Time430' || args.column.field === 'Time230') {
+                        args.colSpan = 2;
+                    }
+                    break;
+                case 10006:
+                    if (args.column.field === 'Time900' || args.column.field === 'Time430' ||
+                        args.column.field === 'Time230' || args.column.field === 'Time330') {
+                        args.colSpan = 2;
+                    } else if (args.column.field === 'Time1000' || args.column.field === 'Time1130') {
+                        args.colSpan = 3;
+                    }
+                    break;
+                case 10007:
+                    if (args.column.field === 'Time900' || args.column.field === 'Time300' || args.column.field === 'Time1030') {
+                        args.colSpan = 2;
+                    } else if (args.column.field === 'Time1130' || args.column.field === 'Time400') {
+                        args.colSpan = 3;
+                    }
+                    break;
+                case 10008:
+                    if (args.column.field === 'Time900' || args.column.field === 'Time1030' || args.column.field === 'Time230') {
+                        args.colSpan = 3;
+                    } else if (args.column.field === 'Time400') {
+                        args.colSpan = 2;
+                    }
+                    break;
+                case 10009:
+                    if (args.column.field === 'Time900' || args.column.field === 'Time1130') {
+                        args.colSpan = 3;
+                    } else if (args.column.field === 'Time430' || args.column.field === 'Time230') {
+                        args.colSpan = 2;
+                    }
+                    break;
+                case 10010:
+                    if (args.column.field === 'Time900' || args.column.field === 'Time230' ||
+                        args.column.field === 'Time400' || args.column.field === 'Time1130') {
+                        args.colSpan = 3;
+                    } else if (args.column.field === 'Time1030') {
+                        args.colSpan = 2;
+                    }
+                    break;
+            }
+
+        }
+    </script>
+}
+@section ActionDescription{
+	<div id="action-description">
+		 <p>This sample demonstrates the Grid component with the column spanning feature. In this sample, you will see multiple columns spanning.
+        </p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Column Spanning in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+      <p>
+            This feature enables you to span multiple adjacent cells. Use the <code>colSpan</code> attribute to define how many cells are to be spanned in the <a href='https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Grids.Grid.html#Syncfusion_EJ2_Grids_Grid_QueryCellInfo'><code>QueryCellInfo</code><span class="sr-only">opens in a new tab</span></a> event. 
+            Additionally, you can freeze columns at specific positions by setting the freeze property to left, right, center and fixed in the column definition.
+    </p>
+        <p>
+            In this demo, you can see that the employee named <b>Davolio</b> is analyzing data from 9.00 AM to 10.00 AM, so the cells for that time are spanned. Similarly, another employee <b>Buchanan</b> is doing support work from 9.30 AM to 11.00 AM, and the cells are spanned accordingly. 
+            Also, the <b>Employee ID</b> column is frozen to the left.
+    </p>
+            <p>
+                More information on the column spanning can be found in this
+                <a target="_blank" 
+                href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/columns/column-spanning" aria-label="documentation section">
+                documentation section<span class="sr-only">opens in a new tab</span></a>.
+            </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Column Spanning Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Column Spanning in ASP.NET MVC Data Grid Control</h1>
+                }

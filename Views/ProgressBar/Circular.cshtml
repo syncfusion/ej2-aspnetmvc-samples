@@ -1,0 +1,122 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div class="row" style="margin-top: 8%;">
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="circular-container">
+                    @(Html.EJS().ProgressBar("circular-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(100)
+                                                          .StartAngle(180).EndAngle(180).Load("Load")
+                                                         .Minimum(0).Maximum(100).EnableRtl(false).Width("160px").Height("160px")
+                                                         .Animation(an => an.Enable(true).Delay(0).Duration(2000)).Render())
+                </div>
+                <div class="progress-text-align">Determinate</div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="rtl-container">
+                    @(Html.EJS().ProgressBar("rtl-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(70)
+                                                         .Load("Load").SecondaryProgress(90)
+                                                         .Minimum(0).Maximum(100).Width("160px").Height("160px")
+                                                         .Animation(an => an.Enable(true).Delay(0).Duration(2000)).Render())
+                </div>
+                <div class="progress-text-align">Buffer </div>
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="track-container">
+                    @(Html.EJS().ProgressBar("track-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(100)
+                                                         .Load("Load").SegmentCount(4)
+                                                         .Minimum(0).Maximum(100).EnableRtl(false).Width("160px").Height("160px")
+                                                         .Animation(an => an.Enable(true).Delay(0).Duration(2000)).Render())
+                </div>
+                <div class="progress-text-align">Segment</div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="rounded-container">
+                    @(Html.EJS().ProgressBar("rounded-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(20)
+                                                         .Load("Load").CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round).IsIndeterminate(true)
+                                                         .Minimum(0).Maximum(100).EnableRtl(false).Width("160px").Height("160px")
+                                                         .Animation(an => an.Enable(true).Delay(0).Duration(2000)).Render())
+                </div>
+                <div class="progress-text-align">Indeterminate</div>
+            </div>
+        </div>
+        <div class="row" align="center">
+            <button id="reLoad" class="e-control e-btn e-lib e-outline e-primary">Reload</button>
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+        .progress-text-align {
+            font-family: Roboto-Regular;
+            font-size: 14px;
+            color: #3D3E3C;
+        }
+        #reLoad {
+            border-radius: 4px;
+            text-transform: capitalize;
+            margin-top: 3%;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/Progressbar/theme-color.js"></script>
+    <script>
+        function annotationElementContent(color, controlID) {
+            var content;
+            switch (controlID) {
+                case 'rounded-container':
+                    content = '60%';
+                    break;
+                default:
+                    return '';
+            }
+            return ('<div class="annotaion-pro"  id="point1" style="color: ' + color + ' "><span>' + content + '</span></div>');
+        }
+        var annotationColors = ['#e91e63', '#0078D6', '#317ab9', '#007bff', '#FFD939'];
+        var div = document.getElementsByClassName('progress-text-align');
+        var Load = function (args) {
+            loadProgressBarTheme(args);
+            if (args.progressBar.theme === 'HighContrast' || args.progressBar.theme === 'Bootstrap5Dark' || args.progressBar.theme === 'BootstrapDark' || args.progressBar.theme === 'FabricDark'
+                || args.progressBar.theme === 'TailwindDark' || args.progressBar.theme === 'Tailwind3Dark' || args.progressBar.theme === 'MaterialDark' || args.progressBar.theme === 'FluentDark' || args.progressBar.theme === 'Material3Dark' || args.progressBar.theme === 'Fluent2HighContrast' || args.progressBar.theme === 'Fluent2Dark') {
+                for (let i = 0; i < div.length; i++) {
+                    div[i].setAttribute('style', 'color:white');
+                }
+            }
+        };
+        var replayBtn = document.getElementById('reLoad');
+        replayBtn.onclick = function () {
+            var inverseSemiProgress = document.getElementById('circular-container').ej2_instances[0];
+            var verticalProgress = document.getElementById('rtl-container').ej2_instances[0];
+            var semiProgress = document.getElementById('track-container').ej2_instances[0];
+            var quarterProgress = document.getElementById('rounded-container').ej2_instances[0];
+            inverseSemiProgress.refresh();
+            verticalProgress.refresh();
+            semiProgress.refresh();
+            quarterProgress.refresh();
+        };
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Circular in ASP.NET MVC Progress Bar control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates a circular progress bar with determinate and indeterminate states, segments and buffer value.
+}
+@section Description{
+<p>
+    In this example, you can see how to render and configure the circular progress bar. Progress bar is used to visualize the progression of an extended operation. The sample shows the determinate and indeterminate states, buffer and segments of circular progress bar.
+</p>
+}
+@section Title{
+    <title>ASP.NET MVC Progress Bar Circular Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Circular in ASP.NET MVC Progress Bar Control</h1>
+}

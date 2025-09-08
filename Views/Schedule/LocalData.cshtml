@@ -1,0 +1,53 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
+        </div>
+    </div>
+    <script type="text/javascript">
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            var categoryColor = args.data.CategoryColor;
+            if (!args.element || !categoryColor) {
+                return;
+            }
+            if (scheduleObj.currentView === 'Agenda') {
+                (args.element.firstChild).style.borderLeftColor = categoryColor;
+            } else {
+                args.element.style.backgroundColor = categoryColor;
+            }
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Local Data in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo shows the way of binding an array of JavaScript objects (local JSON datasource) to Schedule.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            Scheduler can be bound either to local or remote data services which will load the data by default on demand to reduce the
+            data transfer and load time. In this sample, the
+            <code>DataSource</code> property available within the
+            <code>EventSettings</code> needs to be assigned with the valid local JSON data.
+        </p>
+        <p>The <code>EventRendered</code> event is used to customize the events. In this sample, background color of the event is changed based on the custom field 'CategoryColor'</p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Scheduler Local Data Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Local Data in ASP.NET MVC Scheduler Control</h1>
+                }

@@ -1,0 +1,143 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Spreadsheet
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Spreadsheet("spreadsheet").Password("spreadsheet").OpenUrl("ProtectSheetOpen").SaveUrl("ProtectSheetSave").Created("createdHandler").BeforeCellRender("beforeCellRenderHandler").Sheets(sheet =>
+   {
+       sheet.Name("EMI Calculator").IsProtected(true).Rows(row =>
+       {
+           row.Cells(cell => cell.Index(1).Value("Home Loan Calculator").Style(style =>
+           {
+               style.FontWeight(FontWeight.Bold).TextAlign(TextAlign.Center);
+           }).Add()).Add();
+           row.Cells(cell =>
+                {
+               cell.Index(1).Value("Loan Amount:").Add();
+               cell.Format("$#,##0.00").Value("100000").Add();
+           }).Add();
+           row.Cells(cell =>
+                {
+               cell.Index(1).Value("Interest Rate:").Add();
+               cell.Format("0.00%").Value("0.08").Add();
+           }).Add();
+           row.Cells(cell =>
+                {
+               cell.Index(1).Value("Periods (terms in year):").Add();
+               cell.Value("1").Add();
+           }).Add();
+           row.Cells(cell =>
+                {
+               cell.Index(1).Value("Start Date:").Add();
+               cell.Value("03-03-2020").Add();
+           }).Add();
+           row.Cells(cell =>
+                {
+               cell.Index(1).Value("Loan EMI:").Add();
+               cell.Format("$#,##0.00").Value("8698.84").Add();
+           }).Add();
+           row.Cells(cell =>
+                {
+               cell.Index(1).Value("Number of Payments:").Add();
+               cell.Value("12").Add();
+           }).Add();
+           row.Cells(cell =>
+                {
+               cell.Index(1).Value("Total Repayment Amount:").Add();
+               cell.Format("$#,##0.00").Value("104386.11").Add();
+           }).Add();
+           row.Cells(cell =>
+                {
+               cell.Index(1).Value("Total Interest  Amount:").Add();
+               cell.Format("$#,##0.00").Value("4386.11").Add();
+           }).Add();
+       }).Columns(column =>
+       {
+           column.Index(1).Width(190).Add();
+           column.Width(100).Add();
+       }).Add();
+       sheet.IsProtected(true).Name("EMI Schedule").Ranges(ranges =>
+            {
+           ranges.DataSource(ViewData["ProtectSheetData"]).ShowFieldAsHeader(true).Add();
+           }).Rows(row =>
+               {
+                   row.Cells(cell =>
+                   {
+                       cell.Style(style => { style.FontWeight(FontWeight.Bold).TextAlign(TextAlign.Center); }).Add();
+                       cell.Style(style => { style.FontWeight(FontWeight.Bold).TextAlign(TextAlign.Center); }).Add();
+                       cell.Style(style => { style.FontWeight(FontWeight.Bold).TextAlign(TextAlign.Center); }).Add();
+                       cell.Style(style => { style.FontWeight(FontWeight.Bold).TextAlign(TextAlign.Center); }).Add();
+                       cell.Style(style => { style.FontWeight(FontWeight.Bold).TextAlign(TextAlign.Center); }).Add();
+                       cell.Style(style => { style.FontWeight(FontWeight.Bold).TextAlign(TextAlign.Center); }).Add();
+                   }).Add();
+                }).Columns(column =>
+            {
+           column.Index(1).Width(110).Add();
+           column.Width(85).Add();
+           column.Width(85).Add();
+           column.Width(80).Add();
+           column.Width(90).Add();
+       }).Add();
+   }).Render()
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Protection in ASP.NET MVC Spreadsheet control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates protect sheet and protect workbook with EMI calculation scenario as an example. To unprotect the sheet, click the unprotect sheet button in the Data tab. Meanwhile, to unprotect the workbook, click the unprotect workbook button in the data tab and provide the password as <code>spreadsheet</code> in the dialog box.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            Protect sheet helps you to prevent the users from modifying the data in the spreadsheet. Protect workbook helps you to protect the workbook with a password. In this demo, the `EMI Schedule` sheet is locked using <code>isProtected</code> property inside the `Sheet` property and protect the workbook with a password using <code>password</code> property.
+        </p>
+        <p>
+            More information about protect sheet and lock cell feature can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started-mvc" aria-label="documentation section">
+                documentation
+            <span class="sr-only">opens in a new tab</span></a> section.
+        </p>
+    </div>
+}
+
+<script>
+    var numberFormat = ej.spreadsheet.getFormatFromType('Currency');
+    function createdHandler() {
+        //Applied number formatting to a range
+        this.numberFormat("$#,##0.00", 'EMI Schedule!C2:F13');
+        this.numberFormat('m/d/yyyy', 'EMI Calculator!C5:C5');
+        this.numberFormat('m/d/yyyy', 'EMI Schedule!B2:B13');
+    }
+    function beforeCellRenderHandler(args) {
+        //Merged cells using custom code
+        if (this.activeSheetIndex === 0 && args.address === 'B1') {
+            args.element.colSpan = 2;
+        }
+    }
+</script>
+
+@*custom code start*@
+
+<style>
+    .control-section {
+        height: 550px;
+    }
+
+    #sb-content .e-spreadsheet .e-tab .e-tab-text {
+        display: inherit;
+    }
+</style>
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Spreadsheet Protection Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Protection in ASP.NET MVC Spreadsheet Control</h1>
+                }

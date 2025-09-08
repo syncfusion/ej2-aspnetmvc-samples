@@ -1,0 +1,226 @@
+﻿@using Syncfusion.EJ2
+@model EJ2MVCSampleBrowser.Models.AutoFillOptionsModel
+@{
+    ViewBag.Title = "Excel AutoFill";
+}
+
+@section ControlsSection {
+    <div class="control-section">
+        <p>
+            Click the "Create Document" button to generate and view the Excel file. You can enter the Step Value and Stop Value as either a number or a date in MM/DD/YYYY format, and the generated document can be opened using Microsoft Excel or Excel Viewer.
+        </p>
+        <div style="padding: 20px; max-width: 500px; font-family: sans-serif;">
+            @using (Html.BeginForm("AutoFill", "excel", FormMethod.Post))
+            {
+                <div style="margin-bottom: 10px;">
+                    <label style="width: 80px; display: inline-block; font-weight: normal">Fill Type:</label>
+                    <input type="radio" name="typeOption" value="AutoFill" id="autofillRadio" checked />
+                    <label for="autofillRadio" style="margin-right: 15px;font-weight: normal">Auto Fill</label>
+                    <input type="radio" name="typeOption" value="FillSeries" id="fillseriesRadio" />
+                    <label for="fillseriesRadio" style="font-weight: normal">Fill Series</label>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <label style="width: 80px; display: inline-block; font-weight: normal">Fill Option:</label>
+                    @Html.DropDownListFor(m => m.SelectedAutoFillOption,
+                        (IEnumerable<SelectListItem>)ViewBag.AutoFillOptions,
+                        new { @class = "form-control", style = "width: 200px; display: inline-block;", id = "autoFillOption" })
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <label style="width: 80px; display: inline-block; font-weight: normal">Series In:</label>
+                    @Html.DropDownListFor(m => m.SeriesBy,
+                        (IEnumerable<SelectListItem>)ViewBag.SeriesByList,
+                        new { @class = "form-control", style = "width: 200px; display: inline-block; margin-right: 10px;", id = "seriesBy" })
+                </div>
+
+                <div id="trendContainer" style="display: flex; align-items: center; margin-bottom: 10px; margin-left: 80px;">
+                    @Html.CheckBoxFor(model => model.Trend, new
+                    {
+                        @class = "form-check-input",
+                        @id = "trendCheckbox",
+                        @style = "margin: 0 2px 0 5px; transform: translateY(1px);"
+                    })
+                    <label class="form-check-label" for="trendCheckbox" style="font-weight: 500; font-size: 16px;">Trend</label>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <label style="width: 80px; display: inline-block; font-weight: normal">Step Value:</label>
+                    @Html.TextBoxFor(m => m.StepValue,
+                        new { @class = "form-control", style = "width: 200px; display: inline-block;", id = "stepValue", placeholder = "Enter Value", disabled = "disabled" })
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="width: 80px; display: inline-block; font-weight: normal">Stop Value:</label>
+                    @Html.TextBoxFor(m => m.StopValue,
+                        new { @class = "form-control", style = "width: 200px; display: inline-block;", id = "stopValue", placeholder = "Enter Value", disabled = "disabled" })
+                </div>
+
+                <div>
+                    <input type="submit" value="Create Document" class="btn btn-outline-primary" />
+                </div>
+            }
+        </div>
+    </div>
+}
+@section ActionDescription{
+    <div>
+        This sample demonstrates how to use the Auto Fill and Fill Series options using XlsIO.
+    </div>
+}
+@section Description{
+    <div>
+        <p> The Auto Fill and Fill Series features enable users to programmatically populate a range of Excel cells based on defined patterns, sequences, or trends. These capabilities help reduce manual data entry by automatically generating values using built-in logic.</p>
+        <p style="display:block"><b>Features:</b></p>
+        <ul>
+            <li>Allows automatic filling of cells with common sequences, including numbers, months, and custom patterns.</li>
+            <li>Offers Fill Series options, including linear, growth, and date-based sequences.</li>
+            <li>Supports configuration of step value, stop value, series direction, and trend usage.</li>
+        </ul>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the AutoFill Option in ASP.NET MVC Excel (XlsIO) library. Explore here for more details." />
+}
+@section Title{
+    <title>ASP.NET MVC Excel (XlsIO) library - AutoFill Example - Syncfusion Demos</title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Auto Fill and Fill Series in ASP.NET MVC Excel (XlsIO) Library</h1>
+}
+<style>
+    #trendContainer {
+        display: none;
+    }
+</style>
+@section Scripts {
+    <script>
+        const autoFillList = @Html.Raw(Json.Encode(ViewBag.AutoFillOptions));
+        const fillSeriesList = @Html.Raw(Json.Encode(ViewBag.FillSeriesOptions));
+
+        function populateDropdown(list) {
+            $('#autoFillOption').empty();
+            list.forEach(item => {
+                $('#autoFillOption').append(new Option(item.Text, item.Value));
+            });
+        }
+        function updateTrendVisibility() {
+            const isFillSeries = document.getElementById('fillseriesRadio')?.checked;
+            const value = $('#autoFillOption').val() || "";
+
+            if (isFillSeries && (value === 'F0' || value === 'F1')) {
+                document.getElementById('trendContainer').style.display = 'block';
+            } else {
+                document.getElementById('trendContainer').style.display = 'none';
+                document.getElementById('trendCheckbox').checked = false; // Optional: uncheck
+            }
+            console.log("isFillSeries:", isFillSeries, "autoFillOption value:", value);
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            updateTrendVisibility();
+
+            // When fill type radio buttons are changed
+            document.querySelectorAll('input[name="typeOption"]').forEach(el => {
+                el.addEventListener('change', updateTrendVisibility);
+            });
+
+            // When dropdown changes
+            document.getElementById('autoFillOption').addEventListener('change', updateTrendVisibility);
+        });
+        function toggleFields() {
+            const type = $('input[name="typeOption"]:checked').val();
+            const value = $('#autoFillOption').val() || "";
+            const isAuto = value.startsWith('A');
+            const isLinearGrowth = value === 'F0' || value === 'F1';
+            const isAutoFill = value === 'F6';
+            const trendChecked = $('#trendCheckbox').is(':checked');
+
+            // Disable everything by default
+            $('#seriesBy').prop('disabled', true);
+            $('#trendCheckbox').prop('disabled', true);
+            $('#stepValue').prop('disabled', true);
+            $('#stopValue').prop('disabled', true);
+
+            if (type === 'AutoFill') {
+                // Only the Fill Option dropdown is used in AutoFill
+                return;
+            }
+
+            // For FillSeries
+            $('#seriesBy').prop('disabled', false);
+
+            if (isAuto) {
+                // If value still starts with 'A' (shouldn't happen in FillSeries), exit
+                return;
+            }
+
+            if (isLinearGrowth) {
+                // Enable the Trend checkbox
+                $('#trendCheckbox').prop('disabled', false);
+
+                // If Trend is not selected, enable Step and Stop values
+                if (!trendChecked) {
+                    $('#stepValue').prop('disabled', false);
+                    $('#stopValue').prop('disabled', false);
+                } else {
+                    $('#stepValue').val('');
+                    $('#stopValue').val('');
+                }
+            } else if (!isAuto && isAutoFill){
+                $('#seriesBy').prop('disabled', false);
+                $('#stepValue').val('');
+                $('#stopValue').val('');
+            }
+            else {
+                // For all other FillSeries options, enable Step and Stop values
+                $('#stepValue').prop('disabled', false);
+                $('#stopValue').prop('disabled', false);
+            }
+        }
+
+
+        $(document).ready(function () {
+            // Set initial dropdown
+            populateDropdown(autoFillList);
+            toggleFields();
+
+            $('input[name="typeOption"]').change(function () {
+                const selected = $(this).val();
+
+                // Repopulate Fill Option dropdown
+                populateDropdown(selected === 'AutoFill' ? autoFillList : fillSeriesList);
+
+                // Reset Fill Option to default
+                $('#autoFillOption').val(selected === 'AutoFill' ? 'A0' : 'F0');
+
+                // Reset Series In dropdown to first item
+                if (selected === 'AutoFill') {
+                    $('#seriesBy').prop('selectedIndex', -1);
+                } else {
+                    $('#seriesBy').prop('selectedIndex', 0);
+                }
+
+                // Reset Step and Stop values
+                $('#stepValue').val('');
+                $('#stopValue').val('');
+
+                // Uncheck and hide Trend
+                $('#trendCheckbox').prop('checked', false);
+                $('#trendContainer').hide();
+
+                // Update field logic
+                toggleFields();
+                updateTrendVisibility();
+            });
+            $('#autoFillOption').change(toggleFields);
+            $('#trendCheckbox').change(toggleFields);
+        });
+        $('form').submit(function (e) {
+            const selectedOption = $('#autoFillOption').val();
+            if (!selectedOption) {
+                e.preventDefault(); // Prevent form submission
+                return false;
+            }
+        });
+    </script>
+}
