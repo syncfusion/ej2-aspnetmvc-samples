@@ -26,7 +26,7 @@
         <div class="content-wrapper">
             @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource(dataManger =>
             {
-                dataManger.Url("https://ej2services.syncfusion.com/aspnet/release/api/order").CrossDomain(true).Adaptor("WebApiAdaptor");
+                dataManger.Url("https://ej2services.syncfusion.com/aspnet/development/api/order").CrossDomain(true).Adaptor("WebApiAdaptor");
             }).ExpandAll(true).FormatSettings(formatsettings =>
             {
                 formatsettings.Name("UnitPrice").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
@@ -47,13 +47,13 @@
     <script>
         var isInitialRender = true;
         var remoteData = new ej.data.DataManager({
-            url: 'https://ej2services.syncfusion.com/aspnet/release/api/order',
+            url: 'https://ej2services.syncfusion.com/aspnet/development/api/order',
             adaptor: new ej.data.WebApiAdaptor,
             crossDomain: true
         });
 
         var csvReport = {
-            url: 'https://ej2services.syncfusion.com/aspnet/release/api/product',
+            url: 'https://ej2services.syncfusion.com/aspnet/development/api/product',
             type: 'CSV',
             enableSorting: true,
             expandAll: false,

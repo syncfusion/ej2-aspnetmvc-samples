@@ -6,7 +6,7 @@
         <div class="content-wrapper">
             <div class="schedule-container">
                 <div class="title-container">
-                    <h1 class="title-text">Doctor's Appointments</h1>
+                    <h2 class="title-text">Doctor's Appointments</h2>
                 </div>
                 @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CssClass("schedule-drag-drop").Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineMonth).Add(); }).CurrentView(View.TimelineDay).SelectedDate(new DateTime(DateTime.Today.Year, 7, 2)).WorkHours(new ScheduleWorkHours { Highlight = true, Start = "08:00", End = "18:00" }).Group(group => group.EnableCompactView(false).Resources((string[])ViewData["Resources"])).Resources(res =>
                     {

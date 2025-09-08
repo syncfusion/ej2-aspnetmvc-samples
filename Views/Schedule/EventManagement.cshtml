@@ -39,7 +39,7 @@
                 .EndTime(end => end.Name("EndTime"))
                 .Location(loc => loc.Name("Title"))
                 .Description(desc => desc.Name("Capacity")))
-            .DataSource(ViewData["datasource"])).EventRendered("onEventRendered").PopupOpen("onPopupOpen").PopupClose("onPopupClose").CellClick("onCellClick")
+            .DataSource(ViewData["datasource"])).EventRendered("onEventRendered").PopupOpen("onPopupOpen").PopupClose("onPopupClose").CellClick("onCellClick").DataBound("onDataBound")
             .ToolbarItems(new List<ScheduleToolbarItem>
             {
                 new ScheduleToolbarItem { Name = ToolbarName.Previous },
@@ -68,7 +68,7 @@
                     Type = Syncfusion.EJ2.Navigations.ItemType.Button,
                     Align = Syncfusion.EJ2.Navigations.ItemAlign.Right,
                     CssClass = "toolbar-post-agenda",
-                    PrefixIcon = "e-icons e-show-unplanned-events",
+                    PrefixIcon = "e-icons e-show-hide-panel",
                     ShowTextOn = Syncfusion.EJ2.Navigations.DisplayMode.Overflow,
                     Overflow = Syncfusion.EJ2.Navigations.OverflowOption.Show,
                     Id = "overview_toolbar_settings_unplanned_events",
@@ -214,23 +214,6 @@
     </script>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var dropDownButton = new ej.splitbuttons.DropDownButton({
-            items: [
-                { text: 'Print', id: 'print' },
-                { text: 'Export', id: 'export' }
-            ],
-            iconCss: "e-icons e-print-export",
-            cssClass: "e-tbar-btn",
-            select: handlePrintExportSelect
-        });
-        dropDownButton.appendTo("#printExportButton");
-
-        // Remove the caret span manually
-        const buttonEl = document.querySelector('#printExportButton');
-        const caret = buttonEl?.querySelector('.e-caret');
-        if (caret) caret.remove();
-    });
     let isDraggedItemDropped = false;
     var draggedItemId = null;
     var draggedItemSpeakers = [];
@@ -265,6 +248,26 @@
             intl.formatDate(data.EndTime, { skeleton: 'hm' }) + ')';
     }
 
+    function onDataBound() {
+        const printButton = document.querySelector('#printExportButton');
+        if (!(printButton.ej2_instances && printButton.ej2_instances[0])) {
+            var dropDownButton = new ej.splitbuttons.DropDownButton({
+                items: [
+                    { text: 'Print', id: 'print' },
+                    { text: 'Export', id: 'export' }
+                ],
+                iconCss: "e-icons e-more-horizontal-1",
+                cssClass: "e-tbar-btn",
+                select: handlePrintExportSelect
+            });
+            dropDownButton.appendTo("#printExportButton");
+            // Remove the caret span manually
+            const buttonEl = document.querySelector('#printExportButton');
+            const caret = buttonEl?.querySelector('.e-caret');
+            if (caret) caret.remove();
+        }
+    }
+
     function getResourceData(roomId) {
         var schedule = document.getElementById('ScheduleObj').ej2_instances[0];
         var resourceData = schedule.getResourceCollections().find(r => r.field === "RoomId");
@@ -285,19 +288,19 @@
 
     function toggleUnplannedEventsElement() {
         var settingsPanel = document.querySelector('.unplanned-events-container');
-        var toggleButton = document.querySelector('.e-show-unplanned-events') || document.querySelector('.e-hide-unplanned-events');
+        var toggleButton = document.querySelector('.e-show-hide-panel') || document.querySelector('.e-view-side');
         if (!settingsPanel || !toggleButton) return;
         if (settingsPanel.classList.contains('hide')) {
             ej.base.removeClass([settingsPanel], 'hide');
-            if (toggleButton.classList.contains('e-hide-unplanned-events')) {
-                ej.base.removeClass([toggleButton], 'e-hide-unplanned-events');
-                ej.base.addClass([toggleButton], 'e-show-unplanned-events');
+            if (toggleButton.classList.contains('e-view-side')) {
+                ej.base.removeClass([toggleButton], 'e-view-side');
+                ej.base.addClass([toggleButton], 'e-show-hide-panel');
             }
         } else {
             ej.base.addClass([settingsPanel], 'hide');
-            if (toggleButton.classList.contains('e-show-unplanned-events')) {
-                ej.base.removeClass([toggleButton], 'e-show-unplanned-events');
-                ej.base.addClass([toggleButton], 'e-hide-unplanned-events');
+            if (toggleButton.classList.contains('e-show-hide-panel')) {
+                ej.base.removeClass([toggleButton], 'e-show-hide-panel');
+                ej.base.addClass([toggleButton], 'e-view-side');
             }
         }
     }

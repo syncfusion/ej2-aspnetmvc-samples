@@ -10,7 +10,6 @@
 
 <script>
 
-    var addClass = ej.base.addClass;
     function customDates(args) {
         /*Date need to be customized*/
         var span;
@@ -29,7 +28,7 @@
         span = document.createElement('span');
         span.setAttribute('class', 'e-icons highlight');
         //use the imported method to add the multiple classes to the given element
-        addClass([args.element], ['special', 'e-day', name.toLowerCase()]);
+        ej.base.addClass([args.element], ['special', 'e-day', name.toLowerCase()]);
         args.element.firstElementChild.setAttribute('title', name + '!');
         args.element.setAttribute('title', name + '!');
         args.element.appendChild(span);

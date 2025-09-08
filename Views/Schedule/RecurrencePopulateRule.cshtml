@@ -22,11 +22,13 @@
             }
         }
     </style>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            var recObject = document.getElementById('RecurrenceEditor').ej2_instances[0];
-            recObject.setRecurrenceRule('FREQ=DAILY;INTERVAL=2;COUNT=8');
-        });
+    <script type="text/javascript"> 
+        window.onload = function () {
+            var recElement = document.getElementById('RecurrenceEditor');
+            if (recElement && recElement.ej2_instances && recElement.ej2_instances[0]) {
+                recElement.ej2_instances[0].setRecurrenceRule('FREQ=DAILY;INTERVAL=2;COUNT=8');
+            }
+        };
         function onChange(args) {
             var recObject = document.getElementById('RecurrenceEditor').ej2_instances[0];
             recObject.setRecurrenceRule(args.value);

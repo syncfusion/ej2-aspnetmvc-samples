@@ -68,6 +68,7 @@
             var treegrid = document.getElementById("Editing").ej2_instances[0];
             treegrid.editSettings.mode = args.value;
             treegrid.toolbar = args.value == "Cell" ? ['Add', 'Delete', 'Update', 'Cancel', 'Indent', 'Outdent'] : ['Add', 'Edit', 'Delete', 'Update', 'Cancel', 'Indent', 'Outdent'];
+            treegrid.refreshColumns();
         }
     </script>
 }

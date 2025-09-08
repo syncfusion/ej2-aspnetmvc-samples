@@ -101,7 +101,19 @@
             <img class="moments" height="32" width="32" src="@Url.Content("~/Content/gantt/images/moments.svg")" />
             ${else}
             <img class="moments" height="32" width="32" src="@Url.Content("~/Content/gantt/images/moments.svg")" />
-            <span class="e-task-label" style="position:absolute;top:15px;font-size:12px;text-overflow:ellipsis;height:90%;overflow:hidden;">${Performance}</span>
+             <span class="e-task-label" style="
+                position: absolute;
+                top: 15px;
+                left: 40px;
+                right: 5px;
+                font-size: 12px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                height: 90%;
+                line-height: 1.2;
+            ">${Performance}
+            </span>
         </div>
         ${/if}
         </div>
@@ -111,7 +123,19 @@
             <img class="face-mask" height="32" width="32" src="@Url.Content("~/Content/gantt/images/face-mask.svg")" />
             ${else}
             <img class="face-mask" height="32" width="32" src="@Url.Content("~/Content/gantt/images/face-mask.svg")" />
-            <span class="e-task-label" style="position:absolute;top:5px;font-size:12px;text-overflow:ellipsis;height:90%;overflow:hidden;">${Performance}</span>
+            <span class="e-task-label" style="
+                position: absolute;
+                top: 15px;
+                left: 40px;
+                right: 5px;
+                font-size: 12px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                height: 90%;
+                line-height: 1.2;
+            ">${Performance}
+            </span>
             ${/if}
         </div>
         ${else}
@@ -121,11 +145,41 @@
             ${else}
             ${if(taskData.Winner && taskData.Movie)}
             <img class="oscar" height="32" width="32" src="@Url.Content("~/Content/gantt/images/oscar.svg")" />
-            <span class="e-task-label" style="position:absolute; top:13px;font-size:14px;">${taskData.Winner}</span>
-            <span class="e-task-label" style="position:absolute;top:33px;font-size:10px;text-overflow:ellipsis;">${taskData.Movie}</span>
+            <span class="e-task-label" style="
+                position:absolute;
+                top:8px;
+                left:40px;
+                right:5px;
+                font-size:14px;
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+            ">${taskData.Winner}
+            </span>
+            <span class="e-task-label" style="
+                position:absolute;
+                top:28px;
+                left:40px;
+                right:5px;
+                font-size:10px;
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+            ">${taskData.Movie}
+            </span>
             ${else if(taskData.Movie)}
             <img class="oscar" height="32" width="32" src="@Url.Content("~/Content/gantt/images/oscar.svg")" />
-            <span class="e-task-label" style="position:absolute; top:0px;font-size:12px;text-overflow:ellipsis;"></br> ${taskData.Movie} </span>
+            <span class="e-task-label" style="
+                position:absolute;
+                top:15px;
+                left:40px;
+                right:5px;
+                font-size:12px;
+                white-space:nowrap;
+                overflow:hidden;
+                text-overflow:ellipsis;
+            ">${taskData.Movie}
+            </span>
             ${else}
             <span class="e-task-label"></span>
             ${/if}
@@ -163,10 +217,10 @@
     <div id="description">
         <p>
             The Gantt Chart provides support for customizing taskbar UI using taskbar template feature. The
-           <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_TaskbarTemplate">taskbarTemplate</a>
+           <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_TaskbarTemplate">TaskbarTemplate</a>
             property accepts either string or HTML element`s ID value, which will be used as the template for the taskbars.
-            The summary tasks and the milestone items can also customized using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_ParentTaskbarTemplate">parentTaskbarTemplate</a> and
-            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_MilestoneTemplate">milestoneTemplate</a> properties.
+            The summary tasks and the milestone items can also customized using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_ParentTaskbarTemplate">ParentTaskbarTemplate</a> and
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_MilestoneTemplate">MilestoneTemplate</a> properties.
             In this demo, we have customized the taskbar UI to display the data from custom columns and the taskbarTemplate
             is assigned with the ID of a SCRIPT element whose content is used as the template.
             The template expression should be provided inside <code>${...}</code> interpolation syntax

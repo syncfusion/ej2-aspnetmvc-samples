@@ -21,6 +21,7 @@ namespace EJ2MVCSampleBrowser.Models
             public string TaskType { get; set; }
             public DateTime? StartDate { get; set; }
             public DateTime? EndDate { get; set; }
+            public int? BaselineDuration { get; set; }
             public DateTime BaselineStartDate { get; set; }
             public DateTime BaselineEndDate { get; set; }
             public double? TimeLog { get; set; }
@@ -54,6 +55,7 @@ namespace EJ2MVCSampleBrowser.Models
             public int ResourceId { get; set; }
             public Nullable<int> ResourceUnit { get; set; }
         }
+        
         public class GanttResources
         {
             public int ResourceId { get; set; }
@@ -68,6 +70,7 @@ namespace EJ2MVCSampleBrowser.Models
             public string ResourceGroup { get; set; }
             public string IsExpand { get; set; }
         }
+        
         public class TaskbarData : GanttDataSource
         {
             public string Performance { get; set; }
@@ -3240,6 +3243,7 @@ namespace EJ2MVCSampleBrowser.Models
             GanttDataSourceCollection.Add(Record1Child6);
             return GanttDataSourceCollection;
         }
+
         public static List<GanttDataSource> BaselineData()
         {
             List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
@@ -3247,210 +3251,375 @@ namespace EJ2MVCSampleBrowser.Models
             GanttDataSource Record1 = new GanttDataSource()
             {
                 TaskId = 1,
-                TaskName = "Receive vehicle and create job card",
-                BaselineStartDate = new DateTime(2024, 03, 05, 10, 0, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 10, 0, 0),
-                StartDate = new DateTime(2024, 03, 05, 10, 0, 0),
-                EndDate = new DateTime(2024, 03, 05, 10, 0, 0),
+                TaskName = "Planning phase"
             };
+
             GanttDataSource Record2 = new GanttDataSource()
             {
                 TaskId = 2,
-                TaskName = "Allot mechanic and send vehicle to service bay",
-                BaselineStartDate = new DateTime(2024, 03, 05, 10, 0, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 10, 15, 0),
-                StartDate = new DateTime(2024, 03, 05, 10, 15, 0),
-                EndDate = new DateTime(2024, 03, 05, 10, 20, 0),
+                TaskName = "Initiate phase",
+                StartDate = new DateTime(2025, 7, 4),
+                EndDate = new DateTime(2025, 7, 4),
+                Duration = 0,
+                BaselineStartDate = new DateTime(2025, 7, 4),
+                BaselineEndDate = new DateTime(2025, 7, 4),
+                BaselineDuration = 0,
+                ParentID = 1
             };
+
             GanttDataSource Record3 = new GanttDataSource()
             {
                 TaskId = 3,
-                TaskName = "Change the receive vehicle and create job cardengine oil",
-                BaselineStartDate = new DateTime(2024, 03, 05, 10, 15, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 10, 45, 0),
-                StartDate = new DateTime(2024, 03, 05, 10, 20, 0),
-                EndDate = new DateTime(2024, 03, 05, 10, 35, 0),
+                TaskName = "Create job card",
+                StartDate = new DateTime(2025, 7, 5),
+                EndDate = new DateTime(2025, 7, 5),
+                Duration = 1,
+                BaselineStartDate = new DateTime(2025, 7, 4),
+                BaselineEndDate = new DateTime(2025, 7, 4),
+                BaselineDuration = 1,
+                ParentID = 1,
+                Predecessor = "2FS",
+                Progress = 100
             };
+
             GanttDataSource Record4 = new GanttDataSource()
             {
                 TaskId = 4,
-                TaskName = "Replace the oil filter",
-                BaselineStartDate = new DateTime(2024, 03, 05, 10, 45, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 11, 15, 0),
-                StartDate = new DateTime(2024, 03, 05, 10, 35, 0),
-                EndDate = new DateTime(2024, 03, 05, 11, 0, 0),
+                TaskName = "Allot mechanic",
+                StartDate = new DateTime(2025, 7, 6),
+                EndDate = new DateTime(2025, 7, 8),
+                Duration = 3,
+                BaselineStartDate = new DateTime(2025, 7, 4),
+                BaselineEndDate = new DateTime(2025, 7, 6),
+                BaselineDuration = 3,
+                ParentID = 1,
+                Predecessor = "3FS",
+                Progress = 80
             };
+
             GanttDataSource Record5 = new GanttDataSource()
             {
                 TaskId = 5,
-                TaskName = "Replace the air filter",
-                BaselineStartDate = new DateTime(2024, 03, 05, 10, 45, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 11, 15, 0),
-                StartDate = new DateTime(2024, 03, 05, 10, 35, 0),
-                EndDate = new DateTime(2024, 03, 05, 11, 0, 0),
+                TaskName = "Inspect belt",
+                StartDate = new DateTime(2025, 7, 9),
+                EndDate = new DateTime(2025, 7, 11),
+                Duration = 3,
+                BaselineStartDate = new DateTime(2025, 7, 9),
+                BaselineEndDate = new DateTime(2025, 7, 11),
+                BaselineDuration = 3,
+                ParentID = 1,
+                Predecessor = "4FS",
+                Progress = 50
             };
+
             GanttDataSource Record6 = new GanttDataSource()
             {
                 TaskId = 6,
-                TaskName = "Replace the fuel filter",
-                BaselineStartDate = new DateTime(2024, 03, 05, 11, 15, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 11, 25, 0),
-                StartDate = new DateTime(2024, 03, 05, 11, 0, 0),
-                EndDate = new DateTime(2024, 03, 05, 11, 20, 0),
+                TaskName = "Check battery",
+                StartDate = new DateTime(2025, 7, 9),
+                EndDate = new DateTime(2025, 7, 10),
+                Duration = 2,
+                BaselineStartDate = new DateTime(2025, 7, 7),
+                BaselineEndDate = new DateTime(2025, 7, 8),
+                BaselineDuration = 2,
+                ParentID = 1,
+                Predecessor = "4FS",
+                Progress = 55
             };
+
             GanttDataSource Record7 = new GanttDataSource()
             {
                 TaskId = 7,
-                TaskName = "Replace the cabin filter",
-                BaselineStartDate = new DateTime(2024, 03, 05, 11, 0, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 11, 30, 0),
-                StartDate = new DateTime(2024, 03, 05, 11, 0, 0),
-                EndDate = new DateTime(2024, 03, 05, 11, 25, 0),
+                TaskName = "Test alternator",
+                StartDate = new DateTime(2025, 7, 12),
+                EndDate = new DateTime(2025, 7, 14),
+                Duration = 3,
+                BaselineStartDate = new DateTime(2025, 7, 11),
+                BaselineEndDate = new DateTime(2025, 7, 13),
+                BaselineDuration = 3,
+                ParentID = 1,
+                Predecessor = "5FS,6FS",
+                Progress = 40
             };
+
             GanttDataSource Record8 = new GanttDataSource()
             {
                 TaskId = 8,
-                TaskName = "Replace the spark plugs",
-                BaselineStartDate = new DateTime(2024, 03, 05, 11, 0, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 11, 30, 0),
-                StartDate = new DateTime(2024, 03, 05, 11, 25, 0),
-                EndDate = new DateTime(2024, 03, 05, 11, 45, 0),
+                TaskName = "Inspect cooling",
+                StartDate = new DateTime(2025, 7, 15),
+                EndDate = new DateTime(2025, 7, 17),
+                Duration = 3,
+                BaselineStartDate = new DateTime(2025, 7, 12),
+                BaselineEndDate = new DateTime(2025, 7, 14),
+                BaselineDuration = 3,
+                ParentID = 1,
+                Predecessor = "7FS",
+                Progress = 30
             };
+
             GanttDataSource Record9 = new GanttDataSource()
             {
                 TaskId = 9,
-                TaskName = "Check level and refill brake fluid/clutch fluid",
-                BaselineStartDate = new DateTime(2024, 03, 05, 11, 20, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 11, 40, 0),
-                StartDate = new DateTime(2024, 03, 05, 11, 30, 0),
-                EndDate = new DateTime(2024, 03, 05, 11, 50, 0),
+                TaskName = "Phase end",
+                StartDate = new DateTime(2025, 7, 20),
+                EndDate = new DateTime(2025, 7, 20),
+                Duration = 0,
+                BaselineStartDate = new DateTime(2025, 7, 14),
+                BaselineEndDate = new DateTime(2025, 7, 14),
+                BaselineDuration = 0,
+                ParentID = 1,
+                Predecessor = "8FS"
             };
+
             GanttDataSource Record10 = new GanttDataSource()
             {
                 TaskId = 10,
-                TaskName = "Check brake pads/liners, brake discs/drums, and replace if worn out",
-                BaselineStartDate = new DateTime(2024, 03, 05, 11, 40, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 12, 0, 0),
-                StartDate = new DateTime(2024, 03, 05, 11, 50, 0),
-                EndDate = new DateTime(2024, 03, 05, 12, 20, 0),
+                TaskName = "Execution phase"
             };
+
             GanttDataSource Record11 = new GanttDataSource()
             {
                 TaskId = 11,
-                TaskName = "Check level and refill power steering fluid",
-                BaselineStartDate = new DateTime(2024, 03, 05, 11, 40, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 12, 0, 0),
-                StartDate = new DateTime(2024, 03, 05, 12, 0, 0),
-                EndDate = new DateTime(2024, 03, 05, 12, 15, 0),
+                TaskName = "Initiate phase",
+                StartDate = new DateTime(2025, 7, 21),
+                EndDate = new DateTime(2025, 7, 21),
+                Duration = 0,
+                BaselineStartDate = new DateTime(2025, 7, 17),
+                BaselineEndDate = new DateTime(2025, 7, 17),
+                BaselineDuration = 0,
+                ParentID = 10,
+                Predecessor = "9FS"
             };
+
             GanttDataSource Record12 = new GanttDataSource()
             {
                 TaskId = 12,
-                TaskName = "Check level and refill automatic/manual transmission fluid",
-                BaselineStartDate = new DateTime(2024, 03, 05, 12, 0, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 12, 35, 0),
-                StartDate = new DateTime(2024, 03, 05, 11, 50, 0),
-                EndDate = new DateTime(2024, 03, 05, 12, 20, 0),
+                TaskName = "Change oil",
+                StartDate = new DateTime(2025, 7, 22),
+                EndDate = new DateTime(2025, 7, 22),
+                Duration = 1,
+                BaselineStartDate = new DateTime(2025, 7, 16),
+                BaselineEndDate = new DateTime(2025, 7, 16),
+                BaselineDuration = 1,
+                ParentID = 10,
+                Predecessor = "11FS",
+                Progress = 20
             };
+
             GanttDataSource Record13 = new GanttDataSource()
             {
                 TaskId = 13,
-                TaskName = "Grease and lubricate components",
-                BaselineStartDate = new DateTime(2024, 03, 05, 12, 20, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 12, 35, 0),
-                StartDate = new DateTime(2024, 03, 05, 12, 20, 0),
-                EndDate = new DateTime(2024, 03, 05, 12, 45, 0),
+                TaskName = "Replace oil filter",
+                StartDate = new DateTime(2025, 7, 23),
+                EndDate = new DateTime(2025, 7, 25),
+                Duration = 3,
+                BaselineStartDate = new DateTime(2025, 7, 18),
+                BaselineEndDate = new DateTime(2025, 7, 20),
+                BaselineDuration = 3,
+                ParentID = 10,
+                Predecessor = "12FS",
+                Progress = 15
             };
+
             GanttDataSource Record14 = new GanttDataSource()
             {
                 TaskId = 14,
-                TaskName = "Inspect and replace the timing belt or timing chain if needed",
-                BaselineStartDate = new DateTime(2024, 03, 05, 12, 35, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 13, 0, 0),
-                StartDate = new DateTime(2024, 03, 05, 12, 45, 0),
-                EndDate = new DateTime(2024, 03, 05, 13, 0, 0),
+                TaskName = "Replace air filter",
+                StartDate = new DateTime(2025, 7, 23),
+                EndDate = new DateTime(2025, 7, 25),
+                Duration = 3,
+                BaselineStartDate = new DateTime(2025, 7, 16),
+                BaselineEndDate = new DateTime(2025, 7, 18),
+                BaselineDuration = 3,
+                ParentID = 10,
+                Predecessor = "12FS",
+                Progress = 15
             };
+
             GanttDataSource Record15 = new GanttDataSource()
             {
                 TaskId = 15,
-                TaskName = "Wheel balancing",
-                BaselineStartDate = new DateTime(2024, 03, 05, 13, 0, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 13, 20, 0),
-                StartDate = new DateTime(2024, 03, 05, 13, 0, 0),
-                EndDate = new DateTime(2024, 03, 05, 13, 45, 0),
+                TaskName = "Replace fuel filter",
+                StartDate = new DateTime(2025, 7, 26),
+                EndDate = new DateTime(2025, 7, 27),
+                Duration = 2,
+                BaselineStartDate = new DateTime(2025, 7, 21),
+                BaselineEndDate = new DateTime(2025, 7, 22),
+                BaselineDuration = 2,
+                ParentID = 10,
+                Predecessor = "13FS,14FS",
+                Progress = 10
             };
+
             GanttDataSource Record16 = new GanttDataSource()
             {
                 TaskId = 16,
-                TaskName = "Wheel alignment",
-                BaselineStartDate = new DateTime(2024, 03, 05, 13, 20, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 13, 45, 0),
-                StartDate = new DateTime(2024, 03, 05, 13, 45, 0),
-                EndDate = new DateTime(2024, 03, 05, 14, 45, 0),
+                TaskName = "Replace cabin filter",
+                StartDate = new DateTime(2025, 7, 26),
+                EndDate = new DateTime(2025, 7, 27),
+                Duration = 2,
+                BaselineStartDate = new DateTime(2025, 7, 19),
+                BaselineEndDate = new DateTime(2025, 7, 20),
+                BaselineDuration = 2,
+                ParentID = 10,
+                Predecessor = "13FS,14FS",
+                Progress = 10
             };
+
             GanttDataSource Record17 = new GanttDataSource()
             {
                 TaskId = 17,
-                TaskName = "Check for proper operation of all lights, wipers etc",
-                BaselineStartDate = new DateTime(2024, 03, 05, 13, 50, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 14, 30, 0),
-                StartDate = new DateTime(2024, 03, 05, 14, 45, 0),
-                EndDate = new DateTime(2024, 03, 05, 15, 30, 0),
+                TaskName = "Replace spark plugs",
+                StartDate = new DateTime(2025, 7, 28),
+                EndDate = new DateTime(2025, 7, 29),
+                Duration = 2,
+                BaselineStartDate = new DateTime(2025, 7, 23),
+                BaselineEndDate = new DateTime(2025, 7, 24),
+                BaselineDuration = 2,
+                ParentID = 10,
+                Predecessor = "15FS,16FS",
+                Progress = 5
             };
+
             GanttDataSource Record18 = new GanttDataSource()
             {
                 TaskId = 18,
-                TaskName = "Check for any error codes in the ECU and take corrective action",
-                BaselineStartDate = new DateTime(2024, 03, 05, 14, 30, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 15, 30, 0),
-                StartDate = new DateTime(2024, 03, 05, 15, 30, 0),
-                EndDate = new DateTime(2024, 03, 05, 16, 15, 0),
+                TaskName = "Phase end",
+                StartDate = new DateTime(2025, 7, 30),
+                EndDate = new DateTime(2025, 7, 30),
+                Duration = 0,
+                BaselineStartDate = new DateTime(2025, 7, 23),
+                BaselineEndDate = new DateTime(2025, 7, 23),
+                BaselineDuration = 0,
+                ParentID = 10,
+                Predecessor = "17FS"
             };
+
             GanttDataSource Record19 = new GanttDataSource()
             {
                 TaskId = 19,
-                TaskName = "Use scan tool read trouble code",
-                BaselineStartDate = new DateTime(2024, 03, 05, 15, 30, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 16, 45, 0),
-                StartDate = new DateTime(2024, 03, 05, 16, 15, 0),
-                EndDate = new DateTime(2024, 03, 05, 16, 45, 0),
+                TaskName = "Launch phase"
             };
+
             GanttDataSource Record20 = new GanttDataSource()
             {
                 TaskId = 20,
-                TaskName = "Exterior washing",
-                BaselineStartDate = new DateTime(2024, 03, 05, 16, 45, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 17, 15, 0),
-                StartDate = new DateTime(2024, 03, 05, 16, 45, 0),
-                EndDate = new DateTime(2024, 03, 05, 17, 30, 0),
+                TaskName = "Initiate phase",
+                StartDate = new DateTime(2025, 7, 31),
+                EndDate = new DateTime(2025, 7, 31),
+                Duration = 0,
+                BaselineStartDate = new DateTime(2025, 7, 24),
+                BaselineEndDate = new DateTime(2025, 7, 24),
+                BaselineDuration = 0,
+                ParentID = 19,
+                Predecessor = "18FS"
             };
+
             GanttDataSource Record21 = new GanttDataSource()
             {
                 TaskId = 21,
-                TaskName = "Interior vacuuming",
-                BaselineStartDate = new DateTime(2024, 03, 05, 17, 15, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 17, 45, 0),
-                StartDate = new DateTime(2024, 03, 05, 17, 30, 0),
-                EndDate = new DateTime(2024, 03, 05, 18, 0, 0),
+                TaskName = "Refill fluids",
+                StartDate = new DateTime(2025, 8, 1),
+                EndDate = new DateTime(2025, 8, 2),
+                Duration = 2,
+                BaselineStartDate = new DateTime(2025, 7, 25),
+                BaselineEndDate = new DateTime(2025, 7, 26),
+                BaselineDuration = 2,
+                ParentID = 19,
+                Predecessor = "20FS",
+                Progress = 10
             };
+
             GanttDataSource Record22 = new GanttDataSource()
             {
-                TaskId = 21,
-                TaskName = "Final service inspection",
-                BaselineStartDate = new DateTime(2024, 03, 05, 17, 45, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 18, 0, 0),
-                StartDate = new DateTime(2024, 03, 05, 18, 0, 0),
-                EndDate = new DateTime(2024, 03, 05, 18, 30, 0),
+                TaskId = 22,
+                TaskName = "Check brakes",
+                StartDate = new DateTime(2025, 8, 3),
+                EndDate = new DateTime(2025, 8, 4),
+                Duration = 2,
+                BaselineStartDate = new DateTime(2025, 7, 25),
+                BaselineEndDate = new DateTime(2025, 7, 26),
+                BaselineDuration = 2,
+                ParentID = 19,
+                Predecessor = "21FS",
+                Progress = 5
             };
+
             GanttDataSource Record23 = new GanttDataSource()
             {
                 TaskId = 23,
-                TaskName = "Vehicle handover",
-                BaselineStartDate = new DateTime(2024, 03, 05, 18, 0, 0),
-                BaselineEndDate = new DateTime(2024, 03, 05, 18, 0, 0),
-                StartDate = new DateTime(2024, 03, 05, 18, 30, 0),
-                EndDate = new DateTime(2024, 03, 05, 18, 30, 0),
+                TaskName = "Refill steering",
+                StartDate = new DateTime(2025, 8, 5),
+                EndDate = new DateTime(2025, 8, 6),
+                Duration = 2,
+                BaselineStartDate = new DateTime(2025, 7, 28),
+                BaselineEndDate = new DateTime(2025, 7, 29),
+                BaselineDuration = 2,
+                ParentID = 19,
+                Predecessor = "22FS",
+                Progress = 5
             };
+
+            GanttDataSource Record24 = new GanttDataSource()
+            {
+                TaskId = 24,
+                TaskName = "Refill transmission",
+                StartDate = new DateTime(2025, 8, 5),
+                EndDate = new DateTime(2025, 8, 6),
+                Duration = 2,
+                BaselineStartDate = new DateTime(2025, 7, 30),
+                BaselineEndDate = new DateTime(2025, 7, 31),
+                BaselineDuration = 2,
+                ParentID = 19,
+                Predecessor = "22FS",
+                Progress = 5
+            };
+
+            GanttDataSource Record25 = new GanttDataSource()
+            {
+                TaskId = 25,
+                TaskName = "Lubricate components",
+                StartDate = new DateTime(2025, 8, 7),
+                EndDate = new DateTime(2025, 8, 8),
+                Duration = 2,
+                BaselineStartDate = new DateTime(2025, 7, 31),
+                BaselineEndDate = new DateTime(2025, 8, 1),
+                BaselineDuration = 2,
+                ParentID = 19,
+                Predecessor = "23FS,24FS",
+                Progress = 0
+            };
+
+            GanttDataSource Record26 = new GanttDataSource()
+            {
+                TaskId = 26,
+                TaskName = "Wheel balancing",
+                StartDate = new DateTime(2025, 8, 9),
+                EndDate = new DateTime(2025, 8, 11),
+                Duration = 3,
+                BaselineStartDate = new DateTime(2025, 8, 1),
+                BaselineEndDate = new DateTime(2025, 8, 3),
+                BaselineDuration = 3,
+                ParentID = 19,
+                Predecessor = "25FS",
+                Progress = 0
+            };
+
+            GanttDataSource Record27 = new GanttDataSource()
+            {
+                TaskId = 27,
+                TaskName = "Phase end",
+                StartDate = new DateTime(2025, 8, 12),
+                EndDate = new DateTime(2025, 8, 12),
+                Duration = 0,
+                BaselineStartDate = new DateTime(2025, 8, 5),
+                BaselineEndDate = new DateTime(2025, 8, 5),
+                BaselineDuration = 0,
+                ParentID = 19,
+                Predecessor = "26FS",
+                Progress = 0
+            };
+
             GanttDataSourceCollection.Add(Record1);
             GanttDataSourceCollection.Add(Record2);
             GanttDataSourceCollection.Add(Record3);
@@ -3462,6 +3631,7 @@ namespace EJ2MVCSampleBrowser.Models
             GanttDataSourceCollection.Add(Record9);
             GanttDataSourceCollection.Add(Record10);
             GanttDataSourceCollection.Add(Record11);
+            GanttDataSourceCollection.Add(Record12);
             GanttDataSourceCollection.Add(Record13);
             GanttDataSourceCollection.Add(Record14);
             GanttDataSourceCollection.Add(Record15);
@@ -3473,6 +3643,11 @@ namespace EJ2MVCSampleBrowser.Models
             GanttDataSourceCollection.Add(Record21);
             GanttDataSourceCollection.Add(Record22);
             GanttDataSourceCollection.Add(Record23);
+            GanttDataSourceCollection.Add(Record24);
+            GanttDataSourceCollection.Add(Record25);
+            GanttDataSourceCollection.Add(Record26);
+            GanttDataSourceCollection.Add(Record27);
+
             return GanttDataSourceCollection;
         }
         public static List<TaskbarData> TaskbarTemplateData()
@@ -7899,6 +8074,625 @@ namespace EJ2MVCSampleBrowser.Models
 
             return GanttData;
 
+        }
+        public static List<GanttDataSource> DialogData()
+        {
+            List<GanttDataSource> GanttDataSourceCollection = new List<GanttDataSource>();
+
+            // Record 1: Project Kickoff
+            GanttDataSource Record1 = new GanttDataSource()
+            {
+                TaskId = 1,
+                TaskName = "Project Kickoff",
+                StartDate = new DateTime(2025, 04, 01),
+                EndDate = new DateTime(2025, 04, 03),
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 04, 01),
+                IsManual = true,
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record1Child1 = new GanttDataSource()
+            {
+                TaskId = 2,
+                TaskName = "Requirement Analysis",
+                StartDate = new DateTime(2025, 04, 01),
+                Duration = 2,
+                Progress = 100,
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 1, ResourceUnit = 70 },
+                new ResourceModel { ResourceId = 2, ResourceUnit = 70 }
+            },
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 04, 01),
+                BaselineStartDate = new DateTime(2025, 04, 01),
+                BaselineDuration = 2,
+                Work = 32,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 04, 01), Duration = 1 },
+                new GanttSegment { StartDate = new DateTime(2025, 04, 02), Duration = 1 }
+            }
+            };
+            GanttDataSource Record1Child2 = new GanttDataSource()
+            {
+                TaskId = 3,
+                TaskName = "Feasibility Study",
+                StartDate = new DateTime(2025, 04, 03),
+                Duration = 3,
+                Progress = 30,
+                Predecessor = "2FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 2, ResourceUnit = 70 },
+                new ResourceModel { ResourceId = 3, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 04, 05),
+                IsManual = true,
+                Work = 24
+            };
+            Record1.SubTasks.Add(Record1Child1);
+            Record1.SubTasks.Add(Record1Child2);
+
+            // Record 2: Design Phase
+            GanttDataSource Record2 = new GanttDataSource()
+            {
+                TaskId = 4,
+                TaskName = "Design Phase",
+                StartDate = new DateTime(2025, 04, 04),
+                EndDate = new DateTime(2025, 04, 11),
+                ConstraintType = 0,
+                IsManual = true,
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record2Child1 = new GanttDataSource()
+            {
+                TaskId = 5,
+                TaskName = "UI Design",
+                StartDate = new DateTime(2025, 04, 04),
+                Duration = 4,
+                Progress = 60,
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 1, ResourceUnit = 70 }
+            },
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 04, 04),
+                BaselineStartDate = new DateTime(2025, 04, 04),
+                BaselineDuration = 4,
+                Work = 32,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 04, 04), Duration = 2 },
+                new GanttSegment { StartDate = new DateTime(2025, 04, 06), Duration = 2 }
+            }
+            };
+            GanttDataSource Record2Child2 = new GanttDataSource()
+            {
+                TaskId = 6,
+                TaskName = "Database Design",
+                StartDate = new DateTime(2025, 04, 08),
+                Duration = 4,
+                Progress = 40,
+                Predecessor = "5FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 8, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 04, 08),
+                IsManual = true,
+                Work = 32,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 04, 08), Duration = 2 },
+                new GanttSegment { StartDate = new DateTime(2025, 04, 10), Duration = 2 }
+            }
+            };
+            Record2.SubTasks.Add(Record2Child1);
+            Record2.SubTasks.Add(Record2Child2);
+
+            // Record 3: Development Phase
+            GanttDataSource Record3 = new GanttDataSource()
+            {
+                TaskId = 7,
+                TaskName = "Development Phase",
+                StartDate = new DateTime(2025, 04, 12),
+                EndDate = new DateTime(2025, 04, 28),
+                ConstraintType = 0,
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record3Child1 = new GanttDataSource()
+            {
+                TaskId = 8,
+                TaskName = "Frontend Development",
+                StartDate = new DateTime(2025, 04, 12),
+                Duration = 6,
+                Progress = 20,
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 4, ResourceUnit = 70 },
+                new ResourceModel { ResourceId = 5, ResourceUnit = 70 },
+                new ResourceModel { ResourceId = 1, ResourceUnit = 70 },
+                new ResourceModel { ResourceId = 2, ResourceUnit = 70 }
+            },
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 04, 12),
+                IsManual = true,
+                Work = 48
+            };
+            GanttDataSource Record3Child2 = new GanttDataSource()
+            {
+                TaskId = 9,
+                TaskName = "Backend Development",
+                StartDate = new DateTime(2025, 04, 18),
+                Duration = 8,
+                Progress = 10,
+                Predecessor = "8FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 5, ResourceUnit = 70 },
+                new ResourceModel { ResourceId = 6, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 04, 18),
+                BaselineStartDate = new DateTime(2025, 04, 18),
+                BaselineDuration = 8,
+                Work = 64,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 04, 18), Duration = 4 },
+                new GanttSegment { StartDate = new DateTime(2025, 04, 22), Duration = 4 }
+            }
+            };
+            GanttDataSource Record3Child3 = new GanttDataSource()
+            {
+                TaskId = 10,
+                TaskName = "API Integration",
+                StartDate = new DateTime(2025, 04, 26),
+                Duration = 3,
+                Progress = 0,
+                Predecessor = "9FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 6, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 04, 26),
+                IsManual = true,
+                Work = 24
+            };
+            Record3.SubTasks.Add(Record3Child1);
+            Record3.SubTasks.Add(Record3Child2);
+            Record3.SubTasks.Add(Record3Child3);
+
+            // Record 4: Testing Phase
+            GanttDataSource Record4 = new GanttDataSource()
+            {
+                TaskId = 11,
+                TaskName = "Testing Phase",
+                StartDate = new DateTime(2025, 04, 29),
+                EndDate = new DateTime(2025, 05, 08),
+                ConstraintType = 0,
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record4Child1 = new GanttDataSource()
+            {
+                TaskId = 12,
+                TaskName = "Unit Testing",
+                StartDate = new DateTime(2025, 04, 29),
+                Duration = 3,
+                Progress = 0,
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 7, ResourceUnit = 70 }
+            },
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 04, 29),
+                IsManual = true,
+                Work = 24,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 04, 29), Duration = 2 },
+                new GanttSegment { StartDate = new DateTime(2025, 05, 01), Duration = 1 }
+            }
+            };
+            GanttDataSource Record4Child2 = new GanttDataSource()
+            {
+                TaskId = 13,
+                TaskName = "Integration Testing",
+                StartDate = new DateTime(2025, 05, 02),
+                Duration = 3,
+                Progress = 0,
+                Predecessor = "12FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 8, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 05, 02),
+                BaselineStartDate = new DateTime(2025, 05, 02),
+                BaselineDuration = 3,
+                Work = 24
+            };
+            GanttDataSource Record4Child3 = new GanttDataSource()
+            {
+                TaskId = 14,
+                TaskName = "User Acceptance Testing",
+                StartDate = new DateTime(2025, 05, 05),
+                Duration = 4,
+                Progress = 0,
+                Predecessor = "13FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 1, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 05, 05),
+                IsManual = true,
+                Work = 32
+            };
+            Record4.SubTasks.Add(Record4Child1);
+            Record4.SubTasks.Add(Record4Child2);
+            Record4.SubTasks.Add(Record4Child3);
+
+            // Record 5: Deployment Phase
+            GanttDataSource Record5 = new GanttDataSource()
+            {
+                TaskId = 15,
+                TaskName = "Deployment Phase",
+                StartDate = new DateTime(2025, 05, 09),
+                EndDate = new DateTime(2025, 05, 13),
+                ConstraintType = 0,
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record5Child1 = new GanttDataSource()
+            {
+                TaskId = 16,
+                TaskName = "Server Setup",
+                StartDate = new DateTime(2025, 05, 09),
+                Duration = 2,
+                Progress = 0,
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 2, ResourceUnit = 70 },
+                new ResourceModel { ResourceId = 3, ResourceUnit = 70 }
+            },
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 05, 09),
+                IsManual = true,
+                Work = 16,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 05, 09), Duration = 1 },
+                new GanttSegment { StartDate = new DateTime(2025, 05, 10), Duration = 1 }
+            }
+            };
+            GanttDataSource Record5Child2 = new GanttDataSource()
+            {
+                TaskId = 17,
+                TaskName = "Application Deployment",
+                StartDate = new DateTime(2025, 05, 11),
+                Duration = 3,
+                Progress = 0,
+                Predecessor = "16FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 3, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 05, 11),
+                BaselineStartDate = new DateTime(2025, 05, 11),
+                BaselineDuration = 3,
+                Work = 24
+            };
+            Record5.SubTasks.Add(Record5Child1);
+            Record5.SubTasks.Add(Record5Child2);
+
+            // Record 6: Maintenance Phase
+            GanttDataSource Record6 = new GanttDataSource()
+            {
+                TaskId = 18,
+                TaskName = "Maintenance Phase",
+                StartDate = new DateTime(2025, 05, 14),
+                EndDate = new DateTime(2025, 05, 24),
+                ConstraintType = 0,
+                IsManual = true,
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record6Child1 = new GanttDataSource()
+            {
+                TaskId = 19,
+                TaskName = "Bug Fixes",
+                StartDate = new DateTime(2025, 05, 14),
+                Duration = 5,
+                Progress = 0,
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 4, ResourceUnit = 70 }
+            },
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 05, 14),
+                BaselineStartDate = new DateTime(2025, 05, 14),
+                BaselineDuration = 5,
+                Work = 40,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 05, 14), Duration = 3 },
+                new GanttSegment { StartDate = new DateTime(2025, 05, 17), Duration = 2 }
+            }
+            };
+            GanttDataSource Record6Child2 = new GanttDataSource()
+            {
+                TaskId = 20,
+                TaskName = "Performance Optimization",
+                StartDate = new DateTime(2025, 05, 19),
+                Duration = 6,
+                Progress = 0,
+                Predecessor = "19FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 1, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 05, 19),
+                IsManual = true,
+                Work = 48
+            };
+            Record6.SubTasks.Add(Record6Child1);
+            Record6.SubTasks.Add(Record6Child2);
+
+            // Record 7: Documentation
+            GanttDataSource Record7 = new GanttDataSource()
+            {
+                TaskId = 21,
+                TaskName = "Documentation",
+                StartDate = new DateTime(2025, 05, 25),
+                EndDate = new DateTime(2025, 06, 13),
+                ConstraintType = 0,
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record7Child1 = new GanttDataSource()
+            {
+                TaskId = 22,
+                TaskName = "User Manual",
+                StartDate = new DateTime(2025, 05, 25),
+                Duration = 10,
+                Progress = 50,
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 2, ResourceUnit = 70 }
+            },
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 05, 25),
+                BaselineStartDate = new DateTime(2025, 05, 25),
+                BaselineDuration = 10,
+                Work = 80,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 05, 25), Duration = 5 },
+                new GanttSegment { StartDate = new DateTime(2025, 05, 30), Duration = 5 }
+            }
+            };
+            GanttDataSource Record7Child2 = new GanttDataSource()
+            {
+                TaskId = 23,
+                TaskName = "Technical Docs",
+                StartDate = new DateTime(2025, 06, 04),
+                Duration = 10,
+                Progress = 30,
+                Predecessor = "22FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 3, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 06, 04),
+                IsManual = true,
+                Work = 80
+            };
+            Record7.SubTasks.Add(Record7Child1);
+            Record7.SubTasks.Add(Record7Child2);
+
+            // Record 8: Training
+            GanttDataSource Record8 = new GanttDataSource()
+            {
+                TaskId = 24,
+                TaskName = "Training",
+                StartDate = new DateTime(2025, 06, 14),
+                EndDate = new DateTime(2025, 06, 23),
+                ConstraintType = 0,
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record8Child1 = new GanttDataSource()
+            {
+                TaskId = 25,
+                TaskName = "Training Material Prep",
+                StartDate = new DateTime(2025, 06, 14),
+                Duration = 5,
+                Progress = 0,
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 4, ResourceUnit = 70 }
+            },
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 06, 14),
+                IsManual = true,
+                Work = 40,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 06, 14), Duration = 3 },
+                new GanttSegment { StartDate = new DateTime(2025, 06, 17), Duration = 2 }
+            }
+            };
+            GanttDataSource Record8Child2 = new GanttDataSource()
+            {
+                TaskId = 26,
+                TaskName = "Conduct Training",
+                StartDate = new DateTime(2025, 06, 19),
+                Duration = 5,
+                Progress = 0,
+                Predecessor = "25FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 5, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 06, 19),
+                BaselineStartDate = new DateTime(2025, 06, 19),
+                BaselineDuration = 5,
+                Work = 40
+            };
+            Record8.SubTasks.Add(Record8Child1);
+            Record8.SubTasks.Add(Record8Child2);
+
+            // Record 9: Review Phase
+            GanttDataSource Record9 = new GanttDataSource()
+            {
+                TaskId = 27,
+                TaskName = "Review Phase",
+                StartDate = new DateTime(2025, 06, 24),
+                EndDate = new DateTime(2025, 06, 28),
+                ConstraintType = 0,
+                IsManual = true,
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record9Child1 = new GanttDataSource()
+            {
+                TaskId = 28,
+                TaskName = "Internal Review",
+                StartDate = new DateTime(2025, 06, 24),
+                Duration = 2,
+                Progress = 0,
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 6, ResourceUnit = 70 },
+                new ResourceModel { ResourceId = 7, ResourceUnit = 70 }
+            },
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 06, 24),
+                BaselineStartDate = new DateTime(2025, 06, 24),
+                BaselineDuration = 2,
+                Work = 16,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 06, 24), Duration = 1 },
+                new GanttSegment { StartDate = new DateTime(2025, 06, 25), Duration = 1 }
+            }
+            };
+            GanttDataSource Record9Child2 = new GanttDataSource()
+            {
+                TaskId = 29,
+                TaskName = "Client Review",
+                StartDate = new DateTime(2025, 06, 26),
+                Duration = 3,
+                Progress = 0,
+                Predecessor = "28FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 8, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 06, 26),
+                BaselineStartDate = new DateTime(2025, 06, 26),
+                BaselineDuration = 3,
+                Work = 24
+            };
+            Record9.SubTasks.Add(Record9Child1);
+            Record9.SubTasks.Add(Record9Child2);
+
+            // Record 10: Project Closure
+            GanttDataSource Record10 = new GanttDataSource()
+            {
+                TaskId = 30,
+                TaskName = "Project Closure",
+                StartDate = new DateTime(2025, 06, 29),
+                EndDate = new DateTime(2025, 07, 13),
+                ConstraintType = 0,
+                Work = 120,
+                SubTasks = new List<GanttDataSource>()
+            };
+            GanttDataSource Record10Child1 = new GanttDataSource()
+            {
+                TaskId = 31,
+                TaskName = "Final Report",
+                StartDate = new DateTime(2025, 06, 29),
+                Duration = 10,
+                Progress = 0,
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 1, ResourceUnit = 70 }
+            },
+                ConstraintType = 4,
+                ConstraintDate = new DateTime(2025, 06, 29),
+                IsManual = true,
+                Work = 80,
+                Segments = new List<GanttSegment>
+            {
+                new GanttSegment { StartDate = new DateTime(2025, 06, 29), Duration = 5 },
+                new GanttSegment { StartDate = new DateTime(2025, 07, 04), Duration = 5 }
+            }
+            };
+            GanttDataSource Record10Child2 = new GanttDataSource()
+            {
+                TaskId = 32,
+                TaskName = "Sign-off",
+                StartDate = new DateTime(2025, 07, 09),
+                Duration = 5,
+                Progress = 0,
+                Predecessor = "31FS",
+                Resources = new List<ResourceModel>
+            {
+                new ResourceModel { ResourceId = 2, ResourceUnit = 70 },
+                new ResourceModel { ResourceId = 3, ResourceUnit = 70 }
+            },
+                ConstraintType = 2,
+                ConstraintDate = new DateTime(2025, 07, 09),
+                BaselineStartDate = new DateTime(2025, 07, 09),
+                BaselineDuration = 5,
+                Work = 40
+            };
+            Record10.SubTasks.Add(Record10Child1);
+            Record10.SubTasks.Add(Record10Child2);
+
+            // Add all records to the collection
+            GanttDataSourceCollection.Add(Record1);
+            GanttDataSourceCollection.Add(Record2);
+            GanttDataSourceCollection.Add(Record3);
+            GanttDataSourceCollection.Add(Record4);
+            GanttDataSourceCollection.Add(Record5);
+            GanttDataSourceCollection.Add(Record6);
+            GanttDataSourceCollection.Add(Record7);
+            GanttDataSourceCollection.Add(Record8);
+            GanttDataSourceCollection.Add(Record9);
+            GanttDataSourceCollection.Add(Record10);
+
+            return GanttDataSourceCollection;
+        }
+
+        public class DataResource
+        {
+            public string ResourceId { get; set; }
+            public Nullable<int> Unit { get; set; }
+            public string ResourceName { get; set; }
+            public string Role { get; set; }
+        }
+
+        public static List<DataResource> DataResources()
+        {
+            List<DataResource> ResourceCollection = new List<DataResource>
+            {
+                new DataResource { ResourceId = "1", ResourceName = "Martin Tamer", Unit = 100, Role = "UI/UX Designer" },
+                new DataResource { ResourceId = "2", ResourceName = "Rose Fuller", Unit = 100, Role = "Business Analyst" },
+                new DataResource { ResourceId = "3", ResourceName = "Margaret Buchanan", Unit = 100, Role = "Technical Lead" },
+                new DataResource { ResourceId = "4", ResourceName = "Fuller King", Unit = 100, Role = "Frontend Developer" },
+                new DataResource { ResourceId = "5", ResourceName = "Davolio Fuller", Unit = 100, Role = "Full-Stack Developer" },
+                new DataResource { ResourceId = "6", ResourceName = "Van Jack", Unit = 100, Role = "Backend Developer" },
+                new DataResource { ResourceId = "7", ResourceName = "Jack Davolio", Unit = 100, Role = "Quality Assurance Engineer" },
+                new DataResource { ResourceId = "8", ResourceName = "Construction Supervisor", Unit = 100, Role = "Database Engineer" }
+            };
+            return ResourceCollection;
         }
     }
 }

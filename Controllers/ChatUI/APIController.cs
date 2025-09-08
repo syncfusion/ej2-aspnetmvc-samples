@@ -9,6 +9,7 @@ using Syncfusion.EJ2.InteractiveChat;
 using System.Collections.Generic;
 using EJ2MVCSampleBrowser.Models;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace EJ2MVCSampleBrowser.Controllers.ChatUI
 {
@@ -16,7 +17,10 @@ namespace EJ2MVCSampleBrowser.Controllers.ChatUI
     {
         public List<object> TimeStampFormatOptions { get; set; }
         public List<object> TypingUserOptions { get; set; }
+        public List<object> MentionUserOptions { get; set; }
         public object DDBListValue = "MM/dd hh:mm a";
+        public string[] MentionUserValues { get; set; }
+        public List<ChatUIUser> MentionUsers { get; set; }
         public List<ChatUIMessage> CommunityMessagedata { get; set; }
         public List<ToolbarItemModel> MessageToolbarItems { get; set; }
         public ActionResult API()
@@ -44,11 +48,37 @@ namespace EJ2MVCSampleBrowser.Controllers.ChatUI
                 new { text = "Charlie", value = "Charlie" },
                 new { text = "Jordan", value = "Jordan"}
             };
+            MentionUserOptions = new List<object>
+            {
+                 new { text = "Alice Brown", value = "Alice Brown" },
+                 new { text = "Michale Suyama", value = "Michale Suyama" },
+                 new { text = "Charlie", value = "Charlie" },
+                 new { text = "Janet", value = "Janet" },
+                 new { text = "Jordan Peele", value = "Jordan Peele" }
+            };
+
+            MentionUserValues = new string[] { "Alice Brown", "Michale Suyama", "Charlie", "Janet", "Jordan Peele" };
+
+            var userModels = new ChatMessagesData().GetMentionUsers();
+
+            MentionUsers = userModels.Select(u => new ChatUIUser
+            {
+                Id = u.id,
+                User = u.user,
+                AvatarUrl = u.avatarUrl,
+                AvatarBgColor = u.avatarBgColor,
+                StatusIconCss = u.statusIconCss
+            }).ToList();
+
+
             ViewData["MessageToolbarItems"] = MessageToolbarItems;
             ViewData["CommunityMessagedata"] = CommunityMessagedata;
             ViewData["TimeStampFormatOptions"] = TimeStampFormatOptions;
             ViewData["TypingUserOptions"] = TypingUserOptions;
+            ViewData["MentionUserOptions"] = MentionUserOptions;
             ViewData["DDBListValue"] = DDBListValue;
+            ViewData["MentionUsers"] = MentionUsers;
+            ViewData["MentionUserValues"] = MentionUserValues;
             return View();
         }
     }

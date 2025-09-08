@@ -17,10 +17,10 @@
                  <div class="e-panel-content">
                      @(Html.EJS().Chart("linechart").Height("100%").Width("100%").Series(series =>
                      {
-                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).CornerRadius(conrnerRadius => conrnerRadius.TopLeft(4).TopRight(4))
+                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).CornerRadius(cornerRadius => cornerRadius.TopLeft(4).TopRight(4))
                             .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Middle).Font(ft => ft.Color("white")))).XName("Period").Fill("#2485FA")
                             .YName("OnlinePercentage").DataSource(ViewData["columnSource"]).Name("Online").Width(2).Add();
-                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).CornerRadius(conrnerRadius => conrnerRadius.TopLeft(4).TopRight(4))
+                        series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column).CornerRadius(cornerRadius => cornerRadius.TopLeft(4).TopRight(4))
                             .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Middle).Font(ft=>ft.Color("white")))).XName("Period").Fill("#FEC200")
                             .YName("RetailPercentage").DataSource(ViewData["columnSource"]).Name("Retail").Width(2).Add();
                         }).PrimaryYAxis(px => px.LabelFormat("{value}%").LabelStyle(ls => ls.Size("11px")).LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))

@@ -5,7 +5,7 @@
     <div class="col-lg-12 control-section msg-template-section">
         <div class="msg-content-section">
             @Html.EJS().Button("showBtn").Content("Show pull request").CssClass("e-outline e-primary msg-hidden").Render()
-            @Html.EJS().Message("msg_template").Severity(Severity.Success).Created("created").Closed("closed").ContentTemplate(@<div id="template"><h1>Merged pull request</h1><p>Pull request #41 merged after a successful build</p><button id='commitBtn' class='e-control e-btn e-link'>View Commit</button><button id='btn1' class='e-control e-btn e-link'>Dismiss</button></div>).Render()
+            @Html.EJS().Message("msg_template").Severity(Severity.Success).Created("created").Closed("closed").ContentTemplate(@<div id="template"><span class="msg-title">Merged pull request</span><p>Pull request #41 merged after a successful build</p><button id='commitBtn' class='e-control e-btn e-link'>View Commit</button><button id='btn1' class='e-control e-btn e-link'>Dismiss</button></div>).Render()
         </div>
     </div>
 }
@@ -45,11 +45,12 @@
         display: none;
     }
 
-    .msg-template-section .e-message h1 {
+    .msg-template-section .e-message .msg-title {
         margin: 0;
         font-size: 16px;
         font-weight: 600;
         line-height: 1.25;
+        display: block;
     }
 
     .msg-template-section .e-message .e-msg-icon {

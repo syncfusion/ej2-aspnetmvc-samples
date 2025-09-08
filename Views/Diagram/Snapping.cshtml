@@ -234,28 +234,29 @@
         function snapToLines(args) {
             var diagram = document.getElementById("diagram").ej2_instances[0];
             var showGridlines = document.getElementById("showGridlines").ej2_instances[0];
-            if (showGridlines.checked && snapToObject.checked) {
+            var snapObject = document.getElementById("snapToObject").ej2_instances[0];
+            if (showGridlines.checked && snapObject.checked) {
                 diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All;
             }
-            else if (showGridlines.checked && !snapToObject.checked) {
+            else if (showGridlines.checked && !snapObject.checked) {
                 diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All & ~ej.diagrams.SnapConstraints.SnapToObject;
             }
-            else if (!showGridlines.checked && snapToObject.checked) {
+            else if (!showGridlines.checked && snapObject.checked) {
                 diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All & ~ej.diagrams.SnapConstraints.ShowLines;
             }
-            else if (!showGridlines.checked && !snapToObject.checked) {
+            else if (!showGridlines.checked && !snapObject.checked) {
                 diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All & ~(ej.diagrams.SnapConstraints.ShowLines | ej.diagrams.SnapConstraints.SnapToObject);
             }
             switch (args.value) {
                 case 'Snap To Gridlines':
                     diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All | ej.diagrams.SnapConstraints.SnapToLines;
-                    if (!showGridlines.checked && !snapToObject.checked) {
+                    if (!showGridlines.checked && !snapObject.checked) {
                         diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All & ~(ej.diagrams.SnapConstraints.ShowLines | ej.diagrams.SnapConstraints.SnapToObject);
                     }
-                    else if (!snapToObject.checked && showGridlines.checked) {
+                    else if (!snapObject.checked && showGridlines.checked) {
                         diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All & ~(ej.diagrams.SnapConstraints.SnapToObject);
                     }
-                    else if (snapToObject.checked && !showGridlines.checked) {
+                    else if (snapObject.checked && !showGridlines.checked) {
                         diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All & ~(ej.diagrams.SnapConstraints.ShowLines);
                     }
                     break;
@@ -267,13 +268,13 @@
                     break;
                 case 'None':
                     diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All & ~(ej.diagrams.SnapConstraints.SnapToHorizontalLines | ej.diagrams.SnapConstraints.SnapToVerticalLines | ej.diagrams.SnapConstraints.SnapToLines);
-                    if (!showGridlines.checked && !snapToObject.checked) {
+                    if (!showGridlines.checked && !snapObject.checked) {
                         diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All & ~(ej.diagrams.SnapConstraints.ShowLines | ej.diagrams.SnapConstraints.SnapToObject | ej.diagrams.SnapConstraints.SnapToHorizontalLines | ej.diagrams.SnapConstraints.SnapToVerticalLines | ej.diagrams.SnapConstraints.SnapToLines);
                     }
-                    else if (showGridlines.checked && !snapToObject.checked) {
+                    else if (showGridlines.checked && !snapObject.checked) {
                         diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All & ~(ej.diagrams.SnapConstraints.SnapToObject | ej.diagrams.SnapConstraints.SnapToHorizontalLines | ej.diagrams.SnapConstraints.SnapToVerticalLines | ej.diagrams.SnapConstraints.SnapToLines);
                     }
-                    else if (!showGridlines.checked && snapToObject.checked) {
+                    else if (!showGridlines.checked && snapObject.checked) {
                         diagram.snapSettings.constraints = ej.diagrams.SnapConstraints.All & ~(ej.diagrams.SnapConstraints.ShowLines | ej.diagrams.SnapConstraints.SnapToHorizontalLines | ej.diagrams.SnapConstraints.SnapToVerticalLines | ej.diagrams.SnapConstraints.SnapToLines);
                     }
                     break;

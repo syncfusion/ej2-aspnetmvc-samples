@@ -22,7 +22,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
         public ActionResult CellTemplate()
         {
             ViewData["data"] = new PivotTableData().GetrenewableEnergy();
-            ViewData["drilledMembers"] = new string[] { "FY 2015", "FY 2017", "FY 2018" };
+            ViewData["drilledMembers"] = new string[] { "FY 2022", "FY 2023", "FY 2024" };
             return View();
         }
     }

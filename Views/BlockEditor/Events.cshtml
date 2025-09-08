@@ -5,7 +5,7 @@
 @section ControlsSection{
     <div class="col-lg-8 control-section">
         <div class="content-wrapper">
-            @Html.EJS().BlockEditor("events-blockeditor").Created("function(e){ logEvent('created'); }").ContentChanged("function(e){ logEvent('contentChanged'); }").BlockAdded("function(e){ logEvent('blockAdded'); }").BlockRemoved("function(e){ logEvent('blockRemoved'); }").BlockMoved("function(e){ logEvent('blockMoved'); }").BlockDrag("function(e){ logEvent('blockDrag'); }").BlockDragStart("function(e){ logEvent('blockDragStart'); }").BlockDrop("function(e){ logEvent('blockDrop'); }").Focus("function(e){ logEvent('focus'); }").Blur("function(e){ logEvent('blur'); }").SelectionChanged("function(e){ logEvent('selectionChanged'); }").BeforePaste("function(e){ logEvent('beforePaste'); }").AfterPaste("function(e){ logEvent('afterPaste'); }").UndoRedoPerformed("function(e){ logEvent('undoRedoPerformed'); }").Blocks((List<Block>)ViewData["BlockDataEvents"]).Render()
+            @Html.EJS().BlockEditor("events-blockeditor").Created("function(e){ logEvent('created'); }").ContentChanged("function(e){ logEvent('contentChanged'); }").BlockAdded("function(e){ logEvent('blockAdded'); }").BlockRemoved("function(e){ logEvent('blockRemoved'); }").BlockMoved("function(e){ logEvent('blockMoved'); }").BlockDrag("function(e){ logEvent('blockDrag'); }").BlockDragStart("function(e){ logEvent('blockDragStart'); }").BlockDrop("function(e){ logEvent('blockDrop'); }").Focus("function(e){ logEvent('focus'); }").Blur("function(e){ logEvent('blur'); }").SelectionChanged("function(e){ logEvent('selectionChanged'); }").BeforePaste("function(e){ logEvent('beforePaste'); }").AfterPaste("function(e){ logEvent('afterPaste'); }").UndoRedoPerformed("function(e){ logUndoRedoEvent(e); }").Blocks((List<Block>)ViewData["BlockDataEvents"]).Render()
         </div>
     </div>
     <div class="col-lg-4 property-section">
@@ -58,6 +58,10 @@
         function logEvent(eventName) {
             appendElement(`BlockEditor <b>${eventName}</b> event called<hr>`);
         };
+
+        function logUndoRedoEvent(event) {
+            appendElement(`BlockEditor <b>${event.isUndo ? 'Undo' : 'Redo'}</b> action performed<hr>`);
+        }
 
         function appendElement(html) {
             var span = document.createElement('span');

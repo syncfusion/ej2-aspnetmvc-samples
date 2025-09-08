@@ -21,7 +21,7 @@ namespace EJ2MVCSampleBrowser.Controllers.PivotView
 
         public ActionResult ServerSideAggregation()
         {
-             ViewData["drilledMembers"] = new string[] { "PRO-10001", "PRO-10002", "PRO-10003" };
+             ViewData["drilledMembers"] = new string[] { "France", "Germany" };
             return View();
         }
     }

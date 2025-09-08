@@ -52,14 +52,14 @@
                 <tr style="height: 50px">
                     <td>
                         <div>
-                            @Html.EJS().RadioButton("fy15").Label("FY 2015").Name("DrillOperation").Checked(false).Change("onChange").Render()
+                            @Html.EJS().RadioButton("fy22").Label("FY 2022").Name("DrillOperation").Checked(false).Change("onChange").Render()
                         </div>
                     </td>
                 </tr>
                 <tr style="height: 50px">
                     <td>
                         <div>
-                            @Html.EJS().RadioButton("fy15_q1").Label("FY 2015 >> Q1").Name("DrillOperation").Checked(false).Change("onChange").Render()
+                            @Html.EJS().RadioButton("fy22_q1").Label("FY 2022 >> Q1").Name("DrillOperation").Checked(false).Change("onChange").Render()
                         </div>
                     </td>
                 </tr>
@@ -104,11 +104,11 @@
             else if (id === 'expand') {
                 pivotObj.dataSourceSettings.expandAll = true;
             }
-            else if (id === 'fy15') {
-                pivotObj.dataSourceSettings.drilledMembers = [{ name: 'Year', items: ['FY 2015'] }];
+            else if (id === 'fy22') {
+                pivotObj.dataSourceSettings.drilledMembers = [{ name: 'Year', items: ['FY 2022'] }];
             }
-            else if (id === 'fy15_q1') {
-                pivotObj.dataSourceSettings.drilledMembers = [{ name: 'Year', items: ['FY 2015'] },
+            else if (id === 'fy22_q1') {
+                pivotObj.dataSourceSettings.drilledMembers = [{ name: 'Year', items: ['FY 2022'] },
                 { name: 'Quarter', items: ['Q1'] }];
             }
             else if (id === 'us') {

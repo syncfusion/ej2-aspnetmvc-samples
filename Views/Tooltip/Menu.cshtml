@@ -297,12 +297,15 @@
     //beforRender event handler for Tooltip
 
     //Initialize ListView component
-    var listObj = new ej.lists.ListView({
-        //Map appropriate columns to fields property
-        fields: { text: 'Name', iconCss: 'icon' },
-        //Set true to show icons
-        showIcon: true
-    });
+    var listObj;
+    window.onload = function () {
+        listObj = new ej.lists.ListView({
+            //Map appropriate columns to fields property
+            fields: { text: 'Name', iconCss: 'icon' },
+            //Set true to show icons
+            showIcon: true
+        });
+    };
 
     function onCreated() {
         tooltipObj = document.getElementById("tooltip").ej2_instances[0];

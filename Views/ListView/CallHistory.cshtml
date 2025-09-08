@@ -9,7 +9,7 @@
         var missed = "#missed";
     }
     <div class="control-section">
-        <div class="layoutWrapper">
+        <div class="layoutWrapper e-device-layout">
             <div class="speaker">
                 <div class="camera"></div>
             </div>
@@ -63,13 +63,6 @@
 }
 
 <script>
-    window.onload = function () {
-        if (!ej.base.Browser.isDevice) {
-            document.getElementsByClassName('layoutWrapper')[0].classList.add('e-device-layout');
-        } else {
-            document.getElementsByClassName('tabContainer')[0].classList.add('e-visbile-layer');
-        }
-    }
     function filterData(dataSource, value) {
         let newData = [];
         dataSource.filter((data) => {
@@ -163,10 +156,6 @@
 
     body.bootstrap-dark .e-listview.e-list-template .e-list-wrapper.e-list-multi-line .e-list-content {
         color: rgba(255,255,255,0.7);
-    }
-
-    .e-visbile-layer {
-        visibility: visible;
     }
 
 /* ListView customization */

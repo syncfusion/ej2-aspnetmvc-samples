@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers
         {
             ViewData["Items"] = new[] {"Undo", "Redo", "|", "ImportWord", "ExportWord", "ExportPdf", "|",
                 "Bold", "Italic", "Underline", "StrikeThrough", "InlineCode", "|", "CreateLink", "Image", "CreateTable", "CodeBlock",
-                "HorizontalLine", "Blockquote", "|", "BulletFormatList", "NumberFormatList", "|", "Formats", "Alignments", "|", "Outdent", "Indent", "|",
+                "HorizontalLine", "Blockquote", "|", "BulletFormatList", "NumberFormatList", "Checklist", "|", "Formats", "Alignments", "|", "Outdent", "Indent", "|",
                 "FontColor", "BackgroundColor", "FontName", "FontSize", "|", "LowerCase", "UpperCase", "|", "SuperScript", "SubScript", "|",
                 "EmojiPicker", "FileManager", "Video", "Audio", "|", "FormatPainter", "ClearFormat",
                 "|", "Print", "FullScreen", "|", "SourceCode"};
@@ -31,6 +31,12 @@ namespace EJ2MVCSampleBrowser.Controllers
                 getImageUrl = hostUrl + "api/FileManager/GetImage",
                 uploadUrl = hostUrl + "api/FileManager/Upload",
                 downloadUrl = hostUrl + "api/FileManager/Download"
+            };
+            ViewData["Text"] = new[] {
+                "Formats", "|", "Bold", "Italic", "Fontcolor", "BackgroundColor", "|", "CreateLink", "Image", "CreateTable", "Blockquote", "|", "Unorderedlist", "Orderedlist", "Indent", "Outdent"
+            };
+            ViewData["Table"] = new[] {
+                "Tableheader", "TableRemove", "|", "TableRows", "TableColumns", "TableCell", "|" , "TableEditProperties", "Styles", "BackgroundColor", "Alignments", "TableCellVerticalAlign"
             };
             ViewData["ExportWord"] = new Syncfusion.EJ2.RichTextEditor.RichTextEditorExportWord
             {

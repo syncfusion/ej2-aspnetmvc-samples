@@ -253,6 +253,88 @@ gulp.task('desValidation', function (done) {
     }
 });
 
+function adjustTitle(componentName, featureName) {
+    const shortTemplates = [
+        `Learn about ${featureName} in ASP.NET MVC ${componentName} - Syncfusion Demos`,
+        `${featureName} feature in ASP.NET MVC ${componentName} - Try it now!`
+    ];
+
+    const longTemplates = [
+        `ASP.NET MVC ${componentName} ${featureName} - Syncfusion`,
+        `${featureName} Example using ASP.NET MVC ${componentName} - Syncfusion`
+    ];
+
+    const base = `ASP.NET MVC ${componentName} ${featureName} Example - Syncfusion Demos`;
+    const baseLength = base.length;
+
+    if (baseLength < 50) {
+        for (let template of shortTemplates) {
+            if (template.length >= 50 && template.length <= 70) {
+                return template;
+            }
+        }
+    } else if (baseLength > 70) {
+        for (let template of longTemplates) {
+            if (template.length >= 50 && template.length <= 70) {
+                return template;
+            }
+        }
+    } else {
+        return base;
+    }
+    // If no suitable template found, return the base title with adjustments
+    return base.length > 70 ? base.substring(0, 67) + '...' : base.padEnd(50, '.');
+}
+
+
+
+function adjustDescription(featureName, metaControlCategory) {
+    const shortTemplates = [
+        `Explore the ${featureName} in ASP.NET MVC ${metaControlCategory}. Learn how it helps improve your app's functionality.`,
+        `This example shows how ${featureName} works in ASP.NET MVC ${metaControlCategory}. Understand its purpose and usage.`,
+        `Discover the ${featureName} feature in ASP.NET MVC ${metaControlCategory}. Learn how to use it in real-world scenarios.`,
+        `Learn how to use ${featureName} in ASP.NET MVC ${metaControlCategory}. This guide helps you integrate it effectively.`,
+        `Understand the ${featureName} in ASP.NET MVC ${metaControlCategory}. See how it enhances your development workflow.`,
+        `Explore ${featureName} in ASP.NET MVC ${metaControlCategory}. Learn how to configure and apply it in your projects.`
+    ];
+
+    const longTemplates = [
+        `This example demonstrates the ${featureName} in ASP.NET MVC ${metaControlCategory}. Discover its capabilities, integration steps, and customization options.`,
+        `Explore the ${featureName} feature in ASP.NET MVC ${metaControlCategory}. Learn how to use it effectively and integrate it into your application with best practices.`,
+        `Understand how ${featureName} works in ASP.NET MVC ${metaControlCategory}. This guide covers usage, configuration, and advanced customization.`,
+        `This demo shows how to use ${featureName} in ASP.NET MVC ${metaControlCategory}, including setup, configuration, and real-world implementation tips.`,
+        `Discover the benefits of using ${featureName} in ASP.NET MVC ${metaControlCategory}. Learn how to apply it efficiently in your business apps.`,
+        `Explore ${featureName} in ASP.NET MVC ${metaControlCategory}. This example covers integration, customization, and practical usage scenarios.`
+    ];
+
+    const base = `This example demonstrates the ${featureName} feature in ASP.NET MVC ${metaControlCategory}.Learn how it works and how to integrate it into your application.`
+
+    const baseLength = base.length;
+
+    if (baseLength < 150) {
+        for (let template of shortTemplates) {
+            if (template.length >= 150 && template.length <= 160) 
+                return template;
+        }
+    } else if (baseLength > 160) {
+        for (let template of longTemplates) {
+            if (template.length >= 150 && template.length <= 160) 
+                return template;
+        }
+    }
+    if(baseLength < 146 && baseLength > 135){
+        return base + ' Explore here.';
+    }
+    if (baseLength < 150 && baseLength > 145) {
+        return base + 'Check now.'; 
+    } 
+    if (baseLength > 160) {
+        return base.substring(0, 157) + '...'; 
+    }
+    return base;
+}
+
+
 gulp.task('title-section', function (done) {
     var samplelists = config.window.samplesList;
     for (let component of samplelists) {
@@ -272,7 +354,10 @@ gulp.task('title-section', function (done) {
             let dir = sample.component;
             let path = `./Views/${dir}/${url}.cshtml`;
             let content = fs.existsSync(path) ? fs.readFileSync(path, 'utf8') : '';
-            let title = `ASP.NET MVC ${componentName} ${featureName} Example - Syncfusion Demos `;
+            var title = adjustTitle(componentName, featureName);
+            if(title.length > 70 || title.length < 50) {
+                throw new Error(`error: The title for ${featureName} in ${componentName} is not within the recommended length. Please adjust it.`);
+            }
             if (content !== '') {
                 if ((/@section Title\s?{/).test(content)) {
                     content = content.replace(/@section Title+{([^}]*)}/g, `@section Title{
@@ -283,7 +368,10 @@ gulp.task('title-section', function (done) {
                  <title>${title}</title>
              }`;
                 }
-                let description = `This example demonstrates the ${featureName} in ASP.NET MVC ${metaControlCategory}. Explore here for more details.`;
+                let description = adjustDescription(featureName, metaControlCategory);
+                if(description.length > 160 || description.length < 150) {
+                   throw new Error(`error: The description for ${featureName} in ${metaControlCategory} is not within the recommended length. Please adjust it.`);
+                }
                 if ((/@section Meta\s?{/).test(content)) {
                     content = content.replace(/@section Meta+{([^}]*)}/g, `@section Meta{
                     <meta name="description" content="${description}"/>
@@ -367,7 +455,7 @@ gulp.task('mvc-version-update', function (done) {
     if (packageList) {
         for (var nuget of packageList) {
             var nugetName = nuget.split(' version')[0].replace('<package id="', '').replace('"', '');
-            if (!(/Syncfusion.EJ2.MVC5|Syncfusion.EJ2.GridExport.MVC5|Syncfusion.EJ2.Spreadsheet.AspNet.MVC5|Syncfusion.Licensing/.test(nugetName))) {
+            if (!(/Syncfusion.EJ2.MVC5|Syncfusion.EJ2.GridExport.MVC5|Syncfusion.Licensing/.test(nugetName))) {
                 var shellCode = shelljs.exec(`nuget list ${nugetName} -AllVersions -Source ${nexusFeed}`, { silent: true, async: false });
                 if (shellCode.code === 0 && !shellCode.stdout.startsWith('No packages found.')) {
                     console.log("Package name -> " + nugetName + " ;");

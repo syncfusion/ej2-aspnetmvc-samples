@@ -26,7 +26,7 @@
         <li><p> Contains undo / redo manager.</p></li>
         <li><p> Creates bulleted and numbered lists.</p></li>
     </ul>
-</div>).Created("created").ActionBegin("actionBegin").ActionComplete("actionComplete").Focus("focus").Blur("blur").Change("change").ToolbarClick("toolbarClick").BeforeDialogOpen("beforeDialogOpen").DialogOpen("dialogOpen").DialogClose("dialogClose").BeforeQuickToolbarOpen("beforeQuickToolbarOpen").QuickToolbarOpen("quickToolbarOpen").QuickToolbarClose("quickToolbarClose").ImageSelected("imageSelected").ImageUploading("imageUploading").ImageUploadSuccess("imageUploadSuccess").ImageUploadFailed("imageUploadFailed").ImageRemoving("imageRemoving").Resizing("resizing").ResizeStart("resizeStart").ResizeStop("resizeStop").ToolbarSettings(e => e.Items((object)ViewData["Items"])).FileManagerSettings(e => { e.Enable(true); e.Path("/Pictures/Food"); e.AjaxSettings((object)ViewData["AjaxSettings"]); }).Render()
+</div>).Created("created").ActionBegin("actionBegin").ActionComplete("actionComplete").Focus("focus").Blur("blur").Change("change").ToolbarClick("toolbarClick").BeforeDialogOpen("beforeDialogOpen").DialogOpen("dialogOpen").DialogClose("dialogClose").BeforeQuickToolbarOpen("beforeQuickToolbarOpen").QuickToolbarOpen("quickToolbarOpen").QuickToolbarClose("quickToolbarClose").ImageSelected("imageSelected").ImageUploading("imageUploading").ImageUploadSuccess("imageUploadSuccess").ImageUploadFailed("imageUploadFailed").ImageRemoving("imageRemoving").Resizing("resizing").ResizeStart("resizeStart").ResizeStop("resizeStop").SelectionChanged("selectionChanged").ToolbarSettings(e => e.Items((object)ViewData["Items"])).FileManagerSettings(e => { e.Enable(true); e.Path("/Pictures/Food"); e.AjaxSettings((object)ViewData["AjaxSettings"]); }).Render()
             </div>
         </div>
     <div class="col-lg-4 property-section">
@@ -194,6 +194,10 @@
         function actionCompleteHandler() {
             setTimeout(function () { rteObj.refreshUI(); }, 400);
         }
+        function selectionChanged() {
+            appendElement('Rich Text Editor <b>selectionChanged</b> event called<hr>');
+        }
+
 
     </script>
     <style>
@@ -279,6 +283,7 @@
         <li><code>resizing</code> – Triggers only when resizing the image.</li>
         <li><code>resizeStart</code> –Triggers only when you start resizing the image.</li>
         <li><code>resizeStop</code> – Triggers only when you stop resizing the image.</li>
+        <li><code>selectionChanged</code> – Triggers only when the selection within the editor is modified.</li>
         </ul>
     </div>
 }

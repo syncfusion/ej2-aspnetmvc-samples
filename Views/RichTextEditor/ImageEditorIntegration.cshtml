@@ -8,7 +8,7 @@
 @section ControlsSection{
     <div class="control-section">
         <div class="control-wrapper">
-            @Html.EJS().RichTextEditor("defaultRTE").ToolbarClick("onToolbarClick").Destroyed("destroyed").ContentTemplate(@<div>
+            @Html.EJS().RichTextEditor("defaultRTE").ToolbarClick("onToolbarClick").Created("created").Destroyed("destroyed").ContentTemplate(@<div>
                 <p>
                     An image can be edited within a Rich Text Editor using an Image Editor.
                     <img id="img1" style="height: 350px;" src=@Url.Content("~/Content/images/RichTextEditor/bridge.png") aria-label='Bridge'>
@@ -76,7 +76,7 @@
     var dialogObj;
     var RTEObj;
     var imageEditorObj;
-    var selection = new ej.richtexteditor.NodeSelection();
+    var selection;
     var range;
     var saveSelection;
     var dataURL;
@@ -130,6 +130,9 @@
     function open() {
         imageEditorObj.update();
         imageEditorObj.open(dataURL);
+    }
+    function created() {
+       selection = new ej.richtexteditor.NodeSelection();
     }
     function dispose() {
         if (imageEditorObj !== null && imageEditorObj !== undefined) {

@@ -20,7 +20,7 @@ namespace EJ2MVCSampleBrowser.Controllers.TreeGrid
         // GET: CustomAggregates
         public ActionResult CustomAggregate()
         {
-            var treeData = ShipmentData.GetShipmentData();
+            var treeData = OrdersTreeData.GetShipmentData();
             ViewData["datasource"] = treeData;
             return View();
         }

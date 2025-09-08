@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div id="target" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; display: none;">
-                    @Html.EJS().Dialog("modalDialog").Header("Shift swap").CssClass("swap-dialog").IsModal(true).ShowCloseIcon(true).Visible(false).Width("378px").Height("250px").Buttons(new List<DialogDialogButton>
+                    @Html.EJS().Dialog("modalDialog").Header("Shift swap").CssClass("swap-dialog").IsModal(true).ShowCloseIcon(true).Visible(false).Width("378px").Buttons(new List<DialogDialogButton>
                     {
                     new DialogDialogButton
                     {
@@ -439,7 +439,7 @@
             var buttonElements = dialogObj.element.querySelectorAll('.e-footer-content .e-btn');
 
             buttonElements.forEach(function (btnEl) {
-                if (btnEl.innerText.trim() === 'Swap Shift') {
+                if (btnEl.innerText.trim().toUpperCase() === 'SWAP SHIFT') {
                     var buttonInstance = btnEl.ej2_instances?.[0];
                     if (buttonInstance) {
                         buttonInstance.disabled = !enable;

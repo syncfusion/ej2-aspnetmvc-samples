@@ -33,7 +33,7 @@
            {
                filters.Name("Product_Categories").Caption("Product Categories").Add();
            })
-           .ValueSortSettings(new PivotViewValueSortSettings { ColumnHeaderText= "FY 2015##In Stock", HeaderDelimiter= "##", ColumnSortOrder=Sorting.Descending, RowHeaderText="France", RowSortOrder=Sorting.Ascending })
+           .ValueSortSettings(new PivotViewValueSortSettings { ColumnHeaderText= "FY 2022##In Stock", HeaderDelimiter= "##", ColumnSortOrder=Sorting.Descending, RowHeaderText="France", RowSortOrder=Sorting.Ascending })
            ).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).ShowFieldList(true).EnableValueSorting(true).ShowValuesButton(true).DataBound("dataBound").Render()
     </div>
 </div>
@@ -71,7 +71,7 @@
 @section ActionDescription{
    <div id="action-description">
        <p>This sample demonstrates ordering of column and row header values in ascending or descending order. Here, the
-            <b>FY 2015 → In Stock</b> column header and the <b>France</b> row header are both ordered by defining
+            <b>FY 2022 → In Stock</b> column header and the <b>France</b> row header are both ordered by defining
             sort-related settings in code behind.
         </p>
     </div>

@@ -20,7 +20,8 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "heading-block",
-                    Type = "Heading1",
+                    Type = BlockType.Heading,
+                    Props = new { level = 1 },
                     Content = new List<object>
                     {
                         new { id = "heading-content", type = "Text", content = "Block Editor API Demo" }
@@ -29,7 +30,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "intro-block",
-                    Type = "Paragraph",
+                    Type = BlockType.Paragraph,
                     Content = new List<object>
                     {
                         new
@@ -43,7 +44,8 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "api-heading",
-                    Type = "Heading2",
+                    Type = BlockType.Heading,
+                    Props = new { level = 2 },
                     Content = new List<object>
                     {
                         new { id = "api-heading-content", type = "Text", content = "API Features:" }
@@ -52,7 +54,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "api-list-1",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -66,7 +68,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "api-list-2",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -80,7 +82,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "api-list-3",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -94,7 +96,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "api-list-4",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -108,7 +110,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "api-list-5",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -122,7 +124,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "api-list-6",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -136,7 +138,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "api-list-7",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -150,7 +152,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "api-list-8",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -164,7 +166,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "api-list-9",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -178,7 +180,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "try-it-block",
-                    Type = "Paragraph",
+                    Type = BlockType.Paragraph,
                     Content = new List<object>
                     {
                         new
@@ -186,7 +188,7 @@ namespace EJ2MVCSampleBrowser.Models
                             id = "try-it-content",
                             type = "Text",
                             content = "Try it out! Use the property panel on the right to interact with the API.",
-                            styles = new { bold = true, bgColor = "#999999" }
+                            props = new { styles = new { bold = true, bgColor = "#999999" } }
                         }
                     }
                 }
@@ -200,7 +202,8 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "heading-block",
-                    Type = "Heading1",
+                    Type = BlockType.Heading,
+                    Props = new { level = 1 },
                     Content = new List<object>
                     {
                         new { id = "heading-content", type = "Text", content = "Welcome to the Block Editor Demo!" }
@@ -209,7 +212,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "intro-block",
-                    Type = "Paragraph",
+                    Type = BlockType.Paragraph,
                     Content = new List<object>
                     {
                         new
@@ -223,7 +226,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "styled-paragraph",
-                    Type = "Paragraph",
+                    Type = BlockType.Paragraph,
                     Content = new List<object>
                     {
                         new { id = "styled-text-1", type = "Text", content = "Try selecting text to see " },
@@ -232,15 +235,15 @@ namespace EJ2MVCSampleBrowser.Models
                             id = "styled-text-2",
                             type = "Text",
                             content = "formatting options",
-                            styles = new { bold = true, italic = true }
+                            props = new { styles = new { bold = true, italic = true } }
                         },
-                        new { id = "styled-text-3", type = "Text", content = " or type " },
+                        new { id = "styled-text-3", type = "Text", content = ", or type " },
                         new
                         {
                             id = "styled-text-4",
                             type = "Text",
                             content = "\"/\"",
-                            styles = new { bgColor = "#999999", bold = true }
+                            props = new { styles = new { bgColor = "#999999", bold = true } }
                         },
                         new { id = "styled-text-5", type = "Text", content = " to access the command menu." }
                     }
@@ -248,7 +251,8 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "block-types-heading",
-                    Type = "Heading2",
+                    Type = BlockType.Heading,
+                    Props = new { level = 2 },
                     Content = new List<object>
                     {
                         new { id = "block-types-heading-content", type = "Text", content = "Block Types" }
@@ -257,7 +261,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "quote-block",
-                    Type = "Quote",
+                    Type = BlockType.Quote,
                     Content = new List<object>
                     {
                         new
@@ -265,28 +269,30 @@ namespace EJ2MVCSampleBrowser.Models
                             id = "quote-content",
                             type = "Text",
                             content = "The Block Editor makes document creation a seamless experience with its intuitive block-based approach.",
-                            styles = new { italic = true }
+                            props = new { styles = new { italic = true } }
                         }
                     }
                 },
                 new Block
                 {
                     Id = "callout-block",
-                    Type = "Callout",
-                    Children = new List<object>
-                    {
-                        new Block
+                    Type = BlockType.Callout,
+                    Props = new {
+                        Children = new List<object>
                         {
-                            Id = "callout-content",
-                            Type = "Paragraph",
-                            Content = new List<object>
+                            new Block
                             {
-                                new
+                                Id = "callout-content",
+                                Type = BlockType.Paragraph,
+                                Content = new List<object>
                                 {
-                                    id = "callout-content-1",
-                                    type = "Text",
-                                    content = "Important: Block Editor supports various content types including Text, Link, Code, Mention, and Label.",
-                                    styles = new { bold = true }
+                                    new
+                                    {
+                                        id = "callout-content-1",
+                                        type = "Text",
+                                        content = "Important: Block Editor supports various content types including Text, Link, Code, Mention, and Label.",
+                                        props = new { styles = new { bold = true } }
+                                    }
                                 }
                             }
                         }
@@ -295,7 +301,8 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "list-types-heading",
-                    Type = "Heading3",
+                    Type = BlockType.Heading,
+                    Props = new { level = 3 },
                     Content = new List<object>
                     {
                         new { id = "list-types-heading-content", type = "Text", content = "List Types" }
@@ -304,7 +311,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "bullet-list-header",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -312,14 +319,14 @@ namespace EJ2MVCSampleBrowser.Models
                             id = "bullet-list-header-content",
                             type = "Text",
                             content = "Text blocks: Paragraph, Heading 1-4, Quote, Callout",
-                            styles = new { bold = true }
+                            props = new { styles = new { bold = true } }
                         }
                     }
                 },
                 new Block
                 {
                     Id = "numbered-list",
-                    Type = "NumberedList",
+                    Type = BlockType.NumberedList,
                     Content = new List<object>
                     {
                         new
@@ -333,8 +340,8 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "check-list",
-                    Type = "CheckList",
-                    IsChecked = true,
+                    Type = BlockType.Checklist,
+                    Props = new { isChecked = true },
                     Content = new List<object>
                     {
                         new
@@ -348,31 +355,32 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "divider-block",
-                    Type = "Divider",
-                    Content = new List<object>()
+                    Type = BlockType.Divider
                 },
                 new Block
                 {
                     Id = "toggle-block",
-                    Type = "ToggleParagraph",
-                    IsExpanded = true,
+                    Type = BlockType.CollapsibleParagraph,
                     Content = new List<object>
                     {
                         new { id = "toggle-content", type = "Text", content = "Click me to expand/collapse" }
                     },
-                    Children = new List<object>
-                    {
-                        new Block
+                    Props = new {
+                        IsExpanded = true,
+                        Children = new List<object>
                         {
-                            Id = "toggle-child",
-                            Type = "Paragraph",
-                            Content = new List<object>
+                            new Block
                             {
-                                new
+                                Id = "toggle-child",
+                                Type = BlockType.Paragraph,
+                                Content = new List<object>
                                 {
-                                    id = "toggle-child-content",
-                                    type = "Text",
-                                    content = "This content is inside a toggle block. Toggle blocks are useful for organizing content that can be expanded or collapsed."
+                                    new
+                                    {
+                                        id = "toggle-child-content",
+                                        type = "Text",
+                                        content = "This content is inside a toggle block. Toggle blocks are useful for organizing content that can be expanded or collapsed."
+                                    }
                                 }
                             }
                         }
@@ -381,7 +389,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "code-block",
-                    Type = "Code",
+                    Type = BlockType.Code,
                     Content = new List<object>
                     {
                         new
@@ -395,7 +403,8 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "formatting-heading",
-                    Type = "Heading4",
+                    Type = BlockType.Heading,
+                    Props = new { level = 4 },
                     Content = new List<object>
                     {
                         new { id = "formatting-heading-content", type = "Text", content = "Text Formatting Examples" }
@@ -404,7 +413,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "formatting-examples",
-                    Type = "Paragraph",
+                    Type = BlockType.Paragraph,
                     Content = new List<object>
                     {
                         new
@@ -412,63 +421,63 @@ namespace EJ2MVCSampleBrowser.Models
                             id = "format-bold",
                             type = "Text",
                             content = "Bold ",
-                            styles = new { bold = true }
+                            props = new { styles = new { bold = true } }
                         },
                         new
                         {
                             id = "format-italic",
                             type = "Text",
                             content = "Italic ",
-                            styles = new { italic = true }
+                            props = new { styles = new { italic = true } }
                         },
                         new
                         {
                             id = "format-underline",
                             type = "Text",
                             content = "Underline ",
-                            styles = new { underline = true }
+                            props = new { styles = new { underline = true } }
                         },
                         new
                         {
                             id = "format-strikethrough",
                             type = "Text",
                             content = "Strikethrough ",
-                            styles = new { strikethrough = true }
+                            props = new { styles = new { strikethrough = true } }
                         },
                         new
                         {
                             id = "format-superscript",
                             type = "Text",
                             content = "Superscript ",
-                            styles = new { superscript = true }
+                            props = new { styles = new { superscript = true } }
                         },
                         new
                         {
                             id = "format-subscript",
                             type = "Text",
                             content = "Subscript ",
-                            styles = new { subscript = true }
+                            props = new { styles = new { subscript = true } }
                         },
                         new
                         {
                             id = "format-uppercase",
                             type = "Text",
                             content = "uppercase ",
-                            styles = new { uppercase = true }
+                            props = new { styles = new { uppercase = true } }
                         },
                         new
                         {
                             id = "format-lowercase",
                             type = "Text",
                             content = "LOWERCASE",
-                            styles = new { lowercase = true }
+                            props = new { styles = new { lowercase = true } }
                         }
                     }
                 },
                 new Block
                 {
                     Id = "link-block",
-                    Type = "Paragraph",
+                    Type = BlockType.Paragraph,
                     Content = new List<object>
                     {
                         new { id = "link-text", type = "Text", content = "Visit " },
@@ -477,7 +486,7 @@ namespace EJ2MVCSampleBrowser.Models
                             id = "link-content",
                             type = "Link",
                             content = "Syncfusion",
-                            linkSettings = new { url = "https://www.syncfusion.com/", openInNewWindow = true }
+                            props = new { url = "https://www.syncfusion.com/", openInNewWindow = true }
                         },
                         new { id = "link-text-end", type = "Text", content = " for more information." }
                     }
@@ -485,18 +494,18 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "label-block",
-                    Type = "Paragraph",
+                    Type = BlockType.Paragraph,
                     Content = new List<object>
                     {
                         new { id = "label-text", type = "Text", content = "This block contains a " },
-                        new { id = "progress", type = "Label" },
+                        new { id = "progress-label", type = "Label", props = new { labelId = "progress" } },
                         new { id = "label-text-end", type = "Text", content = " label." }
                     }
                 },
                 new Block
                 {
                     Id = "try-it-block",
-                    Type = "Paragraph",
+                    Type = BlockType.Paragraph,
                     Content = new List<object>
                     {
                         new
@@ -504,7 +513,7 @@ namespace EJ2MVCSampleBrowser.Models
                             id = "try-it-content",
                             type = "Text",
                             content = "Try it out! Click anywhere and start typing, or type \"/\" to see available commands.",
-                            styles = new { bold = true, bgColor = "#999999" }
+                            props = new { styles = new { bold = true, bgColor = "#999999" } }
                         }
                     }
                 }
@@ -518,7 +527,8 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "heading-block",
-                    Type = "Heading1",
+                    Type = BlockType.Heading,
+                    Props = new { level = 1 },
                     Content = new List<object>
                     {
                         new { id = "heading-content", type = "Text", content = "Block Editor Events Demo" }
@@ -527,7 +537,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "intro-block",
-                    Type = "Paragraph",
+                    Type = BlockType.Paragraph,
                     Content = new List<object>
                     {
                         new
@@ -541,7 +551,8 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "features-heading",
-                    Type = "Heading2",
+                    Type = BlockType.Heading,
+                    Props = new { level = 2 },
                     Content = new List<object>
                     {
                         new { id = "features-heading-content", type = "Text", content = "Notable Features:" }
@@ -550,7 +561,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "feature-list-1",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -564,7 +575,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "feature-list-2",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -578,7 +589,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "feature-list-3",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -592,7 +603,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "feature-list-4",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -606,7 +617,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "feature-list-5",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -620,7 +631,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "feature-list-6",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -634,7 +645,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "feature-list-7",
-                    Type = "BulletList",
+                    Type = BlockType.BulletList,
                     Content = new List<object>
                     {
                         new
@@ -648,7 +659,7 @@ namespace EJ2MVCSampleBrowser.Models
                 new Block
                 {
                     Id = "try-it-block",
-                    Type = "Paragraph",
+                    Type = BlockType.Paragraph,
                     Content = new List<object>
                     {
                         new
@@ -656,7 +667,7 @@ namespace EJ2MVCSampleBrowser.Models
                             id = "try-it-content",
                             type = "Text",
                             content = "Try different actions like typing, selecting text, adding blocks, or moving blocks to see the events triggered.",
-                            styles = new { bold = true, bgColor = "#999999" }
+                            props = new { styles = new { bold = true, bgColor = "#999999" } }
                         }
                     }
                 }

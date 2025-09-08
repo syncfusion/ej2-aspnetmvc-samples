@@ -12,7 +12,6 @@ using System.Web;
 using System.Web.Mvc;
 using EJ2MVCSampleBrowser.Models;
 using Syncfusion.EJ2.Charts;
-using Syncfusion.EJ2.Spreadsheet;
 
 namespace EJ2MVCSampleBrowser.Controllers.Chart
 {

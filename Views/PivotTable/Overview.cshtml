@@ -74,7 +74,7 @@
         }).Toolbar(new List<string>
         () { "New", "Save", "SaveAs", "Rename", "Remove", "Load",
         "Grid", "Chart", "Export", "SubTotal", "GrandTotal", "Formatting",
-        "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").ChartSeriesCreated("chartSeriesCreated").DataBound("dataBound").CellTemplate("${getCellContent(data)}").Render()
+        "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").Load("load").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").ChartSeriesCreated("chartSeriesCreated").DataBound("dataBound").CellTemplate("${getCellContent(data)}").Render()
     </div>
     <div class="urllink">
         Source:
@@ -171,6 +171,7 @@
         if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
             pivotObj.layoutRefresh();
             isInitialRender = false;
+            pivotObj.isModified = false;
         }
     }
     function saveReport(args) {
@@ -281,6 +282,11 @@
     function exportQueryCellInfo(args) {
         if (args.cell.axis === 'value' && args.cell.value === undefined) {
             args.style.numberFormat = undefined;
+        }
+    }
+    function load(args) {
+        if (ej.base.Browser.isDevice) {
+            args.dataSourceSettings.rows = [{ name: 'rank_display', caption: 'Rank', expandAll: true, allowDragAndDrop: false }];
         }
     }
 </script>

@@ -14,7 +14,7 @@
         @Html.EJS().TreeGrid("Overview").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
    {
        col.Field("name").HeaderText("Province").Width(210).Template("#flagtemplate").Filter(new { type = "Excel", itemTemplate = "#flagtemplate" }).Add();
-       col.Field("population").HeaderText("Population (Million)").ValueAccessor("populationValue").Width(210).Add();
+       col.Field("population").HeaderText("Population (Million)").TextAlign(TextAlign.Right).ValueAccessor("populationValue").Width(210).Add();
        col.Field("gdp").HeaderText("GDP Rate %").Width(129).Template("#gdptemplate").AllowFiltering(false).Add();
        col.Field("rating").HeaderText("Credit Rating").Template("#ratingtemplate").CustomAttributes(new { @class = "ratingCircle" }).Width(160).Add();
        col.Field("unemployment").HeaderText("Unemployment Rate").Template("#unemploymentTemplate").AllowFiltering(false).Width(190).Add();
@@ -27,9 +27,9 @@
 
     <div style="padding-top: 5px; padding-bottom: 20px; text-align: right">
         Reference links:
-        <a href="https://countryeconomy.com/ratings" style="padding-right: 12px">https://countryeconomy.com</a>
-        <a href="https://en.wikipedia.org/wiki/" style="padding-right: 12px">https://en.wikipedia.org/wiki/</a>
-        <a href="http://worldpopulationreview.com">http://worldpopulationreview.com</a>
+        <a href="https://countryeconomy.com/ratings" rel="nofollow" style="padding-right: 12px">https://countryeconomy.com</a>
+        <a href="https://en.wikipedia.org/wiki/" rel="nofollow" style="padding-right: 12px">https://en.wikipedia.org/wiki/</a>
+        <a href="http://worldpopulationreview.com" rel="nofollow">http://worldpopulationreview.com</a>
     </div>
 
 }
@@ -95,7 +95,7 @@
 <script id="locationtemplate" type="text/x-template">
     <div class="image" id="coordinates">
         <img src="../Content/images/treegrid/Map.png" class="e-image" alt="Location"/> &nbsp
-        <a target="_blank" href="https://www.google.com/maps/place/${coordinates}" aria-label="google maps">${coordinates}</a>
+        <a target="_blank" href="https://www.google.com/maps/place/${coordinates}" rel="nofollow" aria-label="google maps">${coordinates}</a>
     </div>
 </script>
 <script type="text/x-template" id="gdptemplate">

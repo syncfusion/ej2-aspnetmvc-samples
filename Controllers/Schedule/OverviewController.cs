@@ -175,7 +175,7 @@ namespace EJ2MVCSampleBrowser.Controllers.Schedule
             EventData.Add(new AppointmentData()
             {
                 Id = 1,
-                Subject = EventSubjects[new Random().Next(1, 25)],
+                Subject = "Stand-Up Meeting",
                 StartTime = Start.ToLocalTime(),
                 EndTime = End.ToLocalTime(),
                 Location = "",

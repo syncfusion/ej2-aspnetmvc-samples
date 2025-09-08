@@ -61,6 +61,7 @@
             if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
                 pivotObj.refreshData();
                 isInitialRender = false;
+                pivotObj.isModified = false;
             }
         }
         function onChartLoad(args) {

@@ -14,7 +14,7 @@
                     .InnerRadius("50%").Border(br => br.Width(1).Color("#ffffff"))
                     .DataSource(ViewData["PieChartPoints"]).Add();
             })
-            .EnableSmartLabels(true).EnableAnimation(false).EnableBorderOnMouseMove(false).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Percentage: <b>${point.y}%</b>").Header(""))
+            .EnableSmartLabels(true).EnableAnimation(false).EnableBorderOnMouseMove(false).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Percentage: <b>${point.y}%</b>").Header("").EnableHighlight(true))
             .LegendSettings(leg => leg.Visible(true)
                 .ToggleVisibility(false)
                 .Position(Syncfusion.EJ2.Charts.LegendPosition.Bottom))
