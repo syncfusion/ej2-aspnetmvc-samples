@@ -45,7 +45,6 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/getting-started-mvc">DataGrid</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/getting-started">Pivot Table</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/getting-started-mvc">TreeGrid</a></div>
-            <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/spreadsheet/getting-started-mvc">Spreadsheet</a></div>
             <p>&nbsp;</p>
             <div><p class="controlcategory">INTERACTIVE CHAT</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/ai-assistview/getting-started">AI AssistView - Preview</a></div>
@@ -72,17 +71,10 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
             <div><p class="controlcategory">FORMS</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/query-builder/getting-started">Query Builder</a></div>
             <p>&nbsp;</p>
-            <div><p class="controlcategory">DOCUMENT PROCESSING LIBRARIES</p></div>
-            <div class="controlanchorlink"><a target="_self" href="https://help.syncfusion.com/file-formats/xlsio/create-read-edit-excel-files-in-asp-net-mvc-c-sharp">Excel</a></div>
-            <div class="controlanchorlink"><a target="_self" href="https://help.syncfusion.com/file-formats/pdf/create-pdf-file-in-asp-net-mvc">PDF</a></div>
-            <div class="controlanchorlink"><a target="_self" href="https://help.syncfusion.com/file-formats/docio/create-word-document-in-asp-net-mvc">Word</a></div>
-            <div class="controlanchorlink"><a target="_self" href="https://help.syncfusion.com/file-formats/presentation/create-read-edit-powerpoint-files-in-asp-net-mvc">PowerPoint</a></div>
-            <p>&nbsp;</p>
         </td>
         <td>
             <p></p>
-            <div><p class="controlcategory">VIEWER & EDITORS</p></div>
-            <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/pdfviewer/getting-started">PDF Viewer</a></div>
+            <div><p class="controlcategory">EDITORS</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/getting-started">RichTextEditor</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/rich-text-editor/getting-started">Markdown Editor</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/document-editor/getting-started">Word Processor</a></div>
