@@ -91,14 +91,14 @@
       <HintPath>packages\Syncfusion.DocIO.AspNet.Mvc5.31.1.17\lib\net462\Syncfusion.DocIO.Base.dll</HintPath>		
     </Reference>
     <Reference Include="Syncfusion.Compression.Base">
-      <HintPath>packages\lib\net462\Syncfusion.Compression.Base.dll</HintPath>
+      <HintPath>packages\Syncfusion.Compression.Base.31.1.17\lib\net462\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Presentation.Base">		
       <HintPath>packages\Syncfusion.Presentation.AspNet.Mvc5.31.1.17\lib\net462\Syncfusion.Presentation.Base.dll</HintPath>		
     </Reference>
     <Reference Include="Syncfusion.Licensing">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>packages\lib\net462\Syncfusion.Licensing.dll</HintPath>
+      <HintPath>packages\Syncfusion.Licensing.31.1.17\lib\net462\Syncfusion.Licensing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
