@@ -1,0 +1,207 @@
+@using Syncfusion.EJ2
+@using EJ2CoreSampleBrowser.Models
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="content-wrapper" id="all-option-sample">
+            @Html.EJS().RichTextEditor("api").ContentTemplate(@<div>
+                <p>Rich Text Editor is a WYSIWYG editing control that will reduce the effort for users while trying to express their formatting word content as HTML or Markdown format.</p>
+                <p><b>API's:</b></p>
+                <ul>
+                    <li><p>maxLength - allows restricting the maximum length to be entered.</p></li>
+                    <li><p>readOnly - allows to change it as a non-editable state.</p></li>
+                    <li><p>enabled - enable or disable the RTE component.</p></li>
+                    <li><p>enableHtmlEncode - Get the encoded string value through value property and source code panel.</p></li>
+                    <li><p>getValue - get the value of RTE.</p></li>
+                    <li><p>getSelection - get the selected text of RTE.</p></li>
+                    <li><p>selectAll - select all content in RTE.</p></li>
+                </ul>
+            </div>).Created("created").ShowCharCount(true).MaxLength(1000).Render()
+        </div>
+    </div>
+
+    <div class="col-lg-4 property-section" id="all-option-table">
+        <table id="property" title="Properties">
+            <tbody>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Max Length </div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div>
+                            @Html.EJS().NumericTextBox("maxlength").Min(555).Max(2000).Placeholder("Maximum Length").Format("n0").Value(1000).Change("maxlength_onChange").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Readonly </div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div style="padding-left: 0;padding-top: 0">
+                            @Html.EJS().CheckBox("readonly").Checked(false).Change("readOnly_onChange").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Enable </div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div style="padding-left: 0;padding-top: 0">
+                            @Html.EJS().CheckBox("enable").Checked(true).Change("enabled_onChange").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 50%">
+                        <div class="userselect">Enable HTML Encode </div>
+                    </td>
+                    <td style="width: 50%;padding-right: 10px">
+                        <div style="padding-left: 0;padding-top: 0">
+                            @Html.EJS().CheckBox("enablehtml").Checked(false).Change("enablehtml_onChange").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div>
+                            @Html.EJS().Button("getVal").Content("Get Value").CssClass("btn btn-default").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div>
+                            @Html.EJS().Button("selectHtml").Content("Get Selection").CssClass("btn btn-default").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div>
+                            @Html.EJS().Button("selectAll").Content("Select All").CssClass("btn btn-default").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+        .bootstrap-dark button#getVal,
+        .fluent-dark button#getVal,
+        .bootstrap5-dark button#getVal,
+        .bootstrap5\.3-dark button#getVal,
+        .tailwind-dark button#getVal,
+        .tailwind3-dark button#getVal,
+        .highcontrast button#getVal,
+        .material3-dark button#getVal {
+            color: #FFFFFF;
+            background: #000000;
+        }
+        
+        .bootstrap-dark button#selectHtml,
+        .fluent-dark button#selectHtml,
+        .bootstrap5-dark button#selectHtml,
+        .bootstrap5\.3-dark button#selectHtml,
+        .tailwind-dark button#selectHtml,
+        .tailwind3-dark button#selectHtml,
+        .highcontrast button#selectHtml,
+        .material3-dark button#selectHtml {
+            color: #FFFFFF;
+            background: #000000;
+        }
+    
+        .bootstrap-dark button#selectall,
+        .fluent-dark button#selectall,
+        .bootstrap5-dark button#selectall,
+        .bootstrap5\.3-dark button#selectall,
+        .tailwind-dark button#selectall,
+        .tailwind3-dark button#selectall,
+        .highcontrast button#selectall,
+        .material3-dark button#selectall {
+            color: #FFFFFF;
+            background: #000000;
+        }
+    </style>
+}
+
+
+@section Scripts{
+    <script>
+        document.getElementById('getVal').onclick = function () {
+            alert(rteObj.value);
+        };
+        document.getElementById('selectHtml').onclick = function () {
+            alert(rteObj.getSelection());
+        };
+        document.getElementById('selectAll').onclick = function () {
+            rteObj.selectAll();
+        };
+    </script>
+}
+
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the API in ASP.NET MVC Rich Text Editor control. Explore here for more details."/>
+                }
+
+@*custom code end*@
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the usage of API in Rich Text Editor. Use the properties panel to change the maximum length, read
+            only mode, disable status, to get value, enable HTML encode, select all content and get selected HTML from the Rich Text Editor.
+        </p>
+
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>In this demo, we are going to ensure the API'S behaviour by</p>
+        <ul>
+            <li>Changing the value of <code>maxLength</code> textbox to change maximum Length of character.</li>
+            <li>Clicking the <code>readOnly</code> check box to enable/disable editable and non-editable mode of the RTE.</li>
+            <li>Clicking the <code>enabled</code> check box to enable/disable the RTE component.</li>
+            <li>Clicking the <code>enableHtmlEncode</code> check box to enableHtmlEncode/disableHtmlEncode the RTE component.</li>
+            <li>Clicking the <code>getValue</code> button which shows the RTE values in the alert window.</li>
+            <li>Clicking the <code>getSelection</code> button which shows the selectedText in the alert window.</li>
+            <li>Clicking the <code>selectAll</code> button selecting all text content in the RTE.</li>
+        </ul>
+    </div>
+}
+<script>
+    var rteObj;
+
+    function created() {
+        rteObj = this;
+    }
+
+    function maxlength_onChange(args) {
+        rteObj.maxLength = args.value;
+    }
+
+    function readOnly_onChange(args) {
+        rteObj.readonly = args.checked;
+    }
+
+    function enabled_onChange(args) {
+        rteObj.enabled = args.checked;
+    }
+
+    function enablehtml_onChange(args) {
+        rteObj.enableHtmlEncode = args.checked;
+    }
+</script>
+@section Title{
+                    <title>ASP.NET MVC Rich Text Editor API Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of API in ASP.NET MVC Rich Text Editor Control</h1>
+                }

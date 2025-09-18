@@ -1,0 +1,117 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("CaptionAggregate").DataSource((IEnumerable<object>)ViewData["datasource"]).GridLines(Syncfusion.EJ2.Grids.GridLine.Vertical).AllowGrouping().Columns(col =>
+   {
+       col.Field("ID").IsPrimaryKey(true).Visible(false).Add();
+       col.Field("Month").Type("date").HeaderText("Month").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Format("yMd").ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+       col.Field("ConsumptionCategory").HeaderText("Category").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+       col.TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).HeaderTemplate("#energyTemplate").Columns(new List<Syncfusion.EJ2.Grids.GridColumn>() { new Syncfusion.EJ2.Grids.GridColumn { Field = "EnergyConsumed", Width = "150", HeaderText = "Consumed", TextAlign = Syncfusion.EJ2.Grids.TextAlign.Right, ClipMode = Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip }, new Syncfusion.EJ2.Grids.GridColumn { Field = "EnergyProduced", Width = "300", HeaderText = "Produced", TextAlign = Syncfusion.EJ2.Grids.TextAlign.Right } }).Add();
+       col.Field("WeatherCondition").HeaderText("Weather").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+       col.Field("EnergyPrice").HeaderText("Energy").Format("C2").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+   }).Height("300").EnableHover(false).GroupSettings(group=>group.ShowGroupedColumn(true).ShowDropArea(false).Columns(new string[] { "ConsumptionCategory" })).Aggregates(agg =>
+   {
+       agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "EnergyProduced", Type = "Sum", FooterTemplate = "Total Energy Produced: ${Sum} KWh" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "EnergyProduced", Type = "Sum", GroupFooterTemplate = "Total Energy Produced: ${Sum} KWh" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "EnergyProduced", Type = "Max", GroupCaptionTemplate = "<div><span class='e-maximum'> Max : ${Max}</span></div>" } }).Add();
+       agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "EnergyProduced", Type = "Average", FooterTemplate = "Average Energy Produced: ${Average} KWh" } }).Add();
+
+   }).EnableHover(false).AllowSorting().AllowMultiSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Render()
+    </div>
+}
+
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates Aggregate functionality of the Grid. In this sample, “Energy Produced” column will displays their <code>sum</code> aggregate value in group footer, as well as the <code>min</code> and <code>max</code> aggregate value in group caption.</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Group and Caption Aggregate in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		 <p>The Grid supports displaying aggregates in the footer, group footer and group caption.
+    The aggregate configurations can be provided by the <code>
+        Aggregates</code> property.</p>
+    <p>The built-in aggregates are,</p>
+     <ul>
+        <li><code>Sum</code></li>     
+        <li><code>Average</code></li>     
+        <li><code>Min</code></li>     
+        <li><code>Max</code></li>     
+        <li><code>Count</code></li>     
+        <li><code>TrueCount</code></li>     
+        <li><code>FalseCount</code></li>     
+        <li><code>Custom</code> - Requires the <code>
+        CustomAggregate</code> property to perform the aggregation.
+        The custom aggregate value can be accessed inside template using the key <code>${Custom}</code></li>     
+    </ul>    
+    <p>
+        In this demo, the <code>GroupFooterTemplate</code> property is used to display the group footer aggregation for the <strong><i>Energy Produced</i></strong> column and <code>
+        GroupCaptionTemplate</code> property is used to display the group caption aggregation.
+    </p>    
+    <p>    To enable group footer aggregation for <strong><i>Energy Produced</i></strong> column, the <code>Sum</code> aggregate type is used by setting the <code>        
+        type</code> and <code>field</code> property to <strong><i>EnergyProduced</i></strong>, which will be used to perform the aggregation.
+        The aggregate value is accessed inside the <code>
+        groupCaptionTemplate</code> using its <code>Type</code> name (<code>${Sum}</code>).
+    </p>
+    <p>    To enable group caption aggregation for <strong><i>Energy Produced</i></strong> column, the <code>Max</code> aggregate type is used by setting the <code>
+        Type</code> and <code>Field</code> property is set as <strong><i>EnergyProduced</i></strong> which will be used to perform the aggregation.
+        The aggregate value is accessed inside the<code>GroupCaptionTemplate</code> using its <code>
+        Type</code> name (<code>${Max}</code>).
+    </p>
+    <p>In this sample, <code>GroupCaptionTemplate</code> to show the multiple aggregate values.</p>
+    <p>The template expression should be provided inside <code>${...}</code> the interpolation syntax.</p>
+     <p>
+        For more details on the row template feature, refer to this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/aggregates/group-and-caption-aggregate">
+            documentation section</a>.
+    </p>
+	</div>
+    <style>
+    .e-maximum{
+        color:#008000;
+        font-weight: bold;
+    }
+    .e-minimum{
+        color:#dc3545;
+        font-weight: bold;
+    }
+    
+    .bootstrap5 .e-grid .e-icon.energy.e-icons::before,
+    .bootstrap5-dark .e-grid .e-icon.energy.e-icons::before {
+        content: '\e8cd';
+    }
+    
+    .highcontrast .e-grid .e-icon.energy.e-icons::before {
+        content: '\e991';
+    }
+    
+    .tailwind .e-grid .e-icon.energy.e-icons::before,
+    .tailwind-dark .e-grid .e-icon.energy.e-icons::before,
+    .fluent .e-grid .e-icon.energy.e-icons::before,
+    .fluent-dark .e-grid .e-icon.energy.e-icons::before,
+    .fluent2 .e-grid .e-icon.energy.e-icons::before,
+    .fluent2-dark .e-grid .e-icon.energy.e-icons::before,
+    .fluent2-highcontrast .e-grid .e-icon.energy.e-icons::before,
+    .material3 .e-grid .e-icon.energy.e-icons::before,
+    .material3-dark .e-grid .e-icon.energy.e-icons::before {
+        content: '\e8cd';
+    }
+
+   #CaptionAggregate.e-grid tr.e-altrow .e-rowcell:not(.e-selectionbackground.e-active) {
+        background-color: rgb(228 228 228 / 15%);
+    }
+</style>
+<script id="energyTemplate" type="text/x-template"> 
+    <span class="energy e-icons e-icon"></span>
+    <span> Energy (KWh)</span>
+</script>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Group and Caption Aggregate Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Group and Caption Aggregate in ASP.NET MVC Data Grid Control</h1>
+                }

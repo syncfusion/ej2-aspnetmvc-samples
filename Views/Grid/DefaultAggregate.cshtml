@@ -1,0 +1,69 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("DefaultAggregate").DataSource((IEnumerable<object>)ViewData["dataSource"]).GridLines(Syncfusion.EJ2.Grids.GridLine.Vertical).Columns(col =>
+   {
+       col.Field("Month").HeaderText("TimeStamp").Width("140").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).IsPrimaryKey(true).Add();
+       col.Field("Sales").HeaderText("Sales").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").Add();
+       col.Field("MarketingSpend").HeaderText("Marketing Spend").Width("190").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+       col.Field("NewCustomers").HeaderText("New Customers").Width("180").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+       col.Field("ReturningCustomers").HeaderText("Returning Customers").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("220").ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+       col.Field("WebTraffic").HeaderText("Web Traffic").Width("160").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+
+   }).Height("300").EnableHover(false).AllowMultiSorting().AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Aggregates(agg=> { 
+       agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Sales", Format = "C2", Type = "Sum", FooterTemplate = "Total: ${Sum}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "MarketingSpend", Format = "C2", Type = "Sum", FooterTemplate = "Total: ${Sum}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "ReturningCustomers", Format = "N", Type = "Sum", FooterTemplate = "Returning Customers: ${Sum}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "NewCustomers", Format = "N", Type = "Sum", FooterTemplate = "New Customers: ${Sum}" } }).Add(); 
+        agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Sales", Format = "C2", Type = "Average", FooterTemplate = "Average: ${Average}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "MarketingSpend", Format = "C2", Type = "Average", FooterTemplate = "Total: ${Average}" }, new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "WebTraffic", Format = "N", Type = "Max", FooterTemplate = "Total: ${Max}" }  }).Add();
+        agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>() { new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "WebTraffic", Format = "N", Type = "Min", FooterTemplate = "Total: ${Min}"} }).Add();}).PageSettings(page=> { page.PageCount(5); }).Render() 
+    </div>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates aggregate functionality of the Grid. In this sample, the aggregate value for the columns
+            are displayed in column footer.</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default Aggregate in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		<p>
+            The Grid supports displaying aggregates in its footer, group footer and group caption.
+		The aggregate configurations can be provided by the <code>Aggregates</code> property.</p>
+		<p>The built-in aggregates are,</p>
+		 <ul>
+			<li><code>Sum</code></li>     
+			<li><code>Average</code></li>     
+			<li><code>Min</code></li>     
+			<li><code>Max</code></li>     
+			<li><code>Count</code></li>     
+			<li><code>Truecount</code></li>     
+			<li><code>Falsecount</code></li>     
+           <li><code>Custom</code></li>			     
+		</ul> 
+        <p>
+            In this demo, the <code>FooterTemplate</code> property is used to display four different aggregates (<code>Sum</code>, <code>Average</code>, <code>Max</code>, <code>Min</code>) in the Grid footer.
+            Each aggregate type is specified using the <code>
+              type</code> and <code>field</code> properties accessed in the footer template by its type name. The aggregate value will be formatted based on its <code>format</code> value(<strong><i>N2</i></strong> or <strong><i>C2</i></strong>) before being displayed.
+          </p>
+          <p>
+        For more details on the row template feature, refer to this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/aggregates/footer-aggregate">
+            documentation section</a>.
+    </p>
+	</div>
+    <style>
+        #DefaultAggregate.e-grid tr.e-altrow .e-rowcell:not(.e-selectionbackground.e-active) {
+            background-color: rgb(228 228 228 / 15%);
+        }
+    </style>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Default Aggregate Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Aggregate in ASP.NET MVC Data Grid Control</h1>
+                }

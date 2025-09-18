@@ -1,0 +1,75 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    @{
+        var piecenter = new
+        {
+            x = "50%",
+            y = "50%"
+        };
+
+    }
+    
+        <div class="control-section" align="center">
+            
+                <div class="control-section">
+                    @(Html.EJS().AccumulationChart("container").Series(series =>
+                    {
+                        series.DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).Font(ft => ft.FontWeight("600")).ConnectorStyle(cs => cs.Length("20px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)))
+                            .XName("Browser")
+                            .YName("Users")
+                            .Name("Browser")
+                            .Explode(true)
+                            .ExplodeOffset("10%")
+                            .InnerRadius("0%").Border(border => border.Width(1).Color("#FFFFFF"))
+                            .DataSource(ViewData["ChartPoints"]).BorderRadius(3)
+                            .Add();
+                    })
+                        .EnableSmartLabels(true)
+                        .EnableAnimation(true).Center(center => center.X("50%").Y("50%"))
+                        .Title("Global Electricity Generation by Source - 2024").SubTitle("Source: wikipedia.org")
+                        .LegendSettings(ls => ls.Visible(false))
+                        .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Percentage: <b>${point.y}%</b>").Header("").EnableHighlight(true))
+                        .Load("load").EnableBorderOnMouseMove(false).Render()
+                        )
+                </div>
+            </div>
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            loadAccumulationChartTheme(args);
+            args.accumulation.series[0].startAngle = ej.base.Browser.isDevice ? 55 : 35;
+            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "60%";
+            args.accumulation.series[0].dataLabel.connectorStyle.length = ej.base.Browser.isDevice ? '10px' : '20px';
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '12px';
+            args.accumulation.series[0].explodeIndex = 0;
+        };
+    </script>
+}
+ @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Pie in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+    <p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/pie-chart" aria-label="ASP.NET MVC Pie Chart">ASP.NET MVC Pie Chart<span class="sr-only">opens in a new tab</span></a> example demonstrates a pie chart for global electricity generation. Datalabels show information about the points.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a pie chart. The pie chart is a circular graphic, which is ideal for displaying categories as a proportion or a percentage of the whole. The radius of the pie chart can be customized using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_Radius" aria-label="Radius">Radius<span class="sr-only">opens in a new tab</span></a> property.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the pie series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/pie-dough-nut#pie-chart" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Pie Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }

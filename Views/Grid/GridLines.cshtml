@@ -1,0 +1,77 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "GridLines";
+}
+
+@section ControlsSection{
+
+   <div class="col-lg-8 control-section">
+    <div class="control-wrapper">
+        <div class="control-section">
+            @Html.EJS().Grid("GridLines").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
+{
+
+    col.Field("EmployeeID").HeaderText("Employee ID").Width("125").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+    col.Field("FirstName").HeaderText("Name").Width("125").ValidationRules(new { required = true, minLength = 5 }).Add();
+    col.Field("Title").HeaderText("Title").Width("180").Add();
+    col.Field("HireDate").HeaderText("Hire Date").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").EditType("datepickeredit").Add();
+
+}).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 property-section">
+    <table id="property" title="Properties" style="width: 100%;">
+        <tr>
+            <td class="left-side">GridLines</td>
+            <td>
+                @Html.EJS().DropDownList("lines").DataSource((IEnumerable<object>)ViewData["data"]).Value("Default").Change("onChange").Render()
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script>
+        function onChange() {
+            var grid = document.getElementById("GridLines").ej2_instances[0];
+            grid.gridLines= this.value;
+        }
+</script>
+
+}
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates visibility of the grid lines that separates the rows and columns. In this sample, you can change
+			the gridline from the properties panel.</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the GridLines in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+    <p>
+        The <code>GridLines</code> property is used to control the line visibility that separates the rows and columns. The Grid
+        allow us to display the following grid lines,
+    </p>
+    <ul>
+        <li><code>Default</code> - Shows the Horizontal line.</li>
+        <li><code>None</code> - Shows no line.</li>
+        <li><code>Both</code> - Shows both Horizontal and Vertical lines.</li>
+        <li><code>Horizontal</code> - Shows the Horizontal line.</li>
+        <li><code>Vertical</code> - Shows the Vertical line.</li>
+    </ul>
+    <p> In this demo, you can modify the display of Gridlines by selecting values in the dropdown.
+    </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid GridLines Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of GridLines in ASP.NET MVC Data Grid Control</h1>
+                }

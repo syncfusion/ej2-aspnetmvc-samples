@@ -1,0 +1,91 @@
+@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.PivotView
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Drill Through in ASP.NET MVC Pivot Table control. Explore here for more details."/>
+                }
+@section ControlsSection{
+
+    <div class="control-section">
+    <div class="content-wrapper">
+        @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>)ViewData["Data"]).ExpandAll(false).EnableSorting(true)
+           .FormatSettings(formatsettings =>
+           {
+               formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
+           })
+           .Rows(rows =>
+           {
+               rows.Name("Country").Add();
+               rows.Name("Products").Add();
+           })
+           .Columns(columns =>
+           {
+               columns.Name("Year").Add();
+               columns.Name("Order_Source").Caption("Order Source").Add();
+           })
+           .Values(values =>
+           {
+               values.Name("In_Stock").Caption("In Stock").Add();
+               values.Name("Sold").Caption("Units Sold").Add();
+               values.Name("Amount").Caption("Sold Amount").Add();
+           })
+           .Filters(filters =>
+           {
+               filters.Name("Product_Categories").Caption("Product Categories").Add();
+           })).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).ShowFieldList(true).AllowDrillThrough(true).ShowTooltip(false).DataBound("dataBound").Render()
+    </div>
+</div>
+
+    <style>
+        #pivotview {
+            width: 100%;
+            height: 100%;
+        }
+        .sb-sample-content-area {
+            min-height: 255px !important;
+        }
+        .control-section {
+            min-height: 255px !important;
+        }
+    </style>
+    <script>
+        var isInitialRender = true;
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
+    </script>
+}
+
+@section PreScripts {
+    <script>
+        ej.base.enableRipple(false);
+    </script>
+}
+
+@section ActionDescription{
+<div id="action-description">
+    <p>This sample demonstrates how to obtain a list of raw items for a particular cell using the drill-through option on double-clicking.</p>
+</div>
+}
+
+@section Description{
+    <div id="description">
+    <p>In this sample, you can view the raw items of any pivot table cell by double-clicking the cell. The
+        drill-through dialog holds the row headers, column headers, and values information of the clicked cell.
+        Initially drill-through information is displayed for bound fields and you can include the remaining raw items
+        details using the <code>column chooser</code> option in the dialog.
+    </p>
+    <p>This feature can be enabled by setting the <code>allowDrillThrough</code> as true.</p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Pivot Table Drill Through Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Drill Through in ASP.NET MVC Pivot Table Control</h1>
+                }

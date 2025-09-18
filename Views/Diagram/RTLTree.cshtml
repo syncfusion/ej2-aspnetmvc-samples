@@ -1,0 +1,106 @@
+@using Syncfusion.EJ2;
+@using EJ2MVCSampleBrowser.Models;
+@section ControlsSection{
+    <div class="col-xs-12 control-section">
+        
+            @(Html.EJS().Diagram("container").Width("100%").Height("600px").Created("create").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
+                .GetNodeDefaults("getNodeDefaults").GetConnectorDefaults("getConnectorDefaults").DataSourceSettings(ss => ss.Id("Name").ParentId("Category").DataSource(new DataManager() { Data = (List<RTLData>)ViewData["Nodes"] }))
+                .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree).Orientation(Syncfusion.EJ2.Diagrams.LayoutOrientation.RightToLeft).VerticalSpacing(100).HorizontalSpacing(-10).VerticalAlignment(Syncfusion.EJ2.Diagrams.VerticalAlignment.Center).HorizontalAlignment(Syncfusion.EJ2.Diagrams.HorizontalAlignment.Center))
+                .Render()
+            )
+        
+    </div>
+
+    <script>
+        function create() {
+            var diagram = document.getElementById("container").ej2_instances[0];
+            diagram.fitToPage();
+            diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
+            diagram.dataBind();
+        }
+        function getConnectorDefaults(connector, diagram) {
+            connector.type = 'Bezier';
+            connector.sourcePortID = 'port1';
+            connector.targetPortID = 'port2';
+            connector.targetDecorator = { shape: 'None' };
+            return connector;
+        }
+        function getNodeDefaults(obj, diagram) {
+            obj.width = 120;
+            obj.style = { fill: '#034d6d', strokeWidth: 1 };
+            var key = 'branch';
+            //Initialize shape
+            if ((obj.data.Branch) === 'root') {
+                obj.shape = { type: 'Basic', shape: 'Ellipse' };
+                obj.height = 120;
+                obj.style.fill = '#916DAF';
+            } else {
+                obj.shape = {
+                    type: 'Native',
+                    content: '<svg width="120" height="61"> <g><line x1="0" x2="120" y1="60" y2="60" stroke-width="1" stroke= "black"></line>'
+                    + '<rect x="0" y="0" width="120" height="60" fill="transparent" stroke="none"></rect></g></svg>'
+                };
+                obj.style.strokeWidth = 0;
+                obj.height = 60;
+            }
+            //Set ports and annotations
+            obj.ports = getPorts((obj.data.Branch) === 'root');
+            if ((obj.data.Branch) !== 'root') {
+                obj.annotations = [{
+                    offset: { y: 1 }, verticalAlignment: 'Bottom', margin: { bottom: 10 }, content: obj.data.Name
+                }];
+            } else {
+                obj.annotations = [{
+                    style: { color: 'white' }, content: obj.data.Name
+                }];
+            }
+            return obj;
+        }
+        function getPorts(root) {
+            var ports = [
+                {
+                    id: 'port1', shape: 'Circle', offset: { x: 0, y: 0.5 }, horizontalAlignment: 'Left',
+                    verticalAlignment: 'Bottom', margin: { right: -2, bottom: -5.5 }
+                },
+                {
+                    id: 'port2', shape: 'Circle', offset: { x: 1, y: 0.99 }, horizontalAlignment: 'Right',
+                    verticalAlignment: 'Bottom', margin: { right: -2, bottom: -5.5 }
+                }
+            ];
+            if (!root) {
+                ports[0].offset.y = 1;
+            } else {
+                ports[0].verticalAlignment = 'Center';
+                ports[0].horizontalAlignment = 'Center';
+            }
+            return ports;
+        }
+
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the concept of artificial intelligence using hierarchical tree layout algorithm.
+    </p>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the RTL Tree in ASP.NET MVC Diagram control. Explore here for more details."/>
+                }
+@section Description{
+    <p>
+        This example shows how to generate a RTL (right to left) tree from an external data source. The
+        <code>orientation</code> property of the layout can be used to generate RTL tree.
+    </p>
+    <br />
+}
+
+
+
+
+
+@section Title{
+                    <title>ASP.NET MVC Diagram RTL Tree Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of RTL Tree in ASP.NET MVC Diagram Control</h1>
+                }
