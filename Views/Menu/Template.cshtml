@@ -1,0 +1,180 @@
+@using Syncfusion.EJ2
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Template in ASP.NET MVC Menu Bar control. Explore here for more details."/>
+                }
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="menu-control">
+            @Html.EJS().Menu("menu").Items(ViewData["data"]).Fields((Syncfusion.EJ2.Navigations.MenuFieldSettings)ViewData["menuFields"]).Template("#menuTemplate").Render()
+        </div>
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the template functionalities of the <code>Menu</code> component. Interact with <code>Menu</code> using hover/click to display sub menu pop-up items with its customized templates.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The menu component has an option to customize menu items using the <code>Template</code> property, so that the menu items can be rendered according to the requirement.
+        </p>
+        <p>
+            In this demo, the below customizations are demonstrated.
+            <ul>
+                <li>Header menu items and the 'Products' sub menu items represents the customization of default rendering of li elements i.e. <b>${category}</b> in template.</li>
+                <li>
+                    'Services' sub menu item represent the customization of single li element which simulate the default rendering of Products sub menu items
+                    i.e. ul li elements with added <code>Badge</code> component are rendered in a single li with customized css styles.
+                </li>
+                <li>'About Us' sub menu item is shown with <code>Card</code> component in a single li.</li>
+            </ul>
+        </p>
+        <p>
+            For more information, you can refer to the
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/menu/data-source-binding-and-custom-menu-items/#custom-menu-items" aria-label="documentation section">
+                templates
+            <span class="sr-only">opens in a new tab</span></a> section from the documentation.
+        </p>
+    </div>
+}
+
+<!-- Template to render Menu -->
+<script id="menuTemplate" type="text/x-template">
+        ${if(category)}
+        ${category}
+        ${else if (value)}
+        <div style="width: 100%;display: flex;justify-content: space-between;">
+            ${if(url)}
+            <img class="e-avatar e-avatar-small" src="@Url.Content("~/Content/menu/images/${url}.png")" />
+            ${/if}
+            <span style="width:100%;">${value}</span>
+            ${if(count)}
+            <span class="e-badge e-badge-success">${count}</span>
+            ${/if}
+        </div>
+        ${else}
+        <div tabindex="0" class="e-card">
+            <div class="e-card-header">
+                <div class="e-card-header-caption">
+                    <div class="e-card-header-title">About Us</div>
+                </div>
+            </div>
+            <div class="e-card-content">
+                ${about.value}
+            </div>
+            <div class="e-card-actions">
+                <button class="e-btn e-outline" style="pointer-events: auto;">
+                    Read More
+                </button>
+            </div>
+        </div>
+        ${/if}
+</script>
+@*custom code start*@
+<style>
+
+    /**
+    * ej2 Menu template styles
+    */
+    .menu-control {
+        margin-top: 45px;
+        text-align: center;
+    }
+
+    /* Common ul & li styles */
+    .e-bigger .e-menu-wrapper ul.e-ul,
+    .e-menu-wrapper ul.e-ul {
+        padding: 0;
+    }
+    .e-bigger .e-menu-wrapper ul.e-ul .e-menu-item,
+    .e-menu-wrapper ul.e-ul .e-menu-item {
+        display: flex;
+        padding: 0 10px;
+        outline-color: transparent;
+    }
+    .e-menu-wrapper .e-ul .e-menu-item{
+        height: 36px;
+        line-height: 36px;
+    }
+
+</style>
+@*custom code end*@
+<style>
+
+    /** Avatar customization */
+    .e-menu-wrapper ul .e-menu-item .e-avatar {
+        background-color: inherit;
+        font-size: 8px;
+        margin-right: 8px;
+        align-self: center;
+        width: auto;
+        overflow: visible;
+    }
+    .e-bigger .e-menu-wrapper ul .e-menu-item .e-avatar {
+        font-size: 10px;
+    }
+
+    /** Badge customization */
+    .e-menu-wrapper ul .e-menu-item .e-badge {
+        margin-left: 10px;
+        align-self: center;
+        overflow: visible;
+    }
+
+    /** Card customization */
+    .e-menu-wrapper ul.e-ul .e-menu-item .e-card {
+        width: 290px;
+        font-size: inherit;
+        background-color: inherit;
+        border-color: transparent;
+    }
+    .e-bigger .e-menu-wrapper ul.e-ul .e-menu-item .e-card {
+        width: 320px;
+    }
+    .e-menu-wrapper ul.e-ul .e-menu-item .e-card .e-card-content {
+        white-space: normal;
+        color: inherit;
+        padding-top: 0;
+        text-align: justify;
+        font-size: inherit;
+    }
+    .e-menu-wrapper ul.e-ul .e-menu-item#about {
+        height: auto;
+        padding: 0;
+    }
+    .e-menu-wrapper ul.e-ul .e-menu-item#about.e-focused {
+        background-color: transparent;
+        outline-color: transparent;
+        pointer-events: none;
+    }
+
+     /* custom code start */
+    .material3 .e-menu-wrapper ul .e-menu-item .e-avatar,
+    .material3-dark .e-menu-wrapper ul .e-menu-item .e-avatar,
+    .e-bigger .material3 .e-menu-wrapper ul .e-menu-item .e-avatar,
+    .e-bigger .material3-dark .e-menu-wrapper ul .e-menu-item .e-avatar
+    {
+        height: 24px;
+    }
+    .material3 .e-menu-wrapper ul.e-ul .e-menu-item .e-card,
+    .material3-dark .e-menu-wrapper ul.e-ul .e-menu-item .e-card,
+    .e-bigger .material3 .e-menu-wrapper ul.e-ul .e-menu-item .e-card,
+    .e-bigger .material3-dark .e-menu-wrapper ul.e-ul .e-menu-item .e-card
+    {
+        border-radius: 0;
+    }
+    /* custom code end */
+</style>
+
+@section Title{
+                    <title>ASP.NET MVC Menu Bar Template Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Template in ASP.NET MVC Menu Bar Control</h1>
+                }

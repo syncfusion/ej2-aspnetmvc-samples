@@ -1,0 +1,76 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div style="text-align:center">
+            @(Html.EJS().BulletChart("container")
+                .Tooltip(tp => tp.Enable(true).Template("#Tooltip"))
+                .ValueField("value")
+                .Width("800")
+                .TargetField("target")
+                .Animation(an => an.Enable(false))
+                .Ranges(rn =>
+                {
+                    rn.End(30).Color("#599C20").Add();
+                    rn.End(60).Color("#EFC820").Add();
+                    rn.End(100).Color("#CA4218").Add();
+                })
+                .Minimum(0).Maximum(100).Interval(10)
+                .Title("Revenue YTD")
+                .LabelFormat("{value}K")
+                .Load("load")
+                .DataSource(ViewData["dataSource"])
+                .Render()
+            )
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script id='Tooltip' type="text/x-template">
+        <div id="wrap">
+            <table style="width:100%; background-color: #ffffff; border-spacing: 0px; border-collapse:separate; border: 1px solid grey; border-radius:10px; padding-top: 5px; padding-bottom:5px">
+                <tr>
+                    <td style="font-weight:bold; color:black; padding-left: 5px;padding-top: 2px;padding-bottom: 2px;">Sales</td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 5px; color:black; padding-right: 5px; padding-bottom: 2px;">Target : ${target}K </td>
+                </tr>
+                <tr>
+                    <td style="padding-left: 5px; color:black; padding-right: 5px">Current : ${value} </td>
+                </tr>
+            </table>
+        </div>
+    </script>
+    <script src="~/Scripts/bullet-chart/theme-color.js"></script>
+    <script>
+         var load = function (args) {
+             loadBulletChartTheme(args);
+             args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "80%";
+         }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Tooltip Template in ASP.NET MVC Bullet Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates bullet chart with tooltip template to display the bullet chart data.
+    </p>
+}
+@section Description{
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a feature bar or comparative bar on the bullet chart.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Bullet Chart Tooltip Template Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Tooltip Template in ASP.NET MVC Bullet Chart Control</h1>
+                }

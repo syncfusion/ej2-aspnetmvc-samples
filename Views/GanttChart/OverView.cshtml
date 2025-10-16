@@ -1,0 +1,275 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@{
+    ViewData["Title"] = "OverView";
+}
+
+@section ControlsSection{
+    @{
+        List<object> toolbarItems = new List<object> { "ExpandAll", "CollapseAll" };
+        toolbarItems.Add(new
+        {
+            type = "Input",
+            align = "Right",
+            template = "#ToolbarTemplate"
+        });
+    }
+    <div id="ToolbarTemplate">
+        <div>
+            @(Html.EJS().DropDownList("Drop").DataSource((IEnumerable<object>)ViewData["Data"])
+                .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Placeholder("View").Width("99px").Change("Change")
+                .Render()
+            )
+        </div>
+    </div>
+
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("OverView").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("500px").AllowFiltering(true).HighlightWeekends(true).AllowSelection(true).AllowResizing(true).TreeColumnIndex(1)
+                .DateFormat("MMM dd, y").Toolbar(toolbarItems).Load("load").AllowSorting(true).ShowColumnMenu(true)
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("TimeLog").Progress("Progress")
+                .Dependency("Predecessor").ParentID("ParentID").ResourceInfo("Assignee"))
+                .Resources((IEnumerable<object>)ViewData["Resources"])
+                .ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName").Unit("ResourceUnit"))
+                .TaskbarHeight(24).RowHeight(36)
+                .Columns(col =>
+                {
+                    col.Field("TaskId").Width(80).Visible(false).Add();
+                    col.Field("TaskName").HeaderText("Product Release").Width(200).Add();
+                    col.Field("Assignee").HeaderText("Assignee").Width(130).Template("#columnTemplate").Add();
+                    col.Field("Status").HeaderText("Status").Width(120).MinWidth(100).Template("#columnTemplate1").Add();
+                    col.Field("Priority").HeaderText("Priority").Width(100).MinWidth(80).Template("#columnTemplate2").Add();
+                    col.Field("Work").HeaderText("Planned Hours").Width(120).Add();
+                    col.Field("TimeLog").HeaderText("Work Log").Width(120).Add();
+                })
+                .SplitterSettings(sp => sp.Position("55.5%"))
+                .EventMarkers(em =>
+                {
+                    em.Day("04/04/2024").Label("Q-1 Release").Add();
+                    em.Day("06/30/2024").Label("Q-2 Release").Add();
+                    em.Day("09/29/2024").Label("Q-3 Release").Add();
+                })
+                .Holidays(hol => {
+                    hol.From("01/01/2024").To("01/01/2024").Label("New Year holiday").Add();
+                    hol.From("12/25/2023").To("12/26/2023").Label("Christmas holidays").Add();
+                })
+                .SelectionSettings(ss => ss.Mode(Syncfusion.EJ2.Grids.SelectionMode.Row).Type(Syncfusion.EJ2.Grids.SelectionType.Single).EnableToggle(true))
+                .LabelSettings(ls => ls.RightLabel("Assignee").TaskLabel("${Progress}%"))
+                .TimelineSettings(ts => ts.TimelineUnitSize(50).ShowTooltip(true).TopTier(tt => tt.Format("MMM yyyy").Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Month))
+                .BottomTier(bt => bt.Format("dd").Count(4).Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day)))
+                .FilterSettings(f => f.Type(Syncfusion.EJ2.Gantt.FilterType.Menu))
+                .GridLines(Syncfusion.EJ2.Gantt.GridLine.Vertical)
+                .ProjectStartDate("12/24/2023")
+                .ProjectEndDate("10/26/2024")
+                .Render()
+            )
+        </div>
+    </div>
+
+    <script id="columnTemplate" type="text/x-template">
+        ${if(ganttProperties.resourceNames)}
+        <div class="image">
+            <img src="../Content/gantt/images/${ganttProperties.resourceNames}.png" style="height:25px;width:25px" />
+            <div style="display:inline-block;width:100%;position:relative;${isRtl()}">${ganttProperties.resourceNames}</div>
+        </div>
+        ${/if}
+    </script>
+
+    <script type="text/x-template" id="columnTemplate1">
+        ${if(taskData.Status)}
+        <div style="${Status(taskData.Status)}"><span style="${StatusContent(taskData.Status)}">${taskData.Status}</span></div>
+        ${/if}
+    </script>
+    <script type="text/x-template" id="columnTemplate2">
+        ${if(taskData.Priority)}
+        <div style="${Priority(taskData.Priority)}"><span style="${PriorityContent(taskData.Priority)}">${taskData.Priority}</span></div>
+        ${/if}
+    </script>
+    <style>
+        .e-gantt-child-taskbar,
+        .e-gantt-parent-taskbar {
+            border-radius: 10px !important
+        }
+        .fluent2 #overviewSample .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .fluent2-dark #overviewSample .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .fluent2-highcontrast #overviewSample .e-toolbar-items .e-toolbar-right .e-template .e-input-group {
+            width: 99px !important;
+        }
+         .e-bigger.fluent2 .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.fluent2-dark .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.fluent2-highcontrast .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.bootstrap5 .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.bootstrap5\.3 .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.bootstrap5\.3-dark-lite .e-toolbar-items .e-toolbar-right .e-template .e-input-group,
+        .e-bigger.bootstrap5\.3-dark .e-toolbar-items .e-toolbar-right .e-template .e-input-group, 
+        .e-bigger.bootstrap5\.3-lite .e-toolbar-items .e-toolbar-right .e-template .e-input-group {
+            width: 101px !important;
+        }
+    </style>
+
+    <script>
+        var theme;
+        var style;
+        var CurrentTheme;
+        var statusStyleColor;
+        var priorityStyle;
+        var priorityContentStyle;
+        var statusContentstyleColor;
+        function load() {
+            var themeCollection = ['bootstrap5', 'bootstrap', 'bootstrap4', 'fluent', 'fabric', 'fusionnew', 'material3', 'material', 'highcontrast', 'tailwind', 'fluent2', 'tailwind3', 'bootstrap5.3'];
+            theme = window.themeName;
+            var check = themeCollection.indexOf(theme);
+            if (check >= 0) {
+                CurrentTheme = true;
+            }
+            else {
+                CurrentTheme = false;
+            }
+        }
+        function isRtl() {
+            let gantt = document.getElementsByClassName('e-gantt')[0].ej2_instances[0];
+            if (gantt.enableRtl) {
+                return 'right:10px;';
+            } else {
+                return 'left:10px;';
+            }
+        }
+
+        function Status(status) {
+            switch (status) {
+                case "In Progress":
+                    statusStyleColor = (CurrentTheme) ? "#DFECFF" : "#2D3E57";
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 96px; height: 24px; border-radius: 24px; background:" + statusStyleColor;
+                    break;
+                case "Open":
+                    style = "background-color: red; color: white; border-radius: 15px; padding:6px";
+                    break;
+                case "On Hold":
+                    statusStyleColor = (CurrentTheme) ? "#E4E4E7" : "#3C3B43";
+                    style = "display: flex; border-radius: 24px; padding: 0px 12px; gap: 10px; width: 78px; height: 24px; background:" + statusStyleColor;
+                    break;
+                case "Completed":
+                    statusStyleColor = (CurrentTheme) ? "#DFFFE2" : "#16501C";
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 98px; height: 24px; border-radius: 24px;background:" + statusStyleColor;
+                    break;
+                case "High":
+                    statusStyleColor = (CurrentTheme) ? "#FFEBE9" : "#48211D";
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 55px; height: 24px; border-radius: 24px; background:" + statusStyleColor;
+                    break;
+            }
+            return style;
+        }
+
+        function StatusContent(status) {
+            switch (status) {
+                case "In Progress":
+                    statusContentstyleColor = (CurrentTheme) ? "#006AA6" : "#34B6FF";
+                    style = "width: 72px; height: 22px; font-style: normal; font-weight: 500; font-size: 14px; line-height: 20px; text-align: center; color: " + statusContentstyleColor;
+                    break;
+                case "Open":
+                    style = "background-color: red; color: white; border-radius: 15px; padding:6px";
+                    break;
+                case "On Hold":
+                    statusContentstyleColor = (CurrentTheme) ? "#766B7C" : "#CDCBD7";
+                    style = "width: 54px; height: 22px; font-style: normal; font-weight: 500; font-size: 14px; line-height: 20px; text-align: center; color: " + statusContentstyleColor;
+                    break;
+                case "Completed":
+                    statusContentstyleColor = (CurrentTheme) ? "#00A653" : "#92FFC8";
+                    style = "width: 74px; height: 22px; font-style: normal; font-weight: 500; font-size: 14px; line-height: 20px; text-align: center; color: " + statusContentstyleColor;
+                    break;
+                case "High":
+                    statusContentstyleColor = (CurrentTheme) ? "#FF3740" : "#FFB5B8";
+                    style = "width: 31px; height: 22px; font-style: normal; font-weight: 500; font-size: 14px; line-height: 20px; text-align: center; color: " + statusContentstyleColor;
+                    break;
+            }
+            return style;
+        }
+
+        function Priority(priority) {
+            switch (priority) {
+                case "Low":
+                    priorityStyle = (CurrentTheme) ? "#FFF6D1" : "#473F1E";
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 52px; height: 24px; border-radius: 24px; background: " + priorityStyle;
+                    break;
+                case "Normal":
+                    priorityStyle = (CurrentTheme) ? "#F5DFFF" : "#4D2F5A";
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 73px; height: 24px; border-radius: 24px; background: " + priorityStyle;
+                    break;
+                case "Critical":
+                    priorityStyle = (CurrentTheme) ? "#FFEBE9" : "#48211D";
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 72px; height: 24px; border-radius: 24px; background: " + priorityStyle;
+                    break;
+                case "High":
+                    priorityStyle = (CurrentTheme) ? "#FFEBE9" : "#48211D";
+                    style = "display: flex; padding: 0px 12px; gap: 10px; width: 55px; height: 24px; border-radius: 24px; background: " + priorityStyle;
+                    break;
+            }
+            return style;
+        }
+
+        function PriorityContent(priority) {
+            switch (priority) {
+                case "Low":
+                    priorityContentStyle = (CurrentTheme) ? "#70722B" : "#FDFF88";
+                    style = "width: 28px; height: 22px; font-style: normal; font-weight: 500; font-size: 14px; line-height: 20px; text-align: center; color: " + priorityContentStyle;
+                    break;
+                case "Normal":
+                    priorityContentStyle = (CurrentTheme) ? "#7100A6" : "#E3A9FF";
+                    style = "width: 49px; height: 22px; font-style: normal; font-weight: 500; font-size: 14px; line-height: 20px; text-align: center; color: " + priorityContentStyle;
+                    break;
+                case "Critical":
+                    priorityContentStyle = (CurrentTheme) ? "#FF3740" : "#FFB5B8";
+                    style = "width: 48px; height: 22px; font-style: normal; font-weight: 500; font-size: 14px; line-height: 20px; text-align: center; color: " + priorityContentStyle;
+                    break;
+                case "High":
+                    priorityContentStyle = (CurrentTheme) ? "#FF3740" : "#FFB5B8";
+                    style = "width: 31px; height: 22px; font-style: normal; font-weight: 500; font-size: 14px; line-height: 20px; text-align: center; color: " + priorityContentStyle;
+                    break;
+            }
+            return style;
+        }
+
+        function Change(e) {
+            var ganttObj = document.getElementById("OverView").ej2_instances[0];
+            var position = e.value;
+
+            if (position === 'Grid') {
+                ganttObj.splitterSettings.position = '100%';
+            }
+            else if (position === 'Gantt') {
+                ganttObj.splitterSettings.position = '0%';
+            }
+            else {
+                ganttObj.splitterSettings.position = '55.5%';
+            }
+        }
+
+    </script>
+
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample shows an overview of the EJ2 Gantt Chart features that visualize the progress of each feature of the product towards its release and make it easier to monitor the scheduling of the dependent items.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Overview in ASP.NET MVC Gantt control. Explore here for more details." />
+}
+
+@section Description{
+    <div id="description">
+        <p>This example shows the three-quarter release planning of product features rendered in the EJ2 Gantt Chart. It tracks the quarterly release planning of product status, resources, and task scheduling.</p>
+        <p>EJ2 Gantt Chart features such as Sorting, Filtering, Column resizing, Column menu, Column template and so on are used in this demo.</p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Overview Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Overview in ASP.NET MVC Gantt Control</h1>
+}
