@@ -1,0 +1,98 @@
+@using Syncfusion.EJ2;
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Color Range in ASP.NET MVC HeatMap Chart control. Explore here for more details."/>
+                }
+@section ControlsSection{
+    <div>
+        <div class="col-md-8 control-section">
+            <div class="content-wrapper">
+                <div id="container" style="width:92%">
+                    @Html.EJS().HeatMap("container").PaletteSettings(ps =>
+                         ps.Palette(palette =>
+                         {
+                             palette.StartValue(5).EndValue(15).MinColor("#FFFFDA").MaxColor("#EDF8B6").Add();
+                             palette.StartValue(15).EndValue(20).MinColor("#CAE8B4").MaxColor("#78D1BD").Add();
+                             palette.StartValue(20).EndValue(31.7).MinColor("#36BCC6").MaxColor("#208FC6").Add();
+                         }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Gradient)).Load("load").CellSettings(cs =>
+                      cs.Border(ViewData["border"]).ShowLabel(false)).TitleSettings(ts => ts.Text("U.S. Government Energy Consumption by Agency (Trillion Btu)").TextStyle(ViewData["textStyle"])).XAxis(
+                         xAxis =>
+                         {
+                             xAxis.LabelRotation(45)
+                            .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
+                            .Labels((string[])ViewData["xlabels"]).TextStyle(ViewData["labelTextStyle"]);
+                         }).YAxis(yaxis => yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"])).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings => legendSettings.Visible(true).TextStyle(ViewData["labelTextStyle"])).DataSource(ViewData["dataSource"]).Render()
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 property-section">
+            <table id="property" title="Properties" style="width: 100%; margin-left: -10px;">
+                <tbody>
+                    <tr style="height: 50px">
+                        <td style="width: 60%">
+                            <div>Palette Type:</div>
+                        </td>
+                        <td style="width: 40%;">
+                            <div class="row">
+                                <input id="fixed" type="radio">
+                            </div>
+                            <div class="row">
+                                <input id="gradient" type="radio">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+        body.material-dark .property-panel-section {
+            color: #ffffff;
+        }
+    </style>
+    <script>
+        var load = function (args) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+        };
+        var fixedRadioButton = new ej.buttons.RadioButton({
+            label: 'Fixed', name: 'paletteType',
+            change: function () { valueXChange(); }, value: 'Fixed'
+        });
+        fixedRadioButton.appendTo('#fixed');
+
+        var gradientradioButton = new ej.buttons.RadioButton({
+            label: 'Gradient', name: 'paletteType',
+            change: function () { valueXChange(); }, value: 'Gradient', checked: true
+        });
+        gradientradioButton.appendTo('#gradient');
+
+        function valueXChange() {
+            var heatMap = document.getElementById('container').ej2_instances[0];
+            heatMap.paletteSettings.type = fixedRadioButton.checked ? 'Fixed' : 'Gradient';
+        }
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the energy consumption in trillion British thermal units (btu) by the various public sectors in US government over the years. The data label is disabled in this sample, the tooltip displays the data point values.  In property panel, the options are available to change palette type in Heatmap by means of radio button.
+    </p>
+}
+@section Description{
+    <p>
+        This example explains how to provide a specific color for specific range in heatmap. The <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPalette.html#Syncfusion_EJ2_HeatMap_HeatMapPalette_StartValue" target="_blank" aria-label="startValue"> startValue <span class="sr-only">opens in a new tab</span></a> and <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPalette.html#Syncfusion_EJ2_HeatMap_HeatMapPalette_EndValue" target="_blank" aria-label="endValue"> endValue <span class="sr-only">opens in a new tab</span></a> properties are used to define the range start and end values. The <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPalette.html#Syncfusion_EJ2_HeatMap_HeatMapPalette_MinColor" target="_blank" aria-label="minColor"> minColor <span class="sr-only">opens in a new tab</span></a> and <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPalette.html#Syncfusion_EJ2_HeatMap_HeatMapPalette_MaxColor" target="_blank" aria-label="maxColor"> maxColor <span class="sr-only">opens in a new tab</span></a> properties represent the colors of given range.
+    </p>
+    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
+    <br>
+}
+
+@section Title{
+                    <title>ASP.NET MVC HeatMap Chart Color Range Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Color Range in ASP.NET MVC HeatMap Chart Control</h1>
+                }

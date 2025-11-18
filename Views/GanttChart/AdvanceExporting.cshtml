@@ -1,0 +1,273 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "AdvanceExporting";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            <div style="display: flex;">
+                <div style="display: flex;">
+                    <label id="export" for="checked" style="margin:0px 5px 0px 0px;font-size: 15px;"> AutoFit in Pdf Export </label>
+                    <div>
+                        @Html.EJS().Switch("checked").Change("Change").Render()
+                    </div>
+                </div>
+            </div>
+            <div>
+                @(Html.EJS().Gantt("AdvanceExport")
+                .DataSource((IEnumerable<object>)ViewData["DataSource"])
+                .EnableCriticalPath(true)
+                .DateFormat("MMM dd, y")
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
+                    .Progress("Progress").Dependency("Predecessor").Child("SubTasks").ResourceInfo("ResourceId"))
+                .EventMarkers(em =>
+                {
+                    em.Day("04/09/2025").Label("Research phase").Add();
+                    em.Day("06/20/2025").Label("Sales and marketing phase").Add();
+                })
+                .Holidays(hol =>
+                {
+                    hol.From("04/04/2025").To("04/04/2025").Label("Local Holiday").Add();
+                    hol.From("04/19/2025").To("04/19/2025").Label("Good Friday").Add();
+                    hol.From("04/30/2025").To("04/30/2025").Label("Release Holiday").Add();
+                })
+                .Columns(col =>
+                {
+                    col.Field("TaskId").Width(80).Add();
+                    col.Field("TaskName").Width(250).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("EndDate").Add();
+                    col.Field("Progress").Add();
+                })
+                .AllowExcelExport(true)
+                .AllowPdfExport(true)
+                .Toolbar(new List<string> { "PdfExport" })
+                .ToolbarClick("toolbarClick")
+                .TimelineSettings(tl => tl.TopTier(tt => tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week)).BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day).Count(1)))
+                .LabelSettings(ls => ls.LeftLabel("#leftLabel").RightLabel("#rightLabel"))
+                .SplitterSettings(ss => ss.ColumnIndex(2))
+                .ProjectStartDate("03/25/2025")
+                .ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName"))
+                .Resources((IEnumerable<object>)ViewData["Resources"])
+                .HighlightWeekends(true)
+                .GridLines(Syncfusion.EJ2.Gantt.GridLine.Both)
+                .Height("450px")
+                .TreeColumnIndex(1)
+                .AllowSelection(true)
+                .PdfQueryTaskbarInfo("pdfQueryTaskbarInfo")
+                .QueryTaskbarInfo("queryTaskbarInfo")
+                .Render()
+            )
+            </div>
+            <style>
+
+                .fluent2 #export,
+                .fluent2-dark #export {
+                    padding: 7px;
+                }
+            </style>
+            <script type="text/x-template" id="leftLabel">
+                <div style="margin-top=-7px;">
+                    <div id="leftLabel">
+                        ${if(ganttProperties.taskId === 7)}
+                        <span style="color: #8E2440;">Custom Label</span>
+                        ${else}
+                        <span>${TaskName}</span>
+                        ${/if}
+                    </div>
+                </div>
+            </script>
+            <script type="text/x-template" id="rightLabel">
+                <div style="margin-top=-7px;">
+                    ${if(ganttProperties.resourceInfo)}
+                    <div id="rightLabel">
+                        ${getResourceElements(ganttProperties.resourceInfo)}
+                    </div>
+                    ${/if}
+                </div>
+            </script>
+
+            <script>
+                var isFitToWidth;
+                function toolbarClick(args) {
+                    if (args.item.id === "AdvanceExport_pdfexport") {
+                        var borderWidth = 1;
+                        var borderColor = new ej.pdfexport.PdfColor(227, 22, 91);
+                        var pdfpen = new ej.pdfexport.PdfPen(borderColor, borderWidth);
+                        pdfpen.dashStyle = ej.pdfexport.PdfDashStyle.Dash;
+                        var exportProperties = {
+                            pageSize: 'A2',
+                            fileName: "Product Development Report.pdf.pdf",
+                            ganttStyle: {
+                                eventMarker: {
+                                    label: {
+                                        fontColor: new ej.pdfexport.PdfColor(33, 33, 33),
+                                        fontStyle: ej.pdfexport.PdfFontStyle.Bold,
+                                        backgroundColor: new ej.pdfexport.PdfColor(253, 191, 100),
+                                    },
+                                    lineStyle: pdfpen,
+                                },
+                                holiday: {
+                                    fontColor: new ej.pdfexport.PdfColor(33, 33, 33),
+                                    backgroundColor: new ej.pdfexport.PdfColor(243, 244, 246),
+                                }
+                            },
+                            header: {
+                                fromTop: 0,
+                                height: 150,
+                                contents: [
+                                    {
+                                        type: 'Text',
+                                        value: 'Product Development Lifecycle Gantt Chart Report March 2025 - June 2025',
+                                        position: { x: 20, y: 20 },
+                                        style: { textBrushColor: '#00008B', fontSize: 24 },
+                                    },
+                                    {
+                                        type: 'Line',
+                                        style: { penColor: '#00008B', penSize: 2, dashStyle: 'Solid' },
+                                        points: { x1: 20, y1: 70, x2: 755, y2: 70 },
+                                    },
+                                ],
+                            },
+                            footer: {
+                                fromBottom: 160,
+                                height: 100,
+                                contents: [
+                                    {
+                                        type: 'Text',
+                                        value: "© 2024 Syncfusion Inc. All Rights Reserved.\n" +
+                                            "Generated on: " + new Date().toLocaleString('en-US', {
+                                                month: 'long',
+                                                day: '2-digit',
+                                                year: 'numeric',
+                                                hour: '2-digit',
+                                                minute: '2-digit',
+                                                second: '2-digit',
+                                                hour12: true
+                                            }),
+                                        position: { x: 1950, y: 40 },
+                                        style: { textBrushColor: '#3a435e', fontSize: 20 },
+                                    }
+                                ],
+                            },
+                            fitToWidthSettings: {
+                                isFitToWidth: isFitToWidth,
+                            }
+                        };
+                        this.pdfExport(exportProperties);
+                    }
+                }
+                function Change(args) {
+                    if (args.checked) {
+                        isFitToWidth = true;
+                    } else {
+                        isFitToWidth = false;
+                    }
+                }
+
+                var pdfQueryTaskbarInfo = function (args) {
+                    args.labelSettings.leftLabel.value = args.data.ganttProperties.taskName;
+                    if (args.data.ganttProperties.resourceNames) {
+                        args.labelSettings.rightLabel.value = args.data.ganttProperties.resourceNames;
+                        args.labelSettings.rightLabel.image = [{
+                            base64: args.data.taskData.ResourcesImage, width: 20, height: 20
+                        }];
+                        if (args.data.ganttProperties.taskId === 7) {
+                            args.labelSettings.leftLabel.value = 'Custom Label';
+                            args.labelSettings.leftLabel.fontStyle.fontColor = new ej.pdfexport.PdfColor(142, 36, 64);
+                        }
+                    }
+                    var theme = document.body.classList.contains('tailwind3-dark') || document.body.classList.contains('fluent2-dark') ||
+                        document.body.classList.contains('material3-dark') || document.body.classList.contains('bootstrap5.3-dark') ||
+                        document.body.classList.contains('fluent2-highcontrast') || document.body.classList.contains('fluent2-dark');
+                    if (theme && args.data.isCritical) {
+                        args.taskbar.progressColor = new ej.pdfexport.PdfColor(172, 6, 136);
+                        args.taskbar.taskColor = args.taskbar.taskBorderColor = new ej.pdfexport.PdfColor(73, 4, 58);
+                    }
+                    else if (!theme && args.data.isCritical) {
+                        args.taskbar.progressColor = new ej.pdfexport.PdfColor(176, 0, 138);
+                        args.taskbar.taskColor = new ej.pdfexport.PdfColor(255, 206, 244);
+                    }
+                };
+                var getResourceElements = function (value) {
+                    var out = "";
+                    var img = document.createElement('img');
+                    img.height = 20;
+                    var span = document.createElement('span');
+                    span.style.marginLeft = "5px";
+                    span.style.marginRight = "5px";
+                    for (var index = 0; index < value.length; index++) {
+                        img.src = 'https://ej2.syncfusion.com/demos/src/gantt/images/' + value[index].ResourceName + '.png';
+                        span.innerHTML = value[index].ResourceName;
+                        out = out + img.outerHTML + span.outerHTML;
+                    }
+                    return out;
+                };
+                var queryTaskbarInfo = function (args) {
+                    var theme = document.body.classList.contains('tailwind3-dark') || document.body.classList.contains('fluent2-dark') ||
+                        document.body.classList.contains('material3-dark') || document.body.classList.contains('bootstrap5.3-dark') ||
+                        document.body.classList.contains('fluent2-highcontrast') || document.body.classList.contains('fluent2-dark');
+                    if (theme && args.data.isCritical) {
+                        args.taskbarBgColor = "#49043A";
+                        args.progressBarBgColor = "#AC0688";
+                    } else if (!theme && args.data.isCritical) {
+                        args.progressBarBgColor = "#B0008A";
+                        args.taskbarBgColor = "#FFCEF4";
+                    }
+                };
+            </script>
+        </div>
+    </div>
+});
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the advanced PDF export features of the Gantt Chart, allowing customization of various elements such as headers, footers, task labels, event markers, holidays, and taskbars. These customizations can be configured using the
+            <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/gantt/pdfExportProperties/">PdfExportProperties</a> and
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_PdfQueryTaskbarInfo">PdfQueryTaskbarInfo</a> event.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Advance Exporting in ASP.NET MVC Gantt control. Explore here for more details." />
+}
+
+@section Description{
+    <div id="description">
+        <p>In this sample, the Gantt Chart's PDF export functionality is enhanced with various customization options:</p>
+        <ul>
+            <li>
+                <strong>Custom Headers and Footers</strong>: The headers and footers in the exported PDF can be customized using the
+                <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/gantt/pdfExportProperties/#header">header</a> and
+                <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/gantt/pdfExportProperties/#footer">footer</a> properties,which allowing us to include relevant information of exported PDF.
+            </li>
+            <li>
+                <strong>Taskbar and Task Label Styling</strong>:Taskbar and Task Label appearance can be customized in the exported PDF using the
+                <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_PdfQueryTaskbarInfo">pdfQueryTaskbarInfo</a> event.
+            </li>
+            <li>
+                <strong> Event marker and holiday</strong>:Event marker and holiday can be cusotmized in exported PDF using
+                <a target="_blank" href="https://helpej2.syncfusion.com/documentation/api/gantt/pdfExportProperties/#ganttstyle">ganttstyle</a>
+                in <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/gantt/pdfExportProperties">PdfExportProperties</a>.
+            </li>
+            <li>
+                <strong>Fit-to-Width Support</strong>: This feature allows the Gantt component's rows to be auto-fitted to the width of the PDF document's page using the
+                <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/gantt/pdfExportProperties/#fittowidthsettings">fitToWidthSettings</a>
+                in <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/gantt/pdfExportProperties">PdfExportProperties</a>.
+            </li>
+        </ul>
+
+        <p>More information about advanced PDF exporting features in Gantt can be found in the <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/gantt/pdf-export/pdf-export">documentation section</a>.</p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Exporting Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Advance Exporting in ASP.NET MVC Gantt Control</h1>
+}

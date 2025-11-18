@@ -1,0 +1,1022 @@
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Diagrams;
+@using Syncfusion.EJ2.Navigations;
+@using EJ2MVCSampleBrowser.Models;
+@using Newtonsoft.Json;
+
+@section ControlsSection{
+
+    <style>
+        #toolbarContainer {
+            display: flex;
+            align-items: center;
+            height: 62px !important;
+            width: 100% !important;
+            position: relative;
+        }
+
+        #toolbar {
+            height: 62px !important;
+        }
+
+        #toolbarWithToggleSwitch {
+            height: 62px !important;
+        }
+
+        #symbolPalette {
+            overflow: hidden !important;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        #symbolPalette_container {
+            border: none !important;
+        }
+
+        #symbolPalette .e-acrdn-header {
+            display: none;
+        }
+
+        #symbolPalette .e-acrdn-content {
+            padding: 0;
+            background-color: transparent !important;
+        }
+
+        #symbolPalette .e-remove-palette {
+            background-color: transparent !important;
+        }
+
+        #symbolPalette .e-accordion {
+            background-color: transparent !important;
+        }
+
+        #symbolPalette .e-accordion .e-acrdn-item.e-selected.e-select.e-active {
+            background-color: transparent !important;
+        }
+
+        #switch-container {
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            right: 0;
+            margin-right: 10px;
+        }
+
+        #diagram {
+            display: block;
+        }
+
+        .loading-indicator {
+            border: 4px solid #e6ffe6;
+            border-top: 4px solid green;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            animation: spin 2s linear infinite;
+        }
+
+        .tick {
+            display: none;
+            animation: showTick 0.5s forwards;
+            width: 14px;
+            height: 14px;
+            padding: 1px;
+            line-height: 1;
+            color: white;
+            border-radius: 50%;
+            background-color: green;
+        }
+
+        @@keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @@keyframes showTick {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+
+    <div class="control-section">
+        <div id="toolbarContainer">
+            @*Main Toolbar*@
+            @(Html.EJS().Toolbar("toolbar")
+            .Width("80%")
+            .OverflowMode(OverflowMode.Popup)
+            .Items((List<ToolbarItem>)ViewData["firstTbItems"])
+            .Render()
+            )
+            @*Toolbar with Toggle Switch*@
+            @(Html.EJS().Toolbar("toolbarWithToggleSwitch")
+            .Width("20%")
+            .Items((List<ToolbarItem>)ViewData["secondTbItems"])
+            .Created("onToggleToolbarCreated")
+            .Render()
+            )
+        </div>
+        @*Diagram Control*@
+        @(Html.EJS().Diagram("diagram")
+        .Width("100%")
+        .Height("600px")
+        .GetNodeDefaults("getNodeDefaults")
+        .GetConnectorDefaults("getConnectorDefaults")
+        .ScrollSettings(new DiagramScrollSettings() { ScrollLimit = ScrollLimit.Infinity })
+        .Tool(DiagramTools.ZoomPan)
+        .SelectedItems(new DiagramSelector() { UserHandles = (List<DiagramUserHandle>)ViewBag.userHandles })
+        .OnUserHandleMouseDown("handleMouseDown")
+        .SelectionChange("onSelectionChange")
+        .Created("onDiagramCreated")
+        .Render()
+        )
+    </div>
+
+
+    <script>
+        // Initialize variables
+        var diagram;
+        var flowTimeOut1, flowTimeOut2;
+        var isPaused = false;
+        var animationIntervals = [];
+        var connectorBeforeAnimationColor = "#B0B0B0";
+        var connectorDuringAnimationColor = "#FF7F50";
+        var connectorAfterAnimationColor = "green";
+        var connectorAnnotationColor = "#32CD32";
+        var nodeStrokeBeforeAnimationColor = "black";
+        var nodeStrokeAfterAnimationColor = "green";
+        // Initial Default Diagram Data
+        var diagramData = {
+            nodes: [
+                {
+                    id: "start",
+                    offsetX: 100,
+                    offsetY: 380,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Event",
+                        event: { event: "Start", trigger: "None" },
+                    },
+                    annotations: [{ content: "Start" }],
+                },
+                {
+                    id: "liquidInput",
+                    offsetX: 300,
+                    offsetY: 280,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Liquid Input" }],
+                },
+                {
+                    id: "dryInput",
+                    offsetX: 300,
+                    offsetY: 480,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Dry Input" }],
+                },
+                {
+                    id: "condensed",
+                    offsetX: 500,
+                    offsetY: 180,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Condensed" }],
+                },
+                {
+                    id: "cream",
+                    offsetX: 500,
+                    offsetY: 260,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Cream" }],
+                },
+                {
+                    id: "caneSugar",
+                    offsetX: 500,
+                    offsetY: 340,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Cane Sugar" }],
+                },
+                {
+                    id: "water",
+                    offsetX: 500,
+                    offsetY: 420,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Water" }],
+                },
+                {
+                    id: "ingredients",
+                    offsetX: 500,
+                    offsetY: 500,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Ingredients" }],
+                },
+                {
+                    id: "flavour",
+                    offsetX: 500,
+                    offsetY: 580,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Flavour" }],
+                },
+                {
+                    id: "fruitsAndNuts",
+                    offsetX: 500,
+                    offsetY: 660,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Fruits and Nuts" }],
+                },
+                {
+                    id: "blending",
+                    offsetX: 700,
+                    offsetY: 380,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Blending" }],
+                },
+                {
+                    id: "coolingAging",
+                    offsetX: 840,
+                    offsetY: 380,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Cooling/Aging" }],
+                },
+                {
+                    id: "packaging",
+                    offsetX: 980,
+                    offsetY: 380,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Packaging" }],
+                },
+                {
+                    id: "storageDistribution",
+                    width: 140,
+                    offsetX: 1130,
+                    offsetY: 380,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Activity",
+                        activity: { activity: "Task" },
+                    },
+                    annotations: [{ content: "Storage/Distribution" }],
+                },
+                {
+                    id: "end",
+                    offsetX: 1260,
+                    offsetY: 380,
+                    shape: {
+                        type: "Bpmn",
+                        shape: "Event",
+                        event: { event: "End", trigger: "None" },
+                    },
+                    annotations: [{ content: "End" }],
+                },
+            ],
+            connectors: [
+                { id: "c1", sourceID: "start", targetID: "liquidInput" },
+                { id: "c2", sourceID: "start", targetID: "dryInput" },
+                { id: "c3", sourceID: "liquidInput", targetID: "condensed" },
+                { id: "c4", sourceID: "liquidInput", targetID: "cream" },
+                { id: "c5", sourceID: "liquidInput", targetID: "caneSugar" },
+                { id: "c6", sourceID: "liquidInput", targetID: "water" },
+                { id: "c7", sourceID: "liquidInput", targetID: "ingredients" },
+                {
+                    id: "c8",
+                    sourceID: "dryInput",
+                    targetID: "flavour"
+                },
+                {
+                    id: "c9",
+                    sourceID: "dryInput",
+                    targetID: "fruitsAndNuts"
+                },
+                { id: "c10", sourceID: "condensed", targetID: "blending" },
+                { id: "c11", sourceID: "cream", targetID: "blending" },
+                { id: "c12", sourceID: "caneSugar", targetID: "blending" },
+                { id: "c13", sourceID: "water", targetID: "blending" },
+                { id: "c14", sourceID: "ingredients", targetID: "blending" },
+                { id: "c15", sourceID: "flavour", targetID: "blending" },
+                { id: "c16", sourceID: "fruitsAndNuts", targetID: "blending" },
+                { id: "c17", sourceID: "blending", targetID: "coolingAging" },
+                { id: "c18", sourceID: "coolingAging", targetID: "packaging" },
+                { id: "c19", sourceID: "packaging", targetID: "storageDistribution" },
+                { id: "c20", sourceID: "storageDistribution", targetID: "end" },
+            ],
+        };
+
+        // Handle Diagram Created Event
+        function onDiagramCreated() {
+            diagram = document.getElementById("diagram").ej2_instances[0];
+
+            // Load nodes and connectors in the diagram
+            loadDiagramNodesAndConnectors();
+
+            // Tool Bar
+            var toolbar = document.getElementById("toolbar").ej2_instances[0];
+            // handle toolbar buttons click
+            toolbar.clicked = function (args) {
+                if (args.item === undefined || args.item.text === undefined) {
+                    return;
+                }
+                switch (args.item.text) {
+                    case "Execute":
+                    case "Pause":
+                    case "Resume":
+                        diagram.clearSelection();
+                        startWorkflow();
+                        break;
+                    case "Reset":
+                        resetWorkflow();
+                        updateExecuteButton("Execute");
+                        break;
+                    case "Delete":
+                        diagram.remove();
+                        break;
+                    case "New":
+                        diagram.clear();
+                        updateExecuteButton("Execute");
+                        break;
+                    case "Select":
+                        diagram.tool = ej.diagrams.DiagramTools.MultipleSelect;
+                        break;
+                    case "Pan":
+                        diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
+                        break;
+                    case "Open":
+                        // open the file open popup
+                        document.getElementById("fileInput").click();
+                        break;
+                    case "Save":
+                        saveDiagram();
+                        break;
+                }
+            };
+
+            // Hidden file input for opening json files
+            var input = document.createElement("input");
+            input.type = "file";
+            input.accept = ".json";
+            input.id = "fileInput";
+            input.style.display = "none";
+            document.body.appendChild(input);
+
+            input.addEventListener("change", function (e) {
+                var file = e.target.files[0];
+                if (!file) return;
+                var reader = new FileReader();
+                reader.onload = function (evt) {
+                    var json = JSON.parse(evt.target.result);
+                    diagram.loadDiagram(json);
+                    updateExecuteButton("Execute");
+                    clearAnimationIntervals();
+                    diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
+                    setTimeout(() => {
+                        diagram.fitToPage();
+                    }, 100);
+                    input.value = "";
+                };
+                reader.readAsText(file);
+            });
+
+            // Creating palette
+            var palette = new ej.diagrams.SymbolPalette({
+                id: 'symbolpalette',
+                width: '100%',
+                height: '62px',
+                expandMode: 'Multiple',
+                symbolHeight: 45,
+                symbolWidth: 45,
+                symbolMargin: { top: 5, bottom: 5, left: 5, right: 5 },
+                palettes: [
+                    {
+                        id: "BPMN",
+                        expanded: true,
+                        symbols: [
+                            {
+                                id: "Start",
+                                shape: { type: "Bpmn", shape: "Event" },
+                                annotations: [{ content: "Start" }],
+                                tooltip: { content: "Start", relativeMode: "Object" },
+                                constraints:
+                                    ej.diagrams.NodeConstraints.Default |
+                                    ej.diagrams.NodeConstraints.Tooltip,
+                            },
+                            {
+                                id: "Decision",
+                                shape: { type: "Bpmn", shape: "Gateway" },
+                                annotations: [{ content: "Decision" }],
+                                tooltip: { content: "Decision", relativeMode: "Object" },
+                                constraints:
+                                    ej.diagrams.NodeConstraints.Default |
+                                    ej.diagrams.NodeConstraints.Tooltip,
+                            },
+                            {
+                                id: "Task",
+                                shape: { type: "Bpmn", shape: "Activity" },
+                                annotations: [{ content: "Task" }],
+                                tooltip: { content: "Task", relativeMode: "Object" },
+                                constraints:
+                                    ej.diagrams.NodeConstraints.Default |
+                                    ej.diagrams.NodeConstraints.Tooltip,
+                            },
+                            {
+                                id: "End",
+                                shape: {
+                                    type: "Bpmn",
+                                    shape: "Event",
+                                    event: { event: "End", trigger: "None" },
+                                },
+                                annotations: [{ content: "End" }],
+                                tooltip: { content: "End", relativeMode: "Object" },
+                                constraints:
+                                    ej.diagrams.NodeConstraints.Default |
+                                    ej.diagrams.NodeConstraints.Tooltip,
+                            },
+                        ],
+                        iconCss: "",
+                    },
+                ],
+                getSymbolInfo: function (symbol) {
+                    return { fit: true, tooltip: symbol.id };
+                }
+            });
+            palette.appendTo('#symbolPalette');
+
+            // disable/enable sepecific toolbar buttons initially
+            toggleToolbarElements(false);
+            setTimeout(() => {
+                diagram.fitToPage();
+            }, 100);
+        }
+
+        // Updated the toggle switch to the toolbar item
+        function onToggleToolbarCreated() {
+            // Initialize Switch
+            var toggleSwitch = new ej.buttons.Switch({
+                checked: false, // Start in "View Mode"
+                change: function (args) {
+                    toggleToolbarElements(args.checked);
+                }
+            });
+            toggleSwitch.appendTo('#switchMode');
+
+            // Initialize tooltip on the toggle switch container
+            var tooltip = new ej.popups.Tooltip({
+                content: 'Enable Editing',
+                target: '#switch-container',
+                position: 'TopCenter',
+                opensOn: "Hover"
+            });
+            tooltip.appendTo('#switch-container');
+        }
+
+        // helps in loading diagram nodes and connectors
+        function loadDiagramNodesAndConnectors() {
+            diagram.nodes = diagramData.nodes;
+            diagram.connectors = diagramData.connectors;
+        }
+
+        // Update the toolbar button text based on the animation state
+        function updateExecuteButton(state) {
+            var toolbar = document.getElementById("toolbar").ej2_instances[0];
+            var btn = toolbar.items.find(i => i.text === "Execute" || i.text === "Pause" || i.text === "Resume");
+
+            var config = {
+                "Execute": { text: "Execute", tooltipText: "Start Workflow", prefixIcon: "e-icons e-play" },
+                "Pause": { text: "Pause", tooltipText: "Pause Workflow", prefixIcon: "e-icons e-pause" },
+                "Resume": { text: "Resume", tooltipText: "Resume Workflow", prefixIcon: "e-icons e-play" }
+            };
+
+            Object.assign(btn, config[state]);
+        }
+
+        // save the current diagram in json format
+        function saveDiagram() {
+            var fileName = "Diagram.json";
+            var jsonData = diagram.saveDiagram();
+            var blob = new Blob([jsonData], { type: "application/json" });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // toggle the toolbar buttons state and palette visibility based on edit/view mode
+        function toggleToolbarElements(isChecked){
+            var isEditMode = isChecked;
+
+            // 1. Update tooltip
+            var tooltip = document.getElementById('switch-container').ej2_instances[0];
+            if (isEditMode) {
+                tooltip.content = 'Enable Editing';
+            } else {
+                tooltip.content = 'Disable Editing';
+            }
+
+            // 2. Enable/disable toolbar buttons
+            var toolbar = document.getElementById("toolbar").ej2_instances[0];
+            var itemsToDisable = ["Select", "Delete", "Save"];
+            itemsToDisable.forEach(function (text) {
+                var index = toolbar.items.findIndex(function (item) {
+                    return item.text === text;
+                });
+                if (index !== -1) {
+                    toolbar.enableItems(index, isEditMode); // Enable only in edit mode
+                }
+            });
+
+            // 3. Hide last separator in toolbar
+            var items = toolbar.items;
+            var lastSepIndex = items.findIndex(function (item, idx) {
+                return item.type === "Separator" && idx > 7;
+            });
+            if (lastSepIndex !== -1) {
+                items[lastSepIndex].visible = isEditMode;
+            }
+
+            // 4. Show/hide palette
+            var palette = document.getElementById('symbolPalette');
+            if (palette) {
+                palette.style.display = isEditMode ? 'flex' : 'none';
+            }
+
+            // 5. Update Diagram Tools
+            if (diagram) {
+                if (isEditMode) {
+                    diagram.tool = ej.diagrams.DiagramTools.MulipleSelect;
+                } else {
+                    diagram.tool = ej.diagrams.DiagramTools.ZoomPan;
+                }
+            }
+        }
+
+        // Handle the nodes and connectors userhandles functionality on mouse down
+        function handleMouseDown(args) {
+            var handleName = args.element.name;
+
+            switch (handleName) {
+                case "delete":
+                    if (diagram.selectedItems.nodes.length > 0) {
+                        diagram.remove(diagram.selectedItems.nodes[0]);
+                    }
+                    break;
+
+                case "drawConnector":
+                    var sourceNode = diagram.selectedItems.nodes[0];
+                    if (!sourceNode) return;
+
+                    diagram.drawingObject = {
+                        type: "Straight",
+                        sourceID: sourceNode.id
+                    };
+                    diagram.tool = ej.diagrams.DiagramTools.DrawOnce;
+                    break;
+
+                case "stopAnimation":
+                    // enable and disable animation flow through a particular connector
+                    var connector = diagram.selectedItems.connectors[0];
+                    if (connector) {
+                        if (!connector.addInfo) connector.addInfo = {};
+                        connector.addInfo.stopAnimation = !connector.addInfo.stopAnimation;
+
+                        // Find the user handle and update it
+                        var handle = diagram.selectedItems.userHandles.find(function (h) {
+                            return h.name === "stopAnimation";
+                        });
+
+                        if (handle) {
+                            var isStopped = connector.addInfo.stopAnimation;
+
+                            if (isStopped) {
+                                handle.pathData = "M2,0 L10,8 L2,16 L2,0 Z"; // Play icon
+                                handle.tooltip.content = "Enable Animation";
+                            } else {
+                                handle.pathData = "M4.75,0.75 L9.25,0.75 L9.25,9.25 L4.75,9.25 Z"; // Stop icon
+                                handle.tooltip.content = "Disable Animation";
+                            }
+
+                        }
+                    }
+                    break;
+            }
+        };
+
+        // Updates the stopAnimation user handle icon and tooltip based on the selected connector's state
+        function onSelectionChange(args) {
+            if (args.state !== "Changed") return;
+            var connector = diagram.selectedItems.connectors[0];
+            var handle = null;
+            for (var i = 0; i < diagram.selectedItems.userHandles.length; i++) {
+                if (diagram.selectedItems.userHandles[i].name === "stopAnimation") {
+                    handle = diagram.selectedItems.userHandles[i];
+                    break;
+                }
+            }
+            if (connector && handle) {
+                var isStopped =
+                    connector.addInfo && connector.addInfo.stopAnimation === true;
+                if (isStopped) {
+                    handle.pathData = "M2,0 L10,8 L2,16 L2,0 Z"; // Play icon (start animation)
+                } else {
+                    handle.pathData = "M5.25,1.25 L8.75,1.25 L8.75,8.75 L5.25,8.75 Z"; // Stop icon
+                }
+                if (isStopped) {
+                    handle.tooltip.content = "Enable Animation";
+                } else {
+                    handle.tooltip.content = "Disable Animation";
+                }
+                handle.visible = true;
+            } else if (handle) {
+                handle.visible = false;
+            }
+        }
+
+      // Node defaults
+      function getNodeDefaults(node) {
+        // restrict rotation and hide thumbs
+        node.constraints =
+          (ej.diagrams.NodeConstraints.Default &
+            ~ej.diagrams.NodeConstraints.Rotate) |
+          ej.diagrams.NodeConstraints.HideThumbs;
+
+        // Set default width and height
+        if (
+          typeof node.width === "undefined" ||
+          typeof node.height === "undefined"
+        ) {
+          var dimensions = {
+            Event: { width: 60, height: 60 },
+            Gateway: { width: 90, height: 70 },
+            Activity: { width: 90, height: 50 },
+          };
+          var shapeType = node.shape.shape;
+          if (typeof node.width === "undefined") {
+            node.width = dimensions[shapeType].width;
+          }
+          if (typeof node.height === "undefined") {
+            node.height = dimensions[shapeType].height;
+          }
+        }
+        return node;
+      }
+
+      // Connector defaults
+      function getConnectorDefaults(connector) {
+        // Configure the connector with a straight type
+        connector.type = "Straight";
+
+        // connector initial color style, before animation
+        connector.style.strokeColor =
+          connector.targetDecorator.style.strokeColor =
+          connector.targetDecorator.style.fill =
+            connectorBeforeAnimationColor;
+
+        // connector annotation, that will be animated during the workflow animation
+        connector.annotations = [
+          {
+            content: "",
+            height: 16,
+            width: 16,
+            offset: 0,
+            style: { fill: "transparent", fontSize: 24 },
+          },
+        ];
+        return connector;
+      }
+
+      // Workflow animation
+      function startWorkflow() {
+        // PAUSE state if running
+        if (!isPaused && animationIntervals.length) {
+          isPaused = true;
+          updateExecuteButton("Resume");
+          clearAnimationIntervals();
+          return;
+        }
+
+        // RESUME state if paused
+        if (isPaused) {
+          isPaused = false;
+          updateExecuteButton("Pause");
+          resumeWorkflow();
+          return;
+        }
+
+        // EXECUTE state to start from start
+        isPaused = false;
+        resetWorkflow();
+        updateExecuteButton("Pause");
+
+        // find the "start" nodes in the diagram, as animation only works from "start" nodes
+        var startNodes = diagram.nodes.filter(function (node) {
+          return (
+            node.shape &&
+            node.shape.type === "Bpmn" &&
+            node.shape.shape === "Event" &&
+            node.shape.event.event === "Start"
+          );
+        });
+        if (startNodes.length === 0) {
+          console.error("No start nodes found.");
+          return;
+        }
+        startNodes.forEach(function (startNode) {
+          animateNode(startNode.id);
+        });
+      }
+
+      // Resume Workflow animation from the last paused state
+      function resumeWorkflow() {
+        diagram.connectors.forEach(function (connector) {
+          // Retrieve the last annotation of the connector
+          var lastAnn = connector.annotations[connector.annotations.length - 1];
+          // Check if the annotation offset is within the animation range
+          if (lastAnn && lastAnn.offset > 0 && lastAnn.offset < 0.9) {
+            // Restore the annotations that need to be visible
+            lastAnn.content = "●";
+            if (lastAnn.style) lastAnn.style.color = connectorAnnotationColor;
+
+            // Get the source node of the connector and check if it s a start event node
+            var sourceNode = diagram.getObject(connector.sourceID);
+            var isStartNode =
+              sourceNode &&
+              sourceNode.shape &&
+              sourceNode.shape.type === "Bpmn" &&
+              sourceNode.shape.shape === "Event" &&
+              sourceNode.shape.event &&
+              sourceNode.shape.event.event === "Start";
+
+            // If the source node is a start node or already completed node, continue the animation
+            if (
+              isStartNode ||
+              (sourceNode &&
+                sourceNode.style.strokeColor === nodeStrokeAfterAnimationColor)
+            ) {
+              // Animate the connector and the target node
+              animateConnector(connector, function (targetId) {
+                var targetNode = diagram.getObject(targetId);
+                if (targetNode) {
+                  createLoadingAnimation(targetNode);
+                  setTimeout(function () {
+                    completeNodeAnimation(targetNode);
+                    animateNode(targetId);
+                  }, 1000);
+                }
+              });
+            }
+          }
+        });
+      }
+
+      // Function to animate a node and its connected nodes
+      function animateNode(nodeId) {
+        // Filter connectors originating from the node
+        var currentConnectors = diagram.connectors.filter(function (conn) {
+          return conn.sourceID === nodeId;
+        });
+
+        currentConnectors.forEach(function (connector) {
+          // Check if additional info contains "stopAnimation"
+          if (!(connector.addInfo && connector.addInfo.stopAnimation === true)) {
+            animateConnector(connector, function (targetNodeId) {
+              var targetNode = diagram.getObject(targetNodeId);
+
+              // Start loading animation for the target node
+              if (targetNode) {
+                createLoadingAnimation(targetNode);
+
+                flowTimeOut1 = setTimeout(function() {
+                  // Hide all loading indicators
+                  Array.prototype.slice
+                    .call(document.getElementsByClassName("loading-indicator"))
+                    .forEach(function (el) {
+                      el.style.display = "none";
+                    });
+                  // Show all tick indicators
+                  Array.prototype.slice
+                    .call(document.getElementsByClassName("tick"))
+                    .forEach(function (el) {
+                      el.style.display = "block";
+                    });
+
+                  targetNode.style.strokeColor = nodeStrokeAfterAnimationColor;
+
+                  // Check if the target node is a BPMN "End" event node
+                  if (
+                    targetNode.shape &&
+                    targetNode.shape.type === "Bpmn" &&
+                    targetNode.shape.shape === "Event" &&
+                    targetNode.shape.event &&
+                    targetNode.shape.event.event === "End"
+                  ) {
+                    // Reset toolbar for new execution
+                    updateExecuteButton("Execute");
+                    animationIntervals.length = 0; // Clear animation intervals
+                  } else {
+                    // Recursively animate connected nodes
+                    animateNode(targetNodeId);
+                  }
+                }, 1000);
+              }
+            });
+          }
+        });
+      }
+
+      // Function to animate a connector and execute a callback upon completion
+      function animateConnector(connector, callback) {
+        var lastAnn = connector.annotations[connector.annotations.length - 1];
+        lastAnn.offset = lastAnn.offset || 0.02; // Initialize or set the offset
+        lastAnn.content = "●"; // Set visual marker, to show the flow
+        lastAnn.style.color = connectorAnnotationColor; // Set annotation marker color
+
+        // Start interval to animate the connector
+        var flowInterval = setInterval(function() {
+          if (isPaused) {
+            return; // Pause animation if the workflow is paused
+          }
+          // Continue animation if the offset hasn't reached the end
+          if (lastAnn.offset < 0.9) {
+            lastAnn.offset += 0.025;
+            connector.style.strokeColor =
+              connector.targetDecorator.style.strokeColor =
+              connector.targetDecorator.style.fill =
+                connectorDuringAnimationColor; // Change color during animation
+          } else {
+            // Animation complete, clean up and execute the callback
+            clearInterval(flowInterval);
+            lastAnn.style.color = "transparent";
+            connector.style.strokeColor =
+              connector.targetDecorator.style.strokeColor =
+              connector.targetDecorator.style.fill =
+                connectorAfterAnimationColor; // Set after animation color for connector
+            callback(connector.targetID); // Execute callback with target node ID
+          }
+        }, 120); // Interval of 120ms for the animation steps
+
+        // Add the interval to the list of active animations
+        animationIntervals.push(flowInterval);
+      }
+
+      // Function to create and add a loading animation annotation to a node
+      function createLoadingAnimation(targetNode) {
+        if (!targetNode || !targetNode.annotations) {
+          return;
+        }
+        // HTML template for the loading animation and a hidden tick indicator
+        var  htmlTemplate = '<div style="display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; margin-left: -3px; margin-top: -3px;"><div class="loading-indicator"></div><div class="tick" style="display: none;"><i class="e-icons e-check"></i></div></div>';
+
+        // adding annotation with the template to the node
+        var annotation = {
+          template: htmlTemplate,
+          offset: { x: 0, y: 0 },
+          verticalAlignment: "Top",
+          horizontalAlignment: "Left",
+          style: { fill: "transparent" },
+        };
+
+        diagram.addLabels(targetNode, [annotation]);
+      }
+
+      // Function to show complete status for the given node
+      function completeNodeAnimation(node) {
+        // Hide all loading indicators
+        document.querySelectorAll(".loading-indicator").forEach(function (el) {
+          el.style.display = "none";
+        });
+
+        // Display all tick elements as visible
+        document.querySelectorAll(".tick").forEach(function (el) {
+          el.style.display = "block";
+        });
+
+        // Update the stroke color for the node to indicate completion
+        if (node.style) {
+          node.style.strokeColor = nodeStrokeAfterAnimationColor;
+        }
+
+      }
+
+        function resetWorkflow() {
+        // Set pause state to false
+        isPaused = false;
+        // clear any existing timeouts
+        clearTimeout(flowTimeOut1);
+        clearTimeout(flowTimeOut2);
+        // Clear any running animation intervals
+        clearAnimationIntervals();
+        // Remove all custom animations and tick indicators
+        document.querySelectorAll(".loading-indicator, .tick").forEach(function(el) {
+          el.remove();
+        });
+        // Restore all nodes to their default styles
+        diagram.nodes.forEach(function(node) {
+          if (node.style) node.style.strokeColor = nodeStrokeBeforeAnimationColor;
+        });
+        // Restore all connectors to their default styles
+        diagram.connectors.forEach(function(connector) {
+          connector.style.strokeColor =
+            connector.targetDecorator.style.strokeColor =
+            connector.targetDecorator.style.fill =
+              connectorBeforeAnimationColor;
+
+          // Reset connector annotations to initial state
+          connector.annotations.forEach(function(ann) {
+            ann.offset = 0; // start position
+            ann.content = ""; // Reset content
+            ann.style.color = connectorAnnotationColor; // initial state color
+          });
+        });
+      }
+
+      // Function to clear all active animation intervals
+      function clearAnimationIntervals() {
+        // Stop all timers stored in animationIntervals
+        animationIntervals.forEach(clearInterval);
+        // Reset the array to remove all interval references
+        animationIntervals.length = 0;
+      }
+    </script>
+
+}
+@section ActionDescription{
+    <p>
+        This sample provides a visual representation of a streamlined workflow diagram built using the Syncfusion® EJ2 Diagram control with BPMN shapes.
+    </p>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Work fLow Diagram in ASP.NET MVC Diagram control. Explore here for more details." />
+}
+
+@section Description{
+    <p>
+        This sample demonstrates how to build an animated workflow diagram using BPMN nodes, connectors, and annotations. The diagram simulates a workflow execution process, where clicking the 'Execute' button triggers animated connectors and loading indicators on nodes that transition to checkmarks upon successful completion. The sample also includes options to pause, resume, stop, and reset the workflow. The 'Reset' button restores the diagram to its initial state. Users can enhance the workflow by dragging BPMN elements from the symbol palette, with zoom and pan functionalities enabled for interactive navigation.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC Diagram Workflow Diagram Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Workflow Diagram in ASP.NET MVC Diagram Control</h1>
+}

@@ -1,0 +1,666 @@
+﻿@using Syncfusion.EJ2.Navigations;
+
+@section ControlsSection{
+    <div class="control-section">
+        @(Html.EJS().Tab("ej2Tab").HeightAdjustMode(HeightStyles.None).OverflowMode(OverflowMode.Scrollable).HeaderPlacement(HeaderPosition.Top).Height("500px")
+        .Items(new List<TabItem> {
+           new TabItem { Header = new TabHeader { Text = "Line" }, Content = "#lineCharts" },
+           new TabItem { Header = new TabHeader { Text = "Column" }, Content = "#columnCharts" },
+           new TabItem { Header = new TabHeader { Text = "Spline" }, Content = "#splineCharts" },
+           new TabItem { Header = new TabHeader { Text = "Area" }, Content = "#areaCharts" },
+           new TabItem { Header = new TabHeader { Text = "Bar" }, Content = "#barCharts" },
+           new TabItem { Header = new TabHeader { Text = "Bubble" }, Content = "#bubbleCharts" },
+           new TabItem { Header = new TabHeader { Text = "Scatter" }, Content = "#scatterCharts" },
+           new TabItem { Header = new TabHeader { Text = "Step line" }, Content = "#stepLineCharts" },
+           new TabItem { Header = new TabHeader { Text = "Range column" }, Content = "#rangeCharts" }
+        })
+        .Selected("tabSelect")
+        .Render())
+    </div>
+
+
+    <div id="lineCharts">
+        @(Html.EJS().Chart("lineChart").Load("lineLoad").Loaded("lineLoaded").PrimaryXAxis(axis => axis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+        .MajorGridLines(gr => gr.Width(0)).MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0))).PrimaryYAxis(axis => axis.Maximum(100)
+        .Minimum(0).LabelFormat("{value}").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LineStyle(lineStyle => lineStyle.Width(0))
+        .MajorTickLines(gr => gr.Width(0))).Series(series => {
+        series.DataSource((ViewData["LineData"]))
+            .XName("x")
+            .YName("y").Width(2.5)
+            .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Line)
+            .Marker(marker => marker.Visible(true).Height(8).Width(8).DataLabel(dataLabel => dataLabel.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer)))
+            .Animation(anim => anim.Enable(true))
+            .Add();
+            }).ChartArea(area => area.Border(border => border.Width(0))).Width("100%").Render())
+    </div>
+    <div id="columnCharts" style="display: none">
+        @(Html.EJS().Chart("columnChart").Load("columnLoad").Loaded("columnLoaded").PrimaryXAxis(axis => axis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+        .MajorGridLines(gr => gr.Width(0)).MinorTickLines(mt => mt.Width(0)).MajorTickLines(mt => mt.Width(0))).PrimaryYAxis(axis => axis.Maximum(100)
+        .Minimum(0).LabelFormat("{value}").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LineStyle(lineStyle => lineStyle.Width(0))
+        .MajorTickLines(gr => gr.Width(0))).Series(series => {
+        series.DataSource(ViewData["ColumnData"])
+            .XName("x")
+            .YName("y")
+            .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+            .Marker(marker => marker.Visible(false).DataLabel(dataLabel => dataLabel.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer)))
+            .Animation(anim => anim.Enable(true)).CornerRadius(cornerRadius => cornerRadius.TopLeft(4).TopRight(4))
+            .Add();
+            }).ChartArea(area => area.Border(border => border.Width(0))).Render())
+    </div>
+    <div id="splineCharts" style="display: none">
+        @(Html.EJS().Chart("splineChart").Load("splineLoad").Loaded("splineLoaded").PrimaryXAxis(axis => axis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+        .MajorGridLines(gr => gr.Width(0)).MinorTickLines(mt => mt.Width(0)).MajorTickLines(mt => mt.Width(0))).PrimaryYAxis(axis => axis.Maximum(100)
+        .Minimum(0).LabelFormat("{value}").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LineStyle(lineStyle => lineStyle.Width(0))
+        .MajorTickLines(gr => gr.Width(0))).Series(series => {
+        series.DataSource(ViewData["SplineData"])
+            .XName("x")
+            .YName("y").Width(2.5)
+            .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline)
+            .Marker(marker => marker.Visible(true).Height(8).Width(8).DataLabel(dataLabel => dataLabel.Visible(false)))
+            .Animation(anim => anim.Enable(true))
+            .Add();
+            }).ChartArea(area => area.Border(border => border.Width(0))).Width("100%").Render())
+    </div>
+    <div id="areaCharts" style="display: none">
+        @(Html.EJS().Chart("areaChart").Load("areaLoad").Loaded("areaLoaded").PrimaryXAxis(axis => axis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+            .MajorGridLines(gr => gr.Width(0)).MinorTickLines(mt => mt.Width(0)).MajorTickLines(mt => mt.Width(0))).PrimaryYAxis(axis => axis.Maximum(100)
+        .Minimum(0).LabelFormat("{value}").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LineStyle(lineStyle => lineStyle.Width(0))
+        .MajorTickLines(gr => gr.Width(0))).Series(series => {
+            series.DataSource(ViewData["AreaData"])
+                .XName("x")
+                .YName("y")
+                .Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea)
+                .Marker(marker => marker.Visible(false).DataLabel(dataLabel => dataLabel.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer)))
+                .Animation(anim => anim.Enable(true))
+                .Add();
+                }).ChartArea(area => area.Border(border => border.Width(0))).Width("100%").Render())
+    </div>
+    <div id="barCharts" style="display: none">
+        @(Html.EJS().Chart("barChart").Load("barLoad").Loaded("barLoaded").PrimaryXAxis(axis => axis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+            .MajorGridLines(gr => gr.Width(0)).MinorTickLines(mt => mt.Width(0)).MajorTickLines(mt => mt.Width(0))).PrimaryYAxis(axis => axis.Maximum(100)
+        .Minimum(0).LabelFormat("{value}").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LineStyle(lineStyle => lineStyle.Width(0))
+        .MajorTickLines(gr => gr.Width(0))).Series(series => {
+            series.DataSource(ViewData["BarData"])
+                .XName("x")
+                .YName("y")
+                .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bar)
+                .Marker(marker => marker.Visible(false).DataLabel(dataLabel => dataLabel.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer)))
+                .Animation(anim => anim.Enable(true)).CornerRadius(cornerRadius => cornerRadius.BottomRight(4).TopRight(4))
+                .Add();
+                }).ChartArea(area => area.Border(border => border.Width(0))).Width("100%").Render())
+    </div>
+    <div id="bubbleCharts" style="display: none">
+        @(Html.EJS().Chart("bubbleChart").Load("bubbleLoad").PointRender("pointRender").Loaded("bubbleLoaded").PrimaryXAxis(axis => axis.Minimum(1).Maximum(7).Interval(1)
+   .MajorGridLines(gr => gr.Width(0)).MajorTickLines(mt => mt.Width(0))).PrimaryYAxis(axis => axis.Minimum(0).Maximum(100).MajorTickLines(gr => gr.Width(0))).Series(series => {
+        series.DataSource(ViewData["BubbleData"])
+            .XName("x")
+            .YName("y").Size("size")
+            .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Bubble).Border(border => border.Width(2))
+            .Marker(marker => marker.Visible(false).DataLabel(dataLabel => dataLabel.Visible(false)))
+            .Animation(anim => anim.Enable(true))
+            .Add();
+            }).ChartArea(area => area.Border(border => border.Width(0))).Width("100%").Render())
+    </div>
+    <div id="scatterCharts" style="display: none">
+        @(Html.EJS().Chart("scatterChart").Load("scatterLoad").Loaded("scatterLoaded").PrimaryXAxis(axis => axis.Minimum(1).Maximum(10).Interval(1).MajorGridLines(gr => gr.Width(0)).MajorTickLines(mt => mt.Width(0)).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)).PrimaryYAxis(axis => axis.Minimum(0).
+Maximum(80).Interval(10).MajorTickLines(gr => gr.Width(0)).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.None)).Series(series =>
+{
+    series.DataSource(ViewData["ScatterData"])
+        .XName("x")
+        .YName("y")
+        .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
+        .Marker(marker => marker.Visible(false).Height(8).Width(8).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).DataLabel(dataLabel => dataLabel.Visible(false)))
+        .Animation(anim => anim.Enable(true))
+        .Add();
+    series.DataSource(ViewData["ScatterData"])
+    .XName("x")
+    .YName("y1")
+    .Type(Syncfusion.EJ2.Charts.ChartSeriesType.Scatter)
+    .Marker(marker => marker.Visible(false).Height(8).Width(8).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).DataLabel(dataLabel => dataLabel.Visible(false)))
+    .Animation(anim => anim.Enable(true))
+    .Add();
+}).ChartArea(area => area.Border(border => border.Width(0))).Width("100%").Render())
+    </div>
+    <div id="stepLineCharts" style="display: none">
+        @(Html.EJS().Chart("stepLineChart").Load("stepLoad").Loaded("stepLoaded").PrimaryXAxis(axis => axis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+        .MajorGridLines(gr => gr.Width(0)).MinorTickLines(mt => mt.Width(0)).MajorTickLines(mt => mt.Width(0))).PrimaryYAxis(axis => axis.Maximum(100)
+        .Minimum(0).LabelFormat("{value}").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LineStyle(lineStyle => lineStyle.Width(0))
+        .MajorTickLines(gr => gr.Width(0))).Series(series => {
+        series.DataSource(ViewData["StepLineData"])
+            .XName("x")
+            .YName("y").Width(2.5)
+            .Type(Syncfusion.EJ2.Charts.ChartSeriesType.StepLine)
+            .Marker(marker => marker.Visible(false).DataLabel(dataLabel => dataLabel.Visible(false)))
+            .Animation(anim => anim.Enable(true))
+            .Add();
+            }).ChartArea(area => area.Border(border => border.Width(0))).Width("100%").Render())
+
+
+    </div>
+    <div id="rangeCharts" style="display: none">
+        @(Html.EJS().Chart("rangeColumnChart").Load("rangeLoad").Loaded("rangeLoaded").PrimaryXAxis(axis => axis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+            .MajorGridLines(gr => gr.Width(0)).MinorTickLines(mt => mt.Width(0)).MajorTickLines(mt => mt.Width(0))).PrimaryYAxis(axis => axis.Maximum(100)
+        .Minimum(0).LabelFormat("{value}").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LineStyle(lineStyle => lineStyle.Width(0))
+        .MajorTickLines(gr => gr.Width(0))).Series(series => {
+            series.DataSource(ViewData["RangeColumnData"])
+                .XName("x")
+                .High("high")
+                .Low("low").ColumnSpacing(0.1)
+                .Type(Syncfusion.EJ2.Charts.ChartSeriesType.RangeColumn)
+                .Marker(marker => marker.Visible(false).DataLabel(dataLabel => dataLabel.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer)))
+                .Animation(anim => anim.Enable(true)).CornerRadius(cornerRadius => cornerRadius.TopLeft(4).TopRight(4).BottomLeft(4).BottomRight(4))
+                .Add();
+                }).ChartArea(area => area.Border(border => border.Width(0))).Width("100%").Render())
+    </div>
+
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var scatterdata1 = shuffleArray([
+            { x: '1', y: 60, y1: 45 },
+            { x: '1.25', y: 40, y1: 30 },
+            { x: '1.5', y: 25, y1: 10 },
+            { x: '1.75', y: 15, y1: 50 },
+            { x: '2', y: 15, y1: 65 },
+            { x: '2.25', y: 35, y1: 50 },
+            { x: '2.5', y: 40, y1: 30 },
+            { x: '2.75', y: 60, y1: 25 },
+            { x: '3', y: 65, y1: 25 },
+            { x: '3.25', y: 30, y1: 15 },
+            { x: '3.5', y: 20, y1: 60 },
+            { x: '3.75', y: 50, y1: 40 },
+            { x: '4', y: 50, y1: 35 },
+            { x: '4.25', y: 55, y1: 50 },
+            { x: '4.5', y: 75, y1: 15 },
+            { x: '4.75', y: 45, y1: 60 },
+            { x: '5', y: 45, y1: 50 },
+            { x: '5.25', y: 35, y1: 30 },
+            { x: '5.5', y: 30, y1: 20 },
+            { x: '5.75', y: 55, y1: 40 },
+            { x: '6', y: 70, y1: 55 },
+            { x: '6.25', y: 60, y1: 25 },
+            { x: '6.5', y: 15, y1: 40 },
+            { x: '6.75', y: 40, y1: 15 },
+            { x: '7', y: 30, y1: 25 },
+            { x: '7.25', y: 60, y1: 35 },
+            { x: '7.5', y: 60, y1: 35 },
+            { x: '7.75', y: 25, y1: 15 },
+            { x: '8', y: 25, y1: 10 },
+            { x: '8.25', y: 50, y1: 30 },
+            { x: '8.5', y: 45, y1: 65 },
+            { x: '8.75', y: 55, y1: 20 },
+            { x: '9', y: 50, y1: 60 },
+            { x: '9.25', y: 30, y1: 45 },
+            { x: '9.5', y: 10, y1: 20 },
+            { x: '9.75', y: 40, y1: 35 },
+            { x: '10', y: 55, y1: 15 }
+        ]);
+        var scatterdata2 = shuffleArray([
+            { x: '1', y: 70, y1: 25 },
+            { x: '1.25', y: 55, y1: 40 },
+            { x: '1.5', y: 45, y1: 40 },
+            { x: '1.75', y: 30, y1: 45 },
+            { x: '2', y: 20, y1: 55 },
+            { x: '2.25', y: 30, y1: 45 },
+            { x: '2.5', y: 10, y1: 35 },
+            { x: '2.75', y: 25, y1: 15 },
+            { x: '3', y: 50, y1: 20 },
+            { x: '3.25', y: 60, y1: 30 },
+            { x: '3.5', y: 25, y1: 60 },
+            { x: '3.75', y: 50, y1: 45 },
+            { x: '4', y: 30, y1: 15 },
+            { x: '4.25', y: 55, y1: 20 },
+            { x: '4.5', y: 65, y1: 75 },
+            { x: '4.75', y: 45, y1: 35 },
+            { x: '5', y: 60, y1: 45 },
+            { x: '5.25', y: 35, y1: 10 },
+            { x: '5.5', y: 15, y1: 30 },
+            { x: '5.75', y: 30, y1: 60 },
+            { x: '6', y: 55, y1: 50 },
+            { x: '6.25', y: 25, y1: 45 },
+            { x: '6.5', y: 35, y1: 10 },
+            { x: '6.75', y: 20, y1: 30 },
+            { x: '7', y: 40, y1: 65 },
+            { x: '7.25', y: 30, y1: 45 },
+            { x: '7.5', y: 30, y1: 60 },
+            { x: '7.75', y: 45, y1: 30 },
+            { x: '8', y: 60, y1: 45 },
+            { x: '8.25', y: 50, y1: 40 },
+            { x: '8.5', y: 20, y1: 25 },
+            { x: '8.75', y: 70, y1: 15 },
+            { x: '9', y: 75, y1: 15 },
+            { x: '9.25', y: 30, y1: 50 },
+            { x: '9.5', y: 50, y1: 35 },
+            { x: '9.75', y: 55, y1: 20 },
+            { x: '10', y: 15, y1: 70 }
+        ]);
+        var scatterdata3 = shuffleArray([
+            { x: '1', y: 20, y1: 30 },
+            { x: '1.25', y: 30, y1: 20 },
+            { x: '1.5', y: 35, y1: 60 },
+            { x: '1.75', y: 40, y1: 30 },
+            { x: '2', y: 55, y1: 20 },
+            { x: '2.25', y: 45, y1: 35 },
+            { x: '2.5', y: 60, y1: 45 },
+            { x: '2.75', y: 25, y1: 30 },
+            { x: '3', y: 45, y1: 15 },
+            { x: '3.25', y: 50, y1: 45 },
+            { x: '3.5', y: 50, y1: 35 },
+            { x: '3.75', y: 15, y1: 40 },
+            { x: '4', y: 15, y1: 70 },
+            { x: '4.25', y: 45, y1: 55 },
+            { x: '4.5', y: 75, y1: 10 },
+            { x: '4.75', y: 60, y1: 25 },
+            { x: '5', y: 30, y1: 55 },
+            { x: '5.25', y: 45, y1: 35 },
+            { x: '5.5', y: 60, y1: 25 },
+            { x: '5.75', y: 40, y1: 45 },
+            { x: '6', y: 10, y1: 50 },
+            { x: '6.25', y: 20, y1: 65 },
+            { x: '6.5', y: 65, y1: 40 },
+            { x: '6.75', y: 30, y1: 30 },
+            { x: '7', y: 25, y1: 65 },
+            { x: '7.25', y: 35, y1: 40 },
+            { x: '7.5', y: 20, y1: 45 },
+            { x: '7.75', y: 60, y1: 50 },
+            { x: '8', y: 35, y1: 60 },
+            { x: '8.25', y: 25, y1: 45 },
+            { x: '8.5', y: 30, y1: 15 },
+            { x: '8.75', y: 50, y1: 70 },
+            { x: '9', y: 45, y1: 75 },
+            { x: '9.25', y: 20, y1: 35 },
+            { x: '9.5', y: 40, y1: 50 },
+            { x: '9.75', y: 45, y1: 30 },
+            { x: '10', y: 50, y1: 25 }
+        ]);
+        var scatterdata4 = shuffleArray([
+            { x: '1', y: 50, y1: 60 },
+            { x: '1.25', y: 45, y1: 55 },
+            { x: '1.5', y: 15, y1: 30 },
+            { x: '1.75', y: 55, y1: 20 },
+            { x: '2', y: 60, y1: 45 },
+            { x: '2.25', y: 55, y1: 35 },
+            { x: '2.5', y: 55, y1: 20 },
+            { x: '2.75', y: 30, y1: 50 },
+            { x: '3', y: 70, y1: 50 },
+            { x: '3.25', y: 25, y1: 35 },
+            { x: '3.5', y: 30, y1: 35 },
+            { x: '3.75', y: 45, y1: 60 },
+            { x: '4', y: 65, y1: 15 },
+            { x: '4.25', y: 20, y1: 70 },
+            { x: '4.5', y: 25, y1: 75 },
+            { x: '4.75', y: 35, y1: 25 },
+            { x: '5', y: 40, y1: 60 },
+            { x: '5.25', y: 50, y1: 30 },
+            { x: '5.5', y: 20, y1: 10 },
+            { x: '5.75', y: 35, y1: 40 },
+            { x: '6', y: 35, y1: 45 },
+            { x: '6.25', y: 30, y1: 25 },
+            { x: '6.5', y: 30, y1: 70 },
+            { x: '6.75', y: 60, y1: 20 },
+            { x: '7', y: 45, y1: 25 },
+            { x: '7.25', y: 40, y1: 35 },
+            { x: '7.5', y: 20, y1: 55 },
+            { x: '7.75', y: 50, y1: 40 },
+            { x: '8', y: 50, y1: 40 },
+            { x: '8.25', y: 35, y1: 55 },
+            { x: '8.5', y: 60, y1: 35 },
+            { x: '8.75', y: 30, y1: 60 },
+            { x: '9', y: 10, y1: 65 },
+            { x: '9.25', y: 25, y1: 50 },
+            { x: '9.5', y: 40, y1: 50 },
+            { x: '9.75', y: 30, y1: 25 },
+            { x: '10', y: 65, y1: 30 },
+        ]);
+        function tabSelect(args) {
+            let chartIds = [
+                'lineChart',
+                'columnChart',
+                'splineChart',
+                'areaChart',
+                'barChart',
+                'bubbleChart',
+                'scatterChart',
+                'stepLineChart',
+                'rangeColumnChart'
+            ];
+            chartIds.forEach((id, index) => {
+                if (index === args.selectedIndex) {
+                    var chartElement = document.getElementById(id);
+                    if (chartElement) {
+                        let chart = chartElement.ej2_instances[0];
+                        chart.refresh();
+                    }
+                }
+            });
+        }
+        function generateRandomData(points) {
+            if (points) {
+                return points.map(item => ({
+                    x: item.x,
+                    y: Math.floor(Math.random() * (90 - 10 + 1) + 10) // Randomly generate y values between 10 and 100
+                }));
+            }
+        }
+
+        function pointRender(args) {
+            bubblePointRender(args);
+        }
+        let lineIntervalId;
+        function lineClearInterval() {
+            if (lineIntervalId) {
+                clearInterval(lineIntervalId);
+                lineIntervalId = null;
+            }
+        }
+        function lineLoaded(args) {
+            let chartElement = document.getElementById('lineCharts');
+            chartElement.setAttribute('title', '');
+        }
+
+        function lineLoad(args) {
+            args.chart.width = "100%";
+            loadChartTheme(args);
+            lineClearInterval();
+            lineIntervalId = setInterval(function () {
+                let container = document.getElementById('lineChart');
+                if (container && container.children.length > 0 && container.id === args.chart.element.id) {
+                    const updatedData = generateRandomData(args.chart.series[0].dataSource);
+                    if (args.chart.series.length > 0) {
+                        args.chart.series[0].setData(updatedData, 1400);
+                    }
+                } else {
+                    lineClearInterval();
+                }
+            }, 2000);
+        }
+
+        function columnLoaded(args) {
+            let chartElement = document.getElementById('columnCharts');
+            chartElement.setAttribute('title', '');
+        }
+
+        let columnIntervalId;
+        function columnClearInterval() {
+            if (columnIntervalId) {
+                clearInterval(columnIntervalId);
+                columnIntervalId = null;
+            }
+        }
+
+        function columnLoad(args) {
+            args.chart.width = "100%";
+            loadChartTheme(args);
+            columnClearInterval();
+            columnIntervalId = setInterval(function () {
+                let container = document.getElementById('columnChart');
+                if (container && container.children.length > 0 && container.id === args.chart.element.id) {
+                    const updatedData = generateRandomData(args.chart.series[0].dataSource);
+                    if (args.chart.series.length > 0) {
+                        args.chart.series[0].setData(updatedData, 1400);
+                    }
+                } else {
+                    columnClearInterval();
+                }
+            }, 2000);
+        }
+
+        function splineLoaded(args) {
+            let chartElement = document.getElementById('splineCharts');
+            chartElement.setAttribute('title', '');
+        }
+
+        let splineIntervalId;
+        function splineClearInterval() {
+            if (splineIntervalId) {
+                clearInterval(splineIntervalId);
+                splineIntervalId = null;
+            }
+        }
+
+        function splineLoad(args) {
+            args.chart.width = "100%";
+            loadChartTheme(args);
+            splineClearInterval();
+            splineIntervalId = setInterval(function () {
+                let container = document.getElementById('splineChart');
+                if (container && container.children.length > 0 && container.id === args.chart.element.id) {
+                    const updatedData = generateRandomData(args.chart.series[0].dataSource);
+                    if (args.chart.series.length > 0) {
+                        args.chart.series[0].setData(updatedData, 1400);
+                    }
+                } else {
+                    splineClearInterval();
+                }
+            }, 2000);
+        }
+
+        function areaLoaded(args) {
+            let chartElement = document.getElementById('areaCharts');
+            chartElement.setAttribute('title', '');
+        }
+        let areaIntervalId;
+        function areaClearInterval() {
+            if (areaIntervalId) {
+                clearInterval(areaIntervalId);
+                areaIntervalId = null;
+            }
+        }
+
+        function areaLoad(args) {
+            args.chart.width = "100%";
+            loadChartTheme(args);
+            areaClearInterval();
+            areaIntervalId = setInterval(function () {
+                let container = document.getElementById('areaChart');
+                if (container && container.children.length > 0 && container.id === args.chart.element.id) {
+                    const updatedData = generateRandomData(args.chart.series[0].dataSource);
+                    if (args.chart.series.length > 0) {
+                        args.chart.series[0].setData(updatedData, 1400);
+                    }
+                } else {
+                    areaClearInterval();
+                }
+            }, 2000);
+        }
+
+        function barLoaded(args) {
+            let chartElement = document.getElementById('barCharts');
+            chartElement.setAttribute('title', '');
+        }
+
+        let barIntervalId;
+        function barClearInterval() {
+            if (barIntervalId) {
+                clearInterval(barIntervalId);
+                barIntervalId = null;
+            }
+        }
+
+        function barLoad(args) {
+            args.chart.width = "100%";
+            loadChartTheme(args);
+            barClearInterval();
+            barIntervalId = setInterval(function () {
+                let container = document.getElementById('barChart');
+                if (container && container.children.length > 0 && container.id === args.chart.element.id) {
+                    const updatedData = generateRandomData(args.chart.series[0].dataSource);
+                    if (args.chart.series.length > 0) {
+                        args.chart.series[0].setData(updatedData, 1400);
+                    }
+                } else {
+                    barClearInterval();
+                }
+            }, 2000);
+        }
+
+        let bubbleIntervalId;
+        function bubbleClearInterval() {
+            if (bubbleIntervalId) {
+                clearInterval(bubbleIntervalId);
+                bubbleIntervalId = null;
+            }
+        }
+
+        function bubbleLoaded(args) {
+            let chartElement = document.getElementById('bubbleCharts');
+            chartElement.setAttribute('title', '');
+        }
+
+        function bubbleLoad(args) {
+            args.chart.width = "100%";
+            loadChartTheme(args);
+            bubbleClearInterval();
+            bubbleIntervalId = setInterval(function () {
+                let container = document.getElementById('bubbleChart');
+                if (container && container.children.length > 0 && container.id === args.chart.element.id) {
+                    let updatedData = args.chart.series[0].dataSource.map(item => {
+                        var minYValue = 5;
+                        var maxYValue = 95;
+                        var randomYValue = Math.random() * (maxYValue - minYValue) + minYValue;
+                        var minSize = 3.5;
+                        var maxSize = 9.5;
+                        var randomSize = Math.random() * (maxSize - minSize) + minSize;
+                        return Object.assign({}, item, { y: randomYValue, size: randomSize });
+                    });
+                    updatedData = shuffleArray(updatedData);
+                    if (args.chart.series.length > 0) {
+                        args.chart.series[0].setData(updatedData, 1400);
+                    }
+                } else {
+                    bubbleClearInterval();
+                }
+            }, 2000);
+        }
+
+        function shuffleArray(array) {
+            var _a;
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                _a = [array[j], array[i]], array[i] = _a[0], array[j] = _a[1];
+            }
+            return array;
+        }
+
+        let scatterIntervalId;
+        function scatterClearInterval() {
+            if (scatterIntervalId) {
+                clearInterval(scatterIntervalId);
+                scatterIntervalId = null;
+            }
+        }
+
+        function scatterLoaded(args) {
+            let chartElement = document.getElementById('scatterCharts');
+            chartElement.setAttribute('title', '');
+        }
+
+        function scatterLoad(args) {
+            args.chart.width = "100%";
+            loadChartTheme(args);
+            var index = 1;
+            var datasets = [shuffleArray(args.chart.series[0].dataSource), scatterdata1, scatterdata2, scatterdata3, scatterdata4];
+            scatterClearInterval();
+            scatterIntervalId = setInterval(function () {
+                let container = document.getElementById('scatterChart');
+                if (container && container.children.length > 0 && container.id === args.chart.element.id) {
+                    var scatterDataSource = datasets[index % datasets.length];
+                    index++;
+                    args.chart.series[0].setData(scatterDataSource, 2000);
+                    args.chart.series[1].setData(scatterDataSource, 2000);
+                } else {
+                    scatterClearInterval();
+                }
+            }, 2000);
+        }
+
+        let stepLineIntervalId;
+        function stepLineClearInterval() {
+            if (stepLineIntervalId) {
+                clearInterval(stepLineIntervalId);
+                stepLineIntervalId = null;
+            }
+        }
+
+        function stepLoaded(args) {
+            let chartElement = document.getElementById('stepLineCharts');
+            chartElement.setAttribute('title', '');
+        }
+
+        function stepLoad(args) {
+            args.chart.width = "100%";
+            loadChartTheme(args);
+            stepLineClearInterval();
+            stepLineIntervalId = setInterval(function () {
+                let container = document.getElementById('stepLineChart');
+                if (container && container.children.length > 0 && container.id === args.chart.element.id) {
+                    const updatedData = generateRandomData(args.chart.series[0].dataSource);
+                    if (args.chart.series.length > 0) {
+                        args.chart.series[0].setData(updatedData, 1400);
+                    }
+                } else {
+                    stepLineClearInterval();
+                }
+            }, 2000);
+        }
+
+        function rangeLoaded(args) {
+            let chartElement = document.getElementById('rangeCharts');
+            chartElement.setAttribute('title', '');
+        }
+
+        let rangeIntervalId;
+        function rangeClearInterval() {
+            if (rangeIntervalId) {
+                clearInterval(rangeIntervalId);
+                rangeIntervalId = null;
+            }
+        }
+
+        function rangeLoad(args) {
+            args.chart.width = "100%";
+            loadChartTheme(args);
+            rangeClearInterval();
+            rangeIntervalId = setInterval(function () {
+                let container = document.getElementById('rangeColumnChart');
+                if (container && container.children.length > 0 && container.id === args.chart.element.id) {
+                    const updatedData = args.chart.series[0].dataSource.map(item => {
+                        const high = Math.floor(Math.random() * (45 + 1)) + 50;
+                        const low = Math.floor(Math.random() * (40 + 1)) + 5;
+                        return { x: item.x, high, low };
+                    });
+                    if (args.chart.series.length > 0) {
+                        args.chart.series[0].setData(updatedData, 1400);
+                    }
+                } else {
+                    rangeClearInterval();
+                }
+            }, 2000);
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Series Animation in ASP.NET MVC Chart control. Explore here for more details." />
+}
+@*custom code end*@
+
+@section ActionDescription{
+    <p>
+        This sample demonstrates the animation capabilities of various chart series types. Dynamic updates at regular intervals showcase smooth transitions and animations.
+    </p>
+}
+
+@section Description{
+    <p>
+        In this example, different types of chart series, such as Line, Column, Spline, Area, Bar, Bubble, Scatter, Step Line, and Range Column, are animated to demonstrate real-time data updates. The chart dynamically updates with random values using the <code>setData</code> method. Each chart type reflects its unique characteristics and enhances visual understanding through animations.
+    </p>
+    <p>
+        More information on the various chart types can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/line" aria-label="documentation section">documentation section</a>.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC Chart Series Animation Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Series Animation in ASP.NET MVC Chart Control</h1>
+}

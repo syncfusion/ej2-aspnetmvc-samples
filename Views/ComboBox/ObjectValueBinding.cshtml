@@ -1,0 +1,73 @@
+@using Syncfusion.EJ2.DropDowns
+@using Syncfusion.EJ2
+@model EJ2MVCSampleBrowser.Controllers.ComboBoxRecord
+@section ControlsSection{
+        <div class="col-lg-8 control-section">
+        <div class="control-wrapper">
+            <div id="default" style='padding-top:75px;'>
+                @Html.EJS().ComboBox("object").Placeholder("Select a Item").PopupHeight("200px").Change("valueChange").DataSource(@Model.RecordList).AllowObjectBinding(true).Fields(new ComboBoxFieldSettings { Text = "Text", Value = "ID" }).Render()
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <textarea id="value" title="Properties" style="width: 100%; margin-top:90px; height: 60px; background-color: inherit;" readonly>Selected value : </textarea>
+    </div>
+
+    @*custom code start*@
+    <style>
+        .control-wrapper {
+            margin: 0 auto;
+            width: 250px;
+        }
+
+        .property-section .right-side {
+            padding-left: 10px;
+        }
+
+        .property-section .left-side {
+            padding: 5px;
+            width: 25%
+        }
+    </style>
+    @*custom code end*@
+    <script type="text/javascript">
+        function valueChange() {
+            var listObj = document.getElementById('object').ej2_instances[0];
+            var value = document.getElementById('value');
+            value.innerHTML = "Selected value : " + JSON.stringify(listObj.value);
+        }
+    </script>
+}
+@section Scripts{
+    <script type="text/javascript">
+        valueChange();
+        
+    </script>
+
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Object Value Binding Functionalities in ASP.NET MVC ComboBox control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <div id="action-description">
+    <p>This sample demonstrates the object value binding functionalities of the ComboBox. Type a character in the
+        ComboBox element or click the drodown icon to choose an item from the <code>options</code> list. The
+        corresponding object value of the selected item is then assigned to the value property.
+    In the property panel, the <code>value</code> property of the selected item's will be displayed.</p>
+</div>
+}
+@section Description{
+    <div id="description">
+    <p>The <code>ComboBox</code> component allows the user to type a value, or choose an option from the list of
+        predefined options.Once an item is selected, its associated object value is automatically assigned to the
+        <code>value</code> property. This behavior is enabled by the <code>allowObjectBinding</code> property.
+    </p>
+</div>
+}
+@section Title{
+                    <title>ASP.NET MVC ComboBox Object Value Binding Functionalities Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Object Value Binding Functionalities in ASP.NET MVC ComboBox Control</h1>
+                }

@@ -1,0 +1,268 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <style>
+        td {
+            width: 40%;
+        }
+    </style>
+    <div class="col-md-8 control-section">
+        @Html.EJS().CircularGauge("range-container").Load("onGaugeLoad").Background("transparent").Axes(axes => axes.LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+        .Pointers(pointer => pointer.Value(65).Radius("60%").PointerWidth(8).Cap(cap => cap.Radius(7)).NeedleTail(needleTail => needleTail.Length("18%")).Add())
+            .Ranges(range =>
+            {
+                range.Start(0).End(40).Color("#30B32D").Add();
+                range.Start(40).End(80).Color("#FFDD00").Add();
+                range.Start(80).End(120).Color("#F03E3E").Add();
+            }).MinorTicks(minorTick => minorTick.Height(0).Color("transparent")).MajorTicks(majorTick => majorTick.Height(10).Offset(5)).StartAngle(210).EndAngle(150).Minimum(0).Maximum(120).Radius("80%").LineStyle(lineStyle => lineStyle.Width(10).Color("transparent"))
+            .Annotations(annotations => { 
+                annotations.Content("<div><span style=font-size:14px; font-family:Regular>Speedometer</span></div>").Angle(0).ZIndex("1").Radius("30%").Add();
+                annotations.Content("<div><span style=font-size:20px; font-family:Regular>65 MPH</span></div>").Angle(180).ZIndex("1").Radius("40%").Add();
+            })
+        .Add()).Render()
+    </div>
+    <div class="col-md-4 property-section">
+        <div class="property-panel-section">
+            <div class="property-panel-header">Properties</div>
+            <div class="property-panel-content">
+                <table title="Properties" style="width: 100%;">
+                    <colgroup>
+                        <col span="1" style="width: 45%;">
+                        <col span="1" style="width: 40%;">
+                        <col span="1" style="width: 10%;">
+                    </colgroup>
+
+                    <tr style="height: 40px">
+                        <td>
+                            <div style="font-size: 14px; margin-top: -6px"> Select Range </div>
+                        </td>
+                        <td>
+                            <div style="margin-top: -5px;height : 30px">
+                                @Html.EJS().DropDownList("rangeSelect").Index(0).Width("125%").DataSource((IEnumerable<object>)ViewData["rangeSelect"]).Value("Low").Change("valueChange").Render()
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 40px">
+                        <td>
+                            <div style="font-size:14px">Range Start </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="start" value="0" min="0" max="40">
+                            </div>
+                        </td>
+                        <td style="text-align: center">
+                            <div>
+                                <span id='rangeStart'>0</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr style="height: 40px">
+                        <td>
+                            <div style="font-size:14px">Range End </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="end" value="40" min="0" max="40">
+                            </div>
+                        </td>
+                        <td style="text-align:center;">
+                            <div>
+                                <span id='rangeEnd'>40</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 40px">
+                        <td>
+                            <div style="font-size:14px">Start Width </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="startWidth" value="10" min="0" max="30">
+                            </div>
+                        </td>
+                        <td style="text-align:center;">
+                            <div>
+                                <span id='rangeStartWidth'>10</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 40px">
+                        <td>
+                            <div style="font-size:14px">End Width </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="endWidth" value="10" min="0" max="30">
+                            </div>
+                        </td>
+                        <td style="text-align:center;">
+                            <div>
+                                <span id='rangeEndWidth'>10</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 40px">
+                        <td>
+                            <div style="font-size:14px">Corner Radius </div>
+                        </td>
+                        <td>
+                            <div>
+                                <input type="range" id="radius" value="0" min="0" max="12">
+                            </div>
+                        </td>
+                        <td style="text-align:center;">
+                            <div>
+                                <span id='roundedRadius'>0</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+        input.e-input.e-bigger, textarea.e-input.e-bigger, .e-bigger input.e-input, .e-bigger textarea.e-input, .e-input-group.e-bigger, .e-bigger .e-input-group, .e-input-group.e-control-wrapper.e-bigger, .e-bigger .e-input-group.e-control-wrapper {
+            height: 100%;
+            font-size: 14px;
+            align-items: center;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        var circulargauge;
+        function onGaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+            circulargauge = sender.gauge;
+        }
+
+        var index = 0;
+        function valueChange() {
+            var listObj = document.getElementById('rangeSelect').ej2_instances[0];
+            index = listObj.value == "Low" ? 0 : listObj.value == "Medium" ? 1 : 2 ;
+            (document.getElementById('endWidth')).value = circulargauge.axes[0].ranges[index].endWidth.toString();
+            document.getElementById('rangeEndWidth').innerHTML = circulargauge.axes[0].ranges[index].endWidth.toString();
+            (document.getElementById('startWidth')).value = circulargauge.axes[0].ranges[index].startWidth.toString();
+            if (index == 0) {
+                document.getElementById('start').min = "0";
+                document.getElementById('start').max = "40";
+                document.getElementById('end').min = "0";
+                document.getElementById('end').max = "40";
+            } else if (index == 1) {
+                document.getElementById('start').min = "40";
+                document.getElementById('start').max = "80";
+                document.getElementById('end').min = "40";
+                document.getElementById('end').max = "80";
+            } else {
+                document.getElementById('start').min = "80";
+                document.getElementById('start').max = "120";
+                document.getElementById('end').min = "80";
+                document.getElementById('end').max = "120";
+            }
+            document.getElementById('rangeStartWidth').innerHTML =
+                circulargauge.axes[0].ranges[index].startWidth.toString();
+            document.getElementById('end').value = circulargauge.axes[0].ranges[index].end.toString();
+            document.getElementById('rangeEnd').innerHTML =
+                circulargauge.axes[0].ranges[index].end.toString();
+            document.getElementById('start').value = circulargauge.axes[0].ranges[index].start.toString();
+            document.getElementById('rangeStart').innerHTML =
+                circulargauge.axes[0].ranges[index].start.toString();
+            document.getElementById('radius').value = circulargauge.axes[0].ranges[index].roundedCornerRadius.toString();
+            document.getElementById('roundedRadius').innerHTML =
+                circulargauge.axes[0].ranges[index].roundedCornerRadius.toString();
+            }
+            document.getElementById('start').onpointermove = document.getElementById('start').ontouchmove =
+                document.getElementById('start').onchange = function () {
+                    var min = parseInt((document.getElementById('start')).value, 10);
+                document.getElementById('rangeStart').innerHTML = min;
+                circulargauge.axes[0].ranges[index].start = min;
+                    circulargauge.axes[0].pointers[0].animation.enable = false;
+        };
+
+        document.getElementById('end').onpointermove = document.getElementById('end').ontouchmove =
+            document.getElementById('end').onchange = function () {
+                var max = parseInt((document.getElementById('end')).value, 10);
+                document.getElementById('rangeEnd').innerHTML = max;
+            circulargauge.axes[0].ranges[index].end = max;
+                circulargauge.axes[0].pointers[0].animation.enable = false;
+            };
+
+        document.getElementById('startWidth').onpointermove = document.getElementById('startWidth').ontouchmove =
+            document.getElementById('startWidth').onchange = function () {
+                var startWidth = parseInt((document.getElementById('startWidth')).value, 10);
+                document.getElementById('rangeStartWidth').innerHTML = startWidth;
+            circulargauge.axes[0].ranges[index].startWidth = startWidth;
+                circulargauge.axes[0].pointers[0].animation.enable = false;
+            };
+
+        document.getElementById('endWidth').onpointermove = document.getElementById('endWidth').ontouchmove =
+            document.getElementById('endWidth').onchange = function () {
+                var endWidth = parseInt((document.getElementById('endWidth')).value, 10);
+                document.getElementById('rangeEndWidth').innerHTML = endWidth;
+            circulargauge.axes[0].ranges[index].endWidth = endWidth;
+                circulargauge.axes[0].pointers[0].animation.enable = false;
+            };
+
+        document.getElementById('radius').onpointermove = document.getElementById('radius').ontouchmove =
+            document.getElementById('radius').onchange = function () {
+                var radius = parseInt((document.getElementById('radius')).value, 10);
+                document.getElementById('roundedRadius').innerHTML = radius;
+            circulargauge.axes[0].ranges[index].roundedCornerRadius = radius;
+                circulargauge.axes[0].pointers[0].animation.enable = false;
+            };
+
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates how to highlight a region in an axis using ranges in the circular gauge. The width, corner radius, and start and end range of a range can all be customized.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Range Customization in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render and configure the ranges in the circular gauge. Ranges are used to group the axis values, and you can use
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeRange.html#Syncfusion_EJ2_CircularGauge_CircularGaugeRange_Start" aria-label="Start">
+                Start<span class="sr-only">opens in a new tab</span></a>,
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeRange.html#Syncfusion_EJ2_CircularGauge_CircularGaugeRange_End" aria-label="End">
+                End<span class="sr-only">opens in a new tab</span></a>,
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeRange.html#Syncfusion_EJ2_CircularGauge_CircularGaugeRange_Color" aria-label="Color">
+                Color<span class="sr-only">opens in a new tab</span></a>,
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeRange.html#Syncfusion_EJ2_CircularGauge_CircularGaugeRange_StartWidth" aria-label="StartWidth">
+                StartWidth<span class="sr-only">opens in a new tab</span></a>,
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeRange.html#Syncfusion_EJ2_CircularGauge_CircularGaugeRange_EndWidth" aria-label="EndWidth">
+                EndWidth<span class="sr-only">opens in a new tab</span></a>,
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeRange.html#Syncfusion_EJ2_CircularGauge_CircularGaugeRange_Radius" aria-label="Radius">
+                Radius<span class="sr-only">opens in a new tab</span></a> and
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeRange.html#Syncfusion_EJ2_CircularGauge_CircularGaugeRange_RoundedCornerRadius" aria-label="RoundedCornerRadius">RoundedCornerRadius<span class="sr-only">opens in a new tab</span></a> properties to customize them. In addition, an axis with multiple ranges is shown in the circular gauge component, as well as options to customize the range properties via the property panel.
+        </p>
+        <p>
+            More information on the ranges can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/gauge-ranges" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+
+
+@section Title{
+    <title>ASP.NET MVC Circular Gauge Range Customization Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Range Customization in ASP.NET MVC Circular Gauge Control</h1>
+}
