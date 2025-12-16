@@ -1,6 +1,6 @@
 [![.NET](https://github.com/syncfusion/ej2-aspnetmvc-samples/actions/workflows/dotnet.yml/badge.svg)](https://github.com/syncfusion/ej2-aspnetmvc-samples/actions/workflows/dotnet.yml)
 
-# Syncfusion® ASP.NET MVC Components Examples      
+# Syncfusion® ASP.NET MVC Components Examples       
 
 This repository contains the demos of [Syncfusion ASP.NET MVC Components](https://www.syncfusion.com/aspnet-mvc-ui-controls/). This is the best place to check our controls to get more insight into the usage of APIs.
 
