@@ -1,0 +1,43 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("RowHover").DataSource((IEnumerable<object>)ViewData["datasource"]).EnableHover().AllowPaging().Columns(col =>
+   {
+
+       col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+       col.Field("ProductName").HeaderText("Product Name").Width("150").ValidationRules(new { required = true }).Add();
+       col.Field("UnitPrice").HeaderText("Supplier ID").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("UnitsInStock").HeaderText("Units In Stock").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("Discontinued").HeaderText("Discontinued").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Width("140").Type("boolean").DisplayAsCheckBox(true).EditType("booleanedit").Add();
+
+
+   }).PageSettings(page=>page.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+    </div>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		 <p>This sample demonstrates the Grid component with the row hover feature. Move the mouse over the Grid rows to see the
+			hover effect.
+		</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Row Hover in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		     <p>Row Hover feature enables us to identify the current row by highlighting them with the mouse hovers. This can be enabled
+				by setting the <code>EnableHover</code> property as true.
+			</p>
+			<p>In this demo,by enabling the enableHover property, now you can move the mouse over Grid rows to see the hover effect.</p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Data Grid Row Hover Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Row Hover in ASP.NET MVC Data Grid Control</h1>
+                }

@@ -1,0 +1,69 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.FileManager
+@using EJ2MVCSampleBrowser.Models
+
+@{
+    string[] items = new string[] { "NewFolder", "Cut", "Copy", "Paste", "Delete", "Download", "Rename", "SortBy", "Refresh", "Selection", "View", "Details" };
+    string[] layout = new string[] { "SortBy", "View", "Refresh", "|", "Paste", "|", "NewFolder", "|", "Details", "|", "SelectAll" };
+    string[] file = new string[] { "Cut", "Copy", "|", "Delete", "Download", "Rename", "|", "Details" };
+
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="sample-container">
+            <!-- File Manager full functionalities sample -->
+            @Html.EJS().FileManager("filemanager").AjaxSettings(
+              new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
+              {
+                  Url = "https://ej2-aspcore-service.azurewebsites.net/api/FileManagerAccess/FileOperations",
+                  GetImageUrl = "https://ej2-aspcore-service.azurewebsites.net/api/FileManagerAccess/GetImage",
+                  UploadUrl = "https://ej2-aspcore-service.azurewebsites.net/api/FileManagerAccess/Upload",
+                  DownloadUrl = "https://ej2-aspcore-service.azurewebsites.net/api/FileManagerAccess/Download"
+              }).ToolbarSettings(new Syncfusion.EJ2.FileManager.FileManagerToolbarSettings()
+              {
+                  Items = items
+              }).UploadSettings(new FileManagerUploadSettings
+              {
+                 DirectoryUpload = true
+              }).Render()
+        </div>
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            The File Manager that gives you complete control over who can access your folders and files. With this essential feature, you can define access permissions and create a secure and organized digital environment.
+            This File Manager sample demonstrates that the enabled access permission will permit only read action and will not allow the user to perform any write action on the <code>documents</code>, <code>music</code> folders, and the <code>bird image</code> file inside the <code>pictures/nature</code> folder.
+        </p>
+        <p>
+            In the <code>music</code> folder, uploading folders (directory uploads) is restricted while individual file uploads remain allowed. This ensures users can add files to the <code>music</code> directory without creating nested folder structures.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The access control feature allows you to define access permissions for folders and files using a set of access rule properties based on user's role.
+            Refer to the <a target='_blank' href='https://ej2.syncfusion.com/aspnetmvc/documentation/file-manager/access-control#access-rules'>Access Rules<span class="sr-only">opens in a new tab</span></a> and <a target='_blank' href='https://ej2.syncfusion.com/aspnetmvc/documentation/file-manager/access-control#permissions'>Permissions<span class="sr-only">opens in a new tab</span></a> UG for more details on this.
+        </p>
+
+        <p>
+            <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install
+            <a target="_blank" href="https://www.syncfusion.com/downloads" aria-label="Syncfusion Essential Studio">Syncfusion Essential Studio<sup>&reg;</sup> <span class="sr-only">opens in a new tab</span></a>on your machine and run the demo.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Overview in ASP.NET MVC File Manager control. Explore here for more details." />
+}
+
+@section Title{
+    <title>ASP.NET MVC File Manager Overview Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Overview in ASP.NET MVC File Manager Control</h1>
+}

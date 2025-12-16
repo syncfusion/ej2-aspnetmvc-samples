@@ -1,0 +1,62 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
+@{
+    ViewData["Title"] = "LoadChildOnDemand";
+}
+
+@*custom code end*@
+
+@section ControlsSection{
+<div class="control-section">
+    @(Html.EJS().TreeGrid("TreeGrid")
+    .DataSource(ds =>
+    ds.Url("https://ej2services.syncfusion.com/production/web-services/api/TreeUrlDataSource")
+    .Adaptor("UrlAdaptor")
+    .CrossDomain(true))
+    .Columns(col =>
+    {
+    col.Field("TaskID").HeaderText("Task ID").IsPrimaryKey(true).Width(90).TextAlign(TextAlign.Right).Add();
+    col.Field("TaskName").HeaderText("Task Name").Width(150).Add();
+    col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(120).Add();
+    col.Field("EndDate").HeaderText("End Date").Format("yMd").TextAlign(TextAlign.Right).Width(120).Add();
+    col.Field("Duration").HeaderText("Duration").Width(110).TextAlign(TextAlign.Right).Add();
+    col.Field("Progress").HeaderText("Progress").Width(110).Add();
+    col.Field("Priority").HeaderText("Priority").Width(130).Add();
+
+    }).Height(450).IdMapping("TaskID").ParentIdMapping("ParentValue").ExpandStateMapping("IsExpanded").HasChildMapping("isParent").EnableVirtualization(true).LoadChildOnDemand(true).PageSettings(page => page.PageSize(20)).TreeColumnIndex(1).Render()
+    )
+</div>
+}
+
+@*custom code start*@
+
+@section Meta{
+<meta name="description" content="This example demonstrates the LoadChildOnDemand with virtualization in ASP.NET MVC Tree Grid control. Explore here for more details." />
+                }
+
+
+@section ActionDescription{
+<div id="action-description">
+    <p>
+        This example demonstrates how to load child records on demand in the Tree Grid when using remote data. During the initial render, only parent rows are loaded and displayed in a collapsed state. Child records are fetched dynamically when a parent row is expanded.
+    </p>
+</div>
+}
+
+@section Description{
+<div id="description">
+    The <a target='_blank' href='https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.treegrid.treegrid.html#Syncfusion_EJ2_TreeGrid_TreeGrid_LoadChildOnDemand'>LoadChildOnDemand</a> property is enabled by default, allowing the Tree Grid to initially render only parent records initially. This behavior is supported only for remote data sources and helps improve performance by minimizing the initial load. If LoadChildOnDemand is set to false, both parent and child records are loaded together during the initial rendering, and all rows are displayed in an expanded state.
+        In this demo, Tree Grid features such as <a target='_blank' href='https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/virtual-scroll'>Virtualization</a>, and the <a target='_blank' href='https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/data-binding/remote-data'>DataManager</a> are used.
+</div>
+}
+
+@*custom code end*@
+@section Title{
+<title>ASP.NET MVC Tree Grid LoadChildOnDemand Example - Syncfusion Demos </title>
+                }
+@section Header{
+<h1 class='sb-sample-text'>Example of LoadChildOnDemand in ASP.NET MVC Tree Grid Control</h1>
+                }

@@ -1,0 +1,79 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "Zooming";
+}
+
+@section ControlsSection{
+<div class="control-section">
+
+    @(Html.EJS().Gantt("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px")
+                    .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+                    .Dependency("Predecessor").Child("SubTasks")).TreeColumnIndex(1)
+                    .Columns(col =>
+                        {
+                            col.Field("TaskId").Width(80).Add();
+                            col.Field("TaskName").Width(250).Add();
+                            col.Field("StartDate").Add();
+                            col.Field("EndDate").Add();
+                            col.Field("Duration").Add();
+                            col.Field("Progress").Add();
+                            col.Field("Predecessor").Add();
+                        })
+                    .Toolbar(new List<string>() {"ZoomIn","ZoomOut","ZoomToFit" })
+                    .LabelSettings(ls => ls.LeftLabel("TaskName"))
+                    .Render()
+    )
+</div>
+ }
+
+@section ActionDescription{
+<div id="action-description">
+    <p>
+        This sample visualizes the various phases involved in the manufacturing process of a product,
+        which transforms from a conceptual model to a sellable product.
+    </p>
+</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Zooming in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            The sample demonstrates the zooming support in Gantt Chart.
+            You can zoom in or zoom out the project timeline dynamically with following toolbar buttons.
+
+            <li><code>ZoomIn</code> - To perform zoom in action on Gantt timeline.</li>
+            <li><code>ZoomOut </code> - To perform zoom out action on Gantt timeline.</li>
+            <li><code>ZoomToFit </code> - To show all tasks with timeline fit into available chart width.</li>
+            <br>
+            The zooming feature enables you to view the tasks in the project clearly from minute to year timespan. You need
+            to include
+            <code>ZoomIn</code>, <code>ZoomOut </code> and <code>ZoomToFit </code> buttons in the toolbar for performing
+            zooming actions in Gantt Chart.
+            <li>
+                <code>ZoomIn</code> - If the user clicks on the <code>ZoomIn</code> icon we have increased the timeline cell
+                width,
+                when the cell size exceeds the specified range then we have changed the timeline view mode.
+            </li>
+            <li>
+                <code>ZoomOut </code> - If the user clicks on the <code>ZoomOut</code> icon we have decrease the timeline
+                cell width, when the cell size falls
+                behind the specified range then we have changed the timeline view mode based on the zooming levels.
+            </li>
+            <li>
+                <code>ZoomToFit </code> - In project, if the tasks are rendered in different time ranges, when the user
+                clicks on the <code>ZoomToFit</code> icon,
+                then all the tasks are rendered within the current viewable chart container width.
+            </li>
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Gantt Zooming Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Zooming in ASP.NET MVC Gantt Control</h1>
+                }

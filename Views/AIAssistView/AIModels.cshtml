@@ -1,0 +1,734 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Navigations
+@using Syncfusion.EJ2.Buttons
+@using Syncfusion.EJ2.Popups
+@using Syncfusion.EJ2.Lists
+@using Syncfusion.EJ2.InteractiveChat
+@using Syncfusion.EJ2.DropDowns
+@using Newtonsoft.Json
+
+@section ControlsSection {
+    <div class="control-section">
+        <div class="ai-model">
+            @Html.EJS().Sidebar("assistantSidebar").Width("250px").Target(".ai-model").Position(Syncfusion.EJ2.Navigations.SidebarPosition.Left).Type(Syncfusion.EJ2.Navigations.SidebarType.Push).EnableDock(false).EnableGestures(false).Created("onSidebarCreated").ContentTemplate(@<div>
+                <div class="assistant-sidebar-header">
+                    <div class="header-left">
+                        <span id="icon-assist" class="header-icon e-icons e-assistview-icon"></span>
+                        <span class="header-title">AI Assist</span>
+                    </div>
+                    @Html.EJS().Button("closebtn").IconCss("e-icons e-close").CssClass("e-flat").Render()
+                </div>
+                <div class="assistant-sidebar-content">
+                    @Html.EJS().Button("newthreadbtn").IconCss("e-icons e-plus").CssClass("new-thread-btn").Content("New Thread").Render()
+                    <div id="conversation-list"></div>
+                </div>
+            </div>).Render()
+            @Html.EJS().AIAssistView("aiAssistView").BannerTemplate("#bannerTemplate").PromptSuggestions((string[])ViewData["Suggestions"]).PromptRequest("promptRequest").ShowHeader(false).StopRespondingClick("handleStopResponse").Width("auto").Height("100%").Created("onCreated").FooterToolbarSettings(new AIAssistViewFooterToolbarSettings() { ToolbarPosition = ToolbarPosition.Bottom }).EnableAttachments(true).AttachmentSettings(new AIAssistViewAttachmentSettings() { SaveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Remove") }).ContentTemplate(@<div>
+                <div class="ai-assist-header">
+                    @Html.EJS().Button("togglebtn").IconCss("e-icons e-menu").Render()
+                    @Html.EJS().DropDownList("ai-model-dropdown").PopupHeight("200px").Width("200px").DataSource(ViewData["Models"]).Value((string)ViewData["SelectedModel"]).Change("modelChange").Fields(new DropDownListFieldSettings { Text = "name", Value = "id" }).Render()
+                </div>
+            </div>).Render()
+            @Html.EJS().Toast("toast").Target(".e-views").TimeOut(1500).ShowCloseButton(true).Position(p => p.X("Right").Y("Bottom")).Render()
+        </div>
+        </div>
+        @*custom code start*@
+        <style>
+            .ai-model {
+                height: 500px;
+                width: 96%;
+                margin: 12px auto;
+                overflow: hidden;
+            }
+
+            .ai-model #aiAssistView {
+                border: 1px solid #dee2e6;
+            }
+
+            .ai-model .banner-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 330px;
+                text-align: center;
+            }
+
+            .ai-model .banner-content.e-no-content {
+                height: 25vh;
+            }
+
+            .ai-model .banner-content .e-assistview-icon:before {
+                font-size: 40px;
+            }
+
+            #assistantSidebar {
+                border: 1px solid #dee2e6;
+                border-right: none;
+            }
+
+            .assistant-sidebar-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 50px;
+                padding-left: 17px;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            .assistant-sidebar-header .header-icon {
+                font-size: 20px;
+                margin-right: 10px;
+            }
+
+            .assistant-sidebar-header .header-title {
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            .assistant-sidebar-content .new-thread-btn {
+                border: none;
+                color: #333;
+                text-align: start;
+                margin-top: 2px;
+                width: 100%;
+            }
+
+            .assistant-sidebar-content .new-thread-btn .e-icons {
+                padding-left: 8px;
+                padding-bottom: 3px;
+                margin-right: 8px;
+                font-weight: bold;
+            }
+
+            #conversation-list {
+                border: none;
+                padding-top: 5px;
+            }
+
+
+            #assistantSidebar .e-toolbar .e-toolbar-item:not(.e-separator):not(.e-spacer) {
+                padding: 8px 0;
+                margin: 0;
+            }
+
+            #assistantSidebar.e-close .assistant-sidebar-content .new-thread-btn,
+            #assistantSidebar.e-close .e-toolbar-left .e-toolbar-item {
+                display: none;
+            }
+
+            #assistantSidebar.e-close .e-toolbar-items .e-toolbar-right {
+                left: 16px;
+            }
+
+            #assistantSidebar .e-toolbar-item .e-tbar-btn:hover .e-icons {
+                color: #6c757d;
+            }
+
+            .banner-content .e-assistview-icon:before {
+                font-size: 35px;
+            }
+
+            .assistant-sidebar-header .header-left {
+                display: flex;
+                cursor: default;
+            }
+
+            .toast-content {
+                display: flex;
+                align-items: baseline;
+                gap: 6px;
+            }
+
+            .ai-model .ai-assist-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 50px;
+                padding: 9px;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            .assistant-sidebar-content {
+                padding: 5px;
+            }
+
+            .ai-model #assistantSidebar .assistant-sidebar-content .e-btn {
+                box-shadow: none;
+            }
+
+            .e-listview .e-list-item {
+                border: none;
+            }
+
+            .e-view-content {
+                height: 90% !important;
+            }
+
+            #assistantSidebar .assistant-sidebar-content .e-text-content {
+                display: flex;
+                align-items: center;
+            }
+
+            #assistantSidebar .assistant-sidebar-content .e-text-content .delete-icon {
+                padding: 3px 5px 0 5px;
+            }
+
+            .e-dark-mode .ai-model #aiAssistView,
+            .e-dark-mode #assistantSidebar {
+                border: 1px solid #666;
+            }
+
+            .e-dark-mode #assistantSidebar .assistant-sidebar-header,
+            .e-dark-mode .ai-model .ai-assist-header {
+                border-bottom: 1px solid #666;
+            }
+
+            @@media screen and (max-width: 680px) {
+                .ai-model {
+                    width: 100%;
+                    margin: 0;
+                }
+
+                #ai-model-dropdown {
+                    margin-left: 50px;
+                }
+
+                .e-sidebar-container .e-main-content.e-content-animation {
+                    margin-left: 0 !important;
+                }
+
+                #close {
+                    display: block;
+                }
+            }
+
+            @@media screen and (min-width: 681px) {
+                #close {
+                    display: none;
+                }
+
+                #assistantSidebar {
+                    display: block;
+                }
+            }
+        </style>
+        @*custom code end*@
+}
+
+@section PreScripts {
+    <script>
+        async function getAzureOpenAIAssist(req) {
+            var { apiKey, endpoint, deployment, prompt, apiVersion = '2024-07-01-preview' } = req;
+            var url = endpoint.replace(/\/$/, '') + `/openai/deployments/${encodeURIComponent(deployment)}/chat/completions` + `?api-version=${encodeURIComponent(apiVersion)}`;
+            var res = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'api-key': apiKey },
+                body: JSON.stringify({
+                    messages: [{ role: 'user', content: prompt }],
+                    temperature: 0.7,
+                    max_tokens: 200
+                })
+            });
+            var data = await res.json().catch(() => ({}));
+            if (!res.ok) {
+                var apiMsg = data?.error?.message || `HTTP ${res.status} ${res.statusText}`;
+                throw new Error(apiMsg);
+            }
+            return data?.choices?.[0]?.message?.content?.trim() || 'No response received.';
+        }
+
+        // Calls the DeepSeek chat completion API and returns the assistant reply.
+        async function getDeepSeekAIAssist(apiKey, prompt) {
+            try {
+                const url = 'https://api.deepseek.com/chat/completions';
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${apiKey}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        model: 'deepseek-reasoner',
+                        messages: [{ role: 'user', content: prompt }]
+                    })
+                });
+                if (!response.ok) throw new Error('API request failed');
+                const data = await response.json();
+                return data.choices[0].message.content;
+            } catch (error) {
+                throw error;
+            }
+        }
+
+        async function getGeminiAIAssist(apiKey, model, prompt) {
+            try {
+                var url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+                var response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }]
+                    })
+                });
+                if (!response.ok) throw new Error('API request failed');
+                var data = await response.json();
+                return data.candidates[0].content.parts[0].text;
+            } catch (error) {
+                throw error;
+            }
+        }
+
+        var geminiApiKey = '';
+        var geminiModel = '';
+        var deepseekApiKey = '';
+        var azureApiKey = '';
+        var azureEndpoint = '';
+        var azureDeployment = 'gpt-4o-mini';
+        var azureApiVersion = '2024-07-01-preview';
+
+        var suggestions = @Html.Raw(Json.Encode(ViewData["Suggestions"]));
+        var models = @Html.Raw(Json.Encode(ViewData["Models"]));
+        var selectedConvId = '';
+        var listData = [];
+        var stopStreaming = false;
+        var isMobile = false;
+        var aiAssistViewInst;
+        var sideObj;
+        var toastObj;
+        var aiToastObj;
+        var selectedModel = @Html.Raw(Json.Encode(ViewData["SelectedModel"]));
+        var conversationList;
+
+        function onSidebarCreated() {
+            sideObj = ej.base.getInstance(document.getElementById('assistantSidebar'), ej.navigations.Sidebar);
+            conversationList = new ej.lists.ListView({
+                dataSource: getLeftPaneData(),
+                fields: { text: 'text', id: 'id' },
+                template: function(data) {
+                    return '<div class="e-text-content">' +
+                        '<span class="e-list-text">' +
+                        (data.text) +
+                        '</span>' +
+                        '<span data-id="' + data.id + '" class="delete-icon e-icons e-trash" title="Delete Conversation"></span>' +
+                        '</div>';
+                },
+                select: function(args) { onItemSelect(args); }
+            });
+            conversationList.appendTo('#conversation-list');
+            attachDeleteEventListener();
+            setSidebarConfig();
+            InitializingApp();
+        }
+
+        function attachDeleteEventListener() {
+            var convContainer = document.getElementById('conversation-list');
+            if (convContainer) {
+                convContainer.removeEventListener('click', handleDeleteClick);
+                convContainer.addEventListener('click', handleDeleteClick);
+            }
+        }
+
+        function handleDeleteClick(ev) {
+            var target = ev.target;
+            var icon = target.closest('.delete-icon');
+            if (!icon) return;
+            ev.preventDefault();
+            ev.stopPropagation();
+            var convId = icon.getAttribute('data-id');
+            if (convId) {
+                deleteConversation(convId);
+            }
+        }
+
+        function InitializingApp() {
+            checkInitialLocalStorage();
+            listData = getLeftPaneData();
+            if (conversationList) {
+                conversationList.dataSource = listData;
+                conversationList.refresh();
+                attachDeleteEventListener();
+            }
+            if (listData.length > 0 && !selectedConvId) {
+                selectedConvId = listData[0].id;
+                onItemSelect({ data: listData[0] });
+            } else {
+                updateBannerStyle();
+            }
+        }
+
+        function checkInitialLocalStorage(isClear = false) {
+            if (!localStorage.getItem('aiassist-model') || isClear) {
+                localStorage.setItem('aiassist-model', JSON.stringify({}));
+            }
+        }
+
+        function promptRequest(args) {
+            if (!args.prompt || !args.prompt.trim()) {
+                return;
+            }
+            if (!selectedConvId) {
+                selectedConvId = createNewConversation(args.prompt);
+            }
+            aiAssistViewInst.addPrompt(args.prompt);
+            updateBannerStyle();
+            updateConversationName(args.prompt);
+            if (selectedModel === 'gemini') {
+                handleGeminiRequest(args);
+            }
+            else if (selectedModel === 'deepseek') {
+                handleDeepSeekRequest(args);
+            }
+            else {
+                handleOpenAIRequest(args);
+            }
+        }
+
+        var toggleBtn = document.getElementById('togglebtn');
+        var closeBtn = document.getElementById('closebtn');
+        var btnclickele = document.getElementById('closebtn');
+        btnclickele.addEventListener('click', btnClick);
+
+        function btnClick() {
+            if (isMobile && sideObj) {
+                sideObj.toggle();
+            }
+        }
+
+        var toggleclickele = document.getElementById('togglebtn');
+        toggleclickele.addEventListener('click', toggleSidebar);
+
+        function toggleSidebar() {
+            if (sideObj) {
+                sideObj.toggle();
+            }
+        }
+
+        var newThreadButtonElement = document.getElementById('newthreadbtn');
+        newThreadButtonElement.addEventListener('click', loadNewAIAssist);
+
+        function loadNewAIAssist() {
+            if (!aiAssistViewInst) {
+                setTimeout(loadNewAIAssist, 100);
+                return;
+            }
+            checkAndUpdateLocalStorage();
+            selectedConvId = '';
+            aiAssistViewInst.prompts = [];
+            aiAssistViewInst.promptSuggestions = suggestions;
+            updateBannerStyle();
+            if (isMobile && sideObj && sideObj.isOpen) {
+                sideObj.toggle();
+            }
+        }
+
+        function setSidebarConfig() {
+            isMobile = window.innerWidth <= 680;
+            if (sideObj) {
+                sideObj.enableDock = false;
+                sideObj.type = isMobile ? 'Over' : 'Auto';
+                sideObj.showBackdrop = isMobile;
+                sideObj.closeOnDocumentClick = !isMobile;
+                if (isMobile) {
+                    sideObj.hide();
+                } else {
+                    sideObj.show();
+                }
+                sideObj.dataBind();
+            }
+            if (toggleBtn) {
+                toggleBtn.style.display = isMobile ? 'block' : 'none';
+            }
+            if (closeBtn) {
+                closeBtn.style.display = isMobile ? 'block' : 'none';
+            }
+        }
+
+        function onResize() {
+
+                setSidebarConfig();
+            
+        }
+
+        function onItemSelect(e) {
+            var item = e.data;
+            if (!item || !item.id) return;
+            checkAndUpdateLocalStorage();
+            selectedConvId = item.id;
+            updateAIAssistViewData(item.id);
+            updateBannerStyle();
+            if (isMobile && sideObj && sideObj.isOpen) {
+                sideObj.toggle();
+            }
+        }
+
+        function deleteConversation(convId) {
+            if (!convId) return;
+            var appData = JSON.parse(localStorage.getItem('aiassist-model') || '{}');
+            delete appData[convId];
+            localStorage.setItem('aiassist-model', JSON.stringify(appData));
+            refreshConversationList();
+            if (selectedConvId === convId) {
+                selectedConvId = '';
+                if (listData.length > 0) {
+                    selectedConvId = listData[0].id;
+                    onItemSelect({ data: listData[0] });
+                } else {
+                    loadNewAIAssist();
+                }
+            }
+        }
+
+        function getNextConvId() {
+            var appData = JSON.parse(localStorage.getItem('aiassist-model') || '{}');
+            var ids = Object.keys(appData).map(k => parseInt(k)).filter(id => !isNaN(id));
+            var maxId = ids.length > 0 ? Math.max(...ids) : 0;
+            return (maxId + 1).toString();
+        }
+
+        function checkAndUpdateLocalStorage() {
+            if (!aiAssistViewInst || !selectedConvId) return;
+            var appData = JSON.parse(localStorage.getItem('aiassist-model') || '{}');
+            if (appData[selectedConvId]) {
+                appData[selectedConvId].prompts = aiAssistViewInst.prompts.map(p => ({
+                    prompt: p.prompt || '',
+                    response: p.response || ''
+                }));
+                localStorage.setItem('aiassist-model', JSON.stringify(appData));
+            }
+        }
+
+        function getLeftPaneData() {
+            var appData = JSON.parse(localStorage.getItem('aiassist-model') || '{}');
+            return Object.keys(appData)
+                .map(k => ({ id: k, num: parseInt(k) }))
+                .filter(item => !isNaN(item.num))
+                .sort((a, b) => b.num - a.num)
+                .map(item => {
+                    var convData = appData[item.id];
+                    var name = convData?.name ? convData.name.split('\n')[0] : 'Untitled Conversation';
+                    return { text: name, id: item.id };
+                });
+        }
+
+        function updateBannerStyle() {
+            var bannerElem = document.querySelector('.banner-content');
+            if (bannerElem) {
+                bannerElem.style.display = (aiAssistViewInst && aiAssistViewInst.prompts && aiAssistViewInst.prompts.length > 0) ? 'none' : 'block';
+            }
+        }
+
+        function updateConversationName(prompt) {
+            if (selectedConvId) {
+                var appData = JSON.parse(localStorage.getItem('aiassist-model') || '{}');
+                var convData = appData[selectedConvId];
+                if (convData && convData.name === 'New Conversation') {
+                    convData.name = prompt.slice(0, 40).trim() || 'Untitled Conversation';
+                    localStorage.setItem('aiassist-model', JSON.stringify(appData));
+                    refreshConversationList();
+                }
+            }
+        }
+
+        function refreshConversationList() {
+            listData = getLeftPaneData();
+            if (conversationList) {
+                conversationList.dataSource = listData;
+                conversationList.refresh();
+                attachDeleteEventListener();
+            }
+        }
+
+        function updateAIAssistViewData(id) {
+            if (!aiAssistViewInst || !id) return;
+            aiAssistViewInst.prompts = [];
+            aiAssistViewInst.promptSuggestions = suggestions;
+            var appData = JSON.parse(localStorage.getItem('aiassist-model') || '{}');
+            var convData = appData[id.toString()];
+            if (convData && convData.prompts) {
+                aiAssistViewInst.prompts = convData.prompts.map(p => ({
+                    prompt: p.prompt || '',
+                    response: p.response || ''
+                }));
+            }
+            aiAssistViewInst.dataBind();
+        }
+
+        function createNewConversation(prompt) {
+            var newId = getNextConvId();
+            var appData = JSON.parse(localStorage.getItem('aiassist-model') || '{}');
+            appData[newId] = {
+                name: prompt.slice(0, 40).trim() || 'New Conversation',
+                prompts: [{ prompt: prompt, response: '' }],
+                promptSuggestions: [...suggestions]
+            };
+            localStorage.setItem('aiassist-model', JSON.stringify(appData));
+            refreshConversationList();
+            return newId;
+        }
+
+        function handleStopResponse() {
+            stopStreaming = true;
+        }
+
+        async function streamAIResponse(fullResponse) {
+            let streamedResponseText = '';
+            if (fullResponse) {
+                await new Promise(resolve => setTimeout(resolve, 300));
+                let i = 0;
+                while (i < fullResponse.length && !stopStreaming) {
+                    streamedResponseText += fullResponse[i];
+                    i++;
+                    aiAssistViewInst.addPromptResponse(
+                        marked.parse(streamedResponseText),
+                        false
+                    );
+                    aiAssistViewInst.scrollToBottom();
+                    await new Promise(resolve => setTimeout(resolve, 10));
+                }
+            }
+            return streamedResponseText;
+        }
+
+        async function handleGeminiRequest(args) {
+            stopStreaming = false;
+            if (!aiAssistViewInst) return;
+            try {
+                var fullResponse = await getGeminiAIAssist(geminiApiKey, geminiModel, args.prompt);
+                var streamedText = await streamAIResponse(fullResponse);
+                if (!stopStreaming) {
+                    aiAssistViewInst.addPromptResponse(
+                        marked.parse(streamedText),
+                        true
+                    );
+                    checkAndUpdateLocalStorage();
+                }
+            } catch (error) {
+                setTimeout(() => {
+                    var errorMessage = '⚠️ Something went wrong while connecting to the Gemini service. Please check your API key.';
+                    aiAssistViewInst.addPromptResponse(errorMessage, true);
+                    checkAndUpdateLocalStorage();
+                }, 1000);
+            }
+        }
+
+        // Handles invoking DeepSeek, streaming the reply, and storing the result.
+         async function handleDeepSeekRequest(args) {
+            stopStreaming = false;
+            if (!aiAssistViewInst) return;
+            try {
+                const fullResponse = await getDeepSeekAIAssist(deepseekApiKey, args.prompt);
+                const streamedText = await streamAIResponse(fullResponse);
+                if (!stopStreaming) {
+                    aiAssistViewInst.addPromptResponse(
+                        marked.parse(streamedText),
+                        true
+                    );
+                    checkAndUpdateLocalStorage();
+                }
+            } catch (error) {   
+                setTimeout(() => {
+                    var errorMessage = '⚠️ Something went wrong while connecting to the Gemini service. Please check your API key.';
+                    aiAssistViewInst.addPromptResponse(errorMessage, true);
+                    checkAndUpdateLocalStorage();
+                }, 1000);
+            }
+        }
+
+        async function handleOpenAIRequest(args) {
+            stopStreaming = false;
+            if (!aiAssistViewInst) return;
+            try {
+                var fullResponse = await getAzureOpenAIAssist({
+                    apiKey: azureApiKey,
+                    endpoint: azureEndpoint,
+                    deployment: azureDeployment,
+                    apiVersion: azureApiVersion,
+                    prompt: args.prompt
+                });
+                var streamedText = await streamAIResponse(fullResponse);
+                if (!stopStreaming) {
+                    aiAssistViewInst.addPromptResponse(
+                        marked.parse(streamedText),
+                        true
+                    );
+                    checkAndUpdateLocalStorage();
+                }
+            } catch (error) {
+                setTimeout(() => {
+                    var errorMessage = '⚠️ Something went wrong while connecting to the Gemini service. Please check your API key.';
+                    aiAssistViewInst.addPromptResponse(errorMessage, true);
+                    checkAndUpdateLocalStorage();
+                }, 1000);
+            }
+        }
+
+        function modelChange(args) {
+            selectedModel = args.value;
+            var modelName = models.find(m => m.id === selectedModel)?.name || 'the selected model';
+            if (toastObj) {
+                toastObj.show({
+                    content: `<div class="toast-content"><span class="e-icons e-magic-wand"> </span> <span>You are using <b>${modelName}</b> with standard access</span></div>`
+                });
+            }
+        }
+
+        function onCreated() {
+            aiAssistViewInst = ej.base.getInstance(document.getElementById('aiAssistView'), ej.interactivechat.AIAssistView);
+            toastObj = ej.base.getInstance(document.getElementById('toast'), ej.notifications.Toast);
+            var dropdownInst = ej.base.getInstance(document.getElementById('ai-model-dropdown'), ej.dropdowns.DropDownList);
+            if (dropdownInst) {
+                dropdownInst.value = selectedModel;
+                dropdownInst.dataBind();
+            }
+            window.addEventListener('resize', onResize);
+        }
+
+        loadExternalFile();
+        function loadExternalFile() {
+            var script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.19/marked.js';
+            document.getElementsByTagName('head')[0].appendChild(script);
+        }
+    </script>
+    <script id="bannerTemplate" type="text/x-jsrender">
+        <div class="banner-content e-no-content">
+            <div class="e-icons e-assistview-icon"></div>
+            <h3 class="ai-assist-banner-subtitle">How can I help you today?</h3>
+        </div>
+    </script>
+}
+
+@section Meta {
+    <meta name="description" content="This example demonstrates the AI Models in ASP.NET MVC AI AssistView control. Explore here for more details." />
+}
+
+@section ActionDescription {
+    <div id="action-description">
+        <p>
+            This example demonstrates the <strong>AI AssistView</strong> designed to integrate multiple AI models:
+            <code>Azure OpenAI</code>, <code>Gemini</code> and <code>DeepSeek</code>.
+        </p>
+    </div>
+}
+
+@section Description {
+    <div id="description">
+	  <p>
+	    In this example, the <strong>AI AssistView</strong> with a responsive sidebar, AI models dropdown and Markdown streaming to deliver an AI-powered chat interface.
+	  </p>
+	  <ul>
+          <li>Switch between providers (Azure OpenAI, Gemini and DeepSeek) via a dropdown menu, with toast notifications confirming selection.</li>
+	    <li>Enter your API key(s) to enable live, dynamic responses from the selected provider.</li>
+	    <li>Stream AI responses with auto-scroll and rich Markdown rendering using <code>marked</code>.</li>
+	    <li>Create, select, and delete conversations with conversations stored in the localStorage.</li>
+	  </ul>
+    </div>
+}
+
+@section Title {
+    <title>ASP.NET MVC AI AssistView AI Models Example - Syncfusion Demos</title>
+}
+
+@section Header {
+    <h1 class='sb-sample-text'>Example of AI Models in ASP.NET MVC AI AssistView Control</h1>
+}

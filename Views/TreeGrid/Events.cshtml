@@ -1,0 +1,147 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+@*custom code end*@
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+       <div class="control-section">
+       @{
+                var dict = new Dictionary<string, object>();
+                dict.Add("number", true);
+                dict.Add("min", 0);
+            }
+        @Html.EJS().TreeGrid("Events").DataSource((IEnumerable<object>)ViewData["datasource"]).EditSettings(edit =>
+   {
+       edit.AllowEditing(true);
+   }).Columns(col =>
+   {
+       col.Field("TaskId").HeaderText("Task ID").Width(110).IsPrimaryKey(true).TextAlign(TextAlign.Right).Add();
+       col.Field("TaskName").HeaderText("Task Name").Width(210).EditType("stringedit").ValidationRules(new { required = true }).Add();
+       col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).EditType("datepickeredit")
+       .ValidationRules(new { date = true }).Width(110).Add();
+       col.Field("Progress").HeaderText("Progress").Width(110).EditType("numericedit")
+       .ValidationRules(dict).Edit(new { @params = new { format = "n" } }).TextAlign(TextAlign.Right).Add();
+
+   }).ChildMapping("Children").AllowReordering().AllowSorting().AllowPaging().PageSettings(page => page.PageSize(11).PageCount(5)).Height(350).TreeColumnIndex(1).DataBound("dataBound").ActionBegin("actionBegin").ActionComplete("actionComplete").Load("load").Created("create").BeginEdit("beginEdit").RowSelecting("rowSelecting").RowSelected("rowSelected").RowDeselecting("rowDeselecting").RowDeselected("rowDeselected").ColumnDragStart("columnDragStart").ColumnDrag("columnDrag").ColumnDrop("columnDrop").Collapsing("collapsing").Collapsed("collapsed").Expanding("expanding").Expanded("expanded").Render()
+    </div>
+    </div>
+        <div class="col-lg-3 property-section">
+                <table id="property" title="Event Trace">
+                    <tr>
+                        <td>
+                            <div class="eventarea" style="height: 245px;overflow: auto">
+                                <span class="EventLog" id="EventLog" style="word-break: normal;"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top:10px">
+                           @Html.EJS().Button("clear").Content("Clear").Render()
+                        </td>
+                    </tr>
+                </table>
+        </div>
+    <script>
+      document.getElementById('clear').onclick = () => {
+        document.getElementById('EventLog').innerHTML = '';
+       };
+       function beginEdit() {
+            appendElement('TreeGrid <b>beginEdit</b> event called<hr>');
+        }
+        function columnDragStart() {
+            appendElement('TreeGrid <b>columnDragStart</b> event called<hr>');
+        }
+        function columnDrop() {
+            appendElement('TreeGrid <b>columnDrop</b> event called<hr>');
+        }
+        function columnDrag() {
+            appendElement('TreeGrid <b>columnDrag</b> event called<hr>');
+        }
+        function load() {
+            appendElement('TreeGrid <b>load</b> event called<hr>');
+        }
+        function create() {
+            appendElement('TreeGrid <b>create</b> event called<hr>');
+        }
+        function actionBegin() {
+            appendElement('TreeGrid <b>actionBegin</b> event called<hr>');
+        }
+        function actionComplete() {
+            appendElement('TreeGrid <b>actionComplete</b> event called<hr>');
+        }
+        function dataBound() {
+            appendElement('TreeGrid <b>dataBound</b> event called<hr>');
+        }
+        function rowSelecting() {
+            appendElement('TreeGrid <b>rowSelecting</b> event called<hr>');
+        }
+        function rowSelected() {
+            appendElement('TreeGrid <b>rowSelected</b> event called<hr>');
+        }
+        function rowDeselecting() {
+            appendElement('TreeGrid <b>rowDeselecting</b> event called<hr>');
+        }
+        function rowDeselected() {
+            appendElement('TreeGrid <b>rowDeselected</b> event called<hr>');
+        }
+          function expanding() {
+            appendElement('TreeGrid <b>expanding</b> event called<hr>');
+        }
+        function expanded() {
+            appendElement('TreeGrid <b>expande</b> event called<hr>');
+        }
+        function collapsing() {
+            appendElement('TreeGrid <b>collapsing</b> event called<hr>');
+        }
+        function collapsed() {
+            appendElement('TreeGrid <b>collapsed</b> event called<hr>');
+        }
+        function appendElement(html) {
+            var span = document.createElement('span');
+            span.innerHTML = html;
+            var log = document.getElementById('EventLog');
+            log.insertBefore(span, log.firstChild);
+        }
+    </script>
+}
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Events in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates all the events that have been triggered on all the Tree Grid operations with the help of Event Trace
+                panel.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+            <p>The Tree Grid triggers events based on its actions. The events can be used as an extension
+                point to perform custom operations.
+            </p>
+            <p>In this demo, perform Tree Grid actions like paging, sorting, reordering, filtering etc. and see
+                the <strong>Event Trace</strong> panel for the events emitted.
+            </p>
+            <p>More information on the Grid events can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/accessibility#keyboard-navigation" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+            </p>
+    </div>
+}
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Tree Grid Events Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Events in ASP.NET MVC Tree Grid Control</h1>
+                }

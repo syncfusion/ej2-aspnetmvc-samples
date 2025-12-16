@@ -1,0 +1,119 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Notifications;
+@section ControlsSection{
+    <div class="col-lg-12 control-section toast-default-section">
+        <div class="control_wrapper">
+            @Html.EJS().Toast("toast_default").Title("Adaptive Tiles Meeting").Position(p => p.X("Right")).TimeOut(5000).ContentTemplate(@<div>Conference Room 01 / Building 135 10:00 AM-10:30 AM</div>).Created("created").Icon("e-meeting").BeforeOpen("onBeforeOpen").Close("onclose").Render()
+            <div class="col-lg-12 col-sm-12 col-md-12 center">
+                <div id="toastBtnDefault" style="margin: auto;text-align: center">
+                    @Html.EJS().Button("toastBtnShow").CssClass("e-btn").Content("Show Toasts").Render()
+                    @Html.EJS().Button("toastBtnHide").CssClass("e-btn").Content("Hide All").Render()
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var toastObj;
+        var btnEleShow = document.getElementById('toastBtnShow');
+        var btnEleHide = document.getElementById('toastBtnHide');
+        document.onclick = function (e) {
+            if (e.target !== btnEleShow) {
+                toastObj.hide('All');
+            }
+        };
+
+        btnEleShow.onclick = function () {
+            toastObj.show();
+        };
+
+        btnEleHide.onclick = function () {
+            toastObj.hide('All');
+        };
+
+        function created() {
+             toastObj = this;
+        }
+        function onclose(e) {
+            if (e.toastContainer.childElementCount === 0) {
+                btnEleHide.style.display = 'none';
+            }
+        }
+
+        function onBeforeOpen() {
+            btnEleHide.style.display = 'inline-block';
+        }
+        setTimeout(function () {
+            toastObj.show({
+                target: document.body
+            });
+        }, 500);
+    </script>
+    <style>
+        #toast_default .e-meeting::before {
+            content: "\e705";
+            font-size: 17px;
+        }
+        #toastBtnHide{
+            margin-left:10px;
+        }
+        .bootstrap4 #toast_default .e-meeting::before {
+            content: "\e763";
+            font-size: 20px;
+        }
+        .tailwind #toast_default .e-meeting::before,
+        .tailwind-dark #toast_default .e-meeting::before,
+        .tailwind3 #toast_default .e-meeting::before,
+        .tailwind3-dark #toast_default .e-meeting::before,
+        .fluent #toast_default .e-meeting::before,
+        .fluent-dark #toast_default .e-meeting::before,
+        .bootstrap5 #toast_default .e-meeting::before,
+        .bootstrap5-dark #toast_default .e-meeting::before {
+            content: "\e7e9";
+            font-size: 18px;
+        }
+    </style>
+}
+
+@section ActionDescription{
+
+
+    <div id="action-description">
+        <p>This sample demonstrates the basic layout of a Toast to show simple notification and hide them.</p>
+    </div>
+
+
+
+}
+@section Description{
+
+
+    <div id="description">
+        <p>The <code>Toast</code> is a notification pop-up used to display on the desired position with required message and header icons.</p>
+        <ul>
+            <li>The header text is set using <b>title</b> property.</li>
+            <li>Information to be displayed is set using <b>content</b> property.</li>
+        </ul>
+        <p>
+            More information about Toast can be found in this
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/toast/getting-started" target="_blank" aria-label="documentation section"> documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+
+    </div>
+
+
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC Toast control. Explore here for more details."/>
+                }
+
+@*custom code end*@
+
+@section Title{
+                    <title>ASP.NET MVC Toast Default Functionalities Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC Toast Control</h1>
+                }

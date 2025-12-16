@@ -1,0 +1,89 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewData["view"]).WorkHours(new ScheduleWorkHours { Highlight = true, Start = "08:00", End = "20:00" }).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 100%;">
+                        <div>
+                            @Html.EJS().TimePicker("startTime").Format("HH:mm").Value(new DateTime(2000, 1, 1, 8, 0, 0)).Placeholder("Work Start").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 100%;">
+                        <div>
+                            @Html.EJS().TimePicker("endTime").Format("HH:mm").Value(new DateTime(2000, 1, 1, 20, 0, 0)).Placeholder("Work End").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 100%;">
+                        <div>
+                            @Html.EJS().Button("submit").Content("Submit").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
+    <script type="text/javascript">
+        document.getElementById('submit').onclick = function () {
+            var start = document.getElementById('startTime');
+            var end = document.getElementById('endTime');
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.workHours.start = start.value;
+            scheduleObj.workHours.end = end.value;
+        }
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            applyCategoryColor(args, scheduleObj.currentView);
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Work Hours in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo showcases how to set the required working hours on Schedule, thus visually highlighting the cells underlying the
+            given work hour range.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, the work hours are set by using the
+            <code>WorkHours</code> property and it usually applies only on the working days defined for the Schedule. It can either be highlighted
+            or not by defining the
+            <code>Highlight</code> option within the
+            <code>WorkHours</code> property. The working hour range can be defined by using the
+            <code>Start</code> and
+            <code>End</code> option available within the
+            <code>WorkHours</code> property.
+        </p>
+        <p>
+            To set discontinuous working hours on a day, then the default
+            <code>WorkHours</code> on Scheduler needs to be disabled by setting false to
+            <code>Highlight</code> option within it. Then, use the
+            <code>setWorkHours</code> method which accepts the days collection and the start & end hour values as parameters.
+        </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Scheduler Work Hours Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Work Hours in ASP.NET MVC Scheduler Control</h1>
+                }

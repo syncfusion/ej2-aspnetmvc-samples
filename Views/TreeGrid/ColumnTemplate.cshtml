@@ -1,0 +1,174 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
+@{
+    ViewData["Title"] = "ColumnTemplate";
+}
+
+@*custom code end*@
+
+@section ControlsSection{
+    <div class="control-section">
+        @(Html.EJS().TreeGrid("ColumnTemplate")
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
+            .Columns(col=>{
+                    col.Field("EmpID").HeaderText("Employee ID").Width(95).Add();
+                    col.Field("Name").HeaderText("Name").Width(90).Add();
+                    col.Field("DOB").HeaderText("DOB").Format("yMd").TextAlign(TextAlign.Right).Width(85).Add();
+                    col.HeaderText("Tax per annum").Template("#columnTemplate1").TextAlign(TextAlign.Center).Width(90).Add();
+                    col.HeaderText("One day Index").Template("#columnTemplate2").Width(90).TextAlign(TextAlign.Center).Add();
+                    col.HeaderText("Year GR").Template("#columnTemplate3").Width(120).TextAlign(TextAlign.Center).Add();
+                })
+                .Height(359)
+                .Width("auto")
+                .ChildMapping("Children")
+                .RowHeight(83)
+                .RowDataBound("rowDataBound")
+                .TreeColumnIndex(0).Render()
+        )
+        <script type="text/x-template" id="columnTemplate1">
+            <div id="spkline${EmployeeID}"></div>
+        </script>
+        <script type="text/x-template" id="columnTemplate2">
+            <div id="spkarea${EmployeeID}"></div>
+        </script>
+        <script type="text/x-template" id="columnTemplate3">
+            <div id="spkwl${EmployeeID}"></div>
+        </script>
+    </div>
+    <script>
+
+        @*custom code start*@
+
+        var lineData = [
+            [0, 6, 4, 1, 3, 2, 5],
+            [5, 4, 6, 3, 1, 2, 0],
+            [6, 4, 0, 3, 2, 5, 1],
+            [4, 6, 3, 0, 1, 2, 5],
+            [3, 5, 6, 4, 0, 1, 2],
+            [1, 3, 4, 2, 5, 0, 6],
+            [2, 4, 0, 3, 5, 6, 1],
+            [5, 4, 6, 3, 1, 2, 0],
+            [0, 6, 4, 1, 3, 2, 5],
+            [6, 4, 0, 3, 2, 5, 1],
+            [4, 6, 3, 0, 1, 2, 5],
+            [3, 5, 6, 4, 0, 1, 2],
+            [1, 3, 4, 2, 5, 0, 6],
+            [2, 4, 0, 3, 5, 6, 1],
+            [5, 4, 6, 3, 1, 2, 0],
+            [0, 6, 4, 1, 3, 2, 5],
+            [6, 4, 0, 3, 2, 5, 1],
+            [4, 6, 3, 0, 1, 2, 5],
+            [2, 4, 0, 3, 5, 6, 1],
+            [3, 5, 6, 4, 0, 1, 2],
+            [1, 3, 4, 2, 5, 0, 6]   
+        ];
+var columnData = [
+    [0, 6, -4, 1, -3, 2, 5],
+    [5, -4, 6, 3, -1, 2, 0],
+    [6, 4, 0, 3, -2, 5, 1],
+    [4, -6, 3, 0, 1, -2, 5],
+    [3, 5, -6, -4, 0, 1, 2],
+    [1, -3, 4, -2, 5, 0, 6],
+    [2, 4, 0, -3, 5, -6, 1],
+    [5, 4, -6, 3, 1, -2, 0],
+    [0, -6, 4, 1, -3, 2, 5],
+    [6, 4, 0, -3, 2, -5, 1],
+    [4, 6, -3, 0, 1, 2, 5],
+    [3, -5, -6, 4, 0, 1, 2],
+    [1, 3, -4, -2, 5, 0, 6],
+    [2, -4, 0, -3, 5, 6, 1],
+    [5, 4, -6, 3, 1, -2, 0],
+    [0, 6, 4, -1, -3, 2, 5],
+    [6, -4, 0, -3, 2, 5, 1],
+    [4, 6, -3, 0, -1, 2, 5],
+    [6, 4, 0, -3, 2, -5, 1],
+    [3, 5, 6, -4, 0, 1, 2],
+    [1, 3, -4, 2, -5, 0, 6]
+];
+
+
+        function sparkload(args) {
+            let theme = location.hash.split('/')[1];
+            theme = theme ? theme : 'Material';
+            args.sparkline.theme = theme.charAt(0).toUpperCase() + theme.slice(1);
+        }
+
+        @*custom code end*@
+
+        function rowDataBound(args) {
+            let line = new ej.charts.Sparkline({
+                height: '50px',
+                width: '150px', load: sparkload,
+                lineWidth: 2,
+                valueType: 'Numeric',
+                fill: '#3C78EF',
+                dataSource: lineData[args.data.EmployeeID]
+            });
+            line.appendTo(args.row.querySelector('#spkline' + args.data.EmployeeID));
+            let column = new ej.charts.Sparkline({
+                height: '50px',
+                width: '150px', load: sparkload,
+                type: 'Column',
+                valueType: 'Numeric',
+                fill: '#3C78EF',
+                negativePointColor: '#f7a816',
+                dataSource: columnData[args.data.EmployeeID]
+            });
+            column.appendTo(args.row.querySelector('#spkarea' + args.data.EmployeeID));
+            let winloss = new ej.charts.Sparkline({
+                height: '50px',
+                width: '150px', load: sparkload,
+                type: 'WinLoss',
+                valueType: 'Numeric',
+                fill: '#3C78EF',
+                tiePointColor: 'darkgray',
+                negativePointColor: '#f7a816',
+                dataSource: columnData[args.data.EmployeeID]
+            });
+            winloss.appendTo(args.row.querySelector('#spkwl' + args.data.EmployeeID));
+        }
+    </script>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Column Template in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the usage of template columns in Tree Grid. In this sample, we have shown SparkLine control in Tree Grid columns.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The Tree Grid provides a way to use a custom layout for each cell using column template feature.
+            The <code>Columns->Template</code> property accepts either string or HTML element`s ID value, which will be used as the template for the cell.
+        </p>
+        <p>
+            In this demo, using column template, we have presented SparkLine charts for the "Tax per annum", "One day index" and "Year GR" columns. In <code>Columns->Template</code> we have assigned with the ID of a SCRIPT element whose content is used as the template.
+        </p>
+        <p>The template expression should be provided inside <code>${...}</code> interpolation syntax</p>
+        <br>
+
+        <p>
+            More information on the column template can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/columns/column-template" aria-label="documentation section" >documentation<span class="sr-only">opens in a new tab</span></a> section.
+        </p>
+    </div>
+
+}
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Tree Grid Column Template Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Column Template in ASP.NET MVC Tree Grid Control</h1>
+                }

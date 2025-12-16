@@ -1,0 +1,367 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "Timeline";
+}
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="control-wrapper">
+            <div class="control-section">
+                @(Html.EJS().Gantt("Timeline").DataSource((IEnumerable<object>)ViewData["DataSource"])
+                    .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate")
+                    .Duration("Duration").Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Notes"))
+                    .Height("503px").HighlightWeekends(true).ProjectStartDate("02/03/2024").ProjectEndDate("03/23/2024")
+                    .TimelineSettings(ts => ts.TopTier(tt => tt.Format("MMM dd, yyyy").Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week))
+                    .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day)))
+                    .SplitterSettings(ss => ss.ColumnIndex(1)).TreeColumnIndex(1).LabelSettings(ls => ls.RightLabel("TaskName"))
+                    .Columns(col => {
+                        col.Field("TaskId").Visible(false).Add();
+                        col.Field("TaskName").HeaderText("Name").Width(250).Add();
+                        col.Field("StartDate").HeaderText("Start Date").Add();
+                        col.Field("EndDate").HeaderText("End Date").Add();
+                        col.Field("Duration").HeaderText("Duration").Add();
+                        col.Field("Predecessor").HeaderText("Dependency").Add();
+                        col.Field("Progress").HeaderText("Progress").Add(); 
+                    })
+                    .Render()
+                )
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%;">
+            <colgroup>
+                <col style="width:30%" />
+                <col style="width:70%" />
+            </colgroup>
+            <tr>
+                <td style="width: 30%">
+                    <div>Timeline Unit Size</div>
+                </td>
+                <td style="width: 70%;">
+                    <div>
+                        @Html.EJS().NumericTextBox("unitWidth").Value(33).Change("onUnitWidthChange").Min(10).Format("n").Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:30%;"><div><b>Top tier</b></div></td>
+                <td style="width:70%;">
+                    <div>
+                        @Html.EJS().CheckBox("TopTierCheck").Checked(true).Change("TopTierChange").Render()
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="width:30%;"> <div style="padding-top: 8px">Count</div></td>
+                <td style="width:70%;">
+                    <div>
+                        @Html.EJS().NumericTextBox("TopTierCount").Format("n").Min(1).Max(50).Value(1).Change("TopCountChange").Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:30%;">
+                    <div>
+                        Unit
+                    </div>
+                </td>
+                <td style="width:70%;">
+                    <div>
+                        @(Html.EJS().DropDownList("TopTierUnit").DataSource((IEnumerable<Object>)ViewData["Units"])
+                            .Fields(fs => fs.Text("Unit").Value("Id")).Value("Week").Change("TopUnitChange").Render()
+                        )
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:30%;">
+                    <div>
+                        Format
+                    </div>
+                </td>
+                <td style="width:70%;">
+                    <div>
+                        @(Html.EJS().DropDownList("TopTierFormat").DataSource((IEnumerable<Object>)ViewData["WeekFormat"])
+                              .Fields(fs => fs.Text("Format").Value("Id")).Value("MMM dd, yyyy").Change("TopFormatChange").Render()
+                        )
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:30%;">
+                    <div><b>Bottom tier</b></div>
+                </td>
+                <td style="width:70%;">
+                    <div>
+                        @Html.EJS().CheckBox("BottomTierCheck").Checked(true).Change("BottomTierChange").Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:30%;">
+                    <div>Count</div>
+                </td>
+                <td style="width:70%;">
+                    <div>
+                        @Html.EJS().NumericTextBox("BottomTierCount").Format("n").Min(1).Max(50).Value(1).Change("BottomCountChange").Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:30%;">
+                    <div>
+                        Unit
+                    </div>
+                </td>
+                <td style="width:70%;">
+                    <div>
+                        @(Html.EJS().DropDownList("BottomTierUnit").DataSource((IEnumerable<Object>)ViewData["Units"])
+                            .Fields(fs => fs.Text("Unit").Value("Id")).Value("Day").Change("BottomUnitChange").Render()
+                        )
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:30%;">
+                    <div>
+                        Format
+                    </div>
+                </td>
+                <td style="width:70%;">
+                    <div>
+                        @(Html.EJS().DropDownList("BottomTierFormat").DataSource((IEnumerable<Object>)ViewData["DayFormat"])
+                            .Fields(fs => fs.Text("Format").Value("Id")).Index(3).Change("BottomFormatChange").Render()
+                        )
+                    </div>
+                </td>
+            </tr>
+             <tr>
+                <td style="width:30%;"><div>Enable multitaskbar</div></td>
+                <td style="width:70%;">
+                    <div>
+                        @Html.EJS().CheckBox("MultiTaskbarCheck").Checked(false).Change("MultiTaskbarChange").Render()
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function MultiTaskbarChange() {
+            var checkBox = document.getElementById("MultiTaskbarCheck").ej2_instances[0];
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            if (checkBox.checked) {
+                gantt.enableMultiTaskbar = true;
+            } else {
+                gantt.enableMultiTaskbar = false;
+            }
+        }
+        function onUnitWidthChange(args) {
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            gantt.timelineSettings.timelineUnitSize = args.value;
+        }
+        function TopTierChange() {
+            var checkBox = document.getElementById("TopTierCheck").ej2_instances[0];
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            var topTierCount = document.getElementById("TopTierCount").ej2_instances[0];
+            var topTierformat = document.getElementById("TopTierFormat").ej2_instances[0];
+            var topTierUnit = document.getElementById("TopTierUnit").ej2_instances[0];
+            if (checkBox.checked) {
+                gantt.timelineSettings.topTier.unit = 'Week';
+                topTierCount.enabled = true;
+                topTierformat.enabled = true;
+                topTierUnit.enabled = true;
+            } else {
+                gantt.timelineSettings.topTier.unit = 'None';
+                topTierCount.enabled = false;
+                topTierformat.enabled = false;
+                topTierUnit.enabled = false;
+            }
+        }
+
+        function BottomTierChange() {
+            var checkBox = document.getElementById("BottomTierCheck").ej2_instances[0];
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            var bottomTierCount = document.getElementById("BottomTierCount").ej2_instances[0];
+            var bottomTierformat = document.getElementById("BottomTierFormat").ej2_instances[0];
+            var bottomTierUnit = document.getElementById("BottomTierUnit").ej2_instances[0];
+            if (checkBox.checked) {
+                gantt.timelineSettings.bottomTier.unit = 'Day';
+                bottomTierCount.enabled = true;
+                bottomTierformat.enabled = true;
+                bottomTierUnit.enabled = true;
+            } else {
+                gantt.timelineSettings.bottomTier.unit = 'None';
+                bottomTierCount.enabled = false;
+                bottomTierformat.enabled = false;
+                bottomTierUnit.enabled = false;
+            }
+        }
+
+        function TopCountChange(args) {
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            var count = args.value;
+            gantt.timelineSettings.topTier.count = count;
+        }
+
+        function BottomCountChange(args) {
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            var count = args.value;
+            gantt.timelineSettings.bottomTier.count = count;
+        }
+
+        function TopFormatChange(args) {
+            var format = args.value;
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            gantt.timelineSettings.topTier.format = format.toString();
+        }
+
+        function BottomFormatChange(args) {
+            var format = args.value;
+            if (format == 'E')
+                format = '';
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            gantt.timelineSettings.bottomTier.format = format.toString();
+        }
+
+
+        function TopUnitChange(args) {
+            var unit = args.value;
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            var topFormatDropDown = document.getElementById("TopTierFormat").ej2_instances[0];
+            
+            if (unit === 'Year') {
+                topFormatDropDown.dataSource = yearformat;
+            } else if (unit === 'Month') {
+                topFormatDropDown.dataSource = monthformat;
+            } else if (unit === 'Week') {
+                topFormatDropDown.dataSource = weekformat;
+            } else if (unit === 'Day') {
+                topFormatDropDown.dataSource = dayformat;
+            } else {
+                topFormatDropDown.dataSource = hourformat;
+            }
+            topFormatDropDown.value = topFormatDropDown.dataSource[0].Id;
+            updateUnitWidth(unit, 'top');
+            gantt.timelineSettings.topTier.unit = unit;
+        }
+        function updateUnitWidth(unit, tier) {
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            var topUnit = tier === 'top' ? unit : gantt.timelineSettings.topTier.unit;
+            var bottomUnit = tier === 'bottom' ? unit : gantt.timelineSettings.bottomTier.unit;
+            var units = ['None', 'Hour', 'Day', 'Week', 'Month', 'Year'];
+            var bootomCellUnit;
+            var unitWidth;
+            if (units.indexOf(topUnit) === 0 && units.indexOf(bottomUnit) === 0) {
+                bootomCellUnit = 'Day';
+            } else if (units.indexOf(topUnit) === 0 && units.indexOf(bottomUnit) > 0) {
+                bootomCellUnit = bottomUnit;
+            } else if (units.indexOf(topUnit) > 0 && units.indexOf(bottomUnit) === 0) {
+                bootomCellUnit = topUnit;
+            } else if (units.indexOf(topUnit) <= units.indexOf(bottomUnit)) {
+                bootomCellUnit = topUnit;
+            } else {
+                bootomCellUnit = bottomUnit;
+            }
+            if (bootomCellUnit === 'Year') {
+                unitWidth = 2000;
+            } else if (bootomCellUnit === 'Month') {
+                unitWidth = 300;
+            } else if (bootomCellUnit === 'Week') {
+                unitWidth = 150;
+            } else if (bootomCellUnit === 'Day') {
+                unitWidth = 33;
+            } else if (bootomCellUnit === 'Hour') {
+                unitWidth = 25;
+            }
+            var NumericBox = document.getElementById("unitWidth").ej2_instances[0];
+            NumericBox.value = unitWidth;
+        }  
+
+        function BottomUnitChange(args) {
+            var unit = args.value;
+            var gantt = document.getElementById("Timeline").ej2_instances[0];
+            var bottomFormatDropDown = document.getElementById("BottomTierFormat").ej2_instances[0];
+         
+            if (unit === 'Year') {
+                bottomFormatDropDown.dataSource = yearformat;
+            } else if (unit === 'Month') {
+                bottomFormatDropDown.dataSource = monthformat;
+            } else if (unit === 'Week') {
+                bottomFormatDropDown.dataSource = weekformat;
+            } else if (unit === 'Day') {
+                bottomFormatDropDown.dataSource = dayformat;
+            } else {
+                bottomFormatDropDown.dataSource = hourformat;
+            }
+            bottomFormatDropDown.value = bottomFormatDropDown.dataSource[0].Id;
+            updateUnitWidth(unit, 'bottom');
+            gantt.timelineSettings.bottomTier.unit = unit;
+        }
+
+        var yearformat = [
+            { Id: 'MMM "yy', Format: 'Jan "18' },
+            { Id: 'y', Format: '2018' },
+            { Id: 'MMMM, y', Format: 'January, 18' },
+        ];
+        var monthformat = [
+            { Id: 'MMM dd, yyyy', Format: 'Jan 01, 2018' },
+            { Id: 'MMMM', Format: 'January' },
+            { Id: 'MMM', Format: 'Jan' },
+        ];
+        var weekformat = [
+            { Id: 'MMM dd, yyyy', Format: 'Jan 01, 2019' },
+            { Id: 'EEE MMM dd, "yy', Format: 'Mon Jan 01, "19' },
+            { Id: 'EEE MMM dd', Format: 'Mon Jan 01' },
+        ];
+        var dayformat = [
+            { Id: 'EEE, dd', Format: 'Mon, 01' },
+            { Id: 'EEE', Format: 'Mon' },
+            { Id: 'dd', Format: '01' },
+            { Id: 'E', Format: 'M' },
+        ];
+        var hourformat = [
+            { Id: 'hh', Format: '00' },
+            { Id: 'hh : mm a', Format: '00 : 00 AM' },
+            { Id: 'h : mm a', Format: '0 : 00 AM' },
+        ];
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample allows you to customize the Gantt Chart timeline by adjusting the timeline unit size, header text format, and count for both the top and bottom tiers, and provides an option to enable the multitaskbar feature.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Timeline API in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+        This example demonstrates how to effectively customize the timeline settings of a Gantt Chart.
+        You can customize the timeline width by adjusting the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.GanttTimelineSettings.html#Syncfusion_EJ2_Gantt_GanttTimelineSettings_TimelineUnitSize">TimelineUnitSize</a> property
+        in <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.GanttTimelineSettings.html">TimelineSettings</a>.
+        The Gantt Chart supports various timeline units such as <code>minutes</code>, <code>hours</code>, <code>days</code>, <code>weeks</code>, <code>months</code>, and <code>years</code>.
+        You can easily customize these units by changing the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.GanttTimelineTierSettings.html#Syncfusion_EJ2_Gantt_GanttTimelineTierSettings_Unit">Unit</a> for both top tier and bottom tier in <code>TimelineSettings</code>.
+        The <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.GanttTimelineTierSettings.html#Syncfusion_EJ2_Gantt_GanttTimelineTierSettings_Format">Format</a> of the timeline can be customized by modifying the format value for both the top and bottom tiers.
+        You can combine timeline cells in the top and bottom tiers using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.GanttTimelineTierSettings.html#Syncfusion_EJ2_Gantt_GanttTimelineTierSettings_Count">Count</a> property in <code>TimelineSettings</code>.
+      </p>
+      <p>
+        Tooltips are visible by default in the Gantt Chart timeline, You can customize the tooltip visiblity by using the  <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.GanttTimelineSettings.html#Syncfusion_EJ2_Gantt_GanttTimelineSettings_ShowTooltip">ShowTooltip</a> property in the timeline settings.
+      </p>
+      <p>
+        <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_EnableMultiTaskbar" aria-label="enableMultiTaskbar">EnableMultiTaskbar<span class="sr-only">opens in a new tab</span></a> allows you to display multiple taskbars within a parent row, ensuring a clear overview even in collapsed states.
+      </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Gantt Timeline API Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Timeline API in ASP.NET MVC Gantt Control</h1>
+                }

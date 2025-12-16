@@ -1,0 +1,47 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Kanban
+
+@section ControlsSection {
+<div class="control-section">
+    <div class="control_wrapper">
+        @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col=> {
+       col.HeaderText("To Do").KeyField("Open").Add();
+       col.HeaderText("In Progress").KeyField("InProgress").Add();
+       col.HeaderText("Testing").KeyField("Testing").Add();
+       col.HeaderText("Done").KeyField("Close").Add();
+   }).CardSettings(card =>  {
+        card.ContentField("Summary").HeaderField("Id");
+        }).Render()
+
+    </div>
+</div>
+}
+@section ActionDescription{
+<div id="action-description">
+    <p>
+        This sample demonstrates the way of data binding to Kanban control with object array (local data source).
+    </p>
+</div>
+}
+@section Description{
+<div id="description">
+    <p>
+        The Kanban supports binding data source to the board using the <code>DataSource</code> property that can be
+        assigned with the list or instances of DataManager.
+    </p>
+    <p>
+        In this demo, the array of objects is assigned as the data source to the Kanban board.
+    </p>
+</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Local Data in ASP.NET MVC Kanban control. Explore here for more details."/>
+                }
+
+@section Title{
+                    <title>ASP.NET MVC Kanban Local Data Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Local Data in ASP.NET MVC Kanban Control</h1>
+                }

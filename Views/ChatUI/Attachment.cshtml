@@ -1,0 +1,111 @@
+@using Syncfusion.EJ2.InteractiveChat
+@using Syncfusion.EJ2
+
+@section ControlsSection{
+    <div class="control-section chat-ui">
+        <div class="attachment-chatui">
+            @Html.EJS().ChatUI("chatAttachment").HeaderText("Paul Wilson (You)").HeaderIconCss("chat_user_avatar").Created("userCreated").HeaderToolbar(new ChatUIToolbarSettings() { Items = ViewData["AttachmentHeaderToolbar"], ItemClicked = "toolbarItemClicked" }).EnableAttachments(true).AttachmentSettings(new ChatUIFileAttachmentSettings() { SaveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Save"), RemoveUrl = @Url.Content("https://ej2services.syncfusion.com/production/web-services/api/FileUploader/Remove") }).User(new ChatUIUser() { Id = "user1", User = "Paul Wilson", AvatarUrl = "./../Content/chatui/images/paul_wilson.png" }).EmptyChatTemplate("#emptyChatTemplate").Render()
+        </div>
+    </div>
+    <style>
+        .attachment-chatui {
+            height: 500px;
+            width: 40%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+        }
+
+            .attachment-chatui .chat_user_avatar {
+                background-image: url('./../Content/chatui/images/paul_wilson.png');
+                background-color: unset;
+            }
+
+            .attachment-chatui .emptyChatText {
+                font-size: 16px;
+                font-style: italic;
+            }
+
+            .attachment-chatui .emptychat-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .attachment-chatui .chat-text-content {
+                display: flex;
+                align-items: center;
+            }
+
+            .attachment-chatui .emptyChatText {
+                font-size: 14px;
+                font-weight: 500;
+                margin-left: 10px;
+            }
+
+            .attachment-chatui .emptyChatMessage {
+                font-size: 14px;
+                text-align: center;
+            }
+
+        @@media only screen and (max-width: 850px) {
+            .attachment-chatui {
+                flex-direction: column;
+                height: 500px;
+                width: 70%;
+            }
+        }
+    </style>
+}
+
+@section PreScripts {
+    <script>
+        var chatAttachmentObj;
+        function userCreated() {
+            chatAttachmentObj = ej.base.getInstance(document.getElementById('chatAttachment'), ejs.interactivechat.ChatUI);
+        }
+        function toolbarItemClicked(args) {
+            if (args.item.iconCss === 'e-icons e-refresh') {
+                chatAttachmentObj.messages = [];
+            }
+        }
+    </script>
+    <script id="emptyChatTemplate" type="text/x-jsrender">
+        <div class="emptychat-content">
+            <div class="chat-text-content">
+                <h5><span class="e-icons e-multiple-comment"></span></h5>
+                <div class="emptyChatText" >No conversations yet.</div>
+            </div>
+            <div class="emptyChatMessage" >Type to begin or attach images, videos or files.</div>
+        </div>
+    </script>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the attachment support in ASP.NET MVC AIAssistView control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>This example demonstrates the ability for users to attach files during chat interactions, which helps provide additional context to the conversation.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.ChatUIFileAttachmentSettings.html#Syncfusion_EJ2_InteractiveChat_ChatUIFileAttachmentSettings_EnableAttachments">enableAttachments</a> property is set to <code>true</code> to allow users to attach files in the chat interface. The <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.ChatUIFileAttachmentSettings.html#Syncfusion_EJ2_InteractiveChat_ChatUIFileAttachmentSettings_AttachmentSettings">attachmentSettings</a> property is used to configure the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.ChatUIFileAttachmentSettings.html#Syncfusion_EJ2_InteractiveChat_ChatUIFileAttachmentSettings_SaveUrl">saveUrl</a> and <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.ChatUIFileAttachmentSettings.html#Syncfusion_EJ2_InteractiveChat_ChatUIFileAttachmentSettings_RemoveUrl">removeUrl</a>, enabling file upload functionality.
+        </p>    
+        <p>
+            Various file types such as images, videos, and documents can be attached. You can use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.ChatUIFileAttachmentSettings.html#Syncfusion_EJ2_InteractiveChat_ChatUIFileAttachmentSettings_AllowedFileTypes">allowedFileTypes</a> property within <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.ChatUIFileAttachmentSettings.html#Syncfusion_EJ2_InteractiveChat_ChatUIFileAttachmentSettings_AttachmentSettings">attachmentSettings</a> to restrict uploads to specific file types. Additionally, the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.ChatUI.html#Syncfusion_EJ2_InteractiveChat_ChatUI_EmptyChatTemplate">emptyChatTemplate</a> property is used to customize the banner displayed before starting a conversation.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC AIAssistView Attachment Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Attachment in ASP.NET MVC AIAssistView Control</h1>
+}

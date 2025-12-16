@@ -1,0 +1,96 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.FileManager
+@using EJ2MVCSampleBrowser.Models
+
+@{
+    string[] file = new string[] { "Cut", "Copy", "|", "Delete", "Download", "Rename", "|", "Details" };
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="sample-container">
+            <!-- File Manager directory upload feature sample -->
+            @Html.EJS().FileManager("filemanager").AjaxSettings(
+              new Syncfusion.EJ2.FileManager.FileManagerAjaxSettings
+              {
+                  Url = "FileOperations",
+                  DownloadUrl = "Download",
+                  UploadUrl = "Upload",
+                  GetImageUrl = "GetImage"
+              }).ContextMenuSettings(new Syncfusion.EJ2.FileManager.FileManagerContextMenuSettings()
+              {
+                  File = file
+              }).ToolbarItems(new List<FileManagerToolbarItem> {
+                new FileManagerToolbarItem { Name= "NewFolder" },
+                new FileManagerToolbarItem { Template="${getUploadContent()}", Name="Upload", CssClass="upload-template" },
+                new FileManagerToolbarItem { Name= "SortBy" },
+                new FileManagerToolbarItem { Name= "Refresh" },
+                new FileManagerToolbarItem { Name= "Cut" },
+                new FileManagerToolbarItem { Name= "Copy" },
+                new FileManagerToolbarItem { Name= "Paste" },
+                new FileManagerToolbarItem { Name= "Delete" },
+                new FileManagerToolbarItem { Name= "Download" },
+                new FileManagerToolbarItem { Name= "Rename" },
+                new FileManagerToolbarItem { Name= "Selection" },
+                new FileManagerToolbarItem { Name= "View" },
+                new FileManagerToolbarItem { Name= "Details" }
+              }).Render()
+        </div>
+    </div>
+    <style>
+        #uploadTemplate {
+            font-size: 14px;
+        }
+    </style>
+}
+
+<script>
+    function getUploadContent() {
+        var ajax = new ej.base.Ajax('@Url.Action("UploadButtonTemplate", "FileManager")', 'GET', true);
+        ajax.send().then();
+        ajax.onSuccess = function (data) {
+            $(".upload-template.e-toolbar-item.e-template").html(data);
+            if (document.getElementById("uploadTemplate").classList.contains("e-dropdown-btn")) {
+                document.getElementById('uploadTemplate').onclick = function (args) {
+                    args.stopPropagation();
+                };
+            }
+        }
+        return "<div></div>";
+    }
+</script>
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the folder (directory) upload feature. Choose <code>Folder</code> or <code>File</code> from the <code>Upload</code> Context Menu item or the Toolbar to upload a folder or a file in the File Manager component.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>In this demo, a folder upload is enabled by setting <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.FileManager.FileManagerUploadSettings.html#Syncfusion_EJ2_FileManager_FileManagerUploadSettings_DirectoryUpload" aria-label="directoryUpload"> DirectoryUpload <span class="sr-only">opens in a new tab</span></a> to <code>true</code>. It allows users to select or drag and drop a folder to upload its contents including hierarchy folders and files in the File Manager component.</p>
+        <p>
+            The folder (directory) upload is supported for the following file system providers,
+            <li> Physical provider</li>
+            <li> NodeJS provider</li>
+            <li> Azure provider</li>
+            <li> Amazon S3 provider</li>
+        </p>
+        <p>To efficiently upload large files and folders to the server in manageable chunks, use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.FileManager.FileManagerUploadSettings.html#Syncfusion_EJ2_FileManager_FileManagerUploadSettings_ChunkSize">chunkSize</a> property to specify the desired chunk size.</p>
+        <p>
+            <b>Note: </b>File Manager's upload functionality is restricted in the online demos for security reasons. If you need to test upload functionality, please install
+            <a target="_blank" href="https://www.syncfusion.com/downloads" aria-label="downloads">Syncfusion Essential Studio<sup>&reg;</sup> <span class="sr-only">opens in a new tab</span></a>on your machine and run the demo.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Directory Upload in ASP.NET MVC File Manager control. Explore here for more details." />
+}
+@section Title{
+    <title>ASP.NET MVC File Manager Directory Upload Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Directory Upload in ASP.NET MVC File Manager Control</h1>
+}
