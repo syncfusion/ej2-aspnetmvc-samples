@@ -213,4 +213,6 @@ The Syncfusion license that contains the terms and conditions can be found at
 
 * [ASP.NET MVC documentation](https://ej2.syncfusion.com/aspnetmvc/documentation/introduction)
 * [ASP.NET MVC components](https://www.syncfusion.com/aspnet-mvc-ui-controls/)
-* [ASP.NET MVC live demos](https://ej2.syncfusion.com/aspnetmvc/) 
+* [ASP.NET MVC live demos](https://ej2.syncfusion.com/aspnetmvc/)
+
+<p>Copyright © 2001-2026 Syncfusion®, Inc. All rights reserved.</p>
