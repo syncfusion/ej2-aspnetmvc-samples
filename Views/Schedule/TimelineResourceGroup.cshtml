@@ -1,0 +1,64 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineDay).Add(); view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineWorkWeek).Add(); view.Option(View.TimelineMonth).Add(); view.Option(View.Agenda).Add(); }).Group(group => group.Resources((string[])ViewData["Resources"])).Resources(res =>
+            {
+                res.DataSource(ViewData["Projects"]).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
+                res.DataSource(ViewData["Categories"]).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").GroupIDField("groupId").ColorField("color").AllowMultiple(true).Add();
+            }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewData["datasource"])).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).WorkDays((int[])ViewData["workDays"]).Render()
+        </div>
+    </div>
+    <style type="text/css">
+        .e-schedule:not(.e-device) .e-agenda-view .e-content-wrap table td:first-child {
+            width: 90px;
+        }
+
+        .e-schedule .e-agenda-view .e-resource-column {
+            width: 100px;
+        }
+    </style>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Timeline Grouping in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo showcases how the multiple resources are grouped as well as how the events are portrayed in timeline view layouts.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In the timeline view, each row depicts a single resource whereas in vertical views, each resource are grouped parallelly
+            as columns. Here, the resource grouping follows the tree-view like hierarchical grouping structure and can contain
+            any level of child resources. In this sample, we have used two level hierarchy, where the
+            <code>PROJECT 1</code> and
+            <code>PROJECT 2</code> are the parent level and the
+            <code>development</code> and
+            <code>testing</code> are child level resources which are defined using the
+            <code>Resources</code> property. They are grouped in layout by using the
+            <code>Group</code> property and its order of grouping depends on the order of names passed onto the
+            <code>Resources</code> option within
+            <code>Group</code>.
+        </p>
+        <p>
+            Also, the colors defined for the child level resources will get applied to the events of those resources by default. In case,
+            if the colors of parent level needs to be applied to those child events, then it is necessary to define the
+            <code>resourceColorField</code> option within the
+            <code>EventSettings</code> property with the parent level resource name value.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Scheduler Timeline Grouping Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Timeline Grouping in ASP.NET MVC Scheduler Control</h1>
+                }

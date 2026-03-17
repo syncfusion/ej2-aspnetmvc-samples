@@ -1,0 +1,77 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Maps
+@section ControlsSection{
+<div class="control-section">
+	<div class="control_wrapper">
+		@Html.EJS().Maps("container").Load("mapsload").TitleSettings(title => title.Text("Location of Africa continent in the World map").TextStyle(new MapsFont { Size = "16px" })).ZoomSettings(new Syncfusion.EJ2.Maps.MapsZoomSettings
+		{
+		Enable = true
+		}).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer>
+			{
+			new Syncfusion.EJ2.Maps.MapsLayer
+			{
+            UrlTemplate = "https://tile.openstreetmap.org/level/tileX/tileY.png",
+			},
+			new Syncfusion.EJ2.Maps.MapsLayer
+			{
+			Type = Syncfusion.EJ2.Maps.Type.SubLayer,
+			ShapeData = ViewData["shapeData"],
+			ShapeSettings = new MapsShapeSettings{ Fill="#5100a3", Opacity = 0.4 }
+			}
+			}).Render()
+	</div>
+    <div style="float: right">
+        <a href="https://www.openstreetmap.org/copyright" rel="nofollow" target="_blank" aria-label="OpenStreetMap">© OpenStreetMap contributors</a>
+    </div>
+    <br />
+    <div style="float: right; margin-right: 10px;">
+        Source:
+        <a href="https://www.whatarethe7continents.com/biggest-largest-smallest-continents/" rel="nofollow" target="_blank" aria-label="Seven Continents">Seven Continents</a>
+    </div>
+</div>
+    <script>
+        function mapsload(args) {
+            var theme = themeName ? themeName : 'Material';
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+        }
+    </script>
+    <style>
+		#container {
+		display: block;
+		}
+    </style>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the continents in the world by rendering them in a map layer. Also marks the office locations of YouTube in the world using markers.
+        </p>
+    </div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the OSM With SubLayer in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render a map with the provided GeoJSON data. Group of shapes can be combined to form a layer of the map. You can bind the desired colors from the data source to the map shapes. The marker templates are used to display the names for shapes and mark specific locations. Legend is enabled in this example to represent each continent.
+        </p>
+        <p>
+            Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices.
+        </p>
+        <br />
+        <p style="font-weight: 500">Injecting Module</p>
+        <p>
+            Maps component features are segregated into individual feature-wise modules. To use a marker, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method, and use a legend by injecting the <code>Legend</code> module.
+        </p>
+    </div>
+}
+
+
+
+@section Title{
+                    <title>ASP.NET MVC Maps OSM With SubLayer Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of OSM With SubLayer in ASP.NET MVC Maps Control</h1>
+                }

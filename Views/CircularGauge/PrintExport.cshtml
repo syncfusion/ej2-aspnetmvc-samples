@@ -1,0 +1,126 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@using Syncfusion.EJ2.Inputs
+
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().CircularGauge("container").Load("gaugeLoad").AllowPrint(true).AllowImageExport(true).AllowPdfExport(true).Background("transparent").Axes(axes => axes
+            .Radius("80%").Direction(GaugeDirection.AntiClockWise).StartAngle(0).EndAngle(0).LabelStyle(labelStyle => labelStyle.Position(Position.Outside).HiddenLabel(HiddenLabel.Last).Font(font => font.FontFamily("inherit")).Offset(2).UseRangeColor(true)).LineStyle(lineStyle => lineStyle.Width(0))
+            .MinorTicks(minorTick => minorTick.Width(1).Height(8).Position(Position.Outside).Interval(2).UseRangeColor(true)).MajorTicks(majorTick => majorTick.Width(1).Height(25).Position(Position.Outside).Interval(10).UseRangeColor(true)).Pointers(pointers => pointers.PointerWidth(0))
+            .Ranges(range =>
+             {
+                 range.Start(0).End(32).StartWidth("10").EndWidth("35").Radius("90%").Color("#F8A197").Add();
+                 range.Start(32).End(70).StartWidth("10").EndWidth("35").Radius("90%").Color("#C45072").Add();
+                 range.Start(70).End(100).StartWidth("10").EndWidth("35").Radius("90%").Color("#1B679F").Add();
+             }).Add()).Render()
+        </div>
+    </div>
+
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
+            <tr style="height: 50px">
+                <td style="width: 40%">
+                    <div style="width: 60%; font-size: 14px">
+                        Export Type
+                    </div>
+                </td>
+                <td style="width: 50%;">
+                    <div style='margin-top: -5px;height : 45px'>
+                        @Html.EJS().DropDownList("Export").Index(0).Width("100%").DataSource(ViewData["format"]).Value("JPEG").Change("valueChange").Render()
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 60px">
+                <td style="width: 40%">
+                    <div style="width: 60%; font-size: 14px">File Name</div>
+                </td>
+                <td style="width: 40%;">
+                    <div style='margin-top: 0px;height : 45px'>
+                        @Html.EJS().TextBox("fileName").Value("Circular Gauge").Width("100%").Render()
+                    </div>
+                </td>
+            </tr>
+            <tr id="button-control" style="height: 50px">
+                <td align="right" style="padding-right:5%">
+                    <div style="width: 100px">
+                        @Html.EJS().Button("export").Content("Export").CssClass("e-small").IsPrimary(true).Render()
+                    </div>
+                </td>
+                <td align="left" style="padding-left:5%">
+                    <div style="width: 100px">
+                        @Html.EJS().Button("print").Content("Print").CssClass("e-small").IsPrimary(true).Render()
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+        input.e-input.e-bigger, textarea.e-input.e-bigger, .e-bigger input.e-input, .e-bigger textarea.e-input, .e-input-group.e-bigger, .e-bigger .e-input-group, .e-input-group.e-control-wrapper.e-bigger, .e-bigger .e-input-group.e-control-wrapper {
+            height: 100%;
+            font-size: 14px;
+            align-items: center;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        function gaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+        }
+        var mode = "JPEG";
+        function valueChange() {
+            var exportType = document.getElementById('Export').ej2_instances[0];
+            mode = exportType.value;
+        }
+        document.getElementById('export').onclick = function () {
+            var gauge = document.getElementById('container').ej2_instances[0];
+            var fileName = (document.getElementById('fileName')).value;
+            gauge.export(mode, fileName);
+        };
+        document.getElementById('print').onclick = function () {
+            var gauge = document.getElementById('container').ej2_instances[0];
+            gauge.print();
+        };
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the print and export functionalities of the circular gauge.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Print & Export in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to print and export the rendered circular gauge. You can add print functionality by using the <b>print</b> method when
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGauge.html#Syncfusion_EJ2_CircularGauge_CircularGauge_AllowPrint" aria-label="AllowPrint"> AllowPrint<span class="sr-only">opens in a new tab</span></a> is set as <b>true</b>. Also, you can add export functionality by using the <b>export</b> method when
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGauge.html#Syncfusion_EJ2_CircularGauge_CircularGauge_AllowImageExport" aria-label="AllowImageExport">AllowImageExport<span class="sr-only">opens in a new tab</span></a> and
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGauge.html#Syncfusion_EJ2_CircularGauge_CircularGauge_AllowPdfExport" aria-label="AllowPdfExport">AllowPdfExport<span class="sr-only">opens in a new tab</span></a> are set as <b>true</b>. The circular gauge can be exported to JPEG, PNG, SVG, and PDF formats.
+        </p>
+        <p>
+            More information about print and export can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/print-and-export" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+
+
+@section Title{
+    <title>ASP.NET MVC Circular Gauge Print & Export Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Print & Export in ASP.NET MVC Circular Gauge Control</h1>
+}

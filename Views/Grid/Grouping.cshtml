@@ -1,0 +1,76 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Popups
+
+@{
+    ViewData["Title"] = "Grouping";
+}
+
+@section ControlsSection{
+  <div class="control-section">
+    @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
+{
+
+       col.Field("OrderID").HeaderText("Order ID").IsPrimaryKey(true).Width("140").ValidationRules(new { required = true, number = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 3 }).Add();
+       col.Field("Freight").HeaderText("Freight").Width("140").EditType("numericedit").ValidationRules(new { required = true }).Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("OrderDate").HeaderText("Order Date").AllowGrouping(false).EditType("datetimepickeredit").Width("150").Format(new { type = "datetime", format = "M/d/y hh:mm a" }).Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
+
+}).AllowPaging().PageSettings(page => page.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).AllowGrouping().Created("created").EditSettings(edit => { edit.AllowEditing(true); }).Toolbar(new List<string>() { "Edit", "Update", "Cancel" }).GroupSettings(group=>group.Columns(new string[] { "ShipCountry" })).Render()
+
+</div>
+    @Html.EJS().Dialog("alert_dialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Header("Grouping").Content("Grouping is disabled for this column").Visible(false).Width("300px").Target(".control-section").Buttons((List<DialogDialogButton>)ViewData["alertbutton"]).Render()
+
+    <script>
+        function created(args) {
+            var grid = this;
+            grid.on("columnDragStart", columnDragStart, this);
+        }
+        function columnDragStart(args) {
+             if(args.column.field === "OrderDate"){
+                 var dialogObj = document.getElementById('alert_dialog').ej2_instances[0];
+                 dialogObj.show();
+              }
+        }
+        function alertBtnClick() {
+            var dialogObj = document.getElementById('alert_dialog').ej2_instances[0];
+            dialogObj.hide();
+        }
+    </script>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default Grouping in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates grouping feature of the Grid component. In this sample, the Grid data is grouped against
+			ShipCountry column. To group any other column simply drag the column header and drop on the group drop area.</p>
+	</div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+		The Grid control has options to group the records based on the required column. When grouping is applied, grouped records
+        are organized into a hierarchical structure to facilitate easier expansion and collapse of records. To enable grouping,
+        set <code>AllowGrouping</code> property as true.
+		</p>
+		<p>Columns can be grouped by simply dragging the column header and drop on the group drop area.</p>
+		<p>In this demo, to group a specify column, drag and drop the column in the group drop area.</p>
+        <p>
+            In this demo, editing options can be enabled by setting <code>editSettings.allowEditing</code> as <code>true</code>.
+            You can start editing by double-clicking a row or the toolbar `Edit` button. 
+            Once in edit mode, you have the ability to modify the values of the selected row. 
+            When saving the record, the Grid will refresh the specific edited row without affecting the expanded group state.
+        </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Default Grouping Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Grouping in ASP.NET MVC Data Grid Control</h1>
+                }

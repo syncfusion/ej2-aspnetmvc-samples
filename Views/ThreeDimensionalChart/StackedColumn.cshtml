@@ -1,0 +1,62 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+
+        @Html.EJS().Chart3D("container").EnableRotation(true).WallColor("transparent").Height("400").Rotation(7).Tilt(10).Depth(100).Title("Steel Production by Countries, Grouped by Continent").PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).Interval(1)
+   ).Series(series =>
+   {
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewData["ChartData"]).XName("X").YName("Y").Name("Iran").StackingGroup("Asia").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewData["ChartData"]).XName("X").YName("Y1").Name("Indonesia").StackingGroup("Asia").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewData["ChartData"]).XName("X").YName("Y2").Name("Italy").StackingGroup("Europe").ColumnWidth(0.6).Add();
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.StackingColumn).DataSource(ViewData["ChartData"]).XName("X").YName("Y3").Name("France").StackingGroup("Europe").ColumnWidth(0.6).Add();
+   }).PrimaryYAxis(py => py.Interval(10)
+        ).Tooltip(tt => tt.Enable(true).Format("${point.x} : <b>${point.y} Mmt")
+        ).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").AxisLabelRender("axisLabelRender").Render()
+    </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/three-dimensional-chart/theme-color.js"></script>
+    <script>
+        var axisLabelRender = function (args) {
+            if (args.axis.name === 'primaryYAxis') {
+                args.text = args.text + ' Mmt';
+            }
+        }
+        var load = function (args) {
+            load3DChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? '100%' : '75%';
+            args.chart.primaryYAxis.maximum = ej.base.Browser.isDevice ? 50 : 60;
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the 3D Stacked Column in ASP.NET MVC 3D Chart control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This example of a 3D stacked column chart visualizes the steel production of countries, grouped by continent. The legend in the sample provides information about these series.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a 3D stacked column chart. The 3D stacked column chart stacks points in the series vertically. Additionally, the <code>StackingGroup</code> property can be used to group stacked collections based on category.
+    </p>
+    <p>
+        <code>Tooltips</code> are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC Chart 3D Stacked Column Chart Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of 3D Stacked Column in ASP.NET MVC 3D Chart Control</h1>
+}
+

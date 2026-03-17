@@ -1,0 +1,110 @@
+@using Syncfusion.EJ2;
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Legend Placement in ASP.NET MVC HeatMap Chart control. Explore here for more details."/>
+                }
+@section ControlsSection{
+    <div>
+        <div class="col-md-8 control-section">
+            <div class="content-wrapper">
+                <div id="container" style="width:92%">
+                    @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("Hourly Weather Forecast").TextStyle(ViewData["textStyle"])).XAxis(xAxis =>
+                    {
+                        xAxis.Labels((string[])ViewData["xLabels"]).TextStyle(ViewData["labelTextStyle"]);
+                    }).YAxis(yaxis =>
+                    {
+                        yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"]);
+                    }).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
+                    {
+                        palette.Value(0).Color("#6EB5D0").Add();
+                        palette.Value(10).Color("#7EDCA2").Add();
+                        palette.Value(19).Color("#DCD57E").Add();
+                        palette.Value(22).Color("#DCD57E").Add();
+                    })).CellSettings(cellSettings =>
+                    cellSettings.ShowLabel(false).Format("{value} C")).TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings =>
+                    legendSettings.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).Title(title => title.Text("Celsius").TextStyle(ViewData["labelTextStyle"])).
+                    LabelFormat("{value}\xB0 C").TextStyle(ViewData["labelTextStyle"])).TooltipRender("tooltipRender").Load("load").DataSource(ViewData["dataSource"]).Render()
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 property-section">
+            <table id="property" title="Properties" style="width: 100%; margin-left: -10px;">
+                <tbody>
+                    <tr style="height: 50px">
+                        <td style="width: 60%">
+                            <div>Legend Position:</div>
+                        </td>
+                        <td style="width: 40%;">
+                            <div>
+                                <select id="LegendPosition">
+                                    <option value="Left">Left</option>
+                                    <option value="Right">Right</option>
+                                    <option value="Top">Top</option>
+                                    <option value="Bottom">Bottom</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+
+        body.material-dark .property-panel-section {
+            color: #ffffff;
+        }
+    </style>
+    <script>
+        var tooltipRender = function (args) {
+            args.content = [args.xLabel + ' | ' + args.yLabel + ' : ' + args.value + '\xB0 C'];
+        };
+        var load = function (args) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            args.heatmap.legendSettings.labelFormat = "{value}\xB0 C";
+            @* custom code end *@
+        };
+        var legentListObj = new ej.dropdowns.DropDownList({
+            index: 3,
+            popupHeight: '200px',
+            change: function () { valueXChange(); }
+        });
+        legentListObj.appendTo('#LegendPosition');
+
+        function valueXChange() {
+            var heatMap = document.getElementById('container').ej2_instances[0];
+            heatMap.legendSettings.position = legentListObj.value.toString() === 'Right' ?
+                'Right' : legentListObj.value.toString() === 'Bottom' ?
+                    'Bottom' : legentListObj.value.toString() === 'Left' ?
+                        'Left' : legentListObj.value.toString() === 'Top' ? 'Top' : null;
+        }
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the hourly weather forecast for some major European cities. The data label is disabled in this sample, the tooltip displays the data point values.  In property panel, the options are available to change the display position of the Heatmap legend axes by means of dropdown.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to change the display position of the Heatmap legend. You can change the display position
+        of legend to left, right, bottom and top by using the
+        <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapLegendSettings.html#Syncfusion_EJ2_HeatMap_HeatMapLegendSettings_Position" target="_blank" aria-label="position">position <span class="sr-only">opens in a new tab</span></a> property in
+        <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapLegendSettings.html" target="_blank" aria-label="legendSettings">legendSettings<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+    <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
+    <br>
+}
+
+@section Title{
+                    <title>ASP.NET MVC HeatMap Chart Legend Placement Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Legend Placement in ASP.NET MVC HeatMap Chart Control</h1>
+                }

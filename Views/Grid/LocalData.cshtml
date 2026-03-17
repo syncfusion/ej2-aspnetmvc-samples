@@ -1,0 +1,47 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "LocalData";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("LocalData").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
+   {
+
+       col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+       col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 5 }).Add();
+       col.Field("OrderDate").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").Add();
+       col.Field("Freight").HeaderText("Freight").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("numericedit").ValidationRules(new { required = true, min = 0 }).Add();
+       col.Field("ShippedDate").HeaderText("Shipped Date").Width("140").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
+
+   }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+    </div>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+        <p>
+            This sample demonstrates the way of data binding Grid component with List object(list binding data source).
+        </p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the List Binding in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		<p>The Grid supports data binding. The <code>DataSource</code> property can be assigned either with the list of
+		   objects or instance of <code>DataManager</code>.</p>
+		<p>In this demo, the list of objects is assigned as the data source to the Grid.</p>		
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid List Binding Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of List Binding in ASP.NET MVC Data Grid Control</h1>
+                }

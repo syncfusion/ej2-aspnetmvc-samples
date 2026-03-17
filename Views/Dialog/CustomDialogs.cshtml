@@ -1,0 +1,139 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Popups
+
+@section ControlsSection{
+    <div id="target" class="col-lg-12 control-section">
+
+        @Html.EJS().Button("alertBtn").CssClass("dlgbtn").Content("Alert").Render()
+        @Html.EJS().Button("confirmBtn").CssClass("dlgbtn").Content("Confirm").Render()
+        @Html.EJS().Button("promptBtn").CssClass("dlgbtn").Content("Prompt").Render()
+
+        @Html.EJS().Dialog("alert_dialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("onLoadalert").Header("Low Battery").Close("dialogClose").Open("dialogOpen").ContentTemplate(@<div>10% of battery remaining</div>).CloseOnEscape(true).Visible(false).Width("250px").Target("#target").Buttons((List<DialogDialogButton>)ViewData["AlertButton"]).Render()
+        @Html.EJS().Dialog("confirm_dialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("onLoadconfirm").Header("Delete Multiple Items").Close("dialogClose").Open("dialogOpen").ContentTemplate(@<span>Are you sure you want to permanently delete these items ?</span>).Visible(false).ShowCloseIcon(true).CloseOnEscape(true).Width("400px").Target("#target").Buttons((List<DialogDialogButton>)ViewData["ConfirmButton"]).Render()
+        @Html.EJS().Dialog("prompt_dialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("onLoadprompt").Header("Join Wi-Fi network").Visible(false).Close("dialogClose").Open("dialogOpen").ContentTemplate(@<table class='Table'><tbody><tr><td>SSID:</td></tr><tr><td><b>AndroidAP</b></td></tr><tr><td>Password:</td></tr><tr><td><span class='e-input-group'><input type='password' id='password' name='Required' class='e-input'></span></td></tr></tbody></table>).ShowCloseIcon(true).CloseOnEscape(true).Width("330px").Target("#target").Buttons((List<DialogDialogButton>)ViewData["PromptButton"]).Render()
+
+    </div>
+}
+<style>
+    .e-btn-hide {
+        display: none;
+    }
+
+    .Table {
+        border-collapse: separate;
+        border-spacing: 10px;
+        width: 85%;
+        margin: 0px -5px 0px;
+    }
+
+    .dlgbtn {
+        margin-right: 10px;
+    }
+
+    #alertBtn, #confirmBtn, #promptBtn {
+        margin-right: 2%;
+    }
+
+    /* custom code start */
+    #target {
+        height: 100%;
+    }
+
+    @@media screen and (min-width: 150px) and (max-width: 480px) {
+        .control-section {
+            margin-bottom: 30px;
+        }
+
+        .control-wrapper {
+            margin-bottom: 0px;
+        }
+    }
+    /* custom code end */
+</style>
+
+@section PreScripts {
+    <script>
+        var alertObj, confirmObj, promptObj;
+        function onLoadalert() {
+            alertObj = this;
+            document.getElementById('alertBtn').onclick = function () {
+                alertObj.show();
+            };
+        }
+        function onLoadconfirm() {
+            confirmObj = this;
+            document.getElementById('confirmBtn').onclick = function () {
+                confirmObj.show();
+            };
+        }
+        function onLoadprompt() {
+            promptObj = this;
+            document.getElementById('promptBtn').onclick = function () {
+                promptObj.show();
+            };
+            document.getElementById('password').addEventListener('focus', function () {
+                this.parentElement.classList.add('e-input-focus');
+            });
+            document.getElementById('password').addEventListener('blur', function () {
+                this.parentElement.classList.remove('e-input-focus');
+            });
+        }
+        function alertBtnClick() {
+            alertObj.hide();
+        }
+        function confirmBtnClick() {
+            confirmObj.hide();
+        }
+        function promptBtnClick() {
+            promptObj.hide();
+        }
+        function dialogOpen() {
+            document.getElementById('alertBtn').style.display = 'none';
+            document.getElementById('confirmBtn').style.display = 'none';
+            document.getElementById('promptBtn').style.display = 'none';
+        }
+        function dialogClose() {
+            document.getElementById('alertBtn').style.display = 'inline-block';
+            document.getElementById('confirmBtn').style.display = 'inline-block';
+            document.getElementById('promptBtn').style.display = 'inline-block';
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This example demonstrates the different types of Dialog like alert, confirm, and prompt.
+            The buttons "Alert", "Confirm", and "Prompt" will be shown after closing the alert Dialog.
+            These buttons are used to open the corresponding Dialogs.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The Dialog control is used to display messages such as supplementary content like images and text,
+            and an interactive content like form components within a web page. The following are the two types of Dialogs:
+            <ul>
+                <li>Alert - Used to show errors, warnings, and information that needs user awareness.</li>
+                <li>Prompt - Used to get input from the user.</li>
+                <li>Confirmation - Used to get approval from user that appears before any critical action.</li>
+            </ul>
+        </p>
+
+    </div>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Custom Dialogs in ASP.NET MVC Dialog control. Explore here for more details."/>
+                }
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Dialog Custom Dialogs Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Custom Dialogs in ASP.NET MVC Dialog Control</h1>
+                }

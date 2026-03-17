@@ -1,0 +1,54 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper schedule-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EnableAdaptiveUI(true).CurrentView(View.Month).Views(view =>
+                       {
+                           view.Option(View.Day).Add();
+                           view.Option(View.Week).Add();
+                           view.Option(View.Month).Add();
+                       }).Group(group => group.Resources((string[])ViewData["Resources"])).Resources(res =>
+                      {
+                          res.DataSource(ViewData["Projects"]).Field("ProjectId").Title("Choose Project").Name("Projects").TextField("text").IdField("id").ColorField("color").Add();
+                          res.DataSource(ViewData["Categories"]).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").GroupIDField("groupId").ColorField("color").AllowMultiple(true).Add();
+                      }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Summary")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewData["datasource"])).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).Render()
+        </div>
+    </div>
+
+    <style>
+        @@media (min-width: 481px) {
+            .schedule-wrapper {
+                margin: 0 25%;
+            }
+        }
+    </style>
+}
+
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Adaptive Grouping in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This demo showcases how multiple resources are grouped in compact view and how events are portrayed in the scheduler view layouts.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, we have showcased the Schedule views and resource grouping in the compact view mode with the help of the <code>enableAdaptiveUI</code> property.
+            In Scheduler view, only one resource has been shown to enhance the view experience of resource events details clearly.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Scheduler Adaptive Grouping Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Adaptive Grouping in ASP.NET MVC Scheduler Control</h1>
+                }

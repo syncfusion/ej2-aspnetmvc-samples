@@ -1,0 +1,267 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
+@{
+    ViewData["Title"] = "KeyboardInteraction";
+}
+
+@*custom code end*@
+
+@section ControlsSection{
+     <div class="col-lg-9 control-section">
+        <div class="control-section">
+         @{
+                var dict = new Dictionary<string, object>();
+                dict.Add("number", true);
+                dict.Add("min", 0);
+            }
+        @Html.EJS().TreeGrid("KeyboardInteraction").EditSettings(edit =>
+            {
+                edit.AllowAdding(true);
+                edit.AllowDeleting(true);
+                edit.AllowEditing(true);
+                edit.Mode(Syncfusion.EJ2.TreeGrid.EditMode.Row);
+            }).SelectionSettings(sel=> {
+                    sel.Type(SelectionType.Multiple);
+            }).DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
+       {
+                col.Field("TaskId").HeaderText("Task ID").IsPrimaryKey(true).Width(90)
+                    .TextAlign(TextAlign.Right).Add();
+                col.Field("TaskName").HeaderText("Task Name").EditType("stringedit").Width(240)
+                    .ValidationRules(new { required = true }).Add();
+                col.Field("StartDate").HeaderText("Start Date").Width(105).Format("yMd")
+                    .EditType("datepickeredit")
+                    .ValidationRules(new { date = true })
+                    .TextAlign(TextAlign.Right).Add();
+                col.Field("Duration").HeaderText("Duration").Width(100).EditType("numericedit")
+                    .ValidationRules(dict)
+                    .Edit(new { @params = new { format = "n" } })
+                    .TextAlign(TextAlign.Right).Add();
+                col.Field("Progress").HeaderText("Progress").Width(100).EditType("numericedit")
+                .Edit(new { @params = new { format = "n" } }).TextAlign(TextAlign.Right).Add();
+
+
+       }).Height(900).PageSettings(p => p.PageCount(5)).ChildMapping("Children").TreeColumnIndex(1).Render()
+    </div>
+    </div>
+    <div class="col-lg-3 property-section">
+    <table id="property" title="Properties" style="width: 100%;height: 100%;">
+        <tr style="height: 50px">
+            <td style="width: 30%">
+                <b>Keys</b>
+            </td>
+            <td style="width: 70%;padding-right: 10px">
+                <b>Description</b>
+            </td>
+         </tr>
+         <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>F2</b>
+            </td>
+            <td style="width: 50%">
+                Row edit
+            </td>
+         </tr>
+         <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Enter</b>
+            </td>
+            <td style="width: 50%">
+                Save request
+            </td>
+         </tr>
+         <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Delete</b>
+            </td>
+            <td style="width: 50%">
+                Delete row
+            </td>
+         </tr>
+         <tr style="height:50px;">
+             <td style="width: 50%">
+                <b>Ctrl + Shift + UpArrow</b>
+            </td>
+            <td style="width: 50%">
+                Collapse Child Grid
+            </td>
+         </tr>
+         <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Ctrl + Shift + DownArrow</b>
+            </td>
+            <td style="width: 50%">
+                Expand Child Grid
+            </td>
+         </tr>
+         <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Ctrl + UpArrow</b>
+            </td>
+            <td style="width: 50%">
+                Collapse All
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Ctrl + DownArrow</b>
+            </td>
+            <td style="width: 50%">
+                Expand All
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Ctrl + Home</b>
+            </td>
+            <td style="width: 50%">
+                First row selection
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Ctrl + End</b>
+            </td>
+            <td style="width: 50%">
+                Last row selection
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Home</b>
+            </td>
+            <td style="width: 50%">
+                First cell selection
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>End</b>
+            </td>
+            <td style="width: 50%">
+                Last cell selection
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Up Arrow</b>
+            </td>
+            <td style="width: 50%">
+                Move row selection up
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Down Arrow</b>
+            </td>
+            <td style="width: 50%">
+                Move row selection down
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Right Arrow</b>
+            </td>
+            <td style="width: 50%">
+                Move Cell selection right
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Left Arrow</b>
+            </td>
+            <td style="width: 50%">
+                Move Cell selection left
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Shift + Down/Up</b>
+            </td>
+            <td style="width: 50%">
+                Multiple row Selection
+            </td>
+        </tr>
+        <tr style="height:50px;">
+            <td style="width: 50%">
+                <b>Alt + j</b>
+            </td>
+            <td style="width: 50%">
+                Focus Tree Grid element
+            </td>
+        </tr>
+    </table>
+</div>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Keyboard Interaction in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This demo showcases the keyboard shortcuts applicable on Tree Grid and also lists out in below description, how those applicable 
+        shortcuts interacts with Tree Grid actions.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+          <p>
+        All the Tree Grid actions can be controlled via keyboard keys. The applicable key 
+          combinations and its relative functionalities are listed below.
+    </p>
+    <p>
+        <table>
+            <tr><td><b>Keys</b></td><td><b>Description</b></td></tr>
+            <tr><td><code>Ctrl + Down Arrow</code></td><td>ExpandAll</td></tr>
+            <tr><td><code>Ctrl + Up Arrow</code></td><td>CollapseAll</td></tr>
+            <tr><td><code>F2</code></td><td>Edit</td></tr>
+            <tr><td><code>ESC</code></td><td>Cancel</td></tr>
+            <tr><td><code>Enter</code></td><td>Save</td></tr>
+            <tr><td><code>Insert</code></td><td>Add</td></tr>
+            <tr><td><code>Delete</code></td><td>Delete</td></tr>
+            <tr><td><code>Ctrl + Home</code></td><td>First row selection</td></tr>
+            <tr><td><code>Ctrl + End</code></td><td>Last row selection</td></tr>
+            <tr><td><code>Home</code></td><td>First cell selection</td></tr>
+            <tr><td><code>End</code></td><td>Last cell selection</td></tr>
+            <tr><td><code>Up Arrow</code></td><td>Move row selection up</td></tr>
+            <tr><td><code>Down Arrow</code></td><td>Move row selection down</td></tr>
+            <tr><td><code>Up Arrow</code></td><td>Move Cell selection up</td></tr>
+            <tr><td><code>Down Arrow</code></td><td>Move Cell selection down</td></tr>
+            <tr><td><code>Right Arrow</code></td><td>Move Cell selection right</td></tr>
+            <tr><td><code>Left Arrow</code></td><td>Move Cell selection left</td></tr>
+            <tr><td><code>Shift + Down/Up</code></td><td>Multiple row Selection</td></tr>
+            <tr><td style="width:70%"><code>Shift + Right/Left/Down/Up</code></td><td>Multiple Cell Selection</td></tr>
+            <tr><td><code>Ctrl + Shift + Up Arrow</code></td><td>Collapse selected parent row</td></tr>
+            <tr><td><code>Ctrl + Shift + Down Arrow</code></td><td>Expand selected parent row</td></tr>
+            <tr><td><code>Alt + j</code></td><td>Focus Tree Grid element</td></tr>
+            <tr><td><code>Tab</code></td><td>Go to next cell for editing</td></tr>
+            <tr><td><code>Shift + Tab</code></td><td>Go to previous cell for editing</td></tr>
+            <tr><td><code>PageDown</code></td><td>Go to Next page</td></tr>
+            <tr><td><code>PageUp</code></td><td>Go to Previous page</td></tr>
+            <tr><td><code>Ctrl + Alt + PageUp</code></td><td>Go to First page</td></tr>
+            <tr><td><code>Ctrl + Alt + PageDown</code></td><td>Go to Last page</td></tr>
+            <tr><td><code>Alt + PageUp</code></td><td>Go to Next pager</td></tr>
+            <tr><td><code>Alt + PageDown</code></td><td>Go to last pager</td></tr>
+        </table>
+    </p>
+
+    <p>
+        More information on the Tree Grid keyboard interaction can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/accessibility#keyboard-navigation" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+    </div>
+}
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Tree Grid Keyboard Interaction Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Keyboard Interaction in ASP.NET MVC Tree Grid Control</h1>
+                }

@@ -1,0 +1,85 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+@using Syncfusion.EJ2.DropDowns
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").CurrentView(View.WorkWeek).Views(ViewData["view"]).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).WorkDays((int[])ViewData["workDays"]).WorkHours(new ScheduleWorkHours { Start = "08:00" }).SelectedDate(new DateTime(DateTime.Today.Year, 2, 15)).Render()
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 100%;">
+                        <div>
+                            @Html.EJS().DropDownList("scheduleworkdays").Value("1,3,5").PopupWidth("auto").Placeholder("Work days").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).DataSource(ViewData["workDaysdata"]).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 100%;">
+                        <div>
+                            @Html.EJS().DropDownList("scheduledayofweek").Value("0").Placeholder("First day of week").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).PopupHeight("250px").DataSource(ViewData["dayOfWeek"]).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("scheduleWeek").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
+    <script type="text/javascript">
+        function scheduleWeek(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.firstDayOfWeek = parseInt(args.value, 10);
+            scheduleObj.dataBind();
+        }
+        function onChange(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.workDays = args.value.toString().split(',').map(Number);
+            scheduleObj.dataBind();
+        }
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            applyCategoryColor(args, scheduleObj.currentView);
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Work Days in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo showcases how to set customized working days as well as first day of a week on Schedule.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, the working days of a week can be set on Scheduler using the
+            <code>WorkDays</code> property which accepts the collection of day indexes (from 0 to 6) of a week. By default, it is set to
+            <code>[1, 2, 3, 4, 5]</code> and in this demo, it has been set to
+            <code>[1, 3, 5]</code> which means that
+            <code>Monday, Wednesday, Friday</code> is being set as working days of a week and is visually differentiated from non-working days. The working hours usually
+            applies only on these given working days.
+        </p>
+        <p>
+            The first day of the week can also be set on the Scheduler by using the
+            <code>FirstDayOfWeek</code> property, which will make the Scheduler to start with that day.
+        </p>
+        <p>
+            <strong>Note: </strong> Here, Sunday is always denoted as 0, Monday as 1 and so on.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Scheduler Work Days Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Work Days in ASP.NET MVC Scheduler Control</h1>
+                }

@@ -1,0 +1,66 @@
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.TreeMap;
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            <div id="container">
+                        @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("US Gold medal categories in Summer Olympics - 2016").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("Gold").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${Sport} : ${Gold}" }).LeafItemSettings(leaf =>
+                   leaf.ShowLabels(true).LabelPath("Sport").Fill("#993399").TemplatePosition(Syncfusion.EJ2.TreeMap.LabelPosition.Center)
+                   .Border(new TreeMapBorder { Color = "black", Width = 0.5 }).LabelFormat("${Sport} - ${Gold}").LabelTemplate((string)ViewData["imagedata"])
+                   ).Render()
+            </div>
+        </div>
+            <div style="margin-left: 80%">
+                Source:<a href="https//en.wikipedia.org/wiki/United_States_at_the_2016_Summer_Olympics" rel="nofollow" target="_blank" aria-label="wikipedia"> en.wikipedia.org</a>
+            </div>
+        </div>
+    <script>
+        function load(args) {
+            var theme = themeName ? themeName : 'Material';
+            args.treemap.theme = ((theme.charAt(0).toUpperCase() +
+                theme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5'));
+            args.treemap.dataSource = [
+                { Sport: "Swimming", Gold: 16, GameImage: 'Swimming.svg', ItemHeight: "180px", ItemWidth: '180px' },
+                { Sport: "Athletics", Gold: 13, GameImage: 'Athletics.svg', ItemHeight: "70px", ItemWidth: '70px' },
+                { Sport: "Gymnastics", Gold: 4, GameImage: 'Gymnastics.svg', ItemHeight: "80px", ItemWidth: '80px' },
+                { Sport: "Cycling", Gold: 2, GameImage: 'Cycling.svg', ItemHeight: "50px", ItemWidth: '50px' },
+                { Sport: "Wrestling", Gold: 2, GameImage: 'Wrestling.svg', ItemHeight: "60px", ItemWidth: '50px' },
+                { Sport: "Basketball", Gold: 2, GameImage: 'Basketball.svg', ItemHeight: "50px", ItemWidth: '50px' },
+                { Sport: "Boxing", Gold: 1, GameImage: 'Boxing.svg', ItemHeight: "40px", ItemWidth: '30px' },
+                { Sport: "Tennis", Gold: 1, GameImage: 'Tennis.svg', ItemHeight: "40px", ItemWidth: '40px' },
+                { Sport: "Judo", Gold: 1, GameImage: 'Judo.svg', ItemHeight: "40px", ItemWidth: '40px' },
+                { Sport: "Rowing", Gold: 1, GameImage: 'Rowing.svg', ItemHeight: "40px", ItemWidth: '40px' },
+                { Sport: "Shooting", Gold: 1, GameImage: 'Shooting.svg', ItemHeight: "40px", ItemWidth: '40px' },
+                { Sport: "Triathlon", Gold: 1, GameImage: 'Triathlon.svg', ItemHeight: "40px", ItemWidth: '40px' },
+                { Sport: "Water polo", Gold: 1, GameImage: 'Water polo.svg', ItemHeight: "40px", ItemWidth: '40px' }
+            ];
+        }
+    </script>
+    <style>
+        #container {
+            display: block;
+            width: 100%;
+        }
+    </style>
+}
+
+@section ActionDescription{
+    <p>
+        This sample depicts the gold medal categories of US in 2016 summer Olympics. Each categories are denoted with label template.
+    </p>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Customization in ASP.NET MVC TreeMap control. Explore here for more details." />
+}
+@section Description{
+    <p>
+        In this example, you can see how to place custom HTML templates in the treemap items. Also we have formatted the labels default text.
+    </p>
+
+}
+@section Title{
+    <title>ASP.NET MVC TreeMap Customization Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Customization in ASP.NET MVC TreeMap Control</h1>
+}

@@ -1,0 +1,48 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">     
+        @Html.EJS().AccumulationChart("container").EnableBorderOnMouseMove(false).Series(series =>
+        {
+            series.StartAngle(60).DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs => cs.Length("20px").Type(Syncfusion.EJ2.Charts.ConnectorType.Curve)).Font(ft => ft.FontWeight("600"))).XName("Country").YName("Medal").DataSource(ViewData["ChartPoints"]).Add();
+        }
+            ).Tooltip(tp => tp.Enable(true).EnableHighlight(true).Format("<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>").Header("")).EnableSmartLabels(true).LegendSettings(ls => ls.Visible(false)).Title("Summer Olympics 2024 - Gold Medals").SubTitle("Source: wikipedia.org").Load("load").Render()
+    </div>
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function(args){
+            loadAccumulationChartTheme(args);
+            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "65%";
+            args.accumulation.series[0].dataLabel.textWrap = ej.base.Browser.isDevice ? "Wrap" : "Normal";
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "7px" : "12px";
+            args.accumulation.series[0].dataLabel.connectorStyle.length = ej.base.Browser.isDevice ? '2px' : '20px';
+        }
+    </script>
+}
+         @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Smart Labels in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+         @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample shows the gold medal count scored by each country at the summer olympics 2024 games using smart labels on the chart.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how the labels can be arranged smartly without overlapping. You can use the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationChart.html#Syncfusion_EJ2_Charts_AccumulationChart_EnableSmartLabels" aria-label="EnableSmartLabels">EnableSmartLabels<span class="sr-only">opens in a new tab</span></a> property to enable or disable the support.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information on the smart labels can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/data-label#smart-labels" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Smart Labels Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }

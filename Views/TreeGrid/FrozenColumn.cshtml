@@ -1,0 +1,56 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+@{
+    ViewData["Title"] = "FrozenColumn";
+}
+
+<h2>FrozenColumn</h2>
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().TreeGrid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewData["datasource"]).AllowSelection(false).AllowResizing().Columns(col =>
+    {
+        col.Field("TaskId").HeaderText("Task ID").Width(100).TextAlign(TextAlign.Right).Add();
+        col.Field("TaskName").HeaderText("Task Name").Width(260).Add();
+        col.Field("StartDate").HeaderText("Start Date").Width(230).TextAlign(TextAlign.Right).Format("yMd").Add();
+        col.Field("EndDate").HeaderText("End Date").Width(230).TextAlign(TextAlign.Right).Format("yMd").Add();
+        col.Field("Duration").HeaderText("Duration").Width(210).TextAlign(TextAlign.Right).Add();
+        col.Field("Progress").HeaderText("Progress").Width(210).TextAlign(TextAlign.Right).Add();
+        col.Field("Priority").HeaderText("Priority").Width(230).Add();
+        col.Field("Approved").HeaderText("Approved").TextAlign(TextAlign.Left).Type("boolean").Width(230).Add();
+    }).Height(410).ChildMapping("Children").TreeColumnIndex(1).FrozenColumns(2).Render()
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the frozen columns feature of the Tree Grid. Scroll the movable content horizontally to view the frozen columns with the content.   
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The freezing feature enables the user to freeze certain columns to scroll remaining movable content. This can be achieved by setting <b>FrozenColumns</b> property.
+        </p>
+        <p>
+            In this demo sample, the first two columns is set to frozen by using the
+            <code>
+                <a target="_blank" class="code" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/columns-mvc/#frozencolumns" aria-label="FrozenColumns">
+                    FrozenColumns
+                <span class="sr-only">opens in a new tab</span></a>
+            </code>  properties.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Tree Grid Frozen Column Example - Syncfusion Demos </title> 
+                }
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Frozen Column in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Frozen Column in ASP.NET MVC Tree Grid Control</h1>
+                }

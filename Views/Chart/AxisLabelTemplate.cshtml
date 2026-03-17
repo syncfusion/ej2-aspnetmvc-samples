@@ -1,0 +1,133 @@
+@using Syncfusion.EJ2
+
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @(Html.EJS().Chart("container")
+            .Title("Olympic medal standings 2024")
+            .SubTitle("Source: www.olympics.com")
+            .TitleStyle(ts => ts.TextOverflow(Syncfusion.EJ2.Charts.TextOverflow.Wrap))
+            .SubTitleStyle(ts => ts.TextOverflow(Syncfusion.EJ2.Charts.TextOverflow.Wrap))
+            .IsTransposed(true).ChartArea(ca => ca.Border(br => br.Width(0)))
+            .LegendSettings(ls => ls.Visible(true))
+            .Tooltip(t => t.Enable(true))
+            .Annotations(an =>
+            {
+                an.X("Netherlands").Y("110").CoordinateUnits(Syncfusion.EJ2.Charts.Units.Point).Content("<img style='margin-top:15px;height:150px;width:220px;opacity:0.5' " + "src='" + Url.Content("~/Content/chart/medals.png") + "' alt='Medals' />").Add();
+            })
+            .PrimaryXAxis(x => x
+                .ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+                .MajorGridLines(mg => mg.Width(0))
+                .LineStyle(ls => ls.Width(0))
+                .MajorTickLines(mt => mt.Width(0))
+                .IsInversed(true)
+            )
+            .PrimaryYAxis(y => y
+                .Visible(false).Maximum(130)
+            )
+            .Series(series =>
+            {
+                series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn)
+                        .Name("Gold")
+                        .Fill("#FFD700")
+                        .XName("Country")
+                        .YName("Count")
+                        .LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
+                        .Marker(mr => mr.DataLabel(dl => dl.Visible(true)
+                                                            .Position(Syncfusion.EJ2.Charts.LabelPosition.Middle)))
+                        .DataSource(ViewData["olympicsGoldData"])
+                        .Add();
+
+                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn)
+                        .Name("Silver")
+                        .Fill("#C0C0C0")
+                        .XName("Country")
+                        .YName("Count")
+                        .LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
+                        .Marker(mr => mr.DataLabel(dl => dl.Visible(true)
+                                                            .Position(Syncfusion.EJ2.Charts.LabelPosition.Middle)))
+                        .DataSource(ViewData["olympicsSilverData"])
+                        .Add();
+
+                    series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingColumn)
+                        .Name("Bronze")
+                        .Fill("#CD7F32")
+                        .XName("Country")
+                        .YName("Count")
+                        .LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
+                        .Marker(mr => mr.DataLabel(dl => dl.Visible(true)
+                                                            .Position(Syncfusion.EJ2.Charts.LabelPosition.Middle)))
+                        .DataSource(ViewData["olympicsBronzeData"])
+                        .Add();
+            }).Load("load").Loaded("loaded")
+            .ChartArea(a => a.Border(b => b.Width(0)))
+            .Render()
+        )
+    </div>
+
+    <style>
+        #control-container { padding: 0 !important; }
+        .light-bg {
+            color: #000000;
+        }
+        .dark-bg {
+            color: #ffffff;
+        }
+    </style>
+    <script id="AxisLabelTemplate" type="text/x-template">
+    <div id="labelTemplate" class="light-bg" style="display:flex;align-items:center;gap:8px;border-radius:3px;width:130px;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0;">
+        <span style="font-size:12px;width:18px;text-align:right;display:inline-block;">${(value + 1)}.</span>
+        <span style="font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${label}</span>
+        </div>
+        <img src="@Url.Content("~/Content/chart/labelTemplate/${label}.png")" alt="${label} flag" width="22" height="22" style="border-radius:50%" />
+    </div>
+    </script>
+    <script src="~/Scripts/chart/theme-color.js"></script>
+
+    <script>
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.annotations[0].y = ej.base.Browser.isDevice ? "90" : "110";
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.primaryXAxis.labelTemplate = "#AxisLabelTemplate";
+        }
+        var loaded = function (args) {
+            var isDark = args.chart.theme.includes('Dark') || args.chart.theme.includes('HighContrast');
+            var labels = document.querySelectorAll('#labelTemplate');
+            for (var i = 0; i < labels.length; i++) {
+                var el = labels[i];
+                el.classList.remove('dark-bg');
+                el.classList.remove('light-bg');
+                el.classList.add(isDark ? 'dark-bg' : 'light-bg');
+            }
+            
+        };
+    </script>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates Axis Label Template in ASP.NET MVC Chart control. Explore here for more details." />
+}
+@section ActionDescription{
+    <p>
+        This sample shows the 2024 Olympic medal standings for the top 10 countries using a stacked Column chart. The x-axis uses label templates to display each country’s rank and name (with flag), enabling quick comparison of Gold, Silver, and Bronze totals.
+    </p>
+}
+@section Description{
+    <p>
+        Use the axis label template feature to customize axis labels via the <code>labelTemplate</code> property on the chart axis. Templates can include HTML markup, conditional styling, and embedded icons or images (for example, country flags). This sample binds rank and country to the template while the series plot medal counts.
+    </p>
+    <p>
+        More information on axis labels can be found in the
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/axis-labels" aria-label="Navigate to the documentation for Axis labels">
+            documentation section<span class="sr-only">opens in a new tab</span>
+        </a>.
+    </p>
+    
+}
+@section Title{
+    <title>ASP.NET MVC Chart Axis Label Template Example - Syncfusion Demos</title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Charts</h1>
+}

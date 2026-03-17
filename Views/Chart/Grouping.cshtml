@@ -1,0 +1,123 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+   <div>
+    <div class="col-lg-8 control-section sb-property-border">
+        
+            @(Html.EJS().AccumulationChart("container")
+                    .Series(sr =>
+                    {
+                        sr.XName("Country")
+                               .YName("Medal")
+                               .Name("Summer Olympics")
+                               .Explode(true)
+                               .DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).ConnectorStyle(cs=>cs.Type(Syncfusion.EJ2.Charts.ConnectorType.Curve).Length("20px")).Font(ft => ft.FontWeight("600")))
+                               .StartAngle(-20)
+                               .EndAngle(340).Border(br => br.Width(1).Color("#ffffff"))
+                               .GroupTo("9")
+                               .GroupMode(Syncfusion.EJ2.Charts.GroupModes.Point)
+                               .InnerRadius("0%")
+                               .DataSource(ViewData["ChartPoints"])
+                               .Add();
+                    })
+                    .EnableSmartLabels(true)
+                     .Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br> Gold Medals: <b>${point.y}</b>").Header("").EnableHighlight(true))
+                     .LegendSettings(leg => leg.Visible(false))
+                     .Load("load").EnableBorderOnMouseMove(false)
+                     .Title("Summer Olympic 2024 - Gold Medals").SubTitle("Source: wikipedia.org").Render()
+            )
+   </div>
+        
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr>
+                    <td style="width: 50%">
+                        <div>
+                            GroupModes:
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div>
+                            @Html.EJS().DropDownList("groupmode").Index(0).DataSource(ViewData["data"]).Value("Point").Change("changedata").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 30%">
+                        <div>
+                            Group To
+                        </div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div data-role="rangeslider">
+                            <input type="range" name="range-min" id="clubpoint" value="9" min="0" max="27" style="width:90%">
+                        </div>
+                    </td>
+                    <td style="width: 30%">
+                        <div>
+                            <p id="clubvalue" style="font-weight: normal; padding-top: 15px">9</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>      
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function(args) {
+            loadAccumulationChartTheme(args);
+            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "40%" : "55%";
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "8px" : "13px";
+            args.accumulation.series[0].dataLabel.connectorStyle.length = ej.base.Browser.isDevice ? '10px' : '20px';                    
+        }
+        function clubchange(value) {
+            var pie = document.getElementById("container").ej2_instances[0];
+            pie.series[0].groupTo = value.toString();
+            pie.series[0].animation.enable = false;
+            document.getElementById('clubvalue').innerHTML = value.toString();
+            pie.removeSvg();
+            pie.refreshSeries();
+            pie.refreshChart();
+        }
+        function changedata(args) {
+            var currentValue = args.value === 'Point' ? 9 : 8;
+            document.getElementById('clubpoint').value = currentValue.toString();
+            var pie = document.getElementById('container').ej2_instances[0];
+            pie.series[0].groupMode = args.value;
+            clubchange(currentValue);
+        }     
+        document.getElementById('clubpoint').onchange = function (e) {
+        clubchange(+document.getElementById('clubpoint').value);
+    };
+    </script>
+}
+ @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Grouping in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample shows the gold medal count scored by each country at the summer olympic 2024 games, along with the pie series grouping functionality.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to group points based on count and values. The slice can be grouped based on the number of points by specifying the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_GroupMode" aria-label="GroupMode">GroupMode<span class="sr-only">opens in a new tab</span></a> to <b>Point</b>. For example, if the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_GroupTo" aria-label="GroupTo">GroupTo<span class="sr-only">opens in a new tab</span></a>
+        property is set to 10, the chart will display the first 10 points and the remaining entries from the collection will be grouped as a single point. The slice can also be grouped based on values by specifying the <code>GroupMode</code> to <b>Value</b>. For example, if the <code>GroupTo</code> is set to 10, the first 10 points with a lower value will be grouped together and shown as a single point while the others as a slice.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p>
+        More information on the grouping can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/grouping" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Grouping Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }

@@ -1,0 +1,133 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "Events";
+}
+
+@section ControlsSection{
+
+<div class="col-lg-8 control-section">
+    <div class="control-wrapper">
+        <div class="control-section">
+
+            @Html.EJS().Grid("Events").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowGrouping().AllowReordering().Columns(col =>
+{
+
+    col.Field("CategoryName").HeaderText("Category Name").Width("170").Add();
+    col.Field("ProductName").HeaderText("Product Name").Width("170").Add();
+    col.Field("QuantityPerUnit").HeaderText("Quantity Per Unit").AllowGrouping(false).Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+
+}).AllowPaging().PageSettings(page => page.PageCount(2)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Load("load").Created("created").ActionBegin("actionBegin").ActionComplete("actionComplete").DataBound("dataBound").RowSelecting("rowSelecting").RowSelected("rowSelected").ColumnDragStart("columnDragStart").ColumnDrag("columnDrag").ColumnDrop("columnDrop").Render()
+        </div>
+    </div>
+</div>
+
+
+
+
+
+  <div class="col-lg-4 property-section">
+    <style>
+        #EventLog b {
+            color: #388e3c;
+        }
+
+        hr {
+            margin: 1px 10px 1px 0px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+
+
+    <table id="property" title="Event Trace">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="eventarea" style="height: 200px;overflow: auto">
+                        <span class="EventLog" id="EventLog" style="word-break: normal;"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="evtbtn">
+                        @Html.EJS().Button("clear").Content("Clear").CssClass("e-flat").Render()
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+  <script>
+          function columnDragStart() {
+              appendElement('Grid <b>columnDragStart</b> event called<hr>');
+          }
+          function columnDrop() {
+              appendElement('Grid <b>columnDrop</b> event called<hr>');
+          }
+          function columnDrag() {
+              appendElement('Grid <b>columnDrag</b> event called<hr>');
+          }
+          function load() {
+              appendElement('Grid <b>load</b> event called<hr>');
+          }
+          function created() {
+              appendElement('Grid <b>create</b> event called<hr>');
+          }
+          function actionBegin() {
+              appendElement('Grid <b>actionBegin</b> event called<hr>');
+          }
+          function actionComplete() {
+              appendElement('Grid <b>actionComplete</b> event called<hr>');
+          }
+          function dataBound() {
+              appendElement('Grid <b>dataBound</b> event called<hr>');
+          }
+          function rowSelecting() {
+              appendElement('Grid <b>rowSelecting</b> event called<hr>');
+          }
+          function rowSelected() {
+              appendElement('Grid <b>rowSelected</b> event called<hr>');
+          }
+          function appendElement(html) {
+              var span = document.createElement('span');
+              span.innerHTML = html;
+              var log = document.getElementById('EventLog');
+              log.insertBefore(span, log.firstChild);
+          }
+
+          document.getElementById("clear").addEventListener("click", function () {
+
+              document.getElementById('EventLog').innerHTML = '';
+          })
+
+</script>
+
+}
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates all the events that have been triggered on all the Grid operations with the help of Event Trace
+			panel.
+		</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Events in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		<p>The Grid triggers events based on its actions. The events can be used as an extension point to perform custom operations.
+		</p>
+		<p>In this demo, perform Grid actions like Paging, Sorting, Reordering, Grouping etc. and see the <strong>Event Trace</strong> panel for the events emitted.
+		</p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Events Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Events in ASP.NET MVC Data Grid Control</h1>
+                }

@@ -1,0 +1,93 @@
+@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(ViewData["view"]).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 50%">
+                        <div>Export as iCalendar</div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div width='300px'>
+                            @Html.EJS().Button("ics-export").Content("Export").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 50%">
+                        <div>Import iCalendar file</div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div width='300px' class='upload_wrapper'>
+                            @Html.EJS().Uploader("ics-import").AllowedExtensions(".ics").CssClass("calendar-import").Multiple(false).ShowFileList(false).Buttons(new Syncfusion.EJ2.Inputs.UploaderButtonsProps { Browse = "Choose file" }).Selected("onSelected").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+        .calendar-import.e-upload {
+            border: 0;
+            padding-left: 0 !important;
+        }
+
+            .calendar-import.e-upload .e-file-select-wrap {
+                padding: 0
+            }
+
+                .calendar-import.e-upload .e-file-select-wrap .e-file-drop {
+                    display: none;
+                }
+    </style>
+    <script type="text/javascript">
+        document.getElementById('ics-export').onclick = function () {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.exportToICalendar();
+        }
+        function onSelected(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.importICalendar(args.event.target.files[0]);
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Export and Import ICS in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This example showcases how to export the Scheduler events to a calendar (.ics) file, as well as how to import
+            events from an .ics file (downloaded from any of the calendars like Google or Outlook) into our Scheduler.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, the Scheduler events can be exported to a calendar (.ics) file by using the
+            <code>exportToICalendar</code> public method. By default,
+            the calendar is exported with a file name <code>Calendar.ics</code>.
+            To change this file name on export, pass the custom string value as <code>fileName</code> to get the file
+            downloaded with this provided name.
+            The events from external calendars can also be imported into Scheduler by using the
+            <code>importICalendar</code> method. This method accepts the blob object of an .ics file to be imported as a
+            mandatory argument.
+        </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Scheduler Export and Import ICS Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Export and Import ICS in ASP.NET MVC Scheduler Control</h1>
+                }

@@ -1,0 +1,151 @@
+@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.PivotView
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Remote Data in ASP.NET MVC Pivot Table control. Explore here for more details."/>
+                }
+@section ControlsSection{
+    <div class="control-section">
+        <div id="dropdown-control" style="margin-bottom:5px;">
+            <table style="max-width: 330px;">
+                <tbody>
+                    <tr style="height: 50px">
+                        <td>
+                            <div><b>Content Type:</b>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="padding-left: 5px;">
+                                @Html.EJS().DropDownList("contenttype").Index(0).DataSource(ViewData["contentTypeDropDown"]).Value("JSON").Change("contentType").Render()
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="content-wrapper">
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("300").DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource(dataManger =>
+            {
+                dataManger.Url("https://ej2services.syncfusion.com/production/web-services/api/order").CrossDomain(true).Adaptor("WebApiAdaptor");
+            }).ExpandAll(true).FormatSettings(formatsettings =>
+            {
+                formatsettings.Name("UnitPrice").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
+            }).Rows(rows =>
+            {
+                rows.Name("ShipCountry").Caption("Ship Country").Add();
+                rows.Name("ShipCity").Caption("Ship City").Add();
+            }).Columns(columns =>
+            {
+                columns.Name("ProductName").Caption("Product Name").Add();
+            }).Values(values =>
+            {
+                values.Name("Quantity").Add();
+                values.Name("UnitPrice").Caption("Unit Price").Add();
+            })).GridSettings(new PivotViewGridSettings { ColumnWidth = 120 }).DataBound("dataBound").Render()
+        </div>
+    </div>
+    <script>
+        var isInitialRender = true;
+        var remoteData = new ej.data.DataManager({
+            url: 'https://ej2services.syncfusion.com/production/web-services/api/order',
+            adaptor: new ej.data.WebApiAdaptor,
+            crossDomain: true
+        });
+
+        var csvReport = {
+            url: 'https://ej2services.syncfusion.com/aspnet/development/api/product',
+            type: 'CSV',
+            enableSorting: true,
+            expandAll: false,
+            rows: [
+                { name: 'Region' },
+                { name: 'Country' }
+            ],
+            values: [
+                { name: 'Total Cost' },
+                { name: 'Total Revenue' },
+                { name: 'Total Profit' }
+            ],
+            columns: [
+                { name: 'Item Type' },
+                { name: 'Sales Channel' }
+            ],
+            formatSettings: [{ name: 'Total Cost', format: 'C0' }, { name: 'Total Revenue', format: 'C0' }, { name: 'Total Profit', format: 'C0' }],
+            drilledMembers: [{ name: 'Item Type', items: ['Baby Food'] }],
+            filters: []
+        };
+
+        var jsonReport = {
+            url: '',
+            dataSource: remoteData,
+            type: 'JSON',
+            expandAll: true,
+            formatSettings: [{ name: 'UnitPrice', format: 'C0' }],
+            columns: [{ name: 'ProductName', caption: 'Product Name' }],
+            filters: [],
+            rows: [{ name: 'ShipCountry', caption: 'Ship Country' }, { name: 'ShipCity', caption: 'Ship City' }],
+            values: [{ name: 'Quantity' }, { name: 'UnitPrice', caption: 'Unit Price' }]
+        };
+
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
+        function contentType() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            var contentDropDown = document.getElementById("contenttype").ej2_instances[0];
+            if (contentDropDown.value === 'JSON') {
+                pivotObj.dataSourceSettings = jsonReport;
+            } else if (contentDropDown.value === 'CSV') {
+                pivotObj.dataSourceSettings = csvReport;
+            }
+        }
+    </script>
+    <style>
+        .control-section {
+            padding-top: 5px;
+        }
+    </style>
+}
+
+@section PreScripts {
+    <script>
+        ej.base.enableRipple(false);
+    </script>
+}
+
+@section ActionDescription{
+   <div id="action-description">
+       <p>This sample demonstrates basic rendering of the pivot table bound to JSON or CSV data pulled from a remote server.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>The pivot table supports JSON and CSV data source. The
+            <code>dataSourceSettings->dataSource</code> property can be assigned with the result of DataManager to bind remote data.</p>
+        The
+        <code>DataManager</code>, which will act as an interface between the service endpoint and the pivot table, will require the below minimal
+        information to interact with service endpoint properly.
+        <ul>
+            <li>
+                <code>DataManager->url</code> - Defines the service endpoint to fetch data.</li>
+            <li>
+                <code>DataManager->adaptor</code> - Defines the adaptor option. Here,
+                <code>WebApiAdaptor</code> is used for remote binding.</li>
+        </ul>
+        In this demo, with respect to JSON remote data, is bound by assigning service data as an instance of
+        <code>DataManager</code> to the
+        <code>dataSourceSettings->dataSource</code> property. But for CSV, the service URL is directly set to <code>url</code> for remote data consumption.
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Pivot Table Remote Data Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Remote Data in ASP.NET MVC Pivot Table Control</h1>
+                }

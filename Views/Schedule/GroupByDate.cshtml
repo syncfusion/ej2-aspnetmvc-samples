@@ -1,0 +1,61 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div>
+            @Html.EJS().CheckBox("hideNonWrokingDays").Change("onChange").Checked(true).Label("Hide non working days").Render()
+        </div>                 
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Group(group => group.ByDate(true).HideNonWorkingDays(true).Resources((string[])ViewData["Resources"])).Resources(res => { res.DataSource(ViewData["Owners"]).Field("TaskId").Title("Assignee").Name("Owners").TextField("text").IdField("id").ColorField("color").WorkDaysField("workDays").AllowMultiple(true).Add(); }).Views(view => { view.Option(View.Day).Add(); view.Option(View.Week).Add(); view.Option(View.Month).Add(); view.Option(View.Agenda).Add(); }).EventSettings(e => e.Fields(f => f.Subject(sub => sub.Name("Subject").Title("Task")).Location(loc => loc.Name("Location").Title("Project Name")).Description(des => des.Name("Description").Title("Comments"))).DataSource(ViewData["datasource"])).SelectedDate(new DateTime(DateTime.Today.Year, 4, 6)).Render()
+        </div>
+    </div>
+    <script type="text/javascript">
+        function onChange(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            if (args.checked) {
+                scheduleObj.group.hideNonWorkingDays  = true;
+            }
+            else {
+                scheduleObj.group.hideNonWorkingDays  = false;
+            }
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Date-wise Grouping in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo illustrates the daily tasks of two employees grouped by date-wise.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, there are 2 resources defined namely
+            <strong>Alice</strong> and
+            <strong>Smith</strong> under the resource
+            <code>DataSource</code>. The Scheduler can be switched to group by date, by setting
+            <code>true</code> to the option
+            <code>ByDate</code> within the
+            <code>Group</code> property.
+        </p>
+        <p>
+            The different work days for the each resources are provided by using the
+            <code>workDaysField</code> property and the Scheduler
+            will be displayed the provided dates alone when
+            <code>hideNonWorkingDays</code> property set as <code>true</code>.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Scheduler Date-wise Grouping Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Date-wise Grouping in ASP.NET MVC Scheduler Control</h1>
+                }

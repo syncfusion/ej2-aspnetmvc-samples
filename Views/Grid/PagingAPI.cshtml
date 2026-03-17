@@ -1,0 +1,131 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+   <div class="col-lg-8 control-section">
+    <div class="control-wrapper">
+        <div class="control-section">
+            @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
+           {
+
+               col.Field("ProductID").HeaderText("Product ID").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+               col.Field("ProductName").HeaderText("Product Name").Width("190").ValidationRules(new { required = true, minLength = 5 }).Add();
+               col.Field("UnitPrice").HeaderText("Unit Price").Format("C2").Width("135").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("numericedit").Add();
+               col.Field("UnitsInStock").HeaderText("Units In Stock").Width("160").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+
+           }).AllowPaging().Locale("en-US").PageSettings(page => page.PageCount(2)).AllowSorting().ActionComplete("actionComplete").AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 property-section">
+
+
+    <table id="property" title="Properties" style="width: 100%;">
+
+
+        
+        <tr>
+            <td class="left-side">Page Size</td>
+            <td style="padding-bottom:10px">
+                @Html.EJS().NumericTextBox("pageSize").Change("pageSizeChange").Min(1).Value(12).Max(77).Render()
+            </td>
+        </tr>
+
+        <tr>
+            <td class="left-side">Page Count</td>
+            <td style="padding-bottom:10px">
+                @Html.EJS().NumericTextBox("pageCount").Change("pageCountChange").Min(1).Value(2).Max(7).Render()
+            </td>
+        </tr>
+        <tr>
+            <td class="left-side">Current Page</td>
+            <td>
+                @Html.EJS().NumericTextBox("currentPage").Change("currentPageChange").Min(1).Value(1).Max(7).Render()
+            </td>
+        </tr>
+
+
+    </table>
+</div>
+    <script>
+
+       ej.base.L10n.load({
+            'en-US': {
+                'pager': {
+                    'currentPageInfo': '',
+                    'totalItemsInfo': '{1} to {2} of {0}',
+                }
+            }
+        });
+        
+       function pageSizeChange(args) {
+           var grid = document.getElementById("Grid").ej2_instances[0];
+           this.value = parseInt(this.value, 10) > grid.pageSettings.totalRecordsCount ?
+               grid.pageSettings.totalRecordsCount :this.value;
+           grid.pageSettings.pageSize = parseInt(this.value, 10);
+           document.getElementById("currentPage").ej2_instances[0].max = Math.ceil(grid.pageSettings.totalRecordsCount / grid.pageSettings.pageSize);
+       }
+       function pageCountChange(args) {
+           var grid = document.getElementById("Grid").ej2_instances[0];
+           this.value = parseInt(this.value, 10) > 7 ? '7' : this.value;
+           grid.pageSettings.pageCount = parseInt(this.value, 10);
+
+       }
+       function currentPageChange(args) {
+           var grid = document.getElementById("Grid").ej2_instances[0];
+           this.value = parseInt(this.value, 10) > parseInt(this.max, 10) ? this.max : this.value;
+           var pageNumber = parseInt(this.value, 10);
+           grid.goToPage(pageNumber);
+
+       }
+       function actionComplete(args) {
+
+           if (args.requestType === 'paging') {
+               document.getElementById("currentPage").ej2_instances[0].value = args.currentPage;
+           }
+       }
+</script>
+    <style>
+        .e-pager .e-pagecountmsg {
+            display: inline-block;
+        }
+    </style>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>
+			This sample demonstrates the usage of paging API in Grid. In this sample, use the properties panel to change the page size,
+			page count and current page of the Grid.
+		</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Paging API in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		 <p>Paging allows you to display the contents of the Grid in page segments. The number of items on a page is determined by
+			the <code>PageSettings->PageSize</code> property. If no value is specified for the <code>
+			PageSettings->PageSize</code> property, the Grid will display 12 items on a page. By default, paging is disabled. To enable paging,
+			set <code>AllowPaging</code> property to true.</p>
+		<p>In this demo,</p>
+		<ul>
+			<li>Click the <strong>Allow Paging</strong> check box to enable/disable paging feature.</li>
+			<li>Change the value of <strong>Page Size</strong> textbox to change <code>
+			PageSettings->PageSize.</code></li>
+			<li>Change the value of <strong>Page Count</strong> textbox to change <code>
+			PageSettings->PageCount.</code></li>
+			<li>Change the value of <strong>Current Page</strong> textbox to change<code>
+			PageSettings->CurrentPage.</code></li>
+			<li>Changed default pager details information using the <code>totalItemsInfo</code> locale property.</li>
+		</ul>	
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Data Grid Paging API Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Paging API in ASP.NET MVC Data Grid Control</h1>
+                }

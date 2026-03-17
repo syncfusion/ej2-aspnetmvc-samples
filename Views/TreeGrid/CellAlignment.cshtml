@@ -1,0 +1,111 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
+@{
+    ViewData["Title"] = "CellAlignment";
+}
+
+@*custom code end*@
+
+@section ControlsSection{
+<div class="col-lg-8 control-section">
+    <div class="control-section">
+        @Html.EJS().TreeGrid("CellAlignment").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
+       {
+           col.Field("TaskId").HeaderText("Task ID").Width(120).TextAlign(TextAlign.Right).Add();
+           col.Field("TaskName").HeaderText("Task Name").Width(200).Add();
+           col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(100).Add();
+           col.Field("Duration").HeaderText("Duration").Width(90).TextAlign(TextAlign.Right).Add();
+           col.Field("Progress").HeaderText("Progress").Width(110).TextAlign(TextAlign.Right).Add();
+
+       }).AllowPaging().ChildMapping("Children").Height(350).TreeColumnIndex(1).Render()
+    </div>
+</div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tr style="height: 50px">
+                <td style="width: 50%">
+                    <div>Column</div>
+                </td>
+                <td style="width: 50%;padding-right: 10px">
+                    @Html.EJS().DropDownList("Column").DataSource((IEnumerable<object>)ViewData["dd"]).Value("TaskId").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Change("onChange").Render()
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td style="width: 50%">
+                    <div>Cell Alignment</div>
+                </td>
+                <td style="width: 50%;padding-right: 10px">
+                    @Html.EJS().DropDownList("Alignment").DataSource((IEnumerable<object>)ViewData["index"]).Value("Right").Fields(new Syncfusion.EJ2.DropDowns.DropDownListFieldSettings { Text = "name", Value = "id" }).Change("change").Render()
+                </td>
+            </tr>
+        </table>
+    </div>
+        <script>
+        function onChange(args) {
+            var treegrid = document.getElementById("CellAlignment").ej2_instances[0];
+            var dropDownColumn = document.getElementById("Column").ej2_instances[0];
+            var dropDownAlign = document.getElementById("Alignment").ej2_instances[0];
+            var columnName= args.value;
+            var alignment = treegrid.getColumnByField(columnName).textAlign;
+            dropDownAlign.value = alignment;
+           
+        }
+        function change(args) {
+            var treegrid = document.getElementById("CellAlignment").ej2_instances[0];
+            var dropDownColumn = document.getElementById("Column").ej2_instances[0];
+            var dropDownAlign = document.getElementById("Alignment").ej2_instances[0];
+            var alignment = args.value;
+            let columnName = dropDownColumn.value;
+            treegrid.getColumnByField(columnName).textAlign = alignment;
+            treegrid.refreshColumns();
+           
+        }
+    </script>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Cell Alignment in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the text alignment functionalities of the Tree Grid columns. .</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+    <p>
+            Align both content and header text of particular column using the <code>TextAlign
+            </code> property of columns. There are four possible ways to align content and header text of column, they are.
+        <br>
+    </p>
+    <ul>
+            <li><code>Right</code></li>
+            <li><code>Left</code></li>
+            <li><code>Center</code></li>
+            <li><code>Justify</code></li>
+    </ul>
+    
+    <br/>
+
+    <p>
+            In this sample, we have initially set the <code>TextAlign</code> property as “Right” for Duration, Start Date and End Date columns
+            and also we have an option to align the values of content and header text dynamically by select the column and text align value from property panel.        
+    </p>
+    </div>
+}
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Tree Grid Cell Alignment Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Cell Alignment in ASP.NET MVC Tree Grid Control</h1>
+                }

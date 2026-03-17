@@ -1,0 +1,124 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "Unscheduled Task";
+}
+
+@section ControlsSection{
+<div class="control-section">
+    @{
+        List<object> toolbarItems = new List<object>();
+        toolbarItems.Add(new
+        {
+            text = "Insert task",
+            tooltipText = "Insert task at top",
+            id = "toolbarAdd",
+            prefixIcon = "e-add-icon tb-icons"
+        });
+    }
+    @(Html.EJS().Gantt("UnscheduledTask").DataSource((IEnumerable<object>)ViewData["DataSource"])
+            .Height("450px")
+            .HighlightWeekends(true)
+            .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration"))
+            .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true))
+            .AllowUnscheduledTasks(true)
+            .Toolbar(toolbarItems)
+            .ToolbarClick("toolbarClick")
+            .AllowUnscheduledTasks(true)
+            .Columns(col =>
+            {
+                col.Field("TaskId").HeaderText("Id").Width(90).Add();
+                col.Field("TaskName").HeaderText("Name").Width(80).Add();
+                col.Field("StartDate").HeaderText("Start Date").Width(120).Add();
+                col.Field("EndDate").HeaderText("End date").Width(120).Add();
+                col.Field("Duration").HeaderText("Duration").Width(90).Add();
+            }).SplitterSettings(sl => sl.ColumnIndex(4))
+            .ProjectEndDate("01/20/2024")
+            .ProjectStartDate("01/01/2024")
+            .HighlightWeekends(false)
+            .LabelSettings(ls => ls.LeftLabel("TaskName").RightLabel("TaskType"))
+            .Render()
+    )
+</div>
+    <script>
+        function toolbarClick(args) {
+            if (args.item.id === 'toolbarAdd') {
+                let data = {
+                    Duration: null,
+                    StartDate: null,
+                    EndDate: null,
+                    TaskType: ""
+                };
+                var gantt = document.getElementById("UnscheduledTask").ej2_instances[0];
+                gantt.editModule.addRecord(data);
+            }
+        }
+    </script>
+    <style>
+        #UnscheduledTask .e-add-icon:before {
+            content: "\e506"
+        }
+
+        .bootstrap4 #UnscheduledTask .e-add-icon:before {
+            content: "\e783"
+        }
+		.tailwind #UnscheduledTask .e-add-icon:before,
+		.tailwind-dark #UnscheduledTask .e-add-icon:before {
+		   content: "\e7dd"
+		}
+        .bootstrap5 #UnscheduledTask .e-add-icon:before,
+        .bootstrap5-dark #UnscheduledTask .e-add-icon:before,
+        .tailwind #UnscheduledTask .e-add-icon:before,
+        .tailwind-dark #UnscheduledTask .e-add-icon:before,
+        .tailwind3 #UnscheduledTask .e-add-icon:before,
+        .tailwind3-dark #UnscheduledTask .e-add-icon:before,
+        .fluent #UnscheduledTask .e-add-icon:before,
+        .fluent-dark #UnscheduledTask .e-add-icon:before,
+        .material3 #UnscheduledTask .e-add-icon:before,
+        .material3-dark #UnscheduledTask .e-add-icon:before,
+        .fluent2 #UnscheduledTask .e-add-icon:before,
+        .fluent2-dark #UnscheduledTask .e-add-icon:before,
+        .fluent2-highcontrast #UnscheduledTask .e-add-icon:before,
+        .bootstrap5\.3 #UnscheduledTask .e-add-icon:before,
+        .bootstrap5\.3-dark-lite #UnscheduledTask .e-add-icon:before,
+        .bootstrap5\.3-dark #UnscheduledTask .e-add-icon:before, 
+        .bootstrap5\.3-lite #UnscheduledTask .e-add-icon:before {
+            content: "\e836"
+        }
+    </style>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualize the various types of unscheduled taskbars in Gantt with quick add support of task with custom toolbar in Gantt.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Unscheduled Tasks in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            Unscheduled tasks are tasks in a project that are not scheduled with proper dates or duration at the commencement
+            of the project.  These tasks can be scheduled properly at any time during project implementation based on factors
+            such as resource availability, dependent tasks, and more.
+        </p>
+        <p>
+            This example shows how to display the unscheduled tasks in Gantt by enabling the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_AllowUnscheduledTasks">AllowUnscheduledTasks</a> property.
+            This also shows how to add an empty row in Gantt by using a custom toolbar button click action.
+        </p>
+          <p>
+            By using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_ToolbarClick">ToolbarClick</a> event and <code>addRecord</code> method, an empty row can be added at the
+            top of the rows with undefined task details.
+        </p>      
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Gantt Unscheduled Tasks Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Unscheduled Tasks in ASP.NET MVC Gantt Control</h1>
+                }

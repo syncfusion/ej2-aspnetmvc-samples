@@ -1,0 +1,77 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
+@{
+    ViewData["Title"] = "DetailTemplate";
+}
+
+@*custom code end*@
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().TreeGrid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
+    {
+        col.Field("Name").HeaderText("First Name").Width(160).Add();
+        col.Field("DOB").HeaderText("DOB").Width(85).Type("date").Format("yMd").TextAlign(TextAlign.Right).Add();
+        col.Field("Designation").HeaderText("Designation").Width(147).Add();
+        col.Field("EmpID").HeaderText("EmployeeID").Width(125).Add();
+        col.Field("Country").HeaderText("Country").Width(148).Add();
+    }).Height(335).ChildMapping("Children").TreeColumnIndex(0).DetailTemplate("#detailtemplate").Render()
+    </div>
+
+    <script id="detailtemplate" type="text/x-template">
+        <div style="position: relative; display: inline-block; float: left; font-weight: bold; width: 10%;padding:5px 4px 2px 27px;">
+            <img src="../Content/images/treegrid/${FullName}.png" alt="${FullName}" />
+        </div>
+        <div style="padding-left: 25px; display: inline-block; width: 66%; text-wrap: normal;font-size:13px;font-family:'Segoe UI';">
+            <div class="e-description" style="word-wrap: break-word;">
+                <b>${Name}</b> was born on ${DOB.toLocaleDateString()}. Now lives at ${Address}, ${Country}. ${Name} holds a position of <b>${Designation}</b> in our WA department, (Seattle USA).
+            </div>
+            <div class="e-description" style="word-wrap: break-word;margin-top:5px;">
+                <b style="margin-right:10px;">Contact:</b>${Contact}
+            </div>
+        </div>
+    </script>
+
+}
+
+@*custom code start*@
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the Tree Grid component with the detail template feature.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The detail row template provides an additional information about a data row. The
+            <code>
+                <a target="_blank" class="code" href="" aria-label="DetailTemplate">
+                    DetailTemplate
+                <span class="sr-only">opens in a new tab</span></a>
+            </code>
+            property accepts either string or HTML element`s ID value, which will be used as the template for the detail
+            row.
+        </p>
+        <p>In this demo, we have presented Employee Information with image in the detail row.</p>
+        <p>The template expression should be provided inside <code>${...}</code> interpolation syntax.</p>
+    </div>
+}
+
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Tree Grid Detail Template Example - Syncfusion Demos </title> 
+                }
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Detail Template in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Detail Template in ASP.NET MVC Tree Grid Control</h1>
+                }

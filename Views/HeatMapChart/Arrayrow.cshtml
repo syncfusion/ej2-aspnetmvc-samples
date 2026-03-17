@@ -1,0 +1,65 @@
+@using Syncfusion.EJ2;
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Row in ASP.NET MVC HeatMap Chart control. Explore here for more details."/>
+                }
+@section ControlsSection{
+    <div class="control-section">
+        <div id="container">
+            @Html.EJS().HeatMap("container").TitleSettings(titleSettings => titleSettings.Text("GDP Growth Rate for Major Economies (in Percentage)").TextStyle(ViewData["textStyle"])).XAxis(
+            xAxis =>
+            {
+                xAxis.LabelRotation(45)
+                        .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
+                        .Labels((string[])ViewData["xLabels"]).TextStyle(ViewData["labelTextStyle"]);
+            }).YAxis(yaxis => yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"])).PaletteSettings(paletteSettings => paletteSettings.Palette(palette =>
+            {
+                palette.Value(-1).Color("#F0D6AD").Add();
+                palette.Value(0).Color("#9da49a").Add();
+                palette.Value(3.5).Color("#d7c7a7").Add();
+                palette.Value(6.0).Color("#6e888f").Add();
+                palette.Value(7.5).Color("#466f86").Add();
+                palette.Value(10).Color("#19547B").Add();
+
+            })).CellSettings(cellSettings =>
+            cellSettings.Border(ViewData["border"]).TextStyle(ViewData["labelTextStyle"])).LegendSettings(legendSettings => legendSettings.Visible(false)).TooltipSettings(tooltipSettings => 
+            tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).TooltipRender("tooltipRender").Load("load").DataSource(ViewData["dataSource"]).Render()
+        </div>
+    </div>
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+        var tooltipRender = function (args) {
+            args.content = [args.yLabel + ' | ' + args.xLabel + ' : ' + args.value + ' %'];
+        };
+        var load = function (args) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+        };
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the GDP growth rate for the countries which are the world’s major economies over the years.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to bind array object as data source for heatmap and configure the Heatmap using the data adaptor support. You can directly bind the array object to the Heatmap data source with default property settings.
+    </p>
+    <p>
+        The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.
+    </p>
+    <br>
+}
+
+@section Title{
+                    <title>ASP.NET MVC HeatMap Chart Row Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Row in ASP.NET MVC HeatMap Chart Control</h1>
+                }

@@ -1,0 +1,130 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "Task Constraints";
+}
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("Constraint").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px")
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
+                .Progress("Progress").Dependency("Predecessor").ParentID("ParentID").Notes("info")
+                .ConstraintDate("ConstraintDate").ConstraintType("ConstraintType")
+                )
+                .Toolbar(new List<string> { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll", "Indent", "Outdent" })
+                .EditSettings(es => es
+                    .AllowAdding(true)
+                    .AllowEditing(true)
+                    .AllowDeleting(true)
+                    .AllowTaskbarEditing(true)
+                    .ShowDeleteConfirmDialog(true)
+                )
+                .AllowSelection(true)
+                .GridLines(Syncfusion.EJ2.Gantt.GridLine.Both)
+                .HighlightWeekends(true)
+                .TreeColumnIndex(1)
+                .TimelineSettings(ts => ts.TopTier(tt => tt.Format("MMM dd, yyyy").Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week))
+                .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day)))
+                .EventMarkers(em => {
+                    em.Day("03/25/2025").Label("Project StartDate").Add();
+                    em.Day("08/31/2025").Label("Project EndDate").Add();
+                })
+                .Columns(col => {
+                    col.Field("TaskId").Visible(false).Add();
+                    col.Field("TaskName").HeaderText("Job Name").Width(200).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("Duration").Add();
+                    col.Field("ConstraintType").HeaderText("Constraint Type").Width(180).Add();
+                    col.Field("ConstraintDate").HeaderText("Constraint Date").Add();
+                    col.Field("EndDate").Add();
+                    col.Field("Predecessor").Add();
+                    col.Field("Progress").Add();
+                })
+                .LabelSettings(ls => ls
+                    .LeftLabel("TaskName")
+                    .RightLabel("#rightLabel")) // use JS template
+                .SplitterSettings(sp => sp.ColumnIndex(4))
+                .ProjectStartDate("03/25/2025")
+                .ProjectEndDate("09/01/2025")
+                .Render()
+            )
+        </div>
+    </div>
+
+    <script id="rightLabel" type="text/x-template">
+        <div style="margin-top:-7px;">
+            <div>${getConstraintText(ganttProperties.constraintType)}</div>
+        </div>
+    </script>
+
+    <script>
+        function getConstraintText(value) {
+            const map = {
+                0: 'As Soon As Possible',
+                1: 'As Late As Possible',
+                2: 'Must Start On',
+                3: 'Must Finish On',
+                4: 'Start No Earlier Than',
+                5: 'Start No Later Than',
+                6: 'Finish No Earlier Than',
+                7: 'Finish No Later Than'
+            };
+            return map[value];
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample illustrates how to apply and visualize task constraints in a Gantt Chart. Task constraints define specific scheduling rules that determine when a task can start or finish, based on project requirements or dependencies.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the constraint feature of the Gantt Chart. Explore here for more details." />
+}
+
+@section Description {
+    <div id="description">
+    <p>
+        In Gantt Chart, task constraints define the rules that limit a task start or end date based on project scheduling needs. The following constraint types are supported:
+        <ul>
+            <li><code>As Soon As Possible</code> - Task starts as early as possible. Default for auto-scheduled tasks.</li>
+            <li><code>As Late As Possible</code> - Task finishes as late as possible without delaying dependent tasks.</li>
+            <li><code>Must Start On</code> - Task must start on the specified date.</li>
+            <li><code>Must Finish On</code> - Task must finish on the specified date.</li>
+            <li><code>Start No Earlier Than</code> - Task cannot start before the specified date.</li>
+            <li><code>Start No Later Than</code> - Task must start on or before the specified date.</li>
+            <li><code>Finish No Earlier Than</code> - Task cannot finish before the specified date.</li>
+            <li><code>Finish No Later Than</code> - Task must finish on or before the specified date.</li>
+        </ul>
+        <br />
+        <p>
+            You can assign constraints to a task using the <code><a target="_blank" class="code" href="https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_constraintType">taskFields.constraintType</a></code> and <code><a target="_blank" class="code" href="https://help.syncfusion.com/cr/aspnetcore-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_constraintDate">taskFields.constraintDate</a></code> properties.
+            Constraints can also be updated interactively through the task edit dialog.
+        </p>
+    </p>
+<p><strong>Handling constraint violation popup:</strong></p>
+<p>
+    To control or suppress the constraint violation dialog, handle the <code>actionBegin</code> event with <code>requestType</code> as <code>validateTaskViolation</code>. 
+    Use <code>args.validateMode</code> to specify how to respond to constraint conflicts. Available properties include:
+</p>
+<ul>
+    <li><code>respectMustStartOn</code></li>
+    <li><code>respectMustFinishOn</code></li>
+    <li><code>respectStartNoLaterThan</code></li>
+    <li><code>respectFinishNoLaterThan</code></li>
+</ul>
+<p>
+    These options are false by default, which means the violation popup appears. To suppress the popup and cancel conflicting changes silently, set the relevant flag(s) to <strong>true</strong>.
+</p>
+</div>
+}
+@section Title{
+    <title>ASP.NET MVC Gantt Constraints Example - Syncfusion Demos</title>
+}
+
+@section Header{
+    <h1 class='sb-sample-text'>Example of Constraints in ASP.NET MVC Gantt Control</h1>
+}

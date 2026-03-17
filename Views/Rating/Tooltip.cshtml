@@ -1,0 +1,76 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Inputs
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="rating-control">
+            <div class="rating-content">
+                <label>Default</label><br/>
+                @Html.EJS().Rating("rating").Value(3).Render()
+            </div>
+            <div class="rating-content">
+                <label>Template</label><br />
+                @Html.EJS().Rating("rating1").Value(3).TooltipTemplate("<span> ${value} Star</span>").Render()
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+
+    .rating-control .rating-content {
+        width: 240px;
+        margin: 15px 0;
+        min-height: 75px;
+        padding: 0;
+        text-align: center;
+    }
+
+    .rating-control {
+        margin: 6% auto;
+        max-width: 600px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('right-pane')) {
+            document.getElementById('right-pane').addEventListener('scroll', hideTooltipOnScroll);
+        }
+
+        function hideTooltipOnScroll() {
+            var tooltipElement = document.querySelector('.e-rating-tooltip');
+            if (tooltipElement && ej.base.Browser.isDevice) {
+                tooltipElement.style.display = 'none';
+            }
+        }
+    });
+</script>
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Tooltip in ASP.NET MVC Rating Control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            The following sample demonstrates the tooltip and its customization using templates in the ASP.NET MVC Rating control.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The <code>TooltipTemplate</code> property customizes the tooltip template in the ASP.NET MVC Rating control.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC Rating Tooltip Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Tooltip in ASP.NET MVC Rating Control</h1>
+}

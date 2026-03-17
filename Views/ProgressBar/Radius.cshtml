@@ -1,0 +1,188 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section progress-bar-parent">
+        <div class="row" style="margin-top: 8%">
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="full-background">
+                    @(Html.EJS().ProgressBar("full-background").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(60)
+                                                  .Width("160px").Height("160px").Load("progressLoad0").EnableRtl(false)
+                                                  .TrackThickness(80).ProgressThickness(10).Radius("100%").InnerRadius("190%")
+                                                  .CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round)
+                                                  .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                                  .Annotations(an => { an.Content("<div  style='font-size:20px; font-weight:bold; color:#ffffff;fill:#ffffff'><span>60%</span></div>").Add(); }).Render())
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+
+                <div id="outer-radius">
+                    @(Html.EJS().ProgressBar("outer-radius").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(90)
+                                                  .Width("160px").Height("160px").Load("progressLoad")
+                                                  .ProgressThickness(8).InnerRadius("72")
+                                                  .CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round)
+                                                  .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                                  .Render())
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="on-radius">
+                    @(Html.EJS().ProgressBar("on-radius").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(90)
+                                                  .Width("160px").Height("160px").Load("progressLoad")
+                                                  .TrackThickness(3).ProgressThickness(8)
+                                                  .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                                  .Render())
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="pie">
+                    @(Html.EJS().ProgressBar("pie").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(70)
+                                                  .Width("160px").Height("160px").Load("progressLoad").EnablePieProgress(true)
+                                                  .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                                  .Render())
+                </div>
+            </div>
+        </div>
+        <div class="row linear-parent">
+            <button id="reLoad" class="e-control e-btn e-lib e-outline e-primary">Reload</button>
+        </div>
+    </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+
+        #reLoad {
+            border-radius: 4px;
+            text-transform: capitalize;
+            margin-top: 3%;
+        }
+
+        .linear-parent {
+            text-align: center;
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/Progressbar/theme-color.js"></script>
+    <script>
+        var progressLoad0 = function (args) {
+            args.progressBar.progressColor = '#FFFFFF';
+            var selectedTheme = loadProgressBarTheme(args);
+            switch (selectedTheme) {
+                case 'material':
+                    args.progressBar.trackColor = '#f8c2d4';
+                    args.progressBar.progressColor = '#e91e63';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#e91e63"><span></span></div>';
+                    break;
+                case 'bootstrap5.3':
+                case 'bootstrap5.3-dark':
+                case 'fabric':
+                    args.progressBar.progressColor = '#0078D6';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0078D6"><span></span></div>';
+                    break;
+                case 'bootstrap':
+                    args.progressBar.progressColor = '#317ab9';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#317ab9"><span></span></div>';
+                    break;
+                case 'tailwind':
+                case 'tailwind3':
+                    args.progressBar.progressColor = '#4F46E5';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#4F46E5"><span></span></div>';
+                    break;
+                case 'highcontrast':
+                    args.progressBar.progressColor = '#FFD939';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:20px;font-weight:bold;color:#FFD939"><span>60%</span></div>';
+                    break;
+                case 'bootstrap-dark':
+                case 'fabric-dark':
+                case 'material-dark':
+                    args.progressBar.progressColor = '#9A9A9A';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#9A9A9A"><span></span></div>';
+                    break;
+                case 'tailwind-dark':
+                    args.progressBar.progressColor = '#22D3EE';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#22D3EE"><span></span></div>';
+                    break;
+                case 'tailwind3-dark':
+                    args.progressBar.progressColor = '#6366F1';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#6366F1"><span></span></div>';
+                    break;
+                case 'bootstrap4':
+                    args.progressBar.progressColor = '#007bff';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#007bff"><span></span></div>';
+                    break;
+                case 'bootstrap5':
+                case 'bootstrap5-dark':
+                case 'fluent':
+                case 'fluent-dark':
+                    args.progressBar.progressColor = '#0D6EFD';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0D6EFD"><span></span></div>';
+                    break;
+                case 'material3':
+                    args.progressBar.progressColor = '#6750A4';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#6750A4"><span></span></div>';
+                    break;
+                case 'material3-dark':
+                    args.progressBar.progressColor = '#D0BCFF';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#D0BCFF"><span></span></div>';
+                    break;
+                case 'fluent2':
+                    args.progressBar.progressColor = '#0F6CBD';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#0F6CBD"><span></span></div>';
+                    break;
+                case 'fluent2-dark':
+                    args.progressBar.progressColor = '#115EA3';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#115EA3"><span></span></div>';
+                    break;
+                case 'fluent2-highcontrast':
+                    args.progressBar.progressColor = '#1AEBFF';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#1AEBFF"><span></span></div>';
+                    break;
+                default:
+                    args.progressBar.progressColor = '#D0BCFF';
+                    args.progressBar.annotations[0].content = '<div id="point1" style="font-size:24px;font-weight:bold;color:#D0BCFF"><span></span></div>';
+                    break;
+            }
+        };
+        var progressLoad = function (args) {
+            window.loadProgressBarTheme(args);
+        }
+
+        var replayBtn = document.getElementById('reLoad');
+        replayBtn.onclick = function () {
+            var FullProgress = document.getElementById('full-background').ej2_instances[0];
+            var OuterProgress = document.getElementById('outer-radius').ej2_instances[0];
+            var OnProgress = document.getElementById('on-radius').ej2_instances[0];
+            var pie = document.getElementById('pie').ej2_instances[0];
+            FullProgress.refresh();
+            OuterProgress.refresh();
+            OnProgress.refresh();
+            pie.refresh();
+        };
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Radius in ASP.NET MVC Progress Bar control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates a circular progress bar with customization options like radius, inner-radius, track and progress thickness.
+    </p>
+}
+@section Description{
+    <p>
+        This demo for Essential JS2 Progress Bar control shows the customizing options for radius, inner-radius, track and progress thickness.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC Progress Bar Radius Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Radius in ASP.NET MVC Progress Bar Control</h1>
+}

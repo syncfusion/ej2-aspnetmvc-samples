@@ -1,0 +1,102 @@
+
+
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Charts
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @(Html.EJS().Chart("chartcontainer")
+                                .Title("All-Time Summer Olympic Medal Count by Country")
+                                .SubTitle("Source: Wikipedia.org")
+                                .LegendRender("legendRender")
+                                .Load("load")
+                                .Series(series =>
+                                {
+                                    series.Type(ChartSeriesType.Column).XName("Country").YName("Gold").DataSource(ViewData["MedalData"]).Name("Gold").ColumnSpacing(0.1).Add();
+                                    series.Type(ChartSeriesType.Column).XName("Country").YName("Silver").DataSource(ViewData["MedalData"]).Name("Silver").ColumnSpacing(0.1).Add();
+                                    series.Type(ChartSeriesType.Column).XName("Country").YName("Bronze").DataSource(ViewData["MedalData"]).Name("Bronze").ColumnSpacing(0.1).Add();
+                                })
+                                .PrimaryYAxis(px => px.Minimum(0).Maximum(50).Interval(10).Title("Medal Count").LineStyle(ls => ls.Width(0)).MajorTickLines(mg => mg.Width(0))
+                                ).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).LabelPlacement(LabelPlacement.OnTicks).EdgeLabelPlacement(EdgeLabelPlacement.Shift).MajorGridLines(mg => mg.Width(0))
+                                ).Tooltip(tt => tt.Enable(true).Header("<b>${point.x}</b>").Format("${series.name} Medals : <b>${point.y}</b>")
+                                ).ChartArea(area => area.Border(b => b.Width(0))
+                                ).LegendSettings(leg => leg.Visible(true).Position(Syncfusion.EJ2.Charts.LegendPosition.Right)
+                                ).Render())
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This sample demonstrates customizable legend templates using all-time Summer Olympic medal data in an ASP.NET MVC Chart." />
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates customizable legend templates using all-time Summer Olympic medal data.
+            It displays Gold, Silver, and Bronze medal counts for five countries — Argentina, Austria,
+            Ethiopia, Iran, and India. Each legend entry features a medal icon rendered through a custom
+            legend template to enhance visual clarity and data interpretation.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            This sample shows how to render and configure a custom legend template in a Column chart.
+            The legend items are customized using the
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/chart/legendSettings/"
+               aria-label="Navigate to the documentation for template in LegendSettings in the EJ2 Chart control"><code>template</code></a>
+            property of
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/chart/legendSettings/"
+               aria-label="Navigate to the documentation for LegendSettings in the EJ2 Chart control"><code>LegendSettings</code></a>,
+            which allows embedding custom HTML content such as medal images and styled text into each legend item.
+        </p>
+        <p>
+            The <code>legendRender</code> event is used to dynamically update the template content for each series — setting the medal icon image and
+            label text per series.
+        </p>
+        <p>
+            <code>Tooltip</code> is enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+        </p>
+        <p>
+            More information on chart legends can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/legend/"
+               aria-label="Navigate to the documentation for Legend in ASP.NET MVC Chart control">documentation</a>.
+        </p>
+    </div>
+}
+<script src="~/Scripts/chart/theme-color.js"></script>
+<script>
+
+        function legendRender(args) {
+        var chart = document.getElementById('chartcontainer').ej2_instances[0];
+        var matchedSeries = chart.series.find(function (s) { return s.name === args.text; });
+        var opacity = matchedSeries && !matchedSeries.visible ? '0.5' : '1';
+
+        var baseUrl = '@Url.Content("~/Content/chart/")';
+        args.template = args.template
+            .replace('opacity:1;', 'opacity:' + opacity + ';')
+            .replace('src=""', 'src="' + baseUrl + args.text.toLowerCase() + '-medal.png"')
+            .replace('font-size:', 'color:' + args.fill + ';font-weight:bold;font-size:')
+            .replace('></span>', '>' + args.text + '</span>');
+        }
+
+        function load(args) {
+        loadChartTheme(args);
+        var chart = document.getElementById('chartcontainer').ej2_instances[0];
+        chart.width = ej.base.Browser.isDevice ? '100%' : '75%';
+            chart.legendSettings.template = '<div class="template" style="display:flex;align-items:center;gap:' + (ej.base.Browser.isDevice ? '1px' : '8px') + ';opacity:1;">' +
+                '<img class="e-image" src="" width="20" height="20" />' +
+                '<span class="e-text" style="font-size:' + (ej.base.Browser.isDevice ? '9px' : '14px') + ';"></span>' +
+                '</div>';
+        }
+</script>
+
+<style>
+    #control-container {
+        padding: 0 !important;
+    }
+</style>

@@ -1,0 +1,58 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        <div id="outer" style="display:block">
+            @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Background("Transparent").Annotations(
+            annotation => annotation.AxisIndex(0).AxisValue(10).X(10).Y(-70).ZIndex("1").Content("<div style='width: 70px;margin-left:-3%;margin-top: 42%;font-size: 16px;'>10 MPH</div>").Add()).Axes(axes =>
+            axes.Pointers(pointer => pointer.Width(15).Height(15).Value(10).Offset("-40").Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Triangle).Add())
+            .MajorTicks(majorTick => majorTick.Interval(10).Height(20).Color("#9E9E9E"))
+            .MinorTicks(minorTick => minorTick.Interval(2).Height(10).Color("#9E9E9E"))
+            .LabelStyle(labelStyle => labelStyle.Offset(48).Font(font => font.FontFamily("inherit"))).Add()).Render()
+        </div>
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        function onGaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample shows the linear gauge's basic rendering, which includes an axis, a pointer, major ticks, minor ticks and annotation.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the DefaultFunctionalities in ASP.NET MVC Linear Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            The linear gauge control shows scale values in either horizontal or vertical orientation. Axis, range, ticks, pointer, and container properties can be used to customize the basic appearance of the linear gauge.
+        </p>
+        <p>
+            More information on the linear gauge can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/getting-started" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+
+}
+
+@section Title{
+    <title>ASP.NET MVC Linear Gauge Default Functionalities Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC Linear Gauge Control</h1>
+}

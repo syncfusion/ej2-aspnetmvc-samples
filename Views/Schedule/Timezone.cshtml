@@ -1,0 +1,84 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+@using Syncfusion.EJ2.DropDowns
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div class='datepicker-control-section'>
+            <table class='property-table' style="width: 100%; margin-bottom: 18px;">
+                <tbody>
+                    <tr style="height: 50px">
+                        <td style="width:5%">
+                            <div class="timezone" style="font-size: 14px;">
+                                Timezone
+                            </div>
+                        </td>
+                        <td style="width: 70%;">
+                            <div>
+                                @Html.EJS().DropDownList("scheduletimezone").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Index(1).PopupWidth("250").Width("250").DataSource(ViewData["data"]).Fields(new DropDownListFieldSettings { Text = "Name", Value = "Value" }).Change("onChange").Render()
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 6, 20)).Timezone("UTC").Render()
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.min.js"></script>
+    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
+    <script type="text/javascript">
+        if (ej.base.Browser.isIE) {
+            ej.schedule.Timezone.prototype.offset = function (date, timezone) {
+                return moment.tz.zone(timezone).utcOffset(date.getTime());
+            };
+        }
+        function onChange(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.timezone = (args.value).toString();
+            scheduleObj.dataBind();
+        }
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            applyCategoryColor(args, scheduleObj.currentView);
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Timezone in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo visualizes the 2021 FIFA football match scheduler which is depicted as events here. The timings of each event are
+            associated with the timezone of the match location where it will be held. When the Scheduler time zone changes, the
+            events in it displays according to the selected timezone's offset time difference.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, the
+            <code>Timezone</code> of Scheduler is set to UTC and each events on it holds different
+            <code>StartTimezone</code> and
+            <code>EndTimezone</code> values, therefore the event timings will be converted based on timezone assigned to Scheduler and will be displayed
+            appropriately in UTC timings.
+        </p>
+        <p>
+            When the user selects different timezone value listed out in a dropdown on properties panel, Scheduler will display the events
+            accordingly to the selected timezone value as the selected timezone will be assigned to Schedule
+            <code>Timezone</code> property.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Scheduler Timezone Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Timezone in ASP.NET MVC Scheduler Control</h1>
+                }

@@ -1,0 +1,238 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@model EJ2MVCSampleBrowser.Controllers.MultiSelectRecord
+@section ControlsSection{
+    <div class="control-section col-lg-9">
+        <div class="control-wrapper">
+            <h4>Local Data</h4>
+            @Html.EJS().MultiSelect("local").Mode(VisualMode.Box).Placeholder("e.g. Item 1").DataSource(@Model.RecordList).EnableVirtualization(true).AllowFiltering(true).HideSelectedItem(true).ClosePopupOnSelect(true).AllowCustomValue(true).Fields(new MultiSelectFieldSettings  { Text = "Text", Value = "ID" }).PopupHeight("200px").Render()
+        </div>
+        <div class="control-wrapper">
+            <h4>Remote Data</h4>
+            @Html.EJS().MultiSelect("remote").Mode(VisualMode.Delimiter).Placeholder("e.g. OrderID").DataSource(obj =>
+            obj.Url("https://ej2services.syncfusion.com/production/web-services/api/VirtualDropdownData").CrossDomain(true).Adaptor("UrlAdaptor")).EnableVirtualization(true).AllowFiltering(true).HideSelectedItem(true).ClosePopupOnSelect(true).AllowCustomValue(true).Fields(new MultiSelectFieldSettings
+            {
+            Text = "OrderID",
+            Value = "OrderID"
+            }).PopupHeight("200px").Render()
+        </div>
+        <div class="control-wrapper">
+            <h4>Default Values</h4>
+            @Html.EJS().MultiSelect("default").Mode(VisualMode.Default).Placeholder("e.g. Item 1").DataSource(@Model.RecordList).EnableVirtualization(true).AllowFiltering(true).HideSelectedItem(true).ClosePopupOnSelect(true).AllowCustomValue(true).Fields(new MultiSelectFieldSettings
+            {
+            Text = "Text", Value = "ID"
+            }).PopupHeight("200px").Value((string[])@Model.val).Render()
+        </div>
+        <div class="control-wrapper">
+            <h4>Grouping</h4>
+            @Html.EJS().MultiSelect("group").Mode(VisualMode.CheckBox).Placeholder("e.g. Item 1").DataSource(@Model.RecordList).EnableVirtualization(true).AllowFiltering(true).EnableSelectionOrder(false).AllowCustomValue(true).Fields(new MultiSelectFieldSettings  { GroupBy = "Group", Text = "Text", Value = "ID" }).PopupHeight("200px").Render()
+        </div>
+        <div class="control-wrapper">
+            <h4>Template</h4>
+            @Html.EJS().MultiSelect("template").Mode(VisualMode.Default).Placeholder("e.g. Item 1").DataSource(@Model.RecordList).EnableVirtualization(true).AllowFiltering(true).HideSelectedItem(true).ClosePopupOnSelect(true).AllowCustomValue(true).Fields(new MultiSelectFieldSettings  { Text = "Text", Value = "ID" }).PopupHeight("200px").ItemTemplate("<div class=\"ename\" style=\"height: 40px\"> ${Text} </div>").HeaderTemplate("<div class=\"header\"><span style=\"margin-left:17px\">Items Info</span></div>").ValueTemplate("<div class=\"name\"> ${Text} </div>").Render()
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <div id="property" title="Properties">
+            <table id="property" title="Properties">
+                <tbody>
+                    <tr>
+                        <td style="width: 50%;">
+                            <div>
+                                @Html.EJS().CheckBox("check1").Change("filterChange").Label("AllowFiltering").Checked(true).Render()
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">
+                            <div>
+                            @Html.EJS().CheckBox("check2").Change("customChange").Label("AllowCustomValue").Checked(true).Render()
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">
+                            <div>
+                                @Html.EJS().CheckBox("check3").Change("hideChange").Label("HideSelectedItem").Checked(true).Render()
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">
+                            <div>
+                            @Html.EJS().CheckBox("check4").Change("closeChange").Label("ClosePopupOnSelect").Checked(true).Render()
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        function filterChange(args) {
+            var localObj = document.getElementById("local").ej2_instances[0];
+            var remoteObj = document.getElementById("remote").ej2_instances[0];
+            var defaultObj = document.getElementById("default").ej2_instances[0];
+            var groupObj = document.getElementById("group").ej2_instances[0];
+            var templateObj = document.getElementById("template").ej2_instances[0];
+            localObj.allowFiltering = args.checked;
+            remoteObj.allowFiltering = args.checked;
+            defaultObj.allowFiltering = args.checked;
+            groupObj.allowFiltering = args.checked;
+            templateObj.allowFiltering = args.checked;
+        }
+        function customChange(args) {
+            var localObj = document.getElementById("local").ej2_instances[0];
+            var remoteObj = document.getElementById("remote").ej2_instances[0];
+            var defaultObj = document.getElementById("default").ej2_instances[0];
+            var groupObj = document.getElementById("group").ej2_instances[0];
+            var templateObj = document.getElementById("template").ej2_instances[0];
+            localObj.allowCustomValue = args.checked;
+            remoteObj.allowCustomValue = args.checked;
+            defaultObj.allowCustomValue = args.checked;
+            groupObj.allowCustomValue = args.checked;
+            templateObj.allowCustomValue = args.checked;
+        }
+        function hideChange(args) {
+            var localObj = document.getElementById("local").ej2_instances[0];
+            var remoteObj = document.getElementById("remote").ej2_instances[0];
+            var defaultObj = document.getElementById("default").ej2_instances[0];
+            var groupObj = document.getElementById("group").ej2_instances[0];
+            var templateObj = document.getElementById("template").ej2_instances[0];
+            localObj.hideSelectedItem = args.checked;
+            remoteObj.hideSelectedItem = args.checked;
+            defaultObj.hideSelectedItem = args.checked;
+            templateObj.hideSelectedItem = args.checked;
+        }
+        function closeChange(args) {
+            var localObj = document.getElementById("local").ej2_instances[0];
+            var remoteObj = document.getElementById("remote").ej2_instances[0];
+            var defaultObj = document.getElementById("default").ej2_instances[0];
+            var groupObj = document.getElementById("group").ej2_instances[0];
+            var templateObj = document.getElementById("template").ej2_instances[0];
+            localObj.closePopupOnSelect = args.checked;
+            remoteObj.closePopupOnSelect = args.checked;
+            defaultObj.closePopupOnSelect = args.checked;
+            templateObj.closePopupOnSelect = args.checked;
+        }
+
+    </script>
+    @*custom code start*@
+
+   <style>
+    .control-section .control-wrapper {
+        width: 80%;
+        margin: 0 auto;
+        width: 250px;
+        padding-top: 15px
+    } 
+
+    .e-list-icon {
+        font-family: 'e-icons' !important;
+        color: rgba(0, 0, 0, .57);
+    }
+    .header {
+        font-weight: 600;
+        color: rgba(0, 0, 0, .54);
+        height: 48px;
+        padding: 15px 0 0 16px;
+        font-size: 16px;
+        background-color: #f5f5f5;
+    }
+
+    /* custom code start*/
+    .fabric .header {
+        background-color: #fff;
+        border-bottom: 1px solid #ccc;
+        color: #0078d7;
+        font-weight: 400;
+    }
+
+    .fluent-dark .header,
+    .fluent2-dark .header,
+    .fluent2-highcontrast .header {
+        background: #252423;
+        color: #2899F5;
+    }
+
+    .bootstrap5-dark .header {
+        background: #343A40;
+        color: #7B848D;
+    }
+
+    .fluent .header{
+         color: #2899F5;
+    }
+
+    .tailwind-dark .header,
+    .tailwind3-dark .header {
+        background: #374151;
+        color: rgb(255, 255, 255);
+    }
+
+    .material3-dark .header,
+    .material-dark .header {
+        background: rgb(66, 66, 66);
+        color: rgb(255, 255, 255);
+    }
+
+    .fabric-dark .header {
+        background: rgb(40, 39, 39);
+        color: rgb(255, 255, 255);
+    }
+
+    .bootstrap-dark .header {
+        background: rgb(49, 49, 49);
+        color: rgb(255, 255, 255);
+    }
+
+    .bootstrap .header {
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ccc;
+        color: #777;
+        font-family: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+        font-weight: 600;
+        font-size: 15px;
+        height: 48px;
+        padding: 15px 0 0 16px;
+    }
+
+    .highcontrast .header {
+        color: #fff;
+        background-color: #000;
+    }
+    
+    .bootstrap4 .header {
+        color: #6c757d;
+    }
+    
+    .e-bigger.bootstrap .header {
+        height: 44px;
+        font-size: 13px;
+    }
+</style>
+    @*custom code end*@
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Virtualization in ASP.NET MVC MultiSelect control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <div id="action-description">
+       <p>This example demonstrates the virtualization support of the MultiSelect in ASP.NET MVC application. The component has 150 items bound to it; however, when you open the suggestion list, only few items are loaded based on the popup height, and the remaining items are loaded while scrolling.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>The <code>MultiSelect</code> component supports virtualization, which improves UI performance for large amounts of data. To enable virtualization, set the <code>enableVirtualization</code> property to true. When virtualization is enabled, DropDownList doesn't render the entire suggestion data source on initial component rendering. It loads the N number of items in the popup on initial rendering and the remaining set number of items will load while scrolling.
+        Virtualization works with both local and remote data.</p>
+    </div>
+}
+
+
+@section Title{
+                    <title>ASP.NET MVC Dropdown List Virtualization Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Virtualization in ASP.NET MVC Dropdown List Control</h1>
+                }

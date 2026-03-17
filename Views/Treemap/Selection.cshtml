@@ -1,0 +1,203 @@
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.TreeMap;
+@section ControlsSection{
+    <style>
+        .check {
+            opacity: 1 !important;
+            position: relative !important;
+            width: 15px !important;
+            height: 15px !important;
+        }
+
+        label {
+            height: 32px !important;
+        }
+
+        .enableCheck {
+            margin-top: 7px;
+        }
+
+        .bootstrap .enableCheck, .bootstrap-dark .enableCheck{
+            margin-top: 0px;
+        }
+
+        .fabric .enableCheck, .fabric-dark .enableCheck, .material .enableCheck {
+            margin-top: 5px;
+        }
+
+        .e-view.fluent2 #property .e-checkbox-wrapper .e-icons, .e-view.fluent2-dark #property .e-checkbox-wrapper .e-icons, .e-view.fluent2-highcontrast #property .e-checkbox-wrapper .e-icons {
+            margin-left: 0px;
+        }
+    </style>
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            <div id="container">
+                @Html.EJS().TreeMap("container").Load("load").TitleSettings(title => title.Text("Import and Export details of US")).WeightValuePath("sales").Levels(level =>
+                {
+                    level.GroupPath("dataType").Fill("#c5e2f7").HeaderStyle(new TreeMapFont { Size = "16px" }).HeaderAlignment(Syncfusion.EJ2.TreeMap.Alignment.Center).GroupGap(5).Add();
+                    level.GroupPath("product").Fill("#a4d1f2").HeaderAlignment(Syncfusion.EJ2.TreeMap.Alignment.Center).GroupGap(2).Add();
+                }).LeafItemSettings(leaf => leaf.LabelPath("type").Fill("#8ebfe2").LabelPosition(Syncfusion.EJ2.TreeMap.LabelPosition.Center).Gap(10)).SelectionSettings(selection =>
+                selection.Enable(true).Fill("#58a0d3").Border(new TreeMapBorder { Width = 0.3, Color = "black" }).Opacity("1")).HighlightSettings(highlight =>
+                highlight.Enable(true).Fill("#71b0dd").Border(new TreeMapBorder { Width = 0.3, Color = "black" }).Opacity("1")).Render()
+            </div>
+        </div>
+        <div style="float: right; margin-right: 10px;">
+            Source:
+            <a href="https://www.indexmundi.com/united_states/imports_commodities.html" target="_blank" aria-label="Source">www.indexmundi.com</a>
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="margin-left: -10px"><b>Highlight</b></div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px"> Enable</div>
+                    </td>
+                    <td>
+                        <div class="enableCheck" style="margin-left: -10px;">
+                            <input type="checkbox" id="highlightEnable" checked />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px">Mode</div>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="selectIndex" autocomplete="off" id="highlightMode" style="width:60%;">
+                                <option value="Item" selected>Item</option>
+                                <option value="Child">Child</option>
+                                <option value="Parent">Parent</option>
+                                <option value="All">All</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="margin-left: -10px"><b>Selection</b></div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px">Enable</div>
+                    </td>
+                    <td>
+                        <div style="margin-left: -10px;" class="enableCheck">
+                            <input type="checkbox" id="SelectionEnable" checked />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="property-text" style="margin-left: -10px"> Mode</div>
+                    </td>
+                    <td>
+                        <div>
+                            <select name="selectIndex" autocomplete="off" id="selectionMode" style="width:60%;">
+                                <option value="Item" selected>Item</option>
+                                <option value="Child">Child</option>
+                                <option value="Parent">Parent</option>
+                                <option value="All">All</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var treemap;
+        function load(args) {
+            var theme = themeName ? themeName : 'Material';
+            args.treemap.theme = ((theme.charAt(0).toUpperCase() +
+                theme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5'));
+            args.treemap.dataSource = [
+                { dataType: "Import", type: "Animal products", product: "2010", sales: 20839332874 },
+                { dataType: "Import", type: "Animal products", product: "2011", sales: 23098635589 },
+                { dataType: "Import", type: "Chemical products", product: "2010", sales: 141637951510 },
+                { dataType: "Import", type: "Chemical products", product: "2011", sales: 161550338209 },
+                { dataType: "Import", type: "Base metals", product: "2010", sales: 86079439944 },
+                { dataType: "Import", type: "Base metals", product: "2011", sales: 103821671535 },
+                { dataType: "Import", type: "Textile articles", product: "2010", sales: 97126140830 },
+                { dataType: "Import", type: "Textile articles", product: "2011", sales: 104980750811 },
+                { dataType: "Export", type: "Animal products", product: "2010", sales: 15845503378 },
+                { dataType: "Export", type: "Animal products", product: "2011", sales: 20650111620 },
+                { dataType: "Export", type: "Chemical products", product: "2010", sales: 136100054087 },
+                { dataType: "Export", type: "Chemical products", product: "2011", sales: 146341672411 },
+                { dataType: "Export", type: "Base metals", product: "2010", sales: 59060592813 },
+                { dataType: "Export", type: "Base metals", product: "2011", sales: 71785882641 },
+                { dataType: "Export", type: "Textile articles", product: "2010", sales: 20982380561 },
+                { dataType: "Export", type: "Textile articles", product: "2011", sales: 26016143783 }
+            ];
+            treemap = args.treemap;
+        }
+        var highlightChange;
+        var highlightCheckBox = new ej.buttons.CheckBox({
+            change: highlightChange, checked: true
+        }, '#highlightEnable');
+        var selectionChange;
+        var selectionCheckBox = new ej.buttons.CheckBox({
+            change: selectionChange, checked: true
+        }, '#SelectionEnable');
+        highlightCheckBox.change = highlightChange = function (e) {
+            treemap.highlightSettings.enable = e.checked;
+            treemap.refresh();
+        };
+        selectionCheckBox.change = selectionChange = function (e) {
+            treemap.selectionSettings.enable = e.checked;
+            treemap.refresh();
+        };
+        var highlightMode = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select highlight type',
+            width: '100%',
+            change: function () {
+                treemap.highlightSettings.mode = highlightMode.value;
+                treemap.refresh();
+            }
+        });
+        highlightMode.appendTo('#highlightMode');
+        var selectionMode = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Selection selection type',
+            width: '100%',
+            change: function () {
+                treemap.selectionSettings.mode = selectionMode.value;
+                treemap.refresh();
+            }
+        });
+        selectionMode.appendTo('#selectionMode');
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample depicts the details of Imports made by Japan. Selection and highlight has been enabled in this sample.
+    </p>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Selection & Highlight in ASP.NET MVC TreeMap control. Explore here for more details."/>
+                }
+@section Description{
+    <p>
+        In this example, you can see the modes available for performing highlight and selection in treemap. It can be either enabled or disabled.
+    </p>
+    <br />
+}
+
+@section Title{
+                    <title>ASP.NET MVC TreeMap Selection & Highlight Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Selection & Highlight in ASP.NET MVC TreeMap Control</h1>
+                }

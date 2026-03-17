@@ -1,0 +1,99 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Inputs
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="rating-control">
+            <div class="rating-content">
+                <label>Basic</label><br />
+                @Html.EJS().Rating("rating").Render()
+            </div>
+            <div class="rating-content">
+                <label>Reset</label><br />
+                @Html.EJS().Rating("rating1").Value(3).AllowReset(true).Render()
+            </div>
+            <div class="rating-content">
+                <label>Single Selection</label><br />
+                @Html.EJS().Rating("rating2").Value(3).EnableSingleSelection(true).Render()
+            </div>
+            <div class="rating-content">
+                <label>ReadOnly</label><br />
+                @Html.EJS().Rating("rating3").Value(3).ReadOnly(true).Render()
+            </div>
+            <div class="rating-content">
+                <label>Disabled</label><br />
+                @Html.EJS().Rating("rating4").Value(3).Disabled(true).Render()
+            </div>
+            <div class="rating-content">
+                <label>Items Count</label><br />
+                @Html.EJS().Rating("rating5").Value(3).ItemsCount(8).Render()
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+
+    .rating-control .rating-content {
+        width: 240px;
+        margin: 15px 0;
+        min-height: 75px;
+        padding: 0;
+        text-align: center;
+    }
+
+    .e-bigger .rating-control .rating-content {
+        width: 330px;
+        margin: 15px 0;
+        min-height: 75px;
+        padding: 0;
+        text-align: center;
+    }
+
+    .rating-control {
+        margin: 6% auto;
+        max-width: 800px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (document.getElementById('right-pane')) {
+            document.getElementById('right-pane').addEventListener('scroll', hideTooltipOnScroll);
+        }
+
+        function hideTooltipOnScroll() {
+            var tooltipElement = document.querySelector('.e-rating-tooltip');
+            if (tooltipElement && ej.base.Browser.isDevice) {
+                tooltipElement.style.display = 'none';
+            }
+        }
+    });
+</script>
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC Rating Control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the default functionalities of the Rating control. The control lets a user provide a star rating or view other people’s ratings on a numeric scale for any service provided, such as for movies, applications, or products.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            This example showcases the usage of the <code>AllowReset</code>, <code>ReadOnly</code>, <code>EnableSingleSelection</code>, <code>ItemsCount</code>, and <code>Disabled</code> properties in the ASP.NET MVC Rating control.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC Rating DefaultFunctionalities Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC Rating Control</h1>
+}

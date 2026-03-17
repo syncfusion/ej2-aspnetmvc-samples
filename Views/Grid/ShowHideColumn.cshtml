@@ -1,0 +1,128 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "ShowHideColumn";
+}
+
+@section ControlsSection{
+   <div class="col-lg-8 control-section">
+    <div class="control-wrapper">
+        <div class="control-section">
+            @Html.EJS().Grid("FlatGrid").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
+           {
+               col.Field("CategoryName").HeaderText("Category Name").Width("160").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left).Add();
+               col.Field("ProductName").HeaderText("Product Name").Width("170").Add();
+               col.Field("UnitsInStock").HeaderText("Units In Stock").Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("Discontinued").HeaderText("Discontinued").Width("150").DisplayAsCheckBox(true).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Type("boolean").Add();
+
+           }).AllowPaging().PageSettings(page => page.PageCount(2)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Render()
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-4 property-section">
+
+
+
+    <table id="property" title="Properties" style="width: 100%;">
+
+
+        <tr>
+            <td class="left-side">Column</td>
+            <td style="padding-bottom:10px">
+                @Html.EJS().DropDownList("columns").DataSource((IEnumerable<object>)ViewData["columns"]).Value("CategoryName").Fields(field => { field.Value("value").Text("text"); }).Change("onChange").Render()
+            </td>
+        </tr>
+
+        <tr>
+            <td class="left-side" style="padding-bottom:10px">
+                @Html.EJS().Button("hide").Content("Hide").Render()
+            </td>
+            <td style="padding-bottom:10px">
+                @Html.EJS().Button("show").Disabled(true).Content("Show").Render()
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 30%">
+                    Hidden Columns
+            </td>
+            <td style="width: 70%; padding:10px 10px 10px 0px">
+                    <textarea id="hiddencolumns" style="resize: none;height:65px;padding: 6px" class="e-input e-textarea" readonly="readonly"></textarea>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <script>
+        
+        function onChange(args) {
+
+            var columnName = this.value;
+            var grid = document.getElementById("FlatGrid").ej2_instances[0];
+            var column=grid.getColumnByField(columnName);
+            if (column.visible === undefined || column.visible) {
+                document.getElementById("show").disabled = true;
+                document.getElementById("hide").disabled = false;
+            } else {
+                document.getElementById("hide").disabled = true;
+                document.getElementById("show").disabled = false;
+            }
+        }
+    </script>
+<script>
+
+        document.getElementById("hide").addEventListener("click", function() {
+            var drop = document.getElementById("columns").ej2_instances[0], grid = document.getElementById("FlatGrid").ej2_instances[0];
+            var columnName =drop.value;
+            var column= grid.getColumnByField(columnName);
+            if (grid.getHeaderTable().querySelectorAll('th.e-hide').length === 3) {
+                alert('Atleast one Column should be visible');
+            } else {
+                grid.showHider.hide(column.headerText, 'headerText');
+                document.getElementById("hide").disabled = true;
+                document.getElementById("show").disabled = false;
+                document.getElementById("hiddencolumns").value = document.getElementById("hiddencolumns").value + column.headerText + '\n';
+            }
+        })
+
+        document.getElementById("show").addEventListener("click", function () {
+            var drop = document.getElementById("columns").ej2_instances[0], grid = document.getElementById("FlatGrid").ej2_instances[0];
+            var columnName = drop.value;
+            var column = grid.getColumnByField(columnName);
+            grid.showHider.show(column.headerText, 'headerText');
+            document.getElementById("show").disabled = true;
+            document.getElementById("hide").disabled = false;
+            document.getElementById("hiddencolumns").value = document.getElementById("hiddencolumns").value.replace(column.headerText + '\n', '');
+        })
+</script>
+}
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates dynamic show hide columns feature of Grid. Select column name from the properties panel and
+        click hide/show to toggle visibility.
+		</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Show or Hide Column in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		<p>The Grid column can be showed/hidden dynamically using <code>showColumns </code> and <code>hideColumns</code> method of the Grid.</p>
+    <p>In this demo, the columns can be showed and hidden by selecting the column name in the dropdown and click the Show or
+        Hide buttons to toggle visibility. And the column`s visibility is toggled based on the
+        <code>Columns->HeaderText</code> value.</p>
+    <br/>
+    <p>The <code>Columns->Visible</code> property specifies the visibility of a column. To hide a column at the initial rendering, set the <code>Columns->Visible
+     </code> property to false.</p>
+	
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Show or Hide Column Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Show or Hide Column in ASP.NET MVC Data Grid Control</h1>
+                }

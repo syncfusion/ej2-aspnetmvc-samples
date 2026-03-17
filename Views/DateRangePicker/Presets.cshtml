@@ -1,0 +1,88 @@
+﻿@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div id="wrapper">
+            @Html.EJS().DateRangePicker("daterangepicker").Placeholder("Choose a Range").Presets(PresetItem =>
+            {
+                PresetItem.Label("This Week").Start(ViewData["weekStart"]).End(ViewData["weekEnd"]).Add();
+                PresetItem.Label("This Month").Start(ViewData["monthStart"]).End(ViewData["monthEnd"]).Add();
+                PresetItem.Label("Last Month").Start(ViewData["lastMonthStart"]).End(ViewData["lastMonthEnd"]).Add();
+                PresetItem.Label("Last Year").Start(ViewData["lastYearStart"]).End(ViewData["lastYearEnd"]).Add();
+            }
+            ).Render()
+        </div>
+    </div>
+
+    @*custom code start*@
+    <style>
+        #wrapper {
+            max-width: 246px;
+            margin: 30px auto;
+            padding-top: 50px;
+        }
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var labelsByLanguage = {
+            en: ['This Week', 'This Month', 'Last Month', 'Last Year'],
+            de: ['Diese Woche', 'Dieser Monat', 'Letzter Monat', 'Letztes Jahr'],
+            'fr-CH': ['Cette semaine', 'Ce mois-ci', 'Le mois dernier', 'L\'année dernière'],
+            ar: ['هذا الأسبوع', 'هذا الشهر', 'الشهر الماضي', 'السنة الماضية'],
+            zh: ['本周', '本月', '上个月', '去年']
+        };
+
+        var daterangepicker = document.getElementById('daterangepicker').ej2_instances[0];
+
+        function updatePresetLabels(languageCode) {
+            var newLabels = labelsByLanguage[languageCode];
+            if (newLabels) {
+                daterangepicker.presets = [
+                    { label: newLabels[0], start: daterangepicker.presets[0].start, end: daterangepicker.presets[0].end },
+                    { label: newLabels[1], start: daterangepicker.presets[1].start, end: daterangepicker.presets[1].end },
+                    { label: newLabels[2], start: daterangepicker.presets[2].start, end: daterangepicker.presets[2].end },
+                    { label: newLabels[3], start: daterangepicker.presets[3].start, end: daterangepicker.presets[3].end }
+                ];
+            }
+        }
+
+        // Handle culture changes
+        var cultureElement = document.getElementById("sb-setting-culture_hidden");
+        if (cultureElement) {
+            var initialLanguage = cultureElement.value;
+            updatePresetLabels(initialLanguage);
+        }
+    });
+    </script>
+
+    @*custom code end*@
+
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            Click/Touch the DateRangePicker popup icon to view and select the list of custom preset ranges. Select the custom range option which is provided at the end of this list to open date range picker popup calendar for selecting custom ranges.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            <code>DateRangePicker</code> component has presets support to display the collection of required ranges in the popup element. User can select a required range from the list and the selected range value will be updated in the component.
+        </p>
+        <p>
+            More information on the DateRangePicker instantiation can be found in the
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/daterangepicker/getting-started-mvc" target="_blank" aria-label="documentation section"> documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Preset Ranges in ASP.NET MVC DateRangePicker control. Explore here for more details." />
+}
+@section Title{
+    <title>ASP.NET MVC DateRangePicker Preset Ranges Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Preset Ranges in ASP.NET MVC DateRangePicker Control</h1>
+}

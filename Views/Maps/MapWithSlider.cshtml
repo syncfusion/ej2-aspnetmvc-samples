@@ -1,0 +1,129 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Maps
+@section ControlsSection{
+    <style>
+        #mapannotation.e-control.e-slider .e-handle {
+            background-color: #4B4B4B;
+        }
+
+        .e-control-wrapper.e-slider-container.e-horizontal .e-slider-track {
+            background: -webkit-linear-gradient(left, #7E9CDC 0, #DCD57E 17%, #7EDCA2 34%, #6EB5D0 51%, #A6DC7E 68%, #DCA87E 85%, #d075c6 100%);
+            background: linear-gradient(left, #7E9CDC 0, #DCD57E 17%, #7EDCA2 34%, #6EB5D0 51%, #A6DC7E 68%, #DCA87E 85%, #d075c6 100%);
+            background: -moz-linear-gradient(left, #7E9CDC 0, #DCD57E 17%, #7EDCA2 34%, #6EB5D0 51%, #A6DC7E 68%, #DCA87E 85%, #d075c6 100%);
+        }
+
+        .e-limit-bar.e-limits {
+            background-color: transparent !important;
+        }
+
+        .e-control-wrapper.e-slider-container.e-horizontal .e-range {
+            height: 0px !important;
+            width: 0px !important;
+        }
+
+        #mapannotation.e-control.e-slider .e-slider-track {
+            height: 8px;
+            top: calc(50% - 4px);
+            border-radius: 5px;
+        }
+    </style>
+    <div class="control-section">
+        <div id="mapslider">
+            @Html.EJS().Maps("mapslider").Margin(margin=>margin.Bottom(20)).Annotations(a=>a.Content("#mapslider-annotation").Y("95%").HorizontalAlignment(AnnotationAlignment.Center).Add()).TitleSettings(title => title.Text("Average annual population growth in North American countries").TextStyle(new MapsFont { Size = "16px" })).Load("mapsLoad").Loaded("mapLoaded").Layers(layer =>
+       {
+           layer.TooltipSettings(t => t.Visible(true).Format("${name} : ${population}%")).DataSource(ViewData["DataSource"]).ShapeDataPath("name")
+           .ShapePropertyPath("name").ShapeSettings(new MapsShapeSettings
+           {
+               ColorValuePath = "population",
+               ColorMapping = new List<MapsColorMapping> {
+                new MapsColorMapping { From =  -1.5 , To = -0.75, Color="#7E9CDC"},
+                new MapsColorMapping { From = -0.75, To = 0.001, Color="#DCD57E" },
+                new MapsColorMapping { From = 0.1 , To = 0.75, Color="#7EDCA2" },
+                new MapsColorMapping { From = 0.76 , To = 1.5, Color="#6EB5D0" },
+                new MapsColorMapping { From = 1.5 , To = 2.25, Color="#A6DC7E" },
+                new MapsColorMapping { From = 2.25 , To = 3, Color="#DCA87E" },
+                new MapsColorMapping { From = 3 , To = 3.75, Color="#d075c6" }
+           }
+           }).ShapeData(ViewData["MapShapeData"]).Add();
+       }).Render()
+        </div>
+        <div id="mapslider-annotation" style="display: none;">
+            <div id="mapannotation" style="width:300px"></div>
+        </div>
+        <br /><br />
+        <div style="margin-left: 75%">
+            Source:
+            <a href="https://en.wikipedia.org/wiki/List_of_North_American_countries_by_population" target="_blank" aria-label="Population growth in North America">Population growth in North America</a>
+        </div>
+    </div>
+    <script>
+        var sliderVal = [-1.5, 3.75];
+        var maps;
+        var colorCodes = ['#7E9CDC', '#DCD57E', '#7EDCA2', '#6EB5D0', '#A6DC7E', '#DCA87E', '#d075c6'];
+        function mapsLoad(args) {
+            maps = args.maps;
+            var theme = themeName ? themeName : 'Material';
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+        }
+
+        function mapLoaded(args) {
+            if (document.getElementById('mapslider_Annotation_0')) {
+                annotationRender(sliderVal);
+            }
+        }
+
+        function annotationRender(val) {
+            var slider = new ej.inputs.Slider({
+                min: -1.5, max: 3.75,
+                value: val,
+                step: 0.75,
+                type: 'Range',
+                ticks: { placement: 'After', largeStep: 0.75 },
+                changed: function (args) {
+                    if (!isNaN(args.value[0]) && !isNaN(args.value[1])) {
+                        for (var i = 0; i < maps.layers[0].shapeSettings.colorMapping.length; i++) {
+                            if (maps.layers[0].shapeSettings.colorMapping[i].from < args.value[0] ||
+                                maps.layers[0].shapeSettings.colorMapping[i].to > args.value[1]) {
+                                maps.layers[0].shapeSettings.colorMapping[i].color = '#E5E5E5';
+                            } else {
+                                maps.layers[0].shapeSettings.colorMapping[i].color = colorCodes[i];
+                            }
+                        }
+                        sliderVal = args.value;
+                        maps.refresh();
+                    }
+                }
+            });
+            slider.appendTo('#mapannotation');
+        }
+    </script>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the average annual population growth of the countries in the North America continent.
+        </p>
+    </div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Map With Slider in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
+@section Description{
+    <div id="description">
+        <p>
+            In this example, the range color mapping is applied to the shapes based on the population growth of the countries in percentage. The EJ2 Slider control is placed at the bottom of the maps to control the minimum and maximum color ranges.
+        </p>
+        <p>
+            The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.
+        </p>
+    </div>
+}
+
+
+
+@section Title{
+                    <title>ASP.NET MVC Maps Map With Slider Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Map With Slider in ASP.NET MVC Maps Control</h1>
+                }

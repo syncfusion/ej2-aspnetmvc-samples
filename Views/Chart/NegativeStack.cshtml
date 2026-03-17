@@ -1,0 +1,109 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        
+      @Html.EJS().Chart("container-vertical").Series(series =>
+ {
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar).XName("Age").YName("FemalePercentValue").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
+    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer).Name("FemalePercent").Font(ff => ff.FontWeight("600").Size("9px"))))
+    .DataSource(ViewData["ChartPoints"]).Name("Female").ColumnWidth(0.5).CornerRadius(cr => cr.TopRight(4).BottomRight(4)).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingBar).XName("Age").YName("MalePercentValue").LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle)
+    .Marker(mr => mr.DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Outer).Name("MalePercent").Font(ff => ff.FontWeight("600").Size("9px"))))
+    .DataSource(ViewData["ChartPoints"]).Name("Male").ColumnWidth(0.5).CornerRadius(cr => cr.TopRight(4).BottomRight(4)).Add();
+ }).PrimaryXAxis(px => px.Title("Population by Age Range").Minimum(0).Interval(3)
+ .MajorGridLines(mg=>mg.Width(0)).MajorTickLines(mt => mt.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+       ).PrimaryYAxis(py => py.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift).LabelFormat("{value}%").Interval(3).RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.Round).Title("Share of Total Population (%)").LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0))
+       ).Title("Belize Demographic Breakdown by Age and Gender (2024)").SubTitle("Source: statisticstimes.com").ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))
+       ).LegendSettings(lg => lg.Visible(true).EnableHighlight(true).ShapeHeight(8).ShapeWidth(8)
+       ).Tooltip(tt => tt.Enable(true).EnableHighlight(true).Header("${point.x}")).TooltipRender("tooltipRender").Load("load").AxisLabelRender("axisLabelRender").Render()
+ 
+        </div>
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    @*custom code end*@
+    <script>
+        var negativeStackData = [
+            { age: '90 - 94', male: 123, female: 153, malePercent: '0.03%', femalePercent: '0.04%', malePercentValue: 0.03, femalePercentValue: -0.04 },
+            { age: '85 - 89', male: 407, female: 457, malePercent: '0.1%', femalePercent: '0.11%', malePercentValue: 0.1, femalePercentValue: -0.11 },
+            { age: '80 - 84', male: 879, female: 970, malePercent: '0.21%', femalePercent: '0.23%', malePercentValue: 0.21, femalePercentValue: -0.23 },
+            { age: '75 - 79', male: 1609, female: 1768, malePercent: '0.39%', femalePercent: '0.42%', malePercentValue: 0.39, femalePercentValue: -0.42 },
+            { age: '70 - 74', male: 2769, female: 3004, malePercent: '0.66%', femalePercent: '0.72%', malePercentValue: 0.66, femalePercentValue: -0.72 },
+            { age: '65 - 69', male: 4250, female: 4511, malePercent: '1.02%', femalePercent: '1.08%', malePercentValue: 1.02, femalePercentValue: -1.08 },
+            { age: '60 - 64', male: 6152, female: 6369, malePercent: '1.48%', femalePercent: '1.53%', malePercentValue: 1.48, femalePercentValue: -1.53 },
+            { age: '55 - 59', male: 7741, female: 7976, malePercent: '1.86%', femalePercent: '1.91%', malePercentValue: 1.86, femalePercentValue: -1.91 },
+            { age: '50 - 54', male: 9643, female: 10086, malePercent: '2.31%', femalePercent: '2.42%', malePercentValue: 2.31, femalePercentValue: -2.42 },
+            { age: '45 - 49', male: 11332, female: 11585, malePercent: '2.72%', femalePercent: '2.78%', malePercentValue: 2.72, femalePercentValue: -2.78 },
+            { age: '40 - 44', male: 13569, female: 13713, malePercent: '3.25%', femalePercent: '3.29%', malePercentValue: 3.25, femalePercentValue: -3.29 },
+            { age: '35 - 39', male: 16293, female: 15999, malePercent: '3.91%', femalePercent: '3.84%', malePercentValue: 3.91, femalePercentValue: -3.84 },
+            { age: '30 - 34', male: 18805, female: 18038, malePercent: '4.51%', femalePercent: '4.32%', malePercentValue: 4.51, femalePercentValue: -4.32 },
+            { age: '25 - 29', male: 20023, female: 19216, malePercent: '4.8%', femalePercent: '4.61%', malePercentValue: 4.8, femalePercentValue: -4.61 },
+            { age: '20 - 24', male: 20428, female: 19689, malePercent: '4.9%', femalePercent: '4.72%', malePercentValue: 4.9, femalePercentValue: -4.72 },
+            { age: '15 - 19', male: 19663, female: 18950, malePercent: '4.71%', femalePercent: '4.54%', malePercentValue: 4.71, femalePercentValue: -4.54 },
+            { age: '10 - 14', male: 18701, female: 17859, malePercent: '4.48%', femalePercent: '4.28%', malePercentValue: 4.48, femalePercentValue: -4.28 },
+            { age: '05 - 09', male: 19863, female: 18942, malePercent: '4.76%', femalePercent: '4.54%', malePercentValue: 4.76, femalePercentValue: -4.54 },
+            { age: '00 - 04', male: 18171, female: 17316, malePercent: '4.36%', femalePercent: '4.15%', malePercentValue: 4.36, femalePercentValue: -4.15 }
+        ];
+
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+        };
+        var tooltipRender = function (args) {
+            var ageGroup = args.point.x; // No need for type annotation in JS
+            var dataPoint = negativeStackData.find(function (d) {
+                return d.age === ageGroup;
+            });
+
+            if (args.text && dataPoint) {
+                var value;
+                if (args.series.name === 'Male') {
+                    value = dataPoint.malePercent;
+                } else if (args.series.name === 'Female') {
+                    value = dataPoint.femalePercent;
+                }
+
+                if (value) {
+                    args.text = args.series.name + ' Population: <b>' + value + '</b>';
+                }
+            }
+        };
+        var axisLabelRender = function (args) {
+            if (args.value < 0) {
+                args.text = (-args.value + '%').toString();
+            }
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Negative Stack in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates a stacked bar chart representing the population distribution by age and gender, including negative data points. Data point values are displayed as data labels.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure negative values in a stacked bar chart. The stacked bar chart stacks points in the series horizontally.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p>
+        More information about the stacked bar series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/stacked-bar" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Negative Stack Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }

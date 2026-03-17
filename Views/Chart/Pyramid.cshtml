@@ -1,0 +1,46 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        @(Html.EJS().AccumulationChart("container").Series(series =>
+   {
+       series.Type(Syncfusion.EJ2.Charts.AccumulationType.Pyramid).Width("45%").Height("80%").XName("Foods").YName("Calories").Name("Food").
+       NeckWidth("15%").GapRatio(0.03).Explode(false).DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).Font(ft => ft.FontWeight("600")).ConnectorStyle(cs => cs.Length("20px"))).DataSource(ViewData["ChartPoints"]).Add();
+   }).Title("Food Consumption Pyramid").SubTitle("Source: wikipedia.org").Tooltip(tl => tl.Enable(true).EnableHighlight(true).Format("${point.x}: <b>${point.y}% of Daily Intake</b>").Header("")).LegendSettings(ls =>ls.Visible(false)).Load("load").Render())
+    </div>
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function(args) {
+            loadAccumulationChartTheme(args);
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? "7px" : "12px";
+            args.accumulation.series[0].dataLabel.connectorStyle.length = ej.base.Browser.isDevice ? '10px' : '20px';       
+        }      
+    </script>
+}
+         @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Pyramid in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+         @*custom code end*@
+@section ActionDescription{
+    <p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/pyramid-chart" aria-label="ASP.NET MVC Pyramid Chart">ASP.NET MVC Pyramid Chart<span class="sr-only">opens in a new tab</span></a> visualizes food comparison data by using pyramid series.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a pyramid chart. This chart is shaped like a triangle, with lines dividing it into sections of varying widths. Depending on the Y coordinate, the width indicates a level of hierarchy among other categories. The <code>DataLabel</code> represents individual data and its value.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the pyramid series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/pyramid" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Pyramid Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }

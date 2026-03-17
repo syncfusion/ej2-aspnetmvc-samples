@@ -1,0 +1,191 @@
+@using Syncfusion.EJ2
+@using EJ2CoreSampleBrowser.Models
+@using Syncfusion.EJ2.DropDowns
+@section ControlsSection{
+    <div class="control-section">
+        <div class="control-wrapper">
+            <table class="api">
+                <tbody>
+                    <tr>
+                        <td>
+                            <div>
+                                @Html.EJS().DropDownList("enterList").PopupHeight("200px").Index(0).DataSource(
+                                (IEnumerable<FormatOption>)ViewData["EnterData"]).Placeholder("When pressing the enter key").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Change("enterChange").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Format" }).Render()
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                @Html.EJS().DropDownList("shiftEnterList").PopupHeight("200px").Index(0).DataSource(
+                                (IEnumerable<FormatOption>)ViewData["ShiftEnterData"]).Placeholder("When pressing the shift + enter key").FloatLabelType(Syncfusion.EJ2.Inputs.FloatLabelType.Always).Change("shiftEnterChange").Fields(new DropDownListFieldSettings { Text = "Text", Value = "Format" }).Render()
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            @Html.EJS().RichTextEditor("defaultRTE").ContentTemplate(@<p>In Rich text Editor, the enter key and shift + enter key actions can be customized using the enterKey and shiftEnterKey APIs. And the possible values are as follows:<ul><li>P - When "P" is configured, pressing enter or shift + enter will create a "p" tag</li><li>DIV - When "DIV" is configured, pressing enter or shift + enter will create a "div" tag</li><li>BR - When "BR" is configured, pressing enter or shift + enter will create a "br" tag</li></ul></p>).Created("created").Change("onChange").SaveInterval(1).Height(200).Render()
+            <br>
+            <label>Code View </label>
+            <div id="codeView" class="codeView"></div>
+        </div>
+    </div>
+    <link href="~/Content/RichTextEditor/codemirror.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/css/css.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/htmlmixed/htmlmixed.js" type="text/javascript"></script>
+    <script>
+        var rteObj;
+
+        function created() {
+            rteObj = this;
+            onChange();
+        }
+
+        function enterChange(args) {
+            if (args.value === 'P') {
+                rteObj.enterKey = 'P';
+                rteObj.value = `<p>In Rich text Editor, the enter key and shift + enter key actions can be customized using the enterKey and shiftEnterKey APIs. And the possible values are as follows:</p><ul><li>P - When 'P' is configured, pressing enter or shift + enter will create a 'p' tag</li><li>DIV - When 'DIV' is configured, pressing enter or shift + enter will create a 'div' tag</li><li>BR - When 'BR' is configured, pressing enter or shift + enter will create a 'br' tag</li></ul>`;
+            } else if (args.value === 'DIV') {
+                rteObj.enterKey = 'DIV';
+                rteObj.value = `<div>In Rich text Editor, the enter key and shift + enter key action can be customized using the enterKey and shiftEnterKey APIs. And the possible values are as follows</div><ul><li>P - When 'P' is configured pressing enter will create a 'p' tag</li><li>DIV - When 'DIV' is configured pressing enter will create a 'div' tag</li><li>BR - When 'BR' is configured pressing enter will create a 'br' tag</li></ul>`;
+            } else if (args.value === 'BR') {
+                rteObj.enterKey = 'BR';
+                rteObj.value = `In Rich text Editor, the enter key and shift + enter key action can be customized using the enterKey and shiftEnterKey APIs. And the possible values are as follows<ul><li>P - When 'P' is configured pressing enter will create a 'p' tag</li><li>DIV - When 'DIV' is configured pressing enter will create a 'div' tag</li><li>BR - When 'BR' is configured pressing enter will create a 'br' tag</li></ul>`;
+            }
+            onChange();
+        }
+
+        function shiftEnterChange(args) {
+            if (args.value === 'BR') {
+                rteObj.shiftEnterKey = 'BR';
+            } else if (args.value === 'DIV') {
+                rteObj.shiftEnterKey = 'DIV';
+            } else if (args.value === 'P') {
+                rteObj.shiftEnterKey = 'P';
+            }
+        }
+        function onChange() {
+
+            var id = rteObj.getID() + 'mirror-view';
+            var codeView = document.getElementById('codeView');
+            var mirrorView;
+            if (document.getElementById(id)) {
+                mirrorView = document.getElementById(id);
+                mirrorView.innerHTML = '';
+            } else {
+                mirrorView = ej.base.createElement('div', { className: 'e-content codeViewContent' });
+                mirrorView.id = id;
+                codeView.appendChild(mirrorView);
+            }
+            mirrorView.style.display = 'block';
+            if (rteObj.value !== null) {
+                CodeMirror(mirrorView, {
+                    value: rteObj.value,
+                    mode: 'text/html',
+                    lineWrapping: true,
+                    readOnly: true
+                });
+            }
+        }
+    </script>
+    <style>
+        .api {
+            width: 75%;
+        }
+
+            .api td {
+                padding-right: 100px;
+                margin-top: 3px;
+            }
+
+        @@media only screen and (max-width: 600px) {
+            .api {
+                width: 100%;
+            }
+
+                .api td {
+                    display: block;
+                }
+        }
+
+        @@media only screen and (min-width: 600px) and (max-width: 1000px) {
+            .api {
+                width: 100%;
+            }
+        }
+
+        .control-wrapper {
+            padding: 20px;
+        }
+
+        .codeView {
+            border: 1px solid rgba(0,0,0,0.12);
+            height: 200px;
+            width: 100%;
+        }
+
+        .bootstrap-dark .codeView{
+            border:1px solid rgb(80,80,80);
+        }
+        .highcontrast .codeView {
+            border:1px solid rgb(255,255,255);
+        }
+        
+        .CodeMirror {
+            height: 190px;
+        }
+
+        .codeViewContent {
+            padding-left: 16px;
+        }
+        .highcontrast .CodeMirror {
+            color:#fff;
+        }
+        .hightcontrast .codeView{
+            border: 1px solid #fff;
+        }
+        .bootstrap5\.3-dark .codeView .CodeMirror {
+            background: rgb(40, 45, 49);
+            color:#fff
+        }
+        .fluent2-dark .CodeMirror-scroll {
+            background-color: rgb(37, 36, 35);
+            color: #fff;
+        }
+        .fluent2-highcontrast .CodeMirror-scroll{
+        background-color: #000;
+        Color: #fff
+        }
+    </style>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Enter Key Configuration in ASP.NET MVC Rich Text Editor control. Explore here for more details."/>
+                }
+
+@*custom code end*@
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the API usage to customize the enter key and shift + enter key action in the Rich Text Editor content.
+            Code view represents the current rich text editor value when pressing typing or pressing enter key or shift + enter key.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>In this demos, Ensuring the API'S behaviors by doing</p>
+        <ul>
+            <li>Change the value of <code>enterKey</code> dropdown to customize the enter the enter key action when enter key is pressed.</li>
+            <li>Change the value of <code>shiftEnterKey</code> dropdown to customize the shift+enter the enter key action when shift+enter key is pressed.</li>
+        </ul>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Rich Text Editor Enter Key Configuration Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Enter Key Configuration in ASP.NET MVC Rich Text Editor Control</h1>
+                }

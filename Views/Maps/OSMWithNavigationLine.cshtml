@@ -1,0 +1,121 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Maps
+@section ControlsSection{
+    <div class="control-section">
+        <div class="control_wrapper">
+            @Html.EJS().Maps("container").Load("mapsload").TitleSettings(title => title.Text("Flight route from Los Angeles to Mexico city").TextStyle(new MapsFont { Size = "16px" })).CenterPosition(new MapsCenterPosition { Latitude = 27.0902, Longitude = -105.7129 }
+    ).ZoomSettings(new Syncfusion.EJ2.Maps.MapsZoomSettings
+    {
+        ZoomFactor = 5,
+        Enable = false
+    }).Layers(new List<Syncfusion.EJ2.Maps.MapsLayer> {
+        new Syncfusion.EJ2.Maps.MapsLayer
+        {
+            UrlTemplate = "https://tile.openstreetmap.org/level/tileX/tileY.png",
+            NavigationLineSettings = new List<MapsNavigationLine>
+        {
+            new MapsNavigationLine { Width = 8, Visible=true,Angle=-0.05,Color="#00ace6", Latitude=new [] { 23.6445, 34.0522 }, Longitude = new [] { -102.832, -118.2437 } }
+        },
+            MarkerSettings = new List<Syncfusion.EJ2.Maps.MapsMarker>
+                   {
+                     new Syncfusion.EJ2.Maps.MapsMarker
+                      {
+                          Visible = true,
+                          DataSource = new [] { new { name = "Mexico City", latitude = 23.6445, longitude = -102.832 } },
+                          Template = "<div><img src=../Content/Maps/group.svg style=height:15px; width: 15px;></img></div>",
+                          TooltipSettings = new MapsTooltipSettings{ Visible=true, ValuePath="name" },
+                      },
+                      new Syncfusion.EJ2.Maps.MapsMarker
+                      {
+                          Visible = true,
+                          DataSource = new [] { new { name = "Mexico City", latitude = 24.2005, longitude = -102.832 } },
+                          Template = "<div><img src=../Content/Maps/ballon.png style=height:30px; width: 20px;></img></div>",
+                          TooltipSettings = new MapsTooltipSettings{ Visible=true, ValuePath="name" },
+                      },
+                       new Syncfusion.EJ2.Maps.MapsMarker
+                      {
+                          Visible = true,
+                          DataSource = new [] { new { name = "Mexico City", latitude = 24.0005, longitude = -101.200 } },
+                          Template = "<div style=color:#000;font-weight:500;font-size:13px;text-align:left>Mexico</div>",
+                          TooltipSettings = new MapsTooltipSettings{ Visible=true, ValuePath="name" },
+                      },
+                         new Syncfusion.EJ2.Maps.MapsMarker
+                      {
+                          Visible = true,
+                          DataSource = new [] { new { name = "Los Angeles", latitude = 34.0522, longitude = -118.2437 } },
+                          Template = "<div><img src=../Content/Maps/oval.svg style=height:15px; width: 15px;></img></div>",
+                          TooltipSettings = new MapsTooltipSettings{ Visible=true, ValuePath="name" }
+                      },
+                             new Syncfusion.EJ2.Maps.MapsMarker
+                      {
+                          Visible = true,
+                          DataSource = new [] { new { name = "Los Angeles City", latitude = 34.7000, longitude = -121.5000 } },
+                          Template = "<div><div style=color:#000;text-align:right;font-weight:500;font-size:13px;>Los Angeles</br>International Airport</div></div",
+                          TooltipSettings = new MapsTooltipSettings{ Visible=true, ValuePath="name" },
+                      },
+                       new Syncfusion.EJ2.Maps.MapsMarker
+                      {
+                          Visible = true,
+                          DataSource = new [] { new { name = "Los Angeles City", latitude = 28.5, longitude = -110.400 } },
+                          Template = "<div><img src=../Content/Maps/map-tooltip.svg style=height:50px; width: 100px;></img></div>"
+                      }
+                   },
+        }
+
+    }).Render()
+        </div>
+        <div style="float: right">
+            <a href="https://www.openstreetmap.org/copyright" target="_blank" aria-label="OpenStreetMap">© OpenStreetMap contributors</a>
+        </div>
+        <br />
+        <div style="float: right; margin-right: 10px;">
+            Source:
+            <a href="https://www.google.co.in/maps" target="_blank" aria-label="google">www.google.co.in/maps</a>
+        </div>
+    </div>
+    <script>
+        function mapsload(args) {
+            var theme = themeName ? themeName : 'Material';
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+        }
+    </script>
+    <style>
+		#container {
+		display: block;
+		}
+    </style>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the continents in the world by rendering them in a map layer. Also marks the office locations of YouTube in the world using markers.
+        </p>
+    </div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the OSM With Navigation Line in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render a map with the provided GeoJSON data. Group of shapes can be combined to form a layer of the map. You can bind the desired colors from the data source to the map shapes. The marker templates are used to display the names for shapes and mark specific locations. Legend is enabled in this example to represent each continent.
+        </p>
+        <p>
+            Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a shape or tap a shape in touch enabled devices.
+        </p>
+        <br />
+        <p style="font-weight: 500">Injecting Module</p>
+        <p>
+            Maps component features are segregated into individual feature-wise modules. To use a marker, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method, and use a legend by injecting the <code>Legend</code> module.
+        </p>
+    </div>
+}
+
+
+
+@section Title{
+                    <title>ASP.NET MVC Maps OSM With Navigation Line Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of OSM With Navigation Line in ASP.NET MVC Maps Control</h1>
+                }

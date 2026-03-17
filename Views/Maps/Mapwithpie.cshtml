@@ -1,0 +1,314 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Maps
+@section ControlsSection{
+    <style>
+        #container {
+            display: table;
+            margin: 0 auto;
+        }
+    </style>
+    <div class="control-section">
+        <div id="template" style="display:none;">Name</div>
+        <div id="outer" style="width:100%">
+            @Html.EJS().Maps("container").Resize("mapResize").Load("mapsload").Loaded("loaded").LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.Maps.LegendPosition.Bottom)).TitleSettings(title => title.Text("Top 6 largest countries age group details").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).Layers(layer =>
+       {
+           layer.MarkerSettings(new List<MapsMarker> {
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+                new MapsMarker() { Visible = true, AnimationDuration = 0 },
+           }).ShapeSettings(new MapsShapeSettings{ Fill = "#E5E5E5", ColorMapping = (List<MapsColorMapping>)ViewData["colormapping"] }).ShapeData(ViewData["shapeData"]).Add();
+       }).Render()
+            <div style="margin-left:75%">
+                Source:
+                <a href="http://www.nationmaster.com/country-info/stats/People/Age-structure/55--64-years" rel="nofollow" target="_blank" aria-label="nationmaster">www.nationmaster.com</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        var chart, chart1, chart2, chart3, chart4, chart5;
+        var dataFirst = true;
+        function mapsload(args) {
+            var theme = themeName ? themeName : 'Material';
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            if (dataFirst) {
+                args.maps.layers[0].markerSettings[0].template = '<div id="pieChart1" style="height:150px;width:200px;"></div>';
+                args.maps.layers[0].markerSettings[0].dataSource = [
+                    { 'latitude': 61.938950426660604, 'longitude': 97.03125 }
+                ];
+                args.maps.layers[0].markerSettings[1].template = '  <div id="pieChart2" style="height:150px;width:200px;">';
+                args.maps.layers[0].markerSettings[1].dataSource = [
+                    { 'latitude': 57.70414723434193, 'longitude': -114.08203125 }
+                ];
+                args.maps.layers[0].markerSettings[2].template = '<div id="pieChart3" style="top:-35px;left:-50px;height:150px;width:200px;"></div>';
+                args.maps.layers[0].markerSettings[2].dataSource = [
+                    { 'latitude': 10.555037013237452, 'longitude': -64.1160548956648 }
+                ];
+                args.maps.layers[0].markerSettings[3].template = '<div id="pieChart4" style="top:-55px;left:-10px;height:150px;width:200px;"></div>';
+                args.maps.layers[0].markerSettings[3].dataSource = [
+                    { 'latitude': 9.774059122564566, 'longitude': 108.77498325892299 }
+                ];
+                args.maps.layers[0].markerSettings[4].template = '<div id="pieChart5" style="top:-65px;left:15px;height:130px;width:200px;"></div>';
+                args.maps.layers[0].markerSettings[4].dataSource = [
+                    { 'latitude': -52.313430655959614, 'longitude': -66.26827567737013 }
+                ];
+                args.maps.layers[0].markerSettings[5].template = '<div id="pieChart6" style="height:150px;width:200px;"></div>';
+                args.maps.layers[0].markerSettings[5].dataSource = [
+                    { 'latitude': -23.725011735951796, 'longitude': 132.978515625 }
+                ];
+                dataFirst = false;
+            }
+        }
+
+        function mapResize(args) {
+            chart.destroy();
+            chart1.destroy();
+            chart2.destroy();
+            chart3.destroy();
+            chart4.destroy();
+            chart5.destroy();
+        }
+
+        function loaded(args) {
+            setTimeout(() => {
+            chart = new ej.charts.AccumulationChart({
+                background: 'transparent',
+                width: '70',
+                height: '70',
+                tooltip: {
+                    enable: true,
+                    format: '${point.x} : ${point.y}%'
+                },
+                legendSettings: {
+                    visible: false
+                },
+                series: [
+                    {
+                        animation: {
+                            enable: false
+                        },
+                        explode: true,
+                        explodeIndex: 0,
+                        explodeOffset: '20%',
+                        name: 'Russia',
+                        palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
+                        dataSource: [
+                            { 'x': '0-14 years', y: 16 }, { 'x': '15-24 years', y: 11.5 },
+                            { 'x': '25-54 years', y: 45.9 }, { 'x': '55-64 years', y: 13.5 },
+                        ],
+                        type: 'Pie',
+                        xName: 'x',
+                        yName: 'y'
+                    }
+                ]
+            });
+            chart.appendTo('#pieChart1');
+            chart1 = new ej.charts.AccumulationChart({
+                background: 'transparent',
+                width: '70',
+                height: '70',
+                legendSettings: {
+                    visible: false
+                },
+                tooltip: {
+                    enable: true,
+                    format: '${point.x} : ${point.y}%'
+                },
+                series: [
+                    {
+                        animation: {
+                            enable: false
+                        },
+                        explode: true,
+                        explodeIndex: 0,
+                        explodeOffset: '20%',
+                        name: 'Canada',
+                        palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
+                        dataSource: [
+                            { 'x': '0-14 years', y: 15.5 }, { 'x': '15-24 years', y: 12.9 },
+                            { 'x': '25-54 years', y: 41.4 }, { 'x': '55-64 years', y: 13.3 },
+                        ],
+                        type: 'Pie',
+                        xName: 'x',
+                        yName: 'y'
+                    }
+                ]
+            });
+            chart1.appendTo('#pieChart2');
+            chart2 = new ej.charts.AccumulationChart({
+                background: 'transparent',
+                width: '70',
+                height: '70',
+                legendSettings: {
+                    visible: false
+                },
+                tooltip: {
+                    enable: true,
+                    format: '${point.x} : ${point.y}%'
+                },
+                series: [
+                    {
+                        animation: {
+                            enable: false
+                        },
+                        explode: true,
+                        explodeIndex: 0,
+                        explodeOffset: '20%',
+                        name: 'USA',
+                        palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
+                        dataSource: [
+                            { 'x': '0-14 years', y: 20 }, { 'x': '15-24 years', y: 13.7 },
+                            { 'x': '25-54 years', y: 40.2 }, { 'x': '55-64 years', y: 12.3 },
+                        ],
+                        type: 'Pie',
+                        xName: 'x',
+                        yName: 'y'
+                    }
+                ]
+            });
+            chart2.appendTo('#pieChart3');
+            chart3 = new ej.charts.AccumulationChart({
+                background: 'transparent',
+                width: '70',
+                height: '70',
+                legendSettings: {
+                    visible: false
+                },
+                tooltip: {
+                    enable: true,
+                    format: '${point.x} : ${point.y}%'
+                },
+                series: [
+                    {
+                        animation: {
+                            enable: false
+                        },
+                        explode: true,
+                        explodeIndex: 0,
+                        explodeOffset: '20%',
+                        name: 'China',
+                        palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
+                        dataSource: [
+                            { 'x': '0-14 years', y: 17.2 }, { 'x': '15-24 years', y: 15.4 },
+                            { 'x': '25-54 years', y: 46.9 }, { 'x': '55-64 years', y: 11.3 },
+                        ],
+                        type: 'Pie',
+                        xName: 'x',
+                        yName: 'y'
+                    }
+                ]
+            });
+            chart3.appendTo('#pieChart4');
+            chart4 = new ej.charts.AccumulationChart({
+                background: 'transparent',
+                width: '70',
+                height: '70',
+                legendSettings: {
+                    visible: false
+                },
+                tooltip: {
+                    enable: true,
+                    format: '${point.x} : ${point.y}%'
+                },
+                series: [
+                    {
+                        animation: {
+                            enable: false
+                        },
+                        explode: true,
+                        explodeIndex: 0,
+                        explodeOffset: '20%',
+                        name: 'Brazil',
+                        palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
+                        dataSource: [
+                            { 'x': '0-14 years', y: 24.2 }, { 'x': '15-24 years', y: 16.7 },
+                            { 'x': '25-54 years', y: 43.6 }, { 'x': '55-64 years', y: 8.2 },
+                        ],
+                        type: 'Pie',
+                        xName: 'x',
+                        yName: 'y'
+                    }
+                ]
+            });
+            chart4.appendTo('#pieChart5');
+            chart5 = new ej.charts.AccumulationChart({
+                background: 'transparent',
+                width: '70',
+                height: '70',
+                legendSettings: {
+                    visible: false
+                },
+                tooltip: {
+                    enable: true,
+                    format: '${point.x} : ${point.y}%'
+                },
+                series: [
+                    {
+                        animation: {
+                            enable: false
+                        },
+                        explode: true,
+                        explodeIndex: 0,
+                        explodeOffset: '20%',
+                        name: 'Australia',
+                        palettes: ['#634D6F', '#B34D6D', '#557C5C', '#5E55E2', '#7C744D'],
+                        dataSource: [
+                            { 'x': '0-14 years', y: 18.1 }, { 'x': '15-24 years', y: 13.4 },
+                            { 'x': '25-54 years', y: 42 }, { 'x': '55-64 years', y: 11.8 },
+                        ],
+                        type: 'Pie',
+                        xName: 'x',
+                        yName: 'y'
+                    }
+                ]
+            });
+            chart5.appendTo('#pieChart6');
+            }, 10);
+        }
+
+    </script>
+    <style>
+        #pieChart1, #pieChart2,
+        #pieChart3, #pieChart4,
+        #pieChart5, #pieChart6 {
+            position: absolute !important;
+            margin-left: -35px;
+            margin-top: -35px;
+        }
+    </style>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the placing of pie charts on the maps. Pie chart is rendered with the age group details of top 6 largest countries.
+        </p>
+    </div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Map with Pie Chart in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
+@section Description{
+    <div id="description">
+        <p>
+            <div id="description">
+        <p>
+            In this example, you can see how to render the pie chart as marker in map. Any custom HTML elements can be used as a marker.
+
+        </p>
+        <br />
+        <p style="font-weight: 500">Injecting Module</p>
+        <p>
+            Maps component features are segregated into individual feature-wise modules. To use marker template, you need to inject <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
+        </p>
+    </div>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Maps Map with Pie Chart Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Map with Pie Chart in ASP.NET MVC Maps Control</h1>
+                }

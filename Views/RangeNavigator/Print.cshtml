@@ -1,0 +1,142 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+<div>
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            <div id="container">
+                @(Html.EJS().RangeNavigator("container").LabelPosition(Syncfusion.EJ2.Charts.AxisPosition.Outside)
+                    .Tooltip(tl => tl.Enable(true))
+                    .Series(sr =>
+                    {
+                        sr.XName("x").YName("y").Width(2).Type(Syncfusion.EJ2.Charts.RangeNavigatorType.StepLine).Add();
+                    }).Load("load").Changed("changed").Render()
+                )
+            </div>
+            <div id="chartcontainer">
+                @(Html.EJS().Chart("chart")
+            .Series(sr =>
+            {
+                sr.XName("x")
+                   .YName("y")
+                   .Width(2).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).Animation((Syncfusion.EJ2.Charts.ChartAnimation)ViewData["animation"]).Add();
+                sr.XName("x")
+                   .YName("y")
+                   .Width(2).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Spline).Animation((Syncfusion.EJ2.Charts.ChartAnimation)ViewData["animation"]).Add();
+            })
+              .PrimaryXAxis(xaxis =>
+                 xaxis.CrosshairTooltip((Syncfusion.EJ2.Charts.ChartCrosshairTooltip)ViewData["Cross"]).MajorGridLines((Syncfusion.EJ2.Charts.ChartMajorGridLines)ViewData["lineWidth"])
+                      .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+
+              )
+              .ChartArea(ca => ca.Border((Syncfusion.EJ2.Charts.ChartBorder)ViewData["border"]))
+              .PrimaryYAxis(yaxis =>
+                  yaxis.RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.Normal).Minimum(80).Maximum(140).LineStyle((Syncfusion.EJ2.Charts.ChartAxisLine)ViewData["lineWidth"]).MajorTickLines((Syncfusion.EJ2.Charts.ChartMajorTickLines)ViewData["lineWidth"])
+                        .LineStyle((Syncfusion.EJ2.Charts.ChartAxisLine)ViewData["lineWidth"]))
+                        .Crosshair(cr => cr.Enable(true).LineType(Syncfusion.EJ2.Charts.LineType.Vertical))
+                        .Height("350").Load("chartload").Render()
+                )
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr id="button-control" style="height: 50px">
+                    <td align="center">
+                        <div>
+                            <button id="togglebtn">Print</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    <style>
+        #button-control {
+            width: 100%;
+            text-align: center;
+        }
+
+        #control-container {
+            padding: 0px !important;
+        }
+
+        .e-play-icon::before {
+            content: '\e813';
+        }
+    </style>
+    <script src="~/Scripts/datasource.js"></script>
+    <script src="~/Scripts/range-navigator/theme-color.js"></script>
+    <script>
+        var series1 = [];
+        var series2 = [];
+        var value = 100;
+        var value1 = 120;
+        for (var i = 0; i < 351; i++) {
+            if (Math.random() > .5) {
+                value += Math.random();
+                value1 += Math.random();
+            }
+            else {
+                value -= Math.random();
+                value1 -= Math.random();
+            }
+            series1.push({ x: i, y: value });
+            series2.push({ x: i, y: value1 });
+        }
+        var zoomFactor, zoomPosition;
+        var load = function (args) {
+            loadRangeNavigatorTheme(args);
+            args.rangeNavigator.series[0].dataSource = series1;
+            args.rangeNavigator.value = [150, 250];
+            args.rangeNavigator.areaSeriesModule = new ej.charts.AreaSeries(args.rangeNavigator);
+            args.rangeNavigator.lineSeriesModule = new ej.charts.LineSeries(args.rangeNavigator);
+            args.rangeNavigator.stepLineSeriesModule = new ej.charts.StepLineSeries(args.rangeNavigator);
+            args.rangeNavigator.dateTimeModule = new ej.charts.DateTime(args.rangeNavigator);
+            args.rangeNavigator.logarithmicModule = new ej.charts.Logarithmic(args.rangeNavigator);
+            args.rangeNavigator.rangeTooltipModule = new ej.charts.RangeTooltip(args.rangeNavigator);
+        }
+        var chartload = function (args) {
+            loadChartTheme(args);
+            args.chart.series[0].dataSource = series1;
+            args.chart.series[1].dataSource = series2;
+            args.chart.zoomFactor = zoomFactor;
+            args.chart.zoomPosition = zoomPosition;
+        }
+        var changed = function (args) {
+            zoomFactor = args.zoomFactor;
+            zoomPosition = args.zoomPosition;
+            if ((document.getElementById('chart').childNodes.length > 1)) {
+                var chart = document.getElementById('chart').ej2_instances[0];
+                chart.primaryXAxis.zoomFactor = args.zoomFactor;
+                chart.primaryXAxis.zoomPosition = args.zoomPosition;
+                chart.dataBind();
+            }
+        }
+        document.getElementById('togglebtn').onclick = function () {
+            var range = document.getElementById('container').ej2_instances[0];
+            range.print(["container", "chart"]);
+        };
+    </script>
+}
+             @*custom code start*@
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Range Navigator control shows how to print the charts and export the chart contents to SVG, PDF, JPEG, PNG, and Excel formats at client-side." />
+}
+             @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates the print feature in the range navigator. You can print the range navigator directly from the browser by clicking print.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the print feature. The rendered range navigator can be printed directly from the browser by calling the public method print.
+    </p>
+    <p>
+        More information on the print can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/range-navigator/export" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}

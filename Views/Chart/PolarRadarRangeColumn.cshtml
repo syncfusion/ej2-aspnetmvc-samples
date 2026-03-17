@@ -1,0 +1,108 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+<div>
+    <div class="col-lg-8 control-section">
+@(Html.EJS().Chart("container")
+    .Series(sr =>
+    {
+        sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Polar)
+            .DrawType(Syncfusion.EJ2.Charts.ChartDrawType.RangeColumn)
+            .Name("Germany")
+            .XName("Month")
+            .High("MaxTemp")
+            .Low("MinTemp")
+            .Width(2).TooltipMappingName("MinTemp")
+            .Marker(mr => mr.DataLabel(dl => dl.Visible(true).EnableRotation(true).Font(ft=>ft.Color("#ffffff")).Position(Syncfusion.EJ2.Charts.LabelPosition.Top)))
+            .Border(br => br.Color("white").Width(3))
+            .DataSource(ViewData["ChartPoints"]).Add();
+    })
+      .PrimaryXAxis(xaxis =>
+         xaxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+             .LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.OnTicks)
+             .Interval(1)
+    )
+      .PrimaryYAxis(yaxis =>
+          yaxis.LabelFormat("{value}")
+                 .Interval(5)
+                 .Minimum(0)
+                 .Maximum(15)
+      )
+      .Title("Temperatures of Germany")
+      .Tooltip(tp => tp.Enable(true).Header("").Format("<b>${point.x}</b> <br> Low : <b>${point.low}°C</b> <br> High : <b>${point.high}°C</b>"))
+      .LegendSettings(lg => lg.Visible(false))
+      .Load("load").TextRender("textRender").Render()
+)
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 50%">
+                        <div>
+                            Series Type:
+                        </div>
+                    </td>
+                    <td style="width: 50%;">
+                        <div>
+                            @Html.EJS().DropDownList("dropdown").Index(0).DataSource(ViewData["data"]).Value("Polar").Change("valueChange").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+ @*custom code start*@
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+</style>
+ @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.primaryXAxis.coefficient = ej.base.Browser.isDevice ? 80 : 100;
+        };
+        function textRender(args) {
+            args.text = args.text.replace('˚C', '');
+        }
+        var valueChange = function () {
+            var chart = document.getElementById('container').ej2_instances[0];
+            var polarType = document.getElementById("dropdown").ej2_instances[0];
+            chart.series[0].type = polarType.value;
+            chart.series[0].animation.enable = false;
+            chart.refresh();
+        }
+    </script>
+}
+ @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the RangeColumn in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample shows minimum and maximum temperature variations in polar and radar charts using a range column series.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure polar and radar charts with a range column series. Switching between polar and radar series can be done using <b>Series Type</b> in the property panel.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p>
+        More information about the polar and radar chart with a range column series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/polar#range-column" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart RangeColumn Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of RangeColumn in ASP.NET MVC Chart Control</h1>
+                }

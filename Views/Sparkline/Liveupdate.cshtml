@@ -1,0 +1,165 @@
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Charts
+@section ControlsSection{
+    <div class="control-section" align="center">
+        <div id="spark-container" class="row">
+            <div class="cols-sample-area" align="center" style="margin-top: 8%;">
+                <div align="center" class="col-lg-3 col-m-3 col-sm-6">
+                    <div align="center" class="spark" id="spark-container1">
+                        @Html.EJS().Sparkline("spark-container1").Load("load1").Height("130px").Width("90%").ContainerArea(new SparklineContainerArea { Background = "white", Border = new SparklineSparklineBorder { Color = "#dcdfe0", Width = 2 } }).Border(new SparklineSparklineBorder { Color = "#0358a0", Width = 1 }).Fill("#e8f2fc").Type(SparklineType.Area).ValueType(SparklineValueType.Numeric).XName("x").YName("yval").DataSource(ViewData["datasource"]).Render()
+                        <div style="font-size: 12px; position: absolute; margin-top: 10px; margin-left: 8%;">
+                            <b>CPU</b>
+                        </div>
+                        <div id="cpu" style="color: #0877d6;position: absolute; margin-top: 25px; margin-left: 8%;">26% 1.2GHz</div>
+                    </div>
+                </div>
+                <div align="center" class="col-lg-3 col-m-3 col-sm-6">
+                    <div align="center" class="spark" id="spark-container2">
+                        @Html.EJS().Sparkline("spark-container2").Load("load2").Height("130px").Width("90%").ContainerArea(new SparklineContainerArea { Background = "white", Border = new SparklineSparklineBorder { Color = "#dcdfe0", Width = 2 } }).Border(new SparklineSparklineBorder { Color = "#b247c6", Width = 1 }).Fill("#f5e8fc").Type(SparklineType.Area).ValueType(SparklineValueType.Numeric).XName("x").YName("yval1").DataSource(ViewData["datasource"]).Render()
+                        <div style="font-size: 12px; position: absolute; margin-top: 10px; margin-left: 8%;">
+                            <b>Disk</b>
+                        </div>
+                        <div id="disk" style="color: #b247c6;position: absolute; margin-top: 25px; margin-left: 8%;">50%</div>
+                    </div>
+                </div>
+                <div align="center" class="col-lg-3 col-m-3 col-sm-6">
+                    <div align="center" class="spark" id="spark-container3">
+                        @Html.EJS().Sparkline("spark-container3").Load("load3").Height("130px").Width("90%").ContainerArea(new SparklineContainerArea { Background = "white", Border = new SparklineSparklineBorder { Color = "#dcdfe0", Width = 2 } }).Border(new SparklineSparklineBorder { Color = "#5bcc8f", Width = 1 }).Fill("#e0f9d1").Type(SparklineType.Area).ValueType(SparklineValueType.Numeric).XName("x").YName("yval2").DataSource(ViewData["datasource"]).Render()
+                        <div style="font-size: 12px; position: absolute; margin-top: 10px; margin-left: 8%;">
+                            <b>Memory</b>
+                        </div>
+                        <div id="memory" style="color: #5bcc8f;position: absolute; margin-top: 25px; margin-left: 8%;">6.5/15.8 GB (41%)</div>
+                    </div>
+                </div>
+                <div align="center" class="col-lg-3 col-m-3 col-sm-6">
+                    <div align="center" class="spark" id="spark-container4">
+                        @Html.EJS().Sparkline("spark-container4").Load("load4").Height("130px").Width("90%").ContainerArea(new SparklineContainerArea { Background = "white", Border = new SparklineSparklineBorder { Color = "#dcdfe0", Width = 2 } }).Border(new SparklineSparklineBorder { Color = "#AA907A", Width = 1 }).Fill("#F2D8C7").Type(SparklineType.Area).ValueType(SparklineValueType.Numeric).XName("x").YName("yval3").DataSource(ViewData["datasource"]).Render()
+                        <div style="font-size: 12px; position: absolute; margin-top: 10px; margin-left: 8%;">
+                            <b>Ethernet</b>
+                        </div>
+                        <div id="net" style="color: #d1a990;position: absolute; margin-top: 25px; margin-left: 8%;">R: 50Kbps</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .spark {
+            float: left;
+            width: 95%;
+            margin-left: 3%;
+        }
+    </style>
+    <script src="~/Scripts/Sparkline/theme-color.js"></script>
+    <script>
+        var spark, spark1, spark2, spark3, temp1, temp2, temp3, temp4;
+        function load1(args) {
+            loadSparkLineTheme(args);
+            if (!spark) {
+                args.sparkline.axisSettings.minY = 0;
+                args.sparkline.axisSettings.maxY = 150;
+                spark = args.sparkline;
+                temp1 = spark.dataSource.length - 1;
+            }
+        }
+        function update() {
+            if (spark.element.className.indexOf('e-sparkline') > -1) {
+                var value = ((Math.random() * 100) + 5) % 50;
+                spark.dataSource.push({ x: ++temp1, yval: value });
+                spark.dataSource.shift();
+                spark.refresh();
+                var cpu = document.getElementById('cpu');
+                cpu.innerHTML = ((value / 150) * 100).toFixed(0) + '% ' + ((value * 3) / 100).toFixed(2) + 'GHz';
+            }
+        }
+        setInterval(update, 1000);
+        function load2(args) {
+            loadSparkLineTheme(args);
+            if (!spark1) {
+                spark1 = args.sparkline;
+                spark1.axisSettings.minY = 4;
+                spark1.axisSettings.maxY = 8;
+                temp2 = spark1.dataSource.length - 1;
+            }
+        }
+        function update1() {
+            if (spark1.element.className.indexOf('e-sparkline') > -1) {
+                var value = Math.random();
+                if (value > 0.6) {
+                    value = 6 + (value / 10);
+                }
+                else {
+                    value = 6 - (value / 10);
+                }
+                spark1.dataSource.push({ x: ++temp2, yval1: value });
+                spark1.dataSource.shift();
+                spark1.refresh();
+                var memory = document.getElementById('memory');
+                var gb = parseFloat(value.toString().replace('0', '')).toFixed(1);
+                memory.innerHTML = gb + '/15.8 GB (' + ((value / 15.8) * 100).toFixed(0) + '%)';
+            }
+        }
+        setInterval(update1, 1000);
+        function load3(args) {
+            loadSparkLineTheme(args);
+            if (!spark2) {
+                spark2 = args.sparkline;
+                spark2.axisSettings.minY = 0;
+                spark2.axisSettings.maxY = 100;
+                temp3 = spark2.dataSource.length - 1;
+            }
+        }
+        function update2() {
+            if (spark2.element.className.indexOf('e-sparkline') > -1) {
+                var value = ((Math.random() * 100) + 5) % 80;
+                spark2.dataSource.push({ x: ++temp3, yval2: value });
+                spark2.dataSource.shift();
+                spark2.refresh();
+                var disk = document.getElementById('disk');
+                disk.innerHTML = value.toFixed(0) + '%';
+            }
+        }
+        setInterval(update2, 1000);
+        function load4(args) {
+            loadSparkLineTheme(args);
+            if (!spark3) {
+                args.sparkline.axisSettings.minY = 0;
+                args.sparkline.axisSettings.maxY = 100;
+                spark3 = args.sparkline;
+                temp4 = spark3.dataSource.length - 1;
+            }
+        }
+        function update4() {
+            if (spark3.element.className.indexOf('e-sparkline') > -1) {
+                var value = ((Math.random() * 100) + 5) % 80;
+                spark3.dataSource.push({ x: ++temp3, yval3: value });
+                spark3.dataSource.shift();
+                spark3.refresh();
+                var net = document.getElementById('net');
+                net.innerHTML = 'R: ' + value.toFixed(0) + 'Kbps';
+            }
+        }
+        setInterval(update4, 1000);
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the CPU, memory, disk and Ethernet usage by dynamically updating the values in Sparkline.
+    </p>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Live Update in ASP.NET MVC Sparkline Charts control. Explore here for more details."/>
+                }
+@section Description{
+    <p>
+        n this example, you can see how to dynamically update the values of sparkline. We have rendered 4 sparklines and updating their value for every second.
+    </p>
+}
+
+
+@section Title{
+                    <title>ASP.NET MVC Sparkline Charts Live Update Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Live Update in ASP.NET MVC Sparkline Charts Control</h1>
+                }

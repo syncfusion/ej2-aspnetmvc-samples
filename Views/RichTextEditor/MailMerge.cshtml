@@ -1,0 +1,153 @@
+@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.DropDowns
+@section ControlsSection{
+    <div class="control-section">
+        <div class="control-wrapper">
+            @Html.EJS().RichTextEditor("mailMergeEditor").ActionBegin("actionBeginHandler").ActionComplete("actionCompleteHandler").SaveInterval(1).Created("created").ToolbarSettings(e => e.Items((object)ViewData["Tools"])).Value((string)ViewData["RTEValue"]).Render()
+            @Html.EJS().Button("merge_data").Content("<span class='e-tbar-btn-text'>Merge Data</span>").Click("onClickHandler").CssClass("e-tbar-btn e-btn").Render()
+            @Html.EJS().DropDownButton("insert_Field").Content("<span class='e-rte-dropdown-btn-text'>Insert Field</span>").Close("onDropDownClose").Select("onItemSelect").Items(ViewData["Items"]).CssClass("e-rte-dropdown-btn e-rte-dropdown-popup e-rte-dropdown-items e-rte-elements e-rte-dropdown-menu").Render()
+            @Html.EJS().Mention("mentionField").MentionChar((char)ViewData["MentionChar"]).Created("onMentionCreate").Target("#mailMergeEditor_rte-edit-view").DataSource((IEnumerable<MergeData>)ViewData["MergeData"]).AllowSpaces(true).Fields(new MentionFieldSettings { Text = "Text" }).DisplayTemplate("<span> {{${Value}}} </span>").PopupWidth("250px").PopupHeight("200px").Render()
+        </div>
+    </div>
+}
+
+@*custom code start*@
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Mail Merge Integration in ASP.NET MVC Rich Text Editor control. Explore here for more details." />
+}
+
+@*custom code end*@
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates how to implement a mail merge in the Rich Text Editor sample by inserting placeholders into the editor using custom toolbar item, which are then replaced with actual data to create personalized content.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The mail merge in the Rich Text Editor sample enables users to insert placeholders for personalized content. These placeholders are replaced with actual data when generating the final content, making it easy
+            to create customized letters, invoices, and more.
+        </p>
+        <p>The following configurations are used in this sample:</p>
+        <ul>
+            <li>
+                The <code>Button</code> and <code>DropDownButton</code> are configured in the custom toolbar of
+                the Rich Text Editor.
+            </li>
+            <li>The <code>Button</code> click action performs the merge of the editor placeholder content.</li>
+            <li>
+                The <code>DropDownButton</code> provides a list of available fields, such as "First Name" or
+                "Email Address." A selected field from this dropdown is inserted into the editor as a placeholder.
+            </li>
+            <li>
+                The <code>Mention</code> allows insertion of merge fields by pressing the mention character, such
+                as <code>&#123;</code>, in the editor and selecting an item. These chips make it easy to see and select fields
+                directly within the content.
+            </li>
+        </ul>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Rich Text Editor Mail Merge Integration Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Mail Merge Integration in ASP.NET MVC Rich Text Editor Control</h1>
+}
+<script>
+    var mailMergeEditor;
+    var mentionObj;
+    const textToValueMap = {
+        'First Name': 'FirstName',
+        'Last Name': 'LastName',
+        'Support Email': 'SupportEmail',
+        'Company Name': 'CompanyName',
+        'Promo Code': 'PromoCode',
+        'Support Phone Number': 'SupportPhoneNumber',
+        'Customer ID': 'CustomerID',
+        'Expiration Date': 'ExpirationDate',
+        'Subscription Plan': 'SubscriptionPlan'
+    };
+    var placeholderData = {
+        "FirstName": "John",
+        "LastName": "Doe",
+        "PromoCode": "ABC123",
+        "SubscriptionPlan": "Premium",
+        "CustomerID": "123456",
+        "ExpirationDate": "2024-12-31",
+        "SupportEmail": "support@example.com",
+        "SupportPhoneNumber": "+1-800-555-5555",
+        "CompanyName": "Example Inc."
+    };
+    function created() {
+        mailMergeEditor = this;
+    }
+    function onMentionCreate() {
+        mentionObj = this;
+    }
+    function actionBeginHandler(args) {
+        if (
+            args.requestType === 'EnterAction' &&
+            mentionObj.element.classList.contains('e-popup-open')
+        ) {
+            args.cancel = true;
+        }
+    }
+    function onDropDownClose() {
+        if (mailMergeEditor) {
+            mailMergeEditor.focusIn();
+        }
+    }
+    function onItemSelect(args) {
+        if (args.item.text != null) {
+            const value = textToValueMap[args.item.text];
+            const trimmedValue = value.trim();
+            mailMergeEditor.formatter.editorManager.nodeSelection.restore();
+            mailMergeEditor.executeCommand(
+                'insertHTML',
+                `<span contenteditable="false" class="e-mention-chip"><span>{{${trimmedValue}}}</span></span>&nbsp;`,
+                { undo: true }
+            );
+        }
+    }
+    function actionCompleteHandler(e) {
+        if (e.requestType === 'SourceCode') {
+            mailMergeEditor.getToolbar().querySelector('#merge_data').parentElement.classList.add('e-overlay');
+            mailMergeEditor.getToolbar().querySelector('#insert_Field').parentElement.classList.add('e-overlay');
+        } else if (e.requestType === 'Preview') {
+            mailMergeEditor.getToolbar().querySelector('#merge_data').parentElement.classList.remove('e-overlay');
+            mailMergeEditor.getToolbar().querySelector('#insert_Field').parentElement.classList.remove('e-overlay');
+        }
+    }
+    function onClickHandler() {
+        if (mailMergeEditor) {
+            let editorContent = mailMergeEditor.value;
+            let mergedContent = replacePlaceholders(editorContent, placeholderData);
+            if (mailMergeEditor.formatter.getUndoRedoStack().length === 0) {
+                mailMergeEditor.formatter.saveData();
+            }
+            mailMergeEditor.value = mergedContent;
+            mailMergeEditor.formatter.saveData();
+        } else {
+            console.log('MailMergeEditor is not initialized.');
+        }
+    }
+    function replacePlaceholders(template, data) {
+        return template.replace(/{{\s*(\w+)\s*}}/g, (match, key) => {
+            var value = data[key.trim()];
+            var result = value !== undefined ? value : match;
+            return result;
+        });
+    }
+</script>
+<style>
+    .tailwind3 #merge_data,
+    .tailwind3-dark #merge_data {
+        font-weight:400;
+    }
+</style>
