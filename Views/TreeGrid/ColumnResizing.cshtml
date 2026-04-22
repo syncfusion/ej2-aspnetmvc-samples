@@ -1,0 +1,64 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
+@{
+    ViewData["Title"] = "DefaultFunctionalities";
+}
+
+@*custom code end*@
+
+@section ControlsSection{
+    <div class="control-section">
+        @(Html.EJS().TreeGrid("TreeGrid")
+            .AllowPaging()
+            .AllowResizing()
+            .DataSource((IEnumerable<object>)ViewData["datasource"])
+            .Columns(col =>
+               {
+                   col.Field("TaskId").HeaderText("Task ID").Width(90).TextAlign(TextAlign.Right).Add();
+                   col.Field("TaskName").HeaderText("Task Name").Width(220).MinWidth(120).MaxWidth(300).Add();
+                   col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(135).Add();
+                   col.Field("EndDate").HeaderText("End Date").Format("yMd").TextAlign(TextAlign.Right).Width(135).Add();
+                   col.Field("Duration").HeaderText("Duration").Width(110).AllowResizing(false).TextAlign(TextAlign.Right).Add();
+                   col.Field("Progress").HeaderText("Progress").Width(120).TextAlign(TextAlign.Right).Add();
+                   col.Field("Priority").HeaderText("Priority").Width(110).Add();
+               })
+           .ChildMapping("Children")
+           .Height(350)
+           .TreeColumnIndex(1)
+       .Render()
+       )
+    </div>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Column Resizing in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>In this demo, resizing feature is enabled by setting the <code>AllowResizing</code> property as true and Task Name column can be resized between the range of minWidth (120px) and maxWidth (300px). Also, column resizing has been disabled for Duration column. </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>The Tree Grid columns can be resized by clicking and dragging at the right edge of columns header. Set <code>AllowResizing</code> property as true, to enable column resizing behavior in Tree Grid. You can also prevent the resize of the specific column by setting <code>Columns->AllowResizing</code> as false in columns definition.
+        </p>
+        <p> More information on the column resizing can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/columns/column-resizing" aria-label="documentation section" >documentation<span class="sr-only">opens in a new tab</span></a> section.
+        </p>
+    </div>
+}
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Tree Grid Column Resizing Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Column Resizing in ASP.NET MVC Tree Grid Control</h1>
+                }

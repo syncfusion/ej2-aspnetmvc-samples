@@ -1,0 +1,133 @@
+@using Syncfusion.EJ2;
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Palette Mode in ASP.NET MVC HeatMap Chart control. Explore here for more details."/>
+                }
+@section ControlsSection{
+    <div>
+        <div class="col-md-8 control-section">
+            <div class="content-wrapper">
+                <div id="container" style="width:92%">
+                    @Html.EJS().HeatMap("container").PaletteSettings(paletteSettings =>
+                    paletteSettings.Palette(palette =>
+                    {
+                        palette.Value(4.3).Color("#FFFFDA").Add();
+                        palette.Value(7).Color("#EDF8B6").Add();
+                        palette.Value(9).Color("#CAE8B4").Add();
+                        palette.Value(15).Color("#78D1BD").Add();
+                        palette.Value(18).Color("#36BCC6").Add();
+                        palette.Value(25).Color("#208FC6").Add();
+                        palette.Value(30).Color("#253494").Add();
+                        palette.Value(32).Color("#081D58").Add();
+                    }).Type(Syncfusion.EJ2.HeatMap.PaletteType.Fixed)).Load("load").TooltipSettings(tooltipSettings => tooltipSettings.TextStyle(textStyle => textStyle.FontFamily("inherit"))).LegendSettings(legendSettings =>
+                    legendSettings.Position(Syncfusion.EJ2.HeatMap.LegendPosition.Bottom).EnableSmartLegend(true).Width("400px").TextStyle(ViewData["labelTextStyle"])).CellSettings(cellSettings =>
+                    cellSettings.Border(ViewData["border"]).ShowLabel(false)).TitleSettings(titleSettings => titleSettings.Text("U.S. Government Energy Consumption by Agency (Trillion Btu)").TextStyle(ViewData["textStyle"])).XAxis(
+                    xAxis =>
+                    {
+                        xAxis.LabelRotation(45)
+                        .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
+                        .Labels((string[])ViewData["xlabels"]).TextStyle(ViewData["labelTextStyle"]);
+                    }).YAxis(yaxis => yaxis.Labels((string[])ViewData["yLabels"]).TextStyle(ViewData["labelTextStyle"])).DataSource(ViewData["dataSource"]).Render()
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 property-section">
+            <table id="property" title="Properties" style="width: 100%; margin-left: -10px;">
+                <tbody>
+                    <tr style="height: 50px">
+                        <td style="width: 60%">
+                            <div>Palette Type:</div>
+                        </td>
+                        <td style="width: 40%;">
+                            <div class="row">
+                                <input id="fixed" type="radio">
+                            </div>
+                            <div class="row">
+                                <input id="gradient" type="radio">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td style="width: 60%">
+                            <div style="margin-top: 22px">Enable Smart Legend:</div>
+                        </td>
+                        <td style="width: 40%;">
+                            <div>
+                                <div class="row" style="margin-left: -22px">
+                                    <input id="smartLegend" type="checkbox">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+        body.material-dark .property-panel-section {
+            color: #ffffff;
+        }
+    </style>
+    <script>
+        var load = function (args) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+        };
+        var fixedRadioButton = new ej.buttons.RadioButton({
+            label: 'Fixed', name: 'paletteType',
+            change: function () { valueXChange(); }, value: 'Fixed', checked: true
+        });
+        fixedRadioButton.appendTo('#fixed');
+
+        var gradientradioButton = new ej.buttons.RadioButton({
+            label: 'Gradient', name: 'paletteType',
+            change: function () { valueXChange(); }, value: 'Gradient'
+        });
+        gradientradioButton.appendTo('#gradient');
+
+        var smartLegend = new ej.buttons.CheckBox({
+            name: 'enableSmartLegend',
+            change: function () { valueChange(); }, checked: true
+        });
+        smartLegend.appendTo('#smartLegend');
+
+        function valueXChange() {
+            var heatMap = document.getElementById('container').ej2_instances[0];
+            smartLegend.disabled = fixedRadioButton.checked ? false : true;
+            heatMap.paletteSettings.type = fixedRadioButton.checked ? 'Fixed' : 'Gradient';
+        }
+
+        function valueChange() {
+            var heatMap = document.getElementById('container').ej2_instances[0];
+            heatMap.legendSettings.enableSmartLegend = smartLegend.checked;
+        }
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the energy consumption in trillion British thermal units (btu) by the various public sectors in US government over the years. The data label is disabled in this sample, the tooltip displays the data point values.  In property panel, the options are available to change palette type in Heatmap by means of radio button.
+    </p>
+}
+@section Description{
+        <p>
+            In this example, you can see how to change the palette type between
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/heatmap-chart/palette#fixed" target="_blank" aria-label="Fixed">Fixed<span class="sr-only">opens in a new tab</span></a> and
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/heatmap-chart/palette#gradient" target="_blank" aria-label="Gradient">Gradient<span class="sr-only">opens in a new tab</span></a> types in Heatmap. The palette type can be defined using the
+            <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPaletteSettings.html#Syncfusion_EJ2_HeatMap_HeatMapPaletteSettings_Type" target="_blank" aria-label="type">type<span class="sr-only">opens in a new tab</span></a> property in
+            <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.HeatMap.HeatMapPaletteSettings.html" target="_blank" aria-label="paletteSettings">paletteSettings<span class="sr-only">opens in a new tab</span></a>. Legend is enabled in this example, changing the palette mode the legend type will be automatically switched between
+            gradient legend and fixed type legend.
+        </p>
+        <p>The tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item on touch-enabled devices.</p>
+        <br>
+}
+
+@section Title{
+                    <title>ASP.NET MVC HeatMap Chart Palette Mode Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Palette Mode in ASP.NET MVC HeatMap Chart Control</h1>
+                }

@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "ColumnResize";
+}
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+    <div style="overflow-x: auto; margin-left: 4px;">
+        @Html.EJS().Grid("ColumnResize").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowResizing(true).Columns(col =>
+   {
+
+       col.Field("OrderID").HeaderText("Order ID").MinWidth("115").Width("150").MaxWidth("200").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+       col.Field("CustomerID").HeaderText("Customer Name").Width("150").MinWidth("115").ValidationRules(new { required = true, minLength = 5 }).Add();
+       col.Field("Freight").HeaderText("Freight").Width("120").MinWidth("115").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("numericedit").ValidationRules(new { required = true, min = 0 }).Add();
+       col.Field("ShippedDate").HeaderText("Shipped Date").Width("150").Format("yMd").AllowResizing(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").MinWidth("115").Width("150").EditType("dropdownedit").Add();
+
+   }).Height("400").Width("850").AllowSorting().AutoFit(true).AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+    </div>
+    </div>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates the Grid column rendering with a specified width. This sample also shows how to enable the resizing feature. Click and drag the right corner of each column header to resize it.
+		</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Column Resize in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            By default, if the total width of the columns is less than the width of the Grid, columns will automatically fill to the grid's width. The Grid's AutoFit feature prevents Grid columns from filling more than their specified width by enabling the <code>AutoFit</code> as true.
+        </p>
+        <br/>
+
+		<p>The Grid columns can be resized by clicking and dragging at the right edge of column's header. To enable column, resize behavior, set the <code>AllowResizing</code> property to true. You can also prevent the resize of a particular column by setting
+        <code>Columns->AllowResizing</code> to false in columns definition. And, by double clicking at the right edge of column header, the respective column width will get auto adjusted to its fit using the <code>AutoFitColumns</code> method.
+
+		</p>
+		<br/>
+
+		<p>
+			In this demo, the AllowResizing feature is enabled by setting the <code>AllowResizing</code> property to true and <b>Order ID</b> column can be resized
+         between the range of <code>MinWidth (100px)</code> and <code>MaxWidth (200px).</code> 
+			 Also, column resizing is disabled for the <b>Shipped Date</b> column.
+		</p>
+
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Column Resize Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Column Resize in ASP.NET MVC Data Grid Control</h1>
+                }

@@ -1,0 +1,117 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+
+        @(Html.EJS().AccumulationChart("container")
+            .Series(sr =>
+            {
+                sr.XName("X")
+                    .YName("Y")
+                    .InnerRadius("0%")
+                    .TooltipMappingName("Tooltip")
+                    .Animation(a => a.Enable(false))
+                    .DataLabel(dl => dl.Visible(true)
+                                  .Name("Text")
+                                  .ConnectorStyle(cs => cs.Type(Syncfusion.EJ2.Charts.ConnectorType.Line)))
+                    .Border(b => b.Width(1).Color("#ffffff"))
+                    .DataSource(ViewData["PieChartPoints"]).Add();
+            })
+            .Tooltip(tp => tp.Enable(true).Header("<b>${point.x}</b>").Format("Production: <b>${point.tooltip}</b> barrels/day"))
+            .LegendSettings(leg => leg.Visible(true).Position(Syncfusion.EJ2.Charts.LegendPosition.Right)
+                .ItemPadding(15))
+            .Load("load").LegendRender("legendRender").EnableBorderOnMouseMove(false)
+            .Title((string)ViewBag.TitleText)
+            .SubTitle((string)ViewBag.SubTitle)
+            .TitleStyle(ts => ts.Position(Syncfusion.EJ2.Charts.TitlePosition.Custom))
+            .Render()
+            )
+    </div>
+
+    <script src="~/scripts/chart/theme-color.js"></script>
+    <script>
+        var isDevice = ej.base.Browser.isDevice;
+
+        var legendTemplate = '<div class="legend-template" style="display:flex; align-items:flex-start; gap:' + (isDevice ? '6px' : '8px') + '; opacity:1; max-width:' + (isDevice ? '160px' : '280px') + '; box-sizing:border-box;">' +
+            '<img class="e-legend-img" src="" width="' + (isDevice ? '24' : '36') + '" height="' + (isDevice ? '24' : '36') + '" style="flex:0 0 ' + (isDevice ? '24px' : '36px') + '; margin-top:' + (isDevice ? '0px' : '2px') + ';" />' +
+            '<div style="display:flex; flex-direction:column; min-width:0; text-align:left;">' +
+            '<span class="e-legend-label" style="font-weight:600; font-size:' + (isDevice ? '10px' : '13px') + '; color:LABEL_COLOR; line-height:' + (isDevice ? '12px' : '18px') + '; white-space:normal; overflow-wrap:break-word; word-break:break-word; max-width:' + (isDevice ? '130px' : '220px') + ';"></span>' +
+            '<span class="e-legend-desc" style="font-size:' + (isDevice ? '10px' : '12px') + '; margin-top:' + (isDevice ? '0px' : '2px') + '; line-height:' + (isDevice ? '12px' : '15px') + '; white-space:normal; overflow-wrap:break-word; word-break:break-word; max-width:' + (isDevice ? '130px' : '220px') + ';"></span>' +
+            '</div>' +
+            '</div>';
+
+        function legendRender(args) {
+            var chart = document.getElementById('container').ej2_instances[0];
+            var desc = chart.series[0].dataSource.find(function (d) { return d.X === args.text; }).Description;
+            var matchedPoint = chart.series[0].points.find(function (p) { return p.x === args.text; });
+            var opacity = matchedPoint && !matchedPoint.visible ? '0.5' : '1';
+            var baseUrl = '@Url.Content("~/Content/chart/")';
+            args.template = args.template
+                .replace('opacity:1;', 'opacity:' + opacity + ';')
+                .replace('LABEL_COLOR', args.fill)
+                .replace('src=""', 'src="' + baseUrl + args.text + '.png"')
+                .replace('></span>', '>' + args.text + '</span>')
+                .replace(/<span class="e-legend-desc"([^>]*)><\/span>/, '<span class="e-legend-desc"$1>' + desc + '</span>');
+        }
+
+        function load(args) {
+            loadAccumulationChartTheme(args);
+
+            var chart = document.getElementById('container').ej2_instances[0];
+
+            chart.titleStyle.x = isDevice ? 150 : 492;
+            chart.titleStyle.y = 22.75;
+
+            chart.legendSettings.width = isDevice ? '35%' : '20%';
+            chart.legendSettings.template = legendTemplate;
+
+            if (chart.series && chart.series.length > 0) {
+                chart.series[0].radius = isDevice ? '65%' : '70%';
+                chart.series[0].dataLabel.position = isDevice ? 'Inside' : 'Outside';
+                chart.series[0].dataLabel.name = isDevice ? '' : 'Text';
+                chart.series[0].dataLabel.format = isDevice ? '{value}%' : '';
+                chart.series[0].dataLabel.enableRotation = isDevice ? true : false;
+                chart.series[0].dataLabel.font.size = isDevice ? '8px' : '12px';
+                chart.series[0].dataLabel.font.fontWeight = '600';
+            }
+        }
+    </script>
+
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates custom legend templates in a pie chart visualizing the world's top 5 oil-producing countries in an ASP.NET MVC accumulation chart." />
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates custom legend templates in a pie chart visualizing the world's top 5 oil-producing countries — United States, Saudi Arabia, Russia, Canada, and China. Each pie segment reflects the percentage share of production, and the legend displays country flags and daily output in millions of barrels.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            This sample uses the <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/accumulation-chart/legendsettings"
+               aria-label="Navigate to the documentation for template in legendSettings in the EJ2 Accumulation Chart control"><code>template</code></a> property of
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/accumulation-chart/legendsettings"
+               aria-label="Navigate to the documentation for LegendSettings in the EJ2 Accumulation Chart control"><code>LegendSettings</code></a>
+            to fully customize legend items.
+            The <code>legendRender</code> event dynamically injects country-specific data — including flag images, color-matched labels, and production volumes — into the legend template at render time.
+        </p>
+        <p>
+            More information on legend customization in accumulation charts can be found in the
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/legend/"
+               aria-label="Navigate to the documentation for Legend in ASP.NET MVC Accumulation Chart control">documentation</a>.
+        </p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Chart - Pie with Legend Template Example | Oil Producing Countries</title>
+}
+
+@section Header{
+    <h1 class="sb-sample-text">Example of Pie with Legend Template in ASP.NET MVC Chart Control</h1>
+}

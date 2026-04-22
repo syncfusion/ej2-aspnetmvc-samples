@@ -1,0 +1,347 @@
+@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.PivotView
+@section Meta{
+<meta name="description" content="This sample shows an overview of ASP.NET MVC Pivot Table that allows to organize and summarize the pivot data
+        in a detailed or abstract view and displays it as a grid and chart. Explore here for more details." />
+}
+@section ControlsSection{
+<meta name="referrer" content="never">
+<div class="col-lg control-section" id="pivot-table-section">
+    <div class="content-wrapper">
+        @Html.EJS().PivotView("pivotview").Width("100%").Height("600").ShowGroupingBar(true).EnableVirtualization(true).AllowDeferLayoutUpdate(true).AllowDrillThrough(true).AllowGrouping(true).EnableValueSorting(true).ShowToolbar(true).ShowFieldList(true).AllowExcelExport(true).AllowNumberFormatting(true).AllowConditionalFormatting(true).AllowPdfExport(true).ExportAllPages(false).MaxNodeLimitInMemberEditor(50).ShowToolbar(true).AllowCalculatedField(true).EnableFieldSearching(true).DataSourceSettings(dataSourceSettings
+        =>
+        dataSourceSettings.DataSource((IEnumerable<object>)ViewData["DataSource"]).ExpandAll(false).EnableSorting(true).EmptyCellsTextContent("-").ShowHeaderWhenEmpty(false)
+        .FormatSettings(formatsettings =>
+        {
+        formatsettings.Name("international_students").Format("N0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
+        formatsettings.Name("faculty_count").Format("N0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
+        })
+        .FilterSettings(filtersettings =>
+        {
+        filtersettings.Name("region").Type(Syncfusion.EJ2.PivotView.FilterType.Exclude).Items((string[])ViewData["filterMembers"]).Add();
+        }).Rows(rows =>
+        {
+        rows.Name("rank_display").Caption("Rank").ExpandAll(true).AllowDragAndDrop(true).Add();
+        rows.Name("university").Caption("University").ExpandAll(true).AllowDragAndDrop(true).Add();
+        })
+        .Columns(columns => {
+        columns.Name("region").Caption("Region").Add();
+        columns.Name("country").Caption("Country").Add();
+        })
+        .Values(values =>
+        {
+        values.Name("international_students").Caption("Students").Add();
+        values.Name("faculty_count").Caption("Faculty").Add();
+        })
+        .Filters(filters =>
+        {
+        filters.Name("type").Caption("University Type").Add();
+        })
+        .FieldMapping(fieldMapping =>
+        {
+        fieldMapping.Name("rank_display").DataType("number").Add();
+        fieldMapping.Name("country").Caption("Country").Add();
+        fieldMapping.Name("city").Caption("City").Add();
+        fieldMapping.Name("region").Caption("Region").Add();
+        fieldMapping.Name("research_output").Caption("Research Output").Add();
+        fieldMapping.Name("student_faculty_ratio").Caption("Student Faculty Ratio").Add();
+        })
+        .GroupSettings(groupSettings =>
+        {
+        groupSettings.Name("rank_display").Type(GroupType.Number).RangeInterval(100).Add();
+        })
+        .ConditionalFormatSettings(format =>
+        {
+        format.Conditions(Syncfusion.EJ2.PivotView.Condition.Between).Measure("international_students").Value1(1).Value2(5000).Style(style
+        => { style.BackgroundColor("#E10000").Color("white").FontFamily("Tahoma").FontSize("12px"); }).ApplyGrandTotals(false).Add();
+        format.Conditions(Syncfusion.EJ2.PivotView.Condition.GreaterThan).Measure("international_students").Value1(50000).Style(style
+        => { style.BackgroundColor("#0C860C").Color("white").FontFamily("Tahoma").FontSize("12px"); }).ApplyGrandTotals(false).Add();
+        format.Conditions(Syncfusion.EJ2.PivotView.Condition.Between).Measure("faculty_count").Value1(1).Value2(1000).Style(style
+        => { style.BackgroundColor("#E10000").Color("white").FontFamily("Tahoma").FontSize("12px"); }).ApplyGrandTotals(false).Add();
+        format.Conditions(Syncfusion.EJ2.PivotView.Condition.GreaterThan).Measure("faculty_count").Value1(10000).Style(style
+        => { style.BackgroundColor("#0C860C").Color("white").FontFamily("Tahoma").FontSize("12px"); }).ApplyGrandTotals(false).Add();
+        })).GridSettings(gridSettings =>
+        gridSettings.ColumnWidth(120).RowHeight(36).AllowSelection(true).SelectionSettings(selectionSettings =>
+        selectionSettings.CellSelectionMode(PivotCellSelectionMode.Box).Type("Single").Mode(SelectionMode.Both)).ExcelQueryCellInfo("exportQueryCellInfo")).DisplayOption(new 
+        PivotViewDisplayOption
+        {
+        View = View.Both
+        }).ChartSettings(new PivotViewChartSettings
+        {
+        Title = "Top Universities Analysis",
+        Load = "onChartLoad"
+        }).Toolbar(new List<string>
+        () { "New", "Save", "SaveAs", "Rename", "Remove", "Load",
+        "Grid", "Chart", "Export", "SubTotal", "GrandTotal", "Formatting",
+        "FieldList"}).SaveReport("saveReport").LoadReport("loadReport").Load("load").FetchReport("fetchReport").RenameReport("renameReport").RemoveReport("removeReport").NewReport("newReport").ToolbarRender("beforeToolbarRender").ChartSeriesCreated("chartSeriesCreated").DataBound("dataBound").CellTemplate("${getCellContent(data)}").Render()
+    </div>
+    <div class="urllink">
+        Source:
+        <a href="https://www.topuniversities.com/university-rankings?utm_source=topnav" target="_blank" aria-label="QS World">QS World
+            University Rankings</a>
+    </div>
+</div>
+
+<style>
+    #pivotview {
+        width: 100%;
+        height: 100%;
+    }
+
+    @@media only screen and (max-width: 400px) {
+        #pivot-table-section {
+            overflow: auto;
+        }
+    }
+
+    .sb-sample-content-area {
+        min-height: 255px !important;
+    }
+
+    .control-section {
+        min-height: 255px !important;
+    }
+
+    .e-hyperlinkcell {
+        text-decoration: auto;
+    }
+
+    .e-hyperlinkcell:hover {
+        text-decoration: underline;
+    }
+
+    .university-logo {
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+
+    .urllink {
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+</style>
+<script>
+    var isInitialRender = true;
+    window.getCellContent = function (args) {
+        var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+        if (args.cellInfo && args.cellInfo.axis === 'value' && pivotObj.pivotValues[args.cellInfo.rowIndex] && pivotObj.pivotValues[args.cellInfo.rowIndex][0].hasChild) {
+            if (args.targetCell.classList.contains(args.cellInfo.cssClass)) {
+                args.targetCell.classList.remove(args.cellInfo.cssClass);
+                args.cellInfo.style = undefined;
+            }
+        }
+        if (args.cellInfo && args.cellInfo.axis === 'row' && args.cellInfo.valueSort.axis === 'university') {
+            var imgElement = ej.base.createElement('img', {
+                className: 'university-logo',
+                attrs: {
+                    'src': pivotObj.dataSourceSettings.dataSource[args.cellInfo.index[0]].logo,
+                    'alt': args.cellInfo.formattedText,
+                    'width': '30',
+                    'height': '30'
+                },
+            });
+            var cellValue = ej.base.select('.e-cellvalue', args.targetCell);
+            cellValue.classList.add('e-hyperlinkcell');
+            cellValue.addEventListener('click', hyperlinkCellClick.bind(pivotObj));
+            args.targetCell.firstElementChild.insertBefore(imgElement, cellValue);
+        }
+        return '';
+    };
+
+    function hyperlinkCellClick(args) {
+        var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+        var cell = args.target.closest('.e-rowsheader');
+        var pivotValue = pivotObj.pivotValues[Number(cell.getAttribute('index'))][Number(cell.getAttribute('aria-colindex')) -1];
+        var link = pivotObj.dataSourceSettings.dataSource[pivotValue.index[0]].link;
+        window.open(link, '_blank');
+    }
+    function chartSeriesCreated() {
+        var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+        pivotObj.chartSettings.chartSeries.legendShape = pivotObj.chartSettings.chartSeries.type === 'Polar' ? 'Rectangle' : 'SeriesType';
+    }
+    function onChartLoad(args) {
+        var selectedTheme = location.hash.split("/")[1];
+        selectedTheme = selectedTheme ? selectedTheme : "Material";
+        args.chart.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/contrast/i, 'Contrast').replace(/-highContrast/i, 'HighContrast');
+    }
+    function dataBound() {
+        var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+        if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+            pivotObj.layoutRefresh();
+            isInitialRender = false;
+            pivotObj.isModified = false;
+        }
+    }
+    function saveReport(args) {
+        var reports = [];
+        var isSaved = false;
+        if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
+            reports = JSON.parse(localStorage.pivotviewReports);
+        }
+        if (args.report && args.reportName && args.reportName !== '') {
+            let report = JSON.parse(args.report);
+            report.dataSourceSettings.dataSource = [];
+            report.pivotValues = [];
+            args.report = JSON.stringify(report);
+            reports.map(function (item) {
+                if (args.reportName === item.reportName) {
+                    item.report = args.report;
+                    isSaved = true;
+                }
+            });
+            if (!isSaved) {
+                reports.push(args);
+            }
+            localStorage.pivotviewReports = JSON.stringify(reports);
+        }
+    }
+    function fetchReport(args) {
+        var reportCollection = [];
+        var reeportList = [];
+        if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
+            reportCollection = JSON.parse(localStorage.pivotviewReports);
+        }
+        reportCollection.map(function (item) {
+            reeportList.push(item.reportName);
+        });
+        args.reportName = reeportList;
+    }
+    function loadReport(args) {
+        var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+        var reportCollection = [];
+        if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
+            reportCollection = JSON.parse(localStorage.pivotviewReports);
+        }
+        reportCollection.map(function (item) {
+            if (args.reportName === item.reportName) {
+                args.report = item.report;
+            }
+        });
+        if (args.report) {
+            let report = JSON.parse(args.report);
+            report.dataSourceSettings.dataSource = pivotObj.dataSourceSettings.dataSource;
+            pivotObj.dataSourceSettings = report.dataSourceSettings;
+        }
+    }
+    function removeReport(args) {
+        var reportCollection = [];
+        if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
+            reportCollection = JSON.parse(localStorage.pivotviewReports);
+        }
+        for (var i = 0; i < reportCollection.length; i++) {
+            if (reportCollection[i].reportName === args.reportName) {
+                reportCollection.splice(i, 1);
+            }
+        }
+        if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
+            localStorage.pivotviewReports = JSON.stringify(reportCollection);
+        }
+    }
+    function renameReport(args) {
+        var reportCollection = [];
+        if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
+            reportCollection = JSON.parse(localStorage.pivotviewReports);
+        }
+        if (args.isReportExists) {
+            for (var i = 0; i < reportCollection.length; i++) {
+                if (reportCollection[i].reportName === args.rename) {
+                    reportCollection.splice(i, 1);
+                }
+            }
+        }
+        reportCollection.map(function (item) {
+            if (args.reportName === item.reportName) {
+                item.reportName = args.rename;
+            }
+        });
+        if (localStorage.pivotviewReports && localStorage.pivotviewReports !== "") {
+            localStorage.pivotviewReports = JSON.stringify(reportCollection);
+        }
+    }
+    function newReport() {
+        var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+        pivotObj.setProperties({
+            dataSourceSettings: {
+                columns: [],
+                rows: [],
+                values: [],
+                filters: []
+            }
+        }, false);
+    }
+    function beforeToolbarRender(args) {
+        args.customToolbar.splice(6, 0, {
+            type: 'Separator'
+        });
+        args.customToolbar.splice(9, 0, {
+            type: 'Separator'
+        });
+    }
+    function exportQueryCellInfo(args) {
+        if (args.cell.axis === 'value' && args.cell.value === undefined) {
+            args.style.numberFormat = undefined;
+        }
+    }
+    function load(args) {
+        if (ej.base.Browser.isDevice) {
+            args.dataSourceSettings.rows = [{ name: 'rank_display', caption: 'Rank', expandAll: true, allowDragAndDrop: false }];
+        }
+    }
+</script>
+}
+
+@section PreScripts {
+<script>
+    ej.base.enableRipple(false);
+</script>
+}
+
+@section ActionDescription{
+<div id="action-description">
+    <p>This sample provides an overview of <a target="_blank"
+            href="https://www.syncfusion.com/aspnet-mvc-ui-controls/pivot-table" aria-label="ASP.NET MVC Pivot Table">
+            ASP.NET MVC Pivot Table<span class="sr-only">opens in a new tab</span></a>, which allows you to organize and summarize pivot data in a detailed or abstract
+        view and display it as a grid and chart.</p>
+</div>
+}
+
+@section Description{
+<div id="description">
+    <p>
+        The ASP.NET MVC Pivot Table is a powerful control for organizing and summarizing business data and displaying
+        the
+        results in a table and chart format. It includes major features such as built-in <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/aggregation/#aggregation" aria-label="aggregations">
+            aggregations<span class="sr-only">opens in a new tab</span></a>, <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/field-list#field-list" aria-label="pivot table field list">
+            pivot table field list<span class="sr-only">opens in a new tab</span></a> for report manipulation, Excel-like <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/filtering#filtering" aria-label="filtering">
+            filtering<span class="sr-only">opens in a new tab</span></a> and <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/sorting#sorting" aria-label="sorting">
+            sorting<span class="sr-only">opens in a new tab</span></a>, <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/editing#editing" aria-label="editing">
+            editing<span class="sr-only">opens in a new tab</span></a>, <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/excel-export#excel-export" aria-label="Excel">
+            Excel<span class="sr-only">opens in a new tab</span></a> and <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/pdf-export#pdf-export" aria-label="PDF">
+            PDF<span class="sr-only">opens in a new tab</span></a> exporting, and so on, which are used in this demo, as well as a large data source loaded without any
+        performance degradation by using <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/virtual-scrolling#virtual-scrolling" aria-label="virtualization">
+            virtualization<span class="sr-only">opens in a new tab</span></a> support.
+    </p><br />
+    <p>
+        More information on the ASP.NET MVC Pivot Table can be found in this <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/getting-started" aria-label="documentation section" >
+            documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+</div>
+}
+
+@section Title{
+<title>ASP.NET MVC Pivot Table Overview - Syncfusion Demos </title>
+}
+@section Header{
+<h1 class='sb-sample-text'>Overview of ASP.NET MVC Pivot Table Control</h1>
+}

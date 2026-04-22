@@ -1,0 +1,100 @@
+@using Syncfusion.EJ2;
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Heatmap control shows how to place the heatmap legend in different positions" />
+}
+@section ControlsSection{
+    <div>
+        <div class="col-md-8 control-section">
+            <div class="content-wrapper">
+                <div id="container" style="width:92%">
+                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Hourly Weather Forecast (in Celsius)").TextStyle(ViewData["textStyle"])).XAxis(xAxis =>
+                         {
+                             xAxis.Labels(ViewData["xLabels"]);
+                         }).YAxis(yaxis =>
+                         {
+                             yaxis.Labels(ViewData["yLabels"]);
+                         }).PaletteSettings(ps => ps.Palette(palette =>
+                         {
+                             palette.Value(0).Color("#6EB5D0").Add();
+                             palette.Value(10).Color("#7EDCA2").Add();
+                             palette.Value(19).Color("#DCD57E").Add();
+                             palette.Value(22).Color("#DCD57E").Add();
+                         })).CellSettings(cs =>
+                         cs.ShowLabel(false).Format("{value} C")).LegendSettings(ls =>
+                         ls.Visible(true).Position(Syncfusion.EJ2.HeatMap.LegendPosition.Left).
+                         LabelFormat("{value}\xB0 C")).TooltipRender("tooltipRender").Load("load").DataSource(ViewData["dataSource"]).Render()
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 property-section">
+            <table id="property" title="Properties" style="width: 100%">
+                <tbody>
+                    <tr style="height: 50px">
+                        <td style="width: 60%">
+                            <div>Legend Position:</div>
+                        </td>
+                        <td style="width: 40%;">
+                            <div>
+                                <select id="LegendPosition">
+                                    <option value="Left">Left</option>
+                                    <option value="Right">Right</option>
+                                    <option value="Top">Top</option>
+                                    <option value="Bottom">Bottom</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+        var tooltipRender = function (args) {
+            args.content = [args.xLabel + ' | ' + args.yLabel + ' : ' + args.value + '\xB0 C'];
+        };
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+            args.heatmap.legendSettings.labelFormat = "{value}\xB0 C";
+        };
+        var legentListObj = new ej.dropdowns.DropDownList({
+            index: 0,
+            popupHeight: '200px',
+            change: function () { valueXChange(); }
+        });
+        legentListObj.appendTo('#LegendPosition');
+
+        function valueXChange() {
+            var heatMap = document.getElementById('container').ej2_instances[0];
+            heatMap.legendSettings.position = legentListObj.value.toString() === 'Right' ?
+                'Right' : legentListObj.value.toString() === 'Bottom' ?
+                    'Bottom' : legentListObj.value.toString() === 'Left' ?
+                        'Left' : legentListObj.value.toString() === 'Top' ? 'Top' : null;
+        }
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the hourly weather forecast for some major European cities. The data label is disabled in this sample, the tooltip displays the data point values. In property panel, the options are available to change the display position of the Heatmap legend axes by means of dropdown.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to change the display position of the Heatmap legend. You can change the display position of legend to left, right, bottom, and top by using the <code>position </code> property in <code>legendSettings</code>.
+    </p>
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <br>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the <code>Tooltip </code>  module using the <code>Heatmap.Inject(Tooltip) </code> method, and use a legend by injecting the <code>Legend </code>  module using the <code>Heatmap.Inject(Legend) </code>  method.
+    </p>
+}

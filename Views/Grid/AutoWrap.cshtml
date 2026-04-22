@@ -1,0 +1,39 @@
+@using Syncfusion.EJ2
+
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("AutoWrap").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowTextWrap().Columns(col =>
+   {
+       col.Field("Inventor").HeaderText("Inventor Name").Width("155").Add();
+       col.Field("NumberofPatentFamilies").HeaderText("No of Patent Families").Width("200").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();       
+       col.Field("Country").HeaderText("Country").Width("120").Add();
+       col.Field("Active").HeaderText("Active").Width("130").Add();
+       col.Field("Mainfieldsofinvention").HeaderText("Main Fields of Invention (Primary patent technology areas)").Width("180").Add();      
+
+   }).AllowSorting().AllowFiltering().FilterSettings(filter => filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu)).AllowPaging().PageSettings(page=>page.PageCount(5)).Render()
+    </div>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+        <p>This sample demonstrates the Data Grid with the text wrap option enabled for both header and cell content. 
+            This setting ensures that long header text and cell values are fully visible by wrapping onto multiple lines instead of being truncated with an ellipsis.</p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the AutoWrap Column Cells in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		<p>In this demo, the <strong>"Main Fields of Invention"</strong> column exceeds the available width, so its header and cell content are wrapped across multiple lines for better readability. Text wrapping is enabled by setting the grid’s <code>AllowTextWrap</code> property to <strong>true</strong>, which automatically applies wrapping to both header and cell content.</p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Data Grid AutoWrap Column Cells Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of AutoWrap Column Cells in ASP.NET MVC Data Grid Control</h1>
+                }

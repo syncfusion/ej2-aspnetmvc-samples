@@ -1,0 +1,161 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
+@{
+    ViewData["Title"] = "Sorting";
+}
+
+@*custom code end*@
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().TreeGrid("Sorting")
+                .AllowSorting()
+                .AllowPaging()
+                .AllowMultiSorting()
+                .DataSource((IEnumerable<object>)ViewData["datasource"])
+                .SortSettings(sort=>sort.Columns(
+                    new List<object>() {
+                        new { field = "category", direction = "Ascending" },
+                        new { field = "orderName", direction = "Descending" }
+                    }
+                ))
+                .ActionComplete("actionComplete")
+                .Columns(col =>
+                {
+                    col.Field("orderName").HeaderText("Order Name").Width(200).Add();
+                    col.Field("category").HeaderText("Category").Width(140).Add();
+                    col.Field("orderDate").HeaderText("Order Date").Format("yMd").TextAlign(TextAlign.Right).Width(150).Add();
+                    col.Field("units").HeaderText("Units").TextAlign(TextAlign.Right).Width(110).Add();
+
+                }).ChildMapping("subTasks").Height(400).TreeColumnIndex(0).Render()
+            );
+        </div>
+    </div>
+        <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tr>
+                <td style="width: 70%">
+                    <div>
+                        Order Name
+                    </div>
+                </td>
+                <td style="width: 30%;padding:10px 10px 10px 0px">
+                    <div class="col-md-6">
+                        @Html.EJS().CheckBox("orderName").Change("onChange").Checked(true).Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 70%">
+                    <div>
+                        Category
+                    </div>
+                </td>
+                <td style="width: 30%;padding:10px 10px 10px 0px">
+                    <div class="col-md-6">
+                        @Html.EJS().CheckBox("category").Change("onChange").Checked(true).Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 70%">
+                    <div>
+                        Order Date
+                    </div>
+                </td>
+                <td style="width: 30%; padding:10px 10px 10px 0px">
+                    <div class="col-md-6">
+                        @Html.EJS().CheckBox("orderDate").Change("onChange").Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 70%">
+                    <div>
+                        Units
+                    </div>
+                </td>
+                <td style="width: 30%; padding:10px 10px 10px 0px">
+                    <div class="col-md-6">
+                        @Html.EJS().CheckBox("units").Change("onChange").Render()
+                    </div>
+                </td>
+            </tr>       
+        </table>
+    </div>
+
+   <script>
+
+        function onChange(args) {
+            var treeGridObj = document.getElementById("Sorting").ej2_instances[0];
+            if (args.checked) {
+                treeGridObj.sortByColumn(this.element.id, 'Ascending', true);
+            }
+            else {
+                treeGridObj.grid.removeSortColumn(this.element.id);
+            }
+        }
+
+        function actionComplete(args) {
+            var treeGridObj = document.getElementById("Sorting").ej2_instances[0];
+            if (args.requestType === 'sorting') {
+                for (let columns of treeGridObj.getColumns()) {
+                    for (let sortcolumns of treeGridObj.sortSettings.columns) {
+                        if (sortcolumns.field === columns.field) {
+                            check(sortcolumns.field, true); break;
+                        } else {
+                            check(columns.field, false);
+                        }
+                    }
+                }
+            }
+        }
+
+        function check(field, state) {
+             document.getElementById(field).ej2_instances[0].checked = state;
+        }
+    </script>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Multi Sorting in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>Sorting feature enables us to order the data in a particular direction. It can be enabled by setting the <code>AllowSorting</code> as true.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+           To sort a Tree Grid column by simply click the column header. The icons <code>ascending</code> and <code>descending</code> specifies the sort direction of a column.
+        </p>
+        <p>By default, multi-sorting is enabled in Tree Grid, to sort multiple columns by hold CTRL key and click on the column headers. To clear sort for a column, hold SHIFT key and click the column header.</p>
+        <p>
+            While using Tree Grid in a touch device, you have an option for multi sorting in single tap on the Tree Grid header. By tapping on the Tree Grid header, it will show the toggle button in small popup with sort icon. Now tap the button to enable the multi-sorting in single tap.
+        </p>
+        <p>In this demo,</p>
+        <ul>
+            <li>Simply click the column header to sort a column.</li>
+            <li>Check the checkboxes in the properties panel to sort a column and uncheck to remove sort from a column</li>
+        </ul>
+        <p>More information on the sorting feature configuration can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/tree-grid/sorting" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.</p>
+    </div>
+}
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Tree Grid Multi Sorting Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Multi Sorting in ASP.NET MVC Tree Grid Control</h1>
+                }

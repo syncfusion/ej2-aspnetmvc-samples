@@ -1,0 +1,60 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "DefaultFunctionalities";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+
+        @(Html.EJS().Gantt("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true)
+            .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+            .Dependency("Predecessor").Child("SubTasks")).TreeColumnIndex(1)
+            .Columns(col =>
+                {
+                    col.Field("TaskId").Width(80).Add();
+                    col.Field("TaskName").Width(250).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("EndDate").Add();
+                    col.Field("Duration").Add();
+                    col.Field("Progress").Add();
+                    col.Field("Predecessor").Add();
+                })
+            .LabelSettings(ls=>ls.LeftLabel("TaskName"))
+            .ProjectStartDate("03/24/2024")
+            .ProjectEndDate("07/06/2024")
+            .Render()
+        )
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the various phases involved in the manufacturing process of a product, which transforms from a conceptual model to a sellable product.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render a Gantt Chart with the provided data source. The default timeline
+            view week-day mode is applied to Gantt Chart. The dependency lines are enabled in this example to represent the
+            execution order or the hierarchy between the phases.
+        </p>
+        <p>
+            Tooltip is enabled for all the UI in this example. To see the tooltip in action, hover the mouse over or tap
+            taskbars, timeline units and dependency lines in touch enabled devices.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Gantt Default Functionalities Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC Gantt Control</h1>
+                }

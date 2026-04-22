@@ -1,0 +1,117 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").EventClick("OnEventClick").PopupOpen("OnPopupOpen").Navigating("OnNavigating").Destroyed("OnDestroyed").CellDoubleClick("OnCellDoubleClick").CellClick("OnCellClick").ActionFailure("OnActionFailure").Created("OnCreate").ActionBegin("OnActionBegin").ActionComplete("OnActionComplete").EventRendered("onEventRendered").Select("onSelect").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 1, 10)).Render()
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Event Trace">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="eventarea" style="height: 245px;overflow: auto">
+                            <span class="EventLog" id="EventLog" style="word-break: normal;"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="evtbtn" style="padding-bottom: 10px">
+                            <input id="clear" type="button" class="btn btn-default" value="Clear">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+        #EventLog b {
+            color: #388e3c;
+        }
+
+        hr {
+            margin: 1px 10px 1px 0px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
+    <script type="text/javascript">
+        document.getElementById('clear').onclick = function () {
+            document.getElementById('EventLog').innerHTML = '';
+        };
+        function OnCreate() {
+            appendElement('Schedule <b>Load</b> event is triggered<hr>');
+        }
+        function OnActionBegin() {
+            appendElement('Schedule <b>Action Begin</b> event is triggered<hr>');
+        }
+        function OnActionComplete() {
+            appendElement('Schedule <b>Action Complete</b> event is triggered<hr>');
+        }
+        function OnActionFailure() {
+            appendElement('Schedule <b>Action Failure</b> event is triggered<hr>');
+        }
+        function OnCellDoubleClick() {
+            appendElement('SChedule <b>Cell Double Click</b> event is triggered<hr>');
+        }
+        function OnCellClick() {
+            appendElement('Schedule <b>Cell Click</b> event is triggered<hr>');
+        }
+        function OnNavigating() {
+            appendElement('Schedule <b>Navigating</b> event is triggered<hr>');
+        }
+        function OnDestroyed() {
+            appendElement('Schedule <b>Destroyed</b> event is triggered<hr>');
+        }
+        function OnEventClick() {
+            appendElement('Schedule <b>Event Click</b> event is triggered<hr>');
+        }
+        function OnPopupOpen() {
+            appendElement('Schedule <b>Popup Open</b> event is triggered<hr>');
+        }
+        function appendElement(html) {
+            var span = document.createElement('span');
+            span.innerHTML = html;
+            var log = document.getElementById('EventLog');
+            log.insertBefore(span, log.firstChild);
+        }
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            applyCategoryColor(args, scheduleObj.currentView);
+        }
+        function onSelect(args) {
+            args.showQuickPopup = args.requestType === 'cellSelect';
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Events in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo illustrates the client-side events that triggers on respective Scheduler actions and are displayed
+            on the event trace panel.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, the client-side events that triggers based on the action taking place in Scheduler has been demonstrated. The
+            user can use these events, if at some point they need to perform some custom actions or any needed additional
+            customizations on the available Scheduler features.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Scheduler Events Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Events in ASP.NET MVC Scheduler Control</h1>
+                }

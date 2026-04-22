@@ -1,0 +1,105 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@using EJ2MVCSampleBrowser.Models
+@{
+    char employeeMentionChar = '@';
+    char projectMentionChar = '#';
+    char costMentionChar = '$';
+    char statusMentionChar = '%';
+}
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div id="mention-controls">
+            <table>
+                <tr>
+                    <td>
+                        <label id="label" class="multiple">Start typing <code>@@</code>, <code>#</code>, <code>$</code> or <code>%</code> to select the respective values</label>
+                        <div id="multipleList" placeHolder="Type here..!"></div>
+
+                        @Html.EJS().Mention("employee").MentionChar(employeeMentionChar).PopupWidth("250px").PopupHeight("215px").SuggestionCount(15).Target("#multipleList").DataSource(obj =>
+                       obj.Url("https://ej2services.syncfusion.com/production/web-services/api/Employees").CrossDomain(true).Adaptor("WebApiAdaptor")).Fields(new MentionFieldSettings
+                       {
+                           Text = "FirstName",
+                           Value = "EmployeeID"
+                       }).Query((string)ViewData["query"]).Render()
+
+                        @Html.EJS().Mention("project").MentionChar(projectMentionChar).Target("#multipleList").AllowSpaces(true).DataSource((IEnumerable<ProjectsData>)ViewData["project"]).DisplayTemplate("<span class=\"e-success\">${Value}</span>").RequireLeadingSpace(false).Fields(new MentionFieldSettings { Text = "Value" }).Render()
+
+                        @Html.EJS().Mention("cost").MentionChar(costMentionChar).Target("#multipleList").AllowSpaces(true).DataSource((IEnumerable<UseCostsData>)ViewData["cost"]).DisplayTemplate("<span class=\"e-error\">${Value}</span>").Fields(new MentionFieldSettings { Text = "Value" }).Render()
+
+                        @Html.EJS().Mention("status").MentionChar(statusMentionChar).Target("#multipleList").AllowSpaces(true).DataSource((IEnumerable<StatusData>)ViewData["status"]).DisplayTemplate("<span class=\"e-warning\">${Value}</span>").Fields(new MentionFieldSettings { Text = "Value" }).Render()
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Different Mentioned Characters in ASP.NET Core Mention control. Explore here for more details." />
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the different mentioned characters that are used to render the suggestion list. Type the <code>@@</code> or <code>#</code> or <code>$</code> or <code>%</code> characters to select or tag the name from respective suggestion lists.</p>
+        <p>
+            The <code>RequireLeadingSpace</code> property in Mention controls whether a space is needed before triggering the Mention suggestion popup. 
+            When set to <code>false</code>, it activates without a space; when set to <code>true</code>, a space is required before the Mention character. To see this feature in action, start typing with <code>#</code>.
+        </p> 
+</div>
+}
+@section Description{
+    <p>
+        The <code>RequireLeadingSpace</code> property in Mention controls whether a space is needed before triggering the Mention suggestion popup. 
+        When set to <code>false</code>, it activates without a space; when set to <code>true</code>, a space is required before the Mention character. To see this feature in action, start typing with <code>#</code>.
+    </p>
+    <p>In the above sample, the following are configured for the contenteditable div element with @Html.Raw("mention") integrated.</p>
+    <ul>
+        <li><code>@@</code> - Typing <code>@@</code> lists out the suggestions of the employee names.</li>
+        <li><code>#</code> - Typing <code>#</code> lists the project names.</li>
+        <li><code>$</code> - Typing <code>$</code> lists out the cost of the project.</li>
+        <li><code>%</code> - Typing <code>%</code> lists the status of the project.</li>
+    </ul>
+}
+
+
+<style>
+    #multipleList {
+        min-height: 100px;
+        border: 1px solid #D7D7D7;
+        width: 600px;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+
+    #mention-controls {
+        margin: 0 auto;
+        width: 600px;
+        padding: 10px;
+    }
+
+        #mention-controls #label {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+    div#multipleList[placeholder]:empty:before {
+        content: attr(placeholder);
+        color: #555;
+    }
+
+    @@media screen and (max-width: 1010px) {
+        #multipleList,
+        #mention-controls, #mention-controls table {
+            width: 100%;
+        }
+    }
+</style>
+
+@section Title{
+    <title>ASP.NET MVC Mention Component Different Mentioned Characters Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Different Mentioned Characters in ASP.NET MVC Mention Control</h1>
+}

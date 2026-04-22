@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "UrlAdaptor";
+}
+
+@using Syncfusion.EJ2
+@section ControlsSection{
+      <div class="control-section">
+          @Html.EJS().Grid("UrlAdaptor").DataSource(ds => ds.Url(@Url.Action("UrlDatasource", "Grid")).Adaptor("UrlAdaptor")).AllowSorting().Columns(col =>
+           {
+               col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+               col.Field("CustomerID").HeaderText("Customer Name").Width("170").Add();
+               col.Field("Freight").HeaderText("Freight").Width("130").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").Add();
+               col.Field("ShipCity").HeaderText("Ship City").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+           }).AllowPaging().AllowFiltering().Toolbar(new List<string>() { "Search" }).Render()
+      </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+    <p>In this sample, the <code>UrlAdaptor</code> is used for binding the data source from controller actions. To perform the grid actions like paging, filtering, sorting at server side we can use <code>DataOperations</code> class.
+     </p>
+
+</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the URL Adaptor in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+   <div id="description">
+    <p>
+        The <code>UrlAdaptor</code> is the base adaptor that would interact with remote services. Here the datasource will be loaded on-Demand concept.
+        In server-side the <code>DataManagerRequest</code> class helps in binding the Grid queries passed to the server-side. Based on those queries you can perform server-side operation on the Grid data.
+        The query parameters that help you perform the server-side operations are as follows.
+</p>
+       <ul>
+           <li><code>RequiresCounts</code> -  If it is <code>true</code> then the total count of records will included in response.</li>
+           <li><code>Skip</code> - It holds the number of records to skip.</li>
+           <li><code>Take</code> - It holds the number of records to take.</li>
+           <li><code>Sorted</code> - It contains details of current sorted column and its direction.</li>
+           <li><code>Where</code> - It contains details of current filter column name and its constraints.</li>
+       </ul>
+       <p>
+           The following grid action can be performed using <code>DataOperations</code> class under the following server side methods.
+           <ul>
+               <li><code>PerformSkip</code> - Bypasses a specified Skip value and returns the remaining collections of records.</li>
+               <li><code>PerformTake</code> - Bypasses a specified Take value and returns the remaining  collections of records.</li>
+               <li><code>PerformFiltering</code> - Filters a sequence of records based on a predicate.</li>
+               <li><code>PerformSorting</code> - Sorts the collections of records based on its direction.</li>
+               <li><code>PerformSearching</code> - Search the records based on a predicate.</li>
+           </ul>
+</p>
+</div>
+}   
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid URL Adaptor Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of URL Adaptor in ASP.NET MVC Data Grid Control</h1>
+                }

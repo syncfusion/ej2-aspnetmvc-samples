@@ -1,0 +1,66 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+
+@*custom code start*@
+
+@{
+    ViewData["Title"] = "RowHover";
+}
+
+@*custom code end*@
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().TreeGrid("RowHover").DataSource((IEnumerable<object>)ViewData["datasource"]).Columns(col =>
+       {
+           col.Field("TaskId").HeaderText("Task ID").Width(90).TextAlign(TextAlign.Right).Add();
+           col.Field("TaskName").HeaderText("Task Name").Width(180).Add();
+           col.Field("StartDate").HeaderText("Start Date").Format("yMd").TextAlign(TextAlign.Right).Width(120).Add();
+           col.Field("EndDate").HeaderText("End Date").Format("yMd").TextAlign(TextAlign.Right).Width(120).Add();
+           col.Field("Duration").HeaderText("Duration").Width(90).TextAlign(TextAlign.Right).Add();
+           col.Field("Progress").HeaderText("Progress").Width(90).TextAlign(TextAlign.Right).Add();
+
+       }).EnableHover().Height(350).ChildMapping("Children").TreeColumnIndex(1).Render()
+    </div>
+
+}
+
+<style type="text/css">
+    .material3 #TreeGrid .e-gridcontent .e-row:hover .e-rowcell:not(.e-selectionbackground):not(.e-active) {
+       background-color: rgba(28, 27, 31,0.05) !important;
+    }
+    .material3-dark #TreeGrid .e-gridcontent .e-row:hover .e-rowcell:not(.e-selectionbackground):not(.e-active) {
+       background-color: rgba(230,225,229,0.05) !important;
+    }
+</style>
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Row Hover in ASP.NET MVC Tree Grid control. Explore here for more details."/>
+                }
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the Tree Grid component with the row hover feature. Move the mouse over the Tree Grid rows to see the hover effect.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            Row Hover feature enables us to identify the current row by highlighting them with the mouse hovers. This can be enabled by setting the <code>EnableHover</code> property as true.
+        </p>
+        <p>In this demo, by enabling the <code>EnableHover</code> property, you can move the mouse over Tree Grid rows to see the hover effect
+        </p>
+    </div>
+}
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Tree Grid Row Hover Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Row Hover in ASP.NET MVC Tree Grid Control</h1>
+                }

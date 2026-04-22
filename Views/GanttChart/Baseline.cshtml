@@ -1,0 +1,249 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "Baseline";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("Baseline").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").RenderBaseline(true)
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").Progress("Progress").Duration("Duration").EndDate("EndDate").BaselineStartDate("BaselineStartDate").BaselineDuration("BaselineDuration").ParentID("ParentID").Dependency("Predecessor")
+                .BaselineEndDate("BaselineEndDate")).Columns(col =>
+                {
+                     col.Field("TaskId").Visible(false).Add();
+                    col.Field("TaskName").HeaderText("Service Name").Width(200).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+                    col.Field("StartDate").HeaderText("Start time").Width(140).Add();
+                    col.Field("Duration").HeaderText("Duration").Width(125).Add();
+                    col.Field("BaselineStartDate").HeaderText("Planned start time").Width(195).Add();
+                    col.Field("BaselineDuration").HeaderText("Baseline Duaration").Width(195).Add();
+                    col.Field("variance").HeaderText("Variance").Width(140).Add();
+                }).AllowSelection(true).IncludeWeekend(true)
+                .LabelSettings(ls=>ls.RightLabel("TaskName"))
+                .TimelineSettings(ts => ts.TopTier(tt => tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Month).Format("MMMM yyyy"))
+                    .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day)))
+                .TooltipSettings(ts => ts.Taskbar("#tooltip"))
+                .TreeColumnIndex(1)
+                .Height("650px")
+                .TaskbarHeight(25)
+                .RowHeight(46)
+                .ParentTaskbarTemplate("#parenttask")
+                .SplitterSettings(sp => sp.ColumnIndex(4))
+                .DayWorkingTime(dw =>
+                {
+                    dw.From(0).To(24).Add();
+                }).ProjectStartDate("07/02/2025").ProjectEndDate("09/15/2025")
+                .QueryTaskbarInfo("queryTaskbarInfo")
+                .QueryCellInfo("queryCellInfo")
+                .Render()
+            )
+        </div>
+    </div>
+
+    <script type="text/x-jsrender" id="tooltip">
+        <table>
+            <tbody>
+                <tr><td colspan="3">${TaskName}</td></tr>
+                <tr>
+                    <td> Start Time </td>
+                    <td>:</td>
+                    <td>${this.getFormatedDate(StartDate)}</td>
+                </tr>
+                <tr>
+                    <td> End Time</td>
+                    <td>:</td>
+                    <td>${this.getFormatedDate(EndDate)}</td>
+                </tr>
+                <tr>
+                    <td> Planned start time</td>
+                    <td>:</td>
+                    <td>${this.getFormatedDate(BaselineStartDate)}</td>
+                </tr>
+                <tr>
+                    <td> Planned end time</td>
+                    <td>:</td>
+                    <td>${this.getFormatedDate(BaselineEndDate)}</td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+
+    <script type="text/x-jsrender" id="parenttask">
+        <div class="e-gantt-parent-taskbar e-row-expand e-custom-parent" style="height:10px; margin-top: 17px; background:#F3F4F6; border: 1px solid #9CA3AF; border-radius:5px;text-overflow:ellipsis;" >
+            <div class="e-gantt-child-progressbar e-custom-progress" style="height:100%; width:${ganttProperties.progress}%; background:#9CA3AF; border-radius:5px;">
+            </div>
+            <span class="e-label" style="position:absolute; top:0px; right:6px; font-size:12px; margin: 0px; text-overflow:ellipsis; white-space:nowrap;">${TaskName} | ${this.getFormatedDate(ganttProperties.startDate)} - ${this.getFormatedDate(ganttProperties.endDate)} | ${ganttProperties.duration} days</span>
+        </div>
+    </script>
+    <script>
+        var themeColors = {
+                'material3': {
+                    onTime: '#F0FDF4',
+                    delayed: '#FFF7ED',
+                    baseline: '#DAA520',
+                    onTimeProgress: '#15803D',
+                    delayedProgress: '#C2410C'
+                },
+                'material3-dark': {
+                    onTime: '#122A2C',
+                    delayed: '#282125',
+                    baseline: '#9CA3AF',
+                    onTimeProgress: '#22C55E',
+                    delayedProgress: '#FB923C'
+                },
+                'tailwind3': {
+                    onTime: '#F0FDF4',
+                    delayed: '#FFF7ED',
+                    baseline: '#DAA520',
+                    onTimeProgress: '#15803D',
+                    delayedProgress: '#C2410C'
+                },
+                'tailwind3-dark': {
+                    onTime: '#122A2C',
+                    delayed: '#282125',
+                    baseline: '#9CA3AF',
+                    onTimeProgress: '#22C55E',
+                    delayedProgress: '#FB923C'
+                },
+                'bootstrap5.3': {
+                    onTime: '#F0FDF4',
+                    delayed: '#FFF7ED',
+                    baseline: '#DAA520',
+                    onTimeProgress: '#15803D',
+                    delayedProgress: '#C2410C'
+                },
+                'bootstrap5.3-dark': {
+                    onTime: '#122A2C',
+                    delayed: '#282125',
+                    baseline: '#9CA3AF',
+                    onTimeProgress: '#22C55E',
+                    delayedProgress: '#FB923C'
+                },
+                'fluent2': {
+                    onTime: '#F0FDF4',
+                    delayed: '#FFF7ED',
+                    baseline: '#DAA520',
+                    onTimeProgress: '#15803D',
+                    delayedProgress: '#C2410C'
+                },
+                'fluent2-dark': {
+                    onTime: '#122A2C',
+                    delayed: '#282125',
+                    baseline: '#9CA3AF',
+                    onTimeProgress: '#22C55E',
+                    delayedProgress: '#FB923C'
+                },
+                'fluent2-highcontrast': {
+                    onTime: '#122A2C',
+                    delayed: '#282125',
+                    baseline: '#9CA3AF',
+                    onTimeProgress: '#22C55E',
+                    delayedProgress: '#FB923C'
+                }
+            };
+        function getCurrentTheme() {
+                var bodyClasses = document.body.className.split(' ');
+                if (bodyClasses.indexOf('material3-dark') !== -1) return 'material3-dark';
+                if (bodyClasses.indexOf('tailwind3-dark') !== -1) return 'tailwind3-dark';
+                if (bodyClasses.indexOf('bootstrap5.3-dark') !== -1) return 'bootstrap5.3-dark';
+                if (bodyClasses.indexOf('fluent2-dark') !== -1) return 'fluent2-dark';
+                if (bodyClasses.indexOf('fluent2-highcontrast') !== -1) return 'fluent2-highcontrast';
+                if (bodyClasses.indexOf('material3') !== -1) return 'material3';
+                if (bodyClasses.indexOf('tailwind3') !== -1) return 'tailwind3';
+                if (bodyClasses.indexOf('bootstrap5.3') !== -1) return 'bootstrap5.3';
+                return 'fluent2';
+            }
+            var currentTheme = getCurrentTheme();
+            var colors = themeColors[currentTheme];
+            // Set baselineColor dynamically after Gantt initialization
+            document.addEventListener('DOMContentLoaded', function () {
+                var gantt = document.getElementById('Baseline').ej2_instances[0];
+                gantt.baselineColor = colors.baseline;
+            });
+            function queryTaskbarInfo(args) {
+                var taskbarColor = !args.data.ganttProperties.baselineStartDate || !args.data.ganttProperties.baselineEndDate || args.data.ganttProperties.startDate <= args.data.ganttProperties.baselineStartDate ? colors.onTime : colors.delayed;
+                var progressColor = !args.data.ganttProperties.baselineStartDate || !args.data.ganttProperties.baselineEndDate || args.data.ganttProperties.startDate <= args.data.ganttProperties.baselineStartDate ? colors.onTimeProgress : colors.delayedProgress;
+                if (args.taskbarType !== 'ParentTask') {
+                    if (currentTheme === 'material3' || currentTheme === 'material3-dark') {
+                        if (args.taskbarType !== 'Milestone') {
+                            args.taskbarElement.querySelectorAll('.e-gantt-child-taskbar-inner-div')[0].style.setProperty('background', taskbarColor, 'important');
+                        } else {
+                            args.taskbarElement.querySelectorAll('.e-gantt-milestone')[0].style.setProperty('border', progressColor, 'important');
+                            args.rowElement.querySelectorAll('.e-baseline-gantt-milestone-container')[0].style.setProperty('border', colors.baseline, 'important');
+                        }
+                    }
+                    args.taskbarBgColor = taskbarColor;
+                    args.milestoneColor = progressColor;
+                    args.taskbarBorderColor = progressColor;
+                    args.progressBarBgColor = progressColor;
+                }
+            }
+            function queryCellInfo(args) {
+                if (args.column.field === "variance") {
+                    var start = args.data.ganttProperties.startDate;
+                    var baselineStart = args.data.ganttProperties.baselineStartDate;
+                    var baselineEnd = args.data.ganttProperties.baselineEndDate;
+                    if (!baselineStart || !baselineEnd || !start || start <= baselineStart) {
+                        args.data.variance = 0;
+                        args.data.taskData.variance = 0;
+                        args.cell.innerText = "0 days";
+                        return;
+                    }
+                    var diffInDays = (start - baselineStart) / (1000 * 60 * 60 * 24);
+                    var roundedDiff = Math.round(diffInDays);
+                    args.data.variance = roundedDiff;
+                    args.data.taskData.variance = roundedDiff;
+                    args.cell.innerText = roundedDiff + " days";
+                }
+            }
+    </script>
+
+    <style>
+        .e-baseline-bar {
+            height: 6px !important;
+        }
+        .fluent2-highcontrast .e-custom-parent,
+        .e-dark-mode .e-custom-parent {
+            background: #232937 !important;
+            border: 1px solid #2F3542 !important;
+        }
+        .fluent2-highcontrast .e-custom-progress,
+        .e-dark-mode .e-custom-progress {
+            background: #2F3542 !important;
+        }
+    </style>
+};
+
+
+
+@section ActionDescription{
+    <div id="action-description">
+         <p>This sample visualizes the complete car service schedule using the Gantt Chart. Baselines are enabled to highlight deviations between planned and actual service dates, helping track schedule accuracy across all tasks and milestones.</p>
+
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Baseline in ASP.NET MVC Gantt control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p> In this demo sample, the baseline feature in the Gantt Chart, which helps visualize the variance between planned and actual task 
+        schedules. Baselines provide a clear reference for tracking project deviations and are rendered for all task types including child tasks, 
+        parent tasks, and milestones.</p>
+    <p>To enable baselines in the Gantt Chart, set the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_RenderBaseline">RenderBaseline</a> property to <code>true</code> and define the planned schedule using the 
+        <code>BaselineStartDate</code> field. You can either specify the <code>BaselineEndDate</code> directly or use the <code>BaselineDuration</code> property to calculate it 
+        automatically. Setting <code>baselineDuration</code> to zero is particularly useful for milestones, as it clearly marks a planned point in time. 
+        The appearance of baselines can be customized using the <code><a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/api/gantt/#baselinecolor"></a>baselineColor</code> property to visually distinguish planned timelines from actual 
+        task progress.timelines from actual progress.</p>
+        <br>
+    <p>More information on the Essential<sup>®</sup> JS2 Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/baseline">documentation section</a>.</p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Gantt Baseline Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Baseline in ASP.NET MVC Gantt Control</h1>
+                }

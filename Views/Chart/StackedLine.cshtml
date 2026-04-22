@@ -1,0 +1,65 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        
+      @Html.EJS().Chart("container-vertical").Series(series =>
+ {
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).IsFilled(true)).XName("X").YName("Y").DataSource(ViewData["ChartPoints"]).Name("Wind").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true)).XName("X").YName("Y1").DataSource(ViewData["ChartPoints"]).Name("Bio mass").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine).Opacity(1).Marker(mkr => mkr.Visible(true).Width(5).Height(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).IsFilled(true)).XName("X").YName("Y2").DataSource(ViewData["ChartPoints"]).Name("Small Hydro").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine).Opacity(1).Marker(mkr => mkr.Visible(true).Width(6).Height(6).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).IsFilled(true)).XName("X").YName("Y3").DataSource(ViewData["ChartPoints"]).Name("Solar").Width(2).Add();
+ }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Double).Interval(1)
+ .MajorGridLines(mg=>mg.Width(0)).MinorGridLines(mg => mg.Width(0))
+ .MajorTickLines(mt => mt.Width(0)).
+ MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
+       ).PrimaryYAxis(py => py.LabelFormat("{value}TWh").LineStyle(ly => ly.Width(0)).MajorGridLines(mg=>mg.Width(1)).MinorGridLines(mg => mg.Width(1))
+           .MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).Title("Energy Generation (TWh)")
+       ).Title("Yearly Renewable Energy Generation in India (2015-2023)").SubTitle("Source: wikipedia.org").ChartArea(area => area.Border(br=>br.Width(0)).Margin(margin => margin.Bottom(12))).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true).Header("<b>${series.name}</b>").Format("${point.x} : <b>${point.y}</b>")).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
+        </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+        #container {
+            display: block;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Trim';
+            args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';
+        }
+    </script>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Stacked Line in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/stacked-line-chart" aria-label="ASP.NET MVC Stacked Line Chart">ASP.NET MVC Stacked Line Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the yearly renewable energy generation in India from 2015 to 2023.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the stacked line chart. The stacked line chart visualizes data with y-values stacked one over another in a series order. It shows the relationship between individual values to the total sum of points.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+    </p>
+    <p>
+         More information about the stacked line series can be found in this
+         <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/stacked-line" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+     </p> 
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Stacked Line Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }

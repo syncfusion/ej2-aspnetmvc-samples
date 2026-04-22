@@ -1,0 +1,96 @@
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.Charts
+@section ControlsSection{
+    <div class="col-lg-12 control-section" align="center">
+        @(Html.EJS().Chart("container").Series(
+           series =>
+           {
+               series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.BoxAndWhisker).
+               Name("Department").
+               Marker(mr=>mr.Visible(true).Width(7).Height(7)).
+               XName("Department").
+               BoxPlotMode(Syncfusion.EJ2.Charts.BoxPlotMode.Normal).
+               YName("Age").DataSource(ViewData["ChartPoints"]).
+               Add();
+           }).PrimaryXAxis(
+           xAxis =>
+               xAxis.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+                    .Interval(1)
+                    .MajorGridLines(mg=>mg.Width(0))
+                    .MajorTickLines(mg => mg.Width(0))
+           ).PrimaryYAxis(
+           yAxis =>
+               yAxis.Minimum(10).
+               Maximum(60).
+               Interval(10).
+               Title("Age").
+               MajorGridLines(mg => mg.Width(1)).
+               MajorTickLines(mg => mg.Width(0)).LineStyle(ls=>ls.Width(0))
+           ).Title("Employees Age Group in Various Departments").LegendSettings(
+            legend => {
+                legend.Visible(false);
+            }).Tooltip(
+           tooltip =>
+           {
+               tooltip.Enable(true).Header("");
+           }).ChartArea(area => area.Border(br => br.Width(0))).Load("load").PointRender("labelRender").Render()
+       )
+    </div>
+
+@*custom code start*@
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+</style>
+@*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>        
+        var labelRender = function (args) {
+            pointRender(args);
+        };
+
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice ? 'None' : 'Rotate45';
+            args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice ? -45 : 0;
+        };
+
+        function valueChange() {
+            var chart = document.getElementById("container").ej2_instances[0];
+            var mode = document.getElementById("dropdown").ej2_instances[0];
+                chart.series[0].boxPlotMode = mode.value;
+                chart.series[0].animation.enable = false;
+                chart.refresh();
+            }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Box and Whisker in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/box-and-whisker-chart" aria-label="ASP.NET MVC Box and Whisker Chart">ASP.NET MVC Box and Whisker Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the employee’s age group in various departments of a company with box and whisker chart.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a box and whisker chart or box plot. This chart is used to visualize a group of numerical data through their data quartiles. Box plots may also have lines extending vertically from the boxes (whiskers) indicating variability outside the upper and lower quartiles. <code>Marker</code> and <code>DataLabel</code> are used to represent individual data and its values.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the box and whisker series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/box-whisker" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Box and Whisker Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Box and Whisker in ASP.NET MVC Chart Control</h1>
+                }

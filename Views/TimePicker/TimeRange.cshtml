@@ -1,0 +1,134 @@
+@using Syncfusion.EJ2
+@section ControlsSection {
+    <div class="control-section">
+        <div class="control_wrapper">
+            <div class="pane">
+                <div class="tabs-wrap">
+                    <div class="wrap">
+                        @Html.EJS().TimePicker("start").Created("onStartCreate").Placeholder("Start Time").Change("onEnableEndTime").Render()
+                    </div>
+                </div>
+                <div class="tabs-wrap" style="clear: both">
+                    <div class="wrap">
+                        @Html.EJS().TimePicker("end").Created("onEndCreate").Placeholder("End Time").Enabled(false).Render()
+                    </div>
+                </div>
+                <div class="tabs-wrap" style="clear: both;padding: 14px 10px;">
+                    <div class="wrap">
+                        @Html.EJS().CheckBox("dayRange").Change("changeTime").Label("Business Hours").Render()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        isStartTimeChange = true;
+        endInput = document.getElementById('end');
+    });
+    function onEnableEndTime(args) {
+        /*Enables end time if start time is selected*/
+        if (isStartTimeChange) {
+            endTime.enabled = true;
+            endTime.value = null;
+            endInput.value = '';
+            value = new Date(+args.value);
+            value.setMinutes(value.getMinutes() + endTime.step);
+            endTime.min = value;
+        } else {
+            isStartTimeChange = true;
+        }
+    }
+
+    function changeTime() {
+        /*To determine whether we have selected business hours or not*/
+        let element = document.getElementById('dayRange');
+        isStartTimeChange = false;
+        if (element.checked) {
+            /*Business hours*/
+            startTime.value = new Date('9/6/2017 9:00');
+            endTime.enabled = true;
+            endTime.value = new Date('9/6/2017 18:00');
+            startTime.readonly = true;
+            endTime.readonly = true;
+        } else {
+            endTime.value = null;
+            startTime.value = null;
+            endInput.value = '';
+            startTime.readonly = false;
+            endTime.readonly = false;
+            endTime.enabled = false;
+        }
+    }
+
+    function onStartCreate() {
+        startTime = document.getElementById('start').ej2_instances[0];
+    }
+    function onEndCreate() {
+        endTime = document.getElementById('end').ej2_instances[0];
+    }
+
+</script>
+    @*custom code start*@
+
+<style>
+    .control_wrapper {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .control_wrapper {
+        padding: 2%;
+        max-width: 400px;
+    }
+
+    .e-bigger .control-section {
+        margin-top: 60px;
+    }
+
+    .tabs-wrap {
+        padding: 10px;
+    }
+</style>
+    @*custom code end*@
+
+@section ActionDescription {
+    <div id="action-description">
+        <p>
+            Select a start time from the first TimePicker and then the second TimePicker will be enabled. Select an end time from the second TimePicker to get a <code>time range</code>. Click/Touch the Business Hours checkbox to change both the TimePickers to <code>read-only</code> state.
+        </p>
+    </div>
+}
+@section Description {
+    <div id="description">
+        <p>
+            Time Range sample illustrates the appointment time selection scenario with the start and end time option. Here, two TimePicker
+            components are used to select the start and end time.
+        </p>
+        <p>
+            Before the start time selection, the end time TimePicker is in disable state. When the start time is selected, then you
+            will be able to select the end time or else, need to select the entire business hours 9:00 to 18:00 from the <code>Business Hours</code>        option. Once the options are checked, both the TimePicker components goes to readonly state.
+        </p>
+        <p>
+            More information about the time range restriction can be found in the <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/timepicker/time-range/"
+                                                                                     target="_blank" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Time Range in ASP.NET MVC TimePicker control. Explore here for more details."/>
+                }
+
+
+
+
+@section Title{
+                    <title>ASP.NET MVC TimePicker Time Range Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Time Range in ASP.NET MVC TimePicker Control</h1>
+                }

@@ -1,0 +1,39 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+   <div class="control-section">
+    @Html.EJS().Grid("Search").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col =>
+   {
+       col.Field("CategoryName").HeaderText("Category Name").Width("160").Add();
+       col.Field("ProductName").HeaderText("Product Name").Width("170").Add();
+       col.Field("UnitsInStock").HeaderText("Units In Stock").Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("QuantityPerUnit").HeaderText("Quantity Per Unit").Width("170").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+       col.Field("Discontinued").HeaderText("Discontinued").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Width("140").Type("boolean").DisplayAsCheckBox(true).Add();
+   }).AllowPaging().PageSettings(page=>page.PageCount(2)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Toolbar(new List<string>() { "Search" }).Render()
+</div>
+}
+@section ActionDescription{
+	<div id="action-description">
+		<p>
+			This sample demonstrates the Grid searching feature. In this sample, use the search box from toolbar to search Grid records.
+		</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Search in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		<p>The Grid has an option to search its content using the <code>search</code> method with search key as the parameter.</p>
+		<p>In this demo, The Grid toolbar provides an option to search the Grid's records. The user can type the text box in the
+			toolbar and click search button or press Enter key to perform search operation. We have used <code>search
+			</code> method to initiate search.</p>		
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Data Grid Search Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Search in ASP.NET MVC Data Grid Control</h1>
+                }

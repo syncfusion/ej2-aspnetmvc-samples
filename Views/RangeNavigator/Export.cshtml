@@ -1,0 +1,251 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+<div>
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            <br>
+            <h4 id="days" align="center" style="font-family: Segoe UI;font-weight: 500; font-style:normal; font-size:15px;"> Conns,Inc Stock Close Details</h4>
+            <div id="container" align="center">
+                @(Html.EJS().RangeNavigator("container").LabelFormat("MMM")
+                    .IntervalType(Syncfusion.EJ2.Charts.RangeIntervalType.Months).EnableGrouping(true)
+                    .XName("xDate").YName("Close").AnimationDuration(500)
+                    .ValueType(Syncfusion.EJ2.Charts.RangeValueType.DateTime)                 
+                    .Load("load").Changed("changed").Render()
+                )
+            </div>
+            <br> <br>
+            <div id="container1" align="center">
+                @(Html.EJS().Chart("chart")
+            .Series(sr =>
+            {
+                sr.XName("xDate")
+                   .YName("Close")
+                   .Name("Sales")
+                   .Width(2).Type(Syncfusion.EJ2.Charts.ChartSeriesType.SplineArea).Add();
+            })
+              .PrimaryXAxis(xaxis =>
+                 xaxis.CrosshairTooltip(ct=>ct.Enable(true)).MajorGridLines(mg=>mg.Width(0))
+                      .ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime)
+                      .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+
+              )
+              .ChartArea(ca => ca.Border(br=>br.Width(0)))
+              .PrimaryYAxis(yaxis =>
+                  yaxis.LabelFormat("{value}M").Title("Million in USD")
+                        .Minimum(81).Maximum(87).Interval(2)
+                        .RangePadding(Syncfusion.EJ2.Charts.ChartRangePadding.Normal)
+                        .MajorTickLines(mt=>mt.Width(0))
+                        .LineStyle(ls=>ls.Width(0)))
+                        .LegendSettings(ls => ls.Visible(false))                        
+                        .Height("350").Tooltip(tl => tl.Enable(true).Shared(true)).Load("chartload").Render()
+                )
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 40%">
+                        <div>
+                            Export Type:
+                        </div>
+                    </td>
+                    <td style="width: 60%;">
+                        <div>
+                            @Html.EJS().DropDownList("Export").Index(0).DataSource(ViewData["data"]).Value("JPEG").Change("valueChange").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td style="width: 40%">
+                        <div>File Name:</div>
+                    </td>
+                    <td style="width: 40%;">
+                        <div class="e-float-input" style="margin-top: 0px;">
+                            <input type="text" value="Chart" id="fileName">
+                        </div>
+                    </td>
+                </tr>
+                <tr id="button-control" style="height: 50px" align="center">
+                    <td colspan="2">
+                        <div>
+                            @Html.EJS().Button("exportBtn").IsPrimary(true).IconCss("e-icons e-export-icon").Content("Export").CssClass("e-flat").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr id="button-control" style="height: 50px" align='center'>
+                    <td align='center' colspan="2">
+                        <div>
+                            @Html.EJS().Button("printBtn").IsPrimary(true).IconCss("e-icons e-print-icon").Content("Print").CssClass("e-flat").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    <style>
+        #button-control {
+            width: 100%;
+            text-align: center;
+        }
+
+        #control-container {
+            padding: 0px !important;
+        }
+
+        .e-play-icon::before {
+            content: '\e813';
+        }
+
+        .e-print-icon::before {
+            content: '\e34b';
+        }
+
+        .e-view.fabric .e-print-icon::before, .e-view.fabric-dark .e-print-icon::before {
+            content: '\e7df';
+        }
+
+        .e-view.bootstrap .e-print-icon::before {
+            content: '\ebd2';
+        }
+
+        .e-view.bootstrap4 .e-print-icon::before {
+            content: '\e743';
+        }
+
+        .e-view.tailwind .e-print-icon::before, .e-view.tailwind3 .e-print-icon::before, .e-view.tailwind-dark .e-print-icon::before, .e-view.tailwind3-dark .e-print-icon::before {
+            content: '\e76c';
+        }
+
+        .e-view.highcontrast .e-print-icon::before {
+            content: '\ebf9';
+        }
+
+        .e-view.bootstrap5\.3 .e-print-icon::before, .e-view.bootstrap5\.3-dark .e-print-icon::before {
+            content: '\e75d';
+        }
+
+        .e-view.fluent .e-print-icon::before, .e-view.fluent-dark .e-print-icon::before {
+            content: '\e75d';
+        }
+
+        .e-view.material3 .e-print-icon::before, .e-view.material3-dark .e-print-icon::before {
+            content: '\e75d';
+        }
+
+        .e-view.fluent2 .e-print-icon::before, .e-view.fluent2-dark .e-print-icon::before, .e-view.fluent2-highcontrast .e-print-icon::before {
+            content: '\e75d';
+        }
+
+        .e-export-icon::before {
+            content: '\e728';
+        }
+
+        .e-view.fabric .e-export-icon::before, .e-view.fabric-dark .e-export-icon::before {
+            content: '\e710';
+        }
+
+        .e-view.bootstrap4 .e-export-icon::before {
+            content: '\e780';
+        }
+
+        .e-view.tailwind-dark .e-export-icon::before, .e-view.tailwind3-dark .e-export-icon::before, .e-view.tailwind .e-export-icon::before, .e-view.tailwind3 .e-export-icon::before {
+            content: '\e7bf';
+        }
+
+        .e-view.highcontrast .e-export-icon::before {
+            content: '\e710';
+        }
+
+        .e-view.bootstrap5\.3 .e-export-icon::before, .e-view.bootstrap5\.3-dark .e-export-icon::before {
+            content: '\e72e';
+        }
+
+        .e-view.fluent .e-export-icon::before, .e-view.fluent-dark .e-export-icon::before {
+            content: '\e72e';
+        }
+
+        .e-view.fluent2 .e-export-icon::before, .e-view.fluent2-dark .e-export-icon::before, .e-view.fluent2-highcontrast .e-export-icon::before {
+            content: '\e72e';
+        }
+
+        .e-view.material3 .e-export-icon::before, .e-view.material3-dark .e-export-icon::before {
+            content: '\e72e';
+        }
+    </style>
+    <script src="~/Scripts/datasource.js"></script>
+    <script src="~/Scripts/range-navigator/theme-color.js"></script>
+<script>
+        var dateTimeData = dataCollection;
+        var zoomFactor, zoomPosition;    
+        var load = function (args) {
+            var theme = loadRangeNavigatorTheme(args);
+            args.rangeNavigator.dataSource = dateTimeData;
+            args.rangeNavigator.width = "100%";
+            args.rangeNavigator.value = [new Date('2013-05-01'), new Date('2013-08-01')];
+        }
+        var chartload = function (args) {
+            var theme = loadChartTheme(args);
+            args.chart.series[0].border = { width: 2, color: borderColor[themesList.indexOf(args.chart.theme.toLowerCase())] };
+            args.chart.series[0].fill = regionColor[themesList.indexOf(args.chart.theme.toLowerCase())];
+            args.chart.series[0].dataSource = dateTimeData;
+            args.chart.zoomFactor = zoomFactor;
+            args.chart.zoomPosition = zoomPosition;
+        }
+        var changed = function (args) {
+            zoomFactor = args.zoomFactor;
+            zoomPosition = args.zoomPosition;
+            if ((document.getElementById('chart').childNodes.length > 1)) {
+                var chart = document.getElementById('chart').ej2_instances[0];
+                chart.primaryXAxis.zoomFactor = args.zoomFactor;
+                chart.primaryXAxis.zoomPosition = args.zoomPosition;
+                chart.dataBind();
+            }
+
+        }
+        var mode = "JPEG";
+        function valueChange() {
+            var exportType = document.getElementById('Export').ej2_instances[0];
+            mode = exportType.value;
+        }
+        document.getElementById('exportBtn').onclick = function () {
+            var range = document.getElementById('container').ej2_instances[0];
+            var chart = document.getElementById('chart').ej2_instances[0];
+            var dropdown = document.getElementById('Export').ej2_instances[0];
+            var fileName = (document.getElementById('fileName')).value;
+            chart.exportModule.export(dropdown.value, fileName, null, [range, chart]);
+        };
+        document.getElementById('printBtn').onclick = function () {
+            var range = document.getElementById('container').ej2_instances[0];
+            range.print(["container", "chart"]);
+        };
+</script>
+}
+             @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Print and Export in ASP.NET MVC Range Selector control. Explore here for more details."/>
+                }
+             @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates the export feature in the range navigator. You can export the range navigator in PNG, SVG, PDF or JPEG format by clicking <code>Export</code>.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the export feature. The rendered range navigator can be exported as either JPEG, PNG or SVG format. It can be achieved using the Blob. It is supported only in modern browsers.
+    </p>
+    <p>
+        More information on the export can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/range-navigator/export" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Range Selector Print and Export Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Print and Export in ASP.NET MVC Range Selector Control</h1>
+                }

@@ -1,0 +1,245 @@
+@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2.PivotView
+@using Syncfusion.EJ2.DropDowns
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Export in ASP.NET MVC Pivot Table control. Explore here for more details."/>
+                }
+@section ControlsSection{
+
+    <div class="col-lg-8 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().PivotView("pivotview").Width("100%").Height("350").AllowExcelExport(true).AllowPdfExport(true).ShowFieldList(true).AllowConditionalFormatting(true).DataSourceSettings(dataSourceSettings => dataSourceSettings.DataSource((IEnumerable<object>
+                )ViewData["Data"]).ExpandAll(false).EnableSorting(true)
+                .FormatSettings(formatsettings =>
+                {
+                    formatsettings.Name("Amount").Format("C0").MaximumSignificantDigits(10).MinimumSignificantDigits(1).UseGrouping(true).Add();
+                    formatsettings.Name("In_Stock").Format("N0").Add();
+                    formatsettings.Name("Sold").Format("N0").Add();
+                })
+                .Rows(rows =>
+                {
+                    rows.Name("Country").Add();
+                    rows.Name("Products").Add();
+                })
+                .Columns(columns =>
+                {
+                    columns.Name("Year").ExpandAll(true).Add();
+                    columns.Name("Quarter").Add();
+                })
+                .Values(values =>
+                {
+                    values.Name("In_Stock").Caption("In Stock").Add();
+                    values.Name("Sold").Caption("Units Sold").Add();
+                    values.Name("Amount").Caption("Sold Amount").Add();
+                })
+                .Filters(filters =>
+                {
+                    filters.Name("Product_Categories").Caption("Product Categories").Add();
+                })
+                .ConditionalFormatSettings(format =>
+                {
+                    format.Conditions(Condition.LessThan).Measure("In_Stock").Value1(3000).Style(style => { style.BackgroundColor("#FF005C").Color("white").FontFamily("Tahoma").FontSize("12px"); }).ApplyGrandTotals(false).Add();
+                    format.Conditions(Condition.GreaterThan).Measure("In_Stock").Value1(3500).Style(style => { style.BackgroundColor("#35B65A").Color("white").FontFamily("Tahoma").FontSize("12px"); }).ApplyGrandTotals(false).Add();
+                    format.Conditions(Condition.LessThan).Measure("Sold").Value1(20000).Style(style => { style.BackgroundColor("#FF005C").Color("white").FontFamily("Tahoma").FontSize("12px"); }).ApplyGrandTotals(false).Add();
+                    format.Conditions(Condition.GreaterThan).Measure("Sold").Value1(30000).Style(style => { style.BackgroundColor("#35B65A").Color("white").FontFamily("Tahoma").FontSize("12px"); }).ApplyGrandTotals(false).Add();
+                    format.Conditions(Condition.LessThan).Measure("Amount").Value1(10000000).Style(style => { style.BackgroundColor("#FF005C").Color("white").FontFamily("Tahoma").FontSize("12px"); }).ApplyGrandTotals(false).Add();
+                    format.Conditions(Condition.GreaterThan).Measure("Amount").Value1(15000000).Style(style => { style.BackgroundColor("#35B65A").Color("white").FontFamily("Segoe UI").FontSize("12px"); }).ApplyGrandTotals(false).Add();
+                })
+                .FilterSettings(filtersettings =>
+                {
+                    filtersettings.Name("Year").Type(Syncfusion.EJ2.PivotView.FilterType.Include).Items((string[])ViewData["YearFilterMembers"]).Add();
+                    filtersettings.Name("Products").Type(Syncfusion.EJ2.PivotView.FilterType.Include).Items((string[])ViewData["ProductsFilterMembers"]).Add();
+                })
+                .DrilledMembers(drilledmembers =>
+                {
+                    drilledmembers.Name("Country").Items((string[])ViewData["drilledMembers"]).Add();
+                })
+                ).GridSettings(new PivotViewGridSettings { ColumnWidth = 140 }).DataBound("dataBound").Render()
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties" style="width: 100%;height:100%;">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 40%">
+                        <div>
+                            Export Type:
+                        </div>
+                    </td>
+                    <td style="width: 60%;">
+                        <div style="margin-left: -20px">
+                            @Html.EJS().DropDownList("mode").Index(0).DataSource((IEnumerable<object>)ViewData["exportMode"]
+                            ).Fields(new DropDownListFieldSettings { Text = "text", Value = "value" }).Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td></td>
+                    <td>
+                        <div style="float: right">
+                            @Html.EJS().Button("export-btn").Content("Export").IsPrimary(true).Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        #pivotview {
+            width: 100%;
+            height: 100%;
+        }
+        .sb-sample-content-area {
+            min-height: 255px !important;
+        }
+        .control-section {
+            min-height: 255px !important;
+        }
+    </style>
+    <script>
+        var isInitialRender = true;
+        document.getElementById('export-btn').onclick = function () {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            var exportType = document.getElementById('mode').ej2_instances[0];
+            var today = new Date().toLocaleDateString('en-US', {
+                month: 'short',
+                day: '2-digit',
+                year: 'numeric'
+            });
+            if (exportType.value === 'excel') {
+                var excelExportProperties = {
+                    header: {
+                        headerRows: 4,
+                        rows: [
+                            { cells: [{ colSpan: 10, value: "Sales Performance Report - Q1 2026", style: { fontColor: '#1B4965', fontSize: 20, hAlign: 'Center', bold: true } }] },
+                            { cells: [{ colSpan: 10, value: "Region: Global | Currency: USD", style: { fontColor: '#35B65A', fontSize: 15, hAlign: 'Center', bold: true } }] }
+                        ]
+                    },
+                    footer: {
+                        footerRows: 4,
+                        rows: [
+                            { cells: [{ colSpan: 10, value: "Total In Stock: 14,263 | Total Units Sold: 125,031 | Total Sold Amount: $48,265,135.81", style: { fontColor: '#35B65A', fontSize: 15, hAlign: 'Center', bold: true } }] },
+                            { cells: [{ colSpan: 10, value: "Report generated on: " + today, style: { fontColor: '#1B4965', fontSize: 15, hAlign: 'Center', bold: true } }] }
+                        ]
+                    }
+                };
+                pivotObj.excelExport(excelExportProperties);
+            }
+            else if (exportType.value === 'csv') {
+                pivotObj.csvExport();
+            }
+            else {
+                var pdfExportProperties = {
+                    header: {
+                        fromTop: 0,
+                        height: 130,
+                        contents: [
+                            {
+                                type: 'Text',
+                                value: 'Sales Performance Report - Q1 2026',
+                                position: { x: 275, y: 30 },
+                                style: { textBrushColor: '#1B4965', fontSize: 35 }
+                            },
+                            {
+                                type: 'Text',
+                                value: 'Region: Global | Currency: USD',
+                                position: { x: 385, y: 80 },
+                                style: { textBrushColor: '#35B65A', fontSize: 22 }
+                            }
+                        ]
+                    },
+                    footer: {
+                        fromBottom: 160,
+                        height: 150,
+                        contents: [
+                            {
+                                type: 'Text',
+                                value: "Total In Stock: 14,263 | Total Units Sold: 125,031 | Total Sold Amount: $48,265,135.81",
+                                position: { x: 275, y: 0 },
+                                style: { textBrushColor: '#35B65A', fontSize: 18 }
+                            },
+                            {
+                                type: 'Text',
+                                value: "Report generated on: " + today,
+                                position: { x: 385, y: 25 },
+                                style: { textBrushColor: '#1B4965', fontSize: 18 }
+                            },
+                            {
+                                type: 'PageNumber',
+                                pageNumberType: 'Numeric',
+                                format: 'Page {$current} of {$total}',
+                                position: { x: 915, y: 120 },
+                                style: { textBrushColor: '#1B4965', fontSize: 20 }
+                            }
+                        ]
+                    }
+                };
+                pivotObj.pdfExport(pdfExportProperties);
+            }
+        };
+
+        function dataBound() {
+            var pivotObj = document.getElementById('pivotview').ej2_instances[0];
+            if (isInitialRender && pivotObj.element.querySelector('.e-valuescontent')) {
+                pivotObj.layoutRefresh();
+                isInitialRender = false;
+            }
+        }
+    </script>
+}
+
+@section PreScripts {
+    <script>
+        ej.base.enableRipple(false);
+    </script>
+}
+
+@section ActionDescription{
+   <div id="action-description">
+       <p>This sample demonstrates client-side exporting of the pivot table to Excel, CSV and PDF formats.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The pivot table supports client-side exporting and allows data to be exported in Excel, CSV, and PDF formats
+            using the
+            <code>excelExport</code>,
+            <code>csvExport</code>, and
+            <code>pdfExport</code> methods.
+            To perform an export, the desired document type can be selected from the dropdown list in the property panel,
+            followed by clicking the "Export" button.
+        </p>
+    
+        <p>
+            Headers and footers can also be added during export.
+            For Excel, the <code>header</code> and <code>footer</code> properties are defined in the
+            <code>excelExportProperties</code> object and passed to the <code>excelExport</code> method.
+            For PDF, the <code>header</code> and <code>footer</code> properties are defined in the
+            <code>pdfExportProperties</code> object and passed to the <code>pdfExport</code> method.
+        </p>
+    
+        <p>
+            More information on exporting is available in the corresponding
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/excel-export">Excel
+                Export</a>,
+            <a target="_blank"
+                href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/excel-export#export-data-to-a-csv-file">CSV
+                Export</a>,
+            and
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/pivot-table/pdf-export">PDF
+                Export</a>
+            documentation sections.
+        </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Pivot Table Export Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Export in ASP.NET MVC Pivot Table Control</h1>
+                }

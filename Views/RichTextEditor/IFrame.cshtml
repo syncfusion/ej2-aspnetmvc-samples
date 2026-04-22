@@ -1,0 +1,175 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        <div class="control-wrapper">
+    @Html.EJS().RichTextEditor("iframe").ContentTemplate(@<div>
+    <p>
+        The Rich Text Editor component is a WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update the content.
+        Users can format their content using standard toolbar commands.
+    </p>
+    <p><b> Key features:</b></p>
+    <ul>
+        <li><p>Provides &lt; IFRAME &gt; and &lt; DIV &gt; modes</p></li>
+        <li><p>Capable of handling markdown editing.</p></li>
+        <li><p>Contains a modular library to load the necessary functionality on demand.</p></li>
+        <li><p>Provides a fully customizable toolbar.</p></li>
+        <li><p>Provides HTML view to edit the source directly for developers.</p></li>
+        <li><p>Supports third - party library integration.</p></li>
+        <li><p>Allows a preview of modified content before saving it.</p></li>
+        <li><p>Handles images, hyperlinks, video, hyperlinks, uploads, etc.</p></li>
+        <li><p>Contains undo / redo manager.</p></li>
+        <li><p>Creates bulleted and numbered lists.</p></li>
+    </ul>
+    <h3>Auto Formatting – Write Faster, Format Smarter</h3>
+    <p> Boost your productivity with Auto Formatting, a powerful feature that lets you style content instantly using simple, familiar Markdown-style shortcuts. No need to reach for the toolbar — just type and watch your content transform in real time. </p>
+    <h4>Effortless Formatting Shortcuts</h4>
+    <table class="e-rte-table">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>Shortcut</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Bulleted List</td>
+            <td>Start a line with <code>*</code> or <code>-</code> followed by a space</td>
+        </tr>
+        <tr>
+            <td>Numbered List</td>
+            <td>Start a line with <code>1.</code> or <code>i.</code> followed by a space</td>
+        </tr>
+        <tr>
+            <td>Checklist / To-do</td>
+            <td>Start a line with <code>[ ]</code> or <code>[x]</code> followed by a space</td>
+        </tr>
+        <tr>
+            <td>Headings (H1 to H6)</td>
+            <td>Use <code>#</code>, <code>##</code>, <code>###</code>, <code>####</code>, <code>#####</code>, or <code>######</code> followed by a space</td>
+        </tr>
+        <tr>
+            <td>Block Quote</td>
+            <td>Start a line with <code>&gt;</code> followed by a space</td>
+        </tr>
+        <tr>
+            <td>Code Block</td>
+            <td>Start a line with <code>```</code> followed by a space</td>
+        </tr>
+        <tr>
+            <td>Horizontal Line</td>
+            <td>Start a line with <code>---</code> followed by a space</td>
+        </tr>
+        <tr>
+            <td>Bold Text</td>
+            <td>Type <code>**text**</code> or <code>__text__</code></td>
+        </tr>
+        <tr>
+            <td>Italic Text</td>
+            <td>Type <code>*text*</code> or <code>_text_</code></td>
+        </tr>
+        <tr>
+            <td>Inline Code</td>
+            <td>Type <code>`text`</code></td>
+        </tr>
+        <tr>
+            <td>Strikethrough</td>
+            <td>Type <code>~~text~~</code></td>
+        </tr>
+    </tbody>
+    </table>
+</div>).Created("created").QuickToolbarSettings(e => { e.Table((object)ViewData["Table"]); e.Text((object)ViewData["Text"]); e.ShowOnRightClick(true); }).ExportWord((Syncfusion.EJ2.RichTextEditor.RichTextEditorExportWord)ViewData["ExportWord"]).ExportPdf((Syncfusion.EJ2.RichTextEditor.RichTextEditorExportPdf)ViewData["ExportPdf"]).ImportWord((Syncfusion.EJ2.RichTextEditor.RichTextEditorImportWord)ViewData["ImportWord"]).ActionBegin("handleFullScreen").ActionComplete("actionCompleteHandler").Height("500").IframeSettings(iframeSettings => iframeSettings.Enable(true)).ToolbarSettings(e => e.Items((object)ViewData["Items"])).FileManagerSettings(e => { e.Enable(true); e.Path("/Pictures/Food"); e.AjaxSettings((object)ViewData["AjaxSettings"]); }).Render()
+        </div>
+    </div>
+<script type="text/javascript">
+        var rteObj;
+        function created() {
+            rteObj = this;
+        }
+        function handleFullScreen(e) {
+            var sbCntEle = document.querySelector('.sb-content.e-view');
+            var sbHdrEle = document.querySelector('.sb-header.e-view');
+            var leftBar;
+            var transformElement;
+            if (ej.base.Browser.isDevice) {
+                leftBar = document.querySelector('#right-sidebar');
+                transformElement = document.querySelector('.sample-browser.e-view.e-content-animation');
+            }
+            else {
+                leftBar = document.querySelector('#left-sidebar');
+                transformElement = document.querySelector('#right-pane');
+            }
+            if (e.targetItem === 'Maximize') {
+                if (ej.base.Browser.isDevice &&  ej.base.Browser.isIos) {
+                    ej.base.addClass([sbCntEle, sbHdrEle], ['hide-header']);
+                }
+                ej.base.addClass([leftBar], ['e-close']);
+                ej.base.removeClass([leftBar], ['e-open']);
+                if (!ej.base.Browser.isDevice) {
+                    transformElement.style.marginLeft = '0px';
+                }
+                transformElement.style.transform = 'inherit';
+            }
+            else if (e.targetItem === 'Minimize') {
+                if (ej.base.Browser.isDevice &&  ej.base.Browser.isIos) {
+                    ej.base.removeClass([sbCntEle, sbHdrEle], ['hide-header']);
+                }
+                ej.base.removeClass([leftBar], ['e-close']);
+                if (!ej.base.Browser.isDevice) {
+                    ej.base.addClass([leftBar], ['e-open']);
+                }
+                transformElement.style.transform = 'translateX(0px)';
+            }
+        }
+        function actionCompleteHandler() {
+            setTimeout(function () { rteObj.refreshUI(); }, 400);
+        }
+    </script>
+    <style>
+        .e-rte-content body {
+            color: black;
+            background-color: white;
+        }
+
+        .sb-header {
+            z-index: 100;
+        }
+
+        .sb-content.e-view.hide-header {
+            top: 0 !important;
+        }
+
+        .sb-header.e-view.hide-header {
+            display: none;
+        }
+    </style>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the IFrame in ASP.NET MVC Rich Text Editor control. Explore here for more details."/>
+                }
+
+@*custom code end*@
+
+@section ActionDescription{
+    <div id="action-description">
+  <p>This sample demonstrates the default rendering of the Rich Text Editor in <code>iframe mode</code>.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+                        The Rich Text Editor is WYSIWYG ("what you see is what you get") editor that is used to create and edit content, and return valid HTML markup. The editor provides a standard toolbar to format content using its commands. The toolbar contains commands to align the text, insert link, insert image,
+            insert list, undo/redo the operation, HTML view, and more.
+        </p>
+    </div>
+}
+
+
+@section Title{
+                    <title>ASP.NET MVC Rich Text Editor IFrame Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of IFrame in ASP.NET MVC Rich Text Editor Control</h1>
+                }

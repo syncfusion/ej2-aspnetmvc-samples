@@ -1,0 +1,100 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Navigations;
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div class="e-sample-resize-container" style="margin-top: 100px">
+            @Html.EJS().Toolbar("template-Toolbar").CssClass("template").Items((List<Syncfusion.EJ2.Navigations.ToolbarItem>)ViewData["templateItems"]).OverflowMode(Syncfusion.EJ2.Navigations.OverflowMode.Popup).KeyDown("OnKeyDown").Render()
+        </div>
+        <div id="count-textbox">
+            @Html.EJS().NumericTextBox("count").Width("50px").Max("100").Min("0").Value("1").ShowSpinButton(false).Format("###.##").Render()
+            <span class="total-page">of 100</span>
+        </div>
+        @Html.EJS().ComboBox("combo-element").Value("100%").ShowClearButton(false).Width("85px").PopupWidth("85px").DataSource((string[])ViewData["data"]).Render()
+        @Html.EJS().TextBox("text-element").Width("125px").Placeholder("Find Text").Created("onCreate").Render()
+    </div>
+}
+<script type="text/javascript">
+    function onCreate() {
+        this.addIcon('prepend', 'e-icons e-search');
+    }
+
+    function OnKeyDown(args) {
+        if (args.originalEvent.action === 'moveRight') {
+            focusInputElement(args.nextItem, args);
+        }
+        else if (args.originalEvent.action === 'moveLeft') {
+            focusInputElement(args.nextItem, args);
+        }
+    }
+
+    function focusInputElement(item, args) {
+        if (item && item.classList.contains('e-template')) {
+            var inputElement = item.querySelector('input');
+            if (inputElement) {
+                inputElement.focus();
+                args.cancel = true;
+            }
+        }
+    }
+</script>
+
+
+@section ActionDescription{
+    <p>
+        This sample demonstrates customization of the ASP.Net MVC Toolbar.
+    </p>
+}
+
+@section Description{
+    <p>
+        In this demo, the ASP.Net MVC Toolbar showcases customization options for toolbar items using the <code>template</code> property. The Toolbar items are arranged using the <code>align</code> property.
+    </p>
+    <p>
+        To add icons to the toolbar items, the <code>prefixIcon</code> property is used. When the <code>showTextOn</code> property's is set to <code>overflow</code>, the Toolbar items' <code>text</code> that overflows will be visible.
+    </p>
+    <p>
+        In this demo, <code>NumericTextBox</code>, <code>ComboBox</code> and <code>TextBox</code> are used inside the Toolbar .
+    </p>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Template in ASP.NET MVC Toolbar control. Explore here for more details." />
+}
+
+<style>
+    /* Toolbar Styles */
+
+    .template.e-toolbar .total-page {
+        padding-left: 4px;
+        cursor: default;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+
+    .template.e-toolbar .e-toolbar-pop .page-count,
+    .template.e-toolbar .e-toolbar-pop .selection-tool,
+    .template.e-toolbar .e-toolbar-pop .find,
+    .template.e-toolbar .e-toolbar-pop .pan-mode,
+    .template.e-toolbar .e-toolbar-pop .percentage {
+        display: none;
+    }
+
+    .template.e-tbar-section-popup .e-sample-resize-container {
+        height: 40px;
+        width: 100%;
+        max-width: 100% !important;
+    }
+
+    .template.e-toolbar .e-toolbar-items .e-toolbar-item:not(.e-separator) {
+        padding-left: 2px;
+        line-height: 1;
+    }
+
+</style>
+@section Title{
+    <title>ASP.NET MVC Toolbar Template Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Template in ASP.NET MVC Toolbar Control</h1>
+}

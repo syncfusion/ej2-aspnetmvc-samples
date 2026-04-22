@@ -1,0 +1,177 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+@using Syncfusion.EJ2.Notifications;
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").CssClass("schedule-holiday-calendar").Width("100%").RowAutoHeight(true).Height("100%").SelectedDate(new DateTime(DateTime.Today.Year, 8, 5)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).EventRendered("onEventRender").ActionBegin("onActionBegin").DragStop("onEventDragOrResize").ResizeStop("onEventDragOrResize").CellClick("clickOnHoliday").CellDoubleClick("clickOnHoliday").Render()
+            @Html.EJS().Toast("schedule-reminder").Title("Information!").Position(p => p.X("Right")).CssClass("e-toast-info").Icon("e-info toast-icons").Target(".e-schedule").Render()
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 100%;">
+                        <div>
+                            @Html.EJS().CheckBox("holiday-list-collection").Change("updateHolidayListCollection").Checked(true).Label("Holiday events").Render()
+                        </div>
+                <tr style="height: 50px">
+                    <td style="width: 100%;">
+                        <div>
+                            @Html.EJS().CheckBox("holiday-event-collection").Change("updateHolidayEventCollection").Checked(true).Label("Scheduling event on holiday").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
+    <script type="text/javascript">
+
+        var holidayEventCollection = true;
+        var holidayListCollection = true;
+
+        var combinedData = @Html.Raw(ViewData["datasource"]);
+        var holidayList = combinedData.filter(event => event.IsHoliday === true);
+
+        function updateHolidayEventCollection(args) {
+            holidayEventCollection = args.checked;
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.refreshEvents();
+        }
+        function updateHolidayListCollection(args) {
+            holidayListCollection = args.checked;
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            scheduleObj.refreshEvents();
+        }
+        function isEventWithinHolidayRange(eventStartDate, eventEndDate) {
+            var isInRange = false;
+            for (var i = 0; i < holidayList.length; i++) {
+                var holiday = holidayList[i];
+                var holidayStartDate = new Date(holiday.StartTime);
+                var holidayEndDate = new Date(holiday.EndTime);
+                if ((eventStartDate >= holidayStartDate &&
+                    eventStartDate <= holidayEndDate) ||
+                    (eventEndDate >= holidayStartDate && eventEndDate <= holidayEndDate) ||
+                    (eventStartDate <= holidayStartDate && eventEndDate >= holidayEndDate)
+                ) {
+                    isInRange = true;
+                    break;
+                }
+            }
+            return isInRange;
+        }
+        function showToastForAction(actionName, holidayDateRange) {
+            if (!holidayDateRange) return;
+            var messages = {
+                resizeStop: 'You cannot resize an event within the holiday date range',
+                dragStop: 'You cannot drop an event within the holiday date range',
+                eventCreate: 'You cannot add an event within the holiday date range',
+                eventChange: 'You cannot edit an event within the holiday date range',
+            };
+            if (messages[actionName]) {
+                var toast = document.getElementById('schedule-reminder').ej2_instances[0];
+                toast.content = messages[actionName];
+                toast.show();
+            }
+        }
+        function onActionBegin(args) {
+            var { requestType } = args;
+            var isCreateOrChange = requestType === 'eventCreate' || requestType === 'eventChange';
+            if (isCreateOrChange) {
+                var eventData = requestType === 'eventCreate' ? args.data[0]: args.data;
+                var adjustedEndTime = eventData.IsAllDay
+                    ? new Date(eventData.EndTime.setMinutes(eventData.EndTime.getMinutes() - 1))
+                    : eventData.EndTime;
+                var isHolidayDateRange = !holidayEventCollection &&
+                    !eventData.RecurrenceRule &&
+                    isEventWithinHolidayRange(eventData.StartTime, adjustedEndTime);
+                args.cancel = isHolidayDateRange;
+                showToastForAction(requestType, isHolidayDateRange);
+            }
+        }
+        function clickOnHoliday(args) {
+            args.cancel =
+                !holidayEventCollection &&
+                isEventWithinHolidayRange(
+                    args.startTime,
+                    args.endTime.setMinutes(args.endTime.getMinutes() - 1)
+                );
+        }
+        function onEventRender(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            var event = args.data;
+            if (!holidayEventCollection) {
+                if (!event.IsHoliday && event.IsAllDay) {
+                    event.EndTime.setMinutes(event.EndTime.getMinutes() - 1);
+                }
+                args.cancel =
+                    !event.IsHoliday &&
+                    isEventWithinHolidayRange(event.StartTime, event.EndTime);
+            }
+            if (event.IsHoliday && !holidayListCollection) {
+                args.cancel = true;
+            }
+            applyCategoryColor(args, scheduleObj.currentView);
+        }
+        function onEventDragOrResize(args) {
+            var isHolidayDateRange =
+                !holidayEventCollection &&
+                isEventWithinHolidayRange(args.data.StartTime,
+                    args.data.EndTime.setMinutes(args.data.EndTime.getMinutes() - 1));
+            args.cancel = isHolidayDateRange;
+            showToastForAction(args.name, isHolidayDateRange);
+        }
+    </script>
+
+    <style>
+        .schedule-holiday-calendar.e-schedule .e-appointment.e-read-only .e-appointment-details .e-subject.e-text-center {
+            text-align: left;
+        }
+    </style>
+
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Holiday Calendar in ASP.NET MVC Scheduler control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo illustrates how to add and remove holiday events and perform CRUD operations on holiday dates in the
+            scheduler.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this sample, we’ll demonstrate how to perform CRUD operations on holiday dates in a calendar. If a user wants to
+            schedule an appointment on a holiday, they should check the <code>Scheduling event on holiday</code> checkbox.
+            This will enable them to add an appointment on a holiday date.If a holiday list is displayed in the calendar, the
+            <code>Holiday events</code> checkbox will be checked. The holiday list is highlighted in a different color.
+        </p>
+        <ul>
+            <li>
+                When an action is performed to drag and resize an event, if the <code>Scheduling event on holiday</code>
+                checkbox is checked, the appointment can be scheduled on holiday dates. If it is unchecked, the appointment
+                cannot have CRUD actions performed on it, and a warning message will be displayed.
+            </li>
+            <li>
+                If a recurring event is added on a holiday date and the <code>Scheduling event on holiday</code> checkbox is
+                checked, it allows the event to occur on that dates. If the checkbox is unchecked, it prevents the event from
+                occurring, based on the dates in the holiday collection.
+            </li>
+        </ul>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC Scheduler Holiday Calendar Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Holiday Calendar in ASP.NET MVC Scheduler Control</h1>
+}

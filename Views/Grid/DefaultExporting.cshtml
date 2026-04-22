@@ -1,0 +1,145 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        <div class="control-wrapper">
+            <div class="control-section">
+                @Html.EJS().Grid("Grid").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowSorting().AllowGrouping().AllowPdfExport().AllowExcelExport().ToolbarClick("toolbarClick").Columns(col =>
+           {
+               col.HeaderText("Employee Image").Template("#template1").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+               col.Field("FirstName").HeaderText("Name").Width("130").Add();
+               col.Field("Title").HeaderText("Designation").Width("180").Add();
+               col.HeaderText("Email ID").Template("#template2").Width("180").Add();
+               col.Field("HireDate").HeaderText("Hire Date").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").Add();
+               col.Field("Address").Width("120").AllowGrouping(false).Add();
+
+           }).DataBound("gridDataBound").Height("350").AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).Toolbar(new List<string>() { "ExcelExport", "PdfExport", "CsvExport" }).ExcelQueryCellInfo("exportQueryCellInfo").PdfQueryCellInfo("exportQueryCellInfo").Render()
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%;">
+            <tr>
+                <td style="padding-top: 10px">
+                    @Html.EJS().CheckBox("Export").Checked(true).LabelPosition(Syncfusion.EJ2.Buttons.LabelPosition.Before).Change("change").Label("Export Template Column").Render()
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- custom code end -->
+    <script id="template1" type="text/x-template">
+        <div class="image">
+            <img src="@Url.Content("~/Content/images/Employees/${EmployeeID}.png")" alt="${EmployeeID}" />
+        </div>
+    </script>
+    <script id="template2" type="text/x-template">
+        <div class="link">
+            <a href="mailto:${EmailID}">${EmailID}</a>
+        </div>
+    </script>
+
+
+    <style>
+        .image img {
+            height: 55px;
+            width: 55px;
+            border-radius: 50px;
+            box-shadow: inset 0 0 1px #e0e0e0, inset 0 0 14px rgba(0,0,0,0.2);
+        }
+    </style>
+
+    <script>
+
+        function toolbarClick(args) {
+            var gridObj = document.getElementById("Grid").ej2_instances[0];
+            if (args.item.id === 'Grid_pdfexport') {
+                gridObj.pdfExport();
+            }
+            if (args.item.id === 'Grid_excelexport') {
+                gridObj.excelExport();
+            }
+	    if (args.item.id === 'Grid_csvexport') {
+                gridObj.csvExport();
+            }
+        }
+
+        function exportQueryCellInfo(args) {
+            if (args.column.headerText === 'Employee Image') {
+                if (args.name === "excelQueryCellInfo") {
+                    args.image = { height: 75, base64: args.data["EmployeeImage"], width: 75 };
+                } else {
+                    args.image = { base64: args.data["EmployeeImage"] };
+                }
+            }
+            if (args.column.headerText === 'Email ID') {
+                args.hyperLink = {
+                    target: 'mailto:' + args.data["EmailID"],
+                    displayText: args.data["EmailID"]
+                };
+            }
+        };
+
+        var fields = ['Employee Image', 'Email ID'];
+        function change(args) {
+            var grid = document.getElementById("Grid").ej2_instances[0];
+            if (args.checked) {
+                grid.showColumns(fields, "headerText");
+                grid.toolbarModule.toolbar.hideItem(2, true);
+            } else {
+                grid.hideColumns(fields, "headerText");
+                grid.toolbarModule.toolbar.hideItem(2, false);
+            }
+        };
+        function gridDataBound(args) {
+            if (!this.isInitialLoad) {
+                var grid = document.getElementById("Grid").ej2_instances[0];
+                grid.toolbarModule.toolbar.hideItem(2, true);
+            }
+        }
+
+    </script>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the client-side exporting of the Grid, which allows you to export its data to the Excel, PDF and CSV formats.
+            Use the toolbar buttons to export Grid data to desired format.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default Exporting in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+
+@section Description{
+    <div id="description">
+        <p>Grid supports client-side exporting which allows you to export its data to the Excel, PDF and CSV formats.</p>
+        <p>
+            In this demo, while exporting, we have included images and hyperlinks from the template columns i.e 
+			<strong><i>Image</i></strong> and <strong><i>URL</i></strong> using <code>
+                <a target="_blank" class="code"
+                   href="https://ej2.syncfusion.com/javascript/documentation/api/grid/#excelquerycellinfo" aria-label="excelQueryCellInfo">
+                    excelQueryCellInfo
+                <span class="sr-only">opens in a new tab</span></a>
+            </code> and <code>
+                <a target="_blank" class="code"
+                   href="https://ej2.syncfusion.com/javascript/documentation/api/grid/#pdfquerycellinfo" aria-label="pdfQueryCellInfo">
+                    pdfQueryCellInfo
+                <span class="sr-only">opens in a new tab</span></a>
+            </code> events. The ExcelExport, PdfExport, and CsvExport items are defined in the toolbar, for which we have defined actions in toolbarClick event to export the Grid data using the
+            <code>ExcelExport</code>,<code>PdfExport</code>	and <code>CsvExport</code>  methods.
+        </p>
+        <p>
+            Note: Since CSV format is supported only plain text, images and hyperlinks will not be exported on this.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Data Grid Default Exporting Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Exporting in ASP.NET MVC Data Grid Control</h1>
+                }

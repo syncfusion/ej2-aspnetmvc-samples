@@ -1,0 +1,203 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div class="row linear-parent">
+            <div id="danger" class="linear-progress">
+                @(Html.EJS()
+                .ProgressBar("danger")
+                .Type(Syncfusion.EJ2.ProgressBar.ProgressType.Linear)
+                .Value(20)
+                .Minimum(0)
+                .Maximum(100)
+                .Width("100%")
+                .Height("30")
+                .ProgressThickness(20)
+                .TrackThickness(20)
+                .Role(Syncfusion.EJ2.ProgressBar.ModeType.Success)
+                .IsStriped(true)
+                .Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                .Load("progressLoad")
+                .Render()
+                )
+            </div>
+            <div id="warning" class="linear-progress">
+                @(Html.EJS()
+                .ProgressBar("warning")
+                .Type(Syncfusion.EJ2.ProgressBar.ProgressType.Linear)
+                .Value(40)
+                .Minimum(0)
+                .Maximum(100)
+                .Width("100%")
+                .Height("30")
+                .ProgressThickness(20)
+                .TrackThickness(20)
+                .Role(Syncfusion.EJ2.ProgressBar.ModeType.Info)
+                .IsStriped(true)
+                .Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                .Load("progressLoad")
+                .Render()
+                )
+            </div>
+            <div id="info" class="linear-progress">
+                @(Html.EJS()
+                .ProgressBar("info")
+                .Type(Syncfusion.EJ2.ProgressBar.ProgressType.Linear)
+                .Value(70)
+                .Minimum(0)
+                .Maximum(100)
+                .Width("100%")
+                .Height("30")
+                .ProgressThickness(20)
+                .TrackThickness(20)
+                .Role(Syncfusion.EJ2.ProgressBar.ModeType.Warning)
+                .IsStriped(true)
+                .Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                .Load("progressLoad")
+                .Render()
+                )
+            </div>
+            <div id="success" class="linear-progress">
+                @(Html.EJS()
+                .ProgressBar("success")
+                .Type(Syncfusion.EJ2.ProgressBar.ProgressType.Linear)
+                .Value(100)
+                .Minimum(0)
+                .Maximum(100)
+                .Width("100%")
+                .Height("30")
+                .ProgressThickness(20)
+                .TrackThickness(20)
+                .Role(Syncfusion.EJ2.ProgressBar.ModeType.Danger)
+                .IsStriped(true)
+                .Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                .Load("progressLoad")
+                .Render()
+                )
+            </div>
+        </div>
+        <div class="row linear-button">
+            <button id="animation" class="e-control e-btn e-lib e-outline e-primary">Stop Animation</button>
+        </div>
+    </div>
+
+    @*custom code start*@
+    <style scoped>
+        #control-container {
+            padding: 0px !important;
+        }
+
+        .linear-parent {
+            text-align: center;
+            margin-top: 2%;
+        }
+
+        .linear-button {
+            text-align: center;
+        }
+
+        .linear-progress {
+            width: 80%;
+            margin: auto;
+            margin-bottom: 3%;
+        }
+
+        #animation {
+            border-radius: 4px;
+            text-transform: capitalize;
+        }
+
+        #danger_Lineartrack {
+            opacity: 1 !important;
+        }
+
+        #warning_Lineartrack {
+            opacity: 1 !important;
+        }
+
+        #info_Lineartrack {
+            opacity: 1 !important;
+        }
+
+        #success_Lineartrack {
+            opacity: 1 !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/Progressbar/theme-color.js"></script>
+    <script>
+        var progressLoad = function (args) {
+            loadProgressBarTheme(args);
+            if (args.progressBar.theme === 'Material') {
+                args.progressBar.trackColor = '#eee';
+            }
+            if (args.progressBar.theme === 'HighContrast') {
+                args.progressBar.trackColor = '#969696';
+            }
+        };
+
+        var animationBtn = document.getElementById('animation');
+        animationBtn.onclick = function () {
+            var dangerProgress = document.getElementById('danger').ej2_instances[0];
+            var warningProgress = document.getElementById('warning').ej2_instances[0];
+            var infoProgress = document.getElementById('info').ej2_instances[0];
+            var successProgress = document.getElementById('success').ej2_instances[0];
+            if (!dangerProgress.animation.enable) {
+                dangerProgress.animation.enable = true;
+                animationBtn.innerHTML = 'Stop Animation';
+                dangerProgress.refresh();
+            } else {
+                dangerProgress.animation.enable = false;
+                animationBtn.innerHTML = 'Start Animation';
+                dangerProgress.refresh();
+            }
+            if (!warningProgress.animation.enable) {
+                warningProgress.animation.enable = true;
+                animationBtn.innerHTML = 'Stop Animation';
+                warningProgress.refresh();
+            } else {
+                warningProgress.animation.enable = false;
+                animationBtn.innerHTML = 'Start Animation';
+                warningProgress.refresh();
+            }
+            if (!infoProgress.animation.enable) {
+                infoProgress.animation.enable = true;
+                animationBtn.innerHTML = 'Stop Animation';
+                infoProgress.refresh();
+            } else {
+                infoProgress.animation.enable = false;
+                animationBtn.innerHTML = 'Start Animation';
+                infoProgress.refresh();
+            }
+            if (!successProgress.animation.enable) {
+                successProgress.animation.enable = true;
+                animationBtn.innerHTML = 'Stop Animation';
+                successProgress.refresh();
+            } else {
+                successProgress.animation.enable = false;
+                animationBtn.innerHTML = 'Start Animation';
+                successProgress.refresh();
+            }
+        };
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Stripes in ASP.NET MVC Progress Bar control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates a striped linear progress bar with animation.
+    </p>
+}
+@section Description{
+    <p>
+        This demo for Essential JS2 Progress Bar control shows the linear progress bar with different labels format with help of <code>IsStriped</code>property.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC Progress Bar Stripes Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Stripes in ASP.NET MVC Progress Bar Control</h1>
+}

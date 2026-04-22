@@ -1,0 +1,49 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "DefaultFunctionalities";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("DefaultFunctionalities").DataSource((IEnumerable<object>)ViewData["dataSource"]).Columns(col=> {
+
+       col.Field("OrderID").HeaderText("Order ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("180").IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+       col.Field("CustomerID").HeaderText("Customer Name").Width("150").ValidationRules(new { required = true, minLength = 5 }).Add();
+       col.Field("OrderDate").HeaderText("Order Date").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("130").Format("yMd").EditType("datepickeredit").Add();
+       col.Field("Freight").HeaderText("Freight").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("120").Format("C2").EditType("numericedit").ValidationRules(new { required = true, min = 0 }).Add();
+       col.Field("ShippedDate").HeaderText("Shipped Date").Width("140").Format("yMd").EditType("datepickeredit").Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
+
+   }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" }).Render()
+        </div>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates the default rendering of the Grid with minimum configuration.</p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+			The Grid is used to display and manipulate tabular data with configuration options to control the way the data is presented
+			and manipulated. It will pull the data from a data source, such as an IEnumerable, OData web services,
+			or <code>DataManager</code> binding data fields to columns. Also, displaying a column header to identify the field with
+			support for grouped records.
+		</p>
+		<p>
+			In this demo, the Grid is populated with its minimum default settings.
+		</p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Data Grid Default Functionalities Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC Data Grid Control</h1>
+                }

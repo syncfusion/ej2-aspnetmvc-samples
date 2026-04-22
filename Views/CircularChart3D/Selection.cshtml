@@ -1,0 +1,56 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @Html.EJS().CircularChart3D("container").Tilt(-30).Title("Browser Market Shares in November 2023").HighlightMode(Syncfusion.EJ2.Charts.CircularChart3DHighlightMode.Point
+        ).Series(series =>
+        {
+        series.XName("X").YName("Y").DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.CircularChart3DLabelPosition.Outside).Name("X")
+        .Font(ft => ft.FontWeight("600"))).DataSource(ViewData["ChartData"]).Add();
+        }).SelectionMode(Syncfusion.EJ2.Charts.CircularChart3DSelectionMode.Point
+        ).SelectionPattern(Syncfusion.EJ2.Charts.SelectionPattern.DiagonalForward
+        ).Tooltip(tt => tt.Enable(true).Format("<b>${point.x}</b><br>Browser Share: <b>${point.y}%</b>").Header("")
+        ).LegendSettings(leg => leg.Visible(true).ToggleVisibility(false)).IsMultiSelect(true).Load("load").Render()
+    </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/CircularChart3D/theme-color.js"></script>
+    <script>
+        function load(args) {
+            loadCircular3DChartTheme(args);
+            args.chart.legendSettings.position = ej.base.Browser.isDevice ? "Bottom" : "Right";
+            args.chart.series[0].dataLabel.connectorStyle.length = ej.base.Browser.isDevice ? "20px" : "40px";
+            args.chart.series[0].radius = ej.base.Browser.isDevice ? "50%" : "70%";
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the 3D Circular Chart Selection in ASP.NET MVC 3D Circular Chart control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample displays the browser market share using a 3D pie chart with selection and highlight behavior.
+    </p>
+}
+@section Description{
+    <p>
+        In this sample, you can select and highlight any point in the chart by clicking on or touching it. Additionally, you have the option to select and highlight a point during the initial loading of the chart using the <code>SelectedDataIndexes</code> option.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point on touch-enabled devices.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC 3D Circular Chart Selection Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of 3D Circular Chart Selection in ASP.NET MVC 3D Circular Chart Control</h1>
+}
+

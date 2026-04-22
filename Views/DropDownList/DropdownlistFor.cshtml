@@ -1,0 +1,64 @@
+@using Syncfusion.EJ2
+@model EJ2MVCSampleBrowser.Controllers.DropdownlistModel
+
+@section ControlsSection{
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+<div class="col-lg-12 control-section">
+    <div id="wrapper">
+        @Html.EJS().DropDownListFor(model => model.val).DataSource(@Model.data).Placeholder("e.g. Basketball").Render()
+        <div>
+            @Html.ValidationMessageFor(model => model.val)
+        </div>
+        <div id="submitbutton">
+            @Html.EJS().Button("btn").Content("Submit").Render()
+        </div>
+    </div>
+</div>
+
+    }
+
+    @*custom code start*@
+<style>
+    #wrapper {
+        max-width: 246px;
+        margin: 30px auto;
+        padding-top: 50px;
+    }
+
+    #submitbutton {
+        margin-top: 20px;
+        margin-left: 65px;
+    }
+
+    #control-content #wrapper .field-validation-error {
+        color: red;
+    }
+</style>
+    @*custom code end*@
+
+}
+@section ActionDescription{
+<div id="action-description">
+    <p>
+        This example demonstrates the strongly-typed helper of <code>DropDownList</code>. Edit the DropDownList's value and click the 'Submit' button to pass the modified value to controller.
+    </p>
+</div>
+}
+@section Description{
+<div id="description">
+    <p>
+        In this sample, the DropDownList is rendered with strongly-typed helper (FOR control) and bound its value from controller using model binding. The modified value is bond to controller action "DropDownListFor" when submitting a page.
+    </p>
+</div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the DropDownListFor in ASP.NET MVC Dropdown List control. Explore here for more details."/>
+                }
+@section Title{
+                    <title>ASP.NET MVC Dropdown List DropDownListFor Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of DropDownListFor in ASP.NET MVC Dropdown List Control</h1>
+                }
