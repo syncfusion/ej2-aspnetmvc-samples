@@ -1,5 +1,0 @@
-@model string
-<div style="display: flex;">
-    @Html.EJS().Menu((Model + "_menu")).Items(ViewData["menuItems"]).Select("selectHandler").Render()
-</div>
-@Html.EJS().ScriptManager()
