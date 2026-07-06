@@ -1,0 +1,118 @@
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            <div id="signature-control">
+                <div class='e-sign-heading'>
+                    <span id="signdescription">Sign below</span>
+                    <span class="e-btn-options">
+                        @Html.EJS().Button("signsave").Content("SAVE").Disabled(true).CssClass("e-primary e-sign-save").Render()
+                        @Html.EJS().Button("signclear").Content("CLEAR").Disabled(true).CssClass("e-primary e-sign-clear").Render()
+                    </span>
+                </div>
+                @Html.EJS().Signature("signature").Change("Change").Render()
+            </div>
+        </div>
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the basic rendering of the <b>Signature</b> control with the save and clear option.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>The <code>Signature</code> control is a user interface to draw the signature digitally. The <code>Signature</code> control is displayed as a container where end-user can sign their name as a verified signature inside the container.</p>
+        <p>In this sample, you can draw the signature. Use the <b>Save</b> button to store your signature as an image file, and the <b>Clear</b> button to clear the signature.</p>
+         <p>
+              More information about Signature can be found in this
+              <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/signature/getting-started"  aria-label="documentation section" > documentation section<span class="sr-only">opens in a new tab</span></a>.
+          </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC Signature control. Explore here for more details."/>
+                }
+
+@section Scripts {
+    <script>
+        var signature = new ej.inputs.Signature({}, '#signature');
+        document.getElementById('signsave').addEventListener('click', function () {
+            var signature = ej.base.getComponent(document.getElementById('signature'), 'signature');
+            signature.save();
+        });
+        document.getElementById('signclear').addEventListener('click', function () {
+            var signature = ej.base.getComponent(document.getElementById('signature'), 'signature');
+            var clrBtn = ej.base.getComponent(document.getElementById('signclear'), 'btn');
+            var saveBtn = ej.base.getComponent(document.getElementById('signsave'), 'btn');
+            signature.clear();
+            if (signature.isEmpty()) {
+                saveBtn.disabled = true;
+                clrBtn.disabled = true;
+            }
+        });
+    </script>
+
+}
+
+
+<script>
+
+    function Change() {
+        var signature = ej.base.getComponent(document.getElementById('signature'), 'signature');
+        var clrBtn = ej.base.getComponent(document.getElementById('signclear'), 'btn');
+        var saveBtn = ej.base.getComponent(document.getElementById('signsave'), 'btn');
+        if (!signature.isEmpty()) {
+            saveBtn.disabled = false;
+            clrBtn.disabled = false;
+        }
+    }
+</script>
+
+
+@*custom code start*@
+<style>
+
+    #signature-control {
+        height: 300px;
+        width: 100%;
+        margin: 0;
+    }
+
+    #signature {
+        height: 90%;
+        width: 100%;
+    }
+
+    #signature-control h4 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .e-bigger #signature-control h4 {
+        font-size: 20px;
+    }
+
+    #signdescription {
+        font-size: 14px;
+        padding-bottom: 10px;
+    }
+
+    .e-sign-clear {
+        margin-left: 5px;
+    }
+    .e-btn-options {
+        float: right;
+        margin-bottom: 10px;
+    }
+</style>
+@*custom code end*@
+
+@section Title{
+                    <title>ASP.NET MVC Signature Default Functionalities Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC Signature Control</h1>
+                }

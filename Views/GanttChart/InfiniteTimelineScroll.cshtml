@@ -1,0 +1,73 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "InfiniteTimelineScroll";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("InfiniteScroll").DataSource((IEnumerable<object>)ViewData["DataSource"])
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
+                    .Progress("Progress").Dependency("Predecessor").ParentID("ParentID"))
+                .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
+                .AllowSelection(true).GridLines(Syncfusion.EJ2.Gantt.GridLine.Both)
+                .Height("450px").TreeColumnIndex(1).EnableInfiniteTimelineScroll(true)
+                .HighlightWeekends(true).TimelineSettings(tl => tl.TopTier(tt =>
+                  tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week).Format("MMM dd, y")).
+                BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))).Columns(col =>
+                {
+                    col.Field("TaskId").Width(80).Add();
+                    col.Field("TaskName").HeaderText("Job Name").ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Width(250).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("Duration").Add();
+                    col.Field("Progress").Add();
+                    col.Field("Predecessor").Add();
+                }).LabelSettings(ls => ls.LeftLabel("TaskId")
+                .RightLabel("TaskName").TaskLabel("${Progress}%"))
+                .SplitterSettings(spl => {
+                    spl.ColumnIndex(3);
+                })
+                .Render()
+            )
+        </div>
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the infinite timeline scrolling feature in the Gantt Chart,
+            allowing users to navigate across project timelines without fixed date boundaries.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Editing in ASP.NET MVC Gantt control. Explore here for more details."/>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            By enabling the
+            <a target="_blank"
+                href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_EnableInfiniteTimelineScroll">
+                enableInfiniteTimelineScroll
+            </a> property, the timeline dynamically generates additional date ranges as you scroll horizontally.
+        </p>
+
+        <p>
+            When the scroll position reaches the edges of the visible timeline, new segments are rendered automatically,
+            ensuring uninterrupted navigation in either direction.
+        </p>
+
+        <p>More information on the Essential<sup>®</sup> ASP.NET MVC Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/time-line/time-line">documentation section</a>.</p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Infinite Timeline Scrolling Example - Syncfusion Demos </title> 
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Infinite Timeline Scrolling in ASP.NET MVC Gantt Control</h1>
+}

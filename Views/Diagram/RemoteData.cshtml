@@ -1,0 +1,37 @@
+@using Syncfusion.EJ2;
+@using EJ2MVCSampleBrowser.Models;
+
+@section ControlsSection {
+
+<div class="control-section" style="width:100%;height:100%;float:left;">
+    @Html.EJS().Diagram("diagram").Width("1000px").Height("500px").GetNodeDefaults("nodeDefaults").GetConnectorDefaults("connectorDefaults")
+    .DataSourceSettings(ss => ss.Id("EmployeeID").ParentId("ReportsTo")
+    .DataSource(new DataManager() { Url = "https://mvc.syncfusion.com/Services/Northwnd.svc/", CrossDomain=true, }))
+    .Layout(l => l.Type(Syncfusion.EJ2.Diagrams.LayoutType.HierarchicalTree)).SnapSettings(s => s.Constraints(0)).Render();
+</div>
+
+    <style>
+        #control-diagram {
+            padding: 0px !important;
+        }
+
+        #diagramcontent {
+            position: relative !important;
+        }
+    </style>
+
+    <script>
+        function nodeDefaults(obj, diagram) {
+            obj.width = 80;
+            obj.height = 40;
+            //Initialize shape
+            obj.shape = { type: 'Basic', shape: 'Rectangle' };
+            obj.style = { fill: '#048785', strokeColor: 'Transparent' };
+        }
+        function connectorDefaults(connector, diagram) {
+            connector.type = 'Orthogonal';
+            connector.style.strokeColor = '#048785';
+            connector.targetDecorator.shape = 'None';
+        }
+    </script>
+}

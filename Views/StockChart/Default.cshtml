@@ -1,0 +1,80 @@
+@using Syncfusion.EJ2;
+<script src="~/Scripts/StockChartData/indicator-data.js"></script>
+@section ControlsSection{
+    <div class="control-section">
+        <div id="control-container">
+            @(Html.EJS().StockChart("container").Load("load").Title("AAPL Stock Price")
+            .PrimaryXAxis(xaxis =>xaxis.MajorGridLines(mg=>mg.Color("transparent")
+            ).CrosshairTooltip(ct=>ct.Enable(true)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTimeCategory).EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift))
+            .PrimaryYAxis(yaxis =>yaxis.MajorTickLines(mt=>mt.Color("transparent").Height(0)
+            ).LineStyle(ls=>ls.Color("transparent")))
+            .Series(sr =>
+            {
+                sr.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle).XName("x").YName("high").High("high").Low("low").DataSource("data").Add();
+            })
+            .TooltipRender("tooltipRender")
+            .Crosshair(cr=>cr.Enable(true).LineType(Syncfusion.EJ2.Charts.LineType.Both))
+            .Tooltip(tp => tp.Enable(true))
+            .ChartArea(area => area.Border(br=>br.Width(0)))
+            .Render())
+        </div>
+    </div>
+     @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+        #container {
+            display: block;
+        }
+
+        #container_stock_border {
+            pointer-events: none;
+        }
+    </style>
+     @*custom code end*@
+    <script src="~/Scripts/StockChartData/theme-color.js"></script>
+    <script>
+        var data = window.defaultData;
+        var load = function (args) {
+            loadStockChartTheme(args);
+        }
+
+        function tooltipRender(args) {
+            if (args.text.split('<br/>')[4]) {
+                var target = parseFloat(args.text.split('<br/>')[4].split('<b>')[1].split('</b>')[0]);
+                var value = (target / 100000000).toFixed(1) + 'B';
+                args.text = args.text.replace(args.text.split('<br/>')[4].split('<b>')[1].split('</b>')[0], value);
+            }
+        };
+    </script>
+}
+ @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default in ASP.NET MVC Stock Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+    <p>This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/stock-chart" aria-label="ASP.NET MVC Stock Chart">ASP.NET MVC Stock Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the AAPL stock price with candle chart. Tooltip and crosshair show the information about the data and period.</p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the stock chart. The candle type series chart shows financial data and trends at equal intervals. The <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/stock-chart/period-selector" aria-label="Period Selector">Period Selector<span class="sr-only">opens in a new tab</span></a> and <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/stock-chart/range-selector" aria-label="Range Selector">Range Selector<span class="sr-only">opens in a new tab</span></a> can be used to select a range with specified periods.
+    </p>
+    <p>
+        Stock Chart provides support to 10 types of <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/stock-chart/technical-indicators" aria-label="Technical Indicators">Technical Indicators<span class="sr-only">opens in a new tab</span></a> namely <code>Accumulation Distribution</code>, <code>ATR</code>, <code>EMA</code>, <code>SMA</code>, <code>TMA</code>, <code>Momentum</code>, <code>MACD</code>, <code>RSI</code>, <code>Stochastic</code>, <code>Bollinger Band</code>. By using indicator dropdown box, add and remove the required indicator types.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover the chart or tap on it in touch enabled devices.
+    </p>
+    <p>
+        More information about the stock charts can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/stock-chart/getting-started" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Stock Chart Default Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default in ASP.NET MVC Stock Chart Control</h1>
+                }

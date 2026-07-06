@@ -1,0 +1,199 @@
+﻿@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "BaselineTemplate";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-wrapper">
+                    @(Html.EJS().Gantt("BaselineTemplate")
+                        .DataSource((IEnumerable<object>)ViewData["DataSource"])
+                        .Height("550px")
+                        .RowHeight(60)
+                        .TaskbarHeight(20)
+                        .TreeColumnIndex(0)
+                        .GridLines(Syncfusion.EJ2.Gantt.GridLine.Both)
+                        .RenderBaseline(true)
+                        .HighlightWeekends(true)
+                        .AllowSelection(true)
+                        .ProjectStartDate("05/01/2024")
+                        .ProjectEndDate("05/30/2024")
+                        .TaskFields(ts => ts
+                            .Id("TaskId")
+                            .Name("TaskName")
+                            .StartDate("StartDate")
+                            .EndDate("EndDate")
+                            .BaselineStartDate("BaselineStartDate")
+                            .BaselineDuration("BaselineDuration")
+                            .Duration("Duration")
+                            .ParentID("ParentID")
+                            .Dependency("Predecessor")
+                            .Progress("Progress")
+                        )
+                        .Columns(col =>
+                        {
+                            col.Field("TaskId").HeaderText("Task ID").Add();
+                            col.Field("TaskName").HeaderText("Task Name").Width(270).Add();
+                            col.Field("BaselineStartDate").HeaderText("Baseline Start Date").Width(180).Add();
+                            col.Field("BaselineDuration").HeaderText("Baseline Duration").Width(180).Add();
+                            col.Field("RevisedBaseline").HeaderText("Baseline1 Start Date").Width(180).Add();
+                            col.Field("RevisedBaselineDuration").HeaderText("Baseline1 Duration").Width(180).Add();
+                            col.Field("FinalBaseline").HeaderText("Baseline2 Start Date").Width(180).Add();
+                            col.Field("FinalBaselineDuration").HeaderText("Baseline2 Duration").Width(180).Add();
+                        })
+                        .TimelineSettings(tl => tl
+                            .TopTier(tt => tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Month).Format("MMMM yyyy"))
+                            .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))
+                        )
+                        .SplitterSettings(spl => spl.ColumnIndex(4))
+                        .TooltipSettings(ts => ts.ShowTooltip(false))
+                        .LabelSettings(ls => ls.RightLabel("TaskName"))
+                        .BaselineTemplate("#baselineTemplate")
+                        .Render()
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // baselineTemplate used by the Gantt to render multi-baselines.
+        // It expects a global gantt instance; try to resolve it from known window names.
+        function baselineTemplateFn(props) {
+            if (props.hasChildRecords || (props.data && props.data.hasChildRecords)) {
+                return '';
+            }
+
+            var g = props.taskData;
+            var gp = g.ganttProperties || {};
+            var ganttChart = document.getElementById('BaselineTemplate').ej2_instances[0];
+
+            if (!ganttChart) return '';
+
+            var chart = ganttChart.chartRowsModule;
+            var baselineTop = chart.baselineTop;
+            var baselineHeight = chart.baselineHeight;
+            var taskBarHeight = chart.taskBarHeight;
+            var milestoneHeight = chart.milestoneHeight;
+            var milestoneMarginTop = chart.milestoneMarginTop;
+
+            var rowHeight = ganttChart.rowHeight;
+            var renderBaseline = ganttChart.renderBaseline;
+            var enableRtl = ganttChart.enableRtl;
+
+            var gap = 9;
+            var baselineGap = 4;
+
+            function getLeft(date) {
+                return ganttChart.dataOperation.getTaskLeft(new Date(date), false, gp.calendarContext);
+            }
+
+            // Add calendar days (not only working days)
+            function getWidth(start, duration) {
+                if (!start || duration == null) return 0;
+
+                var end = new Date(start);
+                end.setDate(end.getDate() + duration);
+
+                var leftStart = ganttChart.dataOperation.getTaskLeft(new Date(start), false, gp.calendarContext);
+                var leftEnd = ganttChart.dataOperation.getTaskLeft(end, false, gp.calendarContext);
+
+                return leftEnd - leftStart;
+            }
+
+            function render(start, duration, index) {
+                if (!start) return '';
+
+                var left = getLeft(start);
+                var width = getWidth(start, duration);
+
+                if (duration === 0) {
+                    var size = renderBaseline ? taskBarHeight : (taskBarHeight - 10);
+                    var baselineMilestoneHeight = renderBaseline ? 5 : 2;
+
+                    var leftPos = enableRtl ? (left - (milestoneHeight / 2) + 3) : (left - (milestoneHeight / 2) + 1);
+
+                    var marginTop = (-Math.floor(rowHeight - milestoneMarginTop) + baselineMilestoneHeight) + 2 + (index * baselineGap);
+
+                    return '<div class="e-baseline-gantt-milestone-container" style="position:absolute;width:' + size + 'px;height:' + size + 'px;transform:rotate(45deg);' +
+                        (enableRtl ? 'right:' : 'left:') + leftPos + 'px;margin-top:' + marginTop + 'px;"></div>';
+                }
+
+                return '<div class="e-baseline-bar" role="term" style="position:absolute;' +
+                    (enableRtl ? 'right:' : 'left:') + left + 'px;' +
+                    'margin-top:' + (baselineTop + (index * gap)) + 'px;' +
+                    'width:' + width + 'px;height:' + baselineHeight + 'px;"></div>';
+            }
+
+            return '<div class="custom-multi-baseline">' +
+                render(g.taskData.BaselineStartDate, g.taskData.BaselineDuration, 0) +
+                render(g.taskData.RevisedBaseline, g.taskData.RevisedBaselineDuration, 1) +
+                render(g.taskData.FinalBaseline, g.taskData.FinalBaselineDuration, 2) +
+                '</div>';
+        }
+    </script>
+    <script type="text/x-jsrender" id="baselineTemplate">
+        ${baselineTemplateFn(data)}
+    </script>
+    <style>
+        .e-baseline-bar {
+            height: 6px !important;
+        }
+    </style>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the usage of the <b>baseline template</b> feature in the Gantt Chart component.
+            It showcases how multiple baseline timelines can be rendered within a single task, enabling comparison
+            of different planned schedules in one view.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description"
+          content="This example demonstrates the Baseline Template in ASP.NET MVC Gantt control. Explore here for more details." />
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            In this example, the Gantt Chart visualizes a product launch workflow with multiple baseline
+            representations enabled. Each task includes up to three baseline bars, sourced from custom
+            baseline fields, allowing you to compare various planning iterations such as initial plan,
+            revised plan, and final baseline.
+        </p>
+
+        <p>
+            The <a target="_blank"
+                href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_BaselineTemplate">
+                baselineTemplate
+            </a> property is used to customize the rendering of baseline bars.
+            Using this template, you can fully control the appearance, styling, and structure of each baseline,
+            including colors, positioning, and shapes. This flexibility makes it easy to adapt baseline visualization
+            based on specific project requirements.
+        </p>
+
+        <p>
+            The template also supports rendering for both regular tasks and milestones, providing a consistent
+            visual comparison across all task types.
+        </p>
+
+        <p>
+            This approach helps project managers effectively analyze deviations between planned and actual
+            schedules, identify delays, and make informed decisions across different phases of the project lifecycle.
+        </p>
+        <p>More information on the Essential<sup>®</sup> ASP.NET MVC Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/baseline">documentation section</a>.</p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Baseline Template Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Baseline in ASP.NET MVC Gantt Control</h1>
+}

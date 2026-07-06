@@ -1,0 +1,113 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Popups
+
+@section ControlsSection{
+    <div id="target" class="col-lg-12 control-section">
+
+        @Html.EJS().Button("dialogBtn").CssClass("dlgbtn").Content("Open Dialog").Render()
+
+        @Html.EJS().Dialog("firstDialog").Visible(true).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("firstDlgCreated").Header("First Dialog").Close("dialogClose").Open("dialogOpen").ContentTemplate(@<div><p>This is the first dialog and acts as a parent dialog, you can open the second (child) dialog by clicking 'Next'.</p></div>).ShowCloseIcon(true).CloseOnEscape(true).Width("330px").Height("260px").Target("#target").Buttons((List<DialogDialogButton>)ViewData["NextButton"]).Render()
+        @Html.EJS().Dialog("secondDialog").Visible(false).AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.None }).Created("secondDlgCreated").IsModal(true).Header("Second Dialog").Close("dialogClose2").Open("dialogOpen").ContentTemplate(@<div><p>This is the second dialog and act as a child dialog.</p></div>).ShowCloseIcon(true).CloseOnEscape(true).Width("285px").Height("215px").Target("#target").Buttons((List<DialogDialogButton>)ViewData["CloseButton"]).Render()
+
+    </div>
+}
+
+<style>
+    .e-btn-hide {
+        display: none;
+    }
+    /* custom code start */
+    #control-container {
+        padding: 0px !important;
+    }
+
+    .dlgbtn {
+        margin-right: 10px;
+    }
+
+    #container {
+        height: 100%;
+        min-height: 350px;
+        position: relative;
+    }
+
+    @@media screen and (min-width: 150px) and (max-width: 480px) {
+        .control-section {
+            margin-bottom: 30px;
+        }
+
+        .control-wrapper {
+            margin-bottom: 0px;
+        }
+    }
+    /* custom code end */
+</style>
+
+@section PreScripts {
+    <script>
+        var firstDlgObj, secondDlgObj;
+    var btnElement = document.getElementById('dialogBtn');
+    document.getElementById('dialogBtn').onclick = function () {
+            firstDlgObj.show();
+            secondDlgObj.hide();
+        };
+        function dlgButtonClick() {
+            secondDlgObj.show();
+        }
+        function dlg2ButtonClick() {
+            secondDlgObj.hide();
+        }
+        // 'Open' Button will be shown, if Dialog is closed
+        function dialogClose() {
+            btnElement.style.display = 'block';
+        }
+        function dialogClose2() {
+           btnElement.style.display = 'none';
+        }
+        // 'Open' Button will be hidden, if Dialog is opened
+        function dialogOpen() {
+            btnElement.style.display = 'none';
+    }
+    function firstDlgCreated() {
+        firstDlgObj = this;
+    }
+    function secondDlgCreated() {
+        secondDlgObj = this;
+    }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This example demonstrates how to display multiple dialogs one over the other.
+            The second dialog is configured with draggable behavior to adjust its position.
+            You can invoke the second dialog from first dialog's button.
+            Enable the "open dialog" button to reopen the dialog if the first dialog is closed.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            You can configure the dialog as a parent and child, and invoke the child dialog from its parent dialog.
+            In addition, multiple dialogs can be shown at a time in a page.
+            The Z- index order will be controlled automatically in the browser and manually using the <code>zIndex</code> property.
+        </p>
+    </div>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Multiple Dialogs in ASP.NET MVC Dialog control. Explore here for more details."/>
+                }
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Dialog Multiple Dialogs Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Multiple Dialogs in ASP.NET MVC Dialog Control</h1>
+                }

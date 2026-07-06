@@ -1,0 +1,69 @@
+@using Syncfusion.EJ2.MultiColumnComboBox
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        <div class="control-wrapper">
+            <div style='padding-top:30px;'>
+                <label>Select a product</label>
+                @Html.EJS().MultiColumnComboBox("keyboardnav").Placeholder("Select any product").Fields(new MultiColumnComboBoxFieldSettings
+                { Text = "ProductName", Value = "ProductID" }).Columns(col =>
+                {
+                    col.Field("ProductID").Header("Product ID").Width("100").Add();
+                    col.Field("ProductName").Header("Product Name").Width("200").Add();
+                    col.Field("UnitPrice").Header("UnitPrice").Width("90").Add();
+                    col.Field("UnitsInStock").Header("Units In Stock").Width("120").Add();
+                }).PopupHeight("210px").PopupWidth("650px").DataSource((IEnumerable<ProductDetails>)ViewData["data"]).Render()
+            </div>
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+        .control-wrapper {
+            margin: 0 auto;
+            width: 250px;
+        }
+
+        @@media only screen and (max-width: 480px) {
+            .control-wrapper {
+                width: 300px;
+            }
+        }
+    </style>
+    @*custom code end*@
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the keyboard navigations in ASP.NET MVC MultiColumn ComboBox control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates keyboard navigations support in the MultiColumn Combobox.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>To provide users with the ability to navigate, select, and interact with popup data in a MultiColumn ComboBox using keyboard shortcuts for improved accessibility.</p>
+        <p>Keyboards Actions :</p>
+        <p><ul>
+            <li><code>Enter</code>-  Select the focused item and close the popup.</li>
+            <li><code>Esc</code>- Close the popup.</li>
+            <li><code>Alt + Down Arrow</code>- Open the popup.</li>
+            <li><code>Alt + Up Arrow</code>- Close the popup.</li>
+            <li><code>Up Arrow</code>- Select the previous item.</li>
+            <li><code>Down Arrow</code>- Select the next item.</li>
+            <li><code>Home</code>- Select the first item.</li>
+            <li><code>End</code>- Select the last item.</li>
+            <li><code>Tab</code>- Select the focused item, close the popup, and move to the next focusable element.</li>
+            <li><code>Shift + Tab</code>- Select the focused item, close the popup, and move to the previous focusable element.</li>
+        </ul></p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC MultiColumn ComboBox keyboard navigations Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of keyboard navigations in ASP.NET MVC MultiColumn ComboBox Control</h1>
+}

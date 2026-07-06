@@ -1,0 +1,68 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="control-wrapper">
+            @Html.EJS().RichTextEditor("inline").InlineMode(inline => inline.OnSelection(true).Enable(true)).ToolbarSettings(e => e.Items((object)ViewData["Items"])).Created("created").FontFamily(font => font.Width("auto")).Format(format => format.Width("auto")).ContentTemplate(@<text><h2>Inline Rich Text Editor!</h2><p>Click on this text to edit dynamically. The formatting toolbar will appear only when you select the content.</p><h5>Features:</h5><ul><li><strong>Minimal UI:</strong> The editor is clean and distraction-free.</li><li><strong>Contextual Toolbar:</strong> The toolbar appears only when text is selected.</li><li><strong>Rich Formatting:</strong> Supports bold, italic, underline, lists, links, and more.</li><li><strong>Seamless Editing:</strong> Works like a native text field but with powerful styling options.</li></ul><blockquote><p>Try selecting this text to see the toolbar in action!</p></blockquote></text>).Render()
+        </div>
+    </div>
+    <div class="col-lg-4 property-section" id="all-option-table">
+        <table id="property" title="Properties">
+            <tbody>
+                <tr>
+                    <td style="padding-right: 10px">
+                        <div style="padding-left: 0;padding-top: 0">
+                            @Html.EJS().CheckBox("select").Checked(true).Label("Show on Selection").Change("select_onChange").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+        .control-section {
+            padding-top: 35px;
+        }
+    </style>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Inline in ASP.NET MVC Rich Text Editor control. Explore here for more details."/>
+                }
+
+@*custom code end*@
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+                        This sample demonstrates the toolbar show on inline mode. Toolbar will appear when you select the below editable content and
+            it will hide when you focus out from the edit area.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+                        The Rich Text Editor provides an option to display toolbar on demand using mode property. Set mode as inline to enable
+            inline editor. The toolbar becomes visible only when the content is selected.
+        </p>
+    </div>
+}
+
+<script>
+    var rteObj;
+    function created() {
+        rteObj = this;
+    }
+
+    function select_onChange(args) {
+        rteObj.inlineMode.onSelection = args.checked;
+    }
+</script>
+@section Title{
+                    <title>ASP.NET MVC Rich Text Editor Inline Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Inline in ASP.NET MVC Rich Text Editor Control</h1>
+                }

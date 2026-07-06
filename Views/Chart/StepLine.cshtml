@@ -1,0 +1,64 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+
+        @Html.EJS().Chart("container-vertical").Series(series =>
+       {
+
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StepLine).XName("X").YName("Y").Opacity(1)
+           .Marker(mr => mr.Visible(false).DataLabel(dl => dl.Visible(true).Font(ft => ft.FontWeight("600")))).DataSource(ViewData["StepLineData"]).Width(3).Add();
+       }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Double)
+       .MajorGridLines(mg=>mg.Width(0)).Minimum(2006).Maximum(2025).Interval(3)
+       .EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+       ).PrimaryYAxis(py => py.LabelFormat("{value}").Minimum(0).Maximum(20).MajorTickLines(mt=>mt.Width(0)).Interval(4).LineStyle(ls=>ls.Width(0)).Title("Sales in million")
+       ).Title("Worldwide Best-Selling Albums by Year").SubTitle("Source: wikipedia.org").ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).Header("<b>${point.x}</b>").EnableHighlight(true).EnableMarker(false)).Load("load").TooltipRender("tooltipRender").Render()
+        </div>
+    
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+        }
+
+        var tooltipRender = function (args) {
+            var data = args.series.dataSource[args.point.index];
+            args.text = `Sales: <b>${data.Y}M</b><br/>Album: <b>${data.Album}</b><br/>Artist: <b>${data.Artist}</b>`;
+        }
+    </script>
+}
+   @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Step Line in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+   @*custom code end*@
+@section ActionDescription{
+    <p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/stepline-chart" aria-label="ASP.NET MVC Step Line Chart">ASP.NET MVC Step Line Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the global best-selling albums by year from 2001 to 2024.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a step line type chart. This chart forms a step-like progression by connecting points using vertical and horizontal lines. <code>Markers</code> are used to represent individual data points and their values.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over or tap on the chart.
+    </p>
+    <p>
+        More information about the step line series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/step-line" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p> 
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Step Line Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }

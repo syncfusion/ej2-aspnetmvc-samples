@@ -1,0 +1,128 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div class="content-wrapper multiple-schedulers">
+            <div class="schedule-container">
+                @Html.EJS().Schedule("first-schedule").EventDragArea(".content-wrapper").Width("100%").Height("650px").SelectedDate(new DateTime(DateTime.Today.Year, 4, 1)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).Group(group => group.Resources((string[])ViewData["ResourceNames"])).Resources(res => { res.DataSource(ViewData["firstScheduleResourceDataSource"]).Field("TaskId").Title("Employee").Name("Employees").TextField("text").IdField("id").ColorField("color").Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["firstScheduleData"] }).RowAutoHeight(true).DragStop("onFirstEventDragStop").Render()
+                @Html.EJS().Schedule("second-schedule").EventDragArea(".content-wrapper").Width("100%").Height("650px").SelectedDate(new DateTime(DateTime.Today.Year, 4, 1)).CurrentView(View.Month).Views(view => { view.Option(View.Month).Add(); }).Group(group => group.Resources((string[])ViewData["ResourceNames"])).Resources(res => { res.DataSource(ViewData["secondScheduleResourceDataSource"]).Field("TaskId").Title("Employee").Name("Employees").TextField("text").IdField("id").ColorField("color").Add(); }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["secondScheduleData"] }).RowAutoHeight(true).DragStop("onSecondEventDragStop").Render()
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        function onFirstEventDragStop(args) {
+            var firstSchedule = document.getElementById('first-schedule').ej2_instances[0];
+            var secondSchedule = document.getElementById('second-schedule').ej2_instances[0];
+            handleDragStop(args, firstSchedule, secondSchedule, '#second-schedule');
+        }
+
+        function onSecondEventDragStop(args) {
+            var firstSchedule = document.getElementById('first-schedule').ej2_instances[0];
+            var secondSchedule = document.getElementById('second-schedule').ej2_instances[0];
+            handleDragStop(args, secondSchedule, firstSchedule, '#first-schedule');
+        }
+
+        function handleDragStop(args, sourceSchedule, targetSchedule, targetSelector) {
+            if (ej.base.closest(args.event.target, targetSelector)) {
+                args.cancel = true;
+                const cellData = targetSchedule.getCellDetails(args.event.target);
+                if (cellData) {
+                    sourceSchedule.deleteEvent(args.data.Id);
+                    const resourceDetails = targetSchedule.getResourcesByIndex(cellData.groupIndex);
+                    var droppedEventStartTime;
+                    var droppedEventEndTime;
+                    var eventDuration = new Date(args.data.EndTime).getTime() - new Date(args.data.StartTime).getTime();
+                    if (!args.data.IsAllDay) {
+                        droppedEventStartTime = new Date(cellData.startTime);
+                        droppedEventStartTime.setHours(args.data.StartTime.getHours(), args.data.StartTime.getMinutes());
+                        droppedEventEndTime = new Date(droppedEventStartTime.getTime() + eventDuration);
+                    } else {
+                        droppedEventStartTime = cellData.startTime;
+                        droppedEventEndTime = new Date(droppedEventStartTime.getTime() + eventDuration);
+                    }
+                    const eventData = {
+                        Id: targetSchedule.getEventMaxID(),
+                        Subject: args.data.Subject,
+                        StartTime: droppedEventStartTime,
+                        EndTime: droppedEventEndTime,
+                        IsAllDay: args.data.IsAllDay,
+                        Location: args.data.Location,
+                        Description: args.data.Description,
+                        StartTimezone: args.data.StartTimezone,
+                        EndTimezone: args.data.EndTimezone,
+                        TaskId: resourceDetails.resourceData.id
+                    };
+                    targetSchedule.addEvent(eventData);
+                    const classElement = sourceSchedule.element.querySelector('.e-selected-cell');
+                    if (classElement) {
+                        classElement.classList.remove('e-selected-cell');
+                    }
+                }
+            }
+        }
+
+    </script>
+
+    <style>
+        .content-wrapper.multiple-schedulers .schedule-container {
+            display: flex;
+        }
+
+        .multiple-schedulers .e-drag-clone,
+        .multiple-schedulers .e-schedule-event-clone {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        #first-schedule {
+            margin-right: 10px;
+        }
+
+        @@media screen and (max-width: 768px) {
+            .content-wrapper.multiple-schedulers .schedule-container {
+                flex-direction: column;
+            }
+
+            #first-schedule {
+                margin-right: 0;
+            }
+
+            #second-schedule {
+                margin-top: 10px;
+            }
+        }
+    </style>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the event drag between Multiple schedules in ASP.NET MVC Schedule control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This example illustrates how to drag and drop events among multiple Scheduler. You can drag events from one Scheduler to another.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, <code>EventDragArea</code> is used to drag a range of events from one Scheduler to another. The
+            <code>DragStop</code> event of the Scheduler is triggered when an item is dropped from one Scheduler onto
+            another. Within the <code>DragStop</code> event, the <code>addEvent</code> method is used to add the dropped event to the
+            target Scheduler, and the <code>deleteEvent</code> method is used to remove the dragged event from the source
+            Scheduler.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC schedule Multiple schedule Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Multiple schedule in ASP.NET MVC schedule Control</h1>
+}

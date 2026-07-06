@@ -1,0 +1,62 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        
+        @(Html.EJS().AccumulationChart("container")
+            .Series(sr =>
+            {
+                sr.XName("X")
+                    .YName("Y")
+                    .DataLabel(dl => dl.Visible(false))
+                    .Explode(false)
+                    .ExplodeOffset("10%")
+                    .ExplodeIndex(0).BorderRadius(3)
+                    .InnerRadius("50%").Border(br => br.Width(1).Color("#ffffff"))
+                    .DataSource(ViewData["PieChartPoints"]).Add();
+            })
+            .EnableSmartLabels(true).EnableAnimation(false).EnableBorderOnMouseMove(false).Tooltip(tp => tp.Enable(true).Format("<b>${point.x}</b><br>Percentage: <b>${point.y}%</b>").Header("").EnableHighlight(true))
+            .LegendSettings(leg => leg.Visible(true)
+                .ToggleVisibility(false)
+                .Position(Syncfusion.EJ2.Charts.LegendPosition.Bottom))
+            .Annotations(an => { an.Region(Syncfusion.EJ2.Charts.Regions.Series).X("50%").Y("50%").Add(); })
+            .Load("load").SelectionMode(Syncfusion.EJ2.Charts.AccumulationSelectionMode.Point)
+            .Render()
+            )
+    </div>
+   <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var fluent2Colors = ["#6200EE", "#09AF74", "#0076E5", "#CB3587", "#E7910F", "#66CD15", "#F3A93C", "#107C10",
+            "#C19C00"];
+        var load = function(args) {
+            loadAccumulationChartTheme(args);
+            args.accumulation.legendSettings.textWrap = 'Wrap';
+            args.accumulation.annotations[0].content = ej.base.Browser.isDevice ? " " : "<div style='font-Weight:600;font-size:14px'>Internet Users <br> by Country<br>2025</div>";
+            args.accumulation.series[0].radius = ej.base.Browser.isDevice ? "80%" : "85%";
+        }        
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Pie with Legend in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample shows statistics on internet usage by country using the donut chart with legends shown at the bottom of the chart.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render a donut chart with legends. You can use <code>radius</code> and <code>innerRadius</code> properties to render the donut.
+    </p>
+    <p>
+        More information about the legend feature can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/legend" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Pie with Legend Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Pie with Legend in ASP.NET MVC Chart Control</h1>
+                }

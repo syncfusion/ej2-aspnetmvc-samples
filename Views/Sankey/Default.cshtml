@@ -1,0 +1,64 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Charts
+
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @Html.EJS().Sankey("sankey-container").Width("90%").Height("500").Background("transparent").Title("California Energy Consumption in 2023").SubTitle("Source: Lawrence Livermore National Laboratory").Margin(margin => margin.Left(20).Right(20).Top(20).Bottom(20)).Border(border => border.Width(0).Color("#E0E0E0")).LinkStyle(ls => ls.Opacity(0.6).Curvature(0.55).ColorType(Syncfusion.EJ2.Charts.ColorType.Source)).NodeStyle(nodeStyle => nodeStyle.Width(25).Padding(5).Opacity(1)
+        ).LabelSettings(label => label.Visible(true)).Tooltip(tooltip => tooltip.Enable(true)
+        .NodeTemplate("${name}: ${value} TBtu")
+        .LinkTemplate("${start.name}: ${start.out} TBtu → ${target.name}: ${target.in} TBtu")).LegendSettings(legend => legend.Visible(true).Position(Syncfusion.EJ2.Charts.LegendPosition.Bottom).ItemPadding(8)).Nodes((List<SankeyNode>)ViewData["SankeyNodes"]).Links((List<SankeyLink>)ViewData["SankeyLinks"]).Load("load").Render()
+    </div>
+
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+
+    <script src="~/Scripts/sankey/theme-color.js"></script>
+    <script>
+        function load(args) {
+            if (typeof loadSankeyChartTheme === 'function') {
+                loadSankeyChartTheme(args);
+            }
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "90%";
+            if (ej.base.Browser.isDevice) { 
+                args.chart.height = "600"; 
+                args.chart.labelSettings.visible = false;
+                args.chart.tooltip.linkTemplate = ej.base.Browser.isDevice ? '${start.name}: ${start.out} TBtu<br/>→ ${target.name}: ${target.in} TBtu' : '${start.name}: ${start.out} TBtu → ${target.name}: ${target.in} TBtu';
+            }
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <p>
+        Explore California's 2023 energy consumption in TBtu (Trillion British Thermal Units) with an interactive Sankey chart based on Lawrence Livermore National Laboratory data. Follow energy flows from generation sources to Residential, Commercial, Industrial, and Transportation sectors, highlighting useful energy services versus rejected energy.
+    </p>
+}
+
+@section Meta{
+    <meta name="description" content="Interactive Sankey diagram of California energy consumption (2023) in TBtu, showing flows from sources to sectors, energy services, and rejected energy.">
+}
+
+@section Description{
+    <p>
+        This Sankey chart illustrates energy flow across sources, carriers, and usage sectors,
+        with labeled nodes and interactive tooltips that reveal detailed link and value information.
+    </p>
+    <p><strong>Key features:</strong></p>
+    <ul>
+        <li>Configure nodes to represent energy sources and consumption sectors</li>
+        <li>Define links to trace energy flow from generation through end use</li>
+        <li>Enable tooltips for exploring individual flow values and relationships</li>
+        <li>Hover over nodes or links for deeper insight into the energy distribution pattern</li>
+    </ul>
+}
+
+@section Title{
+    <title>ASP.NET MVC Sankey - California Energy Consumption 2023 | Syncfusion Demos</title>
+}
+
+@section Header{
+    <h1 class='sb-sample-text'>Sankey: California Energy Consumption (2023)</h1>
+}
