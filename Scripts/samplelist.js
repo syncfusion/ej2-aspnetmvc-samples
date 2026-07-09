@@ -2106,7 +2106,6 @@ if (!window) {
           "url": "SpeechToText",
           "name": "Speech To Text",
           "category": "Speech",
-          "notificationDescription": "AI AssistView enhanced with Voice Input introduces seamless speech-to-text capabilities directly in the footer toolbar by Syncfusion's SpeechToText component and the browser's Web Speech API, users can click the microphone icon to speak naturally their voice is transcribed in real-time and inserted into the editable prompt area." ,
           "uid": "00448",
           "order": 1,
           "component": "AIAssistView",
@@ -6514,7 +6513,6 @@ if (!window) {
     "directory": "Sankey",
     "category": "Data Visualization",
     "ftName": "Sankey",
-    "type": "new",
     "samples": [
         {
             "url": "Default",
@@ -7510,22 +7508,6 @@ if (!window) {
         "dir": "Schedule",
         "parentId": "031"
       },
-
-      // Ignore: From Build
-      {
-        "url": "TaskProgressTracker",
-        "name": "Task Progress Tracker",
-        "type" : "new",
-        "category": "Product Use Case",
-        "notificationDescription": "The Task Progress Tracker delivers a unified scheduling and project management experience by seamlessly combining a Timeline Scheduler with real time progress visualization. It enables users to manage tasks efficiently while instantly tracking key metrics such as completion percentage, upcoming deadlines, and overdue tasks through an interactive interface. With automatic synchronization between schedule updates and progress tracking, along with consistent resource based coloring and clear visual summaries, it provides quick insights and informed decision making in a single, cohesive interface.",
-        "uid": "0031322",
-        "order": 1,
-        "component": "Schedule",
-        "dir": "Schedule",
-        "parentId": "031"
-      },
-      // End: Ignore
-      
       // Ignore: From Build
 
       {
@@ -7541,37 +7523,6 @@ if (!window) {
         "parentId": "031"
       },
 
-      // End: Ignore
-
-      // Ignore: From Build
-
-      {
-        "url": "CascadingEventEditor",
-        "name": "Cascading Combos",
-        "type" : "new",
-        "category": "Product Use Case",
-        "notificationDescription": "The Cascading Event Editor sample demonstrates how to create a dynamic event editor with dependent dropdowns for floor, room, and staff selections, enhancing the user experience by providing intuitive and accessible controls for managing appointments.",
-        "uid": "0031321",
-        "order": 1,
-        "component": "Schedule",
-        "dir": "Schedule",
-        "parentId": "031"
-      },
-
-      // End: Ignore
-      // Ignore: From Build
-      {
-        "url": "EventActionButtons",
-        "name": "Event Action Buttons",
-        "type": "new",
-        "category": "Product Use Case",
-        "notificationDescription": "The Event Action Buttons sample enhances the user experience by providing intuitive and accessible controls directly on each event within the scheduler. With clearly labeled buttons for editing, deleting, and viewing details, users can quickly manage their appointments without navigating through complex menus. This streamlined interaction design improves efficiency and usability, allowing users to perform common scheduling tasks with ease and confidence.",
-        "uid": "0031323",
-        "order": 1,
-        "component": "Schedule",
-        "dir": "Schedule",
-        "parentId": "031"
-       },
       // End: Ignore
       {
         "url": "LocalData",
@@ -12398,7 +12349,7 @@ if (!window) {
         "parentId": "078"
       },
       // Ignore: From Build
-      
+
       {
         "url": "ComponentsDialog",
         "name": "Components inside Dialog",
