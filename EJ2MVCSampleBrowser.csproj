@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -417,12 +417,15 @@
     <Compile Include="Controllers\Sankey\DefaultController.cs" />
     <Compile Include="Controllers\Sankey\OrientationController.cs" />
     <Compile Include="Controllers\Sankey\PrintExportController.cs" />
+    <Compile Include="Controllers\Schedule\CascadingEventEditorController.cs" />
+    <Compile Include="Controllers\Schedule\EventActionButtonsController.cs" />
     <Compile Include="Controllers\Schedule\ClipboardController.cs" />
     <Compile Include="Controllers\Schedule\EmployeeShiftManagementController.cs" />
     <Compile Include="Controllers\Schedule\EventManagementController.cs" />
     <Compile Include="Controllers\Schedule\HolidayCalendarController.cs" />
     <Compile Include="Controllers\Schedule\IntegrationWithChartController.cs" />
     <Compile Include="Controllers\Schedule\LimitConcurrentEventsController.cs" />
+    <Compile Include="Controllers\Schedule\TaskProgressTrackerController.cs" />
     <Compile Include="Controllers\Signature\DefaultFunctionalitiesController.cs" />
     <Compile Include="Controllers\Signature\ToolbarController.cs" />
     <Compile Include="Controllers\Breadcrumb\OverFlowModesController.cs" />
@@ -3374,6 +3377,8 @@
     <Content Include="Views\MarkdownEditor\MentionIntegration.cshtml" />
     <Content Include="Views\Schedule\AddRemoveResources.cshtml" />
     <Content Include="Views\Schedule\Agenda.cshtml" />
+    <Content Include="Views\Schedule\CascadingEventEditor.cshtml" />
+    <Content Include="Views\Schedule\EventActionButtons.cshtml" />
     <Content Include="Views\Schedule\CellDimension.cshtml" />
     <Content Include="Views\Schedule\CellTemplate.cshtml" />
     <Content Include="Views\Schedule\CustomMonthView.cshtml" />
@@ -3409,6 +3414,7 @@
     <Content Include="Views\Schedule\Reminder.cshtml" />
     <Content Include="Views\Schedule\RemoteData.cshtml" />
     <Content Include="Views\Schedule\ScrollTime.cshtml" />
+    <Content Include="Views\Schedule\TaskProgressTracker.cshtml" /> 
     <Content Include="Views\Schedule\Timeline.cshtml" />
     <Content Include="Views\Schedule\TimelineResourceGroup.cshtml" />
     <Content Include="Views\Schedule\TimelineResources.cshtml" />
@@ -4918,6 +4924,8 @@
     <Content Include="Controllers\Schedule\BlockEventsController.cs" />
     <Content Include="Controllers\Schedule\CalendarExportImportController.cs" />
     <Content Include="Controllers\Schedule\CalendarIntegrationController.cs" />
+    <Content Include="Controllers\Schedule\CascadingEventEditorController.cs" />
+    <Content Include="Controllers\Schedule\EventActionButtonsController.cs" />
     <Content Include="Controllers\Schedule\CellDimensionController.cs" />
     <Content Include="Controllers\Schedule\CellTemplateController.cs" />
     <Content Include="Controllers\Schedule\ClipboardController.cs" />
@@ -4971,6 +4979,7 @@
     <Content Include="Controllers\Schedule\LimitConcurrentEventsController.cs" />
     <Content Include="Controllers\Schedule\ScrollTimeController.cs" />
     <Content Include="Controllers\Schedule\SearchEventsController.cs" />
+    <Content Include="Controllers\Schedule\TaskProgressTrackerController.cs" />
     <Content Include="Controllers\Schedule\TimelineController.cs" />
     <Content Include="Controllers\Schedule\TimelineResourceGroupController.cs" />
     <Content Include="Controllers\Schedule\TimelineResourcesController.cs" />
