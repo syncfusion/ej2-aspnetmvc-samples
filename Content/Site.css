@@ -91,8 +91,7 @@
 .e-samplestatus.preview, .e-samplestatus.Preview,
 .e-samplestatus.update, .e-samplestatus.Update,
 .e-samplestatus.new, .e-samplestatus.New {
-    top: 2.5px;
-    line-height: 8px;
+    line-height: 9px;
 }
 
 .bootstrap5 .e-samplestatus.preview, .bootstrap5 .e-samplestatus.Preview,
@@ -234,7 +233,7 @@
 .fluent2-highcontrast.e-bigger .e-samplestatus.update, .e-bigger .e-samplestatus.Update,
 .fluent2-highcontrast.e-bigger .e-samplestatus.new, .e-bigger .e-samplestatus.New {
     top: 4px;
-    line-height: 17px;
+    line-height: 15px;
 }
 
 .bootstrap5\.3.e-bigger .e-samplestatus.preview, .e-bigger .e-samplestatus.Preview,
@@ -2723,8 +2722,6 @@ a.sb-ad-link, a.sb-ad-link:hover, a.sb-ad-link:active {
     .sb-notification-popup {
         width: 60% !important;
     }
-
-    #th
 }
 
 .sb-mobilefooter {
@@ -3051,10 +3048,9 @@ a.sb-ad-link, a.sb-ad-link:hover, a.sb-ad-link:active {
         outline: none;
     }
     .sb-mobile-setting {
-        display: block;
+        display: none;
         padding-top: 7px;
     }
-    .sb-icon-Demo,
     .sb-icon-API {
         display: none;
     }
@@ -5312,7 +5308,7 @@ body.fluent2-highcontrast,
 .e-bigger.fluent2-highcontrast .e-samplestatus.update,
 .e-bigger.fluent2-highcontrast .e-samplestatus.preview,
 .e-bigger.fluent2-highcontrast .e-samplestatus.new {
-    top: 9px;
+    top: 8px;
 }
 .material3 .e-samplestatus.update.tree,
 .material3 .e-samplestatus.preview.tree,

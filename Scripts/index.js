@@ -1676,10 +1676,14 @@ function renderPropertyPane(ele) {
 
 
 function loadJSON() {
-    var switchText = localStorage.getItem('ej2-switch') || 'mouse';
+    var storedSwitch = localStorage.getItem('ej2-switch');
+    var switchText;
     var switchlocalization = sessionStorage.getItem('ej2-culture') || 'en';
-    if (ej.base.Browser.isDevice || window.screen.width <= 850) {
-        switchText = 'touch';
+    if (storedSwitch) {
+        switchText = storedSwitch;
+    } 
+    else {
+        switchText = (ej.base.Browser.isDevice || window.screen.width <= 850) ? 'touch' : 'mouse';
     }
     setLeftPaneHeight();
     if (isMobile) {
