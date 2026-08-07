@@ -1,0 +1,118 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Popups
+
+@section ControlsSection{
+    <div id="target" class="col-lg-12 control-section">
+        <div id="customization">
+            <div class="animate">
+                @Html.EJS().Button("Zoom").CssClass("e-outline").IsPrimary(true).Content("Zoom").Render()
+            </div>
+            <div class="animate">
+                @Html.EJS().Button("FlipXDown").CssClass("e-outline").IsPrimary(true).Content("FlipX Down").Render()
+            </div>
+            <div class="animate">
+                @Html.EJS().Button("FlipXUp").CssClass("e-outline").IsPrimary(true).Content("FlipX Up").Render()
+            </div>
+            <div class="animate">
+                @Html.EJS().Button("FlipYLeft").CssClass("e-outline").IsPrimary(true).Content("FlipY Left").Render()
+            </div>
+            <div class="animate">
+                @Html.EJS().Button("FlipYRight").CssClass("e-outline").IsPrimary(true).Content("FlipY Right").Render()
+            </div>
+
+            @Html.EJS().Dialog("animationDialog").AnimationSettings(new DialogAnimationSettings() { Effect = DialogEffect.Zoom }).Header("Animation Dialog").Created("created").ContentTemplate(@<div><span>The dialog is configured with animation effect. It is opened or closed with 'Zoom In or Out' animation.</span></div>).IsModal(true).ShowCloseIcon(true).CloseOnEscape(true).Width("285px").Target("#target").Buttons((List<DialogDialogButton>)ViewData["DefaultButton"]).Render()
+
+        </div>
+    </div>
+}
+
+<style>
+    /* custom code start */
+    #target {
+        height: 100%;
+        min-height: 350px;
+    }
+    /* custom code end */
+
+    html,
+    body,
+    #container {
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+        min-height: 400px;
+    }
+
+    .text {
+        text-transform: capitalize;
+    }
+
+    #customization {
+        display: table;
+        margin: 0 auto;
+    }
+
+    .animate {
+        display: table-cell;
+        padding: 10px;
+    }
+</style>
+
+@section PreScripts {
+    <script>
+        var dialogObj;
+        var list = document.getElementsByClassName('animate');
+        for (var i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', function (e) {
+                onAnimationChange(e);
+            });
+        }
+        function onAnimationChange(e) {
+            var effects = e.target.id;
+            var txt = e.target.parentElement.innerText;
+            txt = (txt == "Zoom In/Out") ? "Zoom In or Out" : txt;
+            dialogObj.content = 'The dialog is configured with animation effect. It is opened or closed with "' + txt + '" animation.';
+            dialogObj.animationSettings = { effect: effects, duration: 400 };
+            dialogObj.show();
+        }
+        function dlgButtonClick() {
+            dialogObj.hide();
+        }
+        function created() {
+            dialogObj = this;
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This example demonstrates how to open or close the dialog with animation effects by clicking the appropriate button.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The dialog can be opened or closed with animation effect using the <code>animationSettings</code> property.
+            You can also customize the duration of animation and delay to begin animation.
+            Disables the dialog's animation by setting the animation effect as none.
+        </p>
+    </div>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Animation in ASP.NET MVC Dialog control. Explore here for more details."/>
+                }
+
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Dialog Animation Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Animation in ASP.NET MVC Dialog Control</h1>
+                }

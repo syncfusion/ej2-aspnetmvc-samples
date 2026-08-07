@@ -1,0 +1,54 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+
+        @Html.EJS().Chart3D("container").EnableRotation(true).WallColor("transparent").Height("400").Rotation(7).Tilt(10).Depth(100).Title("Olympic Gold Medal Counts - Tokyo 2020").PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).Interval(1).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.BetweenTicks).LabelRotation(-45)
+   ).Series(series =>
+   {
+       series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Column).DataSource(ViewData["ChartData"]).XName("X").YName("Y").Name("Gold").ColumnSpacing(0.1).Add();
+   }).PrimaryYAxis(py => py.Maximum(20).Interval(4)).Tooltip(tt => tt.Enable(true).Header("${point.x}").Format("Gold Medal : <b>${point.y}")).LegendSettings(leg => leg.Visible(false).EnableHighlight(true)).Load("load").PointRender("labelRender").Render()
+    </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/three-dimensional-chart/theme-color.js"></script>
+    <script>        
+        var labelRender = function (args) {
+            pointRender(args);
+        };
+        var load = function (args) {
+            load3DChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? '100%' : '75%';
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the 3D Column in ASP.NET MVC 3D Chart control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This example of a 3D column chart visualizes the medal count from the Tokyo Olympics using the default column series in the 3D chart.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a 3D column chart, accommodating null and zero values. The null points represent missing data, while zero is considered a valid value in the 3D chart.
+    </p>
+    <p>
+        <code>Tooltips</code> are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC 3D Column Chart Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of 3D Column in ASP.NET MVC 3D Chart Control</h1>
+}
+

@@ -1,0 +1,228 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <style>
+        .radiusCheckbox {
+            margin-top: -10px;
+        }
+        .e-view.fluent2 #property .e-checkbox-wrapper, .e-view.fluent2-dark #property .e-checkbox-wrapper, .e-view.fluent2-highcontrast #property .e-checkbox-wrapper {
+            padding-left: 0px;
+        }
+    </style>
+    <div class="col-md-8 control-section" align="center">
+        @Html.EJS().CircularGauge("container").Load("gaugeLoad").Background("transparent").Axes(axes => axes.StartAngle(270).EndAngle(90).Radius("100%").HideIntersectingLabel(true).MajorTicks(majorTicks => majorTicks.Interval(10).Height(15).Width(2).Position(Position.Inside))
+        .MinorTicks(minorTicks => minorTicks.Interval(2).Height(8).Width(1).Position(Position.Inside)).LineStyle(lineStyle => lineStyle.Width(3)).LabelStyle(labelStyle => labelStyle.Position(Position.Outside)
+        .AutoAngle(true).Format("{value}%").Font(font => font.FontWeight("Normal").FontFamily("Inherit"))).Radius("100%").Minimum(0).Maximum(100).Pointers(pointers => pointers.Animation(animation => animation.Enable(false))
+        .Value(30).Radius("75%").PointerWidth(7).Cap(cap => cap.Radius(8).Border(border => border.Width(0)))
+        .NeedleTail(needleTail => needleTail.Length("13%")).Add()).Add()).Render()
+    </div>
+    <div class="col-md-4 property-section">
+        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
+            <colgroup>
+                <col span="1" style="width: 50%;">
+                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 20%;">
+            </colgroup>
+            <tr style="height: 50px">
+                <td>
+                    <div style="font-size: 14px;">Start Angle </div>
+                </td>
+                <td>
+                    <div style="width: 90%;">
+                        <input type="range" id="start" value="270" min="0" max="360" />
+                    </div>
+                </td>
+                <td style="text-align:center;">
+                    <div style="width: 25px">
+                        <span id='rangeStart' style="font-size: 14px;margin-left:-10px">270°</span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr style="height: 50px">
+                <td>
+                    <div style="font-size: 14px;">End Angle </div>
+                </td>
+                <td>
+                    <div style="width: 90%">
+                        <input type="range" id="end" value="90" min="0" max="360" />
+                    </div>
+                </td>
+                <td style="text-align:center;">
+                    <div style="width: 25px">
+                        <span id='rangeEnd' style="font-size: 14px; margin-left: -10px">90°</span>
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td>
+                    <div style="font-size: 14px;">Radius </div>
+                </td>
+                <td>
+                    <div style="width: 90%">
+                        <input type="range" id="radius" value="100" min="30" max="100" />
+                    </div>
+                </td>
+                <td style="text-align:center;">
+                    <div style="width: 25px">
+                        <span id='radius1' style="font-size: 14px; margin-left: -10px">100%</span>
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td>
+                    <div class="property-text" style="font-size: 14px;"> Radius based on angle</div>
+                </td>
+                <td>
+                    <div class="radiusCheckbox" style=" margin-left: -10px">
+                        @Html.EJS().CheckBox("angle").Change("onChange").Checked(false).Render()
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td>
+                    <div style="font-size: 14px;">Center X </div>
+                </td>
+                <td>
+                    <div style="width: 90%">
+                        <input type="range" id="centerX" value="50" min="0" max="100" />
+                    </div>
+                </td>
+                <td style="text-align:center;">
+                    <div style="width: 25px">
+                        <span id='center1' style="font-size: 14px; margin-left: -10px">50%</span>
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td>
+                    <div style="font-size: 14px;">Center Y </div>
+                </td>
+                <td>
+                    <div style="width: 90%">
+                        <input type="range" id="centerY" value="50" min="0" max="100" />
+                    </div>
+                </td>
+                <td style="text-align:center;">
+                    <div style="width: 25px">
+                        <span id='center2' style="font-size: 14px; margin-left: -10px">50%</span>
+                    </div>
+                </td>
+            </tr>
+            <tr style="height: 50px">
+                <td>
+                    <div class="property-text" style="font-size: 14px;"> Hide Intersecting Labels</div>
+                </td>
+                <td>
+                    <div class="labelCheckbox" style="padding-top: 0px; margin-left: -10px">
+                        @Html.EJS().CheckBox("hideLabel").Change("onHideLabelChange").Checked(true).Render()
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+        var circulargauge;
+        function gaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+            circulargauge = sender.gauge;
+        }
+
+        var highlightCheckBox;
+        function onChange(args) {
+            var centerX = document.getElementById('centerX');
+            var centerY = document.getElementById('centerY');
+            if (args.checked) {
+                circulargauge.centerX = null;
+                circulargauge.centerY = null;
+                circulargauge.moveToCenter = true;
+                centerX.disabled = true;
+                centerY.disabled = true;
+            } else {
+                circulargauge.centerX = centerX.value + '%';
+                circulargauge.centerY = centerY.value + '%';
+                centerX.disabled = false;
+                centerY.disabled = false;
+                circulargauge.moveToCenter = false;
+            }
+            highlightCheckBox = args.checked;
+            circulargauge.refresh();
+        }
+
+        function onHideLabelChange(args) {
+            circulargauge.axes[0].hideIntersectingLabel = args.checked;
+            circulargauge.refresh();
+        }
+
+        document.getElementById('start').onpointermove = document.getElementById('start').ontouchmove =
+            document.getElementById('start').onchange = function () {
+                var min = parseInt(document.getElementById('start').value, 10);
+                document.getElementById('rangeStart').innerHTML = min + '°';
+                circulargauge.axes[0].startAngle = min;
+                circulargauge.refresh();
+            };
+        document.getElementById('end').onpointermove = document.getElementById('end').ontouchmove =
+            document.getElementById('end').onchange = function () {
+                var max = parseInt(document.getElementById('end').value, 10);
+                document.getElementById('rangeEnd').innerHTML = max + '°';
+                circulargauge.axes[0].endAngle = max;
+                circulargauge.refresh();
+            };
+        document.getElementById('radius').onpointermove = document.getElementById('radius').ontouchmove =
+            document.getElementById('radius').onchange = function () {
+                var max = parseInt(document.getElementById('radius').value, 10);
+                document.getElementById('radius1').innerHTML = max + '%';
+                circulargauge.axes[0].radius = '' + max + '%';
+                circulargauge.refresh();
+            };
+        document.getElementById('centerX').onpointermove = document.getElementById('centerX').ontouchmove =
+            document.getElementById('centerX').onchange = function () {
+                if (!highlightCheckBox) {
+                    var max = parseInt(document.getElementById('centerX').value, 10);
+                    document.getElementById('center1').innerHTML = max + '%';
+                    circulargauge.centerX = '' + max + '%';
+                    circulargauge.refresh();
+                }
+            };
+        document.getElementById('centerY').onpointermove = document.getElementById('centerY').ontouchmove =
+            document.getElementById('centerY').onchange = function () {
+                if (!highlightCheckBox) {
+                    var max = parseInt(document.getElementById('centerY').value, 10);
+                    document.getElementById('center2').innerHTML = max + '%';
+                    circulargauge.centerY = '' + max + '%';
+                    circulargauge.refresh();
+                }
+            };
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample shows how to create semi-circular or quarter-circular gauges by modifying a circular gauge with different start and end angles.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, a circular gauge is rendered with different start and end angles to create semi-circular or quarter-circular gauges. The radius, start angle, end angle, and center position of the circular gauge can all be customized using the options in the properties panel.
+        </p>
+        <p>
+            More information on the semi-circular or quarter-circular gauges can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/gauge-appearance#radius-calculation-based-on-angles" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Circular Gauge Semi-circularGauge Example - Syncfusion Demos </title> 
+                }
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Semi-circularGauge in ASP.NET MVC Circular Gauge control. Explore here for more details."/>
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Semi-circularGauge in ASP.NET MVC Circular Gauge Control</h1>
+                }

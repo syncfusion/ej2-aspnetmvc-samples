@@ -1,0 +1,192 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <style>
+        #templateWrap img {
+            width: 16px;
+            height: 16px;
+            margin-top: 4px;
+        }
+
+        #templateWrap .des {
+            float: right;
+            padding-left: 5px;
+        }
+    </style>
+    <script id='germany' type="text/x-template">
+        <div id='templateWrap'>
+            <img src="@Url.Content("~/Content/CircularGauge/Images/positive.png")" alt="Positive Value for Germany" />
+            <div class='des'>
+                <div style="font-size:20px;font-family:inherit">${pointers[0].value}%</div>
+            </div>
+        </div>
+    </script>
+    <script id='usa' type="text/x-template">
+        <div id='templateWrap'>
+            <img src="@Url.Content("~/Content/CircularGauge/Images/positive.png")" alt="Positive Value for USA" />
+            <div class='des'>
+                <div style="font-size:20px;font-family:inherit">${pointers[0].value}%</div>
+            </div>
+        </div>
+    </script>
+    <script id='uk' type="text/x-template">
+        <div id='templateWrap'>
+            <img src="@Url.Content("~/Content/CircularGauge/Images/negative.png")" alt="Negative Value for UK" />
+            <div class='des'>
+                <div style="font-size:20px;font-family:inherit">-${pointers[0].value}%</div>
+            </div>
+        </div>
+    </script>
+    <div class="control-section">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="container1" style="height:250px;display:block">
+                    @Html.EJS().CircularGauge("container1").Load("onGaugeLoad").Background("transparent").Axes(axes => axes
+                    .StartAngle(230).EndAngle(130).MajorTicks(majorTick => majorTick.Width(0).Color("transparent")).LineStyle(lineStyle => lineStyle.Width(0).Color("transparent")).MinorTicks(minorTick => minorTick.Width(0).Color("transparent"))
+                    .LabelStyle(labelStyle => labelStyle.Font(font => font.Size("0px"))).Radius("90%")
+                    .Ranges(range => {
+                        range.Start(0).End(50).StartWidth("15").EndWidth("15").Color("#EC121C").Add();
+                        range.Start(50).End(100).StartWidth("15").EndWidth("15").Color("#45EA0C").Add();
+                    })
+                    .Pointers(pointer => pointer.Value(75).Radius("60%").Animation(animation => animation.Enable(false)).PointerWidth(5).Cap(cap => cap.Radius(6).Border(border => border.Width(0))).NeedleTail(needleTail => needleTail.Length("25%")).Add())
+                    .Annotations(annotations => { annotations.Content("#germany").Angle(180).ZIndex("1").Radius("30%").Add();
+                        annotations.Content("<div style=color:#9E9E9E;font-size:16px;font-family:inherit>Germany</div>").Angle(180).ZIndex("1").Radius("65%").Add();
+                    })
+                    .Add()).Render()
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="container2" style="height: 250px; display: block">
+                    @Html.EJS().CircularGauge("container2").Load("onGaugeLoad").Background("transparent").Axes(axes => axes
+                    .StartAngle(230).EndAngle(130).MajorTicks(majorTick => majorTick.Width(0).Color("transparent")).LineStyle(lineStyle => lineStyle.Width(0).Color("transparent")).MinorTicks(minorTick => minorTick.Width(0).Color("transparent"))
+                    .LabelStyle(labelStyle => labelStyle.Font(font => font.Size("0px"))).Radius("90%")
+                    .Ranges(range =>
+                    {
+                        range.Start(0).End(50).StartWidth("15").EndWidth("15").Color("#EC121C").Add();
+                        range.Start(50).End(100).StartWidth("15").EndWidth("15").Color("#45EA0C").Add();
+                    })
+                    .Pointers(pointer => pointer.Value(75).Radius("60%").Animation(animation => animation.Enable(false)).PointerWidth(5).Cap(cap => cap.Radius(6).Border(border => border.Width(0))).NeedleTail(needleTail => needleTail.Length("25%")).Add())
+                    .Annotations( annotations =>
+                    {
+                        annotations.Content("#usa").Angle(180).ZIndex("1").Radius("30%").Add();
+                        annotations.Content("<div style=color:#9E9E9E;font-size:16px;font-family:inherit>USA</div>").Angle(180).ZIndex("1").Radius("65%").Add();
+                    }) .Add()).Render()
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div id="container3" style="height: 250px; display: block">
+                    @Html.EJS().CircularGauge("container3").Load("onGaugeLoad").Background("transparent").Axes(axes => axes
+                    .StartAngle(230).EndAngle(130).MajorTicks(majorTick => majorTick.Width(0).Color("transparent")).LineStyle(lineStyle => lineStyle.Width(0).Color("transparent")).MinorTicks(minorTick => minorTick.Width(0).Color("transparent"))
+                    .LabelStyle(labelStyle => labelStyle.Font(font => font.Size("0px"))).Radius("90%")
+                    .Ranges(range =>
+                    {
+                        range.Start(0).End(50).StartWidth("15").EndWidth("15").Color("#EC121C").Add();
+                        range.Start(50).End(100).StartWidth("15").EndWidth("15").Color("#45EA0C").Add();
+                    })
+                    .Pointers(pointer => pointer.Value(75).Radius("60%").Animation(animation => animation.Enable(false)).PointerWidth(5).Cap(cap => cap.Radius(6).Border(border => border.Width(0))).NeedleTail(needleTail => needleTail.Length("25%")).Add())
+                    .Annotations(annotations =>
+                    {
+                        annotations.Content("#uk").Angle(180).ZIndex("1").Radius("30%").Add();
+                        annotations.Content("<div style=color:#9E9E9E;font-size:16px;font-family:inherit>UK</div>").Angle(180).ZIndex("1").Radius("65%").Add();
+                    }).Add()).Render()
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="container5">
+                @{ var OrderData = new[] { new { Country = "Germany", Sales = 500, Target = 400, vsTarget = 300 }, new { Country = "USA", Sales = 1000, Target = 600, vsTarget = 360 }, new { Country = "UK", Sales = 600, Target = 700, vsTarget = -100 } };}
+                @Html.EJS().Grid("container5").DataSource(OrderData).Columns(new List<Syncfusion.EJ2.Grids.GridColumn> {
+                    new Syncfusion.EJ2.Grids.GridColumn { Field = "Country", HeaderText = "Country", Width = "80" },
+                    new Syncfusion.EJ2.Grids.GridColumn { Field = "Sales", HeaderText = "Sales $", Width = "80" },
+                    new Syncfusion.EJ2.Grids.GridColumn { Field = "Target", HeaderText = "Target $", Width = "80" },
+                    new Syncfusion.EJ2.Grids.GridColumn { Field = "vsTarget", HeaderText = "vs Target", Width = "80" } }).Render()
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function onGaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+        }
+
+        var interval = setInterval(function () {
+            if (document.getElementById('container1_svg')) {
+                var germany = document.getElementById("container1").ej2_instances[0];
+                var usa = document.getElementById("container2").ej2_instances[0];
+                var uk = document.getElementById("container3").ej2_instances[0];
+                var value1 = Math.round(Math.random() * (90 - 55) + 55);
+                var value2 = Math.round(Math.random() * (75 - 60) + 60);
+                var value3 = Math.round(Math.random() * (40 - 10) + 10);
+                var gridData1 = 4 * value1;
+                var gridData2 = 6 * value2;
+                var gridData3 = 7 * value3;
+                var orderData = [
+                    {
+                        'Country': 'Germany',
+                        'Sales': 500,
+                        'Target': 400,
+                        'vsTarget': gridData1
+                    }, {
+                        'Country': 'USA',
+                        'Sales': 1000,
+                        'Target': 600,
+                        'vsTarget': gridData2
+                    }, {
+                        'Country': 'UK',
+                        'Sales': 600,
+                        'Target': 700,
+                        'vsTarget': -gridData3
+                    }
+                ];
+                var grid = document.querySelector(".e-grid").ej2_instances[0];
+                var data = new ej.data.DataManager(orderData).executeLocal(new ej.data.Query().take(3));
+                grid.dataSource = data;
+                grid.refresh();
+                germany.axes[0].pointers[0].animation.enable = true;
+                usa.axes[0].pointers[0].animation.enable = true;
+                uk.axes[0].pointers[0].animation.enable = true;
+                germany.setPointerValue(0, 0, value1);
+                usa.setPointerValue(0, 0, value2);
+                uk.setPointerValue(0, 0, value3);
+                germany.setAnnotationValue(0, 0, '#germany');
+                usa.setAnnotationValue(0, 0, '#usa');
+                uk.setAnnotationValue(0, 0, '#uk');
+            } else {
+                clearInterval(interval);
+            }
+        },2000);
+    </script>
+}
+
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample shows live stock price data displayed in multiple circular gauges.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the DataSample in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            The pointer value in the circular gauge can be dynamically updated using the <b>setPointerValue</b> method. In this example, the stock price changes across countries are displayed in multiple circular gauges.
+        </p>
+        <p>
+            More information on the circular gauge can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/getting-started" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+
+@section Title{
+    <title>ASP.NET MVC Circular Gauge DataSample Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of DataSample in ASP.NET MVC Circular Gauge Control</h1>
+}

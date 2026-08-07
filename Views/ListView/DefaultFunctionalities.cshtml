@@ -1,0 +1,78 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Lists
+@section ControlsSection{
+    <div class="control-section">
+        <div id="flat-list">
+            <h4>Flat List</h4>
+            @Html.EJS().ListView("listview").Enable(true).DataSource((IEnumerable<object>)ViewData["dataSource"]).Render()
+        </div>
+        <div id="group-list">
+            <h4>Group List</h4>
+            @Html.EJS().ListView("listviewgrp").Enable(true).DataSource((IEnumerable<object>)ViewData["groupData"]).Fields(new ListViewFieldSettings { GroupBy = "category" }).Render()
+        </div>
+
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC ListView control. Explore here for more details."/>
+                }
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the default functionalities of the ListView. Click any item from the list to select and highlight it.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>The ListView component represents data in interactive hierarchical structure interface across different layouts or views, that also has the features such as data binding, template rendering, and grouping.</p>
+
+        <p>The group list allows you to group the relevant items under a logical category by mapping the <code><a target='_blank' class='code' href='https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Lists.ListViewFieldSettings.html#Syncfusion_EJ2_Lists_ListViewFieldSettings_GroupBy'>GroupBy<span class="sr-only">opens in a new tab</span></a></code> field.</p>
+
+        <p>In this sample, <b>Cars</b> are grouped based on their <b>Category</b>.</p>
+
+    </div>
+}
+
+<style>
+    #listview, #listviewgrp {
+        border: 1px solid #dddddd;
+        border-radius: 3px;
+    }
+
+    .control-section {
+        overflow: auto;
+    }
+
+    body.material-dark .control-section{
+        color:#ffffff;
+    }
+
+    #flat-list,
+    #group-list {
+        width: 49%;
+        margin: auto;
+        margin-bottom: 15px;
+    }
+
+        #flat-list h4, #group-list h4 {
+            padding-left: 16px;
+        }
+
+    #flat-list {
+        float: left;
+        padding-left: 16px;
+    }
+
+    #group-list {
+        float: right;
+        padding-right: 16px;
+    }
+</style>
+
+@section Title{
+                    <title>ASP.NET MVC ListView Default Functionalities Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC ListView Control</h1>
+                }

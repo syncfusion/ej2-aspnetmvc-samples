@@ -1,0 +1,103 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@using EJ2MVCSampleBrowser.Models
+@using Newtonsoft.Json
+@section ControlsSection{
+    <div class="col-lg-9 control-section" style="height: 400px;">
+        <div class='control-wrapper'>
+            <div style='padding-top:70px;'>
+                @Html.EJS().AutoComplete("books").Placeholder("e.g. Node.js Succinctly").Filtering("filtering").DataSource((IEnumerable<BooksData>)ViewData["data"]).Fields(new AutoCompleteFieldSettings { Value = "BookName" }).DebounceDelay(300).Render()
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%;">
+            <tr>
+                <td style="padding-top: 10px">
+                    <label class="example-label">Debounce Delay</label>
+                    @Html.EJS().NumericTextBox("numeric").Format("n0").Value(300).Min(1).Change("change").Render()
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    @*custom code start*@
+    <style>
+        .control-wrapper {
+            margin: 0 auto;
+            width: 300px;
+        }
+    </style>
+    @*custom code end*@
+    <script src="../Scripts/fuse.min.js"></script>
+    <script type="text/javascript">
+        function filtering(e) {
+            var options = {
+                keys: ['BookName'],
+                includeMatches: true,
+                findAllMatches: true
+            };
+            var fuse = new Fuse(@Html.Raw(JsonConvert.SerializeObject(ViewData["data"])), options);
+            var result = fuse.search(e.text);
+            var data = [];
+            for (var i = 0; i < result.length; i++) {
+                data.push(result[i].item);
+            }
+            e.updateData(data, null);
+            var popupElement = document.getElementById('books_popup');
+            if (popupElement)
+            {
+                var lists = popupElement.querySelectorAll('.e-list-item');
+                highlightSearch(lists, result);
+            }
+        }
+        function change(args) {
+            var autoCompleteObj = document.getElementById('books').ej2_instances[0];
+            autoCompleteObj.debounceDelay = args.value;
+        }
+
+        function highlightSearch(listItems, result) {
+            if (result.length > 0) {
+                for (var i = 0; i < listItems.length; i++) {
+                    var innerHTML = listItems[i].innerHTML;
+                    for (var j = result[i].matches[0].indices.length - 1; j >= 0; j--) {
+                        var indexes = result[i].matches[0].indices[j];
+                        innerHTML = innerHTML.substring(0, indexes[0]) + '<span class="e-highlight">' +
+                            innerHTML.substring(indexes[0], (indexes[1] + 1)) + '</span>' + innerHTML.substring(indexes[1] + 1);
+                        listItems[i].innerHTML = innerHTML;
+                    }
+                }
+            }
+        }
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Custom Filtering in ASP.NET MVC AutoComplete control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the custom filtering functionalities of the AutoComplete. You can choose
+            an item from the suggestion list that filtered items based on approximate string matching technique.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The AutoComplete can be customized to showcase the suggestion list by using <code>filtering</code> event.
+            In that, you can use your own libraries to filter the data and update it to AutoComplete suggestion list via <code>updateData</code> method. The debounce delay, in milliseconds, for filtering items in the AutoComplete component can be set using the <code>DebounceDelay</code> property.
+        </p>
+
+        <p>In this sample, used Fuse.js library for custom filtering of books data.</p>
+        <p>
+            For more information about Fuse.js can be found in this <a href="http://fusejs.io/" target="_blank" aria-label="reference link"> reference link<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC AutoComplete Custom Filtering Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Custom Filtering in ASP.NET MVC AutoComplete Control</h1>
+}

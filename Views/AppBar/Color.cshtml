@@ -1,0 +1,309 @@
+@{
+    ViewData["Title"] = "Color";
+    List<object> productDropDownButtonItems = new List<object>();
+    productDropDownButtonItems.Add(new
+    {
+        text = "Developer",
+    });
+    productDropDownButtonItems.Add(new
+    {
+        text = "Analytics",
+    });
+    productDropDownButtonItems.Add(new
+    {
+        text = "Reporting",
+    });
+    productDropDownButtonItems.Add(new
+    {
+        text = "E-Signature",
+    });
+    productDropDownButtonItems.Add(new
+    {
+        text = "Help-Desk",
+    });
+
+    List<object> companyDropDownButtonItems = new List<object>();
+    companyDropDownButtonItems.Add(new
+    {
+        text = "Dashboard",
+    });
+    companyDropDownButtonItems.Add(new
+    {
+        text = "Notifications",
+    });
+    companyDropDownButtonItems.Add(new
+    {
+        text = "User Settings",
+    });
+    companyDropDownButtonItems.Add(new
+    {
+        text = "Log Out",
+    });
+
+    List<MenuItem> verticalMenuItems = new List<MenuItem>(){
+            new MenuItem
+            {
+
+                IconCss= "e-icons e-more-vertical-1",
+                Items = new List<MenuItem>()
+                {
+                    new MenuItem { Text= "Home" },
+                    new MenuItem
+                    {
+                        Text = "Products",
+                        Items = new List<MenuItem>()
+                        {
+                             new MenuItem { Text= "Developer" },
+                             new MenuItem { Text= "Analytics" },
+                             new MenuItem { Text= "Reporting" },
+                             new MenuItem { Text= "E-Signature" },
+                             new MenuItem { Text= "Help Desk" }
+                        }
+                    },
+                    new MenuItem
+                    {
+                        Text = "Company",
+                        Items = new List<MenuItem>()
+                        {
+                             new MenuItem { Text= "About Us" },
+                             new MenuItem { Text= "Customers" },
+                             new MenuItem { Text= "Blog" },
+                             new MenuItem { Text= "Careers" }
+                        }
+                    },
+                    new MenuItem { Text = "Login" }
+                }
+            }
+     };
+    Dictionary<string, object> ButtonAttribute = new Dictionary<string, object>();
+    ButtonAttribute.Add("aria-label", "menu");
+}
+
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Navigations;
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section color-appbar-section">
+        <div class="color-appbar-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Light</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @(Html.EJS().AppBar("lightAppBar").ColorMode(AppBarColor.Light).ContentTemplate(@<div>
+                            @Html.EJS().Button("lightButtonMenu").HtmlAttributes(ButtonAttribute).CssClass("e-inherit menu").IconCss("e-icons e-menu").Render()
+                            @Html.EJS().Button("lightButtonHome").CssClass("e-inherit home e-appbar-menu").Content("Home").Render()
+                            @Html.EJS().DropDownButton("lightProductDropDownButton").CssClass("e-inherit e-light e-appbar-menu").Content("Products").Items(productDropDownButtonItems).Render()
+                            @Html.EJS().DropDownButton("lightCompanyDropDownButton").CssClass("e-inherit e-light e-appbar-menu").Content("Company").Items(companyDropDownButtonItems).Render()
+                            <div class="e-appbar-spacer"></div>
+                            <div style="width: 200px; margin-right:10px">
+                                 <span class="e-input-group e-control-wrapper e-inherit">
+                                      <input type="text" class="e-searchinput e-input" placeholder="Search">
+                                      <span class="e-icons e-search e-input-group-icon"></span>
+                                  </span>
+                            </div>
+                            <div class="e-appbar-separator"></div>
+                            @Html.EJS().Button("lightButtonLogin").IsPrimary(true).CssClass("login").Content("Login").Render()
+                            @Html.EJS().Menu("lightVerticalMenu").CssClass("e-inherit e-light e-appbar-icon-menu").Items(verticalMenuItems).BeforeItemRender("itemRender").Render()
+                    </div>).Render())
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Dark</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @(Html.EJS().AppBar("darkAppBar").ColorMode(AppBarColor.Dark).ContentTemplate(@<div>
+                            @Html.EJS().Button("darkButtonMenu").HtmlAttributes(ButtonAttribute).CssClass("e-inherit menu").IconCss("e-icons e-menu").Render()
+                            @Html.EJS().Button("darkButtonHome").CssClass("e-inherit home e-appbar-menu").Content("Home").Render()
+                            @Html.EJS().DropDownButton("darkProductDropDownButton").CssClass("e-inherit e-dark e-appbar-menu").Content("Products").Items(productDropDownButtonItems).Render()
+                            @Html.EJS().DropDownButton("darkCompanyDropDownButton").CssClass("e-inherit e-dark e-appbar-menu").Content("Company").Items(companyDropDownButtonItems).Render()
+                            <div class="e-appbar-spacer"></div>
+                            <div style="width: 200px; margin-right:10px">
+                                 <span class="e-input-group e-control-wrapper e-inherit">
+                                      <input type="text" class="e-searchinput e-input" placeholder="Search">
+                                      <span class="e-icons e-search e-input-group-icon"></span>
+                                  </span>
+                            </div>
+                            <div class="e-appbar-separator"></div>
+                            @Html.EJS().Button("darkButtonLogin").CssClass("e-inherit login").Content("Login").Render()
+                            @Html.EJS().Menu("darkVerticalMenu").CssClass("e-inherit e-dark e-appbar-icon-menu").Items(verticalMenuItems).BeforeItemRender("itemRender").Render()
+                    </div>).Render())
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Primary</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @(Html.EJS().AppBar("primaryAppBar").ColorMode(AppBarColor.Primary).ContentTemplate(@<div>
+                            @Html.EJS().Button("primaryButtonMenu").HtmlAttributes(ButtonAttribute).CssClass("e-inherit menu").IconCss("e-icons e-menu").Render()
+                            @Html.EJS().Button("primaryButtonHome").CssClass("e-inherit home e-appbar-menu").Content("Home").Render()
+                            @Html.EJS().DropDownButton("primaryProductDropDownButton").CssClass("e-inherit e-primary e-appbar-menu").Content("Products").Items(productDropDownButtonItems).Render()
+                            @Html.EJS().DropDownButton("primaryCompanyDropDownButton").CssClass("e-inherit e-primary e-appbar-menu").Content("Company").Items(companyDropDownButtonItems).Render()
+                            <div class="e-appbar-spacer"></div>
+                            <div style="width: 200px; margin-right:10px">
+                                 <span class="e-input-group e-control-wrapper e-inherit">
+                                      <input type="text" class="e-searchinput e-input" placeholder="Search">
+                                      <span class="e-icons e-search e-input-group-icon"></span>
+                                  </span>
+                            </div>
+                            <div class="e-appbar-separator"></div>
+                            @Html.EJS().Button("primaryButtonLogin").CssClass("e-inherit login").Content("Login").Render()
+                            @Html.EJS().Menu("primaryVerticalMenu").CssClass("e-inherit e-primary e-appbar-icon-menu").Items(verticalMenuItems).BeforeItemRender("itemRender").Render()
+                    </div>).Render())
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Inherit</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @(Html.EJS().AppBar("inheritAppBar").ColorMode(AppBarColor.Inherit).ContentTemplate(@<div>
+                            @Html.EJS().Button("inheritButtonMenu").HtmlAttributes(ButtonAttribute).CssClass("e-inherit menu").IconCss("e-icons e-menu").Render()
+                            @Html.EJS().Button("inheritButtonHome").CssClass("e-inherit home e-appbar-menu").Content("Home").Render()
+                            @Html.EJS().DropDownButton("inheritProductDropDownButton").CssClass("e-inherit e-appbar-menu").Content("Products").Items(productDropDownButtonItems).Render()
+                            @Html.EJS().DropDownButton("inheritCompanyDropDownButton").CssClass("e-inherit e-appbar-menu").Content("Company").Items(companyDropDownButtonItems).Render()
+                            <div class="e-appbar-spacer"></div>
+                            <div style="width: 200px; margin-right:10px">
+                                 <span class="e-input-group e-control-wrapper e-inherit">
+                                      <input type="text" class="e-searchinput e-input" placeholder="Search">
+                                      <span class="e-icons e-search e-input-group-icon"></span>
+                                  </span>
+                            </div>
+                            <div class="e-appbar-separator"></div>
+                            @Html.EJS().Button("inheritButtonLogin").IsPrimary(true).CssClass("login").Content("Login").Render()
+                            @Html.EJS().Menu("inheritVerticalMenu").CssClass("e-inherit e-appbar-icon-menu").Items(verticalMenuItems).BeforeItemRender("itemRender").Render()
+                    </div>).Render())
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+    <script>
+        var input = document.querySelectorAll('.color-appbar-section .e-input-group .e-input,.e-float-input.e-input-group input');
+        var focusFn = function (index) {
+            return function () {
+                getParentNode(input[index]).classList.add('e-input-focus');
+            };
+        };
+        var blurFn = function (index) {
+            return function () { getParentNode(input[index]).classList.remove('e-input-focus'); };
+        };
+        for (var i = 0; i < input.length; i++) {
+            input[i].addEventListener('focus', focusFn(i));
+            input[i].addEventListener('blur', blurFn(i));
+        }
+        function getParentNode(element) {
+            var parentNode = element.parentNode;
+            if (parentNode.classList.contains('e-input-in-wrap')) {
+                return parentNode.parentNode;
+            }
+            return parentNode;
+        }
+        function itemRender(args) {
+            if (args.element.children.length > 0 && args.element.children[0].classList.contains("e-more-vertical-1")) {
+                args.element.setAttribute('aria-label', 'more vertical');
+            }
+        }
+    </script>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Color modes in ASP.NET MVC AppBar control." />
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        This sample demonstrates the available types of color in the <strong>ASP.NET MVC AppBar</strong> component.
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>In this demo, the available types of background color for <strong>ASP.NET MVC AppBar</strong> are showcased. The background and font colors can be set using the <strong>ColorMode</strong> property. The different types are <code>light</code>, <code>dark</code>, <code>primary</code>, and <code>inherit</code>.</p>
+        <p><code>Light</code> - The AppBar can be displayed with a light background.</p>
+        <p><code>Dark</code> - The AppBar can be displayed with a dark background.</p>
+        <p><code>Primary</code> - The AppBar can be displayed with primary colors.</p>
+        <p><code>Inherit</code> - The AppBar inherits the color from its parent element.</p> <br />
+        <P> On <code>mobile devices</code>, media query is used to display the AppBar in adaptive views. You can click the menu to see the hidden AppBar content.</P>
+    </div>
+}
+
+<style>
+    .color-appbar-section .e-dropdown-btn.e-inherit,
+    .color-appbar-section .e-btn.e-inherit.home {
+        margin: 0 5px;
+    }
+
+    .color-appbar-section .e-appbar .e-appbar-separator {
+        margin: 0 10px;
+    }
+
+    .color-appbar-section .e-appbar-icon-menu {
+        display: none;
+    }
+
+    @@media screen and (max-width: 768px) {
+
+        .color-appbar-section .e-appbar-icon-menu {
+            display: block;
+        }
+
+        .color-appbar-section .login,
+        .color-appbar-section .e-appbar-separator,
+        .color-appbar-section .e-dropdown-btn.e-inherit.e-appbar-menu,
+        .color-appbar-section .e-menu-wrapper.e-inherit.e-appbar-menu,
+        .color-appbar-section .e-menu-wrapper.e-inherit.e-appbar-icon-menu .e-menu .e-menu-item .e-caret,
+        .color-appbar-section .e-btn.e-inherit.e-appbar-menu {
+            display: none;
+        }
+
+        .color-appbar-section .e-menu-wrapper.e-inherit.e-appbar-icon-menu ul .e-menu-item.e-menu-caret-icon {
+            padding: 0 8px;
+        }
+
+        .color-appbar-section .e-menu-wrapper.e-inherit ul .e-menu-item .e-menu-icon {
+            margin-right: 0;
+        }
+
+        .color-appbar-section .e-menu-wrapper.e-inherit {
+            margin: 0 10px;
+        }
+
+        .fabric .color-appbar-section .e-menu-wrapper.e-inherit ul.e-menu:not(.e-vertical),
+        .fabric-dark .color-appbar-section .e-menu-wrapper.e-inherit ul.e-menu:not(.e-vertical) {
+            padding: 0;
+        }
+
+        .color-appbar-section .menu.e-ripple {
+            overflow: visible;
+        }
+
+        .color-appbar-section .e-input-group.e-control-wrapper.e-inherit {
+            margin-left: 10px;
+        }
+
+        .color-appbar-section .menu {
+            margin-bottom: 3px;
+        }
+    }
+</style>
+
+@section Title{
+    <title>ASP.NET MVC AppBar Color Mode Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Color mode in ASP.NET MVC AppBar Control</h1>
+}

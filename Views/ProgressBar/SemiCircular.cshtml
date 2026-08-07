@@ -1,0 +1,174 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section progress-bar-parent">
+        <div class="row" style="margin-top: 8%">
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="angle-container">
+                    @(Html.EJS().ProgressBar("angle-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(100)
+                                          .Width("160px").Height("160px").Load("progressLoad").TrackThickness(5).ProgressThickness(5)
+                                          .StartAngle(240).EndAngle(120).CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round)
+                                          .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                          .Annotations(an => { an.Content("<div style='font - size:24px; font - weight:bold; color:#0078D6;fill:#0078D6'><span>100%</span></div>").Add(); }).Render())
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="vertical-container">
+                    @(Html.EJS().ProgressBar("vertical-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(100)
+                                            .Width("160px").Height("160px").Load("progressLoad").TrackThickness(5).ProgressThickness(5)
+                                             .StartAngle(180).EndAngle(0).CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round)
+                                             .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                             .Annotations(an => { an.Content("<div class='annotaion-pro' id='point1'><span>100%</span></div>").Add(); }).Render())
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+
+                <div id="vsemi-container">
+                    @(Html.EJS().ProgressBar("vsemi-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(100)
+                                                .Width("160px").Height("160px").Load("progressLoad").TrackThickness(5).ProgressThickness(5)
+                                                .StartAngle(0).EndAngle(180).CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round)
+                                                .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                                .Annotations(an => { an.Content("<div class='annotaion-pro' id='point1'><span>100%</span></div>").Add(); }).Render())
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-3" align="center">
+                <div id="semi-container">
+                    @(Html.EJS().ProgressBar("semi-container").Type(Syncfusion.EJ2.ProgressBar.ProgressType.Circular).Value(100)
+                                                .Width("160px").Height("160px").Load("progressLoad").TrackThickness(6).ProgressThickness(6)
+                                                .StartAngle(270).EndAngle(90).CornerRadius(Syncfusion.EJ2.ProgressBar.CornerType.Round)
+                                                .Minimum(0).Maximum(100).Animation(an => an.Enable(true).Delay(0).Duration(2000))
+                                                .Annotations(an => { an.Content("<div class='annotaion-pro' id='point1'><span>100%</span></div>").Add(); }).Render())
+                </div>
+            </div>
+        </div>
+        <div class="row" align="center">
+            <button id="reLoad" class="e-control e-btn e-lib e-outline e-primary">Reload</button>
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+
+        #reLoad {
+            border-radius: 4px;
+            text-transform: capitalize;
+            margin-top: 3%;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/Progressbar/theme-color.js"></script>
+    <script>
+        function annotationElementContent(color, controlID) {
+            var content;
+            switch (controlID) {
+                case 'angle-container':
+                    content = '100%';
+                    break;
+                case 'vertical-container':
+                    content = '100%';
+                    break;
+                case 'vsemi-container':
+                    content = '100%';
+                    break;
+                case 'semi-container':
+                    content = '100%';
+                    break;
+            }
+            return ('<div id="point1" style="font-size:24px;font-weight:bold;color: ' + color + ' "><span>' + content + '</span></div>');
+        }
+        var annotationColors = ['#e91e63', '#0078D6', '#317ab9', '#007bff', '#4F46E5', '#FFD939', '#9A9A9A', '#22D3EE', '#0D6EFD', '#6750A4', '#D0BCFF', '#0F6CBD', '#1AEBFF', '#115EA3', '#6366F1'];
+        var progressLoad = function (args) {
+            var selectedTheme = loadProgressBarTheme(args);
+            switch (selectedTheme) {
+                case 'material':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[0], args.progressBar.element.id);
+                    break;
+                case 'fabric':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[1], args.progressBar.element.id);
+                    break;
+                case 'bootstrap':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[2], args.progressBar.element.id);
+                    break;
+                case 'bootstrap4':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[3], args.progressBar.element.id);
+                    break;
+                case 'tailwind':
+                case 'tailwind3':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[4], args.progressBar.element.id);
+                    break;
+                case 'bootstrap-dark':
+                case 'fabric-dark':
+                case 'material-dark':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[6], args.progressBar.element.id);
+                    break;
+                case 'bootstrap5':
+                case 'bootstrap5-dark':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[8], args.progressBar.element.id);
+                    break;
+                case 'tailwind-dark':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[7], args.progressBar.element.id);
+                    break;
+                case 'tailwind3-dark':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[14], args.progressBar.element.id);
+                    break;
+                case 'fluent':
+                case 'fluent-dark':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[8], args.progressBar.element.id);
+                    break;
+                case 'material3':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[9], args.progressBar.element.id);
+                    break;
+                case 'material3-dark':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[10], args.progressBar.element.id);
+                    break;
+                case "fluent2":
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[11], args.progressBar.element.id);
+                    break;
+                case 'fluent2-dark':
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[13], args.progressBar.element.id);
+                    break;
+                case "fluent2-highcontrast":
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[12], args.progressBar.element.id);
+                    break;
+                default:
+                    args.progressBar.annotations[0].content = annotationElementContent(annotationColors[5], args.progressBar.element.id);
+                    break;
+            }
+        };
+        var replayBtn = document.getElementById('reLoad');
+        replayBtn.onclick = function () {
+            var inverseSemiProgress = document.getElementById('angle-container').ej2_instances[0];
+            var verticalProgress = document.getElementById('vertical-container').ej2_instances[0];
+            var semiProgress = document.getElementById('semi-container').ej2_instances[0];
+            var vsemiProgress = document.getElementById('vsemi-container').ej2_instances[0];
+            inverseSemiProgress.refresh();
+            verticalProgress.refresh();
+            semiProgress.refresh();
+            vsemiProgress.refresh();
+        };
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Angle in ASP.NET MVC Progress Bar control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates a circular progress bar with start and end angle customized.
+    </p>
+}
+@section Description{
+    <p>
+        This demo for Essential JS2 Progress Bar control shows the customizing options for angle in circular progress bar. Annotation is enabled in the sample to represent the progress value with animation.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC Progress Bar Angle Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Angle in ASP.NET MVC Progress Bar Control</h1>
+}
