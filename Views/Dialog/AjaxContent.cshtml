@@ -1,0 +1,159 @@
+@using Syncfusion.EJ2
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section" id="target">
+        <div class="control-wrapper">
+            @Html.EJS().Button("dialogBtn").Content("Open").Render()
+            @Html.EJS().Dialog("ajax_dialog").Close("dialogClose").Created("created").Open("dialogOpen").Header("<span class='e-avatar template-image e-avatar-xsmall image'></span>What's Coming from Microsoft this Fall").ShowCloseIcon(true).CloseOnEscape(true).Width("500px").Target("#target").ContentTemplate(@<div>On October 17, Microsoft will release its Fall Creators Update for the Windows 10 platform. Much like its previous counterpart, the Spring Creators Update, the release is set to deliver more features to Windows 10 for both developers and users with particular emphasis this time around on app modernization, mixed realityand gamedevelopment and software updates. App modernization is the term Microsoft used in its press event toencompass thefeatures that will affect most Windows 10 users and developers. The updates primarily serve to make using Windows 10</div>).Buttons((List<Syncfusion.EJ2.Popups.DialogDialogButton>)ViewData["AjaxButton"]).Render()
+        </div>
+    </div>
+}
+<style>
+    .control-wrapper {
+        height: 250px;
+        width: 500px;
+    }
+
+    .bootstrap .e-dialog .e-dlg-header >img.img1 {
+        margin-top: 1px;
+    }
+
+    .tailwind .e-dialog .e-dlg-header >img.img1,
+    .tailwind-dark .e-dialog .e-dlg-header >img.img1,
+    .tailwind3 .e-dialog .e-dlg-header >img.img1,
+    .tailwind3-dark .e-dialog .e-dlg-header >img.img1,
+    .bootstrap5 .e-dialog .e-dlg-header >img.img1,
+    .bootstrap5-dark .e-dialog .e-dlg-header >img.img1,
+    .bootstrap4 .e-dialog .e-dlg-header >img.img1
+    .fluent .e-dialog .e-dlg-header >img.img1,
+    .fluent-dark .e-dialog .e-dlg-header >img.img1 {
+        margin-top: 0px;
+    }
+
+    .control-section {
+        height: 400px;
+    }
+
+    .e-dlg-header-content {
+        min-height: 65px;
+    }
+
+    .tailwind .e-dlg-header-content,
+    .tailwind-dark .e-dlg-header-content,
+    .tailwind3 .e-dlg-header-content,
+    .tailwind3-dark .e-dlg-header-content {
+        padding-top: 18px;
+    }
+
+    .tailwind .e-dlg-header-content,
+    .tailwind-dark .e-dlg-header-content,
+    .material3 .e-dlg-header-content,
+    .fluent .e-dlg-header-content,
+    .fluent-dark .e-dlg-header-content,
+    .material3-dark .e-dlg-header-content,
+    .material .e-dlg-header-content,
+    .material-dark .e-dlg-header-content,
+    .tailwind3 .e-dlg-header-content,
+    .tailwind3-dark .e-dlg-header-content,
+    .bootstrap5 .e-dlg-header-content,
+    .bootstrap5-dark .e-dlg-header-content,
+    .bootstrap4 .e-dlg-header-content {
+        min-height: 50px;
+        padding-left: 80px;
+    }
+
+    .e-bigger .e-dialog .e-icon-dlg-close::before {
+        top: 0px;
+    }
+    /* custom code start */
+    #target {
+        height: 100%;
+        min-height: 350px;
+    }
+    @@media screen and (min-width: 150px) and (max-width: 480px) {
+        .control-section {
+            margin-bottom: 30px;
+        }
+    }
+    /* custom code end */
+    .material .e-dialog {
+        height: 260px;
+    }
+    .fabric .e-dialog, .bootstrap .e-dialog, .highcontrast .e-dialog {
+        height: 320px;
+    }
+    .e-dialog .e-dlg-header-content .e-dlg-header .e-avatar.template-image {
+        background-image: url('@Url.Content("~/Content/Dialog/images/2.png")');
+        vertical-align: middle;
+        display: inline-block;
+        background-color: transparent;
+        border-radius: 0;
+        height: 20px;
+        width: 20px;
+        float: left;
+        margin-right: 10px;
+    }
+</style>
+
+@section PreScripts {
+    <script>
+    var lessContent = 'On October 17, Microsoft will release its Fall Creators Update for the Windows 10 platform. Much like its previous counter part, the Spring Creators Update, the release is set to deliver more features to Windows 10 for both developers and users with particular emphasis this time around on app modernization, mixed reality and game development and software updates. App modernization is the term Microsoft used in its press event to encompass the features that will affect most Windows 10 users and developers. The updates primarily serve to makeusing Windows 10';
+    var btnEle = document.getElementById('dialogBtn'), dialogObj;
+    function dlgButtonClick() {
+        if (document.querySelector('.e-footer-content .e-btn').textContent === 'More Details') {
+            var fetchApi = new ej.base.Fetch(baseurl + 'Content/Dialog/blog.html', 'GET');
+            fetchApi.send().then();
+            fetchApi.onSuccess = function (data) {
+                dialogObj.content = data;
+            };
+            dialogObj.buttons = [{ click: dlgButtonClick, buttonModel: { content: 'Less Details', isPrimary: true } }];
+        }
+        else {
+            dialogObj.content = lessContent;
+            dialogObj.buttons = [{ click: dlgButtonClick, buttonModel: { content: 'More Details', isPrimary: true } }];
+        }
+    }
+    function dialogClose() {
+        btnEle.style.display = 'inline-block';
+    }
+    function dialogOpen() {
+        btnEle.style.display = 'none';
+    }
+    btnEle.onclick = function () {
+        dialogObj.show();
+    };
+    function created() {
+        dialogObj = this;
+    }
+    </script>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This example demonstrates that the content of dialog can be loaded from external HTML file. Click "more details" on dialog to load the content dynamically from external HTML file. Click “open” to show the dialog again, if it is closed.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The user can load dialog's content dynamically from external source like external file using Fetch library. The Fetch library can make the request and load dialog's content using its success event.
+        </p>
+    </div>
+}
+
+@*custom code start*@
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Ajax Content in ASP.NET MVC Dialog control. Explore here for more details."/>
+                }
+
+@*custom code end*@
+
+@section Title{
+                    <title>ASP.NET MVC Dialog Ajax Content Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Ajax Content in ASP.NET MVC Dialog Control</h1>
+                }

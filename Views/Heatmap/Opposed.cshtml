@@ -1,0 +1,92 @@
+@using Syncfusion.EJ2;
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Heatmap control shows how to place the axis opposite to the default position in heatmap" />
+}
+@section ControlsSection{
+    <div>
+        <div class="col-md-8 control-section">
+            <div class="content-wrapper">
+                <div id="container" style="width:92%">
+                    @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Monthly Flight Traffic at JFK Airport").TextStyle(ViewData["textStyle"])).XAxis(
+                         xAxis =>
+                         {
+                             xAxis.LabelRotation(45)
+                             .LabelIntersectAction(Syncfusion.EJ2.HeatMap.LabelIntersectAction.None)
+                             .Labels(ViewData["xLabels"])
+                             .OpposedPosition(true);
+                         }).YAxis(yaxis =>
+                         {
+                             yaxis.OpposedPosition(true)
+                             .Labels(ViewData["yLabels"]);
+                         }).CellSettings(cs =>
+                         cs.Border(ViewData["border"]).ShowLabel(false).Format("{value} flights")).LegendSettings(ls => ls.Visible(false)).Load("load").DataSource(ViewData["dataSource"]).Render()
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 property-section">
+            <table id="property" title="Properties" style="width: 100%">
+                <tbody>
+                    <tr style="height: 50px">
+                        <td style="width: 40%;">
+                            <div>
+                                <input id="XOpposedPosition" type="checkbox">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td style="width: 40%;">
+                            <div>
+                                <input id="YOpposedPosition" type="checkbox">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+        };
+        var xlistObj = new ej.buttons.CheckBox({ label: 'Change X-Axis Position', checked: true, change: valueXChange });
+        xlistObj.appendTo('#XOpposedPosition');
+
+        function valueXChange() {
+            var heatMap = document.getElementById('container').ej2_instances[0];
+            heatMap.xAxis.opposedPosition = xlistObj.checked;
+        }
+
+        var ylistObj = new ej.buttons.CheckBox({ label: 'Change Y-Axis Position', checked: true, change: valueYChange });
+        ylistObj.appendTo('#YOpposedPosition');
+
+        function valueYChange() {
+            var heatMap = document.getElementById('container').ej2_instances[0];
+            heatMap.yAxis.opposedPosition = ylistObj.checked;
+        }
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample illustrates the monthly flight arrivals at JFK international airport, New York. The data label is disabled in this sample, the tooltip displays the data point values.  In property panel, the options are available to change the position of the axes by means of checkbox for each axis.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to change the display position of the axis. You can change the display position of axes by enabling the <code>opposedPosition </code> property for each axis.
+    </p>
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <br>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Heatmap component features are segregated into individual feature-wise modules. To use a tooltip, inject the <code>Tooltip </code> module using the <code>Heatmap.Inject(Tooltip) </code> method.
+    </p>
+}

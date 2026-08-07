@@ -1,0 +1,53 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Kanban
+
+@section ControlsSection {
+    <div class="control-section">
+        <div class="control_wrapper">
+            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col=> {
+           col.HeaderText("To Do").KeyField("Open").AllowToggle(true).Add();
+           col.HeaderText("In Progress").KeyField("InProgress").AllowToggle(true).Add();
+           col.HeaderText("Testing").KeyField("Testing").AllowToggle(true).IsExpanded(false).Add();
+           col.HeaderText("Done").KeyField("Close").AllowToggle(true).Add();
+       }).CardSettings(card =>  {
+           card.ContentField("Summary").HeaderField("Id");
+       }).Render()
+        </div>
+    </div>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the toggle column feature of Kanban. Each column of Kanban is collapsible, and the
+            testing
+            column is collapsed on page load itself.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The Kanban controls allows you to expand or collapse its columns to save space. The remaining columns extend its
+            width to occupy the hided column space.
+            This feature can be achieved by the following properties:
+        </p>
+        <ul>
+            <li><code>AllowToggle:</code> Enables the expand/collapse behavior in Kanban.</li>
+            <li>
+                <code>IsExpanded:</code> The property determines whether the column can be collapsed on the page load
+                itself.
+            </li>
+        </ul>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Toggle Columns in ASP.NET MVC Kanban control. Explore here for more details."/>
+                }
+
+@section Title{
+                    <title>ASP.NET MVC Kanban Toggle Columns Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Toggle Columns in ASP.NET MVC Kanban Control</h1>
+                }

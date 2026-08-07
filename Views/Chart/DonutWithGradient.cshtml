@@ -1,0 +1,94 @@
+﻿@using Syncfusion.EJ2;
+@section ControlsSection{
+   <div class="control-section" align="center">
+       <div id="container" style="text-align:center">
+        @(Html.EJS().AccumulationChart("container").Series(
+            series =>
+            {
+                series.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie).
+                    DataLabel(dl => dl.Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside).Font(ft => ft.Size("12px")).ConnectorStyle(cs => cs.Length("10px"))).
+                    XName("Country").
+                    YName("Share").
+                    InnerRadius("65%").
+                    Radius("70%").
+                    Name("Share by country").
+                    LegendShape(Syncfusion.EJ2.Charts.LegendShape.Rectangle).
+                    DataSource(ViewData["ChartPoints"]).
+                    Add();
+                }).EnableSmartLabels(true).LegendSettings(
+                legend =>
+                {
+                    legend.Visible(true).Position(Syncfusion.EJ2.Charts.LegendPosition.Right);
+                }).Tooltip(tp => tp.Enable(true).Header("").Format("${point.x} : <b>${point.y}%</b>"))
+                .EnableBorderOnMouseMove(true).Load("load").PointRender("pointRender").LegendRender("legendRender").Title("Share of E-commerce Orders by Country - 2025").SubTitle("Source: Data provided by Eurostat European Statistics").TitleStyle(ts => ts.Position(Syncfusion.EJ2.Charts.TitlePosition.Custom)).Render()
+    )
+    </div>
+       </div>
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        const baseColors = ['#39B9E6', '#2E79CF', '#4960CF', '#5E47C6', '#8A44C9', '#C24F86', '#D8584E', '#E07245', '#F09A4A'];
+        const chartData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewData["ChartPoints"]));
+
+        function load(args) {
+            loadAccumulationChartTheme(args);
+            args.accumulation.titleStyle.x = ej.base.Browser.isDevice ? 180 : 500;
+            args.accumulation.titleStyle.y = 15;
+        }
+
+        function pointRender(args) {
+            const idx = args.point.index;
+            const base = baseColors[idx % baseColors.length];
+            args.radialGradient = {
+                cx: 0.5, cy: 0.5, fx: 0.5, fy: 0.5, r: 0.6,
+                gradientColorStop: [
+                    { offset: 0, color: base, opacity: 1, brighten: 0.2, lighten: 0 },
+                    { offset: 45, color: base, opacity: 1, brighten: 0.1, lighten: 0 },
+                    { offset: 70, color: base, opacity: 1, brighten: 0, lighten: 0 },
+                    { offset: 85, color: base, opacity: 1, brighten: -0.1, lighten: 0 },
+                    { offset: 100, color: base, opacity: 1, brighten: -0.2, lighten: 0 }
+                ]
+            };
+        }
+
+        function legendRender(args) {
+            const country = args.text;
+            const dataPoint = chartData.find(d => d.Country === country);
+            if (dataPoint) {
+                args.text = dataPoint.DataLabelMappingName;
+            }
+        }
+    </script>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Donut in ASP.NET MVC Chart control with radial gradient. Explore here for more details."/>
+}
+
+@section ActionDescription{
+    <p>
+        This ASP.NET MVC donut chart example shows the share of e-commerce orders by country in 2025 using a donut chart with radial gradient fills. Each slice is annotated with data labels showing the country name and its exact percentage, 
+        while the legend on the right provides a quick reference for all countries and their respective values.
+    </p>
+}
+
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a donut chart with a gradient. To apply a
+        gradient to each point in the pie series, use the <a href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.charts.accumulationchart.html#Syncfusion_EJ2_Charts_AccumulationChart_PointRender">pointRender</a> event. Through this
+        event, you can customize the color of each point in the donut chart using the <code>radialGradient</code> property, 
+        which applies a circular gradient from the center outward with multiple color stops to create smooth color transitions across each slice.
+    </p>
+    <p><code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point on touch-enabled devices.</p>
+    <p>
+        More information about the donut series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/pie-dough-nut#doughnut-chart" aria-label="documentation section">documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+
+@section Title{
+    <title>ASP.NET MVC Chart Donut with Gradient Example - Syncfusion Demos </title> 
+}
+
+@section Header{
+    <h1 class='sb-sample-text'>Charts</h1>
+}

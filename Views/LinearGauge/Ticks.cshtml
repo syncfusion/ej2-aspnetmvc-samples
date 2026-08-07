@@ -1,0 +1,146 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12"
+                 style="display: flex;justify-content: center; align-items: center;">
+                <div style="margin: auto;padding: 10px;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id='horizontal' style="padding:6px;cursor:pointer;width:86px;color:black;font-size:15px;border:1px solid #0074E3;background-color:white;text-align:center">Horizontal</div>
+                                </td>
+                                <td>
+                                    <div id='vertical' style="padding:6px;cursor:pointer;width:86px;color:white;font-size:15px;border:1px solid #0074E3;background-color: #0074E3;text-align:center">Vertical</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <pre style="background-color: inherit; border:hidden"></pre>
+        <div id="containerBox">
+            <div id='containerOutside' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
+                @Html.EJS().LinearGauge("outsideTicks").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Outside ticks").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(5))
+                .LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Pointers(pointer => pointer.Width(0).Add())
+                .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Outside)).Add()).Render()
+            </div>
+            <div id='containerCross' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
+                @Html.EJS().LinearGauge("crossTicks").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Cross ticks").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).Line(line => line.Width(5))
+                .LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit"))).Pointers(pointer => pointer.Width(0).Add())
+                .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Cross)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Cross)).Add()).Render()
+            </div>
+            <div id='containerInside' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
+                @Html.EJS().LinearGauge("insideTicks").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Inside ticks").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).IsInversed(true).Line(line => line.Width(5))
+                .LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit"))).Pointers(pointer => pointer.Width(0).Add())
+                .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Inside)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Inside)).Add()).Render()
+            </div>
+            <div id='containerOffset' class="col-xs-5 col-sm-5 col-lg-3 col-md-3" style="display: flex;justify-content: center; align-items: center;">
+                @Html.EJS().LinearGauge("offsetTicks").Load("gaugeLoad").AnimationDuration(3500).Background("Transparent").Width("150px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Ticks with offset").TitleStyle(textStyle =>
+                textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true).IsInversed(true).Line(line => line.Width(5))
+                .LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit"))).Pointers(pointer => pointer.Width(0).Add())
+                .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1).Position(Syncfusion.EJ2.LinearGauge.Position.Inside).Offset(10)).MinorTicks(minorTick => minorTick.Height(3).Interval(10).Position(Syncfusion.EJ2.LinearGauge.Position.Inside).Offset(10)).Add()).Render()
+            </div>
+        </div>
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        var outsideTicksGauge, crossTicksGauge, insideTicksGauge, offsetTicksGauge;
+        function gaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+            if (sender.gauge.element.id === 'outsideTicks') {
+                outsideTicksGauge = sender.gauge;
+            }
+            if (sender.gauge.element.id === 'crossTicks') {
+                crossTicksGauge = sender.gauge;
+            }
+            if (sender.gauge.element.id === 'insideTicks') {
+                insideTicksGauge = sender.gauge;
+            }
+            if (sender.gauge.element.id === 'offsetTicks') {
+                offsetTicksGauge = sender.gauge;
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('horizontal').addEventListener('click', function () {
+                outsideTicksGauge.width = crossTicksGauge.width = insideTicksGauge.width = offsetTicksGauge.width = '450px';
+                outsideTicksGauge.height = crossTicksGauge.height = insideTicksGauge.height = offsetTicksGauge.height = '150px';
+                outsideTicksGauge.orientation = crossTicksGauge.orientation = insideTicksGauge.orientation = offsetTicksGauge.orientation = "Horizontal";
+                document.getElementById('horizontal').style.color = "white";
+                document.getElementById('horizontal').style.backgroundColor = "#0074E3";
+                document.getElementById('vertical').style.color = "black";
+                document.getElementById('vertical').style.backgroundColor = "white";
+                document.getElementById('containerOutside').className = document.getElementById('containerCross').className =
+                    document.getElementById('containerInside').className = document.getElementById('containerOffset').className = "col-xs-12 col-sm-12 col-lg-12 col-md-12";
+
+            });
+            document.getElementById('vertical').addEventListener('click', function () {
+                outsideTicksGauge.width = crossTicksGauge.width = insideTicksGauge.width = offsetTicksGauge.width = '150px';
+                outsideTicksGauge.height = crossTicksGauge.height = insideTicksGauge.height = offsetTicksGauge.height = '350px';
+                outsideTicksGauge.orientation = crossTicksGauge.orientation = insideTicksGauge.orientation = offsetTicksGauge.orientation = "Vertical";
+                document.getElementById('vertical').style.color = "white";
+                document.getElementById('vertical').style.backgroundColor = "#0074E3";
+                document.getElementById('horizontal')['style']['color'] = "black";
+                document.getElementById('horizontal')['style']['backgroundColor'] = "white";
+                document.getElementById('containerOutside').className = document.getElementById('containerCross').className =
+                    document.getElementById('containerInside').className = document.getElementById('containerOffset').className = "col-xs-5 col-sm-5 col-lg-3 col-md-3";
+
+            });
+        });
+
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample shows ticks in various positions such as inside, middle, and outside. Additionally, the position of the ticks can be customized using offset.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Ticks in ASP.NET MVC Linear Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render and configure ticks in the linear gauge. The
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.LinearGauge.LinearGaugeTick.html#Syncfusion_EJ2_LinearGauge_LinearGaugeTick_Position" aria-label="Position">
+                Position
+            <span class="sr-only">opens in a new tab</span></a> and
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.LinearGauge.LinearGaugeTick.html#Syncfusion_EJ2_LinearGauge_LinearGaugeTick_Offset" aria-label="Offset properties">
+                Offset properties
+            <span class="sr-only">opens in a new tab</span></a> in
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.LinearGauge.LinearGaugeTick.html" aria-label="MajorTicks">
+                MajorTicks
+            <span class="sr-only">opens in a new tab</span></a> and
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.LinearGauge.LinearGaugeTick.html" aria-label="MinorTicks">MinorTicks<span class="sr-only">opens in a new tab</span></a> are used to position the ticks as well as provide offset.
+        </p>
+        <p>
+            More information on the ticks can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/axis#ticks-customization" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+
+}
+@section Title{
+    <title>ASP.NET MVC Linear Gauge Ticks Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Ticks in ASP.NET MVC Linear Gauge Control</h1>
+}

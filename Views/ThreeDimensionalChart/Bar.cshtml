@@ -1,0 +1,56 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+
+        @Html.EJS().Chart3D("container").EnableRotation(true).Rotation(22).Depth(100).Height("400").Title("GDP Percentage by Country in 2017").PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).LabelPlacement(Syncfusion.EJ2.Charts.LabelPlacement.BetweenTicks)
+   ).Series(series =>
+        {
+            series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Bar).DataSource(ViewData["ChartData"]).XName("X").YName("Y").Name("GDP").ColumnSpacing(0.1).Add();
+            series.Type(Syncfusion.EJ2.Charts.Chart3DSeriesType.Bar).DataSource(ViewData["ChartData"]).XName("X").YName("Y1").Name("Share in World's GDP").ColumnSpacing(0.1).Add();
+        }).PrimaryYAxis(py => py.LabelFormat("{value}%").EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+        ).Tooltip(tt => tt.Enable(true)
+        ).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
+    </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/three-dimensional-chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            load3DChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? '100%' : '70%';
+            args.chart.primaryYAxis.maximum = ej.base.Browser.isDevice ? 8 : 7;
+            args.chart.primaryYAxis.interval = ej.base.Browser.isDevice ? 2 : 1;
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the 3D Bar in ASP.NET MVC 3D Chart control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample visualizes the GDP data by country for the year 2017 using bar series in a 3D chart. Data points are enhanced with tooltips.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a 3D bar chart. The 3D bar chart, similar to the 3D column chart, differs in that the orientation of the y-axis is horizontal rather than vertical.
+    </p>
+    <p>
+        <code>Tooltips</code> are enabled in this example, to see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC 3D Bar Chart Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of 3D Bar in ASP.NET MVC 3D Chart Control</h1>
+}
+

@@ -1,0 +1,100 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@using EJ2MVCSampleBrowser.Models
+@{
+    char nameMentionChar = '@';
+}
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div id="mention-controls">
+            <table>
+                <tr>
+                    <td>
+                        <label id="disabled-size">Compose your content</label>
+                        <div id="disabledMention" placeholder="@Html.Raw("@") and tag user"></div>
+                        @Html.EJS().Mention("disableditem").Target("#disabledMention").MentionChar(nameMentionChar).AllowSpaces(true).ItemTemplate("<div class=\"listItems\"><img class=\"mentionEmpImage\" src=\"../Content/Mention/images/Employees/${Eimg}.png\" alt=\"employee\"/><span class=\"person\"> ${Name} </span><span class=\"email\">${EmailId}</span></div>").NoRecordsTemplate("No item related to the search").DisplayTemplate("${Name}").PopupWidth("250px").PopupHeight("200px").DataSource((IEnumerable<DisabledEmailData>)ViewData["emails"]).Fields(new MentionFieldSettings { Text = "Name", Disabled = "State" }).Render()
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the disabled items functionalities in ASP.NET MVC Mention control. Explore here for more details." />
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the disabled items functionalities of the Mention component. Type the <code>@@</code> character in the editable element and you will notice that the disabled items are greyed out and cannot be selected.</p>
+    </div>
+}
+@section Description{
+    <p>The Mention provides options for individual items to be in either an enabled or disabled state for specific scenarios. Once an item is disabled, it cannot be select a particular item. To configure the disabled item columns, use the <code>fields.disabled</code> property.</p>
+}
+
+<style>
+    #disabledMention {
+        min-height: 100px;
+        border: 1px solid #D7D7D7;
+        width: 600px;
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+    #mention-controls {
+        margin: 0 auto;
+        width: 600px;
+    }
+
+    .listItems {
+        padding-left: 12px;
+        vertical-align: middle;
+        width: 80%;
+    }
+
+    #disabledMention_popup .e-dropdownbase .e-list-item {
+        line-height: 25px;
+        text-indent: 8px;
+    }
+
+    .mentionEmpImage {
+        width: 44px;
+        float: left;
+    }
+
+    .person {
+        font-size: 16px;
+        margin-top: 8px;
+    }
+
+    .e-dropdownbase .e-list-item * {
+        display: block;
+    }
+
+    div#disabledMention[placeholder]:empty:before {
+        content: attr(placeholder);
+        color: #555;
+    }
+
+    #disabled-size {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    @@media screen and (max-width: 1010px) {
+        #disabledMention,
+        #mention-controls, #mention-controls table {
+            width: 100%;
+        }
+    }
+</style>
+
+@section Title{
+    <title>ASP.NET MVC Mention Component Disabled Functionalities Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Disabled Functionalities in ASP.NET MVC Mention Control</h1>
+}

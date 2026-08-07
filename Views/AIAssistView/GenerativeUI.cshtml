@@ -1,0 +1,253 @@
+@using Syncfusion.EJ2
+@using Newtonsoft.Json
+@using Syncfusion.EJ2.InteractiveChat
+
+@section ControlsSection {
+    <div class="control-section">
+        <div class="generative-aiassistview">
+            @Html.EJS().AIAssistView("generativeAssistView").BannerTemplate("#bannerContent").PromptRequest("onPromptRequest").Created("onAssistViewCreated").EnableStreaming(true).ShowClearButton(true).PromptSuggestionsHeader("Suggested Prompts").PromptSuggestions((string[])ViewData["PromptSuggestionData"]).ToolbarSettings(new AIAssistViewToolbarSettings()
+            {
+                Items = ViewData["ToolbarItems"],
+                ItemClicked = "toolbarItemClicked"
+            }).Render()
+        </div>
+    </div>
+}
+
+@section PreScripts{
+    <script>
+        var blockData = @Html.Raw(Json.Encode(ViewData["BlockData"]));
+        var suggestions = @Html.Raw(Json.Encode(ViewData["PromptSuggestionData"]));
+        var aiAssistViewInstance;
+
+        function onAssistViewCreated() {
+            setTimeout(function () {
+                aiAssistViewInstance = document.getElementById('generativeAssistView').ej2_instances[0];
+                if (aiAssistViewInstance) {
+                    registerTools();
+                }
+            }, 500);
+        }
+
+        function onPromptRequest(args) {
+            setTimeout(function () {
+                if (args.prompt === "What is the weather in New York?") {
+                    aiAssistViewInstance.addPromptResponse({ blocks: blockData.cardBlockData });
+                }
+                else if (args.prompt === "What are France\"s GDP growth trends?") {
+                    aiAssistViewInstance.addPromptResponse({ blocks: blockData.chartBlockData });
+                }
+                else if (args.prompt === "How do smartphone sales perform across regions?") {
+                    aiAssistViewInstance.addPromptResponse({ blocks: blockData.gridBlockData });
+                }
+                else {
+                    var response = "For real-time prompt processing, connect the AIAssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
+                    aiAssistViewInstance.addPromptResponse(response);
+                }
+            }, 1000);
+        }
+
+        function toolbarItemClicked(args) {
+            if (args.item.iconCss === 'e-icons e-refresh') {
+                this.prompts = [];
+                this.promptSuggestions = suggestions;
+            }
+        }
+
+        function registerTools() {
+            aiAssistViewInstance.registerToolUI({
+                toolName: 'weather-card',
+                template: '<div tabindex="0" class="e-card" id="weather_card" role="button"><div class="e-card-header"><div class="e-card-header-caption"><div class="e-card-header-title">Today</div><div class="e-card-sub-title">New York - Scattered Showers.</div></div></div><div class="e-card-header weather_report"><div class="e-card-header-image"></div><div class="e-card-header-caption"><div class="e-card-header-title">1º / -4º</div><div class="e-card-sub-title">Chance for snow: 100%</div></div></div></div>'
+            });
+
+            aiAssistViewInstance.registerToolUI({
+                toolName: 'chart-tool',
+                template: '<div class="chartContainer" style="width: 100%; height: 400px;"></div>',
+                handler: function (container, args) {
+                    var Browser = ej.base.Browser;
+                    new ej.charts.Chart({
+                        primaryXAxis: {
+                            title: 'Years',
+                            interval: Browser.isDevice ? 2 : 1,
+                            labelIntersectAction: 'Rotate45',
+                            valueType: 'Category',
+                            majorGridLines: { width: 0 },
+                            minorGridLines: { width: 0 },
+                            majorTickLines: { width: 0 },
+                            minorTickLines: { width: 0 },
+                            lineStyle: { width: 0 }
+                        },
+                        primaryYAxis: {
+                            title: 'Growth (in Billion)',
+                            minimum: -3,
+                            maximum: 3,
+                            interval: 1,
+                            lineStyle: { width: 0 },
+                            majorTickLines: { width: 0 },
+                            majorGridLines: { width: 1 },
+                            minorGridLines: { width: 1 },
+                            minorTickLines: { width: 0 },
+                            labelFormat: '{value}B'
+                        },
+                        chartArea: { border: { width: 0 } },
+                        series: [
+                            { type: 'StackingColumn', dataSource: args.privateConsumptionData, xName: 'x', yName: 'y', name: 'Private Consumption' },
+                            { type: 'StackingColumn', dataSource: args.governmentConsumptionData, xName: 'x', yName: 'y', name: 'Government Consumption' },
+                            { type: 'StackingColumn', dataSource: args.investmentData, xName: 'x', yName: 'y', name: 'Investment' },
+                            { type: 'StackingColumn', dataSource: args.foreignTradeData, xName: 'x', yName: 'y', name: 'Net Foreign Trade' },
+                            { type: 'Line', dataSource: args.gdpData, xName: 'x', yName: 'y', name: 'GDP', width: 2, marker: { visible: true, width: 7, height: 7 } }
+                        ],
+                        width: '100%',
+                        height: '400px',
+                        title: 'Annual Growth GDP in France',
+                        tooltip: { enable: true, enableHighlight: true },
+                        legendSettings: { enableHighlight: true }
+                    }).appendTo(container.querySelector('.chartContainer'));
+                }
+            });
+
+            aiAssistViewInstance.registerToolUI({
+                toolName: 'sales-grid',
+                template: '<div class="gridContainer" style="width: 100%;"></div>',
+                handler: function (container, args) {
+                    var grid = new ej.grids.Grid({
+                        dataSource: args.gridData,
+                        columns: [
+                            { field: 'Region', headerText: 'Region', width: 150, textAlign: 'Center' },
+                            { field: 'Sales', headerText: 'Sales %', width: 120, textAlign: 'Center' },
+                            { field: 'Growth', headerText: 'Growth %', width: 120, textAlign: 'Center' },
+                            { field: 'Status', headerText: 'Status', width: 130, textAlign: 'Center' }
+                        ],
+                        allowPaging: false,
+                        pageSettings: { pageSize: 8 },
+                        width: 'min-content'
+                    });
+                    grid.appendTo(container.querySelector('.gridContainer'));
+                }
+            });
+
+            aiAssistViewInstance.prompts = [{
+                prompt: "What are France's GDP growth trends?",
+                blocks: blockData.chartBlockData
+            }];
+        }
+    </script>
+
+    <script id="bannerContent" type="text/x-jsrender">
+        <div class="banner-content">
+            <div class="e-icons e-assistview-icon"></div>
+            <h3>AI Assistance Generative UI</h3>
+            <i>Render interactive tools such as weather cards, charts, data grids etc directly inside AI responses.</i>
+        </div>
+    </script>
+}
+
+<style>
+    .generative-aiassistview {
+        height: 600px;
+        width: 60vw;
+        margin: 0 auto;
+    }
+
+        .generative-aiassistview .banner-content .e-assistview-icon:before {
+            font-size: 35px;
+        }
+
+        .generative-aiassistview .banner-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 330px;
+            text-align: center;
+        }
+
+    @@media only screen and (max-width: 750px) {
+        .generative-aiassistview {
+            width: 100%;
+        }
+    }
+
+    .generative-aiassistview .chartContainer {
+        width: max-content;
+    }
+
+        .generative-aiassistview .chartContainer svg text {
+            fill: rgba(0, 0, 0, 1);
+        }
+
+    body[class*="highcontrast"] .generative-aiassistview .chartContainer svg text,
+    body[class*="dark"] .generative-aiassistview .chartContainer svg text {
+        fill: white;
+    }
+
+    /* Weather Card Layout Customization */
+
+    .generative-aiassistview #weather_card.e-card {
+        background-image: url('https://ej2.syncfusion.com/javascript/demos/src/card/images/weather.png');
+        width: 420px;
+    }
+
+    .generative-aiassistview .material3-dark .e-card .e-card-header,
+    .generative-aiassistview .material-dark .e-card .e-card-header {
+        padding: 10px;
+    }
+
+    .generative-aiassistview #weather_card.e-card .e-card-header-caption .e-card-header-title,
+    .generative-aiassistview #weather_card.e-card .e-card-header-caption .e-card-sub-title {
+        color: white;
+    }
+
+    .generative-aiassistview .highcontrast #weather_card.e-card .e-card-header.weather_report .e-card-header-image {
+        border: none;
+    }
+
+    .generative-aiassistview #weather_card.e-card .weather_report .e-card-header-caption {
+        text-align: right;
+    }
+
+    .generative-aiassistview #weather_card.e-card .e-card-header.weather_report .e-card-header-image {
+        background-image: url('https://ej2.syncfusion.com/javascript/demos/src/card/images/rainy.svg');
+    }
+
+    .generative-aiassistview .col-xs-6.col-sm-6.col-lg-6.col-md-6 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .generative-aiassistview .card-layout {
+        margin: auto;
+        max-width: 400px;
+    }
+</style>
+
+@section Meta {
+    <meta name="description" content="This sample demonstrates how to render interactive generative UI tools directly within AI responses using user prompts in the AI AssistView control." />
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates how to render interactive generative UI tools directly within AI responses using user prompts in the AI AssistView control. By configuring an appropriate <code>system prompt</code>, the AI can generate well-structured prompts that automatically invoke the registered tools, enabling seamless integration of dynamic and interactive UI elements within responses.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>In this example, the AI AssistView is configured with the UI tools:</p>
+        <ul>
+            <li>The <code>addPromptResponse</code> method adds AI responses to the AIAssistView by accepting a blocks array that defines content structure. Tools are registered using <code>registerToolUI()</code>, which defines a template and handler function for rendering.</li>
+            <li>Tool registration - Three registered tools deliver rich content: <code>weather-card</code> for forecast displays, <code>chart-tool</code> for GDP growth visualization, and <code>sales-grid</code> for regional performance data.</li>
+            <li><a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#bannertemplate">bannerTemplate</a> - Customizes the initial banner content with icon and heading.</li>
+            <li><a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#promptsuggestions">promptSuggestions</a> - Provides predefined prompts for weather forecasts, sales analysis, and economic trend data.</li>
+            <li><a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#promptrequest">promptRequest</a> - Handles prompt execution and dynamically renders custom tools.</li>
+            <li><a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#enablestreaming">enableStreaming</a> - Enables real-time response streaming with simulated delay.</li>
+        </ul>
+    </div>
+}
+
+@section Title {
+    <title>ASP.NET MVC AI AssistView generative UI Example - Syncfusion Demos</title>
+}
+
+@section Header {
+    <h1 class='sb-sample-text'>Example of generative UI in ASP.NET MVC AI AssistView Control</h1>
+}

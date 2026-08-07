@@ -1,0 +1,78 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Buttons
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="fab-default-container">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 custom-index"  id="target1">
+                        @Html.EJS().Fab("Default1").Target("#target1").Position(FabPosition.MiddleCenter).HtmlAttributes(new Dictionary<string, object>() { { "title", "Contact" } }).CssClass("e-mic").IconCss("e-icons e-people").IsPrimary(false).Render()
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 custom-index" id="target2">
+                        @Html.EJS().Fab("Default2").Target("#target2").Position(FabPosition.MiddleCenter).Content("Contact").IconCss("e-icons e-people").Render()
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 custom-index" id="target3">
+                        @Html.EJS().Fab("Default3").Target("#target3").Position(FabPosition.MiddleCenter).Content("Disabled").IconCss("e-icons e-people").Disabled(true).Render()
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6 custom-index" id="target4">
+                        @Html.EJS().Fab("Default4").Target("#target4").Position(FabPosition.MiddleCenter).Content("Text Content").CssClass("e-warning").Render()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .fab-default-container {
+        width: 90%;
+        margin: 8% auto;
+        text-align: center;
+        max-width: 600px;
+    }
+
+    .custom-index {
+        z-index: 500 !important;
+    }
+
+    .fab-default-container .col-xs-12 {
+        position: relative;
+        margin: 15px 0;
+        min-height: 100px;
+    }
+    .fab-default-container .col-md-6 {
+        padding: 0;
+    }
+</style>
+@section Meta{
+    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC Chips control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the default functionalities of the Floating Action Button (FAB).
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, each FAB showcases the usage of <code>IconCss</code>, <code>CssClass</code>, <code>Content</code> and <code>Disabled</code> properties. Such as:
+        </p>
+        <ul>
+            <li>Icon only FAB</li>
+            <li>Icon with label FAB</li>
+            <li>Disabled FAB</li>
+            <li>Label Only FAB</li>
+        </ul>
+</div>
+}
+@section Title{
+    <title>ASP.NET MVC FAB DefaultFunctionalities Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC FAB Control</h1>
+}
