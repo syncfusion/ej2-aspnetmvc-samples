@@ -1,0 +1,198 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Charts
+
+@{
+    var temperatureGradient = new ChartLinearGradient
+    {
+        X1 = 0, Y1 = 0, X2 = 1, Y2 = 0,
+        GradientColorStop = new List<ChartGradientColorStop>
+        {
+            new ChartGradientColorStop { Color = "#FB923C", Offset = 0, Opacity = 1 },
+            new ChartGradientColorStop { Color = "#F97316", Offset = 55, Opacity = 1 },
+            new ChartGradientColorStop { Color = "#C2410C", Offset = 100, Opacity = 1 }
+        }
+    };
+
+    var co2Gradient = new ChartLinearGradient
+    {
+        X1 = 0, Y1 = 0, X2 = 1, Y2 = 0,
+        GradientColorStop = new List<ChartGradientColorStop>
+        {
+            new ChartGradientColorStop { Color = "#60A5FA", Offset = 0, Opacity = 1 },
+            new ChartGradientColorStop { Color = "#2563EB", Offset = 50, Opacity = 1 },
+            new ChartGradientColorStop { Color = "#1E40AF", Offset = 100, Opacity = 1 }
+        }
+    };
+
+    var seaIceGradient = new ChartLinearGradient
+    {
+        X1 = 0, Y1 = 0, X2 = 0, Y2 = 1,
+        GradientColorStop = new List<ChartGradientColorStop>
+        {
+            new ChartGradientColorStop { Color = "#10B981", Offset = 0, Opacity = 0.30 },
+            new ChartGradientColorStop { Color = "#34D399", Offset = 45, Opacity = 0.15 },
+            new ChartGradientColorStop { Color = "#ECFDF5", Offset = 100, Opacity = 0.02 }
+        }
+    };
+}
+
+@section ControlsSection {
+    <script id="co2Annotation" type="text/x-template">
+        <div class="climate-insight climate-insight-blue climate-insight-anchor-down">
+            <div class="climate-insight-marker climate-insight-marker-diamond"></div>
+            <div class="climate-insight-leader"></div>
+            <div class="climate-insight-pill">
+                <span class="climate-insight-pin climate-insight-pin-diamond"></span>
+                <span class="climate-insight-label">CO₂ seasonal peak</span>
+                <span class="climate-insight-value">430.5 ppm</span>
+            </div>
+        </div>
+    </script>
+
+    <script id="seaIceAnnotation" type="text/x-template">
+        <div class="climate-insight climate-insight-green climate-insight-anchor-up">
+            <div class="climate-insight-marker climate-insight-marker-rectangle"></div>
+            <div class="climate-insight-leader"></div>
+            <div class="climate-insight-pill">
+                <span class="climate-insight-pin climate-insight-pin-rectangle"></span>
+                <span class="climate-insight-label">Sea ice annual low</span>
+                <span class="climate-insight-value">4.68 M km²</span>
+            </div>
+        </div>
+    </script>
+
+    <script id="temperatureAnnotation" type="text/x-template">
+        <div class="climate-insight climate-insight-orange climate-insight-anchor-right">
+            <div class="climate-insight-marker climate-insight-marker-circle"></div>
+            <div class="climate-insight-leader"></div>
+            <div class="climate-insight-pill">
+                <span class="climate-insight-pin climate-insight-pin-circle"></span>
+                <span class="climate-insight-label">Hottest anomaly</span>
+                <span class="climate-insight-value">+1.75°C</span>
+            </div>
+        </div>
+    </script>
+
+    <div class="control-section" align="center">
+        <div class="climate-chart-container">
+            @(Html.EJS().Chart("container").Title("Global Climate Pulse").SubTitle("Monthly global climate signals during 2025 • Copernicus C3S • NOAA GML • NSIDC")
+                .TitleStyle(s => s.TextAlignment(Alignment.Near).FontFamily("Segoe UI").FontWeight("700").Size("24px").TextOverflow(TextOverflow.Wrap))
+                .SubTitleStyle(s => s.TextAlignment(Alignment.Near).FontFamily("Segoe UI").FontWeight("500").Size("13px").TextOverflow(TextOverflow.Wrap))
+                .PrimaryXAxis(axis => axis.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTimeCategory).IntervalType(IntervalType.Months).Interval(1).LabelFormat("MMM").EdgeLabelPlacement(EdgeLabelPlacement.Shift).PlotOffsetLeft(10).PlotOffsetRight(10).MajorGridLines(l => l.Width(0)).MinorGridLines(l => l.Width(0)).MajorTickLines(l => l.Width(0)).LineStyle(l => l.Width(0)).LabelStyle(s => s.FontFamily("Segoe UI").FontWeight("600").Size("12px")))
+                .PrimaryYAxis(axis => axis.Title("Temperature Anomaly (°C)").Minimum(1.2).Maximum(1.8).Interval(0.1).LabelFormat("{value}°C").EdgeLabelPlacement(EdgeLabelPlacement.Shift).MajorGridLines(l => l.Width(1).DashArray("3,4")).MinorGridLines(l => l.Width(0)).MajorTickLines(l => l.Width(0)).LineStyle(l => l.Width(1.5).Color("#F97316")).LabelStyle(s => s.FontFamily("Segoe UI").FontWeight("600").Size("12px").Color("#EA580C")).TitleStyle(s => s.FontFamily("Segoe UI").FontWeight("700").Size("13px").Color("#EA580C").TextAlignment(Alignment.Center)))
+                .Axes(axes =>
+                {
+                    axes.Name("CO2Axis").Title("Atmospheric CO₂ (ppm)").OpposedPosition(true).Minimum(422).Maximum(432).Interval(2).LabelFormat("{value} ppm").EdgeLabelPlacement(EdgeLabelPlacement.Shift).MajorGridLines(l => l.Width(0)).MinorGridLines(l => l.Width(0)).MajorTickLines(l => l.Width(0)).LineStyle(l => l.Width(1.5).Color("#2563EB")).LabelStyle(s => s.FontFamily("Segoe UI").FontWeight("600").Size("12px").Color("#2563EB")).TitleStyle(s => s.FontFamily("Segoe UI").FontWeight("700").Size("13px").Color("#2563EB").TextAlignment(Alignment.Center)).Add();
+                    axes.Name("SeaIceAxis").Title("Arctic Sea Ice (million km²)").OpposedPosition(true).Minimum(4).Maximum(16).Interval(2).LabelFormat("{value}M").EdgeLabelPlacement(EdgeLabelPlacement.Shift).MajorGridLines(l => l.Width(0)).MinorGridLines(l => l.Width(0)).MajorTickLines(l => l.Width(0)).LineStyle(l => l.Width(1.5).Color("#059669")).LabelStyle(s => s.FontFamily("Segoe UI").FontWeight("600").Size("12px").Color("#059669")).TitleStyle(s => s.FontFamily("Segoe UI").FontWeight("700").Size("13px").Color("#059669").TextAlignment(Alignment.Center)).Add();
+                })
+                .Annotations(a =>
+                {
+                    a.Content("#co2Annotation").X(0).Y(430.51).CoordinateUnits(Units.Point).Region(Regions.Chart).YAxisName("CO2Axis").Add();
+                    a.Content("#seaIceAnnotation").X(0).Y(4.68).CoordinateUnits(Units.Point).Region(Regions.Chart).YAxisName("SeaIceAxis").Add();
+                    a.Content("#temperatureAnnotation").X(0).Y(1.75).CoordinateUnits(Units.Point).Region(Regions.Chart).Add();
+                })
+                .Series(series =>
+                {
+                    series.Type(ChartSeriesType.Area).DataSource(ViewData["ChartPoints"]).Name("Arctic Sea Ice (million km²)").XName("Month").YName("SeaIceExtent").YAxisName("SeaIceAxis").Fill("#10B981").Opacity(1).Width(2.5).Border(b => b.Width(2.5).Color("#059669")).LinearGradient(seaIceGradient).Marker(m => m.Visible(true).Shape(ChartShape.Rectangle).Width(8).Height(8).IsFilled(true).Fill("#10B981")).Animation(a => a.Enable(true).Duration(1200).Delay(0)).Add();
+                    series.Type(ChartSeriesType.Line).DataSource(ViewData["ChartPoints"]).Name("Temperature Anomaly (°C)").XName("Month").YName("TemperatureAnomaly").Fill("#F97316").Width(4).LinearGradient(temperatureGradient).Marker(m => m.Visible(true).Shape(ChartShape.Circle).Width(8).Height(8).IsFilled(true).Fill("#F97316")).Animation(a => a.Enable(true).Duration(1400).Delay(450)).Add();
+                    series.Type(ChartSeriesType.Spline).SplineType(SplineType.Natural).DataSource(ViewData["ChartPoints"]).Name("Atmospheric CO₂ (ppm)").XName("Month").YName("AtmosphericCO2").YAxisName("CO2Axis").Fill("#2563EB").Width(3.5).LinearGradient(co2Gradient).Marker(m => m.Visible(true).Shape(ChartShape.Diamond).Width(8).Height(8).IsFilled(true).Fill("#2563EB")).Animation(a => a.Enable(true).Duration(1400).Delay(950)).Add();
+                })
+                .Tooltip(t => t.Enable(true).Shared(true).EnableMarker(true).Opacity(0.97).Header("<b>${point.x}</b>").Format("${series.name} : <b>${point.y}</b>"))
+                .Crosshair(c => c.Enable(true).LineType(LineType.Vertical).DashArray("4,4").Line(l => l.Width(1)))
+                .LegendSettings(l => l.Visible(true).Position(LegendPosition.Bottom).Alignment(Alignment.Center).ShapeWidth(10).ShapeHeight(10).ShapePadding(8).Padding(24).EnableHighlight(true).ToggleVisibility(false).TextStyle(s => s.FontFamily("Segoe UI").FontWeight("600").Size("12px")))
+                .ChartArea(a => a.Border(b => b.Width(0))).Load("load").Loaded("chartLoaded").LegendRender("legendRender").Render())
+        </div>
+    </div>
+
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        function load(args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? '100%' : '90%';
+            if (args.chart.annotations && args.chart.annotations.length >= 3) {
+                args.chart.annotations[0].x = new Date(2025, 4, 1);
+                args.chart.annotations[1].x = new Date(2025, 8, 1);
+                args.chart.annotations[2].x = new Date(2025, 0, 1);
+            }
+            var chartElement = args.chart.element;
+            if (args.chart.enableRtl) {
+                chartElement.classList.add('climate-chart-rtl');
+            } else {
+                chartElement.classList.remove('climate-chart-rtl');
+            }
+        }
+        function chartLoaded() {
+            var element = document.getElementById('container');
+            if (element) { element.setAttribute('title', ''); }
+        }
+        function legendRender(args) {
+            if (args.text === 'Temperature Anomaly (°C)') { args.shape = 'Circle'; args.fill = '#F97316'; }
+            else if (args.text === 'Atmospheric CO₂ (ppm)') { args.shape = 'Diamond'; args.fill = '#2563EB'; }
+            else if (args.text === 'Arctic Sea Ice (million km²)') { args.shape = 'Rectangle'; args.fill = '#10B981'; }
+        }
+    </script>
+
+    <style>
+        #control-container { padding: 0 !important; }
+        .climate-chart-container { width:100%; box-sizing:border-box; padding:18px 20px 8px; background:transparent; border:1px solid #dce5ef; border-radius:18px; box-shadow:0 1px 2px rgba(15,23,42,.03),0 10px 28px rgba(15,23,42,.06); }
+        .climate-feature-list { margin:12px 0; padding-left:24px; list-style-type:disc; }
+        .climate-feature-list li { display:list-item; margin-bottom:6px; }
+        .climate-insight { position:relative; width:0; height:0; pointer-events:none; }
+        .climate-insight-marker { position:absolute; top:-7px; left:-7px; z-index:3; width:14px; height:14px; box-sizing:border-box; border:2px solid #fff; background:currentColor; }
+        .climate-insight-marker-circle { border-radius:50%; }
+        .climate-insight-marker-diamond { transform:rotate(45deg); }
+        .climate-insight-marker-rectangle { border-radius:2px; }
+        .climate-insight-leader { position:absolute; z-index:2; background:currentColor; opacity:.55; }
+        .climate-insight-pill { position:absolute; z-index:2; display:inline-flex; align-items:center; gap:8px; min-height:32px; box-sizing:border-box; padding:6px 12px 6px 8px; border:1px solid #dbe4ee; border-radius:8px; background:var(--sf-chart-bg,#fff); box-shadow:0 6px 16px rgba(15,23,42,.12); color:#334155; font-family:"Segoe UI",sans-serif; font-size:11px; font-weight:600; line-height:14px; white-space:nowrap; }
+        .climate-insight-anchor-down .climate-insight-pill { top:34px; left:0; transform:translate(-50%,0); }
+        .climate-insight-anchor-down .climate-insight-leader { top:9px; left:0; width:1.5px; height:23px; transform:translateX(-50%); }
+        .climate-insight-anchor-up .climate-insight-pill { top:-34px; left:0; transform:translate(-50%,-100%); }
+        .climate-insight-anchor-up .climate-insight-leader { top:-32px; left:0; width:1.5px; height:23px; transform:translateX(-50%); }
+        .climate-insight-anchor-right .climate-insight-pill { top:0; left:34px; transform:translate(0,-50%); }
+        .climate-insight-anchor-right .climate-insight-leader { top:0; left:9px; width:23px; height:1.5px; transform:translateY(-50%); }
+        /* Open the temperature annotation toward the left in RTL mode. */
+        .climate-chart-rtl .climate-insight-anchor-right .climate-insight-pill { right: 34px; left: auto; transform: translate(0, -50%); }
+        .climate-chart-rtl .climate-insight-anchor-right .climate-insight-leader { right: 9px; left: auto; width: 23px; height: 1.5px; transform: translateY(-50%); }
+        .climate-insight-pin { width:9px; height:9px; flex:0 0 9px; }
+        .climate-insight-pin-circle { border-radius:50%; }
+        .climate-insight-pin-diamond { transform:rotate(45deg); }
+        .climate-insight-pin-rectangle { border-radius:1.5px; }
+        .climate-insight-label { color:#334155; font-weight:600; }
+        .climate-insight-value { padding:1px 6px; border-radius:4px; background:rgba(15,23,42,.04); font-weight:700; }
+        .climate-insight-blue { color:#2563eb; }
+        .climate-insight-blue .climate-insight-pin { background:#2563eb; }
+        .climate-insight-blue .climate-insight-value { color:#1d4ed8; background:rgba(37,99,235,.1); }
+        .climate-insight-green { color:#059669; }
+        .climate-insight-green .climate-insight-pin { background:#059669; }
+        .climate-insight-green .climate-insight-value { color:#047857; background:rgba(5,150,105,.1); }
+        .climate-insight-orange { color:#ea580c; }
+        .climate-insight-orange .climate-insight-pin { background:#ea580c; }
+        .climate-insight-orange .climate-insight-value { color:#c2410c; background:rgba(234,88,12,.1); }
+        @@media only screen and (max-width:640px) {
+            .climate-chart-container { padding:12px 8px 6px; border-radius:12px; }
+            .climate-insight-pill { min-height:26px; gap:5px; padding:4px 8px 4px 6px; font-size:10px; line-height:12px; }
+            .climate-insight-value { display:none; }
+        }
+    </style>
+}
+
+@section Meta {
+    <meta name="description" content="This example demonstrates a multi-axis combination chart in the ASP.NET MVC Chart control." />
+}
+@section ActionDescription {
+    <p>This example visualizes monthly global climate signals during 2025 using temperature anomaly, atmospheric CO₂, and Arctic sea ice extent data. Multiple axes compare measurements with different units and value ranges in a single chart.</p>
+}
+@section Description {
+    <p>The chart demonstrates how unrelated datasets with different value ranges can be plotted together for a unified view of climate signals.</p>
+    <ul class="climate-feature-list">
+        <li>An area series for Arctic sea ice extent on the outer-right Y axis.</li>
+        <li>A line series for temperature anomalies on the primary Y axis.</li>
+        <li>A spline series for atmospheric CO₂ on the inner-right Y axis.</li>
+        <li>Distinct color-coded axes, labels, and legends for each measurement.</li>
+        <li>Annotations highlighting the temperature anomaly peak, seasonal CO₂ peak, and annual sea ice minimum.</li>
+    </ul>
+    <p><code>Tooltip</code> and <code>Crosshair</code> are enabled. Hover over a point or tap one on a touch-enabled device to display the shared tooltip.</p>
+    <p>More information about multiple axes can be found in this <a target="_blank" rel="noopener noreferrer" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/axis-customization#multiple-axis" aria-label="Navigate to the multiple axes documentation">documentation section<span class="sr-only"> opens in a new tab</span></a>.</p>
+}
+@section Title { <title>ASP.NET MVC Chart Multi-Axis Combination Example - Syncfusion Demos</title> }
+@section Header { <h1 class="sb-sample-text">Example of Multi-Axis Combination Chart in ASP.NET MVC Chart Control</h1> }

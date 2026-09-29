@@ -1,0 +1,76 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "UndoRedo";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("UndoRedo").DataSource((IEnumerable<object>)ViewData["DataSource"])
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
+                .Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Notes"))
+                .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
+                .Toolbar(new List<string>() { "Add", "Edit", "Update", "Delete", "Cancel","Search", "Undo", "Redo" })
+                .AllowSelection(true).EnableUndoRedo(true)
+                .UndoRedoActions(new List<string>() { "Sorting", "Add", "ColumnReorder", "ColumnResize", "ColumnState", "Delete", "Edit", "Filtering", "Indent", "Outdent", "NextTimeSpan", "PreviousTimeSpan", "RowDragAndDrop", "Search" })
+                .GridLines(Syncfusion.EJ2.Gantt.GridLine.Both).EnableContextMenu(true).AllowResizing(true).AllowSorting(true)
+                .Height("450px").TreeColumnIndex(1).HighlightWeekends(true).TimelineSettings(tl => tl.TopTier(tt =>
+                    tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week).Format("MMM dd, y")).
+                BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))).Columns(col =>
+                {
+                    col.Field("TaskId").Width(80).Add();
+                    col.Field("TaskName").HeaderText("Job Name").Width(250).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("Duration").Add();
+                    col.Field("Progress").Add();
+                    col.Field("Predecessor").Add();
+                })
+                .LabelSettings(ls => ls.LeftLabel("TaskName"))
+                .EditDialogFields(edf =>
+                {
+                    edf.Type(Syncfusion.EJ2.Gantt.DialogFieldType.General).Add();
+                    edf.Type(Syncfusion.EJ2.Gantt.DialogFieldType.Dependency).Add();
+                    edf.Type(Syncfusion.EJ2.Gantt.DialogFieldType.Notes).Add();
+                })
+                .ProjectStartDate("03/25/2024")
+                .ProjectEndDate("07/28/2024")
+                .Render()
+            )
+        </div>
+    </div>
+}
+
+@section ActionDescription {
+    <div id="action-description">
+        <p>This sample showcases the undo-redo functionality in the Gantt Chart, allowing users to revert or reapply their recent actions such as task edits, additions, and deletions.</p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Undo Redo in ASP.NET MVC Gantt control. Explore here for more details." />
+}
+
+@section Description {
+    <div id="description">
+         <p>The undo feature lets users reverse the most recent changes made to tasks, dependencies, columns, or timeline settings. The redo feature restores actions that were previously undone. Both can be triggered using keyboard shortcuts (<code>Ctrl + Z</code> for Undo, <code>Ctrl + Y</code> for Redo on Windows/Linux or <code>Cmd + Z</code> / <code>Cmd + Shift + Z</code> on Mac) or via toolbar buttons.</p>
+        <p>
+            You can configure which actions are tracked using the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_UndoRedoActions">undoRedoActions</a> property. Supported actions include: 
+            <code>Edit</code>, <code>Add</code>, <code>Delete</code>, <code>Sorting</code>, <code>ColumnReorder</code>, <code>ColumnResize</code>, <code>Search</code>, <code>Filtering</code>, <code>ZoomIn</code>, <code>ZoomOut</code>, <code>ZoomToFit</code>, <code>ColumnState</code>, <code>Indent</code>, <code>Outdent</code>, <code>RowDragAndDrop</code>, <code>TaskbarDragAndDrop</code>, <code>PreviousTimeSpan</code>, and <code>NextTimeSpan</code>
+        </p>
+        <p>The number of undo-redo steps stored can be controlled using the <code>undoRedoStepsCount</code> property, which defaults to 10.</p>
+        <p>
+            In this demo, the undo-redo feature is enabled by setting <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_EnableUndoRedo">
+            enableUndoRedo</a> to <code>true</code>
+        </p>
+        <p>More information on the Essential<sup>®</sup> JS2 Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/undo-redo">undo redo</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full ASP.NET MVC Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-gantt-chart">ASP.NET MVC Gantt Chart</a> page.</p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Undo Redo Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Undo Redo in ASP.NET MVC Gantt Control</h1>
+}

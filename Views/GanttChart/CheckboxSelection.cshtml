@@ -1,0 +1,123 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@{
+    ViewData["Title"] = "CheckboxSelection";
+}
+
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("CheckboxSelection").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("450px").HighlightWeekends(true)
+                .AllowSelection(true).TreeColumnIndex(2)
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration")
+                .Progress("Progress").Dependency("Predecessor").ParentID("ParentID"))
+                .LabelSettings(ls => ls.LeftLabel("TaskName"))
+                .SelectionSettings(ss => ss.Mode(Syncfusion.EJ2.Grids.SelectionMode.Row).Type(Syncfusion.EJ2.Grids.SelectionType.Multiple)
+                .EnableToggle(false)).SplitterSettings(sp => sp.ColumnIndex(3))
+                .EnableHover(true)
+                .AllowFiltering(true)
+                .HierarchyCheckboxMode(Syncfusion.EJ2.Gantt.HierarchyCheckboxMode.Hierarchy)
+                .AllowResizing(true)
+                .ProjectStartDate("03/26/2025")
+                .ProjectEndDate("06/13/2025")
+                .Toolbar(new List<string> { "Search" })
+                .Columns(col =>
+                {
+                    col.Field("CheckBox").HeaderText("").ShowCheckbox(true).Width(70).AllowFiltering(false).Add();
+                    col.Field("TaskId").Visible(false).Add();
+                    col.Field("TaskName").Width(260).HeaderText("Task Name").AllowReordering(false).Add();
+                    col.Field("StartDate").HeaderText("Start Date").Width(140).Add();
+                    col.Field("Predecessor").Width(190).HeaderText("Predecessor").Add();
+                    col.Field("Duration").HeaderText("Duration").AllowEditing(false).Add();
+                    col.Field("Progress").HeaderText("Progress").Add();
+                })
+                .Render()
+            )
+        </div>
+    </div>
+
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties">
+            <tr>
+                <td style="width: 100%">
+                    <div style="fontSize: 15px">
+                        Hierarchy Checkbox Selection Mode
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 100%;padding-right: 5px">
+                    <div style="width: 150px">
+                        @(Html.EJS().DropDownList("SelectionModeList").DataSource((IEnumerable<object>)ViewData["Data1"]).PopupWidth("100px")
+                            .Fields(new DropDownListFieldSettings { Text = "type", Value = "id" }).Value("hierarchy").Change("ChangeMode")
+                            .Render()
+                        )
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function ChangeMode(e) {
+            var mode = e.value;
+            var gantt = document.getElementById("CheckboxSelection").ej2_instances[0];
+            gantt.hierarchyCheckboxMode = mode;
+            gantt.refresh();
+        }
+    </script>
+    <style>
+    body.tailwind3 #CheckboxSelection.e-gantt .e-gantt-tree-grid-pane .e-headercell,
+    body.tailwind3-dark #CheckboxSelection.e-gantt .e-gantt-tree-grid-pane .e-headercell {
+      padding: 0px 8px !important;
+    }
+    </style>
+
+}
+
+@section ActionDescription {
+    <div id="action-description">
+        <p>
+            This sample demonstrates hierarchy-based checkbox selection in the Gantt Chart. It allows configuring how checkbox selection is propagated across parent and child task records using different hierarchy modes.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Checkbox Selection in ASP.NET MVC Gantt control. Explore here for more details." />
+}
+
+@section Description {
+    <div id="description">
+        <p>
+            The hierarchy checkbox selection feature simplifies parent-child selection management by automatically handling descendant propagation and ancestor state calculations. It supports parent selection, child selection, and indeterminate checkbox states without requiring custom implementation. The hierarchy selection behavior can be configured using the
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_HierarchyCheckboxMode">hierarchyCheckboxMode</a>
+            property.
+        </p>
+        <p>
+            The following hierarchy checkbox modes are supported:
+        </p>
+        <ul>
+            <li>
+                <code>self</code> - Selecting or deselecting a checkbox affects only the current row. Parent and child records remain unchanged.
+            </li>
+            <li>
+                <code>hierarchy</code> - Selecting a parent record automatically selects all descendant records. Child selection updates the corresponding parent state and displays indeterminate states when applicable.
+            </li>
+            <li>
+                <code>filteredHierarchy</code> - Works similar to <code>hierarchy</code>, but checkbox propagation is applied only to the currently visible records after filtering or searching.
+            </li>
+        </ul>
+
+        <p>More information on the Essential<sup>®</sup> ASP.NET MVC Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/selection/selection">selection</a> documentation section.</p>
+        <br />
+        <p>Looking for the full ASP.NET MVC Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-gantt-chart">ASP.NET MVC Gantt Chart</a> page.</p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Checkbox Selection Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Checkbox Selection in ASP.NET MVC Gantt Control</h1>
+}

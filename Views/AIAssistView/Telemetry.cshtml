@@ -1,0 +1,106 @@
+@using Syncfusion.EJ2.InteractiveChat
+@using Syncfusion.EJ2
+@using Newtonsoft.Json
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="telemetry-aiassistview">
+            @Html.EJS().AIAssistView("telemetryAssistView").ToolbarSettings(new AIAssistViewToolbarSettings() { Items = ViewData["ToolbarItems"], ItemClicked = "toolbarItemClicked" }).PromptSuggestions((string[])ViewData["PromptSuggestionData"]).BannerTemplate("#bannerContent").PromptRequest("onPromptRequest").Created("onCreated").EnableStreaming(true).TelemetrySettings(new AIAssistViewTelemetrySettings() { Enable = true }).Render()
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+
+        .telemetry-aiassistview {
+            height: 600px;
+            width: 60vw;
+            margin: 0 auto;
+        }
+
+            .telemetry-aiassistview .banner-content .e-assistview-icon:before {
+                font-size: 35px;
+            }
+
+            .telemetry-aiassistview .banner-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 330px;
+                text-align: center;
+            }
+
+        @@media only screen and (max-width: 750px) {
+            .telemetry-aiassistview {
+                width: 100%;
+            }
+        }
+    </style>
+    @*custom code end*@
+}
+
+@section PreScripts {
+    <script>
+        var telemetryAIAssistView;
+        var prompts = @Html.Raw(Json.Encode(ViewData["PromptResponseData"]));
+        var suggestions = @Html.Raw(Json.Encode(ViewData["PromptSuggestionData"]));
+
+        function onCreated() {
+            var assistEle = document.getElementById('telemetryAssistView');
+            telemetryAIAssistView = ej.base.getInstance(assistEle, ejs.interactivechat.AIAssistView);
+        }
+
+        async function onPromptRequest(args) {
+            var matched = prompts.find(function (data) { return data.Prompt === args.prompt; });
+            var responseText = matched
+                ? matched.Response
+                : "For real-time prompt processing, connect the AI AssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
+
+            // MOCK data
+            var telemetryData = {
+                model: "gpt-4o-mini",
+                inputTokens: args.prompt.length,
+                outputTokens: responseText.length,
+                reasoningTokens: 0,
+                cachedInputTokens: 0
+            };
+
+            telemetryAIAssistView.addPromptResponse(responseText, true, telemetryData);
+            telemetryAIAssistView.promptSuggestions = (matched && matched.SuggestionData && matched.SuggestionData.length)
+                ? matched.SuggestionData
+                : suggestions;
+        }
+
+        function toolbarItemClicked(args) {
+            if (args.item.iconCss === 'e-icons e-refresh') {
+                telemetryAIAssistView.prompts = [];
+                telemetryAIAssistView.promptSuggestions = suggestions;
+            }
+        }
+    </script>
+    <script id="bannerContent" type="text/x-jsrender">
+        <div class="banner-content">
+            <div class="e-icons e-assistview-icon"></div>
+            <h3>AI Telemetry</h3>
+            <i>Send a prompt or pick a suggestion to see telemetry metrics for the turn.</i>
+        </div>
+    </script>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Telemetry functionality in ASP.NET MVC AIAssistView control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the telemetry functionality in the AI AssistView. When enabled, it captures per-turn metrics such as response duration, streaming chunks, model identifier, and token usage, and reports them on every response.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>In this example, the <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#telemetrysettings">telemetrySettings</a> <code>enable</code> property is set to <code>true</code>, so each prompt/response turn automatically reports its metrics. Additionally, the <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#bannertemplate">bannerTemplate</a> customizes the banner content, and <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#toolbarsettings">toolbarSettings</a> adds custom toolbar items like a right-aligned <code>Refresh</code> button. The <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#promptsuggestions">promptSuggestions</a> provides AI prompt suggestions, and <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#promptrequest">promptRequest</a> handles prompt requests when triggered. Hover the duration chip shown in the response toolbar to inspect the metric breakdown for that turn.</p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC AIAssistView Telemetry Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Telemetry in ASP.NET MVC AIAssistView Control</h1>
+}

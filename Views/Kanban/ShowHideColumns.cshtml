@@ -1,0 +1,108 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Kanban
+
+@section ControlsSection {
+<div class="col-lg-9 control-section">
+    <div class="control_wrapper">
+        @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col=> {
+       col.HeaderText("To Do").KeyField("Open").Add();
+       col.HeaderText("In Progress").KeyField("InProgress").Add();
+       col.HeaderText("In Review").KeyField("Review").Add();
+       col.HeaderText("Done").KeyField("Close").Add();
+   }).CardSettings(card =>  {
+           card.ContentField("Summary").HeaderField("Id");
+       }).Created("onCreate").Render()
+
+    </div>
+</div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Show/Hide Columns">
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.EJS().CheckBox("Open").Checked(true).Change("onChange").Label("To Do").Render()
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EJS().CheckBox("InProgress").Checked(true).Change("onChange").Label("In Progress").Render()
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EJS().CheckBox("Review").Checked(true).Change("onChange").Label("In Review").Render()
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.EJS().CheckBox("Close").Checked(true).Change("onChange").Label("Done").Render()
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var kanbanObj;
+        function onCreate() {
+            kanbanObj = this;
+        }
+        function onChange(args) {
+            if (args.checked) {
+                kanbanObj.showColumn(this.element.id);
+            } else {
+                kanbanObj.hideColumn(this.element.id);
+            }
+        }
+    </script>
+    <style>
+        #property tr {
+            height: 50px;
+        }
+    </style>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates dynamic column visibility management in the Kanban component, allowing users to customize the board layout by showing or hiding columns as needed.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+    <p>
+        This sample demonstrates how to dynamically manage column visibility in the Kanban component using the available public methods.
+    </p>
+    <ul>
+        <li>
+            <a href="https://ej2.syncfusion.com/documentation/api/kanban/index-default#showcolumn" target="_blank">showColumn</a>:
+            Displays a hidden column based on the specified <code>keyField</code> value.
+        </li>
+        <li>
+            <a href="https://ej2.syncfusion.com/documentation/api/kanban/index-default#hidecolumn" target="_blank">hideColumn</a>:
+            Hides a visible column based on the specified <code>keyField</code> value.
+        </li>
+    </ul>
+    <p>
+        These methods enable users to customize the board layout by controlling the visibility of workflow stages at runtime.
+    </p>
+    <p>
+        More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this
+        <a href="https://ej2.syncfusion.com/documentation/api/kanban/index-default#showcolumn" target="_blank">show column</a> documentation section.
+    </p>
+        <p>
+            Looking for the full ASP.NET Core Kanban component overview, features, pricing, and documentation?
+            Visit the <a href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-kanban-board" target="_blank">ASP.NET MVC</a> page.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Show Hide Columns in ASP.NET MVC Kanban control. Explore here for more details."/>
+                }
+
+@section Title{
+                    <title>ASP.NET MVC Kanban Show Hide Columns Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Show Hide Columns in ASP.NET MVC Kanban Control</h1>
+                }

@@ -1,0 +1,134 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().CircularGauge("clock").Load("gaugeLoad").Loaded("gaugeLoaded").Background("transparent").Axes(axes => axes
+        .Radius("90%").StartAngle(0).EndAngle(0).Minimum(0).Maximum(12).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).Offset(10).HiddenLabel(HiddenLabel.First))
+        .Pointers(pointer => { pointer.Value(10.2).Radius("70%").PointerWidth(3).NeedleStartWidth(2).Cap(cap => cap.Radius(5).Color("white").Border(border => border.Color("#00A8B5").Width(1))).Animation(animation => animation.Enable(false)).NeedleTail(needleTail => needleTail.Length("0%")).Add();
+            pointer.Value(2).Radius("100%").PointerWidth(3).NeedleStartWidth(1).Cap(cap => cap.Radius(5).Color( "white").Border(border => border.Color("#00A8B5").Width(1))).Animation(animation => animation.Enable(false)).NeedleTail(needleTail => needleTail.Length("0%")).Add();
+            pointer.Value(12).Radius("90%").PointerWidth(3).Color("#00A8B5").NeedleStartWidth(1).Cap(cap => cap.Radius(5).Color("white").Border(border => border.Color("#00A8B5").Width(1))).Animation(animation => animation.Enable(false)).NeedleTail(needleTail => needleTail.Length("25%").Color("#00A8B5")).Add(); })
+        .LineStyle(lineStyle => lineStyle.Width(2))
+        .MinorTicks(minorTick => minorTick.Height(10).Width(1).Interval(0.2).Offset(5)).MajorTicks(majorTick => majorTick.Height(15).Width(2).Interval(1).Offset(5))
+        .Add()).Render()
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        var circulargauge;
+        var pointerInterval;
+        var needlePointer = 0.2;
+        function gaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+            circulargauge = sender.gauge;
+        }
+        function gaugeLoaded(sender) {
+            circulargauge.axes[0].annotations = [{
+                angle: 290, radius: '0%', zIndex: '1',
+                content: '<div id="subGaugeOne" style="margin-left: -50%"></div>'
+            }, {
+                angle: 90, radius: '0%', zIndex: '1',
+                content: '<div id="subGaugeTwo" style="margin-left: -110%;margin-top: -50%;"></div>'
+            }];
+
+            var subGauge1 = new ej.circulargauge.CircularGauge({
+                width: '150px',
+                height: '150px',
+                background: 'transparent',
+                axes: [{
+                    labelStyle: { hiddenLabel: 'First', font: { fontFamily: 'inherit', size: '7px' }, offset: -5 },
+                    majorTicks: { interval: 2, offset: 2 },
+                    minorTicks: { interval: 0.4, offset: 2 }, minimum: 0, maximum: 12,
+                    pointers: [{
+                        value: 5,
+                        radius: '50%', pointerWidth: 2, color: '#00A8B5',
+                        animation: { enable: false }, cap: { radius: 0 }, needleTail: { length: '0%' }
+                    }], startAngle: 0, endAngle: 0, radius: '70%', lineStyle: { width: 2 }
+                }],
+                load: function (sender) {
+                    @* custom code start *@
+                    var selectedTheme = themeName ? themeName : 'Material';
+                    sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+                    @* custom code end *@
+                }
+            });
+
+
+            var subGauge2 = new ej.circulargauge.CircularGauge({
+                width: '150px',
+                height: '150px',
+                background: 'transparent',
+                axes: [{
+                    labelStyle: { hiddenLabel: 'First', font: { fontFamily: 'inherit', size: '7px' }, offset: -5 },
+                    majorTicks: { offset: 2, interval: 2 },
+                    minorTicks: { offset: 2, interval: 0.4 }, minimum: 0, maximum: 12,
+                    pointers: [{
+                        value: 8,
+                        radius: '50%', pointerWidth: 2, color: '#00A8B5',
+                        animation: { enable: false }, cap: { radius: 0 }, needleTail: { length: '0%' }
+                    }], startAngle: 0, endAngle: 0, radius: '70%', lineStyle: { width: 2 }
+                }],
+                load: function (sender) {
+                    @* custom code start *@
+                    var selectedTheme = themeName ? themeName : 'Material';
+                    sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+                    @* custom code end *@
+                }
+            });
+            subGauge1.appendTo('#subGaugeOne');
+            subGauge2.appendTo('#subGaugeTwo');
+        }
+
+        var pointerInterval = setInterval(function () {
+            if (document.getElementById('clock')) {
+                if (needlePointer <= 12) {
+                    circulargauge.setPointerValue(0, 2, needlePointer);
+                    needlePointer += 0.2;
+                } else {
+                    needlePointer = 0.2;
+                }
+            } else {
+                clearInterval(+pointerInterval);
+            }
+        }, 1000);
+
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates how to create an analog clock that displays the time.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Clock in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, a clock has been created by adding axis, minor ticks, major ticks, and needles in a circular gauge and customizing it accordingly. In addition, the clock ticks, displaying the time in a lively manner.
+        </p>
+        <p>
+            More information on the circular gauge can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/getting-started" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+
+
+@section Title{
+    <title>ASP.NET MVC Circular Gauge Clock Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Clock in ASP.NET MVC Circular Gauge Control</h1>
+}

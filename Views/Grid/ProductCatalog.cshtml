@@ -1,0 +1,647 @@
+﻿@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@{
+    ViewData["Title"] = "ProductCatalog";
+}
+@section ControlsSection{
+        <div class="control-section">
+        @Html.EJS().Grid("ProductGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).Height("520px").AllowSorting(true).AllowFiltering(true).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Excel); }).DetailTemplate("#detailtemplate").DetailDataBound("detailDataBound").Columns(col =>
+            {
+                col.Field("ProductID")
+                    .HeaderText("ID")
+                    .Width("80")
+                    .TextAlign(Syncfusion.EJ2.Grids.TextAlign.Left)
+                    .IsPrimaryKey(true)
+                    .Type("number")
+                    .Add();
+
+                col.Field("ProductName")
+                    .HeaderText("Product")
+                    .Width("130")
+                    .Template("#productTemplate")
+                    .TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center)
+                    .Add();
+
+                col.Field("Category")
+                    .HeaderText("Category")
+                    .Width("110")
+                    .TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center)
+                    .Add();
+
+                col.HeaderText("Sales")
+                    .Width("70")
+                    .TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center)
+                    .Template("#salesTemplate")
+                    .Add();
+
+                col.Field("Price")
+                    .HeaderText("Price")
+                    .Width("70")
+                    .TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right)
+                    .Format("C2")
+                    .Add();
+                            
+                col.Field("Status")
+                    .HeaderText("Status")
+                    .Width("100")
+                    .TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center)
+                    .Template("#statusTemplate")
+                    .Add();
+            }).Render()
+    </div>
+
+
+ @*  detail template *@
+<script id="detailtemplate" type="text/x-template">
+        <div class="detail-page">
+            <div class="detail-top">
+                <div class="product-detail-wrapper">
+                    <div class="detail-grid">
+                        <!-- Product Description Card -->
+                        <div class="e-card">
+                            <div class="e-card-header">
+                                <div class="e-card-header-caption">
+                                    <div class="e-card-title">Product Description</div>
+                                </div>
+                            </div>
+                            <div class="e-card-content">
+                                <div class="product-description-text">${ProductDescription}</div>
+                                <h4 class="sub-title">Key Highlights</h4>
+                                <ul class="highlight-list">
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Technical Specifications Card -->
+                        <div class="e-card">
+                            <div class="e-card-header">
+                                <div class="e-card-header-caption">
+                                    <div class="e-card-title">
+                                        Technical Specifications
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="e-card-content specification-content">
+                            </div>
+                        </div>
+
+                        <!-- Pricing Details Card -->
+                        <div class="e-card">
+                            <div class="e-card-header">
+                                <div class="e-card-header-caption">
+                                    <div class="e-card-title">Pricing Details</div>
+                                </div>
+                            </div>
+                            <div class="e-card-content">
+                                <div class="info-row">
+                                    <span>Current Price</span>
+                                    <span class="current-price">${formatCurrency(Price)}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span>Original Price</span>
+                                    <span class="original-price">${formatCurrency(OriginalPrice)}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span>Discount</span>
+                                    <span class="discount-price">${getDiscount(OriginalPrice, Price)}%</span>
+                                </div>
+                                <div class="info-row">
+                                    <span>Cost Price</span>
+                                    <span class="cost-price">${formatCurrency(CostPrice)}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span>Profit Margin</span>
+                                    <span class="profit-price">${ProfitMargin}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    @*  product column *@
+    <script id="productTemplate" type="text/x-template">
+        ${productTemplate(data)}
+    </script>
+
+    <script id="statusTemplate" type="text/x-template">
+        ${statusTemplate(data)}
+    </script>
+
+
+    <script id="salesTemplate" type="text/x-template">
+        ${salesTemplate(data)}
+    </script>
+
+    <script type="text/javascript">
+
+        function salesTemplate(e) {
+
+            var trend =
+                ((e.SalesMonth3 - e.SalesMonth2) /
+                    Math.max(e.SalesMonth2, 1)) * 100;
+
+            var div = document.createElement('div');
+            div.className = 'sales-cell-inline';
+
+            div.innerHTML =
+                '<span class="sales-number">' +
+                e.SalesMonth3.toLocaleString() +
+                '</span>' +
+                '<span class="sales-growth ' +
+                (trend >= 0 ? 'positive' : 'negative') +
+                '">' +
+                (trend >= 0 ? ' ↑ ' : ' ↓ ') +
+                Math.abs(trend).toFixed(1) +
+                '%' +
+                '</span>';
+
+            return div.outerHTML;
+        }
+
+        function statusTemplate(e) {
+
+            var badgeClass =
+                e.Status === 'In Stock'
+                    ? 'status-badge-success'
+                    : 'status-badge-error';
+
+            var div = document.createElement('div');
+            div.className = 'status-cell';
+
+            div.innerHTML =
+                '<span class="status-badge ' + badgeClass + '">' +
+                e.Status +
+                '</span>' +
+                '<div class="status-units">' +
+                e.Units +
+                ' units</div>';
+
+            return div.outerHTML;
+        }
+                
+        function productTemplate(e) {
+
+            var container = document.createElement('div');
+            container.className = 'product-cell';
+
+            var image = document.createElement('img');
+            image.className = 'product-image';
+            image.src = '../Content/images/productCatalog/' + e.ProductName + '.png';
+            image.alt = e.ProductName;
+
+            var content = document.createElement('div');
+            content.className = 'product-copy';
+
+            var productName = document.createElement('div');
+            productName.className = 'product-name';
+            productName.textContent = e.ProductName;
+
+            var meta = document.createElement('div');
+            meta.className = 'product-meta';
+
+            var description = document.createElement('span');
+            description.className = 'product-description';
+            description.textContent = e.Description;
+
+            var sku = document.createElement('span');
+            sku.className = 'product-sku';
+            sku.textContent = 'SKU: ' + e.SKU;
+
+            meta.appendChild(description);
+            meta.appendChild(sku);
+
+            content.appendChild(productName);
+            content.appendChild(meta);
+
+            container.appendChild(image);
+            container.appendChild(content);
+
+            return container.outerHTML;
+        }
+
+        function detailDataBound(args) {
+            var list = args.detailElement.querySelector('.highlight-list');
+            if (!list) {
+                return;
+            }
+            var highlights = args.data.Highlights;
+            if (!highlights) {
+                return;
+            }
+            if (typeof highlights === 'string') {
+                highlights = highlights.split(',');
+            }
+            list.innerHTML = '';
+            highlights.forEach(function (item) {
+                var li = document.createElement('li');
+                li.innerHTML =
+                    '<span class="bullet"></span>' +
+                    '<span>' + item + '</span>';
+                list.appendChild(li);
+             });
+
+            const specContainer =
+                args.detailElement.querySelector('.specification-content');
+
+            if (specContainer && args.data.Specifications) {
+
+                let html = '';
+
+                Object.keys(args.data.Specifications).forEach(function (key) {
+                    html +=
+                        '<div class="info-row">' +
+                            '<span>' + key + '</span>' + args.data.Specifications[key] +
+                        '</div>';
+                });
+
+                specContainer.innerHTML = html;
+            }
+        }
+
+        function getDiscount(original, price) {
+            original = (original === 0 || original == null) ? 1 : original;
+            return Math.round(((original - price) / original) * 100);
+        }
+        function formatCurrency(v) {
+            var n = Number(v);
+            if (isNaN(n)) n = 0;
+            return '$' + n.toLocaleString();
+        }
+        
+    </script>
+    
+    <style type="text/css" class="cssStyles">
+
+        #ProductGrid .product-cell {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 0;
+            height: 100%;
+            text-align: left;
+        }
+
+        #ProductGrid .product-image {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            min-height: 52px;
+            border-radius: 10px;
+            object-fit: cover;
+            display: block;
+        }
+
+        #ProductGrid .product-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            min-width: 0;
+            text-align: left;
+        }
+
+        #ProductGrid .product-name {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #ProductGrid .product-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            color: #6b7280;
+            line-height: 1.3;
+        }
+
+        #ProductGrid .product-description,
+        #ProductGrid .product-sku {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 10px;
+            font-weight: 400;
+            color: #6B7280;
+        }
+
+        #ProductGrid .sales-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        #ProductGrid .sales-number {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        #ProductGrid .sales-growth {
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+            line-height: 1;
+        }
+
+        #ProductGrid .sales-growth.positive {
+            color: #22c55e;
+        }
+
+        #ProductGrid .sales-growth.negative {
+            color: #ef4444;
+        }
+
+        #ProductGrid .status-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: center;
+        }
+
+        #ProductGrid .status-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 20px;
+            border-radius: 12px;
+            border: 1px solid;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 10px 14px;
+            white-space: nowrap;
+        }
+
+        #ProductGrid .status-badge-success {
+            background: #F0FDF4;
+            border-color: #BBF7D0;
+            color: #15803D;
+        }
+
+        #ProductGrid .status-badge-error {
+            background: #FEF2F2;
+            border-color: #FECACA;
+            color: #DC2626;
+        }
+
+        #ProductGrid .status-units {
+            padding-top: 6px;
+        }
+
+        #ProductGrid .detail-page {
+            padding: 16px;
+        }
+
+        #ProductGrid .detail-top {
+            display: grid;
+            gap: 16px;
+            align-items: stretch;
+        }
+
+        #ProductGrid .e-detailrow .e-detailcell {
+            padding: 0 !important;
+            overflow: hidden;
+        }
+
+        #ProductGrid .product-detail-wrapper {
+            padding: 0;
+        }
+
+        #ProductGrid .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            align-items: start;
+        }
+
+        #ProductGrid .detail-grid > .e-card {
+            width: 100%;
+            margin: 0;
+        }
+  
+
+        #ProductGrid .detail-grid > .e-card {
+            border-radius: 16px;
+            margin: 0;
+        }
+
+        #ProductGrid .detail-grid .e-card .e-card-title,
+        #ProductGrid .detail-grid .e-card .sub-title {
+            font-size: inherit;
+            font-weight: 700;
+            color: inherit;
+            font-family: inherit;
+            line-height: 1.4;
+        }
+
+        #ProductGrid .bullet {
+            width: 10px;
+            height: 10px;
+            background: #a78bfa;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px #ede9fe;
+            flex-shrink: 0;
+        }
+
+        #ProductGrid .detail-grid .e-card .e-card-content {
+            padding: 12px;
+            color: inherit;
+            font-family: inherit;
+        }
+
+        #ProductGrid .detail-grid .e-card .product-description-text,
+        #ProductGrid .detail-grid .e-card .highlight-list li,
+        #ProductGrid .detail-grid .e-card .info-row span {
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: 400;
+        }
+
+        #ProductGrid .detail-grid .e-card .info-row strong {
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: 600;
+        }
+
+        #ProductGrid .sub-title {
+            font-weight: 700;
+            margin: 14px 0;
+        }
+
+        #ProductGrid .product-description-text {
+            line-height: 1.6;
+            font-size: inherit;
+        }
+
+        #ProductGrid .highlight-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #ProductGrid .highlight-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            font-weight: 400;
+        }
+
+        #ProductGrid .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+        }
+
+        #ProductGrid .info-row:last-child {
+            border-bottom: none;
+        }
+
+        #ProductGrid .info-row span {
+            flex: 0 0 38%;
+            font-weight: 400;
+        }
+
+        #ProductGrid .info-row strong {
+            flex: 1 1 58%;
+            text-align: right;
+            font-weight: 400;
+            word-break: break-word;
+        }
+
+
+        #ProductGrid .e-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        #ProductGrid .e-card-content {
+            padding: 14px;
+            flex: 1;
+        }
+
+        #ProductGrid .original-price {
+            text-decoration: line-through;
+        }
+
+        #ProductGrid .pricing-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        #ProductGrid .pricing-section .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        #ProductGrid .pricing-section .info-row:last-child {
+            border-bottom: none;
+        }
+
+        #ProductGrid .info-row .current-price,
+        #ProductGrid .info-row .original-price,
+        #ProductGrid .info-row .discount-price,
+        #ProductGrid .info-row .cost-price,
+        #ProductGrid .info-row .profit-price {
+            flex: 1 1 58%;
+            text-align: right;
+            font-weight: 700;
+            word-break: break-word;
+        }
+
+        #ProductGrid .current-price {
+            color: #6366f1 !important;
+        }
+
+        #ProductGrid .original-price {
+            text-decoration: line-through;
+        }
+
+        #ProductGrid .discount-price {
+            color: #ef4444 !important;
+        }
+
+        #ProductGrid .profit-price {
+            color: #22c55e !important;
+        }
+
+        #ProductGrid .sales-cell-inline {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        #ProductGrid .sales-number {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        #ProductGrid .sales-growth {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        #ProductGrid .sales-growth.positive {
+            color: #22c55e;
+        }
+
+        #ProductGrid .sales-growth.negative {
+            color: #ef4444;
+        }
+    </style>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates a product catalog built using the Syncfusion® ASP.NET MVC Data Grid with column templates and a detail template. Each row displays product information through customized templates, including product details, sales trends, pricing, and stock status.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Product Catalog Grid with Detail Row Template in ASP.NET MVC. Explore here for more details." />
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The Syncfusion® ASP.NET MVC Data Grid demonstrates the use of detail and column templates to display product inventory. Custom templates are applied to columns such as "Product", "Sales", and "Status".
+        </p>
+        <p>
+            Rows can be expanded to display a detail section using the Syncfusion® Card layout. This section presents product information including detailed descriptions, specifications, and pricing details.
+        </p>
+       
+        <p>
+            For more details on the detail template feature, refer to <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/row/detail-template" aria-label="documentation"> this documentation section</a>.
+        </p>
+
+        <p>
+            Looking for the full ASP.NET MVC Data Grid component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/grid" aria-label="documentation">ASP.NET MVC Data Grid component</a> page
+        </p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Data Grid Product Catalog Example - Syncfusion Demos</title>
+}
+
+@section Header{
+    <h1 class='sb-sample-text'>Example of Product Catalog with Detail Row Template in ASP.NET MVC Data Grid Control</h1>
+}

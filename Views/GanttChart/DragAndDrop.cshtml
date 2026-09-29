@@ -1,0 +1,69 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Grids
+@{
+    ViewData["Title"] = "DragAndDrop";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        @(Html.EJS().Gantt("DragAndDrop").DataSource((IEnumerable<object>)ViewData["DataSource"]).AllowRowDragAndDrop(true).Height("450px")
+            .HighlightWeekends(true).TreeColumnIndex(1).AllowTaskbarDragAndDrop(true)
+            .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+            .Dependency("Predecessor").Child("SubTasks"))
+            .SelectionSettings(sel =>
+            {
+                sel.Type(SelectionType.Multiple);
+            })
+            .SplitterSettings(spl => {
+                spl.ColumnIndex(3);
+            })
+            .Columns(col =>
+            {
+                col.Field("TaskId").HeaderText("ID").Width(80).Add();
+                col.Field("TaskName").HeaderText("Name").Width(250).Add();
+                col.Field("StartDate").HeaderText("Start Date").Add();
+                col.Field("Duration").HeaderText("Duration").Add();
+                col.Field("Progress").HeaderText("Progress").Add();
+                col.Field("Predecessor").HeaderText("Dependency").Add();
+
+            })
+            .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
+            .LabelSettings(ls => ls.LeftLabel("TaskName"))
+            .ProjectStartDate("03/24/2024")
+            .ProjectEndDate("07/06/2024")
+            .Render()
+        )
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the row drag-and-drop feature in the Gantt Chart. Tasks can be reordered by dragging the drag handle displayed in the left side of the Gantt row. Rows can be dropped at the required position to reorganize the task hierarchy and sequence.</p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Row Drag and Drop in ASP.NET MVC Gantt control. Explore here for more details."/>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            Row drag and drop feature can be enabled by settting <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_AllowRowDragAndDrop" aria-label="Navigate to the allowRowDragAndDrop property reference for ASP.NET MVC Gantt Chart control">
+                allowRowDragAndDrop
+            </a> property as true. In this demo, taskbar drag and drop between rows can be enabled by setting <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_AllowTaskbarDragAndDrop" aria-label="Navigate to the allowTaskbarDragAndDrop property reference for ASP.NET MVC Gantt Chart control">
+                allowTaskbarDragAndDrop
+            </a> as true.
+        </p>
+        <p>More information on the Essential<sup>®</sup> Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/drag-and-drop">drag and drop</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full ASP.NET MVC Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-gantt-chart">ASP.NET MVC Gantt Chart</a> page.</p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Row Drag and Drop Example - Syncfusion Demos </title> 
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Row Drag and Drop in ASP.NET MVC Gantt Control</h1>
+}

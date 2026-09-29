@@ -1,0 +1,107 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "Remote Data Binding";
+}
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("DefaultFunctionalities").DataSource(dataManger =>
+                {
+                    dataManger.Url("https://services.syncfusion.com/aspnet/production/api/GanttData").CrossDomain(true).Adaptor("WebApiAdaptor");
+                })
+                .Height("450px")
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").Progress("Progress")
+                .Duration("Duration").Dependency("Predecessor").Child("SubTasks"))
+                .Columns(col =>
+                {
+                    col.Field("TaskId").Visible(false).Add();
+                    col.Field("TaskName").HeaderText("Task Name").Width(250).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("Duration").Add();
+                })
+                .TreeColumnIndex(1)
+                .AllowSelection(true)
+                .GridLines(Syncfusion.EJ2.Gantt.GridLine.Both)
+                .HighlightWeekends(true)
+                .TimelineSettings(ts => ts.TimelineUnitSize(50)
+                    .TopTier(tt => tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Month).Format("MMM dd, y"))
+                    .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day).Formatter("formatter")))
+                .LabelSettings(ls => ls.LeftLabel("TaskName")).IncludeWeekend(true)
+                .ProjectStartDate("02/24/2021")
+                .ProjectEndDate("06/10/2021")
+                .Render()
+            )
+        </div>
+        <div style="float: right; margin:10px 10px 0px 0px;">
+            Source:
+            <a href="https://en.wikipedia.org/wiki/Cereal_growth_staging_scales" target='_blank'>https://en.wikipedia.org/</a>
+        </div>
+    </div>
+    <script>
+        function formatter(date) {
+            var month = date.getMonth();
+            if (month === 1) {
+                return '';
+            } else {
+                var presentDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                var start = new Date(presentDate.getFullYear(), 0, 0);
+                var diff = Number(presentDate) - Number(start);
+                var oneDay = 1000 * 60 * 60 * 24;
+                var day = Math.floor(diff / oneDay);
+                return 'day ' + (day - 59);
+            }
+        }
+    </script>
+}
+
+@section ActionDescription {
+    <div id="action-description">
+        <p>This sample demonstrates binding remote data to the Gantt Chart using <code>DataManager</code>. The data visualizes the various stages of the product growth cycle and supports efficient navigation of large datasets through row and timeline virtualization.</p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Remote Data in ASP.NET MVC Gantt control. Explore here for more details."/>
+}
+
+@section Description {
+    <div id="description">
+        <p>
+            The <code>dataSource</code> property in Gantt Chart can be assigned with the instance of
+            <code>DataManager</code> to bind remote data.
+            The DataManager, which will act as an interface between the service endpoint and the Gantt Chart, will require
+            the below minimal information to interact with service endpoint properly.
+        </p>
+        <ol>
+            <li><code>DataManager->url</code> - Defines the service endpoint to fetch data.</li>
+            <li>
+                <code>DataManager->adaptor</code> - Defines the adaptor option. By default, ODataAdaptor is used for remote
+                binding. Adaptor is responsible for processing response and request from/to the service endpoint. Adaptors
+                are designed to interact with particular service endpoints. They are,
+            </li>
+            <li>
+                <code>UrlAdaptor</code> - Use this to interact with any remote services. This is the base adaptor for all
+                remote
+                based adaptors.
+            </li>
+            <li><code>ODataAdaptor</code> - Use this to interact with OData endpoints.</li>
+            <li><code>ODataV4Adaptor</code> - Use this to interact with OData V4 endpoints.</li>
+            <li><code>WebApiAdaptor</code> - Use this to interact with Web API created under OData standards.</li>
+            <li><code>WebMethodAdaptor</code> - Use this to interact with web methods.</li>
+        </ol>
+        <p>In this demo, remote data is bound by assigning service data as an instance of <code>DataManager</code> to the
+            <code>dataSource</code> property. More information on the data binding can be found in this documentation
+            section.
+        </p>
+        <p>More information on the Essential<sup>®</sup> Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/data-binding#remote-data">data binding</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full ASP.NET MVC Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-gantt-chart">ASP.NET MVC Gantt Chart</a> page.</p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Remote Data Example - Syncfusion Demos </title> 
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Remote Data in ASP.NET MVC Gantt Control</h1>
+}

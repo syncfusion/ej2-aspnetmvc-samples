@@ -1,0 +1,73 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @Html.EJS().CircularGauge("container").Load("onGaugeLoad").Background("transparent").AxisLabelRender("onAxesLabelRendering").Axes(axes => axes.Radius("80%")
+            .LineStyle(lineStyle => lineStyle.Width(20).Color("#E0E0E0")).StartAngle(0).EndAngle(360).LabelStyle(labelStyle => labelStyle.AutoAngle(true).Offset(10).HiddenLabel(HiddenLabel.Last).Font(font => font.FontFamily("inherit")))
+            .MajorTicks(majorTick => majorTick.Height(15).Interval(1)).MinorTicks(minorTick => minorTick.Height(10).Interval(0.5))
+            .Pointers(pointer =>
+            {
+                pointer.Value(7).Radius("50%").PointerWidth(30).LinearGradient(linearGradient =>
+            linearGradient.StartValue("0%").EndValue("100%").ColorStop(colorStop =>
+            {
+                colorStop.Color("#ff6b78").Offset("0.1%").Opacity(0.9).Add();
+                colorStop.Color("#e20a22").Offset("70%").Opacity(0.9).Add();
+            })
+            ).Cap(cap => cap.Radius(15).Color("#ffffff").Border(border => border.Width(0))).Animation(animation => animation.Enable(false)).Add();
+                pointer.Value(3).Radius("50%").Color("#f7f7f7").PointerWidth(30).Cap(cap => cap.Radius(15).Color("#ffffff").Border(border => border.Width(0))).Animation(animation => animation.Enable(false)).Add();
+            }).Minimum(0).Maximum(8).Add()).Render()
+        </div>
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        var value = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', ''];
+        function onAxesLabelRendering(sender) {
+            sender.text = value[sender.value];
+        }
+        var circulargauge;
+        function onGaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+        }
+
+    </script>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates how to create a direction compass by modifying the circular gauge's functionalities to meet the needs of the user.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Direction Compass in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, a direction compass has been depicted by adding a couple of needle pointers in the circular gauge and customizing labels to show the direction.
+        </p>
+        <p>
+            More information on the circular gauge can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/getting-started" aria-label="documentation section"> documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+
+
+@section Title{
+    <title>ASP.NET MVC Circular Gauge Direction Compass Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Direction Compass in ASP.NET MVC Circular Gauge Control</h1>
+}

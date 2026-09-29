@@ -1,0 +1,116 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "DefaultEditing";
+}
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @(Html.EJS().Gantt("Editing").DataSource((IEnumerable<object>)ViewData["DataSource"])
+                .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").DurationUnit("DurationUnit").ParentID("ParentID")
+                    .Progress("Progress").Dependency("Predecessor").Child("SubTasks").Notes("Notes").ResourceInfo("ResourceId"))
+                .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
+                .Toolbar(new List<string>() { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll", "Indent", "Outdent" })
+                .AllowSelection(true).GridLines(Syncfusion.EJ2.Gantt.GridLine.Both)
+                .Height("450px").TreeColumnIndex(1).ResourceFields(rf => rf.Id("ResourceId").Name("ResourceName"))
+                .Resources((IEnumerable<object>)ViewData["Resources"]).HighlightWeekends(true).TimelineSettings(tl => tl.TopTier(tt =>
+                  tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week).Format("MMM dd, y")).
+                BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day))).Columns(col =>
+                {
+                    col.Field("TaskId").Width(80).Add();
+                    col.Field("TaskName").HeaderText("Job Name").Width(250).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("EndDate").Add();
+                    col.Field("Duration").Add();
+                    col.Field("Progress").Add();
+                    col.Field("Predecessor").Add();
+                }).LabelSettings(ls => ls.LeftLabel("TaskName")
+                .RightLabel("ResourceId"))
+                .EditDialogFields(edf =>
+                {
+                    edf.Type(Syncfusion.EJ2.Gantt.DialogFieldType.General).Add();
+                    edf.Type(Syncfusion.EJ2.Gantt.DialogFieldType.Dependency).Add();
+                    edf.Type(Syncfusion.EJ2.Gantt.DialogFieldType.Resources).Add();
+                    edf.Type(Syncfusion.EJ2.Gantt.DialogFieldType.Notes).Add();
+                })
+                .EventMarkers(em =>
+                {
+                    em.Day("4/17/2024").Label("Project approval and kick-off").Add();
+                    em.Day("5/3/2024").Label("Foundation inspection").Add();
+                    em.Day("6/7/2024").Label("Site manager inspection").Add();
+                    em.Day("7/16/2024").Label("Property handover and sign-off").Add();
+                })
+                .ProjectStartDate("03/26/2025")
+                .ProjectEndDate("11/15/2025").Created("Created").ActionBegin("ActionBegin")
+                .Render()
+            )
+        </div>
+    </div>
+    <script>
+        var startDate
+        function Created(args) {
+            var gantt = document.getElementsByClassName('e-gantt')[0].ej2_instances[0];
+            gantt.columns[1].validationRules = { required: true, minLength: [5, 'Task name should have a minimum length of 5 characters'] };
+            gantt.columns[3].validationRules = { required: [customFn, 'Please enter a value greater than the start date.'] };
+            gantt.columns[4].validationRules = { required: true };
+            gantt.columns[5].validationRules = { required: true, min: 0, max: 100 };
+        }
+        function ActionBegin(args) {
+            if (args.columnName === "EndDate" || args.requestType === "beforeOpenAddDialog" || args.requestType === "beforeOpenEditDialog") {
+                startDate = args.rowData.ganttProperties.startDate;
+            }
+            if (args.requestType === "taskbarediting" && args.taskBarEditAction === "ChildDrag") {
+                startDate = args.data.ganttProperties.startDate;
+            }  
+        }
+        function customFn(args) {
+            var endDate;
+            var gantt = (document.getElementsByClassName('e-gantt')[0]).ej2_instances[0];
+            if (args.element && args.value) {
+                var dateOptions = { format: gantt.dateFormat, type: 'dateTime', skeleton: 'yMd' };
+                endDate =  gantt.globalize.parseDate(args.value, dateOptions);
+                if (!startDate && gantt.editModule.dialogModule['beforeOpenArgs']) {
+                    startDate = gantt.editModule.dialogModule['beforeOpenArgs'].rowData['ganttProperties'].startDate;
+                    endDate = (gantt.editModule.dialogModule['beforeOpenArgs'].rowData['ganttProperties'].endDate);
+                }
+                startDate.setHours(0, 0, 0, 0);
+                endDate.setHours(0, 0, 0, 0);
+            }
+            return startDate <= endDate;
+        }
+    </script>
+}
+
+@section ActionDescription {
+    <div id="action-description">
+        <p>This sample demonstrates task editing and CRUD operations in the Gantt Chart using a residential construction project workflow. You can add, edit, delete, indent, outdent, and update tasks using the toolbar or direct user interactions.</p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Editing in ASP.NET MVC Gantt control. Explore here for more details."/>
+}
+
+@section Description {
+    <div id="description">
+        <p>The Gantt Chart supports built-in CRUD operations through the <code><a target="_blank" rel="noopener noreferrer" href="https://help.syncfusion.com/cr/aspnetmvc-js2/syncfusion.ej2.gantt.gantt.html#Syncfusion_EJ2_Gantt_Gantt_EditSettings">editSettings</a></code> property. In this example, adding, editing, deleting, and taskbar editing are enabled, allowing tasks to be modified directly from both the TreeGrid and chart areas.</p>
+          <ul>
+            <li><code>Add</code> - Creates a new task</li>
+            <li><code>Edit </code> - Modifies the selected task.</li>
+            <li><code>Indent</code> - Makes the selected task a child task.</li>
+            <li><code>Outdent</code> - Promotes the selected task to a higher level.</li>
+            <li><code>Delete</code> - Removes the selected task.</li>
+            <li><code>Update</code> / <code>Cancel</code> - Saves or discards the current changes.</li>
+          </ul>
+        <p>Tasks can be edited by double-clicking a row, using the toolbar commands, or opening the edit dialog. Taskbars can also be modified through drag-and-drop interactions, including updating task dates, durations, progress, and dependency relationships. This sample demonstrates resource assignment, dependency editing, notes editing, and support for custom duration units through the <code>taskFields.durationUnit</code> mapping such as <code>week</code>, <code>month</code>, <code>days</code>, <code>hours</code> and <code>minutes</code>.</p>
+        <p>More information on the Essential<sup>®</sup> Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/managing-tasks/editing-tasks">editing tasks</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full ASP.NET MVC Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-gantt-chart">ASP.NET MVC Gantt Chart</a> page.</p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Editing Example - Syncfusion Demos </title> 
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Editing in ASP.NET MVC Gantt Control</h1>
+}

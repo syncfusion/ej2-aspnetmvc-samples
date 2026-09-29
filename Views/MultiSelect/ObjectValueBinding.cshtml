@@ -1,0 +1,80 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@using EJ2MVCSampleBrowser.Models
+@model EJ2MVCSampleBrowser.Controllers.MultiSelectRecord
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="control-wrapper">
+            <div id="default" style='padding-top:75px;'>
+                @Html.EJS().MultiSelect("object").Mode(VisualMode.Default).Placeholder("Select a Item").PopupHeight("200px").Change("valueChange").DataSource(@Model.RecordList).AllowObjectBinding(true).Fields(new MultiSelectFieldSettings { Text = "Text", Value = "ID" }).Render()
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <textarea id="value" title="Properties" style="width: 100%; margin-top:90px; height: 60px; background-color: inherit;" readonly >Selected value : </textarea>
+    </div>
+
+    @*custom code start*@
+    <style>
+        .control-wrapper {
+            margin: 0 auto;
+            width: 250px;
+        }
+
+        .property-section .right-side {
+            padding-left: 10px;
+        }
+
+        .property-section .left-side {
+            padding: 5px;
+            width: 25%
+        }
+    </style>
+    @*custom code end*@
+    <script type="text/javascript">
+        function valueChange() {
+            var listObj = document.getElementById('object').ej2_instances[0];
+            var value = document.getElementById('value');
+            value.innerHTML = "Selected value : " + JSON.stringify(listObj.value);
+        }
+    </script>
+}
+@section Scripts{
+    <script type="text/javascript">
+        valueChange();
+        
+    </script>
+
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Default Functionalities in ASP.NET MVC MultiSelect Dropdown control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the default functionalities of the MultiSelect. Type a character in the MultiSelect element or click on this element to choose one or more items from the suggestion list.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The <code>MultiSelect</code> component contains a list of predefined values from that the user can choose multiple
+            values.
+        </p>
+        <p>In this sample, the selected items are shown with three different UI modes in three different MultiSelect elements. That three UI modes are listed below,</p>
+        <ul>
+            <li><b>Default</b> - on focus-in, the component will act in <code>box mode</code> and on blur, the component will act in <code>delimiter mode</code>.</li>
+            <li><b>Box</b> - selected items will be visualized in chip.</li>
+            <li><b>Delimiter</b> - selected items will be visualized in text content.</li>
+        </ul>
+        <p>
+            More information on the MultiSelect instantiation can be found in the
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/multi-select/getting-started-mvc" target="_blank" aria-label="documentation section"> documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC MultiSelect Dropdown Default Functionalities Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Default Functionalities in ASP.NET MVC MultiSelect Dropdown Control</h1>
+}

@@ -1,0 +1,58 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "Critical Path";
+}
+@section ControlsSection{
+    <div class="control-section">
+        @(Html.EJS().Gantt("CriticalPath").DataSource((IEnumerable<object>)ViewData["DataSource"])
+            .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate").Duration("Duration").Progress("Progress")
+            .Dependency("Predecessor").Child("SubTasks")).TreeColumnIndex(1)
+            .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
+                .EnableCriticalPath(true)
+            .Toolbar(new List<string>() {"Add", "Edit", "Delete","CriticalPath" })
+            .Columns(col =>
+                {
+                    col.Field("TaskId").Width(80).Add();
+                    col.Field("TaskName").Width(250).Add();
+                    col.Field("StartDate").Add();
+                    col.Field("EndDate").Add();
+                    col.Field("Duration").Add();
+                    col.Field("Predecessor").Add();
+                    col.Field("Progress").Add();
+                })
+            .LabelSettings(ls=>ls.LeftLabel("TaskName"))
+            .Height("450px").IncludeWeekend(true)
+            .ProjectStartDate("03/24/2024")
+            .Render()
+        )
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the critical path feature in the Gantt Chart, providing visibility into the sequence of tasks that directly influences project completion.</p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Critical Path in ASP.NET MVC Gantt control. Explore here for more details."/>
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            The Gantt Chart supports critical path analysis, which identifies the sequence of tasks that determines the overall project completion date. Critical tasks are highlighted to help monitor activities that have a direct impact on project delivery. Any delay in a critical task results in a corresponding delay to the project completion date. Monitoring the critical path helps project managers identify scheduling risks and prioritize key activities.
+        </p>
+        <p>In this sample, critical path visualization is enabled using the <code>enableCriticalPath</code> property. The toolbar also provides a built-in <code>CriticalPath</code> option for displaying critical tasks and dependencies</p>
+        <p>More information on the Essential<sup>®</sup> Gantt Chart can be found in this <a target="_blank" href="https://help.syncfusion.com/gantt-sdk/asp-net-core/gantt-chart/criticalpath">critical path</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full ASP.NET MVC Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-gantt-chart">ASP.NET MVC Gantt Chart</a> page.</p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Critical Path Example - Syncfusion Demos </title> 
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Critical Path in ASP.NET MVC Gantt Control</h1>
+}

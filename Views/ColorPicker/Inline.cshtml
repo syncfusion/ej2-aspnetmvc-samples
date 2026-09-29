@@ -1,0 +1,162 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+    <div id="inline-control">
+        <div class="row">
+            <div id="preview"></div>
+        </div>
+        <div id="inline-content" class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                <h4>Inline Palette</h4>
+                @Html.EJS().ColorPicker("inline-color-palette").Mode(Syncfusion.EJ2.Inputs.ColorPickerMode.Palette).ModeSwitcher(false).Inline(true).ShowButtons(false).Change("onChange").Render()
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-6 col-md-6">
+                <h4>Inline Picker</h4>
+                @Html.EJS().ColorPicker("inline-color-picker").ModeSwitcher(false).Inline(true).ShowButtons(false).Change("onChange").Render()
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Inline Mode in ASP.NET MVC Color Picker control. Explore here for more details."/>
+                }
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the inline (flat) mode ColorPicker with different modes and predefined styles.</p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+    <p>
+        The ColorPicker component is a user interface to select and adjust color values. This supports various color specifications
+        like RGB (Red Green Blue), HSV (Hue Saturation Value), and Hex codes.
+    </p>
+    <p>
+        In this sample,
+    </p>
+    <ul>
+        <li>Color picker/palette is rendered inline by using the inline
+            <code>
+                <a target="_blank" href="https://help.syncfusion.com/cr/cref_files/aspnetmvc-js2/Syncfusion.EJ2~Syncfusion.EJ2.Inputs.ColorPicker~Inline.html" aria-label="inline">inline<span class="sr-only">opens in a new tab</span></a>
+            </code> property set to
+            <i>true</i>.</li>
+        <li>Using the
+            <code>
+                <a target="_blank" href="https://help.syncfusion.com/cr/cref_files/aspnetmvc-js2/Syncfusion.EJ2~Syncfusion.EJ2.Inputs.ColorPicker~Mode.html" aria-label="mode">mode<span class="sr-only">opens in a new tab</span></a>
+            </code> property, you can specify the mode
+            <i>(Picker/ Palette)</i> of the ColorPicker.</li>
+        <li>Using the
+            <code>
+                <a target="_blank" href="https://help.syncfusion.com/cr/cref_files/aspnetmvc-js2/Syncfusion.EJ2~Syncfusion.EJ2.Inputs.ColorPicker~ShowButtons.html" aria-label="showButtons">showButtons<span class="sr-only">opens in a new tab</span></a>
+            </code> property, you can enable or disable the control
+            <i>(apply/cancel)</i> buttons.</li>
+    </ul>
+    <p>
+        More information about ColorPicker can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/color-picker/getting-started/#inline-type" aria-label="documentation section">
+            documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+</div>
+
+}
+@*custom code start*@
+
+@section Scripts {
+    <script>
+        if (window.browserDetails.isDevice) {
+            document.getElementById('inline-control').classList.add('e-mobile-control');
+        }
+    </script>
+}
+
+<script>
+    function onChange(args) {
+        document.getElementById('preview').style.backgroundColor = args.currentValue.hex;
+    }
+</script>
+
+<style>
+/* Common sample level styles */
+#inline-control {
+    width: 100%;
+    text-align: center;
+}
+#inline-control .col-xs-12 {
+    margin: 10px 0;
+}
+#inline-control h4 {
+    margin-bottom: 20px;
+}
+
+.material-dark #inline-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.fabric-dark #inline-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.bootstrap-dark #inline-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.bootstrap5-dark #inline-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+
+.tailwind-dark #inline-control h4 {
+    color: rgba(255, 255, 255, 0.64);
+}
+.e-bigger #inline-control h4 {
+    font-size: 20px;
+}
+
+/* Preview area styles */
+#inline-control #preview {
+    background: transparent url('@Url.Content("~/Content/colorpicker/images/pen.png")') no-repeat;
+    display: inline-block;
+    height: 80px;
+    margin: 10px 0;
+    width: 600px;
+    background-color: #008000;
+}
+#inline-control.e-mobile-control #preview {
+    background: transparent url('@Url.Content("~/Content/colorpicker/images/pen_mobile.png")') no-repeat;
+    background-color: #008000;
+    height: 35px;
+    width: 300px;
+}
+.highcontrast #inline-control #preview {
+    background: transparent url('@Url.Content("~/Content/colorpicker/images/pen_highcontrast.png")') no-repeat;
+    background-color: #008000;
+}
+.highcontrast #inline-control.e-mobile-control #preview {
+    background: transparent url('@Url.Content("~/Content/colorpicker/images/pen_mobile_highcontrast.png")') no-repeat;
+    background-color: #008000;
+}
+
+/* Common sample level styles for mobile */
+#inline-control.e-mobile-control h4 {
+    margin-bottom: 15px;
+}
+#inline-control.e-mobile-control #inline-content {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+#inline-control.e-mobile-control #inline-content .col-xs-12 {
+    flex: 0 0 auto;
+    margin-top: 5px;
+}
+</style>
+@*custom code end*@
+@section Title{
+                    <title>ASP.NET MVC Color Picker Inline Mode Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Inline Mode in ASP.NET MVC Color Picker Control</h1>
+                }

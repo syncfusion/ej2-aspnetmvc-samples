@@ -1,0 +1,136 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Maps
+@section ControlsSection{
+    <script src="~/Scripts/PenisularLocation.js"></script>
+    <div class="control-section">
+        <div id="outer" style="width:100%">
+            @Html.EJS().Maps("container").Load("mapsLoad").CenterPosition(new MapsCenterPosition { Latitude = 25.54244147012483, Longitude = -89.62646484375 }).ZoomSettings(zoom => zoom.Enable(false).ZoomFactor(13)).MapsArea(map => map.Background("#4863A0")).TitleSettings(title => title.Text("Shipping sea route between various cities").TextStyle(new MapsFont{ Size = "18px", Opacity = 1 })).Layers(layer =>
+        {
+            layer.NavigationLineSettings(new List<MapsNavigationLine>
+            {
+                new MapsNavigationLine { Visible = true, Angle = 0, Color = "white", DashArray = "1", Latitude = new double[] { 22.403410892712124, 29.756032197482973 }, Longitude = new double[] { -97.8717041015625, -95.36270141601562 } },
+                new MapsNavigationLine { Visible = true, Angle = 0, Color = "white", DashArray = "1", Latitude = new double[] { 22.403410892712124, 30.180747605060766 }, Longitude = new double[] { -97.8717041015625, -85.81283569335938 } },
+                new MapsNavigationLine { Visible = true, Angle = 0, Color = "white", DashArray = "1", Latitude = new double[] { 22.403410892712124, 27.9337540167772 }, Longitude = new double[] { -97.8717041015625, -82.49908447265625 } },
+                new MapsNavigationLine { Visible = true, Angle = 0, Color = "white", DashArray = "1", Latitude = new double[] { 22.403410892712124, 21.282336521195344 }, Longitude = new double[] { -97.8717041015625, -89.6649169921875 } },
+                new MapsNavigationLine { Visible = true, Angle = 0, Color = "white", DashArray = "1", Latitude = new double[] { 29.756032197482973, 21.282336521195344 }, Longitude = new double[] { -95.36270141601562, -89.6649169921875 } },
+                new MapsNavigationLine { Visible = true, Angle = 0, Color = "white", DashArray = "1", Latitude = new double[] { 30.180747605060766, 21.282336521195344 }, Longitude = new double[] { -85.81283569335938, -89.6649169921875 } },
+                new MapsNavigationLine { Visible = true, Angle = 0, Color = "white", DashArray = "1", Latitude = new double[] { 27.9337540167772, 21.282336521195344 }, Longitude = new double[] { -82.49908447265625, -89.6649169921875 } },
+            }).MarkerSettings(new List<MapsMarker> {
+                 new MapsMarker { Visible = true, AnimationDuration = 0 },
+                 new MapsMarker { Visible = true, AnimationDuration = 0 },
+                 new MapsMarker { Visible = true, AnimationDuration = 0 },
+                 new MapsMarker { Visible = true, AnimationDuration = 0 },
+                 new MapsMarker { Visible = true, AnimationDuration = 0 },
+                 new MapsMarker { Visible = true, AnimationDuration = 0 },
+            }).ShapeSettings(new MapsShapeSettings{ Fill = "#789071" }).ShapeData(ViewData["shapeData"]).Add();
+        }).Render()
+            <div style="margin-left: 75%">
+                Source:
+                <a href="http://www.lineaships.com/en/linea-peninsular/" target="_blank" aria-label="lineaships">www.lineaships.com</a>
+            </div>
+        </div>
+    </div>
+    <style>
+        #container {
+            display: table;
+            margin: 0 auto;
+        }
+
+        #container_layerIndex_0_line_Group {
+            stroke-dasharray: 10px 10px;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            -webkit-animation: dash 15s linear infinite;
+            animation: dash 15s linear infinite;
+        }
+
+        @@-webkit-keyframes dash {
+            100% {
+                stroke-dashoffset: -20px;
+            }
+        }
+
+        @@keyframes dash {
+            100% {
+                stroke-dashoffset: -20px;
+            }
+        }
+    </style>
+    <script>
+        function mapsLoad(args) {
+            var theme = themeName ? themeName : 'Material';
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            args.maps.layers[0].markerSettings = penisularMarker;
+            args.maps.layers[0].markerSettings[0].dataSource = [
+                {
+                    latitude: 22.403410892712124,
+                    longitude: -97.8717041015625,
+                    name: 'ALTAMIRA'
+                },
+                {
+                    latitude: 29.756032197482973,
+                    longitude: -95.36270141601562,
+                    name: 'HOUSTON'
+                },
+                {
+                    latitude: 30.180747605060766,
+                    longitude: -85.81283569335938,
+                    name: 'PANAMA CITY'
+                },
+                {
+                    latitude: 27.9337540167772,
+                    longitude: -82.49908447265625,
+                    name: 'TAMPA'
+                },
+                {
+                    latitude: 21.282336521195344,
+                    longitude: -89.6649169921875,
+                    name: 'PROGRESO'
+                }
+            ];
+            args.maps.layers[0].markerSettings[1].dataSource = [ { latitude: 22.403410892712124, longitude: -97.8717041015625 } ];
+            args.maps.layers[0].markerSettings[1].template = '<div id="marker1" style="font-size: 12px;color:white">ALTAMIRA</div>';
+            args.maps.layers[0].markerSettings[1].offset = { x: -35, y: 0 };
+            args.maps.layers[0].markerSettings[2].dataSource = [ { latitude: 29.756032197482973, longitude: -95.36270141601562 } ];
+            args.maps.layers[0].markerSettings[2].template = '<div id="marker2" style="font-size: 12px;color:white">HOUSTON</div>';
+            args.maps.layers[0].markerSettings[2].offset = { x: 0, y: -15 };
+            args.maps.layers[0].markerSettings[3].dataSource = [ { latitude: 30.180747605060766, longitude: -85.81283569335938 } ];
+            args.maps.layers[0].markerSettings[3].template = '<div id="marker3" style="font-size: 12px;color:white">PANAMA CITY</div>';
+            args.maps.layers[0].markerSettings[3].offset = { x: 0, y: -5 };
+            args.maps.layers[0].markerSettings[4].dataSource = [ { latitude: 27.9337540167772, longitude: -82.49908447265625 } ];
+            args.maps.layers[0].markerSettings[4].template = '<div id="marker4" style="font-size: 12px;color:white">TAMPA</div>';
+            args.maps.layers[0].markerSettings[4].offset = { x: 0, y: -15 };
+            args.maps.layers[0].markerSettings[5].dataSource = [ { latitude: 21.282336521195344, longitude: -89.6649169921875 } ];
+            args.maps.layers[0].markerSettings[5].template = '<div id="marker5" style="font-size: 12px;color:white">PROGRESO</div>';
+            args.maps.layers[0].markerSettings[5].offset = { x: 0, y: 15 };
+        }
+    </script>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample illustrates the sea routes between various cities for shipping.
+        </p>
+    </div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Navigation Lines in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render lines between two points in map. You can use <code>dashArray</code>, <code>width</code>, and <code>color</code> properties to customize the appearance of the navigation lines.
+        </p>
+        <br />
+        <p style="font-weight: 500">Injecting Module</p>
+        <p>
+            Maps component features are segregated into individual feature-wise modules. To use navigation lines, you need to inject <code>NavigationLine</code> module using the <code>Maps.Inject(NavigationLine)</code> method.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Maps Navigation Lines Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Navigation Lines in ASP.NET MVC Maps Control</h1>
+                }

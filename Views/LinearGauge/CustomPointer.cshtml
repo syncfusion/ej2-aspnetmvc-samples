@@ -1,0 +1,136 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12" style="display: flex;justify-content: center; align-items: center;">
+                <div style="margin: auto;padding: 10px;">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id='horizontal' style="padding:6px;cursor:pointer;width:86px;color:black;font-size:15px;border:1px solid #0074E3;background-color:white;text-align:center">Horizontal</div>
+                                </td>
+                                <td>
+                                    <div id='vertical' style="padding:6px;cursor:pointer;width:86px;color:white;font-size:15px;border:1px solid #0074E3;background-color: #0074E3;text-align:center">Vertical</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <pre style="background-color: inherit; border:hidden"></pre>
+        <div id="containerBox" style="float: left;"></div>
+        <div id='textWidget1' class="col-xs-5 col-sm-5 col-lg-4 col-md-4" style="display: flex;justify-content: center; align-items: center;">
+            @Html.EJS().LinearGauge("textWidget").Load("guageLoad").AnimationDuration(3500).Background("Transparent").Width("170px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Text widget").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Annotations(annotation => annotation.AxisIndex(0).AxisValue(55).X(0).Y(0).ZIndex("1").Content("<div style='font-size: 12px;color: white;margin-left: -2px;margin-top: -1px;'> 55 </div>").Add()).Axes(axes => 
+            axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(20)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            .Pointers(pointer => pointer.Width(30).Value(55).Offset("-2").Color("#173BBB").Placement(Syncfusion.EJ2.LinearGauge.Placement.Center).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Circle).Position(Syncfusion.EJ2.LinearGauge.Position.Cross).Add())
+            .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
+        </div>
+        <div id='iconWidget1' class="col-xs-5 col-sm-5 col-lg-4 col-md-4" style="display: flex;justify-content: center; align-items: center;">
+            @Html.EJS().LinearGauge("iconWidget").Load("guageLoad").AnimationDuration(3500).Background("Transparent").Width("170px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Icon widget").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Axes(axes => axes.Minimum(0).Maximum(100).OpposedPosition(true)
+            .Line(line => line.Width(20)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            .Pointers(pointer => pointer.Width(45).Value(90).Height(30).Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Image).ImageUrl(@Url.Content("~/Content/LinearGauge/thumb-icon.png")).Add())
+            .MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
+        </div>
+        <div id='multipleWidget1' class="col-xs-5 col-sm-5 col-lg-4 col-md-4" style="display: flex;justify-content: center; align-items: center;">
+            @Html.EJS().LinearGauge("multipleWidget").Load("guageLoad").AnimationDuration(3500).Background("Transparent").Width("170px").Height("350px").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Multiple widget pointers").TitleStyle(textStyle =>
+            textStyle.FontFamily("inherit").FontWeight("499")).Annotations(annotation => annotation.AxisIndex(0).AxisValue(60).X(0).Y(0).ZIndex("1").Content("<div style='font-size: 12px;color: white;margin-left: -2px;margin-top: -1px;'> 60 </div>").Add()).Axes(axes => 
+            axes.Minimum(0).Maximum(100).OpposedPosition(true).Line(line => line.Width(20)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            .Pointers(pointer => {
+                pointer.Width(30).Value(60).Color("#173BBB").Offset("-2").Placement(Syncfusion.EJ2.LinearGauge.Placement.Center).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Circle).Position(Syncfusion.EJ2.LinearGauge.Position.Cross).Add();
+                pointer.Width(45).Value(30).Height(30).Color("#173BBB").Placement(Syncfusion.EJ2.LinearGauge.Placement.Near).MarkerType(Syncfusion.EJ2.LinearGauge.MarkerType.Image).ImageUrl(@Url.Content("~/Content/LinearGauge/thumb-icon.png")).Add();
+            }).MajorTicks(majorTick => majorTick.Interval(20).Height(7).Width(1)).MinorTicks(minorTick => minorTick.Height(3).Interval(10)).Add()).Render()
+        </div>
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        var textWidgetGauge, iconWidgetGauge, multipleWidgetGauge;
+        function guageLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+            if (sender.gauge.element.id === 'textWidget') {
+                textWidgetGauge = sender.gauge;
+            }
+            if (sender.gauge.element.id === 'iconWidget') {
+                iconWidgetGauge = sender.gauge;
+            }
+            if (sender.gauge.element.id === 'multipleWidget') {
+                multipleWidgetGauge = sender.gauge;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById('horizontal').addEventListener('click', function () {
+                textWidgetGauge.width = iconWidgetGauge.width = multipleWidgetGauge.width = '450px';
+                textWidgetGauge.height = iconWidgetGauge.height = multipleWidgetGauge.height = '150px';
+                textWidgetGauge.orientation = iconWidgetGauge.orientation = multipleWidgetGauge.orientation = "Horizontal";
+                textWidgetGauge.axes[0].pointers[0].offset = 2;
+                multipleWidgetGauge.axes[0].pointers[0].offset = 2;
+                document.getElementById('horizontal').style.color = "white";
+                document.getElementById('horizontal').style.backgroundColor = "#0074E3";
+                document.getElementById('vertical').style.color = "black";
+                document.getElementById('vertical').style.backgroundColor = "white";
+                document.getElementById('textWidget1').className = document.getElementById('iconWidget1').className =
+                    document.getElementById('multipleWidget1').className = "col-xs-12 col-sm-12 col-lg-12 col-md-12";
+
+            });
+            document.getElementById('vertical').addEventListener('click', function () {
+                textWidgetGauge.width = iconWidgetGauge.width = multipleWidgetGauge.width = '170px';
+                textWidgetGauge.height = iconWidgetGauge.height = multipleWidgetGauge.height = '350px';
+                textWidgetGauge.orientation = iconWidgetGauge.orientation = multipleWidgetGauge.orientation = "Vertical";
+                textWidgetGauge.axes[0].pointers[0].offset = -2;
+                multipleWidgetGauge.axes[0].pointers[0].offset = -2;
+                document.getElementById('vertical').style.color = "white";
+                document.getElementById('vertical').style.backgroundColor = "#0074E3";
+                document.getElementById('horizontal')['style']['color'] = "black";
+                document.getElementById('horizontal')['style']['backgroundColor'] = "white";
+                document.getElementById('textWidget1').className = document.getElementById('iconWidget1').className =
+                    document.getElementById('multipleWidget1').className = "col-xs-5 col-sm-5 col-lg-4 col-md-4";
+
+            });
+        });
+
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the inclusion of text and image pointers in the linear gauge. Additionally, multiple pointer support is enabled.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Custom Pointer in ASP.NET MVC Linear Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render and configure text and image pointers in the linear gauge. The properties available in
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.LinearGauge.LinearGaugePointer.html" aria-label="Pointers">Pointers<span class="sr-only">opens in a new tab</span></a> and
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.LinearGauge.LinearGaugeAnnotation.html" aria-label="Annotations">Annotations<span class="sr-only">opens in a new tab</span></a> help in the customization of the text and image pointers in the linear gauge.
+        </p>
+        <p>
+            More information on the pointers can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/pointers" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+
+}
+@section Title{
+    <title>ASP.NET MVC Linear Custom Pointer Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Custom Pointer in ASP.NET MVC Linear Gauge Control</h1>
+}

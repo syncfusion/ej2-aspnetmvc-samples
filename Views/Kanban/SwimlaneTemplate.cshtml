@@ -1,0 +1,81 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Kanban
+
+@section ControlsSection {
+    <div class="control-section">
+        <div class="control_wrapper">
+            @Html.EJS().Kanban("kanban").KeyField("Status").DataSource((IEnumerable<object>)ViewData["data"]).Columns(col =>
+            {
+           col.HeaderText("To Do").KeyField("Open").Add();
+           col.HeaderText("In Progress").KeyField("InProgress").Add();
+           col.HeaderText("Testing").KeyField("Testing").Add();
+           col.HeaderText("Done").KeyField("Close").Add();
+       }).CardSettings(card =>  {
+           card.ContentField("Summary").HeaderField("Id");
+       }).SwimlaneSettings(swim => {
+           swim.KeyField("Assignee").Template("#swimlaneTemplate");
+       }).Render()
+
+        </div>
+    </div>
+    <script id="swimlaneTemplate" type="text/x-jsrender">
+        <div class='swimlane-template e-swimlane-template-table'>
+            <div class="e-swimlane-row-text"><img src="../Content/images/Kanban/${keyField}.png" alt="" /><span>${textField}</span></div>
+        </div>
+    </script>
+    <style>
+        .swimlane-template {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+            .swimlane-template img {
+                height: 24px;
+                width: 24px;
+                border-radius: 50%;
+            }
+
+            .swimlane-template span {
+                padding-left: 10px;
+            }
+    </style>
+
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates swimlane template customization in the Kanban component, enabling workflow items to be organized and presented with personalized swimlane headers for improved task visualization.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+    <p>
+        This sample demonstrates swimlane header customization in the Kanban component using the
+        <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/kanban/swimlane#template" target="_blank">swimlaneSettings.template</a>
+        property. A custom template can be defined using a string template or an HTML element to personalize the appearance of swimlane headers.
+    </p>
+    <p>
+    In this sample, each swimlane header is rendered with resource-specific information, including an avatar image and assignee details, providing a more intuitive and visually engaging way to identify workflow ownership.
+    </p>
+    <p>
+        More information on the Essential<sup>®</sup> JS2 Kanban board can be found in this
+        <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/kanban/swimlane#template" target="_blank">swimlane template</a> documentation section.
+    </p>
+    <p>
+        Looking for the full ASP.NET Core Kanban component overview, features, pricing, and documentation?
+        Visit the <a href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-kanban-board" target="_blank">ASP.NET MVC</a> page.
+    </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Swimlane Template in ASP.NET MVC Kanban control. Explore here for more details."/>
+                }
+
+@section Title{
+                    <title>ASP.NET MVC Kanban Swimlane Template Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Swimlane Template in ASP.NET MVC Kanban Control</h1>
+                }

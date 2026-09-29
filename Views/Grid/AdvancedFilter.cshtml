@@ -1,0 +1,103 @@
+﻿@{
+    ViewData["Title"] = "AdvancedFiltering";
+}
+
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("AdvancedFilter").DataSource((IEnumerable<object>)ViewData["dataSource"]).AllowSorting(true).AllowAdvancedFiltering(true).EnableVirtualization(true).PageSettings(page => page.PageSize(50)).Toolbar(new List<string>() { "Edit", "Delete", "AdvancedFilter" }).Height(400).RowHeight(45).Columns(col =>
+        {
+            col.Field("TicketID").HeaderText("Ticket ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("120").IsPrimaryKey(true).Add();
+            col.Field("Title").HeaderText("Title").Width("260").AllowEditing(false).Add();
+            col.Field("TypeofRequest").HeaderText("Type").Width("150").AllowEditing(false).Add();
+            col.Field("Assignee").HeaderText("Assignee").Width("150").EditType("dropdownedit").Add();
+            col.Field("Priority").HeaderText("Priority").Width("130").EditType("dropdownedit").Add();
+            col.Field("Status").HeaderText("Status").Width("130").EditType("dropdownedit").Add();
+            col.Field("CreatedDate").HeaderText("Created Date").Width("140").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").AllowEditing(false).Add();
+            col.Field("DueDate").HeaderText("Due Date").Width("140").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("yMd").EditType("datepickeredit").Add();
+        }).EditSettings(edit => { edit.AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Dialog); }).ActionBegin("actionBegin").Load("load").Render()
+    </div>
+
+    <script>
+        var initialAdvancedFilterRule = {
+            condition: 'and',
+            rules: [{
+                field: 'Status',
+                label: 'Status',
+                type: 'string',
+                operator: 'notequal',
+                value: 'done'
+            }]
+        };
+        function load(args) {
+            var grid = document.getElementById('AdvancedFilter').ej2_instances[0];
+            grid.advancedFilterSettings = {
+                queryBuilderSettings: {
+                    rule: initialAdvancedFilterRule
+                }
+            };
+            if (args) {
+				args.enableSeamlessScrolling = true;
+			}
+        };
+        function actionBegin(args) {
+            var grid = document.getElementById('AdvancedFilter').ej2_instances[0];
+            if (!grid) {
+                return;
+            }
+
+            var hideColumns = function (visible) {
+                var fields = ['Title', 'TypeofRequest', 'CreatedDate'];
+                fields.forEach(function (field) {
+                    var column = grid.getColumnByField(field);
+                    if (column) {
+                        column.visible = visible;
+                    }
+                });
+            };
+
+            if (args.requestType === 'beginEdit' || args.requestType === 'add') {
+                hideColumns(false);
+            }
+
+            if (args.requestType === 'save' || args.requestType === 'cancel') {
+                hideColumns(true);
+            }
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the Advanced Filter feature of the Grid. It applies an initial filter rule to hide completed records and opens the advanced filter dialog from the toolbar to create custom criteria.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Advanced Filtering Feature in ASP.NET MVC Data Grid control with an initial query builder rule and inline editing behavior." />
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            This sample demonstrates the Advanced Filter feature in the ASP.NET MVC Data Grid control. Advanced filtering provides
+            a user-friendly interface to create complex filtering conditions with multiple criteria and logical operators.
+            The initial query builder rule filters out records where the status is <strong>Done</strong> and users can further refine the dataset from the toolbar action.
+        </p>
+        <p>
+            The Advanced Filter feature is enabled by setting the <code>allowAdvancedFiltering</code> property to <code>true</code>.
+            Users can combine multiple filter conditions with logical operators to create custom filter expressions.
+        </p>
+        <p>
+            Looking for the full ASP.NET MVC Data Grid component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/grid" aria-label="documentation">ASP.NET MVC Data Grid component</a> page.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC Data Grid Advanced Filtering Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Advanced Filtering in ASP.NET MVC Data Grid Control</h1>
+}

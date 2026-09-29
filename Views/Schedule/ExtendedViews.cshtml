@@ -1,0 +1,46 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").Views(view => { view.Option(View.Day).DisplayName("3 Days").Interval(3).Add(); view.Option(View.Week).DisplayName("2 Weeks").Interval(2).IsSelected(true).Add(); view.Option(View.Month).DisplayName("4 Months").Interval(4).Add(); }).EventRendered("onEventRendered").EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 6, 16)).Render()
+        </div>
+    </div>
+
+    <script src="~/Scripts/schedule/applyCategoryColor.js"></script>
+    <script type="text/javascript">
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            applyCategoryColor(args, scheduleObj.currentView);
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the View Intervals in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo illustrates how to display n number of days, weeks, and months on a single view.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, the
+            <code>Interval</code> property has been defined with different values on each view such as 3 on day view, 2 on week view and 4 on month
+            view, so that it will be displayed as 3 days, 2 weeks, and 4 months on the respective views. This property is not applicable on
+            agenda and month agenda views.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Scheduler View Intervals Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of View Intervals in ASP.NET MVC Scheduler Control</h1>
+                }
