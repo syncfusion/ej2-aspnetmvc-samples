@@ -75,7 +75,7 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
             <div><p class="controlcategory">FORMS</p></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/query-builder/getting-started">Query Builder</a></div>
             <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/form-builder/getting-started">Form Builder - Preview</a></div>
-            <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/form-renderer/getting-started">Form Rendered - Preview</a></div>
+            <div class="controlanchorlink"><a target="_self" href="https://ej2.syncfusion.com/aspnetmvc/documentation/form-renderer/getting-started">Form Renderer - Preview</a></div>
             <p>&nbsp;</p>
         </td>
         <td>
@@ -195,9 +195,9 @@ The following topics can help you to use the Syncfusion ASP.NET MVC Components a
 
 ## License
 
-Syncfusion ASP.NET MVC Components is available under the Syncfusion Essential Studio program, and can be licensed either under the Syncfusion Community License Program or the Syncfusion commercial license.
+Syncfusion ASP.NET MVC Components is available under the Syncfusion UI Component Suite program, and can be licensed either under the Syncfusion Community License Program or the Syncfusion commercial license.
 
-To be qualified for the Syncfusion Community License Program you must have a gross revenue of less than one (1) million U.S. dollars (USD 1,000,000.00) per year and have less than five (5) developers in your organization, and agree to be bound by Syncfusionâs terms and conditions.
+To be qualified for the Syncfusion Community License Program you must have a gross revenue of less than $1M revenue, 5 or fewer developers, 10 or fewer employees, never more than $3M outside capital in your organization, and agree to be bound by Syncfusion's terms and conditions.
 
 Customers who do not qualify for the community license can contact sales@syncfusion.com for commercial licensing options.
 
