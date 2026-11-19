@@ -1,0 +1,83 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @Html.EJS().CircularGauge("container").Load("gaugeLoad").AxisLabelRender("onAxesLabelRendering").Background("transparent").Axes(axes => axes
+         .Radius("70%").StartAngle(0).EndAngle(0).Minimum(0).Maximum(12).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")).HiddenLabel(HiddenLabel.First))
+         .Pointers(pointer =>
+         {
+             pointer.Value(4.7).Type(PointerType.Marker).MarkerShape(GaugeShape.Image).Radius("97%").MarkerWidth(28).MarkerHeight(28).ImageUrl(@Url.Content("~/Content/CircularGauge/Images/sun-icon.png")).Animation(animation => animation.Enable(false)).Add();
+             pointer.Value(9).Type(PointerType.Marker).MarkerShape(GaugeShape.Image).Radius("97%").MarkerWidth(28).MarkerHeight(28).ImageUrl(@Url.Content("~/Content/CircularGauge/Images/moon-icon.png")).Animation(animation => animation.Enable(false)).Add();
+         })
+         .Ranges(range =>
+         {
+             range.Start(0).End(4.7).StartWidth("4").EndWidth("4").Color("#6453D0").Add();
+             range.Start(12).End(9).StartWidth("4").EndWidth("4").Color("#6453D0").Add();
+             range.Start(4.7).End(9).StartWidth("4").EndWidth("4").Color("#d7d3ed").Add();
+         }).LineStyle(new CircularGaugeLine { Width = 0, Color = "transparent" })
+         .MinorTicks(minorTick => minorTick.Height(7).Width(1).Interval(0.2).Offset(4)).MajorTicks(majorTick => majorTick.Interval(1).Width(2).Height(12).Offset(4)).Annotations(annotation =>
+         {
+             annotation.Content("<div style='font-size: 15px; border-radius: 20px; border: 2px solid gray; padding: 5px 4px 5px; width: 93%; text-align: center; margin-left: 67px;'>Mon, 5 Apr</div>").Angle(342).ZIndex("1").Radius("129%").Add();
+             annotation.Content("<div style='font-size: 15px; margin-left: 25px'>07 hrs 43 mins</div>").Angle(185).ZIndex("1").Radius("120%").Add();
+             annotation.Content("<div style='font-size: 15px; margin-left: 34px;'>Sleep Time</div>").Angle(185).ZIndex("1").Radius("140%").Add();
+             annotation.Content("<div style='color:#6453D0; font-size: 15px; margin-top: 54px; margin-left: 28px'><p style='text-align: center; '>4 Apr</p><p style='margin-top: -10px;'>9:00 PM</p></div>").Angle(285).ZIndex("1").Radius("60%").Add();
+             annotation.Content("<div style='color:#6453D0; margin-top: -8px;'> - </div>").Angle(0).ZIndex("1").Radius("0%").Add();
+             annotation.Content("<div style='color:#6453D0; font-size: 15px; margin-left: -15px; margin-top: 56px;'><p style='text-align: center;'>5 Apr </p><p style='margin-top: -10px;'>4:43 AM</p></div>").Angle(70).ZIndex("1").Radius("50%").Add();
+         }).Add()).Render()
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        var circulargauge;
+        function gaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+        }
+        function onAxesLabelRendering(args) {
+            if (args.value == 3 || args.value == 6 || args.value == 9 || args.value == 12) {
+                args.text = args.value.toString();
+            }
+            else {
+                args.text = "";
+            }
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample represents the number of hours slept by a person using a sleep tracker. The sleep tracker also displays the start and end time of each sleep cycle.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Custom Labels in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to make the circular gauge look like a sleep tracker. Additionally, the date, start and end time, and duration of sleep are all displayed.
+        </p>
+        <p>
+            More information on the circular gauge can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/getting-started" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+
+
+@section Title{
+    <title>ASP.NET MVC Circular Gauge Sleep Tracker Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Sleep Tracker in ASP.NET MVC Circular Gauge Control</h1>
+}

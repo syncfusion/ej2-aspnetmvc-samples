@@ -1,0 +1,73 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().CircularGauge("container").Load("gaugeLoad").CenterY("75%").Background("transparent").Axes(axes => axes
+        .Radius("120%").StartAngle(270).EndAngle(90).Minimum(0).Maximum(120).RangeGap(3).LabelStyle(labelStyle => labelStyle.Font(font => font.Size("0px")).Offset(-5))
+        .Pointers(pointers =>
+        {
+            pointers.Value(82).Radius("60%").PointerWidth(10).NeedleStartWidth(1).NeedleEndWidth(1).Cap(cap => cap.Radius(0)).Animation(animation => animation.Enable(true)).Add();
+            pointers.Value(20).Radius("85%").PointerWidth(10).Type(PointerType.Marker).MarkerShape(GaugeShape.Text).Text("Poor").Animation(animation => animation.Enable(false)).TextStyle(new CircularGaugeFont { Size = "18px", FontFamily = "inherit" }).Color("transparent").Add();
+            pointers.Value(60).Radius("85%").PointerWidth(10).Type(PointerType.Marker).MarkerShape(GaugeShape.Text).Text("Average").Animation(animation => animation.Enable(false)).TextStyle(new CircularGaugeFont { Size = "18px", FontFamily = "inherit" }).Color("transparent").Add();
+            pointers.Value(100).Radius("85%").PointerWidth(10).Type(PointerType.Marker).MarkerShape(GaugeShape.Text).Text("Good").Animation(animation => animation.Enable(false)).TextStyle(new CircularGaugeFont { Size = "18px", FontFamily = "inherit" }).Color("transparent").Add();
+        })
+        .Ranges(ranges => { ranges.Start(0).End(20).Color("#dd3800").Radius("80%").StartWidth("85").EndWidth("85").Add();
+            ranges.Start(20.5).End(40).Color("#ff4100").Radius("80%").StartWidth("85").EndWidth("85").Add();
+            ranges.Start(40.5).End(60).Color("#ffba00").Radius("80%").StartWidth("85").EndWidth("85").Add();
+            ranges.Start(60.5).End(80).Color("#ffdf10").Radius("80%").StartWidth("85").EndWidth("85").Add();
+            ranges.Start(80.5).End(100).Color("#8be724").Radius("80%").StartWidth("85").EndWidth("85").Add();
+            ranges.Start(100.5).End(120).Color("#64be00").Radius("80%").StartWidth("85").EndWidth("85").Add();
+        })
+        .LineStyle(lineStyle => lineStyle.Width(0).Color("transparent"))
+        .MinorTicks(minorTicks => minorTicks.Width(0).Color("transparent")).MajorTicks(majorTicks => majorTicks.Width(0).Color("transparent")).Add()).Render()
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        var value = ['0', '2', '5', '10', '20', '50', '100', '150', '200'];
+        function gaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the performance outcome of a work using the text pointer in the circular gauge.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Text Pointer in ASP.NET MVC Circular Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to use a text to customize the pointer in the circular gauge. The text can be added to the circular gauge's pointer primarily through the use of the
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugePointer.html#Syncfusion_EJ2_CircularGauge_CircularGaugePointer_Type" aria-label="Type">Type<span class="sr-only">opens in a new tab</span></a>,
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugePointer.html#Syncfusion_EJ2_CircularGauge_CircularGaugePointer_MarkerShape" aria-label="MarkerShape">MarkerShape<span class="sr-only">opens in a new tab</span></a> and
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugePointer.html#Syncfusion_EJ2_CircularGauge_CircularGaugePointer_Text" aria-label="Text">Text<span class="sr-only">opens in a new tab</span></a> properties in the
+            <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugePointer.html" aria-label="Pointers">Pointers<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+        <p>
+            More information on the pointers can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/gauge-pointers" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Circular Gauge Custom Labels Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Custom Labels in ASP.NET MVC Circular Gauge Control</h1>
+}

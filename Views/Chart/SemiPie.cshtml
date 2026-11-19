@@ -1,0 +1,64 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @Html.EJS().AccumulationChart("container").EnableAnimation(false).EnableBorderOnMouseMove(false).Series(series =>
+{
+    series.StartAngle(270).EndAngle(90).Radius("100%").Border(border => border.Width(1).Color("#FFFFFF")).DataLabel(dl => dl.EnableRotation(true).Visible(true).Name("DataLabelMappingName").Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside).ConnectorStyle(cs => cs.Length("10%")).Font(ft => ft.FontWeight("600").Color("#ffffff"))).InnerRadius("50%").XName("Browser").YName("Users").BorderRadius(3).DataSource(ViewData["PieChartPoints"]).Add();
+}
+            ).EnableBorderOnMouseMove(false).LegendSettings(lg => lg.Visible(false)).Tooltip(tp => tp.Enable(false)).Load("load").Annotations(an =>
+                 {
+                     an
+                .Region(Syncfusion.EJ2.Charts.Regions.Series).Add();
+  }).Resized("onChartResized").Render()
+    </div>
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            loadAccumulationChartTheme(args);
+            args.accumulation.annotations[0].content = ej.base.Browser.isDevice ? "<div style='font-Weight:600; font-size:10px;'>Browser<br>Market<br>Shares</div>" : "<div style='font-Weight:600; font-size:14px;'>Browser<br>Market<br>Shares</div>";
+            args.accumulation.series[0].dataLabel.font.size = ej.base.Browser.isDevice ? '7px' : '11px';
+            args.accumulation.annotations[0].properties.x = "50%";
+            args.accumulation.annotations[0].properties.y = "85%";
+        };
+        var onChartResized =  function (args)
+        {
+            if (ej.base.Browser.isDevice)
+            {
+                 changeFontSize();
+            }
+        };
+        function changeFontSize()
+        {
+             fontSize = "8px";
+             textSize = "8px";
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Semi Pie in ASP.NET MVC Chart control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This example demonstrates a semi-pie chart for mobile browsers usage statistics. Data label shows the information about the points.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render a semi pie chart using <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_StartAngle" aria-label="StartAngle">StartAngle<span class="sr-only">opens in a new tab</span></a> and <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_EndAngle" aria-label="EndAngle">EndAngle<span class="sr-only">opens in a new tab</span></a> properties. Data labels are wrapped to fit inside the pie slice. To enable the datalabel wrap feature, use the <code>TextWrap</code> datalabel property.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the data label feature can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/data-label" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC Chart Semi Pie Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Semi Pie in ASP.NET MVC Chart Control</h1>
+}

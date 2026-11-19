@@ -1,0 +1,109 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-md-8 control-section">
+        @Html.EJS().LinearGauge("container").Load("onGaugeLoad").Background("Transparent").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Vertical).Title("Temperature Measure").TitleStyle(textStyle =>
+         textStyle.FontFamily("inherit")).Container(container => container.Width(13).RoundedCornerRadius(5).Type(Syncfusion.EJ2.LinearGauge.ContainerType.Thermometer)).Axes(axes => 
+         { 
+            axes.Minimum(0).Maximum(180).Line(line => line.Width(0).Color("#9E9E9E")).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            .Pointers(pointer => pointer.Value(90).Height(13).Width(13).Color("#f02828").Type(Syncfusion.EJ2.LinearGauge.Point.Bar).RoundedCornerRadius(5).Add())
+            .MajorTicks(majorTick => majorTick.Color("#9E9E9E").Interval(20).Height(20))
+            .MinorTicks(minorTick => minorTick.Color("#9E9E9E").Interval(10).Height(10)).Add();
+            axes.Minimum(0).Maximum(180).OpposedPosition(true)
+            .Line(line => line.Width(0)).LabelStyle(labelStyle => labelStyle.Font(font => font.FontFamily("inherit")))
+            .Pointers(pointer => pointer.Width(0))
+            .MajorTicks(majorTick => majorTick.Color("#9E9E9E").Interval(20).Height(20))
+            .MinorTicks(minorTick => minorTick.Color("#9E9E9E").Interval(10).Height(10)).Add();
+         }).Render()
+    </div>
+    <div class="col-md-4 property-section">
+        <table id="property" title="Properties" style="width: 100%; margin-left: -10px">
+            <tbody>
+                <tr style="height: 50px">
+                    <td>
+                        <div style="font-size:14px">Orientation</div>
+                    </td>
+                    <td>
+                        <div style="height:45px">
+                            @Html.EJS().DropDownList("orientationMode").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewData["orientation"]).Value("Vertical").Change("valueChange").Render()
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 75px">
+                    <td>
+                        <div style="font-size:14px">Container Type</div>
+                    </td>
+                    <td>
+                        <div style="height:45px">
+                            @Html.EJS().DropDownList("containerMode").Index(0).Width("100%").DataSource((IEnumerable<object>)ViewData["container"]).Value("Thermometer").Change("valueContainerChange").Render()
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+        input.e-input.e-bigger, textarea.e-input.e-bigger, .e-bigger input.e-input, .e-bigger textarea.e-input, .e-input-group.e-bigger, .e-bigger .e-input-group, .e-input-group.e-control-wrapper.e-bigger, .e-bigger .e-input-group.e-control-wrapper {
+            height: 100%;
+            font-size: 14px;
+            align-items: center;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        var gauge;
+        function onGaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+            gauge = sender.gauge;
+        }
+
+        function valueChange() {
+            var orientationMode = document.getElementById('orientationMode').ej2_instances[0];
+            gauge.orientation = orientationMode.value;
+            gauge.refresh();
+        }
+
+        function valueContainerChange() {
+            var containerMode = document.getElementById('containerMode').ej2_instances[0];
+            gauge.container.type = containerMode.value == "Rounded Rectangle" ? "RoundedRectangle" : containerMode.value;
+            gauge.refresh();   
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample shows the different types of containers, such as normal, thermometer, and rounded rectangle. The linear gauge's orientation can also be changed from vertical to horizontal.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Container in ASP.NET MVC Linear Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            The linear gauge can be rendered vertically or horizontally depending on the option selected in the <b>Orientation</b> drop-down list. You can also select the container type from the <b>Container Type</b> drop-down list.
+        </p>
+        <p>
+            More information on the containers can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/linear-gauge-appearance#customizing-the-linear-gauge-container" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+            Likewise, information about orientation can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/axis#orientation" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+
+}
+@section Title{
+    <title>ASP.NET MVC Linear Gauge Container Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Container in ASP.NET MVC Linear Gauge Control</h1>
+}

@@ -1,0 +1,85 @@
+@using Syncfusion.EJ2.Navigations
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="control_wrapper">
+
+            @Html.EJS().TreeView("checkbox").ShowCheckBox(true).Fields((TreeViewFieldsSettings)ViewData["checkboxfields"]).Render()
+
+        </div>
+    </div>
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties">
+            <tbody>
+                <tr>
+                    <td style="padding-right: 10px">
+                        <div style="padding-left: 0;padding-top: 0">
+                            @Html.EJS().CheckBox("select").Checked(true).Label("Auto Check").Change("onChange").Render()
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    @*custom code start*@
+    <style>
+        .control_wrapper {
+            max-width: 500px;
+            margin: auto;
+            border: 1px solid #dddddd;
+            border-radius: 3px;
+        }
+
+
+        @@media screen and (max-width: 768px) {
+            .treeview-control-section {
+                margin: 0;
+            }
+        }
+    </style>
+    @*custom code end*@
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the CheckBox in ASP.NET MVC TreeView control. Explore here for more details."/>
+                }
+@section ActionDescription{
+
+
+<div id="action-description">
+    <p>This <a href="https://www.syncfusion.com/aspnet-mvc-ui-controls/treeview" target="_blank" aria-label="ASP.NET MVC TreeView example">ASP.NET MVC TreeView example<span class="sr-only">opens in a new tab</span></a> demonstrates the CheckBox functionalities of the TreeView. Click on any parent node's CheckBox to check/uncheck the node and its child nodes. The parent node's checked state will be determined by its child nodes checked state.</p>
+</div>
+
+
+
+
+}
+@section Description{
+
+
+<div id="description">
+    <p>The <code>TreeView</code> component can be rendered with checkbox on the left side of each tree node. This allows the user to check more than one nodes, and this can be enabled by the <code>showCheckBox</code> property.</p>
+    <p>In this demo, the TreeView is populated with checkbox enabled.</p>
+    <p>For more information, you can refer to the <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/treeview/check-box/" target="_blank" aria-label="Checkboxes">Checkboxes<span class="sr-only">opens in a new tab</span></a> section from the documentation.</p>
+</div>
+
+
+}
+
+<script>
+    function onChange(args) {
+        var treeObj = document.getElementById('checkbox').ej2_instances[0];
+        treeObj.autoCheck = args.checked;
+    }
+</script>
+
+
+
+
+
+
+@section Title{
+                    <title>ASP.NET MVC TreeView CheckBox Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of CheckBox in ASP.NET MVC TreeView Control</h1>
+                }

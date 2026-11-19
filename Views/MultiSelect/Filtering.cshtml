@@ -1,0 +1,101 @@
+@using Syncfusion.EJ2
+@using EJ2MVCSampleBrowser.Models
+@using Newtonsoft.Json
+@using Syncfusion.EJ2.DropDowns
+@section ControlsSection{
+    <div class="col-lg-9 control-section" style="height: 400px;">
+        <div class='control-wrapper'>
+            <h4>Filtering</h4>
+
+            @Html.EJS().MultiSelect("list").AllowFiltering(true).Query((string)ViewData["query"]).Placeholder("Select countries").DataSource(
+                    (IEnumerable<Countries>)ViewData["data"]).Filtering("onFiltering").Fields(new MultiSelectFieldSettings { Text = "Name", Value = "Code" }).DebounceDelay(300).Render()
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%;">
+            <tr>
+                <td style="padding-top: 10px">
+                    <label class="example-label">Debounce Delay</label>
+                    @Html.EJS().NumericTextBox("numeric").Format("n0").Value(300).Min(1).Change("change").Render()
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <style>
+        .control-fluid, .container-fluid {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .control-section .control-wrapper {
+            width: 80%;
+            margin: 0 auto;
+            min-width: 185px;
+            padding-top: 15px
+        }
+
+        .e-bigger .control-section .control-wrapper {
+            width: 100%;
+        }
+
+        .e-multi-select-wrapper .e-chips > .e-chipcontent {
+            max-width: 80%;
+            white-space: nowrap;
+            line-height: normal;
+        }
+    </style>
+    <script type="text/javascript">
+        function onFiltering(e) {
+            var query = new ej.data.Query();
+            // frame the query based on search string with filter type.
+            query = (e.text !== '') ? query.where('Name', 'startswith', e.text, true) : query;
+            // pass the filter data source, filter query to updateData method.
+            e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewData["data"])), query);
+        }
+        function change(args) {
+            var multiselectObj = document.getElementById('list').ej2_instances[0];
+            multiselectObj.debounceDelay = args.value;
+        }
+    </script>
+
+
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Filtering in ASP.NET MVC MultiSelect Dropdown control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the filtering functionalities of the MultiSelect. Type a character in the MultiSelect element
+            and choose one or more items from the
+            <code>filtered</code> list.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            The MultiSelect has built-in support to filter the data source when
+            <code>allowFiltering</code> is enabled. It performs when characters are typed in the component. In
+            <code>filtering</code> event, you can filter down the data source and return the resulted data to MultiSelect via
+            <code>updateData</code> method to display its list items.
+        </p>
+        <p>
+            This sample illustrates that, query the data source and pass the resulted data to MultiSelect through the
+            <code>updateData</code> method in
+            <code>filtering</code> event. The debounce delay, in milliseconds, for filtering items in the MultiSelect component can be set using the <code>DebounceDelay</code> property.
+        </p>
+        <p>
+            More information on the filtering feature configuration can be found in the
+            <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/multi-select/filtering/" target="_blank" aria-label="documentation section"> documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC MultiSelect Dropdown Filtering Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Filtering in ASP.NET MVC MultiSelect Dropdown Control</h1>
+}

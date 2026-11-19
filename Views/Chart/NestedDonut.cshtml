@@ -1,0 +1,111 @@
+﻿@using Syncfusion.EJ2;
+
+@section ControlsSection{
+    <div class="control-section" align="center">
+
+        @(Html.EJS().AccumulationChart("container")
+            .Series(series =>
+            {
+                series.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
+                    .DataSource(ViewData["CountryData"])
+                    .XName("X")
+                    .YName("Y")
+                    .PointColorMapping("Color")
+                    .Radius("90%")
+                    .InnerRadius("75%")
+                    .Border(br => br.Color("#ffffff").Width(2))
+                    .DataLabel(dl => dl.Visible(true)
+                        .Name("Text")
+                        .Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Outside))
+                    .Animation(animation => animation.Enable(false))
+                    .Add();
+
+                series.Type(Syncfusion.EJ2.Charts.AccumulationType.Pie)
+                    .DataSource(ViewData["RegionData"])
+                    .XName("X")
+                    .YName("Y")
+                    .PointColorMapping("Color")
+                    .Radius("67%")
+                    .InnerRadius("35%")
+                    .Border(br => br.Color("#ffffff").Width(2))
+                    .DataLabel(dl => dl.Visible(true)
+                        .Name("Text")
+                        .Position(Syncfusion.EJ2.Charts.AccumulationLabelPosition.Inside))
+                    .Animation(animation => animation.Enable(false))
+                    .Add();
+            })
+            .EnableBorderOnMouseMove(false)
+            .CenterLabel(cl => cl.Text("Qatar Population<br><b>3.1 Million</b>")
+                .TextStyle(ts => ts.Size("12px").FontWeight("bold")))
+            .Title("The Population of Qatar by Nationality")
+            .Tooltip(tp => tp.Enable(true)
+                .Format("<b>${point.x}</b><br/>Population: <b>${point.y:n2}%</b>")
+                .TextStyle(ts => ts.FontWeight("bold")))
+            .LegendSettings(legend => legend.Visible(true).MappingKey("X"))
+            .Load("load")
+            .Render())
+
+    </div>
+
+@*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+@*custom code end*@
+
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            loadAccumulationChartTheme(args);
+        };
+    </script>
+}
+
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Nested Donut Chart in ASP.NET MVC Accumulation Chart control. Explore here for more details." />
+}
+@*custom code end*@
+
+@section ActionDescription{
+    <p>
+        This nested donut chart example demonstrates how to visualize the population of Qatar by nationality using multiple pie series. The outer ring represents individual countries, while the inner ring shows regional distribution with consistent color grouping.
+    </p>
+}
+
+@section Description{
+    <p>
+        In this example, multiple pie series are used to display hierarchical data in concentric rings. This approach makes it easy to compare nationality-level population distribution alongside broader regional groupings within Qatar.
+    </p>
+    <p>
+        The <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_Radius" aria-label="Navigate to the ASP.NET MVC Accumulation Chart radius API reference"><code>Radius</code><span class="sr-only">opens in a new tab</span>
+        </a>
+        and
+        <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_InnerRadius" aria-label="Navigate to the ASP.NET MVC Accumulation Chart inner radius API reference"><code>InnerRadius</code><span class="sr-only">opens in a new tab</span>
+        </a>
+        properties control the size and thickness of each ring, enabling the nested donut appearance. The
+        <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationSeries.html#Syncfusion_EJ2_Charts_AccumulationSeries_PointColorMapping" aria-label="Navigate to the ASP.NET MVC Accumulation Chart PointColorMapping API reference"><code>PointColorMapping</code><span class="sr-only">opens in a new tab</span></a> 
+            property ensures that countries and their corresponding regions share the same color for visual consistency.
+    </p>
+    <p>
+        The <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Charts.AccumulationChartTooltipSettings.html#Syncfusion_EJ2_Charts_AccumulationChartTooltipSettings_Enable" aria-label="Navigate to the ASP.NET MVC Accumulation Chart TooltipSettings Enable API reference"><code>Tooltip</code><span class="sr-only">opens in a new tab</span></a> feature is enabled to provide additional information. Hover over a segment or tap on touch devices to view the nationality and its population share percentage.
+    </p>
+    <p>
+        More information about rendering multiple pie series can be found in this
+
+        <a target="_blank"
+           href="https://ej2.syncfusion.com/aspnetmvc/documentation/accumulation-chart/pie-dough-nut/#multiple-pie-series"
+           aria-label="Navigate to the documentation for multiple pie series in ASP.NET MVC Accumulation Chart control">
+            documentation<span class="sr-only">opens in a new tab</span></a> section.
+    </p>
+}
+
+@section Title{
+    <title>ASP.NET MVC Chart Nested Donut Example - Syncfusion Demos </title>
+}
+
+@section Header{
+    <h1 class='sb-sample-text'>Charts</h1>
+}

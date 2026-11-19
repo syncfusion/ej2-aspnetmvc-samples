@@ -1,0 +1,56 @@
+@using Syncfusion.EJ2.Navigations
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+    <div class="control_wrapper">
+             @Html.EJS().TreeView("nodeediting").AllowEditing(true).Fields((TreeViewFieldsSettings)ViewData["nodefields"]).Render()
+       
+        </div>
+    </div>
+    @*custom code start*@
+<style>
+    .control_wrapper {
+        max-width: 500px;
+        margin: auto;
+        border: 1px solid #dddddd;
+        border-radius: 3px;
+    }
+
+    @@media screen and (max-width: 768px) {
+        .treeview-control-section {
+            margin: 0;
+        }
+    }
+</style>
+    @*custom code end*@
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Node Editing in ASP.NET MVC TreeView control. Explore here for more details."/>
+                }
+
+@section ActionDescription{
+
+  <div id="action-description">
+    <p>This <a href="https://www.syncfusion.com/aspnet-mvc-ui-controls/treeview" target="_blank" aria-label="ASP.NET MVC TreeView example">ASP.NET MVC TreeView example<span class="sr-only">opens in a new tab</span></a> demonstrates the node editing functionalities of the TreeView. Double click on the node or press F2 key on selected node to edit node text in input textbox. Press enter key or click outside of the input element to save the node, or press escape key to cancel the modified text.</p>
+</div>
+
+
+}
+@section Description{
+
+  <div id="description">
+    <p>The <code>TreeView</code> component has the built-in option to edit and modify the node text in inline by enabling the <code>allowEditing</code> property.</p>
+    <p>For more information, you can refer to the <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/treeview/node-editing/" target="_blank" aria-label="Node Editing">Node Editing<span class="sr-only">opens in a new tab</span></a> section from the documentation.</p>
+</div>
+
+}
+
+
+
+@section Title{
+                    <title>ASP.NET MVC TreeView Node Editing Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Node Editing in ASP.NET MVC TreeView Control</h1>
+                }

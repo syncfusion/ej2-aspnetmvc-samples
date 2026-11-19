@@ -1,0 +1,81 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+<div class="control-section">
+    <h4 id="days" align="center" style="font-family: Segoe UI;font-weight: 500; font-style:normal; font-size:15px;">Filter From Hire Date</h4>
+    <div id="container" align="center">
+        @(Html.EJS().RangeNavigator("container")
+                    .AllowSnapping(true).IntervalType(Syncfusion.EJ2.Charts.RangeIntervalType.Quarter)
+                    .EnableGrouping(true)                    
+                    .GroupBy(Syncfusion.EJ2.Charts.RangeIntervalType.Years)
+                    .EnableDeferredUpdate(true).ValueType(Syncfusion.EJ2.Charts.RangeValueType.DateTime)
+                    .XName("HireDate").YName("yValue")
+                    .Load("load").Changed("changed").Render()
+        )
+    </div>
+    <br>
+    <div id="grid" align="center">
+        @Html.EJS().Grid("Grid").Columns(col =>
+       {
+
+           col.Field("EmployeeID").HeaderText("Employee ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+           col.Field("FirstName").HeaderText("Name").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+           col.Field("Title").HeaderText("Title").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+           col.Field("HireDate").HeaderText("Hire Date").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Format("yMd").Add();
+
+       }).Width("80%").Render()
+    </div>
+</div>
+             @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+                 @*custom code end*@
+    <script src="~/Scripts/datasource.js"></script>
+    <script src="~/Scripts/range-navigator/theme-color.js"></script>
+    <script>
+        var employeeData = employeeData;
+        var start, end;
+        var dataSource = employeeData.filter((data) => {
+            return (data.HireDate >= new Date(1992, 5, 1) && data.HireDate <= new Date(1993, 4, 1));
+        });
+        var load = function (args) {
+            loadRangeNavigatorTheme(args);
+            args.rangeNavigator.width = ej.base.Browser.isDevice ? "100%" : "80%";
+            args.rangeNavigator.dataSource = employeeData;
+            args.rangeNavigator.value = [new Date('1992-06-01'), new Date('1993-05-01')];
+        }
+        var changed = function (args) {
+            if ((document.getElementById('Grid').childNodes.length > 1)) {
+                var grid = document.getElementById('Grid').ej2_instances[0];
+                grid.dataSource = employeeData.filter((data) => {
+                    return (data.HireDate >= new Date(+args.start) && data.HireDate <= new Date(+args.end));
+                });
+                grid.refresh();
+            }
+        }
+    </script>
+}
+             @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Filter in ASP.NET MVC Range Selector control. Explore here for more details."/>
+                }
+             @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample filters the data by hire date using date-time axis.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to bind the value of the range navigator to the grid control using the
+        <code>changed</code> event.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Range Selector Filter Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Filter in ASP.NET MVC Range Selector Control</h1>
+                }
