@@ -1,0 +1,106 @@
+@{
+    ViewData["Title"] = "SerialNumberColumn";
+}
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section">
+        <div class="content-wrapper">
+
+            <div>
+                @(Html.EJS().Gantt("SerialNumberColumn")
+                    .DataSource((IEnumerable<object>)ViewData["DataSource"])
+                    .Height("550px")
+                    .TaskFields(ts => ts
+                        .Id("TaskId")
+                        .Name("TaskName")
+                        .StartDate("StartDate")
+                        .EndDate("EndDate")
+                        .Duration("Duration")
+                        .Progress("Progress")
+                        .Dependency("Predecessor")
+                        .ParentID("ParentID")
+                    )
+                    .EnableSerialNumber(true)
+                    .Toolbar(new List<string> { "Add", "Edit", "Update", "Delete", "Cancel", "Indent", "Outdent", "ExpandAll", "CollapseAll", "Search" })
+                    .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
+                    .AllowSorting(true)
+                    .EnableContextMenu(true)
+                    .AllowSelection(true)
+                    .TreeColumnIndex(2)
+                    .AllowRowDragAndDrop(true)
+                    .AllowTaskbarDragAndDrop(true)
+                    .SplitterSettings(sp => sp.ColumnIndex(2))
+                    .SelectionSettings(ss => ss.Mode(Syncfusion.EJ2.Grids.SelectionMode.Row).Type(Syncfusion.EJ2.Grids.SelectionType.Single).EnableToggle(false))
+                    .TooltipSettings(ts => ts.ShowTooltip(true))
+                    .FilterSettings(fs => fs.Type(Syncfusion.EJ2.Gantt.FilterType.Menu))
+                    .TimelineSettings(tl => tl
+                        .ShowTooltip(true)
+                        .TopTier(tt => tt.Format("MMM dd, yyyy").Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week))
+                        .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day)))
+                    .HighlightWeekends(true)
+                    .AllowFiltering(true)
+                    .GridLines(Syncfusion.EJ2.Gantt.GridLine.Both)
+                    .LabelSettings(ls => ls.TaskLabel("${Progress}%"))
+                    .TaskbarHeight(20)
+                    .RowHeight(40)
+                    .AllowUnscheduledTasks(true)
+                    .ProjectStartDate("03/31/2025")
+                    .ProjectEndDate("04/25/2024")
+                    .Columns(col =>
+                    {
+                        col.Field("TaskId").Visible(false).Add();
+                        col.Field("SerialNumber").HeaderText("S.No").Width(100).AllowFiltering(false).Add();
+                        col.Field("TaskName").Width(260).HeaderText("Task Name").AllowReordering(false).Add();
+                        col.Field("StartDate").HeaderText("Start Date").Width(140).Add();
+                        col.Field("Predecessor").Width(190).HeaderText("Predecessor").Add();
+                        col.Field("Duration").HeaderText("Duration").AllowEditing(false).Add();
+                        col.Field("Progress").HeaderText("Progress").Add();
+                    })
+                    .Render()
+                )
+            </div>
+        </div>
+    </div>
+}
+
+
+@section ActionDescription {
+    <div id="action-description">
+        <p>
+            This sample demonstrates the auto-generated Serial Number column support in the Gantt Chart.
+            The component automatically generates sequential row numbers based on the current visible row order
+            and keeps them updated during operations such as filtering, editing, hierarchy changes,
+            and drag-and-drop actions.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates Serial Number column support in the ASP.NET MVC Gantt control." />
+}
+@section Description {
+    <div id="description">
+
+        <p>
+            The serial number feature automatically generates sequential row numbers for records displayed in the Gantt Chart. When the <strong>
+                <a target="_blank"
+                   href="https://help.syncfusion.com/cr/aspnetcore-js2/Syncfusion.EJ2.Gantt.Gantt.html#Syncfusion_EJ2_Gantt_Gantt_EnableSerialNumber">enableSerialNumber</a>
+            </strong> property is enabled, serial numbers are assigned based on the current visible row order without requiring a dedicated field in the data source.
+        </p>
+
+        <p>
+            The numbering is automatically updated whenever the row order changes due to actions such as filtering, searching, expand and collapse, indent and outdent, CRUD operations, row drag-and-drop, and data refresh.
+        </p>
+
+        <p>More information on the Essential<sup>®</sup> Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/columns/serial-number-column">serial number column</a> documentation section.</p>
+        <br />
+        <p>Looking for the full ASP.NET MVC Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-gantt-chart">ASP.NET MVC Gantt Chart</a> page.</p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC Gantt Serial Number Column Example - Syncfusion Demos</title>
+}
+
+@section Header{
+    <h1 class='sb-sample-text'>Example of Serial Number Code in ASP.NET MVC Gantt Control</h1>
+}

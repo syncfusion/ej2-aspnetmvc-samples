@@ -1,0 +1,215 @@
+﻿@using Syncfusion.EJ2
+
+@section ControlsSection{
+    <div class="col-lg-8 control-section sb-property-border">
+        <div class="api-otp-wrapper">
+            <div id="otp-container">
+                <div class="form-container">
+                    <span class="otp-header"> Enter verification code </span>
+                    @Html.EJS().OtpInput("apiOtp").Separator("-").Placeholder("X").Created("created").Input("handleOtpChange").Render()
+                    <div class="otp-actions">
+                        <button id="reset-btn" class="e-btn" type="button" disabled> Clear </button>
+                        <button id="verify-btn" class="e-btn e-primary" type="button" disabled> Verify </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 property-section">
+        <table id="property" title="Properties">
+            <tbody>
+                <tr>
+                    <td> Styling Mode </td>
+                    <td>
+                        @Html.EJS().DropDownList("stylingMode").DataSource(ViewData["stylingMode"]).PopupHeight("200px").Change("stylingModeChange").Index(0).Render()
+                    </td>
+                </tr>
+                <tr>
+                    <td> Validation Status </td>
+                    <td>
+                        @Html.EJS().DropDownList("validationStatus").DataSource(ViewData["validationStatus"]).PopupHeight("200px").Change("statusChange").Index(0).Render()
+                    </td>
+                </tr>
+                <tr>
+                    <td> Placeholder </td>
+                    <td>
+                        @Html.EJS().TextBox("placeHolder").Value("x").Created("placeholderBoxCreated").Input("updatePlaceHolder").Render()
+                    </td>
+                </tr>
+                <tr>
+                    <td> Separator </td>
+                    <td>
+                        @Html.EJS().TextBox("separator").Value("-").Created("separatorBoxCreated").Input("updateSeparator").Render()
+                    </td>
+                </tr>
+                <tr>
+                    <td> Length </td>
+                    <td>
+                        @Html.EJS().NumericTextBox("length").Value(4).Created("lengthBoxCreated").Max(6).Min(1).Format("0").Change("updateOtpLength").Render()
+                    </td>
+                </tr>
+                <tr>
+                    <td> Disabled </td>
+                    <td>
+                        @Html.EJS().Switch("disabled").Change("handleDisabled").Render()
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+}
+
+<script>
+    var otpInput;
+    var placeholderBox;
+    var separatorBox;
+    var verifyBtn;
+    var resetBtn;
+    var lengthBox;
+
+    function created() {
+        otpInput = document.getElementById('apiOtp').ej2_instances[0];
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        verifyBtn = document.getElementById('verify-btn');
+        resetBtn = document.getElementById('reset-btn');
+        resetBtn.addEventListener('click', function () {
+            otpInput.value = "";
+            verifyBtn.disabled = resetBtn.disabled = true;
+        });
+        verifyBtn.addEventListener('click', function () {
+            alert("Entered OTP value is : " + otpInput.value);
+        });
+    });
+
+    function handleOtpChange(event) {
+        var otpLength = event.value.toString().length;
+        verifyBtn.disabled = otpLength !== otpInput.length;
+        resetBtn.disabled = !otpLength;
+    }
+
+    function placeholderBoxCreated() {
+        placeholderBox = document.getElementById('placeHolder').ej2_instances[0];
+        placeholderBox.element.maxLength = otpInput.length;
+    }
+
+    function separatorBoxCreated() {
+        separatorBox = document.getElementById('separator').ej2_instances[0];
+        separatorBox.element.maxLength = 1;
+    }
+
+    function lengthBoxCreated() {
+        lengthBox = document.getElementById('length').ej2_instances[0];
+    }
+
+    function stylingModeChange(e) {
+        otpInput.stylingMode = e.itemData.value;
+    }
+
+    function statusChange(e) {
+        otpInput.cssClass = e.itemData.value;
+    }
+    function updatePlaceHolder(args) {
+        otpInput.placeholder = args.value;
+    }
+    function updateSeparator(args) {
+        otpInput.separator = args.value;
+    }
+    function updateOtpLength(args) {
+        var value = args.value;
+        if (!value) {
+            lengthBox.element.value = 1;
+        }
+        otpInput.length = value || 1;
+        placeholderBox.element.maxLength = otpInput.length;
+    }
+    function handleDisabled(args) {
+        otpInput.disabled = args.checked;
+    }
+</script>
+
+<style>
+    .api-otp-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        min-height: 400px;
+    }
+
+    #otp-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+    }
+
+    .form-container {
+        height: 220px;
+        padding: 1rem 3rem;
+        box-shadow: 0 1px 3px #d4d4d5, 0 0 0 1px #d4d4d5;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-container > div {
+        margin: 17px 0px;
+    }
+
+    .form-container .otp-header {
+        display: inline-block;
+        font-size: 1.4em;
+        font-weight: 500;
+        margin: 10px 0px;
+    }
+
+    .form-container .otp-actions {
+        display: flex;
+        gap: 20px;
+    }
+
+    .otp-actions button {
+        width: 80px;
+    }
+
+    .property-panel-content td {
+        padding: 10px 0px;
+        width: 35%;
+    }
+</style>
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the API's' in ASP.NET MVC Otp Input Control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the properties available in the OTP Input control.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            This sample can be customized further with the combination of OTP Input properties from the property pane. For example,
+        </p>
+        <ul>
+            <li>The input style can be changed by selecting the Styling Mode dropdownlist from the property pane.</li>
+            <li>The validation state can be changed by selecting the Validation Status dropdownlist from the property pane.</li>
+            <li>The hint placeholder character can be updated by using the Placeholder textbox from the property pane.</li>
+            <li>The separator character (-) can be updated by using the Separator textbox from the property pane.</li>
+            <li>The input field length can be changed by using the Length numerictextbox from the property pane.</li>
+            <li>Enable or Disable the OTP Input by toggling the Disabled switcher button.</li>
+        </ul>
+    </div>
+    }
+    @section Title{
+        <title>ASP.NET MVC Otp Input API Example - Syncfusion Demos </title>
+    }
+@section Header{
+    <h1 class='sb-sample-text'>Example of API's' in ASP.NET MVC Otp Input Control</h1>
+}

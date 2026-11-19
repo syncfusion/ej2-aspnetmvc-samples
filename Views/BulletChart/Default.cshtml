@@ -1,0 +1,184 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div style="text-align:center">
+            @(Html.EJS().BulletChart("container1")
+                        .Tooltip(tp => tp.Enable(true))
+                        .ValueField("value")
+                        .Width("700")
+                        .TargetField("target")
+                        .Animation(an => an.Enable(false))
+                        .Ranges(rn =>
+                        {
+                            rn.End(150).Add();
+                            rn.End(250).Add();
+                            rn.End(300).Add();
+                        })
+                        .Minimum(0).Maximum(300).Interval(50)
+                        .Title("Revenue")
+                        .LabelFormat("${value}K")
+                        .Subtitle("U.S. $")
+                        .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Left)
+                        .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
+                        .DataSource(ViewData["dataSource1"])
+                        .Load("load1")
+                        .Render()
+            )
+        </div>
+        <div style="text-align:center">
+                @(Html.EJS().BulletChart("container2")
+                    .Tooltip(tp => tp.Enable(true))
+                    .ValueField("value")
+                    .Width("700")
+                    .TargetField("target")
+                    .Animation(an => an.Enable(false))
+                    .Ranges(rn =>
+                    {
+                        rn.End(20).Add();
+                        rn.End(25).Add();
+                        rn.End(30).Add();
+                    })
+                    .Minimum(0).Maximum(30).Interval(5)
+                    .Title("Profit")
+                    .LabelFormat("{value}%")
+                    .Subtitle("%")
+                    .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Left)
+                    .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
+                    .DataSource(ViewData["dataSource2"])
+                     .Load("load2")
+                    .Render()
+                )
+            </div>
+            <div style="text-align:center">
+                @(Html.EJS().BulletChart("container3")
+                    .Tooltip(tp => tp.Enable(true))
+                    .ValueField("value")
+                    .Width("700")
+                    .TargetField("target")
+                    .Animation(an => an.Enable(false))
+                    .Ranges(rn =>
+                    {
+                        rn.End(350).Add();
+                        rn.End(500).Add();
+                        rn.End(600).Add();
+                    })
+                    .Minimum(0).Maximum(600).Interval(100)
+                    .Title("Avg Order Size")
+                    .LabelFormat("{value}$")
+                    .Subtitle("U.S. $")
+                    .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Left)
+                    .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
+                    .DataSource(ViewData["dataSource3"])
+                     .Load("load3")
+                    .Render()
+                )
+            </div>
+            <div style="text-align:center">
+                @(Html.EJS().BulletChart("container4")
+                    .Tooltip(tp => tp.Enable(true))
+                    .ValueField("value")
+                    .Width("700")
+                    .TargetField("target")
+                    .Animation(an => an.Enable(false))
+                    .Ranges(rn =>
+                    {
+                        rn.End(1700).Add();
+                        rn.End(2000).Add();
+                        rn.End(2500).Add();
+                    })
+                    .Minimum(0).Maximum(2500).Interval(500)
+                    .Title("New Customers")
+                    .Subtitle("Count")
+                    .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Left)
+                    .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
+                    .DataSource(ViewData["dataSource4"])
+                     .Load("load4")
+                    .Render()
+                )
+            </div>
+            <div style="text-align:center">
+                @(Html.EJS().BulletChart("container5")
+                    .Tooltip(tp => tp.Enable(true))
+                    .ValueField("value")
+                    .Width("700")
+                    .TargetField("target")
+                    .Animation(an => an.Enable(false))
+                    .Ranges(rn =>
+                    {
+                        rn.End(3.7).Add();
+                        rn.End(4.2).Add();
+                        rn.End(5).Add();
+                    })
+                    .Minimum(0).Maximum(5).Interval(1)
+                    .Title("Cust Satisfication")
+                    .Subtitle("Top Rating of 5")
+                    .TitlePosition(Syncfusion.EJ2.Charts.TextPosition.Left)
+                    .Orientation(Syncfusion.EJ2.Charts.OrientationType.Horizontal)
+                    .DataSource(ViewData["dataSource5"])
+                     .Load("load5")
+                    .Render()
+                )
+            </div>
+    </div>
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/bullet-chart/theme-color.js"></script>
+    <script>
+        var load1 = function (args) {
+            loadBulletChartTheme(args);
+            args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 53;
+            args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.bulletChart.titlePosition = ej.base.Browser.isDevice ? 'Top' : 'Left';
+        }
+        var load2 = function (args) {
+            loadBulletChartTheme(args);
+            args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 72;
+            args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.bulletChart.titlePosition = ej.base.Browser.isDevice ? 'Top' : 'Left';
+        }
+        var load3 = function (args) {
+            loadBulletChartTheme(args);
+            args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 13;
+            args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.bulletChart.titlePosition = ej.base.Browser.isDevice ? 'Top' : 'Left';
+        }
+        var load4 = function (args) {
+            loadBulletChartTheme(args);
+            args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 10;
+            args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.bulletChart.titlePosition = ej.base.Browser.isDevice ? 'Top' : 'Left';
+        }
+        var load5 = function (args) {
+            loadBulletChartTheme(args);
+            args.bulletChart.margin.left = ej.base.Browser.isDevice ? 10 : 0;
+            args.bulletChart.width = ej.base.Browser.isDevice ? "100%" : "60%";
+            args.bulletChart.titlePosition = ej.base.Browser.isDevice ? 'Top' : 'Left';
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Default in ASP.NET MVC Bullet Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates a default bullet chart to compare the feature (value) bar with comparative (target) bar. It includes variety of configurations to change the look and feel of the chart.
+    </p>
+}
+@section Description{
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a feature bar or comparative bar on the bullet chart.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Bullet Chart Default Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Default in ASP.NET MVC Bullet Chart Control</h1>
+                }

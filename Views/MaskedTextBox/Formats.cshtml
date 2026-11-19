@@ -1,0 +1,151 @@
+@using Syncfusion.EJ2.Inputs
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@using EJ2MVCSampleBrowser.Models
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        <div class="content-wrapper">
+            <div class="control-label">Formats</div>
+            @Html.EJS().MaskedTextBox("mask1").Mask("(999)-999-9999").Created("OnCreate").Change("OnChange").Render()
+        </div>
+    </div>
+<div class="col-lg-4 property-section" style="padding-left: 0px">
+    <table id="property" title="Properties" style="width: 100%">
+        <tbody>
+            <tr>
+                <td style="width: 50%">
+                    <div>Mask</div>
+                </td>
+                <td style="width: 50%">
+                    <div style="max-width: 200px">
+                        <!-- Input to customize mask format -->
+                        <input class="e-input" id="input1" type="text" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%">
+                    <div>Prompt Character</div>
+                </td>
+                <td style="width: 50%">
+                    <div style="max-width: 200px">
+                        <!-- Prompt character options -->
+                        @Html.EJS().DropDownList("ddl").PopupHeight("200px").Index(1).DataSource(
+                    (IEnumerable<GameList>)ViewData["data"]).Change("valueChange").Fields(new DropDownListFieldSettings { Text = "Mask", Value = "Id" }).Render()
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%;padding-top:10px">
+                    <div>Value</div>
+                </td>
+                <td style="width: 50%;padding-top:10px">
+                    <!-- Display un-masked value -->
+                    <div id="val1" type="text"></div>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 50%;padding-top:10px">
+                    <div>Masked Value</div>
+                </td>
+                <td style="width: 50%;padding-top:10px">
+                    <!-- Display masked value -->
+                    <div id="val2" type="text"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <script>
+        var ele1 = document.getElementById('input1');
+        var ele3 = document.getElementById('val1');
+        var ele4 = document.getElementById('val2');
+        
+        function valueChange() {
+            var ddlObj = document.getElementById('ddl').ej2_instances[0];
+            mask.setProperties({ promptChar: ddlObj.value });
+            ele3.innerHTML = mask.value;
+            ele4.innerHTML = mask.getMaskedValue();
+        }
+        
+        function OnChange(args) {
+            ele3.innerHTML = args.value;
+            ele4.innerHTML = args.maskedValue;
+        }
+        ele1.oninput = function () {
+            var start = ele1.selectionStart;
+            var end = ele1.selectionEnd;
+            mask.setProperties({ mask: ele1.value });
+            ele1.setSelectionRange(start, end);
+            ele3.innerHTML = mask.value;
+            ele4.innerHTML = mask.getMaskedValue();
+        };
+    </script>
+}
+<style>
+    .property-panel-content {
+        padding: 0 10px 10px 0;
+        overflow: auto;
+    }
+
+    .content-wrapper {
+        width: 45%;
+        margin: 0 auto;
+        min-width: 185px;
+        max-width: 350px;
+    }
+
+    .control-label {
+        padding: 24px 0px 10px 0px;
+        font-size: 12px;
+    }
+</style>
+}
+
+@section PreScripts {
+    <script>
+        var mask;
+        function OnCreate() {
+            mask = this;
+            ele1.value = '(999)-999-9999';
+            ele4.innerHTML = mask.getMaskedValue();
+        }
+    </script>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Formats in ASP.NET MVC Input Mask control. Explore here for more details."/>
+                }
+
+@section ActionDescription{
+
+   
+<div id="action-description">
+    <p>
+        This sample demonstrates the different formats that can be applied to MaskedTextBox component.
+        You can customize the mask and prompt character values in the property panel.
+    </p>
+</div>
+
+
+}
+@section Description{
+
+ <div id="description">
+    <p>
+        Here, the "Value" and "Masked Value" labels from the properties panel returns the raw value (unmasked value) and masked value of the MaskedTextBox component.
+        You can also get these raw value and masked value anytime through the
+        <b><a href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Inputs.MaskedTextBox.html#Syncfusion_EJ2_Inputs_MaskedTextBox_Value" target="_blank" aria-label="value">value<span class="sr-only">opens in a new tab</span></a></b> property
+        and <b><a href="http://ej2.syncfusion.com/documentation/maskedtextbox/api-maskedTextBox.html#getmaskedvalue" target="_blank" aria-label="getMaskedValue">getMaskedValue<span class="sr-only">opens in a new tab</span></a></b> method.
+    </p>
+</div>
+
+
+}
+
+@section Title{
+                    <title>ASP.NET MVC Input Mask Formats Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Formats in ASP.NET MVC Input Mask Control</h1>
+                }

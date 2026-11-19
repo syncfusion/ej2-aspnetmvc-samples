@@ -1,0 +1,156 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Navigations
+
+@section ControlsSection{
+    <div class="col-lg-12 control-section indicator-type-section">
+        <div class="col-lg-6 carousel-sample">
+            <h4>Default Indicator</h4>
+            @(Html.EJS().Carousel("defaultIndicator").CssClass("indicator-type").AutoPlay(false).IndicatorsType(CarouselIndicatorsType.Default)
+                .Items(new List<CarouselItem> {
+                    new CarouselItem { Template = "#itemTemplate1"  },
+                    new CarouselItem { Template = "#itemTemplate2"  },
+                    new CarouselItem { Template = "#itemTemplate3"  },
+                    new CarouselItem { Template = "#itemTemplate4"  },
+                    new CarouselItem { Template = "#itemTemplate5"  }
+                })
+                .Render()
+            )
+        </div>
+        <div class="col-lg-6 carousel-sample">
+            <h4>Dynamic Indicator</h4>
+            @(Html.EJS().Carousel("dynamicIndicator").CssClass("indicator-type").AutoPlay(false).IndicatorsType(CarouselIndicatorsType.Dynamic)
+                .Items(new List<CarouselItem> {
+                    new CarouselItem { Template = "#itemTemplate1"  },
+                    new CarouselItem { Template = "#itemTemplate2"  },
+                    new CarouselItem { Template = "#itemTemplate3"  },
+                    new CarouselItem { Template = "#itemTemplate4"  },
+                    new CarouselItem { Template = "#itemTemplate5"  }
+                })
+                .Render()
+            )
+        </div>
+        <div class="col-lg-6 carousel-sample">
+            <h4>Fraction Indicator</h4>
+            @(Html.EJS().Carousel("fractionIndicator").CssClass("indicator-type").AutoPlay(false).IndicatorsType(CarouselIndicatorsType.Fraction)
+                .Items(new List<CarouselItem> {
+                    new CarouselItem { Template = "#itemTemplate1"  },
+                    new CarouselItem { Template = "#itemTemplate2"  },
+                    new CarouselItem { Template = "#itemTemplate3"  },
+                    new CarouselItem { Template = "#itemTemplate4"  },
+                    new CarouselItem { Template = "#itemTemplate5"  }
+                })
+                .Render()
+            )
+        </div>
+        <div class="col-lg-6 carousel-sample">
+            <h4>Progress Indicator</h4>
+            @(Html.EJS().Carousel("progressIndicator").CssClass("indicator-type").AutoPlay(false).IndicatorsType(CarouselIndicatorsType.Progress)
+                .Items(new List<CarouselItem> {
+                    new CarouselItem { Template = "#itemTemplate1"  },
+                    new CarouselItem { Template = "#itemTemplate2"  },
+                    new CarouselItem { Template = "#itemTemplate3"  },
+                    new CarouselItem { Template = "#itemTemplate4"  },
+                    new CarouselItem { Template = "#itemTemplate5"  }
+                })
+                .Render()
+            )
+        </div>
+    </div>
+    <script id="itemTemplate1" type="text/x-template">
+       <div class="e-slide">Slide 1</div>
+    </script>
+    <script id="itemTemplate2" type="text/x-template">
+       <div class="e-slide">Slide 2</div>
+    </script>
+    <script id="itemTemplate3" type="text/x-template">
+        <div class="e-slide">Slide 3</div>
+    </script>
+    <script id="itemTemplate4" type="text/x-template">
+        <div class="e-slide">Slide 4</div>
+    </script>
+    <script id="itemTemplate5" type="text/x-template">
+        <div class="e-slide">Slide 5</div>
+    </script>
+}
+
+@section ActionDescription{
+    <p>
+        This sample demonstrates the types of indicators in the  <a href="https://www.syncfusion.com/aspnet-mvc-ui-controls/carousel" target="_blank" aria-label="ASP.NET MVC Carousel">ASP.NET MVC Carousel <span class="sr-only">opens in a new tab</span></a> component.
+    </p>
+}
+
+@section Description{
+    <p>
+        The <code>ASP.NET MVC Carousel</code> component shows the available types of indicators are showcased. They are <code>Default</code>, <code>Dynamic</code>, <code>Progress</code> and <code>Fraction</code>, and can be set using the <strong>IndicatorsType</strong> property.
+    </p>
+    <p><code>Default</code> - The Carousel displays indicators with a bullet design</p>
+    <p><code>Dynamic</code> - The Carousel applies dynamic animation to the indicators.</p>
+    <p><code>Progress</code> - The Carousel displays slides numerically as indicators.</p>
+    <p><code>Fraction</code> - The Carousel displays indicators like a progress bar.</p>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the types of indicators in the ASP.NET MVC Carousel control. Explore here for more details." />
+}
+
+<style>
+    .indicator-type-section .carousel-sample {
+        margin: -0.5em 0 5.6em 0;
+        height: 200px;
+    }
+
+    .indicator-type .e-carousel-items .e-carousel-item .img-container {
+        height: 100%;
+    }
+
+    .indicator-type.e-carousel .e-next-icon::before,
+    .indicator-type.e-carousel .e-previous-icon::before {
+        color: black;
+    }
+
+    .indicator-type {
+        border: 1px solid #d7d7d7;
+    }
+
+    .indicator-type .e-slide {
+        height: 100%;
+        width: 100%;
+        margin-top: 4em;
+        font-size: 21px;
+        text-align: center;
+        color: black;
+    }
+
+    .indicator-type.e-carousel .e-carousel-indicators.e-dynamic .e-indicator-bars .e-indicator-bar:not(.e-active),
+    .indicator-type.e-carousel .e-carousel-indicators.e-default .e-indicator-bars .e-indicator-bar:not(.e-active) div {
+        background-color: gray;
+    }
+
+    .indicator-type.e-carousel .e-carousel-indicators.e-fraction .e-indicator-bars {
+        color: black;
+    }
+
+    .indicator-type.e-carousel .e-carousel-items .e-carousel-item {
+        background-color: #f9f8f8;
+    }
+    .indicator-type.e-carousel .e-progress {
+        background: none;
+    }
+
+    @@media screen and(max-width: 768px) {
+        .indicator-type-section .carousel-sample {
+            margin: 5em 0;
+        }
+
+        .indicator-type-section .row {
+            margin-top: -5em;
+        }
+    }
+</style>
+
+@section Title{
+    <title>ASP.NET MVC Carousel Indicators Type Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Indicators Types in ASP.NET MVC Carousel Control</h1>
+}

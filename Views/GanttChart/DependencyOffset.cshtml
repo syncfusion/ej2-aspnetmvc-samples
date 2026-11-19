@@ -1,0 +1,69 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "DependencyOffset";
+}
+@section ControlsSection {
+    <div class="control-section">
+        @(Html.EJS().Gantt("DependencyOffset").DataSource((IEnumerable<object>)ViewData["DataSource"]).Height("650px")
+            .TreeColumnIndex(1).RowHeight(46).TaskbarHeight(25).AllowSelection(true).HighlightWeekends(true)
+            .GridLines(Syncfusion.EJ2.Gantt.GridLine.Both)
+            .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate").EndDate("EndDate")
+            .Duration("Duration").Progress("Progress").Dependency("Predecessor").ParentID("ParentID"))
+            .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true).AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
+            .LabelSettings(ls => ls.LeftLabel("TaskName"))
+            .SplitterSettings(sp => sp.ColumnIndex(3))
+            .Columns(col =>
+            {
+                col.Field("TaskId").Visible(false).Add();
+                col.Field("TaskName").HeaderText("Task Name").Width(200).Add();
+                col.Field("Predecessor").HeaderText("Dependency").Width(160).Add();
+                col.Field("StartDate").HeaderText("Start Date").Width(130).Format("MM/dd/yyyy").Add();
+                col.Field("Duration").HeaderText("Duration").Width(110).Add();
+                col.Field("Progress").HeaderText("Progress").Width(100).Format("n").Add();
+            })
+            .ProjectStartDate("01/01/2026")
+            .Render()
+        )
+    </div>
+}
+
+@section ActionDescription {
+    <div id="action-description">
+        <p>
+            This sample illustrates how lead and lag offsets are expressed in task predecessor definitions.
+            Offsets are used to delay or overlap dependent tasks from their default relationship.
+        </p>
+    </div>
+}
+
+@section Description {
+    <div id="description">
+        <p>
+            The Gantt Chart supports dependency offsets to define lead or lag time between linked tasks.
+            These offsets adjust the start or finish dates of dependent tasks relative to their predecessor
+            tasks, enabling more flexible and accurate project scheduling.
+        </p>
+        <p>
+            These offsets affect how the dependent task start and finish dates are calculated relative to
+            the linked task, enabling more complex scheduling scenarios.
+        </p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> Gantt Chart can be found in this <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/gantt/task-dependency#configure-predecessor-offsets-with-duration-units">task dependency</a> documentation section.</p>
+        <br/>
+        <p>Looking for the full ASP.NET MVC Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-gantt-chart">ASP.NET MVC Gantt Chart</a> page.</p>
+    </div>
+}
+
+@section Meta {
+    <meta name="description" content="This example demonstrates dependency lead and lag offsets in ASP.NET MVC Gantt Chart." />
+}
+
+@section Title {
+    <title>ASP.NET Core Gantt Dependency Offset Example - Syncfusion Demos</title>
+}
+
+@section Header {
+    <h1 class="sb-sample-text">
+        Example of Dependency Offset in ASP.NET Core Gantt Control
+    </h1>
+}

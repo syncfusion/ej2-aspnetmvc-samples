@@ -1,0 +1,87 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "ColumnChooser";
+}
+
+@section ControlsSection{
+    <style>
+        #immediateContainer {
+            padding-bottom: 10px;
+            padding-left: 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+    <div class="control-section">
+        <div id="immediateContainer">
+            @Html.EJS().CheckBox("columnChooserMode").Label("Immediate Column Chooser Mode").LabelPosition(Syncfusion.EJ2.Buttons.LabelPosition.After).Checked(true).Change("onChange").Render()
+        </div>  
+        @Html.EJS().Grid("ColumnChooser").DataSource((IEnumerable<object>)ViewData["dataSource"]).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).ShowColumnChooser(true).Columns(col =>
+   {
+
+       col.Field("OrderID").HeaderText("Order ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).ShowInColumnChooser(false).IsPrimaryKey(true).ValidationRules(new { required = true, number = true }).Add();
+       col.Field("CustomerName").HeaderText("Customer Name").Width("150").ShowInColumnChooser(false).ValidationRules(new { required = true, minLength = 5 }).Add();
+       col.Field("OrderDate").HeaderText("Order Date").Width("130").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").ValidationRules(new { required = true }).Add();
+       col.Field("Freight").HeaderText("Freight").Width("120").Format("C2").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("numericedit").ValidationRules(new { required = true, min = 0 }).Add();
+       col.Field("ShippedDate").HeaderText("Shipped Date").Width("140").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("datepickeredit").ValidationRules(new { required = true }).Add();
+       col.Field("ShipCountry").HeaderText("Ship Country").Width("150").EditType("dropdownedit").Add();
+   }).AllowPaging().PageSettings(page=>page.PageCount(5)).AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.CheckBox); }).ColumnChooserSettings(columnChooser => { columnChooser.Mode("Immediate"); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true); }).Toolbar(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "ColumnChooser" }).Render()
+    </div>
+    <script>
+        function onChange(args) { 
+           var grid = document.getElementById("ColumnChooser").ej2_instances[0];
+           if (args.checked) {
+               grid.columnChooserSettings.mode = 'Immediate';
+            } else { 
+                grid.columnChooserSettings.mode = 'Default';
+            }
+        }
+    </script>
+}
+
+@section ActionDescription{
+	<div id="action-description">
+		<p>
+            This sample demonstrates how users can dynamically show or hide columns using the Column Chooser feature. It highlights flexible column visibility management through an interactive Grid interface.
+        </p>
+	</div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Column Chooser in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+		<p>
+            The Column Chooser feature enables users to dynamically control the visibility of columns in the Grid. To enable this functionality, set the <code>showColumnChooser</code> property to <code>true</code> and include the “ColumnChooser” item in the <code>toolbar</code>. To prevent specific columns from appearing in the Column Chooser, set the <code>columns.showInColumnChooser</code> property to <code>false</code>.
+        </p>
+        <p>
+            Column visibility is managed by selecting or deselecting checkboxes in the Column Chooser dialog:
+        </p>
+        <ul>
+            <li>By default, changes are applied to the Grid only after clicking the “OK” button.</li>
+            <li>To apply changes instantly, set the <code>columnChooserSettings.mode</code> property to <code>Immediate</code>.</li>
+        </ul>
+
+        <p>
+            In this demo, the column chooser mode can be switched using the "Immediate Column Chooser Mode" checkbox. When the column chooser button in the toolbar is clicked, it opens the dialog according to the selected mode, allowing users to show or hide columns by selecting or clearing the corresponding checkboxes.
+        </p>
+        <p><strong>Injecting Module:</strong></p> 
+        <p>
+            Features of the Grid component are organized into individual, feature-specific modules. To use the column chooser and toolbar functionality, inject the required modules using <code>Grid.Inject(ColumnChooser, Toolbar)</code>.
+        </p>
+        <p>More information on column chooser configuration can be found in the <a aria-label="API link for documentation" target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/columns/column-chooser">documentation.</a></p>
+        <p>
+            Looking for the full ASP.NET MVC Data Grid component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/grid" aria-label="documentation">ASP.NET MVC Data Grid component</a> page.
+        </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Data Grid Column Chooser Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Column Chooser in ASP.NET MVC Data Grid Control</h1>
+                }

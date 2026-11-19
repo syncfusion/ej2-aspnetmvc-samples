@@ -1,0 +1,109 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Maps
+@section ControlsSection{
+    <style>
+        #container {
+            display: table;
+            margin: 0 auto;
+        }
+    </style>
+
+    <div id="template" style="display:none">
+        <div class="toolback">
+            <div class="listing2">
+                <center>
+                    ${city}
+                </center>
+            </div>
+            <hr style="margin-top: 2px;margin-bottom:5px;border:0.5px solid #DDDDDD">
+            <div>
+                <span class="listing1">Rank : </span><span class="listing2">${Rank}</span>
+            </div>
+            <div>
+                <span class="listing1">Area : </span><span class="listing2">${area} sq kms</span>
+            </div>
+        </div>
+    </div>
+    <div class="control-section">
+        <div id="outer" style="width:100%">
+            @Html.EJS().Maps("container").UseGroupingSeparator(true).Format("n").Load("load").TitleSettings(title => title.Text("Top 50 largest cities in the World").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).ZoomSettings(zoom => zoom.Enable(true)).Layers(layer =>
+            {
+            layer.MarkerSettings((List<MapsMarker>)ViewData["markerSettings"]).ShapeSettings(new MapsShapeSettings { Fill = "#C3E6ED" }).ShapeData(ViewData["shapeData"]).MarkerClusterSettings(new MapsMarkerClusterSettings { AllowClustering= true, Height=40, Width=40, Shape =MarkerType.Image }).Add();
+            }).Render()
+            <div style="float: right; margin-right: 10px;">
+                Source:
+                <a href="http://www.citymayors.com/statistics/largest-cities-area-125.html"
+                   target="_blank" aria-label="citymayors">www.citymayors.com</a>
+            </div>
+        </div>
+    </div>
+    <script>
+            function load(args) {
+                var theme = themeName ? themeName : 'Material';
+                args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+                args.maps.layers[0].markerSettings[0].imageUrl = '@Url.Content("~/Content/Maps/ballon.png")';
+                args.maps.layers[0].markerClusterSettings.imageUrl = '@Url.Content("~/Content/Maps/cluster.svg")';
+            }
+    </script>
+    <style>
+        .toolback {
+            border-radius: 4px;
+            border: 1px #abb9c6;
+            opacity: 90%;
+            background: rgba(53, 63, 76, 0.90);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.40);
+            padding-bottom: 10px;
+            padding-top: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 140px;
+        }
+
+        .listing1 {
+            font-size: 13px;
+            color: #cccccc
+        }
+
+        .listing2 {
+            font-size: 13px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+    </style>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the top 25 populated cities in the world by displaying the markers in their locations.
+        </p>
+    </div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Marker clustering in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
+@section Description{
+    <div id="description">
+        <p>
+            This sample illustrates the world's top 50 cities by showing the markers in their locations and clustering the markers to avoid intersecting.
+
+        </p>
+        <p>
+            In this example, you can see how to display multiple markers in the same region without intersecting each other. If a marker intersects, it will be clustered and the total number of markers will be displayed over the cluster. When zooming in, the number of clusters will be decreased, and the individual marker will be displayed. When zooming out, markers that intersect will again be clustered. You can use the "clusterSettings" property in "layer" to enable marker clustering.
+        </p>
+        <p>
+            Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch-enabled devices.
+        </p>
+        <br />
+        <p style="font-weight: 500">Injecting Module</p>
+        <p>
+            Maps component features are segregated into individual feature-wise modules. To use a marker and cluster, inject the Marker module using the Maps.Inject(Marker) method.
+        </p>
+    </div>
+}
+
+@section Title{
+                    <title>ASP.NET MVC Maps Marker clustering Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Marker clustering in ASP.NET MVC Maps Control</h1>
+                }

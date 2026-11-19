@@ -1,0 +1,65 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        
+      @Html.EJS().Chart("container-vertical").Series(series =>
+ {
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Circle).IsFilled(true)).XName("X").YName("Y").DataSource(ViewData["ChartPoints"]).Name("Canada").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(7).Height(7).Shape(Syncfusion.EJ2.Charts.ChartShape.Diamond).IsFilled(true)).XName("X").YName("Y1").DataSource(ViewData["ChartPoints"]).Name("Algeria").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(5).Height(5).Shape(Syncfusion.EJ2.Charts.ChartShape.Rectangle).IsFilled(true)).XName("X").YName("Y2").DataSource(ViewData["ChartPoints"]).Name("Ireland").Width(2).Add();
+     series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingLine100).Opacity(1).Marker(mkr => mkr.Visible(true).Width(6).Height(6).Shape(Syncfusion.EJ2.Charts.ChartShape.Triangle).IsFilled(true)).XName("X").YName("Y3").DataSource(ViewData["ChartPoints"]).Name("Armenia").Width(2).Add();
+ }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category)
+ .MajorGridLines(mg => mg.Width(0)).MinorGridLines(mg => mg.Width(0))
+ .MajorTickLines(mt => mt.Width(0)).
+ MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0))
+ ).PrimaryYAxis(py => py.Interval(20).Title("Population Share (%)").LineStyle(ly => ly.Width(0)).MajorGridLines(mg => mg.Width(1)).MinorGridLines(mg => mg.Width(1))
+     .MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0))
+       ).Title("Blood Type Distribution by Country").SubTitle("Source: wikipedia.org").ChartArea(area => area.Border(br => br.Width(0)).Margin(margin => margin.Bottom(12))).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true).Format("${point.x} : <b>${point.y}% (${point.percentage}%)</b>")).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
+        </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+        #container {
+            display: block;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice?'None':'Trim';
+            args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice?'-45':'0';
+        }
+    </script>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the 100% Stacked Line in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+@section ActionDescription{
+    <p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/100-stacked-line-chart" aria-label="ASP.NET MVC 100% Stacked Line Chart">ASP.NET MVC 100% Stacked Line Chart<span class="sr-only">opens in a new tab</span></a> example visualizes the blood type distribution across different countries.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the 100% stacked line chart. This chart displays multiple series of data as stacked lines, ensuring that the cumulative proportion of each stacked element always totals 100%. <code>Markers</code> are used to represent individual data and its values.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see a tooltip in action, hover over or tap on the chart.
+    </p>
+    <p>
+         More information about the 100% stacked line series can be found in this
+         <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/stack-line100" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+     </p> 
+}
+@section Title{
+                    <title>ASP.NET MVC Chart 100% Stacked Line Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }

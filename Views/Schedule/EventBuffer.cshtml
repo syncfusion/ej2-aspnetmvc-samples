@@ -1,0 +1,368 @@
+@using Syncfusion.EJ2.Schedule
+@using Syncfusion.EJ2.Popups
+
+@section ControlsSection {
+
+<div class="control-section">
+
+    @Html.EJS().Schedule("Schedule").Height("650px").Width("100%").CssClass("medical-scheduler").StartHour("08:00").SelectedDate(new DateTime(2026, 1, 12)).CurrentView(View.TimelineDay).AllowOverlap(false).ResourceHeaderTemplate("#resourceTemplate").HeaderIndentTemplate("#headerIndentTemplate").ActionBegin("onActionBegin").DragStop("onDragStop").TimeScale(ts => ts.Interval(60).SlotCount(4)).WorkHours(wh => wh.Start("08:00").End("18:00")).Views(view =>{view.Option(View.Day).Add();view.Option(View.TimelineDay).Add();view.Option(View.TimelineWeek).Add();}).Group(group =>group.Resources(new string[] { "Rooms" })).Resources(res =>{res.DataSource(ViewData["RoomData"]).Field("RoomId").Title("Operating Room").Name("Rooms").TextField("RoomText").IdField("RoomId").ColorField("RoomColor").Add();}).EventSettings(e => e.DataSource(ViewData["Events"]).EnableBuffer(true).BufferTemplate("#bufferTemplate").Fields(fields =>
+            {
+                fields.BufferBefore(new ScheduleFieldOptions { Name = "BufferBefore" });
+                fields.BufferAfter(new ScheduleFieldOptions { Name = "BufferAfter" });
+            })).Render()
+
+    @Html.EJS().Dialog("specialityDialog").Visible(false).IsModal(true).Width("320px").Header("Alert").Content("Events cannot be scheduled in this operating room because it does not match the required specialty.").Buttons(button =>
+        {
+            button.Click("closeDialog")
+                .ButtonModel(new
+                {
+                    content = "OK",
+                    isPrimary = true
+                }).Add();
+        }).Render()
+
+</div>
+<script id="resourceTemplate" type="text/x-template">
+    <div class="medical-resource">
+
+        <div class="medical-resource-icon">
+            ${resourceData.Icon}
+        </div>
+
+        <div class="medical-resource-content">
+
+            <div class="medical-resource-specialty">
+                ${resourceData.Specialty}
+            </div>
+
+        </div>
+
+    </div>
+</script>
+
+<script id="bufferTemplate" type="text/x-template">
+    ${renderBuffer(data, bufferType)}
+</script>
+
+<script id="headerIndentTemplate" type="text/x-template">
+    ${getHeaderIndent()}
+</script>
+
+<script>
+
+var roomData = @Html.Raw(ViewData["RoomData"]);
+
+var dialogButtons = [
+    {
+        buttonModel: {
+            content: 'OK',
+            isPrimary: true
+        },
+        click: function () {
+            document
+                .getElementById('specialityDialog')
+                .ej2_instances[0]
+                .hide();
+        }
+    }
+];
+
+function onDragStop(args) {
+
+    var data =
+        Array.isArray(args.data) ? args.data[0] : args.data;
+
+    var room =
+        roomData.find(r => r.RoomId === data.RoomId);
+
+    if (!room) {
+        return;
+    }
+
+    if (room.Specialty !== data.RequiredSkill) {
+
+        args.cancel = true;
+
+        var dialog =
+            document.getElementById('specialityDialog').ej2_instances[0];
+
+        var scheduleObj =
+            document.getElementById('Schedule').ej2_instances[0];
+
+        dialog.enableRtl =
+            scheduleObj.element.classList.contains('e-rtl');
+
+        dialog.show();
+    }
+}
+
+function closeDialog() {
+    document
+        .getElementById('specialityDialog')
+        .ej2_instances[0]
+        .hide();
+}
+
+
+function getHeaderIndent() {
+
+    var scheduleObj =
+        document.getElementById('Schedule').ej2_instances[0];
+
+    if (!scheduleObj) {
+        return '';
+    }
+
+    if (scheduleObj.currentView === 'Day') {
+        return '';
+    }
+
+    return `
+        <div class="resource-header-title">
+            <div class="resource-header-main">
+                Operating Rooms
+            </div>
+            <div class="resource-header-sub">
+                Surgery Suites
+            </div>
+        </div>
+    `;
+}
+function onActionBegin(args) {
+
+    if (args.requestType === 'eventCreate') {
+
+        var records = Array.isArray(args.data)
+            ? args.data
+            : [args.data];
+
+        records.forEach(function (event) {
+
+            var room = roomData.find(
+                r => r.RoomId === event.RoomId
+            );
+
+            if (room) {
+                event.RequiredSkill = room.Specialty;
+            }
+        });
+    }
+}
+
+window.renderBuffer = function (data, bufferType) {
+
+    var scheduleObj =
+        document.getElementById('Schedule').ej2_instances[0];
+
+    var isDayView =
+        scheduleObj &&
+        scheduleObj.currentView === 'Day';
+
+    var iconSrc =
+        bufferType === 'before'
+            ? '@Url.Content("~/Content/schedule/images/health-day.svg")'
+            : '@Url.Content("~/Content/schedule/images/cancer-day.svg")';
+
+    var bufferValue =
+        bufferType === 'before'
+            ? data.data.BufferBefore
+            : data.data.BufferAfter;
+
+
+    if (bufferValue < 10) {
+        return '';
+    }
+
+    if (isDayView) {
+        if (bufferValue <= 15) {
+            return '<span class="buffer-duration">' +
+                bufferValue +
+                ' min</span>';
+        }
+
+        return '<div class="buffer-minimal">' +
+            '<img class="buffer-svg-icon" src="' +
+            iconSrc +
+            '" />' +
+            '<span class="buffer-duration">' +
+            bufferValue +
+            ' min</span>' +
+            '</div>';
+    }
+
+    if (bufferValue <= 20) {
+        return '<div class="buffer-minimal">' +
+            '<img class="buffer-svg-icon" src="' +
+            iconSrc +
+            '" />';
+    }
+
+    return '<div class="buffer-minimal">' +
+        '<img class="buffer-svg-icon" src="' +
+        iconSrc +
+        '" />' +
+        '<span class="buffer-duration">' +
+        bufferValue +
+        ' min</span>' +
+        '</div>';
+};
+</script>
+
+<style>
+
+.medical-resource {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+.medical-scheduler.e-schedule .e-resource-cells {
+    height: 70px !important;
+}
+
+.medical-scheduler.e-schedule .e-buffer-app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.medical-scheduler.e-schedule img {
+    height: 35px;
+    width: 35px;
+}
+
+/* Buffer pill (before/after) */
+.buffer-minimal {
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+    overflow: hidden;
+}
+
+.e-day-wrapper .buffer-minimal {
+  width: 100%;
+  height: fit-content;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.buffer-svg-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.buffer-duration {
+    font-size: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Small buffers: keep only the icon visible, but allow ellipsis on the duration */
+.buffer-minimal .buffer-duration {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.buffer-info {
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* Resource header (left panel) */
+.medical-resource-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.medical-resource-content {
+    min-width: 0;
+}
+
+.medical-resource-name {
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+}
+
+.medical-resource-specialty {
+    font-size: 11px;
+    line-height: 16px;
+}
+
+/* Empty header (top-left) */
+.resource-header-title {
+    padding: 12px 16px;
+}
+
+.resource-header-main {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.resource-header-sub {
+    margin-top: 2px;
+    font-size: 11px;
+}
+
+.buffer-svg-icon {
+    width: 14px;
+    height: 14px;
+}
+
+</style>
+
+}
+
+@section ActionDescription {
+
+<div id="action-description">
+     <p>
+        This surgery scheduling demo highlights efficient operating room management using configurable pre-procedure and post-procedure buffer times within the Scheduler. Plan surgeries with dedicated preparation and recovery periods, reduce scheduling overlaps, maximize operating room utilization, and streamline healthcare appointment coordination.
+    </p>
+</div>
+
+}
+
+@section Description {
+
+<div id="description">
+    <p>
+        The <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.Schedule.ScheduleEventSettings.html">
+            <code>enableBuffer</code>
+        </a> property of <code>eventSettings</code> activates the buffer feature. The
+        <code>bufferBefore</code> and <code>bufferAfter</code> field mappings (in minutes) are configured
+        through <code>eventSettings.fields</code>, and a custom <code>bufferTemplate</code> renders an icon
+        and the buffer duration inside the buffer pill. Conflict detection with <code>allowOverlap=false</code>
+        also flags the buffered reserved range, and drag-and-drop is restricted to the room matching the
+        event&rsquo;s required specialty.
+    </p>
+    <p>
+        Buffers are supported across timeline and vertical time-grid views (Day, Week, WorkWeek, Timeline Day,
+        Timeline Week, Timeline WorkWeek) and re-anchor on the EVENT edges during drag and resize previews.
+    </p>
+    <p>
+        Looking for the full ASP.NETMVC Scheduler component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/scheduler-sdk/aspnet-mvc-scheduler">ASP.NETMVC Scheduler</a> component page.
+    </p>
+</div>
+
+}
+
+@section Title{
+                    <title>ASP.NET MVC Scheduler Event Buffer Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Event Buffer in ASP.NET MVC Scheduler Control</h1>
+                }
