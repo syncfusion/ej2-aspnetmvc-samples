@@ -1,0 +1,329 @@
+@{
+    ViewData["Title"] = "CellEditing";
+}
+
+@using Syncfusion.EJ2
+@section ControlsSection{
+
+    <style>
+        #CellEdit.badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        #CellEdit .booked {
+            background-color: #28a745;
+        }
+
+        #CellEdit .canceled {
+            background-color: #dc3545;
+        }
+
+        #CellEdit .completed {
+            background-color: #007bff;
+        }
+
+        #CellEdit .waiting {
+            background-color: #fd7e14;
+        }
+
+        .material3-dark #CellEdit .booked,
+        .bootstrap5\.3-dark #CellEdit .booked,
+        .fluent2-dark #CellEdit .booked,
+        .tailwind3-dark #CellEdit .booked,
+        .fluent2-highcontrast #CellEdit .booked,
+        .fluent-dark #CellEdit .booked,
+        .highcontrast #CellEdit .booked {
+            background-color: #14532d;
+        }
+
+        .material3-dark #CellEdit .canceled,
+        .bootstrap5\.3-dark #CellEdit .canceled,
+        .fluent2-dark #CellEdit .canceled,
+        .tailwind3-dark #CellEdit .canceled,
+        .fluent2-highcontrast #CellEdit .canceled,
+        .fluent-dark #CellEdit .canceled,
+        .highcontrast #CellEdit .canceled {
+            background-color: #7f1d1d;
+        }
+
+        .material3-dark #CellEdit .completed,
+        .bootstrap5\.3-dark #CellEdit .completed,
+        .fluent2-dark #CellEdit .completed,
+        .tailwind3-dark #CellEdit .completed,
+        .fluent2-highcontrast #CellEdit .completed,
+        .fluent-dark #CellEdit .completed,
+        .highcontrast #CellEdit .completed {
+            background-color: #1e3a8a;
+        }
+
+        .material3-dark #CellEdit .waiting,
+        .bootstrap5\.3-dark #CellEdit .waiting,
+        .fluent2-dark #CellEdit .waiting,
+        .tailwind3-dark #CellEdit .waiting,
+        .fluent2-highcontrast #CellEdit .waiting,
+        .fluent-dark #CellEdit .waiting,
+        .highcontrast #CellEdit .waiting {
+            background-color: #7c2d12;
+        }
+
+        #CellEdit .type {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        #CellEdit .emergency {
+            color: #dc3545;
+        }
+
+        #CellEdit .lab {
+            color: #6f42c1;
+        }
+
+        #CellEdit .follow {
+            color: #fd7e14;
+        }
+
+        #CellEdit .routine {
+            color: #17a2b8;
+        }
+
+        #CellEdit .consult {
+            color: #28a745;
+        }
+
+        .material3-dark #CellEdit .emergency,
+        .bootstrap5\.3-dark #CellEdit .emergency,
+        .fluent2-dark #CellEdit .emergency,
+        .tailwind3-dark #CellEdit .emergency,
+        .fluent2-highcontrast #CellEdit .emergency,
+        .fluent-dark #CellEdit .emergency,
+        .highcontrast #CellEdit .emergency {
+            color: #f87171;
+        }
+
+        .material3-dark #CellEdit .lab,
+        .bootstrap5\.3-dark #CellEdit .lab,
+        .fluent2-dark #CellEdit .lab,
+        .tailwind3-dark #CellEdit .lab,
+        .fluent2-highcontrast #CellEdit .lab,
+        .fluent-dark #CellEdit .lab,
+        .highcontrast #CellEdit .lab {
+            color: #c3d31b;
+        }
+
+        .material3-dark #CellEdit .follow,
+        .bootstrap5\.3-dark #CellEdit .follow,
+        .fluent2-dark #CellEdit .follow,
+        .tailwind3-dark #CellEdit .follow,
+        .fluent2-highcontrast #CellEdit .follow,
+        .fluent-dark #CellEdit .follow,
+        .highcontrast #CellEdit .follow {
+            color: #fb923c;
+        }
+
+        .material3-dark #CellEdit .routine,
+        .bootstrap5\.3-dark #CellEdit .routine,
+        .fluent2-dark #CellEdit .routine,
+        .tailwind3-dark #CellEdit .routine,
+        .fluent2-highcontrast #CellEdit .routine,
+        .fluent-dark #CellEdit .routine,
+        .highcontrast #CellEdit .routine {
+            color: #a0169f;
+        }
+
+        .material3-dark #CellEdit .consult,
+        .bootstrap5\.3-dark #CellEdit .consult,
+        .fluent2-dark #CellEdit .consult,
+        .tailwind3-dark #CellEdit .consult,
+        .fluent2-highcontrast #CellEdit .consult,
+        .fluent-dark #CellEdit .consult,
+        .highcontrast #CellEdit .consult {
+            color: #37b317;
+        }
+
+        #CellEdit .doctor-cell {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #CellEdit .doctor-img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+        }
+    </style>
+    <div class="control-section">
+        @Html.EJS().Grid("CellEdit").DataSource((IEnumerable<object>)ViewData["dataSource"]).ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Height(400).RowHeight(40).Columns(columns =>
+        {
+            columns.Field("ApptID").HeaderText("Appointment ID").IsPrimaryKey(true).Width("140").Visible(false).Add();
+            columns.Field("Patient").HeaderText("Patient").Width("150").ValidationRules(new { required = true }).Add();
+            columns.Field("Doctor").HeaderText("Doctor").Width("160").Template("#doctorTemplate").EditType("dropdownedit").ValidationRules(new { required = true }).Add();
+            columns.Field("AppointmentTime").HeaderText("Appointment Time").Width("200").EditType("datetimepickeredit").Format("M/d/y hh:mm a").Add();
+            columns.Field("Type").HeaderText("Type").Width("150").Template("#typeTemplate").EditType("dropdownedit").ValidationRules(new { required = true }).Add();
+            columns.Field("Status").HeaderText("Status").Width("130").Template("#statusTemplate").EditType("dropdownedit").ValidationRules(new { required = true }).Add();
+            columns.Field("Room").HeaderText("Room No").Width("120").EditType("dropdownedit").Add();
+            columns.Field("Fee").HeaderText("Fee").Width("90").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").EditType("numericedit").Edit(new { @params = new Syncfusion.EJ2.Inputs.NumericTextBox() { ShowSpinButton = false }}).ValidationRules(new { required = true, min = 50, max = 500 }).Add();
+            columns.Field("Notes").HeaderText("Notes").Width("260").Add();
+        }).AllowPaging().AllowSorting().AllowFiltering().FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.CheckBox); }).EditSettings(edit => { edit.AllowAdding(true).AllowEditing(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Cell); }).Toolbar(new List<string>() { "Add", "Delete", "Update", "Cancel" }).ActionBegin("actionBegin").ActionComplete("actionComplete").Load("load").Render()
+    </div>
+
+    <script type="text/x-template" id="doctorTemplate">
+        ${doctorTemplate(data)}
+    </script>
+    <script id="statusTemplate" type="text/x-template">
+        ${statusTemplate(data)}
+    </script>
+    <script id="typeTemplate" type="text/x-template">
+        ${typeTemplate(data)}
+    </script>
+    <script type="text/javascript">
+        function load() {
+            var grid = document.getElementById("CellEdit").ej2_instances[0];
+            var column = grid.getColumnByField('AppointmentTime');
+            column.validationRules = {
+                required: true,
+                timeRule: [validateAppointmentTime, 'Appointment allowed only between 9AM - 9PM']
+            };
+        }
+        function validateAppointmentTime(args) {
+            if (!args.value) return false;
+            var hour = new Date(args.value).getHours();
+            return hour >= 9 && hour <= 20;
+        }
+        function actionBegin(args) {
+            if (args.requestType === 'save' && args.action === 'add') {
+                args.data.ApptID = 'APT-' + (Date.now() % 100000);
+            }
+        }
+
+        function actionComplete(args) {
+            var grid = document.getElementById("CellEdit").ej2_instances[0];
+            if (args.requestType === 'save' && args.columnName === 'Doctor') {
+                  var doctorRoomMap = {
+                    'Dr. Smitha': 'R1',
+                    'Dr. Johnson': 'R2',
+                    'Dr. Garcia': 'R6',
+                    'Dr. Brianna': 'R4',
+                    'Dr. Williams': 'R3',
+                    'Dr. Martinez': 'R7',
+                    'Dr. Davis': 'R8',
+                    'Dr. Joanna': 'R5',
+                };
+                grid.updateCell(args.rowIndex, 'Room', doctorRoomMap[args.data.Doctor])
+            }
+        }
+
+        function doctorTemplate(e) {
+            var divElement = document.createElement('div');
+            divElement.className = 'doctor-cell';
+            var imgElement = document.createElement('img');
+            var doctorList = [
+                'Dr. Smitha',
+                'Dr. Johnson',
+                'Dr. Garcia',
+                'Dr. Brianna',
+                'Dr. Williams',
+                'Dr. Martinez',
+                'Dr. Davis',
+                'Dr. Joanna',
+            ];
+            var index = doctorList.indexOf(e.Doctor) + 1;
+            imgElement.src = '../Content/images/Employees/' + index + '.png';
+            imgElement.alt = e.Doctor;
+            imgElement.className = 'doctor-img';
+            var span = document.createElement('span');
+            span.textContent = e.Doctor;
+            divElement.appendChild(imgElement);
+            divElement.appendChild(span);
+            return divElement.outerHTML;
+        }
+
+        function statusTemplate(e) {
+            var div = document.createElement('div');
+            var span = document.createElement('span');
+            span.classList.add('badge');
+            if (e.Status === 'Booked') {
+                span.classList.add('booked');
+                span.textContent = e.Status;
+            } else if (e.Status === 'Canceled') {
+                span.classList.add('canceled');
+                span.textContent = e.Status;
+            } else if (e.Status === 'Completed') {
+                span.classList.add('completed');
+                span.textContent = e.Status;
+            } else {
+                span.classList.add('waiting');
+                span.textContent = e.Status;
+            }
+            div.appendChild(span);
+            return div.outerHTML;
+        }
+
+        function typeTemplate(e) {
+            var div = document.createElement('div');
+            var span = document.createElement('span');
+            span.classList.add('type');
+            if (e.Type === 'Emergency') {
+                span.classList.add('emergency');
+                span.textContent = `${e.Type}`;
+            } else if (e.Type === 'Lab Test') {
+                span.classList.add('lab');
+                span.textContent = `${e.Type}`;
+            } else if (e.Type === 'Follow-up') {
+                span.classList.add('follow');
+                span.textContent = `${e.Type}`;
+            } else if (e.Type === 'Routine Check') {
+                span.classList.add('routine');
+                span.textContent = `${e.Type}`;
+            } else {
+                span.classList.add('consult');
+                span.textContent = `${e.Type}`;
+            }
+            div.appendChild(span);
+            return div.outerHTML;
+        }
+    </script>
+    
+}
+@section ActionDescription{
+	<div id="action-description">
+		<p>This sample demonstrates cell editing for quick and efficient data updates. It provides a seamless editing experience for modifying individual cell values within the Grid.</p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Cell Editing in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">		   
+		<p> 
+            Cell editing allows users to modify a single cell’s value directly. This mode is enabled by setting <code>editSettings.mode</code> to <code>Cell</code>. Users can enter edit mode by double‑clicking a cell and then changing its value. The update is applied when the user presses "Enter" key or moves to another cell.
+        </p>
+        <p>
+            This editing mode works seamlessly with other Grid features such as validation, formatting, and more, ensuring a consistent and efficient editing experience.
+        </p>
+        <p>
+            More information on edit configuration can be found in the <a target="_blank"
+            href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/editing/edit">
+            documentation section</a>.
+        </p>
+        <p>
+            Looking for the full ASP.NET MVC Data Grid component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/grid" aria-label="documentation">ASP.NET MVC Data Grid component</a> page.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Data Grid Cell Editing Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Cell Editing in ASP.NET MVC Data Grid Control</h1>
+                }

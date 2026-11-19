@@ -1,0 +1,132 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Maps
+@section ControlsSection{
+    <style>
+        #container {
+            display: table;
+            margin: 0 auto;
+        }
+    </style>
+
+    <div id="template" style="display:none">
+        <div class="toolback">
+            <div>
+                <span class="listing1">Capital : </span><span class="listing2">${name}</span>
+            </div>
+            <div>
+                <span class="listing1">Country : </span><span class="listing2">${Country}</span>
+            </div>
+        </div>
+
+    </div>
+     <div class="col-lg-9 control-section">
+        <div id="outer" style="width:100%">
+            <div class="content-wrapper">
+            @Html.EJS().Maps("container").UseGroupingSeparator(true).Format("n").Load("load").TitleSettings(title => title.Text("Capitals of South American countries").TextStyle(new MapsFont{ Size = "16px", Opacity = 1 })).ZoomSettings(new Syncfusion.EJ2.Maps.MapsZoomSettings
+       {
+           Enable = true, MouseWheelZoom = false, PinchZooming = false
+       }).Layers(layer =>
+       {
+           layer.MarkerSettings((List<MapsMarker>)ViewData["markerSettings"]).ShapeSettings(new MapsShapeSettings { Fill = "#C3E6ED" }).ShapeData(ViewData["shapeData"]).Add();
+       }).Render()
+            <div style="margin-left:75%;">
+                Source:
+                <a href="https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_South_America#Sovereign_states" target="_blank" aria-label="wikipedia">www.wikipedia.com</a>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td style="width: 70%">
+                        <div class="property-text" style="padding: 0px;">Zoom to fit all the makers in maps</div>
+                    </td>
+                    <td style="width: 30%">
+                        <div style="padding-top:0px; margin-top: -10px">
+                            <input type="checkbox" id="shape" />
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function load(args) {
+            var theme = themeName ? themeName : 'Material';
+            args.maps.theme = (theme.charAt(0).toUpperCase() + theme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            args.maps.layers[0].shapeSettings.border = { color: "black", width: 0.3 };
+            args.maps.layers[0].markerSettings[0].imageUrl = '@Url.Content("~/Content/Maps/ballon.png")';
+            maps = args.maps;
+        }
+        window.onload = function () {
+            var shapeCheckBox = new ej.buttons.CheckBox(
+                {
+                    change: (args) => {
+                        maps.zoomSettings.shouldZoomInitially = args.checked;
+                        maps.refresh();
+                    },
+                    checked: false
+                },
+                '#shape');
+        }
+    </script>
+    <style>
+        .toolback {
+            border-radius: 4px;
+            border: 1px #abb9c6;
+            opacity: 90%;
+            background: rgba(53, 63, 76, 0.90);
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.40);
+            padding-bottom: 10px;
+            padding-top: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            width: 165px;
+        }
+
+        .listing1 {
+            font-size: 13px;
+            color: #cccccc;
+        }
+
+        .listing2 {
+            font-size: 13px;
+            color: #ffffff;
+            font-weight: 500;
+        }
+    </style>
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample visualizes the capitals of all the countries in the South America continent by displaying the markers in their locations.
+        </p>
+    </div>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Zoom to fit all markers in ASP.NET MVC Maps control. Explore here for more details."/>
+                }
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to zoom the maps dynamically based on the location of the markers in the map. The map is scaled and the center position
+            is changed based on the markers location. This is achieved by setting true to the <code>shouldZoomInitially</code> property in <code>zoomSettings</code>.
+        </p>
+        <p>
+            Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over a marker or tap a marker in touch enabled devices.
+        </p>
+        <br />
+        <p style="font-weight: 500">Injecting Module</p>
+        <p>
+            Maps component features are segregated into individual feature-wise modules. To use a marker, inject the <code>Marker</code> module using the <code>Maps.Inject(Marker)</code> method.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Maps Zoom to fit all markers Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Zoom to fit all markers in ASP.NET MVC Maps Control</h1>
+                }

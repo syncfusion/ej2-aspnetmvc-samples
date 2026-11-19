@@ -1,0 +1,8 @@
+@model string
+<div style="display: flex;">
+    @if (((dynamic)ViewData["subMenuItems"])[0].Items.Count > 0)
+    {
+        @Html.EJS().Menu(Model + "_menu2").Items(ViewData["subMenuItems"]).ShowItemOnClick(true).Select("subMenuSelectHandler").BeforeOpen("beforeOpen").OnClose("onClose").Render()
+    }
+</div>
+@Html.EJS().ScriptManager()

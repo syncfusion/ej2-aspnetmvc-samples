@@ -1,0 +1,89 @@
+@using Syncfusion.EJ2.InteractiveChat
+@using Syncfusion.EJ2
+@using Newtonsoft.Json
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="thinking-aiassistview">
+            @Html.EJS().AIAssistView("aiAssistView").Created("onCreated").PromptSuggestions((string[])ViewData["PromptSuggestionData"]).PromptRequest("onPromptRequest").BannerTemplate("#bannerContent").EnableStreaming(true).Render()
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+        .thinking-aiassistview {
+            height: 600px;
+            width: 60vw;
+            margin: 0 auto;
+        }
+
+        .thinking-aiassistview .banner-content .e-brain:before {
+            font-size: 35px;
+        }
+
+        .thinking-aiassistview .banner-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 330px;
+            text-align: center;
+        }
+
+        @@media only screen and (max-width: 750px) {
+            .thinking-aiassistview {
+                width: 100%;
+            }
+        }
+    </style>
+    @*custom code end*@
+}
+
+@section PreScripts {
+    <script>
+        var thinkingAIAssistView;
+
+        function onCreated() {
+            var assistEle = document.getElementById('aiAssistView');
+            thinkingAIAssistView = ej.base.getInstance(assistEle, ejs.interactivechat.AIAssistView);
+        }
+
+        function onPromptRequest(args) {
+            var partialThinkingBlocks = { blockType: 'thinking', title: 'Thinking', collapsible: true, collapsed: true, isActive: true, stages: [ { status: 'inprogress', content: 'Analyzing your request to deliver the most relevant response' } ] };
+            var finalThinkingBlocks = { blockType: 'thinking', title: 'Thinking', collapsible: true, collapsed: true, isActive: false, stages: [ { status: 'completed', content: 'Analyzing your request to deliver the most relevant response' }, { status: 'completed', content: 'Done' } ] };
+            // Step 1
+            thinkingAIAssistView.addPromptResponse({blocks: [partialThinkingBlocks]}, false);
+            setTimeout(function () {
+                thinkingAIAssistView.addPromptResponse({
+                    blocks: [finalThinkingBlocks],
+                    response: "For real-time prompt processing, connect the AI AssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration."
+                }, true);
+            }, 2000);
+        }
+    </script>
+    <script id="bannerContent" type="text/x-jsrender">
+        <div class="banner-content">
+            <div class="e-icons e-brain"></div>
+            <h3>💭 Thinking Support</h3>
+            <i>Break down complex problems and think through decisions.</i>
+        </div>
+    </script>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Thinking Support in ASP.NET MVC AIAssistView control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the thinking support of the AI AssistView control.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>In this example, the  <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#bannertemplate">bannerTemplate</a> customizes the banner content, and  <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#toolbarsettings">toolbarSettings</a> adds custom toolbar items like a right-aligned <code>Refresh</code> button. The  <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#promptsuggestions">promptSuggestions</a> provides AI prompt suggestions, and  <a target="_blank" href="https://ej2.syncfusion.com/javascript/documentation/api/ai-assistview#promptrequest">promptRequest</a> handles prompt requests when triggered.</p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC AIAssistView Thinking Support Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Thinking Support in ASP.NET MVC AIAssistView Control</h1>
+}

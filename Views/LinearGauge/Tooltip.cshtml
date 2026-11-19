@@ -1,0 +1,134 @@
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().LinearGauge("tooltipContainer").Resized("gaugeResized").Loaded("onGaugeLoaded").Background("Transparent").TooltipRender("onTooltipRendering").AxisLabelRender("onAxisLabelRendering").Load("onGaugeLoad").Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Container(
+        container => container.Width(140).Border(border => border.Width(2).Color("#a6a6a6"))).Tooltip(
+        tooltip => tooltip.Enable(true).ShowAtMousePosition(true).TextStyle(textStyle => textStyle.FontFamily("inherit"))).Orientation(Syncfusion.EJ2.LinearGauge.Orientation.Horizontal).Annotations(annotation =>
+        {
+            annotation.Content("<div id=first><h1 style=font-size:15px>Inches</h1></div>").ZIndex("1").AxisValue(5.4).X(35).Y(-58).AxisIndex(0).Add();
+            annotation.Content("<div id=second><h1 style=font-size:15px>Centimeters</h1></div>").ZIndex("1").AxisValue(16.5).X(50).Y(52).AxisIndex(1).Add();
+        }).Axes(axes =>
+        {
+            axes.Maximum(10).Line(line => line.Offset(140).Color("#a6a6a"))
+            .Pointers(pointer => pointer.Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Value(5.4).Offset("15").Color("#ff66b3").Add())
+            .MajorTicks(majorTick => majorTick.Interval(1).Height(20).Color("#9E9E9E"))
+            .MinorTicks(minorTick => minorTick.Interval(0.2).Height(10).Color("#9E9E9E")).Add();
+            axes.Maximum(25).OpposedPosition(true).Line(line => line.Offset(-140).Color("#a6a6a"))
+            .Pointers(pointer => pointer.Type(Syncfusion.EJ2.LinearGauge.Point.Bar).Value(16.5).Offset("-15").Color("#4d94ff").Add())
+            .MajorTicks(majorTick => majorTick.Interval(1).Height(20).Color("#9E9E9E"))
+            .MinorTicks(minorTick => minorTick.Interval(0.2).Height(10).Color("#9E9E9E")).Add();
+        }).Render()
+    </div>
+    <!-- custom code start -->
+    <style>
+        .control-section {
+            min-height: 450px;
+        }
+    </style>
+    <!-- custom code end -->
+    <script type="text/javascript">
+        var gauge;
+        function onGaugeLoad(sender) {
+            @* custom code start *@
+            var selectedTheme = themeName ? themeName : 'Material';
+            sender.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            @* custom code end *@
+            gauge = sender.gauge;
+            for (var i = 0; i < sender.gauge.annotations.length; i++) {
+                sender.gauge.annotations[i].zIndex = "1";
+            }
+            if (gauge.theme.toLowerCase().indexOf('dark') > 1 || gauge.theme.toLowerCase() === 'highcontrast') {
+                gauge.annotations[0].content = '<div id="second"><h1 style="font-size:15px; color: #DADADA">Inches</h1></div>';
+                gauge.annotations[1].content = '<div id="second"><h1 style="font-size:15px; color: #DADADA">Centimeters</h1></div>';
+            }
+            var width = parseInt(((gauge.width, gauge.element.offsetWidth) || gauge.element.offsetWidth || 600), 10);
+            if (width < 500) {
+                gaugeMobileSize();
+            }
+            else {
+                gaugeDesktopSize();
+            }
+        }
+
+        function gaugeMobileSize() {
+            gauge.axes[1].majorTicks.interval = 2;
+            gauge.axes[1].minorTicks.interval = 1;
+            gauge.orientation = 'Vertical';
+            gauge.annotations[0].x = -57;
+            gauge.annotations[0].y = -30;
+            gauge.annotations[1].x = 50;
+            gauge.annotations[1].y = -45;
+        }
+        function gaugeDesktopSize() {
+            gauge.axes[1].majorTicks.interval = 1;
+            gauge.axes[1].minorTicks.interval = 0.2;
+            gauge.orientation = 'Horizontal';
+            gauge.annotations[0].x = 35;
+            gauge.annotations[0].y = -58;
+            gauge.annotations[1].x = 50;
+            gauge.annotations[1].y = 52;
+        }
+
+        function gaugeResized(args) {
+            if (args.currentSize.width < 500) {
+                gaugeMobileSize();
+            }
+            else {
+                gaugeDesktopSize();
+            }
+        }
+
+        function onAxisLabelRendering(args) {
+            if (args.axis.visibleRange.min === args.value || args.axis.visibleRange.max === args.value) {
+                args.text = '';
+            }
+        }
+
+        function onTooltipRendering(args) {
+            args.content = (args.axis.visibleRange.max === 25) ? args.content + ' cm' : args.content + ' in';
+        }
+
+        function onGaugeLoaded(args) {
+            if (document.getElementById('tooltipContainer')) {
+                if (args.gauge.orientation == 'Vertical') {
+                    document.getElementById('tooltipContainer_Annotation_0').style.transform = 'rotate(270deg)';
+                    document.getElementById('tooltipContainer_Annotation_1').style.transform = 'rotate(270deg)';
+                }
+                else {
+                    document.getElementById('tooltipContainer_Annotation_0').style.transform = '';
+                    document.getElementById('tooltipContainer_Annotation_1').style.transform = '';
+                }
+            }
+        }
+
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample depicts the linear gauge as a measuring scale and shows the tooltip in the linear gauge.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Tooltip in ASP.NET MVC Linear Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            The tooltip is used to track the current value that is closest to the mouse position or touch contact. When using a touch-enabled device, the tooltip is displayed by hovering or tapping.
+        </p>
+        <p>
+            More information about tooltip can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/linear-gauge/user-interaction#tooltip" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+
+}
+@section Title{
+    <title>ASP.NET MVC Linear Gauge Tooltip Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Tooltip in ASP.NET MVC Linear Gauge Control</h1>
+}

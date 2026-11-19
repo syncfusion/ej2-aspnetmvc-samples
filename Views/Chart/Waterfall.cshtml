@@ -1,0 +1,84 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section">
+        <div style="text-align:center">
+            @Html.EJS().Chart("container").Series(series =>
+            {
+                series.Width(2).XName("X").YName("Y").ColumnWidth(0.5).Marker(mr => mr.DataLabel(dl => dl.Visible(true))).Border(br => br.Width(0.2).Color("black")
+                ).CornerRadius(cr => cr.TopLeft(3).BottomLeft(3).BottomRight(3).TopRight(3)).Connector(ViewData["connector"]).IntermediateSumIndexes((int[])ViewData["intermediateSumIndexes"]).SumIndexes((int[])ViewData["sumIndexes"]).NegativeFillColor("#e56590").Name("USA"
+                ).Type(Syncfusion.EJ2.Charts.ChartSeriesType.Waterfall).DataSource(ViewData["ChartPoints"]).Add();
+            }
+            ).ChartArea(area => area.Border(br => br.Width(0))
+            ).PrimaryXAxis(py => py.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).Interval(1).MajorGridLines(mg => mg.Width(0)).MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0))
+            ).PrimaryYAxis(py => py.Minimum(0).Maximum(1250).Interval(250).MajorGridLines(mg => mg.Width(1)).MajorTickLines(mt => mt.Width(0)).MinorTickLines(mt => mt.Width(0)).LineStyle(ls => ls.Width(0)).Title("USD").LabelFormat("{value}K")
+            ).Title("Company Revenue and Profit").LegendSettings(lg => lg.Visible(false)).Tooltip(tl => tl.Enable(true).Header("").Format("<b>${point.x}</b> <br> Product Revenue : <b>${point.y}</b>")).Load("load").TextRender("textRender").Render()
+        </div>
+    </div>
+
+<style>
+ @*custom code start*@
+    #control-container {
+        padding: 0px !important;
+    }
+ @*custom code end*@
+    #container_Series_0_Connector_ {
+        stroke-dasharray: 1px 2px;
+        stroke-linejoin: round; stroke-linecap: round;
+        -webkit-animation: dash 1s linear infinite;
+        animation: dash 1s linear infinite;
+    }
+
+    @@-webkit-keyframes dash {
+        100% {
+            stroke-dashoffset: -3px;
+        }
+    }
+
+    @@keyframes dash {
+        100% {
+            stroke-dashoffset: -3px;
+        }
+    }
+</style>
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.primaryXAxis.labelIntersectAction = ej.base.Browser.isDevice? 'None' : 'Rotate45';
+            args.chart.primaryXAxis.labelRotation = ej.base.Browser.isDevice? -90 : 0;
+        };
+
+        function textRender (args) {
+            args.series.marker.dataLabel.font.size = ej.base.Browser.isDevice ? '8px' : '12px';
+        };
+    </script>
+}
+ @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Waterfall in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+ @*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample visualizes the revenue and profits of a company using the default waterfall series chart. The tooltip provides details on the profits made by each department.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the waterfall chart. The waterfall chart explains the gradual change in the quantitative value of an entity that is subject to changes by increments or decrements.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch-enabled devices.
+    </p>
+    <p>
+        More information about the waterfall series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/waterfall" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Waterfall Example - Syncfusion Demos </title>
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Waterfall in ASP.NET MVC Chart Control</h1>
+                }

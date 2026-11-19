@@ -1,0 +1,219 @@
+@using Syncfusion.EJ2.InteractiveChat
+@using Syncfusion.EJ2
+@using Newtonsoft.Json
+
+@section ControlsSection {
+    <div class="control-section">
+        <div class="mention-aiassistview">
+            @Html.EJS().AIAssistView("mentionAssistView").PromptPlaceholder("Type a prompt and use '/' for commands or '@' for agents...").BannerTemplate("#bannerContent").PromptSuggestions((string[])ViewData["PromptSuggestionData"]).PromptRequest("onPromptRequest").Created("onAssistViewCreated").EnableStreaming(true).Mentions((object)ViewData["Mentions"]).MentionSelect("onMentionSelect").ToolbarSettings(new AIAssistViewToolbarSettings()
+            {
+                Items = ViewData["ToolbarItems"],
+                ItemClicked = "toolbarItemClicked"
+            }).Render()
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+        .mention-aiassistview {
+            height: 600px;
+            width: 60vw;
+            margin: 0 auto;
+        }
+
+            .mention-aiassistview .banner-content .e-assistview-icon:before {
+                font-size: 35px;
+            }
+
+            .mention-aiassistview .banner-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 330px;
+                text-align: center;
+            }
+
+        @@media only screen and (max-width: 750px) {
+            .mention-aiassistview {
+                width: 100%;
+            }
+        }
+
+        .e-assist-mention  .listItems {
+            display: grid;
+            grid-template-columns: 22px 1fr;
+            grid-template-rows: auto auto;
+            column-gap: 5px;
+            row-gap: 0;
+            align-items: center;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            line-height: 1.2;
+            min-height: 38px;
+        }
+
+        .e-assist-mention  .listItems .commandIcon {
+            grid-row: 1 / span 2;
+            grid-column: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'e-icons';
+            font-size: 14px;
+            width: 22px;
+            height: 22px;
+        }
+
+        .e-assist-mention  .listItems .commandName {
+            grid-row: 1;
+            grid-column: 2;
+            font-weight: 600;
+            font-size: 13px;
+            align-self: end;
+        }
+
+        .e-assist-mention  .listItems .commandDesc {
+            grid-row: 2;
+            grid-column: 2;
+            font-size: 11px;
+            color: var(--color-sf-text-muted, #6b6b6b);
+            align-self: start;
+            margin-top: 1px;
+        }
+
+        .e-assist-mention  .e-list-item .e-highlight {
+            font-weight: 700;
+            background: transparent;
+            color: inherit;
+        }
+    </style>
+    @*custom code end*@
+}
+
+@section PreScripts {
+    <script>
+        // Data injected from the controller for the mention sample.
+        var agents = @Html.Raw(Json.Encode(ViewData["Agents"]));
+        var commands = @Html.Raw(Json.Encode(ViewData["Commands"]));
+        var suggestions = @Html.Raw(Json.Encode(ViewData["PromptSuggestionData"]));
+
+        var mentions = [
+            {
+                mentionChar: "@@",
+                dataSource: agents,
+                fields: { text: "name", value: "id", iconCss: "iconCss" },
+                filterType: "StartsWith",
+                highlight: true
+            },
+            {
+                mentionChar: "/",
+                dataSource: commands,
+                showMentionChar: false,
+                fields: { text: "name", value: "id" },
+                itemTemplate: "<div class='listItems'><span class='commandIcon ${iconCss}'></span><span class='commandName'>${name}</span><span class='commandDesc'>${description}</span></div>",
+                displayTemplate: "<span class='e-aiassist-mention-item-chip'>${name}</span>"
+            }
+        ];
+
+        var mentionAssistViewInstance;
+
+        function onAssistViewCreated() {
+            setTimeout(function () {
+                mentionAssistViewInstance = document.getElementById('mentionAssistView').ej2_instances[0];
+                if (mentionAssistViewInstance) {
+                    mentionAssistViewInstance.mentions = mentions;
+                    mentionAssistViewInstance.dataBind();
+                    registerTools();
+                }
+            }, 500);
+        }
+
+        function registerTools() {
+            mentionAssistViewInstance.registerToolUI({
+                toolName: "weather-card",
+                template: function (args) {
+                    var defaults = {
+                        location: "New York",
+                        temperature: "1\u00BA / -4\u00BA",
+                        condition: "Scattered Showers",
+                        humidity: "86%",
+                        windSpeed: "12 km/h"
+                    };
+                    var data = Object.assign({}, defaults, args);
+                    return "<div tabindex=\"0\" class=\"e-card\" id=\"weather_card\" role=\"button\">" +
+                        "<div class=\"e-card-header\"><div class=\"e-card-header-caption\">" +
+                        "<div class=\"e-card-header-title\">" + data.location + "</div>" +
+                        "<div class=\"e-card-sub-title\">" + data.condition + "</div></div></div>" +
+                        "<div class=\"e-card-header weather_report\"><div class=\"e-card-header-image\"></div>" +
+                        "<div class=\"e-card-header-caption\">" +
+                        "<div class=\"e-card-header-title\">" + data.temperature + "</div>" +
+                        "<div class=\"e-card-sub-title\">Humidity: " + data.humidity + "</div>" +
+                        "<div class=\"e-card-sub-title\">Wind: " + data.windSpeed + "</div></div></div></div>";
+                }
+            });
+        }
+
+        function onPromptRequest(args) {
+            setTimeout(function () {
+                var mentionNames = [];
+                if (args.mentions && args.mentions.length > 0) {
+                    args.mentions.forEach(function (mention) {
+                        if (mention.itemData && mention.itemData.id) {
+                            mentionNames.push(mention.itemData.id);
+                        }
+                    });
+                }
+
+                var responseText;
+
+                if (mentionNames.length > 0) {
+                    responseText = "The selected mentions (**" + mentionNames.join("**, **") + "**) were applied to your prompt. For real-time prompt processing with the selected commands and agents, connect the AIAssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services.";
+                } else {
+                    responseText = "For real-time prompt processing, connect the AIAssistView control to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration. You can also type **/** to pick a command or **@@** to pick an agent from the mention popup.";
+                }
+                mentionAssistViewInstance.addPromptResponse(responseText);
+                mentionAssistViewInstance.promptSuggestions = suggestions;
+            }, 1000);
+        }
+
+        function onMentionSelect(args) {
+            // React to a mention item being selected from the popup.
+            // Set args.cancel = true to prevent the default insert behaviour.
+            return args;
+        }
+
+        function toolbarItemClicked(args) {
+            if (args.item.iconCss === "e-icons e-refresh") {
+                this.prompts = [];
+                this.promptSuggestions = suggestions;
+            }
+        }
+
+    </script>
+    <script id="bannerContent" type="text/x-jsrender">
+        <div class="banner-content">
+            <div class="e-icons e-assistview-icon"></div>
+            <h3>AI Assistant with Mentions</h3>
+            <i>Use mentions to quickly access contextual options and enhance prompts within the AI AssistView.</i>
+        </div>
+    </script>
+}
+
+@section Meta {
+    <meta name="description" content="This example demonstrates the mention support in ASP.NET MVC AIAssistView control. Explore here for more details." />
+}
+@section ActionDescription {
+    <div id="action-description">
+        <p>This sample demonstrates the mention support capabilities of the AI AssistView control. Mentions can be referenced directly within prompts, enabling intelligent and context-aware interactions.</p>
+    </div>
+}
+@section Description {
+    <div id="description">
+        <p>In this example, the <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.AIAssistView.html#Syncfusion_EJ2_InteractiveChat_AIAssistView_Mentions">mentions</a> property is used to configure multiple mention sources, enabling users to quickly access contextual actions within the AI AssistView. The <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.AIAssistView.html#Syncfusion_EJ2_InteractiveChat_AIAssistView_BannerTemplate">bannerTemplate</a> customizes the banner content, and <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.AIAssistViewToolbarSettings.html#Syncfusion_EJ2_InteractiveChat_AIAssistViewToolbarSettings">toolbarSettings</a> adds custom toolbar items like a right-aligned <code>Refresh</code> button. The <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.InteractiveChat.AIAssistView.html#Syncfusion_EJ2_InteractiveChat_AIAssistView_PromptRequest">promptRequest</a> event processes the selected mentions and generates responses based on the chosen commands and agents.</p>
+    </div>
+}
+@section Title {
+    <title>ASP.NET MVC AIAssistView Mention Example - Syncfusion Demos </title>
+}
+@section Header {
+    <h1 class="sb-sample-text">Example of Mention in ASP.NET MVC AIAssistView Control</h1>
+}

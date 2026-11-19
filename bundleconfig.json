@@ -1,0 +1,35 @@
+[
+  
+    {
+      "outputFileName":"Scripts/index.min.js",
+      "inputFiles" : [ "Scripts/index.js"],
+      "minify" :
+      {
+        "enabled": true
+      }
+  },
+  {
+    "outputFileName": "Content/Site.min.css",
+    "inputFiles": [ "Content/Site.css" ]
+  },
+  {
+    "outputFileName": "Content/styles/highlight.min.css",
+    "inputFiles": [ "Content/styles/highlight.css" ]
+  },
+  {
+    "outputFileName": "Content/styles/roboto.min.css",
+    "inputFiles": [ "Content/styles/roboto.css" ]
+  },
+  {
+    "outputFileName": "Scripts/bootstrap.min.js",
+    "inputFiles": [ "Scripts/bootstrap.js" ]
+  },
+  {
+    "outputFileName": "Scripts/crossroads.min.js",
+    "inputFiles": [ "Scripts/crossroads.js" ]
+  },
+  {
+    "outputFileName": "Scripts/search-index.min.js",
+    "inputFiles": [ "Scripts/search-index.js" ]
+  }
+]

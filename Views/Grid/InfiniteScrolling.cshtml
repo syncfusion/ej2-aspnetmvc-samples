@@ -1,0 +1,386 @@
+@using Syncfusion.EJ2
+
+@section ControlsSection{
+
+    <style>
+        .image { position: absolute; background-repeat: no-repeat;
+            background-image: url('/scripts/Images/Employees/spinner.gif');
+            background-position: center; width: 16px; height: 28px; }
+
+        .e-bigger .image {
+            height: 36px;
+        }
+
+        #popup {
+            position: absolute;
+            background-color: transparent;
+            display: none;
+            z-index: 100;
+        }
+        .div-button {
+            margin: 5px 5px 5px 0;
+        }
+    </style>
+    <div class="control-section">
+     
+        <div class="row">
+            <table>
+                <tr>
+                    <td style="padding:15px" colspan='2'>
+                        <span>
+             @Html.EJS().Button("generate").CssClass("e-info").Content("Load 100K Data").Render()
+      <span id="popup">
+                                <span id="gif" class="image"></span>
+                            </span>
+                        </span>
+                        
+                    </td>
+                </tr>
+            </table>
+           
+        </div>
+
+
+        <div>
+            @Html.EJS().Grid("InfiniteScroll").AllowSorting().AllowFiltering().ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).EnableInfiniteScrolling().EnableColumnVirtualization().DataBound("hide").Load("load").Height(400).RowHeight(40).FooterRowHeight(40).Columns(columns =>
+            {
+                columns.Field("ProductId").HeaderText("Product ID").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("130").Add();
+                columns.Field("ProductName").HeaderText("Product Name").Width("210").Add();
+                columns.Field("GrossAmount").HeaderText("Gross Amount").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").Width("180").Add();
+                columns.Field("NetAmount").HeaderText("Net Amount").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").Width("180").Add();
+                columns.Field("ProfitMargin").HeaderText("Profit (%)").Width("180").Add();
+                columns.Field("AchievementPercent").HeaderText("Achievement (%)").Width("190").Add();
+                columns.Field("SalesQty").HeaderText("Sales Quantity").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("150").Add();
+                columns.Field("UnitPrice").HeaderText("Unit Price").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").Width("120").Add();
+                columns.Field("Month").HeaderText("Month").Width("120").Add();
+                columns.Field("Category").HeaderText("Category").Width("130").Add();
+                columns.Field("SubCategory").HeaderText("Sub Category").Width("150").Visible(false).Add();
+                columns.Field("Brand").HeaderText("Brand").Width("120").Add();
+                columns.Field("City").HeaderText("City").Width("130").Add();
+                columns.Field("State").HeaderText("State").Width("120").Add();
+                columns.Field("Country").HeaderText("Country").Width("160").Add();
+                columns.Field("Region").HeaderText("Region").Width("130").Add();
+                columns.Field("Discount").HeaderText("Discount (%)").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("N0").Width("140").Add();
+                columns.Field("Tax").HeaderText("Tax (%)").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("N2").Width("130").Add();
+                columns.Field("ShippingCost").HeaderText("Shipping Cost").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").Width("160").Add();
+                columns.Field("Profit").HeaderText("Profit").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").Width("160").Add();
+                columns.Field("Target").HeaderText("Target").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").Width("120").Add();
+                columns.Field("Forecast").HeaderText("Forecast").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").Width("150").Add();
+                columns.Field("SalesRep").HeaderText("Sales Reporter").Width("150").Add();
+                columns.Field("Manager").HeaderText("Manager").Width("140").Add();
+                columns.Field("Channel").HeaderText("Channel").Width("120").Add();
+                columns.Field("Quarter").HeaderText("Quarter").Width("120").Add();
+                columns.Field("Year").HeaderText("Year").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("100").Add();
+                columns.Field("ReturnQty").HeaderText("Return Quantity").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Width("160").Add();
+                columns.Field("ReturnAmount").HeaderText("Return Amount").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Format("C2").Width("160").Add();
+                columns.Field("Remarks").HeaderText("Remarks").Width("220").Add();
+            }).Aggregates(agg => { agg.Columns(new List<Syncfusion.EJ2.Grids.GridAggregateColumn>()
+            {
+                new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "SalesQty", Type = "Sum", Format = "N0", FooterTemplate = "${Sum}" },
+                new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "GrossAmount", Type = "Sum", Format = "C0", FooterTemplate = "${Sum}" },
+                new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "NetAmount", Type = "Sum", Format = "C0", FooterTemplate = "${Sum}" },
+                new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "ShippingCost", Type = "Sum", Format = "C0", FooterTemplate = "${Sum}" },
+                new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Profit", Type = "Sum", Format = "C0", FooterTemplate = "${Sum}" },
+                new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "Forecast", Type = "Sum", Format = "C0", FooterTemplate = "${Sum}" },
+                new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "ReturnQty", Type = "Sum", Format = "N0", FooterTemplate =  "${Sum}" },
+                new Syncfusion.EJ2.Grids.GridAggregateColumn() { Field = "ReturnAmount", Type = "Sum", Format = "C0", FooterTemplate = "${Sum}" }
+            }).Add();}).PageSettings(page => page.PageSize(50)).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.CheckBox).EnableInfiniteScrolling(true); }).Render()
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        var salesDataSource = [], date1 = null, date2 = null, flag = true;
+        function createSalesDataSource() {
+            var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            var productCatalog = [
+                {
+                    name: 'Smart Pro Laptop',
+                    category: 'Electronics',
+                    subCategory: 'Computing',
+                    brand: 'Apex Tech',
+                    basePrice: 1800,
+                    country: 'USA',
+                    state: 'California',
+                    city: 'San Jose',
+                    region: 'North America'
+                },
+                {
+                    name: 'Ergo Desk Monitor',
+                    category: 'Electronics',
+                    subCategory: 'Displays',
+                    brand: 'Vision Core',
+                    basePrice: 780,
+                    country: 'Germany',
+                    state: 'Bavaria',
+                    city: 'Munich',
+                    region: 'Europe'
+                },
+                {
+                    name: 'Office Chair X',
+                    category: 'Furniture',
+                    subCategory: 'Seating',
+                    brand: 'Comfort Line',
+                    basePrice: 450,
+                    country: 'Singapore',
+                    state: 'Central',
+                    city: 'Singapore',
+                    region: 'Asia'
+                },
+                {
+                    name: 'Wireless Keyboard',
+                    category: 'Accessories',
+                    subCategory: 'Input Devices',
+                    brand: 'Key Wave',
+                    basePrice: 200,
+                    country: 'USA',
+                    state: 'Texas',
+                    city: 'Austin',
+                    region: 'North America'
+                },
+                {
+                    name: '4K Business Display',
+                    category: 'Electronics',
+                    subCategory: 'Displays',
+                    brand: 'Vision Core',
+                    basePrice: 1400,
+                    country: 'Brazil',
+                    state: 'São Paulo',
+                    city: 'São Paulo',
+                    region: 'South America'
+                },
+                {
+                    name: 'Ergonomic Mouse Pro',
+                    category: 'Accessories',
+                    subCategory: 'Input Devices',
+                    brand: 'Key Wave',
+                    basePrice: 90,
+                    country: 'United Kingdom',
+                    state: 'England',
+                    city: 'London',
+                    region: 'Europe'
+                },
+                {
+                    name: 'Conference Speaker Set',
+                    category: 'Audio',
+                    subCategory: 'Conference Gear',
+                    brand: 'Sound Sphere',
+                    basePrice: 750,
+                    country: 'Australia',
+                    state: 'NSW',
+                    city: 'Sydney',
+                    region: 'Oceania'
+                },
+                {
+                    name: 'Cloud Backup License',
+                    category: 'Software',
+                    subCategory: 'Subscription',
+                    brand: 'Cloud Nexus',
+                    basePrice: 300,
+                    country: 'Canada',
+                    state: 'Ontario',
+                    city: 'Toronto',
+                    region: 'North America'
+                },
+                {
+                    name: 'Smart Docking Hub',
+                    category: 'Electronics',
+                    subCategory: 'Accessories',
+                    brand: 'Apex Tech',
+                    basePrice: 260,
+                    country: 'Netherlands',
+                    state: 'North Holland',
+                    city: 'Amsterdam',
+                    region: 'Europe'
+                },
+                {
+                    name: 'Premium Standing Desk',
+                    category: 'Furniture',
+                    subCategory: 'Desks',
+                    brand: 'Comfort Line',
+                    basePrice: 950,
+                    country: 'USA',
+                    state: 'Washington',
+                    city: 'Seattle',
+                    region: 'North America'
+                },
+                {
+                    name: 'Noise Cancel Headset',
+                    category: 'Audio',
+                    subCategory: 'Headphones',
+                    brand: 'Sound Sphere',
+                    basePrice: 220,
+                    country: 'Japan',
+                    state: 'Tokyo',
+                    city: 'Tokyo',
+                    region: 'Asia'
+                },
+                {
+                    name: 'Security Suite License',
+                    category: 'Software',
+                    subCategory: 'License',
+                    brand: 'Cloud Nexus',
+                    basePrice: 480,
+                    country: 'India',
+                    state: 'Karnataka',
+                    city: 'Bengaluru',
+                    region: 'Asia'
+                },
+            ];
+            var salesReps = ['Maya Chen', 'Lena Fischer', 'Arun Patel', 'Noah Davis', 'Camila Souza', 'Emma Clark', 'Ethan Brown', 'Sophia Martin', 'Daniel Moore', 'Priya Nair', 'Liam Wilson', 'Olivia Brooks', 'Marco Klein', 'Ava Johnson', 'Rafael Lima', 'Isabella Rossi', 'Hiro Tanaka', 'Fatima Khan'];
+            var managers = ['Olivia Brooks', 'Marco Klein', 'Sofia Lim', 'Priya Nair', 'Rafael Lima', 'Daniel Reed', 'Ava Johnson', 'Liam Wilson', 'Grace Bennett', 'Kunal Mehta', 'Noah Turner', 'Mila Carter'];
+            var channels = ['Online', 'Retail', 'Partner', 'Distributor', 'Direct'];
+            var remarkPool = ['Top seller in the region', 'Stable demand', 'Exceeded quota', 'High repeat orders', 'Important account', 'Low-risk replenishment', 'Need follow-up on renewal', 'Expansion opportunity', 'Seasonal spike observed', 'Pending contract signature', 'Bulk order secured', 'Watch for shipping delay'];
+            var round2 = (value) => Math.round(value * 100) / 100;
+            var pick = (arr) => 
+            arr[Math.floor(Math.random() * arr.length)];
+            var productVersionMap = {};
+            for (var index = 0; index < 100000; index++) {
+                var product = productCatalog[Math.floor(Math.random() * productCatalog.length)];
+                if (!productVersionMap[product.name]) {
+                    productVersionMap[product.name] = 1;
+                }
+                var version = `V${productVersionMap[product.name]}`;
+                productVersionMap[product.name]++;
+                var salesQty = Math.floor(5 + Math.random() * 100);
+                var unitPrice = round2(
+                    product.basePrice * (0.8 + Math.random() * 0.4)
+                );
+                var grossAmount = round2(salesQty * unitPrice);
+                var discount = round2(2 + Math.random() * 18);
+                var discountAmount = round2((grossAmount * discount) / 100);
+                var shippingCost = round2(25 + Math.random() * 150);
+                var tax = round2(5 + Math.random() * 15);
+                var netAmount = round2(
+                    grossAmount - discountAmount + shippingCost * 0.15
+                );
+                var profit = round2(
+                    grossAmount - discountAmount - shippingCost - grossAmount * (0.3 + Math.random() * 0.2)
+                );
+                var target = round2(
+                    grossAmount * (1.2 + Math.random() * 1.5)
+                );
+                var forecast = round2(
+                    target * (0.8 + Math.random() * 0.4)
+                );
+                var profitMargin =
+                    grossAmount === 0 ? 0 : round2((profit / grossAmount) * 100);
+                var achievementPercent = round2(20 + Math.random() * 80);
+                var isZero = Math.random() < 0.05;
+                var returnQty = isZero
+                    ? 0
+                    : Math.floor(1 + Math.random() * 5);
+                var returnAmount = returnQty > 0
+                    ? round2(returnQty * unitPrice * (0.5 + Math.random() * 0.3))
+                    : 0;
+                salesDataSource.push({
+                    ProductId: 100001 + index,
+                    ProductName: `${product.name} ${version}`,
+                    Region: product.region,
+                    SalesQty: salesQty,
+                    GrossAmount: grossAmount,
+                    NetAmount: netAmount,
+                    ProfitMargin: profitMargin,
+                    AchievementPercent: achievementPercent,
+                    UnitPrice: unitPrice,
+                    Month: pick(months),
+                    Category: product.category,
+                    SubCategory: product.subCategory,
+                    Brand: product.brand,
+                    Country: product.country,
+                    State: product.state,
+                    City: product.city,
+                    Discount: discount,
+                    Tax: tax,
+                    ShippingCost: shippingCost,
+                    Profit: profit,
+                    Target: target,
+                    Forecast: forecast,
+                    SalesRep: pick(salesReps),
+                    Manager: pick(managers),
+                    Channel: pick(channels),
+                    Quarter: `Q${Math.floor(Math.random() * 4) + 1}`,
+                    Year: 2023 + Math.floor(Math.random() * 3),
+                    ReturnQty: returnQty,
+                    ReturnAmount: returnAmount,
+                    Remarks: pick(remarkPool)
+                });
+            }
+        }
+
+        document.getElementById("generate").addEventListener('click', function() {
+
+            var grid = document.getElementById("InfiniteScroll").ej2_instances[0]
+            if (!salesDataSource.length) {
+                show();
+                createSalesDataSource();
+                grid.dataSource = salesDataSource;
+            } else {
+                flag = true;
+                show();
+                grid.refresh();
+            }
+
+        })
+        function show() {
+            document.getElementById('popup').style.display = 'inline-block';
+        }
+        function hide(args) {
+            if (flag) {
+                flag = false;
+            }
+            document.getElementById('popup').style.display = 'none';
+        }
+        function load(args) {
+            if (args) {
+                args.enableSeamlessScrolling = true;
+            }
+        }
+    </script>
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        show();
+        hide();
+    </script>
+}
+
+
+@section ActionDescription{
+    <div id="action-description">
+       <p>
+            This sample showcases the infinite scrolling capability of the Grid, designed to handle large datasets seamlessly. Click the “Load 100K Data” button to populate the Grid with data, then scroll vertically and horizontally to dynamically load rows and columns, ensuring smooth navigation.
+        </p>
+    </div>
+}
+
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Infinite Scrolling in ASP.NET MVC Data Grid control. Explore here for more details."/>
+                }
+
+@section Description{
+    <div id="description">
+        <p>
+            Infinite scrolling uses a lazy loading mechanism, where data is fetched automatically as the user scrolls to the end of the Grid. This behavior is enabled by setting the <code>enableInfiniteScrolling</code> property to <code>true</code> and defining the Grid’s <code>height</code> property.
+        </p>
+        <p>
+            The Grid also supports column virtualization, which renders only the visible columns to improve performance when working with a large number of columns. Column virtualization can be enabled by setting the <code>enableColumnVirtualization</code> property to <code>true</code>.
+            Additionally, column virtualization integrates seamlessly with aggregate operations, ensuring that calculations like <code>Sum</code>, <code>Average</code>, etc., remain accurate and are displayed correctly during horizontal scrolling.
+        </p>
+        <p>
+            More information on the infinite scrolling can be found in the
+            <a target="_blank"
+                href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/scrolling/infinite-scrolling" aria-label="Navigate to the documentation for infinite scrolling in ASP.NET Core Grid control">
+            documentation section</a>.
+        </p>
+        <p>
+            Looking for the full ASP.NET MVC Data Grid component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/grid" aria-label="documentation">ASP.NET MVC Data Grid component</a> page.
+        </p>
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Data Grid Infinite Scrolling Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Infinite Scrolling in ASP.NET MVC Data Grid Control</h1>
+                }

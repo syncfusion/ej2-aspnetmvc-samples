@@ -1,0 +1,63 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="content-wrapper">
+            @Html.EJS().Schedule("schedule").Width("100%").Height("650px").AllowInline(true).CurrentView(View.TimelineWeek).Views(view => { view.Option(View.TimelineWeek).Add(); view.Option(View.TimelineMonth).Add(); }).EventRendered("onEventRendered").Group(group => group.Resources((string[])ViewData["Resources"])).Resources(res =>
+                {
+                    res.DataSource(ViewData["Categories"]).Field("TaskId").Title("Category").Name("Categories").TextField("text").IdField("id").ColorField("color").AllowMultiple(true).Add();
+                }).EventSettings(new ScheduleEventSettings { DataSource = ViewData["datasource"] }).SelectedDate(new DateTime(DateTime.Today.Year, 4, 4)).WorkDays((int[])ViewData["workDays"]).Render()
+        </div>
+    </div>
+    <style>
+        .e-schedule .e-timeline-view .e-resource-left-td,
+        .e-schedule .e-timeline-month-view .e-resource-left-td {
+            width: 150px;
+        }
+    </style>
+    <script type="text/javascript">
+        function onEventRendered(args) {
+            var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+            var categoryColor = args.data.CategoryColor;
+            if (!args.element || !categoryColor) {
+                return;
+            }
+            if (scheduleObj.currentView === 'Agenda') {
+                (args.element.firstChild).style.borderLeftColor = categoryColor;
+            } else {
+                args.element.style.backgroundColor = categoryColor;
+            }
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Inline Editing in ASP.NET MVC Scheduler control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This demo shows the experience of adding a new appointment or editing the existing appointment through inline mode.
+            Click on the cells to add an appointment with the subject alone and click on the appointment to edit the subject of the appointment.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>The features enable user to add or edit the appointment through inline mode. Click on the cells or the existing appointments to enable inline mode. You can press the ENTER key on the selected cell or appointment.</p>
+        <p>The feature activates when you enable the <code>allowInline</code> property.</p>
+        <ul>
+            <li>For adding an appointment, the appointment will be created based on the selected time and subject once you focused-out or press ENTER key.</li>
+            <li>For editing an appointment, the appointment will be saved based on the modified subject.</li>
+        </ul>
+
+    </div>
+}
+@section Title{
+                    <title>ASP.NET MVC Scheduler Inline Editing Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Inline Editing in ASP.NET MVC Scheduler Control</h1>
+                }

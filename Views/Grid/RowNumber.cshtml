@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "RowNumber";
+}
+
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("RowNumber").DataSource((IEnumerable<object>)ViewData["dataSource"]).Height(365).RowHeight(45).AllowSorting(true).AllowFiltering(true).EnableVirtualization(true).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.CheckBox); }).Toolbar(new List<string>() { "Delete", "Update", "Cancel", "ExcelExport", "PdfExport" }).AllowExcelExport(true).AllowPdfExport(true).Columns(col =>
+        {
+            col.Type("RowNumber").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+            col.Field("ProductID").HeaderText("Product ID").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Visible(false).IsPrimaryKey(true).Type("number").Add();
+            col.Field("ProductName").HeaderText("Products").Width("160").ValidationRules(new { required = true }).AllowEditing(false).Add();
+            col.Field("Category").HeaderText("Category").Width("140").ValidationRules(new { required = true }).AllowEditing(false).Add();
+            col.Field("SellingPrice").HeaderText("Price").Width("130").Format("C").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("numericedit").ValidationRules(new { required = true, min = 0 }).Filter(new { type = "Menu" }).Add();
+            col.Field("AvailableStock").HeaderText("In-Stock").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Template("#availableStockTemplate").EditType("numericedit").ValidationRules(new { required = true, min = 0 }).Filter(new { type = "Menu" }).Add();
+            col.Field("SoldStock").HeaderText("Sold").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Template("#soldStockTemplate").EditType("numericedit").ValidationRules(new { required = true, min = 0 }).Filter(new { type = "Menu" }).Add();
+        }).EditSettings(edit => { edit.AllowEditing(true).AllowAdding(true).AllowDeleting(true).Mode(Syncfusion.EJ2.Grids.EditMode.Cell); }).Load("load").ToolbarClick("toolbarClick").ActionBegin("actionBegin").Render()
+    </div>
+
+    <script type="text/x-template" id="availableStockTemplate">
+        <span>${AvailableStock} ${Unit}</span>
+    </script>
+    <script type="text/x-template" id="soldStockTemplate">
+        <span>${SoldStock} ${Unit}</span>
+    </script>
+
+    <script>
+        function load(args) {
+            if (args) {
+                args.enableSeamlessScrolling = true;
+            }
+        }
+        function toolbarClick(args) {
+            var gridObj = document.getElementById("RowNumber").ej2_instances[0];
+            if (args.item.id === 'RowNumber_excelexport') {
+                gridObj.excelExport();
+            }
+            if (args.item.id === 'RowNumber_pdfexport') {
+                gridObj.pdfExport();
+            }
+        }
+        function actionBegin(args) {
+            if (args.requestType === 'save' && args.action === 'add') {
+                if (args.data.Category === 'Beverages' || args.data.Category === 'Dairy Products') {
+                    args.data.Unit = 'Litre';
+                }
+                else if (args.data.Category === 'Fruits' || args.data.Category === 'Vegetables' || args.data.Category === 'Nuts' || args.data.Category === 'Rices') {
+                    args.data.Unit = 'Kg';
+                }
+                else {
+                    args.data.Unit = 'Pack';
+                }
+            }
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the Row Number feature in the Data Grid, which automatically displays sequential row numbers in a dedicated column. It provides a simple way to identify the position of records in the current grid view.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Row Number feature in the ASP.NET MVC Data Grid control." />
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, the row number column is enabled by setting the <code>columns-&gt;type</code> property to <code>RowNumber</code>. The grid automatically generates and maintains row numbers for all displayed records, updating them appropriately during operations such as paging, sorting, filtering and grouping.
+        </p>
+        <p>
+            More information on row configuration can be found in the <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/row">documentation section</a>.
+        </p>
+        <p>
+            Looking for the full ASP.NET MVC Data Grid component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/grid" aria-label="documentation">ASP.NET MVC Data Grid component</a> page.
+        </p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Data Grid Row Number Columns Example - Syncfusion Demos</title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Row Number Columns in ASP.NET MVC Data Grid Control</h1>
+}

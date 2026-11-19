@@ -1,0 +1,102 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @Html.EJS().Chart("UpdateData").Series(series =>
+        {
+            series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Column)
+                .XName("X")
+                .YName("Y")
+                .ColumnWidth(0.5)
+                .Marker(mr => mr.Visible(false).DataLabel(dl => dl.Visible(true).Position(Syncfusion.EJ2.Charts.LabelPosition.Top).Format("{value}%").Font(ft => ft.Color("#ffffff"))))
+                .DataSource(ViewData["ChartPoints"])
+                .Add();
+        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.Category).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Rotate90).MajorGridLines(mg => mg.Width(0))
+        ).PrimaryYAxis(py => py.Title("Sales (in percentage)").Interval(5).Minimum(0).Maximum(100).LabelFormat("{value}%").LineStyle(ls => ls.Width(0)).MajorTickLines(mt => mt.Width(0))
+        ).Title("Sales by product").ChartArea(area => area.Border(br => br.Width(0))).Load("load").PointRender("labelRender").AxisRangeCalculated("axisRangeCalculated").Render()
+    </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var intervalId;
+        function load(args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+            args.chart.primaryXAxis.labelStyle.size = ej.base.Browser.isDevice ? "11px" : "12px";
+            args.chart.series[0].cornerRadius.topLeft = ej.base.Browser.isDevice ? 10 : 15;
+            args.chart.series[0].cornerRadius.topRight = ej.base.Browser.isDevice ? 10 : 15;
+
+            updatedataClearInterval();
+
+            intervalId = setInterval(function () {
+                var container = document.getElementById('UpdateData');
+                if (container && container.id === args.chart.element.id) {
+                    var newData = args.chart.series[0].dataSource.map(function (item) {
+                        var value = getRandomInt(10, 90);
+                        return { X: item.X, Y: value };
+                    });
+                    if (args.chart.series.length > 0) {
+                        args.chart.series[0].setData(newData, 500);
+                    }
+                }
+                else {
+                    updatedataClearInterval();
+                }
+            }, 1500);
+        }
+        function updatedataClearInterval() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+        function labelRender(args) {
+            pointRender(args);
+        };
+        function axisRangeCalculated(args) {
+            if (args.axis.name === 'primaryYAxis') {
+                args.maximum = args.maximum > 100 ? 100 : args.maximum;
+                if (args.maximum > 80) {
+                    args.interval = 20;
+                }
+                else if (args.maximum > 40) {
+                    args.interval = 10;
+                }
+            }
+        }
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Update DataSource in ASP.NET MVC Chart control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample demonstrates how the data source for the chart can dynamically update with random values at a set interval.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a column chart that displays sales data, with each entry featuring the product name and the corresponding sales percentage. Additionally, the chart can dynamically update with random values using the <code>SetData</code> method.
+    </p>
+    <p>
+        More information on the column series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/column" aria-label="Navigate to the documentation for Column Chart in ASP.NET MVC Chart control">documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC Chart Update DataSource Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Charts</h1>
+}
