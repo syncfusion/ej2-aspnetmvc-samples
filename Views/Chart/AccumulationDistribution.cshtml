@@ -1,0 +1,98 @@
+@using Syncfusion.EJ2;
+<script src="~/Scripts/stock-chart-data.js"></script>
+@section ControlsSection{
+<div class="control-section" align="center">
+    <div style="text-align:center">
+        @Html.EJS().Chart("container-vertical").Rows(rows =>
+   {
+       rows.Height("40%").Add();
+       rows.Height("60%").Add();
+   }).Axes(ax =>
+   {
+       ax.Name("secondary").
+       OpposedPosition(true).
+       Minimum(-7000000000).
+       Maximum(5000000000).
+       Interval(6000000000).StripLines(sl=> { sl.Start("-7000000000").End("6000000000").Color("#6063ff").Text("").Visible(true).Opacity(0.1).ZIndex(Syncfusion.EJ2.Charts.ZIndex.Behind).Add(); }).
+       Title("Accumulation Distribution (in Billion)")
+       .MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).MajorGridLines(mg=>mg.Width(0)).
+       RowIndex(0).Add();
+   }
+           ).Series(series =>
+           {
+               series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle)
+               .XName("x").High("high").Low("low").Open("open")
+               .Close("close").Volume("volume").BearFillColor("#2ecd71")
+               .BullFillColor("#e74c3d").DataSource("ChartPoints").Name("Apple Inc").Width(2).Add();
+           }).Indicators(id =>
+           {
+               id.Fill("#6063ff").YAxisName("secondary")
+               .Period(3).Type(Syncfusion.EJ2.Charts.TechnicalIndicators.AccumulationDistribution)
+               .Field(Syncfusion.EJ2.Charts.FinancialDataFields.Close).SeriesName("Apple Inc").Add();
+           }).ZoomSettings(zn => zn.EnableSelectionZooming(true).EnablePan(true).Mode(Syncfusion.EJ2.Charts.ZoomMode.X).EnablePinchZooming(true)
+           ).Crosshair(cr => cr.LineType(Syncfusion.EJ2.Charts.LineType.Vertical).Enable(true)
+           ).PrimaryXAxis(px => {
+               px.ZoomFactor(0.2).MajorGridLines(mg=>mg.Width(0)).ZoomPosition(0.6).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Months)
+               .CrosshairTooltip(ct=>ct.Enable(true)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime);
+           }).PrimaryYAxis(py => py.RowIndex(1).OpposedPosition(true)
+           .LineStyle(ls=>ls.Width(0)).Title("Price").Minimum(50)
+           .Maximum(170).Interval(30).LabelFormat("${value}").PlotOffset(25).MajorTickLines(mg => mg.Width(0))
+             ).Title("AAPL Stock Price 2012 - 2017"
+             ).AxisLabelRender("axisLabelRender").ChartArea(area => area.Border(br => br.Width(0))
+             ).Tooltip(tl => tl.Enable(true).Shared(true)).LegendSettings(lg => lg.Visible(false)).Load("load").Render()
+    </div>
+</div>
+
+@*custom code start*@
+<style>
+    #control-container {
+        padding: 0px !important;
+    }
+</style>
+@*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var ChartPoints = hiloData;
+
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+        };
+
+         var axisLabelRender = function (args) {
+              if (args.axis.name === 'secondary') 
+              {
+                   var value = Number(args.text) / 1000000000;
+                   args.text = String(value) + 'B';
+              }
+         };
+    </script>
+    }
+    @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Accumulation Distribution in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample illustrates a chart with candle series and an accumulation distribution indicator. The trackball shows information about the stock rates and signal values each day.
+    </p>
+}
+@section Description{
+     <p>
+        In this example, you can see how to render and configure an accumulation distribution indicator. This uses volume and price to identify whether stock is accumulated or distributed. It also identifies divergences between the stock price and volume flow.
+    </p>
+    <p>
+        <code>Tooltip</code> is enabled in this example. To see the tooltip in action, hover over a point or tap on a point in touch enabled devices.
+    </p>
+    <p>
+        More information about the accumulation distribution indicator can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/technical-indicators#accumulation-distribution" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Accumulation Distribution Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Accumulation Distribution in ASP.NET MVC Chart Control</h1>
+                }

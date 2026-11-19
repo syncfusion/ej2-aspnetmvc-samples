@@ -1,0 +1,255 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.CircularGauge
+
+@section ControlsSection{
+    <div class="control-section" style="overflow: auto;">
+        <table>
+            <tr>
+                <td class="gaugeAlign">
+                    @Html.EJS().CircularGauge("container").Width("280px").Height("300px").Load("gaugeLoadOne").Axes(axes => axes.Radius("100%").StartAngle(230).EndAngle(130)
+                    .LineStyle(new CircularGaugeLine { Width = 30, Color = "#f6f7f9" })
+                    .LabelStyle(new CircularGaugeLabel
+                    {
+                        Position = Position.Outside,
+                        Offset = 20,
+                        Font = new CircularGaugeFont { Size = "12px" }
+                    })
+                    .MajorTicks(new CircularGaugeTick
+                    {
+                        Width = 0,
+                        Height = 0,
+                        Interval = 10,
+                        Color = "transparent"
+                    })
+                    .MinorTicks(new CircularGaugeTick
+                    {
+                        Width = 0,
+                        Height = 0,
+                        Color = "transparent"
+                    }).Minimum(0).Maximum(100).Pointers((List<CircularGaugePointer>)ViewData["FirstGaugePointers"]).Ranges((List<CircularGaugeRange>)ViewData["FirstGaugeRanges"]).Annotations((List<CircularGaugeAnnotation>)ViewData["FirstGaugeAnnotations"]).Add()).Render()
+                </td>
+                <td class="gaugeAlign">
+                    @Html.EJS().CircularGauge("container2").Width("280px").Height("300px").Load("gaugeLoadTwo").CenterY("60%").Axes(axes => axes.Radius("80%").StartAngle(270).EndAngle(90)
+                    .LineStyle(new CircularGaugeLine { Width = 30, Color = "#f6f7f9" })
+                    .LabelStyle(new CircularGaugeLabel
+                    {
+                        Position = Position.Outside,
+                        Font = new CircularGaugeFont { Size = "0px" }
+                    })
+                    .MajorTicks(new CircularGaugeTick
+                    {
+                        Width = 0,
+                        Height = 0,
+                        Color = "transparent"
+                    })
+                    .MinorTicks(new CircularGaugeTick
+                    {
+                        Width = 0,
+                        Height = 0,
+                        Color = "transparent"
+                    }).Minimum(0).Maximum(100).Pointers((List<CircularGaugePointer>)ViewData["SecondGaugePointers"]).Annotations((List<CircularGaugeAnnotation>)ViewData["SecondGaugeAnnotations"]).Add()).Render()
+                </td>
+                <td class="gaugeAlign">
+                    @Html.EJS().CircularGauge("container3").Width("280px").Height("300px").Load("gaugeLoadThree").Axes(axes => axes.Radius("80%").StartAngle(220).EndAngle(140)
+                    .LineStyle(new CircularGaugeLine { Width = 0 })
+                    .LabelStyle(new CircularGaugeLabel
+                    {
+                        Position = Position.Outside,
+                        Font = new CircularGaugeFont { Size = "0px" }
+                    }).MajorTicks(new CircularGaugeTick
+                    {
+                        Width = 0,
+                        Height = 0,
+                        Color = "transparent"
+                    })
+                    .MinorTicks(new CircularGaugeTick
+                    {
+                        Width = 0,
+                        Height = 0,
+                        Color = "transparent"
+                    }).Minimum(0).Maximum(600).Ranges((List<CircularGaugeRange>)ViewData["ThirdGaugeRanges"]).Pointers((List<CircularGaugePointer>)ViewData["ThirdGaugePointers"]).Annotations((List<CircularGaugeAnnotation>)ViewData["ThirdGaugeAnnotations"]).Add()).Render()
+                </td>
+            </tr>
+            <tr>
+                <td class="gaugeAlign">
+                    @Html.EJS().CircularGauge("container4").Width("280px").Height("300px").Load("gaugeLoadFour").Axes(axes => axes.Radius("80%").StartAngle(220).EndAngle(140)
+                    .LineStyle(new CircularGaugeLine { Width = 0 })
+                    .LabelStyle(new CircularGaugeLabel
+                    {
+                        Position = Position.Outside,
+                        Font = new CircularGaugeFont { Size = "0px" }
+                    }).MajorTicks(new CircularGaugeTick
+                    {
+                        Width = 0,
+                        Height = 0,
+
+                        Color = "transparent"
+                    })
+                    .MinorTicks(new CircularGaugeTick
+                    {
+                        Width = 0,
+                        Height = 0,
+                        Color = "transparent"
+                    }).Minimum(0).Maximum(100).Ranges((List<CircularGaugeRange>)ViewData["FourthGaugeRanges"]).Pointers((List<CircularGaugePointer>)ViewData["FourthGaugePointers"]).Annotations((List<CircularGaugeAnnotation>)ViewData["FourthGaugeAnnotations"]).Add()).Render()
+                </td>
+                <td class="gaugeAlign">
+                    @Html.EJS().CircularGauge("container5").Width("280px").Height("300px").Load("gaugeLoadFive").Axes(axes => axes.Radius("80%").StartAngle(220).EndAngle(140)
+                    .LineStyle(new CircularGaugeLine { Width = 0 })
+                    .LabelStyle(new CircularGaugeLabel
+                    {
+                        Position = Position.Outside,
+                        Font = new CircularGaugeFont { Size = "0px" }
+                    }).MajorTicks(new CircularGaugeTick
+                    {
+                        Width = 0,
+                        Height = 0,
+                        Color = "transparent"
+                    })
+                    .MinorTicks(new CircularGaugeTick
+                    {
+                        Width = 0,
+                        Height = 0,
+                        Color = "transparent"
+                    }).Minimum(0).Maximum(100).Pointers((List<CircularGaugePointer>)ViewData["FifthGaugePointers"]).Ranges((List<CircularGaugeRange>)ViewData["FifthGaugeRanges"]).Annotations((List<CircularGaugeAnnotation>)ViewData["FifthGaugeAnnotations"]).Add()).Render()
+                </td>
+                <td class="gaugeAlign">
+                    @Html.EJS().CircularGauge("container6").Width("280px").Height("300px").Load("gaugeLoadSix").Axes(axes => axes.Radius("80%").StartAngle(220).EndAngle(140)
+                    .LineStyle(new CircularGaugeLine { Width = 0 })
+                    .LabelStyle(new CircularGaugeLabel
+                    {
+                    Position = Position.Outside,
+                        Offset = -5,
+                        AutoAngle = true,
+                    Font = new CircularGaugeFont { Size = "0px" }
+                    }).MajorTicks(new CircularGaugeTick
+                    {
+                    Width = 0,
+                    Height = 0,
+                    Interval = 15,
+                    Color = "transparent"
+                    })
+                    .MinorTicks(new CircularGaugeTick
+                    {
+                    Width = 0,
+                    Height = 0,
+                    Color = "transparent"
+                    }).Minimum(0).Maximum(100).Pointers((List<CircularGaugePointer>)ViewData["SixthGaugePointers"]).Ranges((List<CircularGaugeRange>)ViewData["SixthGaugeRanges"]).Annotations((List<CircularGaugeAnnotation>)ViewData["SixthGaugeAnnotations"]).Add()).Render()
+                </td>
+            </tr>
+        </table>
+    </div>
+    <style>
+        .gaugeAlign {
+            width: 50%;
+        }
+
+        .annotationText {
+            margin-top: 15px;
+            margin-left: 2px;
+        }
+
+        .tailwind3 div.annotationText, .tailwind3-dark div.annotationText {
+            margin-top: 5px;
+            margin-left: 0px;
+        }
+
+        .gaugeThirdText {
+            margin-top: 5px;
+            margin-left: 2px;
+        }
+
+        .material div.gaugeThirdText, .material-dark div.gaugeThirdText, .bootstrap-dark div.gaugeThirdText, .bootstrap div.gaugeThirdText,
+        .bootstrap4 div.gaugeThirdText, .fabric div.gaugeThirdText, .fabric div.gaugeThirdText {
+            margin-top: 10px;
+            margin-left: 2px;
+        }
+        .tailwind3 div.gaugeThirdText, .tailwind3-dark div.gaugeThirdText {
+            margin-top: -5px;
+            margin-left: 4px;
+        }
+    </style>
+    <script type="text/javascript">
+        var selectedTheme = themeName ? themeName : 'Material';
+        function gaugeLoadOne(args) {
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
+                args.gauge.axes[0].annotations[0].angle = 188;
+                args.gauge.axes[0].annotations[0].radius = "15%";
+            }
+        }
+
+        function gaugeLoadTwo(args) {
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
+                args.gauge.axes[0].annotations[0].angle = 12;
+                args.gauge.axes[0].annotations[0].radius = "18%";
+                args.gauge.axes[0].annotations[1].angle = 258;
+                args.gauge.axes[0].annotations[1].radius = "102%";
+                args.gauge.axes[0].annotations[2].angle = 102;
+                args.gauge.axes[0].annotations[2].radius = "105%";
+            }
+        }
+
+        function gaugeLoadThree(args) {
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
+                args.gauge.axes[0].annotations[0].angle = 194;
+                args.gauge.axes[0].annotations[0].radius = "8%";
+            }
+        }
+
+        function gaugeLoadFour(args) {
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
+                args.gauge.axes[0].annotations[0].angle = 174;
+                args.gauge.axes[0].annotations[0].radius = "17%";
+            }
+        }
+
+        function gaugeLoadFive(args) {
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
+                args.gauge.axes[0].annotations[0].angle = 174;
+                args.gauge.axes[0].annotations[0].radius = "12%";
+            }
+        }
+
+        function gaugeLoadSix(args) {
+            args.gauge.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1)).replace(/-dark/i, "Dark").replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5');
+            if (selectedTheme.indexOf("tailwind") != -1 && args.gauge.axes[0].annotations != null) {
+                args.gauge.axes[0].annotations[0].angle = 180;
+                args.gauge.axes[0].annotations[0].radius = "6%";
+            }
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample includes a wide range of arc gauges with varying appearances based on the built-in features and customization options.
+        </p>
+    </div>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Patterns in ASP.NET MVC Arc Gauge control. Explore here for more details." />
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this example, you can see how to render an arc gauge in various styles. You can use <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeAxis.html" aria-label="Axes">Axes<span class="sr-only">opens in a new tab</span></a>, <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeRange.html" aria-label="Ranges">Ranges<span class="sr-only">opens in a new tab</span></a>, <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugePointer.html" aria-label="Pointers">Pointers<span class="sr-only">opens in a new tab</span></a> and <a target="_blank" href="https://help.syncfusion.com/cr/aspnetmvc-js2/Syncfusion.EJ2.CircularGauge.CircularGaugeAnnotation.html" aria-label="Annotations">Annotations<span class="sr-only">opens in a new tab</span></a> oriented properties to customize the appearance of the arc gauge, in order to achieve the desired outcome.
+        </p>
+        <p>
+            More information on the arc gauge can be found in this
+            <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/circular-gauge/getting-started" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+        </p>
+    </div>
+}
+
+@section Title{
+    <title>ASP.NET MVC Arc Gauge Patterns Example - Syncfusion Demos </title>
+}
+
+@section Header{
+    <h1 class='sb-sample-text'>Example of Patterns in ASP.NET MVC Arc Gauge Control</h1>
+}

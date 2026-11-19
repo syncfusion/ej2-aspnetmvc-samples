@@ -1,0 +1,170 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+        @Html.EJS().Chart("stock").Series(series =>
+        {
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.Candle)
+                 .XName("x")
+                 .Low("low")
+                 .High("high")
+                 .Open("open")
+                 .Close("close")
+                 .ColumnWidth(0.4)
+                 .BearFillColor("#2ecd71")
+                 .BullFillColor("#e74c3d").LastValueLabel(lastLabel => lastLabel.Enable(true).Background("red").DashArray("3,2").LineWidth(0.5).Font(f => f.Size("10px")))
+                 .Add();
+        }).PrimaryXAxis(px => px.ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).LabelIntersectAction(Syncfusion.EJ2.Charts.LabelIntersectAction.Hide
+        ).MajorGridLines(mg => mg.Width(0)).CrosshairTooltip(ct => ct.Enable(true))
+        ).PrimaryYAxis(py => py.Minimum(120).Interval(20).OpposedPosition(true).CrosshairTooltip(ct => ct.Enable(true)).LineStyle(ls => ls.Width(0)).MajorGridLines(mg => mg.Width(1)).MajorTickLines(mt => mt.Width(0))
+        ).Title("AAPL Historical").Crosshair(cr => cr.Enable(true).DashArray("5,5")).ChartArea(area => area.Border(br => br.Width(0))
+        ).AxisRangeCalculated("axisRangeCalculated").Load("load").PointRender("pointRender").Render()
+    </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        //Initialize the data source
+        var value = 180;
+        var getData = () => {
+            var series = [];
+            var point;
+            for (var i = 0; i < 30; i++) {
+                value = 180 + (Math.random() * 25) * Math.sin(i * Math.PI / 8);
+                value = Math.max(140, Math.min(260, value));
+                if (value > 260) {
+                    value = 260;
+                }
+                if (value < 140) {
+                    value = 140;
+                }
+                value += Math.random() * 0.1;
+                var open = value + Math.round(Math.random() * 18);
+                var low = Math.min(value, open) - Math.round(Math.random() * 6);
+                var high = Math.min(220, Math.max(value, open) + Math.round(Math.random() * 15));
+                point = {
+                    x: new Date(2000, 5, 2, 2, 0, i),
+                    close: value,
+                    open: open,
+                    low: low,
+                    high: high
+                };
+                series.push(point);
+            }
+            return { series: series };
+        };
+        var data = getData().series;
+        var incVal = 0;
+        var updateVal = data.length;
+        var pointAdded = false;
+        var intervalId;
+        function load(args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "90%";
+            args.chart.series[0].dataSource = data;
+            args.chart.primaryXAxis.edgeLabelPlacement = ej.base.Browser.isDevice ? "None" : "Shift";
+            args.chart.primaryXAxis.interval = ej.base.Browser.isDevice ? 8 : 4;
+            stockClearInterval();
+            intervalId = setInterval(function () {
+                var container = document.getElementById('stock');
+                if (container && container.id === args.chart.element.id) {
+                    var newData1 = [];
+                    var value = 180;
+                    pointAdded = true;
+                    for (var i = 0; i < args.chart.series[0].dataSource.length; i++) {
+                        newData1.push(Object.assign({}, args.chart.series[0].dataSource[i]));
+                    }
+                    if (newData1.length > 0) {
+                        var lastIndex = newData1.length - 1;
+                        var previousClose = newData1[lastIndex].close;
+                        newData1[lastIndex].close += (Math.random() < 0.5 ? 1 : -1) * Math.random() * 25;
+                        newData1[lastIndex].close = Math.min(Math.min(Math.max(newData1[lastIndex].close, newData1[lastIndex].low + 5), newData1[lastIndex].high - 5), newData1[lastIndex].open - 2);
+                        if (previousClose === newData1[lastIndex].close) {
+                            newData1[lastIndex].close -= 5;
+                        }
+                    }
+                    if (incVal < 10) {
+                        if (args.chart.series.length > 0) {
+                            args.chart.series[0].setData(newData1);
+                            incVal++;
+                        }
+                    }
+                    else {
+                        var change = (Math.random() < 0.49 ? 1 : -1) * Math.random() * 10;
+                        value += change;
+                        if (value > 260) {
+                            value = 260;
+                        }
+                        if (value < 140) {
+                            value = 140;
+                        }
+                        value += Math.random() * 0.1;
+                        var open = value + Math.round(Math.random() * 12);
+                        var low = Math.min(value, open) - Math.round(Math.random() * 8);
+                        var high = Math.max(value, open) + Math.round(Math.random() * 15);
+                        if (args.chart.series.length > 0) {
+                            var lastDataPointIndex = args.chart.series[0].dataSource.length - 1;
+                            if (lastDataPointIndex >= 0) {
+                                var timestamp = args.chart.series[0].dataSource[lastDataPointIndex].x;
+                                var lastTimestamp = new Date(timestamp).getTime();
+                                args.chart.series[0].addPoint({ x: new Date(lastTimestamp + 1000), high: high, low: low, open: open, close: value });
+                            }
+                        }
+                        incVal = 0;
+                        updateVal++;
+                    }
+                }
+                else {
+                    stockClearInterval();
+                }
+            }, 1000);
+        }
+        function stockClearInterval() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+        function pointRender(args) {
+           args.series.lastValueLabel.background = args.fill;
+        }
+        function axisRangeCalculated(args) {
+            if (args.axis.name === 'primaryXAxis') {
+                var lastPoint = args.axis.series[0].points[args.axis.series[0].points.length - 1].x;
+                args.maximum = new Date(lastPoint).getTime() + 2500;
+                var firstPoint = args.axis.series[0].points[0].x;
+                args.minimum = new Date(firstPoint).getTime() + 500;
+            }
+        }
+    </script>
+}
+@*custom code start*@
+@section Meta{
+    <meta name="description" content="This example demonstrates the Live Stock Data in ASP.NET MVC Chart control. Explore here for more details." />
+}
+@*custom code end*@
+@section ActionDescription{
+    <p>
+        This sample visualizes the animation in the candle chart when existing data is updated or new data is added.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure a candlestick series to display data that updates every second using the <code>SetData</code> method and adds new data every ten seconds using the <code>AddPoint</code> method. The chart demonstrates how to set up a last value label that follows the latest data.
+    </p>
+    <p>
+        More information on the candle series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/candle" aria-label="Navigate to the documentation for Candle Chart in ASP.NET MVC Chart control">documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+    <title>ASP.NET MVC Chart Live Stock Data Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Charts</h1>
+}

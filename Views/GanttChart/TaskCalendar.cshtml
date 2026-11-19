@@ -1,0 +1,130 @@
+@using Syncfusion.EJ2
+@{
+    ViewData["Title"] = "TaskCalendar";
+    var toolbarItems = new List<string>()
+    {
+        "Add", "Edit", "Update", "Delete", "Cancel",
+        "ExpandAll", "CollapseAll", "Search",
+        "PrevTimeSpan", "NextTimeSpan"
+    };
+}
+
+@section ControlsSection{
+    <div class="control-section task-calendar-container">
+        <div style="margin-bottom:15px">
+            <label style="padding-right:10px">Hours per day</label>
+            @(Html.EJS().NumericTextBox("hoursPerDay")
+                .Value(8).Format("n").StrictMode(false)
+                .Width("120px").Change("onHoursChange")
+                .Render()
+            )
+            @(Html.EJS().Button("updateBtn")
+                .Content("Update")
+                .CssClass("e-primary")
+                .Render()
+            )
+            <span id="warningMsg" style="color:red;padding-left:10px"></span>
+        </div>
+        @(Html.EJS().Gantt("TaskCalendar").DataSource((IEnumerable<object>)ViewData["DataSource"])
+            .AllowSorting(true).AllowSelection(true).HighlightWeekends(true)
+            .GridLines(Syncfusion.EJ2.Gantt.GridLine.Both).ShowColumnMenu(false)
+            .TreeColumnIndex(1).RowHeight(46).TaskbarHeight(25).Height("550px")
+            .HoursPerDay(8)
+            .CalendarSettings((object)ViewData["CalendarSettings"])
+            .Toolbar(toolbarItems)
+            .TaskFields(ts => ts.Id("TaskId").Name("TaskName").StartDate("StartDate")
+                .Duration("Duration").Progress("Progress").Dependency("Predecessor")
+                .Child("SubTasks").CalendarId("Calendar"))
+            .EditSettings(es => es.AllowAdding(true).AllowEditing(true).AllowDeleting(true)
+                .AllowTaskbarEditing(true).ShowDeleteConfirmDialog(true))
+            .LabelSettings(ls => ls.RightLabel("TaskName").TaskLabel("Progress"))
+            .SplitterSettings(sp => sp.ColumnIndex(3))
+            .TimelineSettings(ts => ts.TopTier(tt => tt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Week).Format("MM/dd/yyyy"))
+                .BottomTier(bt => bt.Unit(Syncfusion.EJ2.Gantt.TimelineViewMode.Day).Count(1)))
+            .Columns(col =>
+            {
+                col.Field("TaskId").Visible(false).Width(90).Add();
+                col.Field("TaskName").HeaderText("Task Name").Width(200).Add();
+                col.Field("Calendar").HeaderText("Calendar Profile").Width(150).Add();
+                col.Field("Duration").HeaderText("Duration").Width(90).Add();
+                col.Field("Predecessor").HeaderText("Dependency").Width(120).Add();
+                col.Field("StartDate").HeaderText("Start Date").Width(100).Format("MM/dd/yyyy").Add();
+                col.Field("Progress").Format("n").Width(90).Add();
+            })
+            .ProjectStartDate("07/01/2026")
+            .ProjectEndDate("08/31/2026")
+            .Render()
+        )
+    </div>
+
+    <script>
+        function onHoursChange(args) {
+            var warning = document.getElementById('warningMsg');
+            var value = args.value;
+            if (value == null || value < 1 || value > 24) {
+                warning.innerHTML = 'Hours per day value must be greater than 1 and less than 24.';
+                return;
+            }
+            warning.innerHTML = '';
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var updateBtn = document.getElementById('updateBtn');
+            if (updateBtn) {
+                updateBtn.addEventListener('click', updateHours);
+            }
+        });
+        function updateHours() {
+            var gantt = document.getElementById('TaskCalendar').ej2_instances[0];
+            var numeric = document.getElementById('hoursPerDay').ej2_instances[0];
+            var warning = document.getElementById('warningMsg');
+            var value = numeric.value;
+            if (value == null || value < 1 || value > 24) {
+                warning.innerHTML = 'Hours per day value must be greater than 1 and less than 24.';
+                return;
+            }
+            warning.innerHTML = '';
+            gantt.hoursPerDay = value;
+        }
+    </script>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates how different tasks can use different calendars in the Gantt Chart.
+            Leadership, compliance, and technical review activities each follow their own calendar rules,
+            while the Hours per Day setting controls the default duration calculation for the project.
+        </p>
+    </div>
+}
+
+@section Description{
+    <div id="description">
+        <p>This task calendar sample shows that a Gantt Chart project can assign a unique <code>calendar</code> to each task. Different tasks can follow different working patterns without changing the rest of the schedule.</p>
+        <p>This sample uses the following calendar configurations:</p>
+        <ul>
+          <li><strong>Project Calendar:</strong> Standard working hours from 8:00 AM to 12:00 PM and 1:00 PM to 5:00 PM, with a holiday on 07/06/2026 (Company Foundation Day) and an exception working day on 07/05/2026 (Extended Work Day).</li>
+          <li><strong>Steering-committee:</strong> Holidays on 07/07/2026 (SC Strategy Day) and 07/22/2026 (Board Offsite), with exception working days on 07/05/2026 and 07/19/2026 (Compensatory Working).</li>
+          <li><strong>Tech-review:</strong> Holiday period from 07/16/2026 to 07/17/2026 (Architecture Review Freeze), with an exception working day on 07/26/2026 (Extra Review Slot).</li>
+          <li><strong>Compliance-audit:</strong> Holiday period from 07/09/2026 to 07/10/2026 (Compliance Blackout), with an exception working day on 07/25/2026 (Mandatory Audit Working Day).</li>
+        </ul>
+        <p>The <code>hoursPerDay</code> property controls the working hours considered for duration calculations, while the project calendar serves as the default schedule for tasks that do not specify a custom calendar.</p>
+        <p>The Gantt component features are segregated into individual feature-wise modules. To use editing, selection, toolbar, and day marker functionalities, inject the corresponding services into the Gantt component.</p>
+        <br/>
+        <p>More information on the Essential<sup>®</sup> Gantt Chart can be found in this <a target="_blank" href="https://help.syncfusion.com/gantt-sdk/asp-net-mvc/gantt-chart/getting-started">documentation section.</a></p>
+        <br />
+        <p>Looking for the full ASP.NET MVC Gantt Chart component overview, features, pricing, and documentation? Visit the <a target="_blank" href="https://www.syncfusion.com/gantt-sdk/aspnet-mvc-gantt-chart">ASP.NET MVC Gantt Chart</a> page.</p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Task Calendar feature in ASP.NET MVC Gantt control. Explore project calendars, task-specific calendars, holidays, exception days, and working time configurations." />
+}
+
+@section Title{
+    <title>ASP.NET MVC Gantt Task Calendar Example - Syncfusion Demos </title>
+}
+
+@section Header{
+    <h1 class='sb-sample-text'>Example of Task Calendar in ASP.NET MVC Gantt Control</h1>
+}

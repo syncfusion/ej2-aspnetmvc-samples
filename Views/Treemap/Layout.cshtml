@@ -1,0 +1,130 @@
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.TreeMap;
+@section ControlsSection{
+    <div class="col-lg-9 control-section">
+        <div class="content-wrapper">
+            <div id="container">
+                @Html.EJS().TreeMap("container").Load("load").RenderDirection(RenderingMode.TopLeftBottomRight).TitleSettings(title => title.Text("Top 10 countries by GDP Nominal - 2015").TextStyle(new TreeMapFont { Size = "15px" })).WeightValuePath("GDP").TooltipSettings(new TreeMapTooltipSettings { Visible = true, Format = "${State}<br>Rank : ${Rank}" }).RangeColorValuePath("GDP").LeafItemSettings(leaf => leaf.LabelPath("State").LabelFormat("${State}<br>$${GDP} Trillion<br>(${percentage} %)").LabelStyle(new TreeMapFont { Color = "#000000" }).Border(new TreeMapBorder { Color = "#000000", Width = 0.5 })).Render()
+            </div>
+        </div>
+        <div style="margin-left: 65%;">
+            Source:
+            <a href="https//www.reinisfischer.com/top-10-largest-economies-world-gdp-nominal-2015" rel="nofollow" target="_blank" aria-label="Source">www.reinisfischer.com</a>
+        </div>
+    </div>
+    <div class="col-lg-3 property-section">
+        <table id="property" title="Properties" style="width: 100%">
+            <tbody>
+                <tr style="height: 50px">
+                    <td>
+                        <div class="property-text" style="padding-top: 0px !important; margin-left: -10px">Layout Type</div>
+                    </td>
+                    <td>
+                        <div style="margin-top: -10px">
+                        <select name="selectIndex" autocomplete="off" id="layoutMode" style="width:60%;">
+                            <option value="Squarified" selected>Squarified</option>
+                            <option value="SliceAndDiceHorizontal">Horizontal</option>
+                            <option value="SliceAndDiceVertical">Vertical</option>
+                            <option value="SliceAndDiceAuto">Auto</option>
+                        </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 50px">
+                    <td >
+                        <div class="property-text" style="padding-top: 0px !important; margin-left: -10px">Render Direction</div>
+                    </td>
+                    <td>
+                        <div style="margin-top: -10px">
+                        <select name="selectIndex" autocomplete="off" id="renderDirection" style="width:60%;">
+                            <option value="TopLeftBottomRight" selected>TopLeftBottomRight</option>
+                            <option value="TopRightBottomLeft">TopRightBottomLeft</option>
+                            <option value="BottomLeftTopRight">BottomLeftTopRight</option>
+                            <option value="BottomRightTopLeft">BottomRightTopLeft</option>
+                        </select>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        var treemap;
+        function load(sender) {
+            var theme = themeName ? themeName : 'Material';
+            sender.treemap.theme = ((theme.charAt(0).toUpperCase() +
+                theme.slice(1)).replace(/-dark/i, 'Dark').replace(/-high/i, 'High').replace(/contrast/i, 'Contrast').replace(/5.3/i, '5'));
+
+            var data = [{ State: "United States", GDP: 17946, percentage: 11.08, Rank: 1 },
+            { State: "China", GDP: 10866, percentage: 28.42, Rank: 2 },
+            { State: "Japan", GDP: 4123, percentage: -30.78, Rank: 3 },
+            { State: "Germany", GDP: 3355, percentage: -5.19, Rank: 4 },
+            { State: "United Kingdom", GDP: 2848, percentage: 8.28, Rank: 5 },
+            { State: "France", GDP: 2421, percentage: -9.69, Rank: 6 },
+            { State: "India", GDP: 2073, percentage: 13.65, Rank: 7 },
+            { State: "Italy", GDP: 1814, percentage: -12.45, Rank: 8 },
+            { State: "Brazil", GDP: 1774, percentage: -27.88, Rank: 9 },
+            { State: "Canada", GDP: 1550, percentage: -15.02, Rank: 10 }];
+            sender.treemap.dataSource = data;
+            sender.treemap.leafItemSettings.colorMapping[0] = {
+                from: 1550,
+                to: 17946,
+                color: '#9cbb59',
+                minOpacity: 0.7,
+                maxOpacity: 1
+            };
+            treemap = sender.treemap;
+        }
+        var layoutMode = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select layoutMode type',
+            width: '100%',
+            change: () => {
+                treemap.layoutType = layoutMode.value;
+                treemap.refresh();
+            }
+        });
+        layoutMode.appendTo('#layoutMode');
+        var direction = new ej.dropdowns.DropDownList({
+            index: 0,
+            placeholder: 'Select layoutMode type',
+            width: '100%',
+            change: () => {
+                treemap.renderDirection = direction.value;
+                treemap.refresh();
+            }
+        });
+        direction.appendTo('#renderDirection');
+    </script>
+    <style>
+        #container {
+            display: block;
+            width: 100%;
+        }
+    </style>
+}
+@section ActionDescription{
+    <p>
+        This sample illustrates the details of GDP Nominal of top 10 countries in the year 2015. Layout of the treemap can be changed by using the <code>Layout Type</code> in properties panel.
+    </p>
+}
+@section Meta{
+    <meta name="description" content="This example demonstrates the Layout in ASP.NET MVC TreeMap control. Explore here for more details." />
+}
+@section Description{
+    <p>
+        In this example, you can change the layout of the TreeMap as desaturation color mapping has been applied to denote the weightage of the items by varying the fill color. The labels text also have been formatted and placed in multiple lines.
+    </p>
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover the mouse over an item or tap an item in touch enabled devices.
+    </p>
+}
+
+
+
+@section Title{
+    <title>ASP.NET MVC TreeMap Layout Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Layout in ASP.NET MVC TreeMap Control</h1>
+}

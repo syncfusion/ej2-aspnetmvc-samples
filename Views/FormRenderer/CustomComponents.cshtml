@@ -1,0 +1,237 @@
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.FormRenderer
+@using EJ2MVCSampleBrowser.Models
+
+@section ControlsSection{
+    <style>
+        .control-section {
+            padding-left: 0px !important;
+            padding-top: 0px !important;
+        }
+    </style>
+
+    <div class="control-section">
+        <div class="col-lg-12">
+            <div>
+                @Html.EJS().FormRenderer("form-renderer-control").CustomWidgetSettings(settings =>
+           		{
+	               settings.TemplateId("textboxTemplate").Template("#customWidgetTemplate").Add();
+	               settings.TemplateId("emailTemplate").Template("#emailTemplate").Add();
+	               settings.Type("dropdown")
+	                       .Template("#dropdownTemplate")
+	                       .Add();
+	               settings.Type("textarea")
+	                       .Template("#textareaTemplate")
+	                       .Add();
+	               settings.Type("checkbox")
+	                       .Template("#checkboxTemplate")
+	                       .Add();
+	               settings.Type("button")
+	                       .Template("#buttonTemplate")
+	                       .Add();
+
+           		}).Schema(ViewData["contactSchema"]).Created("onFormRendererCreated").Render()
+            </div>
+        </div>
+    </div>
+}
+<style>
+    .fr-dropdown {
+        width: 100%;
+        height: 32px;
+        border-radius: 5px;
+        background-color: inherit;
+        color: inherit;
+    }
+
+    .bootstrap5\.3 .fr-dropdown,
+    .bootstrap5\.3-dark .fr-dropdown,
+    .fluent2 .fr-dropdown,
+    .fluent2-dark .fr-dropdown,
+    .fluent2-highcontrast .fr-dropdown,
+    .tailwind3 .fr-dropdown,
+    .tailwind3-dark .fr-dropdown {
+        border-color: var(--color-sf-border);
+    }
+
+    .material3 .fr-dropdown,
+    .material3-dark .fr-dropdown {
+        border-color: rgba(var(--color-sf-outline));
+    }
+
+    .bootstrap5\.3 .fr-dropdown option,
+    .bootstrap5\.3-dark .fr-dropdown option,
+    .fluent2 .fr-dropdown option,
+    .fluent2-dark .fr-dropdown option,
+    .fluent2-highcontrast .fr-dropdown option {
+        background-color: var(--color-sf-flyout-bg-color);
+        color: var(--color-sf-content-text-color);
+    }
+
+    .material3 .fr-dropdown option {
+        background-color: linear-gradient(0deg, rgba(var(--color-sf-surface), 1), rgba(var(--color-sf-surface), 1)), rgba(var(--color-sf-surface));
+        color: rgba(var(--color-sf-on-surface));
+    }
+
+    .material3-dark .fr-dropdown option {
+        background-color: #000;
+        color: #fff;
+    }
+
+    .tailwind3 .fr-dropdown option,
+    .tailwind3-dark .fr-dropdown option {
+        background-color: var(--color-sf-flyout-bg-color);
+        color: var(--color-sf-flyout-text-color);
+    }
+
+    .fluent2 #form-renderer-control-message,
+    .fluent2-dark #form-renderer-control-message,
+    .fluent2-highcontrast #form-renderer-control-message {
+        height: auto;
+    }
+
+    #form-renderer-control .form-group {
+        margin-bottom: 0px;
+    }
+</style>
+@section PreScripts {
+    <script id="customWidgetTemplate" type="text/x-template">
+        <input class="e-input"
+               id="form-renderer-control-${fieldData.id}"
+               name="${fieldData.name}"
+               type="text"
+               placeholder="${fieldData.placeholder}" />
+    </script>
+    <!-- Email -->
+    <script id="emailTemplate" type="text/x-template">
+        <input class="e-input" id="form-renderer-control-${fieldData.id}"
+               name="${fieldData.name}" type="${fieldData.textboxType}"
+               placeholder="${fieldData.placeholder}"
+               data-field-id="${fieldData.id}" />
+    </script>
+
+    <!-- Dropdown -->
+    <script id="dropdownTemplate" type="text/x-template">
+        <select class="fr-dropdown" id="form-renderer-control-${fieldData.id}"
+                name="${fieldData.name}"
+                data-field-id="${fieldData.id}">
+            ${window.buildSelectOptions(fieldData)}
+        </select>
+    </script>
+
+    <!-- Textarea -->
+    <script id="textareaTemplate" type="text/x-template">
+        <textarea class="e-input" id="form-renderer-control-${fieldData.id}"
+                  name="${fieldData.name}"
+                  placeholder="${fieldData.placeholder}"
+                  data-field-id="${fieldData.id}"></textarea>
+    </script>
+
+    <!-- Checkbox -->
+    <script id="checkboxTemplate" type="text/x-template">
+        <label style="font-size:14px;font-weight:500;">
+            <input type="checkbox" id="form-renderer-control-${fieldData.id}"
+                   name="${fieldData.name}" style="margin-right:10px;height:15px;width:15px;"
+                   data-field-id="${fieldData.id}" />
+            ${fieldData.label}
+        </label>
+    </script>
+
+    <!-- Button -->
+    <script id="buttonTemplate" type="text/x-template">
+        <button class="e-btn e-primary" id="form-renderer-control-${fieldData.id}"
+                name="${fieldData.name}" type="${fieldData.buttonType}">
+            ${fieldData.label}
+        </button>
+    </script>
+    <script>
+        function onFormRendererCreated() {
+            var formRendererInstance = ej.base.getComponent(
+                document.getElementById('form-renderer-control'),
+                'form-renderer'
+            );
+            if (!formRendererInstance) {
+                console.error('FormRenderer instance not found!');
+                return;
+            }
+            var rootEl = document.getElementById('form-renderer-control');
+
+            rootEl.addEventListener('change', function (e) {
+                var inputEl = e.target;
+                var parentEl = inputEl.closest('[data-field-id]');
+                if (!parentEl) return;
+
+                var fieldId = parentEl.getAttribute('data-field-id');
+                var value = inputEl.type === 'checkbox' ? inputEl.checked : inputEl.value;
+                formRendererInstance.setFieldValue(fieldId, value);
+            });
+
+            rootEl.addEventListener('input', function (e) {
+                var inputEl = e.target;
+                var parentEl = inputEl.closest('[data-field-id]');
+                if (!parentEl) return;
+
+                var fieldId = parentEl.getAttribute('data-field-id');
+                var value = inputEl.type === 'checkbox' ? inputEl.checked : inputEl.value;
+                formRendererInstance.setFieldValue(fieldId, value);
+            });
+
+            rootEl.addEventListener('blur', function (e) {
+                var inputEl = e.target;
+                var parentEl = inputEl.closest('[data-field-id]');
+                if (!parentEl) return;
+                if (inputEl.type === 'checkbox') return;
+
+                var fieldId = parentEl.getAttribute('data-field-id');
+                formRendererInstance.setFieldValue(fieldId, inputEl.value);
+            }, true);
+        }
+
+    </script>
+    <script>
+        window.buildSelectOptions = function (fieldData) {
+            return fieldData.options
+                .map(function (opt) {
+                    return '<option value="' + opt.value + '">' + opt.text + '</option>';
+                })
+                .join('');
+        };
+    </script>
+
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Custom Components in ASP.NET MVC Form Renderer control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates how to render custom components for individual form field components
+            in the Form Renderer control. Templates allow you to replace the built-in form components with
+            custom or third-party UI components, enabling greater flexibility and customization.
+        </p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>
+            In this sample, a "Contact Us" form is rendered using the Form Renderer control. The text box,
+            text area, drop-down list, checkbox, and button fields are customized using HTML templates.
+        </p>
+        <p>
+            Users can interactively fill out the form, benefit from built-in validation, and submit their
+            responses for data collection.
+        </p>
+        <p>
+            Design custom forms visually and export their schema in seconds with our interactive
+            <a href="https://ej2.syncfusion.com/aspnetmvc/formbuilder/default#/fluent2">Form Builder</a> — a powerful
+            no-code tool for building responsive forms through an intuitive drag-and-drop interface.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC Form Renderer Custom Components Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Custom Components in ASP.NET MVC Form Renderer Control</h1>
+}

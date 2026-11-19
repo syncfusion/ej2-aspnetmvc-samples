@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "FormulaCell";
+}
+
+@using Syncfusion.EJ2
+@section ControlsSection{
+    <div class="control-section">
+        @Html.EJS().Grid("FormulaCell").DataSource((IEnumerable<object>)ViewData["dataSource"]).EnableAutoFill(true).Height("400").ClipMode(Syncfusion.EJ2.Grids.ClipMode.EllipsisWithTooltip).Columns(col =>
+            {
+                col.Field("OrderID").HeaderText("Order ID").Width("100").IsPrimaryKey(true).ValidationRules(new { required = true }).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+                col.Field("ProductName").HeaderText("Product Name").Width("200").ValidationRules(new { required = true }).AllowEditing(false).Add();
+                col.Field("Category").HeaderText("Category").Width("130").AllowEditing(false).Add();
+                col.Field("Quantity").HeaderText("Quantity").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("numericedit").Add();
+                col.Field("PricePerUnit").HeaderText("Price Per Unit").Width("140").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).EditType("numericedit").Format("C2").Add();
+                col.Field("GrossAmount").HeaderText("Gross Amount").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).AllowFormula(true).Format("C2").Add();
+                col.Field("TaxAmount").HeaderText("Tax Amount").Width("130").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).AllowFormula(true).Format("C2").AllowEditing(false).Add();
+                col.Field("TotalAmount").HeaderText("Total Amount").Width("150").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).AllowFormula(true).Format("C2").Add();
+            }).EditSettings(edit => { edit.AllowEditing(true).Mode(Syncfusion.EJ2.Grids.EditMode.Cell); }).SelectionSettings(selection =>{selection.Type(Syncfusion.EJ2.Grids.SelectionType.Multiple).Mode(Syncfusion.EJ2.Grids.SelectionMode.Cell).CellSelectionMode(Syncfusion.EJ2.Grids.CellSelectionMode.Box);}).Render()
+    </div>
+}
+
+@section ActionDescription{
+    <div id="action-description">
+        <p>
+            This sample demonstrates the Formula Cell feature in the Data Grid, which brings spreadsheet-like calculations directly into grid cells. It enables formulas to be dynamically defined and evaluated based on the values of other cells within the same row.
+        </p>
+    </div>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the Formula Cell feature in ASP.NET MVC Data Grid control with spreadsheet-like calculations." />
+}
+
+@section Description{
+    <div id="description">
+        <p>
+            In this demo, formulas are configured directly in the data source and are automatically evaluated during the initial rendering of the grid. Whenever the values of dependent cells change, the calculated fields are instantly recalculated and updated. Formula calculations are enabled for the Gross Amount, Tax Amount, and Total Amount columns by setting the <code>allowFormula</code> property to <code>true</code>. Double-click a cell to edit its value and recalculate formulas automatically.
+        </p>
+        <p>
+            The formulas used are:
+        </p>
+        <ul>
+            <li><b>Gross Amount</b> = Quantity × Price Per Unit</li>
+            <li><b>Tax Amount</b> = Gross Amount × 0.07</li>
+            <li><b>Total Amount</b> = Gross Amount + Tax Amount</li>
+        </ul>
+        <p>
+            When the "Quantity" or "Price Per Unit" values are modified, the Data Grid automatically recalculates the related formula-driven columns, ensuring that all computed values remain accurate and synchronized in real time.
+        </p>
+        <p>
+            More information on editing configuration can be found in the <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/grid/editing">documentation section</a>.
+        </p>
+        <p>
+            Looking for the full ASP.NET MVC Data Grid component overview, features, pricing, and documentation? Visit our <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/grid" aria-label="documentation">ASP.NET MVC Data Grid component</a> page.
+        </p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC Data Grid Formula Cell Example - Syncfusion Demos</title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of Formula Cell in ASP.NET MVC Data Grid Control</h1>
+}

@@ -1,0 +1,81 @@
+@using Syncfusion.EJ2.MultiColumnComboBox
+@using EJ2MVCSampleBrowser.Models
+@using Syncfusion.EJ2
+@using Newtonsoft.Json
+@{
+    var mccbDropdownListData = new string[] { "StartsWith", "EndsWith", "Contains" };
+}
+@section ControlsSection{
+    <div class="col-lg-8 control-section sb-property-border">
+        <div class="control-wrapper">
+            <div style='padding-top:30px;'>
+                <label>Select an employee</label>
+                @Html.EJS().MultiColumnComboBox("filtering").Placeholder("e.g. Alice Johnson").Fields(new MultiColumnComboBoxFieldSettings
+                { Text = "Name", Value = "Experience" }).Columns(col =>
+                {
+                    col.Field("Name").Header("Name").Width("100").Add();
+                    col.Field("Department").Header("Department").Width("110").Add();
+                    col.Field("Role").Header("Role").Width("140").Add();
+                    col.Field("Location").Header("Location").Width("100").Add();
+                    col.Field("Experience").Header("Experience in Years").Width("150").Add();
+                }).PopupHeight("210px").PopupWidth("585px").DataSource((IEnumerable<Employee>)ViewData["data"]).Render()
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 property-section chat-property-section">
+        <div class="property-panel-header"> Properties </div>
+        <div class="property-panel-content">
+            <table class="property-panel-table">
+                <tbody>
+                    <tr>
+                        <td> Choose filter type </td>
+                        <td style="padding-right: 10px">
+                            @Html.EJS().DropDownList("filterType").Placeholder("Select a filter type").Change("onChange").PopupHeight("200px").PopupWidth("300px").DataSource(mccbDropdownListData).Value("StartsWith").Render()
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    @*custom code start*@
+    <style>
+        .control-wrapper {
+            margin: 0 auto;
+            width: 250px;
+        }
+
+        @@media only screen and (max-width: 480px) {
+            .control-wrapper {
+                width: 300px;
+            }
+        }
+    </style>
+    @*custom code end*@
+    <script type="text/javascript">
+        function onChange(args) {
+            var multicolumnEle = document.getElementById('filtering');
+            var mccbInstance = ej.base.getInstance(multicolumnEle, ejs.multicolumncombobox.MultiColumnComboBox);
+            mccbInstance.filterType = args.value;
+        }
+    </script>
+}
+
+@section Meta{
+    <meta name="description" content="This example demonstrates the filter in ASP.NET MVC MultiColumn ComboBox control. Explore here for more details." />
+}
+@section ActionDescription{
+    <div id="action-description">
+        <p>This sample demonstrates the built-in support to filter the <code>Datasource</code> in the MultiColumn ComboBox.</p>
+    </div>
+}
+@section Description{
+    <div id="description">
+        <p>The <code>MultiColumn ComboBox</code> supports filtering, which allows users to search for and select items by typing keywords. The available items are dynamically filtered based on the input, ensuring quick access to the desired data.</p>
+    </div>
+}
+@section Title{
+    <title>ASP.NET MVC MultiColumn ComboBox filter Example - Syncfusion Demos </title>
+}
+@section Header{
+    <h1 class='sb-sample-text'>Example of filter in ASP.NET MVC MultiColumn ComboBox Control</h1>
+}

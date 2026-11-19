@@ -1,0 +1,53 @@
+@using Syncfusion.EJ2;
+@section Meta{
+    <meta name="description" content="This demo for Essential JS2 Heatmap control demonstrates how to bind the array data with values for each cell to heatmap" />
+}
+@section ControlsSection{
+    <div class="control-section">
+        <div id="container" align="center">
+            @Html.EJS().HeatMap("container").TitleSettings(ts => ts.Text("Percentage of Individuals Using Internet by Country").TextStyle(ViewData["textStyle"])).XAxis(
+                  xAxis => xAxis.Labels(ViewData["xLabels"])).YAxis(yaxis =>
+                  yaxis.Labels(ViewData["yLabels"])).PaletteSettings(ps => ps.Palette(palette =>
+                  {
+                      palette.Color("#3498DB").Add();
+                      palette.Color("#2C3E50").Add();
+
+                  })).CellSettings(cs =>
+                  cs.Border(ViewData["border"]).TextStyle(ViewData["cellTextStyle"]).Format("{value} %")).LegendSettings(ls => ls.Visible(false)).TooltipRender("tooltipRender").Load("load").DataSource(ViewData["dataSource"]).Render()
+        </div>
+    </div>
+
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    <script>
+        var tooltipRender = function (args) {
+            args.content = [args.yLabel + ' | ' + args.xLabel + ' : ' + args.value + ' %'];
+        };
+        var load = function (args) {
+            var selectedTheme = themeName ? themeName : 'Material';
+            args.heatmap.theme = (selectedTheme.charAt(0).toUpperCase() + selectedTheme.slice(1));
+        };
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the percentage growth rate of individuals using the internet in a country compared to the overall population of the country.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to bind two-dimensional array object as datasource for heatmap and configure the Heatmap
+        using the data adaptor support.
+    </p>
+    <p>
+        Tooltip is enabled in this example. To see the tooltip in action, hover a point or tap on a point in touch enabled devices.
+    </p>
+    <br>
+    <p style="font-weight: 500">Injecting Module</p>
+    <p>
+        Heatmap component features are segregated into individual feature-wise modules. To use data adaptor support, we need to inject <code>Adaptor </code>module using <code>Heatmap.Inject(Adaptor) </code> method and to use a tooltip, inject the <code>Tooltip </code> module using the <code>Heatmap.Inject(Tooltip) </code> method.
+    </p>
+}

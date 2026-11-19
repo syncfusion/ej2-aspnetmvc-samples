@@ -1,0 +1,173 @@
+@using Syncfusion.EJ2
+@using Newtonsoft.Json
+@using Syncfusion.EJ2.InteractiveChat
+
+@section ControlsSection {
+    <div class="control-section chatgpt-clone">
+        <div class="chatgpt-aiassist" id="chatgptContainer">
+            @Html.EJS().AIAssistView("chatgpt_aiassistview").Created("created").BannerTemplate("#bannerContent").PromptRequest("onPromptRequest").ShowHeader(false).PromptPlaceholder("Ask anything").EnableAttachments(true).AttachmentSettings(new AIAssistViewAttachmentSettings()
+            {
+            SaveUrl = @Url.Content("https://services.syncfusion.com/aspnet/production/api/FileUploader/Save"),
+            RemoveUrl = @Url.Content("https://services.syncfusion.com/aspnet/production/api/FileUploader/Remove")
+            }).SpeechToTextSettings(new AIAssistViewSpeechToTextSettings()
+            {
+            Enable = true
+            }).FooterToolbarSettings(new AIAssistViewFooterToolbarSettings()
+            {
+            ToolbarPosition = ToolbarPosition.Inline,
+            Items = ViewData["FooterToolbarItems"]
+            }).Render()
+        </div>
+    </div>
+}
+
+<script id="bannerContent" type="text/x-jsrender">
+    <div class="banner-content">
+        <div class="chatgpt-header">
+            <h3>Where should we begin?</h3>
+        </div>
+    </div>
+</script>
+
+<style>
+  .control-section.chatgpt-clone {
+    min-height: 550px;
+}
+
+.chatgpt-aiassist {
+    width: 60vw;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatgpt-aiassist.middle-footer {
+    height: 350px;
+    gap: 10px;
+    justify-content: center;
+}
+
+.chatgpt-aiassist.middle-footer #chatgpt_aiassistview {
+    height: 220px;
+    flex: 0 0 220px;
+}
+
+.chatgpt-aiassist.bottom-footer {
+    height: 500px;
+}
+
+.chatgpt-aiassist .chatgpt-header {
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    align-items: end;
+}
+
+.chatgpt-aiassist .chatgpt-header h3 {
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.chatgpt-aiassist #chatgpt_aiassistview {
+    border: none;
+    height: 80%;
+}
+
+.chatgpt-aiassist .e-footer-content:focus-within,
+.chatgpt-aiassist .e-footer.e-toolbar-inline:focus-within {
+    border-color: #b4b4c2;
+}
+
+.chatgpt-aiassist .e-footer .e-assist-prompt-textarea {
+    min-height: 28px;
+    padding: 8px 12px;
+}
+
+.chatgpt-aiassist .e-footer .e-assist-textarea {
+    padding: 8px 12px;
+}
+
+.chatgpt-aiassist .e-footer .e-toolbar {
+    background: transparent;
+    border: none;
+}
+
+.chatgpt-aiassist .e-footer .e-toolbar .e-btn.e-flat,
+.chatgpt-aiassist .e-footer .e-toolbar .e-btn.e-flat:hover {
+    background: transparent;
+    box-shadow: none;
+}
+</style>
+
+@section Meta {
+    <meta name="description" content="This example demonstrates a ChatGPT-like AI AssistView in ASP.NET MVC." />
+}
+
+@section ActionDescription {
+    <div id="action-description">
+        <p>This sample demonstrates a ChatGPT-inspired AI AssistView with a focused conversational layout, simulated responses, speech-to-text input, and a compact inline prompt toolbar.</p>
+    </div>
+}
+
+@section Description {
+    <div id="description">
+        <p>
+            The AI AssistView in this sample showcases how a branded, lightweight ChatGPT-style assistant interface can be
+            created using Syncfusion's <code>AIAssistView</code> control while offering essential interaction
+            features and UI customization options:
+        </p>
+        <ul>
+            <li>Minimal headerless chat layout for distraction-free conversations.</li>
+            <li>Custom banner template displaying the welcoming "Where should we begin?" prompt.</li>
+            <li>Simulated AI response handling using the <code>promptRequest</code> callback.</li>
+            <li>Footer toolbar customization with a plus button, speech-to-text, and the default send button.</li>
+            <li>Speech-to-text input for hands-free interaction.</li>
+            <li>Pill-shaped input bar with a plus button on the left and a clean default send button on the right.</li>
+        </ul>
+        <p>
+            This example serves as a foundation for integrating real LLM services and building branded conversational interfaces with modular UI controls.
+        </p>
+    </div>
+}
+
+@section Title {
+    <title>ASP.NET MVC AI AssistView ChatGPT-like Example - Syncfusion Demos</title>
+}
+
+@section Header {
+    <h1 class="sb-sample-text">Example of ChatGPT-like in ASP.NET MVC AI AssistView Control</h1>
+}
+
+@section PreScripts {
+    <script>
+        var defaultPromptResponseData = @Html.Raw(Json.Encode(ViewData["PromptResponseData"]));
+        var chatgptContainer = document.getElementById('chatgptContainer');
+        var chatgptAIAssistView;
+        var isFirstPrompt = true;
+
+        if (chatgptContainer) {
+            chatgptContainer.classList.add('middle-footer');
+        }
+
+        function onPromptRequest(args) {
+            if (isFirstPrompt && chatgptContainer) {
+                chatgptContainer.classList.remove('middle-footer');
+                chatgptContainer.classList.add('bottom-footer');
+                isFirstPrompt = false;
+            }
+
+            setTimeout(function () {
+                var foundPrompt = defaultPromptResponseData.find(function (item) {
+                    return item.prompt === args.prompt;
+                });
+                var response = foundPrompt ? foundPrompt.response : 'This is a placeholder ChatGPT-style response. Connect to an LLM service for real output.';
+                chatgptAIAssistView.addPromptResponse(response);
+            }, 800);
+        }
+
+        function created() {
+            chatgptAIAssistView = ej.base.getComponent(document.getElementById("chatgpt_aiassistview"), "aiassistview");
+         
+        }
+    </script>
+}

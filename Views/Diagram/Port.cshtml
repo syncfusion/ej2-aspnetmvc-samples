@@ -1,0 +1,268 @@
+@using Syncfusion.EJ2;
+@using Syncfusion.EJ2.DropDowns
+@section ControlsSection{
+    <div class="col-lg-8 control-section">
+        @(Html.EJS().Diagram("container").Width("100%").Height("580px").GetNodeDefaults("getNodeDefaults").SnapSettings(s => s.Constraints(Syncfusion.EJ2.Diagrams.SnapConstraints.None))
+            .GetConnectorDefaults("getConnectorDefaults").Nodes((List<Syncfusion.EJ2.Diagrams.DiagramNode>)ViewData["nodes"]).SelectionChange("selectChange").Connectors((List<Syncfusion.EJ2.Diagrams.DiagramConnector>)ViewData["connectors"]).Render())
+    </div>
+    <div class="col-lg-4 property-section" style="padding-bottom:10px;">
+        <div class="property-panel-header">
+            Properties
+        </div>
+        <div id="propertypanel" class="e-remove-selection">
+            <div class="property-panel-content">
+                <div class="row sb-child-row">
+                    <div class="col-xs-6">
+                        <div style="padding-bottom: 8px">
+                            Visibility
+                        </div>
+                        <div>
+                            @Html.EJS().DropDownList("portsVisiblity").Enabled(true).Fields(new DropDownListFieldSettings() { Text = "Name", Value = "Value" }).DataSource(ViewData["PortVisibility"]).Change("portVisibilityDropOnChange").Render()
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div style="padding-bottom: 8px">
+                            Shape
+                        </div>
+                        <div>
+                            @Html.EJS().DropDownList("shape").Enabled(true).Placeholder("Select a Shape").DataSource(ViewData["shape"]).Fields(new DropDownListFieldSettings() { Value = "Name", Text = "Name" }).Change("portShapeDropOnChange").Render()
+                        </div>
+                    </div>
+                </div>
+                <div class="row sb-child-row">
+                    <div class="col-xs-6">
+                        <div style="padding-bottom: 8px">
+                            Fill Color
+                        </div>
+                        <div style="padding-bottom: 8px">
+                            @Html.EJS().ColorPicker("fill").Value("#000").Disabled(false).Change("colorChange").Render()
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div style="padding-bottom: 8px">
+                            Stroke Color
+                        </div>
+                        <div style="padding-bottom: 8px">
+                            @Html.EJS().ColorPicker("border").Value("#000").Disabled(false).Change("borderChange").Render()
+                        </div>
+                    </div>
+                </div>
+                <div class="row sb-child-row">
+                    <div class="col-xs-6">
+                        <div style="padding-bottom: 8px">
+                            Stroke Width
+                        </div>
+                        <div style="padding-bottom: 8px">
+                            @Html.EJS().NumericTextBox("width").Enabled(true).Format("###.##").Change("widthChange").Value(1).Min(1).Max(15).Step(0.5).Render()
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div style="padding-bottom: 8px">
+                            Size
+                        </div>
+                        <div style="padding-bottom: 8px">
+                            @Html.EJS().NumericTextBox("size").Enabled(true).Format("###.##").Change("sizeChange").Created("diagramCreated").Min(1).Max(30).Value(6).Step(1).Render()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+       
+        .sb-child-row {
+            margin-top: 8px;
+        }
+
+        /* To disable pointer events when there is no selection in diagram */
+        .property-section .e-remove-selection {
+            cursor: not-allowed;
+        }
+
+        .e-remove-selection .propertypanel-content {
+            pointer-events: none;
+        }
+    </style>
+    <script>
+        var portVisibilityDrop;
+        function diagramCreated() {
+            var diagram = document.getElementById("container").ej2_instances[0];
+            diagram.select([diagram.nodes[0]]);
+            diagram.dataBind();
+        }
+
+        function getNodeDefaults(obj, diagram) {
+            if (obj.id === 'node1' || obj.id === 'node2' || obj.id === 'node4' || obj.id === 'node6') {
+                obj.shape = { type: 'Basic', shape: 'Rectangle' };
+            } else if (obj.id === 'node3' || obj.id === 'node5' || obj.id === 'node7') {
+                obj.shape = { type: 'Basic', shape: 'Diamond' };
+            }
+            //sets height and width for nodes
+            obj.height = 65;
+            obj.width = 100;
+            obj.style = { fill: '#ebf8fb', strokeColor: '#baeaf5' };
+            for (var i = 0; i < obj.ports.length; i++) {
+                //sets styles for the ports
+                obj.ports[i].style = {
+                    fill: '#366f8c',
+                    strokeColor: '#366f8c'
+                };
+                obj.ports[i].width = 6;
+                obj.ports[i].height = 6;
+                obj.ports[i].visibility = ej.diagrams.PortVisibility.Visible;
+            }
+        }
+        function getConnectorDefaults(connector) {
+            connector.type = 'Orthogonal';
+            connector.style = { strokeColor: '#8cdcef', strokeWidth: 1 };
+            connector.targetDecorator = { width: 5, height: 5, style: { fill: '#8cdcef', strokeColor: '#8cdcef' } };
+        }
+
+        function colorChange(args) {
+            applyPortStyle('fillcolor', args.currentValue.rgba);
+        }
+
+        function borderChange(args) {
+            applyPortStyle('strokecolor', args.currentValue.rgba);
+        }
+
+        function sizeChange(args) {
+            applyPortStyle('size', args.value);
+        }
+
+        function widthChange(args) {
+            applyPortStyle('strokewidth', args.value);
+        }
+
+        function getPort() {
+            var diagram = document.getElementById("container").ej2_instances[0];
+            var ports = [];
+            if (diagram.selectedItems.nodes.length > 0) {
+                var node = diagram.selectedItems.nodes[0];
+                return node.ports;
+            }
+            return ports;
+        }
+
+        function selectChange(args) {
+            portVisibilityDrop = document.getElementById("portsVisiblity").ej2_instances[0];
+            var portFillDrop = document.getElementById("fill").ej2_instances[0];
+            var portBorderDrop = document.getElementById("border").ej2_instances[0];
+            var portShapeDrop = document.getElementById("shape").ej2_instances[0];
+            var portSizeNum = document.getElementById("size").ej2_instances[0];
+            var portWidthNum = document.getElementById("width").ej2_instances[0];
+
+
+            if (args.state === 'Changed') {
+                var appearance = document.getElementById('propertypanel');
+                @*custom code start*@
+                var selectedElement = document.getElementsByClassName('e-remove-selection');
+                if (args.newValue) {
+                    if (!appearance.classList.contains('e-remove-selection')) {
+                        appearance.classList.add('e-remove-selection');
+                    }
+                    @*custom code end*@
+                    if (args.newValue[0] instanceof ej.diagrams.Node && selectedElement.length) {
+                        selectedElement[0].classList.remove('e-remove-selection');
+                        var port = getPort()[0];
+                        portVisibilityDrop.value = port.visibility;
+                        portVisibilityDrop.dataBind();
+                        portFillDrop.value = port.style.fill;
+                        portFillDrop.dataBind();
+                        portBorderDrop.value = port.style.strokeColor;
+                        portBorderDrop.dataBind();
+                        portShapeDrop.value = port.shape;
+                        portShapeDrop.dataBind();
+                        portSizeNum.value = port.height;
+                        portSizeNum.dataBind();
+                        portWidthNum.value = port.style.strokeWidth;
+                        portWidthNum.dataBind();
+                    }
+                }
+            }
+        }
+
+        function applyPortStyle(propertyName, propertyValue) {
+            var diagram = document.getElementById("container").ej2_instances[0];
+            var ports = getPort();
+            for (var j = 0; j < ports.length; j++) {
+                var port = ports[j];
+                if (propertyName === 'size') {
+                    port.height = propertyValue;
+                    port.width = propertyValue;
+                } else if (propertyName === 'strokewidth') {
+                    port.style.strokeWidth = propertyValue;
+                } else if (propertyName === 'strokecolor') {
+                    port.style.strokeColor = propertyValue;
+                } else if (propertyName === 'fillcolor') {
+                    port.style.fill = propertyValue;
+                }
+            }
+            diagram.dataBind();
+        }
+
+        function portVisibilityDropOnChange(args) {
+            var diagram = document.getElementById("container").ej2_instances[0];
+            var port = getPort();
+            if (port) {
+                for (var j = 0; j < port.length; j++) {
+                        port[j].visibility = portVisibilityDrop.value;
+                }
+            }
+            diagram.dataBind();
+        }
+
+        function portShapeDropOnChange(args) {
+            var portShapeDrop = document.getElementById("shape").ej2_instances[0];
+            var diagram = document.getElementById("container").ej2_instances[0];
+            var port = getPort();
+            for (var j = 0; j < port.length; j++) {
+                switch (portShapeDrop.value) {
+                    case 'X':
+                        port[j].shape = 'X';
+                        break;
+                    case 'Circle':
+                        port[j].shape = 'Circle';
+                        break;
+                    case 'Square':
+                        port[j].shape = 'Square';
+                        break;
+                    case 'Custom':
+                        port[j].shape = 'Custom';
+                        port[j].pathData = 'M3,0 L6,6 L0,6 Z ';
+                        break;
+                }
+                diagram.dataBind();
+            }
+        }
+
+    </script>
+}
+@section ActionDescription{
+    <p>
+        This sample visualizes the process flow of publishing a book using connection points. Connection points are static points
+        over the shapes that allow creating connections to the shapes. Customizing the size and appearance of the connection points is illustrated in this example.
+    </p>
+}
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Ports in ASP.NET MVC Diagram control. Explore here for more details."/>
+                }
+@section Description{
+    <p>
+        This example shows how to add connection ports to shapes. The <code>ports</code> property of the node defines the static connection ports. The <code>offset</code>,
+        <code>horizontalAlignment</code>, <code>verticalAlignment</code> and <code>margin</code> properties of the ports define its position.
+    </p>
+    <p>
+        The <code>style</code> property of the port can be used to customize its appearance. The <code>visibility</code> property can also be used to define when the connection ports should be visible.
+    </p>
+
+    <p>
+        In this example, the appearance and visibility of the ports can be customized using the options added to the property panel.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Diagram Ports Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Example of Ports in ASP.NET MVC Diagram Control</h1>
+                }

@@ -1,0 +1,62 @@
+@using Syncfusion.EJ2;
+@section ControlsSection{
+    <div class="control-section" align="center">
+
+        @Html.EJS().Chart("container-vertical").Series(series =>
+       {
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("OrganicSales").Opacity(1).DataSource(ViewData["ChartPoints"]).Name("Bank Transfer").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("FairTradeSales").Opacity(1).DataSource(ViewData["ChartPoints"]).Name("Credit Card").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("VegAlternativesSales").Opacity(1).DataSource(ViewData["ChartPoints"]).Name("Debit Card").Add();
+           series.Type(Syncfusion.EJ2.Charts.ChartSeriesType.StackingArea).Width(2).Border(br => br.Width(2).Color("#666666")).XName("Period").YName("OtherSales").Opacity(1).DataSource(ViewData["ChartPoints"]).Name("Cash").Add();
+
+       }).PrimaryXAxis(px => px.EdgeLabelPlacement(Syncfusion.EJ2.Charts.EdgeLabelPlacement.Shift)
+       .MajorGridLines(mg=>mg.Width(0)).ValueType(Syncfusion.EJ2.Charts.ValueType.DateTime).IntervalType(Syncfusion.EJ2.Charts.IntervalType.Years).LabelFormat("yyyy")
+       ).PrimaryYAxis(py => py.LabelFormat("{value}k")
+       .MajorTickLines(mt=>mt.Width(0)).LineStyle(ls=>ls.Width(0)).Title("Amount of sales in €")
+       .Interval(1).Minimum(0).Maximum(7)
+       ).Title("Amount of Sales by Payment Mode"
+       ).ChartArea(area => area.Border(br => br.Width(0))).Tooltip(tt => tt.Enable(true).ShowNearestTooltip(true).EnableHighlight(true)).LegendSettings(leg => leg.EnableHighlight(true)).Load("load").Render()
+
+ 
+        </div>
+
+    @*custom code start*@
+    <style>
+        #control-container {
+            padding: 0px !important;
+        }
+    </style>
+    @*custom code end*@
+    <script src="~/Scripts/chart/theme-color.js"></script>
+    <script>
+        var load = function (args) {
+            loadChartTheme(args);
+            args.chart.width = ej.base.Browser.isDevice ? "100%" : "75%";
+        }
+    </script>      
+}
+   @*custom code start*@
+@section Meta{
+                    <meta name="description" content="This example demonstrates the Stacked Area in ASP.NET MVC Chart control. Explore here for more details."/>
+                }
+   @*custom code end*@
+@section ActionDescription{
+    <p>
+        This <a target="_blank" href="https://www.syncfusion.com/aspnet-mvc-ui-controls/charts/chart-types/stacked-area-chart" aria-label="ASP.NET MVC Stacked Area">ASP.NET MVC Stacked Area<span class="sr-only">opens in a new tab</span></a> example visualizes the amount of sales by payment mode with default stacked area series. A legend in the sample shows information about the series.
+    </p>
+}
+@section Description{
+    <p>
+        In this example, you can see how to render and configure the stacked area chart. This chart visualizes data with y-values stacked one over another in a series order. It shows the relationship between individual values to the total sum of points.
+    </p>
+    <p>
+        More information on the stacked area series can be found in this
+        <a target="_blank" href="https://ej2.syncfusion.com/aspnetmvc/documentation/chart/chart-types/stacked-area" aria-label="documentation section" >documentation section<span class="sr-only">opens in a new tab</span></a>.
+    </p>
+}
+@section Title{
+                    <title>ASP.NET MVC Chart Stacked Area Example - Syncfusion Demos </title> 
+                }
+@section Header{
+                    <h1 class='sb-sample-text'>Charts</h1>
+                }

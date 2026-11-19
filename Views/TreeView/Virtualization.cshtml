@@ -1,0 +1,61 @@
+@using Syncfusion.EJ2.Navigations
+@using Syncfusion.EJ2
+
+@section ControlsSection{
+    <div class="control-section">
+        <div class="control_wrapper">
+            @Html.EJS().TreeView("tree").Height("400px").EnableVirtualization(true).ShowCheckBox(true).Fields((TreeViewFieldsSettings)ViewData["virtualFields"]).Render()
+        </div>
+    </div>
+@*custom code start*@
+<style>
+    .control_wrapper {
+        max-width: 700px;
+        margin: auto;
+        border: 1px solid #dddddd;
+        border-radius: 3px;
+    }
+
+    @@media screen and (max-width:768px) {
+        .treeview-control-section {
+            margin: 0;
+        }
+    }
+</style>
+
+}
+
+@section Meta{
+<meta name="description"
+      content="This example demonstrates the Virtualization feature in ASP.NET MVC TreeView control." />
+}
+
+@section ActionDescription{
+
+<div id="action-description">
+    <p>
+        This example demonstrates virtualization support in ASP.NET MVC TreeView. The component has 8000 items bound to it including children; however, when you open the suggestion list, only few items are loaded based on the height specified, and the remaining items are loaded while scrolling.
+    </p>
+</div>
+
+}
+
+@section Description{
+
+<div id="description">
+    <p>The TreeView component supports UI virtualization to improve rendering performance when handling a large amount of data. Enable this feature by setting the <code>enableVirtualization</code> property to <code>true</code> and providing a fixed <code>height</code> for the TreeView container.</p>
+    <p>In this demo, a large organization-like dataset is generated programmatically and virtualization is enabled to render the nodes efficiently.</p>
+    <p>For more details, refer to the <a href="https://ej2.syncfusion.com/aspnetmvc/documentation/treeview/virtualization" target="_blank">Virtualization documentation</a>.</p>
+</div>
+
+}
+
+@section Title{
+<title>ASP.NET MVC TreeView Virtualization Example - Syncfusion Demos</title>
+}
+
+@section Header{
+<h1 class="sb-sample-text">
+    Example of Virtualization in ASP.NET MVC TreeView Control
+</h1>
+}

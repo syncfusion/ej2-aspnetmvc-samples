@@ -1,0 +1,23 @@
+@using Syncfusion.EJ2;
+
+@model EJ2MVCSampleBrowser.Models.QueryTemplateModel.ActionModel
+
+<div class="e-rule e-rule-template">
+    <div class="e-rule-filter">
+        @Html.EJS().DropDownList(Model.RuleID + "_fieldddl").Fields(Model.Fields).Value(Model.Rule.Field).DataSource(Model.Columns).Change("fieldChange").Render()
+    </div>
+    <div class="e-rule-operator e-operator">
+        @Html.EJS().RadioButton(Model.RuleID + "_operator1").Label("Is Equal").Value("equal").Name(Model.RuleID + "_operator").Change("operatorChange").Checked(Model.Rule.Operator == "equal").Render()
+        @Html.EJS().RadioButton(Model.RuleID + "_operator2").Label("Is Not Equal").Value("notequal").Name(Model.RuleID + "_operator").Change("operatorChange").Checked(Model.Rule.Operator == "notequal").Render()
+    </div>
+    <div class="e-rule-value e-value e-custom-value">
+        @Html.EJS().DropDownList(Model.RuleID + "_valueddl").Fields(Model.Fields).Value(Model.Rule.Value).DataSource(ViewData["Items"]).Change("valueChange").Render()
+    </div>
+    <div class="e-rule-value-delete">
+        <button class="e-removerule e-custom-delete e-rule-delete e-css e-btn e-small e-round">
+            <span class="e-btn-icon e-icons e-delete-icon" />
+        </button>
+    </div>
+</div>
+
+@Html.EJS().ScriptManager()
